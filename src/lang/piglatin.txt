@@ -665,7 +665,6 @@ STR_OFF                                                         :Offway
 STR_SUMMARY                                                     :Ummarysay
 STR_FULL                                                        :Ullfay
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Owntay irectoryday
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -703,6 +702,7 @@ STR_02DE_MAP_OF_WORLD                                           :Apmay ofway orl
 STR_EXTRA_VIEW_PORT                                             :Extraway iewportvay
 STR_SIGN_LIST                                                   :Ignsay istlay
 STR_02DF_TOWN_DIRECTORY                                         :Owntay irectoryday
+STR_02BB_TOWN_DIRECTORY                                         :Owntay irectoryday
 STR_TOWN_POPULATION                                             :{BLACK}Orldway opulationpay: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Iewportvay {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Opycay otay iewportvay
@@ -729,6 +729,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Autosave
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Electsay intervalway etweenbay automaticway amegay avessay
 STR_02F7_OFF                                                    :Offway
+STR_AUTOSAVE_1_MONTH                                            :Everyway onthmay
 STR_02F8_EVERY_3_MONTHS                                         :Everyway 3 onthsmay
 STR_02F9_EVERY_6_MONTHS                                         :Everyway 6 onthsmay
 STR_02FA_EVERY_12_MONTHS                                        :Everyway 12 onthsmay
@@ -849,7 +850,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Asebay a
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Electsay ethay asebay aphicsgray etsay otay useway
 
-STR_AUTOSAVE_1_MONTH                                            :Everyway onthmay
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosaveway ailedfay
 
 STR_MONTH_JAN                                                   :Anuaryjay
@@ -2800,12 +2800,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Earclay 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Esetray ethay atenesslay ountercay, osay ethay ehiclevay illway ebay onway imetay
 STR_SERVICE_HINT                                                :{BLACK}Ipskay isthay orderway unlessway away ervicesay isway eedednay
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ostcay: {CURRENCY} Eightway: {WEIGHT_S}{}Eedspay: {VELOCITY}  Owerpay: {POWER}{}Unningray Ostcay: {CURRENCY}/yray{}Apacitycay: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Okenbray ownday
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Ageway: {LTBLUE}{STRING}{BLACK}   Unningray Ostcay: {LTBLUE}{CURRENCY}/yray
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Eightway: {LTBLUE}{WEIGHT_S}  {BLACK}Owerpay: {LTBLUE}{POWER}{BLACK} Axmay. eedspay: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Eightway: {LTBLUE}{WEIGHT_S} {BLACK}Owerpay: {LTBLUE}{POWER}{BLACK} Axmay. eedspay: {LTBLUE}{VELOCITY} {BLACK}Axmay. Tay.Eway.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ofitpray isthay earyay: {LTBLUE}{CURRENCY}  (astlay earyay: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eliabilityray: {LTBLUE}{COMMA}%  {BLACK}Eakdownsbray incesay astlay ervicesay: {LTBLUE}{COMMA}
+STR_885C_BROKEN_DOWN                                            :{RED}Okenbray ownday
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Ageway: {LTBLUE}{STRING}{BLACK}   Unningray Ostcay: {LTBLUE}{CURRENCY}/yray
 STR_8861_STOPPED                                                :{RED}Oppedstay
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}An'tcay akemay aintray asspay ignalsay atway angerday...
 STR_8863_CRASHED                                                :{RED}Ashedcray!

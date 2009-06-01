@@ -733,7 +733,6 @@ STR_OFF                                                         :Vypnuto
 STR_SUMMARY                                                     :Shrnutí
 STR_FULL                                                        :Plná
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Seznam měst
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -771,6 +770,7 @@ STR_02DE_MAP_OF_WORLD                                           :Mapa světa
 STR_EXTRA_VIEW_PORT                                             :Další pohled
 STR_SIGN_LIST                                                   :Seznam popisků
 STR_02DF_TOWN_DIRECTORY                                         :Seznam měst
+STR_02BB_TOWN_DIRECTORY                                         :Seznam měst
 STR_TOWN_POPULATION                                             :{BLACK}Populace světa: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pohled {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Nastavit jako pohled
@@ -797,6 +797,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Automati
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Volba intervalu mezi automatickým ukládáním hry
 STR_02F7_OFF                                                    :Vypnuto
+STR_AUTOSAVE_1_MONTH                                            :Každý měsíc
 STR_02F8_EVERY_3_MONTHS                                         :Každé 3 měsíce
 STR_02F9_EVERY_6_MONTHS                                         :Každých 6 měsíců
 STR_02FA_EVERY_12_MONTHS                                        :Každých 12 měsíců
@@ -917,7 +918,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Základn
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Zvolte základní sadu grafiky
 
-STR_AUTOSAVE_1_MONTH                                            :Každý měsíc
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatické uložení selhalo
 
 STR_MONTH_JAN                                                   :Leden
@@ -2197,12 +2197,12 @@ STR_NUM_VERY_LOW                                                :velmi nízké
 STR_6816_LOW                                                    :nízké
 STR_6817_NORMAL                                                 :střední
 STR_6818_HIGH                                                   :vysoké
-STR_02BF_CUSTOM                                                 :Vlastní
+STR_02BF_CUSTOM                                                 :vlastní
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :velmi nízká
 STR_681C_SLOW                                                   :nízká
-STR_681D_MEDIUM                                                 :středně vysoká
+STR_681D_MEDIUM                                                 :střední
 STR_681E_FAST                                                   :vysoká
 STR_681F_VERY_FAST                                              :velmi vysoká
 STR_VERY_LOW                                                    :velmi nízká
@@ -2308,7 +2308,7 @@ STR_7049_SELECT_MALE_FACES                                      :{BLACK}Zvolit m
 STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Zvolit ženské obličeje
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Vytvořit náhodnou novou tvář
 STR_704C_KEY                                                    :{BLACK}Legenda
-STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Ukázat legendu ke grafům
+STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Zobrazit legendu ke grafům
 STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Zobrazit podrobné hodnocení výkonu
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Legenda ke grafům společností
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klepni zde pro přepnuti zobrazení společnosti na grafu
@@ -2874,12 +2874,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Zrušit 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Smazat zpoždění, takže vozidlo pojede na čas
 STR_SERVICE_HINT                                                :{BLACK}Přeskoč tento cíl, pokud není potřeba pravidelná údržba
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Hmotnost: {WEIGHT_S}{}Rychlost: {VELOCITY}  Výkon: {POWER}{}Cena provozu: {CURRENCY} ročně{}Kapacita: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Porucha
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Stáří: {LTBLUE}{STRING}{BLACK}   Cena provozu: {LTBLUE}{CURRENCY} ročně
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_S}  {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_S} {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY} {BLACK}Max. tažná síla: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Příjem tento rok: {LTBLUE}{CURRENCY}  (minulý rok: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
+STR_885C_BROKEN_DOWN                                            :{RED}Porucha
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Stáří: {LTBLUE}{STRING}{BLACK}   Cena provozu: {LTBLUE}{CURRENCY} ročně
 STR_8861_STOPPED                                                :{RED}Zastaveno
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Nemohu vlak nechat projet semafory v nebezpečí...
 STR_8863_CRASHED                                                :{RED}Nehoda!

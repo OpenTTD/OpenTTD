@@ -666,7 +666,6 @@ STR_OFF                                                         :اغلاق
 STR_SUMMARY                                                     :ملخص
 STR_FULL                                                        :ممتلئ
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :دليل المدن
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -704,6 +703,7 @@ STR_02DE_MAP_OF_WORLD                                           :خريطة ال
 STR_EXTRA_VIEW_PORT                                             :شاشة عرض اضافية
 STR_SIGN_LIST                                                   :قائمة العلامات
 STR_02DF_TOWN_DIRECTORY                                         :دليل المدن
+STR_02BB_TOWN_DIRECTORY                                         :دليل المدن
 STR_TOWN_POPULATION                                             :{BLACK}سكان العالم: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}شاشة عرض{COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}انسخ لشاشة العرض
@@ -730,6 +730,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}حفظ �
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}اختار مدة الحفظ الآلي
 STR_02F7_OFF                                                    :بدون
+STR_AUTOSAVE_1_MONTH                                            :كل شهر
 STR_02F8_EVERY_3_MONTHS                                         :كل 3 اشهر
 STR_02F9_EVERY_6_MONTHS                                         :كل 6 اشهر
 STR_02FA_EVERY_12_MONTHS                                        :كل سنة
@@ -850,7 +851,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK} الو�
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK} اختر مجموعة الواجهة الرسومية
 
-STR_AUTOSAVE_1_MONTH                                            :كل شهر
 STR_AUTOSAVE_FAILED                                             :{WHITE}فشل الحفظ التلقائي
 
 STR_MONTH_JAN                                                   :يناير
@@ -2801,12 +2801,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}مسح �
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}عدل وقت التاخير للعداد حتى تصل المركبة في الوقت المحدد
 STR_SERVICE_HINT                                                :{BLACK}تجاوز هذا الامر الا اذا لم تكن الصيانة مطلوبة
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK} التكلفة: {CURRENCY} الوزن: {WEIGHT_S} {} السرعة: {VELOCITY}  الطاقة: {POWER}{} كلفة التشغيل: {CURRENCY} / سنة {} السعة: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED} متعطل
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}العمر: {LTBLUE}{STRING}{BLACK}      تكلفة التشغيل: {LTBLUE}{CURRENCY}/سنة
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK} الوزن: {LTBLUE}{WEIGHT_S}  {BLACK} الطاقة: {LTBLUE}{POWER}{BLACK} السرعة القصوى:  {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK} الوزن  {LTBLUE}{WEIGHT_S} {BLACK} القوة {LTBLUE}{POWER}{BLACK} السرعة القصوى {LTBLUE}{VELOCITY} {BLACK} قوة السحب القصوى {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK} الدخل هذه السنة: {LTBLUE}{CURRENCY}       (السنة السابقة{CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}الصلاحية: {LTBLUE}{COMMA}%  {BLACK} مرات التعطيل منذ الصيانة السابقة: {LTBLUE}{COMMA}
+STR_885C_BROKEN_DOWN                                            :{RED} الاعطال
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}العمر: {LTBLUE}{STRING}{BLACK}      تكلفة التشغيل: {LTBLUE}{CURRENCY}/سنة
 STR_8861_STOPPED                                                :{RED} متوقف
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}لا يمكن السماح للقطار بالعبور من الاشارة في وضع الخطر
 STR_8863_CRASHED                                                :{RED}تحطم!

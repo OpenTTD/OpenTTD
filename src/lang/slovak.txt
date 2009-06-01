@@ -2795,7 +2795,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Vytvori 
 STR_8820_RENAME                                                 :{BLACK}Premenovat
 STR_8823_SKIP                                                   :{BLACK}Preskocit
 STR_8824_DELETE                                                 :{BLACK}Vynechat
-STR_8826_GO_TO                                                  :{BLACK}Chod do
+STR_8826_GO_TO                                                  :{BLACK}Choď do
 STR_REFIT                                                       :{BLACK}Prestavba
 STR_REFIT_TIP                                                   :{BLACK}Vyberte typ nákladu na prestavbu v tomto poradí. CTRL+klik na odstránenie príkazu prestavby
 STR_REFIT_ORDER                                                 :(Prestavba na {STRING})

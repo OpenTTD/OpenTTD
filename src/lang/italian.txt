@@ -667,7 +667,6 @@ STR_OFF                                                         :No
 STR_SUMMARY                                                     :Sommario
 STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Elenco città
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -705,6 +704,7 @@ STR_02DE_MAP_OF_WORLD                                           :Mappa del mondo
 STR_EXTRA_VIEW_PORT                                             :Mini visuale extra
 STR_SIGN_LIST                                                   :Elenco cartelli
 STR_02DF_TOWN_DIRECTORY                                         :Elenco città
+STR_02BB_TOWN_DIRECTORY                                         :Elenco città
 STR_TOWN_POPULATION                                             :{BLACK}Popolazione mondiale: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Mini visuale {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copia nella mini visuale
@@ -731,6 +731,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Salvatag
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Seleziona l'intervallo fra i salvataggi automatici della partita
 STR_02F7_OFF                                                    :No
+STR_AUTOSAVE_1_MONTH                                            :Ogni mese
 STR_02F8_EVERY_3_MONTHS                                         :Ogni 3 mesi
 STR_02F9_EVERY_6_MONTHS                                         :Ogni 6 mesi
 STR_02FA_EVERY_12_MONTHS                                        :Ogni 12 mesi
@@ -851,7 +852,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Stile gr
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Seleziona lo stile grafico di base da utilizzare
 
-STR_AUTOSAVE_1_MONTH                                            :Ogni mese
 STR_AUTOSAVE_FAILED                                             :{WHITE}Salvataggio automatico fallito
 
 STR_MONTH_JAN                                                   :Gennaio
@@ -1208,7 +1208,7 @@ STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Copre la
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Impossibile generare industrie...
 
 STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Apre la barra di modellazione del terreno per alzare/abbassare il terreno, piantare alberi, etc.
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Modella terreno
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Modellazione terreno
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Livella terreno
 
 
@@ -2802,12 +2802,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Elimina 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Azzera il contatore del ritardo, in modo che il veicolo sia considerato in orario
 STR_SERVICE_HINT                                                :{BLACK}Ingnora quest'ordine a meno che non sia necessaria una manutenzione
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Costo: {CURRENCY} Peso: {WEIGHT_S}{}Velocità: {VELOCITY}  Potenza: {POWER}{}Costo d'esercizio: {CURRENCY}/anno{}Capacità: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Guasto
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Età: {LTBLUE}{STRING}{BLACK}   Costo d'esercizio: {LTBLUE}{CURRENCY}/anno
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_S}  {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max.: {LTBLUE}{VELOCITY} {BLACK}S.T. max.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profitto quest'anno: {LTBLUE}{CURRENCY}  (anno scorso: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Affidabilità: {LTBLUE}{COMMA}%  {BLACK}Guasti dall'ultima manutenzione: {LTBLUE}{COMMA}
+STR_885C_BROKEN_DOWN                                            :{RED}Guasto
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Età: {LTBLUE}{STRING}{BLACK}   Costo d'esercizio: {LTBLUE}{CURRENCY}/anno
 STR_8861_STOPPED                                                :{RED}Fermo
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Impossibile far passare al treno un segnale di pericolo...
 STR_8863_CRASHED                                                :{RED}Distrutto!

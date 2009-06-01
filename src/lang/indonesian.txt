@@ -665,7 +665,6 @@ STR_OFF                                                         :Mati
 STR_SUMMARY                                                     :Ringkasan
 STR_FULL                                                        :Penuh
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Daftar kota
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -703,6 +702,7 @@ STR_02DE_MAP_OF_WORLD                                           :Peta Dunia
 STR_EXTRA_VIEW_PORT                                             :Viewport ekstra
 STR_SIGN_LIST                                                   :Daftar Tanda
 STR_02DF_TOWN_DIRECTORY                                         :Daftar Kota
+STR_02BB_TOWN_DIRECTORY                                         :Daftar kota
 STR_TOWN_POPULATION                                             :{BLACK}Populasi Dunia: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Viewport {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Simpan ke viewport
@@ -729,6 +729,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Simpan O
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Pilih selang waktu permainan otomatis disimpan
 STR_02F7_OFF                                                    :Mati
+STR_AUTOSAVE_1_MONTH                                            :Setiap bulan
 STR_02F8_EVERY_3_MONTHS                                         :Setiap 3 bulan
 STR_02F9_EVERY_6_MONTHS                                         :Setiap 6 bulan
 STR_02FA_EVERY_12_MONTHS                                        :Setiap 12 bulan
@@ -849,7 +850,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Set Graf
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Pilih grafik dasar yang digunakan
 
-STR_AUTOSAVE_1_MONTH                                            :Setiap bulan
 STR_AUTOSAVE_FAILED                                             :{WHITE}Simpan otomatis gagal
 
 STR_MONTH_JAN                                                   :Januari
@@ -2016,7 +2016,7 @@ STR_5011_SUSPENSION_CONCRETE                                    :Suspensi, Beton
 STR_5012_WOODEN                                                 :Kayu
 STR_5013_CONCRETE                                               :Beton
 STR_5014_TUBULAR_STEEL                                          :Pipa, Baja
-STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silicon
+STR_BRIDGE_TUBULAR_SILICON                                      :Pipa, Silikon
 STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Tidak dapat membangun jembatan disini...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Tidak dapat membangun terowongan disini...
 STR_5017_RAILROAD_TUNNEL                                        :Terowongan Kereta api
@@ -2033,8 +2033,8 @@ STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Jembatan jalan 
 STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Jembatan jalan suspensi beton bertulang
 STR_5025_WOODEN_ROAD_BRIDGE                                     :Jembatan jalan kayu
 STR_5026_CONCRETE_ROAD_BRIDGE                                   :Jembatan jalan beton
-STR_5027_TUBULAR_RAIL_BRIDGE                                    :jembatan rel berbentuk tabung
-STR_5028_TUBULAR_ROAD_BRIDGE                                    :jembatan berbentuk tabung
+STR_5027_TUBULAR_RAIL_BRIDGE                                    :Jembatan rel berbentuk tabung
+STR_5028_TUBULAR_ROAD_BRIDGE                                    :Jembatan berbentuk tabung
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}terhalang obyek
@@ -2241,6 +2241,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Pilih wa
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Buat wajah baru secara acak
 STR_704C_KEY                                                    :{BLACK}Item
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Tampilkan grafik item
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Perlihatkan detil rating kekuatan
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Grafik item perusahaan
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klik disini untuk menandai daftar perusahaan pada grafik
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Jumlah kargo terkirim
@@ -2799,12 +2800,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Hapus ju
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Kembalikan penghitung waktu keterlambatan seperti semula, sehingga kendaraan akan selalu tepat waktu
 STR_SERVICE_HINT                                                :{BLACK}Lewati servis kecuali jika dibutuhkan servis
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Biaya: {CURRENCY} Berat: {WEIGHT_S}{}Kecepatan: {VELOCITY}  Daya: {POWER}{}Biaya ops.: {CURRENCY}/thn{}Kapasitas: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Mogok
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Usia: {LTBLUE}{STRING}{BLACK}   Biaya Operasional: {LTBLUE}{CURRENCY}/thn
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Berat: {LTBLUE}{WEIGHT_S}  {BLACK}Daya: {LTBLUE}{POWER}{BLACK} Kecepatan Maks.: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Berat: {LTBLUE}{WEIGHT_S}  {BLACK}Daya: {LTBLUE}{POWER}{BLACK} Kecepatan Maks.: {LTBLUE}{VELOCITY} {BLACK}Traksi Maks.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Berat: {LTBLUE}{WEIGHT_S} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Laba tahun ini: {LTBLUE}{CURRENCY}  (tahun lalu: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Kehandalan: {LTBLUE}{COMMA}%  {BLACK}Mogok sejak servis terakhir: {LTBLUE}{COMMA}
+STR_885C_BROKEN_DOWN                                            :{RED}Rusak
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Usia: {LTBLUE}{STRING}{BLACK}   Biaya Operasional: {LTBLUE}{CURRENCY}/thn
 STR_8861_STOPPED                                                :{RED}Berhenti
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Tidak dapat memaksa kereta melanggar sinyal pada saat bahaya...
 STR_8863_CRASHED                                                :{RED}Kecelakaan!
@@ -3172,6 +3173,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Kereta a
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' memberikan informasi yang salah.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informasi muat ulang untuk '{1:ENGINE}' berbeda dengan daftar beli setelah konstruksi. Ini menyebabkan pembaruan otomatis gagal memuat ulang dengan benar..
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' menyebabkan perulangan tanpa akhir di tingkat produksi.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game telah disimpan pada versi terdahulu tanpa dukungan alat transportasi trem. Semua Trem telah dihilangkan.
 
@@ -3560,14 +3562,14 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Pengaturan AI
 STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Tampilkan setting AI
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
-STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name of the AI
-STR_AI_DEBUG_RELOAD                                             :{BLACK}Reload AI
-STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Kill the AI, reload the script, and restart the AI
-STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI Debug window is only available for the server
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nama AI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Muat ulang AI
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Matikan fitur AI, muat ulang script, dan restart AI
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI Jendela "Debug" hanya tersedia untuk server
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfigurasi AI
 STR_AI_CHANGE                                                   :{BLACK}Pilih AI
 STR_AI_CONFIGURE                                                :{BLACK}Konfigurasikan
-STR_AI_CHANGE_TIP                                               :{BLACK}Muat Ai lainnya
+STR_AI_CHANGE_TIP                                               :{BLACK}Muat AI lainnya
 STR_AI_CONFIGURE_TIP                                            :{BLACK}Mengkonfigurasi parameter AI
 STR_AI_LIST_TIP                                                 :{BLACK}Semua AI yang akan dimuat pada permainan selanjutnya
 STR_AI_LIST_CAPTION                                             :{WHITE}AI tersedia

@@ -730,6 +730,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Авто
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Интервала между две автозаписваня
 STR_02F7_OFF                                                    :изключено
+STR_AUTOSAVE_1_MONTH                                            :всеки месец
 STR_02F8_EVERY_3_MONTHS                                         :всеки 3 месеца
 STR_02F9_EVERY_6_MONTHS                                         :всеки 6 месеца
 STR_02FA_EVERY_12_MONTHS                                        :всеки 12 месеца
@@ -849,7 +850,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Базо
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Изберете базов графичен набор
 
-STR_AUTOSAVE_1_MONTH                                            :всеки месец
 STR_AUTOSAVE_FAILED                                             :{WHITE}Автозапазването е неуспешно
 
 STR_MONTH_JAN                                                   :Януари

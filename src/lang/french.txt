@@ -666,7 +666,6 @@ STR_OFF                                                         :Aucun
 STR_SUMMARY                                                     :Sommaire
 STR_FULL                                                        :Complet
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Annuaire des villes
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -704,6 +703,7 @@ STR_02DE_MAP_OF_WORLD                                           :Carte du monde
 STR_EXTRA_VIEW_PORT                                             :Vue supplémentaire
 STR_SIGN_LIST                                                   :Liste des panneaux
 STR_02DF_TOWN_DIRECTORY                                         :Annuaire des villes
+STR_02BB_TOWN_DIRECTORY                                         :Annuaire des villes
 STR_TOWN_POPULATION                                             :{BLACK}Population mondiale : {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vue {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copier vers la vue
@@ -730,6 +730,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Sauvegar
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Sélectionner l'intervalle de temps entre les sauvegardes automatiques
 STR_02F7_OFF                                                    :Désactivé
+STR_AUTOSAVE_1_MONTH                                            :Tous les mois
 STR_02F8_EVERY_3_MONTHS                                         :Tous les 3 mois
 STR_02F9_EVERY_6_MONTHS                                         :Tous les 6 mois
 STR_02FA_EVERY_12_MONTHS                                        :Tous les 12 mois
@@ -850,7 +851,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Graphiqu
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Sélectionner les graphiques de base à utiliser
 
-STR_AUTOSAVE_1_MONTH                                            :Tous les mois
 STR_AUTOSAVE_FAILED                                             :{WHITE}Enregistrement automatique échoué
 
 STR_MONTH_JAN                                                   :Janvier
@@ -2801,12 +2801,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Annuler 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Remet à zéro le compteur de retard, le véhicule sera donc à l'heure
 STR_SERVICE_HINT                                                :{BLACK}Sauter cet ordre tant qu'aucun entretien n'est requis
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Prix: {CURRENCY} Poids: {WEIGHT_S}{}Vitesse: {VELOCITY}  Puissance: {POWER}{}Coût d'entretien: {CURRENCY}/an{}Capacité: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}En panne
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Âge: {LTBLUE}{STRING}{BLACK}   Coût d'entretien: {LTBLUE}{CURRENCY}/an
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Poids: {LTBLUE}{WEIGHT_S}  {BLACK}Puissance: {LTBLUE}{POWER}{BLACK} Vitesse max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Poids: {LTBLUE}{WEIGHT_S} {BLACK}Puissance: {LTBLUE}{POWER}{BLACK} Vitesse max.: {LTBLUE}{VELOCITY} {BLACK}E.T. max.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit cette année: {LTBLUE}{CURRENCY}  (année précédente: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilité: {LTBLUE}{COMMA}%  {BLACK}Pannes depuis le dernier entretien: {LTBLUE}{COMMA}
+STR_885C_BROKEN_DOWN                                            :{RED}En Panne
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Âge: {LTBLUE}{STRING}{BLACK}   Coût d'entretien: {LTBLUE}{CURRENCY}/an
 STR_8861_STOPPED                                                :{RED}Stoppé
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Impossible de forcer le train à avancer sous le danger...
 STR_8863_CRASHED                                                :{RED}Crashé!

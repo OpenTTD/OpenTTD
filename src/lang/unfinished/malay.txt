@@ -579,7 +579,6 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Saiz ba
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Tunjukkan utusan atau laporan berita terakhir
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Direktori Bandar
-STR_02BF_CUSTOM                                                 :Custom
 
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Pilihan permainan
@@ -625,6 +624,7 @@ STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Pilih te
 STR_02F4_AUTOSAVE                                               :{BLACK}Simpanan automatik
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Pilih tempoh untuk simpanan permainan automatik
 STR_02F7_OFF                                                    :Matikan
+STR_AUTOSAVE_1_MONTH                                            :Setiap bulan
 STR_02F8_EVERY_3_MONTHS                                         :Setiap 3 bulan
 STR_02F9_EVERY_6_MONTHS                                         :Setiap 6 bulan
 STR_02FA_EVERY_12_MONTHS                                        :Setiap 12 bulan
@@ -676,7 +676,7 @@ STR_TOWNNAME_SWEDISH                                            :Swedish
 STR_TOWNNAME_DUTCH                                              :Dutch
 STR_TOWNNAME_FINNISH                                            :Finnish
 STR_TOWNNAME_POLISH                                             :Polish
-STR_TOWNNAME_SLOVAKISH                                          :Slovakish
+STR_TOWNNAME_SLOVAK                                             :Slovak
 STR_TOWNNAME_NORWEGIAN                                          :Norwegian
 STR_TOWNNAME_HUNGARIAN                                          :Hungarian
 STR_TOWNNAME_AUSTRIAN                                           :Austrian
@@ -710,7 +710,6 @@ STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{S
 
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
-STR_AUTOSAVE_1_MONTH                                            :Setiap bulan
 
 STR_MONTH_JAN                                                   :Januari
 STR_MONTH_FEB                                                   :Februari
@@ -992,6 +991,7 @@ STR_2013_LARGE_OFFICE_BLOCK                                     :Bangunan pejaba
 STR_2014_TOWN_HOUSES                                            :Rumah
 STR_2015_HOTEL                                                  :Hotel
 STR_2016_STATUE                                                 :Patung
+STR_2017_FOUNTAIN                                               :Air Pancur
 STR_2018_PARK                                                   :Taman
 STR_2019_OFFICE_BLOCK                                           :Bangunan pejabat
 STR_201A_SHOPS_AND_OFFICES                                      :Kedai dan pejabat
@@ -1001,18 +1001,22 @@ STR_201D_OFFICE_BLOCK                                           :Bangunan pejaba
 STR_201E_STADIUM                                                :Stadium
 STR_201F_OLD_HOUSES                                             :Rumah usang
 STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Majlis tempatan
+STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Papar maklumat pihak berkuasa tempatan
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} majlis tempatan
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Penarafan syarikat pengangkutan:
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidi
 STR_202D_UNTIL                                                  :{YELLOW}, sehingga {DATE_SHORT})
 STR_2038_FLATS                                                  :Pangsapuri
+STR_203A_SHOPS_AND_OFFICES                                      :Kedai-kedai dan pejabat-pejabat
+STR_203B_SHOPS_AND_OFFICES                                      :Kedai-kedai dan pejabat-pejabat
 STR_203C_THEATER                                                :Panggung Wayang
 STR_203D_STADIUM                                                :Stadium
 STR_203E_OFFICES                                                :Pejabat
 STR_203F_HOUSES                                                 :Rumah
 STR_2040_CINEMA                                                 :Panggung Wayang
 STR_2041_SHOPPING_MALL                                          :Pusat beli-belah
+STR_2042_DO_IT                                                  :{BLACK}Lakukan
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Kempen iklan kecil
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Kempen iklan sederhana
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Kempen iklan besar
@@ -1059,6 +1063,7 @@ STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Tukarkan
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Tunjukkan senarai kargo yang diterima
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Pilih saiz/jenis lapangan kapal terbang
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Stesen keretapi
 STR_3060_AIRPORT                                                :Lapangan kapal terbang
 STR_3062_BUS_STATION                                            :Stesen bas
@@ -1067,14 +1072,18 @@ STR_3068_DOCK                                                   :{WHITE}Perlabuh
 
 
 ##id 0x3800
+STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...mesti dibina atas air
 STR_3804_WATER                                                  :Air
 STR_3806_SHIP_DEPOT                                             :Depot kapal
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Tidak boleh dibina atas air
 
 ##id 0x4000
 STR_4003_DELETE                                                 :{BLACK}Padam
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fail tidak boleh dibaca
 
 ##id 0x4800
+STR_4805_FOREST                                                 :Hutan
+STR_4808_FACTORY                                                :Kilang
 
 ############ range for requires starts
 ############ range for requires ends
@@ -1109,12 +1118,27 @@ STR_SV_STNAME_NORTH                                             :{STRING} Utara
 ############ range for difficulty settings starts
 ############ range for difficulty settings ends
 
+STR_02BF_CUSTOM                                                 :Custom
 
 ##id 0x7000
 
+STR_LIVERY_BUS                                                  :Bas
+STR_LIVERY_TRUCK                                                :Lori
+STR_LIVERY_PASSENGER_SHIP                                       :Feri Penumpang
+STR_LIVERY_FREIGHT_SHIP                                         :Kapal Kargo
+STR_LIVERY_HELICOPTER                                           :Helikopter
+STR_LIVERY_SMALL_PLANE                                          :Kapal Terbang Kecil
+STR_LIVERY_LARGE_PLANE                                          :Kapal Terbang Besar
+STR_LIVERY_PASSENGER_TRAM                                       :Trem Penumpang
 
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Pilih warna pertama untuk skim yang dipilih
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Pilih warna kedua untuk skim yang dipilih
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Pilih skim warna untuk menukarkanya atau berbilang skim dengan Ctrl+Klik. Klik kotak untuk menukarkan pakaian skim ini
 
 ##id 0x8000
+STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
+STR_8005_PLODDYPHUT_DIESEL                                      :Ploddyphut Diesel
+STR_8006_POWERNAUT_DIESEL                                       :Powernaut Diesel
 
 ##id 0x8800
 

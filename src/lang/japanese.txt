@@ -663,7 +663,6 @@ STR_OFF                                                         :切
 STR_SUMMARY                                                     :概要
 STR_FULL                                                        :完全
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :市町村のリスト
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -701,6 +700,7 @@ STR_02DE_MAP_OF_WORLD                                           :世界の地図
 STR_EXTRA_VIEW_PORT                                             :特別ビューア
 STR_SIGN_LIST                                                   :標示のリスト
 STR_02DF_TOWN_DIRECTORY                                         :市町村のリスト
+STR_02BB_TOWN_DIRECTORY                                         :市町村のリスト
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}人
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}ビューア {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}ビューアへコピー
@@ -727,6 +727,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}自動�
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}自動保存の間隔を選択します
 STR_02F7_OFF                                                    :切
+STR_AUTOSAVE_1_MONTH                                            :毎月
 STR_02F8_EVERY_3_MONTHS                                         :毎3月
 STR_02F9_EVERY_6_MONTHS                                         :毎6月
 STR_02FA_EVERY_12_MONTHS                                        :毎12月
@@ -846,7 +847,6 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}スク�
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}使用するGRFの選択
 
-STR_AUTOSAVE_1_MONTH                                            :毎月
 STR_AUTOSAVE_FAILED                                             :{WHITE}自動保存に失敗しました
 
 STR_MONTH_JAN                                                   :1月
@@ -2769,12 +2769,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}選択�
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}遅刻回数をリセットして、車両が定刻になります
 STR_SERVICE_HINT                                                :{BLACK}修理が必要でないとこの指令をスキップ
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}価格：{CURRENCY}　重量：{WEIGHT_S}{}最大速度：{VELOCITY}　出力：{POWER}{}運転費：一年間{CURRENCY}{}容量：{CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}故障
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}使用年数：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}1年間に{CURRENCY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量：{LTBLUE}{WEIGHT_S}　{BLACK}出力：{LTBLUE}{POWER}{BLACK}　最大速度：{LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量：{LTBLUE}{WEIGHT_S}　{BLACK}出力：{LTBLUE}{POWER}　{BLACK}最大速度：{LTBLUE}{VELOCITY} {BLACK}最大T.E.：{LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重さ：{LTBLUE}{WEIGHT_S}　{BLACK}力：{LTBLUE}{POWER}{BLACK}　最高速度：{LTBLUE}{VELOCITY}　{BLACK}最大牽引力：{LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の損益：{LTBLUE}{CURRENCY}（昨年：{CURRENCY}）
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障回数：{LTBLUE}{COMMA}
+STR_885C_BROKEN_DOWN                                            :{RED}故障中
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}使用年数：{LTBLUE}{STRING}{BLACK}　運転費：{LTBLUE}1年間に{CURRENCY}
 STR_8861_STOPPED                                                :{RED}停止中
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}信号を無視して列車を進行させることができません...
 STR_8863_CRASHED                                                :{RED}事故！
@@ -3360,6 +3360,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}地域�
 STR_DATE_TINY                                                   :{2:NUM}-{1:STRING}-{0:STRING}
 STR_DATE_SHORT                                                  :{1:NUM}年{0:STRING}
 STR_DATE_LONG                                                   :{2:NUM}年{1:STRING}{0:STRING}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}

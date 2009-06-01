@@ -665,7 +665,6 @@ STR_OFF                                                         :Fra
 STR_SUMMARY                                                     :Kortfattet
 STR_FULL                                                        :Fuld
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Byoversigt
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -703,6 +702,7 @@ STR_02DE_MAP_OF_WORLD                                           :Kort over verde
 STR_EXTRA_VIEW_PORT                                             :Nyt lokalitetsvindue
 STR_SIGN_LIST                                                   :Liste over skilte
 STR_02DF_TOWN_DIRECTORY                                         :Byoversigt
+STR_02BB_TOWN_DIRECTORY                                         :Byoversigt
 STR_TOWN_POPULATION                                             :{BLACK}Verdens befolkning: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Lokalitetsvindue {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Hent global
@@ -729,6 +729,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Automati
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Vælg interval imellem automatisk gemning
 STR_02F7_OFF                                                    :Fra
+STR_AUTOSAVE_1_MONTH                                            :Hver måned
 STR_02F8_EVERY_3_MONTHS                                         :Hver 3. måned
 STR_02F9_EVERY_6_MONTHS                                         :Hver 6. måned
 STR_02FA_EVERY_12_MONTHS                                        :Hver 12. måned
@@ -849,7 +850,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis-gr
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Vælg det basis-grafiksæt der skal bruges
 
-STR_AUTOSAVE_1_MONTH                                            :Hver måned
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fejl under autogem
 
 STR_MONTH_JAN                                                   :januar
@@ -2245,7 +2245,7 @@ STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Vis deta
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Nøgle til selskabsgraf
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klik her for at vise/skjule selskabets graf
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Afleveret last
-STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Selskabets ydelsesrate (maksimal=1000)
+STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Selskabets præstationsrang (maksimal rang=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Selskabsværdier
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Selskabsoversigt
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
@@ -2800,12 +2800,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Nulstil 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nulstil forsinkelses-tæller, så transportmidlet kommer til tiden
 STR_SERVICE_HINT                                                :{BLACK}Spring denne ordre over medmindre der er behov for service
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Pris: {CURRENCY} Vægt: {WEIGHT_S}{}Hastighed: {VELOCITY}  Styrke: {POWER}{}Driftsomkostninger: {CURRENCY}/år{}Kapacitet: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Gået i stykker
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vægt: {LTBLUE}{WEIGHT_S}  {BLACK}Styrke: {LTBLUE}{POWER}{BLACK} Maks. hastighed: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vægt: {LTBLUE}{WEIGHT_S} {BLACK}Effekt: {LTBLUE}{POWER}{BLACK} Maks. hast.: {LTBLUE}{VELOCITY} {BLACK}Maks. trækkraft: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Afkast i år: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed {LTBLUE}{COMMA}%  {BLACK}nedbrud siden sidste service: {LTBLUE}{COMMA}
+STR_885C_BROKEN_DOWN                                            :{RED}Gået i stykker
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftsomkostninger: {LTBLUE}{CURRENCY}/år
 STR_8861_STOPPED                                                :{RED}Stoppet
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kan ikke få toget til at passere signalet...
 STR_8863_CRASHED                                                :{RED}Forulykket!

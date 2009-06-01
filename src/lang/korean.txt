@@ -730,6 +730,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}자동�
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}게임 자동 저장의 간격을 선택
 STR_02F7_OFF                                                    :사용 안함
+STR_AUTOSAVE_1_MONTH                                            :매달
 STR_02F8_EVERY_3_MONTHS                                         :3개월마다
 STR_02F9_EVERY_6_MONTHS                                         :6개월마다
 STR_02FA_EVERY_12_MONTHS                                        :12개월마다
@@ -850,7 +851,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}기본 �
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}사용할 기본 그래픽을 선택하세요
 
-STR_AUTOSAVE_1_MONTH                                            :매달
 STR_AUTOSAVE_FAILED                                             :{WHITE}자동 저장 실패
 
 STR_MONTH_JAN                                                   :1월
@@ -2801,12 +2801,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택�
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}지각 카운터 초기화, 차량은 제시간으로 운행합니다.
 STR_SERVICE_HINT                                                :{BLACK}점검이 필요하면 이 경로를 건너뜁니다.
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}가격: {CURRENCY} 무게: {WEIGHT_S}{}속도: {VELOCITY}  힘: {POWER}{}운행비용: {CURRENCY}/년{}수송량: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}고장
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}무게: {LTBLUE}{WEIGHT_S}  {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}무게: {LTBLUE}{WEIGHT_S} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY} {BLACK}최고 T.E.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}올해 수익: {LTBLUE}{CURRENCY}  (작년: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
+STR_885C_BROKEN_DOWN                                            :{RED}고장
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
 STR_8861_STOPPED                                                :{RED}정지함
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}너무 위험해서 신호를 무시할 수 없습니다...
 STR_8863_CRASHED                                                :{RED}충돌!!

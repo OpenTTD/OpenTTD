@@ -16,76 +16,76 @@ STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nicht ge
 STR_0004                                                        :{WHITE}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Ebenes Land erforderlich
-STR_0008_WAITING                                                :{BLACK}Wartend:  {WHITE}{STRING}
+STR_0008_WAITING                                                :{BLACK}Wartend: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} unterwegs von {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Akzeptiert: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Akzeptiert: {GOLD}
 STR_SUPPLIES                                                    :{BLACK}Liefert: {GOLD}
 STR_000E                                                        :
-STR_000F_PASSENGERS                                             :Passagiere
-STR_0010_COAL                                                   :Kohle
-STR_0011_MAIL                                                   :Post
-STR_0012_OIL                                                    :Öl
-STR_0013_LIVESTOCK                                              :Vieh
-STR_0014_GOODS                                                  :Waren
-STR_0015_GRAIN                                                  :Getreide
-STR_0016_WOOD                                                   :Holz
-STR_0017_IRON_ORE                                               :Eisenerz
-STR_0018_STEEL                                                  :Stahl
-STR_0019_VALUABLES                                              :Wertsachen
-STR_001A_COPPER_ORE                                             :Kupfererz
-STR_001B_MAIZE                                                  :Mais
-STR_001C_FRUIT                                                  :Früchte
-STR_001D_DIAMONDS                                               :Diamanten
-STR_001E_FOOD                                                   :Nahrungsmittel
-STR_001F_PAPER                                                  :Papier
-STR_0020_GOLD                                                   :Gold
-STR_0021_WATER                                                  :Wasser
-STR_0022_WHEAT                                                  :Weizen
-STR_0023_RUBBER                                                 :Kautschuk
-STR_0024_SUGAR                                                  :Zucker
-STR_0025_TOYS                                                   :Spielwaren
-STR_0026_CANDY                                                  :Bonbons
-STR_0027_COLA                                                   :Cola
-STR_0028_COTTON_CANDY                                           :Zuckerwatte
-STR_0029_BUBBLES                                                :Luftblasen
-STR_002A_TOFFEE                                                 :Karamell
-STR_002B_BATTERIES                                              :Batterien
-STR_002C_PLASTIC                                                :Plastik
-STR_002D_FIZZY_DRINKS                                           :Limonaden
+STR_000F_PASSENGERS                                             :{G=p}Passagiere
+STR_0010_COAL                                                   :{G=w}Kohle
+STR_0011_MAIL                                                   :{G=w}Post
+STR_0012_OIL                                                    :{G=n}Öl
+STR_0013_LIVESTOCK                                              :{G=n}Vieh
+STR_0014_GOODS                                                  :{G=p}Waren
+STR_0015_GRAIN                                                  :{G=n}Getreide
+STR_0016_WOOD                                                   :{G=n}Holz
+STR_0017_IRON_ORE                                               :{G=n}Eisenerz
+STR_0018_STEEL                                                  :{G=m}Stahl
+STR_0019_VALUABLES                                              :{G=p}Wertsachen
+STR_001A_COPPER_ORE                                             :{G=n}Kupfererz
+STR_001B_MAIZE                                                  :{G=m}Mais
+STR_001C_FRUIT                                                  :{G=p}Früchte
+STR_001D_DIAMONDS                                               :{G=p}Diamanten
+STR_001E_FOOD                                                   :{G=p}Nahrungsmittel
+STR_001F_PAPER                                                  :{G=n}Papier
+STR_0020_GOLD                                                   :{G=n}Gold
+STR_0021_WATER                                                  :{G=n}Wasser
+STR_0022_WHEAT                                                  :{G=m}Weizen
+STR_0023_RUBBER                                                 :{G=m}Kautschuk
+STR_0024_SUGAR                                                  :{G=m}Zucker
+STR_0025_TOYS                                                   :{G=p}Spielwaren
+STR_0026_CANDY                                                  :{G=p}Bonbons
+STR_0027_COLA                                                   :{G=w}Cola
+STR_0028_COTTON_CANDY                                           :{G=w}Zuckerwatte
+STR_0029_BUBBLES                                                :{G=p}Luftblasen
+STR_002A_TOFFEE                                                 :{G=n}Karamell
+STR_002B_BATTERIES                                              :{G=p}Batterien
+STR_002C_PLASTIC                                                :{G=n}Plastik
+STR_002D_FIZZY_DRINKS                                           :{G=w}Limonade
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :Passagier
-STR_0030_COAL                                                   :Kohle
-STR_0031_MAIL                                                   :Post
-STR_0032_OIL                                                    :Öl
-STR_0033_LIVESTOCK                                              :Vieh
-STR_0034_GOODS                                                  :Waren
-STR_0035_GRAIN                                                  :Getreide
-STR_0036_WOOD                                                   :Holz
-STR_0037_IRON_ORE                                               :Eisenerz
-STR_0038_STEEL                                                  :Stahl
-STR_0039_VALUABLES                                              :Wertsachen
-STR_003A_COPPER_ORE                                             :Kupfererz
-STR_003B_MAIZE                                                  :Mais
-STR_003C_FRUIT                                                  :Früchte
-STR_003D_DIAMOND                                                :Diamanten
-STR_003E_FOOD                                                   :Nahrungsmittel
-STR_003F_PAPER                                                  :Papier
-STR_0040_GOLD                                                   :Gold
-STR_0041_WATER                                                  :Wasser
-STR_0042_WHEAT                                                  :Weizen
-STR_0043_RUBBER                                                 :Kautschuk
-STR_0044_SUGAR                                                  :Zucker
-STR_0045_TOY                                                    :Spielware
-STR_0046_CANDY                                                  :Bonbon
-STR_0047_COLA                                                   :Cola
-STR_0048_COTTON_CANDY                                           :Zuckerwatte
-STR_0049_BUBBLE                                                 :Luftblase
-STR_004A_TOFFEE                                                 :Karamell
-STR_004B_BATTERY                                                :Batterie
-STR_004C_PLASTIC                                                :Plastik
-STR_004D_FIZZY_DRINK                                            :Limonade
+STR_002F_PASSENGER                                              :{G=m}Passagier
+STR_0030_COAL                                                   :{G=w}Kohle
+STR_0031_MAIL                                                   :{G=w}Post
+STR_0032_OIL                                                    :{G=n}Öl
+STR_0033_LIVESTOCK                                              :{G=n}Vieh
+STR_0034_GOODS                                                  :{G=p}Waren
+STR_0035_GRAIN                                                  :{G=n}Getreide
+STR_0036_WOOD                                                   :{G=n}Holz
+STR_0037_IRON_ORE                                               :{G=n}Eisenerz
+STR_0038_STEEL                                                  :{G=m}Stahl
+STR_0039_VALUABLES                                              :{G=p}Wertsachen
+STR_003A_COPPER_ORE                                             :{G=n}Kupfererz
+STR_003B_MAIZE                                                  :{G=m}Mais
+STR_003C_FRUIT                                                  :{G=p}Früchte
+STR_003D_DIAMOND                                                :{G=p}Diamanten
+STR_003E_FOOD                                                   :{G=p}Nahrungsmittel
+STR_003F_PAPER                                                  :{G=n}Papier
+STR_0040_GOLD                                                   :{G=n}Gold
+STR_0041_WATER                                                  :{G=n}Wasser
+STR_0042_WHEAT                                                  :{G=n}Weizen
+STR_0043_RUBBER                                                 :{G=m}Kautschuk
+STR_0044_SUGAR                                                  :{G=m}Zucker
+STR_0045_TOY                                                    :{G=n}Spielware
+STR_0046_CANDY                                                  :{G=m}Bonbon
+STR_0047_COLA                                                   :{G=w}Cola
+STR_0048_COTTON_CANDY                                           :{G=w}Zuckerwatte
+STR_0049_BUBBLE                                                 :{G=w}Luftblase
+STR_004A_TOFFEE                                                 :{G=n}Karamell
+STR_004B_BATTERY                                                :{G=w}Batterie
+STR_004C_PLASTIC                                                :{G=n}Plastik
+STR_004D_FIZZY_DRINK                                            :{G=w}Limonade
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} Passagier{P "" e}
 STR_QUANTITY_COAL                                               :{WEIGHT} Kohle
@@ -222,7 +222,7 @@ STR_00FC_FOREST                                                 :{BLACK}{TINYFON
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Bahnhof
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Lkw-Ladestation
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Busbahnhof
-STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Flughafen / Heliport
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Flughafen / Hubschrauberlandeplatz
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Hafen
 STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Unebenes Land
 STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Wiesen
@@ -388,7 +388,7 @@ STR_0170                                                        :{TINYFONT}{STRI
 STR_0171_PAUSE_GAME                                             :{BLACK}Spiel anhalten
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Spiel speichern, Spiel laden, Spiel abbrechen, (OpenTTD) Beenden
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Liste der Firmenbahnhöfe anzeigen
-STR_0174_DISPLAY_MAP                                            :{BLACK}Weltkarte anzeigen
+STR_0174_DISPLAY_MAP                                            :{BLACK}Weltkarte, zusätzliche Fenster oder Schilderliste anzeigen
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Weltkarte anzeigen, Städteverzeichnis
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Städteverzeichnis anzeigen
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Firmenfinanzen anzeigen
@@ -649,7 +649,7 @@ STR_02A3_LARGE                                                  :{BLACK}Groß
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Zufällig
 STR_FOUND_TOWN_CITY                                             :{BLACK}Stadt
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Städte wachsen schneller als normale Orte{}Abhängig von den Einstellungen sind diese größer wenn sie gegründet werden
-STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Stadtgröße bestimmen
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Stadtgröße festlegen
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadtgröße:
 
 STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Städtischer Straßenbauplan:
@@ -666,7 +666,6 @@ STR_OFF                                                         :Aus
 STR_SUMMARY                                                     :Ticker
 STR_FULL                                                        :Zeitung
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Städteverzeichnis
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -674,7 +673,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 STR_02C4_GAME_OPTIONS                                           :Spieleinstellungen
 STR_02C6_DIFFICULTY_SETTINGS                                    :Schwierigkeitsgrad
 STR_MENU_CONFIG_SETTINGS                                        :Erweiterte Einstellungen
-STR_NEWGRF_SETTINGS                                             :Newgrf-Einstellungen
+STR_NEWGRF_SETTINGS                                             :NewGRF-Einstellungen
 STR_TRANSPARENCY_OPTIONS                                        :Transparenzeinstellungen
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Städtenamen anzeigen
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Stationsnamen anzeigen
@@ -682,8 +681,8 @@ STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Schild
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Wegpunkte anzeigen
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Vollständige Animation
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Vollständige Detailansicht
-STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Durchsichtige Gebäude
-STR_TRANSPARENT_SIGNS                                           :{SETX 12}Durchsichtige Stationsnamen
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Transparenz für Gebäude
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparenz für Stationsnamen
 ############ range ends here
 
 ############ range for menu starts
@@ -704,6 +703,7 @@ STR_02DE_MAP_OF_WORLD                                           :Weltkarte
 STR_EXTRA_VIEW_PORT                                             :Zusatzansicht
 STR_SIGN_LIST                                                   :Schilderliste
 STR_02DF_TOWN_DIRECTORY                                         :Städteverzeichnis
+STR_02BB_TOWN_DIRECTORY                                         :Städteverzeichnis
 STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ansicht {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}In Zusatzansicht
@@ -730,6 +730,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Autosich
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Abstand zwischen den automatischen Spielesicherungen wählen
 STR_02F7_OFF                                                    :Aus
+STR_AUTOSAVE_1_MONTH                                            :Jeden Monat
 STR_02F8_EVERY_3_MONTHS                                         :Alle  3 Monate
 STR_02F9_EVERY_6_MONTHS                                         :Alle  6 Monate
 STR_02FA_EVERY_12_MONTHS                                        :Alle 12 Monate
@@ -786,7 +787,7 @@ STR_TOWNNAME_SWEDISH                                            :Schwedisch
 STR_TOWNNAME_DUTCH                                              :Niederländisch
 STR_TOWNNAME_FINNISH                                            :Finnisch
 STR_TOWNNAME_POLISH                                             :Polnisch
-STR_TOWNNAME_SLOVAK                                             :Slovakisch
+STR_TOWNNAME_SLOVAK                                             :Slowakisch
 STR_TOWNNAME_NORWEGIAN                                          :Norwegisch
 STR_TOWNNAME_HUNGARIAN                                          :Ungarisch
 STR_TOWNNAME_AUSTRIAN                                           :Österreichisch
@@ -848,9 +849,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Format a
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Standard Grafik
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Zu benutzendes Set an Basisgrafiken auswählen
-STR_AUTOSAVE_1_MONTH                                            :Jeden Monat
+
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosicherung fehlgeschlagen
 
 STR_MONTH_JAN                                                   :Januar
@@ -1289,7 +1289,7 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}IP Adres
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Teilnehmer
-STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Teilnehmer anwesend / max.
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Teilnehmer anwesend / max.{}Firmen anwesend / max.
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Spielfeldgröße
@@ -1621,7 +1621,7 @@ STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Straße 
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Straßenarbeiten sind im Gange
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Straßenbau
 STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Straßenbahnbau
-STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Brücke wählen
+STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Straßenbrücke wählen
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... Einbahnstraßen können keine Abzweigung haben
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Straße kann hier nicht gebaut werden...
 STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Straßenbahn kann hier nicht gebaut werden...
@@ -1832,8 +1832,8 @@ STR_303C_OUTSTANDING                                            :Hervorragend
 ############ range for rating ends
 
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} akzeptiert keine {STRING} mehr
-STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} akzeptiert keine {STRING} und keine {STRING} mehr
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} akzeptiert kein{G "en" "e" "" "e"} {STRING} mehr
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} akzeptiert kein{G "en" "e" "" "e"} {STRING} und kein{G "en" "e" "" "e"} {STRING} mehr
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} akzeptiert jetzt auch {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} akzeptiert jetzt auch {STRING} und {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Ausrichtung Busbahnhof
@@ -1870,7 +1870,7 @@ STR_305F_AIRCRAFT_HANGAR                                        :Flugzeughangar
 STR_3060_AIRPORT                                                :Flughafen
 STR_3061_TRUCK_LOADING_AREA                                     :Lkw-Ladeplatz
 STR_3062_BUS_STATION                                            :Busbahnhof
-STR_3063_SHIP_DOCK                                              :Schiffshafen
+STR_3063_SHIP_DOCK                                              :Hafen
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Einzugsgebiet anzeigen
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Einzugsgebiet nicht angezeigen
 STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Einzugsgebiet anzeigen
@@ -1955,7 +1955,7 @@ STR_481B_LUMBER_MILL                                            :{G=w}Holzmühle
 STR_481C_COTTON_CANDY_FOREST                                    :{G=m}Zuckerwattewald
 STR_481D_CANDY_FACTORY                                          :{G=w}Bonbonfabrik
 STR_481E_BATTERY_FARM                                           :{G=w}Batterieplantage
-STR_481F_COLA_WELLS                                             :{G=w}Colaquellen
+STR_481F_COLA_WELLS                                             :{G=p}Colaquellen
 STR_4820_TOY_SHOP                                               :{G=n}Spielwarengeschäft
 STR_4821_TOY_FACTORY                                            :{G=w}Spielwarenfabrik
 STR_4822_PLASTIC_FOUNTAINS                                      :{G=m}Plastikbrunnen
@@ -1979,7 +1979,7 @@ STR_4828_PRODUCES                                               :{BLACK}Produzie
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion im letzten Monat:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% befördert)
-STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Hauptansicht zum Industriegebiet scrollen
+STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Hauptansicht zur Industrie scrollen
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Neue{G r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} gebaut!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Neue{G r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} angepflanzt!
 STR_482F_COST                                                   :{BLACK}Kosten: {YELLOW}{CURRENCY}
@@ -2007,12 +2007,12 @@ STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Die Brü
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Anfang und Ende können nicht im selben Feld liegen
 STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Brückenköpfe nicht auf einer Höhe
 STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Die Brücke ist zu niedrig für diese Umgebung
-STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Anfang und Ende müssen auf einer Ebene liegen
+STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Anfang und Ende müssen auf einer Linie liegen
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Platz ist nicht für einen Tunnel geeignet
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL                                       :Stahlhängebrücke
 STR_500F_GIRDER_STEEL                                           :Stahlträgerbrücke
-STR_5010_CANTILEVER_STEEL                                       :Selbsttragende Stahlbrücke
+STR_5010_CANTILEVER_STEEL                                       :Auslegerbrücke (Stahl)
 STR_5011_SUSPENSION_CONCRETE                                    :Betonhängebrücke
 STR_5012_WOODEN                                                 :Holzbrücke
 STR_5013_CONCRETE                                               :Betonbrücke
@@ -2024,13 +2024,13 @@ STR_5017_RAILROAD_TUNNEL                                        :Eisenbahntunnel
 STR_5018_ROAD_TUNNEL                                            :Straßentunnel
 STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Stahlhängebrücke
 STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Stahlträgerbrücke
-STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Selbsttragende Stahlbrücke
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Auslegerbrücke (Stahl)
 STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Stahlbetonbrücke
 STR_501F_WOODEN_RAIL_BRIDGE                                     :Holzbrücke
 STR_5020_CONCRETE_RAIL_BRIDGE                                   :Betonbrücke
 STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Stahlhängebrücke
 STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Stahlträgerbrücke
-STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Selbsttragende Stahlbrücke
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Auslegerbrücke (Stahl)
 STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Stahlbetonbrücke
 STR_5025_WOODEN_ROAD_BRIDGE                                     :Holzbrücke
 STR_5026_CONCRETE_ROAD_BRIDGE                                   :Betonbrücke
@@ -2045,7 +2045,7 @@ STR_5803_COMPANY_HEADQUARTERS                                   :Firmensitz
 STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...Firmensitz ist im Weg
 STR_5805_COMPANY_OWNED_LAND                                     :Firmeneigenes Gelände
 STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Das Land kann nicht erworben werden...
-STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...ist bereits im eigenen Firma!
+STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...ist bereits im Besitz der eigenen Firma!
 
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -2111,7 +2111,7 @@ STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Max. Ge
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Städteanzahl: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Industriedichte: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Höhe des Anfangskredites: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Kreditzinsen: {ORANGE}{COMMA}%
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Anfänglicher Zinssatz auf Kredite: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Fahrzeugbetriebskosten: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Baugeschwindigkeit der Gegenspieler: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Fahrzeugpannen: {ORANGE}{STRING}
@@ -2217,7 +2217,7 @@ STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...Kredi
 STR_702E_REQUIRED                                               :{WHITE}...erfordert {CURRENCY}
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Kredit kann nicht getilgt werden...
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}Von der Bank geliehenes Geld kann nicht abgegeben werden...
-STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Neues Profil für Manager aussuchen
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Neues Portrait für Manager aussuchen
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Firmenfarbe ändern
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Managername ändern
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Firmenname ändern
@@ -2337,8 +2337,8 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Schiffsf
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Flugzeugfarbschema anzeigen
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Wähle die Hauptfarbe für das gewählte Schema aus.
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Wähle die Nebenfarbe für das ausgewählte Schema.
-
 STR_LIVERY_PANEL_TIP                                            :{BLACK}Wähle ein Farbschema oder mehrere Farbschemata mittels Strg+Klick aus, um diese zu ändern. Klicke in das Kästchen um ein Schema zu aktivieren.
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Dampf)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
@@ -2647,9 +2647,9 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ändert 
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Erweiterten Befehl einfügen
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Fahre zum nächsten Depot
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Fahre zum nächsten Hangar
-STR_ORDER_NEAREST_DEPOT                                         :dem nächsten
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Nächstes Depot
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Nächster Hangar
+STR_ORDER_NEAREST_DEPOT                                         :nächsten
 STR_ORDER_NEAREST_HANGAR                                        :dem nächsten Hangar
 STR_ORDER_SERVICE_AT                                            :Falls nötig, Wartung in
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Fahre ohne Halt Zwecks Wartung zu
@@ -2675,18 +2675,18 @@ STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Höchstgeschwin
 STR_ORDER_CONDITIONAL_AGE                                       :Fahrzeugalter (Jahre)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Benötigt Inspektion
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Immer
-STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :ist gleich
-STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ist ungleich
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :ist kleiner als
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :ist kleiner gleich
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :ist größer als
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :ist größer gleich
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :ist wahr
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :ist falsch
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :gleich
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ungleich
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :kleiner als
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :kleiner gleich
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :größer als
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :größer gleich
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :wahr
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :falsch
 STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 STR_CONDITIONAL_UNCONDITIONAL                                   :Springe zu Auftrag {COMMA}
-STR_CONDITIONAL_NUM                                             :Springe zu Auftrag {COMMA}, wenn {STRING} {STRING} {COMMA}
-STR_CONDITIONAL_TRUE_FALSE                                      :Springe zu Auftrag {COMMA}, wenn {STRING} {STRING}
+STR_CONDITIONAL_NUM                                             :Springe zu Auftrag {COMMA}, wenn {STRING} {STRING} {COMMA} ist
+STR_CONDITIONAL_TRUE_FALSE                                      :Springe zu Auftrag {COMMA}, wenn {STRING} {STRING} ist
 
 STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Nicht unterwegs
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Unterwegs (ohne Fahrplan)
@@ -2730,7 +2730,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Baut ein
 STR_8820_RENAME                                                 :{BLACK}Umbenennen
 STR_8823_SKIP                                                   :{BLACK}Überspringen
 STR_8824_DELETE                                                 :{BLACK}Löschen
-STR_8826_GO_TO                                                  :{BLACK}Fahre nach
+STR_8826_GO_TO                                                  :{BLACK}Fahre zu
 STR_REFIT                                                       :{BLACK}Umrüsten
 STR_REFIT_TIP                                                   :{BLACK}Frachtart auswählen, auf die umgerüstet werden soll. Strg+Klick, um einen Umrüstungsauftrag wieder zu entfernen
 STR_REFIT_ORDER                                                 :(auf {STRING} umrüsten)
@@ -2768,7 +2768,7 @@ STR_8838_N_A                                                    :k.A.{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Schienenfahrzeug kann nicht verkauft werden...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Weg zum Depot kann nicht gefunden werden
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Zug kann nicht angehalten {} oder losgeschickt werden ...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Wartungsintervall: {LTBLUE}{COMMA}Tage {BLACK} Letzte Wartung: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Wartungsintervall: {LTBLUE}{COMMA}Tag{P "" e} {BLACK} Letzte Wartung: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Wartungsintervall: {LTBLUE}{COMMA}%{BLACK}   Letzte Wartung: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Züge - für Einzelheiten auf den jeweiligen Zug klicken
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Züge - für Einzelheiten auf den Zug klicken; Waggon ziehen, um ihn an-/abzukoppeln
@@ -2781,7 +2781,7 @@ STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Umbenenn
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Laufende Zugbewegung - Klicke hier, um den Zug anzuhalten / zu starten
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Anzeige der Aufträge
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Hauptansicht zum Zug scrollen
-STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Zug ins Depot schicken
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Zug ins Depot schicken. Strg+Klick um dort nur Wartung durchzuführen.
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Zug zur Weiterfahrt zwingen, ohne das Signal zu beachten
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Fahrtrichtung umkehren
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Zeige Einzelheiten des Zuges
@@ -2801,12 +2801,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Zeitrahm
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Verspätungsmelder zurücksetzen (das Fahrzeug gilt dann als pünktlich).
 STR_SERVICE_HINT                                                :{BLACK}Überspringe diesen Auftrag, sofern keine Wartung benötigt wird
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kosten: {CURRENCY}   Gewicht: {WEIGHT_S}{}Geschwindigk.: {VELOCITY} Leistung: {POWER}{}Betriebskosten: {CURRENCY} pro Jahr{}Kapazität: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Panne
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}  Betriebskosten: {LTBLUE}{CURRENCY} pro Jahr
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S}  {BLACK}Leistung: {LTBLUE}{POWER}{BLACK}  Höchstgeschwindigkeit: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S} {BLACK}Leistung: {LTBLUE}{POWER}{BLACK} Max. Geschw.: {LTBLUE}{VELOCITY} {BLACK}Max. Zugkraft: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Gewinn lfd. Jahr: {LTBLUE}{CURRENCY}  (vergangenes Jahr: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}% {BLACK}Ausfälle seit letzter Wartung: {LTBLUE}{COMMA}
+STR_885C_BROKEN_DOWN                                            :{RED}Panne
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}  Betriebskosten: {LTBLUE}{CURRENCY} pro Jahr
 STR_8861_STOPPED                                                :{RED}Angehalten
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Der Zug kann das Signal nicht ohne Gefahr passieren...
 STR_8863_CRASHED                                                :{RED}Unfall!
@@ -2814,7 +2814,7 @@ STR_8863_CRASHED                                                :{RED}Unfall!
 STR_8865_NAME_TRAIN                                             :{WHITE}Name des Zuges
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Zug kann nicht benannt werden...
 STR_8867_NAME_TRAIN                                             :{BLACK}Name des Zuges
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Zugunglück!{}{COMMA} sterben in einem Feuerball nach Zusammenstoß
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Zugunglück!{}{COMMA} {P stirbt sterben} in einem Feuerball nach Zusammenstoß
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Die Zugbewegung kann nicht umgekehrt werden...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zugtyp umbenennen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Zugtyp kann nicht umbenannt werden...
@@ -2877,8 +2877,8 @@ STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Fahrzeug
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Straßenfahrzeuge - für Einzelheiten auf das Fahrzeug klicken
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Laufende Fahrzeugbewegung - Klick zum Anhalten bzw. Losschicken
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Aufträge für das Fahrzeug anzeigen
-STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Hauptansicht auf das Fahrzeug richten
-STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Das Fahrzeug ins Depot schicken
+STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Hauptansicht zum Fahrzeug scrollen
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Das Fahrzeug ins Depot schicken. Strg+Klick um dort nur Wartung durchzuführen.
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Das Fahrzeug zur Umkehr zwingen
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Einzelheiten des Fahrzeuges anzeigen
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Straßenfahrzeuge - für Einzelheiten auf das Fahrzeug klicken
@@ -2902,7 +2902,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Die erste Straßenbahn erreicht {STATION}!
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Die erste Frachtstraßenbahn erreicht {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Fahrzeug verunglückt!{}Fahrer stirbt in Inferno nach Zusammenstoß mit Zug
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Fahrzeug verunglückt!{}{COMMA} sterben in Inferno nach Zusammenstoß mit Zug
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Fahrzeug verunglückt!{}{COMMA} {P stirbt sterben} in Inferno nach Zusammenstoß mit Zug
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Das Fahrzeug kann nicht wenden...
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Fahrzeuge, die aus mehreren Einheiten bestehen, können nicht wenden.
 STR_9034_RENAME                                                 :{BLACK}Umbenennen
@@ -3039,7 +3039,7 @@ STR_A030_NAME_AIRCRAFT                                          :{WHITE}Flugzeug
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Flugzeug kann nicht benannt werden...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Flugzeugname
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Das erste Flugzeug startet von {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Flugzeugabsturz!{}{COMMA} sterben in einem Feuerball auf {STATION}
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Flugzeugabsturz!{}{COMMA} {P stirbt sterben} in einem Feuerball auf {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Flugzeugabsturz!{}Dem Flugzeug ging der Treibstoff aus, {COMMA} {P stirbt sterben} in einem Feuerball!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Umbenennen
@@ -3536,20 +3536,20 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Krawatte
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Signalauswahl
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kann Signale hier nicht umbauen...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standardsignal (Formsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Schienensystem.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Einfahrsignal (Formsignal){}Zeigt grün, wenn im folgenden Block mindestens Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Ausfahrsignal (Formsignal){}Verhält sich wie ein normales Signal, wird jedoch benötigt, um Einfahr- oder Combosignalen den Block als "frei" zu melden.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combosignal (Formsignal){}Das Combosignal ist gleichzeitig Ausfahr- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Pfadsignal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Pfadsignale können von hinten durchfahren werden.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Einseitiges Pfadsignal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalblock zu befahren, sofern ein Pfad reserviert werden kann. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standardsignal (Lichtsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Schienensystem.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein normales Signal, gibt jedoch das Signal an Einfahr- und Combosignale im vorherliegenden Block weiter.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combosignal (Lichtsignal){}Das Combosignal ist gleichzeitig Ausfahr- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Blocksignal (Formsignal){}Dieses ist der einfachste Signaltyp. Er erlaubt nur einem Zug zu einem gegebenen Zeitpunkt den Signalabschnitt zu durchfahren.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Einfahrsignal (Formsignal){}Zeigt grün, wenn im folgenden Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Ausfahrsignal (Formsignal){}Verhält sich wie ein Blocksignal, wird jedoch benötigt, um Einfahr- oder Kombinationssignalen den Block als "frei" zu melden.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombinationssignal (Formsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Pfadsignal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalabschnitt zu befahren, sofern ein Pfad reserviert werden kann. Pfadsignale können von hinten durchfahren werden.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Einseitiges Pfadsignal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalabschnitt zu befahren, sofern ein Pfad reserviert werden kann. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Blocksignal (Lichtsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Schienensystem.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein Blocksignal, gibt jedoch das Signal an Einfahr- und Kombinationssignale im vorherliegenden Block weiter.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinationssignal (Lichtsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Pfadsignal (Lichtsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Pfadsignale können von hinten durchfahren werden.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Einseitiges Pfadsignal (Lichtsignal):{}Erlaubt mehreren Zügen, einen Signalblock zu befahren, sofern ein Pfad reserviert werden kann. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Einseitiges Pfadsignal (Lichtsignal):{}Erlaubt mehreren Zügen, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg+Klicken ändert die bestehende Bauform.
-STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Abstand der Signale
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Abstand der Signale beim automatischen Bau durch Ziehen
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Signalabstand verringern
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Signalabstand erhöhen
 ########
@@ -3566,7 +3566,7 @@ STR_AI_DEBUG                                                    :{WHITE}KI Debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name der KI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}KI erneut laden
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Stoppe die KI, lade das Script neu und starte de KI erneut
-STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}KI Debug-Fenster ist nur auf dem Server vorhanden
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}KI Debug-Fenster ist nur auf dem Server verfügbar
 STR_AI_CONFIG_CAPTION                                           :{WHITE}KI einstellen
 STR_AI_CHANGE                                                   :{BLACK}KI wählen
 STR_AI_CONFIGURE                                                :{BLACK}Einstellungen

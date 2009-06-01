@@ -665,7 +665,6 @@ STR_OFF                                                         :I Ffwrdd
 STR_SUMMARY                                                     :Crynodeb
 STR_FULL                                                        :Llawn
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Cyfeiriadur Trefi
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -703,6 +702,7 @@ STR_02DE_MAP_OF_WORLD                                           :Map o'r Byd
 STR_EXTRA_VIEW_PORT                                             :Ffenestr Olygfa Newydd
 STR_SIGN_LIST                                                   :Rhestr Arwyddion
 STR_02DF_TOWN_DIRECTORY                                         :Cyfeiriadur Trefi
+STR_02BB_TOWN_DIRECTORY                                         :Cyfeiriadur Trefi
 STR_TOWN_POPULATION                                             :{BLACK}Poblogaeth y Byd: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ffenestr Olygfa{COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copïo i Ffenestr Olygfa
@@ -729,6 +729,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Awtogadw
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Dewiswch pa mor aml y dylid awtogadw gemau
 STR_02F7_OFF                                                    :Diffodd Awtogadw
+STR_AUTOSAVE_1_MONTH                                            :Bob mis
 STR_02F8_EVERY_3_MONTHS                                         :Bob 3 mis
 STR_02F9_EVERY_6_MONTHS                                         :Bob 6 mis
 STR_02FA_EVERY_12_MONTHS                                        :Bob 12 mis
@@ -849,7 +850,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Set Raff
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Dewiswch y set raffeg sylfaenol i'w defnyddio
 
-STR_AUTOSAVE_1_MONTH                                            :Bob mis
 STR_AUTOSAVE_FAILED                                             :{WHITE}Methodd yr Awtogadw
 
 STR_MONTH_JAN                                                   :Ionawr

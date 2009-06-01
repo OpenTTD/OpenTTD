@@ -665,7 +665,6 @@ STR_OFF                                                         :Kapalı
 STR_SUMMARY                                                     :Özet
 STR_FULL                                                        :Tam
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Şehir listesi
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -703,6 +702,7 @@ STR_02DE_MAP_OF_WORLD                                           :Dünya haritas�
 STR_EXTRA_VIEW_PORT                                             :Ekstra görünüm
 STR_SIGN_LIST                                                   :Tabela listesi
 STR_02DF_TOWN_DIRECTORY                                         :Şehir listesi
+STR_02BB_TOWN_DIRECTORY                                         :Şehir listesi
 STR_TOWN_POPULATION                                             :{BLACK}Dünya nüfusu: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Görünüm {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Görünümü kopyala
@@ -729,6 +729,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Otokayde
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Otokaydetme aralığını seçin
 STR_02F7_OFF                                                    :Kapalı
+STR_AUTOSAVE_1_MONTH                                            :Her ay
 STR_02F8_EVERY_3_MONTHS                                         :Her 3 ay
 STR_02F9_EVERY_6_MONTHS                                         :Her 6 ay
 STR_02FA_EVERY_12_MONTHS                                        :Her 12 ay
@@ -849,7 +850,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Temel gr
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Kullanılacak temel grafik setini seçin
 
-STR_AUTOSAVE_1_MONTH                                            :Her ay
 STR_AUTOSAVE_FAILED                                             :{WHITE}Otokayıt başarısız
 
 STR_MONTH_JAN                                                   :Ocak
@@ -2241,6 +2241,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Bayan su
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Rastgele surat yap
 STR_704C_KEY                                                    :{BLACK}Anahtar
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Grafik anahtarını göster
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Detaylı performans oranlarını göster
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Şirket grafikleri anahtari
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Grafikte şirketi göstermek/gizlemek için tıkla
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Taşınan kargo
@@ -2799,12 +2800,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Seçili 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Geç kalma sayacını sıfırla, böylece araç zamanında gitmiş sayılacak
 STR_SERVICE_HINT                                                :{BLACK}Bakım gerekmiyorsa bunu atla
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Fiyat: {CURRENCY} Ağırlık: {WEIGHT_S}{}Hız: {VELOCITY}  Güç: {POWER}{}Bakım: {CURRENCY}/sene{}Kapasite: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Bozuldu
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Yaş: {LTBLUE}{STRING}{BLACK}   Bakım: {LTBLUE}{CURRENCY}/sene
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_S}  {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Mak. hız: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_S} {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Azami Hız: {LTBLUE}{VELOCITY} {BLACK}Azami Tork: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Bu seneki kâr: {LTBLUE}{CURRENCY}  (geçen sene: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Güvenilirlik: {LTBLUE}%{COMMA}  {BLACK}Son servisteki bozulmalar: {LTBLUE}{COMMA}
+STR_885C_BROKEN_DOWN                                            :{RED}Arızalı
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Yaş: {LTBLUE}{STRING}{BLACK}   Bakım: {LTBLUE}{CURRENCY}/sene
 STR_8861_STOPPED                                                :{RED}Durdu
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Tehlikedeki tren sinyali geçemez...
 STR_8863_CRASHED                                                :{RED}Çarptı!

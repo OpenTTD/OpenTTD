@@ -426,10 +426,10 @@ STR_AGE                                                         :{COMMA} год�
 STR_AGE_RED                                                     :{RED}{COMMA} година{P "" s} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Патно возило
-STR_019D_AIRCRAFT                                               :Летало
-STR_019E_SHIP                                                   :Брод
 STR_019F_TRAIN                                                  :Воз
+STR_019C_ROAD_VEHICLE                                           :Патно возило
+STR_019E_SHIP                                                   :Брод
+STR_019D_AIRCRAFT                                               :Летало
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Информации за земјишна област
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Цена за чистење: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Цена за чистење: {RED}{CURRENCY}

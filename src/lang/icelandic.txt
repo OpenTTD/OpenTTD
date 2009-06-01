@@ -558,7 +558,7 @@ STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Framlei
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Framleiðslubreytingar fyrirtækja þjónustuð af mótherjum
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Aðrar framleiðslubreytingar
 STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Ráð / upplýsingar um faratæki fyrirtækisins
-STR_020C_NEW_VEHICLES                                           :{YELLOW}Ný farartæki
+STR_020C_NEW_VEHICLES                                           :{YELLOW}Kaupa lestarvagna
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Breyting á viðtöku farms
 STR_020E_SUBSIDIES                                              :{YELLOW}Samstarfssamningar
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Almennar upplýsingar
@@ -666,7 +666,6 @@ STR_OFF                                                         :Af
 STR_SUMMARY                                                     :Úrtak
 STR_FULL                                                        :Allt
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Listi yfir bæi
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -704,6 +703,7 @@ STR_02DE_MAP_OF_WORLD                                           :Heimskort
 STR_EXTRA_VIEW_PORT                                             :Auka sjónarhorn
 STR_SIGN_LIST                                                   :Skiltalisti
 STR_02DF_TOWN_DIRECTORY                                         :Listi yfir bæi
+STR_02BB_TOWN_DIRECTORY                                         :Listi yfir bæi
 STR_TOWN_POPULATION                                             :{BLACK}Heildaríbúafjöldi: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Sjónarhorn {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Afrita í sjónarhorn
@@ -730,6 +730,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Sjálfvi
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Tíðni sjálfvirkra vistana
 STR_02F7_OFF                                                    :Aldrei
+STR_AUTOSAVE_1_MONTH                                            :Mánaðarlega
 STR_02F8_EVERY_3_MONTHS                                         :Ársfjórðungslega
 STR_02F9_EVERY_6_MONTHS                                         :Hálfsárslega
 STR_02FA_EVERY_12_MONTHS                                        :Árlega
@@ -850,7 +851,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Grunngra
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Nota grunngrafíkina
 
-STR_AUTOSAVE_1_MONTH                                            :Mánaðarlega
 STR_AUTOSAVE_FAILED                                             :{WHITE}Sjálfvirk vistun mistókst
 
 STR_MONTH_JAN                                                   :Janúar
@@ -2126,11 +2126,11 @@ STR_CITY_APPROVAL                                               :{LTBLUE}Afstað
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Engin
-STR_NUM_VERY_LOW                                                :Mjög lág
+STR_NUM_VERY_LOW                                                :Örfáir
 STR_6816_LOW                                                    :Fáir
 STR_6817_NORMAL                                                 :Miðlungs
 STR_6818_HIGH                                                   :Margir
-STR_02BF_CUSTOM                                                 :Breytt
+STR_02BF_CUSTOM                                                 :Sérstillt
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Mjög hægt
@@ -2242,6 +2242,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Velja kv
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Mynda andlit af handahófi
 STR_704C_KEY                                                    :{BLACK}Lykill
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Sýna lykilmynd
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Birta ítarlegt árangursmat
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Lykilmynd fyrir fyrirtækjagröf
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Smelltu hér til að taka út/setja inn graf þessa fyrirtækis
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Fluttar einingar af farmi
@@ -2719,7 +2720,7 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nýir ei
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nýir segullestarvagnar
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Járnbrautarlestir
 
-STR_881F_BUILD_VEHICLE                                          :{BLACK}Smíða vagn
+STR_881F_BUILD_VEHICLE                                          :{BLACK}Kaupa vagn
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Afrita bifreið
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Þetta býr til aðra eins bifreið. Control smelltu til að deila áætlun
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Þetta býr til aðra bifreið sem er eins og sú sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á bifreiðina. Control smelltu til að deila áætlun
@@ -2771,11 +2772,11 @@ STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Skoðana
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Skoðanamillibil: {LTBLUE}{COMMA}%{BLACK}   Seinasta skoðun: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Lestir - smelltu á lest fyrir nánari upplýsingar
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Lestir - ýttu á lest fyrir uppl., dragðu farartæki til að bæta við/fjarlægja úr lest
-STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Byggja nýja lest
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Kaupa nýja lestarvagna
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Dragðu lestarvagn hingað til að selja hann
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Miðstilla sjónarhorn á staðsetningu lestarskýlis
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lestarlisti - smelltu á farartæki fyrir meiri upplýsingar
-STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Búa til valinn lestarvagn
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Kaupa valinn lestarvagn
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Endurnefna lestarvagnstegund
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Núverandi aðgerð lestar - smelltu hér til að stöðva/ræsa lestina
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Sýna lestarskipanir
@@ -2881,11 +2882,11 @@ STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Senda bi
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Þvinga bifreið til að snúa við
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Sýna upplýsingar um bifreið
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Bifreið - smelltu á bifreið fyrir nánari upplýsingar
-STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Bæta við bílaflota fyrirtækisins
+STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Kaupa nýja bifreið
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Dragðu bifreið hingað til að selja hana
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Miðja aðalsjónarhorn á bifreiðaskýli
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Bifreiðalisti - ýttu á bifreið fyrir nánari upplýsingar
-STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Smíða valda bifreið
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Kaupa valda bifreið
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Verð: {CURRENCY}{}Hraði: {VELOCITY}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Rými: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
@@ -2924,7 +2925,7 @@ STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} S
 STR_9804_NEW_SHIPS                                              :{BLACK}Ný skip
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Skip
 STR_9808_NEW_SHIPS                                              :{WHITE}Ný skip
-STR_9809_BUILD_SHIP                                             :{BLACK}Smíða skip
+STR_9809_BUILD_SHIP                                             :{BLACK}Kaupa skip
 STR_CLONE_SHIP                                                  :{BLACK}Afrita skip
 STR_CLONE_SHIP_INFO                                             :{BLACK}Þetta býr til annað eins skip. Control smelltu til að deila áætlun
 STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Þetta býr til annað skip sem er eins og það sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á skipið. Control smelltu til að deila áætlun
@@ -2951,12 +2952,12 @@ STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Byggja höfn
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Reisa slipp (til að smíða og viðhalda skipum)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skip - smelltu á skip fyrir nánari upplýsingar
-STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Smíða nýtt skip
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Kaupa nýtt skip
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Dragðu skip hingað til að selja það
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Miðja aðalsjónarhorn á slipp
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skip - smelltu fyrir nánari upplýsingar
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Skipalisti - smelltu á skip fyrir nánari upplýsingar
-STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Smíða valið skip
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Kaupa valið skip
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Núverandi aðgerð skips - smelltu hér til að stöðva/ræsa skipið
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Sýna skipanir skips
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Miðja aðalsjónarhorn á staðsetningu skips
@@ -2995,7 +2996,7 @@ STR_CLONE_AIRCRAFT                                              :{BLACK}Afrita f
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Þetta býr til aðra eins flugvél. Control smelltu til að deila áætlun
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Þetta býr til aðra flugvél sem er eins og sú sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á flugvélina. Control smelltu til að deila áætlun
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Ný flugvél
-STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Smíða flugvél
+STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Kaupa flugvél
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Get ekki smíðað flugvél...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Flugvél
 STR_A00A                                                        :{WHITE}{VEHICLE}
@@ -3022,11 +3023,11 @@ STR_A01D_AIRPORT_CONSTRUCTION                                   :Flugvallarframk
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Byggja flugvöll
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Flugvélar - smelltu á flugvél fyrir nánari upplýsingar
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Flugvélar - smelltu á flugvél fyrir nánari upplýsingar
-STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Smíða nýja flugvél
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Kaupa nýja flugvél
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Dragðu flugvél hingað til að selja hana
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Miðja aðalsjónarhorn á flugskýli
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Flugvélalisti - smelltu á flugvél fyrir nánari upplýsingar
-STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Smíða valda flugvél
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Kaupa valda flugvél
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Núverandi aðgerð - smelltu hér til að stöðva/ræsa flugvél
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Sýna skipanir flugvélar
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Miðja aðalsjónarhorn á flugvélina
