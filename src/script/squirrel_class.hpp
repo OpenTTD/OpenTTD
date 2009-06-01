@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file squirrel_class.cpp defines templates for converting C++ classes to Squirrel classes */
+/** @file squirrel_class.hpp Defines templates for converting C++ classes to Squirrel classes */
 
 #ifndef SQUIRREL_CLASS_HPP
 #define SQUIRREL_CLASS_HPP

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file squirrel_std.cpp Implements the Squirrel Standard Function class */
+
 #include <squirrel.h>
 #include "../stdafx.h"
 #include "../debug.h"

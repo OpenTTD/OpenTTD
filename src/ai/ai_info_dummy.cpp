@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file ai_info_dummy.cpp Implementation of a dummy AI. */
+
 #include <squirrel.h>
 #include "../stdafx.h"
 

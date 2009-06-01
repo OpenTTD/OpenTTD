@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file network_gui.cpp Implementation of the Network related GUIs. */
+/** @file network_content_gui.cpp Implementation of the Network Content related GUIs. */
 
 #if defined(ENABLE_NETWORK)
 #include "../stdafx.h"

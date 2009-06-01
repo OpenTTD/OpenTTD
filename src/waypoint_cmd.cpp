@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file waypoint_cmp.cpp Command Handling for waypoints. */
+/** @file waypoint_cmd.cpp Command Handling for waypoints. */
 
 #include "stdafx.h"
 
