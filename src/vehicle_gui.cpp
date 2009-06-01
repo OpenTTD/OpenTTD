@@ -1504,16 +1504,17 @@ struct VehicleDetailsWindow : Window {
 		SetDParam(1, v->date_of_last_service);
 		DrawString(13, this->width - 2, this->height - (v->type != VEH_TRAIN ? 11 : 23), Company::Get(v->owner)->settings.vehicle.servint_ispercent ? STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT : STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS);
 
+		const Widget *matrix = &this->widget[VLD_WIDGET_MIDDLE_DETAILS];
 		switch (v->type) {
 			case VEH_TRAIN:
-				DrawVehicleDetails(v, 2, this->width - 2, 57, this->vscroll.pos, this->vscroll.cap, det_tab);
+				DrawVehicleDetails(v, matrix->left + 2, matrix->right - 2, matrix->top + 1, this->vscroll.pos, this->vscroll.cap, det_tab);
 				break;
 
 			case VEH_ROAD:
 			case VEH_SHIP:
 			case VEH_AIRCRAFT:
-				DrawVehicleImage(v, 3, 57, INVALID_VEHICLE, 0, 0);
-				DrawVehicleDetails(v, 75, this->width - 2, 57, this->vscroll.pos, this->vscroll.cap, det_tab);
+				DrawVehicleImage(v, matrix->left + 3, matrix->top + 1, INVALID_VEHICLE, 0, 0);
+				DrawVehicleDetails(v, matrix->left + 75, matrix->right - 2, matrix->top + 1, this->vscroll.pos, this->vscroll.cap, det_tab);
 				break;
 
 			default: NOT_REACHED();
