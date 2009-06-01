@@ -144,8 +144,17 @@ struct Widget {
 	StringID tooltips;                ///< Tooltips that are shown when rightclicking on a widget
 };
 
+/** Different forms of sizing nested widgets, using NWidgetBase::AssignSizePosition() */
+enum SizingType {
+	ST_ARRAY,    ///< Initialize nested widget tree to generate a #Widget * array.
+	ST_SMALLEST, ///< Initialize nested widget tree to smallest size. Also updates \e current_x and \e current_y.
+	ST_RESIZE,   ///< Resize the nested widget tree.
+};
+
 /**
  * Baseclass for nested widgets.
+ * @invariant After initialization, \f$current\_x = smallest\_x + n * resize\_x, for n \geq 0\f$.
+ * @invariant After initialization, \f$current\_y = smallest\_y + m * resize\_y, for m \geq 0\f$.
  * @ingroup NestedWidgets
  */
 class NWidgetBase : public ZeroedMemoryAllocator {
@@ -153,7 +162,7 @@ public:
 	NWidgetBase(WidgetType tp);
 
 	virtual int SetupSmallestSize() = 0;
-	virtual void AssignSizePosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl) = 0;
+	virtual void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl) = 0;
 
 	virtual void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl) = 0;
 
@@ -172,8 +181,8 @@ public:
 		this->padding_left = left;
 	};
 
-	inline uint GetHorizontalStepSize() const;
-	inline uint GetVerticalStepSize() const;
+	inline uint GetHorizontalStepSize(SizingType sizing) const;
+	inline uint GetVerticalStepSize(SizingType sizing) const;
 
 	WidgetType type;      ///< Type of the widget / nested widget.
 	bool fill_x;          ///< Allow horizontal filling from initial size.
@@ -185,6 +194,9 @@ public:
 	 */
 	uint smallest_x;      ///< Smallest horizontal size of the widget in a filled window.
 	uint smallest_y;      ///< Smallest vertical size of the widget in a filled window.
+	/* Current widget size (that is, after resizing). */
+	uint current_x;       ///< Current horizontal size (after resizing).
+	uint current_y;       ///< Current vertical size (after resizing).
 
 	uint pos_x;           ///< Horizontal position of top-left corner of the widget in the window.
 	uint pos_y;           ///< Vertical position of top-left corner of the widget in the window.
@@ -196,17 +208,28 @@ public:
 	uint8 padding_right;  ///< Paddings added to the right of the widget. Managed by parent container widget.
 	uint8 padding_bottom; ///< Paddings added to the bottom of the widget. Managed by parent container widget.
 	uint8 padding_left;   ///< Paddings added to the left of the widget. Managed by parent container widget.
+
+protected:
+	inline void StoreSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y);
 };
 
-/** Get the horizontal sizing step. */
-inline uint NWidgetBase::GetHorizontalStepSize() const
+/**
+ * Get the horizontal sizing step.
+ * @param sizing Type of resize being performed.
+ */
+inline uint NWidgetBase::GetHorizontalStepSize(SizingType sizing) const
 {
+	if (sizing == ST_RESIZE) return this->resize_x;
 	return this->fill_x ? 1 : 0;
 }
 
-/** Get the vertical sizing step. */
-inline uint NWidgetBase::GetVerticalStepSize() const
+/**
+ * Get the vertical sizing step.
+ * @param sizing Type of resize being performed.
+ */
+inline uint NWidgetBase::GetVerticalStepSize(SizingType sizing) const
 {
+	if (sizing == ST_RESIZE) return this->resize_y;
 	return this->fill_y ? 1 : 0;
 }
 
@@ -220,7 +243,7 @@ public:
 	void SetFill(bool fill_x, bool fill_y);
 	void SetResize(uint resize_x, uint resize_y);
 
-	void AssignSizePosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
 
 	uint min_x; ///< Minimal horizontal size of only this widget.
 	uint min_y; ///< Minimal vertical size of only this widget.
@@ -269,7 +292,7 @@ public:
 	NWidgetStacked(WidgetType tp);
 
 	int SetupSmallestSize();
-	void AssignSizePosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 };
 
@@ -293,7 +316,7 @@ public:
 	NWidgetHorizontal();
 
 	int SetupSmallestSize();
-	void AssignSizePosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
 
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 };
@@ -304,7 +327,7 @@ class NWidgetHorizontalLTR : public NWidgetHorizontal {
 public:
 	NWidgetHorizontalLTR();
 
-	void AssignSizePosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
 
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 };
@@ -316,7 +339,7 @@ public:
 	NWidgetVertical();
 
 	int SetupSmallestSize();
-	void AssignSizePosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
 
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 };
@@ -343,7 +366,7 @@ public:
 	void SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post);
 
 	int SetupSmallestSize();
-	void AssignSizePosition(uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
 
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
 private:
