@@ -553,7 +553,7 @@ Window::~Window()
 	/* Prevent Mouseover() from resetting mouse-over coordinates on a non-existing window */
 	if (_mouseover_last_w == this) _mouseover_last_w = NULL;
 
-	/* Make sure we don't try to access this window as the focused window when it don't exist anymore. */
+	/* Make sure we don't try to access this window as the focused window when it doesn't exist anymore. */
 	if (_focused_window == this) _focused_window = NULL;
 
 	this->DeleteChildWindows();
@@ -1321,16 +1321,16 @@ static bool HandleMouseOver()
  * Update all the widgets of a window based on their resize flags
  * Both the areas of the old window and the new sized window are set dirty
  * ensuring proper redrawal.
- * @param w Window to resize
- * @param x delta x-size of changed window (positive if larger, etc.)
- * @param y delta y-size of changed window
+ * @param w       Window to resize
+ * @param delta_x Delta x-size of changed window (positive if larger, etc.)
+ * @param delta_y Delta y-size of changed window
  */
-void ResizeWindow(Window *w, int x, int y)
+void ResizeWindow(Window *w, int delta_x, int delta_y)
 {
 	bool resize_height = false;
 	bool resize_width = false;
 
-	if (x == 0 && y == 0) return;
+	if (delta_x == 0 && delta_y == 0) return;
 
 	w->SetDirty();
 	for (Widget *wi = w->widget; wi->type != WWT_LAST; wi++) {
@@ -1341,29 +1341,29 @@ void ResizeWindow(Window *w, int x, int y)
 
 		/* Resize the widget based on its resize-flag */
 		if (rsizeflag & RESIZE_LEFT) {
-			wi->left += x;
+			wi->left += delta_x;
 			resize_width = true;
 		}
 
 		if (rsizeflag & RESIZE_RIGHT) {
-			wi->right += x;
+			wi->right += delta_x;
 			resize_width = true;
 		}
 
 		if (rsizeflag & RESIZE_TOP) {
-			wi->top += y;
+			wi->top += delta_y;
 			resize_height = true;
 		}
 
 		if (rsizeflag & RESIZE_BOTTOM) {
-			wi->bottom += y;
+			wi->bottom += delta_y;
 			resize_height = true;
 		}
 	}
 
 	/* We resized at least 1 widget, so let's resize the window totally */
-	if (resize_width)  w->width  += x;
-	if (resize_height) w->height += y;
+	if (resize_width)  w->width  += delta_x;
+	if (resize_height) w->height += delta_y;
 
 	w->SetDirty();
 }
@@ -1469,15 +1469,15 @@ static bool HandleWindowDragging()
 			}
 
 			/* Search for the title bar */
-			const Widget *t = w->GetWidgetOfType(WWT_CAPTION);
-			assert(t != NULL);
+			const Widget *caption = w->GetWidgetOfType(WWT_CAPTION);
+			assert(caption != NULL);
 
 			/* The minimum number of pixels of the title bar must be visible
 			 * in both the X or Y direction */
 			static const int MIN_VISIBLE_TITLE_BAR = 13;
 
 			/* Make sure the window doesn't leave the screen */
-			nx = Clamp(nx, MIN_VISIBLE_TITLE_BAR - t->right, _screen.width - MIN_VISIBLE_TITLE_BAR - t->left);
+			nx = Clamp(nx, MIN_VISIBLE_TITLE_BAR - caption->right, _screen.width - MIN_VISIBLE_TITLE_BAR - caption->left);
 			ny = Clamp(ny, 0, _screen.height - MIN_VISIBLE_TITLE_BAR);
 
 			/* Make sure the title bar isn't hidden by behind the main tool bar */
@@ -1485,19 +1485,19 @@ static bool HandleWindowDragging()
 			if (v != NULL) {
 				int v_bottom = v->top + v->height;
 				int v_right = v->left + v->width;
-				if (ny + t->top >= v->top && ny + t->top < v_bottom) {
-					if ((v->left < MIN_VISIBLE_TITLE_BAR && nx + t->left < v->left) ||
-							(v_right > _screen.width - MIN_VISIBLE_TITLE_BAR && nx + t->right > v_right)) {
+				if (ny + caption->top >= v->top && ny + caption->top < v_bottom) {
+					if ((v->left < MIN_VISIBLE_TITLE_BAR && nx + caption->left < v->left) ||
+							(v_right > _screen.width - MIN_VISIBLE_TITLE_BAR && nx + caption->right > v_right)) {
 						ny = v_bottom;
 					} else {
-						if (nx + t->left > v->left - MIN_VISIBLE_TITLE_BAR &&
-								nx + t->right < v_right + MIN_VISIBLE_TITLE_BAR) {
+						if (nx + caption->left > v->left - MIN_VISIBLE_TITLE_BAR &&
+								nx + caption->right < v_right + MIN_VISIBLE_TITLE_BAR) {
 							if (w->top >= v_bottom) {
 								ny = v_bottom;
 							} else if (w->left < nx) {
-								nx = v->left - MIN_VISIBLE_TITLE_BAR - t->left;
+								nx = v->left - MIN_VISIBLE_TITLE_BAR - caption->left;
 							} else {
-								nx = v_right + MIN_VISIBLE_TITLE_BAR - t->right;
+								nx = v_right + MIN_VISIBLE_TITLE_BAR - caption->right;
 							}
 						}
 					}
