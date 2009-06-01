@@ -92,18 +92,6 @@ static FORCEINLINE bool HasBit(const T x, const uint8 y)
 }
 
 /**
- * Check several bits in a value.
- *
- * This macro checks if a value contains at least one bit of an other
- * value.
- *
- * @param x The first value
- * @param y The second value
- * @return True if at least one bit is set in both values, false else.
- */
-#define HASBITS(x, y) (((x) & (y)) != 0)
-
-/**
  * Set a bit in a variable.
  *
  * This function sets a bit in a variable. The variable is changed

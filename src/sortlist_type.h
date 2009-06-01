@@ -106,7 +106,7 @@ public:
 	Listing GetListing() const
 	{
 		Listing l;
-		l.order = HASBITS(this->flags, VL_DESC);
+		l.order = (this->flags & VL_DESC) != 0;
 		l.criteria = this->sort_type;
 
 		return l;
@@ -159,7 +159,7 @@ public:
 	Filtering GetFiltering() const
 	{
 		Filtering f;
-		f.state = HASBITS(this->flags, VL_FILTER);
+		f.state = (this->flags & VL_FILTER) != 0;
 		f.criteria = this->filter_type;
 
 		return f;
@@ -214,7 +214,7 @@ public:
 	 */
 	bool IsDescSortOrder() const
 	{
-		return HASBITS(this->flags, VL_DESC);
+		return (this->flags & VL_DESC) != 0;
 	}
 
 	/**
@@ -241,7 +241,7 @@ public:
 	bool Sort(SortFunction *compare)
 	{
 		/* Do not sort if the resort bit is not set */
-		if (!HASBITS(this->flags, VL_RESORT)) return false;
+		if (!(this->flags & VL_RESORT)) return false;
 
 		CLRBITS(this->flags, VL_RESORT);
 
@@ -250,9 +250,9 @@ public:
 		/* Do not sort when the list is not sortable */
 		if (!this->IsSortable()) return false;
 
-		const bool desc = HASBITS(this->flags, VL_DESC);
+		const bool desc = (this->flags & VL_DESC) != 0;
 
-		if (HASBITS(this->flags, VL_FIRST_SORT)) {
+		if (this->flags & VL_FIRST_SORT) {
 			CLRBITS(this->flags, VL_FIRST_SORT);
 
 			QSortT(this->data, this->items, compare, desc);
@@ -292,7 +292,7 @@ public:
 	 */
 	bool IsFilterEnabled() const
 	{
-		return HASBITS(this->flags, VL_FILTER);
+		return (this->flags & VL_FILTER) != 0;
 	}
 
 	/**
@@ -319,7 +319,7 @@ public:
 	bool Filter(FilterFunction *decide, F filter_data)
 	{
 		/* Do not filter if the filter bit is not set */
-		if (!HASBITS(this->flags, VL_FILTER)) return false;
+		if (!(this->flags & VL_FILTER)) return false;
 
 		bool changed = false;
 		for (uint iter = 0; iter < this->items;) {
@@ -363,7 +363,7 @@ public:
 	 */
 	bool NeedRebuild() const
 	{
-		return HASBITS(this->flags, VL_REBUILD);
+		return (this->flags & VL_REBUILD) != 0;
 	}
 
 	/**

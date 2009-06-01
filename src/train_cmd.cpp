@@ -678,7 +678,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 			/* do not connect new wagon with crashed/flooded consists */
 			if (w->tile == tile && IsFreeWagon(w) &&
 					w->engine_type == engine &&
-					!HASBITS(w->vehstatus, VS_CRASHED)) {
+					!(w->vehstatus & VS_CRASHED)) {
 				u = GetLastVehicleInChain(w);
 				break;
 			}
@@ -995,7 +995,7 @@ static Train *FindGoodVehiclePos(const Train *src)
 
 	Train *dst;
 	FOR_ALL_TRAINS(dst) {
-		if (IsFreeWagon(dst) && dst->tile == tile && !HASBITS(dst->vehstatus, VS_CRASHED)) {
+		if (IsFreeWagon(dst) && dst->tile == tile && !(dst->vehstatus & VS_CRASHED)) {
 			/* check so all vehicles in the line have the same engine. */
 			Train *t = dst;
 			while (t->engine_type == eng) {
@@ -1065,7 +1065,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (src == NULL || !CheckOwnership(src->owner)) return CMD_ERROR;
 
 	/* Do not allow moving crashed vehicles inside the depot, it is likely to cause asserts later */
-	if (HASBITS(src->vehstatus, VS_CRASHED)) return CMD_ERROR;
+	if (src->vehstatus & VS_CRASHED) return CMD_ERROR;
 
 	/* if nothing is selected as destination, try and find a matching vehicle to drag to. */
 	Train *dst;
@@ -1076,7 +1076,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		if (dst == NULL || !CheckOwnership(dst->owner)) return CMD_ERROR;
 
 		/* Do not allow appending to crashed vehicles, too */
-		if (HASBITS(dst->vehstatus, VS_CRASHED)) return CMD_ERROR;
+		if (dst->vehstatus & VS_CRASHED) return CMD_ERROR;
 	}
 
 	/* if an articulated part is being handled, deal with its parent vehicle */
@@ -1416,7 +1416,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (p2 > 1) return CMD_ERROR;
 
-	if (HASBITS(v->vehstatus, VS_CRASHED)) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
+	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
 
 	while (IsArticulatedPart(v)) v = v->Previous();
 	Train *first = v->First();
@@ -3574,7 +3574,7 @@ static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
 		 * As there might be more than two trains involved, we have to do that for all vehicles */
 		const Train *u;
 		FOR_ALL_TRAINS(u) {
-			if (HASBITS(u->vehstatus, VS_CRASHED) && (u->track & TRACK_BIT_DEPOT) == TRACK_BIT_NONE) {
+			if ((u->vehstatus & VS_CRASHED) && (u->track & TRACK_BIT_DEPOT) == TRACK_BIT_NONE) {
 				TrackBits trackbits = u->track;
 				if ((trackbits & TRACK_BIT_WORMHOLE) == TRACK_BIT_WORMHOLE) {
 					/* Vehicle is inside a wormhole, v->track contains no useful value then. */
@@ -4457,7 +4457,7 @@ bool Train::Tick()
 		assert(IsFrontEngine(this));
 
 		return TrainLocoHandler(this, true);
-	} else if (IsFreeWagon(this) && HASBITS(this->vehstatus, VS_CRASHED)) {
+	} else if (IsFreeWagon(this) && (this->vehstatus & VS_CRASHED)) {
 		/* Delete flooded standalone wagon chain */
 		if (++this->crash_anim_pos >= 4400) {
 			delete this;

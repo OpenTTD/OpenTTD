@@ -259,7 +259,7 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 	 * actually translated.
 	 */
 	if (!new_scheme) {
-		if (HASBITS(langid_to_add, GRFLB_AMERICAN | GRFLB_ENGLISH)) {
+		if (langid_to_add & (GRFLB_AMERICAN | GRFLB_ENGLISH)) {
 			langid_to_add = GRFLX_ENGLISH;
 		} else {
 			StringID ret = STR_EMPTY;

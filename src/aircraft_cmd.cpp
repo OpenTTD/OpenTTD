@@ -448,7 +448,7 @@ CommandCost CmdSellAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED);
 
-	if (HASBITS(v->vehstatus, VS_CRASHED)) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
+	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
 
 	CommandCost ret(EXPENSES_NEW_VEHICLES, -v->value);
 
@@ -1816,7 +1816,7 @@ static bool AirportHasBlock(Aircraft *v, const AirportFTA *current_pos, const Ai
 			airport_flags |= current_pos->block;
 		}
 
-		if (HASBITS(st->airport_flags, airport_flags)) {
+		if (st->airport_flags & airport_flags) {
 			v->cur_speed = 0;
 			v->subspeed = 0;
 			return true;
@@ -1857,7 +1857,7 @@ static bool AirportSetBlocks(Aircraft *v, const AirportFTA *current_pos, const A
 		if (current_pos->block == next->block) airport_flags ^= next->block;
 
 		Station *st = Station::Get(v->targetairport);
-		if (HASBITS(st->airport_flags, airport_flags)) {
+		if (st->airport_flags & airport_flags) {
 			v->cur_speed = 0;
 			v->subspeed = 0;
 			return false;
@@ -1911,7 +1911,7 @@ static bool AirportFindFreeTerminal(Aircraft *v, const AirportFTAClass *apc)
 
 		while (temp != NULL) {
 			if (temp->heading == 255) {
-				if (!HASBITS(st->airport_flags, temp->block)) {
+				if (!(st->airport_flags & temp->block)) {
 					/* read which group do we want to go to?
 					 * (the first free group) */
 					uint target_group = temp->next_position + 1;
@@ -1962,7 +1962,7 @@ static bool AirportFindFreeHelipad(Aircraft *v, const AirportFTAClass *apc)
 
 		while (temp != NULL) {
 			if (temp->heading == 255) {
-				if (!HASBITS(st->airport_flags, temp->block)) {
+				if (!(st->airport_flags & temp->block)) {
 
 					/* read which group do we want to go to?
 					 * (the first free group) */

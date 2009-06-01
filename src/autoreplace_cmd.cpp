@@ -613,7 +613,7 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
 
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!v->IsInDepot()) return CMD_ERROR;
-	if (HASBITS(v->vehstatus, VS_CRASHED)) return CMD_ERROR;
+	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
 	bool free_wagon = false;
 	if (v->type == VEH_TRAIN) {
