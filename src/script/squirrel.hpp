@@ -213,6 +213,11 @@ public:
 	 * Reset the crashed status.
 	 */
 	void ResetCrashed();
+
+	/**
+	 * Are we allowed to suspend the squirrel script at this moment?
+	 */
+	bool CanSuspend();
 };
 
 #endif /* SQUIRREL_HPP */

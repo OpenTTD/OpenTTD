@@ -275,6 +275,7 @@ typedef struct tagSQRegFunction{
 }SQRegFunction;
 
 /*vm*/
+SQUIRREL_API bool sq_can_suspend(HSQUIRRELVM v);
 SQUIRREL_API HSQUIRRELVM sq_open(SQInteger initialstacksize);
 SQUIRREL_API HSQUIRRELVM sq_newthread(HSQUIRRELVM friendvm, SQInteger initialstacksize);
 SQUIRREL_API void sq_seterrorhandler(HSQUIRRELVM v);

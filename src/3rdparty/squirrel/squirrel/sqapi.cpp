@@ -90,6 +90,11 @@ SQInteger sq_getvmstate(HSQUIRRELVM v)
 	}
 }
 
+bool sq_can_suspend(HSQUIRRELVM v)
+{
+	return v->_can_suspend;
+}
+
 void sq_seterrorhandler(HSQUIRRELVM v)
 {
 	SQObject o = stack_get(v, -1);
