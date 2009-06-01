@@ -851,13 +851,13 @@ static void SetupRailToolbar(RailType railtype, Window *w)
  */
 void ShowBuildRailToolbar(RailType railtype, int button)
 {
-	BuildRailToolbarWindow *w;
-
 	if (!Company::IsValidID(_local_company)) return;
 	if (!ValParamRailtype(railtype)) return;
 
+	BuildRailToolbarWindow *w = (BuildRailToolbarWindow *)FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL);
+
 	/* don't recreate the window if we're clicking on a button and the window exists. */
-	if (button < 0 || !(w = dynamic_cast<BuildRailToolbarWindow*>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL)))) {
+	if (button < 0 || w == NULL) {
 		DeleteWindowByClass(WC_BUILD_TOOLBAR);
 		_cur_railtype = railtype;
 		w = AllocateWindowDescFront<BuildRailToolbarWindow>(&_build_rail_desc, TRANSPORT_RAIL);
