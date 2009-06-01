@@ -145,7 +145,7 @@ STR_ABBREV_RUBBER                                               :{TINYFONT}KT
 STR_ABBREV_SUGAR                                                :{TINYFONT}ZO
 STR_ABBREV_TOYS                                                 :{TINYFONT}SP
 STR_ABBREV_SWEETS                                               :{TINYFONT}SÉ
-STR_ABBREV_COLA                                                 :{TINYFONT}KO
+STR_ABBREV_COLA                                                 :{TINYFONT}CO
 STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}ZW
 STR_ABBREV_BUBBLES                                              :{TINYFONT}BL
 STR_ABBREV_TOFFEE                                               :{TINYFONT}KR
@@ -198,7 +198,7 @@ STR_COLOUR_WHITE                                                :Wäiss
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Ze vill Gefierer am Spill
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
-STR_BUTTON_LOCATION                                             :{BLACK}Plaatz
+STR_BUTTON_LOCATION                                             :{BLACK}Plaz
 STR_SMALLMAP_TYPE_CONTOURS                                      :Konturen
 STR_SMALLMAP_TYPE_VEHICLES                                      :Gefierer
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrien
@@ -359,7 +359,7 @@ STR_AVAILABLE_TRAINS                                            :{BLACK}Verfügb
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Verfügbar Gefierer
 STR_AVAILABLE_SHIPS                                             :{BLACK}Verfügbar Schëffer
 STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Verfügbar Fligern
-STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Lëscht vun allen Lokbauarten fir dësen Typ weisen.
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Lëscht vun allen Maschinen fir dësen Typ weisen.
 STR_MANAGE_LIST                                                 :{BLACK}Verwaltungslëscht
 STR_MANAGE_LIST_TIP                                             :{BLACK}Scheckt d'Instructiounen un all Gefierer an der Lëscht
 STR_REPLACE_VEHICLES                                            :Gefierer ersetzen
@@ -433,8 +433,8 @@ STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Schalt d
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Profit dëst Joer: {CURRENCY} (lescht Joer: {CURRENCY})
 
 ############ range for service numbers starts
-STR_AGE                                                         :{COMMA} Joër ({COMMA})
-STR_AGE_RED                                                     :{RED}{COMMA} Joër ({COMMA})
+STR_AGE                                                         :{COMMA} Joer ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} Joer ({COMMA})
 ############ range for service numbers ends
 
 STR_VEHICLE_TRAIN                                               :Zuch
@@ -909,7 +909,7 @@ STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE
 STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Fehler beim Autoerneieren vun {VEHICLE}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} ass ze laang nom Auswiesselen
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Keng Autoerneierungsregel festgeluet.
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(money limit)
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(Geldlimit)
 
 STR_CONFIG_SETTING                                              :{BLACK}Erweidert Astellungen
 STR_CONFIG_SETTING_TIP                                          :{BLACK}Weist erweidert Astellungen
@@ -2389,7 +2389,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Zockerwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Zockerwatt Wagon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Karmelwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Blosenwagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Kolawagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Colawagon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Séissegkeetenwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Spillsaachenwagon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Batterienwagon
@@ -2518,7 +2518,7 @@ STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :RMT Kautschuckc
 STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :MightyMover Zockercamion
 STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Powernaught Zockercamion
 STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Wizzowow Zockercamion
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :MightyMover Kolacamion
+STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :MightyMover Colacamion
 STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Powernaught Colacamion
 STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Wizzowow Colacamion
 STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :MightyMover Zockerwattcamion
@@ -2908,7 +2908,7 @@ STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT
 STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Kann d'Gefiert net dréinen...
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kann keng Gefierer aus e puer Unitéiten emdréinen
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Ëmbenennen
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Gefiehrttyp ëmbenennen
+STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Gefierttyp ëmbenennen
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Gefiertentyp ëmbenennen
 STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Kann den Gefierttyp net ëmbenennen...
 
@@ -2962,7 +2962,7 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Schëff 
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Kann d'Schëff net benennen...
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Biirger feieren . . .{}Éischt Schëff kënnt bei {STATION} un!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plazéiert eng Boje, déi als Weepunkt kann benotzt ginn
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kann Boye net hei plazéieren...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kann Boje net hei plazéieren...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Aquadukt bauen
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Kann den Aquadukt héi net bauen...
 STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Ëmbenennen
@@ -3302,6 +3302,7 @@ STR_NUM_3                                                       :{BLACK}{SKIP}{S
 STR_GENERATE                                                    :{WHITE}Generéiren
 STR_RANDOM                                                      :{BLACK}Duerchenen würfeln
 STR_RANDOM_HELP                                                 :{BLACK}Zoufallszuel änneren fir den Terrain-Generator
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Welt Generatioun
 STR_RANDOM_SEED                                                 :{BLACK}Zoufalls-Zuel:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Klick fir eng Zoufalls-Zuel anzegin
 STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Gidd eng zoufälleg Zuel an
@@ -3330,6 +3331,7 @@ STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Welt Gen
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Wëllt dir wierklech d'Generatioun ofbriechen?
 STR_PROGRESS                                                    :{WHITE}{NUM}% komplett
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}Welt Generatioun
 STR_TREE_GENERATION                                             :{BLACK}Baam Generatioun
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Unbewegbar Generatioun
 STR_CLEARING_TILES                                              :{BLACK}Generatioun vun knubblegen an stengegen Areal
@@ -3356,7 +3358,7 @@ STR_NORTHWEST                                                   :{BLACK}Nordwest
 STR_NORTHEAST                                                   :{BLACK}Nordost
 STR_SOUTHEAST                                                   :{BLACK}Südost
 STR_SOUTHWEST                                                   :{BLACK}Südwest
-STR_BORDER_FREEFORM                                             :{BLACK}Fraiform
+STR_BORDER_FREEFORM                                             :{BLACK}Fräiform
 STR_BORDER_WATER                                                :{BLACK}Waasser
 STR_BORDER_RANDOM                                               :{BLACK}Zoufälleg
 STR_BORDER_RANDOMIZE                                            :{BLACK}Zoufall
@@ -3575,6 +3577,7 @@ STR_AI_RANDOM_AI                                                :Zoufälleg KI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}KI Astellungen
 STR_AI_AUTHOR                                                   :{BLACK}Autor: {STRING}
 STR_AI_VERSION                                                  :{BLACK}Versioun: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Eng KI ass ofgestierzt. W.e.g mellt des dem KI Autor mat engem Screenshot vun der KI Debugfënster
 ########
 

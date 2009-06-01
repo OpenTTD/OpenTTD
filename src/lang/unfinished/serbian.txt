@@ -2597,18 +2597,111 @@ STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Napravit
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Letelice se ne može napraviti
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Leteluca
 
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Promenite naziv vrste letilice
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Promena naziva vrste letilice
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Nemoguća promena naziva vrste letilice...
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Prepravite letilicu kako bi prevozila drugu vrstu tereta
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Prepravi letilicu
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Odaberite vrstu tereta koju će letilica prevoziti
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Prepravite letilicu kako bi prevozila označenu vrstu tereta
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Nemoguće je prepraviti letilicu...
 
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Raspored)
 
 ##id 0xB000
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}Cepelin se srušio kod {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}Drumskom vozilo uništeno pri sudaru sa 'NLO'!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BLACK}{BIGFONT}Eksplozija naftnte rafinerije blizu naselja {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BLACK}{BIGFONT}Fabrika uništena pri nepoznatim okolnostima blizu naselja {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BLACK}{BIGFONT}'NLO' sleteo blizu naselja {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BLACK}{BIGFONT}Urušavanje rudnika uglja uništilo je svoju okolinu blizu naselja {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BLACK}{BIGFONT}Poplave!{}{COMMA} je barem nesta{P o lo lo}, pretpostavlja se da {P je su su} poginu{P o li li} zbog velike nepogode!
 
+STR_BRIBE_FAILED                                                :{WHITE}Vaš pokušaj podmićivanja je
+STR_BRIBE_FAILED_2                                              :{WHITE}otkriven zahvaljujući regionalnim istražiteljima
+STR_BUILD_DATE                                                  :{BLACK}Sagrađeno: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Klasa stanice: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Vrsta stanice: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Detaljan pergled poslovanja
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalji
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vozila:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stanice:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Najmanja dobit:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Najmanji prihod:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Najviši prihod:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Dostavljeno:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Teret:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Novac:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Zajam:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Ukupno:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Broj vozila; ukupan broj drumskih, železničkih vozila, brodova i letilica
+STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Broj stanica. Posebno se broji svaki deo (npr. železničko, autobusko stajalište ili aerodrom) stanice.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Dobit vozila sa najmanjim prihodom (svih vozila starijih od 2 godine)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Količina novca zarađena u mesecu sa najmanjom dobiti u proteklih 12 tromesečja
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Količina novca zarađena u mesecu sa najvećom dobiti u proteklih 12 tromesečja
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Jedinica tereta dostavljenih u proteklih četiri tromesečja
+STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Broj vrsta tereta dostavljenih u proteklom tromesečju
+STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Količina novca koju ova kompanija ima u banci
+STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Količina novca koju ova kompanije je pozajmila
+STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Ukupno bodova od nejviše mogućih
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Podešavanja
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Prikazuje NewGRF podešavanja
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF podešavanja
+STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Primeni promene
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Promeni paletu
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Menja paletu označenog NewGRF-a.{}Promenite paletu ako grafici iz NewGRF-a su ružičasti tokom igre
+STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Postavi parametre
+STR_NEWGRF_FILENAME                                             :{BLACK}Datoteka: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Paleta: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Upravo ćete načiniti izmene na tekuću partiju; to može srušiti igru.{}Da li ste apsolutno sigurni da ovo želite?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Upozorenje: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Greška: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Kobno: {SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} neće raditi sa TTDPatch verzijom.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} je za {STRING} verziju TTD-a.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} je napravljen za korišćenje sa {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Neispravan parametar za {STRING}: parametar {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} mora biti učitan pre {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} mora biti učitan posle {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} zahteva {STRING} ili višu verziju OpenTTD-a.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fajl nije prilagođen za prevod
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Previše učitanih NewGRF-ova.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Učitavanje {STRING} kao statične NewGRF sa {STRING} može da izazove desinhronizacije.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepredviđen sprajt.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nepoznato svojstvo Action 0.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Pokušano korišćenje nepostojećeg ID-ja.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sadrži neispravan sprajt. Svi neispravni sprajtovi će biti prikazani kao crveni znakovi pitanja (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sadrži višestruke Action 8 unose.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Učitava označenu postavku
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Sačuvaj postavku
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Sačuvajte trenutni spisak u postavku
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Unesite ime za postavku
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Izbriši postavku
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Izbrišite trenutno označenu postavku
+STR_NEWGRF_ADD                                                  :{BLACK}Dodaj
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Dodajte NewGRF fajl u spisak
+STR_NEWGRF_REMOVE                                               :{BLACK}Ukloni
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Uklonite označeni NewGRF fajl sa spiska
+STR_NEWGRF_MOVEUP                                               :{BLACK}Naviše
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Pomerite označeni NewGRF fajl više na spisku
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Naniže
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Pomerite označeni NewGRF fajl niže na spisku
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Spisak instaliranih NewGRF fajlova. Kliknite na fajl kako bi promenili njegova svojstva
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parametri: {SILVER}{STRING}
 STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Unesite NewGRF parametre
 STR_NEWGRF_NO_INFO                                              :{BLACK}Informacije nepostoje
@@ -2635,6 +2728,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Voz '{VE
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' sadrži neispravne informacije.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Podaci o tovaru/prenameni za '{1:ENGINE}' se posle izgradnje razlikuju od nabavne liste. Ovo može izazvati neispravnu automatsku zamenu/preuređenje.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' je izazvao beskrajnu petlju poziva proizvodnje industrija.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Partija je sačuvana u vreziji bez podrške za tramvaje. Svi tramvaji su uklonjeni.
 
@@ -2646,6 +2740,17 @@ STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks:
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Pelazak na Euro: {ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Prelazak na Euro: {ORANGE}nikada
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Primer: {ORANGE}{6:CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Promena parametara sopstvene monete
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Smanjite vrednost vaše monete u odnosu na jednu funtu (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Povećajte vrednost vaše monete u odnosu na jednu funtu (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Postavite vrednost vaše monete u odnosu na jednu funtu (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Postavite razdelnik za vašu monetu
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Postavite prefiks za vašu monetu
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Postavite sufiks za vašu monetu
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Raniji prelazak na euro
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Kasniji prelazak na euro
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Odredite godinu za prelazak na euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 funti (£) u vašoj moneti
 
 
 
