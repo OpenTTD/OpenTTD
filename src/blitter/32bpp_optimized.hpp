@@ -12,7 +12,7 @@ class Blitter_32bppOptimized : public Blitter_32bppSimple {
 public:
 	struct SpriteData {
 		uint32 offset[ZOOM_LVL_COUNT][2];
-		byte data[VARARRAY_SIZE];
+		byte data[];
 	};
 
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);

@@ -12,7 +12,7 @@ struct Sprite {
 	uint16 width;
 	int16 x_offs;
 	int16 y_offs;
-	byte data[VARARRAY_SIZE];
+	byte data[];
 };
 
 extern uint _sprite_cache_size;

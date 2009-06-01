@@ -1100,34 +1100,23 @@ make_cflags_and_ldflags() {
 		# Enable some things only for certain GCC versions
 		cc_version=`$cc_host -dumpversion | cut -c 1,3`
 
-		if [ $cc_version -ge 29 ]; then
-			CFLAGS="$CFLAGS -Wall -Wno-multichar -Wsign-compare -Wundef"
-			CFLAGS="$CFLAGS -Wwrite-strings -Wpointer-arith"
-			CFLAGS="$CFLAGS -Wno-uninitialized"
-
-			CC_CFLAGS="$CC_CFLAGS -Wstrict-prototypes"
+		if [ $cc_version -lt 30 ]; then
+			log 1 "configure: error: gcc older than 3.0 can't compile OpenTTD because of its poor template support"
+			exit 1
 		fi
 
-		gcc295=""
-		if [ "$cc_version" = 29 ]; then
-			# Make sure we mark GCC 2.95 flag for Makefile.src.in, as we
-			#  need a lovely hack there to make it compile correctly.
-			gcc295="1"
+		CFLAGS="$CFLAGS -Wall -Wno-multichar -Wsign-compare -Wundef"
+		CFLAGS="$CFLAGS -Wwrite-strings -Wpointer-arith"
+		CFLAGS="$CFLAGS -Wno-uninitialized"
 
-			# Disable warnings about unused variables when
-			# compiling with asserts disabled
-			if [ $enable_assert -eq 0 ]; then
-				CFLAGS="$CFLAGS -Wno-unused"
-			fi
-		fi
+		CFLAGS="$CFLAGS -W -Wno-unused-parameter -Wformat=2"
+		CFLAGS="$CFLAGS -Wredundant-decls"
 
-		if [ $cc_version -ge 30 ]; then
-			CFLAGS="$CFLAGS -W -Wno-unused-parameter -Wformat=2"
-			CFLAGS="$CFLAGS -Wredundant-decls"
+		CC_CFLAGS="$CC_CFLAGS -Wstrict-prototypes"
+
+		if [ $enable_assert -eq 0 ]; then
 			# Do not warn about unused variables when building without asserts
-			if [ $enable_assert -eq 0 ]; then
-				CFLAGS="$CFLAGS -Wno-unused-variable"
-			fi
+			CFLAGS="$CFLAGS -Wno-unused-variable"
 		fi
 
 		if [ $cc_version -ge 34 ]; then
@@ -2666,7 +2655,6 @@ make_sed() {
 		s@!!CONFIGURE_FILES!!@$CONFIGURE_FILES@g;
 		s@!!REVISION!!@$revision@g;
 		s@!!AWK!!@$awk@g;
-		s@!!GCC295!!@$gcc295@g;
 		s@!!DISTCC!!@$distcc@g;
 	"
 

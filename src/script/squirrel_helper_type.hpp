@@ -7,7 +7,7 @@
 
 struct Array {
 	int32 size;
-	int32 array[VARARRAY_SIZE];
+	int32 array[];
 };
 
 #endif /* SQUIRREL_HELPER_TYPE_HPP */

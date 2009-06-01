@@ -67,7 +67,7 @@ static SpriteCache *AllocateSpriteCache(uint index)
 
 struct MemBlock {
 	size_t size;
-	byte data[VARARRAY_SIZE];
+	byte data[];
 };
 
 static uint _sprite_lru_counter;

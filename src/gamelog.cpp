@@ -591,7 +591,7 @@ void GamelogGRFAddList(const GRFConfig *newg)
 /** List of GRFs using array of pointers instead of linked list */
 struct GRFList {
 	uint n;
-	const GRFConfig *grf[VARARRAY_SIZE];
+	const GRFConfig *grf[];
 };
 
 /** Generates GRFList

@@ -45,7 +45,7 @@ static char *GetSpecialNameString(char *buff, int ind, int64 *argv, const char *
 static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, const char *last);
 
 struct LanguagePack : public LanguagePackHeader {
-	char data[VARARRAY_SIZE]; // list of strings
+	char data[]; // list of strings
 };
 
 static char **_langpack_offs;

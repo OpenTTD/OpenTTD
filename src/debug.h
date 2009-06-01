@@ -20,17 +20,9 @@
  */
 
 #ifdef NO_DEBUG_MESSAGES
-	#if defined(__GNUC__) && (__GNUC__ < 3)
-		#define DEBUG(name, level, args...) { }
-	#else
-		#define DEBUG(name, level, ...) { }
-	#endif
+	#define DEBUG(name, level, ...) { }
 #else /* NO_DEBUG_MESSAGES */
-	#if defined(__GNUC__) && (__GNUC__ < 3)
-		#define DEBUG(name, level, args...) if ((level == 0) || ( _debug_ ## name ## _level >= level)) debug(#name, args)
-	#else
-		#define DEBUG(name, level, ...) if (level == 0 || _debug_ ## name ## _level >= level) debug(#name, __VA_ARGS__)
-	#endif
+	#define DEBUG(name, level, ...) if (level == 0 || _debug_ ## name ## _level >= level) debug(#name, __VA_ARGS__)
 
 	extern int _debug_ai_level;
 	extern int _debug_driver_level;

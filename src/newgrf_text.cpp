@@ -80,7 +80,7 @@ public:
 	public:
 		GRFText *next;
 		byte langid;
-		char text[VARARRAY_SIZE];
+		char text[];
 };
 
 

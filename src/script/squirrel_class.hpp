@@ -5,14 +5,6 @@
 #ifndef SQUIRREL_CLASS_HPP
 #define SQUIRREL_CLASS_HPP
 
-#if (__GNUC__ == 2)
-/* GCC 2.95 doesn't like to have SQConvert::DefSQStaticCallback inside a
- *  template (it gives an internal error 373). Above that, it doesn't listen
- *  to 'using namespace' inside a function of a template. So for GCC 2.95 we
- *  do it in the global space to avoid compiler errors. */
-using namespace SQConvert;
-#endif /* __GNUC__ == 2 */
-
 /**
  * The template to define classes in Squirrel. It takes care of the creation
  *  and calling of such classes, to make the AI Layer cleaner while having a

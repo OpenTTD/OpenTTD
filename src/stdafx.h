@@ -116,9 +116,6 @@
 	#define printf pspDebugScreenPrintf
 #endif /* PSP */
 
-/* by default we use [] var arrays */
-#define VARARRAY_SIZE
-
 /* Stuff for GCC */
 #if defined(__GNUC__)
 	#define NORETURN __attribute__ ((noreturn))
@@ -129,11 +126,6 @@
 	/* Warn about functions using 'printf' format syntax. First argument determines which parameter
 	 * is the format string, second argument is start of values passed to printf. */
 	#define WARN_FORMAT(string, args) __attribute__ ((format (printf, string, args)))
-
-	#if (__GNUC__ == 2)
-		#undef VARARRAY_SIZE
-		#define VARARRAY_SIZE 0
-	#endif
 #endif /* __GNUC__ */
 
 #if defined(__WATCOMC__)
