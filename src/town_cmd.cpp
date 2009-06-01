@@ -487,7 +487,7 @@ static void TileLoop_Town(TileIndex tile)
 
 	_current_company = OWNER_TOWN;
 
-	if (hs->building_flags & BUILDING_HAS_1_TILE &&
+	if ((hs->building_flags & BUILDING_HAS_1_TILE) &&
 			HasBit(t->flags12, TOWN_IS_FUNDED) &&
 			CanDeleteHouse(tile) &&
 			GetHouseAge(tile) >= hs->minimum_life &&

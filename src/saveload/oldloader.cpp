@@ -105,8 +105,8 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 	byte *base_ptr = (byte*)base;
 
 	for (const OldChunks *chunk = chunks; chunk->type != OC_END; chunk++) {
-		if (((chunk->type & OC_TTD) && (_savegame_type == SGT_TTO)) ||
-				((chunk->type & OC_TTO) && (_savegame_type != SGT_TTO))) {
+		if (((chunk->type & OC_TTD) && _savegame_type == SGT_TTO) ||
+				((chunk->type & OC_TTO) && _savegame_type != SGT_TTO)) {
 			/* TTD(P)-only chunk, but TTO savegame || TTO-only chunk, but TTD/TTDP savegame */
 			continue;
 		}

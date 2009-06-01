@@ -1199,10 +1199,10 @@ bool IsSlopeRefused(Slope current, Slope refused)
 
 		Slope t = ComplementSlope(current);
 
-		if (refused & SLOPE_W && (t & SLOPE_NW)) return true;
-		if (refused & SLOPE_S && (t & SLOPE_NE)) return true;
-		if (refused & SLOPE_E && (t & SLOPE_SW)) return true;
-		if (refused & SLOPE_N && (t & SLOPE_SE)) return true;
+		if ((refused & SLOPE_W) && (t & SLOPE_NW)) return true;
+		if ((refused & SLOPE_S) && (t & SLOPE_NE)) return true;
+		if ((refused & SLOPE_E) && (t & SLOPE_SW)) return true;
+		if ((refused & SLOPE_N) && (t & SLOPE_SE)) return true;
 	}
 
 	return false;
@@ -1686,7 +1686,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		if (ind == NULL) return CMD_ERROR;
 	}
 
-	if (flags & DC_EXEC && _game_mode != GM_EDITOR && ind != NULL) {
+	if ((flags & DC_EXEC) && _game_mode != GM_EDITOR && ind != NULL) {
 		SetDParam(0, indspec->name);
 		if (indspec->new_industry_text > STR_LAST_STRINGID) {
 			SetDParam(1, STR_TOWN);
@@ -1916,7 +1916,7 @@ static bool CheckIndustryCloseDownProtection(IndustryType type)
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
 	/* oil wells (or the industries with that flag set) are always allowed to closedown */
-	if (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD && _settings_game.game_creation.landscape == LT_TEMPERATE) return false;
+	if ((indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _settings_game.game_creation.landscape == LT_TEMPERATE) return false;
 	return (indspec->behaviour & INDUSTRYBEH_CANCLOSE_LASTINSTANCE) == 0 && GetIndustryTypeCount(type) <= 1;
 }
 
@@ -2174,7 +2174,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		}
 	}
 
-	if (!callback_enabled && indspec->life_type & INDUSTRYLIFE_PROCESSING) {
+	if (!callback_enabled && (indspec->life_type & INDUSTRYLIFE_PROCESSING)) {
 		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && Chance16(1, smooth_economy ? 180 : 2)) {
 			closeit = true;
 		}

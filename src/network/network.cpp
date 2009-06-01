@@ -462,7 +462,7 @@ void NetworkCloseClient(NetworkClientSocket *cs)
 	}
 
 	/* When the client was PRE_ACTIVE, the server was in pause mode, so unpause */
-	if (cs->status == STATUS_PRE_ACTIVE && _pause_mode & PM_PAUSED_JOIN) {
+	if (cs->status == STATUS_PRE_ACTIVE && (_pause_mode & PM_PAUSED_JOIN)) {
 		DoCommandP(0, PM_PAUSED_JOIN, 0, CMD_PAUSE);
 		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "", CLIENT_ID_SERVER, NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL);
 	}

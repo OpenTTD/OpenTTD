@@ -137,10 +137,10 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType
 	/* Get a bitmask of which neighbouring roads has a tile */
 	RoadBits n = ROAD_NONE;
 	RoadBits present = GetAnyRoadBits(tile, rt);
-	if (present & ROAD_NE && GetAnyRoadBits(TILE_ADDXY(tile, -1,  0), rt) & ROAD_SW) n |= ROAD_NE;
-	if (present & ROAD_SE && GetAnyRoadBits(TILE_ADDXY(tile,  0,  1), rt) & ROAD_NW) n |= ROAD_SE;
-	if (present & ROAD_SW && GetAnyRoadBits(TILE_ADDXY(tile,  1,  0), rt) & ROAD_NE) n |= ROAD_SW;
-	if (present & ROAD_NW && GetAnyRoadBits(TILE_ADDXY(tile,  0, -1), rt) & ROAD_SE) n |= ROAD_NW;
+	if ((present & ROAD_NE) && (GetAnyRoadBits(TILE_ADDXY(tile, -1,  0), rt) & ROAD_SW)) n |= ROAD_NE;
+	if ((present & ROAD_SE) && (GetAnyRoadBits(TILE_ADDXY(tile,  0,  1), rt) & ROAD_NW)) n |= ROAD_SE;
+	if ((present & ROAD_SW) && (GetAnyRoadBits(TILE_ADDXY(tile,  1,  0), rt) & ROAD_NE)) n |= ROAD_SW;
+	if ((present & ROAD_NW) && (GetAnyRoadBits(TILE_ADDXY(tile,  0, -1), rt) & ROAD_SE)) n |= ROAD_NW;
 
 	int rating_decrease = RATING_ROAD_DOWN_STEP_EDGE;
 	/* If 0 or 1 bits are set in n, or if no bits that match the bits to remove,
@@ -494,7 +494,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 							if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 							/* Ignore half built tiles */
-							if (flags & DC_EXEC && rt != ROADTYPE_TRAM && IsStraightRoad(existing)) {
+							if ((flags & DC_EXEC) && rt != ROADTYPE_TRAM && IsStraightRoad(existing)) {
 								SetDisallowedRoadDirections(tile, GetDisallowedRoadDirections(tile) ^ toggle_drd);
 								MarkTileDirtyByTile(tile);
 							}

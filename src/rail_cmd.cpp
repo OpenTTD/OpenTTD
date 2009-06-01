@@ -134,7 +134,7 @@ static bool CheckTrackCombination(TileIndex tile, TrackBits to_build, uint flags
 	}
 
 	/* Let's see if we may build this */
-	if (flags & DC_NO_RAIL_OVERLAP || HasSignals(tile)) {
+	if ((flags & DC_NO_RAIL_OVERLAP) || HasSignals(tile)) {
 		/* If we are not allowed to overlap (flag is on for ai companies or we have
 		 * signals on the tile), check that */
 		return future == TRACK_BIT_HORZ || future == TRACK_BIT_VERT;

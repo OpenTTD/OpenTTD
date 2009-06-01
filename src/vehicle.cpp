@@ -864,7 +864,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 	v->reliability = rel = max((rel_old = v->reliability) - v->reliability_spd_dec, 0);
 	if ((rel_old >> 8) != (rel >> 8)) InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-	if (v->breakdown_ctr != 0 || v->vehstatus & VS_STOPPED ||
+	if (v->breakdown_ctr != 0 || (v->vehstatus & VS_STOPPED) ||
 			_settings_game.difficulty.vehicle_breakdowns < 1 ||
 			v->cur_speed < 5 || _game_mode == GM_MENU) {
 		return;

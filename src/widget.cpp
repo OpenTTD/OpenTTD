@@ -141,12 +141,10 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
  */
 int GetWidgetFromPos(const Window *w, int x, int y)
 {
-	uint index;
 	int found_index = -1;
 
-	/* Go through the widgets and check if we find the widget that the coordinate is
-	 * inside. */
-	for (index = 0; index < w->widget_count; index++) {
+	/* Go through the widgets and check if we find the widget that the coordinate is inside. */
+	for (uint index = 0; index < w->widget_count; index++) {
 		const Widget *wi = &w->widget[index];
 		if (wi->type == WWT_EMPTY || wi->type == WWT_FRAME) continue;
 

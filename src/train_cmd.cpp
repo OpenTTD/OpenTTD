@@ -1543,7 +1543,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			}
 
 			/* 3. If it is still a valid train after selling, update its acceleration and cached values */
-			if (flags & DC_EXEC && first != NULL) {
+			if ((flags & DC_EXEC) && first != NULL) {
 				NormaliseTrainConsist(first);
 				TrainConsistChanged(first, false);
 				UpdateTrainGroupID(first);
@@ -1705,7 +1705,7 @@ static Vehicle *TrainOnTileEnum(Vehicle *v, void *)
 static Vehicle *TrainApproachingCrossingEnum(Vehicle *v, void *data)
 {
 	/* not a train || not front engine || crashed */
-	if (v->type != VEH_TRAIN || !IsFrontEngine(v) || v->vehstatus & VS_CRASHED) return NULL;
+	if (v->type != VEH_TRAIN || !IsFrontEngine(v) || (v->vehstatus & VS_CRASHED)) return NULL;
 
 	TileIndex tile = *(TileIndex*)data;
 
@@ -1974,7 +1974,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 		}
 	} else {
 		/* turn the whole train around */
-		if (v->vehstatus & VS_CRASHED || v->breakdown_ctr != 0) return CMD_ERROR;
+		if ((v->vehstatus & VS_CRASHED) || v->breakdown_ctr != 0) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
 			/* Properly leave the station if we are loading and won't be loading anymore */
@@ -2257,7 +2257,7 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 {
 	bool sound = false;
 
-	if (v->vehstatus & VS_TRAIN_SLOWING || v->load_unload_time_rem != 0 || v->cur_speed < 2) {
+	if ((v->vehstatus & VS_TRAIN_SLOWING) || v->load_unload_time_rem != 0 || v->cur_speed < 2) {
 		return;
 	}
 
@@ -2353,7 +2353,7 @@ static void CheckNextTrainTile(Train *v)
 	if (_settings_game.pf.path_backoff_interval == 255) return;
 
 	/* Exit if we reached our destination depot or are inside a depot. */
-	if ((v->tile == v->dest_tile && v->current_order.IsType(OT_GOTO_DEPOT)) || v->track & TRACK_BIT_DEPOT) return;
+	if ((v->tile == v->dest_tile && v->current_order.IsType(OT_GOTO_DEPOT)) || (v->track & TRACK_BIT_DEPOT)) return;
 	/* Exit if we are on a station tile and are going to stop. */
 	if (IsRailwayStationTile(v->tile) && v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile))) return;
 	/* Exit if the current order doesn't have a destination, but the train has orders. */
@@ -3305,7 +3305,7 @@ static int UpdateTrainSpeed(Train *v)
 {
 	uint accel;
 
-	if (v->vehstatus & VS_STOPPED || HasBit(v->flags, VRF_REVERSING) || HasBit(v->flags, VRF_TRAIN_STUCK)) {
+	if ((v->vehstatus & VS_STOPPED) || HasBit(v->flags, VRF_REVERSING) || HasBit(v->flags, VRF_TRAIN_STUCK)) {
 		switch (_settings_game.vehicle.train_acceleration_model) {
 			default: NOT_REACHED();
 			case TAM_ORIGINAL:  accel = v->acceleration * -4; break;
@@ -3704,7 +3704,7 @@ static void TrainController(Train *v, Vehicle *nomove)
 					assert(chosen_track & (bits | GetReservedTrackbits(gp.new_tile)));
 
 					/* Check if it's a red signal and that force proceed is not clicked. */
-					if (red_signals & chosen_track && v->force_proceed == 0) {
+					if ((red_signals & chosen_track) && v->force_proceed == 0) {
 						/* In front of a red signal */
 						Trackdir i = FindFirstTrackdir(trackdirbits);
 
@@ -4285,7 +4285,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 	}
 
 	/* exit if train is stopped */
-	if (v->vehstatus & VS_STOPPED && v->cur_speed == 0) return true;
+	if ((v->vehstatus & VS_STOPPED) && v->cur_speed == 0) return true;
 
 	bool valid_order = !v->current_order.IsType(OT_NOTHING) && v->current_order.GetType() != OT_CONDITIONAL;
 	if (ProcessOrders(v) && CheckReverseTrain(v)) {
@@ -4350,7 +4350,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 	int j = UpdateTrainSpeed(v);
 
 	/* we need to invalidate the widget if we are stopping from 'Stopping 0 km/h' to 'Stopped' */
-	if (v->cur_speed == 0 && v->tcache.last_speed == 0 && v->vehstatus & VS_STOPPED) {
+	if (v->cur_speed == 0 && v->tcache.last_speed == 0 && (v->vehstatus & VS_STOPPED)) {
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 

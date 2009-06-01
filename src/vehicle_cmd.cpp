@@ -67,7 +67,7 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 	switch (v->type) {
 		case VEH_TRAIN:
-			if (v->vehstatus & VS_STOPPED && ((Train *)v)->tcache.cached_power == 0) return_cmd_error(STR_TRAIN_START_NO_CATENARY);
+			if ((v->vehstatus & VS_STOPPED) && ((Train *)v)->tcache.cached_power == 0) return_cmd_error(STR_TRAIN_START_NO_CATENARY);
 			break;
 
 		case VEH_SHIP:
@@ -405,7 +405,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		}
 	} while (v->type == VEH_TRAIN && (v = GetNextVehicle((Train *)v)) != NULL);
 
-	if (flags & DC_EXEC && v_front->type == VEH_TRAIN) {
+	if ((flags & DC_EXEC) && v_front->type == VEH_TRAIN) {
 		/* for trains this needs to be the front engine due to the callback function */
 		_new_vehicle_id = w_front->index;
 	}

@@ -383,7 +383,7 @@ static void UpdateStationVirtCoord(Station *st)
 	Point pt = RemapCoords2(TileX(st->xy) * TILE_SIZE, TileY(st->xy) * TILE_SIZE);
 
 	pt.y -= 32;
-	if (st->facilities & FACIL_AIRPORT && st->airport_type == AT_OILRIG) pt.y -= 16;
+	if ((st->facilities & FACIL_AIRPORT) && st->airport_type == AT_OILRIG) pt.y -= 16;
 
 	SetDParam(0, st->index);
 	SetDParam(1, st->facilities);
@@ -1849,7 +1849,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		uint num = 0;
 		const Station *st;
 		FOR_ALL_STATIONS(st) {
-			if (st->town == t && st->facilities & FACIL_AIRPORT && st->airport_type != AT_OILRIG) num++;
+			if (st->town == t && (st->facilities & FACIL_AIRPORT) && st->airport_type != AT_OILRIG) num++;
 		}
 		if (num >= 2) {
 			authority_refuse_message = STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT;

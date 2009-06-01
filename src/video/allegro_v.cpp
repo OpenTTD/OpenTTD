@@ -327,7 +327,7 @@ static void PollEvent()
 			ClrBit(diff, button);
 			if (HasBit(mouse_b, button)) {
 				/* Pressed mouse button */
-				if (_rightclick_emulate && key_shifts & KB_CTRL_FLAG) {
+				if (_rightclick_emulate && (key_shifts & KB_CTRL_FLAG)) {
 					button = RIGHT_BUTTON;
 					ClrBit(diff, RIGHT_BUTTON);
 				}
@@ -391,7 +391,7 @@ static void PollEvent()
 	if (mouse_action) HandleMouseEvents();
 
 	poll_keyboard();
-	if (key_shifts & KB_ALT_FLAG && (key[KEY_ENTER] || key[KEY_F])) {
+	if ((key_shifts & KB_ALT_FLAG) && (key[KEY_ENTER] || key[KEY_F])) {
 		ToggleFullScreen(!_fullscreen);
 	} else if (keypressed()) {
 		HandleKeypress(ConvertAllegroKeyIntoMy());

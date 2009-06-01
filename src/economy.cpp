@@ -1125,7 +1125,7 @@ void VehiclePayment(Vehicle *front_v)
 
 	for (Vehicle *v = front_v; v != NULL; v = v->Next()) {
 		/* No cargo to unload */
-		if (v->cargo_cap == 0 || v->cargo.Empty() || front_v->current_order.GetUnloadType() & OUFB_NO_UNLOAD) continue;
+		if (v->cargo_cap == 0 || v->cargo.Empty() || (front_v->current_order.GetUnloadType() & OUFB_NO_UNLOAD)) continue;
 
 		/* All cargo has already been paid for, no need to pay again */
 		if (!v->cargo.UnpaidCargo()) {
@@ -1280,7 +1280,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			 * they were loaded, but to not force unload the vehicle when the
 			 * station is still accepting the cargo in the vehicle. It doesn't
 			 * accept cargo that was loaded at the same station. */
-			if (u->current_order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER) && (!accepted || v->cargo.Count() == cargo_count)) {
+			if ((u->current_order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) && (!accepted || v->cargo.Count() == cargo_count)) {
 				remaining = v->cargo.MoveTo(&ge->cargo, amount_unloaded);
 				SetBit(ge->acceptance_pickup, GoodsEntry::PICKUP);
 

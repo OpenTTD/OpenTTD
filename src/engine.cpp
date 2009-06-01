@@ -692,7 +692,7 @@ void EnginesMonthlyLoop()
 		Engine *e;
 		FOR_ALL_ENGINES(e) {
 			/* Age the vehicle */
-			if (e->flags & ENGINE_AVAILABLE && e->age != 0xFFFF) {
+			if ((e->flags & ENGINE_AVAILABLE) && e->age != 0xFFFF) {
 				e->age++;
 				CalcEngineReliability(e);
 			}

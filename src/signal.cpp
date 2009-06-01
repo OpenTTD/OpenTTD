@@ -341,7 +341,7 @@ static SigFlags ExploreSegment(Owner owner)
 				}
 
 				for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) { // test all possible exit directions
-					if (dir != enterdir && tracks & _enterdir_to_trackbits[dir]) { // any track incidating?
+					if (dir != enterdir && (tracks & _enterdir_to_trackbits[dir])) { // any track incidating?
 						TileIndex newtile = tile + TileOffsByDiagDir(dir);  // new tile to check
 						DiagDirection newdir = ReverseDiagDir(dir); // direction we are entering from
 						if (!MaybeAddToTodoSet(newtile, newdir, tile, dir)) return flags | SF_FULL;
@@ -425,7 +425,7 @@ static void UpdateSignalsAroundSegment(SigFlags flags)
 			/* is it a bidir combo? - then do not count its other signal direction as exit */
 			if (sig == SIGTYPE_COMBO && HasSignalOnTrackdir(tile, ReverseTrackdir(trackdir))) {
 				/* at least one more exit */
-				if (flags & SF_EXIT2 &&
+				if ((flags & SF_EXIT2) &&
 						/* no green exit */
 						(!(flags & SF_GREEN) ||
 						/* only one green exit, and it is this one - so all other exits are red */
@@ -433,7 +433,7 @@ static void UpdateSignalsAroundSegment(SigFlags flags)
 					newstate = SIGNAL_STATE_RED;
 				}
 			} else { // entry, at least one exit, no green exit
-				if (IsPresignalEntry(tile, TrackdirToTrack(trackdir)) && flags & SF_EXIT && !(flags & SF_GREEN)) newstate = SIGNAL_STATE_RED;
+				if (IsPresignalEntry(tile, TrackdirToTrack(trackdir)) && (flags & SF_EXIT) && !(flags & SF_GREEN)) newstate = SIGNAL_STATE_RED;
 			}
 		}
 
@@ -535,7 +535,7 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 			/* SIGSEG_FREE is set by default */
 			if (flags & SF_PBS) {
 				state = SIGSEG_PBS;
-			} else if (flags & SF_TRAIN || (flags & SF_EXIT && !(flags & SF_GREEN)) || flags & SF_FULL) {
+			} else if ((flags & SF_TRAIN) || ((flags & SF_EXIT) && !(flags & SF_GREEN)) || (flags & SF_FULL)) {
 				state = SIGSEG_FULL;
 			}
 		}

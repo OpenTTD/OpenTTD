@@ -432,7 +432,7 @@ not_valid_below:;
 		}
 	}
 
-	if (flags & DC_EXEC && transport_type == TRANSPORT_RAIL) {
+	if ((flags & DC_EXEC) && transport_type == TRANSPORT_RAIL) {
 		Track track = AxisToTrack(direction);
 		AddSideToSignalBuffer(tile_start, INVALID_DIAGDIR, _current_company);
 		YapfNotifyTrackLayoutChange(tile_start, track);

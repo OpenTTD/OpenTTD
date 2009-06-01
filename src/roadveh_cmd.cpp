@@ -440,8 +440,8 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	RoadVehicle *v = RoadVehicle::GetIfValid(p1);
 	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (v->vehstatus & VS_STOPPED ||
-			v->vehstatus & VS_CRASHED ||
+	if ((v->vehstatus & VS_STOPPED) ||
+			(v->vehstatus & VS_CRASHED) ||
 			v->breakdown_ctr != 0 ||
 			v->overtaking != 0 ||
 			v->state == RVSB_WORMHOLE ||
@@ -935,7 +935,7 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 	od.tile = v->tile + TileOffsByDiagDir(DirToDiagDir(v->direction));
 	if (CheckRoadBlockedForOvertaking(&od)) return;
 
-	if (od.u->cur_speed == 0 || od.u->vehstatus& VS_STOPPED) {
+	if (od.u->cur_speed == 0 || (od.u->vehstatus & VS_STOPPED)) {
 		v->overtaking_ctr = 0x11;
 		v->overtaking = 0x10;
 	} else {
@@ -1132,7 +1132,7 @@ do_it:;
 					 * pretend we are heading for the tile in front, we'll
 					 * see from there */
 					desttile += TileOffsByDiagDir(dir);
-					if (desttile == tile && trackdirs & _road_exit_dir_to_incoming_trackdirs[dir]) {
+					if (desttile == tile && (trackdirs & _road_exit_dir_to_incoming_trackdirs[dir])) {
 						/* If we are already in front of the
 						 * station/depot and we can get in from here,
 						 * we enter */

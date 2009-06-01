@@ -165,7 +165,7 @@ void UpdateOldAircraft()
 		 * skip those */
 		if (IsNormalAircraft(a)) {
 			/* airplane in terminal stopped doesn't hurt anyone, so goto next */
-			if (a->vehstatus & VS_STOPPED && a->state == 0) {
+			if ((a->vehstatus & VS_STOPPED) && a->state == 0) {
 				a->state = HANGAR;
 				continue;
 			}

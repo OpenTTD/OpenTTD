@@ -119,18 +119,18 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 {
 	switch (::GetOrderTypeByTile(destination)) {
 		case OT_GOTO_STATION:
-			return ((order_flags & ~(AIOF_NON_STOP_FLAGS | AIOF_UNLOAD_FLAGS | AIOF_LOAD_FLAGS)) == 0) &&
+			return (order_flags & ~(AIOF_NON_STOP_FLAGS | AIOF_UNLOAD_FLAGS | AIOF_LOAD_FLAGS)) == 0 &&
 					/* Test the different mutual exclusive flags. */
-					(((order_flags & AIOF_TRANSFER)      == 0) || ((order_flags & AIOF_UNLOAD)    == 0)) &&
-					(((order_flags & AIOF_TRANSFER)      == 0) || ((order_flags & AIOF_NO_UNLOAD) == 0)) &&
-					(((order_flags & AIOF_UNLOAD)        == 0) || ((order_flags & AIOF_NO_UNLOAD) == 0)) &&
-					(((order_flags & AIOF_UNLOAD)        == 0) || ((order_flags & AIOF_NO_UNLOAD) == 0)) &&
-					(((order_flags & AIOF_NO_UNLOAD)     == 0) || ((order_flags & AIOF_NO_LOAD)   == 0)) &&
-					(((order_flags & AIOF_FULL_LOAD_ANY) == 0) || ((order_flags & AIOF_NO_LOAD)   == 0));
+					((order_flags & AIOF_TRANSFER)      == 0 || (order_flags & AIOF_UNLOAD)    == 0) &&
+					((order_flags & AIOF_TRANSFER)      == 0 || (order_flags & AIOF_NO_UNLOAD) == 0) &&
+					((order_flags & AIOF_UNLOAD)        == 0 || (order_flags & AIOF_NO_UNLOAD) == 0) &&
+					((order_flags & AIOF_UNLOAD)        == 0 || (order_flags & AIOF_NO_UNLOAD) == 0) &&
+					((order_flags & AIOF_NO_UNLOAD)     == 0 || (order_flags & AIOF_NO_LOAD)   == 0) &&
+					((order_flags & AIOF_FULL_LOAD_ANY) == 0 || (order_flags & AIOF_NO_LOAD)   == 0);
 
 		case OT_GOTO_DEPOT:
-			return ((order_flags & ~(AIOF_NON_STOP_FLAGS | AIOF_DEPOT_FLAGS)) == 0) &&
-					(((order_flags & AIOF_SERVICE_IF_NEEDED) == 0) || ((order_flags & AIOF_STOP_IN_DEPOT) == 0));
+			return (order_flags & ~(AIOF_NON_STOP_FLAGS | AIOF_DEPOT_FLAGS)) == 0 &&
+					((order_flags & AIOF_SERVICE_IF_NEEDED) == 0 || (order_flags & AIOF_STOP_IN_DEPOT) == 0);
 
 		case OT_GOTO_WAYPOINT: return (order_flags & ~(AIOF_NON_STOP_FLAGS)) == 0;
 		default:               return false;

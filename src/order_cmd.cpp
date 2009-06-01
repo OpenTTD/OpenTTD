@@ -1202,7 +1202,7 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			InvalidateVehicleOrder(u, 0);
 
 			/* If the vehicle already got the current depot set as current order, then update current order as well */
-			if (u->cur_order_index == order_number && u->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) {
+			if (u->cur_order_index == order_number && (u->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS)) {
 				u->current_order.SetRefit(cargo, subtype);
 			}
 		}
@@ -1379,7 +1379,7 @@ void CheckOrders(const Vehicle *v)
 	if (v->vehstatus & VS_CRASHED) return;
 
 	/* Do nothing for stopped vehicles if setting is '1' */
-	if (_settings_client.gui.order_review_system == 1 && v->vehstatus & VS_STOPPED)
+	if (_settings_client.gui.order_review_system == 1 && (v->vehstatus & VS_STOPPED))
 		return;
 
 	/* do nothing we we're not the first vehicle in a share-chain */

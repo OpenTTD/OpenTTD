@@ -183,7 +183,7 @@
 	int num = 0;
 	const Station *st;
 	FOR_ALL_STATIONS(st) {
-		if (st->town == t && st->facilities & FACIL_AIRPORT && st->airport_type != AT_OILRIG) num++;
+		if (st->town == t && (st->facilities & FACIL_AIRPORT) && st->airport_type != AT_OILRIG) num++;
 	}
 	return max(0, 2 - num);
 }

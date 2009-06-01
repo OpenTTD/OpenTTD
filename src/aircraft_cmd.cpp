@@ -110,10 +110,9 @@ static StationID FindNearestHangar(const Aircraft *v)
 		const AirportFTAClass *afc = st->Airport();
 		if (afc->nof_depots == 0 || (
 					/* don't crash the plane if we know it can't land at the airport */
-					afc->flags & AirportFTAClass::SHORT_STRIP &&
-					AircraftVehInfo(v->engine_type)->subtype & AIR_FAST &&
-					!_cheats.no_jetcrash.value
-				)) {
+					(afc->flags & AirportFTAClass::SHORT_STRIP) &&
+					(AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) &&
+					!_cheats.no_jetcrash.value)) {
 			continue;
 		}
 
@@ -137,7 +136,7 @@ static bool HaveHangarInOrderList(Aircraft *v)
 
 	FOR_VEHICLE_ORDERS(v, order) {
 		const Station *st = Station::Get(order->station);
-		if (st->owner == v->owner && st->facilities & FACIL_AIRPORT) {
+		if (st->owner == v->owner && (st->facilities & FACIL_AIRPORT)) {
 			/* If an airport doesn't have a hangar, skip it */
 			if (st->Airport()->nof_depots != 0)
 				return true;
@@ -1057,7 +1056,7 @@ static bool AircraftController(Aircraft *v)
 
 		GetNewVehiclePosResult gp;
 
-		if (dist < 4 || amd->flag & AMED_LAND) {
+		if (dist < 4 || (amd->flag & AMED_LAND)) {
 			/* move vehicle one pixel towards target */
 			gp.x = (v->x_pos != (x + amd->x)) ?
 					v->x_pos + ((x + amd->x > v->x_pos) ? 1 : -1) :
@@ -1334,8 +1333,8 @@ static void MaybeCrashAirplane(Aircraft *v)
 
 	/* FIXME -- MaybeCrashAirplane -> increase crashing chances of very modern airplanes on smaller than AT_METROPOLITAN airports */
 	uint16 prob = 0x10000 / 1500;
-	if (st->Airport()->flags & AirportFTAClass::SHORT_STRIP &&
-			AircraftVehInfo(v->engine_type)->subtype & AIR_FAST &&
+	if ((st->Airport()->flags & AirportFTAClass::SHORT_STRIP) &&
+			(AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) &&
 			!_cheats.no_jetcrash.value) {
 		prob = 0x10000 / 20;
 	}
@@ -1617,7 +1616,7 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 	Station *st = Station::Get(v->targetairport);
 
 	/* runway busy or not allowed to use this airstation, circle */
-	if (apc->flags & (v->subtype == AIR_HELICOPTER ? AirportFTAClass::HELICOPTERS : AirportFTAClass::AIRPLANES) &&
+	if ((apc->flags & (v->subtype == AIR_HELICOPTER ? AirportFTAClass::HELICOPTERS : AirportFTAClass::AIRPLANES)) &&
 			st->airport_tile != INVALID_TILE &&
 			(st->owner == OWNER_NONE || st->owner == v->owner)) {
 		/* {32,FLYING,NOTHING_block,37}, {32,LANDING,N,33}, {32,HELILANDING,N,41},

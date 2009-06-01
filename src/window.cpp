@@ -326,7 +326,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 			}
 		}
 
-		if (w->desc_flags & WDF_RESIZABLE && widget_type == WWT_RESIZEBOX) {
+		if ((w->desc_flags & WDF_RESIZABLE) && widget_type == WWT_RESIZEBOX) {
 			/* When the resize widget is on the left size of the window
 			 * we assume that that button is used to resize to the left. */
 			StartWindowSizing(w, wi->left < (w->width / 2));
@@ -334,7 +334,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 			return;
 		}
 
-		if (w->desc_flags & WDF_STICKY_BUTTON && widget_type == WWT_STICKYBOX) {
+		if ((w->desc_flags & WDF_STICKY_BUTTON) && widget_type == WWT_STICKYBOX) {
 			w->flags4 ^= WF_STICKY;
 			w->InvalidateWidget(widget_index);
 			return;
@@ -1240,7 +1240,7 @@ static void DecreaseWindowCounters()
 	}
 
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
-		if (w->flags4 & WF_TIMEOUT_MASK && !(--w->flags4 & WF_TIMEOUT_MASK)) {
+		if ((w->flags4 & WF_TIMEOUT_MASK) && !(--w->flags4 & WF_TIMEOUT_MASK)) {
 			w->OnTimeout();
 			if (w->desc_flags & WDF_UNCLICK_BUTTONS) w->RaiseButtons();
 		}
@@ -1551,7 +1551,7 @@ static bool HandleWindowDragging()
 
 			/* Now find the new cursor pos.. this is NOT _cursor, because we move in steps. */
 			_drag_delta.y += y;
-			if (w->flags4 & WF_SIZING_LEFT && x != 0) {
+			if ((w->flags4 & WF_SIZING_LEFT) && x != 0) {
 				_drag_delta.x -= x; // x > 0 -> window gets longer -> left-edge moves to left -> subtract x to get new position.
 				w->SetDirty();
 				w->left -= x;  // If dragging left edge, move left window edge in opposite direction by the same amount.
