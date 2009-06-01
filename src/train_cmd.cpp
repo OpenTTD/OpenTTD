@@ -342,6 +342,7 @@ void TrainConsistChanged(Train *v, bool same_length)
 	/* store consist weight/max speed in cache */
 	v->tcache.cached_max_speed = max_speed;
 	v->tcache.cached_tilt = train_can_tilt;
+	v->tcache.cached_max_curve_speed = GetTrainCurveSpeedLimit(v);
 
 	/* recalculate cached weights and power too (we do this *after* the rest, so it is known which wagons are powered and need extra weight added) */
 	TrainCargoChanged(v);
@@ -406,12 +407,19 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 	return stop - (v->tcache.cached_veh_length + 1) / 2;
 }
 
-/** new acceleration*/
-static int GetTrainAcceleration(Train *v, bool mode)
+
+/**
+ * Computes train speed limit caused by curves
+ * @param v first vehicle of consist
+ * @return imposed speed limit
+ */
+int GetTrainCurveSpeedLimit(Train *v)
 {
 	static const int absolute_max_speed = UINT16_MAX;
 	int max_speed = absolute_max_speed;
-	int speed = v->cur_speed * 10 / 16; // km-ish/h -> mp/h
+
+	if (_settings_game.vehicle.train_acceleration_model == TAM_ORIGINAL) return max_speed;
+
 	int curvecount[2] = {0, 0};
 
 	/* first find the curve speed limit */
@@ -445,13 +453,11 @@ static int GetTrainAcceleration(Train *v, bool mode)
 		}
 	}
 
-	if ((curvecount[0] != 0 || curvecount[1] != 0) && max_speed > 88) {
-		int total = curvecount[0] + curvecount[1];
-
+	if (numcurve > 0 && max_speed > 88) {
 		if (curvecount[0] == 1 && curvecount[1] == 1) {
 			max_speed = absolute_max_speed;
-		} else if (total > 1) {
-			if (numcurve > 0) sum /= numcurve;
+		} else {
+			sum /= numcurve;
 			max_speed = 232 - (13 - Clamp(sum, 1, 12)) * (13 - Clamp(sum, 1, 12));
 		}
 	}
@@ -466,6 +472,16 @@ static int GetTrainAcceleration(Train *v, bool mode)
 			max_speed += max_speed / 5;
 		}
 	}
+
+	return max_speed;
+}
+
+/** new acceleration*/
+static int GetTrainAcceleration(Train *v, bool mode)
+{
+	int max_speed = v->tcache.cached_max_curve_speed;
+	assert(max_speed == GetTrainCurveSpeedLimit(v)); // safety check, will be removed later
+	int speed = v->cur_speed * 10 / 16; // km-ish/h -> mp/h
 
 	if (IsTileType(v->tile, MP_STATION) && IsFrontEngine(v)) {
 		StationID sid = GetStationIndex(v->tile);
@@ -3425,18 +3441,6 @@ static const RailtypeSlowdownParams _railtype_slowdown[] = {
 	{0,       256 / 2, 256 / 4, 2}, ///< maglev
 };
 
-/** Modify the speed of the vehicle due to a turn */
-static inline void AffectSpeedByDirChange(Train *v, Direction new_dir)
-{
-	if (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL) return;
-
-	DirDiff diff = DirDifference(v->direction, new_dir);
-	if (diff == DIRDIFF_SAME) return;
-
-	const RailtypeSlowdownParams *rsp = &_railtype_slowdown[v->railtype];
-	v->cur_speed -= (diff == DIRDIFF_45RIGHT || diff == DIRDIFF_45LEFT ? rsp->small_turn : rsp->large_turn) * v->cur_speed >> 8;
-}
-
 /** Modify the speed of the vehicle due to a change in altitude */
 static inline void AffectSpeedByZChange(Train *v, byte old_z)
 {
@@ -3637,7 +3641,9 @@ static Vehicle *CheckVehicleAtSignal(Vehicle *v, void *data)
 
 static void TrainController(Train *v, Vehicle *nomove)
 {
+	Train *first = v->First();
 	Train *prev;
+	bool direction_changed = false; // has direction of any part changed?
 
 	/* For every vehicle after and including the given vehicle */
 	for (prev = v->Previous(); v != nomove; prev = v, v = v->Next()) {
@@ -3817,9 +3823,15 @@ static void TrainController(Train *v, Vehicle *nomove)
 				 * has been updated by AfterSetTrainPos() */
 				update_signals_crossing = true;
 
-				if (prev == NULL) AffectSpeedByDirChange(v, chosen_dir);
-
-				v->direction = chosen_dir;
+				if (chosen_dir != v->direction) {
+					if (prev == NULL && _settings_game.vehicle.train_acceleration_model == TAM_ORIGINAL) {
+						const RailtypeSlowdownParams *rsp = &_railtype_slowdown[v->railtype];
+						DirDiff diff = DirDifference(v->direction, chosen_dir);
+						v->cur_speed -= (diff == DIRDIFF_45RIGHT || diff == DIRDIFF_45LEFT ? rsp->small_turn : rsp->large_turn) * v->cur_speed >> 8;
+					}
+					direction_changed = true;
+					v->direction = chosen_dir;
+				}
 
 				if (IsFrontEngine(v)) {
 					v->load_unload_time_rem = 0;
@@ -3904,6 +3916,9 @@ static void TrainController(Train *v, Vehicle *nomove)
 		/* Do not check on every tick to save some computing time. */
 		if (IsFrontEngine(v) && v->tick_counter % _settings_game.pf.path_backoff_interval == 0) CheckNextTrainTile(v);
 	}
+
+	if (direction_changed) first->tcache.cached_max_curve_speed = GetTrainCurveSpeedLimit(first);
+
 	return;
 
 invalid_rail:

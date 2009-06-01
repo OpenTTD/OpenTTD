@@ -257,6 +257,7 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 
 void TrainConsistChanged(Train *v, bool same_length);
 void TrainPowerChanged(Train *v);
+int GetTrainCurveSpeedLimit(Train *v);
 Money GetTrainRunningCost(const Train *v);
 
 /** Variables that are cached to improve performance and such */
@@ -268,7 +269,6 @@ struct TrainCache {
 
 	/* cached values, recalculated on load and each time a vehicle is added to/removed from the consist. */
 	uint32 cached_power;        ///< total power of the consist.
-	uint16 cached_max_speed;    ///< max speed of the consist. (minimum of the max speed of all vehicles in the consist)
 	uint16 cached_total_length; ///< Length of the whole train, valid only for first engine.
 	uint8 cached_veh_length;    ///< length of this vehicle in units of 1/8 of normal length, cached because this can be set by a callback
 	bool cached_tilt;           ///< train can tilt; feature provides a bonus in curves
@@ -277,6 +277,10 @@ struct TrainCache {
 	uint32 cached_weight;     ///< total weight of the consist.
 	uint32 cached_veh_weight; ///< weight of the vehicle.
 	uint32 cached_max_te;     ///< max tractive effort of consist
+
+	/* cached max. speed / acceleration data */
+	uint16 cached_max_speed;    ///< max speed of the consist. (minimum of the max speed of all vehicles in the consist)
+	int cached_max_curve_speed; ///< max consist speed limited by curves
 
 	/**
 	 * Position/type of visual effect.

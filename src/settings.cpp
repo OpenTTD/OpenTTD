@@ -735,7 +735,10 @@ static bool TrainAccelerationModelChanged(int32 p1)
 {
 	Train *t;
 	FOR_ALL_TRAINS(t) {
-		if (IsFrontEngine(t)) UpdateTrainAcceleration(t);
+		if (IsFrontEngine(t)) {
+			t->tcache.cached_max_curve_speed = GetTrainCurveSpeedLimit(t);
+			UpdateTrainAcceleration(t);
+		}
 	}
 
 	return true;
