@@ -350,20 +350,20 @@ static const WindowDesc _terraform_desc(
 	_terraform_widgets, _nested_terraform_widgets, lengthof(_nested_terraform_widgets)
 );
 
-void ShowTerraformToolbar(Window *link)
+Window *ShowTerraformToolbar(Window *link)
 {
-	if (!Company::IsValidID(_local_company)) return;
+	if (!Company::IsValidID(_local_company)) return NULL;
 
 	Window *w = AllocateWindowDescFront<TerraformToolbarWindow>(&_terraform_desc, 0);
-	if (link == NULL) return;
+	if (link == NULL) return w;
 
 	if (w == NULL) {
 		w = FindWindowById(WC_SCEN_LAND_GEN, 0);
+		if (w == NULL) return NULL;
 	} else {
 		w->top = 22;
 		w->SetDirty();
 	}
-	if (w == NULL) return;
 
 	/* Align the terraform toolbar under the main toolbar and put the linked
 	 * toolbar to left of it
@@ -371,6 +371,18 @@ void ShowTerraformToolbar(Window *link)
 	link->top  = w->top;
 	link->left = w->left - link->width;
 	link->SetDirty();
+
+	return w;
+}
+
+void ShowTerraformToolbarWithTool(uint16 key, uint16 keycode)
+{
+	Window *w = FindWindowById(WC_SCEN_LAND_GEN, 0);
+
+	if (w == NULL) w = ShowTerraformToolbar(NULL);
+	if (w == NULL) return;
+
+	w->OnKeyPress(key, keycode);
 }
 
 static byte _terraform_size = 1;
@@ -774,7 +786,17 @@ static const WindowDesc _scen_edit_land_gen_desc(
 	_scen_edit_land_gen_widgets, _nested_scen_edit_land_gen_widgets, lengthof(_nested_scen_edit_land_gen_widgets)
 );
 
-void ShowEditorTerraformToolbar()
+Window *ShowEditorTerraformToolbar()
 {
-	AllocateWindowDescFront<ScenarioEditorLandscapeGenerationWindow>(&_scen_edit_land_gen_desc, 0);
+	return AllocateWindowDescFront<ScenarioEditorLandscapeGenerationWindow>(&_scen_edit_land_gen_desc, 0);
+}
+
+void ShowEditorTerraformToolbarWithTool(uint16 key, uint16 keycode)
+{
+	Window *w = FindWindowById(WC_SCEN_LAND_GEN, 0);
+
+	if (w == NULL) w = ShowEditorTerraformToolbar();
+	if (w == NULL) return;
+
+	w->OnKeyPress(key, keycode);
 }

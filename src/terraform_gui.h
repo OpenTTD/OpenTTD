@@ -9,7 +9,9 @@
 
 void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
-void ShowTerraformToolbar(Window *link = NULL);
-void ShowEditorTerraformToolbar();
+Window *ShowTerraformToolbar(Window *link = NULL);
+void ShowTerraformToolbarWithTool(uint16 key, uint16 keycode);
+Window *ShowEditorTerraformToolbar();
+void ShowEditorTerraformToolbarWithTool(uint16 key, uint16 keycode);
 
 #endif /* GUI_H */

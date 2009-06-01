@@ -1096,6 +1096,7 @@ struct MainToolbarWindow : Window {
 			case WKC_CTRL | WKC_ALT | 'C': if (!_networking) ShowCheatWindow(); break;
 			case 'A': if (CanBuildVehicleInfrastructure(VEH_TRAIN)) ShowBuildRailToolbar(_last_built_railtype, 4); break; // Invoke Autorail
 			case 'L': ShowTerraformToolbar(); break;
+			case 'Q': case 'W': case 'E': case 'D': ShowTerraformToolbarWithTool(key, keycode); break;
 			case 'M': ShowSmallMap(); break;
 			case 'V': ShowExtraViewPortWindow(); break;
 			default: return ES_NOT_HANDLED;
@@ -1303,6 +1304,7 @@ public:
 			case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(this); break;
 
 			case 'L': ShowEditorTerraformToolbar(); break;
+			case 'Q': case 'W': case 'E': case 'D': ShowEditorTerraformToolbarWithTool(key, keycode); break;
 			case 'M': ShowSmallMap(); break;
 			case 'V': ShowExtraViewPortWindow(); break;
 			default: return ES_NOT_HANDLED;
