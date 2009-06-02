@@ -334,14 +334,20 @@ StringID GetNetworkErrorMsg(NetworkErrorCode err)
 	return network_error_strings[err];
 }
 
-/* Count the number of active clients connected */
+/**
+ * Counts the number of active clients connected.
+ * It has to be in STATUS_ACTIVE and not a spectator
+ * @return number of active clients
+ */
 static uint NetworkCountActiveClients()
 {
-	const NetworkClientInfo *ci;
+	const NetworkClientSocket *cs;
 	uint count = 0;
 
-	FOR_ALL_CLIENT_INFOS(ci) {
-		if (Company::IsValidID(ci->client_playas)) count++;
+	FOR_ALL_CLIENT_SOCKETS(cs) {
+		if (cs->status != STATUS_ACTIVE) continue;
+		if (!Company::IsValidID(cs->GetInfo()->client_playas)) continue;
+		count++;
 	}
 
 	return count;
