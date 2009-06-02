@@ -133,6 +133,8 @@ struct RoadVehicle : public SpecializedVehicle<RoadVehicle, VEH_ROAD> {
 	RoadType roadtype;
 	RoadTypes compatible_roadtypes;
 
+	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
+	RoadVehicle() : SpecializedVehicle<RoadVehicle, VEH_ROAD>() {}
 	/** We want to 'destruct' the right class. */
 	virtual ~RoadVehicle() { this->PreDestructor(); }
 

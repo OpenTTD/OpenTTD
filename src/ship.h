@@ -20,6 +20,8 @@ void GetShipSpriteSize(EngineID engine, uint &width, uint &height);
 struct Ship: public SpecializedVehicle<Ship, VEH_SHIP> {
 	TrackBitsByte state;
 
+	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
+	Ship() : SpecializedVehicle<Ship, VEH_SHIP>() {}
 	/** We want to 'destruct' the right class. */
 	virtual ~Ship() { this->PreDestructor(); }
 

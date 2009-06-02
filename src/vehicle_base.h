@@ -584,6 +584,8 @@ struct DisasterVehicle : public SpecializedVehicle<DisasterVehicle, VEH_DISASTER
 	uint16 image_override;
 	VehicleID big_ufo_destroyer_target;
 
+	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
+	DisasterVehicle() : SpecializedVehicle<DisasterVehicle, VEH_DISASTER>() {}
 	/** We want to 'destruct' the right class. */
 	virtual ~DisasterVehicle() {}
 

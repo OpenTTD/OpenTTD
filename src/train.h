@@ -314,6 +314,8 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	RailTypeByte railtype;
 	RailTypes compatible_railtypes;
 
+	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
+	Train() : SpecializedVehicle<Train, VEH_TRAIN>() {}
 	/** We want to 'destruct' the right class. */
 	virtual ~Train() { this->PreDestructor(); }
 
