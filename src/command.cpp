@@ -526,7 +526,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	/* If the company isn't valid it may only do server command or start a new company!
 	 * The server will ditch any server commands a client sends to it, so effectively
 	 * this guards the server from executing functions for an invalid company. */
-	if ((cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) == 0 && !Company::IsValidID(_current_company)) {
+	if (_game_mode == GM_NORMAL && (cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) == 0 && !Company::IsValidID(_current_company)) {
 		if (my_cmd) ShowErrorMessage(_error_message, error_part1, x, y);
 		return false;
 	}
