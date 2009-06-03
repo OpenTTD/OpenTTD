@@ -41,7 +41,7 @@ public:
 	static const char *GetClassName() { return "AIVehicleList_SharedOrders"; }
 
 	/**
-	 * @param station_id The vehicle that the rest shared orders with.
+	 * @param vehicle_id The vehicle that the rest shared orders with.
 	 */
 	AIVehicleList_SharedOrders(VehicleID vehicle_id);
 };

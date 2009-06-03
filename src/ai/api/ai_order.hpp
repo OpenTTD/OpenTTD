@@ -288,8 +288,10 @@ public:
 	 * Sets the OrderCondition of the given order for the given vehicle.
 	 * @param vehicle_id The vehicle to set the condition type for.
 	 * @param order_position The order to set the condition type for.
+	 * @param condition The condition to compare on.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
 	 * @pre order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position).
+	 * @pre condition >= OC_LOAD_PERCENTAGE && condition <= OC_UNCONDITIONALLY.
 	 * @return Whether the order has been/can be changed.
 	 */
 	static bool SetOrderCondition(VehicleID vehicle_id, OrderPosition order_position, OrderCondition condition);
@@ -298,8 +300,10 @@ public:
 	 * Sets the CompareFunction of the given order for the given vehicle.
 	 * @param vehicle_id The vehicle to set the compare function for.
 	 * @param order_position The order to set the compare function for.
+	 * @param compare The new compare function of the order.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
 	 * @pre order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position).
+	 * @pre compare >= CF_EQUALS && compare <= CF_IS_FALSE.
 	 * @return Whether the order has been/can be changed.
 	 */
 	static bool SetOrderCompareFunction(VehicleID vehicle_id, OrderPosition order_position, CompareFunction compare);
@@ -308,6 +312,7 @@ public:
 	 * Sets the value to compare against of the given order for the given vehicle.
 	 * @param vehicle_id The vehicle to set the value for.
 	 * @param order_position The order to set the value for.
+	 * @param value The value to compare against.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
 	 * @pre order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position).
 	 * @pre value >= 0 && value < 2048.

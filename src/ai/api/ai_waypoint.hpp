@@ -15,6 +15,9 @@ class AIWaypoint : public AIObject {
 public:
 	static const char *GetClassName() { return "AIWaypoint"; }
 
+	/**
+	 * Special waypoint IDs signalling different kinds of waypoints.
+	 */
 	enum SpecialWaypointIDs {
 		WAYPOINT_INVALID = 0xFFFF, //!< An invalid WaypointID.
 	};
