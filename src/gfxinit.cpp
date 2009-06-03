@@ -459,8 +459,8 @@ bool OBGFileScanner::AddFile(const char *filename, size_t basepath_length)
 	}
 
 	if (FillGraphicsSetDetails(graphics, ini, path)) {
-		const GraphicsSet *duplicate = NULL;
-		for (const GraphicsSet *c = _available_graphics_sets; c != NULL; c = c->next) {
+		GraphicsSet *duplicate = NULL;
+		for (GraphicsSet *c = _available_graphics_sets; c != NULL; c = c->next) {
 			if (strcmp(c->name, graphics->name) == 0 || c->shortname == graphics->shortname) {
 				duplicate = c;
 				break;
@@ -476,6 +476,8 @@ bool OBGFileScanner::AddFile(const char *filename, size_t basepath_length)
 
 				*prev = graphics;
 				graphics->next = duplicate->next;
+				/* don't allow recursive delete of all remaining items */
+				duplicate->next = NULL;
 
 				DEBUG(grf, 1, "Removing %s (%i) as base graphics set (duplicate)", duplicate->name, duplicate->version);
 				delete duplicate;
