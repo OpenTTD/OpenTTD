@@ -143,9 +143,24 @@ protected:
 	 */
 	static void *&GetEventPointer();
 
+	/**
+	 * Set the cost of the last command.
+	 */
 	static void SetLastCost(Money last_cost);
+
+	/**
+	 * Get the cost of the last command.
+	 */
 	static Money GetLastCost();
+
+	/**
+	 * Set a variable that can be used by callback functions to pass information.
+	 */
 	static void SetCallbackVariable(int index, int value);
+
+	/**
+	 * Get the variable that is used by callback functions to pass information.
+	 */
 	static int GetCallbackVariable(int index);
 
 public:

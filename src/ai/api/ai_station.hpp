@@ -49,6 +49,10 @@ public:
 		STATION_ANY        = 0x1F, //!< All station types
 	};
 
+	/**
+	 * Special station IDs for building adjacent/new stations when
+	 * the adjacent/distant join features are enabled.
+	 */
 	enum SpecialStationIDs {
 		STATION_NEW = 0xFFFD,           //!< Build a new station
 		STATION_JOIN_ADJACENT = 0xFFFE, //!< Join an neighbouring station if one exists

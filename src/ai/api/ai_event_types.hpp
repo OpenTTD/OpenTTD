@@ -32,6 +32,7 @@ public:
 	/**
 	 * @param vehicle The vehicle that crashed.
 	 * @param crash_site Where the vehicle crashed.
+	 * @param crash_reason The reason why the vehicle crashed.
 	 */
 	AIEventVehicleCrashed(VehicleID vehicle, TileIndex crash_site, CrashReason crash_reason) :
 		AIEvent(AI_ET_VEHICLE_CRASHED),

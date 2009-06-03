@@ -8,62 +8,62 @@
  * reused for other objects once they are released. So be careful, which IDs you store for which purpose and whether they stay valid all the time.
  *
  * <table>
- * <tr><th>type        </th><th> object                                            </th>
- *                          <th> acquired                                          </th>
- *                          <th> released                                          </th>
- *                          <th> reused                                            </th></tr>
- * <tr><td>#BridgeID   </td><td> bridge type                                       </td>
- *                          <td> introduction \ref newgrf_changes "(1)"            </td>
- *                          <td> never \ref newgrf_changes "(1)"                   </td>
- *                          <td> no \ref newgrf_changes "(1)"                      </td></tr>
- * <tr><td>#CargoID    </td><td> cargo type                                        </td>
- *                          <td> game start \ref newgrf_changes "(1)"              </td>
- *                          <td> never \ref newgrf_changes "(1)"                   </td>
- *                          <td> no \ref newgrf_changes "(1)"                      </td></tr>
- * <tr><td>#EngineID   </td><td> engine type                                       </td>
- *                          <td> introduction, preview \ref dynamic_engines "(2)"  </td>
- *                          <td> engines retires \ref dynamic_engines "(2)"        </td>
- *                          <td> no \ref dynamic_engines "(2)"                     </td></tr>
- * <tr><td>#GroupID    </td><td> vehicle group                                     </td>
- *                          <td> creation                                          </td>
- *                          <td> deletion                                          </td>
- *                          <td> yes                                               </td></tr>
- * <tr><td>#IndustyID  </td><td> industry                                          </td>
- *                          <td> construction                                      </td>
- *                          <td> closure                                           </td>
- *                          <td> yes                                               </td></tr>
- * <tr><td>#IndustyType</td><td> industry type                                     </td>
- *                          <td> game start \ref newgrf_changes "(1)"              </td>
- *                          <td> never \ref newgrf_changes "(1)"                   </td>
- *                          <td> no                                                </td></tr>
- * <tr><td>#SignID     </td><td> sign                                              </td>
- *                          <td> construction                                      </td>
- *                          <td> deletion                                          </td>
- *                          <td> yes                                               </td></tr>
- * <tr><td>#StationID  </td><td> station                                           </td>
- *                          <td> construction                                      </td>
- *                          <td> expiration of 'grey' station sign after deletion  </td>
- *                          <td> yes                                               </td></tr>
- * <tr><td>#SubsidyID  </td><td> subsidy                                           </td>
- *                          <td> offer announcement                                </td>
- *                          <td> (offer) expiration                                </td>
- *                          <td> yes                                               </td></tr>
- * <tr><td>#TileIndex  </td><td> tile on map                                       </td>
- *                          <td> game start                                        </td>
- *                          <td> never                                             </td>
- *                          <td> no                                                </td></tr>
- * <tr><td>#TownID     </td><td> town                                              </td>
- *                          <td> game start                                        </td>
- *                          <td> never                                             </td>
- *                          <td> no                                                </td></tr>
- * <tr><td>#VehicleID  </td><td> vehicle                                           </td>
- *                          <td> construction, autorenew, autoreplace              </td>
- *                          <td> destruction, autorenew, autoreplace               </td>
- *                          <td> yes                                               </td></tr>
- * <tr><td>#WaypointID </td><td> waypoint                                          </td>
- *                          <td> construction                                      </td>
- *                          <td> destruction                                       </td>
- *                          <td> yes                                               </td></tr>
+ * <tr><th>type         </th><th> object                                            </th>
+ *                           <th> acquired                                          </th>
+ *                           <th> released                                          </th>
+ *                           <th> reused                                            </th></tr>
+ * <tr><td>#BridgeID    </td><td> bridge type                                       </td>
+ *                           <td> introduction \ref newgrf_changes "(1)"            </td>
+ *                           <td> never \ref newgrf_changes "(1)"                   </td>
+ *                           <td> no \ref newgrf_changes "(1)"                      </td></tr>
+ * <tr><td>#CargoID     </td><td> cargo type                                        </td>
+ *                           <td> game start \ref newgrf_changes "(1)"              </td>
+ *                           <td> never \ref newgrf_changes "(1)"                   </td>
+ *                           <td> no \ref newgrf_changes "(1)"                      </td></tr>
+ * <tr><td>#EngineID    </td><td> engine type                                       </td>
+ *                           <td> introduction, preview \ref dynamic_engines "(2)"  </td>
+ *                           <td> engines retires \ref dynamic_engines "(2)"        </td>
+ *                           <td> no \ref dynamic_engines "(2)"                     </td></tr>
+ * <tr><td>#GroupID     </td><td> vehicle group                                     </td>
+ *                           <td> creation                                          </td>
+ *                           <td> deletion                                          </td>
+ *                           <td> yes                                               </td></tr>
+ * <tr><td>#IndustryID  </td><td> industry                                          </td>
+ *                           <td> construction                                      </td>
+ *                           <td> closure                                           </td>
+ *                           <td> yes                                               </td></tr>
+ * <tr><td>#IndustryType</td><td> industry type                                     </td>
+ *                           <td> game start \ref newgrf_changes "(1)"              </td>
+ *                           <td> never \ref newgrf_changes "(1)"                   </td>
+ *                           <td> no                                                </td></tr>
+ * <tr><td>#SignID      </td><td> sign                                              </td>
+ *                           <td> construction                                      </td>
+ *                           <td> deletion                                          </td>
+ *                           <td> yes                                               </td></tr>
+ * <tr><td>#StationID   </td><td> station                                           </td>
+ *                           <td> construction                                      </td>
+ *                           <td> expiration of 'grey' station sign after deletion  </td>
+ *                           <td> yes                                               </td></tr>
+ * <tr><td>#SubsidyID   </td><td> subsidy                                           </td>
+ *                           <td> offer announcement                                </td>
+ *                           <td> (offer) expiration                                </td>
+ *                           <td> yes                                               </td></tr>
+ * <tr><td>#TileIndex   </td><td> tile on map                                       </td>
+ *                           <td> game start                                        </td>
+ *                           <td> never                                             </td>
+ *                           <td> no                                                </td></tr>
+ * <tr><td>#TownID      </td><td> town                                              </td>
+ *                           <td> game start                                        </td>
+ *                           <td> never                                             </td>
+ *                           <td> no                                                </td></tr>
+ * <tr><td>#VehicleID   </td><td> vehicle                                           </td>
+ *                           <td> construction, autorenew, autoreplace              </td>
+ *                           <td> destruction, autorenew, autoreplace               </td>
+ *                           <td> yes                                               </td></tr>
+ * <tr><td>#WaypointID  </td><td> waypoint                                          </td>
+ *                           <td> construction                                      </td>
+ *                           <td> destruction                                       </td>
+ *                           <td> yes                                               </td></tr>
  * </table>
  *
  * @remarks
