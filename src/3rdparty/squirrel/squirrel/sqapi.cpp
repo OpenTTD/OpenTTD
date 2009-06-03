@@ -92,7 +92,7 @@ SQInteger sq_getvmstate(HSQUIRRELVM v)
 
 bool sq_can_suspend(HSQUIRRELVM v)
 {
-	return v->_can_suspend;
+	return v->_nnativecalls <= 2;
 }
 
 void sq_seterrorhandler(HSQUIRRELVM v)
