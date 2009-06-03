@@ -839,6 +839,13 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
  */
 
 /**
+ * @fn void FillNestedArray(NWidgetCore **array, uint length)
+ * Fill the Window::nested_array array with pointers to nested widgets in the tree.
+ * @param array Base pointer of the array.
+ * @param length Length of the array.
+ */
+
+/**
  * Store size and position.
  * @param sizing         Type of resizing to perform.
  * @param x              Horizontal offset of the widget relative to the left edge of the window.
@@ -971,6 +978,11 @@ int NWidgetCore::SetupSmallestSize()
 	return this->index;
 }
 
+void NWidgetCore::FillNestedArray(NWidgetCore **array, uint length)
+{
+	if (this->index >= 0 && (uint)(this->index) < length) array[this->index] = this;
+}
+
 void NWidgetCore::StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
 {
 	if (this->index < 0) return;
@@ -1043,6 +1055,13 @@ void NWidgetContainer::Add(NWidgetBase *wid)
 		this->tail->next = wid;
 		wid->prev = this->tail;
 		this->tail = wid;
+	}
+}
+
+void NWidgetContainer::FillNestedArray(NWidgetCore **array, uint length)
+{
+	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+		child_wid->FillNestedArray(array, length);
 	}
 }
 
@@ -1419,6 +1438,10 @@ int NWidgetSpacer::SetupSmallestSize()
 	return -1;
 }
 
+void NWidgetSpacer::FillNestedArray(NWidgetCore **array, uint length)
+{
+}
+
 void NWidgetSpacer::StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
 {
 	/* Spacer widgets are never stored in the widget array. */
@@ -1516,6 +1539,12 @@ void NWidgetBackground::StoreWidgets(Widget *widgets, int length, bool left_movi
 {
 	NWidgetCore::StoreWidgets(widgets, length, left_moving, top_moving, rtl);
 	if (this->child != NULL) this->child->StoreWidgets(widgets, length, left_moving, top_moving, rtl);
+}
+
+void NWidgetBackground::FillNestedArray(NWidgetCore **array, uint length)
+{
+	if (this->index >= 0 && (uint)(this->index) < length) array[this->index] = this;
+	if (this->child != NULL) this->child->FillNestedArray(array, length);
 }
 
 /**

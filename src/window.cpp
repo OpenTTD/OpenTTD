@@ -563,6 +563,8 @@ Window::~Window()
 	this->SetDirty();
 
 	free(this->widget);
+	free(this->nested_array); // Contents is released through deletion of #nested_root.
+	delete this->nested_root;
 
 	this->window_class = WC_INVALID;
 }
@@ -789,6 +791,8 @@ static void AssignWidgetToWindow(Window *w, const Widget *widget)
 void Window::Initialize(int x, int y, int min_width, int min_height,
 				WindowClass cls, const Widget *widget, int window_number)
 {
+	/* All data members of nested widgets have been set to 0 by the #ZeroedMemoryAllocator base class. */
+
 	/* Set up window properties */
 	this->window_class = cls;
 	this->flags4 = WF_WHITE_BORDER_MASK; // just opened windows have a white border

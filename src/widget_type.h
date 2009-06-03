@@ -151,6 +151,9 @@ enum SizingType {
 	ST_RESIZE,   ///< Resize the nested widget tree.
 };
 
+/* Forward declarations. */
+class NWidgetCore;
+
 /**
  * Baseclass for nested widgets.
  * @invariant After initialization, \f$current\_x = smallest\_x + n * resize\_x, for n \geq 0\f$.
@@ -165,6 +168,7 @@ public:
 	virtual void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl) = 0;
 
 	virtual void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl) = 0;
+	virtual void FillNestedArray(NWidgetCore **array, uint length) = 0;
 
 	/**
 	 * Set additional space (padding) around the widget.
@@ -260,6 +264,7 @@ public:
 
 	int SetupSmallestSize();
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
+	/* virtual */ void FillNestedArray(NWidgetCore **array, uint length);
 
 	Colours colour;     ///< Colour of this widget.
 	int index;          ///< Index of the nested widget in the widget array of the window (\c -1 means 'not used').
@@ -275,6 +280,7 @@ public:
 	~NWidgetContainer();
 
 	void Add(NWidgetBase *wid);
+	/* virtual */ void FillNestedArray(NWidgetCore **array, uint length);
 
 	/** Return whether the container is empty. */
 	inline bool IsEmpty() { return head == NULL; };
@@ -353,6 +359,7 @@ public:
 
 	int SetupSmallestSize();
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
+	/* virtual */ void FillNestedArray(NWidgetCore **array, uint length);
 };
 
 /** Nested widget with a child.
@@ -369,6 +376,8 @@ public:
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
 
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
+	/* virtual */ void FillNestedArray(NWidgetCore **array, uint length);
+
 private:
 	NWidgetPIPContainer *child; ///< Child widget.
 };

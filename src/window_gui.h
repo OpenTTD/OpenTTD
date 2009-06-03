@@ -169,11 +169,14 @@ public:
 
 	Owner owner;        ///< The owner of the content shown in this window. Company colour is acquired from this variable.
 
-	ViewportData *viewport;///< Pointer to viewport data, if present
-	Widget *widget;        ///< Widgets of the window
-	uint widget_count;     ///< Number of widgets of the window
-	uint32 desc_flags;     ///< Window/widgets default flags setting, @see WindowDefaultFlag
-	const Widget *focused_widget; ///< Currently focused widget or NULL, if no widget has focus
+	ViewportData *viewport;       ///< Pointer to viewport data, if present.
+	Widget *widget;               ///< Widgets of the window.
+	uint widget_count;            ///< Number of widgets of the window.
+	uint32 desc_flags;            ///< Window/widgets default flags setting. @see WindowDefaultFlag
+	const Widget *focused_widget; ///< Currently focused widget, or \c NULL if no widget has focus.
+	NWidgetBase *nested_root;     ///< Root of the nested tree.
+	NWidgetCore **nested_array;   ///< Array of pointers into the tree.
+	uint nested_array_size;       ///< Size of the nested array.
 
 	Window *parent;        ///< Parent window
 	Window *z_front;       ///< The window in front of us in z-order
