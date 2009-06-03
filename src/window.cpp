@@ -191,10 +191,20 @@ void CDECL Window::SetWidgetsLoweredState(bool lowered_stat, int widgets, ...)
  */
 void Window::RaiseButtons()
 {
-	for (uint i = 0; i < this->widget_count; i++) {
-		if (this->IsWidgetLowered(i)) {
-			this->RaiseWidget(i);
-			this->InvalidateWidget(i);
+	if (this->widget != NULL) {
+		for (uint i = 0; i < this->widget_count; i++) {
+			if (this->IsWidgetLowered(i)) {
+				this->RaiseWidget(i);
+				this->InvalidateWidget(i);
+			}
+		}
+	}
+	if (this->nested_array != NULL) {
+		for (uint i = 0; i < this->nested_array_size; i++) {
+			if (this->IsWidgetLowered(i)) {
+				this->RaiseWidget(i);
+				this->InvalidateWidget(i);
+			}
 		}
 	}
 }
@@ -205,12 +215,15 @@ void Window::RaiseButtons()
  */
 void Window::InvalidateWidget(byte widget_index) const
 {
-	const Widget *wi = &this->widget[widget_index];
+	if (this->widget != NULL) {
+		const Widget *wi = &this->widget[widget_index];
 
-	/* Don't redraw the window if the widget is invisible or of no-type */
-	if (wi->type == WWT_EMPTY || IsWidgetHidden(widget_index)) return;
+		/* Don't redraw the window if the widget is invisible or of no-type */
+		if (wi->type == WWT_EMPTY || IsWidgetHidden(widget_index)) return;
 
-	SetDirtyBlocks(this->left + wi->left, this->top + wi->top, this->left + wi->right + 1, this->top + wi->bottom + 1);
+		SetDirtyBlocks(this->left + wi->left, this->top + wi->top, this->left + wi->right + 1, this->top + wi->bottom + 1);
+	}
+	if (this->nested_array != NULL) this->nested_array[widget_index]->Invalidate(this);
 }
 
 /**

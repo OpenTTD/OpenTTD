@@ -504,6 +504,11 @@ static inline void DrawDropdown(const Rect &r, Colours colour, bool clicked, Str
  */
 void Window::DrawWidgets() const
 {
+	if (this->nested_root != NULL) {
+		this->nested_root->Draw(this);
+		return;
+	}
+
 	const DrawPixelInfo *dpi = _cur_dpi;
 
 	for (uint i = 0; i < this->widget_count; i++) {
@@ -741,8 +746,16 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 	if (state == SBS_OFF) return;
 
 	int offset = this->IsWidgetLowered(widget) ? 1 : 0;
-	int base = offset + (_dynlang.text_dir == TD_LTR ? this->widget[widget].right - 11 : this->widget[widget].left);
-	DrawString(base, base + 11, this->widget[widget].top + 1 + offset, state == SBS_DOWN ? DOWNARROW : UPARROW, TC_BLACK, SA_CENTER);
+	int base, top;
+	if (this->widget != NULL) {
+		base = offset + (_dynlang.text_dir == TD_LTR ? this->widget[widget].right - 11 : this->widget[widget].left);
+		top = this->widget[widget].top;
+	} else {
+		assert(this->nested_array != NULL);
+		base = offset + this->nested_array[widget]->pos_x + (_dynlang.text_dir == TD_LTR ? this->nested_array[widget]->current_x - 11 : 0);
+		top = this->nested_array[widget]->pos_y;
+	}
+	DrawString(base, base + 11, top + 1 + offset, state == SBS_DOWN ? DOWNARROW : UPARROW, TC_BLACK, SA_CENTER);
 }
 
 
@@ -881,6 +894,23 @@ inline void NWidgetBase::StoreSizePosition(SizingType sizing, uint x, uint y, ui
  * @note When storing a nested widget, the function should check first that the type in the \a widgets array is #WWT_LAST.
  *       This is used to detect double widget allocations as well as holes in the widget array.
  */
+
+/**
+ * @fn void Draw(const Window *w)
+ * Draw the widgets of the tree.
+ * @param w Window that owns the tree.
+ */
+
+/**
+ * Mark the widget as 'dirty' (in need of repaint).
+ * @param w Window owning the widget.
+ */
+void NWidgetBase::Invalidate(const Window *w) const
+{
+	int abs_left = w->left + this->pos_x;
+	int abs_top = w->top + this->pos_y;
+	SetDirtyBlocks(abs_left, abs_top, abs_left + this->current_x, abs_top + this->current_y);
+}
 
 /**
  * Constructor for resizable nested widgets.
@@ -1151,6 +1181,15 @@ void NWidgetStacked::StoreWidgets(Widget *widgets, int length, bool left_moving,
 	}
 }
 
+void NWidgetStacked::Draw(const Window *w)
+{
+	assert(this->type == NWID_LAYERED); // Currently, NWID_SELECTION is not supported.
+	/* Render from back to front. */
+	for (NWidgetBase *child_wid = this->tail; child_wid != NULL; child_wid = child_wid->prev) {
+		child_wid->Draw(w);
+	}
+}
+
 NWidgetPIPContainer::NWidgetPIPContainer(WidgetType tp) : NWidgetContainer(tp)
 {
 }
@@ -1169,6 +1208,13 @@ void NWidgetPIPContainer::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
 	this->pip_pre = pip_pre;
 	this->pip_inter = pip_inter;
 	this->pip_post = pip_post;
+}
+
+void NWidgetPIPContainer::Draw(const Window *w)
+{
+	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+		child_wid->Draw(w);
+	}
 }
 
 /** Horizontal container widget. */
@@ -1447,6 +1493,16 @@ void NWidgetSpacer::StoreWidgets(Widget *widgets, int length, bool left_moving, 
 	/* Spacer widgets are never stored in the widget array. */
 }
 
+void NWidgetSpacer::Draw(const Window *w)
+{
+	/* Spacer widget is never visible. */
+}
+
+void NWidgetSpacer::Invalidate(const Window *w) const
+{
+	/* Spacer widget never need repainting. */
+}
+
 /**
  * Constructor parent nested widgets.
  * @param tp     Type of parent widget.
@@ -1547,6 +1603,44 @@ void NWidgetBackground::FillNestedArray(NWidgetCore **array, uint length)
 	if (this->child != NULL) this->child->FillNestedArray(array, length);
 }
 
+void NWidgetBackground::Draw(const Window *w)
+{
+	if (this->current_x == 0 || this->current_y == 0) return;
+
+	Rect r;
+	r.left = this->pos_x;
+	r.right = this->pos_x + this->current_x - 1;
+	r.top = this->pos_y;
+	r.bottom = this->pos_y + this->current_y - 1;
+
+	const DrawPixelInfo *dpi = _cur_dpi;
+	if (dpi->left > r.right || dpi->left + dpi->width <= r.left || dpi->top > r.bottom || dpi->top + dpi->height <= r.top) return;
+
+	switch (this->type) {
+		case WWT_PANEL:
+			assert(this->widget_data == 0);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, this->IsLowered() ? FR_LOWERED : FR_NONE);
+			break;
+
+		case WWT_FRAME:
+			DrawFrame(r, this->colour, this->widget_data);
+			break;
+
+		case WWT_INSET:
+			DrawInset(r, this->colour, this->widget_data);
+			break;
+
+		default:
+			NOT_REACHED();
+	}
+
+	if (this->child != NULL) this->child->Draw(w);
+
+	if (this->IsDisabled()) {
+		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
+	}
+}
+
 /**
  * Nested leaf widget.
  * @param tp     Type of leaf widget.
@@ -1633,6 +1727,116 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 		default:
 			NOT_REACHED();
 	}
+}
+
+void NWidgetLeaf::Draw(const Window *w)
+{
+	if (this->current_x == 0 || this->current_y == 0) return;
+
+	Rect r;
+	r.left = this->pos_x;
+	r.right = this->pos_x + this->current_x - 1;
+	r.top = this->pos_y;
+	r.bottom = this->pos_y + this->current_y - 1;
+
+	const DrawPixelInfo *dpi = _cur_dpi;
+	if (dpi->left > r.right || dpi->left + dpi->width <= r.left || dpi->top > r.bottom || dpi->top + dpi->height <= r.top) return;
+
+	bool clicked = this->IsLowered();
+	switch (this->type) {
+		case WWT_EMPTY:
+			break;
+
+		case WWT_PUSHBTN:
+			assert(this->widget_data == 0);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FR_LOWERED : FR_NONE);
+			break;
+
+		case WWT_IMGBTN:
+		case WWT_PUSHIMGBTN:
+		case WWT_IMGBTN_2:
+			DrawImageButtons(r, this->type,this->colour, clicked, this->widget_data);
+			break;
+
+		case WWT_TEXTBTN:
+		case WWT_PUSHTXTBTN:
+		case WWT_TEXTBTN_2:
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FR_LOWERED : FR_NONE);
+			DrawLabel(r, this->type, clicked, this->widget_data);
+			break;
+
+		case WWT_LABEL:
+			DrawLabel(r, this->type, clicked, this->widget_data);
+			break;
+
+		case WWT_TEXT:
+			DrawText(r, (TextColour)this->colour, this->widget_data);
+			break;
+
+		case WWT_MATRIX:
+			DrawMatrix(r, this->colour, clicked, this->widget_data);
+			break;
+
+		case WWT_EDITBOX:
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, FR_LOWERED | FR_DARKENED);
+			break;
+
+		case WWT_SCROLLBAR:
+			assert(this->widget_data == 0);
+			DrawVerticalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP,
+								(w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_MIDDLE,
+								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN, &w->vscroll);
+			break;
+
+		case WWT_SCROLL2BAR:
+			assert(this->widget_data == 0);
+			DrawVerticalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2),
+								(w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_MIDDLE | WF_SCROLL2),
+								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2), &w->vscroll2);
+			break;
+
+		case WWT_CAPTION:
+			DrawCaption(r, this->colour, w->owner, this->widget_data);
+			break;
+
+		case WWT_HSCROLLBAR:
+			assert(this->widget_data == 0);
+			DrawHorizontalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL),
+								(w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL)) == (WF_SCROLL_MIDDLE | WF_HSCROLL),
+								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL), &w->hscroll);
+			break;
+
+		case WWT_STICKYBOX:
+			assert(this->widget_data == 0);
+			DrawStickyBox(r, this->colour, !!(w->flags4 & WF_STICKY));
+			break;
+
+		case WWT_RESIZEBOX:
+			assert(this->widget_data == 0);
+			DrawResizeBox(r, this->colour, this->pos_x < (uint)(w->width / 2), !!(w->flags4 & WF_SIZING));
+			break;
+
+		case WWT_CLOSEBOX:
+			DrawCloseBox(r, this->colour, this->widget_data);
+			break;
+
+		case WWT_DROPDOWN:
+			DrawDropdown(r, this->colour, clicked, this->widget_data);
+			break;
+
+		default:
+			NOT_REACHED();
+	}
+
+	if (this->IsDisabled()) {
+		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
+	}
+}
+
+void NWidgetLeaf::Invalidate(const Window *w) const
+{
+	if (this->type == WWT_EMPTY) return; // Don't repaint dummy widgets.
+	NWidgetBase::Invalidate(w);
 }
 
 /**

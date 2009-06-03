@@ -191,8 +191,14 @@ public:
 	 */
 	inline void SetWidgetDisabledState(byte widget_index, bool disab_stat)
 	{
-		assert(widget_index < this->widget_count);
-		SB(this->widget[widget_index].display_flags, WIDG_DISABLED, 1, !!disab_stat);
+		if (this->widget != NULL) {
+			assert(widget_index < this->widget_count);
+			SB(this->widget[widget_index].display_flags, WIDG_DISABLED, 1, !!disab_stat);
+		}
+		if (this->nested_array != NULL) {
+			assert(widget_index < this->nested_array_size);
+			this->nested_array[widget_index]->SetDisabled(disab_stat);
+		}
 	}
 
 	/**
@@ -220,6 +226,10 @@ public:
 	 */
 	inline bool IsWidgetDisabled(byte widget_index) const
 	{
+		if (this->nested_array != NULL) {
+			assert(widget_index < this->nested_array_size);
+			return this->nested_array[widget_index]->IsDisabled();
+		}
 		assert(widget_index < this->widget_count);
 		return HasBit(this->widget[widget_index].display_flags, WIDG_DISABLED);
 	}
@@ -313,8 +323,14 @@ public:
 	 */
 	inline void SetWidgetLoweredState(byte widget_index, bool lowered_stat)
 	{
-		assert(widget_index < this->widget_count);
-		SB(this->widget[widget_index].display_flags, WIDG_LOWERED, 1, !!lowered_stat);
+		if (this->widget != NULL) {
+			assert(widget_index < this->widget_count);
+			SB(this->widget[widget_index].display_flags, WIDG_LOWERED, 1, !!lowered_stat);
+		}
+		if (this->nested_array != NULL) {
+			assert(widget_index < this->nested_array_size);
+			this->nested_array[widget_index]->SetLowered(lowered_stat);
+		}
 	}
 
 	/**
@@ -323,8 +339,15 @@ public:
 	 */
 	inline void ToggleWidgetLoweredState(byte widget_index)
 	{
-		assert(widget_index < this->widget_count);
-		ToggleBit(this->widget[widget_index].display_flags, WIDG_LOWERED);
+		if (this->widget != NULL) {
+			assert(widget_index < this->widget_count);
+			ToggleBit(this->widget[widget_index].display_flags, WIDG_LOWERED);
+		}
+		if (this->nested_array != NULL) {
+			assert(widget_index < this->nested_array_size);
+			bool lowered_state = this->nested_array[widget_index]->IsLowered();
+			this->nested_array[widget_index]->SetLowered(!lowered_state);
+		}
 	}
 
 	/**
@@ -352,6 +375,10 @@ public:
 	 */
 	inline bool IsWidgetLowered(byte widget_index) const
 	{
+		if (this->nested_array != NULL) {
+			assert(widget_index < this->nested_array_size);
+			return this->nested_array[widget_index]->IsLowered();
+		}
 		assert(widget_index < this->widget_count);
 		return HasBit(this->widget[widget_index].display_flags, WIDG_LOWERED);
 	}
