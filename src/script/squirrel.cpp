@@ -508,3 +508,8 @@ void Squirrel::ResetCrashed()
 {
 	this->crashed = false;
 }
+
+bool Squirrel::CanSuspend()
+{
+	return sq_can_suspend(this->vm);
+}

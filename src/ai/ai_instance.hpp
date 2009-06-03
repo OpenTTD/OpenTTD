@@ -30,6 +30,7 @@ private:
 
 class AIInstance {
 public:
+	friend class AIObject;
 	AIInstance(class AIInfo *info);
 	~AIInstance();
 

@@ -2,6 +2,11 @@
 
 /** @file ai_object.cpp Implementation of AIObject. */
 
+#include "../../stdafx.h"
+#include <squirrel.h>
+#include "../../script/squirrel.hpp"
+#include "../../company_base.h"
+
 #include "ai_log.hpp"
 #include "table/strings.h"
 #include "../ai.hpp"
@@ -157,7 +162,8 @@ void AIObject::SetAllowDoCommand(bool allow)
 
 bool AIObject::GetAllowDoCommand()
 {
-	return GetStorage()->allow_do_command;
+	Squirrel *squirrel = GetCompany(_current_company)->ai_instance->engine;
+	return GetStorage()->allow_do_command && squirrel->CanSuspend();
 }
 
 void *&AIObject::GetEventPointer()

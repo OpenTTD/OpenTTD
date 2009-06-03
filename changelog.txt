@@ -1,3 +1,25 @@
+0.7.1-RC3 (2009-06-03)
+------------------------------------------------------------------------
+- Add: [NoAI] AISignList that can be used to get a list of valid signs (r16400)
+- Change: [NoAI] Stop an AI when it takes too long to initialize or load [FS#2869] (r16425)
+- Fix: Base graphics names must be unique, so do not add duplicates (r16503)
+- Fix: [NoAI] When an AI was suspended while in a function called (indirectly) via call/acall/pcall OpenTTD crashed. Fix this by disallowing AIs to be suspended while called via call/acall/pcall [FS#2935] (r16502)
+- Fix: [NewGRF] Invalidate NewGRF variable caches of more vehicles in more places. Esp. they were only invalidated for trains (r16480)
+- Fix: [NewGRF] Call callbacks after initialisation of vehicle variables (r16479)
+- Fix: [NewGRF] Determining most common (sub-)cargo-type was broken due to someone confusing similiary named variables (r16478)
+- Fix: Loading indicator when 'unload' in and 'no loading' is off was pointing in the wrong direction [FS#2936] (r16477)
+- Fix: Track reservation was drawn at bridge heads in the menu (r16470)
+- Fix: [NoAI] Another try/catch related bug (r16454)
+- Fix: Road vehicles ending up on the pavement when they are in a drive through station that got removed due to bankruptcy [FS#2909] (r16448)
+- Fix: [NoAI] AIRail::GetRailStationDirection returned incorrect information (r16440)
+- Fix: Crash when a company is deleted while a dropdown with company names is open (r16430)
+- Fix: Do not allow content download via the console when there is no zlib as it is done for the GUI already [FS#2919] (r16420)
+- Fix: Some 64bit architectures require size_t to be aligned at 8-byte boundary, ensure it for MemBlock (r16415)
+- Fix: [NewGRF] Disable multitile houses with non-zero population on additional tiles as they cause desyncs and because the specs do not allow that either (r16383)
+- Fix: [NewGRF] Valid UTF-8 sequences between 0x20 and 0xFF should be allowed as is instead of being treated as control codes (r16374)
+- Fix: [NewGRF] Use a valid StringID as fall-back when undefined generic NewGRF strings of vehicles are requested (r16366)
+
+
 0.7.1-RC2 (2009-05-21)
 ------------------------------------------------------------------------
 - Fix: The previously selected NewGRF station type was still remembered after switching to a different game without newstations enabled, preventing stations from being built (r16363)
