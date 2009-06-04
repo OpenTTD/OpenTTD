@@ -501,19 +501,6 @@ enum TownDirectoryWidgets {
 	TDW_RESIZEBOX,
 };
 
-static const Widget _town_directory_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_BLACK_CROSS,            STR_TOOLTIP_CLOSE_WINDOW},             // TDW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_BROWN,    11,   195,     0,    13, STR_TOWN_DIRECTORY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // TDW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_BROWN,   196,   207,     0,    13, 0x0,                        STR_STICKY_BUTTON},                    // TDW_STICKYBOX
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,     0,    98,    14,    25, STR_SORT_BY_NAME,           STR_SORT_ORDER_TIP},                   // TDW_SORTNAME
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,    99,   195,    14,    25, STR_SORT_BY_POPULATION,     STR_SORT_ORDER_TIP},                   // TDW_SORTPOPULATION
-{      WWT_PANEL, RESIZE_BOTTOM,  COLOUR_BROWN,     0,   195,    26,   189, 0x0,                        STR_TOWN_DIRECTORY_LIST_TOOLTIP},      // TDW_CENTERTOWN
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_BROWN,   196,   207,    14,   189, 0x0,                        STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // TDW_SCROLLBAR
-{      WWT_PANEL,     RESIZE_TB,  COLOUR_BROWN,     0,   195,   190,   201, 0x0,                        STR_NULL},                             // TDW_EMPTYBOTTOM
-{  WWT_RESIZEBOX,     RESIZE_TB,  COLOUR_BROWN,   196,   207,   190,   201, 0x0,                        STR_RESIZE_BUTTON},                    // TDW_RESIZEBOX
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_town_directory_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, TDW_CLOSEBOX),
@@ -599,17 +586,15 @@ private:
 	}
 
 public:
-	TownDirectoryWindow(const WindowDesc *desc) : Window(desc, 0)
+	TownDirectoryWindow(const WindowDesc *desc) : Window()
 	{
-		this->vscroll.cap = 16;
-		this->resize.step_height = 10;
-		this->resize.height = this->height - 10 * 6; // minimum of 10 items in the list, each item 10 high
+		this->InitNested(desc, 0);
+
+		this->vscroll.cap = this->nested_array[TDW_CENTERTOWN]->current_y / this->resize.step_height;
 
 		this->towns.SetListing(this->last_sorting);
 		this->towns.SetSortFuncs(this->sorter_funcs);
 		this->towns.ForceRebuild();
-
-		this->FindWindowPlacementAndResize(desc);
 	}
 
 	~TownDirectoryWindow()
@@ -726,7 +711,7 @@ static const WindowDesc _town_directory_desc(
 	WDP_AUTO, WDP_AUTO, 208, 202, 208, 202,
 	WC_TOWN_DIRECTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_town_directory_widgets, _nested_town_directory_widgets, lengthof(_nested_town_directory_widgets)
+	NULL, _nested_town_directory_widgets, lengthof(_nested_town_directory_widgets)
 );
 
 void ShowTownDirectory()

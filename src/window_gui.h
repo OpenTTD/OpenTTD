@@ -138,13 +138,14 @@ struct Window : ZeroedMemoryAllocator {
 
 protected:
 	void Initialize(int x, int y, int min_width, int min_height,
-			WindowClass cls, const Widget *widget, int window_number);
+			WindowClass cls, const Widget *widget, NWidgetBase *nwid, int window_number);
 	void FindWindowPlacementAndResize(int def_width, int def_height);
 	void FindWindowPlacementAndResize(const WindowDesc *desc);
 
 public:
 	Window(int x, int y, int width, int height, WindowClass cls, const Widget *widget);
 	Window(const WindowDesc *desc, WindowNumber number = 0);
+	Window();
 
 	virtual ~Window();
 	/* Don't allow arrays; arrays of Windows are pointless as you need
@@ -182,6 +183,8 @@ public:
 	Window *parent;                  ///< Parent window.
 	Window *z_front;                 ///< The window in front of us in z-order.
 	Window *z_back;                  ///< The window behind us in z-order.
+
+	void InitNested(const WindowDesc *desc, WindowNumber number = 0);
 
 	/**
 	 * Sets the enabled/disabled status of a widget.
