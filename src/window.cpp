@@ -399,23 +399,24 @@ static void DispatchMouseWheelEvent(Window *w, int widget, int wheel)
 {
 	if (widget < 0) return;
 
-	const Widget *wi1 = &w->widget[widget];
-	const Widget *wi2 = &w->widget[widget + 1];
+	Scrollbar *sb = NULL;
+	if (w->widget != NULL) {
+		const Widget *wi1 = &w->widget[widget];
+		const Widget *wi2 = &w->widget[widget + 1];
+		if (wi1->type == WWT_SCROLLBAR || wi2->type == WWT_SCROLLBAR) {
+			sb = &w->vscroll;
+		} else if (wi1->type == WWT_SCROLL2BAR || wi2->type == WWT_SCROLL2BAR) {
+			sb = &w->vscroll2;
+		}
+	}
 
-	/* The listbox can only scroll if scrolling was done on the scrollbar itself,
-	 * or on the listbox (and the next item is (must be) the scrollbar)
-	 * XXX - should be rewritten as a widget-dependent scroller but that's
-	 * not happening until someone rewrites the whole widget-code */
-	Scrollbar *sb;
-	if ((sb = &w->vscroll,  wi1->type == WWT_SCROLLBAR)  || (sb = &w->vscroll2, wi1->type == WWT_SCROLL2BAR)  ||
-			(sb = &w->vscroll2, wi2->type == WWT_SCROLL2BAR) || (sb = &w->vscroll, wi2->type == WWT_SCROLLBAR) ) {
+	if (w->nested_array != NULL && (uint)widget < w->nested_array_size) sb = w->nested_array[widget]->FindScrollbar(w);
 
-		if (sb->count > sb->cap) {
-			int pos = Clamp(sb->pos + wheel, 0, sb->count - sb->cap);
-			if (pos != sb->pos) {
-				sb->pos = pos;
-				w->SetDirty();
-			}
+	if (sb != NULL && sb->count > sb->cap) {
+		int pos = Clamp(sb->pos + wheel, 0, sb->count - sb->cap);
+		if (pos != sb->pos) {
+			sb->pos = pos;
+			w->SetDirty();
 		}
 	}
 }

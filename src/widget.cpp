@@ -47,25 +47,25 @@ static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom)
 	return pt;
 }
 
-/** Special handling for the scrollbar widget type.
- * Handles the special scrolling buttons and other
- * scrolling.
- * @param w Window on which a scroll was performed.
- * @param wi Pointer to the scrollbar widget.
- * @param x The X coordinate of the mouse click.
- * @param y The Y coordinate of the mouse click. */
-void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
+/**
+ * Compute new position of the scrollbar after a click and updates the window flags.
+ * @param w   Window on which a scroll was performed.
+ * @param wtp Scrollbar widget type.
+ * @param mi  Minimum coordinate of the scroll bar.
+ * @param ma  Maximum coordinate of the scroll bar.
+ * @param x   The X coordinate of the mouse click.
+ * @param y   The Y coordinate of the mouse click.
+ */
+static void ScrollbarClickPositioning(Window *w, WidgetType wtp, int x, int y, int mi, int ma)
 {
-	int mi, ma, pos;
+	int pos;
 	Scrollbar *sb;
 
-	switch (wi->type) {
+	switch (wtp) {
 		case WWT_SCROLLBAR:
 			/* vertical scroller */
 			w->flags4 &= ~WF_HSCROLL;
 			w->flags4 &= ~WF_SCROLL2;
-			mi = wi->top;
-			ma = wi->bottom;
 			pos = y;
 			sb = &w->vscroll;
 			break;
@@ -74,8 +74,6 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 			/* 2nd vertical scroller */
 			w->flags4 &= ~WF_HSCROLL;
 			w->flags4 |= WF_SCROLL2;
-			mi = wi->top;
-			ma = wi->bottom;
 			pos = y;
 			sb = &w->vscroll2;
 			break;
@@ -84,8 +82,6 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 			/* horizontal scroller */
 			w->flags4 &= ~WF_SCROLL2;
 			w->flags4 |= WF_HSCROLL;
-			mi = wi->left;
-			ma = wi->right;
 			pos = x;
 			sb = &w->hscroll;
 			break;
@@ -106,8 +102,7 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 
 		if (_scroller_click_timeout == 0) {
 			_scroller_click_timeout = 6;
-			if ((byte)(sb->pos + sb->cap) < sb->count)
-				sb->pos++;
+			if (sb->pos + sb->cap < sb->count) sb->pos++;
 		}
 		_left_button_clicked = false;
 	} else {
@@ -116,10 +111,7 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 		if (pos < pt.x) {
 			sb->pos = max(sb->pos - sb->cap, 0);
 		} else if (pos > pt.y) {
-			sb->pos = min(
-				sb->pos + sb->cap,
-				max(sb->count - sb->cap, 0)
-			);
+			sb->pos = min(sb->pos + sb->cap, max(sb->count - sb->cap, 0));
 		} else {
 			_scrollbar_start_pos = pt.x - mi - 9;
 			_scrollbar_size = ma - mi - 23;
@@ -132,6 +124,76 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 	w->SetDirty();
 }
 
+/** Special handling for the scrollbar widget type.
+ * Handles the special scrolling buttons and other scrolling.
+ * @param w  Window on which a scroll was performed.
+ * @param wi Pointer to the scrollbar widget.
+ * @param x  The X coordinate of the mouse click.
+ * @param y  The Y coordinate of the mouse click.
+ */
+void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
+{
+	int mi, ma;
+
+	switch (wi->type) {
+		case WWT_SCROLLBAR:
+			/* vertical scroller */
+			mi = wi->top;
+			ma = wi->bottom;
+			break;
+
+		case WWT_SCROLL2BAR:
+			/* 2nd vertical scroller */
+			mi = wi->top;
+			ma = wi->bottom;
+			break;
+
+		case  WWT_HSCROLLBAR:
+			/* horizontal scroller */
+			mi = wi->left;
+			ma = wi->right;
+			break;
+
+		default: NOT_REACHED();
+	}
+	ScrollbarClickPositioning(w, wi->type, x, y, mi, ma);
+}
+
+/** Special handling for the scrollbar widget type.
+ * Handles the special scrolling buttons and other scrolling.
+ * @param w Window on which a scroll was performed.
+ * @param nw Pointer to the scrollbar widget.
+ * @param x The X coordinate of the mouse click.
+ * @param y The Y coordinate of the mouse click.
+ */
+void ScrollbarClickHandler(Window *w, const NWidgetCore *nw, int x, int y)
+{
+	int mi, ma;
+
+	switch (nw->type) {
+		case WWT_SCROLLBAR:
+			/* vertical scroller */
+			mi = nw->pos_y;
+			ma = nw->pos_y + nw->current_y;
+			break;
+
+		case WWT_SCROLL2BAR:
+			/* 2nd vertical scroller */
+			mi = nw->pos_y;
+			ma = nw->pos_y + nw->current_y;
+			break;
+
+		case  WWT_HSCROLLBAR:
+			/* horizontal scroller */
+			mi = nw->pos_x;
+			ma = nw->pos_x + nw->current_x;
+			break;
+
+		default: NOT_REACHED();
+	}
+	ScrollbarClickPositioning(w, nw->type, x, y, mi, ma);
+}
+
 /** Returns the index for the widget located at the given position
  * relative to the window. It includes all widget-corner pixels as well.
  * @param *w Window to look inside
@@ -141,8 +203,12 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
  */
 int GetWidgetFromPos(const Window *w, int x, int y)
 {
-	int found_index = -1;
+	if (w->nested_root != NULL) {
+		NWidgetCore *nw = w->nested_root->GetWidgetFromPos(x, y);
+		return (nw != NULL) ? nw->index : -1;
+	}
 
+	int found_index = -1;
 	/* Go through the widgets and check if we find the widget that the coordinate is inside. */
 	for (uint index = 0; index < w->widget_count; index++) {
 		const Widget *wi = &w->widget[index];
@@ -913,6 +979,21 @@ void NWidgetBase::Invalidate(const Window *w) const
 }
 
 /**
+ * @fn NWidgetCore *GetWidgetFromPos(int x, int y)
+ * Retrieve a widget by its position.
+ * @param x Horizontal position relative to the left edge of the window.
+ * @param y Vertical position relative to the top edge of the window.
+ * @return Returns the deepest nested widget that covers the given position, or \c NULL if no widget can be found.
+ */
+
+/**
+ * @fn NWidgetBase *GetWidgetOfType(WidgetType tp)
+ * Retrieve a widget by its type.
+ * @param tp Widget type to search for.
+ * @return Returns the first widget of the specified type, or \c NULL if no widget can be found.
+ */
+
+/**
  * Constructor for resizable nested widgets.
  * @param tp     Nested widget type.
  * @param fill_x Allow horizontal filling from initial size.
@@ -1048,6 +1129,18 @@ void NWidgetCore::StoreWidgets(Widget *widgets, int length, bool left_moving, bo
 }
 
 /**
+ * @fn Scrollbar *NWidgetCore::FindScrollbar(Window *w, bool allow_next = true)
+ * Find the scrollbar of the widget through the Window::nested_array.
+ * @param w          Window containing the widgets and the scrollbar,
+ * @param allow_next Search may be extended to the next widget.
+ *
+ * @todo This implementation uses the constraint that a scrollbar must be the next item in the #Window::nested_array, and the scrollbar
+ *       data is stored in the #Window structure (#Window::vscroll, #Window::vscroll2, and #Window::hscroll).
+ *       Alternative light-weight implementations may be considered, eg by sub-classing a canvas-like widget, and/or by having
+ *       an explicit link between the scrollbar and the widget being scrolled.
+ */
+
+/**
  * Constructor container baseclass.
  * @param tp Type of the container.
  */
@@ -1065,6 +1158,16 @@ NWidgetContainer::~NWidgetContainer()
 		this->head = wid;
 	}
 	this->tail = NULL;
+}
+
+NWidgetBase *NWidgetContainer::GetWidgetOfType(WidgetType tp)
+{
+	if (this->type == tp) return this;
+	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+		NWidgetBase *nwid = child_wid->GetWidgetOfType(tp);
+		if (nwid != NULL) return nwid;
+	}
+	return NULL;
 }
 
 /**
@@ -1190,6 +1293,16 @@ void NWidgetStacked::Draw(const Window *w)
 	}
 }
 
+NWidgetCore *NWidgetStacked::GetWidgetFromPos(int x, int y)
+{
+	if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return NULL;
+	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+		NWidgetCore *nwid = child_wid->GetWidgetFromPos(x, y);
+		if (nwid != NULL) return nwid;
+	}
+	return NULL;
+}
+
 NWidgetPIPContainer::NWidgetPIPContainer(WidgetType tp) : NWidgetContainer(tp)
 {
 }
@@ -1215,6 +1328,17 @@ void NWidgetPIPContainer::Draw(const Window *w)
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 		child_wid->Draw(w);
 	}
+}
+
+NWidgetCore *NWidgetPIPContainer::GetWidgetFromPos(int x, int y)
+{
+	if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return NULL;
+
+	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+		NWidgetCore *nwid = child_wid->GetWidgetFromPos(x, y);
+		if (nwid != NULL) return nwid;
+	}
+	return NULL;
 }
 
 /** Horizontal container widget. */
@@ -1503,6 +1627,16 @@ void NWidgetSpacer::Invalidate(const Window *w) const
 	/* Spacer widget never need repainting. */
 }
 
+NWidgetCore *NWidgetSpacer::GetWidgetFromPos(int x, int y)
+{
+	return NULL;
+}
+
+NWidgetBase *NWidgetSpacer::GetWidgetOfType(WidgetType tp)
+{
+	return (this->type == tp) ? this : NULL;
+}
+
 /**
  * Constructor parent nested widgets.
  * @param tp     Type of parent widget.
@@ -1639,6 +1773,33 @@ void NWidgetBackground::Draw(const Window *w)
 	if (this->IsDisabled()) {
 		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
 	}
+}
+
+NWidgetCore *NWidgetBackground::GetWidgetFromPos(int x, int y)
+{
+	NWidgetCore *nwid = NULL;
+	if (IsInsideBS(x, this->pos_x, this->current_x) && IsInsideBS(y, this->pos_y, this->current_y)) {
+		if (this->child != NULL) nwid = this->child->GetWidgetFromPos(x, y);
+		if (nwid == NULL) nwid = this;
+	}
+	return nwid;
+}
+
+Scrollbar *NWidgetBackground::FindScrollbar(Window *w, bool allow_next)
+{
+	if (this->index > 0 && allow_next && this->child == NULL && (uint)(this->index) + 1 < w->nested_array_size) {
+		NWidgetCore *next_wid = w->nested_array[this->index + 1];
+		if (next_wid != NULL) return next_wid->FindScrollbar(w, false);
+	}
+	return NULL;
+}
+
+NWidgetBase *NWidgetBackground::GetWidgetOfType(WidgetType tp)
+{
+	NWidgetBase *nwid = NULL;
+	if (this->child != NULL) nwid = this->child->GetWidgetOfType(tp);
+	if (nwid == NULL && this->type == tp) nwid = this;
+	return nwid;
 }
 
 /**
@@ -1837,6 +1998,28 @@ void NWidgetLeaf::Invalidate(const Window *w) const
 {
 	if (this->type == WWT_EMPTY) return; // Don't repaint dummy widgets.
 	NWidgetBase::Invalidate(w);
+}
+
+NWidgetCore *NWidgetLeaf::GetWidgetFromPos(int x, int y)
+{
+	return (IsInsideBS(x, this->pos_x, this->current_x) && IsInsideBS(y, this->pos_y, this->current_y)) ? this : NULL;
+}
+
+Scrollbar *NWidgetLeaf::FindScrollbar(Window *w, bool allow_next)
+{
+	if (this->type == WWT_SCROLLBAR) return &w->vscroll;
+	if (this->type == WWT_SCROLL2BAR) return &w->vscroll2;
+
+	if (this->index > 0 && allow_next && (uint)(this->index) + 1 < w->nested_array_size) {
+		NWidgetCore *next_wid = w->nested_array[this->index + 1];
+		if (next_wid != NULL) return next_wid->FindScrollbar(w, false);
+	}
+	return NULL;
+}
+
+NWidgetBase *NWidgetLeaf::GetWidgetOfType(WidgetType tp)
+{
+	return (this->type == tp) ? this : NULL;
 }
 
 /**
