@@ -320,6 +320,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Vill du
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Avsluta spelet
 STR_SORT_ORDER_TIP                                              :{BLACK}Välj sorteringsordning (fallande/stigande)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Välj sortering
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Angre kriterier för filtrering
 STR_SORT_BY                                                     :{BLACK}Sortera efter
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Befolkning
@@ -342,6 +343,8 @@ STR_SORT_BY_LENGTH                                              :Längd
 STR_SORT_BY_LIFE_TIME                                           :Återstående livstid
 STR_SORT_BY_FACILITY                                            :Stationstyp
 STR_SORT_BY_WAITING                                             :Väntande last-värde
+STR_SORT_BY_RATING_MAX                                          :Högsta rating för last
+STR_SORT_BY_RATING_MIN                                          :Lägsta rating för last
 STR_ENGINE_SORT_ENGINE_ID                                       :MotorID (Klassisk Sort)
 STR_ENGINE_SORT_COST                                            :Kostnad
 STR_ENGINE_SORT_POWER                                           :Elektriskt
@@ -665,7 +668,6 @@ STR_OFF                                                         :Av
 STR_SUMMARY                                                     :Summering
 STR_FULL                                                        :Full
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista med städer
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -699,9 +701,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Av
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}På
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Visa subventioner
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventioner
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Världskarta
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Nytt vyfönster
 STR_MAP_MENU_SIGN_LIST                                          :Skyltlista
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista med städer
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Världsbefolkning: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vyfönster {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiera till vy
@@ -728,6 +735,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autospar
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Välj intervall mellan automatiskt sparande
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Avstängd
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Varje månad
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Var 3:e månad
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Var 6:e månad
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Var 12:e månad
@@ -847,8 +855,9 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Välj fi
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Grafikpaket som standard
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Välj vilket grafikpaket som ska användas som standard
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} saknad/korrumperad fil{P "" s}
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Ytterligare information om bas-grafik settet
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Varje månad
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosparning misslyckades
 
 STR_MONTH_JAN                                                   :januari
@@ -936,6 +945,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Visa al
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Visa signaler på körsidan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Visa finansfönstret vid slutet av året: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nya orders är 'non-stop' om inte annat anges.{ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nya tåg-orders stannar som standard vid {ORANGE}{STRING}{LTBLUE} av platformen
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :början
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :mitten
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :slutet
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Vägfordonsköer (med kvanteffekter): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Scrolla vyn när musen är vid kanten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Tillåt mutning av de lokala myndigheterna: {ORANGE}{STRING}
@@ -2231,6 +2244,7 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Välj kv
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Slumpa fram nytt ansikte
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Nyckel
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Visa nyckel till grafer
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Visa detaljerad prestanda-ratings
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Nyckel till företagsgrafer
 STR_GRAPH_KEY_COMPANY_SELECTION                                 :{BLACK}Klicka här för att visa/dölja företaget i grafen
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Enheter levererat gods
@@ -2605,6 +2619,9 @@ STR_ORDER_GO_TO                                                 :Åk till
 STR_ORDER_GO_NON_STOP_TO                                        :Åk non-stop till
 STR_ORDER_GO_VIA                                                :Åk via
 STR_ORDER_GO_NON_STOP_VIA                                       :Åk non-stop via
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[början]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[mitten]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[slutet]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Full last, vilket gods som helst
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lasta om möjligt
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Full last alla frakttyper
@@ -2789,6 +2806,19 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Rensa ti
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nollställ räknaren för sen ankomst så att fordonet kommer i tid
 STR_SERVICE_HINT                                                :{BLACK}Skippa den här ordern om inte servning behövs
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kostnad: {CURRENCY} Vikt: {WEIGHT_S}{}Hastighet: {VELOCITY}  Kraft {POWER}{}Löpande kostnad: {CURRENCY}/år{}Kapacitet: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Kostnad: {CURRENCY} Maxhastiget: {VELOCITY}{}Kapacitet: {CARGO}, {CARGO}{}Körkostnad: {CURRENCY}/år
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Kostnad: {CURRENCY} Maxhastiget: {VELOCITY}{}Kapacitet: {CARGO}{}Körkostnad: {CURRENCY}/år
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ålder: {LTBLUE}{STRING}{BLACK}   Körkostnad: {LTBLUE}{CURRENCY}/år
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maxhastiget: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vikt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maxhastiget: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vikt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maxhastiget: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY} (förra året: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste servicen: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Bygt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacitet: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacitet: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacitet: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Motorstopp
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoppat
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan inte tillåta tåg att passera signal under fara...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Kraschad!
@@ -3127,6 +3157,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{V
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NyGRF '{STRING}' ger felaktig information.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last/återställnings information för '{1:ENGINE}' är skilld ifrån köp lista efter konstruktion. Detta kan leda till att den automatiska förnyelsen slår fel
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' skapade en ändlös loop i produktions-systemet
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spelet sparades i en version som ej stöder spårvagn. Alla spårvagnar har tagits bort
 
@@ -3139,6 +3170,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Går ö
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Går över till Euro: {ORANGE}aldrig
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Förhandsgranska: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ändra valutaparametrar
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Minska värdet för din valuta med ett Pund (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Öka värdet för din valuta med ett Pund (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Sätt växelkursen för din valuta mot ett Pund (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Sätt separatorn för din valuta
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Sätt prefix-sträng för din valuta
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Sätt suffix-sträng för din valuta
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Byt till Euro tidigare
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Byt till Euro senare
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Sätt år för byte till Euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Pund (£) i din valuta
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3245,6 +3286,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. til
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kostnad: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vikt: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Hastighet: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitet: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motoriserade vagnar: {GOLD}+{POWER}{BLACK} Vikt: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Upprustningsbar till: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alla typer av last
@@ -3537,6 +3579,7 @@ STR_AI_RANDOM_AI                                                :Slumpa datorspe
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Datorspelarens parametrar
 STR_AI_AUTHOR                                                   :{BLACK}Upphovsman: {STRING}
 STR_AI_VERSION                                                  :{BLACK}Version: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}En av AI'erna som körs har krachat. Vänligen raportera detta till AIs skapare med en screenshot på "AI Debug Fönsteret".
 ########
 
