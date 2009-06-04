@@ -1072,11 +1072,10 @@ bool HandleCaret(Textbuf *tb)
 
 bool QueryString::HasEditBoxFocus(const Window *w, int wid) const
 {
-	return (w->window_class == WC_OSK &&
-			_focused_window == w->parent &&
-			w->parent->focused_widget != NULL &&
-			w->parent->focused_widget->type == WWT_EDITBOX) ||
-		w->IsWidgetGloballyFocused(wid);
+	if (w->IsWidgetGloballyFocused(wid)) return true;
+	if (w->window_class != WC_OSK || _focused_window != w->parent) return false;
+	return (w->parent->focused_widget != NULL && w->parent->focused_widget->type == WWT_EDITBOX) ||
+		(w->parent->nested_focus != NULL && w->parent->nested_focus->type == WWT_EDITBOX);
 }
 
 HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, Window::EventState &state)

@@ -97,9 +97,12 @@ void SetFocusedWindow(Window *w)
 	if (_focused_window == w) return;
 
 	/* Invalidate focused widget */
-	if (_focused_window != NULL && _focused_window->focused_widget != NULL) {
-		uint focused_widget_id = _focused_window->focused_widget - _focused_window->widget;
-		_focused_window->InvalidateWidget(focused_widget_id);
+	if (_focused_window != NULL) {
+		if (_focused_window->focused_widget != NULL) {
+			uint focused_widget_id = _focused_window->focused_widget - _focused_window->widget;
+			_focused_window->InvalidateWidget(focused_widget_id);
+		}
+		if (_focused_window->nested_focus != NULL) _focused_window->nested_focus->Invalidate(_focused_window);
 	}
 
 	/* Remember which window was previously focused */
@@ -118,11 +121,15 @@ void SetFocusedWindow(Window *w)
  */
 bool EditBoxInGlobalFocus()
 {
-	const Widget *wi = (_focused_window != NULL) ? _focused_window->focused_widget : NULL;
+	if (_focused_window == NULL) return false;
 
 	/* The console does not have an edit box so a special case is needed. */
-	return (wi != NULL && wi->type == WWT_EDITBOX) ||
-			(_focused_window != NULL && _focused_window->window_class == WC_CONSOLE);
+	if (_focused_window->window_class == WC_CONSOLE) return true;
+
+	if (_focused_window->nested_array != NULL) {
+		return _focused_window->nested_focus != NULL && _focused_window->nested_focus->type == WWT_EDITBOX;
+	}
+	return _focused_window->focused_widget != NULL && _focused_window->focused_widget->type == WWT_EDITBOX;
 }
 
 /**
@@ -264,8 +271,19 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 {
 	int widget_index = 0;
 	if (w->desc_flags & WDF_DEF_WIDGET) {
-		widget_index = GetWidgetFromPos(w, x, y);
-		WidgetType widget_type = (widget_index >= 0) ? w->widget[widget_index].type : WWT_EMPTY;
+		const Widget *wi = NULL;
+		const NWidgetCore *nw = NULL;
+		WidgetType widget_type;
+		if (w->widget != NULL) {
+			widget_index = GetWidgetFromPos(w, x, y);
+			wi = &w->widget[widget_index];
+			widget_type = (widget_index >= 0) ? wi->type : WWT_EMPTY;
+		} else {
+			assert(w->nested_root != NULL);
+			nw = w->nested_root->GetWidgetFromPos(x, y);
+			widget_index = (nw != NULL) ? nw->index : -1;
+			widget_type = (widget_index >= 0) ? nw->type : WWT_EMPTY;
+		}
 
 		bool focused_widget_changed = false;
 		/* If clicked on a window that previously did dot have focus */
@@ -288,15 +306,14 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 		/* don't allow any interaction if the button has been disabled */
 		if (w->IsWidgetDisabled(widget_index)) return;
 
-		const Widget *wi = &w->widget[widget_index];
-
 		/* Clicked on a widget that is not disabled.
 		 * So unless the clicked widget is the caption bar, change focus to this widget */
 		if (widget_type != WWT_CAPTION) {
 			/* Close the OSK window if a edit box loses focus */
-			if (w->focused_widget != NULL && w->focused_widget->type == WWT_EDITBOX && // An edit box was previously selected
-					w->focused_widget != wi &&                                 // and focus is going to change
-					w->window_class != WC_OSK) {                               // and it is not the OSK window
+			if ((w->widget != NULL && w->focused_widget != NULL && w->focused_widget->type == WWT_EDITBOX && // An edit box was previously selected
+						w->focused_widget != wi && w->window_class != WC_OSK) ||                 // and focus is going to change and it is not the OSK window
+					(w->nested_root != NULL && w->nested_focus != NULL &&  w->nested_focus->type == WWT_EDITBOX &&
+						w->nested_focus != nw && w->window_class != WC_OSK)) {
 				DeleteWindowById(WC_OSK, 0);
 			}
 
@@ -314,7 +331,11 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 					break;
 			}
 		} else if (widget_type == WWT_SCROLLBAR || widget_type == WWT_SCROLL2BAR || widget_type == WWT_HSCROLLBAR) {
-			ScrollbarClickHandler(w, wi, x, y);
+			if (wi != NULL) {
+				ScrollbarClickHandler(w, wi, x, y);
+			} else {
+				ScrollbarClickHandler(w, nw, x, y);
+			}
 		} else if (widget_type == WWT_EDITBOX && !focused_widget_changed) { // Only open the OSK window if clicking on an already focused edit box
 			/* Open the OSK window if clicked on an edit box */
 			QueryStringBaseWindow *qs = dynamic_cast<QueryStringBaseWindow *>(w);
@@ -342,7 +363,8 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 		if ((w->desc_flags & WDF_RESIZABLE) && widget_type == WWT_RESIZEBOX) {
 			/* When the resize widget is on the left size of the window
 			 * we assume that that button is used to resize to the left. */
-			StartWindowSizing(w, wi->left < (w->width / 2));
+			int left_pos = (wi != NULL) ? wi->left : nw->pos_x;
+			StartWindowSizing(w, left_pos < (w->width / 2));
 			w->InvalidateWidget(widget_index);
 			return;
 		}
@@ -372,14 +394,24 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 static void DispatchRightClickEvent(Window *w, int x, int y)
 {
 	int widget = 0;
+	StringID tooltip = 0;
 
 	/* default tooltips handler? */
 	if (w->desc_flags & WDF_STD_TOOLTIPS) {
-		widget = GetWidgetFromPos(w, x, y);
-		if (widget < 0) return; // exit if clicked outside of widgets
+		if (w->nested_root != NULL) {
+			NWidgetCore *wid = w->nested_root->GetWidgetFromPos(x, y);
+			if (wid == NULL || wid->index < 0) return;
+			widget = wid->index;
+			tooltip = wid->tool_tip;
+		}
+		if (w->widget != NULL) {
+			widget = GetWidgetFromPos(w, x, y);
+			if (widget < 0) return; // exit if clicked outside of widgets
+			tooltip = w->widget[widget].tooltips;
+		}
 
-		if (w->widget[widget].tooltips != 0) {
-			GuiShowTooltips(w->widget[widget].tooltips);
+		if (tooltip != 0) {
+			GuiShowTooltips(tooltip);
 			return;
 		}
 	}
@@ -817,6 +849,7 @@ void Window::Initialize(int x, int y, int min_width, int min_height,
 	this->height = min_height;
 	AssignWidgetToWindow(this, widget);
 	this->focused_widget = NULL;
+	this->nested_focus = NULL;
 	this->resize.width = min_width;
 	this->resize.height = min_height;
 	this->resize.step_width = 1;
@@ -826,7 +859,9 @@ void Window::Initialize(int x, int y, int min_width, int min_height,
 	/* Give focus to the opened window unless it is the OSK window or a text box
 	 * of focused window has focus (so we don't interrupt typing). But if the new
 	 * window has a text box, then take focus anyway. */
-	if (this->window_class != WC_OSK && (!EditBoxInGlobalFocus() || this->GetWidgetOfType(WWT_EDITBOX) != NULL)) SetFocusedWindow(this);
+	bool has_editbox = (this->widget != NULL && this->GetWidgetOfType(WWT_EDITBOX) != NULL) ||
+			(this->nested_root != NULL && this->nested_root->GetWidgetOfType(WWT_EDITBOX) != NULL);
+	if (this->window_class != WC_OSK && (!EditBoxInGlobalFocus() || has_editbox)) SetFocusedWindow(this);
 
 	/* Hacky way of specifying always-on-top windows. These windows are
 	 * always above other windows because they are moved below them.
@@ -1345,44 +1380,56 @@ static bool HandleMouseOver()
  */
 void ResizeWindow(Window *w, int delta_x, int delta_y)
 {
-	bool resize_height = false;
-	bool resize_width = false;
-
 	if (delta_x == 0 && delta_y == 0) return;
 
 	w->SetDirty();
-	for (Widget *wi = w->widget; wi->type != WWT_LAST; wi++) {
-		/* Isolate the resizing flags */
-		byte rsizeflag = GB(wi->display_flags, 0, 4);
 
-		if (rsizeflag == RESIZE_NONE) continue;
+	if (w->nested_root != NULL) {
+		uint new_xinc = max(0u, (w->nested_root->resize_x == 0) ? 0 : (w->nested_root->current_x - w->nested_root->smallest_x) + delta_x);
+		uint new_yinc = max(0u, (w->nested_root->resize_y == 0) ? 0 : (w->nested_root->current_y - w->nested_root->smallest_y) + delta_y);
+		assert(w->nested_root->resize_x == 0 || new_xinc % w->nested_root->resize_x == 0);
+		assert(w->nested_root->resize_y == 0 || new_yinc % w->nested_root->resize_y == 0);
 
-		/* Resize the widget based on its resize-flag */
-		if (rsizeflag & RESIZE_LEFT) {
-			wi->left += delta_x;
-			resize_width = true;
+		w->nested_root->AssignSizePosition(ST_RESIZE, 0, 0, w->nested_root->smallest_x + new_xinc, w->nested_root->smallest_y + new_yinc, false, false, false);
+		w->width  = w->nested_root->current_x;
+		w->height = w->nested_root->current_y;
+	} else {
+		assert(w->widget != NULL);
+
+		bool resize_height = false;
+		bool resize_width = false;
+		for (Widget *wi = w->widget; wi->type != WWT_LAST; wi++) {
+			/* Isolate the resizing flags */
+			byte rsizeflag = GB(wi->display_flags, 0, 4);
+
+			if (rsizeflag == RESIZE_NONE) continue;
+
+			/* Resize the widget based on its resize-flag */
+			if (rsizeflag & RESIZE_LEFT) {
+				wi->left += delta_x;
+				resize_width = true;
+			}
+
+			if (rsizeflag & RESIZE_RIGHT) {
+				wi->right += delta_x;
+				resize_width = true;
+			}
+
+			if (rsizeflag & RESIZE_TOP) {
+				wi->top += delta_y;
+				resize_height = true;
+			}
+
+			if (rsizeflag & RESIZE_BOTTOM) {
+				wi->bottom += delta_y;
+				resize_height = true;
+			}
 		}
 
-		if (rsizeflag & RESIZE_RIGHT) {
-			wi->right += delta_x;
-			resize_width = true;
-		}
-
-		if (rsizeflag & RESIZE_TOP) {
-			wi->top += delta_y;
-			resize_height = true;
-		}
-
-		if (rsizeflag & RESIZE_BOTTOM) {
-			wi->bottom += delta_y;
-			resize_height = true;
-		}
+		/* We resized at least 1 widget, so let's resize the window totally */
+		if (resize_width)  w->width  += delta_x;
+		if (resize_height) w->height += delta_y;
 	}
-
-	/* We resized at least 1 widget, so let's resize the window totally */
-	if (resize_width)  w->width  += delta_x;
-	if (resize_height) w->height += delta_y;
-
 	w->SetDirty();
 }
 
@@ -1486,16 +1533,31 @@ static bool HandleWindowDragging()
 				}
 			}
 
-			/* Search for the title bar */
-			const Widget *caption = w->GetWidgetOfType(WWT_CAPTION);
-			assert(caption != NULL);
+			/* Search for the title bar rectangle. */
+			Rect caption_rect;
+			if (w->widget != NULL) {
+				const Widget *caption = w->GetWidgetOfType(WWT_CAPTION);
+				assert(caption != NULL);
+				caption_rect.left   = caption->left;
+				caption_rect.right  = caption->right;
+				caption_rect.top    = caption->top;
+				caption_rect.bottom = caption->bottom;
+			} else {
+				assert(w->nested_root != NULL);
+				const NWidgetBase *caption = w->nested_root->GetWidgetOfType(WWT_CAPTION);
+				assert(caption != NULL);
+				caption_rect.left   = caption->pos_x;
+				caption_rect.right  = caption->pos_x + caption->current_x;
+				caption_rect.top    = caption->pos_y;
+				caption_rect.bottom = caption->pos_y + caption->current_y;
+			}
 
 			/* The minimum number of pixels of the title bar must be visible
 			 * in both the X or Y direction */
 			static const int MIN_VISIBLE_TITLE_BAR = 13;
 
 			/* Make sure the window doesn't leave the screen */
-			nx = Clamp(nx, MIN_VISIBLE_TITLE_BAR - caption->right, _screen.width - MIN_VISIBLE_TITLE_BAR - caption->left);
+			nx = Clamp(nx, MIN_VISIBLE_TITLE_BAR - caption_rect.right, _screen.width - MIN_VISIBLE_TITLE_BAR - caption_rect.left);
 			ny = Clamp(ny, 0, _screen.height - MIN_VISIBLE_TITLE_BAR);
 
 			/* Make sure the title bar isn't hidden by behind the main tool bar */
@@ -1503,19 +1565,19 @@ static bool HandleWindowDragging()
 			if (v != NULL) {
 				int v_bottom = v->top + v->height;
 				int v_right = v->left + v->width;
-				if (ny + caption->top >= v->top && ny + caption->top < v_bottom) {
-					if ((v->left < MIN_VISIBLE_TITLE_BAR && nx + caption->left < v->left) ||
-							(v_right > _screen.width - MIN_VISIBLE_TITLE_BAR && nx + caption->right > v_right)) {
+				if (ny + caption_rect.top >= v->top && ny + caption_rect.top < v_bottom) {
+					if ((v->left < MIN_VISIBLE_TITLE_BAR && nx + caption_rect.left < v->left) ||
+							(v_right > _screen.width - MIN_VISIBLE_TITLE_BAR && nx + caption_rect.right > v_right)) {
 						ny = v_bottom;
 					} else {
-						if (nx + caption->left > v->left - MIN_VISIBLE_TITLE_BAR &&
-								nx + caption->right < v_right + MIN_VISIBLE_TITLE_BAR) {
+						if (nx + caption_rect.left > v->left - MIN_VISIBLE_TITLE_BAR &&
+								nx + caption_rect.right < v_right + MIN_VISIBLE_TITLE_BAR) {
 							if (w->top >= v_bottom) {
 								ny = v_bottom;
 							} else if (w->left < nx) {
-								nx = v->left - MIN_VISIBLE_TITLE_BAR - caption->left;
+								nx = v->left - MIN_VISIBLE_TITLE_BAR - caption_rect.left;
 							} else {
-								nx = v_right + MIN_VISIBLE_TITLE_BAR - caption->right;
+								nx = v_right + MIN_VISIBLE_TITLE_BAR - caption_rect.right;
 							}
 						}
 					}
@@ -1549,11 +1611,15 @@ static bool HandleWindowDragging()
 				x = _cursor.pos.x - _drag_delta.x;
 			}
 
+			if (w->nested_root != NULL) {
+				/* Nested widgets also allow resize.step_width and/or resize.step_height to become 0 which means no resize is possible. */
+				if (w->resize.step_width  == 0) x = 0;
+				if (w->resize.step_height == 0) y = 0;
+			}
 			/* X and Y has to go by step.. calculate it.
 			 * The cast to int is necessary else x/y are implicitly casted to
 			 * unsigned int, which won't work. */
-			if (w->resize.step_width > 1) x -= x % (int)w->resize.step_width;
-
+			if (w->resize.step_width  > 1) x -= x % (int)w->resize.step_width;
 			if (w->resize.step_height > 1) y -= y % (int)w->resize.step_height;
 
 			/* Check if we don't go below the minimum set size */

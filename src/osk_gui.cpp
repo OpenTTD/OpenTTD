@@ -149,8 +149,14 @@ struct OskWindow : public Window {
 		switch (widget) {
 			case OSK_WIDGET_TEXT: {
 				/* Find the edit box of the parent window and give focus to that */
-				const Widget *wi = this->parent->GetWidgetOfType(WWT_EDITBOX);
-				if (wi != NULL) this->parent->focused_widget = wi;
+				if (this->parent->widget != NULL) {
+					const Widget *wi = this->parent->GetWidgetOfType(WWT_EDITBOX);
+					if (wi != NULL) this->parent->focused_widget = wi;
+				}
+				if (this->parent->nested_root != NULL) {
+					const NWidgetCore *nwid = dynamic_cast<const NWidgetCore *>(this->parent->nested_root->GetWidgetOfType(WWT_EDITBOX));
+					if (nwid != NULL) this->parent->nested_focus = nwid;
+				}
 
 				/* Give focus to parent window */
 				SetFocusedWindow(this->parent);
