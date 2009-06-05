@@ -32,7 +32,6 @@
 static void _DoCommandReturnBuildBridge2(class AIInstance *instance)
 {
 	if (!AIBridge::_BuildBridgeRoad2()) {
-		AIObject::SetLastCommandRes(false);
 		AIInstance::DoCommandReturn(instance);
 		return;
 	}
@@ -45,7 +44,6 @@ static void _DoCommandReturnBuildBridge2(class AIInstance *instance)
 static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 {
 	if (!AIBridge::_BuildBridgeRoad1()) {
-		AIObject::SetLastCommandRes(false);
 		AIInstance::DoCommandReturn(instance);
 		return;
 	}
@@ -67,7 +65,7 @@ static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 	switch (vehicle_type) {
 		case AIVehicle::VT_ROAD:
 			type |= (TRANSPORT_ROAD << 15);
-			type |= (RoadTypeToRoadTypes((::RoadType)AIObject::GetRoadType()) << 8);
+			type |= (::RoadTypeToRoadTypes((::RoadType)AIObject::GetRoadType()) << 8);
 			break;
 		case AIVehicle::VT_RAIL:
 			type |= (TRANSPORT_RAIL << 15);
@@ -86,10 +84,7 @@ static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 
 	AIObject::SetCallbackVariable(0, start);
 	AIObject::SetCallbackVariable(1, end);
-	if (!AIObject::DoCommand(end, start, type | bridge_id, CMD_BUILD_BRIDGE, NULL, &_DoCommandReturnBuildBridge1)) return false;
-
-	/* In case of test-mode, test if we can build both road pieces */
-	return _BuildBridgeRoad1();
+	return AIObject::DoCommand(end, start, type | bridge_id, CMD_BUILD_BRIDGE, NULL, &_DoCommandReturnBuildBridge1);
 }
 
 /* static */ bool AIBridge::_BuildBridgeRoad1()
@@ -101,10 +96,7 @@ static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 	DiagDirection dir_1 = ::DiagdirBetweenTiles(end, start);
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
 
-	if (!AIObject::DoCommand(start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2) | (AIObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD, NULL, &_DoCommandReturnBuildBridge2)) return false;
-
-	/* In case of test-mode, test the other road piece too */
-	return _BuildBridgeRoad2();
+	return AIObject::DoCommand(start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2) | (AIObject::GetRoadType() << 4), 0, CMD_BUILD_ROAD, NULL, &_DoCommandReturnBuildBridge2);
 }
 
 /* static */ bool AIBridge::_BuildBridgeRoad2()
