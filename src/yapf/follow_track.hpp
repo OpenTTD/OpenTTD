@@ -55,7 +55,7 @@ struct CFollowTrackT
 	{
 		assert(!IsRailTT() || (v != NULL && v->type == VEH_TRAIN));
 		m_veh = v;
-		Init(v != NULL ? v->owner : INVALID_OWNER, railtype_override == INVALID_RAILTYPES ? ((const Train *)v)->compatible_railtypes : railtype_override, pPerf);
+		Init(v != NULL ? v->owner : INVALID_OWNER, IsRailTT() && railtype_override == INVALID_RAILTYPES ? ((const Train *)v)->compatible_railtypes : railtype_override, pPerf);
 	}
 
 	FORCEINLINE void Init(Owner o, RailTypes railtype_override, CPerformanceTimer *pPerf)
