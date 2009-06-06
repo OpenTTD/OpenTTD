@@ -106,7 +106,7 @@ struct CFollowTrackT
 		m_old_tile = old_tile;
 		m_old_td = old_td;
 		m_err = EC_NONE;
-		assert(((TrackStatusToTrackdirBits(GetTileTrackStatus(m_old_tile, TT(), m_veh ? ((const RoadVehicle *)m_veh)->compatible_roadtypes : 0)) & TrackdirToTrackdirBits(m_old_td)) != 0) ||
+		assert(((TrackStatusToTrackdirBits(GetTileTrackStatus(m_old_tile, TT(), IsRoadTT() && m_veh != NULL ? ((const RoadVehicle *)m_veh)->compatible_roadtypes : 0)) & TrackdirToTrackdirBits(m_old_td)) != 0) ||
 		       (IsTram() && GetSingleTramBit(m_old_tile) != INVALID_DIAGDIR)); // Disable the assertion for single tram bits
 		m_exitdir = TrackdirToExitdir(m_old_td);
 		if (ForcedReverse()) return true;
@@ -207,7 +207,7 @@ protected:
 		if (IsRailTT() && IsPlainRailTile(m_new_tile)) {
 			m_new_td_bits = (TrackdirBits)(GetTrackBits(m_new_tile) * 0x101);
 		} else {
-			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), m_veh != NULL ? ((const RoadVehicle *)m_veh)->compatible_roadtypes : 0));
+			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), IsRoadTT() && m_veh != NULL ? ((const RoadVehicle *)m_veh)->compatible_roadtypes : 0));
 
 			if (IsTram() && m_new_td_bits == 0) {
 				/* GetTileTrackStatus() returns 0 for single tram bits.
