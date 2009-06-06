@@ -660,7 +660,7 @@ struct AIDebugWindow : public Window {
 	virtual void OnPaint()
 	{
 		/* Check if the currently selected company is still active. */
-		if (ai_debug_company == INVALID_COMPANY || !Company::IsValidID(ai_debug_company)) {
+		if (ai_debug_company == INVALID_COMPANY || !Company::IsValidID(ai_debug_company) || !Company::Get(ai_debug_company)->is_ai) {
 			if (ai_debug_company != INVALID_COMPANY) {
 				/* Raise and disable the widget for the previous selection. */
 				this->RaiseWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
