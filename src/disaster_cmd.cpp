@@ -314,7 +314,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 	} else {
 		/* Target a vehicle */
 		Vehicle *u_tmp = Vehicle::Get(v->dest_tile);
-		if (u_tmp->type != VEH_ROAD || !IsRoadVehFront(u_tmp)) {
+		if (u_tmp == NULL || u_tmp->type != VEH_ROAD || !IsRoadVehFront(u_tmp)) {
 			delete v;
 			return false;
 		}
@@ -402,7 +402,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, boo
 
 	if (v->current_order.GetDestination() == 2) {
 		if (GB(v->tick_counter, 0, 2) == 0) {
-			Industry *i = Industry::Get(v->dest_tile);
+			Industry *i = Industry::Get(v->dest_tile); // Industry destructor calls ReleaseDisastersTargetingIndustry, so this is valid
 			int x = TileX(i->xy) * TILE_SIZE;
 			int y = TileY(i->xy) * TILE_SIZE;
 			uint32 r = Random();
@@ -420,7 +420,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, boo
 			v->current_order.SetDestination(2);
 			v->age = 0;
 
-			Industry *i = Industry::Get(v->dest_tile);
+			Industry *i = Industry::Get(v->dest_tile); // Industry destructor calls ReleaseDisastersTargetingIndustry, so this is valid
 			DestructIndustry(i);
 
 			SetDParam(0, i->town->index);
