@@ -242,8 +242,8 @@ void AfterLoadVehicles(bool part_of_load)
 
 		if (part_of_load) v->fill_percent_te_id = INVALID_TE_ID;
 		v->first = NULL;
-		if (v->type == VEH_TRAIN) ((Train *)v)->tcache.first_engine = INVALID_ENGINE;
-		if (v->type == VEH_ROAD)  ((RoadVehicle *)v)->rcache.first_engine = INVALID_ENGINE;
+		if (v->type == VEH_TRAIN) Train::From(v)->tcache.first_engine = INVALID_ENGINE;
+		if (v->type == VEH_ROAD)  RoadVehicle::From(v)->rcache.first_engine = INVALID_ENGINE;
 
 		v->cargo.InvalidateCache();
 	}
@@ -308,10 +308,10 @@ void AfterLoadVehicles(bool part_of_load)
 		assert(v->first != NULL);
 
 		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) {
-			if (IsFrontEngine(v)) ((Train *)v)->tcache.last_speed = v->cur_speed; // update displayed train speed
-			TrainConsistChanged((Train *)v, false);
+			if (IsFrontEngine(v)) Train::From(v)->tcache.last_speed = v->cur_speed; // update displayed train speed
+			TrainConsistChanged(Train::From(v), false);
 		} else if (v->type == VEH_ROAD && IsRoadVehFront(v)) {
-			RoadVehUpdateCache((RoadVehicle *)v);
+			RoadVehUpdateCache(RoadVehicle::From(v));
 		}
 	}
 
@@ -335,7 +335,7 @@ void AfterLoadVehicles(bool part_of_load)
 	FOR_ALL_VEHICLES(v) {
 		switch (v->type) {
 			case VEH_ROAD: {
-				RoadVehicle *rv = (RoadVehicle *)v;
+				RoadVehicle *rv = RoadVehicle::From(v);
 				rv->roadtype = HasBit(EngInfo(v->First()->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 				rv->compatible_roadtypes = RoadTypeToRoadTypes(rv->roadtype);
 			}
@@ -356,10 +356,10 @@ void AfterLoadVehicles(bool part_of_load)
 					/* In the case of a helicopter we will update the rotor sprites */
 					if (v->subtype == AIR_HELICOPTER) {
 						Vehicle *rotor = shadow->Next();
-						rotor->cur_image = GetRotorImage((Aircraft *)v);
+						rotor->cur_image = GetRotorImage(Aircraft::From(v));
 					}
 
-					UpdateAircraftCache((Aircraft *)v);
+					UpdateAircraftCache(Aircraft::From(v));
 				}
 				break;
 			default: break;

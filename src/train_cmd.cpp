@@ -1725,7 +1725,7 @@ static Vehicle *TrainApproachingCrossingEnum(Vehicle *v, void *data)
 
 	TileIndex tile = *(TileIndex*)data;
 
-	if (TrainApproachingCrossingTile((Train *)v) != tile) return NULL;
+	if (TrainApproachingCrossingTile(Train::From(v)) != tile) return NULL;
 
 	return v;
 }
@@ -1800,7 +1800,7 @@ static void AdvanceWagonsBeforeSwap(Train *v)
 {
 	Train *base = v;
 	Train *first = base; // first vehicle to move
-	Train *last = (Train *)GetLastVehicleInChain(v); // last vehicle to move
+	Train *last = Train::From(GetLastVehicleInChain(v)); // last vehicle to move
 	uint length = CountVehiclesInChain(v);
 
 	while (length > 2) {
@@ -1849,7 +1849,7 @@ static void AdvanceWagonsAfterSwap(Train *v)
 
 	Train *base = v;
 	Train *first = base; // first vehicle to move
-	Train *last = (Train *)GetLastVehicleInChain(v); // last vehicle to move
+	Train *last = Train::From(GetLastVehicleInChain(v)); // last vehicle to move
 	uint length = CountVehiclesInChain(v);
 
 	/* we have to make sure all wagons that leave a depot because of train reversing are moved coorectly
@@ -3559,7 +3559,7 @@ static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
 	Vehicle *coll = v->First();
 
 	/* can't collide with own wagons && can't crash in depot && the same height level */
-	if (coll != tcc->v && ((Train *)v)->track != TRACK_BIT_DEPOT && abs(v->z_pos - tcc->v->z_pos) < 6) {
+	if (coll != tcc->v && Train::From(v)->track != TRACK_BIT_DEPOT && abs(v->z_pos - tcc->v->z_pos) < 6) {
 		int x_diff = v->x_pos - tcc->v->x_pos;
 		int y_diff = v->y_pos - tcc->v->y_pos;
 
@@ -3567,8 +3567,8 @@ static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
 		if (x_diff * x_diff + y_diff * y_diff > 25) return NULL;
 
 		/* crash both trains */
-		tcc->num += TrainCrashed((Train *)tcc->v);
-		tcc->num += TrainCrashed((Train *)coll);
+		tcc->num += TrainCrashed(Train::From(tcc->v));
+		tcc->num += TrainCrashed(Train::From(coll));
 
 		/* Try to reserve all tiles directly under the crashed trains.
 		 * As there might be more than two trains involved, we have to do that for all vehicles */
@@ -3632,8 +3632,8 @@ static Vehicle *CheckVehicleAtSignal(Vehicle *v, void *data)
 	DiagDirection exitdir = *(DiagDirection *)data;
 
 	/* front engine of a train, not inside wormhole or depot, not crashed */
-	if (v->type == VEH_TRAIN && IsFrontEngine(v) && (((Train *)v)->track & TRACK_BIT_MASK) != 0 && !(v->vehstatus & VS_CRASHED)) {
-		if (v->cur_speed <= 5 && TrainExitDir(v->direction, ((Train *)v)->track) == exitdir) return v;
+	if (v->type == VEH_TRAIN && IsFrontEngine(v) && (Train::From(v)->track & TRACK_BIT_MASK) && !(v->vehstatus & VS_CRASHED)) {
+		if (v->cur_speed <= 5 && TrainExitDir(v->direction, Train::From(v)->track) == exitdir) return v;
 	}
 
 	return NULL;
@@ -3942,11 +3942,11 @@ static Vehicle *CollectTrackbitsFromCrashedVehiclesEnum(Vehicle *v, void *data)
 	TrackBits *trackbits = (TrackBits *)data;
 
 	if (v->type == VEH_TRAIN && (v->vehstatus & VS_CRASHED) != 0) {
-		if ((((Train *)v)->track & TRACK_BIT_WORMHOLE) == TRACK_BIT_WORMHOLE) {
+		if ((Train::From(v)->track & TRACK_BIT_WORMHOLE) == TRACK_BIT_WORMHOLE) {
 			/* Vehicle is inside a wormhole, v->track contains no useful value then. */
 			*trackbits |= DiagDirToDiagTrackBits(GetTunnelBridgeDirection(v->tile));
 		} else {
-			*trackbits |= ((Train *)v)->track;
+			*trackbits |= Train::From(v)->track;
 		}
 	}
 

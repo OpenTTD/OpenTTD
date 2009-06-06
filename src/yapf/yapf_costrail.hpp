@@ -247,8 +247,8 @@ public:
 		const Vehicle *v = Yapf().GetVehicle();
 		assert(v != NULL);
 		assert(v->type == VEH_TRAIN);
-		assert(((const Train *)v)->tcache.cached_total_length != 0);
-		int missing_platform_length = (((const Train *)v)->tcache.cached_total_length + TILE_SIZE - 1) / TILE_SIZE - platform_length;
+		assert(Train::From(v)->tcache.cached_total_length != 0);
+		int missing_platform_length = (Train::From(v)->tcache.cached_total_length + TILE_SIZE - 1) / TILE_SIZE - platform_length;
 		if (missing_platform_length < 0) {
 			/* apply penalty for longer platform than needed */
 			cost += Yapf().PfGetSettings().rail_longer_platform_penalty + Yapf().PfGetSettings().rail_longer_platform_per_tile_penalty * -missing_platform_length;

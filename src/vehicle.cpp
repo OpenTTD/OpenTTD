@@ -524,9 +524,9 @@ void Vehicle::PreDestructor()
 		if (this->IsPrimaryVehicle()) DecreaseGroupNumVehicle(this->group_id);
 	}
 
-	if (this->type == VEH_ROAD) ClearSlot((RoadVehicle *)this);
+	if (this->type == VEH_ROAD) ClearSlot(RoadVehicle::From(this));
 	if (this->type == VEH_AIRCRAFT && this->IsPrimaryVehicle()) {
-		Aircraft *a = (Aircraft *)this;
+		Aircraft *a = Aircraft::From(this);
 		Station *st = GetTargetAirportIfValid(a);
 		if (st != NULL) {
 			const AirportFTA *layout = st->Airport()->layout;
@@ -984,8 +984,8 @@ void VehicleEnterDepot(Vehicle *v)
 			if (!IsFrontEngine(v)) v = v->First();
 			UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 			v->load_unload_time_rem = 0;
-			ClrBit(((Train *)v)->flags, VRF_TOGGLE_REVERSE);
-			TrainConsistChanged((Train *)v, true);
+			ClrBit(Train::From(v)->flags, VRF_TOGGLE_REVERSE);
+			TrainConsistChanged(Train::From(v), true);
 			break;
 
 		case VEH_ROAD:
@@ -995,13 +995,13 @@ void VehicleEnterDepot(Vehicle *v)
 
 		case VEH_SHIP:
 			InvalidateWindowClasses(WC_SHIPS_LIST);
-			static_cast<Ship*>(v)->state = TRACK_BIT_DEPOT;
+			Ship::From(v)->state = TRACK_BIT_DEPOT;
 			RecalcShipStuff(v);
 			break;
 
 		case VEH_AIRCRAFT:
 			InvalidateWindowClasses(WC_AIRCRAFT_LIST);
-			HandleAircraftEnterHangar((Aircraft *)v);
+			HandleAircraftEnterHangar(Aircraft::From(v));
 			break;
 		default: NOT_REACHED();
 	}
@@ -1429,9 +1429,9 @@ SpriteID GetEnginePalette(EngineID engine_type, CompanyID company)
 SpriteID GetVehiclePalette(const Vehicle *v)
 {
 	if (v->type == VEH_TRAIN) {
-		return GetEngineColourMap(v->engine_type, v->owner, ((const Train *)v)->tcache.first_engine, v);
+		return GetEngineColourMap(v->engine_type, v->owner, Train::From(v)->tcache.first_engine, v);
 	} else if (v->type == VEH_ROAD) {
-		return GetEngineColourMap(v->engine_type, v->owner, ((const RoadVehicle *)v)->rcache.first_engine, v);
+		return GetEngineColourMap(v->engine_type, v->owner, RoadVehicle::From(v)->rcache.first_engine, v);
 	}
 
 	return GetEngineColourMap(v->engine_type, v->owner, INVALID_ENGINE, v);
@@ -1493,7 +1493,7 @@ void Vehicle::LeaveStation()
 		 * might not be marked as wanting a reservation, e.g.
 		 * when an overlength train gets turned around in a station. */
 		if (UpdateSignalsOnSegment(this->tile, TrackdirToExitdir(this->GetVehicleTrackdir()), this->owner) == SIGSEG_PBS || _settings_game.pf.reserve_paths) {
-			TryPathReserve((Train *)this, true, true);
+			TryPathReserve(Train::From(this), true, true);
 		}
 	}
 }
@@ -1577,7 +1577,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 		if (this->type == VEH_TRAIN && reverse) DoCommand(this->tile, this->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
 
 		if (this->type == VEH_AIRCRAFT) {
-			Aircraft *a = (Aircraft *)this;
+			Aircraft *a = Aircraft::From(this);
 			if (a->state == FLYING && a->targetairport != destination) {
 				/* The aircraft is now heading for a different hangar than the next in the orders */
 				extern void AircraftNextAirportPos_and_Order(Aircraft *a);
@@ -1747,7 +1747,7 @@ bool CanVehicleUseStation(EngineID engine_type, const Station *st)
  */
 bool CanVehicleUseStation(const Vehicle *v, const Station *st)
 {
-	if (v->type == VEH_ROAD) return st->GetPrimaryRoadStop((const RoadVehicle *)v) != NULL;
+	if (v->type == VEH_ROAD) return st->GetPrimaryRoadStop(RoadVehicle::From(v)) != NULL;
 
 	return CanVehicleUseStation(v->engine_type, st);
 }

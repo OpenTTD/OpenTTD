@@ -434,9 +434,9 @@ static uint8 LiveryHelper(EngineID engine, const Vehicle *v)
 		if (!Company::IsValidID(_current_company)) return 0;
 		l = GetEngineLivery(engine, _current_company, INVALID_ENGINE, NULL);
 	} else if (v->type == VEH_TRAIN) {
-		l = GetEngineLivery(v->engine_type, v->owner, ((const Train *)v)->tcache.first_engine, v);
+		l = GetEngineLivery(v->engine_type, v->owner, Train::From(v)->tcache.first_engine, v);
 	} else if (v->type == VEH_ROAD) {
-		l = GetEngineLivery(v->engine_type, v->owner, ((const RoadVehicle *)v)->rcache.first_engine, v);
+		l = GetEngineLivery(v->engine_type, v->owner, RoadVehicle::From(v)->rcache.first_engine, v);
 	} else {
 		l = GetEngineLivery(v->engine_type, v->owner, INVALID_ENGINE, v);
 	}
@@ -534,7 +534,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				memset(common_subtypes, 0, sizeof(common_subtypes));
 
 				for (u = v; u != NULL; u = u->Next()) {
-					if (v->type == VEH_TRAIN) user_def_data |= ((const Train *)u)->tcache.user_def_data;
+					if (v->type == VEH_TRAIN) user_def_data |= Train::From(u)->tcache.user_def_data;
 
 					/* Skip empty engines */
 					if (u->cargo_cap == 0) continue;
@@ -590,7 +590,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				uint16 altitude = v->z_pos - w->z_pos; // Aircraft height - shadow height
 				byte airporttype = ATP_TTDP_LARGE;
 
-				const Station *st = GetTargetAirportIfValid((Aircraft *)v);
+				const Station *st = GetTargetAirportIfValid(Aircraft::From(v));
 
 				if (st != NULL) {
 					switch (st->airport_type) {
@@ -668,7 +668,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			uint16 modflags = 0;
 
 			if (v->type == VEH_TRAIN) {
-				const Train *t = (const Train *)v;
+				const Train *t = Train::From(v);
 				const Train *u = IsTrainWagon(v) && HasBit(v->vehicle_flags, VRF_POWEREDWAGON) ? t->First() : t;
 				RailType railtype = GetRailType(v->tile);
 				bool powered = IsTrainEngine(v) || (IsTrainWagon(v) && HasBit(v->vehicle_flags, VRF_POWEREDWAGON));
@@ -736,7 +736,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x47: return GB(Engine::Get(v->engine_type)->internal_id, 8, 8);
 		case 0x48:
 			if (v->type != VEH_TRAIN || v->spritenum != 0xFD) return v->spritenum;
-			return HasBit(((Train *)v)->flags, VRF_REVERSE_DIRECTION) ? 0xFE : 0xFD;
+			return HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION) ? 0xFE : 0xFD;
 
 		case 0x49: return v->day_counter;
 		case 0x4A: return v->breakdowns_since_last_service;
@@ -768,7 +768,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 	/* Vehicle specific properties */
 	switch (v->type) {
 		case VEH_TRAIN: {
-			Train *t = (Train *)v;
+			Train *t = Train::From(v);
 			switch (variable - 0x80) {
 				case 0x62: return t->track;
 				case 0x66: return t->railtype;
@@ -784,7 +784,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		} break;
 
 		case VEH_ROAD: {
-			RoadVehicle *rv = (RoadVehicle *)v;
+			RoadVehicle *rv = RoadVehicle::From(v);
 			switch (variable - 0x80) {
 				case 0x62: return rv->state;
 				case 0x64: return rv->blocked_ctr;
@@ -797,7 +797,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		} break;
 
 		case VEH_AIRCRAFT: {
-			Aircraft *a = (Aircraft *)v;
+			Aircraft *a = Aircraft::From(v);
 			switch (variable - 0x80) {
 				case 0x62: return MapAircraftMovementState(a);  // Current movement state
 				case 0x63: return a->targetairport;             // Airport to which the action refers
@@ -886,10 +886,10 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 			/* We always use cached value, except for callbacks because the override spriteset
 			 * to use may be different than the one cached. It happens for callback 0x15 (refit engine),
 			 * as v->cargo_type is temporary changed to the new type */
-			group = use_cache ? ((const Train *)v)->tcache.cached_override : GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, ((const Train *)v)->tcache.first_engine);
+			group = use_cache ? Train::From(v)->tcache.cached_override : GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, Train::From(v)->tcache.first_engine);
 			if (group != NULL) return group;
 		} else if (v->type == VEH_ROAD) {
-			group = GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, ((const RoadVehicle *)v)->rcache.first_engine);
+			group = GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, RoadVehicle::From(v)->rcache.first_engine);
 			if (group != NULL) return group;
 		}
 	}
@@ -952,7 +952,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Aircraft *v, bool info_vi
 bool UsesWagonOverride(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	return ((const Train *)v)->tcache.cached_override != NULL;
+	return Train::From(v)->tcache.cached_override != NULL;
 }
 
 /**

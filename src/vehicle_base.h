@@ -573,6 +573,28 @@ struct SpecializedVehicle : public Vehicle {
 	{
 		return IsValidID(index) ? Get(index) : NULL ;
 	}
+
+	/**
+	 * Converts a Vehicle to SpecializedVehicle with type checking.
+	 * @param v Vehicle pointer
+	 * @return pointer to SpecializedVehicle
+	 */
+	static FORCEINLINE T *From(Vehicle *v)
+	{
+		assert(v->type == Type);
+		return (T *)v;
+	}
+
+	/**
+	 * Converts a const Vehicle to const SpecializedVehicle with type checking.
+	 * @param v Vehicle pointer
+	 * @return pointer to SpecializedVehicle
+	 */
+	static FORCEINLINE const T *From(const Vehicle *v)
+	{
+		assert(v->type == Type);
+		return (const T *)v;
+	}
 };
 
 #define FOR_ALL_VEHICLES_OF_TYPE(name, var) FOR_ALL_ITEMS_FROM(name, vehicle_index, var, 0) if (var->type == name::EXPECTED_TYPE)

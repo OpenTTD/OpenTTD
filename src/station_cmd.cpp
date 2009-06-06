@@ -1488,7 +1488,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 static Vehicle *ClearRoadStopStatusEnum(Vehicle *v, void *)
 {
-	if (v->type == VEH_ROAD) ((RoadVehicle *)v)->state &= RVSB_ROAD_STOP_TRACKDIR_MASK;
+	if (v->type == VEH_ROAD) RoadVehicle::From(v)->state &= RVSB_ROAD_STOP_TRACKDIR_MASK;
 
 	return NULL;
 }
@@ -2617,7 +2617,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 
 		int station_ahead;
 		int station_length;
-		int stop = GetTrainStopLocation(station_id, tile, (Train *)v, &station_ahead, &station_length);
+		int stop = GetTrainStopLocation(station_id, tile, Train::From(v), &station_ahead, &station_length);
 
 		/* Stop whenever that amount of station ahead + the distance from the
 		 * begin of the platform to the stop location is longer than the length
@@ -2645,7 +2645,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 			}
 		}
 	} else if (v->type == VEH_ROAD) {
-		RoadVehicle *rv = (RoadVehicle *)v;
+		RoadVehicle *rv = RoadVehicle::From(v);
 		if (rv->state < RVSB_IN_ROAD_STOP && !IsReversingRoadTrackdir((Trackdir)rv->state) && rv->frame == 0) {
 			if (IsRoadStop(tile) && IsRoadVehFront(v)) {
 				/* Attempt to allocate a parking bay in a road stop */

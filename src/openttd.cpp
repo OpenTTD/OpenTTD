@@ -1119,7 +1119,7 @@ void StateGameLoop()
 
 				switch (v->type) {
 					case VEH_ROAD: {
-						RoadVehicle *rv = (RoadVehicle *)v;
+						RoadVehicle *rv = RoadVehicle::From(v);
 						RoadVehicleCache cache = rv->rcache;
 						RoadVehUpdateCache(rv);
 
@@ -1130,7 +1130,7 @@ void StateGameLoop()
 
 					case VEH_TRAIN: {
 						uint length = 0;
-						Train *t = (Train *)v;
+						Train *t = Train::From(v);
 						for (Vehicle *u = t; u != NULL; u = u->Next()) length++;
 
 						TrainCache *wagons = MallocT<TrainCache>(length);
@@ -1151,7 +1151,7 @@ void StateGameLoop()
 					} break;
 
 					case VEH_AIRCRAFT: {
-						Aircraft *a = (Aircraft *)v;
+						Aircraft *a = Aircraft::From(v);
 						AircraftCache cache = a->acache;
 						UpdateAircraftCache(a);
 

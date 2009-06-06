@@ -208,7 +208,7 @@ bool IsArticulatedVehicleCarryingDifferentCargos(const Vehicle *v, CargoID *carg
 
 		switch (v->type) {
 			case VEH_TRAIN:
-				v = (EngineHasArticPart((const Train *)v) ? GetNextArticPart((const Train *)v) : NULL);
+				v = (EngineHasArticPart(Train::From(v)) ? GetNextArticPart(Train::From(v)) : NULL);
 				break;
 
 			case VEH_ROAD:
@@ -256,7 +256,7 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 
 		switch (v->type) {
 			case VEH_TRAIN:
-				v = (EngineHasArticPart((const Train *)v) ? GetNextArticPart((const Train *)v) : NULL);
+				v = (EngineHasArticPart(Train::From(v)) ? GetNextArticPart(Train::From(v)) : NULL);
 				break;
 
 			case VEH_ROAD:
@@ -305,7 +305,7 @@ void AddArticulatedParts(Vehicle *first, VehicleType type)
 			default: NOT_REACHED();
 
 			case VEH_TRAIN: {
-				Train *front = (Train *)first;
+				Train *front = Train::From(first);
 				Train *t = new Train();
 				v->SetNext(t);
 				v = t;
@@ -328,7 +328,7 @@ void AddArticulatedParts(Vehicle *first, VehicleType type)
 			} break;
 
 			case VEH_ROAD: {
-				RoadVehicle *front = (RoadVehicle *)first;
+				RoadVehicle *front = RoadVehicle::From(first);
 				RoadVehicle *rv = new RoadVehicle();
 				v->SetNext(rv);
 				v = rv;

@@ -912,9 +912,9 @@ bool AfterLoadGame()
 				continue;
 			}
 			if (v->type == VEH_TRAIN) {
-				((Train *)v)->track = TRACK_BIT_WORMHOLE;
+				Train::From(v)->track = TRACK_BIT_WORMHOLE;
 			} else {
-				((RoadVehicle *)v)->state = RVSB_WORMHOLE;
+				RoadVehicle::From(v)->state = RVSB_WORMHOLE;
 			}
 		}
 	}

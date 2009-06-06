@@ -177,7 +177,7 @@ void FixOldVehicles()
 
 		/* We haven't used this bit for stations for ages */
 		if (v->type == VEH_ROAD) {
-			RoadVehicle *rv = (RoadVehicle *)v;
+			RoadVehicle *rv = RoadVehicle::From(v);
 			if (rv->state != RVSB_IN_DEPOT && rv->state != RVSB_WORMHOLE) {
 				ClrBit(rv->state, RVS_IS_STOPPING);
 			}
@@ -1316,7 +1316,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 					};
 					if (v->spritenum / 2 >= lengthof(spriteset_rail)) return false;
 					v->spritenum = spriteset_rail[v->spritenum / 2]; // adjust railway sprite set offset
-					((Train *)v)->railtype = type == 0x25 ? 1 : 0; // monorail / rail
+					Train::From(v)->railtype = type == 0x25 ? 1 : 0; // monorail / rail
 					break;
 				}
 

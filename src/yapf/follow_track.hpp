@@ -55,7 +55,7 @@ struct CFollowTrackT
 	{
 		assert(!IsRailTT() || (v != NULL && v->type == VEH_TRAIN));
 		m_veh = v;
-		Init(v != NULL ? v->owner : INVALID_OWNER, IsRailTT() && railtype_override == INVALID_RAILTYPES ? ((const Train *)v)->compatible_railtypes : railtype_override, pPerf);
+		Init(v != NULL ? v->owner : INVALID_OWNER, IsRailTT() && railtype_override == INVALID_RAILTYPES ? Train::From(v)->compatible_railtypes : railtype_override, pPerf);
 	}
 
 	FORCEINLINE void Init(Owner o, RailTypes railtype_override, CPerformanceTimer *pPerf)
@@ -76,7 +76,7 @@ struct CFollowTrackT
 	FORCEINLINE static TransportType TT() {return Ttr_type_;}
 	FORCEINLINE static bool IsWaterTT() {return TT() == TRANSPORT_WATER;}
 	FORCEINLINE static bool IsRailTT() {return TT() == TRANSPORT_RAIL;}
-	FORCEINLINE bool IsTram() {return IsRoadTT() && HasBit(((const RoadVehicle *)m_veh)->compatible_roadtypes, ROADTYPE_TRAM);}
+	FORCEINLINE bool IsTram() {return IsRoadTT() && HasBit(RoadVehicle::From(m_veh)->compatible_roadtypes, ROADTYPE_TRAM);}
 	FORCEINLINE static bool IsRoadTT() {return TT() == TRANSPORT_ROAD;}
 	FORCEINLINE static bool Allow90degTurns() {return T90deg_turns_allowed_;}
 	FORCEINLINE static bool DoTrackMasking() {return IsRailTT() && Tmask_reserved_tracks;}
@@ -106,7 +106,7 @@ struct CFollowTrackT
 		m_old_tile = old_tile;
 		m_old_td = old_td;
 		m_err = EC_NONE;
-		assert(((TrackStatusToTrackdirBits(GetTileTrackStatus(m_old_tile, TT(), IsRoadTT() && m_veh != NULL ? ((const RoadVehicle *)m_veh)->compatible_roadtypes : 0)) & TrackdirToTrackdirBits(m_old_td)) != 0) ||
+		assert(((TrackStatusToTrackdirBits(GetTileTrackStatus(m_old_tile, TT(), IsRoadTT() && m_veh != NULL ? RoadVehicle::From(m_veh)->compatible_roadtypes : 0)) & TrackdirToTrackdirBits(m_old_td)) != 0) ||
 		       (IsTram() && GetSingleTramBit(m_old_tile) != INVALID_DIAGDIR)); // Disable the assertion for single tram bits
 		m_exitdir = TrackdirToExitdir(m_old_td);
 		if (ForcedReverse()) return true;
@@ -207,7 +207,7 @@ protected:
 		if (IsRailTT() && IsPlainRailTile(m_new_tile)) {
 			m_new_td_bits = (TrackdirBits)(GetTrackBits(m_new_tile) * 0x101);
 		} else {
-			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), IsRoadTT() && m_veh != NULL ? ((const RoadVehicle *)m_veh)->compatible_roadtypes : 0));
+			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), IsRoadTT() && m_veh != NULL ? RoadVehicle::From(m_veh)->compatible_roadtypes : 0));
 
 			if (IsTram() && m_new_td_bits == 0) {
 				/* GetTileTrackStatus() returns 0 for single tram bits.

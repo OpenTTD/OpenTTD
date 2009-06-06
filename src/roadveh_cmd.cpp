@@ -762,7 +762,7 @@ static RoadVehicle *RoadVehFindCloseTo(RoadVehicle *v, int x, int y, Direction d
 
 	if (++front->blocked_ctr > 1480) return NULL;
 
-	return (RoadVehicle *)rvf.best;
+	return RoadVehicle::From(rvf.best);
 }
 
 static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)

@@ -1541,7 +1541,7 @@ static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int 
 		case ROAD_TILE_DEPOT: {
 			if (v->type != VEH_ROAD) break;
 
-			RoadVehicle *rv = (RoadVehicle *)v;
+			RoadVehicle *rv = RoadVehicle::From(v);
 			if (rv->frame == RVC_DEPOT_STOP_FRAME &&
 					_roadveh_enter_depot_dir[GetRoadDepotDirection(tile)] == rv->state) {
 				rv->state = RVSB_IN_DEPOT;

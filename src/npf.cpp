@@ -425,7 +425,7 @@ static int32 NPFFindDepot(AyStar *as, OpenListNode *current)
 /** Find any safe and free tile. */
 static int32 NPFFindSafeTile(AyStar *as, OpenListNode *current)
 {
-	const Train *v = (const Train *)((NPFFindStationOrTileData*)as->user_target)->v;
+	const Train *v = Train::From(((NPFFindStationOrTileData *)as->user_target)->v);
 
 	return
 		IsSafeWaitingPosition(v, current->path.node.tile, current->path.node.direction, true, _settings_game.pf.forbid_90_deg) &&
@@ -506,7 +506,7 @@ static void NPFSaveTargetData(AyStar *as, OpenListNode *current)
 
 	if (as->user_target != NULL && ((NPFFindStationOrTileData*)as->user_target)->reserve_path && as->user_data[NPF_TYPE] == TRANSPORT_RAIL) {
 		/* Path reservation is requested. */
-		const Train *v = (const Train *)((NPFFindStationOrTileData*)as->user_target)->v;
+		const Train *v = Train::From(((NPFFindStationOrTileData *)as->user_target)->v);
 
 		const PathNode *target = FindSafePosition(&current->path, v);
 		ftd->node = target->node;

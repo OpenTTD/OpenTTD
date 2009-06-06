@@ -813,22 +813,22 @@ static void FloodVehicle(Vehicle *v)
 						/* FreeTrainTrackReservation() calls GetVehicleTrackdir() that doesn't like crashed vehicles.
 						 * In this case, v->direction matches v->u.rail.track, so we can do this (it wasn't crashed before) */
 						v->vehstatus &= ~VS_CRASHED;
-						FreeTrainTrackReservation((Train *)v);
+						FreeTrainTrackReservation(Train::From(v));
 						v->vehstatus |= VS_CRASHED;
 					}
-					((Train *)v)->crash_anim_pos = 4000; // max 4440, disappear pretty fast
+					Train::From(v)->crash_anim_pos = 4000; // max 4440, disappear pretty fast
 					InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 					break;
 
 				case VEH_ROAD:
 					if (IsRoadVehFront(v)) pass += 1; // driver
-					((RoadVehicle *)v)->crashed_ctr = 2000; // max 2220, disappear pretty fast
+					RoadVehicle::From(v)->crashed_ctr = 2000; // max 2220, disappear pretty fast
 					InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
 					break;
 
 				case VEH_AIRCRAFT:
 					pass += 2; // driver
-					((Aircraft *)v)->crashed_counter = 9000; // max 10000, disappear pretty fast
+					Aircraft::From(v)->crashed_counter = 9000; // max 10000, disappear pretty fast
 					InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
 					break;
 			}

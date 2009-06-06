@@ -54,7 +54,7 @@ private:
 
 	bool FindSafePositionProc(TileIndex tile, Trackdir td)
 	{
-		if (IsSafeWaitingPosition((const Train *)Yapf().GetVehicle(), tile, td, true, !TrackFollower::Allow90degTurns())) {
+		if (IsSafeWaitingPosition(Train::From(Yapf().GetVehicle()), tile, td, true, !TrackFollower::Allow90degTurns())) {
 			m_res_dest = tile;
 			m_res_dest_td = td;
 			return false;   // Stop iterating segment
@@ -149,7 +149,7 @@ public:
 		}
 
 		/* Don't bother if the target is reserved. */
-		if (!IsWaitingPositionFree((const Train *)Yapf().GetVehicle(), m_res_dest, m_res_dest_td)) return false;
+		if (!IsWaitingPositionFree(Train::From(Yapf().GetVehicle()), m_res_dest, m_res_dest_td)) return false;
 
 		for (Node *node = m_res_node; node->m_parent != NULL; node = node->m_parent) {
 			node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Types>::ReserveSingleTrack);
@@ -411,7 +411,7 @@ public:
 		if (target != NULL) target->tile = INVALID_TILE;
 
 		/* set origin and destination nodes */
-		PBSTileInfo origin = FollowTrainReservation((const Train *)v);
+		PBSTileInfo origin = FollowTrainReservation(Train::From(v));
 		Yapf().SetOrigin(origin.tile, origin.trackdir, INVALID_TILE, INVALID_TRACKDIR, 1, true);
 		Yapf().SetDestination(v);
 
@@ -536,9 +536,9 @@ Trackdir YapfChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection ent
 
 bool YapfCheckReverseTrain(const Vehicle *vt)
 {
-	const Train *v = (const Train *)vt;
+	const Train *v = Train::From(vt);
 	/* last wagon */
-	const Train *last_veh = (const Train *)GetLastVehicleInChain(v);
+	const Train *last_veh = Train::From(GetLastVehicleInChain(v));
 
 	/* get trackdirs of both ends */
 	Trackdir td = v->GetVehicleTrackdir();
@@ -602,7 +602,7 @@ bool YapfFindNearestRailDepotTwoWay(const Vehicle *v, int max_distance, int reve
 
 	const Vehicle *last_veh = GetLastVehicleInChain(v);
 
-	PBSTileInfo origin = FollowTrainReservation((const Train *)v);
+	PBSTileInfo origin = FollowTrainReservation(Train::From(v));
 	TileIndex last_tile = last_veh->tile;
 	Trackdir td_rev = ReverseTrackdir(last_veh->GetVehicleTrackdir());
 

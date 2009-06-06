@@ -28,6 +28,8 @@ struct Train;
 struct RoadVehicle;
 struct Ship;
 struct Aircraft;
+struct EffectVehicle;
+struct DisasterVehicle;
 
 struct BaseVehicle
 {

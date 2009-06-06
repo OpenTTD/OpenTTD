@@ -92,7 +92,7 @@ Vehicle *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
 
 	if (v->type != VEH_TRAIN) return NULL;
 
-	Train *t = (Train *)v;
+	Train *t = Train::From(v);
 	if ((t->track != rail_bits) && !TracksOverlap(t->track | rail_bits)) return NULL;
 
 	_error_message = VehicleInTheWayErrMsg(v);
@@ -1235,7 +1235,7 @@ Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
 
 	if (v->type == VEH_TRAIN && !IsArticulatedPart(v)) {
 		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
-		if (GetVehicleProperty(v, 0x0B, rvi->power) != 0) TrainPowerChanged((Train *)v->First());
+		if (GetVehicleProperty(v, 0x0B, rvi->power) != 0) TrainPowerChanged(Train::From(v)->First());
 	}
 
 	return NULL;
@@ -2461,7 +2461,7 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int
 	/* this routine applies only to trains in depot tiles */
 	if (u->type != VEH_TRAIN || !IsRailDepotTile(tile)) return VETSB_CONTINUE;
 
-	Train *v = (Train *)u;
+	Train *v = Train::From(u);
 
 	/* depot direction */
 	dir = GetRailDepotDirection(tile);
