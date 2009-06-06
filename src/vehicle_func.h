@@ -168,4 +168,6 @@ extern uint16 _returned_refit_capacity;
 bool CanVehicleUseStation(EngineID engine_type, const struct Station *st);
 bool CanVehicleUseStation(const Vehicle *v, const struct Station *st);
 
+void ReleaseDisastersTargetingVehicle(VehicleID vehicle);
+
 #endif /* VEHICLE_FUNC_H */
