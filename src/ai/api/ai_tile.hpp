@@ -303,9 +303,12 @@ public:
 	 * @param height The height of the station.
 	 * @param radius The radius of the station.
 	 * @pre AIMap::IsValidTile(tile).
+	 * @pre width > 0.
+	 * @pre height > 0.
+	 * @pre radius > 0.
 	 * @return Value below 8 means no acceptance; the more the better.
 	 */
-	static int32 GetCargoAcceptance(TileIndex tile, CargoID cargo_type, uint width, uint height, uint radius);
+	static int32 GetCargoAcceptance(TileIndex tile, CargoID cargo_type, int width, int height, int radius);
 
 	/**
 	 * Checks how many tiles in the radius produces this cargo.
@@ -317,10 +320,13 @@ public:
 	 * @param height The height of the station.
 	 * @param radius The radius of the station.
 	 * @pre AIMap::IsValidTile(tile).
+	 * @pre width > 0.
+	 * @pre height > 0.
+	 * @pre radius > 0.
 	 * @return The tiles that produce this cargo within radius of the tile.
 	 * @note Town(houses) are not included in the value.
 	 */
-	static int32 GetCargoProduction(TileIndex tile, CargoID cargo_type, uint width, uint height, uint radius);
+	static int32 GetCargoProduction(TileIndex tile, CargoID cargo_type, int width, int height, int radius);
 
 	/**
 	 * Get the manhattan distance from the tile to the tile.

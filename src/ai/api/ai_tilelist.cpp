@@ -68,9 +68,9 @@ void AITileList::RemoveTile(TileIndex tile)
 	this->RemoveItem(tile);
 }
 
-AITileList_IndustryAccepting::AITileList_IndustryAccepting(IndustryID industry_id, uint radius)
+AITileList_IndustryAccepting::AITileList_IndustryAccepting(IndustryID industry_id, int radius)
 {
-	if (!AIIndustry::IsValidIndustry(industry_id)) return;
+	if (!AIIndustry::IsValidIndustry(industry_id) || radius <= 0) return;
 
 	const Industry *i = ::Industry::Get(industry_id);
 
@@ -106,9 +106,9 @@ AITileList_IndustryAccepting::AITileList_IndustryAccepting(IndustryID industry_i
 	} END_TILE_LOOP(cur_tile, i->width + radius * 2, i->height + radius * 2, i->xy - ::TileDiffXY(radius, radius))
 }
 
-AITileList_IndustryProducing::AITileList_IndustryProducing(IndustryID industry_id, uint radius)
+AITileList_IndustryProducing::AITileList_IndustryProducing(IndustryID industry_id, int radius)
 {
-	if (!AIIndustry::IsValidIndustry(industry_id)) return;
+	if (!AIIndustry::IsValidIndustry(industry_id) || radius <= 0) return;
 
 	const Industry *i = ::Industry::Get(industry_id);
 

@@ -71,8 +71,10 @@ public:
 	/**
 	 * @param industry_id The industry to create the AITileList around.
 	 * @param radius The radius of the station you will be using.
+	 * @pre AIIndustry::IsValidIndustry(industry_id).
+	 * @pre radius > 0.
 	 */
-	AITileList_IndustryAccepting(IndustryID industry_id, uint radius);
+	AITileList_IndustryAccepting(IndustryID industry_id, int radius);
 };
 
 /**
@@ -87,8 +89,10 @@ public:
 	/**
 	 * @param industry_id The industry to create the AITileList around.
 	 * @param radius The radius of the station you will be using.
+	 * @pre AIIndustry::IsValidIndustry(industry_id).
+	 * @pre radius > 0.
 	 */
-	AITileList_IndustryProducing(IndustryID industry_id, uint radius);
+	AITileList_IndustryProducing(IndustryID industry_id, int radius);
 };
 
 /**
