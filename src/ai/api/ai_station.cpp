@@ -18,7 +18,7 @@
 /* static */ bool AIStation::IsValidStation(StationID station_id)
 {
 	const Station *st = ::Station::GetIfValid(station_id);
-	return st != NULL && st->owner == _current_company;
+	return st != NULL && (st->owner == _current_company || st->owner == OWNER_NONE);
 }
 
 /* static */ StationID AIStation::GetStationID(TileIndex tile)
