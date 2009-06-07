@@ -2786,25 +2786,125 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Tezina: 
 ########### String for New Landscape Generator
 
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Svet stvaranje
+STR_DATE                                                        :{BLACK}Datum:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Broj naselja:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Broj fabrika:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Sužava snežni pokrivač naviše za jedan
+STR_SNOW_LINE_DOWN                                              :{BLACK}Proširuje snežni pojas naniže za jedan
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Promena donjeg nivoa snežnog pojasa
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Promena početne godine
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Upozorenje o veličini
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Preterana promena veličine mape nije preporučljiva. Da li da se nastavi generisanje?
+STR_HEIGHTMAP_NAME                                              :{BLACK}Naziv visinske mape:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Veličina: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Generisanje sveta...
+STR_GENERATION_ABORT                                            :{BLACK}Prekini
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Prekida generisanje sveta
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Da li stvarno želite da prekinete generisanje?
+STR_PROGRESS                                                    :{WHITE}{NUM}% završeno
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}Svet stvaranje
+STR_TREE_GENERATION                                             :{BLACK}Postavljanje drveća
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Postavljenje nepomičnih objekata
+STR_CLEARING_TILES                                              :{BLACK}Dodavanje grubih i stenovitih područja
+STR_SETTINGUP_GAME                                              :{BLACK}Podešavanje partije
+STR_PREPARING_TILELOOP                                          :{BLACK}Razrađivanje pločica
+STR_PREPARING_GAME                                              :{BLACK}Pripremanje partije
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Ova izmena je prebacila nivo težine na sopstven
+STR_SE_FLAT_WORLD                                               :{WHITE}Ravan teren
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generiše ravan teren
+STR_SE_RANDOM_LAND                                              :{WHITE}Proizvoljan oblik terena
+STR_SE_NEW_WORLD                                                :{BLACK}Napravi novi scenarijo
+STR_SE_CAPTION                                                  :{WHITE}Vrsta scenarija
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Smanjuje visinu ravnog terena za jedan
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Povećava visinu ravnog terena za jedan
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Promena visine ravnog terena
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Visina ravnog terena:
 
+STR_SMALLMAP_CENTER                                             :{BLACK}Pozicioniraj mapu na trenutnu poziciju
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 # Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Ivice mape:
+STR_NORTHWEST                                                   :{BLACK}Severozapad
+STR_NORTHEAST                                                   :{BLACK}Severoistok
+STR_SOUTHEAST                                                   :{BLACK}Jugoistok
+STR_SOUTHWEST                                                   :{BLACK}Jugozapad
+STR_BORDER_FREEFORM                                             :{BLACK}Zemlja
+STR_BORDER_WATER                                                :{BLACK}Voda
+STR_BORDER_RANDOM                                               :{BLACK}Proizvoljno
+STR_BORDER_RANDOMIZE                                            :{BLACK}Proizvoljno
+STR_BORDER_MANUAL                                               :{BLACK}Podešeno
 
 ########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Poljski aerodrom
+STR_CITY_AIRPORT                                                :{BLACK}Gradski aerodrom
+STR_METRO_AIRPORT                                               :{BLACK}Regionalni aerodrom
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Međunarodni aerodrom
+STR_COMMUTER_AIRPORT                                            :{BLACK}Lokalni aerodrom
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinentalni aerodrom
+STR_HELIPORT                                                    :{BLACK}Helipad
+STR_HELIDEPOT                                                   :{BLACK}Helihangar
+STR_HELISTATION                                                 :{BLACK}Helidrom
 
+STR_SMALL_AIRPORTS                                              :{BLACK}Tercijarni promet
+STR_LARGE_AIRPORTS                                              :{BLACK}Sekundarni promet
+STR_HUB_AIRPORTS                                                :{BLACK}Primarni promet
+STR_HELIPORTS                                                   :{BLACK}Helidromi
 
 ############ Tooltip measurment
 
+STR_MEASURE_LENGTH                                              :{BLACK}Dužina: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Područje: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dužina: {NUM}{}Visinska razlika: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Područje: {NUM} x {NUM}{}Visinska razlika: {NUM} m
 
 ############ Date formatting
+STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_SHORT                                                  :{STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Zarada od transfera: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...ova ulica je u vlasništvu naselja
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...ulica je okrenuta u drugom pravcu
 
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Podešavanja Prozirnosti
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Promena prozirnosti naziva stanica. Sa Ctrl+Klik se zaključava.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Promena prozirnosti drveća. Sa Ctrl+Klik se zaključava.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Promena prozirnosti zgrada. Sa Ctrl+Klik se zaključava.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Promena prozirnosti fabrika. Sa Ctrl+Klik se zaključava.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Promena prozirnosti građevina poput stanica, depoa i čvorišta. Sa Ctrl+Klik se zaključava.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Promena prozirnosti mostova. Sa Ctrl+Klik se zaključava.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Promena prozirnosti građevina poput svetionika i repetitora. Sa Ctrl+Klik se zaključava.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Promena prozirnosti kontaktnih mreža. Sa Ctrl+Klik se zaključava.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Promena prozirnosti pokazatelja utovara. Sa Ctrl+Klik se zaključava.
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Čini objekte nevidljivim umesto prozirnim
 
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Grupa {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Svi vozovi
+STR_GROUP_ALL_ROADS                                             :Sva drumska vozila
+STR_GROUP_ALL_SHIPS                                             :Svi brodovi
+STR_GROUP_ALL_AIRCRAFTS                                         :Sve letilice
+STR_GROUP_DEFAULT_TRAINS                                        :Negrupisani vozovi
+STR_GROUP_DEFAULT_ROADS                                         :Negrupisana drumska vozila
+STR_GROUP_DEFAULT_SHIPS                                         :Negrupisani brodovi
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupisane letilice
 
 
 

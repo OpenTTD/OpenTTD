@@ -5,10 +5,10 @@
 ##grflangid 0x07
 ##plural 6
 ##textdir ltr
-##case m f n p
-##gender m f n p
 ##digitsep .
 ##digitsepcur .
+##case m f n p
+##gender m f n p
 
 #
 
@@ -209,7 +209,7 @@ STR_SMALLMAP_TYPE_VEGETATION                                    :Растите�
 STR_SMALLMAP_TYPE_OWNERS                                        :Владельцы
 STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}Дороги
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}Железные дороги
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}Станции/Аэропорты/Доки
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}Станции/Аэропорты/Пристани
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}Строения/Предприятия
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}Автотранспорт
 STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100м
@@ -227,7 +227,7 @@ STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFON
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Автостанция
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}Автобусная станция
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}Аэропорт/Вертодром
-STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}Док
+STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}Пристань
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}Каменистая почва
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}Трава
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}Почва
@@ -322,6 +322,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Вы д
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}В главное меню
 STR_SORT_ORDER_TIP                                              :{BLACK}Смена направления сортировки (убывание/возрастание)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Смена критерия сортировки
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Выберите фильтр
 STR_SORT_BY                                                     :{BLACK}Сортировка
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Население
@@ -395,7 +396,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Пока
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Показать финансовую информацию компании
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Показать основную информацию о компании
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Показать графики
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Показать таблицу лиги компании
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Показать рейтинги компаний
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Показать список поездов компании
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Показать список автотранспорта компании
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Показать список кораблей компании
@@ -600,7 +601,7 @@ STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Стро
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Создание города
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Новый город
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Построить новый город
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Невозможно построить город здесь...
+STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Здесь невозможно построить город...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...слишком близко к краю карты
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...слишком близко к другому городу
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...неподходящее место
@@ -640,7 +641,7 @@ STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Игра
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Играть карту высот
 STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Начать новую игру, используя карту высот в качестве шаблона карты
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Вы уверены, что хотите выйти из этого сценария?
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...можно построить в городах с населением более 1200 жителей
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...можно построить в городах с населением не менее 1200 жителей
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Уменьшить год начала игры на 1
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Увеличить год начала игры на 1
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...оба конца моста должны опираться на землю
@@ -667,7 +668,6 @@ STR_OFF                                                         :Выкл
 STR_SUMMARY                                                     :Кратко
 STR_FULL                                                        :Полно
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Список городов
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -699,11 +699,16 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Об игре
 
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Выкл
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Вкл
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Отображать субсидии
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Показать субсидии
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Субсидии
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Карта мира
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Доп. окно просмотра
 STR_MAP_MENU_SIGN_LIST                                          :Список меток
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Список городов
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Население: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Окно просмотра {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Скопировать в окно
@@ -730,6 +735,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Авто
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Интервал автосохранения игры
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Отключено
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Каждый месяц
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Каждые 3 месяца
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Каждые 6 месяцев
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Каждый год
@@ -850,7 +856,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Осно
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Выбрать осовной графический сет для использования
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Каждый месяц
 STR_AUTOSAVE_FAILED                                             :{WHITE}Ошибка автосохранения
 
 STR_MONTH_JAN                                                   :Январь
@@ -938,6 +943,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Все�
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Показывать светофоры на стороне движения: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Показывать финансовую статистику каждый год: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Новые задания будут 'без остановки' по умолчанию: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}По умолчанию поезда останавливаются {ORANGE}{STRING}{LTBLUE} станции
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :в начале
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :в середине
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :в конце
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Автотранспорт строится в очередь у станции: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Смещать обзор, когда курсор находится у края экрана: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Разрешить подкупать муниципальную власть: {ORANGE}{STRING}
@@ -1539,9 +1548,9 @@ STR_FEEDER_TINY                                                 :{TINYFONT}{YELL
 STR_FEEDER                                                      :{YELLOW}Трансфер: {CURRENCY}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Предполагаемая цена: {CURRENCY}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Предполагаемый доход: {CURRENCY}
-STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Невозможно повысить уровень земли здесь...
-STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Невозможно понизить уровень земли здесь...
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Не могу изменить уровень здесь...
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Здесь невозможно повысить уровень земли...
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Здесь невозможно понизить уровень земли...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Здесь нельзя выровнять землю...
 STR_CLEAR_LAND_DESCRIPTION_ROCKS                                :Скалы
 STR_CLEAR_LAND_DESCRIPTION_ROUGH_LAND                           :Грубая земля
 STR_CLEAR_LAND_DESCRIPTION_BARE_LAND                            :Голая земля
@@ -1566,10 +1575,10 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Элек
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Монорельс
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Магнитные поезда
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Выберите железнодорожный мост
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Невозможно построить депо здесь...
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Невозможно построить станцию здесь...
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Невозможно построить светофор здесь...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Невозможно проложить здесь рельсы...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Здесь невозможно построить депо...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Здесь невозможно построить станцию...
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Здесь невозможно построить светофор...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Здесь невозможно проложить рельсы...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Невозможно удалить рельсы...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Невозможно удалить светофор...
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Направление депо
@@ -1623,15 +1632,15 @@ STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Стро
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Трамваи
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Выберите тип моста
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... односторонние дороги не могут иметь такое пересечение
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Не могу проложить дорогу здесь...
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Здесь невозможно проложить дорогу...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Нельзя построить здесь трамвай...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Не могу удалить дорогу...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не могу удалить этот трамвай...
 STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Направление гаража
 STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Ориентация трамвайного депо
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Не могу построить гараж здесь...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Здесь невозможно построить гараж...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Не могу построить здесь трамвайное депо...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Не могу построить остановку здесь...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Здесь невозможно построить остановку...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Не могу построить грузовую станцию...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Не могу построить пассажирскую трамвайную остановку...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Не могу построить грузовую трамвайную остановку...
@@ -1681,7 +1690,7 @@ STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Население: {ORANGE}{COMMA}{BLACK}  Зданий: {ORANGE}{COMMA}
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Переименовать город
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Не могу переименовать город...
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Местная администрация города {TOWN} не допустит.
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Администрация города {TOWN} запрещает вам это делать
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Названия городов - кликните на названии для отображения города
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Отцентрировать основное окно по городу
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Переименовать город
@@ -1713,7 +1722,7 @@ STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} �
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Рейтинг транспортной компании
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсидии
-STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Свободные субсидии
+STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Предлагаемые субсидии:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING.p} по маршруту из {STRING} в {STRING}{YELLOW} (по {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}нет
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Субсидируемые маршруты:
@@ -1843,8 +1852,8 @@ STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Снач
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Станц{P 2 ия ии ий}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Нет -
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Слишком близко к другому доку
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Сначала удалите док
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Слишком близко к другой пристани
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Сначала удалите пристань
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Выберите направление ж/д станции
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Выберите число платформ ж/д станции
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Выберите длину ж/д станции
@@ -1883,7 +1892,7 @@ STR_STAT_CLASS_WAYP                                             :Точки пу
 ##id 0x3800
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Направление дока
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...должно быть построено на воде
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Невозможно построить док здесь...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Здесь невозможно построить док...
 STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Выберите направление дока
 STR_WATER_DESCRIPTION_WATER                                     :Вода
 STR_WATER_DESCRIPTION_COAST_OR_RIVERBANK                        :Морской или речной берег
@@ -1978,7 +1987,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Пока
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}Новое предприятие! {STRING} строится возле г. {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}Новое предприятие! {STRING} заложен возле г. {TOWN}!
 STR_INDUSTRY_BUILD_COST                                         :{BLACK}Цена: {YELLOW}{CURRENCY}
-STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Невозможно построить это предприятие здесь...
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Построить здесь это предприятие невозможно...
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...лес можно сажать только выше линии снега
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT}{STRING} объявляет о немедленном закрытии!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}Проблемы с поставками вынуждают {STRING} объявить о неизбежном закрытии!
@@ -2013,8 +2022,8 @@ STR_BRIDGE_NAME_WOODEN                                          :Деревян�
 STR_BRIDGE_NAME_CONCRETE                                        :Бетонный
 STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Трубчатый, Стальной
 STR_BRIDGE_TUBULAR_SILICON                                      :Трубчатый, Силиконовый
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Не могу построить мост здесь...
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Не могу построить туннель здесь...
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Здесь невозможно построить мост...
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Здесь невозможно построить туннель...
 STR_TUNNEL_DESCRIPTION_RAILROAD                                 :Железнодорожный туннель
 STR_TUNNEL_DESCRIPTION_ROAD                                     :Автомобильный туннель
 STR_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                    :Стальной подвесной ж/д мост
@@ -2096,13 +2105,13 @@ STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Сохр
 
 ############ range for difficulty levels starts
 STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Лёгкий
-STR_DIFFICULTY_LEVEL_EASY.f                                                 :{BLACK}лёгкая
+STR_DIFFICULTY_LEVEL_EASY.f                                     :{BLACK}лёгкая
 STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Средний
-STR_DIFFICULTY_LEVEL_MEDIUM.f                                               :{BLACK}средняя
+STR_DIFFICULTY_LEVEL_MEDIUM.f                                   :{BLACK}средняя
 STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Тяжёлый
-STR_DIFFICULTY_LEVEL_HARD.f                                                 :{BLACK}тяжёлая
+STR_DIFFICULTY_LEVEL_HARD.f                                     :{BLACK}тяжёлая
 STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Пользов.
-STR_DIFFICULTY_LEVEL_CUSTOM.f                                               :{BLACK}пользов.
+STR_DIFFICULTY_LEVEL_CUSTOM.f                                   :{BLACK}пользов.
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
@@ -2138,16 +2147,16 @@ STR_AI_SPEED_MEDIUM                                             :Средняя
 STR_AI_SPEED_FAST                                               :Быстрая
 STR_AI_SPEED_VERY_FAST                                          :Очень быстрая
 STR_SEA_LEVEL_VERY_LOW                                          :Очень низкий
-STR_SEA_LEVEL_VERY_LOW.n                                                  :Очень низкое
+STR_SEA_LEVEL_VERY_LOW.n                                        :Очень низкое
 STR_SEA_LEVEL_LOW                                               :Низкий
-STR_SEA_LEVEL_LOW.n                                                  :низкое
-STR_SEA_LEVEL_LOW.p                                                  :Низкие
+STR_SEA_LEVEL_LOW.n                                             :низкое
+STR_SEA_LEVEL_LOW.p                                             :Низкие
 STR_SEA_LEVEL_MEDIUM                                            :Средний
-STR_SEA_LEVEL_MEDIUM.n                                               :среднее
-STR_SEA_LEVEL_MEDIUM.p                                               :Средние
+STR_SEA_LEVEL_MEDIUM.n                                          :среднее
+STR_SEA_LEVEL_MEDIUM.p                                          :Средние
 STR_SEA_LEVEL_HIGH                                              :Высокий
-STR_SEA_LEVEL_HIGH.n                                                 :высокое
-STR_SEA_LEVEL_HIGH.p                                                 :Высокие
+STR_SEA_LEVEL_HIGH.n                                            :высокое
+STR_SEA_LEVEL_HIGH.p                                            :Высокие
 STR_DISASTER_NONE                                               :Выключено
 STR_DISASTER_REDUCED                                            :Умеренная
 STR_DISASTER_NORMAL                                             :Обычная
@@ -2216,7 +2225,7 @@ STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Отда
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...максимально допустимый размер ссуды - {CURRENCY}.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Невозможно занять больше денег...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...нет ссуды для выплачивания
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY} надо
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY} требуется
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Невозможно погасить ссуду...
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}Невозможно отдать ссуженные банком деньги...
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Выбрать новое лицо директора
@@ -2618,6 +2627,9 @@ STR_ORDER_GO_TO                                                 :Идти на
 STR_ORDER_GO_NON_STOP_TO                                        :Идти без остановки на
 STR_ORDER_GO_VIA                                                :Идти через
 STR_ORDER_GO_NON_STOP_VIA                                       :Идти без остановки через
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[начало станции]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[середина станции]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[конец станции]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Полн. загр. любым грузом
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Погрузить если доступно
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Полная загрузка всего груза
@@ -2906,7 +2918,7 @@ STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Выбе
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Строительство водных путей
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Строительство водных путей
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Водные пути
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Невозможно построить пристань здесь...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Здесь невозможно построить пристань...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Док {TOWN}
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Новое судно
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Корабл{P 2 ь я ей}
@@ -2965,7 +2977,7 @@ STR_REFITTABLE                                                  :(переоб.)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Аэропорты
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Невозможно построить аэропорт здесь...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Здесь невозможно построить аэропорт...
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}Ангар {STATION}
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Новое судно
 STR_CLONE_AIRCRAFT                                              :{BLACK}Копировать
@@ -3135,7 +3147,7 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Про�
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Снятие с паузы может привести к ошибке OpenTTD.{}Вы хотите запустить игру?
 
 STR_NEWGRF_BROKEN                                               :{WHITE}Поведение строки '{STRING}' файла NewGRF может привести к потере синхронизации и вылету игры.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Меняется длина транспорта '{1:ENGINE}' находящегося вне депо.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Меняется длина транспорта '{1:ENGINE}', находящегося вне депо.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Поезд '{VEHICLE}' принадлежащий '{COMPANY}' имеет неправильную длину. Вероятно, это вызвано проблемами в файле новой графики. Игра может рассинхронизироваться или вылететь.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' указывает неверную информацию.

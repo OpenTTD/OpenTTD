@@ -321,6 +321,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ertu vi
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Hætta leik
 STR_SORT_ORDER_TIP                                              :{BLACK}Velja uppröðun (minnkandi/stækkandi)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Velja uppröðun
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Veldu hvers kyns farartæki þú vilt kaupa
 STR_SORT_BY                                                     :{BLACK}Flokka eftir
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Fólksfjöldi
@@ -343,6 +344,8 @@ STR_SORT_BY_LENGTH                                              :Lengd
 STR_SORT_BY_LIFE_TIME                                           :Líftími eftir
 STR_SORT_BY_FACILITY                                            :Tegund stöðvar
 STR_SORT_BY_WAITING                                             :Verðgildi farms á stöð
+STR_SORT_BY_RATING_MAX                                          :Hæsta einkunn stöðvar
+STR_SORT_BY_RATING_MIN                                          :Lægsta einkunn stöðvar
 STR_ENGINE_SORT_ENGINE_ID                                       :Einkenni (hefðbundin röðun)
 STR_ENGINE_SORT_COST                                            :Kostnaður
 STR_ENGINE_SORT_POWER                                           :Afl
@@ -357,7 +360,7 @@ STR_AVAILABLE_TRAINS                                            :{BLACK}Lestaúr
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Bifreiðaúrval
 STR_AVAILABLE_SHIPS                                             :{BLACK}Skipaúrval
 STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Flugvélaúrval
-STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Skoða lista yfir tegundir í boði af þessari gerð farartækja
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Skoða úrval
 STR_MANAGE_LIST                                                 :{BLACK}Stýra lista
 STR_MANAGE_LIST_TIP                                             :{BLACK}Senda boð til allra farartækja á listanum
 STR_REPLACE_VEHICLES                                            :Skipta út vögnum
@@ -403,7 +406,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Þrengja
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Víkka sýnishorn
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Leggja lestartein
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Leggja veg
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Byggja höfn
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Byggja bryggju
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Byggja flugvöll
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Gróðursetja tré, setja skilti o.s.frv.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landssvæðisupplýsingar
@@ -558,7 +561,7 @@ STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Framlei
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Framleiðslubreytingar fyrirtækja þjónustuð af mótherjum
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Aðrar framleiðslubreytingar
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Ráð / upplýsingar um faratæki fyrirtækisins
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Kaupa lestarvagna
+STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Ný farartæki
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Breyting á viðtöku farms
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Samstarfssamningar
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Almennar upplýsingar
@@ -871,8 +874,8 @@ STR_MONTH_OCT                                                   :Október
 STR_MONTH_NOV                                                   :Nóvember
 STR_MONTH_DEC                                                   :Desember
 
-STR_HEADING_FOR_STATION                                         :{LTBLUE}Stefnir að {STATION}
-STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Stefnir að {STATION}, {VELOCITY}
+STR_HEADING_FOR_STATION                                         :{LTBLUE}Á leið til {STATION}
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Á leið til {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Engar skipanir
 STR_NO_ORDERS_VEL                                               :{LTBLUE}Engar skipanir, {VELOCITY}
 
@@ -943,6 +946,7 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Sýna a
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Sýna umferðarljós akstursmegin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Sýna fjármálaglugga í lok árs: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nýjar skipanir eru "hraðleiðar" sem sjálfgildi {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Við nýja áfangastaði stöðva lestir sjálfgefið við {ORANGE}{STRING}{LTBLUE} brautarpallsins
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :upphaf
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :miðju
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :enda
@@ -1179,8 +1183,8 @@ STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Skipta 
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Breyta dagsetningu: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Leyfa breytingar á verðmæti framleiðslu: {ORANGE}{STRING}
 
-STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Á leiðinni til {WAYPOINT}
-STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Á leiðinni til {WAYPOINT}, {VELOCITY}
+STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Á leið til {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Á leið til {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT                                              :Fara með {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Ekki stöðva á {WAYPOINT}
@@ -1554,7 +1558,7 @@ STR_CLEAR_LAND_DESCRIPTION_ROCKS                                :Klettar
 STR_CLEAR_LAND_DESCRIPTION_ROUGH_LAND                           :Hrjúft land
 STR_CLEAR_LAND_DESCRIPTION_BARE_LAND                            :Bert land
 STR_CLEAR_LAND_DESCRIPTION_GRASS                                :Gras
-STR_CLEAR_LAND_DESCRIPTION_FIELDS                               :Akrir
+STR_CLEAR_LAND_DESCRIPTION_FIELDS                               :Akur
 STR_CLEAR_LAND_DESCRIPTION_SNOW_COVERED_LAND                    :Snjóþekið land
 STR_CLEAR_LAND_DESCRIPTION_DESERT                               :Eyðimörk
 
@@ -1851,8 +1855,8 @@ STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Verður 
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stöðvar
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ekkert -
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Of nálægt annarri höfn
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Verður að eyða höfn fyrst
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Of nálægt annarri bryggju
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Verður að eyða bryggjunni fyrst
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Veldu stöðu lestarstöðvar
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Veldu fjölda lestarspora á lestarstöð
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Veldu lengd lestarstöðvar
@@ -1868,12 +1872,12 @@ STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nöfn st
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Veldu stærð/tegund flugvallar
 STR_STATION_SIGN                                                :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
-STR_STATION_DESCRIPTION_RAILROAD_STATION                        :Lestarstöð
+STR_STATION_DESCRIPTION_RAILROAD_STATION                        :Lestastöð
 STR_STATION_DESCRIPTION_AIRCRAFT_HANGAR                         :Flugskýli
 STR_STATION_DESCRIPTION_AIRPORT                                 :Flugvöllur
 STR_STATION_DESCRIPTION_TRUCK_LOADING_AREA                      :Vörubílastöð
 STR_STATION_DESCRIPTION_BUS_STATION                             :Strætisvagnastöð
-STR_STATION_DESCRIPTION_SHIP_DOCK                               :Skipahöfn
+STR_STATION_DESCRIPTION_SHIP_DOCK                               :Bryggja
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Sýna svæði sem tilheyrir stöð
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Ekki sýna svæði sem tilheyrir stöð
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Svæði sem tilheyrir stöð
@@ -1896,7 +1900,7 @@ STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Velja st
 STR_WATER_DESCRIPTION_WATER                                     :Vatn
 STR_WATER_DESCRIPTION_COAST_OR_RIVERBANK                        :Strönd
 STR_WATER_DESCRIPTION_SHIP_DEPOT                                :Slippur
-STR_BRIDGE_DESCRIPTION_AQUEDUCT                                 :Vatnsleyðsla
+STR_BRIDGE_DESCRIPTION_AQUEDUCT                                 :Vatnsleiðsla
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Get ekki byggt á vatni
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Verður að fylla upp í skipaskurð fyrst
 
@@ -2037,7 +2041,7 @@ STR_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                    :Stálsvifbitabr
 STR_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE                 :Styrkt steypuhengibrú, vegur
 STR_BRIDGE_DESCRIPTION_ROAD_WOODEN                              :Viðarbrú, vegur
 STR_BRIDGE_DESCRIPTION_ROAD_CONCRETE                            :Stepubrú, vegur
-STR_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                       :Rörabrú, lest
+STR_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                       :Rörabrú, lestir
 STR_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                       :Rörabrú, vegur
 
 ##id 0x5800
@@ -2183,18 +2187,18 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ekki hæ
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Fjármál {BLACK}{COMPANYNUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Útgjöld/Tekjur
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
-STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Bygging
-STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Kaupa bifreiðar
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Rekstrarkostnaður lesta
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Rekstrarkostnaður bifreiða
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Rekstrarkostnaður flugvéla
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Rekstrarkostnaður skipa
+STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Framkvæmdir
+STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Ný farartæki
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Rekstur lesta
+STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Rekstur bifreiða
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Rekstur flugvéla
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Rekstur skipa
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Viðhald eigna
-STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Tekjur vegna lesta
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Tekjur vegna bifreiða
-STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Tekjur vegna flugvéla
-STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Tekjur vegna skipa
-STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Lánsvextir
+STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Tekjur lesta
+STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Tekjur bifreiða
+STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Tekjur flugvéla
+STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Tekjur skipa
+STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Vextir lána
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Annað
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
@@ -2605,7 +2609,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :einteinungslest
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :segul lest
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Lestar Bygging
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} lestaskýli
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsta lest kemur við á {STATION}!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Upplýsingar)
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Lest fyrir
@@ -2698,8 +2702,8 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :og ferðast í 
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" a}
 STR_TIMETABLE_TICKS                                             :{COMMA} sl{P ag ög}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Á leið í {TOWN} Lestar Byggingu
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Á leið í {TOWN} Lestar Byggingu, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Á leið í {TOWN} lestaskýli
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Á leið í {TOWN} lestaskýli, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Viðhald í {TOWN} lestaskýli
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Viðhald í {TOWN} lestaskýli, {VELOCITY}
 
@@ -2710,13 +2714,13 @@ STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Tómt
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} frá {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} frá {STATION} (x{NUM})
 STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} bíður í þjónustumiðstöð
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Ný faratæki
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Kaupa lest
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Lestin er of löng
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Aðeins er hægt að eiga við lestir þegar þær bíða í skýli
 STR_VEHICLE_LIST_CAPTION_TRAINS                                 :{WHITE}{COMPANY} - {COMMA} Lestir
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nýir lestarvagnar
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Lestaúrval
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nýjir rafdrifnir lestarvagnar
 STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nýir einteingungsvagnar
 STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nýir segullestarvagnar
@@ -2774,7 +2778,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Skoðana
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Skoðanamillibil: {LTBLUE}{COMMA}%{BLACK}   Seinasta skoðun: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Lestir - smelltu á lest fyrir nánari upplýsingar
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Lestir - ýttu á lest fyrir uppl., dragðu farartæki til að bæta við/fjarlægja úr lest
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kaupa nýja lestarvagna
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kaupa nýja lest
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Dragðu lestarvagn hingað til að selja hann
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Miðstilla sjónarhorn á staðsetningu lestarskýlis
 STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Lestarlisti - smelltu á farartæki fyrir meiri upplýsingar
@@ -2808,7 +2812,9 @@ STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Verð: {
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY}/yr
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Hámarkshraði: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Þyngd: {LTBLUE}{WEIGHT_S} {BLACK}Afl: {LTBLUE}{POWER}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Þyngd: {LTBLUE}{WEIGHT_S} {BLACK}Afl: {LTBLUE}{POWER}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY} {BLACK}Hámarks dráttarafl.: {LTBLUE}{FORCE}
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Hagnaður í ár: {LTBLUE}{CURRENCY} (síðasta ár: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu skoðun: {LTBLUE}{COMMA}
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Framleiðsluár: {LTBLUE}{NUM}{BLACK} Verðgildi: {LTBLUE}{CURRENCY}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Burðargeta: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Burðargeta: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
@@ -2858,8 +2864,8 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Bæta á
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Bíll fyrir
 STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Bílar
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} bifreiðastöð
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Kaupa bifreiðar
+STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} bifreiðaskýli
+STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Kaupa bifreið
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Bifreiðaúrval
 STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Kaupa bifreið
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Get ekki byggt bíl...
@@ -2867,8 +2873,8 @@ STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...verð
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Get ekki selt bifreið...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Get ekki stöðvað/ræst bifreið...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} bíður í þjónustumiðstöð
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Er á leið til bifreiðaskýlis {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Er á leið til bifreiðaskýlis {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Á leið í {TOWN} bifreiðaskýli
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Á leið í {TOWN} bifreiðaskýli, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Viðhald í {TOWN} bifreiðaskýli
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Viðhald í {TOWN} bifreiðaskýli, {VELOCITY}
 STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Get ekki sent bifreið í skýli...
@@ -2915,14 +2921,14 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Get ekki
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Veldu tegund farms sem bifreið mun flytja
 
 ##id 0x9800
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Skipaskurður í byggingu
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Skipaskurður í byggingu
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Vatnaframkvæmdir
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Vatnaframkvæmdir
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Skipaskurður
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Get ekki byggt höfn hér...
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Slippur
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Ný skip
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Get ekki byggt bryggju hér...
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} slippur
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Kaupa skip
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Skip
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Ný skip
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Skipaúrval
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Kaupa skip
 STR_CLONE_SHIP                                                  :{BLACK}Afrita skip
 STR_CLONE_SHIP_INFO                                             :{BLACK}Þetta býr til annað eins skip. Control smelltu til að deila áætlun
@@ -2933,12 +2939,12 @@ STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Get ekki
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Skip er fyrir
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Get ekki stöðvað/ræst skip...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Get ekki sent skip í slipp...
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Stefnir að {TOWN} slippi
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Stefnir að {TOWN} slippi, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Á leið í {TOWN} slipp
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Á leið í {TOWN} slipp, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Viðhald í {TOWN} slippi
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Viðhald í {TOWN} slippi, {VELOCITY}
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} bíður í þjónustumiðstöð
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Byggja höfn
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Byggja bryggju
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Reisa slipp (til að smíða og viðhalda skipum)
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skip - smelltu á skip fyrir nánari upplýsingar
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Kaupa nýtt skip
@@ -2978,18 +2984,18 @@ STR_REFITTABLE                                                  :(breytanlegt)
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Flugvellir
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Get ekki byggt flugvöll hér...
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Flugskýli
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nýja flugvél
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} flugskýli
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Kaupa flugvél
 STR_CLONE_AIRCRAFT                                              :{BLACK}Afrita flugvél
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Þetta býr til aðra eins flugvél. Control smelltu til að deila áætlun
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Þetta býr til aðra flugvél sem er eins og sú sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á flugvélina. Control smelltu til að deila áætlun
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Ný flugvél
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Flugvélaúrval
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Kaupa flugvél
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Get ekki smíðað flugvél...
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Flugvél
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Get ekki sent flugvél í flugskýli...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}Stefnir á {STATION} flugskýli
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Stefnir á {STATION} flugskýli, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Á leið í {STATION} flugskýli
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Á leið í {STATION} flugskýli, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Viðhald í {STATION} flugskýli
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Viðhald í {STATION} flugskýli, {VELOCITY}
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} bíður í flugskýlinu
@@ -3152,6 +3158,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Lest '{V
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Rangar upplýsingar fylgja '{0:STRING}' NewGRF.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Farm/breytingaupplýsingar fyrir '{1:ENGINE}' stangast á við innkaupalista eftir kaup. Þetta kann að valda því að sjálfvirk uppfærsla/útskipting mistakist.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' olli endalausri lykkju í framleiðsluferlinu.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Leikurinn var vistaður í útgáfu án sporvagna. Allir sporvagnar hafa verið fjarlægðir.
 
@@ -3173,6 +3180,7 @@ STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Veldu vi
 STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Skipta fyr yfir í evru
 STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Skipta síðar yfir í evru
 STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Veldu ártal fyrir evruskipti
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10.000 pund (£) í þessum gjaldmiðli
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3447,7 +3455,7 @@ STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Get ekki
 STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Hópar - Smelltu á hóp til að skrifa öll farartæki í þessum hóp
 STR_GROUP_CREATE_TIP                                            :{BLACK}Smelltu til að búa til hóp
 STR_GROUP_DELETE_TIP                                            :{BLACK}Eyða völdum hóp
-STR_GROUP_RENAME_TIP                                            :{BLACK}Endurnefna valdan hóp
+STR_GROUP_RENAME_TIP                                            :{BLACK}Endurnefna valinn hóp
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Smelltu til að halda þessum hóp frá sjálfvirkri uppfærslu
 
 STR_COMPANY_NAME                                                :{COMPANY}

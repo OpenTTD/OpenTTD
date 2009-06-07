@@ -855,6 +855,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Electsay
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Asebay aphicsgray etsay
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Electsay ethay asebay aphicsgray etsay otay useway
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} issingmay/orruptedcay ile{P "" s}fay
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Additionalway informationway aboutway ethay asebay aphicsgray etsay
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosaveway ailedfay
 
