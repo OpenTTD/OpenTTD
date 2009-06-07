@@ -60,9 +60,8 @@ struct TileSpriteToDraw {
 	SpriteID image;
 	SpriteID pal;
 	const SubSprite *sub;           ///< only draw a rectangular part of the sprite
-	int32 x;
-	int32 y;
-	byte z;
+	int32 x;                        ///< screen X coordinate of sprite
+	int32 y;                        ///< screen Y coordinate of sprite
 };
 
 struct ChildScreenSpriteToDraw {
@@ -456,13 +455,15 @@ void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte 
  *
  * @param image the image to draw.
  * @param pal the provided palette.
- * @param x position x of the sprite.
- * @param y position y of the sprite.
- * @param z position z of the sprite.
+ * @param x position x (world coordinates) of the sprite.
+ * @param y position y (world coordinates) of the sprite.
+ * @param z position z (world coordinates) of the sprite.
  * @param sub Only draw a part of the sprite.
+ * @param extra_offs_x Pixel X offset for the sprite position.
+ * @param extra_offs_y Pixel Y offset for the sprite position.
  *
  */
-void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z, const SubSprite *sub)
+void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z, const SubSprite *sub, int extra_offs_x, int extra_offs_y)
 {
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
@@ -470,9 +471,9 @@ void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z, 
 	ts->image = image;
 	ts->pal = pal;
 	ts->sub = sub;
-	ts->x = x;
-	ts->y = y;
-	ts->z = z;
+	Point pt = RemapCoords(x, y, z);
+	ts->x = pt.x + extra_offs_x;
+	ts->y = pt.y + extra_offs_y;
 }
 
 /**
@@ -510,16 +511,18 @@ static void AddChildSpriteToFoundation(SpriteID image, SpriteID pal, const SubSp
  * @param image the image to draw.
  * @param pal the provided palette.
  * @param sub Only draw a part of the sprite.
+ * @param extra_offs_x Pixel X offset for the sprite position.
+ * @param extra_offs_y Pixel Y offset for the sprite position.
  */
-void DrawGroundSprite(SpriteID image, SpriteID pal, const SubSprite *sub)
+void DrawGroundSprite(SpriteID image, SpriteID pal, const SubSprite *sub, int extra_offs_x, int extra_offs_y)
 {
 	/* Switch to first foundation part, if no foundation was drawn */
 	if (_vd.foundation_part == FOUNDATION_PART_NONE) _vd.foundation_part = FOUNDATION_PART_NORMAL;
 
 	if (_vd.foundation[_vd.foundation_part] != -1) {
-		AddChildSpriteToFoundation(image, pal, sub, _vd.foundation_part, 0, 0);
+		AddChildSpriteToFoundation(image, pal, sub, _vd.foundation_part, extra_offs_x, extra_offs_y);
 	} else {
-		DrawGroundSpriteAt(image, pal, _cur_ti->x, _cur_ti->y, _cur_ti->z, sub);
+		DrawGroundSpriteAt(image, pal, _cur_ti->x, _cur_ti->y, _cur_ti->z, sub, extra_offs_x, extra_offs_y);
 	}
 }
 
@@ -1300,8 +1303,7 @@ static void ViewportDrawTileSprites(const TileSpriteToDrawVector *tstdv)
 {
 	const TileSpriteToDraw *tsend = tstdv->End();
 	for (const TileSpriteToDraw *ts = tstdv->Begin(); ts != tsend; ++ts) {
-		Point pt = RemapCoords(ts->x, ts->y, ts->z);
-		DrawSprite(ts->image, ts->pal, pt.x, pt.y, ts->sub);
+		DrawSprite(ts->image, ts->pal, ts->x, ts->y, ts->sub);
 	}
 }
 
