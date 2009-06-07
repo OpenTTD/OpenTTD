@@ -938,7 +938,7 @@ common_call:
 					traps -= ci->_etraps;
 					if(sarg1 != MAX_FUNC_STACKSIZE) STK(arg1) = temp_reg;
 				}
-				else { Raise_Error(_SC("trying to yield a '%s',only genenerator can be yielded"), GetTypeName(ci->_generator)); SQ_THROW();}
+				else { Raise_Error(_SC("trying to yield a '%s',only genenerator can be yielded"), GetTypeName(ci->_closure)); SQ_THROW();}
 				if(Return(arg0, arg1, temp_reg)){
 					assert(traps == 0);
 					outres = temp_reg;
