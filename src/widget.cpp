@@ -1428,6 +1428,7 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 				num_changing_childs--;
 				if (hor_step > 1) increment -= increment % hor_step;
 				child_wid->current_x = child_wid->smallest_x + increment;
+				additional_length -= increment;
 				continue;
 			}
 			next_biggest_stepsize = max(next_biggest_stepsize, hor_step);
@@ -1560,6 +1561,7 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 				num_changing_childs--;
 				if (vert_step > 1) increment -= increment % vert_step;
 				child_wid->current_y = child_wid->smallest_y + increment;
+				additional_length -= increment;
 				continue;
 			}
 			next_biggest_stepsize = max(next_biggest_stepsize, vert_step);
