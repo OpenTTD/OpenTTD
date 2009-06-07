@@ -995,8 +995,8 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		/* draw ramp */
 
-		/* Draw Trambits as SpriteCombine */
-		if (transport_type == TRANSPORT_ROAD) StartSpriteCombine();
+		/* Draw Trambits and PBS Reservation as SpriteCombine */
+		if (transport_type == TRANSPORT_ROAD || transport_type == TRANSPORT_RAIL) StartSpriteCombine();
 
 		/* HACK set the height of the BB of a sloped ramp to 1 so a vehicle on
 		 * it doesn't disappear behind it
@@ -1030,6 +1030,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			}
 			EndSpriteCombine();
 		} else if (transport_type == TRANSPORT_RAIL) {
+			EndSpriteCombine();
 			if (HasCatenaryDrawn(GetRailType(ti->tile))) {
 				DrawCatenary(ti);
 			}
