@@ -1,6 +1,6 @@
 OpenTTD README
-Last updated:    2009-03-10
-Release version: 0.7.0-beta2
+Last updated:    2009-06-09
+Release version: 0.7.1
 ------------------------------------------------------------------------
 
 
@@ -253,8 +253,8 @@ features known from TTDPatch (http://www.ttdpatch.net/).
 
 Several important non-standard controls:
 
-* Ctrl makes much commands more powerful. For example Ctrl clicking on signals
-  with the build signal tool on signals changes their behaviour.
+* Ctrl makes many commands more powerful. For example Ctrl clicking on signals
+  with the build signal tool changes their behaviour.
 * Ingame console. More information at
   http://wiki.openttd.org/index.php/Console
 * Right clicking shows tooltips

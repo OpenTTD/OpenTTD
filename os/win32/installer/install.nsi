@@ -1,11 +1,11 @@
 !define APPNAME "OpenTTD"   ; Define application name
-!define APPVERSION "0.7.0"  ; Define application version
-!define INSTALLERVERSION 55 ; NEED TO UPDATE THIS FOR EVERY RELEASE!!!
+!define APPVERSION "0.7.1"  ; Define application version
+!define APPVERSIONINTERNAL "0.7.1.0" ; Define application version in X.X.X.X
+!define INSTALLERVERSION 62 ; NEED TO UPDATE THIS FOR EVERY RELEASE!!!
 !include ${VERSION_INCLUDE}
 
 !define APPURLLINK "http://www.openttd.org"
 !define APPNAMEANDVERSION "${APPNAME} ${APPVERSION}"
-!define APPVERSIONINTERNAL "${APPVERSION}.0" ; Needs to be of the format X.X.X.X
 
 !define MUI_ICON "..\..\..\media\openttd.ico"
 !define MUI_UNICON "..\..\..\media\openttd.ico"
@@ -112,13 +112,6 @@ Section "!OpenTTD" Section1
 	File ${PATH_ROOT}bin\data\*.grf
 	File ${PATH_ROOT}bin\data\*.obg
 	File ${PATH_ROOT}bin\data\opntitle.dat
-	; Copy scenario files (don't choke if they don't exist)
-	SetOutPath "$INSTDIR\scenario\"
-	File /nonfatal ${PATH_ROOT}bin\scenario\*.scn
-
-	; Copy heightmap files (don't choke if they don't exist)
-	SetOutPath "$INSTDIR\scenario\heightmap\"
-	File /nonfatal ${PATH_ROOT}bin\scenario\heightmap\*.*
 
 	; Copy the scripts
 	SetOutPath "$INSTDIR\scripts\"
