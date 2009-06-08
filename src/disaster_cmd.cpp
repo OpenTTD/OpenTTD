@@ -323,10 +323,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 	} else {
 		/* Target a vehicle */
 		u = GetVehicle(v->dest_tile);
-		if (u->type != VEH_ROAD || !IsRoadVehFront(u)) {
-			delete v;
-			return;
-		}
+		assert(u->type == VEH_ROAD && IsRoadVehFront(u));
 
 		dist = Delta(v->x_pos, u->x_pos) + Delta(v->y_pos, u->y_pos);
 
@@ -1025,6 +1022,26 @@ void ReleaseDisastersTargetingIndustry(IndustryID i)
 		if (v->type == VEH_DISASTER && (v->subtype == ST_AIRPLANE || v->subtype == ST_HELICOPTER)) {
 			/* if it has chosen target, and it is this industry (yes, dest_tile is IndustryID here), set order to "leaving map peacefully" */
 			if (v->current_order.GetDestination() > 0 && v->dest_tile == i) v->current_order.SetDestination(3);
+		}
+	}
+}
+
+/** Notify disasters that we are about to delete a vehicle. So make them head elsewhere.
+ * @param vehicle deleted vehicle
+ */
+void ReleaseDisastersTargetingVehicle(VehicleID vehicle)
+{
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		/* primary disaster vehicles that have chosen target */
+		if (v->type == VEH_DISASTER && v->subtype == ST_SMALL_UFO) {
+			if (v->current_order.GetDestination() != 0 && v->dest_tile == vehicle) {
+				/* Revert to target-searching */
+				v->current_order.SetDestination(0);
+				v->dest_tile = RandomTile();
+				v->z_pos = 135;
+				v->age = 0;
+			}
 		}
 	}
 }

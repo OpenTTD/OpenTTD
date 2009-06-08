@@ -189,8 +189,12 @@ SQSharedState::~SQSharedState()
 	SQCollectable *t = _gc_chain;
 	SQCollectable *nx = NULL;
 	while(t) {
-		t->UnMark();
 		t->_uiRef++;
+		t = t->_next;
+	}
+	t = _gc_chain;
+	while(t) {
+		t->UnMark();
 		t->Finalize();
 		nx = t->_next;
 		if(--t->_uiRef == 0)

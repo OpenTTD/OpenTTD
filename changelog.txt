@@ -1,3 +1,16 @@
+0.7.1 (2009-06-09)
+------------------------------------------------------------------------
+- Fix: When finding duplicate graphics sets favour the more complete one (r16538)
+- Fix: [Squirrel] Crash that occured when an AI was halted while one or more generators were still in a 'running' state [FS#2942] (r16534)
+- Fix: [Squirrel] Do not copy an object when we just checked that the pointer to it is NULL (r16532)
+- Fix: Notify small UFOs on deletion of road vehicles, so they can head for somewhere else instead of stumbling over a ghost (r16525)
+- Fix: [NoAI] StationIDs from oilrigs were not considered valid by the API (r16529)
+- Fix: Draw PBS reservation as groundsprite resp. childsprite of foundation/bridgehead [FS#2959] (r16528)
+- Fix: Missing guards in the NoAI API making it possible to hit an assert in OpenTTD [FS#2963] (r16524)
+- Fix: [NoAI] Possible assert in AI debug window when an AI was stopped and a human company took its CompanyID [FS#2962] (r16522)
+- Fix: [NoAI] Make sure AIBridge::BuildBridge returns what the documentation says it does (r16520)
+
+
 0.7.1-RC3 (2009-06-03)
 ------------------------------------------------------------------------
 - Add: [NoAI] AISignList that can be used to get a list of valid signs (r16400)

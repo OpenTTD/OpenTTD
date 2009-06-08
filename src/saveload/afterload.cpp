@@ -8,6 +8,7 @@
 #include "../window_func.h"
 #include "../fios.h"
 #include "../train.h"
+#include "../roadveh.h"
 #include "../string_func.h"
 #include "../gamelog.h"
 #include "../network/network.h"
@@ -1819,6 +1820,19 @@ bool AfterLoadGame()
 		FOR_ALL_WAYPOINTS(wp) {
 			Owner owner = IsTileType(wp->xy, MP_RAILWAY) ? GetTileOwner(wp->xy) : OWNER_NONE;
 			wp->owner = IsValidCompanyID(owner) ? owner : OWNER_NONE;
+		}
+	}
+
+	if (CheckSavegameVersion(121)) {
+		/* Delete small ufos heading for non-existing vehicles */
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_DISASTER && v->subtype == 2/*ST_SMALL_UFO*/ && v->current_order.GetDestination() != 0) {
+				const Vehicle *u = IsValidVehicleID(v->dest_tile) ? GetVehicle(v->dest_tile) : NULL;
+				if (u == NULL || u->type != VEH_ROAD || !IsRoadVehFront(u)) {
+					delete v;
+				}
+			}
 		}
 	}
 

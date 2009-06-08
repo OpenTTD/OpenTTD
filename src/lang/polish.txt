@@ -2884,12 +2884,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Usuń il
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj licznik spóźnienia, aby pojazd podróżował zgodnie z rozkładem jazdy
 STR_SERVICE_HINT                                                :{BLACK}Pomiń to polecenie jesli serwis nie jest wymagany
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koszt: {CURRENCY} Waga: {WEIGHT_S}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Utrzymanie: {CURRENCY}/rok{}Pojemność: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Awaria
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Waga: {LTBLUE}{WEIGHT_S}  {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Max. prędkość: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Waga: {LTBLUE}{WEIGHT_S} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Max. prędkość: {LTBLUE}{VELOCITY} {BLACK}Max. S.P.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY}  (w ostatnim roku: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
+STR_885C_BROKEN_DOWN                                            :{RED}Zepsuty
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
 STR_8861_STOPPED                                                :{RED}Zatrzymany
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Nie można przepościć pociągu za sygnał, niebezpieczeństwo...
 STR_8863_CRASHED                                                :{RED}Wypadek!

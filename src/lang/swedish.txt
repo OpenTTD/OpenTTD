@@ -665,7 +665,6 @@ STR_OFF                                                         :Av
 STR_SUMMARY                                                     :Summering
 STR_FULL                                                        :Full
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Lista med städer
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -703,6 +702,7 @@ STR_02DE_MAP_OF_WORLD                                           :Världskarta
 STR_EXTRA_VIEW_PORT                                             :Nytt vyfönster
 STR_SIGN_LIST                                                   :Skyltlista
 STR_02DF_TOWN_DIRECTORY                                         :Stadslista
+STR_02BB_TOWN_DIRECTORY                                         :Lista med städer
 STR_TOWN_POPULATION                                             :{BLACK}Världsbefolkning: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vyfönster {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiera till vy
@@ -729,6 +729,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Autospar
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Välj intervall mellan automatiskt sparande
 STR_02F7_OFF                                                    :Avstängd
+STR_AUTOSAVE_1_MONTH                                            :Varje månad
 STR_02F8_EVERY_3_MONTHS                                         :Var 3:e månad
 STR_02F9_EVERY_6_MONTHS                                         :Var 6:e månad
 STR_02FA_EVERY_12_MONTHS                                        :Var 12:e månad
@@ -849,7 +850,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Grafikpa
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Välj vilket grafikpaket som ska användas som standard
 
-STR_AUTOSAVE_1_MONTH                                            :Varje månad
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosparning misslyckades
 
 STR_MONTH_JAN                                                   :januari
@@ -2241,6 +2241,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Välj kv
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Slumpa fram nytt ansikte
 STR_704C_KEY                                                    :{BLACK}Nyckel
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Visa nyckel till grafer
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Visa detaljerad prestanda-ratings
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Nyckel till företagsgrafer
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klicka här för att visa/dölja företaget i grafen
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Enheter levererat gods
@@ -2799,12 +2800,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Rensa ti
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nollställ räknaren för sen ankomst så att fordonet kommer i tid
 STR_SERVICE_HINT                                                :{BLACK}Skippa den här ordern om inte servning behövs
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kostnad: {CURRENCY} Vikt: {WEIGHT_S}{}Hastighet: {VELOCITY}  Kraft {POWER}{}Löpande kostnad: {CURRENCY}/år{}Kapacitet: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Motorstopp
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Ålder: {LTBLUE}{STRING}{BLACK}   Löpande kostnad: {LTBLUE}{CURRENCY}/år
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vikt: {LTBLUE}{WEIGHT_S}  {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Tophastighet: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vikt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maxhastighet: {LTBLUE}{VELOCITY} {BLACK}Maximal Dragkraft: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vikt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maxhastiget: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY}  (förra året: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste service: {LTBLUE}{COMMA}
+STR_885C_BROKEN_DOWN                                            :{RED}Motorstopp
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Ålder: {LTBLUE}{STRING}{BLACK}   Löpande kostnad: {LTBLUE}{CURRENCY}/år
 STR_8861_STOPPED                                                :{RED}Stoppat
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kan inte tillåta tåg att passera signal under fara...
 STR_8863_CRASHED                                                :{RED}Kraschad!
@@ -3172,6 +3173,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{V
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NyGRF '{STRING}' ger felaktig information.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last/återställnings information för '{1:ENGINE}' är skilld ifrån köp lista efter konstruktion. Detta kan leda till att den automatiska förnyelsen slår fel
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' skapade en ändlös loop i produktions-systemet
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spelet sparades i en version som ej stöder spårvagn. Alla spårvagnar har tagits bort
 

@@ -569,6 +569,8 @@ void Vehicle::PreDestructor()
 
 	extern void StopGlobalFollowVehicle(const Vehicle *v);
 	StopGlobalFollowVehicle(this);
+
+	ReleaseDisastersTargetingVehicle(this->index);
 }
 
 Vehicle::~Vehicle()
