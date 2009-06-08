@@ -2662,7 +2662,7 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :Fahre ohne Halt
 STR_ORDER_TRAIN_DEPOT                                           :{G=n}Zugdepot
 STR_ORDER_ROAD_DEPOT                                            :{G=n}Straßenfahrzeugdepot
 STR_ORDER_SHIP_DEPOT                                            :{G=w}Werft
-STR_GO_TO_DEPOT                                                 :{STRING}{G 2 "m" "r" "m" "den"} {2:STRING} {1:TOWN}
+STR_GO_TO_DEPOT                                                 :{STRING}{G 2 "m" "r" "m" " den"} {2:STRING} {1:TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING}{G 2 m r m "den"} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
