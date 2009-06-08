@@ -1785,7 +1785,7 @@ static void SetSelectionTilesDirty()
 
 		static const int OVERLAY_WIDTH = 4; // part of selection sprites is drawn outside the selected area
 
-		/* For halftile foundations on SLOPE_STEEP_W the sprite extents some more towards the top */
+		/* For halftile foundations on SLOPE_STEEP_S the sprite extents some more towards the top */
 		MarkAllViewportsDirty(l - OVERLAY_WIDTH, t - OVERLAY_WIDTH - TILE_HEIGHT, r + OVERLAY_WIDTH, b + OVERLAY_WIDTH);
 
 		/* haven't we reached the topmost tile yet? */
