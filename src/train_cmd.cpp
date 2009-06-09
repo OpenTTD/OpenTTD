@@ -3405,9 +3405,7 @@ static byte AfterSetTrainPos(Train *v, bool new_tile)
 
 			byte middle_z = GetSlopeZ((v->x_pos & INV_TILE_SIZE_MASK) | HALF_TILE_SIZE, (v->y_pos & INV_TILE_SIZE_MASK) | HALF_TILE_SIZE);
 
-			/* For some reason tunnel tiles are always given as sloped :(
-			 * But they are not sloped... */
-			if (middle_z != v->z_pos && !IsTunnelTile(TileVirtXY(v->x_pos, v->y_pos))) {
+			if (middle_z != v->z_pos) {
 				SetBit(v->flags, (middle_z > old_z) ? VRF_GOINGUP : VRF_GOINGDOWN);
 			}
 		}
