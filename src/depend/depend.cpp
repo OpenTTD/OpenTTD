@@ -92,7 +92,7 @@ public:
 	 */
 	char GetChar() const
 	{
-		char c = fgetc(this->fp);
+		int c = fgetc(this->fp);
 		return (c == EOF) ? '\0' : c;
 	}
 
