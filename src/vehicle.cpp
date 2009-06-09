@@ -375,26 +375,16 @@ static void UpdateNewVehiclePosHash(Vehicle *v, bool remove)
 
 	/* Remove from the old position in the hash table */
 	if (old_hash != NULL) {
-		Vehicle *last = NULL;
-		Vehicle *u = *old_hash;
-		while (u != v) {
-			last = u;
-			u = u->next_new_hash;
-			assert(u != NULL);
-		}
-
-		if (last == NULL) {
-			*old_hash = v->next_new_hash;
-		} else {
-			last->next_new_hash = v->next_new_hash;
-		}
+		if (v->next_new_hash != NULL) v->next_new_hash->prev_new_hash = v->prev_new_hash;
+		*v->prev_new_hash = v->next_new_hash;
 	}
 
 	/* Insert vehicle at beginning of the new position in the hash table */
 	if (new_hash != NULL) {
 		v->next_new_hash = *new_hash;
+		if (v->next_new_hash != NULL) v->next_new_hash->prev_new_hash = &v->next_new_hash;
+		v->prev_new_hash = new_hash;
 		*new_hash = v;
-		assert(v != v->next_new_hash);
 	}
 
 	/* Remember current hash position */
@@ -418,24 +408,15 @@ static void UpdateVehiclePosHash(Vehicle *v, int x, int y)
 
 	/* remove from hash table? */
 	if (old_hash != NULL) {
-		Vehicle *last = NULL;
-		Vehicle *u = *old_hash;
-		while (u != v) {
-			last = u;
-			u = u->next_hash;
-			assert(u != NULL);
-		}
-
-		if (last == NULL) {
-			*old_hash = v->next_hash;
-		} else {
-			last->next_hash = v->next_hash;
-		}
+		if (v->next_hash != NULL) v->next_hash->prev_hash = v->prev_hash;
+		*v->prev_hash = v->next_hash;
 	}
 
 	/* insert into hash table? */
 	if (new_hash != NULL) {
 		v->next_hash = *new_hash;
+		if (v->next_hash != NULL) v->next_hash->prev_hash = &v->next_hash;
+		v->prev_hash = new_hash;
 		*new_hash = v;
 	}
 }
