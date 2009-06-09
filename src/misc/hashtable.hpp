@@ -12,7 +12,7 @@ struct CHashTableSlotT
 
 	Titem_ *m_pFirst;
 
-	CHashTableSlotT() : m_pFirst(NULL) {}
+	FORCEINLINE CHashTableSlotT() : m_pFirst(NULL) {}
 
 	/** hash table slot helper - clears the slot by simple forgetting its items */
 	FORCEINLINE void Clear() {m_pFirst = NULL;}
@@ -133,19 +133,16 @@ protected:
 	 *  Titem contains pointer to the next item - GetHashNext(), SetHashNext() */
 	typedef CHashTableSlotT<Titem_> Slot;
 
-	Slot *m_slots;     // here we store our data (array of blobs)
-	int   m_num_items; // item counter
+	Slot m_slots[Tcapacity]; ///< here we store our data (array of blobs)
+	int  m_num_items;        ///< item counter
 
 public:
 	/* default constructor */
-	FORCEINLINE CHashTableT()
-	{
-		/* construct all slots */
-		m_slots = new Slot[Tcapacity];
-		m_num_items = 0;
-	}
+	FORCEINLINE CHashTableT() :
+		m_num_items(0)
+	{ }
 
-	~CHashTableT() {delete [] m_slots; m_num_items = 0; m_slots = NULL;}
+	FORCEINLINE ~CHashTableT() { }
 
 protected:
 	/** static helper - return hash for the given key modulo number of slots */
@@ -168,7 +165,10 @@ public:
 	FORCEINLINE int Count() const {return m_num_items;}
 
 	/** simple clear - forget all items - used by CSegmentCostCacheT.Flush() */
-	FORCEINLINE void Clear() const {for (int i = 0; i < Tcapacity; i++) m_slots[i].Clear();}
+	FORCEINLINE void Clear()
+	{
+		for (size_t i = 0; i < lengthof(m_slots); i++) m_slots[i].Clear();
+	}
 
 	/** const item search */
 	const Titem_ *Find(const Tkey& key) const
