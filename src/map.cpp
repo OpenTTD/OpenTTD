@@ -307,12 +307,17 @@ bool CircularTileSearch(TileIndex *tile, uint radius, uint w, uint h, TestTileOn
 	uint extent[DIAGDIR_END] = { w, h, w, h };
 
 	for (uint n = 0; n < radius; n++) {
-		for (DiagDirection dir = DIAGDIR_NE; dir < DIAGDIR_END; dir++) {
+		for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
+			/* Is the tile within the map? */
 			for (uint j = extent[dir] + n * 2 + 1; j != 0; j--) {
-				if (x <= MapMaxX() && y <= MapMaxY() && ///< Is the tile within the map?
-						proc(TileXY(x, y), user_data)) {     ///< Is the callback successful?
-					*tile = TileXY(x, y);
-					return true;                        ///< then stop the search
+				if (x < MapSizeX() && y < MapSizeY()) {
+					TileIndex t = TileXY(x, y);
+					/* Is the callback successful? */
+					if (proc(t, user_data)) {
+						/* Stop the search */
+						*tile = t;
+						return true;
+					}
 				}
 
 				/* Step to the next 'neighbour' in the circular line */
