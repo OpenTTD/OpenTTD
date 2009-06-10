@@ -39,7 +39,7 @@ void NetworkStartDebugLog(NetworkAddress address);
 void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
 
 void NetworkUpdateClientInfo(ClientID client_id);
-void NetworkClientConnectGame(NetworkAddress address, CompanyID join_as);
+void NetworkClientConnectGame(NetworkAddress address, CompanyID join_as, const char *join_server_password = NULL, const char *join_company_password = NULL);
 void NetworkClientRequestMove(CompanyID company, const char *pass = "");
 void NetworkClientSendRcon(const char *password, const char *command);
 void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data = 0);

@@ -720,7 +720,7 @@ public:
 
 
 /* Used by clients, to connect to a server */
-void NetworkClientConnectGame(NetworkAddress address, CompanyID join_as)
+void NetworkClientConnectGame(NetworkAddress address, CompanyID join_as, const char *join_server_password, const char *join_company_password)
 {
 	if (!_network_available) return;
 
@@ -729,6 +729,8 @@ void NetworkClientConnectGame(NetworkAddress address, CompanyID join_as)
 	strecpy(_settings_client.network.last_host, address.GetHostname(), lastof(_settings_client.network.last_host));
 	_settings_client.network.last_port = address.GetPort();
 	_network_join_as = join_as;
+	_network_join_server_password = join_server_password;
+	_network_join_company_password = join_company_password;
 
 	NetworkDisconnect();
 	NetworkInitialize();

@@ -47,6 +47,11 @@ static uint8 _network_server_max_spectators;
 /** Who would we like to join as. */
 CompanyID _network_join_as;
 
+/** Login password from -p argument */
+const char *_network_join_server_password = NULL;
+/** Company password from -P argument */
+const char *_network_join_company_password = NULL;
+
 /** Make sure the unique ID length is the same as a md5 hash. */
 assert_compile(NETWORK_UNIQUE_ID_LENGTH == 16 * 2 + 1);
 
@@ -509,15 +514,22 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD)
 {
 	NetworkPasswordType type = (NetworkPasswordType)p->Recv_uint8();
 
+	const char *password = _network_join_server_password;
+
 	switch (type) {
 		case NETWORK_COMPANY_PASSWORD:
 			/* Initialize the password hash salting variables. */
 			_password_game_seed = p->Recv_uint32();
 			p->Recv_string(_password_server_unique_id, sizeof(_password_server_unique_id));
 			if (MY_CLIENT->HasClientQuit()) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-
+			password = _network_join_company_password;
+			/* FALL THROUGH */
 		case NETWORK_GAME_PASSWORD:
-			ShowNetworkNeedPassword(type);
+			if (StrEmpty(password)) {
+				ShowNetworkNeedPassword(type);
+			} else {
+				SEND_COMMAND(PACKET_CLIENT_PASSWORD)(type, password);
+			}
 			return NETWORK_RECV_STATUS_OKAY;
 
 		default: return NETWORK_RECV_STATUS_MALFORMED_PACKET;

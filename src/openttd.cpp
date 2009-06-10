@@ -160,6 +160,8 @@ static void ShowHelp()
 		"  -G seed             = Set random seed\n"
 #if defined(ENABLE_NETWORK)
 		"  -n [ip:port#company]= Start networkgame\n"
+		"  -p password         = Password to join server\n"
+		"  -P password         = Password to join company\n"
 		"  -D [ip][:port]      = Start dedicated server\n"
 		"  -l ip[:port]        = Redirect DEBUG()\n"
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
@@ -406,6 +408,8 @@ int ttd_main(int argc, char *argv[])
 	char *debuglog_conn = NULL;
 	char *dedicated_host = NULL;
 	uint16 dedicated_port = 0;
+	char *join_server_password = NULL;
+	char *join_company_password = NULL;
 #endif /* ENABLE_NETWORK */
 
 	_game_mode = GM_MENU;
@@ -418,7 +422,7 @@ int ttd_main(int argc, char *argv[])
 	 *   a letter means: it accepts that param (e.g.: -h)
 	 *   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	 *   a '::' behind it means: it can optional have a param (e.g.: -d<debug>) */
-	optformat = "m:s:v:b:hD::n::ei::I:t:d::r:g::G:c:xl:"
+	optformat = "m:s:v:b:hD::n::ei::I:t:d::r:g::G:c:xl:p:P:"
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
 		"f"
 #endif
@@ -462,6 +466,12 @@ int ttd_main(int argc, char *argv[])
 			break;
 		case 'l':
 			debuglog_conn = mgo.opt;
+			break;
+		case 'p':
+			join_server_password = mgo.opt;
+			break;
+		case 'P':
+			join_company_password = mgo.opt;
 			break;
 #endif /* ENABLE_NETWORK */
 		case 'r': ParseResolution(&resolution, mgo.opt); break;
@@ -694,7 +704,7 @@ int ttd_main(int argc, char *argv[])
 
 			LoadIntroGame();
 			_switch_mode = SM_NONE;
-			NetworkClientConnectGame(NetworkAddress(network_conn, rport), join_as);
+			NetworkClientConnectGame(NetworkAddress(network_conn, rport), join_as, join_server_password, join_company_password);
 		}
 	}
 #endif /* ENABLE_NETWORK */

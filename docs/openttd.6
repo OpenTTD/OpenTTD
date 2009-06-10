@@ -1,6 +1,6 @@
 .\"                                      Hey, EMACS: -*- nroff -*-
 .\" Please adjust this date whenever revising the manpage.
-.Dd Feb 05, 2009
+.Dd Jun 10, 2009
 .Dt OPENTTD 6
 .Sh NAME
 .Nm openttd
@@ -20,6 +20,8 @@
 .Op Fl l Ar host[:port]
 .Op Fl m Ar driver
 .Op Fl n Ar host[:port][#player]
+.Op Fl p Ar password
+.Op Fl P Ar password
 .Op Fl r Ar widthxheight
 .Op Fl s Ar driver
 .Op Fl t Ar year
@@ -72,6 +74,12 @@ Set the music driver, see
 .Fl h
 .It Fl n Ar host[:port][#player]
 Join a network game, optionally specify player to play as and port to connect to
+.It Fl p Ar password
+Password used to join server. Only useful with
+.Fl n
+.It Fl P Ar password
+Password used to join company. Only useful with
+.Fl n
 .It Fl r Ar widthxheight
 Set the resolution
 .It Fl s Ar driver
