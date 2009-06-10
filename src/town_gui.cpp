@@ -751,33 +751,6 @@ enum TownScenarioEditorWidgets {
 	TSEW_LAYOUT_RANDOM,
 };
 
-static const Widget _found_town_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,    10,     0,    13, STR_BLACK_CROSS,                           STR_TOOLTIP_CLOSE_WINDOW},            // TSEW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,   11,   147,     0,    13, STR_FOUND_TOWN_CAPTION,                    STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},  // TSEW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,  148,   159,     0,    13, 0x0,                                       STR_STICKY_BUTTON},                   // TSEW_STICKYBOX
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   159,    14,   161, 0x0,                                       STR_NULL},                            // TSEW_BACKGROUND
-
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    16,    27, STR_FOUND_TOWN_NEW_TOWN_BUTTON,            STR_FOUND_TOWN_NEW_TOWN_TOOLTIP},     // TSEW_NEWTOWN
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    29,    40, STR_FOUND_TOWN_RANDOM_TOWN_BUTTON,         STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP},  // TSEW_RANDOMTOWN
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    42,    53, STR_MANY_RANDOM_TOWNS,                     STR_RANDOM_TOWNS_TIP},                // TSEW_MANYRANDOMTOWNS
-
-{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   147,    54,    67, STR_FOUND_TOWN_INITIAL_SIZE_TITLE,         STR_NULL},                            // TSEW_TOWNSIZE
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,    68,    79, STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON,  STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP}, // TSEW_SIZE_SMALL
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,    68,    79, STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON, STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP}, // TSEW_SIZE_MEDIUM
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,    81,    92, STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON,  STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP}, // TSEW_SIZE_LARGE
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,    81,    92, STR_SELECT_TOWN_SIZE_RANDOM,               STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP}, // TSEW_SIZE_RANDOM
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    96,   107, STR_FOUND_TOWN_CITY,                       STR_FOUND_TOWN_CITY_TOOLTIP},         // TSEW_CITY
-
-{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   147,   108,   121, STR_TOWN_ROAD_LAYOUT,                      STR_NULL},                            // TSEW_TOWNLAYOUT
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,   122,   133, STR_SELECT_LAYOUT_ORIGINAL,                STR_SELECT_TOWN_ROAD_LAYOUT},         // TSEW_LAYOUT_ORIGINAL
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,   122,   133, STR_SELECT_LAYOUT_BETTER_ROADS,            STR_SELECT_TOWN_ROAD_LAYOUT},         // TSEW_LAYOUT_BETTER
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,   135,   146, STR_SELECT_LAYOUT_2X2_GRID,                STR_SELECT_TOWN_ROAD_LAYOUT},         // TSEW_LAYOUT_GRID2
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,   135,   146, STR_SELECT_LAYOUT_3X3_GRID,                STR_SELECT_TOWN_ROAD_LAYOUT},         // TSEW_LAYOUT_GRID3
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,   148,   159, STR_SELECT_LAYOUT_RANDOM,                  STR_SELECT_TOWN_ROAD_LAYOUT},         // TSEW_LAYOUT_RANDOM
-
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_found_town_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, TSEW_CLOSEBOX),
@@ -837,9 +810,9 @@ private:
 	static TownLayout town_layout;
 
 public:
-	FoundTownWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	FoundTownWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		this->FindWindowPlacementAndResize(desc);
+		this->InitNested(desc, window_number);
 		town_layout = _settings_game.economy.town_layout;
 		city = false;
 		this->UpdateButtons();
@@ -956,7 +929,7 @@ static const WindowDesc _found_town_desc(
 	WDP_AUTO, WDP_AUTO, 160, 162, 160, 162,
 	WC_FOUND_TOWN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	_found_town_widgets, _nested_found_town_widgets, lengthof(_nested_found_town_widgets)
+	NULL, _nested_found_town_widgets, lengthof(_nested_found_town_widgets)
 );
 
 void ShowBuildTownWindow()
