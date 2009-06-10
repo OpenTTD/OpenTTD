@@ -297,10 +297,9 @@ static inline TileIndex AddTileIndexDiffCWrap(TileIndex tile, TileIndexDiffC dif
 {
 	int x = TileX(tile) + diff.x;
 	int y = TileY(tile) + diff.y;
-	if (x < 0 || y < 0 || x > (int)MapMaxX() || y > (int)MapMaxY())
-		return INVALID_TILE;
-	else
-		return TileXY(x, y);
+	/* Negative value will become big positive value after cast */
+	if ((uint)x >= MapSizeX() || (uint)y >= MapSizeY()) return INVALID_TILE;
+	return TileXY(x, y);
 }
 
 /**
