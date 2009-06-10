@@ -161,7 +161,7 @@ typedef int32 TileIndexDiff;
  */
 static inline TileIndex TileXY(uint x, uint y)
 {
-	return (y * MapSizeX()) + x;
+	return (y << MapLogX()) + x;
 }
 
 /**
