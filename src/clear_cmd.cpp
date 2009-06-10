@@ -130,22 +130,19 @@ static void AnimateTile_Clear(TileIndex tile)
 
 void TileLoopClearHelper(TileIndex tile)
 {
-	byte self;
-	byte neighbour;
-	TileIndex dirty = INVALID_TILE;
+	bool self = (IsTileType(tile, MP_CLEAR) && IsClearGround(tile, CLEAR_FIELDS));
+	bool dirty = false;
 
-	self = (IsTileType(tile, MP_CLEAR) && IsClearGround(tile, CLEAR_FIELDS));
-
-	neighbour = (IsTileType(TILE_ADDXY(tile, 1, 0), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 1, 0), CLEAR_FIELDS));
+	bool neighbour = (IsTileType(TILE_ADDXY(tile, 1, 0), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 1, 0), CLEAR_FIELDS));
 	if (GetFenceSW(tile) == 0) {
 		if (self != neighbour) {
 			SetFenceSW(tile, 3);
-			dirty = tile;
+			dirty = true;
 		}
 	} else {
 		if (self == 0 && neighbour == 0) {
 			SetFenceSW(tile, 0);
-			dirty = tile;
+			dirty = true;
 		}
 	}
 
@@ -153,16 +150,16 @@ void TileLoopClearHelper(TileIndex tile)
 	if (GetFenceSE(tile) == 0) {
 		if (self != neighbour) {
 			SetFenceSE(tile, 3);
-			dirty = tile;
+			dirty = true;
 		}
 	} else {
 		if (self == 0 && neighbour == 0) {
 			SetFenceSE(tile, 0);
-			dirty = tile;
+			dirty = true;
 		}
 	}
 
-	if (dirty != INVALID_TILE) MarkTileDirtyByTile(dirty);
+	if (dirty) MarkTileDirtyByTile(tile);
 }
 
 
