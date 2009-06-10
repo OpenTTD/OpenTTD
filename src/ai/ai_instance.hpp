@@ -81,6 +81,11 @@ public:
 	class AIController *GetController() { return controller; }
 
 	/**
+	 * Return the "this AI died" value
+	 */
+	inline bool IsDead() { return this->is_dead; }
+
+	/**
 	 * Call the AI Save function and save all data in the savegame.
 	 */
 	void Save();
