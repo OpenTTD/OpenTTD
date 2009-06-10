@@ -79,12 +79,30 @@ struct Company : CompanyPool::PoolItem<&_company_pool> {
 	EngineRenewList engine_renew_list; ///< Defined later
 	CompanySettings settings;          ///< settings specific for each company
 	uint16 *num_engines; ///< caches the number of engines of each type the company owns (no need to save this)
+
+	static FORCEINLINE bool IsValidAiID(size_t index)
+	{
+		const Company *c = GetIfValid(index);
+		return c != NULL && c->is_ai;
+	}
+
+	static FORCEINLINE bool IsValidHumanID(size_t index)
+	{
+		const Company *c = GetIfValid(index);
+		return c != NULL && !c->is_ai;
+	}
 };
 
 #define FOR_ALL_COMPANIES_FROM(var, start) FOR_ALL_ITEMS_FROM(Company, company_index, var, start)
 #define FOR_ALL_COMPANIES(var) FOR_ALL_COMPANIES_FROM(var, 0)
 
 Money CalculateCompanyValue(const Company *c);
+
+static inline bool IsHumanCompany(CompanyID company)
+{
+	return !Company::Get(company)->is_ai;
+}
+
 
 extern uint _next_competitor_start;
 extern uint _cur_company_tick_index;

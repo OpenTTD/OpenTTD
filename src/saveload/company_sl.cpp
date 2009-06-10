@@ -227,7 +227,7 @@ static void SaveLoad_PLYR(Company *c)
 	SlObject(c, _company_desc);
 
 	/* Keep backwards compatible for savegames, so load the old AI block */
-	if (CheckSavegameVersion(107) && !IsHumanCompany(c->index)) {
+	if (CheckSavegameVersion(107) && c->is_ai) {
 		CompanyOldAI old_ai;
 		char nothing;
 

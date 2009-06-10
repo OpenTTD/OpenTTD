@@ -83,12 +83,6 @@ void SetLocalCompany(CompanyID new_company)
 	MarkWholeScreenDirty();
 }
 
-bool IsHumanCompany(CompanyID company)
-{
-	return !Company::Get(company)->is_ai;
-}
-
-
 uint16 GetDrawStringCompanyColour(CompanyID company)
 {
 	/* Get the colour for DrawString-subroutines which matches the colour
@@ -276,7 +270,7 @@ set_name:;
 
 		MarkWholeScreenDirty();
 
-		if (!IsHumanCompany(c->index)) {
+		if (c->is_ai) {
 			CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
 			cni->FillData(c);
 			SetDParam(0, STR_NEWS_COMPANY_LAUNCH_TITLE);
@@ -725,7 +719,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			/* Remove the company */
 			ChangeOwnershipOfCompanyItems(c->index, INVALID_OWNER);
-			if (!IsHumanCompany(c->index)) AI::Stop(c->index);
+			if (c->is_ai) AI::Stop(c->index);
 
 			CompanyID c_index = c->index;
 			delete c;

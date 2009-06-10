@@ -64,7 +64,7 @@
 
 	const Company *c;
 	FOR_ALL_COMPANIES(c) {
-		if (!IsHumanCompany(c->index)) {
+		if (c->is_ai) {
 			_current_company = c->index;
 			c->ai_instance->GameLoop();
 		}
@@ -74,8 +74,7 @@
 	 * Effectively collecting garbage once every two months per AI. */
 	if ((AI::frame_counter & 255) == 0) {
 		CompanyID cid = (CompanyID)GB(AI::frame_counter, 8, 4);
-		Company *com = Company::GetIfValid(cid);
-		if (com != NULL && !IsHumanCompany(cid)) com->ai_instance->CollectGarbage();
+		if (Company::IsValidAiID(cid)) Company::Get(cid)->ai_instance->CollectGarbage();
 	}
 
 	_current_company = OWNER_NONE;
@@ -109,7 +108,7 @@
 
 	const Company *c;
 	FOR_ALL_COMPANIES(c) {
-		if (!IsHumanCompany(c->index)) AI::Stop(c->index);
+		if (c->is_ai) AI::Stop(c->index);
 	}
 }
 
@@ -179,7 +178,7 @@
 	}
 
 	/* Only AIs can have an event-queue */
-	if (!Company::IsValidID(company) || IsHumanCompany(company)) {
+	if (!Company::IsValidAiID(company)) {
 		event->Release();
 		return;
 	}

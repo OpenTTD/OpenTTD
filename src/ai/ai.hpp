@@ -54,7 +54,7 @@ public:
 	/**
 	 * Stop a company to be controlled by an AI.
 	 * @param company The company from which the AI needs to detach.
-	 * @pre !IsHumanCompany(company).
+	 * @pre Company::IsValidAiID(company)
 	 */
 	static void Stop(CompanyID company);
 

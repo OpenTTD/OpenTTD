@@ -1592,7 +1592,7 @@ struct CompanyWindow : Window
 		this->SetWidgetHiddenState(CW_WIDGET_SELL_SHARE,       local);
 		this->SetWidgetHiddenState(CW_WIDGET_COMPANY_PASSWORD, !local || !_networking);
 		this->SetWidgetHiddenState(CW_WIDGET_COMPANY_JOIN,     local || !_networking);
-		this->SetWidgetDisabledState(CW_WIDGET_COMPANY_JOIN,   !IsHumanCompany(c->index));
+		this->SetWidgetDisabledState(CW_WIDGET_COMPANY_JOIN,   c->is_ai);
 
 		if (!local) {
 			if (_settings_game.economy.allow_shares) { // Shares are allowed

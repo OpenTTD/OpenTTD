@@ -642,8 +642,7 @@ struct AIDebugWindow : public Window {
 	{
 		/* Disable the companies who are not active or not an AI */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-			Company *c = Company::GetIfValid(i);
-			this->SetWidgetDisabledState(i + AID_WIDGET_COMPANY_BUTTON_START, c == NULL || !c->is_ai);
+			this->SetWidgetDisabledState(i + AID_WIDGET_COMPANY_BUTTON_START, !Company::IsValidAiID(i));
 		}
 		this->DisableWidget(AID_WIDGET_RELOAD_TOGGLE);
 
@@ -661,7 +660,7 @@ struct AIDebugWindow : public Window {
 	virtual void OnPaint()
 	{
 		/* Check if the currently selected company is still active. */
-		if (ai_debug_company == INVALID_COMPANY || !Company::IsValidID(ai_debug_company) || !Company::Get(ai_debug_company)->is_ai) {
+		if (ai_debug_company == INVALID_COMPANY || !Company::IsValidAiID(ai_debug_company)) {
 			if (ai_debug_company != INVALID_COMPANY) {
 				/* Raise and disable the widget for the previous selection. */
 				this->RaiseWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
@@ -670,13 +669,13 @@ struct AIDebugWindow : public Window {
 				ai_debug_company = INVALID_COMPANY;
 			}
 
-			for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-				Company *c = Company::GetIfValid(i);
-				if (c != NULL && c->is_ai) {
+			const Company *c;
+			FOR_ALL_COMPANIES(c) {
+				if (c->is_ai) {
 					/* Lower the widget corresponding to this company. */
-					this->LowerWidget(i + AID_WIDGET_COMPANY_BUTTON_START);
+					this->LowerWidget(c->index + AID_WIDGET_COMPANY_BUTTON_START);
 
-					ai_debug_company = i;
+					ai_debug_company = c->index;
 					break;
 				}
 			}
@@ -696,7 +695,7 @@ struct AIDebugWindow : public Window {
 			/* Background is grey by default, will be changed to red for dead AIs */
 			this->widget[i + AID_WIDGET_COMPANY_BUTTON_START].colour = COLOUR_GREY;
 
-			Company *c = Company::GetIfValid(i);
+			const Company *c = Company::GetIfValid(i);
 			if (c == NULL || !c->is_ai) {
 				/* Check if we have the company as an active company */
 				if (!this->IsWidgetDisabled(i + AID_WIDGET_COMPANY_BUTTON_START)) {
