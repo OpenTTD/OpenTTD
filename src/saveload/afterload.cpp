@@ -1700,10 +1700,15 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(101)) {
 		Train *t;
 		FOR_ALL_TRAINS(t) {
-			if ((t->track & TRACK_BIT_WORMHOLE) == TRACK_BIT_WORMHOLE) {
-				TryReserveRailTrack(t->tile, DiagDirToDiagTrack(GetTunnelBridgeDirection(t->tile)));
-			} else if ((t->track & TRACK_BIT_MASK) != TRACK_BIT_NONE) {
-				TryReserveRailTrack(t->tile, TrackBitsToTrack(t->track));
+			switch (t->track) {
+				case TRACK_BIT_WORMHOLE:
+					TryReserveRailTrack(t->tile, DiagDirToDiagTrack(GetTunnelBridgeDirection(t->tile)));
+					break;
+				case TRACK_BIT_DEPOT:
+					break;
+				default:
+					TryReserveRailTrack(t->tile, TrackBitsToTrack(t->track));
+					break;
 			}
 		}
 	}

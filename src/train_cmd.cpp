@@ -1925,7 +1925,7 @@ static void ReverseTrainDirection(Train *v)
 	if (crossing != INVALID_TILE) MaybeBarCrossingWithSound(crossing);
 
 	/* If we are inside a depot after reversing, don't bother with path reserving. */
-	if (v->track & TRACK_BIT_DEPOT) {
+	if (v->track == TRACK_BIT_DEPOT) {
 		/* Can't be stuck here as inside a depot is always a safe tile. */
 		if (HasBit(v->flags, VRF_TRAIN_STUCK)) InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		ClrBit(v->flags, VRF_TRAIN_STUCK);
@@ -2369,7 +2369,7 @@ static void CheckNextTrainTile(Train *v)
 	if (_settings_game.pf.path_backoff_interval == 255) return;
 
 	/* Exit if we reached our destination depot or are inside a depot. */
-	if ((v->tile == v->dest_tile && v->current_order.IsType(OT_GOTO_DEPOT)) || (v->track & TRACK_BIT_DEPOT)) return;
+	if ((v->tile == v->dest_tile && v->current_order.IsType(OT_GOTO_DEPOT)) || v->track == TRACK_BIT_DEPOT) return;
 	/* Exit if we are on a station tile and are going to stop. */
 	if (IsRailwayStationTile(v->tile) && v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile))) return;
 	/* Exit if the current order doesn't have a destination, but the train has orders. */
@@ -3104,7 +3104,7 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 	/* We have to handle depots specially as the track follower won't look
 	 * at the depot tile itself but starts from the next tile. If we are still
 	 * inside the depot, a depot reservation can never be ours. */
-	if (v->track & TRACK_BIT_DEPOT) {
+	if (v->track == TRACK_BIT_DEPOT) {
 		if (GetDepotWaypointReservation(v->tile)) {
 			if (mark_as_stuck) MarkTrainAsStuck(v);
 			return false;
@@ -3148,7 +3148,7 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 	}
 
 	/* If we are in a depot, tentativly reserve the depot. */
-	if (v->track & TRACK_BIT_DEPOT) {
+	if (v->track == TRACK_BIT_DEPOT) {
 		SetDepotWaypointReservation(v->tile, true);
 		if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(v->tile);
 	}
@@ -3164,7 +3164,7 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 
 	if (!res_made) {
 		/* Free the depot reservation as well. */
-		if (v->track & TRACK_BIT_DEPOT) SetDepotWaypointReservation(v->tile, false);
+		if (v->track == TRACK_BIT_DEPOT) SetDepotWaypointReservation(v->tile, false);
 		return false;
 	}
 
@@ -3572,11 +3572,11 @@ static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
 		 * As there might be more than two trains involved, we have to do that for all vehicles */
 		const Train *u;
 		FOR_ALL_TRAINS(u) {
-			if ((u->vehstatus & VS_CRASHED) && (u->track & TRACK_BIT_DEPOT) == TRACK_BIT_NONE) {
+			if ((u->vehstatus & VS_CRASHED) && u->track != TRACK_BIT_DEPOT) {
 				TrackBits trackbits = u->track;
-				if ((trackbits & TRACK_BIT_WORMHOLE) == TRACK_BIT_WORMHOLE) {
+				if (trackbits == TRACK_BIT_WORMHOLE) {
 					/* Vehicle is inside a wormhole, v->track contains no useful value then. */
-					trackbits |= DiagDirToDiagTrackBits(GetTunnelBridgeDirection(u->tile));
+					trackbits = DiagDirToDiagTrackBits(GetTunnelBridgeDirection(u->tile));
 				}
 				TryReserveRailTrack(u->tile, TrackBitsToTrack(trackbits));
 			}
@@ -3940,7 +3940,7 @@ static Vehicle *CollectTrackbitsFromCrashedVehiclesEnum(Vehicle *v, void *data)
 	TrackBits *trackbits = (TrackBits *)data;
 
 	if (v->type == VEH_TRAIN && (v->vehstatus & VS_CRASHED) != 0) {
-		if ((Train::From(v)->track & TRACK_BIT_WORMHOLE) == TRACK_BIT_WORMHOLE) {
+		if (Train::From(v)->track == TRACK_BIT_WORMHOLE) {
 			/* Vehicle is inside a wormhole, v->track contains no useful value then. */
 			*trackbits |= DiagDirToDiagTrackBits(GetTunnelBridgeDirection(v->tile));
 		} else {
@@ -3987,9 +3987,9 @@ static void DeleteLastWagon(Train *v)
 	delete v;
 	v = NULL; // make sure nobody will try to read 'v' anymore
 
-	if ((trackbits & TRACK_BIT_WORMHOLE) == TRACK_BIT_WORMHOLE) {
+	if (trackbits == TRACK_BIT_WORMHOLE) {
 		/* Vehicle is inside a wormhole, v->track contains no useful value then. */
-		trackbits |= DiagDirToDiagTrackBits(GetTunnelBridgeDirection(tile));
+		trackbits = DiagDirToDiagTrackBits(GetTunnelBridgeDirection(tile));
 	}
 
 	Track track = TrackBitsToTrack(trackbits);
