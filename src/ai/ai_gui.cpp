@@ -22,6 +22,7 @@
 #include "ai.hpp"
 #include "api/ai_log.hpp"
 #include "ai_config.hpp"
+#include "ai_instance.hpp"
 
 #include "table/strings.h"
 
@@ -692,6 +693,9 @@ struct AIDebugWindow : public Window {
 
 		/* Paint the company icons */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
+			/* Background is grey by default, will be changed to red for dead AIs */
+			this->widget[i + AID_WIDGET_COMPANY_BUTTON_START].colour = COLOUR_GREY;
+
 			Company *c = Company::GetIfValid(i);
 			if (c == NULL || !c->is_ai) {
 				/* Check if we have the company as an active company */
@@ -703,6 +707,11 @@ struct AIDebugWindow : public Window {
 					this->SetDirty();
 				}
 				continue;
+			}
+
+			/* Mark dead AIs by red background */
+			if (c->ai_instance->IsDead()) {
+				this->widget[i + AID_WIDGET_COMPANY_BUTTON_START].colour = COLOUR_RED;
 			}
 
 			/* Check if we have the company marked as inactive */
