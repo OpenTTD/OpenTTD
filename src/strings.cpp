@@ -990,7 +990,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 				CompanyID company = (CompanyID)GetInt32(&argv);
 
 				/* Nothing is added for AI or inactive companies */
-				if (!Company::IsValidHumanID(company)) {
+				if (Company::IsValidHumanID(company)) {
 					int64 args[1];
 					args[0] = company + 1;
 					buff = GetStringWithArgs(buff, STR_COMPANY_NUM, args, last);
