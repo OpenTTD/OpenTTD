@@ -468,8 +468,8 @@ bool OBGFileScanner::AddFile(const char *filename, size_t basepath_length)
 		}
 		if (duplicate != NULL) {
 			/* The more complete graphics set takes precedence over the version number. */
-			if ((duplicate->files == graphics->files && duplicate->version >= graphics->version) ||
-					duplicate->files > graphics->files) {
+			if ((duplicate->found_grfs == graphics->found_grfs && duplicate->version >= graphics->version) ||
+					duplicate->found_grfs > graphics->found_grfs) {
 				DEBUG(grf, 1, "Not adding %s (%i) as base graphics set (duplicate)", graphics->name, graphics->version);
 				delete graphics;
 			} else {
