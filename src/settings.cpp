@@ -1523,6 +1523,7 @@ void SetDefaultCompanySettings(CompanyID cid)
 	}
 }
 
+#if defined(ENABLE_NETWORK)
 /**
  * Sync all company settings in a multiplayer game.
  */
@@ -1538,6 +1539,7 @@ void SyncCompanySettings()
 		if (old_value != new_value) NetworkSend_Command(0, i, new_value, CMD_CHANGE_COMPANY_SETTING, NULL, NULL);
 	}
 }
+#endif /* ENABLE_NETWORK */
 
 /**
  * Get the index in the _company_settings array of a setting

@@ -26,7 +26,12 @@ void SaveGRFPresetToConfig(const char *config_name, struct GRFConfig *config);
 void DeleteGRFPresetFromConfig(const char *config_name);
 
 uint GetCompanySettingIndex(const char *name);
-void SyncCompanySettings();
 void SetDefaultCompanySettings(CompanyID cid);
+
+#if defined(ENABLE_NETWORK)
+void SyncCompanySettings();
+#else /* ENABLE_NETWORK */
+static inline void SyncCompanySettings() {}
+#endif /* ENABLE_NETWORK */
 
 #endif /* SETTINGS_FUNC_H */
