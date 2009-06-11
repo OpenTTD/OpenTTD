@@ -213,6 +213,21 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath="..\src\lang\english_rev.txt"
+			>
+			<FileConfiguration
+				Name="Debug|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating english_rev language file"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					AdditionalDependencies=""
+					Outputs="..\bin\lang\english_rev.lng"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath="..\src\lang\esperanto.txt"
 			>
 			<FileConfiguration
