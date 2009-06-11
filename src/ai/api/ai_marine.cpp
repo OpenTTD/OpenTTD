@@ -54,13 +54,13 @@
 	DiagDirection to_other_tile = ::DiagdirBetweenTiles(t1, t2);
 
 	/* Determine the reachable tracks from the shared edge */
-	TrackBits gtts2 = ::TrackStatusToTrackBits(::GetTileTrackStatus(t2, TRANSPORT_WATER, 0, to_other_tile)) & ::DiagdirReachesTracks(to_other_tile);
-	if (gtts2 == TRACK_BIT_NONE) return false;
+	TrackBits gtts1 = ::TrackStatusToTrackBits(::GetTileTrackStatus(t1, TRANSPORT_WATER, 0, to_other_tile)) & ::DiagdirReachesTracks(to_other_tile);
+	if (gtts1 == TRACK_BIT_NONE) return false;
 
 	to_other_tile = ReverseDiagDir(to_other_tile);
-	TrackBits gtts1 = ::TrackStatusToTrackBits(::GetTileTrackStatus(t1, TRANSPORT_WATER, 0, to_other_tile)) & ::DiagdirReachesTracks(to_other_tile);
+	TrackBits gtts2 = ::TrackStatusToTrackBits(::GetTileTrackStatus(t2, TRANSPORT_WATER, 0, to_other_tile)) & ::DiagdirReachesTracks(to_other_tile);
 
-	return gtts1 != TRACK_BIT_NONE;
+	return gtts2 != TRACK_BIT_NONE;
 }
 
 /* static */ bool AIMarine::BuildWaterDepot(TileIndex tile, TileIndex front)
