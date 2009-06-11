@@ -460,6 +460,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Da li s
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Napusti igru
 STR_SORT_ORDER_TIP                                              :{BLACK}Odaberite način sortiranja (opadajući/rastući)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Odaberite kriterijum za sortiranje
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Izaberite način filtriranja
 STR_SORT_BY                                                     :{BLACK}Sortiraj po
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Naseljenost
@@ -482,6 +483,8 @@ STR_SORT_BY_LENGTH                                              :Dužina
 STR_SORT_BY_LIFE_TIME                                           :Preostao životni vek
 STR_SORT_BY_FACILITY                                            :Vrsta stanice
 STR_SORT_BY_WAITING                                             :Vrednost tovara na čekanju
+STR_SORT_BY_RATING_MAX                                          :Najvišoj oceni tereta
+STR_SORT_BY_RATING_MIN                                          :Najnižoj oceni tereta
 STR_ENGINE_SORT_ENGINE_ID                                       :ID mašine (standardno)
 STR_ENGINE_SORT_COST                                            :Cena
 STR_ENGINE_SORT_POWER                                           :Snaga
@@ -1009,6 +1012,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Odaberit
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Osnovni skup grafika
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Odaberite željeni skup osnovnih grafika
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} datotek{P a e a} nedostaj{P e u e}/neispravn{P a o o}
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Dodatne informacije o osnovnom skupu grafika
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Neuspešno automatsko čuvanje
 
@@ -1097,6 +1102,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Uvek pr
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Prikazivanje semafora na strani smera voženje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Prikazivanje finansijskog stanja na kraju godine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nove naredbe su postavljene sa 'direktno': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nove naredbe zaustavljaju voz na {ORANGE}{STRING}{LTBLUE} stanice
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :kraj
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :sredinu
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :početak
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Vozila čekaju u koloni (na zauzetim stanicama): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Pomeranje prozora kada miš priđe ivicama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Dozvoljeno podmićivanje lokalnih vlasti: {ORANGE}{STRING}
@@ -2936,13 +2945,99 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Promena 
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}VI Podešavanja
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Prikazuje VI podešavanja
+STR_AI_DEBUG                                                    :{WHITE}VI Korekcija
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Naziv VI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno učitavanje
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Zaustavlja Veštačku Inteligenciju, ponovo učitava skriptu, i restartuje je
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Prozor VI Korekcije je dostupna samo na serveru
+STR_AI_CONFIG_CAPTION                                           :{WHITE}VI Podešavanja
+STR_AI_CHANGE                                                   :{BLACK}Odabiranje
+STR_AI_CONFIGURE                                                :{BLACK}Podešavanje
+STR_AI_CHANGE_TIP                                               :{BLACK}Učitavanje druge Veštačke Inteligencije
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Podešavanje parametara Veštačke Iteligencije
+STR_AI_LIST_TIP                                                 :{BLACK}Sve VI će biti učitane u sledećoj partiji
+STR_AI_LIST_CAPTION                                             :{WHITE}Dostupne VI
+STR_AI_AILIST_TIP                                               :{BLACK}Kliknite kako biste izabrali Veštačku Inteligenciju
+STR_AI_ACCEPT                                                   :{BLACK}Prihvati
+STR_AI_ACCEPT_TIP                                               :{BLACK}Izabira označenu Veštačku Inteligenciju
+STR_AI_CANCEL                                                   :{BLACK}Otkaži
+STR_AI_CANCEL_TIP                                               :{BLACK}Ne menja izbor Veštačke Inteligencije
+STR_AI_CLOSE                                                    :{BLACK}Zatvori
+STR_AI_RESET                                                    :{BLACK}Resetuj
+STR_AI_HUMAN_PLAYER                                             :Ljudsko biće
+STR_AI_RANDOM_AI                                                :Proizvoljna VI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}VI Parametri
+STR_AI_AUTHOR                                                   :{BLACK}Autor: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Izdanje: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Jedna od VI je krahirala. Molimo vas da prijavite grešku autoru VI-e sa slikom prozora VI Korekcije .
 ########
 
 ############ town controlled noise level
+STR_NOISE_IN_TOWN                                               :{BLACK}Nivo buke u naselju: {ORANGE}{COMMA}{BLACK}  najviše: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Proizvedena buka: {GOLD}{COMMA}
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD je napravljen bez podrške za "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... preuzimanje dodataka nije moguće!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Osnovna grafika
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :VI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :VI biblioteke
+STR_CONTENT_TYPE_SCENARIO                                       :Scenario
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Visinska mapa
+STR_CONTENT_TITLE                                               :{WHITE}Dodaci za preuzimanje
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Vrsta
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Vrsta dodatka
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Naziv
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Naziv dodatka
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Kliknite kako biste videli detalje{}Kliknite na kvadratić kako biste ga označili za skidanje
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Označi sve
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Obeležava sve dodatke za preuzimanje
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Obeleži ažurirana
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Obeležava sve preuzete dodatke koje imaju novija izdanja za preuzimanje
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznači sve
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Otkazuje preuzimanje svih dodataka
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Unes filter teksta
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Unesite ključnu reč kako bi se filtriralo spisak
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter po ključu/nazivu:
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Preuzmi
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Započinje preuzimanje odabranih dodataka
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Ukupna količina za preuzimanje: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}PODACI O DODATKU
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Dodatak nije označen preuzimanje
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Dodatak je označena za preuzimanje
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Ovaj dodatak je označen za preuzimanje zbog zavisnosti
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Ovo već imate
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Ovaj dodatak je nepoznat i ne može se preuzeti sa OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ovaj dodatak je zamena za postojeci {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Naziv: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Izdanje: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Opis: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Vrsta: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Veličina: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Označeno zbog: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Zavisnosti: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Ključne reči: {WHITE}{STRING}
 
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Preuzimanje dodataka...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Zahtevanje datoteka...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Trenutno se preuzima {STRING} ({NUM} od {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Preuzimanje je završeno
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} od {BYTES} preuzetih ({NUM} %)
 
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Neuspešno povezivanje sa serverom sa dodacima...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Neuspešno preuzimanje...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... prekinula se veza
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... datoteka se nije mogla zapisati
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Preuzeta datoteka se ne može otpakovati
 
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Spisak Dodataka na Mreži
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Pregled novih i ažureiranih dodatka za preuzimanje
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Traži nedostajući fajl na Mreži
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Pretražuje za nedostajuću dodataku na Internetu
 ########

@@ -14,7 +14,7 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Край карты
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}За краем карты
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Слишком близко к краю карты
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Недостаточно денег - требуется {CURRENCY}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
@@ -161,7 +161,7 @@ STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LO
 STR_SMALLMAP_CAPTION                                            :{WHITE}Карта - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Настройки игры
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Сообщение
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Сообщение из {STRING}
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Сообщение от {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Осторожно!
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Это невозможно
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Невозможно расчистить…
@@ -182,13 +182,13 @@ STR_BLACK_4                                                     :{BLACK}4
 STR_BLACK_5                                                     :{BLACK}5
 STR_JUST_NOTHING                                                :Ничего
 STR_COLOUR_DARK_BLUE                                            :Темно-синий
-STR_COLOUR_PALE_GREEN                                           :Светло-зеленый
+STR_COLOUR_PALE_GREEN                                           :Светло-зелёный
 STR_COLOUR_PINK                                                 :Розовый
 STR_COLOUR_YELLOW                                               :Желтый
 STR_COLOUR_RED                                                  :Красный
 STR_COLOUR_LIGHT_BLUE                                           :Светло-синий
-STR_COLOUR_GREEN                                                :Зеленый
-STR_COLOUR_DARK_GREEN                                           :Темно-зеленый
+STR_COLOUR_GREEN                                                :Зелёный
+STR_COLOUR_DARK_GREEN                                           :Тёмно-зелёный
 STR_COLOUR_BLUE                                                 :Синий
 STR_COLOUR_CREAM                                                :Кремовый
 STR_COLOUR_MAUVE                                                :Лиловый
@@ -417,7 +417,7 @@ STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDO
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Невозможно изменить сервисный интервал…
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрыть окно
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заголовок окна - для перемещения окна тащить за него
-STR_STICKY_BUTTON                                               :{BLACK}Иммунитет от нажатия клавиши 'Закрыть все окна'
+STR_STICKY_BUTTON                                               :{BLACK}Игнорировать нажатия клавиши «Закрыть все окна»
 STR_RESIZE_BUTTON                                               :{BLACK}Нажмите и тащите для изменения размера окна
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Кликните, чтобы перейти к текущей папке загрузки/сохранения по умолчанию
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Уничтожить здания, постройки, траву, деревья в ячейке местности
@@ -461,37 +461,37 @@ STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Имя
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
-STR_ORDINAL_NUMBER_1ST                                          :1ое
-STR_ORDINAL_NUMBER_2ND                                          :2ое
-STR_ORDINAL_NUMBER_3RD                                          :3е
-STR_ORDINAL_NUMBER_4TH                                          :4ое
-STR_ORDINAL_NUMBER_5TH                                          :5ое
-STR_ORDINAL_NUMBER_6TH                                          :6ое
-STR_ORDINAL_NUMBER_7TH                                          :7ое
-STR_ORDINAL_NUMBER_8TH                                          :8ое
-STR_ORDINAL_NUMBER_9TH                                          :9ое
-STR_ORDINAL_NUMBER_10TH                                         :10ое
-STR_ORDINAL_NUMBER_11TH                                         :11ое
-STR_ORDINAL_NUMBER_12TH                                         :12ое
-STR_ORDINAL_NUMBER_13TH                                         :13ое
-STR_ORDINAL_NUMBER_14TH                                         :14ое
-STR_ORDINAL_NUMBER_15TH                                         :15ое
-STR_ORDINAL_NUMBER_16TH                                         :16ое
-STR_ORDINAL_NUMBER_17TH                                         :17ое
-STR_ORDINAL_NUMBER_18TH                                         :18ое
-STR_ORDINAL_NUMBER_19TH                                         :19ое
-STR_ORDINAL_NUMBER_20TH                                         :20ое
-STR_ORDINAL_NUMBER_21ST                                         :21ое
-STR_ORDINAL_NUMBER_22ND                                         :22ое
-STR_ORDINAL_NUMBER_23RD                                         :23е
-STR_ORDINAL_NUMBER_24TH                                         :24ое
-STR_ORDINAL_NUMBER_25TH                                         :25ое
-STR_ORDINAL_NUMBER_26TH                                         :26ое
-STR_ORDINAL_NUMBER_27TH                                         :27ое
-STR_ORDINAL_NUMBER_28TH                                         :28ое
-STR_ORDINAL_NUMBER_29TH                                         :29ое
-STR_ORDINAL_NUMBER_30TH                                         :30ое
-STR_ORDINAL_NUMBER_31ST                                         :31ое
+STR_ORDINAL_NUMBER_1ST                                          :1-е
+STR_ORDINAL_NUMBER_2ND                                          :2-е
+STR_ORDINAL_NUMBER_3RD                                          :3-е
+STR_ORDINAL_NUMBER_4TH                                          :4-е
+STR_ORDINAL_NUMBER_5TH                                          :5-е
+STR_ORDINAL_NUMBER_6TH                                          :6-е
+STR_ORDINAL_NUMBER_7TH                                          :7-е
+STR_ORDINAL_NUMBER_8TH                                          :8-е
+STR_ORDINAL_NUMBER_9TH                                          :9-е
+STR_ORDINAL_NUMBER_10TH                                         :10-е
+STR_ORDINAL_NUMBER_11TH                                         :11-е
+STR_ORDINAL_NUMBER_12TH                                         :12-е
+STR_ORDINAL_NUMBER_13TH                                         :13-е
+STR_ORDINAL_NUMBER_14TH                                         :14-е
+STR_ORDINAL_NUMBER_15TH                                         :15-е
+STR_ORDINAL_NUMBER_16TH                                         :16-е
+STR_ORDINAL_NUMBER_17TH                                         :17-е
+STR_ORDINAL_NUMBER_18TH                                         :18-е
+STR_ORDINAL_NUMBER_19TH                                         :19-е
+STR_ORDINAL_NUMBER_20TH                                         :20-е
+STR_ORDINAL_NUMBER_21ST                                         :21-е
+STR_ORDINAL_NUMBER_22ND                                         :22-е
+STR_ORDINAL_NUMBER_23RD                                         :23-е
+STR_ORDINAL_NUMBER_24TH                                         :24-е
+STR_ORDINAL_NUMBER_25TH                                         :25-е
+STR_ORDINAL_NUMBER_26TH                                         :26-е
+STR_ORDINAL_NUMBER_27TH                                         :27-е
+STR_ORDINAL_NUMBER_28TH                                         :28-е
+STR_ORDINAL_NUMBER_29TH                                         :29-е
+STR_ORDINAL_NUMBER_30TH                                         :30-е
+STR_ORDINAL_NUMBER_31ST                                         :31-е
 ############ range for days ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
@@ -528,14 +528,14 @@ STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Выбо
 STR_PLAYLIST_TRACK_SINGLE_DIGIT                                 :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
 STR_PLAYLIST_TRACK_DOUBLE_DIGIT                                 :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Номер трека
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Программа - '{STRING}'
+STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Программа - «{STRING}»
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Очистить
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Сохранить
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Выбор программы «Все треки»
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Выбор программы «Старый стиль музыки»
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Выбор программы «Новый стиль музыки»
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Выбор программы «Пользоват. 1»
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Выбор программы «Пользоват. 2'»
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Выбор программы «Пользоват. 2»
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Очистка пользовательской программы
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Сохранить настройки музыки
 STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Кликните по названию трека для добавления в пользовательскую программу
@@ -580,7 +580,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Магнат
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Транспортный король
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Магнат Века
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_STATS                                             :{BIGFONT}«{STRING}»   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} достиг статуса «{STRING}»!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} из {COMPANY} достиг статуса «{STRING}»!
 STR_BLUE_NUMBER                                                 :{BLUE}{COMMA}
@@ -608,8 +608,8 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}…сл�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}…слишком близко к другому городу
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}…неподходящее место
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}…слишком много городов
-STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Невозможно построить еще города
-STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...больше нет места на карте
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Невозможно построить города…
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}…нет места на карте
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Увеличить размер города
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Расширить
 STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Города не строят дорог. Вы можете включить стоительство дорог в Расш. настройки->Экономика->Города.
@@ -640,7 +640,7 @@ STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Сохр
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Загрузить сценарий
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Сохранить сценарий
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Играть сценарий
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Играть карту высот
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Загрузить карту высот
 STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Начать новую игру, используя карту высот в качестве шаблона карты
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Вы уверены, что хотите выйти из этого сценария?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}…можно построить в городах с населением не менее 1200 жителей
@@ -777,7 +777,7 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Не у�
 STR_TERRAFORM_TOOLTIP_PURCHASE_LAND                             :{BLACK}Купить землю
 STR_STATUSBAR_AUTOSAVE                                          :{RED}Автосохранение
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  СОХРАНЕНИЕ ИГРЫ  *  *
-STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Сохранение все еще идет,{}пожалуйста, дождитесь завершения!
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Идёт сохранение,{}пожалуйста, дождитесь завершения!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Выбрать музыкальную программу
 
 STR_6                                                           :{BLACK}6
@@ -946,7 +946,7 @@ STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Оди�
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Всегда полная дата в панели состояния: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Показывать светофоры на стороне движения: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Показывать финансовую статистику каждый год: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Новые задания будут «без остановки» по умолчанию: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Создавать задания с меткой «без остановки»: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}По умолчанию поезда останавливаются {ORANGE}{STRING}{LTBLUE} станции
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :в начале
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :в середине
@@ -985,7 +985,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Оригина�
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Нефтезаводы не дальше от края карты (клеток): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Высота снежной линии: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Неровность земли (только для TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Неровность земли (только для TerraGenesis): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Очень гладкий
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Гладкий
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Грубый
@@ -993,7 +993,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Очень гр
 STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Алгоритм рассадки деревьев: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Нет
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Оригинальный
-STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Продвинутый
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Улучшенный
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Вращение карты высот: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Против часовой стрелки
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :По часовой стрелке
@@ -1002,13 +1002,13 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Раз�
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Одна или несколько клеток в северном углу не пусты
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Одна или несколько клеток берега без воды
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. протяженность: {ORANGE}{STRING} {RED}(большие значения замедляют игру)
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. протяжённость: {ORANGE}{STRING} {RED}(большие значения замедляют игру)
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Включить обслуживание на вертолётных площадках: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Связать ландшафтную панель с транспортной: {ORANGE}{STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Обратить направление перемещения обзора мышью: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Плавный скроллинг окна просмотра: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Показывать замеры при строительстве: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Показывать окраску транспорта: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Показывать индивидуальную окраску транспорта: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :нет
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :только для своей компании
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :для всех компаний
@@ -1055,7 +1055,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Пок�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Инструменты строительства активны после использования: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Расходы группы в окне финансов компании: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Показывать окно покупки, когда нет доступного транспорта: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Показывать окно строительства, когда нет доступного соотв. транспорта: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Максимальное количество поездов на игрока: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Максимальное количество автотранспорта на игрока: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Максимальное количество авиатранспорта на игрока: {ORANGE}{STRING}
@@ -1105,7 +1105,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :решётко�
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :решёткой 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :случайно
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Городам разрешено строить дороги: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Разрешить городам контролировать уровень шума для аэропортов: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Разрешить городам контролировать уровень шума аэропортов: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :слева
@@ -1132,11 +1132,11 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Тра�
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Станции
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Экономика
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Конкуренты
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Опции экрана
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Настройки экрана
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Взаимодействие
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Сигналы
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Перемещение грузов
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Комп. игроки
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Искусственный интеллект
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Автообновление
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Обслуживание
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршруты
@@ -1210,7 +1210,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Нево
 
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Строить ж/д путь, используя режим Авторельса
 
-STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...в этом сценарии нет городов
+STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}…в этом сценарии нет городов
 STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Генерация карты остановлена…{}…нет доступных мест для размещения городов
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Много случайных городов
@@ -1265,13 +1265,13 @@ STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUST
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Название производства, нажмите для центровки
 
-STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...слишком близко к другому предприятию
+STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}…слишком близко к другому предприятию
 
 STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Переоборудование поезда для иного типа груза
 STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Переоборудовать поезда
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Выбор типа груза для перевозки
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Переоборудование поезда для выделенного типа груза
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Не могу переоборудовать поезд...
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Переоборудование поезда под выбранный тип груза
+STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Невозможно переоборудовать поезд…
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Изменить производительность
 
 ############ network gui strings
@@ -1282,7 +1282,7 @@ STR_NETWORK_PLAYER_NAME                                         :{BLACK}Имя �
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Это имя, под которым вы представитесь другим игрокам
 STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Введите ваше имя
 STR_NETWORK_CONNECTION                                          :{BLACK}Соединение:
-STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Искать сервера в локальной сети, или в Интернете
+STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Искать серверы в локальной сети или в Интернете
 
 STR_NETWORK_START_SERVER                                        :{BLACK}Запуск сервера
 STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Запуск сервера на вашем компьютере. К этой игре смогут подсоединяться другие игроки.
@@ -1312,17 +1312,17 @@ STR_NETWORK_DATE_CAPTION                                        :{BLACK}Дата
 STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Текущая дата
 
 STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Года
-STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Кол-во лет{} в игре
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Количество лет{}в игре
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}ИНФОРМАЦИЯ ОБ ИГРЕ
 STR_NETWORK_CLIENTS                                             :{SILVER}Клиенты:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Язык:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Климат:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Размер карты:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версия сервера:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адрес сервера:  {WHITE}{STRING}
-STR_NETWORK_START_DATE                                          :{SILVER}Дата начала:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Текущая дата:  {WHITE}{DATE_SHORT}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Язык: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Климат: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Размер карты: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версия сервера: {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адрес сервера: {WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}Дата начала: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Текущая дата: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Защищено паролем!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}СЕРВЕР ОТКЛЮЧЕН
 STR_NETWORK_SERVER_FULL                                         :{SILVER}СЕРВЕР ЗАПОЛНЕН
@@ -1340,7 +1340,7 @@ STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Введ
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Установить пароль
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Защитите вашу игру паролем, если вы не хотите, чтобы к ней могли подключиться все желающие
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Выбор карты:
-STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Какую карту вы хотите играть?
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}На какой карте вы хотите играть?
 STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Локальная сеть
 STR_NETWORK_INTERNET                                            :Интернет
@@ -1349,19 +1349,19 @@ STR_NETWORK_INTERNET_ADVERTISE                                  :Интерне�
 STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} клиент{P "" а ов}
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Макс. клиентов:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Выбор максимального числа клиентов. Не все места должны быть заняты
-STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} компан{P ия ии ий}
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} компани{P я и й}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Макс. компаний:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Ограничить максимальное число компаний на сервере
 STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} наблюдател{P ь я ей}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Макс. наблюдателей:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Ограничить максимальное количество наблюдателей на сервере
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Язык общения:
-STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Другие игроки будут знать, на каком языке говорят на сервере
+STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Другие игроки будут знать, на каком языке общаются на сервере
 STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Запуск игры
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Запуск новой сетевой игры с произвольной карты или сценария
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Загрузка игры
-STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Продолжить ранее сохраненную сетевую игру (проверьте, что подсоединились прежним игроком)
+STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Продолжить ранее сохранённую сетевую игру (проверьте, что подсоединились прежним игроком)
 
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :Любой
@@ -1373,7 +1373,7 @@ STR_NETWORK_LANG_BULGARIAN                                      :Болгарс�
 STR_NETWORK_LANG_CHINESE                                        :Китайский
 STR_NETWORK_LANG_CZECH                                          :Чешский
 STR_NETWORK_LANG_DANISH                                         :Датский
-STR_NETWORK_LANG_DUTCH                                          :Немецкий
+STR_NETWORK_LANG_DUTCH                                          :Голландский
 STR_NETWORK_LANG_ESPERANTO                                      :Эсперанто
 STR_NETWORK_LANG_FINNISH                                        :Финский
 STR_NETWORK_LANG_HUNGARIAN                                      :Венгерский
@@ -1381,7 +1381,7 @@ STR_NETWORK_LANG_ICELANDIC                                      :Исландс�
 STR_NETWORK_LANG_ITALIAN                                        :Итальянский
 STR_NETWORK_LANG_JAPANESE                                       :Японский
 STR_NETWORK_LANG_KOREAN                                         :Корейский
-STR_NETWORK_LANG_LITHUANIAN                                     :Латвийский
+STR_NETWORK_LANG_LITHUANIAN                                     :Литовский
 STR_NETWORK_LANG_NORWEGIAN                                      :Норвержский
 STR_NETWORK_LANG_POLISH                                         :Польский
 STR_NETWORK_LANG_PORTUGUESE                                     :Португальский
@@ -1397,14 +1397,14 @@ STR_NETWORK_LANG_AFRIKAANS                                      :Африкаа�
 STR_NETWORK_LANG_CROATIAN                                       :Хорватский
 STR_NETWORK_LANG_CATALAN                                        :Каталанский
 STR_NETWORK_LANG_ESTONIAN                                       :Эстонский
-STR_NETWORK_LANG_GALICIAN                                       :Галицийский
+STR_NETWORK_LANG_GALICIAN                                       :Галисийский
 STR_NETWORK_LANG_GREEK                                          :Греческий
 STR_NETWORK_LANG_LATVIAN                                        :Латвийский
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Состояние сетевой игры
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Подготовка соединения:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Подготовка соединения: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Список компаний в игре. Вы можете присоединиться к существующей или основать новую, если есть такая возможность
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Новая компания
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Основать новую компанию
@@ -1417,7 +1417,7 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Обно
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}ИНФОРМАЦИЯ О КОМПАНИИ
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Имя компании:  {WHITE}{STRING}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Имя компании: {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Основана: {WHITE}{NUM}
 STR_NETWORK_VALUE                                               :{SILVER}Оценочная стоимость: {WHITE}{CURRENCY}
 STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Текущий баланс: {WHITE}{CURRENCY}
@@ -1428,18 +1428,18 @@ STR_NETWORK_VEHICLES                                            :{SILVER}Тра�
 STR_NETWORK_STATIONS                                            :{SILVER}Станции: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_PLAYERS                                             :{SILVER}Игроки: {WHITE}{STRING}
 
-STR_NETWORK_CONNECTING                                          :{WHITE}Соединение...
+STR_NETWORK_CONNECTING                                          :{WHITE}Соединение…
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Соединение..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Авторизация..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Ожидание..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Загрузка карты..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Обработка..
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Регистрация..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Соединение…
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Авторизация…
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Ожидание…
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Загрузка карты…
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Обработка…
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Регистрация…
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Получение информации об игре..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Получение информации о компании..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Получение информации об игре…
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Получение информации о компании…
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}готовится присоединиться {NUM} клиентов
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK} загружено {BYTES} / {BYTES}
@@ -1447,7 +1447,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK} заг�
 STR_NETWORK_DISCONNECT                                          :{BLACK}Отключиться
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Введите количество денег, которые вы хотите передать
-STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сервер защищен. Введите пароль
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сервер защищён. Введите пароль
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компания защищена. Введите пароль
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Список клиентов
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Наблюдатель
@@ -1510,12 +1510,12 @@ STR_NETWORK_CHAT_COMPANY                                        :[Команда
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Команде] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Лично] :
 STR_NETWORK_CHAT_CLIENT                                         :[Лично] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Лично] к {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Лично] для {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Всем] :
 STR_NETWORK_CHAT_ALL                                            :[Всем] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Введите текст для сетевого сообщения
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Сервер закрыл сессию
-STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Сервер перезапускается...{}Пожалуйста, подождите...
+STR_NETWORK_SERVER_REBOOT                                       :{WHITE}Сервер перезапускается…{}Пожалуйста, подождите…
 
 STR_NETWORK_SERVER                                              :Сервер
 STR_NETWORK_CLIENT                                              :Клиент
@@ -1535,10 +1535,10 @@ STR_NETWORK_SEND                                                :{BLACK}Отпр
 
 ##### PNG-MAP-Loader
 
-STR_PNGMAP_ERROR                                                :{WHITE}Не могу загрузить ландшафт из PNG...
-STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...файл не найден.
-STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...не могу преобразовать тип изображения. Треб. PNG 8 или 24-bit глубины цвета.
-STR_PNGMAP_ERR_MISC                                             :{WHITE}...что-то пошло не так. Извините. (возможно, файл поврежден)
+STR_PNGMAP_ERROR                                                :{WHITE}Не могу загрузить ландшафт из PNG…
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}…файл не найден.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}…не могу преобразовать изображение. Треб. PNG 8 или 24-бит глубины цвета.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}…что-то пошло не так. Извините. (Возможно, файл повреждён)
 
 STR_BMPMAP_ERROR                                                :{WHITE}Не могу загрузить ландшафт из BMP…
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}…невозможно преобразовать тип изображения.
@@ -1631,7 +1631,7 @@ STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Объе
 
 ##id 0x1800
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Сначала удалите дорогу
-STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Идут дорожные работы...
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Идут дорожные работы…
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Строительство дорог
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Трамваи
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Выберите тип моста
@@ -1727,7 +1727,7 @@ STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Рейт
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсидии
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Предлагаемые субсидии:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING.p} по маршруту из {STRING} в {STRING}{YELLOW} (по {DATE_SHORT})
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} по маршруту из {STRING} в {STRING}{YELLOW} (по {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}нет
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Субсидируемые маршруты:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} по маршруту из {STATION} в {STATION}{YELLOW} ({COMPANY}{YELLOW}, до {DATE_SHORT})
@@ -1739,7 +1739,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Компания {STRING} получает субсидию!{}{}{STRING} по маршруту {STATION} - {STATION} оплачивается втройне в следующем году!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Компания {STRING} получает субсидию!{}{}{STRING} по маршруту {STATION} - {STATION} оплачивается вчетверо в следующем году!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} местная власть запрещает постройку другого аэропорта в городе
-STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} местная власть не разрешает из-за повышенного уровня шума в аэропорту
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}Администрация г.{NBSP}{TOWN} не разрешает строительство аэропорта из-за высокого уровня шума
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Коттеджи
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Дома
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Многоквартирный дом
@@ -1853,7 +1853,7 @@ STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Снач
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Сначала удалите грузовой терминал
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Сначала надо уничтожить пассажирскую трамвайную остановку
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Сначала надо уничтожить грузовую трамвайную остановку
-STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Станц{P 2 ия ии ий}
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} станци{P я и й}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Нет -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Слишком близко к другой пристани
@@ -1886,7 +1886,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Док
 STR_STATION_DESCRIPTION_BUOY                                    :Буй
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}…буй на пути
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}…станция слишком большая
-STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...использование непрямоугольных станций запрещено
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}…использование непрямоугольных станций запрещено
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Нажмите и держите CTRL для выбора более одного варианта
 
 STR_UNDEFINED                                                   :(неопределено)
@@ -1895,14 +1895,14 @@ STR_STAT_CLASS_WAYP                                             :Точки пу
 
 ##id 0x3800
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Направление дока
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}…должно быть построено на воде
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}…нужно строить в воде
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Здесь невозможно построить док…
 STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Выберите направление дока
 STR_WATER_DESCRIPTION_WATER                                     :Вода
 STR_WATER_DESCRIPTION_COAST_OR_RIVERBANK                        :Морской или речной берег
 STR_WATER_DESCRIPTION_SHIP_DEPOT                                :Верфь
 STR_BRIDGE_DESCRIPTION_AQUEDUCT                                 :Акведук
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}…Невозможно построить на воде
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}…нельзя строить в воде
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Сначала надо уничтожить канал
 
 ##id 0x4000
@@ -1928,7 +1928,7 @@ STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Выбр
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Удалить выбранную сохраненную игру
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Сохранить игру, используя выбранное имя
 STR_NETWORK_SERVER_RANDOM_GAME                                  :Сгенерировать случайную карту
-STR_LOAD_HEIGHTMAP                                              :{WHITE}Загруз. ЛАНДШАФТ
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Загрузить карту
 STR_SAVE_OSKTITLE                                               :{BLACK}Введите имя сохраняемой игры
 
 ##id 0x4800
@@ -1996,12 +1996,12 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}…ле�
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT}{STRING} объявляет о немедленном закрытии!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}Проблемы с поставками вынуждают {STRING} объявить о неизбежном закрытии!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}Недостаток деревьев в округе вынуждает {STRING} объявить о неизбежном закрытии!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} увеличивает объемы производства!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} увеличивает объёмы производства!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BLACK}{BIGFONT}Найден новый угольный пласт в {INDUSTRY}!{}Добыча увеличена вдвое!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BLACK}{BIGFONT}Обнаружены новые запасы нефти на {INDUSTRY} !{}Добыча увеличена вдвое!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BLACK}{BIGFONT}Обнаружены новые запасы нефти на {INDUSTRY}!{}Добыча увеличена вдвое!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BLACK}{BIGFONT}Внедрение новых методов позволяет поднять производство вдвое на {INDUSTRY}!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} производство упало на 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BLACK}{BIGFONT}{INDUSTRY}: Нашествие вредителей, {}производство упало на 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BLACK}{BIGFONT}{INDUSTRY}: Нашествие вредителей,{}производство упало на 50%
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}…может находиться только у края карты
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BLACK}{BIGFONT}{STRING} производительность {INDUSTRY} увеличилась на {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BLACK}{BIGFONT}{STRING} производительность {INDUSTRY} уменьшилась на {COMMA}%!
@@ -2138,8 +2138,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Отн�
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Нет
-STR_NUM_VERY_LOW                                                :Очень низкое
-STR_NUM_LOW                                                     :Низкое
+STR_NUM_VERY_LOW                                                :Очень малое
+STR_NUM_LOW                                                     :Малое
 STR_NUM_NORMAL                                                  :Среднее
 STR_NUM_HIGH                                                    :Большое
 STR_NUM_CUSTOM                                                  :Указанное
@@ -2151,10 +2151,12 @@ STR_AI_SPEED_MEDIUM                                             :Средняя
 STR_AI_SPEED_FAST                                               :Быстрая
 STR_AI_SPEED_VERY_FAST                                          :Очень быстрая
 STR_SEA_LEVEL_VERY_LOW                                          :Очень малое
+STR_SEA_LEVEL_VERY_LOW.p                                        :Очень низкие
 STR_SEA_LEVEL_LOW                                               :Малое
-STR_SEA_LEVEL_LOW.p                                             :Низкие
 STR_SEA_LEVEL_MEDIUM                                            :Среднее
+STR_SEA_LEVEL_MEDIUM.p                                          :Средние
 STR_SEA_LEVEL_HIGH                                              :Большое
+STR_SEA_LEVEL_HIGH.p                                            :Высокие
 STR_DISASTER_NONE                                               :Выключено
 STR_DISASTER_REDUCED                                            :Умеренная
 STR_DISASTER_NORMAL                                             :Обычная
@@ -2183,7 +2185,7 @@ STR_COMPANY_NUM                                                 :(Компани
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Лицо
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Цвет
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Цвет:
-STR_LIVERY_CAPTION                                              :{WHITE}Новый цвет
+STR_LIVERY_CAPTION                                              :{WHITE}Новая цветовая схема
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Название
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Директор
 STR_QUERY_COMPANY_NAME_CAPTION                                  :Компания
@@ -2225,7 +2227,7 @@ STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Нево
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}…нет ссуды для выплачивания
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}…требуется {CURRENCY}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Невозможно погасить ссуду…
-STR_INSUFFICIENT_FUNDS                                          :{WHITE}Невозможно отдать ссуженные банком деньги...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Невозможно отдать ссуженные банком деньги…
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Выбрать новое лицо директора
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Изменить цвет транспортных средств компании
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Изменение имени директора
@@ -2233,10 +2235,10 @@ STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Изме
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Взять/увеличить кредит
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Вернуть часть ссуды
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Директор)
-STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}В должности с: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}В должности с {WHITE}{NUM} года
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Транспорт:
 STR_TRAINS                                                      :{WHITE}{COMMA} поезд{P "" а ов}
-STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} автомашин{P а ы ""}
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} автомобил{P ь я ей}
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} авиатранспорт
 STR_SHIPS                                                       :{WHITE}{COMMA} корабл{P ь я ей}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}нет
@@ -2258,8 +2260,8 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Дост
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Рейтинг деятельности компании (макс=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Стоимость активов компании
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Сравнительная таблица компаний
-STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
-STR_COMPANY_LEAGUE_OTHER                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} «{STRING}»
+STR_COMPANY_LEAGUE_OTHER                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} «{STRING}»
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BLACK}{BIGFONT}Транспортная компания в опасном положении!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BLACK}{BIGFONT} {STRING} будет продана или объявлена банкротом, если ситуация не изменится!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Директор)
@@ -2302,7 +2304,7 @@ STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Паро
 STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Пароль компании по умолчанию
 STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Использовать этот пароль компании по умолчанию для всех новых компаний
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Мировой спад{}{}Финансовые эксперты дают ужасные прогнозы в связи с кризисом экономики!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Спад закончился!{}{}Увеличение объемов торговли внушает уверенность владельцам предприятий. Экономика укрепляет свои позиции.
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Спад закончился!{}{}Увеличение объёмов торговли внушает уверенность владельцам предприятий. Экономика укрепляет свои позиции.
 STR_TOGGLE_LARGE_SMALL_WINDOW                                   :{BLACK}Большое/маленькое окно
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Стоимость компании: {WHITE}{CURRENCY}
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Купить 25% акций компании
@@ -2313,24 +2315,24 @@ STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Не м�
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Не могу продать 25% акций этой компании…
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% владеет {COMPANY})
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BLACK}{BIGFONT}{STRING} выкуплена {STRING}!
-STR_PROTECTED                                                   :{WHITE}Эта компания еще не может торговать акциями...
+STR_PROTECTED                                                   :{WHITE}Эта компания еще не может торговать акциями…
 
 STR_LIVERY_DEFAULT                                              :Стандарт. раскраска
 STR_LIVERY_STEAM                                                :Паровоз
-STR_LIVERY_DIESEL                                               :Дизель
-STR_LIVERY_ELECTRIC                                             :Электропоезд
-STR_LIVERY_MONORAIL                                             :Монорельс
-STR_LIVERY_MAGLEV                                               :Маглев
-STR_LIVERY_DMU                                                  :DMU
-STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_DIESEL                                               :Тепловоз
+STR_LIVERY_ELECTRIC                                             :Электровоз
+STR_LIVERY_MONORAIL                                             :Монорельсовый локомотив
+STR_LIVERY_MAGLEV                                               :Магнитный локомотив
+STR_LIVERY_DMU                                                  :Многосекционный тепловоз
+STR_LIVERY_EMU                                                  :Многосекционный электровоз
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пассаж. вагон (паровоз)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пассаж. вагон (дизель)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пассаж. вагон (тепловоз)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Пассаж. вагон (электро)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Пассажирский вагон (монорельс)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Пассажирский вагон (Маглев)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Пассаж. вагон (монорельс)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Пассаж. вагон (магнит.)
 STR_LIVERY_FREIGHT_WAGON                                        :Грузовой вагон
 STR_LIVERY_BUS                                                  :Автобус
-STR_LIVERY_TRUCK                                                :Грузовое авто
+STR_LIVERY_TRUCK                                                :Грузовой автомобиль
 STR_LIVERY_PASSENGER_SHIP                                       :Пассажирское судно
 STR_LIVERY_FREIGHT_SHIP                                         :Грузовое судно
 STR_LIVERY_HELICOPTER                                           :Вертолёт
@@ -2345,37 +2347,37 @@ STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Наст
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Настройка цветовой схемы судов
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Настройка цветовой схемы авиатранспорта
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Настройка основного цвета
-STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Настройка вторичного цвета
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Настройка дополнительного цвета
 STR_LIVERY_PANEL_TIP                                            :{BLACK}Выберите цветовую схему для изменения, либо несколько схем с CTRL. Кликните на чекбокс для использования выбранной схемы.
 
 ##id 0x8000
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Паровоз Kirby Paul
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :Дизель MJS 250
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Паровоз Kirby Paul Tank
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :Тепловоз MJS 250
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Паровоз Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Паровоз Powernaut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Паровоз Mightymover Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Дизель Ploddyphut
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Дизель Powernaut
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Тепловоз Ploddyphut
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Тепловоз Powernaut
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Паровоз Wills 2-8-0
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Паровоз Chaney 'Jubilee'
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Паровоз Ginzu 'A4'
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :Паровоз SH '8P'
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Дизель Manley-Morel DMU
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :Дизель 'Dash'
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :Дизель SH/Hendry '25'
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :Дизель UU '37'
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Дизель Floss '47'
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :Дизель CS 4000
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :Дизель CS 2400
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Дизель Centennial
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Дизель Kelling 3100
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Дизель Turner Turbo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :Дизель MJS 1000
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :Дизель SH '125'
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :Электро SH '30'
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :Электро SH '40'
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :Электро 'T.I.M.'
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :Электро 'AsiaStar'
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Паровоз Chaney «Jubilee»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Паровоз Ginzu «A4»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :Паровоз SH «8P»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Дизель-поезд Manley-Morel
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :Дизель-поезд «Dash»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :Тепловоз SH/Hendry «25»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :Тепловоз UU «37»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Тепловоз Floss «47»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :Тепловоз CS 4000
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :Тепловоз CS 2400
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Тепловоз Centennial
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Тепловоз Kelling 3100
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Тепловоз Turner Turbo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :Тепловоз MJS 1000
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :Тепловоз SH «125»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :Электровоз SH «30»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :Электровоз SH «40»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :Электровоз «T.I.M.»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :Электровоз «AsiaStar»
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Пассажирский вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Почтовый вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Угольная платформа
@@ -2384,7 +2386,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Товарный вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Хоппер
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Вагон для дерева
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Вагон для жел. руды
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Вагон для железной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Вагон для стали
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Бронированный вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Рефрижератор (еда)
@@ -2403,8 +2405,8 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Вагон (и�
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Платформа (батарейки)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Платформа (газировка)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Платформа (пластик)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :Электро 'X2001'
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :Электро 'Millennium Z1'
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :Электровоз «X2001»
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :Электровоз «Millennium Z1»
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Пассажирский вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Почтовый вагон
@@ -2414,7 +2416,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Товарный вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Хоппер
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Вагон для дерева
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Вагон для жел. руды
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Вагон для железной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Вагон для стали
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Бронированный вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Рефрижератор (еда)
@@ -2446,7 +2448,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Товарный вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Хоппер
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Вагон для леса
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Вагон для жел. руды
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Вагон для железной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Вагон для стали
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Бронированный вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Рефрижератор (еда)
@@ -2701,8 +2703,8 @@ STR_CONDITIONAL_NUM                                             :Перейти 
 STR_CONDITIONAL_TRUE_FALSE                                      :Перейти к заданию {COMMA} когда {STRING} {STRING}
 
 STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Нет назначения
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Путешествует (не учитывается)
-STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Идти до {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Время в пути (неизвестно)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Время в пути - {STRING}
 STR_TIMETABLE_STAY_FOR                                          :и ждать {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :и идти до {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} д{P ень ня ней}
@@ -2756,7 +2758,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Конец заданий - -
 STR_SERVICE                                                     :{BLACK}Обслуж.
 STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Невозможно построить ж/д транспорт…
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Построен: {LTBLUE}{NUM}{BLACK} Стоимость: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}  Построен в {LTBLUE}{NUM} г.{BLACK} Стоимость: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Стоимость: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Разгрузка/Погрузка
@@ -2803,14 +2805,14 @@ STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Пока
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Показать сведения о вагонах
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Показать вместимость вагонов
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Показать общую вместимость поезда по типам грузов
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Показ списка заданий - щелкните для выделения. Если зажать CTRL - обзор станции.
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Пропустить данное задание и начать следующее. CTRL + клик пропускает выделенное задание.
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Показ списка заданий - щёлкните для выделения. Если зажать CTRL - обзор станции.
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Перейти к следующему заданию. CTRL+клик - перейти к выделенному заданию
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Удалить выделенное задание
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Вставить новое задание перед выделенным, или в конец списка
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Расписание - выберите задание.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Изменить время для выделенного задания
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Очистить время в выделенном задании
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Сбросить задержку счетчика, так чтобы транспорт прибыл вовремя.
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Сбросить время в выделенном задании
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Сбросить счётчик так, чтобы транспорт прибыл вовремя.
 STR_SERVICE_HINT                                                :{BLACK}Пропустить это задание, если обслуживание не требуется
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Цена: {CURRENCY} Вес: {WEIGHT_S}{}Скорость: {VELOCITY}  Мощность: {POWER}{}Цена обслуж.: {CURRENCY}/год{}Ёмкость: {CARGO}
 STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Цена: {CURRENCY} Макс. скорость: {VELOCITY}{}Ёмкость: {CARGO}, {CARGO}{}Стоимость обслуживания: {CURRENCY}/год
@@ -2837,35 +2839,35 @@ STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT
 STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Невозможно развернуть поезд…
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Переименовать тип вагона
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Невозможно переименовать…
-STR_CLEAR_TIME                                                  :{BLACK}Сбросить Время
-STR_RESET_LATENESS                                              :{BLACK}Сброс счетчика
+STR_CLEAR_TIME                                                  :{BLACK}Сбросить время
+STR_RESET_LATENESS                                              :{BLACK}Сброс счётчика
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Переименовать точку пути
 
 STR_TRAIN_STOPPING                                              :{RED}Остановлен
 STR_TRAIN_STOPPING_VEL                                          :{RED}Останавливаю, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :IНесовместимый тип рельс
 STR_TRAIN_NO_POWER                                              :{RED}Нет тока.
-STR_TRAIN_START_NO_CATENARY                                     :Кто-то украл все провода, поезд не может ехать...
+STR_TRAIN_START_NO_CATENARY                                     :Кто-то украл все провода, поезд не может ехать.
 STR_TRAIN_STUCK                                                 :{ORANGE}Ожидает свободного пути
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Появился новый {STRING}!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Появился новый {STRING}!  -  {ENGINE}
 
-STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Нельзя продать уничтоженный транспорт ...
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Нельзя продать уничтоженный транспорт…
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Нельзя переоборудовать уничтоженный транспорт…
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Не могу составить расписание для этого транспорта…
-STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Транспорт может только ждать на станции.
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Транспорт может ждать только на станции.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Этот транспорт не останавливается на этой станции.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Изм. время
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Этот транспорт приходит вовремя
-STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Этот транспорт приходит на  {STRING} позже
-STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Этот транспорт приходит на  {STRING} раньше
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Выполнение этого расписания займет {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Движение по маршруту займёт не менее {STRING} (не все просчитано)
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Этот транспорт приходит на {STRING} позже
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Этот транспорт приходит на {STRING} раньше
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Весь маршрут займёт {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Движение по маршруту займёт не менее {STRING} (не всё учтено)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Автомат.
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fill the timetable automatically with the values from the next journey (CTRL-click to try to keep waiting times)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Заполнить график автоматически по мере движения. Ctrl+клик, чтобы не менять время ожидания.
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Машина на пути
@@ -2877,7 +2879,7 @@ STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Пост
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Невозможно построить машину…
 STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}…должен быть остановлен в гараже
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Невозможно продать автомобиль…
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Невозможно остановить/пустить автомобиль…
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Невозможно остановить/запустить автомобиль…
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} ждет в гараже
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Следует в Гараж {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Следует в гараж {TOWN}, {VELOCITY}
@@ -2923,7 +2925,7 @@ STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Нево
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Переоборуд. авто для доставки разных видов грузов.
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Переоборуд. авто
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Переоборуд авто для перевозки доступных видов грузов
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Невозможно переоборудовать авто...
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Невозможно переоборудовать автомобиль…
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Выберите тип грузов для перевозки
 
 ##id 0x9800
@@ -3095,7 +3097,7 @@ STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Пока
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Настройки NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Применить изменения
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Переключить палитру
-STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Переключить палитру для выбраного NewGRF файла.{}Включите эту опцию для выбранного NewGRF файла, если все в игре вам кажентся в "розовом" цвете.
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Переключить палитру для выбраного NewGRF файла.{}Используйте переключение, если графика отрисовывается розовым цветом.
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Параметры
 STR_NEWGRF_FILENAME                                             :{BLACK}Имя файла: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}Палитра: {SILVER}{STRING}
@@ -3160,7 +3162,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Снят
 
 STR_NEWGRF_BROKEN                                               :{WHITE}Файл NewGRF «{STRING}» может привести к потере синхронизации и вылету игры.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Меняется длина транспорта «{1:ENGINE}», находящегося вне депо.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Поезд '{VEHICLE}', принадлежащий '{COMPANY}', имеет неправильную длину. Вероятно, это вызвано проблемами в файле новой графики. Игра может рассинхронизироваться или вылететь.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Поезд «{VEHICLE}», принадлежащий «{COMPANY}», имеет неправильную длину. Вероятно, это вызвано проблемами в файле новой графики. Игра может рассинхронизироваться или вылететь.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF «{STRING}» указывает неверную информацию.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Информация о вместимости/переоборудовании для локомотива «{1:ENGINE}» после постройки отличается от сведений в списке покупки, что может помешать функции автообновления/автозамены корректно произвести переоборудование.
@@ -3194,13 +3196,13 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Поезд{P "" а ов}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Машин{P а ы ""}
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Самолёт{P "" а ов}
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Корабл{P ь я ей}
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} поезд{P "" а ов}
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} автомобил{P ь я ей}
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} самолёт{P "" а ов}
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} корабл{P ь я ей}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Показать все поезда, в расписании которых есть эта станция
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Показать все автомашины, в расписании которых есть эта станция/остановка
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Показать все автомобили, в расписании которых есть эта станция/остановка
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Показать весь авиатранспорт, в расписании которого есть этот аэропорт
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Показать все корабли, в расписании которых есть эта пристань
 
@@ -3217,7 +3219,7 @@ STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Прод
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Продать весь авиатранспорт в ангаре
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Получить список поездов, у которых в заданиях есть это депо
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Получить список авто, у которых в заданиях есть этот гараж
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Получить список автомобилей, у которых в заданиях есть этот гараж
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Получить список судов, у которых в заданиях есть этот док
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Получить список авиатранспорта, у которого в заданиях есть этот ангар
 
@@ -3231,7 +3233,7 @@ STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} корабл{P ь я ей}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} ед. авиатранспорта
 
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.p}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Начать замену
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Прекратить замену
 STR_NOT_REPLACING                                               :{BLACK}Нет замены
@@ -3240,7 +3242,7 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Выбо
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Выбор типа транспорта, на который следует заменить
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Прекратить замену транспорта
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Начать замену выбранных типов транспорта
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Тип пути, на котором производить замену
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Тип ЖД транспорта, подлежащего замене
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}На какой танспорт происходит замена
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Удаление вагонов: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Разрешить при автозамене сохранять длину поездов путём удаления вагонов (начиная с головы поезда), если при автозамене локомотива увеличится длина поезда.
@@ -3317,22 +3319,22 @@ STR_RANDOM_SEED_HELP                                            :{BLACK}Ланд
 STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Введите случайное число
 STR_LAND_GENERATOR                                              :{BLACK}Генератор ландш.:
 STR_TREE_PLACER                                                 :{BLACK}Генератор лесов:
-STR_HEIGHTMAP_ROTATION                                          :{BLACK}Поворот РЕЛЬЕФА:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Поворот карты:
 STR_TERRAIN_TYPE                                                :{BLACK}Тип ландшафта:
-STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Уровень моря:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Количество воды:
 STR_SMOOTHNESS                                                  :{BLACK}Гладкость:
-STR_SNOW_LINE_HEIGHT                                            :{BLACK}"Снежная" линия:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Высота снег. линии:
 STR_DATE                                                        :{BLACK}Дата:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Число городов:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Число промышл.:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
-STR_SNOW_LINE_UP                                                :{BLACK}Поднять "снежную" линию на 1
-STR_SNOW_LINE_DOWN                                              :{BLACK}Опустить "снежную" линию на 1
-STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Изменить уровень "снежной" линии
+STR_SNOW_LINE_UP                                                :{BLACK}Поднять снеговую линию
+STR_SNOW_LINE_DOWN                                              :{BLACK}Опустить снеговую линию
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Изменить высоту снеговой линии
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Изменить год начала игры
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Выход за пределы доступных значений
-STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Увеличение карты до таких размеров не рекомендуется. Продолжить?
-STR_HEIGHTMAP_NAME                                              :{BLACK}Имя РЕЛЬЕФА:
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Изменение размеров исходной карты до таких значений не рекомендуется. Продолжить?
+STR_HEIGHTMAP_NAME                                              :{BLACK}Имя карты:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Размер: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Создание мира…
 STR_GENERATION_ABORT                                            :{BLACK}Отмена
@@ -3348,7 +3350,7 @@ STR_SETTINGUP_GAME                                              :{BLACK}Наст
 STR_PREPARING_TILELOOP                                          :{BLACK}Выполняем цикл
 STR_PREPARING_GAME                                              :{BLACK}Подготовка игры
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Ваши действия сменили уровень сложности на пользовательский
-STR_SE_FLAT_WORLD                                               :{WHITE}Ровная земля
+STR_SE_FLAT_WORLD                                               :{WHITE}Выровнять землю
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Создать ровную землю
 STR_SE_RANDOM_LAND                                              :{WHITE}Случайная земля
 STR_SE_NEW_WORLD                                                :{BLACK}Создать новый сценарий
@@ -3412,16 +3414,16 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}…эт�
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}…неверное направление дороги
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Настройки прозрачности
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Переключить прозрачность значков станций.
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Переключить прозрачность деревьев.
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Переключить прозрачность зданий.
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Переключить прозрачность зданий промышленности.
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Переключить прозрачность зданий, которые можно строить игроком. Например -- станции, депо, точки пути и столбы для электричества.
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Переключить прозрачность мостов
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Переключить прозрачность зданий, вроде антенн и маяков.
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Переключить прозрачность контактной сети. Ctrl-щелчок - запрет изменений.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Переключить прозрачность для индикаторов загрузки
-STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Сделать объекты не прозрачными а невидимыми
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Переключение прозрачности значков станций. Ctrl+щелчок - запрет изменений.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Переключение прозрачности деревьев. Ctrl+щелчок - запрет изменений.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Переключение прозрачности домов. Ctrl+щелчок - запрет изменений.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Переключение прозрачности промышленных объектов. Ctrl+щелчок - запрет изменений.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Переключение прозрачности построенных игроками объектов: станций, депо, точек пути и пр. Ctrl+щелчок - запрет изменений.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Переключение прозрачности мостов. Ctrl+щелчок - запрет изменений.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Переключение прозрачности объектов вроде антенн и маяков. Ctrl+щелчок - запрет изменений.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Переключение прозрачности контактной сети. Ctrl+щелчок - запрет изменений.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Переключение прозрачности индикаторов загрузки. Ctrl+щелчок - запрет изменений.
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Сделать объекты не прозрачными, а полностью невидимыми
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3445,24 +3447,24 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Добавить с общими заданиями
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Удалить всех
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} поезд{P "" а ов}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} автомашин{P а ы ""}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} корабл{P ь я ей}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} самолёт{P "" а ов}
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}Группа «{GROUP}» - {COMMA} поезд{P "" а ов}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}Группа «{GROUP}» - {COMMA} автомобил{P ь я ей}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}Группа «{GROUP}» - {COMMA} корабл{P ь я ей}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}Группа «{GROUP}» - {COMMA} единиц{P а ы ""} авиатранспорта
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Переименовать группу
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Не могу создать группу…
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Не могу удалить группу…
-STR_GROUP_CAN_T_RENAME                                          :{WHITE}Не могу переименовать группу...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Не могу переименовать группу…
 STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Не могу удалить весь транспорт из группы…
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Не могу добавить транспорт в группу…
 STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Не могу добавить транспорт с общими заданиями в группу…
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Группы - Щёлкните группу для отображения в списке
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Щёлкните по имени группы для отображения списка транспорта
 STR_GROUP_CREATE_TIP                                            :{BLACK}Создать группу
 STR_GROUP_DELETE_TIP                                            :{BLACK}Удалить выбранную группу
 STR_GROUP_RENAME_TIP                                            :{BLACK}Переименовать выбранную группу
-STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}В зажатом состоянии защищает группу от всеобщей автозамены
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Защита транспорта в группе от глобальной автозамены
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
@@ -3535,15 +3537,15 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Изме
 
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Выбор сигналов
-STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Не могу преобразовать сигнал здесь...
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Невозможно преобразовать здесь сигнал…
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Стандартный светофор (семофор){}Сигналы необходимы для предотвращения аварий поездов на путях.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Входной сигнал (семафор){}Горит зеленым, если хотя бы один из выходных сигналов зеленый на следующей секции путей. Во всех других случаях горит красным.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Входной сигнал (семафор){}Горит зелёным, если хотя бы один из выходных сигналов зелёный на следующей секции путей. Во всех других случаях горит красным.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Выходной светофор (семафор).{} Работает как обычный светофор, но его значение (цвет) необходимы для нормальной работы входящих и комбинированных пресигналов.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Комбо-светофор (семафор){}Комбо-светофор работает как сдвоенный входной и выходной светофор. Это позволяет построить большую разветвленную сеть.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}ПМС сигнал. ПМС сигнал позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый поезд может зарезервировать безопасный путь. Поезд может проехать ПМС сигнал, направленный в другую сторону
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Односторонний ПМС сигнал. ПМС сигнал позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый поезд может зарезервировать безопасный путь. Поезд НЕ может проехать односторонний ПМС сигнал, направленный в другую сторону
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Стандартный светофор (электро){}Сигналы необходимы для предотвращения аварий поездов на путях.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Входной светофор (элетро){}Горит зеленым, если хотя бы один из выходных сигналов зеленый на следующей секции путей. Во всех других случаях горит красным.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Входной светофор (элетро){}Горит зелёным, если хотя бы один из выходных сигналов зелёный на следующей секции путей. Во всех других случаях горит красным.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Выходной светофор (электро){}Работает как обычный светофор, но его значение (цвет) необходимы для нормальной работы входящих и комбинированных пресигналов.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Комбо-светофор (электро){}Комбо-светофор работает как сдвоенный входной и выходной светофор. Это позволяет построить большую разветвленную сеть.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}ПМС сигнал. ПМС сигнал позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый поезд может зарезервировать безопасный путь. Поезд может проехать ПМС сигнал, направленный в другую сторону
