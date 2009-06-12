@@ -113,8 +113,7 @@ enum AirportTiles {
 	APT_APRON_HALF_EAST        = 162,
 	APT_APRON_HALF_WEST        = 163,
 	APT_GRASS_FENCE_NE_FLAG_2  = 164,
-	APT_GRASS_2_FENCE_NE_FLAG  = 165,
-	/* 166-169 used for flag animation */
+	/* 165-167 used for flag animation */
 };
 
 /** Tiles for Country Airfield (small) */
