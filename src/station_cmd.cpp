@@ -1599,99 +1599,6 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	return ret;
 }
 
-/* FIXME -- need to move to its corresponding Airport variable*/
-
-/* Country Airfield (small) */
-static const byte _airport_sections_country[] = {
-	54, 53, 52, 65,
-	58, 57, 56, 55,
-	64, 63, 63, 62
-};
-
-/* City Airport (large) */
-static const byte _airport_sections_town[] = {
-	31,  9, 33,  9,  9, 32,
-	27, 36, 29, 34,  8, 10,
-	30, 11, 35, 13, 20, 21,
-	51, 12, 14, 17, 19, 28,
-	38, 13, 15, 16, 18, 39,
-	26, 22, 23, 24, 25, 26
-};
-
-/* Metropolitain Airport (large) - 2 runways */
-static const byte _airport_sections_metropolitan[] = {
-	 31,  9, 33,  9,  9, 32,
-	 27, 36, 29, 34,  8, 10,
-	 30, 11, 35, 13, 20, 21,
-	102,  8,  8,  8,  8, 28,
-	 83, 84, 84, 84, 84, 83,
-	 26, 23, 23, 23, 23, 26
-};
-
-/* International Airport (large) - 2 runways */
-static const byte _airport_sections_international[] = {
-	88, 89, 89, 89, 89, 89,  88,
-	51,  8,  8,  8,  8,  8,  32,
-	30,  8, 11, 27, 11,  8,  10,
-	32,  8, 11, 27, 11,  8, 114,
-	87,  8, 11, 85, 11,  8, 114,
-	87,  8,  8,  8,  8,  8,  90,
-	26, 23, 23, 23, 23, 23,  26
-};
-
-/* Intercontinental Airport (vlarge) - 4 runways */
-static const byte _airport_sections_intercontinental[] = {
-	102, 120,  89,  89,  89,  89,  89,  89, 118,
-	120,  23,  23,  23,  23,  23,  23, 119, 117,
-	 87,  54,  87,   8,   8,   8,   8,  51, 117,
-	 87, 162,  87,  85, 116, 116,   8,   9,  10,
-	 87,   8,   8,  11,  31,  11,   8, 160,  32,
-	 32, 160,   8,  11,  27,  11,   8,   8,  10,
-	 87,   8,   8,  11,  30,  11,   8,   8,  10,
-	 87, 142,   8,  11,  29,  11,  10, 163,  10,
-	 87, 164,  87,   8,   8,   8,  10,  37, 117,
-	 87, 120,  89,  89,  89,  89,  89,  89, 119,
-	121,  23,  23,  23,  23,  23,  23, 119,  37
-};
-
-
-/* Commuter Airfield (small) */
-static const byte _airport_sections_commuter[] = {
-	85, 30, 115, 115, 32,
-	87, 8,    8,   8, 10,
-	87, 11,  11,  11, 10,
-	26, 23,  23,  23, 26
-};
-
-/* Heliport */
-static const byte _airport_sections_heliport[] = {
-	66,
-};
-
-/* Helidepot */
-static const byte _airport_sections_helidepot[] = {
-	124, 32,
-	122, 123
-};
-
-/* Helistation */
-static const byte _airport_sections_helistation[] = {
-	 32, 134, 159, 158,
-	161, 142, 142, 157
-};
-
-static const byte * const _airport_sections[] = {
-	_airport_sections_country,           // Country Airfield (small)
-	_airport_sections_town,              // City Airport (large)
-	_airport_sections_heliport,          // Heliport
-	_airport_sections_metropolitan,      // Metropolitain Airport (large)
-	_airport_sections_international,     // International Airport (xlarge)
-	_airport_sections_commuter,          // Commuter Airport (small)
-	_airport_sections_helidepot,         // Helidepot
-	_airport_sections_intercontinental,  // Intercontinental Airport (xxlarge)
-	_airport_sections_helistation        // Helistation
-};
-
 /**
  * Computes the minimal distance from town's xy to any airport's tile.
  * @param afc airport's description
@@ -1793,7 +1700,6 @@ void UpdateAirportsNoise()
 	}
 }
 
-
 /** Place an Airport.
  * @param tile tile where airport will be built
  * @param flags operation to perform
@@ -1813,7 +1719,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (distant_join && (!_settings_game.station.distant_join_stations || !Station::IsValidID(station_to_join))) return CMD_ERROR;
 
 	/* Check if a valid, buildable airport was chosen for construction */
-	if (p1 >= lengthof(_airport_sections) || !HasBit(GetValidAirports(), p1)) return CMD_ERROR;
+	if (p1 >= NUM_AIRPORTS || !HasBit(GetValidAirports(), p1)) return CMD_ERROR;
 
 	if (!CheckIfAuthorityAllowsNewStation(tile, flags)) {
 		return CMD_ERROR;

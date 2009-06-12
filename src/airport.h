@@ -27,6 +27,7 @@ enum {
 	AT_HELIDEPOT     =   6,
 	AT_INTERCON      =   7,
 	AT_HELISTATION   =   8,
+	NUM_AIRPORTS     =   9,
 	AT_OILRIG        =  15,
 	AT_DUMMY         = 255
 };
@@ -199,5 +200,7 @@ const AirportFTAClass *GetAirport(const byte airport_type);
  * @todo set availability of airports by year, instead of airplane
  */
 uint32 GetValidAirports();
+
+extern const byte * const _airport_sections[];
 
 #endif /* AIRPORT_H */
