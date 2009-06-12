@@ -1835,7 +1835,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			const byte *b = _airport_sections[p1];
 
 			BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
-				MakeAirport(tile_cur, st->owner, st->index, *b - ((*b < 67) ? 8 : 24));
+				MakeAirport(tile_cur, st->owner, st->index, *b);
 				b++;
 			} END_TILE_LOOP(tile_cur, w, h, tile)
 		}
