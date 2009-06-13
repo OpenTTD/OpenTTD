@@ -237,7 +237,8 @@ static bool InitializeWindowsAndCaches()
 
 typedef void (CDECL *SignalHandlerPointer)(int);
 static SignalHandlerPointer _prev_segfault = NULL;
-static SignalHandlerPointer _prev_abort = NULL;
+static SignalHandlerPointer _prev_abort    = NULL;
+static SignalHandlerPointer _prev_fpe      = NULL;
 
 static void CDECL HandleSavegameLoadCrash(int signum);
 
@@ -248,7 +249,8 @@ static void CDECL HandleSavegameLoadCrash(int signum);
 static void SetSignalHandlers()
 {
 	_prev_segfault = signal(SIGSEGV, HandleSavegameLoadCrash);
-	_prev_abort = signal(SIGABRT, HandleSavegameLoadCrash);
+	_prev_abort    = signal(SIGABRT, HandleSavegameLoadCrash);
+	_prev_fpe      = signal(SIGFPE,  HandleSavegameLoadCrash);
 }
 
 /**
@@ -258,6 +260,7 @@ static void ResetSignalHandlers()
 {
 	signal(SIGSEGV, _prev_segfault);
 	signal(SIGABRT, _prev_abort);
+	signal(SIGFPE,  _prev_fpe);
 }
 
 /**
@@ -300,7 +303,13 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 
 	ShowInfo(buffer);
 
-	SignalHandlerPointer call = signum == SIGSEGV ? _prev_segfault : _prev_abort;
+	SignalHandlerPointer call = NULL;
+	switch (signum) {
+		case SIGSEGV: call = _prev_segfault; break;
+		case SIGABRT: call = _prev_abort; break;
+		case SIGFPE:  call = _prev_fpe; break;
+		default: NOT_REACHED();
+	}
 	if (call != NULL) call(signum);
 }
 
