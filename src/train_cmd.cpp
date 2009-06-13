@@ -2436,7 +2436,7 @@ static bool CheckTrainStayInDepot(Train *v)
 	}
 
 	/* We are leaving a depot, but have to go to the exact same one; re-enter */
-	if (v->tile == v->dest_tile) {
+	if (v->current_order.IsType(OT_GOTO_DEPOT) && v->tile == v->dest_tile) {
 		/* We need to have a reservation for this to work. */
 		if (GetDepotWaypointReservation(v->tile)) return true;
 		SetDepotWaypointReservation(v->tile, true);
