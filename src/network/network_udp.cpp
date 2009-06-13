@@ -90,7 +90,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 
 	/* Update some game_info */
 	ngi.clients_on     = _network_game_info.clients_on;
-	ngi.start_date     = _network_game_info.start_date;
+	ngi.start_date     = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
 
 	ngi.server_lang    = _settings_client.network.server_lang;
 	ngi.use_password   = !StrEmpty(_settings_client.network.server_password);

@@ -749,7 +749,6 @@ static void NetworkInitGameInfo()
 
 	/* The server is a client too */
 	_network_game_info.clients_on = _network_dedicated ? 0 : 1;
-	_network_game_info.start_date = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
 
 	NetworkClientInfo *ci = new NetworkClientInfo(CLIENT_ID_SERVER);
 	ci->client_playas = _network_dedicated ? COMPANY_SPECTATOR : _local_company;
