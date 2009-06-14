@@ -1259,7 +1259,7 @@ int CDECL main(int argc, char *argv[])
 
 		if (strcmp(argv[1], "-export-pragmas") == 0) {
 			printf("name\tflags\tdefault\tdescription\n");
-			for (int i = 0; i < lengthof(_pragmas); i++) {
+			for (size_t i = 0; i < lengthof(_pragmas); i++) {
 				printf("\"%s\"\t%s\t\"%s\"\t\"%s\"\n",
 						_pragmas[i][0], _pragmas[i][1], _pragmas[i][2], _pragmas[i][3]);
 			}
