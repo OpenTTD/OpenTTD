@@ -790,6 +790,10 @@ static void HandleString(char *str, bool master)
 				ent->translated_case = c;
 			} else {
 				ent->translated = strdup(s);
+				/* If the string was translated, use the line from the
+				 * translated language so errors in the translated file
+				 * are properly referenced to. */
+				ent->line = _cur_line;
 			}
 		}
 	}
