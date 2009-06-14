@@ -663,7 +663,6 @@ STR_OFF                                                         :關閉
 STR_SUMMARY                                                     :摘要
 STR_FULL                                                        :詳細
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :市鎮清冊
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -697,9 +696,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}關
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}開
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}顯示補助項目
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :補助資訊
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :世界地圖
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :打開新視野
 STR_MAP_MENU_SIGN_LIST                                          :標誌清單
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :市鎮清冊
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}視野 {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}將視窗視野移到主視野
@@ -726,6 +730,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自動�
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}選擇自動存檔頻率
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :關閉
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :每個月
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :每 3 個月
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :每 6 個月
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :每 12 個月
@@ -846,7 +851,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}基本�
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}選擇使用的基礎圖片組
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :每個月
 STR_AUTOSAVE_FAILED                                             :{WHITE}自動儲存失敗
 
 STR_MONTH_JAN                                                   :一月
@@ -3134,6 +3138,8 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}改用�
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}改用歐元：{ORANGE}永不改用
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}預覽：{ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}變更自訂幣值參數
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}設定貨幣的分隔符
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}設定兌換成歐元的年代
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3532,6 +3538,7 @@ STR_AI_RANDOM_AI                                                :隨機 AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI 參數
 STR_AI_AUTHOR                                                   :{BLACK}作者： {STRING}
 STR_AI_VERSION                                                  :{BLACK}版本： {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 ########
 
 ############ town controlled noise level

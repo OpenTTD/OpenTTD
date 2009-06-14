@@ -668,7 +668,6 @@ STR_OFF                                                         :关闭
 STR_SUMMARY                                                     :摘要
 STR_FULL                                                        :完全
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :城镇列表
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -702,9 +701,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}关闭
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}开启
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}显示财政补贴
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :财政补贴
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :缩略地图
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :额外视点
 STR_MAP_MENU_SIGN_LIST                                          :标志列表
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :城镇列表
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}所有城镇人口总数：{COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}视点 {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}复制到视点
@@ -851,6 +855,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}选择�
 STR_OPTIONS_BASE_GRF                                            :{BLACK}基础图形组
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}选择要使用的基础图形组
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} 文件{}未找到或不正确
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}关于基本图组的额外信息
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}自动保存失败
 
@@ -3149,6 +3155,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}当车辆不在车库中时,这将改变 '{1:ENGINE}' 的车辆长度.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}列车 '{VEHICLE}' 属于 '{COMPANY}' 使长度无效化了. 这可能是NewGRF导致的. 有可能会发生崩溃或同步错误.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' 的信息不正确
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}购买'{1:ENGINE}' 后，将造成货物/运费的参数与购买列表不符，这将有可能造成自动更新/购买不成功。
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 产生了一个死循环
 
