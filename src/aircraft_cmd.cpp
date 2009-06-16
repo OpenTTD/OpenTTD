@@ -155,7 +155,7 @@ SpriteID Aircraft::GetImage(Direction direction) const
 		SpriteID sprite = GetCustomVehicleSprite(this, direction);
 		if (sprite != 0) return sprite;
 
-		spritenum = Engine::Get(this->engine_type)->image_index;
+		spritenum = Engine::Get(this->engine_type)->original_image_index;
 	}
 
 	return direction + _aircraft_sprite[spritenum];
@@ -183,7 +183,7 @@ static SpriteID GetAircraftIcon(EngineID engine)
 		SpriteID sprite = GetCustomVehicleIcon(engine, DIR_W);
 		if (sprite != 0) return sprite;
 
-		spritenum = Engine::Get(engine)->image_index;
+		spritenum = Engine::Get(engine)->original_image_index;
 	}
 
 	return DIR_W + _aircraft_sprite[spritenum];
