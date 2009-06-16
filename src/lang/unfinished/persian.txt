@@ -423,7 +423,6 @@ STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}اند�
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK} اخرین پیغام یا گزارش را نشان بده
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :لیست شهر ها
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 ############ range for menu starts
@@ -447,7 +446,12 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' در�
 
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}خاموش
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}روشن
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :نقشه ی دنیا
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :لیست شهر ها
+############ end of the 'Display map' dropdown
+
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}واحد پول
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}

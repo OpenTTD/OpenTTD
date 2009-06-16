@@ -1040,7 +1040,6 @@ STR_OFF                                                         :Wyłączone
 STR_SUMMARY                                                     :Sumaryczne
 STR_FULL                                                        :Pełne
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista miast
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -1074,9 +1073,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Wył.
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Wł.
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Wyświetl subsydia
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsydia
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa świata
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Dodatkowy podgląd
 STR_MAP_MENU_SIGN_LIST                                          :Lista tablic
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista miast
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Populacja świata: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Podgląd {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiuj do podglądu

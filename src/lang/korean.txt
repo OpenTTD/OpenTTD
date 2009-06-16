@@ -669,7 +669,6 @@ STR_OFF                                                         :끄기
 STR_SUMMARY                                                     :요약
 STR_FULL                                                        :전체
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :마을 목록
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -703,9 +702,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}끄기
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}켜기
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}보조금 표시
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :보조금
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :전체 지도 보기
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :외부 화면
 STR_MAP_MENU_SIGN_LIST                                          :팻말 목록
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :마을 목록
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}세계 인구: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}외부 화면 {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}외부 화면에 복사

@@ -589,7 +589,12 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Игра
 ############ range ends here
 
 
+############ 'Display map' dropdown. In SE, there is one more item.
+############ end of the 'Display map' dropdown
 
+
+
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој месец
 
 ############ range for menu starts
 ############ range ends here
@@ -608,7 +613,6 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Игра
 
 
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој месец
 STR_AUTOSAVE_FAILED                                             :{WHITE}Автоматското снимање неуспешно
 
 

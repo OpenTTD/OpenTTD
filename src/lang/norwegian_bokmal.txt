@@ -663,7 +663,6 @@ STR_OFF                                                         :Av
 STR_SUMMARY                                                     :Sammendrag
 STR_FULL                                                        :Fullt
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Byoversikt
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -697,9 +696,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Av
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}På
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Vis subsidier
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidier
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Verdenskart
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra vindu
 STR_MAP_MENU_SIGN_LIST                                          :Skiltliste
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Byoversikt
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Verdensbefolkning: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vindu {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopier til vindu

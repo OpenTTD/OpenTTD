@@ -28,131 +28,131 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Prihvać
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Zalihe: {GOLD}
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Putnici
-STR_CARGO_PLURAL_PASSENGERS.gen                                         :putnika
+STR_CARGO_PLURAL_PASSENGERS.gen                                 :putnika
 STR_CARGO_PLURAL_COAL                                           :Ugljen
-STR_CARGO_PLURAL_COAL.gen                                               :ugljena
+STR_CARGO_PLURAL_COAL.gen                                       :ugljena
 STR_CARGO_PLURAL_MAIL                                           :Pošta
-STR_CARGO_PLURAL_MAIL.gen                                               :pošte
+STR_CARGO_PLURAL_MAIL.gen                                       :pošte
 STR_CARGO_PLURAL_OIL                                            :Nafta
-STR_CARGO_PLURAL_OIL.gen                                                :nafte
+STR_CARGO_PLURAL_OIL.gen                                        :nafte
 STR_CARGO_PLURAL_LIVESTOCK                                      :Domaće životinje
-STR_CARGO_PLURAL_LIVESTOCK.gen                                          :domaćih životinja
+STR_CARGO_PLURAL_LIVESTOCK.gen                                  :domaćih životinja
 STR_CARGO_PLURAL_GOODS                                          :Roba
-STR_CARGO_PLURAL_GOODS.gen                                              :robe
+STR_CARGO_PLURAL_GOODS.gen                                      :robe
 STR_CARGO_PLURAL_GRAIN                                          :Žitarice
-STR_CARGO_PLURAL_GRAIN.gen                                              :žita
+STR_CARGO_PLURAL_GRAIN.gen                                      :žita
 STR_CARGO_PLURAL_WOOD                                           :Drvo
-STR_CARGO_PLURAL_WOOD.gen                                               :drva
+STR_CARGO_PLURAL_WOOD.gen                                       :drva
 STR_CARGO_PLURAL_IRON_ORE                                       :Željezna ruda
-STR_CARGO_PLURAL_IRON_ORE.gen                                           :željeza
+STR_CARGO_PLURAL_IRON_ORE.gen                                   :željeza
 STR_CARGO_PLURAL_STEEL                                          :Ćelik
-STR_CARGO_PLURAL_STEEL.gen                                              :čelika
+STR_CARGO_PLURAL_STEEL.gen                                      :čelika
 STR_CARGO_PLURAL_VALUABLES                                      :Dragocjenosti
-STR_CARGO_PLURAL_VALUABLES.gen                                          :dragocjenosti
+STR_CARGO_PLURAL_VALUABLES.gen                                  :dragocjenosti
 STR_CARGO_PLURAL_COPPER_ORE                                     :Bakrena ruda
-STR_CARGO_PLURAL_COPPER_ORE.gen                                         :bakra
+STR_CARGO_PLURAL_COPPER_ORE.gen                                 :bakra
 STR_CARGO_PLURAL_MAIZE                                          :Kukuruz
-STR_CARGO_PLURAL_MAIZE.gen                                              :kukuruza
+STR_CARGO_PLURAL_MAIZE.gen                                      :kukuruza
 STR_CARGO_PLURAL_FRUIT                                          :Voće
-STR_CARGO_PLURAL_FRUIT.gen                                              :voća
+STR_CARGO_PLURAL_FRUIT.gen                                      :voća
 STR_CARGO_PLURAL_DIAMONDS                                       :Dijamanti
-STR_CARGO_PLURAL_DIAMONDS.gen                                           :dijamanata
+STR_CARGO_PLURAL_DIAMONDS.gen                                   :dijamanata
 STR_CARGO_PLURAL_FOOD                                           :Hrana
-STR_CARGO_PLURAL_FOOD.gen                                               :hrane
+STR_CARGO_PLURAL_FOOD.gen                                       :hrane
 STR_CARGO_PLURAL_PAPER                                          :Papir
-STR_CARGO_PLURAL_PAPER.gen                                              :papira
+STR_CARGO_PLURAL_PAPER.gen                                      :papira
 STR_CARGO_PLURAL_GOLD                                           :Zlato
-STR_CARGO_PLURAL_GOLD.gen                                               :zlata
+STR_CARGO_PLURAL_GOLD.gen                                       :zlata
 STR_CARGO_PLURAL_WATER                                          :Voda
-STR_CARGO_PLURAL_WATER.gen                                              :vode
+STR_CARGO_PLURAL_WATER.gen                                      :vode
 STR_CARGO_PLURAL_WHEAT                                          :Pšenica
-STR_CARGO_PLURAL_WHEAT.gen                                              :pšenice
+STR_CARGO_PLURAL_WHEAT.gen                                      :pšenice
 STR_CARGO_PLURAL_RUBBER                                         :Guma
-STR_CARGO_PLURAL_RUBBER.gen                                             :gume
+STR_CARGO_PLURAL_RUBBER.gen                                     :gume
 STR_CARGO_PLURAL_SUGAR                                          :Šećer
-STR_CARGO_PLURAL_SUGAR.gen                                              :šećera
+STR_CARGO_PLURAL_SUGAR.gen                                      :šećera
 STR_CARGO_PLURAL_TOYS                                           :Igračke
-STR_CARGO_PLURAL_TOYS.gen                                               :igračaka
+STR_CARGO_PLURAL_TOYS.gen                                       :igračaka
 STR_CARGO_PLURAL_CANDY                                          :Slatkiši
-STR_CARGO_PLURAL_CANDY.gen                                              :slatkiša
+STR_CARGO_PLURAL_CANDY.gen                                      :slatkiša
 STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_COLA.gen                                               :cole
+STR_CARGO_PLURAL_COLA.gen                                       :cole
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Šećerna vuna
-STR_CARGO_PLURAL_COTTON_CANDY.gen                                       :šećerne vune
+STR_CARGO_PLURAL_COTTON_CANDY.gen                               :šećerne vune
 STR_CARGO_PLURAL_BUBBLES                                        :Mjehurići
-STR_CARGO_PLURAL_BUBBLES.gen                                            :balona
+STR_CARGO_PLURAL_BUBBLES.gen                                    :balona
 STR_CARGO_PLURAL_TOFFEE                                         :Mliječne karamele
-STR_CARGO_PLURAL_TOFFEE.gen                                             :mliječne karamele
+STR_CARGO_PLURAL_TOFFEE.gen                                     :mliječne karamele
 STR_CARGO_PLURAL_BATTERIES                                      :Baterije
-STR_CARGO_PLURAL_BATTERIES.gen                                          :baterija
+STR_CARGO_PLURAL_BATTERIES.gen                                  :baterija
 STR_CARGO_PLURAL_PLASTIC                                        :Plastika
-STR_CARGO_PLURAL_PLASTIC.gen                                            :plastike
+STR_CARGO_PLURAL_PLASTIC.gen                                    :plastike
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gazirana pića
-STR_CARGO_PLURAL_FIZZY_DRINKS.gen                                       :gaziranih pića
+STR_CARGO_PLURAL_FIZZY_DRINKS.gen                               :gaziranih pića
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Putnik
-STR_CARGO_SINGULAR_PASSENGER.aku                                          :putnika
-STR_CARGO_SINGULAR_PASSENGER.gen                                          :putnika
+STR_CARGO_SINGULAR_PASSENGER.aku                                :putnika
+STR_CARGO_SINGULAR_PASSENGER.gen                                :putnika
 STR_CARGO_SINGULAR_COAL                                         :Ugljen
-STR_CARGO_SINGULAR_COAL.gen                                               :ugljena
+STR_CARGO_SINGULAR_COAL.gen                                     :ugljena
 STR_CARGO_SINGULAR_MAIL                                         :Pošta
-STR_CARGO_SINGULAR_MAIL.gen                                               :pošte
+STR_CARGO_SINGULAR_MAIL.gen                                     :pošte
 STR_CARGO_SINGULAR_OIL                                          :Nafta
-STR_CARGO_SINGULAR_OIL.gen                                                :nafte
+STR_CARGO_SINGULAR_OIL.gen                                      :nafte
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Domaće životinje
-STR_CARGO_SINGULAR_LIVESTOCK.gen                                          :domaćih životinja
+STR_CARGO_SINGULAR_LIVESTOCK.gen                                :domaćih životinja
 STR_CARGO_SINGULAR_GOODS                                        :Roba
-STR_CARGO_SINGULAR_GOODS.gen                                              :robe
+STR_CARGO_SINGULAR_GOODS.gen                                    :robe
 STR_CARGO_SINGULAR_GRAIN                                        :Žitarice
-STR_CARGO_SINGULAR_GRAIN.gen                                              :žita
+STR_CARGO_SINGULAR_GRAIN.gen                                    :žita
 STR_CARGO_SINGULAR_WOOD                                         :Drvo
-STR_CARGO_SINGULAR_WOOD.gen                                               :drva
+STR_CARGO_SINGULAR_WOOD.gen                                     :drva
 STR_CARGO_SINGULAR_IRON_ORE                                     :Željezna ruda
-STR_CARGO_SINGULAR_IRON_ORE.gen                                           :željeza
+STR_CARGO_SINGULAR_IRON_ORE.gen                                 :željeza
 STR_CARGO_SINGULAR_STEEL                                        :Čelik
-STR_CARGO_SINGULAR_STEEL.gen                                              :čelika
+STR_CARGO_SINGULAR_STEEL.gen                                    :čelika
 STR_CARGO_SINGULAR_VALUABLES                                    :Dragocjenosti
-STR_CARGO_SINGULAR_VALUABLES.gen                                          :dragocjenosti
+STR_CARGO_SINGULAR_VALUABLES.gen                                :dragocjenosti
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Bakrena ruda
-STR_CARGO_SINGULAR_COPPER_ORE.gen                                         :bakra
+STR_CARGO_SINGULAR_COPPER_ORE.gen                               :bakra
 STR_CARGO_SINGULAR_MAIZE                                        :Kukuruz
-STR_CARGO_SINGULAR_MAIZE.gen                                              :kukuruza
+STR_CARGO_SINGULAR_MAIZE.gen                                    :kukuruza
 STR_CARGO_SINGULAR_FRUIT                                        :Voće
-STR_CARGO_SINGULAR_FRUIT.gen                                              :voća
+STR_CARGO_SINGULAR_FRUIT.gen                                    :voća
 STR_CARGO_SINGULAR_DIAMOND                                      :Dijamant
-STR_CARGO_SINGULAR_DIAMOND.gen                                            :dijamanata
+STR_CARGO_SINGULAR_DIAMOND.gen                                  :dijamanata
 STR_CARGO_SINGULAR_FOOD                                         :Hrana
-STR_CARGO_SINGULAR_FOOD.gen                                               :hrane
+STR_CARGO_SINGULAR_FOOD.gen                                     :hrane
 STR_CARGO_SINGULAR_PAPER                                        :Papir
-STR_CARGO_SINGULAR_PAPER.gen                                              :papira
+STR_CARGO_SINGULAR_PAPER.gen                                    :papira
 STR_CARGO_SINGULAR_GOLD                                         :Zlato
-STR_CARGO_SINGULAR_GOLD.gen                                               :zlata
+STR_CARGO_SINGULAR_GOLD.gen                                     :zlata
 STR_CARGO_SINGULAR_WATER                                        :Voda
-STR_CARGO_SINGULAR_WATER.gen                                              :vode
+STR_CARGO_SINGULAR_WATER.gen                                    :vode
 STR_CARGO_SINGULAR_WHEAT                                        :Pšenica
-STR_CARGO_SINGULAR_WHEAT.gen                                              :pšenice
+STR_CARGO_SINGULAR_WHEAT.gen                                    :pšenice
 STR_CARGO_SINGULAR_RUBBER                                       :Guma
-STR_CARGO_SINGULAR_RUBBER.gen                                             :gume
+STR_CARGO_SINGULAR_RUBBER.gen                                   :gume
 STR_CARGO_SINGULAR_SUGAR                                        :Šećer
-STR_CARGO_SINGULAR_SUGAR.gen                                              :šećera
+STR_CARGO_SINGULAR_SUGAR.gen                                    :šećera
 STR_CARGO_SINGULAR_TOY                                          :Igračka
-STR_CARGO_SINGULAR_TOY.gen                                                :igračaka
+STR_CARGO_SINGULAR_TOY.gen                                      :igračaka
 STR_CARGO_SINGULAR_CANDY                                        :Slatkiš
-STR_CARGO_SINGULAR_CANDY.gen                                              :slatkiša
+STR_CARGO_SINGULAR_CANDY.gen                                    :slatkiša
 STR_CARGO_SINGULAR_COLA                                         :Cola
-STR_CARGO_SINGULAR_COLA.gen                                               :cole
+STR_CARGO_SINGULAR_COLA.gen                                     :cole
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Šećerna vuna
-STR_CARGO_SINGULAR_COTTON_CANDY.gen                                       :šećerne vune
+STR_CARGO_SINGULAR_COTTON_CANDY.gen                             :šećerne vune
 STR_CARGO_SINGULAR_BUBBLE                                       :Mjehurić
-STR_CARGO_SINGULAR_BUBBLE.gen                                             :balona
+STR_CARGO_SINGULAR_BUBBLE.gen                                   :balona
 STR_CARGO_SINGULAR_TOFFEE                                       :Mliječna karamela
-STR_CARGO_SINGULAR_TOFFEE.gen                                             :mliječne karamele
+STR_CARGO_SINGULAR_TOFFEE.gen                                   :mliječne karamele
 STR_CARGO_SINGULAR_BATTERY                                      :Baterija
-STR_CARGO_SINGULAR_BATTERY.gen                                            :baterija
+STR_CARGO_SINGULAR_BATTERY.gen                                  :baterija
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastika
-STR_CARGO_SINGULAR_PLASTIC.gen                                            :plastike
+STR_CARGO_SINGULAR_PLASTIC.gen                                  :plastike
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gazirano piće
-STR_CARGO_SINGULAR_FIZZY_DRINK.gen                                        :gaziranog pića
+STR_CARGO_SINGULAR_FIZZY_DRINK.gen                              :gaziranog pića
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} putni{P k ka ka}
 STR_QUANTITY_COAL                                               :{WEIGHT} ugljena
@@ -730,7 +730,6 @@ STR_OFF                                                         :Isključeno
 STR_SUMMARY                                                     :Sažetak
 STR_FULL                                                        :Puno
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Popis gradova
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -764,9 +763,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Isključ
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Uključeno
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Prikaži subvencije
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencije
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Karta svijeta
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Dodatni pogled
 STR_MAP_MENU_SIGN_LIST                                          :Popis znakova
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Popis gradova
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Svjetsko stanovništvo: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pogled {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiraj u pogled
@@ -793,6 +797,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automats
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Odaberi interval između automatskih spremanja igre
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Isključeno
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Svaki mjesec
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Svaka 3 mjeseca
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Svakih 6 mjeseci
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Svakih 12 mjeseci
@@ -913,7 +918,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Osnovni 
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Odaberi osnovni grafički set za igru
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Svaki mjesec
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatsko spremanje neuspješno
 
 STR_MONTH_JAN                                                   :Siječanj

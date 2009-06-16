@@ -28,191 +28,191 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Прий
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Постачає: {GOLD}
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :пасажири
-STR_CARGO_PLURAL_PASSENGERS.r                                           :пасажирів
-STR_CARGO_PLURAL_PASSENGERS.z                                           :пасажирів
+STR_CARGO_PLURAL_PASSENGERS.r                                   :пасажирів
+STR_CARGO_PLURAL_PASSENGERS.z                                   :пасажирів
 STR_CARGO_PLURAL_COAL                                           :вугілля
-STR_CARGO_PLURAL_COAL.r                                                 :вугілля
-STR_CARGO_PLURAL_COAL.z                                                 :вугілля
+STR_CARGO_PLURAL_COAL.r                                         :вугілля
+STR_CARGO_PLURAL_COAL.z                                         :вугілля
 STR_CARGO_PLURAL_MAIL                                           :пошта
-STR_CARGO_PLURAL_MAIL.r                                                 :пошти
-STR_CARGO_PLURAL_MAIL.z                                                 :пошту
+STR_CARGO_PLURAL_MAIL.r                                         :пошти
+STR_CARGO_PLURAL_MAIL.z                                         :пошту
 STR_CARGO_PLURAL_OIL                                            :нафта
-STR_CARGO_PLURAL_OIL.r                                                  :нафти
-STR_CARGO_PLURAL_OIL.z                                                  :нафту
+STR_CARGO_PLURAL_OIL.r                                          :нафти
+STR_CARGO_PLURAL_OIL.z                                          :нафту
 STR_CARGO_PLURAL_LIVESTOCK                                      :худоба
-STR_CARGO_PLURAL_LIVESTOCK.r                                            :худоби
-STR_CARGO_PLURAL_LIVESTOCK.z                                            :худобу
+STR_CARGO_PLURAL_LIVESTOCK.r                                    :худоби
+STR_CARGO_PLURAL_LIVESTOCK.z                                    :худобу
 STR_CARGO_PLURAL_GOODS                                          :товари
-STR_CARGO_PLURAL_GOODS.r                                                :товарів
-STR_CARGO_PLURAL_GOODS.z                                                :товари
+STR_CARGO_PLURAL_GOODS.r                                        :товарів
+STR_CARGO_PLURAL_GOODS.z                                        :товари
 STR_CARGO_PLURAL_GRAIN                                          :зерно
-STR_CARGO_PLURAL_GRAIN.r                                                :зерна
-STR_CARGO_PLURAL_GRAIN.z                                                :зерно
+STR_CARGO_PLURAL_GRAIN.r                                        :зерна
+STR_CARGO_PLURAL_GRAIN.z                                        :зерно
 STR_CARGO_PLURAL_WOOD                                           :деревина
-STR_CARGO_PLURAL_WOOD.r                                                 :деревини
-STR_CARGO_PLURAL_WOOD.z                                                 :деревину
+STR_CARGO_PLURAL_WOOD.r                                         :деревини
+STR_CARGO_PLURAL_WOOD.z                                         :деревину
 STR_CARGO_PLURAL_IRON_ORE                                       :залізна руда
-STR_CARGO_PLURAL_IRON_ORE.r                                             :залізної руди
-STR_CARGO_PLURAL_IRON_ORE.z                                             :залізну руду
+STR_CARGO_PLURAL_IRON_ORE.r                                     :залізної руди
+STR_CARGO_PLURAL_IRON_ORE.z                                     :залізну руду
 STR_CARGO_PLURAL_STEEL                                          :сталь
-STR_CARGO_PLURAL_STEEL.r                                                :сталі
-STR_CARGO_PLURAL_STEEL.z                                                :сталь
+STR_CARGO_PLURAL_STEEL.r                                        :сталі
+STR_CARGO_PLURAL_STEEL.z                                        :сталь
 STR_CARGO_PLURAL_VALUABLES                                      :коштовності
-STR_CARGO_PLURAL_VALUABLES.r                                            :коштовностей
-STR_CARGO_PLURAL_VALUABLES.z                                            :коштовності
+STR_CARGO_PLURAL_VALUABLES.r                                    :коштовностей
+STR_CARGO_PLURAL_VALUABLES.z                                    :коштовності
 STR_CARGO_PLURAL_COPPER_ORE                                     :мідна руда
-STR_CARGO_PLURAL_COPPER_ORE.r                                           :мідної руди
-STR_CARGO_PLURAL_COPPER_ORE.z                                           :мідну руду
+STR_CARGO_PLURAL_COPPER_ORE.r                                   :мідної руди
+STR_CARGO_PLURAL_COPPER_ORE.z                                   :мідну руду
 STR_CARGO_PLURAL_MAIZE                                          :кукурудза
-STR_CARGO_PLURAL_MAIZE.r                                                :кукурудзи
-STR_CARGO_PLURAL_MAIZE.z                                                :кукурудзу
+STR_CARGO_PLURAL_MAIZE.r                                        :кукурудзи
+STR_CARGO_PLURAL_MAIZE.z                                        :кукурудзу
 STR_CARGO_PLURAL_FRUIT                                          :фрукти
-STR_CARGO_PLURAL_FRUIT.r                                                :фруктів
-STR_CARGO_PLURAL_FRUIT.z                                                :фрукти
+STR_CARGO_PLURAL_FRUIT.r                                        :фруктів
+STR_CARGO_PLURAL_FRUIT.z                                        :фрукти
 STR_CARGO_PLURAL_DIAMONDS                                       :діаманти
-STR_CARGO_PLURAL_DIAMONDS.r                                             :діамантів
-STR_CARGO_PLURAL_DIAMONDS.z                                             :діаманти
+STR_CARGO_PLURAL_DIAMONDS.r                                     :діамантів
+STR_CARGO_PLURAL_DIAMONDS.z                                     :діаманти
 STR_CARGO_PLURAL_FOOD                                           :продукти
-STR_CARGO_PLURAL_FOOD.r                                                 :продуктів
-STR_CARGO_PLURAL_FOOD.z                                                 :продукти
+STR_CARGO_PLURAL_FOOD.r                                         :продуктів
+STR_CARGO_PLURAL_FOOD.z                                         :продукти
 STR_CARGO_PLURAL_PAPER                                          :папір
-STR_CARGO_PLURAL_PAPER.r                                                :паперу
-STR_CARGO_PLURAL_PAPER.z                                                :папір
+STR_CARGO_PLURAL_PAPER.r                                        :паперу
+STR_CARGO_PLURAL_PAPER.z                                        :папір
 STR_CARGO_PLURAL_GOLD                                           :золото
-STR_CARGO_PLURAL_GOLD.r                                                 :золота
-STR_CARGO_PLURAL_GOLD.z                                                 :золото
+STR_CARGO_PLURAL_GOLD.r                                         :золота
+STR_CARGO_PLURAL_GOLD.z                                         :золото
 STR_CARGO_PLURAL_WATER                                          :вода
-STR_CARGO_PLURAL_WATER.r                                                :води
-STR_CARGO_PLURAL_WATER.z                                                :воду
+STR_CARGO_PLURAL_WATER.r                                        :води
+STR_CARGO_PLURAL_WATER.z                                        :воду
 STR_CARGO_PLURAL_WHEAT                                          :пшениця
-STR_CARGO_PLURAL_WHEAT.r                                                :пшениці
-STR_CARGO_PLURAL_WHEAT.z                                                :пшеницю
+STR_CARGO_PLURAL_WHEAT.r                                        :пшениці
+STR_CARGO_PLURAL_WHEAT.z                                        :пшеницю
 STR_CARGO_PLURAL_RUBBER                                         :каучук
-STR_CARGO_PLURAL_RUBBER.z                                               :каучук
+STR_CARGO_PLURAL_RUBBER.z                                       :каучук
 STR_CARGO_PLURAL_SUGAR                                          :цукор
-STR_CARGO_PLURAL_SUGAR.r                                                :цукру
-STR_CARGO_PLURAL_SUGAR.z                                                :цукор
+STR_CARGO_PLURAL_SUGAR.r                                        :цукру
+STR_CARGO_PLURAL_SUGAR.z                                        :цукор
 STR_CARGO_PLURAL_TOYS                                           :іграшки
-STR_CARGO_PLURAL_TOYS.r                                                 :іграшок
-STR_CARGO_PLURAL_TOYS.z                                                 :іграшки
+STR_CARGO_PLURAL_TOYS.r                                         :іграшок
+STR_CARGO_PLURAL_TOYS.z                                         :іграшки
 STR_CARGO_PLURAL_CANDY                                          :солодощі
-STR_CARGO_PLURAL_CANDY.r                                                :солодощів
-STR_CARGO_PLURAL_CANDY.z                                                :солодощі
+STR_CARGO_PLURAL_CANDY.r                                        :солодощів
+STR_CARGO_PLURAL_CANDY.z                                        :солодощі
 STR_CARGO_PLURAL_COLA                                           :кола
-STR_CARGO_PLURAL_COLA.r                                                 :коли
-STR_CARGO_PLURAL_COLA.z                                                 :колу
+STR_CARGO_PLURAL_COLA.r                                         :коли
+STR_CARGO_PLURAL_COLA.z                                         :колу
 STR_CARGO_PLURAL_COTTON_CANDY                                   :солодка вата
-STR_CARGO_PLURAL_COTTON_CANDY.r                                         :солодкої вати
-STR_CARGO_PLURAL_COTTON_CANDY.z                                         :солодку вату
+STR_CARGO_PLURAL_COTTON_CANDY.r                                 :солодкої вати
+STR_CARGO_PLURAL_COTTON_CANDY.z                                 :солодку вату
 STR_CARGO_PLURAL_BUBBLES                                        :бульбашки
-STR_CARGO_PLURAL_BUBBLES.r                                              :бульбашок
-STR_CARGO_PLURAL_BUBBLES.z                                              :бульбашки
+STR_CARGO_PLURAL_BUBBLES.r                                      :бульбашок
+STR_CARGO_PLURAL_BUBBLES.z                                      :бульбашки
 STR_CARGO_PLURAL_TOFFEE                                         :іриски
-STR_CARGO_PLURAL_TOFFEE.r                                               :ірисок
-STR_CARGO_PLURAL_TOFFEE.z                                               :іриски
+STR_CARGO_PLURAL_TOFFEE.r                                       :ірисок
+STR_CARGO_PLURAL_TOFFEE.z                                       :іриски
 STR_CARGO_PLURAL_BATTERIES                                      :батарейки
-STR_CARGO_PLURAL_BATTERIES.r                                            :батарейок
-STR_CARGO_PLURAL_BATTERIES.z                                            :батарейки
+STR_CARGO_PLURAL_BATTERIES.r                                    :батарейок
+STR_CARGO_PLURAL_BATTERIES.z                                    :батарейки
 STR_CARGO_PLURAL_PLASTIC                                        :пластилін
-STR_CARGO_PLURAL_PLASTIC.r                                              :пластиліну
-STR_CARGO_PLURAL_PLASTIC.z                                              :пластилін
+STR_CARGO_PLURAL_PLASTIC.r                                      :пластиліну
+STR_CARGO_PLURAL_PLASTIC.z                                      :пластилін
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :газована вода
-STR_CARGO_PLURAL_FIZZY_DRINKS.r                                         :газованої води
-STR_CARGO_PLURAL_FIZZY_DRINKS.z                                         :газовану воду
+STR_CARGO_PLURAL_FIZZY_DRINKS.r                                 :газованої води
+STR_CARGO_PLURAL_FIZZY_DRINKS.z                                 :газовану воду
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :пасажири
-STR_CARGO_SINGULAR_PASSENGER.r                                            :пасажирів
-STR_CARGO_SINGULAR_PASSENGER.z                                            :пасажирів
+STR_CARGO_SINGULAR_PASSENGER.r                                  :пасажирів
+STR_CARGO_SINGULAR_PASSENGER.z                                  :пасажирів
 STR_CARGO_SINGULAR_COAL                                         :вугілля
-STR_CARGO_SINGULAR_COAL.r                                                 :вугілля
-STR_CARGO_SINGULAR_COAL.z                                                 :вугілля
+STR_CARGO_SINGULAR_COAL.r                                       :вугілля
+STR_CARGO_SINGULAR_COAL.z                                       :вугілля
 STR_CARGO_SINGULAR_MAIL                                         :пошта
-STR_CARGO_SINGULAR_MAIL.r                                                 :пошти
-STR_CARGO_SINGULAR_MAIL.z                                                 :пошту
+STR_CARGO_SINGULAR_MAIL.r                                       :пошти
+STR_CARGO_SINGULAR_MAIL.z                                       :пошту
 STR_CARGO_SINGULAR_OIL                                          :нафта
-STR_CARGO_SINGULAR_OIL.r                                                  :нафти
-STR_CARGO_SINGULAR_OIL.z                                                  :нафту
+STR_CARGO_SINGULAR_OIL.r                                        :нафти
+STR_CARGO_SINGULAR_OIL.z                                        :нафту
 STR_CARGO_SINGULAR_LIVESTOCK                                    :худоба
-STR_CARGO_SINGULAR_LIVESTOCK.r                                            :худоби
-STR_CARGO_SINGULAR_LIVESTOCK.z                                            :худобу
+STR_CARGO_SINGULAR_LIVESTOCK.r                                  :худоби
+STR_CARGO_SINGULAR_LIVESTOCK.z                                  :худобу
 STR_CARGO_SINGULAR_GOODS                                        :товари
-STR_CARGO_SINGULAR_GOODS.r                                                :товарів
-STR_CARGO_SINGULAR_GOODS.z                                                :товари
+STR_CARGO_SINGULAR_GOODS.r                                      :товарів
+STR_CARGO_SINGULAR_GOODS.z                                      :товари
 STR_CARGO_SINGULAR_GRAIN                                        :зерно
-STR_CARGO_SINGULAR_GRAIN.r                                                :зерна
-STR_CARGO_SINGULAR_GRAIN.z                                                :зерно
+STR_CARGO_SINGULAR_GRAIN.r                                      :зерна
+STR_CARGO_SINGULAR_GRAIN.z                                      :зерно
 STR_CARGO_SINGULAR_WOOD                                         :деревина
-STR_CARGO_SINGULAR_WOOD.r                                                 :деревини
-STR_CARGO_SINGULAR_WOOD.z                                                 :деревину
+STR_CARGO_SINGULAR_WOOD.r                                       :деревини
+STR_CARGO_SINGULAR_WOOD.z                                       :деревину
 STR_CARGO_SINGULAR_IRON_ORE                                     :залізна руда
-STR_CARGO_SINGULAR_IRON_ORE.r                                             :залізної руди
-STR_CARGO_SINGULAR_IRON_ORE.z                                             :залізну руду
+STR_CARGO_SINGULAR_IRON_ORE.r                                   :залізної руди
+STR_CARGO_SINGULAR_IRON_ORE.z                                   :залізну руду
 STR_CARGO_SINGULAR_STEEL                                        :сталь
-STR_CARGO_SINGULAR_STEEL.r                                                :сталі
-STR_CARGO_SINGULAR_STEEL.z                                                :сталь
+STR_CARGO_SINGULAR_STEEL.r                                      :сталі
+STR_CARGO_SINGULAR_STEEL.z                                      :сталь
 STR_CARGO_SINGULAR_VALUABLES                                    :коштовності
-STR_CARGO_SINGULAR_VALUABLES.r                                            :коштовностей
-STR_CARGO_SINGULAR_VALUABLES.z                                            :коштовності
+STR_CARGO_SINGULAR_VALUABLES.r                                  :коштовностей
+STR_CARGO_SINGULAR_VALUABLES.z                                  :коштовності
 STR_CARGO_SINGULAR_COPPER_ORE                                   :мідна руда
-STR_CARGO_SINGULAR_COPPER_ORE.r                                           :мідної руди
-STR_CARGO_SINGULAR_COPPER_ORE.z                                           :мідну руду
+STR_CARGO_SINGULAR_COPPER_ORE.r                                 :мідної руди
+STR_CARGO_SINGULAR_COPPER_ORE.z                                 :мідну руду
 STR_CARGO_SINGULAR_MAIZE                                        :кукурудза
-STR_CARGO_SINGULAR_MAIZE.r                                                :кукурудзи
-STR_CARGO_SINGULAR_MAIZE.z                                                :кукурудзу
+STR_CARGO_SINGULAR_MAIZE.r                                      :кукурудзи
+STR_CARGO_SINGULAR_MAIZE.z                                      :кукурудзу
 STR_CARGO_SINGULAR_FRUIT                                        :фрукти
-STR_CARGO_SINGULAR_FRUIT.r                                                :фруктів
-STR_CARGO_SINGULAR_FRUIT.z                                                :фрукти
+STR_CARGO_SINGULAR_FRUIT.r                                      :фруктів
+STR_CARGO_SINGULAR_FRUIT.z                                      :фрукти
 STR_CARGO_SINGULAR_DIAMOND                                      :діаманти
-STR_CARGO_SINGULAR_DIAMOND.r                                              :діамантів
-STR_CARGO_SINGULAR_DIAMOND.z                                              :діаманти
+STR_CARGO_SINGULAR_DIAMOND.r                                    :діамантів
+STR_CARGO_SINGULAR_DIAMOND.z                                    :діаманти
 STR_CARGO_SINGULAR_FOOD                                         :продукти
-STR_CARGO_SINGULAR_FOOD.r                                                 :продуктів
-STR_CARGO_SINGULAR_FOOD.z                                                 :продукти
+STR_CARGO_SINGULAR_FOOD.r                                       :продуктів
+STR_CARGO_SINGULAR_FOOD.z                                       :продукти
 STR_CARGO_SINGULAR_PAPER                                        :папір
-STR_CARGO_SINGULAR_PAPER.r                                                :паперу
-STR_CARGO_SINGULAR_PAPER.z                                                :папір
+STR_CARGO_SINGULAR_PAPER.r                                      :паперу
+STR_CARGO_SINGULAR_PAPER.z                                      :папір
 STR_CARGO_SINGULAR_GOLD                                         :золото
-STR_CARGO_SINGULAR_GOLD.r                                                 :золота
-STR_CARGO_SINGULAR_GOLD.z                                                 :золото
+STR_CARGO_SINGULAR_GOLD.r                                       :золота
+STR_CARGO_SINGULAR_GOLD.z                                       :золото
 STR_CARGO_SINGULAR_WATER                                        :вода
-STR_CARGO_SINGULAR_WATER.r                                                :води
-STR_CARGO_SINGULAR_WATER.z                                                :воду
+STR_CARGO_SINGULAR_WATER.r                                      :води
+STR_CARGO_SINGULAR_WATER.z                                      :воду
 STR_CARGO_SINGULAR_WHEAT                                        :пшениця
-STR_CARGO_SINGULAR_WHEAT.r                                                :пшениці
-STR_CARGO_SINGULAR_WHEAT.z                                                :пшеницю
+STR_CARGO_SINGULAR_WHEAT.r                                      :пшениці
+STR_CARGO_SINGULAR_WHEAT.z                                      :пшеницю
 STR_CARGO_SINGULAR_RUBBER                                       :каучук
-STR_CARGO_SINGULAR_RUBBER.r                                               :каучуку
-STR_CARGO_SINGULAR_RUBBER.z                                               :каучук
+STR_CARGO_SINGULAR_RUBBER.r                                     :каучуку
+STR_CARGO_SINGULAR_RUBBER.z                                     :каучук
 STR_CARGO_SINGULAR_SUGAR                                        :цукор
-STR_CARGO_SINGULAR_SUGAR.r                                                :цукру
-STR_CARGO_SINGULAR_SUGAR.z                                                :цукор
+STR_CARGO_SINGULAR_SUGAR.r                                      :цукру
+STR_CARGO_SINGULAR_SUGAR.z                                      :цукор
 STR_CARGO_SINGULAR_TOY                                          :іграшки
-STR_CARGO_SINGULAR_TOY.r                                                  :іграшок
-STR_CARGO_SINGULAR_TOY.z                                                  :іграшки
+STR_CARGO_SINGULAR_TOY.r                                        :іграшок
+STR_CARGO_SINGULAR_TOY.z                                        :іграшки
 STR_CARGO_SINGULAR_CANDY                                        :цукерки
-STR_CARGO_SINGULAR_CANDY.r                                                :цукерок
-STR_CARGO_SINGULAR_CANDY.z                                                :цукерки
+STR_CARGO_SINGULAR_CANDY.r                                      :цукерок
+STR_CARGO_SINGULAR_CANDY.z                                      :цукерки
 STR_CARGO_SINGULAR_COLA                                         :кола
-STR_CARGO_SINGULAR_COLA.r                                                 :коли
-STR_CARGO_SINGULAR_COLA.z                                                 :колу
+STR_CARGO_SINGULAR_COLA.r                                       :коли
+STR_CARGO_SINGULAR_COLA.z                                       :колу
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :солодка вата
-STR_CARGO_SINGULAR_COTTON_CANDY.r                                         :солодкої вати
-STR_CARGO_SINGULAR_COTTON_CANDY.z                                         :солодку вату
+STR_CARGO_SINGULAR_COTTON_CANDY.r                               :солодкої вати
+STR_CARGO_SINGULAR_COTTON_CANDY.z                               :солодку вату
 STR_CARGO_SINGULAR_BUBBLE                                       :бульбашки
-STR_CARGO_SINGULAR_BUBBLE.r                                               :бульбашок
-STR_CARGO_SINGULAR_BUBBLE.z                                               :бульбашки
+STR_CARGO_SINGULAR_BUBBLE.r                                     :бульбашок
+STR_CARGO_SINGULAR_BUBBLE.z                                     :бульбашки
 STR_CARGO_SINGULAR_TOFFEE                                       :іриски
-STR_CARGO_SINGULAR_TOFFEE.r                                               :ірисок
-STR_CARGO_SINGULAR_TOFFEE.z                                               :іриски
+STR_CARGO_SINGULAR_TOFFEE.r                                     :ірисок
+STR_CARGO_SINGULAR_TOFFEE.z                                     :іриски
 STR_CARGO_SINGULAR_BATTERY                                      :батарейки
-STR_CARGO_SINGULAR_BATTERY.r                                              :батарейок
-STR_CARGO_SINGULAR_BATTERY.z                                              :батарейки
+STR_CARGO_SINGULAR_BATTERY.r                                    :батарейок
+STR_CARGO_SINGULAR_BATTERY.z                                    :батарейки
 STR_CARGO_SINGULAR_PLASTIC                                      :пластилін
-STR_CARGO_SINGULAR_PLASTIC.r                                              :пластиліну
-STR_CARGO_SINGULAR_PLASTIC.z                                              :пластилін
+STR_CARGO_SINGULAR_PLASTIC.r                                    :пластиліну
+STR_CARGO_SINGULAR_PLASTIC.z                                    :пластилін
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :газована вода
-STR_CARGO_SINGULAR_FIZZY_DRINK.r                                          :газованої води
-STR_CARGO_SINGULAR_FIZZY_DRINK.z                                          :газовану воду
+STR_CARGO_SINGULAR_FIZZY_DRINK.r                                :газованої води
+STR_CARGO_SINGULAR_FIZZY_DRINK.z                                :газовану воду
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} пасажир{P "" и iв}
 STR_QUANTITY_COAL                                               :{WEIGHT} вугілля
@@ -790,7 +790,6 @@ STR_OFF                                                         :Відкл.
 STR_SUMMARY                                                     :Коротко
 STR_FULL                                                        :Повністю
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Список міст
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -824,9 +823,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Ні
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Вкл
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Показати субсидії
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Субсидії
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Карта світу
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Додаткове вікно
 STR_MAP_MENU_SIGN_LIST                                          :Список позначень
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Список міст
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Населення світу: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Вікно {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Копіювати до вікна
@@ -853,6 +857,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Авто
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Виберіть період автозбереження гри
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :вимкнено
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :щомісяця
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :кожні три місяці
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :кожні півроку
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :щороку
@@ -973,7 +978,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Осно
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Оберіть, яку основну графіку використовувати
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :щомісяця
 STR_AUTOSAVE_FAILED                                             :{WHITE}Помилка автозбереження
 
 STR_MONTH_JAN                                                   :Січень
@@ -2045,79 +2049,79 @@ STR_SAVE_OSKTITLE                                               :{BLACK}Введ
 STR_OBJECT_IN_THE_WAY                                           :{WHITE}{STRING} на шляху
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Вугільна шахта
-STR_INDUSTRY_NAME_COAL_MINE.z                                            :{G=f}вугільну шахту
+STR_INDUSTRY_NAME_COAL_MINE.z                                   :{G=f}вугільну шахту
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Електростанція
-STR_INDUSTRY_NAME_POWER_STATION.z                                        :{G=f}електростанцію
+STR_INDUSTRY_NAME_POWER_STATION.z                               :{G=f}електростанцію
 STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}Лісопилка
-STR_INDUSTRY_NAME_SAWMILL.z                                              :{G=f}лісопилку
+STR_INDUSTRY_NAME_SAWMILL.z                                     :{G=f}лісопилку
 STR_INDUSTRY_NAME_FOREST                                        :{G=m}Ліс
-STR_INDUSTRY_NAME_FOREST.z                                               :{G=m}ліс
+STR_INDUSTRY_NAME_FOREST.z                                      :{G=m}ліс
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=m}Нафтопереробний завод
-STR_INDUSTRY_NAME_OIL_REFINERY.z                                         :{G=m}нафтопереробний завод
+STR_INDUSTRY_NAME_OIL_REFINERY.z                                :{G=m}нафтопереробний завод
 STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Нафтова платформа
-STR_INDUSTRY_NAME_OIL_RIG.z                                              :{G=f}нафтову платформу
+STR_INDUSTRY_NAME_OIL_RIG.z                                     :{G=f}нафтову платформу
 STR_INDUSTRY_NAME_FACTORY                                       :{G=f}Фабрика
-STR_INDUSTRY_NAME_FACTORY.z                                              :{G=f}фабрику
+STR_INDUSTRY_NAME_FACTORY.z                                     :{G=f}фабрику
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Друкарня
-STR_INDUSTRY_NAME_PRINTING_WORKS.z                                       :{G=f}друкарню
+STR_INDUSTRY_NAME_PRINTING_WORKS.z                              :{G=f}друкарню
 STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=m}Сталеварний завод
-STR_INDUSTRY_NAME_STEEL_MILL.z                                           :{G=m}сталеварний завод
+STR_INDUSTRY_NAME_STEEL_MILL.z                                  :{G=m}сталеварний завод
 STR_INDUSTRY_NAME_FARM                                          :{G=f}Ферма
-STR_INDUSTRY_NAME_FARM.z                                                 :{G=f}ферму
+STR_INDUSTRY_NAME_FARM.z                                        :{G=f}ферму
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Міднорудна шахта
-STR_INDUSTRY_NAME_COPPER_ORE_MINE.z                                      :{G=f}міднорудну шахту
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.z                             :{G=f}міднорудну шахту
 STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=f}Нафтова свердловина
-STR_INDUSTRY_NAME_OIL_WELLS.z                                            :{G=f}нафтову свердловину
+STR_INDUSTRY_NAME_OIL_WELLS.z                                   :{G=f}нафтову свердловину
 STR_INDUSTRY_NAME_BANK                                          :{G=m}Банк
-STR_INDUSTRY_NAME_BANK.z                                                 :{G=m}банк
+STR_INDUSTRY_NAME_BANK.z                                        :{G=m}банк
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=m}Продуктовий завод
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.z                                :{G=m}продуктовий завод
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.z                       :{G=m}продуктовий завод
 STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}Паперова фабрика
-STR_INDUSTRY_NAME_PAPER_MILL.z                                           :{G=f}паперову фабрику
+STR_INDUSTRY_NAME_PAPER_MILL.z                                  :{G=f}паперову фабрику
 STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Золоторудна шахта
-STR_INDUSTRY_NAME_GOLD_MINE.z                                            :{G=f}золоторудну шахту
+STR_INDUSTRY_NAME_GOLD_MINE.z                                   :{G=f}золоторудну шахту
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}Банк
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.z                                                 :{G=m}банк
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.z                          :{G=m}банк
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=f}Діамантова шахта
-STR_INDUSTRY_NAME_DIAMOND_MINE.z                                         :{G=f}діамантову шахту
+STR_INDUSTRY_NAME_DIAMOND_MINE.z                                :{G=f}діамантову шахту
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Залізорудна шахта
-STR_INDUSTRY_NAME_IRON_ORE_MINE.z                                        :{G=f}залізорудну шахту
+STR_INDUSTRY_NAME_IRON_ORE_MINE.z                               :{G=f}залізорудну шахту
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=m}Фруктовий сад
-STR_INDUSTRY_NAME_FRUIT_PLANTATION.z                                     :{G=m}фруктовий сад
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.z                            :{G=m}фруктовий сад
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=m}Каучуковий сад
-STR_INDUSTRY_NAME_RUBBER_PLANTATION.z                                    :{G=m}каучуковий сад
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.z                           :{G=m}каучуковий сад
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Водопостачання
-STR_INDUSTRY_NAME_WATER_SUPPLY.z                                         :водопостачання
+STR_INDUSTRY_NAME_WATER_SUPPLY.z                                :водопостачання
 STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=f}Водонапірна башта
-STR_INDUSTRY_NAME_WATER_TOWER.z                                          :{G=f}водонапірну башту
+STR_INDUSTRY_NAME_WATER_TOWER.z                                 :{G=f}водонапірну башту
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=f}Фабрика
-STR_INDUSTRY_NAME_FACTORY_2.z                                              :{G=f}фабрику
+STR_INDUSTRY_NAME_FACTORY_2.z                                   :{G=f}фабрику
 STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Ферма
-STR_INDUSTRY_NAME_FARM_2.z                                                 :{G=f}ферму
+STR_INDUSTRY_NAME_FARM_2.z                                      :{G=f}ферму
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}Лісопилка
-STR_INDUSTRY_NAME_LUMBER_MILL.z                                          :{G=f}лісопилку
+STR_INDUSTRY_NAME_LUMBER_MILL.z                                 :{G=f}лісопилку
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Ліс солодкої вати
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.z                                  :{G=m}ліс солодкої вати
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.z                         :{G=m}ліс солодкої вати
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=f}Цукеркова фабрика
-STR_INDUSTRY_NAME_CANDY_FACTORY.z                                        :{G=f}цукеркову фабрику
+STR_INDUSTRY_NAME_CANDY_FACTORY.z                               :{G=f}цукеркову фабрику
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Батарейкове поле
-STR_INDUSTRY_NAME_BATTERY_FARM.z                                         :батарейкове поле
+STR_INDUSTRY_NAME_BATTERY_FARM.z                                :батарейкове поле
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Джерело Кока-коли
-STR_INDUSTRY_NAME_COLA_WELLS.z                                           :джерело Кока-коли
+STR_INDUSTRY_NAME_COLA_WELLS.z                                  :джерело Кока-коли
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Іграшковий магазин
-STR_INDUSTRY_NAME_TOY_SHOP.z                                             :іграшковий магазин
+STR_INDUSTRY_NAME_TOY_SHOP.z                                    :іграшковий магазин
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Іграшкова фабрика
-STR_INDUSTRY_NAME_TOY_FACTORY.z                                          :іграшкову фабрику
+STR_INDUSTRY_NAME_TOY_FACTORY.z                                 :іграшкову фабрику
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Пластиліновий фонтан
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.z                                    :пластиліновий фонтан
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.z                           :пластиліновий фонтан
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Завод газованої води
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.z                                  :завод газованої води
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.z                         :завод газованої води
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Бульбашкова фабрика
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR.z                                     :бульбашкову фабрику
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.z                            :бульбашкову фабрику
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Ірисковий кар'єр
-STR_INDUSTRY_NAME_TOFFEE_QUARRY.z                                        :ірисковий кар'єр
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.z                               :ірисковий кар'єр
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Цукрова копальня
-STR_INDUSTRY_NAME_SUGAR_MINE.z                                           :цукрову копальню
+STR_INDUSTRY_NAME_SUGAR_MINE.z                                  :цукрову копальню
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Потребує: {YELLOW}{STRING}{STRING}

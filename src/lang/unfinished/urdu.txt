@@ -236,6 +236,10 @@ STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}زمین
 ############ range ends here
 
 
+############ 'Display map' dropdown. In SE, there is one more item.
+############ end of the 'Display map' dropdown
+
+
 
 
 ############ range for menu starts

@@ -660,7 +660,6 @@ STR_OFF                                                         :כבוי
 STR_SUMMARY                                                     :תמצית
 STR_FULL                                                        :מלא
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :מדריך הערים
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -694,9 +693,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}מופס
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}מופעל
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}הצג סובסידיות
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :סובסידיות
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :מפת העולם
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :השקפה נוספת
 STR_MAP_MENU_SIGN_LIST                                          :רשימת שלטים
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :מדריך הערים
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}אוכלוסיית העולם: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}השקפה {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}העתק להשקפה
@@ -723,6 +727,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}שמיר
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}בחר פרק זמן בין שמירות אוטומטיות
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :כבוי
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :מידי חודש
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :כל 3 חודשים
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :כל 6 חודשים
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :כל 12 חודשים
@@ -843,7 +848,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}סט ג�
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}בחר בסט גרפיקה בסיסי לשימוש
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :מידי חודש
 STR_AUTOSAVE_FAILED                                             :{WHITE}שמירה אוטומטית נכשלה
 
 STR_MONTH_JAN                                                   :ינואר

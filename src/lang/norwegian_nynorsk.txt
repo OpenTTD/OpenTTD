@@ -666,7 +666,6 @@ STR_OFF                                                         :Av
 STR_SUMMARY                                                     :Samandrag
 STR_FULL                                                        :Fullt
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Byoversikt
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -700,9 +699,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Av
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}På
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Vis subsidiar
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidiar
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Verdskart
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra vindauge
 STR_MAP_MENU_SIGN_LIST                                          :Skiltliste
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Byoversikt
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Verdsinnbyggjartal: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vindauge {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopier til vindauge
@@ -729,6 +733,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automati
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vel intervall for automatisk lagring
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Av
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Kvar månad
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Kvar 3. månad
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Kvar 6. månad
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Kvar 12. månad
@@ -849,7 +854,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis-gr
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Vel basis-grafikksett som skal nyttast
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Kvar månad
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autolagring gjekk gale
 
 STR_MONTH_JAN                                                   :januar

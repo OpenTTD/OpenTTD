@@ -227,6 +227,10 @@ STR_VEHICLE_AIRCRAFT                                            :Aeroplani
 ############ range ends here
 
 
+############ 'Display map' dropdown. In SE, there is one more item.
+############ end of the 'Display map' dropdown
+
+
 
 
 ############ range for menu starts

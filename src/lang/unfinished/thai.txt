@@ -571,6 +571,10 @@ STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...ม�
 ############ range ends here
 
 
+############ 'Display map' dropdown. In SE, there is one more item.
+############ end of the 'Display map' dropdown
+
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}การเลือกสกุลเงิน
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}หน่วยในการวัด

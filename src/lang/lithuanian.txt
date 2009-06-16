@@ -28,67 +28,67 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Priima: 
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Tiekia: {GOLD}
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Keleivius
-STR_CARGO_PLURAL_PASSENGERS.ko                                          :Keleivių
+STR_CARGO_PLURAL_PASSENGERS.ko                                  :Keleivių
 STR_CARGO_PLURAL_COAL                                           :Anglį
-STR_CARGO_PLURAL_COAL.ko                                                :Anglies
+STR_CARGO_PLURAL_COAL.ko                                        :Anglies
 STR_CARGO_PLURAL_MAIL                                           :Paštą
-STR_CARGO_PLURAL_MAIL.ko                                                :Pašto
+STR_CARGO_PLURAL_MAIL.ko                                        :Pašto
 STR_CARGO_PLURAL_OIL                                            :Naftą
-STR_CARGO_PLURAL_OIL.ko                                                 :Naftos
+STR_CARGO_PLURAL_OIL.ko                                         :Naftos
 STR_CARGO_PLURAL_LIVESTOCK                                      :Galvijus
-STR_CARGO_PLURAL_LIVESTOCK.ko                                           :Galvijų
+STR_CARGO_PLURAL_LIVESTOCK.ko                                   :Galvijų
 STR_CARGO_PLURAL_GOODS                                          :Prekes
-STR_CARGO_PLURAL_GOODS.ko                                               :Prekių
+STR_CARGO_PLURAL_GOODS.ko                                       :Prekių
 STR_CARGO_PLURAL_GRAIN                                          :Grūdus
-STR_CARGO_PLURAL_GRAIN.ko                                               :Grūdų
+STR_CARGO_PLURAL_GRAIN.ko                                       :Grūdų
 STR_CARGO_PLURAL_WOOD                                           :Medieną
-STR_CARGO_PLURAL_WOOD.ko                                                :Medienos
+STR_CARGO_PLURAL_WOOD.ko                                        :Medienos
 STR_CARGO_PLURAL_IRON_ORE                                       :Geležies rūdą
-STR_CARGO_PLURAL_IRON_ORE.ko                                            :Geležies rūdos
+STR_CARGO_PLURAL_IRON_ORE.ko                                    :Geležies rūdos
 STR_CARGO_PLURAL_STEEL                                          :Plieną
-STR_CARGO_PLURAL_STEEL.ko                                               :Plieno
+STR_CARGO_PLURAL_STEEL.ko                                       :Plieno
 STR_CARGO_PLURAL_VALUABLES                                      :Brangenybes
-STR_CARGO_PLURAL_VALUABLES.ko                                           :Brangenybių
+STR_CARGO_PLURAL_VALUABLES.ko                                   :Brangenybių
 STR_CARGO_PLURAL_COPPER_ORE                                     :Vario rūdą
-STR_CARGO_PLURAL_COPPER_ORE.ko                                          :Vario rūdos
+STR_CARGO_PLURAL_COPPER_ORE.ko                                  :Vario rūdos
 STR_CARGO_PLURAL_MAIZE                                          :Kukurūzus
-STR_CARGO_PLURAL_MAIZE.ko                                               :Kukurūzų
+STR_CARGO_PLURAL_MAIZE.ko                                       :Kukurūzų
 STR_CARGO_PLURAL_FRUIT                                          :Vaisius
-STR_CARGO_PLURAL_FRUIT.ko                                               :Vaisių
+STR_CARGO_PLURAL_FRUIT.ko                                       :Vaisių
 STR_CARGO_PLURAL_DIAMONDS                                       :Deimantus
-STR_CARGO_PLURAL_DIAMONDS.ko                                            :Deimantų
+STR_CARGO_PLURAL_DIAMONDS.ko                                    :Deimantų
 STR_CARGO_PLURAL_FOOD                                           :Maistą
-STR_CARGO_PLURAL_FOOD.ko                                                :Maisto
+STR_CARGO_PLURAL_FOOD.ko                                        :Maisto
 STR_CARGO_PLURAL_PAPER                                          :Popierių
-STR_CARGO_PLURAL_PAPER.ko                                               :Popieriaus
+STR_CARGO_PLURAL_PAPER.ko                                       :Popieriaus
 STR_CARGO_PLURAL_GOLD                                           :Auksą
-STR_CARGO_PLURAL_GOLD.ko                                                :Aukso
+STR_CARGO_PLURAL_GOLD.ko                                        :Aukso
 STR_CARGO_PLURAL_WATER                                          :Vandenį
-STR_CARGO_PLURAL_WATER.ko                                               :Vandens
+STR_CARGO_PLURAL_WATER.ko                                       :Vandens
 STR_CARGO_PLURAL_WHEAT                                          :Kviečius
-STR_CARGO_PLURAL_WHEAT.ko                                               :Kviečių
+STR_CARGO_PLURAL_WHEAT.ko                                       :Kviečių
 STR_CARGO_PLURAL_RUBBER                                         :Kaučiuką
-STR_CARGO_PLURAL_RUBBER.ko                                              :Kaučiuko
+STR_CARGO_PLURAL_RUBBER.ko                                      :Kaučiuko
 STR_CARGO_PLURAL_SUGAR                                          :Cukrų
-STR_CARGO_PLURAL_SUGAR.ko                                               :Cukraus
+STR_CARGO_PLURAL_SUGAR.ko                                       :Cukraus
 STR_CARGO_PLURAL_TOYS                                           :Žaislus
-STR_CARGO_PLURAL_TOYS.ko                                                :Žaislų
+STR_CARGO_PLURAL_TOYS.ko                                        :Žaislų
 STR_CARGO_PLURAL_CANDY                                          :Saldumynus
-STR_CARGO_PLURAL_CANDY.ko                                               :Saldumynų
+STR_CARGO_PLURAL_CANDY.ko                                       :Saldumynų
 STR_CARGO_PLURAL_COLA                                           :Kolą
-STR_CARGO_PLURAL_COLA.ko                                                :Kolos
+STR_CARGO_PLURAL_COLA.ko                                        :Kolos
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Cukraus vatą
-STR_CARGO_PLURAL_COTTON_CANDY.ko                                        :Cukraus vatos
+STR_CARGO_PLURAL_COTTON_CANDY.ko                                :Cukraus vatos
 STR_CARGO_PLURAL_BUBBLES                                        :Burbulus
-STR_CARGO_PLURAL_BUBBLES.ko                                             :Burbulų
+STR_CARGO_PLURAL_BUBBLES.ko                                     :Burbulų
 STR_CARGO_PLURAL_TOFFEE                                         :Karamelę
-STR_CARGO_PLURAL_TOFFEE.ko                                              :Karamelės
+STR_CARGO_PLURAL_TOFFEE.ko                                      :Karamelės
 STR_CARGO_PLURAL_BATTERIES                                      :Baterijas
-STR_CARGO_PLURAL_BATTERIES.ko                                           :Baterijų
+STR_CARGO_PLURAL_BATTERIES.ko                                   :Baterijų
 STR_CARGO_PLURAL_PLASTIC                                        :Plastmasę
-STR_CARGO_PLURAL_PLASTIC.ko                                             :Plastmasės
+STR_CARGO_PLURAL_PLASTIC.ko                                     :Plastmasės
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gaiviuosius gėrimus
-STR_CARGO_PLURAL_FIZZY_DRINKS.ko                                        :Gaiviųjų gėrimų
+STR_CARGO_PLURAL_FIZZY_DRINKS.ko                                :Gaiviųjų gėrimų
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Keleivių
 STR_CARGO_SINGULAR_COAL                                         :Anglies
@@ -121,7 +121,7 @@ STR_CARGO_SINGULAR_TOFFEE                                       :Karamelės
 STR_CARGO_SINGULAR_BATTERY                                      :Baterijų
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastmasės
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gaiviųjų gėrimų
-STR_CARGO_SINGULAR_FIZZY_DRINK.ko                                         :gaiviųjų gėrimų
+STR_CARGO_SINGULAR_FIZZY_DRINK.ko                               :gaiviųjų gėrimų
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} keleivi{P is iai ių}
 STR_QUANTITY_COAL                                               :{WEIGHT} anglies
@@ -699,7 +699,6 @@ STR_OFF                                                         :Isjungta
 STR_SUMMARY                                                     :Santrauka
 STR_FULL                                                        :Pilnas
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Miestų sąrašas
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -733,9 +732,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Išjungt
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Įjungta
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Rodyti subsidijas
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidijos
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Žemėlapis
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Papildomas peržiūros langas
 STR_MAP_MENU_SIGN_LIST                                          :Ženklų sąrašas
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Miestų sąrašas
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Pasaulio populiacija: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Peržiūros langas {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopijuoti į peržiūros langą
@@ -762,6 +766,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automati
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Pasirink, kaip dažnai išsaugoti žaidimą
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Išjungta
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Kiekvieną mėnesį
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Kas 3 mėnesius
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Kas 6 mėnesius
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Kas 12 mėnesių
@@ -881,7 +886,6 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Pasirink
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Bazinis grafikos rinkinys
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Pasirinkti naudojimui bazinę grafikos rinkinį
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Kiekvieną mėnesį
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatinis išsaugojimas nepavyko
 
 STR_MONTH_JAN                                                   :Sausis

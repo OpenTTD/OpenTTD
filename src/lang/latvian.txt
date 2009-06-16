@@ -666,7 +666,6 @@ STR_OFF                                                         :Nav
 STR_SUMMARY                                                     :Kopsavilkums
 STR_FULL                                                        :Pilns
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Pilsētu saraksts
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -700,9 +699,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Nav
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Ir
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Rādīt subsīdijas
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsīdijas
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Pasaules karte
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Papildus skats
 STR_MAP_MENU_SIGN_LIST                                          :Zīmju saraksts
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Pilsētu saraksts
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Pasaules iedzīvotāju skaits: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Skats {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopēt uz skatu
@@ -729,6 +733,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Auto-sag
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Spēles auto-saglabāšanas laika inervāla izvēle
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Izslēgta
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Ikmēnesi
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Katrus 3 mēnešus
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Katrus 6 mēnešus
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Katrus 12 mēnešus
@@ -849,7 +854,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Pamata g
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Uzslēgt pamat grafikas komplektu lietošanai
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Ikmēnesi
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automātiskā saglabāšana neizdevās
 
 STR_MONTH_JAN                                                   :Janvāris

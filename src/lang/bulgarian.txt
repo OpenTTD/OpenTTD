@@ -668,7 +668,6 @@ STR_OFF                                                         :изключе�
 STR_SUMMARY                                                     :Обобщение
 STR_FULL                                                        :Пълно
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Списък от градовете
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -702,9 +701,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Изкл
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Включен
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Покажи субсидиите
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Субсидии
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Карта на света
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Допълнителна камера
 STR_MAP_MENU_SIGN_LIST                                          :Списък с табели
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Списък от градовете
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Световна популация: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Камера {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Преместване на камерата

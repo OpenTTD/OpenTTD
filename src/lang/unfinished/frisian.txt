@@ -534,7 +534,6 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Samar
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Lit lêste (neis)berjocht sjen
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stêden list
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 ############ range for menu starts
@@ -560,7 +559,12 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Ut
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Oan
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Lit Subsydzjes sjen
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsydzjes
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kaart fan 'e wrâld
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stêden list
+############ end of the 'Display map' dropdown
+
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Muntienheid
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}

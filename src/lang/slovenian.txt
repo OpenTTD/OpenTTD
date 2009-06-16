@@ -27,77 +27,77 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Sprejema
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Dobavlja: {GOLD}
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Potniki
-STR_CARGO_PLURAL_PASSENGERS.t                                           :Potnike
+STR_CARGO_PLURAL_PASSENGERS.t                                   :Potnike
 STR_CARGO_PLURAL_COAL                                           :Premog
-STR_CARGO_PLURAL_COAL.r                                                 :Premoga
+STR_CARGO_PLURAL_COAL.r                                         :Premoga
 STR_CARGO_PLURAL_MAIL                                           :Pošta
-STR_CARGO_PLURAL_MAIL.r                                                 :Pošte
-STR_CARGO_PLURAL_MAIL.t                                                 :Pošto
+STR_CARGO_PLURAL_MAIL.r                                         :Pošte
+STR_CARGO_PLURAL_MAIL.t                                         :Pošto
 STR_CARGO_PLURAL_OIL                                            :Nafta
-STR_CARGO_PLURAL_OIL.r                                                  :Nafte
-STR_CARGO_PLURAL_OIL.t                                                  :Nafto
+STR_CARGO_PLURAL_OIL.r                                          :Nafte
+STR_CARGO_PLURAL_OIL.t                                          :Nafto
 STR_CARGO_PLURAL_LIVESTOCK                                      :Živina
-STR_CARGO_PLURAL_LIVESTOCK.r                                            :Živine
-STR_CARGO_PLURAL_LIVESTOCK.t                                            :Živino
+STR_CARGO_PLURAL_LIVESTOCK.r                                    :Živine
+STR_CARGO_PLURAL_LIVESTOCK.t                                    :Živino
 STR_CARGO_PLURAL_GOODS                                          :Izdelki
-STR_CARGO_PLURAL_GOODS.r                                                :Izdelkov
-STR_CARGO_PLURAL_GOODS.t                                                :Izdelke
+STR_CARGO_PLURAL_GOODS.r                                        :Izdelkov
+STR_CARGO_PLURAL_GOODS.t                                        :Izdelke
 STR_CARGO_PLURAL_GRAIN                                          :Žito
-STR_CARGO_PLURAL_GRAIN.r                                                :Žita
+STR_CARGO_PLURAL_GRAIN.r                                        :Žita
 STR_CARGO_PLURAL_WOOD                                           :Les
-STR_CARGO_PLURAL_WOOD.r                                                 :Lesa
+STR_CARGO_PLURAL_WOOD.r                                         :Lesa
 STR_CARGO_PLURAL_IRON_ORE                                       :Železova ruda
-STR_CARGO_PLURAL_IRON_ORE.r                                             :Železove rude
-STR_CARGO_PLURAL_IRON_ORE.t                                             :Železovo rudo
+STR_CARGO_PLURAL_IRON_ORE.r                                     :Železove rude
+STR_CARGO_PLURAL_IRON_ORE.t                                     :Železovo rudo
 STR_CARGO_PLURAL_STEEL                                          :Jeklo
-STR_CARGO_PLURAL_STEEL.r                                                :Jekla
+STR_CARGO_PLURAL_STEEL.r                                        :Jekla
 STR_CARGO_PLURAL_VALUABLES                                      :Vrednosti
 STR_CARGO_PLURAL_COPPER_ORE                                     :Bakrova ruda
-STR_CARGO_PLURAL_COPPER_ORE.r                                           :Bakrove rude
-STR_CARGO_PLURAL_COPPER_ORE.t                                           :Bakrovo rudo
+STR_CARGO_PLURAL_COPPER_ORE.r                                   :Bakrove rude
+STR_CARGO_PLURAL_COPPER_ORE.t                                   :Bakrovo rudo
 STR_CARGO_PLURAL_MAIZE                                          :Koruza
-STR_CARGO_PLURAL_MAIZE.r                                                :Koruze
-STR_CARGO_PLURAL_MAIZE.t                                                :Koruzo
+STR_CARGO_PLURAL_MAIZE.r                                        :Koruze
+STR_CARGO_PLURAL_MAIZE.t                                        :Koruzo
 STR_CARGO_PLURAL_FRUIT                                          :Sadje
-STR_CARGO_PLURAL_FRUIT.r                                                :Sadja
+STR_CARGO_PLURAL_FRUIT.r                                        :Sadja
 STR_CARGO_PLURAL_DIAMONDS                                       :Diamanti
-STR_CARGO_PLURAL_DIAMONDS.r                                             :Diamantov
-STR_CARGO_PLURAL_DIAMONDS.t                                             :Diamante
+STR_CARGO_PLURAL_DIAMONDS.r                                     :Diamantov
+STR_CARGO_PLURAL_DIAMONDS.t                                     :Diamante
 STR_CARGO_PLURAL_FOOD                                           :Hrana
-STR_CARGO_PLURAL_FOOD.r                                                 :Hrane
-STR_CARGO_PLURAL_FOOD.t                                                 :Hrano
+STR_CARGO_PLURAL_FOOD.r                                         :Hrane
+STR_CARGO_PLURAL_FOOD.t                                         :Hrano
 STR_CARGO_PLURAL_PAPER                                          :Papir
-STR_CARGO_PLURAL_PAPER.r                                                :Papirja
+STR_CARGO_PLURAL_PAPER.r                                        :Papirja
 STR_CARGO_PLURAL_GOLD                                           :Zlato
-STR_CARGO_PLURAL_GOLD.r                                                 :Zlata
+STR_CARGO_PLURAL_GOLD.r                                         :Zlata
 STR_CARGO_PLURAL_WATER                                          :Voda
-STR_CARGO_PLURAL_WATER.r                                                :Vode
-STR_CARGO_PLURAL_WATER.t                                                :Vodo
+STR_CARGO_PLURAL_WATER.r                                        :Vode
+STR_CARGO_PLURAL_WATER.t                                        :Vodo
 STR_CARGO_PLURAL_WHEAT                                          :Pšenica
-STR_CARGO_PLURAL_WHEAT.r                                                :Pšenice
-STR_CARGO_PLURAL_WHEAT.t                                                :Pšenico
+STR_CARGO_PLURAL_WHEAT.r                                        :Pšenice
+STR_CARGO_PLURAL_WHEAT.t                                        :Pšenico
 STR_CARGO_PLURAL_RUBBER                                         :Kavčuk
-STR_CARGO_PLURAL_RUBBER.r                                               :Kavčuka
+STR_CARGO_PLURAL_RUBBER.r                                       :Kavčuka
 STR_CARGO_PLURAL_SUGAR                                          :Sladkor
-STR_CARGO_PLURAL_SUGAR.r                                                :Sladkorja
+STR_CARGO_PLURAL_SUGAR.r                                        :Sladkorja
 STR_CARGO_PLURAL_TOYS                                           :Igrače
-STR_CARGO_PLURAL_TOYS.r                                                 :Igrač
+STR_CARGO_PLURAL_TOYS.r                                         :Igrač
 STR_CARGO_PLURAL_CANDY                                          :Sladkarije
-STR_CARGO_PLURAL_CANDY.r                                                :Sladkarij
+STR_CARGO_PLURAL_CANDY.r                                        :Sladkarij
 STR_CARGO_PLURAL_COLA                                           :Cockta
-STR_CARGO_PLURAL_COLA.r                                                 :Cockte
+STR_CARGO_PLURAL_COLA.r                                         :Cockte
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Sladkorna pena
-STR_CARGO_PLURAL_COTTON_CANDY.r                                         :Sladkorne pene
+STR_CARGO_PLURAL_COTTON_CANDY.r                                 :Sladkorne pene
 STR_CARGO_PLURAL_BUBBLES                                        :Mehurčki
-STR_CARGO_PLURAL_BUBBLES.r                                              :Mehurčkov
+STR_CARGO_PLURAL_BUBBLES.r                                      :Mehurčkov
 STR_CARGO_PLURAL_TOFFEE                                         :Karamela
-STR_CARGO_PLURAL_TOFFEE.r                                               :Karamele
+STR_CARGO_PLURAL_TOFFEE.r                                       :Karamele
 STR_CARGO_PLURAL_BATTERIES                                      :Baterije
-STR_CARGO_PLURAL_BATTERIES.r                                            :Baterij
+STR_CARGO_PLURAL_BATTERIES.r                                    :Baterij
 STR_CARGO_PLURAL_PLASTIC                                        :Plastika
-STR_CARGO_PLURAL_PLASTIC.r                                              :Plastike
+STR_CARGO_PLURAL_PLASTIC.r                                      :Plastike
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gazirane pijače
-STR_CARGO_PLURAL_FIZZY_DRINKS.r                                         :Gaziranih pijač
+STR_CARGO_PLURAL_FIZZY_DRINKS.r                                 :Gaziranih pijač
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Potnik
 STR_CARGO_SINGULAR_COAL                                         :Premog
@@ -710,7 +710,6 @@ STR_OFF                                                         :Izključeno
 STR_SUMMARY                                                     :Povzetek
 STR_FULL                                                        :Polno
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Imenik mest
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -744,9 +743,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Izključ
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Vključeno
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Prikaži subvencije
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencije
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Zemljevid sveta
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Dodaten pogled
 STR_MAP_MENU_SIGN_LIST                                          :Seznam napisov
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Imenik mest
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Svetovno prebivalstvo: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pogled {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiraj na pogled
@@ -773,6 +777,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Samo-shr
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Izberi časovni interval samodejnega shranjevanja igre
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Izključeno
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Vsak mesec
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Vsake 3 mesece
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Vsakih 6 mesecev
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Vsakih 12 mesecev
@@ -893,7 +898,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Osnovni 
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Izberi osnovni komplet grafik za uporabo
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Vsak mesec
 STR_AUTOSAVE_FAILED                                             :{WHITE}Samodejno shranjevanje spodletelo
 
 STR_MONTH_JAN                                                   :Januar
@@ -1814,7 +1818,7 @@ STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iglu
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tipiji
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Čajnik-hiša
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Prašičkova banka
-STR_TOWN_BUILDING_NAME_PIGGY_BANK_1.r                                           :Prašičkove banke
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1.r                           :Prašičkove banke
 
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
@@ -1970,79 +1974,79 @@ STR_SAVE_OSKTITLE                                               :{BLACK}Vpiši i
 STR_OBJECT_IN_THE_WAY                                           :{WHITE}{STRING} na poti
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_NAME_COAL_MINE                                     :Premogovnik
-STR_INDUSTRY_NAME_COAL_MINE.r                                            :Premogovnika
+STR_INDUSTRY_NAME_COAL_MINE.r                                   :Premogovnika
 STR_INDUSTRY_NAME_POWER_STATION                                 :Termo elektrarna
-STR_INDUSTRY_NAME_POWER_STATION.r                                        :Termo elektrarne
+STR_INDUSTRY_NAME_POWER_STATION.r                               :Termo elektrarne
 STR_INDUSTRY_NAME_SAWMILL                                       :Žaga
-STR_INDUSTRY_NAME_SAWMILL.r                                              :Žage
+STR_INDUSTRY_NAME_SAWMILL.r                                     :Žage
 STR_INDUSTRY_NAME_FOREST                                        :Gozd
-STR_INDUSTRY_NAME_FOREST.r                                               :Gozda
+STR_INDUSTRY_NAME_FOREST.r                                      :Gozda
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :Naftna rafinerija
-STR_INDUSTRY_NAME_OIL_REFINERY.r                                         :Naftne rafinerije
+STR_INDUSTRY_NAME_OIL_REFINERY.r                                :Naftne rafinerije
 STR_INDUSTRY_NAME_OIL_RIG                                       :Naftna ploščad
-STR_INDUSTRY_NAME_OIL_RIG.r                                              :Naftne ploščadi
+STR_INDUSTRY_NAME_OIL_RIG.r                                     :Naftne ploščadi
 STR_INDUSTRY_NAME_FACTORY                                       :Tovarna
-STR_INDUSTRY_NAME_FACTORY.r                                              :Tovarne
+STR_INDUSTRY_NAME_FACTORY.r                                     :Tovarne
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Tiskarna
-STR_INDUSTRY_NAME_PRINTING_WORKS.r                                       :Tiskarne
+STR_INDUSTRY_NAME_PRINTING_WORKS.r                              :Tiskarne
 STR_INDUSTRY_NAME_STEEL_MILL                                    :Jeklarna
-STR_INDUSTRY_NAME_STEEL_MILL.r                                           :Jeklarne
+STR_INDUSTRY_NAME_STEEL_MILL.r                                  :Jeklarne
 STR_INDUSTRY_NAME_FARM                                          :Kmetija
-STR_INDUSTRY_NAME_FARM.r                                                 :Kmetije
+STR_INDUSTRY_NAME_FARM.r                                        :Kmetije
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Rudnik bakra
-STR_INDUSTRY_NAME_COPPER_ORE_MINE.r                                      :Rudnika bakra
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.r                             :Rudnika bakra
 STR_INDUSTRY_NAME_OIL_WELLS                                     :Naftni vrelci
-STR_INDUSTRY_NAME_OIL_WELLS.r                                            :Naftnih vrelcev
+STR_INDUSTRY_NAME_OIL_WELLS.r                                   :Naftnih vrelcev
 STR_INDUSTRY_NAME_BANK                                          :Banka
-STR_INDUSTRY_NAME_BANK.r                                                 :Banke
+STR_INDUSTRY_NAME_BANK.r                                        :Banke
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Prehrambeni obrat
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.r                                :Prehrambenega obrata
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.r                       :Prehrambenega obrata
 STR_INDUSTRY_NAME_PAPER_MILL                                    :Papirnica
-STR_INDUSTRY_NAME_PAPER_MILL.r                                           :Papirnice
+STR_INDUSTRY_NAME_PAPER_MILL.r                                  :Papirnice
 STR_INDUSTRY_NAME_GOLD_MINE                                     :Rudnik zlata
-STR_INDUSTRY_NAME_GOLD_MINE.r                                            :Rudnika zlata
+STR_INDUSTRY_NAME_GOLD_MINE.r                                   :Rudnika zlata
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Banka
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.r                                                 :Banke
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.r                          :Banke
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Rudnik diamantov
-STR_INDUSTRY_NAME_DIAMOND_MINE.r                                         :Rudnika diamantov
+STR_INDUSTRY_NAME_DIAMOND_MINE.r                                :Rudnika diamantov
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Rudnik železove rude
-STR_INDUSTRY_NAME_IRON_ORE_MINE.r                                        :Rudnika železove rude
+STR_INDUSTRY_NAME_IRON_ORE_MINE.r                               :Rudnika železove rude
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Sadovnjak
-STR_INDUSTRY_NAME_FRUIT_PLANTATION.r                                     :Sadovnjaka
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.r                            :Sadovnjaka
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Plantaža kavčuka
-STR_INDUSTRY_NAME_RUBBER_PLANTATION.r                                    :Plantaže kavčuka
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.r                           :Plantaže kavčuka
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Vodno zajetje
-STR_INDUSTRY_NAME_WATER_SUPPLY.r                                         :Vodnega zajetja
+STR_INDUSTRY_NAME_WATER_SUPPLY.r                                :Vodnega zajetja
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Vodni stolp
-STR_INDUSTRY_NAME_WATER_TOWER.r                                          :Vodnega stolpa
+STR_INDUSTRY_NAME_WATER_TOWER.r                                 :Vodnega stolpa
 STR_INDUSTRY_NAME_FACTORY_2                                     :Tovarna
-STR_INDUSTRY_NAME_FACTORY_2.r                                              :Tovarne
+STR_INDUSTRY_NAME_FACTORY_2.r                                   :Tovarne
 STR_INDUSTRY_NAME_FARM_2                                        :Kmetija
-STR_INDUSTRY_NAME_FARM_2.r                                                 :Kmetije
+STR_INDUSTRY_NAME_FARM_2.r                                      :Kmetije
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Gozdarski obrat
-STR_INDUSTRY_NAME_LUMBER_MILL.r                                          :Gozdarskega obrata
+STR_INDUSTRY_NAME_LUMBER_MILL.r                                 :Gozdarskega obrata
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Gozd sladkorne pene
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.r                                  :Gozda sladkorne pene
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.r                         :Gozda sladkorne pene
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Tovarna slaščic
-STR_INDUSTRY_NAME_CANDY_FACTORY.r                                        :Tovarne slaščic
+STR_INDUSTRY_NAME_CANDY_FACTORY.r                               :Tovarne slaščic
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Farma baterij
-STR_INDUSTRY_NAME_BATTERY_FARM.r                                         :Farme baterij
+STR_INDUSTRY_NAME_BATTERY_FARM.r                                :Farme baterij
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Izvir cockte
-STR_INDUSTRY_NAME_COLA_WELLS.r                                           :Izvira cockte
+STR_INDUSTRY_NAME_COLA_WELLS.r                                  :Izvira cockte
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Trgovina z igračami
-STR_INDUSTRY_NAME_TOY_SHOP.r                                             :Trgovine z igračami
+STR_INDUSTRY_NAME_TOY_SHOP.r                                    :Trgovine z igračami
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Tovarna igrač
-STR_INDUSTRY_NAME_TOY_FACTORY.r                                          :Tovarne igrač
+STR_INDUSTRY_NAME_TOY_FACTORY.r                                 :Tovarne igrač
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Vrelci plastike
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.r                                    :Vrelcev plastike
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.r                           :Vrelcev plastike
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Tovarna gaziranih pijač
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.r                                  :Tovarne gaziranih pijač
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.r                         :Tovarne gaziranih pijač
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Generator mehurčkov
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR.r                                     :Generatorja mehurčkov
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.r                            :Generatorja mehurčkov
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Jama karamele
-STR_INDUSTRY_NAME_TOFFEE_QUARRY.r                                        :Jame karamele
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.r                               :Jame karamele
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Rudnik sladkorja
-STR_INDUSTRY_NAME_SUGAR_MINE.r                                           :Rudnika sladkorja
+STR_INDUSTRY_NAME_SUGAR_MINE.r                                  :Rudnika sladkorja
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Potrebuje: {YELLOW}{STRING}{STRING}

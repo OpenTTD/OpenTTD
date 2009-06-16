@@ -580,7 +580,6 @@ STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Saiz ba
 
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Tunjukkan utusan atau laporan berita terakhir
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Direktori Bandar
 
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pilihan permainan
@@ -605,8 +604,13 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Mati
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Hidup
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Tunjukkan subsidi
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidi
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Peta Dunia
 STR_MAP_MENU_SIGN_LIST                                          :Senarai isyarat
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Direktori Bandar
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Populasi Dunia: {COMMA}
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unit kewangan

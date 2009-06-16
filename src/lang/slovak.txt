@@ -28,130 +28,130 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Prijíma
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Dodáva: {GOLD}
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Cestujúcich
-STR_CARGO_PLURAL_PASSENGERS.g                                           :cestujucich
+STR_CARGO_PLURAL_PASSENGERS.g                                   :cestujucich
 STR_CARGO_PLURAL_COAL                                           :Uhlie
-STR_CARGO_PLURAL_COAL.g                                                 :uhlia
+STR_CARGO_PLURAL_COAL.g                                         :uhlia
 STR_CARGO_PLURAL_MAIL                                           :Poštu
-STR_CARGO_PLURAL_MAIL.g                                                 :posty
+STR_CARGO_PLURAL_MAIL.g                                         :posty
 STR_CARGO_PLURAL_OIL                                            :Ropu
-STR_CARGO_PLURAL_OIL.g                                                  :ropy
+STR_CARGO_PLURAL_OIL.g                                          :ropy
 STR_CARGO_PLURAL_LIVESTOCK                                      :Dobytok
-STR_CARGO_PLURAL_LIVESTOCK.g                                            :dobytka
+STR_CARGO_PLURAL_LIVESTOCK.g                                    :dobytka
 STR_CARGO_PLURAL_GOODS                                          :Tovar
-STR_CARGO_PLURAL_GOODS.g                                                :tovaru
+STR_CARGO_PLURAL_GOODS.g                                        :tovaru
 STR_CARGO_PLURAL_GRAIN                                          :Obilie
-STR_CARGO_PLURAL_GRAIN.g                                                :obilia
+STR_CARGO_PLURAL_GRAIN.g                                        :obilia
 STR_CARGO_PLURAL_WOOD                                           :Drevo
-STR_CARGO_PLURAL_WOOD.g                                                 :dreva
+STR_CARGO_PLURAL_WOOD.g                                         :dreva
 STR_CARGO_PLURAL_IRON_ORE                                       :Železnú rudu
-STR_CARGO_PLURAL_IRON_ORE.g                                             :zeleznej rudy
+STR_CARGO_PLURAL_IRON_ORE.g                                     :zeleznej rudy
 STR_CARGO_PLURAL_STEEL                                          :Ocel
-STR_CARGO_PLURAL_STEEL.g                                                :ocele
+STR_CARGO_PLURAL_STEEL.g                                        :ocele
 STR_CARGO_PLURAL_VALUABLES                                      :Cennosti
-STR_CARGO_PLURAL_VALUABLES.g                                            :cennosti
+STR_CARGO_PLURAL_VALUABLES.g                                    :cennosti
 STR_CARGO_PLURAL_COPPER_ORE                                     :Medenná ruda
-STR_CARGO_PLURAL_COPPER_ORE.g                                           :medennej rudy
+STR_CARGO_PLURAL_COPPER_ORE.g                                   :medennej rudy
 STR_CARGO_PLURAL_MAIZE                                          :Kukuricu
-STR_CARGO_PLURAL_MAIZE.g                                                :kukurice
+STR_CARGO_PLURAL_MAIZE.g                                        :kukurice
 STR_CARGO_PLURAL_FRUIT                                          :Ovocie
-STR_CARGO_PLURAL_FRUIT.g                                                :ovocia
+STR_CARGO_PLURAL_FRUIT.g                                        :ovocia
 STR_CARGO_PLURAL_DIAMONDS                                       :Diamanty
-STR_CARGO_PLURAL_DIAMONDS.g                                             :diamantov
+STR_CARGO_PLURAL_DIAMONDS.g                                     :diamantov
 STR_CARGO_PLURAL_FOOD                                           :Jedlo
-STR_CARGO_PLURAL_FOOD.g                                                 :jedla
+STR_CARGO_PLURAL_FOOD.g                                         :jedla
 STR_CARGO_PLURAL_PAPER                                          :Papier
-STR_CARGO_PLURAL_PAPER.g                                                :papiera
+STR_CARGO_PLURAL_PAPER.g                                        :papiera
 STR_CARGO_PLURAL_GOLD                                           :Zlato
-STR_CARGO_PLURAL_GOLD.g                                                 :zlata
+STR_CARGO_PLURAL_GOLD.g                                         :zlata
 STR_CARGO_PLURAL_WATER                                          :Vodu
-STR_CARGO_PLURAL_WATER.g                                                :vody
+STR_CARGO_PLURAL_WATER.g                                        :vody
 STR_CARGO_PLURAL_WHEAT                                          :Psenicu
-STR_CARGO_PLURAL_WHEAT.g                                                :psenice
+STR_CARGO_PLURAL_WHEAT.g                                        :psenice
 STR_CARGO_PLURAL_RUBBER                                         :Kaucuk
-STR_CARGO_PLURAL_RUBBER.g                                               :kaucuku
+STR_CARGO_PLURAL_RUBBER.g                                       :kaucuku
 STR_CARGO_PLURAL_SUGAR                                          :Cukor
-STR_CARGO_PLURAL_SUGAR.g                                                :cukru
+STR_CARGO_PLURAL_SUGAR.g                                        :cukru
 STR_CARGO_PLURAL_TOYS                                           :Hracky
-STR_CARGO_PLURAL_TOYS.g                                                 :hraciek
+STR_CARGO_PLURAL_TOYS.g                                         :hraciek
 STR_CARGO_PLURAL_CANDY                                          :Cukriky
-STR_CARGO_PLURAL_CANDY.g                                                :cukrikov
+STR_CARGO_PLURAL_CANDY.g                                        :cukrikov
 STR_CARGO_PLURAL_COLA                                           :Kofolu
-STR_CARGO_PLURAL_COLA.g                                                 :kofoly
+STR_CARGO_PLURAL_COLA.g                                         :kofoly
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Cukrovu vatu
-STR_CARGO_PLURAL_COTTON_CANDY.g                                         :cukrovej vaty
+STR_CARGO_PLURAL_COTTON_CANDY.g                                 :cukrovej vaty
 STR_CARGO_PLURAL_BUBBLES                                        :Bublin
-STR_CARGO_PLURAL_BUBBLES.g                                              :bublin
+STR_CARGO_PLURAL_BUBBLES.g                                      :bublin
 STR_CARGO_PLURAL_TOFFEE                                         :Karamelky
-STR_CARGO_PLURAL_TOFFEE.g                                               :karameliek
+STR_CARGO_PLURAL_TOFFEE.g                                       :karameliek
 STR_CARGO_PLURAL_BATTERIES                                      :Baterie
-STR_CARGO_PLURAL_BATTERIES.g                                            :baterii
+STR_CARGO_PLURAL_BATTERIES.g                                    :baterii
 STR_CARGO_PLURAL_PLASTIC                                        :Zuvaciek
-STR_CARGO_PLURAL_PLASTIC.g                                              :zuvaciek
+STR_CARGO_PLURAL_PLASTIC.g                                      :zuvaciek
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Sumienku
-STR_CARGO_PLURAL_FIZZY_DRINKS.g                                         :sumienky
+STR_CARGO_PLURAL_FIZZY_DRINKS.g                                 :sumienky
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Cestujúci
-STR_CARGO_SINGULAR_PASSENGER.g                                            :cestujucich
+STR_CARGO_SINGULAR_PASSENGER.g                                  :cestujucich
 STR_CARGO_SINGULAR_COAL                                         :Uhlie
-STR_CARGO_SINGULAR_COAL.g                                                 :uhlia
+STR_CARGO_SINGULAR_COAL.g                                       :uhlia
 STR_CARGO_SINGULAR_MAIL                                         :Posta
-STR_CARGO_SINGULAR_MAIL.g                                                 :posty
+STR_CARGO_SINGULAR_MAIL.g                                       :posty
 STR_CARGO_SINGULAR_OIL                                          :Ropa
-STR_CARGO_SINGULAR_OIL.g                                                  :ropy
+STR_CARGO_SINGULAR_OIL.g                                        :ropy
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Dobytok
-STR_CARGO_SINGULAR_LIVESTOCK.g                                            :dobytka
+STR_CARGO_SINGULAR_LIVESTOCK.g                                  :dobytka
 STR_CARGO_SINGULAR_GOODS                                        :Tovar
-STR_CARGO_SINGULAR_GOODS.g                                                :tovaru
+STR_CARGO_SINGULAR_GOODS.g                                      :tovaru
 STR_CARGO_SINGULAR_GRAIN                                        :Obilie
-STR_CARGO_SINGULAR_GRAIN.g                                                :obilia
+STR_CARGO_SINGULAR_GRAIN.g                                      :obilia
 STR_CARGO_SINGULAR_WOOD                                         :Drevo
-STR_CARGO_SINGULAR_WOOD.g                                                 :dreva
+STR_CARGO_SINGULAR_WOOD.g                                       :dreva
 STR_CARGO_SINGULAR_IRON_ORE                                     :Železná ruda
-STR_CARGO_SINGULAR_IRON_ORE.g                                             :zeleznej rudy
+STR_CARGO_SINGULAR_IRON_ORE.g                                   :zeleznej rudy
 STR_CARGO_SINGULAR_STEEL                                        :Ocel
-STR_CARGO_SINGULAR_STEEL.g                                                :ocele
+STR_CARGO_SINGULAR_STEEL.g                                      :ocele
 STR_CARGO_SINGULAR_VALUABLES                                    :Cennosti
-STR_CARGO_SINGULAR_VALUABLES.g                                            :cennosti
+STR_CARGO_SINGULAR_VALUABLES.g                                  :cennosti
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Medenná ruda
-STR_CARGO_SINGULAR_COPPER_ORE.g                                           :medennej rudy
+STR_CARGO_SINGULAR_COPPER_ORE.g                                 :medennej rudy
 STR_CARGO_SINGULAR_MAIZE                                        :Kukurica
-STR_CARGO_SINGULAR_MAIZE.g                                                :kukurice
+STR_CARGO_SINGULAR_MAIZE.g                                      :kukurice
 STR_CARGO_SINGULAR_FRUIT                                        :Ovocie
-STR_CARGO_SINGULAR_FRUIT.g                                                :ovocia
+STR_CARGO_SINGULAR_FRUIT.g                                      :ovocia
 STR_CARGO_SINGULAR_DIAMOND                                      :Diamant
-STR_CARGO_SINGULAR_DIAMOND.g                                              :diamantov
+STR_CARGO_SINGULAR_DIAMOND.g                                    :diamantov
 STR_CARGO_SINGULAR_FOOD                                         :Jedlo
-STR_CARGO_SINGULAR_FOOD.g                                                 :jedla
+STR_CARGO_SINGULAR_FOOD.g                                       :jedla
 STR_CARGO_SINGULAR_PAPER                                        :Papier
-STR_CARGO_SINGULAR_PAPER.g                                                :papiera
+STR_CARGO_SINGULAR_PAPER.g                                      :papiera
 STR_CARGO_SINGULAR_GOLD                                         :Zlato
-STR_CARGO_SINGULAR_GOLD.g                                                 :zlata
+STR_CARGO_SINGULAR_GOLD.g                                       :zlata
 STR_CARGO_SINGULAR_WATER                                        :Voda
-STR_CARGO_SINGULAR_WATER.g                                                :vody
+STR_CARGO_SINGULAR_WATER.g                                      :vody
 STR_CARGO_SINGULAR_WHEAT                                        :Psenica
-STR_CARGO_SINGULAR_WHEAT.g                                                :psenice
+STR_CARGO_SINGULAR_WHEAT.g                                      :psenice
 STR_CARGO_SINGULAR_RUBBER                                       :Kaucuk
-STR_CARGO_SINGULAR_RUBBER.g                                               :kaucuku
+STR_CARGO_SINGULAR_RUBBER.g                                     :kaucuku
 STR_CARGO_SINGULAR_SUGAR                                        :Cukor
-STR_CARGO_SINGULAR_SUGAR.g                                                :cukru
+STR_CARGO_SINGULAR_SUGAR.g                                      :cukru
 STR_CARGO_SINGULAR_TOY                                          :Hracky
-STR_CARGO_SINGULAR_TOY.g                                                  :hraciek
+STR_CARGO_SINGULAR_TOY.g                                        :hraciek
 STR_CARGO_SINGULAR_CANDY                                        :Cukriky
-STR_CARGO_SINGULAR_CANDY.g                                                :cukrikov
+STR_CARGO_SINGULAR_CANDY.g                                      :cukrikov
 STR_CARGO_SINGULAR_COLA                                         :Kofola
-STR_CARGO_SINGULAR_COLA.g                                                 :kofoly
+STR_CARGO_SINGULAR_COLA.g                                       :kofoly
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Cukrova vata
-STR_CARGO_SINGULAR_COTTON_CANDY.g                                         :cukrovej vaty
+STR_CARGO_SINGULAR_COTTON_CANDY.g                               :cukrovej vaty
 STR_CARGO_SINGULAR_BUBBLE                                       :Bubliny
-STR_CARGO_SINGULAR_BUBBLE.g                                               :bublin
+STR_CARGO_SINGULAR_BUBBLE.g                                     :bublin
 STR_CARGO_SINGULAR_TOFFEE                                       :Karamel
-STR_CARGO_SINGULAR_TOFFEE.g                                               :karamelu
+STR_CARGO_SINGULAR_TOFFEE.g                                     :karamelu
 STR_CARGO_SINGULAR_BATTERY                                      :Baterie
-STR_CARGO_SINGULAR_BATTERY.g                                              :baterii
+STR_CARGO_SINGULAR_BATTERY.g                                    :baterii
 STR_CARGO_SINGULAR_PLASTIC                                      :Zuvacky
-STR_CARGO_SINGULAR_PLASTIC.g                                              :zuvaciek
+STR_CARGO_SINGULAR_PLASTIC.g                                    :zuvaciek
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Sumienka
-STR_CARGO_SINGULAR_FIZZY_DRINK.g                                          :sumienky
+STR_CARGO_SINGULAR_FIZZY_DRINK.g                                :sumienky
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} cestujuci{P "" "" ch}
 STR_QUANTITY_COAL                                               :{WEIGHT} uhlia
@@ -264,11 +264,11 @@ STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Poloha
 STR_SMALLMAP_TYPE_CONTOURS                                      :Vrstevnice
-STR_SMALLMAP_TYPE_CONTOURS.g                                             :vrstevnic
+STR_SMALLMAP_TYPE_CONTOURS.g                                    :vrstevnic
 STR_SMALLMAP_TYPE_VEHICLES                                      :Dopravné prostriedky
-STR_SMALLMAP_TYPE_VEHICLES.g                                             :dopravnych prostriedkov
+STR_SMALLMAP_TYPE_VEHICLES.g                                    :dopravnych prostriedkov
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Priemysel
-STR_SMALLMAP_TYPE_INDUSTRIES.g                                           :priemyslu
+STR_SMALLMAP_TYPE_INDUSTRIES.g                                  :priemyslu
 STR_SMALLMAP_TYPE_ROUTES                                        :Trasy
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetácia
 STR_SMALLMAP_TYPE_OWNERS                                        :Vlastníci
@@ -732,7 +732,6 @@ STR_OFF                                                         :Vypnute
 STR_SUMMARY                                                     :Obsah
 STR_FULL                                                        :Plne
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Zoznam miest
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -766,9 +765,14 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Vyp.
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Zap.
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Zobrazit dotacie
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Dotacie
+
+############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa sveta
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Dalsi pohlad
 STR_MAP_MENU_SIGN_LIST                                          :Zoznam popisov
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Zoznam miest
+############ end of the 'Display map' dropdown
+
 STR_TOWN_POPULATION                                             :{BLACK}Svetova populacia: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pohlad {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Pohlad podla mapy
@@ -795,6 +799,7 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automati
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vyber interval automatickeho ukladania
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Vypnute
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Každý mesiac
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Každé 3 mesiace
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Každých 6 mesiacov
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Každých 12 mesiacov
@@ -915,7 +920,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Základn
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Zvoľte sadu grafiky, ktorá má byť použitá
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Každý mesiac
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autoulozenie zlyhalo
 
 STR_MONTH_JAN                                                   :Januar
