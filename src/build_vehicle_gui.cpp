@@ -676,7 +676,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 	if (e->type != VEH_TRAIN || RailVehInfo(engine_number)->railveh_type != RAILVEH_WAGON) {
 		/* Design date - Life length */
 		SetDParam(0, ymd.year);
-		SetDParam(1, e->lifelength);
+		SetDParam(1, e->GetLifeLengthInDays() / DAYS_IN_LEAP_YEAR);
 		DrawString(left, right, y, STR_PURCHASE_INFO_DESIGNED_LIFE);
 		y += FONT_HEIGHT_NORMAL;
 

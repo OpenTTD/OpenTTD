@@ -117,7 +117,7 @@
 	if (!IsValidEngine(engine_id)) return -1;
 	if (GetVehicleType(engine_id) == AIVehicle::VT_RAIL && IsWagon(engine_id)) return -1;
 
-	return ::Engine::Get(engine_id)->lifelength * DAYS_IN_LEAP_YEAR;
+	return ::Engine::Get(engine_id)->GetLifeLengthInDays();
 }
 
 /* static */ Money AIEngine::GetRunningCost(EngineID engine_id)

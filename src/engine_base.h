@@ -59,6 +59,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	uint GetPower() const;
 	uint GetDisplayWeight() const;
 	uint GetDisplayMaxTractiveEffort() const;
+	Date GetLifeLengthInDays() const;
 };
 
 struct EngineIDMapping {

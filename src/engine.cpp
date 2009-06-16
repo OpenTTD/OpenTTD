@@ -316,6 +316,16 @@ uint Engine::GetDisplayMaxTractiveEffort() const
 }
 
 /**
+ * Returns the vehicle's life length in days.
+ * @return the life length
+ */
+Date Engine::GetLifeLengthInDays() const
+{
+	/* Assume leap years; this gives the player a bit more than the given amount of years, but never less. */
+	return this->lifelength * DAYS_IN_LEAP_YEAR;
+}
+
+/**
  * Initializes the EngineOverrideManager with the default engines.
  */
 void EngineOverrideManager::ResetToDefaultMapping()

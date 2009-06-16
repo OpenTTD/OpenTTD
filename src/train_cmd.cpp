@@ -869,7 +869,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
-		v->max_age = e->lifelength * DAYS_IN_LEAP_YEAR;
+		v->max_age = e->GetLifeLengthInDays();
 
 		v->name = NULL;
 		v->railtype = rvi->railtype;

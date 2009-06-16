@@ -799,7 +799,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
-		v->max_age = e->lifelength * DAYS_IN_LEAP_YEAR;
+		v->max_age = e->GetLifeLengthInDays();
 		_new_vehicle_id = v->index;
 
 		v->name = NULL;
