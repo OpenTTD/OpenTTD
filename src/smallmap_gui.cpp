@@ -230,12 +230,11 @@ static uint _industry_to_list_pos[NUM_INDUSTRYTYPES];
  */
 void BuildIndustriesLegend()
 {
-	const IndustrySpec *indsp;
 	uint j = 0;
 
 	/* Add each name */
 	for (IndustryType i = 0; i < NUM_INDUSTRYTYPES; i++) {
-		indsp = GetIndustrySpec(i);
+		const IndustrySpec *indsp = GetIndustrySpec(i);
 		if (indsp->enabled) {
 			_legend_from_industries[j].legend = indsp->name;
 			_legend_from_industries[j].colour = indsp->map_colour;
@@ -348,53 +347,6 @@ static const AndOr _smallmap_vegetation_andor[] = {
 
 typedef uint32 GetSmallMapPixels(TileIndex tile); // typedef callthrough function
 
-/**
- * Draws one column of the small map in a certain mode onto the screen buffer. This
- * function looks exactly the same for all types
- *
- * @param dst Pointer to a part of the screen buffer to write to.
- * @param xc The X coordinate of the first tile in the column.
- * @param yc The Y coordinate of the first tile in the column
- * @param pitch Number of pixels to advance in the screen buffer each time a pixel is written.
- * @param reps Number of lines to draw
- * @param mask ?
- * @param proc Pointer to the colour function
- * @see GetSmallMapPixels(TileIndex)
- */
-static void DrawSmallMapStuff(void *dst, uint xc, uint yc, int pitch, int reps, uint32 mask, GetSmallMapPixels *proc)
-{
-	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
-	void *dst_ptr_abs_end = blitter->MoveTo(_screen.dst_ptr, 0, _screen.height);
-	void *dst_ptr_end = blitter->MoveTo(dst_ptr_abs_end, -4, 0);
-
-	do {
-		/* check if the tile (xc,yc) is within the map range */
-		uint min_xy = _settings_game.construction.freeform_edges ? 1 : 0;
-		if (IsInsideMM(xc, min_xy, MapMaxX()) && IsInsideMM(yc, min_xy, MapMaxY())) {
-			/* check if the dst pointer points to a pixel inside the screen buffer */
-			if (dst < _screen.dst_ptr) continue;
-			if (dst >= dst_ptr_abs_end) continue;
-
-			uint32 val = proc(TileXY(xc, yc)) & mask;
-			uint8 *val8 = (uint8 *)&val;
-
-			if (dst <= dst_ptr_end) {
-				blitter->SetPixelIfEmpty(dst, 0, 0, val8[0]);
-				blitter->SetPixelIfEmpty(dst, 1, 0, val8[1]);
-				blitter->SetPixelIfEmpty(dst, 2, 0, val8[2]);
-				blitter->SetPixelIfEmpty(dst, 3, 0, val8[3]);
-			} else {
-				/* It happens that there are only 1, 2 or 3 pixels left to fill, so in that special case, write till the end of the video-buffer */
-				int i = 0;
-				do {
-					blitter->SetPixelIfEmpty(dst, 0, 0, val8[i]);
-				} while (i++, dst = blitter->MoveTo(dst, 1, 0), dst < dst_ptr_abs_end);
-			}
-		}
-	/* switch to next tile in the column */
-	} while (xc++, yc++, dst = blitter->MoveTo(dst, pitch, 0), --reps != 0);
-}
-
 
 static inline TileType GetEffectiveTileType(TileIndex tile)
 {
@@ -421,8 +373,7 @@ static inline uint32 GetSmallMapContoursPixels(TileIndex tile)
 {
 	TileType t = GetEffectiveTileType(tile);
 
-	return
-		ApplyMask(_map_height_bits[TileHeight(tile)], &_smallmap_contours_andor[t]);
+	return ApplyMask(_map_height_bits[TileHeight(tile)], &_smallmap_contours_andor[t]);
 }
 
 /**
@@ -470,22 +421,20 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
 static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
 {
 	TileType t = GetEffectiveTileType(tile);
-	uint32 bits;
 
 	if (t == MP_STATION) {
 		switch (GetStationType(tile)) {
-			case STATION_RAIL:    bits = MKCOLOUR(0x56565656); break;
-			case STATION_AIRPORT: bits = MKCOLOUR(0xB8B8B8B8); break;
-			case STATION_TRUCK:   bits = MKCOLOUR(0xC2C2C2C2); break;
-			case STATION_BUS:     bits = MKCOLOUR(0xBFBFBFBF); break;
-			case STATION_DOCK:    bits = MKCOLOUR(0x98989898); break;
-			default:              bits = MKCOLOUR(0xFFFFFFFF); break;
+			case STATION_RAIL:    return MKCOLOUR(0x56565656);
+			case STATION_AIRPORT: return MKCOLOUR(0xB8B8B8B8);
+			case STATION_TRUCK:   return MKCOLOUR(0xC2C2C2C2);
+			case STATION_BUS:     return MKCOLOUR(0xBFBFBFBF);
+			case STATION_DOCK:    return MKCOLOUR(0x98989898);
+			default:              return MKCOLOUR(0xFFFFFFFF);
 		}
-	} else {
-		/* ground colour */
-		bits = ApplyMask(MKCOLOUR(0x54545454), &_smallmap_contours_andor[t]);
 	}
-	return bits;
+
+	/* ground colour */
+	return ApplyMask(MKCOLOUR(0x54545454), &_smallmap_contours_andor[t]);
 }
 
 
@@ -503,35 +452,23 @@ static const uint32 _vegetation_clear_bits[] = {
 static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 {
 	TileType t = GetEffectiveTileType(tile);
-	uint32 bits;
 
 	switch (t) {
 		case MP_CLEAR:
-			if (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) < 3) {
-				bits = MKCOLOUR(0x37373737);
-			} else {
-				bits = _vegetation_clear_bits[GetClearGround(tile)];
-			}
-			break;
+			return (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) < 3) ? MKCOLOUR(0x37373737) : _vegetation_clear_bits[GetClearGround(tile)];
 
 		case MP_INDUSTRY:
-			bits = GetIndustrySpec(GetIndustryByTile(tile)->type)->check_proc == CHECK_FOREST ? MKCOLOUR(0xD0D0D0D0) : MKCOLOUR(0xB5B5B5B5);
-			break;
+			return GetIndustrySpec(GetIndustryByTile(tile)->type)->check_proc == CHECK_FOREST ? MKCOLOUR(0xD0D0D0D0) : MKCOLOUR(0xB5B5B5B5);
 
 		case MP_TREES:
 			if (GetTreeGround(tile) == TREE_GROUND_SNOW_DESERT) {
-				bits = (_settings_game.game_creation.landscape == LT_ARCTIC) ? MKCOLOUR(0x98575798) : MKCOLOUR(0xC25757C2);
-			} else {
-				bits = MKCOLOUR(0x54575754);
+				return (_settings_game.game_creation.landscape == LT_ARCTIC) ? MKCOLOUR(0x98575798) : MKCOLOUR(0xC25757C2);
 			}
-			break;
+			return MKCOLOUR(0x54575754);
 
 		default:
-			bits = ApplyMask(MKCOLOUR(0x54545454), &_smallmap_vehicles_andor[t]);
-			break;
+			return ApplyMask(MKCOLOUR(0x54545454), &_smallmap_vehicles_andor[t]);
 	}
-
-	return bits;
 }
 
 
@@ -623,6 +560,75 @@ class SmallMapWindow : public Window
 	static const int COLUMN_WIDTH = 119;
 	static const int MIN_LEGEND_HEIGHT = 6 * 7;
 
+	/**
+	 * Remap a map's tile X coordinate (TileX(TileIndex)) to
+	 * a location on this smallmap.
+	 * @param tile_x the tile's X coordinate.
+	 * @return the X coordinate to draw on.
+	 */
+	inline int RemapX(int tile_x)
+	{
+		return tile_x - this->scroll_x / TILE_SIZE;
+	}
+
+	/**
+	 * Remap a map's tile Y coordinate (TileY(TileIndex)) to
+	 * a location on this smallmap.
+	 * @param tile_y the tile's Y coordinate.
+	 * @return the Y coordinate to draw on.
+	 */
+	inline int RemapY(int tile_y)
+	{
+		return tile_y - this->scroll_y / TILE_SIZE;
+	}
+
+	/**
+	 * Draws one column of the small map in a certain mode onto the screen buffer. This
+	 * function looks exactly the same for all types
+	 *
+	 * @param dst Pointer to a part of the screen buffer to write to.
+	 * @param xc The X coordinate of the first tile in the column.
+	 * @param yc The Y coordinate of the first tile in the column
+	 * @param pitch Number of pixels to advance in the screen buffer each time a pixel is written.
+	 * @param reps Number of lines to draw
+	 * @param mask ?
+	 * @param proc Pointer to the colour function
+	 * @see GetSmallMapPixels(TileIndex)
+	 */
+	inline void DrawSmallMapStuff(void *dst, uint xc, uint yc, int pitch, int reps, uint32 mask, GetSmallMapPixels *proc)
+	{
+		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+		void *dst_ptr_abs_end = blitter->MoveTo(_screen.dst_ptr, 0, _screen.height);
+		void *dst_ptr_end = blitter->MoveTo(dst_ptr_abs_end, -4, 0);
+
+		do {
+			/* check if the tile (xc,yc) is within the map range */
+			uint min_xy = _settings_game.construction.freeform_edges ? 1 : 0;
+			if (IsInsideMM(xc, min_xy, MapMaxX()) && IsInsideMM(yc, min_xy, MapMaxY())) {
+				/* check if the dst pointer points to a pixel inside the screen buffer */
+				if (dst < _screen.dst_ptr) continue;
+				if (dst >= dst_ptr_abs_end) continue;
+
+				uint32 val = proc(TileXY(xc, yc)) & mask;
+				uint8 *val8 = (uint8 *)&val;
+
+				if (dst <= dst_ptr_end) {
+					blitter->SetPixelIfEmpty(dst, 0, 0, val8[0]);
+					blitter->SetPixelIfEmpty(dst, 1, 0, val8[1]);
+					blitter->SetPixelIfEmpty(dst, 2, 0, val8[2]);
+					blitter->SetPixelIfEmpty(dst, 3, 0, val8[3]);
+				} else {
+					/* It happens that there are only 1, 2 or 3 pixels left to fill, so in that special case, write till the end of the video-buffer */
+					int i = 0;
+					do {
+						blitter->SetPixelIfEmpty(dst, 0, 0, val8[i]);
+					} while (i++, dst = blitter->MoveTo(dst, 1, 0), dst < dst_ptr_abs_end);
+				}
+			}
+		/* switch to next tile in the column */
+		} while (xc++, yc++, dst = blitter->MoveTo(dst, pitch, 0), --reps != 0);
+	}
+
 public:
 	/**
 	 * Draws the small map.
@@ -642,11 +648,6 @@ public:
 	{
 		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 		DrawPixelInfo *old_dpi;
-		int dx, dy, x, y, x2, y2;
-		void *ptr;
-		int tile_x;
-		int tile_y;
-		ViewPort *vp;
 
 		old_dpi = _cur_dpi;
 		_cur_dpi = dpi;
@@ -659,8 +660,8 @@ public:
 			const Company *c;
 
 			/* fill with some special colours */
-			_owner_colours[OWNER_TOWN] = MKCOLOUR(0xB4B4B4B4);
-			_owner_colours[OWNER_NONE] = MKCOLOUR(0x54545454);
+			_owner_colours[OWNER_TOWN]  = MKCOLOUR(0xB4B4B4B4);
+			_owner_colours[OWNER_NONE]  = MKCOLOUR(0x54545454);
 			_owner_colours[OWNER_WATER] = MKCOLOUR(0xCACACACA);
 			_owner_colours[OWNER_END]   = MKCOLOUR(0x20202020); // industry
 
@@ -671,15 +672,15 @@ public:
 			}
 		}
 
-		tile_x = this->scroll_x / TILE_SIZE;
-		tile_y = this->scroll_y / TILE_SIZE;
+		int tile_x = this->scroll_x / TILE_SIZE;
+		int tile_y = this->scroll_y / TILE_SIZE;
 
-		dx = dpi->left + this->subscroll;
+		int dx = dpi->left + this->subscroll;
 		tile_x -= dx / 4;
 		tile_y += dx / 4;
 		dx &= 3;
 
-		dy = dpi->top;
+		int dy = dpi->top;
 		tile_x += dy / 2;
 		tile_y += dy / 2;
 
@@ -693,37 +694,35 @@ public:
 			}
 		}
 
-		ptr = blitter->MoveTo(dpi->dst_ptr, -dx - 4, 0);
-		x = - dx - 4;
-		y = 0;
+		void *ptr = blitter->MoveTo(dpi->dst_ptr, -dx - 4, 0);
+		int x = - dx - 4;
+		int y = 0;
 
 		for (;;) {
 			uint32 mask = 0xFFFFFFFF;
-			int reps;
-			int t;
 
 			/* distance from left edge */
-			if (x < 0) {
-				if (x < -3) goto skip_column;
-				/* mask to use at the left edge */
-				mask = _smallmap_mask_left[x + 3];
+			if (x >= -3) {
+				if (x < 0) {
+					/* mask to use at the left edge */
+					mask = _smallmap_mask_left[x + 3];
+				}
+
+				/* distance from right edge */
+				int t = dpi->width - x;
+				if (t < 4) {
+					if (t <= 0) break; // exit loop
+					/* mask to use at the right edge */
+					mask &= _smallmap_mask_right[t - 1];
+				}
+
+				/* number of lines */
+				int reps = (dpi->height - y + 1) / 2;
+				if (reps > 0) {
+					this->DrawSmallMapStuff(ptr, tile_x, tile_y, dpi->pitch * 2, reps, mask, _smallmap_draw_procs[this->map_type]);
+				}
 			}
 
-			/* distance from right edge */
-			t = dpi->width - x;
-			if (t < 4) {
-				if (t <= 0) break; // exit loop
-				/* mask to use at the right edge */
-				mask &= _smallmap_mask_right[t - 1];
-			}
-
-			/* number of lines */
-			reps = (dpi->height - y + 1) / 2;
-			if (reps > 0) {
-				DrawSmallMapStuff(ptr, tile_x, tile_y, dpi->pitch * 2, reps, mask, _smallmap_draw_procs[this->map_type]);
-			}
-
-	skip_column:
 			if (y == 0) {
 				tile_y++;
 				y++;
@@ -740,17 +739,15 @@ public:
 		/* draw vehicles? */
 		if (this->map_type == SMT_CONTOUR || this->map_type == SMT_VEHICLES) {
 			Vehicle *v;
-			bool skip;
-			byte colour;
 
 			FOR_ALL_VEHICLES(v) {
 				if (v->type != VEH_EFFECT &&
 						(v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0) {
 					/* Remap into flat coordinates. */
 					Point pt = RemapCoords(
-						v->x_pos / TILE_SIZE - this->scroll_x / TILE_SIZE, // divide each one separately because (a-b)/c != a/c-b/c in integer world
-						v->y_pos / TILE_SIZE - this->scroll_y / TILE_SIZE, //    dtto
-						0);
+							this->RemapX(v->x_pos / TILE_SIZE),
+							this->RemapY(v->y_pos / TILE_SIZE),
+							0);
 					x = pt.x;
 					y = pt.y;
 
@@ -759,7 +756,7 @@ public:
 					if (!IsInsideMM(y, 0, dpi->height)) continue;
 
 					/* Default is to draw both pixels. */
-					skip = false;
+					bool skip = false;
 
 					/* Offset X coordinate */
 					x -= this->subscroll + 3 + dpi->left;
@@ -776,7 +773,7 @@ public:
 					}
 
 					/* Calculate pointer to pixel and the colour */
-					colour = (this->map_type == SMT_VEHICLES) ? _vehicle_type_colours[v->type] : 0xF;
+					byte colour = (this->map_type == SMT_VEHICLES) ? _vehicle_type_colours[v->type] : 0xF;
 
 					/* And draw either one or two pixels depending on clipping */
 					blitter->SetPixel(dpi->dst_ptr, x, y, colour);
@@ -791,9 +788,9 @@ public:
 			FOR_ALL_TOWNS(t) {
 				/* Remap the town coordinate */
 				Point pt = RemapCoords(
-					(int)(TileX(t->xy) * TILE_SIZE - this->scroll_x) / TILE_SIZE,
-					(int)(TileY(t->xy) * TILE_SIZE - this->scroll_y) / TILE_SIZE,
-					0);
+						this->RemapX(TileX(t->xy)),
+						this->RemapY(TileY(t->xy)),
+						0);
 				x = pt.x - this->subscroll + 3 - (t->sign.width_2 >> 1);
 				y = pt.y;
 
@@ -809,42 +806,36 @@ public:
 			}
 		}
 
+		/* Find main viewport. */
+		ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
+
 		/* Draw map indicators */
-		{
-			Point pt;
+		Point pt = RemapCoords(this->scroll_x, this->scroll_y, 0);
 
-			/* Find main viewport. */
-			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
+		x = vp->virtual_left - pt.x;
+		y = vp->virtual_top - pt.y;
+		int x2 = (x + vp->virtual_width) / TILE_SIZE;
+		int y2 = (y + vp->virtual_height) / TILE_SIZE;
+		x /= TILE_SIZE;
+		y /= TILE_SIZE;
 
-			pt = RemapCoords(this->scroll_x, this->scroll_y, 0);
+		x -= this->subscroll;
+		x2 -= this->subscroll;
 
-			x = vp->virtual_left - pt.x;
-			y = vp->virtual_top - pt.y;
-			x2 = (x + vp->virtual_width) / TILE_SIZE;
-			y2 = (y + vp->virtual_height) / TILE_SIZE;
-			x /= TILE_SIZE;
-			y /= TILE_SIZE;
+		DrawVertMapIndicator(x, y, x, y2);
+		DrawVertMapIndicator(x2, y, x2, y2);
 
-			x -= this->subscroll;
-			x2 -= this->subscroll;
-
-			DrawVertMapIndicator(x, y, x, y2);
-			DrawVertMapIndicator(x2, y, x2, y2);
-
-			DrawHorizMapIndicator(x, y, x2, y);
-			DrawHorizMapIndicator(x, y2, x2, y2);
-		}
+		DrawHorizMapIndicator(x, y, x2, y);
+		DrawHorizMapIndicator(x, y2, x2, y2);
 		_cur_dpi = old_dpi;
 	}
 
 	void SmallMapCenterOnCurrentPos()
 	{
-		int x, y;
-		ViewPort *vp;
-		vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
+		ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
-		x  = ((vp->virtual_width  - (this->widget[SM_WIDGET_MAP].right  - this->widget[SM_WIDGET_MAP].left) * TILE_SIZE) / 2 + vp->virtual_left) / 4;
-		y  = ((vp->virtual_height - (this->widget[SM_WIDGET_MAP].bottom - this->widget[SM_WIDGET_MAP].top ) * TILE_SIZE) / 2 + vp->virtual_top ) / 2 - TILE_SIZE * 2;
+		int x = ((vp->virtual_width  - (this->widget[SM_WIDGET_MAP].right  - this->widget[SM_WIDGET_MAP].left) * TILE_SIZE) / 2 + vp->virtual_left) / 4;
+		int y = ((vp->virtual_height - (this->widget[SM_WIDGET_MAP].bottom - this->widget[SM_WIDGET_MAP].top ) * TILE_SIZE) / 2 + vp->virtual_top ) / 2 - TILE_SIZE * 2;
 		this->scroll_x = (y - x) & ~0xF;
 		this->scroll_y = (x + y) & ~0xF;
 		this->SetDirty();
