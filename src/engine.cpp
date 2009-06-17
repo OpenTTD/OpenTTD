@@ -322,7 +322,7 @@ uint Engine::GetDisplayMaxTractiveEffort() const
 Date Engine::GetLifeLengthInDays() const
 {
 	/* Assume leap years; this gives the player a bit more than the given amount of years, but never less. */
-	return this->lifelength * DAYS_IN_LEAP_YEAR;
+	return (this->info.lifelength + _settings_game.vehicle.extend_vehicle_life) * DAYS_IN_LEAP_YEAR;
 }
 
 /**
@@ -515,8 +515,6 @@ void StartupOneEngine(Engine *e, Date aging_date)
 	e->reliability_spd_dec = ei->decay_speed << 2;
 
 	CalcEngineReliability(e);
-
-	e->lifelength = ei->lifelength + _settings_game.vehicle.extend_vehicle_life;
 
 	/* prevent certain engines from ever appearing. */
 	if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) {

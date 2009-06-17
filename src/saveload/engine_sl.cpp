@@ -8,30 +8,30 @@
 #include <map>
 
 static const SaveLoad _engine_desc[] = {
-	SLE_CONDVAR(Engine, intro_date,          SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
-	SLE_CONDVAR(Engine, intro_date,          SLE_INT32,                  31, SL_MAX_VERSION),
-	SLE_CONDVAR(Engine, age,                 SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
-	SLE_CONDVAR(Engine, age,                 SLE_INT32,                  31, SL_MAX_VERSION),
-	    SLE_VAR(Engine, reliability,         SLE_UINT16),
-	    SLE_VAR(Engine, reliability_spd_dec, SLE_UINT16),
-	    SLE_VAR(Engine, reliability_start,   SLE_UINT16),
-	    SLE_VAR(Engine, reliability_max,     SLE_UINT16),
-	    SLE_VAR(Engine, reliability_final,   SLE_UINT16),
-	    SLE_VAR(Engine, duration_phase_1,    SLE_UINT16),
-	    SLE_VAR(Engine, duration_phase_2,    SLE_UINT16),
-	    SLE_VAR(Engine, duration_phase_3,    SLE_UINT16),
+	 SLE_CONDVAR(Engine, intro_date,          SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
+	 SLE_CONDVAR(Engine, intro_date,          SLE_INT32,                  31, SL_MAX_VERSION),
+	 SLE_CONDVAR(Engine, age,                 SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
+	 SLE_CONDVAR(Engine, age,                 SLE_INT32,                  31, SL_MAX_VERSION),
+	     SLE_VAR(Engine, reliability,         SLE_UINT16),
+	     SLE_VAR(Engine, reliability_spd_dec, SLE_UINT16),
+	     SLE_VAR(Engine, reliability_start,   SLE_UINT16),
+	     SLE_VAR(Engine, reliability_max,     SLE_UINT16),
+	     SLE_VAR(Engine, reliability_final,   SLE_UINT16),
+	     SLE_VAR(Engine, duration_phase_1,    SLE_UINT16),
+	     SLE_VAR(Engine, duration_phase_2,    SLE_UINT16),
+	     SLE_VAR(Engine, duration_phase_3,    SLE_UINT16),
 
-	    SLE_VAR(Engine, lifelength,          SLE_UINT8),
-	    SLE_VAR(Engine, flags,               SLE_UINT8),
-	    SLE_VAR(Engine, preview_company_rank,SLE_UINT8),
-	    SLE_VAR(Engine, preview_wait,        SLE_UINT8),
-	SLE_CONDNULL(1, 0, 44),
-	SLE_CONDVAR(Engine, company_avail,       SLE_FILE_U8  | SLE_VAR_U16,  0, 103),
-	SLE_CONDVAR(Engine, company_avail,       SLE_UINT16,                104, SL_MAX_VERSION),
-	SLE_CONDSTR(Engine, name,                SLE_STR, 0,                 84, SL_MAX_VERSION),
+	SLE_CONDNULL(1,                                                        0, 120),
+	     SLE_VAR(Engine, flags,               SLE_UINT8),
+	     SLE_VAR(Engine, preview_company_rank,SLE_UINT8),
+	     SLE_VAR(Engine, preview_wait,        SLE_UINT8),
+	SLE_CONDNULL(1,                                                        0,  44),
+	 SLE_CONDVAR(Engine, company_avail,       SLE_FILE_U8  | SLE_VAR_U16,  0, 103),
+	 SLE_CONDVAR(Engine, company_avail,       SLE_UINT16,                104, SL_MAX_VERSION),
+	 SLE_CONDSTR(Engine, name,                SLE_STR, 0,                 84, SL_MAX_VERSION),
 
 	/* reserve extra space in savegame here. (currently 16 bytes) */
-	SLE_CONDNULL(16, 2, SL_MAX_VERSION),
+	SLE_CONDNULL(16,                                                       2, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -84,7 +84,6 @@ void CopyTempEngineData()
 		e->duration_phase_1    = se->duration_phase_1;
 		e->duration_phase_2    = se->duration_phase_2;
 		e->duration_phase_3    = se->duration_phase_3;
-		e->lifelength          = se->lifelength;
 		e->flags               = se->flags;
 		e->preview_company_rank= se->preview_company_rank;
 		e->preview_wait        = se->preview_wait;

@@ -21,7 +21,6 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	uint16 reliability_spd_dec;
 	uint16 reliability_start, reliability_max, reliability_final;
 	uint16 duration_phase_1, duration_phase_2, duration_phase_3;
-	byte lifelength;
 	byte flags;
 	uint8 preview_company_rank;
 	byte preview_wait;

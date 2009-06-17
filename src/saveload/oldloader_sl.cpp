@@ -406,7 +406,6 @@ static bool FixTTOEngines()
 			e->duration_phase_1    = oe->duration_phase_1;
 			e->duration_phase_2    = oe->duration_phase_2;
 			e->duration_phase_3    = oe->duration_phase_3;
-			e->lifelength          = oe->lifelength;
 			e->flags               = oe->flags;
 
 			e->company_avail = 0;
@@ -1439,7 +1438,7 @@ static const OldChunks engine_chunk[] = {
 	OCL_SVAR( OC_UINT16, Engine, duration_phase_2 ),
 	OCL_SVAR( OC_UINT16, Engine, duration_phase_3 ),
 
-	OCL_SVAR(  OC_UINT8, Engine, lifelength ),
+	OCL_NULL( 1 ), // lifelength
 	OCL_SVAR(  OC_UINT8, Engine, flags ),
 	OCL_SVAR(  OC_UINT8, Engine, preview_company_rank ),
 	OCL_SVAR(  OC_UINT8, Engine, preview_wait ),
