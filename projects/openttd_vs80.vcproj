@@ -103,6 +103,8 @@
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="true"
 				SubSystem="2"
+				StackReserveSize="1024"
+				StackCommitSize="1024"
 				OptimizeReferences="2"
 				OptimizeForWindows98="1"
 				TargetMachine="1"
@@ -201,6 +203,8 @@
 				IgnoreDefaultLibraryNames="LIBCMT.lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
+				StackReserveSize="1024"
+				StackCommitSize="1024"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -312,6 +316,8 @@
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="true"
 				SubSystem="2"
+				StackReserveSize="1024"
+				StackCommitSize="1024"
 				OptimizeReferences="2"
 				OptimizeForWindows98="1"
 				TargetMachine="17"
@@ -413,6 +419,8 @@
 				IgnoreDefaultLibraryNames="LIBCMT.lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
+				StackReserveSize="1024"
+				StackCommitSize="1024"
 				TargetMachine="17"
 			/>
 			<Tool
