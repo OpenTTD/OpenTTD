@@ -804,6 +804,16 @@ function Regression::Marine()
 	print("  IsCanalTile():        " + AIMarine.IsCanalTile(32127));
 	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
 
+	local list = AIBuoyList();
+	print("");
+	print("--AIBuoyList--");
+	print("  Count():             " + list.Count());
+	print("  Location ListDump:");
+	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+		print("    " + i);
+	}
+	print("");
+
 	print("  RemoveWaterDepot():   " + AIMarine.RemoveWaterDepot(28479));
 	print("  RemoveDock():         " + AIMarine.RemoveDock(29253));
 	print("  RemoveBuoy():         " + AIMarine.RemoveBuoy(28481));

@@ -1,0 +1,21 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_buoylist.hpp"
+
+namespace SQConvert {
+	/* Allow AIBuoyList to be used as Squirrel parameter */
+	template <> AIBuoyList *GetParam(ForceType<AIBuoyList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIBuoyList *)instance; }
+	template <> AIBuoyList &GetParam(ForceType<AIBuoyList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIBuoyList *)instance; }
+	template <> const AIBuoyList *GetParam(ForceType<const AIBuoyList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIBuoyList *)instance; }
+	template <> const AIBuoyList &GetParam(ForceType<const AIBuoyList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIBuoyList *)instance; }
+	template <> int Return<AIBuoyList *>(HSQUIRRELVM vm, AIBuoyList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIBuoyList", res, NULL, DefSQDestructorCallback<AIBuoyList>); return 1; }
+}; // namespace SQConvert
+
+void SQAIBuoyList_Register(Squirrel *engine) {
+	DefSQClass <AIBuoyList> SQAIBuoyList("AIBuoyList");
+	SQAIBuoyList.PreRegister(engine, "AIAbstractList");
+	SQAIBuoyList.AddConstructor<void (AIBuoyList::*)(), 1>(engine, "x");
+
+	SQAIBuoyList.PostRegister(engine);
+}

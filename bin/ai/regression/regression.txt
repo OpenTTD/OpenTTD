@@ -7088,6 +7088,12 @@
   IsLockTile():         true
   IsCanalTile():        true
   GetBankBalance():     805063
+
+--AIBuoyList--
+  Count():              1
+  Location ListDump:
+  28481
+
   RemoveWaterDepot():   true
   RemoveDock():         true
   RemoveBuoy():         true
