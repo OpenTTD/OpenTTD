@@ -5,9 +5,9 @@
 ##grflangid 0x2c
 ##plural 8
 ##textdir ltr
-##case r d t
 ##digitsep .
 ##digitsepcur .
+##case r d t
 
 #
 
@@ -897,6 +897,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Izberi f
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Osnovni komplet grafik
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Izberi osnovni komplet grafik za uporabo
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} manjkajoč{P a i e e} /okvarjen{P a i e e} datotek{P a i e e}
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Dodatne informacije o osnovnem kompletu grafik
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Samodejno shranjevanje spodletelo
 
@@ -2884,6 +2886,19 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Počisti
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Resetiraj števec zamud, da bodo vozila točna
 STR_SERVICE_HINT                                                :{BLACK}Preskoči ta ukaz, razen če je potreben servis
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Teža: {WEIGHT_S}{}Hitrost: {VELOCITY}  Moč: {POWER}{}Cena delovanja: {CURRENCY}/leto{}Zmogljivost: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Cena: {CURRENCY} Max. hitrost: {VELOCITY}{}Zmogljivost: {CARGO}, {CARGO}{}Cena delovanja: {CURRENCY}/leto
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Cena: {CURRENCY} Max. hitrost: {VELOCITY}{}Zmogljivost: {CARGO}{}Cena delovanja: {CURRENCY}/leto
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Cena delovanja: {LTBLUE}{CURRENCY}/leto
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. hitrost: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Teža: {LTBLUE}{WEIGHT_S} {BLACK}Moč: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Teža: {LTBLUE}{WEIGHT_S} {BLACK}Moč: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Letošnji dobiček: {LTBLUE}{CURRENCY} (lani: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Zanesljivost: {LTBLUE}{COMMA}%  {BLACK}Okvare po zadnjem servisu: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Zgrajeno: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Zmogljivost: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Zmogljivost: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Zmogljivost: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}V okvari
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Ustavljeno
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ni mogoče, da vlak v nevarnosti pelje mimo semaforjev ...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Uničen!
@@ -3235,6 +3250,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Preklop
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Preklop na Euro: {ORANGE}nikoli
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Predogled: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zamenjaj parameter valute po meri
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Zmanjšaj količino svojega denarja za en funt (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Povečaj količino svojega denarja za en funt (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Nastavi tečaj menjave svoje valute za en funt (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Nastavi ločilno oznako za svojo valuto
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Nastavi oznako za svojo valuto
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Nastavi pripono svoje valute
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Preklopi na euro prej
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Preklopi na euro pozneje
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Nastavi leto preklopa na euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 funtov (£) v tvoji valuti
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3341,6 +3366,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. zan
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Teža: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hitrost: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Zmogljivost: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pogonski vagoni: {GOLD}+{POWER}{BLACK} Teža: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Nadgradljivo za: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Vse vrste tovora
@@ -3633,6 +3659,7 @@ STR_AI_RANDOM_AI                                                :Naključni UI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}UI parametri
 STR_AI_AUTHOR                                                   :{BLACK}Avtor: {STRING}
 STR_AI_VERSION                                                  :{BLACK}Verzija: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Ena izmed zagnanih UI se je sesula. Prosim, javi to avtorju UI s priloženo sliko zaslona v orodju za čiščenje UI.
 ########
 

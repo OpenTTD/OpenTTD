@@ -28,98 +28,98 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Прин
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Отправляются: {GOLD}
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Пассажиры
-STR_CARGO_PLURAL_PASSENGERS.gen                                 :пассажиров
 STR_CARGO_PLURAL_PASSENGERS.acc                                 :пассажиров
+STR_CARGO_PLURAL_PASSENGERS.gen                                 :пассажиров
 STR_CARGO_PLURAL_COAL                                           :Уголь
-STR_CARGO_PLURAL_COAL.gen                                       :угля
 STR_CARGO_PLURAL_COAL.acc                                       :уголь
+STR_CARGO_PLURAL_COAL.gen                                       :угля
 STR_CARGO_PLURAL_MAIL                                           :Почта
-STR_CARGO_PLURAL_MAIL.gen                                       :почты
 STR_CARGO_PLURAL_MAIL.acc                                       :почту
+STR_CARGO_PLURAL_MAIL.gen                                       :почты
 STR_CARGO_PLURAL_OIL                                            :Нефть
-STR_CARGO_PLURAL_OIL.gen                                        :нефти
 STR_CARGO_PLURAL_OIL.acc                                        :нефть
+STR_CARGO_PLURAL_OIL.gen                                        :нефти
 STR_CARGO_PLURAL_LIVESTOCK                                      :Скот
-STR_CARGO_PLURAL_LIVESTOCK.gen                                  :скота
 STR_CARGO_PLURAL_LIVESTOCK.acc                                  :скот
+STR_CARGO_PLURAL_LIVESTOCK.gen                                  :скота
 STR_CARGO_PLURAL_GOODS                                          :Товары
-STR_CARGO_PLURAL_GOODS.gen                                      :товаров
 STR_CARGO_PLURAL_GOODS.acc                                      :товары
+STR_CARGO_PLURAL_GOODS.gen                                      :товаров
 STR_CARGO_PLURAL_GRAIN                                          :Зерно
-STR_CARGO_PLURAL_GRAIN.gen                                      :зерна
 STR_CARGO_PLURAL_GRAIN.acc                                      :зерно
+STR_CARGO_PLURAL_GRAIN.gen                                      :зерна
 STR_CARGO_PLURAL_WOOD                                           :Дерево
-STR_CARGO_PLURAL_WOOD.gen                                       :дерева
 STR_CARGO_PLURAL_WOOD.acc                                       :дерево
+STR_CARGO_PLURAL_WOOD.gen                                       :дерева
 STR_CARGO_PLURAL_IRON_ORE                                       :Железная руда
-STR_CARGO_PLURAL_IRON_ORE.gen                                   :железной руды
 STR_CARGO_PLURAL_IRON_ORE.acc                                   :железную руду
+STR_CARGO_PLURAL_IRON_ORE.gen                                   :железной руды
 STR_CARGO_PLURAL_STEEL                                          :Сталь
-STR_CARGO_PLURAL_STEEL.gen                                      :стали
 STR_CARGO_PLURAL_STEEL.acc                                      :сталь
+STR_CARGO_PLURAL_STEEL.gen                                      :стали
 STR_CARGO_PLURAL_VALUABLES                                      :Драгоценности
-STR_CARGO_PLURAL_VALUABLES.gen                                  :драгоценностей
 STR_CARGO_PLURAL_VALUABLES.acc                                  :драгоценности
+STR_CARGO_PLURAL_VALUABLES.gen                                  :драгоценностей
 STR_CARGO_PLURAL_COPPER_ORE                                     :Медная руда
-STR_CARGO_PLURAL_COPPER_ORE.gen                                 :медной руды
 STR_CARGO_PLURAL_COPPER_ORE.acc                                 :медную руду
+STR_CARGO_PLURAL_COPPER_ORE.gen                                 :медной руды
 STR_CARGO_PLURAL_MAIZE                                          :Кукуруза
-STR_CARGO_PLURAL_MAIZE.gen                                      :кукурузы
 STR_CARGO_PLURAL_MAIZE.acc                                      :кукурузу
+STR_CARGO_PLURAL_MAIZE.gen                                      :кукурузы
 STR_CARGO_PLURAL_FRUIT                                          :Фрукты
-STR_CARGO_PLURAL_FRUIT.gen                                      :фруктов
 STR_CARGO_PLURAL_FRUIT.acc                                      :фрукты
+STR_CARGO_PLURAL_FRUIT.gen                                      :фруктов
 STR_CARGO_PLURAL_DIAMONDS                                       :Алмазы
-STR_CARGO_PLURAL_DIAMONDS.gen                                   :алмазов
 STR_CARGO_PLURAL_DIAMONDS.acc                                   :алмазы
+STR_CARGO_PLURAL_DIAMONDS.gen                                   :алмазов
 STR_CARGO_PLURAL_FOOD                                           :Продукты
-STR_CARGO_PLURAL_FOOD.gen                                       :продуктов
 STR_CARGO_PLURAL_FOOD.acc                                       :продукты
+STR_CARGO_PLURAL_FOOD.gen                                       :продуктов
 STR_CARGO_PLURAL_PAPER                                          :Бумага
-STR_CARGO_PLURAL_PAPER.gen                                      :бумаги
 STR_CARGO_PLURAL_PAPER.acc                                      :бумагу
+STR_CARGO_PLURAL_PAPER.gen                                      :бумаги
 STR_CARGO_PLURAL_GOLD                                           :Золото
-STR_CARGO_PLURAL_GOLD.gen                                       :золота
 STR_CARGO_PLURAL_GOLD.acc                                       :золото
+STR_CARGO_PLURAL_GOLD.gen                                       :золота
 STR_CARGO_PLURAL_WATER                                          :Вода
-STR_CARGO_PLURAL_WATER.gen                                      :воды
 STR_CARGO_PLURAL_WATER.acc                                      :воду
+STR_CARGO_PLURAL_WATER.gen                                      :воды
 STR_CARGO_PLURAL_WHEAT                                          :Пшеница
-STR_CARGO_PLURAL_WHEAT.gen                                      :пшеницы
 STR_CARGO_PLURAL_WHEAT.acc                                      :пшеницу
+STR_CARGO_PLURAL_WHEAT.gen                                      :пшеницы
 STR_CARGO_PLURAL_RUBBER                                         :Каучук
-STR_CARGO_PLURAL_RUBBER.gen                                     :каучука
 STR_CARGO_PLURAL_RUBBER.acc                                     :каучук
+STR_CARGO_PLURAL_RUBBER.gen                                     :каучука
 STR_CARGO_PLURAL_SUGAR                                          :Сахар
-STR_CARGO_PLURAL_SUGAR.gen                                      :сахара
 STR_CARGO_PLURAL_SUGAR.acc                                      :сахар
+STR_CARGO_PLURAL_SUGAR.gen                                      :сахара
 STR_CARGO_PLURAL_TOYS                                           :Игрушки
-STR_CARGO_PLURAL_TOYS.gen                                       :игрушек
 STR_CARGO_PLURAL_TOYS.acc                                       :игрушки
+STR_CARGO_PLURAL_TOYS.gen                                       :игрушек
 STR_CARGO_PLURAL_CANDY                                          :Конфеты
-STR_CARGO_PLURAL_CANDY.gen                                      :конфет
 STR_CARGO_PLURAL_CANDY.acc                                      :конфеты
+STR_CARGO_PLURAL_CANDY.gen                                      :конфет
 STR_CARGO_PLURAL_COLA                                           :Кола
-STR_CARGO_PLURAL_COLA.gen                                       :колы
 STR_CARGO_PLURAL_COLA.acc                                       :колу
+STR_CARGO_PLURAL_COLA.gen                                       :колы
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Сахарная вата
-STR_CARGO_PLURAL_COTTON_CANDY.gen                               :сахарной ваты
 STR_CARGO_PLURAL_COTTON_CANDY.acc                               :сахарную вату
+STR_CARGO_PLURAL_COTTON_CANDY.gen                               :сахарной ваты
 STR_CARGO_PLURAL_BUBBLES                                        :Пузырьки
-STR_CARGO_PLURAL_BUBBLES.gen                                    :пузырьков
 STR_CARGO_PLURAL_BUBBLES.acc                                    :пузырьки
+STR_CARGO_PLURAL_BUBBLES.gen                                    :пузырьков
 STR_CARGO_PLURAL_TOFFEE                                         :Ириски
-STR_CARGO_PLURAL_TOFFEE.gen                                     :ирисок
 STR_CARGO_PLURAL_TOFFEE.acc                                     :ириски
+STR_CARGO_PLURAL_TOFFEE.gen                                     :ирисок
 STR_CARGO_PLURAL_BATTERIES                                      :Батарейки
-STR_CARGO_PLURAL_BATTERIES.gen                                  :батареек
 STR_CARGO_PLURAL_BATTERIES.acc                                  :батарейки
+STR_CARGO_PLURAL_BATTERIES.gen                                  :батареек
 STR_CARGO_PLURAL_PLASTIC                                        :Пластик
-STR_CARGO_PLURAL_PLASTIC.gen                                    :пластика
 STR_CARGO_PLURAL_PLASTIC.acc                                    :пластик
+STR_CARGO_PLURAL_PLASTIC.gen                                    :пластика
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Газировка
-STR_CARGO_PLURAL_FIZZY_DRINKS.gen                               :газировки
 STR_CARGO_PLURAL_FIZZY_DRINKS.acc                               :газировку
+STR_CARGO_PLURAL_FIZZY_DRINKS.gen                               :газировки
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Пассажир
 STR_CARGO_SINGULAR_COAL                                         :Уголь
@@ -176,7 +176,7 @@ STR_QUANTITY_WHEAT                                              :{WEIGHT} пше
 STR_QUANTITY_RUBBER                                             :{VOLUME} каучука
 STR_QUANTITY_SUGAR                                              :{WEIGHT} сахара
 STR_QUANTITY_TOYS                                               :{COMMA} игруш{P ка ки ек}
-STR_QUANTITY_SWEETS                                             :{COMMA} упаков{P ка ки ок} конфет
+STR_QUANTITY_SWEETS                                             :{COMMA} короб{P ка ки ок} конфет
 STR_QUANTITY_COLA                                               :{VOLUME} колы
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} сахарной ваты
 STR_QUANTITY_BUBBLES                                            :{COMMA} пузыр{P ёк ька ьков}
@@ -263,7 +263,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Слиш
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Обзор
-STR_SMALLMAP_TYPE_CONTOURS                                      :Контуры
+STR_SMALLMAP_TYPE_CONTOURS                                      :Рельеф
 STR_SMALLMAP_TYPE_VEHICLES                                      :Транспорт
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Промышленность
 STR_SMALLMAP_TYPE_ROUTES                                        :Маршруты
@@ -2630,7 +2630,7 @@ STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Нефт. та�
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Пассажир. судно MPS
 STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Пассажир. судно FFP
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Судно на возд. подушке Bakewell 300
-STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug Пассажирский паром
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Пассажир. судно Chugger-Chug
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Пассажир. судно Shivershake
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Сухогруз Yate
 STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Сухогруз Bakewell
@@ -2678,13 +2678,13 @@ STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Вертолё�
 STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Вертолёт Guru X2
 STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Вертолёт Powernaut
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Сообщение от производителя транспорта
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Мы создали новую модель: {STRING}. Заинтересованы ли вы в его годовом эксклюзивном использовании для проверки перед запуском в серийное производство?
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :ж/д локомотив
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автотранспорт
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :авиатранспорт
-STR_ENGINE_PREVIEW_SHIP                                         :корабль
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :монорельсовый локомотив
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :магниторельсовый локомотив
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Мы создали новую модель {STRING}. Заинтересованы ли вы в его годовом эксклюзивном использовании для проверки перед запуском в серийное производство?
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :ж/д локомотива
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автотранспорта
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :авиатранспорта
+STR_ENGINE_PREVIEW_SHIP                                         :корабля
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :монорельсового локомотива
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :магниторельсового локомотива
 
 ##id 0x8800
 STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Депо {TOWN}

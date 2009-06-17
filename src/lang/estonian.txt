@@ -952,7 +952,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Ja
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} ei leia jätkamiseks rada.
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} on eksinud.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Sõiduki {VEHICLE} tulud olid eelmisel aastal {CURRENCY}
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} tulud eelmisel aastal olid {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Euroopa rahaliit!{}{}Nüüdsest on riigi igapäevaseks käiberahaks Euro!
 
 # Start of order review system.
@@ -963,8 +963,8 @@ STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}Sõiduki
 STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}Sõiduki {VEHICLE} käskudes on väär jaam
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Uuendus ebaõnnestus sõidukil {VEHICLE} {}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Sõiduk {VEHICLE} on pärast asendamist liiga pikk
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}{VEHICLE} uuendamine ebaõnnestus {}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} on pärast asendamist liiga pikk
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Automaatse asendamise/uuendamise reegleid ei ole rakendatud
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(rahalimiit)
 
@@ -1029,9 +1029,9 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jah, kuid jäta
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :kõikidest veovahenditest
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Hoiata kui rongi sissetulek on negatiivne: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Sõidukid ei aegu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Vananenud sõidukite moderniseerimine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Vananenud sõidukite uuendamine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Piirvanuse saavutanud veovahendit uuendatakse {ORANGE}{STRING}{LTBLUE} kuu piires
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Nõutud rahasumma moderniseerimiseks: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Nõutud rahasumma uuendamiseks: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Veateadete kestus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Rahvaarv alevike nimesiltidel: {ORANGE}{STRING}
 
@@ -1139,11 +1139,11 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Elektri
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Värvilised uudised ilmuvad aastast {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Alustamise aeg: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Sujuv majandus (tihedamad, kuid kergemad muutused): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Sujuv majandus (rohkem, väiksemad muutused): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Aktsiatehingud teiste ettevõtetega: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Venitades rajatavate signaalide paigaldustihedus: {ORANGE}{STRING} ühik(ut)
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Semafore ehitatakse enne: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Signaaliliides: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Signaalide paigutamise graafiline kasutajaliides: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Vaikimisi ehitatav signaalide liik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Tavaline
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Täiustatud
@@ -1192,23 +1192,23 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Suhtlem
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaalid
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kauba käsitlemine
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Arvutimängijad
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Moderniseerimine
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Uuendamine
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Hooldamine
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Marsruutimine
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Rongid
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Linnad
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Tööstused
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Rongide marsruuter: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Rongide marsruudileidja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(ebasoovitatav)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(soovitatav)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Maanteesõidukite marsruuter: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(soovitatud)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Maanteesõidukite marsruudileidja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Algne {RED}(ebasoovitatav)
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(soovitatav)
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laevade marsruuter: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Algne {BLUE}(soovitatav)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(soovitatud)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laevade marsruudileidja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Algne {BLUE}(soovitatud)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(ebasoovitatav)
 
@@ -1522,9 +1522,9 @@ STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Tekkis 
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Kliendi osa ei vasta serveri osaga
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Vale parool
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Server on täis
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Sinu sisenemine siia serverisse on keelatud
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Sinu sisenemine siia serverisse on keelatud
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Sind visati mängust välja
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Selles serveris on petmine keelatud
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Selles serveris on petmine keelatud
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :üldine viga
