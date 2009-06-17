@@ -50,7 +50,6 @@ DrawPixelInfo *_cur_dpi;
 byte _colour_gradient[COLOUR_END][8];
 
 static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = NULL);
-static int ReallyDoDrawString(const char *string, int x, int y, TextColour colour, bool parse_string_also_when_clipped = false);
 
 FontSize _cur_fontsize;
 static FontSize _last_fontsize;
@@ -256,7 +255,8 @@ static void SetColourRemap(TextColour colour)
 }
 
 #if !defined(WITH_ICU)
-static void HandleBiDiAndArabicShapes(char *text, const char *lastof) {}
+typedef WChar UChar;
+static UChar *HandleBiDiAndArabicShapes(UChar *text) { return text; }
 #else
 #include <unicode/ubidi.h>
 #include <unicode/ushape.h>
@@ -288,37 +288,33 @@ static void HandleBiDiAndArabicShapes(char *text, const char *lastof) {}
  * the chance is fairly slim as most characters get shorter instead of longer.
  * @param buffer the buffer to read from/to
  * @param lastof the end of the buffer
+ * @return the buffer to draw from
  */
-static void HandleBiDiAndArabicShapes(char *buffer, const char *lastof)
+static UChar *HandleBiDiAndArabicShapes(UChar *buffer)
 {
-	UChar input_output[DRAW_STRING_BUFFER];
+	static UChar input_output[DRAW_STRING_BUFFER];
 	UChar intermediate[DRAW_STRING_BUFFER];
 
-	char *t = buffer;
+	UChar *t = buffer;
 	size_t length = 0;
 	while (*t != '\0' && length < lengthof(input_output) - 1) {
-		WChar tmp;
-		t += Utf8Decode(&tmp, t);
-		input_output[length++] = tmp;
+		input_output[length++] = *t++;
 	}
 	input_output[length] = 0;
 
 	UErrorCode err = U_ZERO_ERROR;
 	UBiDi *para = ubidi_openSized((int32_t)length, 0, &err);
-	if (para == NULL) return;
+	if (para == NULL) return buffer;
 
 	ubidi_setPara(para, input_output, (int32_t)length, _dynlang.text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, NULL, &err);
 	ubidi_writeReordered(para, intermediate, (int32_t)length, 0, &err);
 	length = u_shapeArabic(intermediate, (int32_t)length, input_output, lengthof(input_output), U_SHAPE_TEXT_DIRECTION_VISUAL_LTR | U_SHAPE_LETTERS_SHAPE, &err);
 	ubidi_close(para);
 
-	if (U_FAILURE(err)) return;
+	if (U_FAILURE(err)) return buffer;
 
-	t = buffer;
-	for (size_t i = 0; i < length && t < (lastof - 4); i++) {
-		t += Utf8Encode(t, input_output[i]);
-	}
-	*t = '\0';
+	input_output[length] = '\0';
+	return input_output;
 }
 #endif /* WITH_ICU */
 
@@ -379,6 +375,45 @@ static int TruncateString(char *str, int maxw)
 	return w;
 }
 
+static int ReallyDoDrawString(const UChar *string, int x, int y, TextColour &colour, bool parse_string_also_when_clipped = false);
+
+/**
+ * Get the real width of the string.
+ * @param str the string to draw
+ * @return the width.
+ */
+static int GetStringWidth(const UChar *str)
+{
+	FontSize size = _cur_fontsize;
+	int max_width;
+	int width;
+	WChar c;
+
+	width = max_width = 0;
+	for (;;) {
+		c = *str++;
+		if (c == 0) break;
+		if (IsPrintable(c)) {
+			width += GetCharacterWidth(size, c);
+		} else {
+			switch (c) {
+				case SCC_SETX:
+				case SCC_SETXY:
+					/* At this point there is no SCC_SETX(Y) anymore */
+					NOT_REACHED();
+					break;
+				case SCC_TINYFONT: size = FS_SMALL; break;
+				case SCC_BIGFONT:  size = FS_LARGE; break;
+				case '\n':
+					max_width = max(max_width, width);
+					break;
+			}
+		}
+	}
+
+	return max(max_width, width);
+}
+
 /**
  * Draw string, possibly truncated to make it fit in its allocated space
  *
@@ -414,16 +449,27 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 	 * the string and draw the parts separated by SETX(Y).
 	 * So here we split
 	 */
-	static SmallVector<char *, 4> setx_offsets;
+	static SmallVector<UChar *, 4> setx_offsets;
 	setx_offsets.Clear();
-	*setx_offsets.Append() = str;
+
+	UChar draw_buffer[DRAW_STRING_BUFFER];
+	UChar *p = draw_buffer;
+
+	*setx_offsets.Append() = p;
 
 	char *loc = str;
 	for (;;) {
 		WChar c;
 		/* We cannot use Utf8Consume as we need the location of the SETX(Y) */
 		size_t len = Utf8Decode(&c, loc);
+		*p++ = c;
+
 		if (c == '\0') break;
+		if (p >= lastof(draw_buffer) - 3) {
+			/* Make sure we never overflow (even if copying SCC_SETX(Y)). */
+			*p = '\0';
+			break;
+		}
 		if (c != SCC_SETX && c != SCC_SETXY) {
 			loc += len;
 			continue;
@@ -431,42 +477,48 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 
 		if ((align & SA_MASK) != SA_LEFT) {
 			DEBUG(grf, 1, "Using SETX and/or SETXY when not aligned to the left. Fixing alignment...");
-			align = SA_LEFT;
+
+			/* For left alignment and change the left so it will roughly be in the
+			 * middle. This will never cause the string to be completely centered,
+			 * but once SETX is used you cannot be sure the actual content of the
+			 * string is centered, so it doesn't really matter. */
+			align = SA_LEFT | SA_FORCE;
+			initial_left = left = max(left, (left + right - GetStringBoundingBox(str).width) / 2);
 		}
 
 		/* We add the begin of the string, but don't add it twice */
-		if (loc != str) *setx_offsets.Append() = loc;
+		if (p != draw_buffer) {
+			*setx_offsets.Append() = p;
+			p[-1] = '\0';
+			*p++ = c;
+		}
 
 		/* Skip the SCC_SETX(Y) ... */
 		loc += len;
-		/* ... skip the x coordinate ... */
-		loc++;
-		/* ... and finally the y coordinate if it exists */
-		if (c == SCC_SETXY) loc++;
+		/* ... copy the x coordinate ... */
+		*p++ = *loc++;
+		/* ... and finally copy the y coordinate if it exists */
+		if (c == SCC_SETXY) *p++ = *loc++;
 	}
 
 	/* In case we have a RTL language we swap the alignment. */
 	if (!(align & SA_FORCE) && _dynlang.text_dir == TD_RTL && align != SA_CENTER) align ^= SA_RIGHT;
 
-	/* Now draw the parts. This is done in the reverse order so we can give the
-	 * BiDi algorithm the room to replace characters. It also simplifies
-	 * 'ending' the strings. */
-	for (char **iter = setx_offsets.End(); iter-- != setx_offsets.Begin(); ) {
-		char *to_draw = *iter;
-		WChar c;
-		size_t len = Utf8Decode(&c, to_draw);
+	for (UChar **iter = setx_offsets.Begin(); iter != setx_offsets.End(); iter++) {
+		UChar *to_draw = *iter;
 		int offset = 0;
 
 		/* Skip the SETX(Y) and set the appropriate offsets. */
-		if (c == SCC_SETX || c == SCC_SETXY) {
-			*to_draw = '\0';
-			to_draw += len;
+		if (*to_draw == SCC_SETX || *to_draw == SCC_SETXY) {
+			to_draw++;
 			offset = *to_draw++;
-			if (c == SCC_SETXY) top = initial_top + *to_draw++;
+			if (*to_draw == SCC_SETXY) top = initial_top + *to_draw++;
+
+			_cur_fontsize = _last_fontsize;
 		}
 
-		HandleBiDiAndArabicShapes(to_draw, last);
-		int w = GetStringBoundingBox(to_draw).width;
+		to_draw = HandleBiDiAndArabicShapes(to_draw);
+		int w = GetStringWidth(to_draw);
 
 		/* right is the right most position to draw on. In this case we want to do
 		 * calculations with the width of the string. In comparison right can be
@@ -755,10 +807,10 @@ Dimension GetStringBoundingBox(const char *str)
 			br.width += GetCharacterWidth(size, c);
 		} else {
 			switch (c) {
-				case SCC_SETX: br.width += (byte)*str++; break;
+				case SCC_SETX: br.width = max((int)*str++, br.width); break;
 				case SCC_SETXY:
-					br.width += (byte)*str++;
-					br.height += (byte)*str++;
+					br.width  = max((int)*str++, br.width);
+					br.height = max((int)*str++, br.height);
 					break;
 				case SCC_TINYFONT: size = FS_SMALL; break;
 				case SCC_BIGFONT:  size = FS_LARGE; break;
@@ -806,12 +858,12 @@ void DrawCharCentered(WChar c, int x, int y, TextColour colour)
  * @return                    the x-coordinates where the drawing has finished.
  *                            If nothing is drawn, the originally passed x-coordinate is returned
  */
-static int ReallyDoDrawString(const char *string, int x, int y, TextColour colour, bool parse_string_also_when_clipped)
+static int ReallyDoDrawString(const UChar *string, int x, int y, TextColour &colour, bool parse_string_also_when_clipped)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
 	FontSize size = _cur_fontsize;
-	WChar c;
-	int xo = x, yo = y;
+	UChar c;
+	int xo = x;
 
 	TextColour previous_colour = colour;
 
@@ -830,13 +882,13 @@ check_bounds:
 	if (y + 19 <= dpi->top || dpi->top + dpi->height <= y) {
 skip_char:;
 		for (;;) {
-			c = Utf8Consume(&string);
+			c = *string++;
 			if (!IsPrintable(c)) goto skip_cont;
 		}
 	}
 
 	for (;;) {
-		c = Utf8Consume(&string);
+		c = *string++;
 skip_cont:;
 		if (c == 0) {
 			_last_fontsize = size;
@@ -859,11 +911,9 @@ skip_cont:;
 		} else if (c == SCC_PREVIOUS_COLOUR) { // revert to the previous colour
 			Swap(colour, previous_colour);
 			goto switch_colour;
-		} else if (c == SCC_SETX) { // {SETX}
-			x = xo + (byte)*string++;
-		} else if (c == SCC_SETXY) {// {SETXY}
-			x = xo + (byte)*string++;
-			y = yo + (byte)*string++;
+		} else if (c == SCC_SETX || c == SCC_SETXY) { // {SETX}/{SETXY}
+			/* The characters are handled before calling this. */
+			NOT_REACHED();
 		} else if (c == SCC_TINYFONT) { // {TINYFONT}
 			size = FS_SMALL;
 		} else if (c == SCC_BIGFONT) { // {BIGFONT}
