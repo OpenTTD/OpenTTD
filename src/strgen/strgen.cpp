@@ -238,7 +238,7 @@ static void EmitSetX(char *buf, int value)
 {
 	char *err;
 	int x = strtol(buf, &err, 0);
-	if (*err != 0) error("SetX param invalid");
+	if (*err != '\0') error("SetX param invalid");
 	PutUtf8(SCC_SETX);
 	PutByte((byte)x);
 }
@@ -247,12 +247,10 @@ static void EmitSetX(char *buf, int value)
 static void EmitSetXY(char *buf, int value)
 {
 	char *err;
-	int x;
-	int y;
 
-	x = strtol(buf, &err, 0);
+	int x = strtol(buf, &err, 0);
 	if (*err != ' ') error("SetXY param invalid");
-	y = strtol(err + 1, &err, 0);
+	int y = strtol(err + 1, &err, 0);
 	if (*err != 0) error("SetXY param invalid");
 
 	PutUtf8(SCC_SETXY);
@@ -271,14 +269,13 @@ bool ParseRelNum(char **buf, int *value)
 	const char *s = *buf;
 	char *end;
 	bool rel = false;
-	int v;
 
 	while (*s == ' ' || *s == '\t') s++;
 	if (*s == '+') {
 		rel = true;
 		s++;
 	}
-	v = strtol(s, &end, 0);
+	int v = strtol(s, &end, 0);
 	if (end == s) return false;
 	if (rel || v < 0) {
 		*value += v;
@@ -329,13 +326,10 @@ static int TranslateArgumentIdx(int arg);
 
 static void EmitWordList(const char * const *words, uint nw)
 {
-	uint i;
-	uint j;
-
 	PutByte(nw);
-	for (i = 0; i < nw; i++) PutByte(strlen(words[i]));
-	for (i = 0; i < nw; i++) {
-		for (j = 0; words[i][j] != '\0'; j++) PutByte(words[i][j]);
+	for (uint i = 0; i < nw; i++) PutByte(strlen(words[i]));
+	for (uint i = 0; i < nw; i++) {
+		for (uint j = 0; words[i][j] != '\0'; j++) PutByte(words[i][j]);
 	}
 }
 
@@ -354,8 +348,9 @@ static void EmitPlural(char *buf, int value)
 		if (words[nw] == NULL) break;
 	}
 
-	if (nw == 0)
+	if (nw == 0) {
 		error("%s: No plural words", _cur_ident);
+	}
 
 	if (_plural_forms[_lang_pluralform].plural_count != nw) {
 		if (_translated) {
@@ -389,20 +384,20 @@ static void EmitGender(char *buf, int value)
 
 		/* This is a {G=DER} command */
 		for (nw = 0; ; nw++) {
-			if (nw >= 8) error("G argument '%s' invalid", buf);
+			if (nw >= MAX_NUM_GENDER) error("G argument '%s' invalid", buf);
 			if (strcmp(buf, _genders[nw]) == 0) break;
 		}
 		/* now nw contains the gender index */
 		PutUtf8(SCC_GENDER_INDEX);
 		PutByte(nw);
 	} else {
-		const char *words[8];
+		const char *words[MAX_NUM_GENDER];
 
 		/* This is a {G 0 foo bar two} command.
 		 * If no relative number exists, default to +0 */
 		if (!ParseRelNum(&buf, &argidx)) {}
 
-		for (nw = 0; nw < 8; nw++) {
+		for (nw = 0; nw < MAX_NUM_GENDER; nw++) {
 			words[nw] = ParseWord(&buf);
 			if (words[nw] == NULL) break;
 		}
@@ -415,9 +410,7 @@ static void EmitGender(char *buf, int value)
 
 static const CmdStruct *FindCmd(const char *s, int len)
 {
-	const CmdStruct *cs;
-
-	for (cs = _cmd_structs; cs != endof(_cmd_structs); cs++) {
+	for (const CmdStruct *cs = _cmd_structs; cs != endof(_cmd_structs); cs++) {
 		if (strncmp(cs->cmd, s, len) == 0 && cs->cmd[len] == '\0') return cs;
 	}
 	return NULL;
@@ -425,9 +418,7 @@ static const CmdStruct *FindCmd(const char *s, int len)
 
 static uint ResolveCaseName(const char *str, uint len)
 {
-	uint i;
-
-	for (i = 0; i < MAX_NUM_CASES; i++) {
+	for (uint i = 0; i < MAX_NUM_CASES; i++) {
 		if (memcmp(_cases[i], str, len) == 0 && _cases[i][len] == 0) return i + 1;
 	}
 	error("Invalid case-name '%s'", str);
@@ -439,8 +430,7 @@ static uint ResolveCaseName(const char *str, uint len)
 static const CmdStruct *ParseCommandString(const char **str, char *param, int *argno, int *casei)
 {
 	const char *s = *str, *start;
-	const CmdStruct *cmd;
-	byte c;
+	char c;
 
 	*argno = -1;
 	*casei = -1;
@@ -465,7 +455,7 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 		c = *s++;
 	} while (c != '}' && c != ' ' && c != '=' && c != '.' && c != 0);
 
-	cmd = FindCmd(start, s - start - 1);
+	const CmdStruct *cmd = FindCmd(start, s - start - 1);
 	if (cmd == NULL) {
 		strgen_error("Undefined command '%.*s'", (int)(s - start - 1), start);
 		return NULL;
@@ -474,10 +464,13 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 	if (c == '.') {
 		const char *casep = s;
 
-		if (!(cmd->flags & C_CASE))
+		if (!(cmd->flags & C_CASE)) {
 			error("Command '%s' can't have a case", cmd->cmd);
+		}
 
-		do c = *s++; while (c != '}' && c != ' ' && c != '\0');
+		do {
+			c = *s++;
+		} while (c != '}' && c != ' ' && c != '\0');
 		*casei = ResolveCaseName(casep, s - casep - 1);
 	}
 
@@ -636,7 +629,6 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 {
 	ParsedCommandStruct templ;
 	ParsedCommandStruct lang;
-	uint i, j;
 	bool result = true;
 
 	ExtractCommandString(&templ, b, true);
@@ -648,10 +640,10 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 		result = false;
 	}
 
-	for (i = 0; i < templ.np; i++) {
+	for (uint i = 0; i < templ.np; i++) {
 		/* see if we find it in lang, and zero it out */
 		bool found = false;
-		for (j = 0; j < lang.np; j++) {
+		for (uint j = 0; j < lang.np; j++) {
 			if (templ.pairs[i].a == lang.pairs[j].a &&
 					strcmp(templ.pairs[i].v, lang.pairs[j].v) == 0) {
 				/* it was found in both. zero it out from lang so we don't find it again */
@@ -669,7 +661,7 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 
 	/* if we reach here, all non consumer commands match up.
 	 * Check if the non consumer commands match up also. */
-	for (i = 0; i < lengthof(templ.cmd); i++) {
+	for (uint i = 0; i < lengthof(templ.cmd); i++) {
 		if (TranslateCmdForCompare(templ.cmd[i]) != TranslateCmdForCompare(lang.cmd[i])) {
 			strgen_warning("%s: Param idx #%d '%s' doesn't match with template command '%s'", name, i,
 				lang.cmd[i]  == NULL ? "<empty>" : lang.cmd[i]->cmd,
@@ -683,10 +675,6 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 
 static void HandleString(char *str, bool master)
 {
-	char *s, *t;
-	LangString *ent;
-	char *casep;
-
 	if (*str == '#') {
 		if (str[1] == '#' && str[2] != '#') HandlePragma(str + 2);
 		return;
@@ -695,35 +683,34 @@ static void HandleString(char *str, bool master)
 	/* Ignore comments & blank lines */
 	if (*str == ';' || *str == ' ' || *str == '\0') return;
 
-	s = strchr(str, ':');
+	char *s = strchr(str, ':');
 	if (s == NULL) {
 		strgen_error("Line has no ':' delimiter");
 		return;
 	}
 
+	char *t;
 	/* Trim spaces.
 	 * After this str points to the command name, and s points to the command contents */
-	for (t = s; t > str && (t[-1] == ' ' || t[-1] == '\t'); t--);
+	for (t = s; t > str && (t[-1] == ' ' || t[-1] == '\t'); t--) {}
 	*t = 0;
 	s++;
 
 	/* Check string is valid UTF-8 */
-	{
-		const char *tmp;
-		for (tmp = s; *tmp != '\0';) {
-			size_t len = Utf8Validate(tmp);
-			if (len == 0) error("Invalid UTF-8 sequence in '%s'", s);
-			tmp += len;
-		}
+	const char *tmp;
+	for (tmp = s; *tmp != '\0';) {
+		size_t len = Utf8Validate(tmp);
+		if (len == 0) error("Invalid UTF-8 sequence in '%s'", s);
+		tmp += len;
 	}
 
 	/* Check if the string has a case..
 	 * The syntax for cases is IDENTNAME.case */
-	casep = strchr(str, '.');
-	if (casep) *casep++ = 0;
+	char *casep = strchr(str, '.');
+	if (casep) *casep++ = '\0';
 
 	/* Check if this string already exists.. */
-	ent = HashFind(str);
+	LangString *ent = HashFind(str);
 
 	if (master) {
 		if (ent != NULL && casep == NULL) {
@@ -897,18 +884,16 @@ static uint CountInUse(uint grp)
 
 bool CompareFiles(const char *n1, const char *n2)
 {
-	FILE *f1, *f2;
-	char b1[4096];
-	char b2[4096];
-	size_t l1, l2;
-
-	f2 = fopen(n2, "rb");
+	FILE *f2 = fopen(n2, "rb");
 	if (f2 == NULL) return false;
 
-	f1 = fopen(n1, "rb");
+	FILE *f1 = fopen(n1, "rb");
 	if (f1 == NULL) error("can't open %s", n1);
 
+	size_t l1, l2;
 	do {
+		char b1[4096];
+		char b2[4096];
 		l1 = fread(b1, 1, sizeof(b1), f1);
 		l2 = fread(b2, 1, sizeof(b2), f2);
 
@@ -927,18 +912,16 @@ bool CompareFiles(const char *n1, const char *n2)
 
 static void WriteStringsH(const char *filename)
 {
-	FILE *out;
-	int i;
 	int next = -1;
 
-	out = fopen("tmp.xxx", "w");
+	FILE *out = fopen("tmp.xxx", "w");
 	if (out == NULL) error("can't open tmp.xxx");
 
 	fprintf(out, "/* This file is automatically generated. Do not modify */\n\n");
 	fprintf(out, "#ifndef TABLE_STRINGS_H\n");
 	fprintf(out, "#define TABLE_STRINGS_H\n");
 
-	for (i = 0; i != lengthof(_strings); i++) {
+	for (int i = 0; i != lengthof(_strings); i++) {
 		if (_strings[i] != NULL) {
 			if (next != i) fprintf(out, "\n");
 			fprintf(out, "static const StringID %s = 0x%X;\n", _strings[i]->name, i);
@@ -973,12 +956,13 @@ static void WriteStringsH(const char *filename)
 
 static int TranslateArgumentIdx(int argidx)
 {
-	int i, sum;
+	int sum;
 
-	if (argidx < 0 || (uint)argidx >= lengthof(_cur_pcs.cmd))
+	if (argidx < 0 || (uint)argidx >= lengthof(_cur_pcs.cmd)) {
 		error("invalid argidx %d", argidx);
+	}
 
-	for (i = sum = 0; i < argidx; i++) {
+	for (int i = sum = 0; i < argidx; i++) {
 		const CmdStruct *cs = _cur_pcs.cmd[i];
 		sum += (cs != NULL) ? cs->consumes : 1;
 	}
@@ -995,11 +979,6 @@ static void PutArgidxCommand()
 
 static void PutCommandString(const char *str)
 {
-	const CmdStruct *cs;
-	char param[256];
-	int argno;
-	int casei;
-
 	_cur_argidx = 0;
 
 	while (*str != '\0') {
@@ -1008,7 +987,11 @@ static void PutCommandString(const char *str)
 			PutByte(*str++);
 			continue;
 		}
-		cs = ParseCommandString(&str, param, &argno, &casei);
+
+		char param[256];
+		int argno;
+		int casei;
+		const CmdStruct *cs = ParseCommandString(&str, param, &argno, &casei);
 		if (cs == NULL) break;
 
 		if (casei != -1) {
@@ -1050,17 +1033,14 @@ static void WriteLength(FILE *f, uint length)
 
 static void WriteLangfile(const char *filename)
 {
-	FILE *f;
 	uint in_use[32];
 	LanguagePackHeader hdr;
-	uint i;
-	uint j;
 
-	f = fopen(filename, "wb");
+	FILE *f = fopen(filename, "wb");
 	if (f == NULL) error("can't open %s", filename);
 
 	memset(&hdr, 0, sizeof(hdr));
-	for (i = 0; i != 32; i++) {
+	for (int i = 0; i != 32; i++) {
 		uint n = CountInUse(i);
 
 		in_use[i] = n;
@@ -1082,8 +1062,8 @@ static void WriteLangfile(const char *filename)
 
 	fwrite(&hdr, sizeof(hdr), 1, f);
 
-	for (i = 0; i != 32; i++) {
-		for (j = 0; j != in_use[i]; j++) {
+	for (int i = 0; i != 32; i++) {
+		for (int j = 0; j != in_use[i]; j++) {
 			const LangString *ls = _strings[(i << 11) + j];
 			const Case *casep;
 			const char *cmdp;
@@ -1179,10 +1159,9 @@ static inline void ottd_mkdir(const char *directory)
  * does not already end with a seperator */
 static inline char *mkpath(char *buf, size_t buflen, const char *path, const char *file)
 {
-	char *p;
 	ttd_strlcpy(buf, path, buflen); // copy directory into buffer
 
-	p = strchr(buf, '\0'); // add path seperator if necessary
+	char *p = strchr(buf, '\0'); // add path seperator if necessary
 	if (p[-1] != PATHSEPCHAR && (size_t)(p - buf) + 1 < buflen) *p++ = PATHSEPCHAR;
 	ttd_strlcpy(p, file, buflen - (size_t)(p - buf)); // catenate filename at end of buffer
 	return buf;
@@ -1196,9 +1175,7 @@ static inline char *mkpath(char *buf, size_t buflen, const char *path, const cha
  */
 static inline char *replace_pathsep(char *s)
 {
-	char *c;
-
-	for (c = s; *c != '\0'; c++) if (*c == '/') *c = '\\';
+	for (char *c = s; *c != '\0'; c++) if (*c == '/') *c = '\\';
 	return s;
 }
 #else
