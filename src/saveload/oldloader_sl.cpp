@@ -1420,6 +1420,8 @@ static bool LoadOldSign(LoadgameState *ls, int num)
 			si->name = CopyFromOldName(RemapOldStringID(_old_string_id));
 		}
 		si->owner = OWNER_NONE;
+	} else {
+		delete si;
 	}
 
 	return true;
