@@ -337,7 +337,7 @@ FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subd
 FILE *FioFOpenFileTar(TarFileListEntry *entry, size_t *filesize)
 {
 	FILE *f = fopen(entry->tar_filename, "rb");
-	assert(f != NULL);
+	if (f == NULL) return f;
 
 	fseek(f, entry->position, SEEK_SET);
 	if (filesize != NULL) *filesize = entry->size;

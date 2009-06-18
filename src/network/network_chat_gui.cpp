@@ -124,28 +124,26 @@ void NetworkInitChatMessage()
 /** Hide the chatbox */
 void NetworkUndrawChatMessage()
 {
+	/* Sometimes we also need to hide the cursor
+	 *   This is because both textmessage and the cursor take a shot of the
+	 *   screen before drawing.
+	 *   Now the textmessage takes his shot and paints his data before the cursor
+	 *   does, so in the shot of the cursor is the screen-data of the textmessage
+	 *   included when the cursor hangs somewhere over the textmessage. To
+	 *   avoid wrong repaints, we undraw the cursor in that case, and everything
+	 *   looks nicely ;)
+	 * (and now hope this story above makes sense to you ;))
+	 */
+	if (_cursor.visible &&
+			_cursor.draw_pos.x + _cursor.draw_size.x >= _chatmsg_box.x &&
+			_cursor.draw_pos.x <= _chatmsg_box.x + _chatmsg_box.width &&
+			_cursor.draw_pos.y + _cursor.draw_size.y >= _screen.height - _chatmsg_box.y - _chatmsg_box.height &&
+			_cursor.draw_pos.y <= _screen.height - _chatmsg_box.y) {
+		UndrawMouseCursor();
+	}
+
 	if (_chatmessage_visible) {
 		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
-		/* Sometimes we also need to hide the cursor
-		 *   This is because both textmessage and the cursor take a shot of the
-		 *   screen before drawing.
-		 *   Now the textmessage takes his shot and paints his data before the cursor
-		 *   does, so in the shot of the cursor is the screen-data of the textmessage
-		 *   included when the cursor hangs somewhere over the textmessage. To
-		 *   avoid wrong repaints, we undraw the cursor in that case, and everything
-		 *   looks nicely ;)
-		 * (and now hope this story above makes sense to you ;))
-		 */
-
-		if (_cursor.visible) {
-			if (_cursor.draw_pos.x + _cursor.draw_size.x >= _chatmsg_box.x &&
-				_cursor.draw_pos.x <= _chatmsg_box.x + _chatmsg_box.width &&
-				_cursor.draw_pos.y + _cursor.draw_size.y >= _screen.height - _chatmsg_box.y - _chatmsg_box.height &&
-				_cursor.draw_pos.y <= _screen.height - _chatmsg_box.y) {
-				UndrawMouseCursor();
-			}
-		}
-
 		int x      = _chatmsg_box.x;
 		int y      = _screen.height - _chatmsg_box.y - _chatmsg_box.height;
 		int width  = _chatmsg_box.width;
