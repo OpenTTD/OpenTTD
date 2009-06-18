@@ -6212,8 +6212,11 @@ void LoadNewGRF(uint load_index, uint file_index)
 			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
 			if (stage > GLS_INIT && HasBit(c->flags, GCF_INIT_ONLY)) continue;
 
-			/* @todo usererror() */
-			if (!FioCheckFileExists(c->filename)) usererror("NewGRF file is missing '%s'", c->filename);
+			if (!FioCheckFileExists(c->filename)) {
+				DEBUG(grf, 0, "NewGRF file is missing '%s'; disabling", c->filename);
+				c->status = GCS_NOT_FOUND;
+				continue;
+			}
 
 			if (stage == GLS_LABELSCAN) InitNewGRFFile(c, _cur_spriteid);
 			LoadNewGRFFile(c, slot++, stage);
