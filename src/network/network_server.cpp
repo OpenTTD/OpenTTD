@@ -989,6 +989,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 		}
 	}
 
+	/* First tell we already closed the connection...
+	 * ... then start the generic code to close the actual connection.
+	 * This to make sure the 'connection lost' message is only shown
+	 * when the connection got really lost and not when the client
+	 * told us it was going to disconnect. */
+	cs->NetworkSocketHandler::CloseConnection();
 	cs->CloseConnection();
 }
 
