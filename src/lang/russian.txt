@@ -121,37 +121,68 @@ STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Газиров�
 STR_CARGO_PLURAL_FIZZY_DRINKS.acc                               :газировку
 STR_CARGO_PLURAL_FIZZY_DRINKS.gen                               :газировки
 STR_CARGO_SINGULAR_NOTHING                                      :
-STR_CARGO_SINGULAR_PASSENGER                                    :Пассажир
+STR_CARGO_SINGULAR_PASSENGER                                    :Пассажиры
+STR_CARGO_SINGULAR_PASSENGER.acc                                :пассажиров
 STR_CARGO_SINGULAR_COAL                                         :Уголь
+STR_CARGO_SINGULAR_COAL.acc                                     :уголь
 STR_CARGO_SINGULAR_MAIL                                         :Почта
+STR_CARGO_SINGULAR_MAIL.acc                                     :почту
 STR_CARGO_SINGULAR_OIL                                          :Нефть
+STR_CARGO_SINGULAR_OIL.acc                                      :нефть
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Скот
+STR_CARGO_SINGULAR_LIVESTOCK.acc                                :скот
 STR_CARGO_SINGULAR_GOODS                                        :Товары
+STR_CARGO_SINGULAR_GOODS.acc                                    :товары
 STR_CARGO_SINGULAR_GRAIN                                        :Зерно
+STR_CARGO_SINGULAR_GRAIN.acc                                    :зерно
 STR_CARGO_SINGULAR_WOOD                                         :Дерево
+STR_CARGO_SINGULAR_WOOD.acc                                     :дерево
 STR_CARGO_SINGULAR_IRON_ORE                                     :Железная руда
+STR_CARGO_SINGULAR_IRON_ORE.acc                                 :железную руду
 STR_CARGO_SINGULAR_STEEL                                        :Сталь
+STR_CARGO_SINGULAR_STEEL.acc                                    :сталь
 STR_CARGO_SINGULAR_VALUABLES                                    :Драгоценности
+STR_CARGO_SINGULAR_VALUABLES.acc                                :драгоценности
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Медная руда
+STR_CARGO_SINGULAR_COPPER_ORE.acc                               :медную руду
 STR_CARGO_SINGULAR_MAIZE                                        :Кукуруза
+STR_CARGO_SINGULAR_MAIZE.acc                                    :кукурузу
 STR_CARGO_SINGULAR_FRUIT                                        :Фрукты
-STR_CARGO_SINGULAR_DIAMOND                                      :Бриллианты
+STR_CARGO_SINGULAR_FRUIT.acc                                    :фрукты
+STR_CARGO_SINGULAR_DIAMOND                                      :Алмазы
+STR_CARGO_SINGULAR_DIAMOND.acc                                  :алмазы
 STR_CARGO_SINGULAR_FOOD                                         :Продукты
+STR_CARGO_SINGULAR_FOOD.acc                                     :продукты
 STR_CARGO_SINGULAR_PAPER                                        :Бумага
+STR_CARGO_SINGULAR_PAPER.acc                                    :бумагу
 STR_CARGO_SINGULAR_GOLD                                         :Золото
+STR_CARGO_SINGULAR_GOLD.acc                                     :золото
 STR_CARGO_SINGULAR_WATER                                        :Вода
+STR_CARGO_SINGULAR_WATER.acc                                    :воду
 STR_CARGO_SINGULAR_WHEAT                                        :Пшеница
+STR_CARGO_SINGULAR_WHEAT.acc                                    :пшеницу
 STR_CARGO_SINGULAR_RUBBER                                       :Каучук
+STR_CARGO_SINGULAR_RUBBER.acc                                   :каучук
 STR_CARGO_SINGULAR_SUGAR                                        :Сахар
+STR_CARGO_SINGULAR_SUGAR.acc                                    :сахар
 STR_CARGO_SINGULAR_TOY                                          :Игрушки
+STR_CARGO_SINGULAR_TOY.acc                                      :игрушки
 STR_CARGO_SINGULAR_CANDY                                        :Конфеты
+STR_CARGO_SINGULAR_CANDY.acc                                    :конфеты
 STR_CARGO_SINGULAR_COLA                                         :Кола
+STR_CARGO_SINGULAR_COLA.acc                                     :колу
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Сахарная вата
+STR_CARGO_SINGULAR_COTTON_CANDY.acc                             :сахарную вату
 STR_CARGO_SINGULAR_BUBBLE                                       :Пузырьки
+STR_CARGO_SINGULAR_BUBBLE.acc                                   :пузырьки
 STR_CARGO_SINGULAR_TOFFEE                                       :Ириски
+STR_CARGO_SINGULAR_TOFFEE.acc                                   :ириски
 STR_CARGO_SINGULAR_BATTERY                                      :Батарейки
+STR_CARGO_SINGULAR_BATTERY.acc                                  :батарейки
 STR_CARGO_SINGULAR_PLASTIC                                      :Пластик
+STR_CARGO_SINGULAR_PLASTIC.acc                                  :пластик
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Газировка
+STR_CARGO_SINGULAR_FIZZY_DRINK.acc                              :газировку
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} пассажир{P "" а ов}
 STR_QUANTITY_COAL                                               :{WEIGHT} угля
@@ -2102,13 +2133,13 @@ STR_TUNNEL_DESCRIPTION_ROAD                                     :Автомоб�
 STR_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                    :Стальной подвесной ж/д мост
 STR_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                       :Стальной балочный ж/д мост
 STR_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                    :Стальной консольный ж/д мост
-STR_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE                 :Укрепленный подвесной железобетонный ж/д мост
+STR_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE                 :Укреплённый подвесной железобетонный ж/д мост
 STR_BRIDGE_DESCRIPTION_RAIL_WOODEN                              :Деревянный ж/д мост
 STR_BRIDGE_DESCRIPTION_RAIL_CONCRETE                            :Бетонный ж/д мост
 STR_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                    :Стальной подвесной мост
 STR_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                        :Стальной балочный мост
 STR_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                    :Стальной консольный мост
-STR_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE                 :Укрепленный подвесной железобетонный мост
+STR_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE                 :Укреплённый подвесной железобетонный мост
 STR_BRIDGE_DESCRIPTION_ROAD_WOODEN                              :Деревянный мост
 STR_BRIDGE_DESCRIPTION_ROAD_CONCRETE                            :Бетонный мост
 STR_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                       :Трубчатый ж/д мост
@@ -2678,13 +2709,13 @@ STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Вертолё�
 STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Вертолёт Guru X2
 STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Вертолёт Powernaut
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Сообщение от производителя транспорта
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Мы создали новую модель {STRING}. Заинтересованы ли вы в его годовом эксклюзивном использовании для проверки перед запуском в серийное производство?
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :ж/д локомотива
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автотранспорта
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :авиатранспорта
-STR_ENGINE_PREVIEW_SHIP                                         :корабля
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :монорельсового локомотива
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :магниторельсового локомотива
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Мы создали новый {STRING}. Заинтересованы ли вы в его годовом эксклюзивном использовании для проверки перед запуском в серийное производство?
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :ж/д локомотив
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автомобиль
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :авиатранспорт
+STR_ENGINE_PREVIEW_SHIP                                         :корабль
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :монорельсовый локомотив
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :магниторельсовый локомотив
 
 ##id 0x8800
 STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Депо {TOWN}
