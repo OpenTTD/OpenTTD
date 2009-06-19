@@ -556,6 +556,8 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 		}
 	}
 
+	_cur_fontsize = FS_NORMAL;
+
 	return align == SA_RIGHT ? min_left : max_right;
 }
 
