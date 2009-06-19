@@ -62,9 +62,9 @@ void NetworkUDPSocketHandler::Close()
 	this->sockets.Clear();
 }
 
-NetworkRecvStatus NetworkUDPSocketHandler::CloseConnection()
+NetworkRecvStatus NetworkUDPSocketHandler::CloseConnection(bool error)
 {
-	NetworkSocketHandler::CloseConnection();
+	NetworkSocketHandler::CloseConnection(error);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 

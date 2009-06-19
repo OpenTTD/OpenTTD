@@ -50,7 +50,7 @@ NetworkClientSocket::~NetworkClientSocket()
  * @return the new status
  * TODO: needs to be splitted when using client and server socket packets
  */
-NetworkRecvStatus NetworkClientSocket::CloseConnection()
+NetworkRecvStatus NetworkClientSocket::CloseConnection(bool error)
 {
 	/* Clients drop back to the main menu */
 	if (!_network_server && _networking) {
@@ -62,7 +62,7 @@ NetworkRecvStatus NetworkClientSocket::CloseConnection()
 		return NETWORK_RECV_STATUS_CONN_LOST;
 	}
 
-	NetworkCloseClient(this);
+	NetworkCloseClient(this, error);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 

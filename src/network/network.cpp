@@ -278,7 +278,7 @@ static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket *cs)
 	/* We just want to close the connection.. */
 	if (res == NETWORK_RECV_STATUS_CLOSE_QUERY) {
 		cs->NetworkSocketHandler::CloseConnection();
-		NetworkCloseClient(cs);
+		NetworkCloseClient(cs, true);
 		_networking = false;
 
 		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
@@ -291,6 +291,7 @@ static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket *cs)
 		case NETWORK_RECV_STATUS_NEWGRF_MISMATCH: errorno = NETWORK_ERROR_NEWGRF_MISMATCH; break;
 		default:                                  errorno = NETWORK_ERROR_GENERAL; break;
 	}
+
 	/* This means we fucked up and the server closed the connection */
 	if (res != NETWORK_RECV_STATUS_SERVER_ERROR && res != NETWORK_RECV_STATUS_SERVER_FULL &&
 			res != NETWORK_RECV_STATUS_SERVER_BANNED) {
@@ -298,7 +299,7 @@ static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket *cs)
 	}
 
 	_switch_mode = SM_MENU;
-	NetworkCloseClient(cs);
+	NetworkCloseClient(cs, true);
 	_networking = false;
 }
 
@@ -437,7 +438,7 @@ static NetworkClientSocket *NetworkAllocClient(SOCKET s)
 }
 
 /* Close a connection */
-void NetworkCloseClient(NetworkClientSocket *cs)
+void NetworkCloseClient(NetworkClientSocket *cs, bool error)
 {
 	/*
 	 * Sending a message just before leaving the game calls cs->Send_Packets.
@@ -448,9 +449,7 @@ void NetworkCloseClient(NetworkClientSocket *cs)
 	 */
 	if (cs->sock == INVALID_SOCKET) return;
 
-	DEBUG(net, 1, "Closed client connection %d", cs->client_id);
-
-	if (!cs->HasClientQuit() && _network_server && cs->status > STATUS_INACTIVE) {
+	if (error && !cs->HasClientQuit() && _network_server && cs->status > STATUS_INACTIVE) {
 		/* We did not receive a leave message from this client... */
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 		NetworkClientSocket *new_cs;
@@ -466,6 +465,8 @@ void NetworkCloseClient(NetworkClientSocket *cs)
 			}
 		}
 	}
+
+	DEBUG(net, 1, "Closed client connection %d", cs->client_id);
 
 	/* When the client was PRE_ACTIVE, the server was in pause mode, so unpause */
 	if (cs->status == STATUS_PRE_ACTIVE && (_pause_mode & PM_PAUSED_JOIN)) {
@@ -579,7 +580,7 @@ static void NetworkClose()
 			SEND_COMMAND(PACKET_CLIENT_QUIT)();
 			cs->Send_Packets();
 		}
-		NetworkCloseClient(cs);
+		NetworkCloseClient(cs, false);
 	}
 
 	if (_network_server) {

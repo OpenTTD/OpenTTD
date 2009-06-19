@@ -110,7 +110,7 @@ protected:
 	/** The opened sockets. */
 	SocketList sockets;
 
-	NetworkRecvStatus CloseConnection();
+	NetworkRecvStatus CloseConnection(bool error = true);
 
 	/* Declare all possible packets here. If it can be received by the
 	 * a specific handler, it has to be implemented. */

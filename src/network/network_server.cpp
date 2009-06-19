@@ -167,13 +167,13 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, Netw
 		DEBUG(net, 1, "Client %d made an error and has been disconnected. Reason: '%s'", cs->client_id, str);
 	}
 
-	cs->CloseConnection();
+	cs->CloseConnection(false);
 
 	/* Make sure the data get's there before we close the connection */
 	cs->Send_Packets();
 
 	/* The client made a mistake, so drop his connection now! */
-	NetworkCloseClient(cs);
+	NetworkCloseClient(cs, false);
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkClientSocket *cs)
@@ -963,7 +963,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 		}
 	}
 
-	cs->CloseConnection();
+	cs->CloseConnection(false);
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
@@ -989,13 +989,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 		}
 	}
 
-	/* First tell we already closed the connection...
-	 * ... then start the generic code to close the actual connection.
-	 * This to make sure the 'connection lost' message is only shown
-	 * when the connection got really lost and not when the client
-	 * told us it was going to disconnect. */
-	cs->NetworkSocketHandler::CloseConnection();
-	cs->CloseConnection();
+	cs->CloseConnection(false);
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
@@ -1610,7 +1604,7 @@ void NetworkServer_Tick(bool send_frame)
 					/* Client did still not report in after 4 game-day, drop him
 					 *  (that is, the 3 of above, + 1 before any lag is counted) */
 					IConsolePrintF(CC_ERROR,"Client #%d is dropped because the client did not respond for more than 4 game-days", cs->client_id);
-					NetworkCloseClient(cs);
+					NetworkCloseClient(cs, true);
 					continue;
 				}
 
@@ -1626,13 +1620,13 @@ void NetworkServer_Tick(bool send_frame)
 			int lag = NetworkCalculateLag(cs);
 			if (lag > _settings_client.network.max_join_time) {
 				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->client_id, _settings_client.network.max_join_time);
-				NetworkCloseClient(cs);
+				NetworkCloseClient(cs, true);
 			}
 		} else if (cs->status == STATUS_INACTIVE) {
 			int lag = NetworkCalculateLag(cs);
 			if (lag > 4 * DAY_TICKS) {
 				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks to start the joining process", cs->client_id, 4 * DAY_TICKS);
-				NetworkCloseClient(cs);
+				NetworkCloseClient(cs, true);
 			}
 		}
 

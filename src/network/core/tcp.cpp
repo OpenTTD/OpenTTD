@@ -27,10 +27,10 @@ NetworkTCPSocketHandler::~NetworkTCPSocketHandler()
 	this->sock = INVALID_SOCKET;
 }
 
-NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection()
+NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection(bool error)
 {
 	this->writable = false;
-	NetworkSocketHandler::CloseConnection();
+	NetworkSocketHandler::CloseConnection(error);
 
 	/* Free all pending and partially received packets */
 	while (this->packet_queue != NULL) {

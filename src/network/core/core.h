@@ -50,9 +50,10 @@ public:
 	/**
 	 * Close the current connection; for TCP this will be mostly equivalent
 	 * to Close(), but for UDP it just means the packet has to be dropped.
+	 * @param error Whether we quit under an error condition or not.
 	 * @return new status of the connection.
 	 */
-	virtual NetworkRecvStatus CloseConnection() { this->has_quit = true; return NETWORK_RECV_STATUS_OKAY; }
+	virtual NetworkRecvStatus CloseConnection(bool error = true) { this->has_quit = true; return NETWORK_RECV_STATUS_OKAY; }
 
 	/**
 	 * Whether the current client connected to the socket has quit.

@@ -96,7 +96,7 @@ public:
 
 	CommandPacket *command_queue; ///< The command-queue awaiting delivery
 
-	NetworkRecvStatus CloseConnection();
+	NetworkRecvStatus CloseConnection(bool error = true);
 
 	NetworkClientSocket(ClientID client_id = INVALID_CLIENT_ID);
 	~NetworkClientSocket();
