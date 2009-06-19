@@ -1628,7 +1628,12 @@ void IConsoleSetSetting(const char *name, const char *value)
 		uint32 val;
 		extern bool GetArgumentInteger(uint32 *value, const char *arg);
 		success = GetArgumentInteger(&val, value);
-		if (success) success = SetSettingValue(index, val);
+		if (!success) {
+			IConsolePrintF(CC_ERROR, "'%s' is not an integer.", value);
+			return;
+		}
+
+		success = SetSettingValue(index, val);
 	}
 
 	if (!success) {
