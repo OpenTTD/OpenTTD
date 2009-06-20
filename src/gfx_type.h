@@ -148,10 +148,12 @@ struct Colour {
 
 /** Available font sizes */
 enum FontSize {
-	FS_NORMAL,
-	FS_SMALL,
-	FS_LARGE,
+	FS_NORMAL, ///< Index of the normal font in the font tables.
+	FS_SMALL,  ///< Index of the small font in the font tables.
+	FS_LARGE,  ///< Index of the large font in the font tables.
 	FS_END,
+
+	FS_BEGIN = FS_NORMAL, ///< First font.
 };
 DECLARE_POSTFIX_INCREMENT(FontSize);
 

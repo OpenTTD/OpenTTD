@@ -631,14 +631,13 @@ static GlyphEntry **_glyph_ptr[FS_END];
 /** Clear the complete cache */
 static void ResetGlyphCache()
 {
-	for (int i = 0; i < FS_END; i++) {
+	for (FontSize i = FS_BEGIN; i < FS_END; i++) {
 		if (_glyph_ptr[i] == NULL) continue;
 
 		for (int j = 0; j < 256; j++) {
 			if (_glyph_ptr[i][j] == NULL) continue;
 
 			for (int k = 0; k < 256; k++) {
-				if (_glyph_ptr[i][j][k].sprite == NULL) continue;
 				free(_glyph_ptr[i][j][k].sprite);
 			}
 
@@ -842,11 +841,11 @@ void SetUnicodeGlyph(FontSize size, uint32 key, SpriteID sprite)
 
 void InitializeUnicodeGlyphMap()
 {
-	for (FontSize size = FS_NORMAL; size != FS_END; size++) {
+	for (FontSize size = FS_BEGIN; size != FS_END; size++) {
 		/* Clear out existing glyph map if it exists */
 		if (_unicode_glyph_map[size] != NULL) {
 			for (uint i = 0; i < 256; i++) {
-				if (_unicode_glyph_map[size][i] != NULL) free(_unicode_glyph_map[size][i]);
+				free(_unicode_glyph_map[size][i]);
 			}
 			free(_unicode_glyph_map[size]);
 			_unicode_glyph_map[size] = NULL;
