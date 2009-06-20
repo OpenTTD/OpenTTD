@@ -640,7 +640,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Save Sce
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Play Scenario
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Play Heightmap
 STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Start a new game, using a heightmap as landscape
-STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Are you sure you want to quit this scenario ?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Are you sure you want to quit this scenario?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...can only be built in towns with a population of at least 1200
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Move the starting date backward 1 year
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Move the starting date forward 1 year
