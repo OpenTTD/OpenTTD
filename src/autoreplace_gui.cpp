@@ -105,11 +105,11 @@ class ReplaceVehicleWindow : public Window {
 	GroupID sel_group;
 	static RailType sel_railtype;
 
-	/** Figure out if an engine should be added to a list
-	 * @param e The EngineID
-	 * @param draw_left If true, then the left list is drawn (the engines specific to the railtype you selected)
-	 * @param show_engines if truem then locomotives are drawn, else wagons (never both)
-	 * @return true if the engine should be in the list (based on this check)
+	/** Figure out if an engine should be added to a list.
+	 * @param e            The EngineID.
+	 * @param draw_left    If \c true, the the left list is drawn (the engines specific to the railtype you selected).
+	 * @param show_engines If \c true, the locomotives are drawn, else the wagons are drawn (never both).
+	 * @return \c true if the engine should be in the list (based on this check), else \c false.
 	 */
 	bool GenerateReplaceRailList(EngineID e, bool draw_left, bool show_engines)
 	{

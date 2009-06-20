@@ -146,7 +146,7 @@ void SortResolutions(int count);
 bool ToggleFullScreen(bool fs);
 
 /* gfx.cpp */
-extern FontSize _cur_fontsize;
+extern FontSize _cur_fontsize; ///< Currently selected font.
 
 byte GetCharacterWidth(FontSize size, uint32 key);
 
@@ -162,8 +162,13 @@ static inline byte GetCharacterHeight(FontSize size)
 	return _font_height[size];
 }
 
+/** Height of characters in the small (#FS_SMALL) font. */
 #define FONT_HEIGHT_SMALL  (GetCharacterHeight(FS_SMALL))
+
+/** Height of characters in the normal (#FS_NORMAL) font. */
 #define FONT_HEIGHT_NORMAL (GetCharacterHeight(FS_NORMAL))
+
+/** Height of characters in the large (#FS_LARGE) font. */
 #define FONT_HEIGHT_LARGE  (GetCharacterHeight(FS_LARGE))
 
 extern DrawPixelInfo *_cur_dpi;

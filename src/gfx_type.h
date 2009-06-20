@@ -129,6 +129,7 @@ struct CursorVars {
 	bool vehchain;   ///< vehicle chain is dragged
 };
 
+/** Data about how and where to blit pixels. */
 struct DrawPixelInfo {
 	void *dst_ptr;
 	int left, top, width, height;
@@ -136,6 +137,7 @@ struct DrawPixelInfo {
 	ZoomLevel zoom;
 };
 
+/** Structure to access the alpha, red, green, and blue channels from a 32 bit number. */
 struct Colour {
 #if TTD_ENDIAN == TTD_BIG_ENDIAN
 	uint8 a, r, g, b; ///< colour channels in BE order
@@ -143,7 +145,7 @@ struct Colour {
 	uint8 b, g, r, a; ///< colour channels in LE order
 #endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
 
-	operator uint32 () const { return *(uint32 *)this; }
+	operator uint32 () const { return *(uint32 *)this; } ///< Conversion of the channel information to a 32 bit number.
 };
 
 /** Available font sizes */
