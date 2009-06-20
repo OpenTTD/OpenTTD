@@ -37,6 +37,8 @@ enum {
 	SHADOW_COLOUR = 2,
 };
 
+static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
+
 /** Get the font loaded into a Freetype face by using a font-name.
  * If no appropiate font is found, the function returns an error */
 #ifdef WIN32

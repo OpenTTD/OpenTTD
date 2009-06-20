@@ -146,7 +146,6 @@ void SortResolutions(int count);
 bool ToggleFullScreen(bool fs);
 
 /* gfx.cpp */
-#define ASCII_LETTERSTART 32
 extern FontSize _cur_fontsize;
 
 byte GetCharacterWidth(FontSize size, uint32 key);
