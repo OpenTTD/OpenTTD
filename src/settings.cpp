@@ -51,6 +51,7 @@
 #include "gfxinit.h"
 #include "gamelog.h"
 #include "station_func.h"
+#include "map_type.h"
 #include "settings_func.h"
 #include "ini_type.h"
 #include "ai/ai.hpp"

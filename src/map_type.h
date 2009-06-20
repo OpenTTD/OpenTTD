@@ -50,6 +50,14 @@ struct TileIndexDiffC {
 	int16 y;        ///< The y value of the coordinate
 };
 
+/** Minimal and maximal map width and height */
+enum {
+	MIN_MAP_SIZE_BITS = 6,                      ///< Minimal size of map is equal to 2 ^ MIN_MAP_SIZE_BITS
+	MAX_MAP_SIZE_BITS = 11,                     ///< Maximal size of map is equal to 2 ^ MAX_MAP_SIZE_BITS
+	MIN_MAP_SIZE      = 1 << MIN_MAP_SIZE_BITS, ///< Minimal map size = 64
+	MAX_MAP_SIZE      = 1 << MAX_MAP_SIZE_BITS, ///< Maximal map size = 2048
+};
+
 /**
  * Approximation of the length of a straight track, relative to a diagonal
  * track (ie the size of a tile side).
