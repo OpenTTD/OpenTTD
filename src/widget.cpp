@@ -223,6 +223,43 @@ int GetWidgetFromPos(const Window *w, int x, int y)
 	return found_index;
 }
 
+/** Distances used in drawing widgets. */
+enum WidgetDrawDistances {
+	WD_IMGBTN_LEFT = 1,         ///< Left offset of the image in the button.
+	WD_IMGBTN_TOP = 1,          ///< Top offset of image in the button.
+
+	WD_INSET_LEFT  = 2,         ///< Left offset of string.
+	WD_INSET_RIGHT = 2,         ///< Right offset of string.
+	WD_INSET_TOP   = 1,         ///< Top offset of string.
+
+	WD_VSCROLLBAR_WIDTH = 12,   ///< Width of a vertical scrollbar.
+
+	WD_HSCROLLBAR_HEIGHT = 12,  ///< Height of a horizontal scrollbar.
+
+	WD_FRAMETEXT_LEFT = 6,      ///< Left offset of the text of the frame.
+	WD_FRAMETEXT_RIGHT = 6,     ///< Right offset of the text of the frame.
+
+	WD_STICKY_WIDTH = 12,       ///< Width of a sticky box widget.
+	WD_STICKY_LEFT = 2,         ///< Left offset of sticky sprite.
+	WD_STICKY_TOP = 3,          ///< Top offset of sticky sprite.
+
+	WD_RESIZE_WIDTH = 12,       ///< Width of a resize box widget.
+	WD_RESIZE_TOP = 3,          ///< Top offset of resize sprite.
+
+	WD_CLOSEBOX_WIDTH = 11,     ///< Width of a close box widget.
+	WD_CLOSEBOX_TOP = 2,        ///< Distance between the top of the close box widget, and the string.
+
+	WD_CAPTION_HEIGHT = 14,     ///< Height of a title bar.
+	WD_CAPTIONTEXT_LEFT = 2,    ///< Offset of the caption text at the left.
+	WD_CAPTIONTEXT_RIGHT = 2,   ///< Offset of the caption text at the right.
+	WD_CAPTIONTEXT_TOP = 2,     ///< Offset of the caption text at the top.
+
+	WD_DROPDOWN_HEIGHT = 12,    ///< Height of a drop down widget.
+	WD_DROPDOWNTEXT_LEFT = 2,   ///< Left offset of the dropdown widget string.
+	WD_DROPDOWNTEXT_RIGHT = 14, ///< Right offset of the dropdown widget string.
+	WD_DROPDOWNTEXT_TOP = 1,    ///< Top offset of the dropdown widget string.
+};
+
 /**
  * Draw frame rectangle.
  * @param left   Left edge of the frame
@@ -278,7 +315,7 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
 
 	/* show different image when clicked for WWT_IMGBTN_2 */
 	if ((type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++;
-	DrawSprite(img, PAL_NONE, r.left + 1 + clicked, r.top + 1 + clicked);
+	DrawSprite(img, PAL_NONE, r.left + WD_IMGBTN_LEFT + clicked, r.top + WD_IMGBTN_TOP + clicked);
 }
 
 /**
@@ -291,7 +328,7 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
 static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, StringID str)
 {
 	if ((type & WWT_MASK) == WWT_TEXTBTN_2 && clicked) str++;
-	DrawString(r.left + clicked, r.right + clicked, ((r.top + r.bottom + 1) >> 1) - 5 + clicked, str, TC_FROMSTRING, SA_CENTER);
+	DrawString(r.left + clicked, r.right + clicked, ((r.top + r.bottom + 1) >> 1) - (FONT_HEIGHT_NORMAL / 2) + clicked, str, TC_FROMSTRING, SA_CENTER);
 }
 
 /**
@@ -314,7 +351,7 @@ static inline void DrawText(const Rect &r, TextColour colour, StringID str)
 static inline void DrawInset(const Rect &r, Colours colour, StringID str)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_LOWERED | FR_DARKENED);
-	if (str != STR_NULL) DrawString(r.left + 2, r.right - 2, r.top + 1, str);
+	if (str != STR_NULL) DrawString(r.left + WD_INSET_LEFT, r.right - WD_INSET_RIGHT, r.top + WD_INSET_TOP, str);
 }
 
 /**
@@ -374,7 +411,7 @@ static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint1
  */
 static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_clicked, bool bar_dragged, bool down_clicked, const Scrollbar *scrollbar)
 {
-	assert(r.right - r.left == 11); // To ensure the same sizes are used everywhere!
+	assert(r.right - r.left == WD_VSCROLLBAR_WIDTH - 1); // To ensure the same sizes are used everywhere!
 
 	/* draw up/down buttons */
 	DrawFrameRect(r.left, r.top, r.right, r.top + 9, colour, (up_clicked) ? FR_LOWERED : FR_NONE);
@@ -411,7 +448,7 @@ static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_
  */
 static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool left_clicked, bool bar_dragged, bool right_clicked, const Scrollbar *scrollbar)
 {
-	assert(r.bottom - r.top == 11); // To ensure the same sizes are used everywhere!
+	assert(r.bottom - r.top == WD_HSCROLLBAR_HEIGHT - 1); // To ensure the same sizes are used everywhere!
 
 	DrawFrameRect(r.left, r.top, r.left + 9, r.bottom, colour, left_clicked ? FR_LOWERED : FR_NONE);
 	DrawSprite(SPR_ARROW_LEFT, PAL_NONE, r.left + 1 + left_clicked, r.top + 1 + left_clicked);
@@ -447,7 +484,7 @@ static inline void DrawFrame(const Rect &r, Colours colour, StringID str)
 {
 	int x2 = r.left; // by default the left side is the left side of the widget
 
-	if (str != STR_NULL) x2 = DrawString(r.left + 6, r.right - 6, r.top, str);
+	if (str != STR_NULL) x2 = DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top, str);
 
 	int c1 = _colour_gradient[colour][3];
 	int c2 = _colour_gradient[colour][7];
@@ -490,9 +527,9 @@ static inline void DrawFrame(const Rect &r, Colours colour, StringID str)
  */
 static inline void DrawStickyBox(const Rect &r, Colours colour, bool clicked)
 {
-	assert(r.right - r.left == 11); // To ensure the same sizes are used everywhere!
+	assert(r.right - r.left == WD_STICKY_WIDTH - 1); // To ensure the same sizes are used everywhere!
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
-	DrawSprite((clicked) ? SPR_PIN_UP : SPR_PIN_DOWN, PAL_NONE, r.left + 2 + clicked, r.top + 3 + clicked);
+	DrawSprite((clicked) ? SPR_PIN_UP : SPR_PIN_DOWN, PAL_NONE, r.left + WD_STICKY_LEFT + clicked, r.top + WD_STICKY_TOP + clicked);
 }
 
 /**
@@ -504,12 +541,12 @@ static inline void DrawStickyBox(const Rect &r, Colours colour, bool clicked)
  */
 static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bool clicked)
 {
-	assert(r.right - r.left == 11); // To ensure the same sizes are used everywhere!
+	assert(r.right - r.left == WD_RESIZE_WIDTH - 1); // To ensure the same sizes are used everywhere!
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 	if (at_left) {
 		DrawSprite(SPR_WINDOW_RESIZE_LEFT, PAL_NONE, r.left + 2 + clicked, r.top + 3 + clicked);
 	} else {
-		DrawSprite(SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.left + 3 + clicked, r.top + 3 + clicked);
+		DrawSprite(SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.left + 3 + clicked, r.top + WD_RESIZE_TOP + clicked);
 	}
 }
 
@@ -522,10 +559,10 @@ static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bo
 static inline void DrawCloseBox(const Rect &r, Colours colour, StringID str)
 {
 	assert(str == STR_BLACK_CROSS || str == STR_SILVER_CROSS); // black or silver cross
-	assert(r.right - r.left == 10); // To ensure the same sizes are used everywhere
+	assert(r.right - r.left == WD_CLOSEBOX_WIDTH - 1); // To ensure the same sizes are used everywhere
 
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_NONE);
-	DrawString(r.left, r.right, r.top + 2, str, TC_FROMSTRING, SA_CENTER);
+	DrawString(r.left, r.right, r.top + WD_CLOSEBOX_TOP, str, TC_FROMSTRING, SA_CENTER);
 }
 
 /**
@@ -537,7 +574,7 @@ static inline void DrawCloseBox(const Rect &r, Colours colour, StringID str)
  */
 static inline void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str)
 {
-	assert(r.bottom - r.top == 13); // To ensure the same sizes are used everywhere!
+	assert(r.bottom - r.top == WD_CAPTION_HEIGHT - 1); // To ensure the same sizes are used everywhere!
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_BORDERONLY);
 	DrawFrameRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, colour, (owner == INVALID_OWNER) ? FR_LOWERED | FR_DARKENED : FR_LOWERED | FR_DARKENED | FR_BORDERONLY);
 
@@ -545,23 +582,23 @@ static inline void DrawCaption(const Rect &r, Colours colour, Owner owner, Strin
 		GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, _colour_gradient[_company_colours[owner]][4]);
 	}
 
-	DrawString(r.left + 2, r.right - 2, r.top + 2, str, TC_FROMSTRING, SA_CENTER);
+	DrawString(r.left + WD_CAPTIONTEXT_LEFT, r.right - WD_CAPTIONTEXT_RIGHT, r.top + WD_CAPTIONTEXT_TOP, str, TC_FROMSTRING, SA_CENTER);
 }
 
 static inline void DrawDropdown(const Rect &r, Colours colour, bool clicked, StringID str)
 {
-	assert(r.bottom - r.top == 11); // ensure consistent size
+	assert(r.bottom - r.top == WD_DROPDOWN_HEIGHT - 1); // ensure consistent size
 
 	if (_dynlang.text_dir == TD_LTR) {
 		DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, colour, FR_NONE);
 		DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, colour, clicked ? FR_LOWERED : FR_NONE);
 		DrawString(r.right - (clicked ? 10 : 11), r.right, r.top + (clicked ? 2 : 1), STR_ARROW_DOWN, TC_BLACK, SA_CENTER);
-		if (str != STR_NULL) DrawString(r.left + 2, r.right - 14, r.top + 1, str, TC_BLACK);
+		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_LEFT, r.right - WD_DROPDOWNTEXT_RIGHT, r.top + WD_DROPDOWNTEXT_TOP, str, TC_BLACK);
 	} else {
 		DrawFrameRect(r.left + 12, r.top, r.right, r.bottom, colour, FR_NONE);
 		DrawFrameRect(r.left, r.top, r.left + 11, r.bottom, colour, clicked ? FR_LOWERED : FR_NONE);
 		DrawString(r.left + clicked, r.left + 11, r.top + (clicked ? 2 : 1), STR_ARROW_DOWN, TC_BLACK, SA_CENTER);
-		if (str != STR_NULL) DrawString(r.left + 14, r.right - 2, r.top + 1, str, TC_BLACK);
+		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_RIGHT, r.right - WD_DROPDOWNTEXT_LEFT, r.top + WD_DROPDOWNTEXT_TOP, str, TC_BLACK);
 	}
 }
 
@@ -1846,45 +1883,45 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 		case WWT_SCROLL2BAR:
 			this->SetFill(false, true);
 			this->SetResize(0, 1);
-			this->min_x = 12;
+			this->min_x = WD_VSCROLLBAR_WIDTH;
 			this->SetDataTip(0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST);
 			break;
 
 		case WWT_CAPTION:
 			this->SetFill(true, false);
 			this->SetResize(1, 0);
-			this->min_y = 14;
+			this->min_y = WD_CAPTION_HEIGHT;
 			this->SetDataTip(data, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
 			break;
 
 		case WWT_HSCROLLBAR:
 			this->SetFill(true, false);
 			this->SetResize(1, 0);
-			this->min_y = 12;
+			this->min_y = WD_HSCROLLBAR_HEIGHT;
 			this->SetDataTip(0x0, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
 			break;
 
 		case WWT_STICKYBOX:
 			this->SetFill(false, false);
-			this->SetMinimalSize(12, 14);
+			this->SetMinimalSize(WD_STICKY_WIDTH, 14);
 			this->SetDataTip(STR_NULL, STR_STICKY_BUTTON);
 			break;
 
 		case WWT_RESIZEBOX:
 			this->SetFill(false, false);
-			this->SetMinimalSize(12, 12);
+			this->SetMinimalSize(WD_RESIZE_WIDTH, 12);
 			this->SetDataTip(STR_NULL, STR_RESIZE_BUTTON);
 			break;
 
 		case WWT_CLOSEBOX:
 			this->SetFill(false, false);
-			this->SetMinimalSize(11, 14);
+			this->SetMinimalSize(WD_CLOSEBOX_WIDTH, 14);
 			this->SetDataTip(STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW);
 			break;
 
 		case WWT_DROPDOWN:
 			this->SetFill(false, false);
-			this->min_y = 12;
+			this->min_y = WD_DROPDOWN_HEIGHT;
 			break;
 
 		default:
