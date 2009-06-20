@@ -730,7 +730,7 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 	FT_Render_Glyph(face->glyph, aa ? FT_RENDER_MODE_NORMAL : FT_RENDER_MODE_MONO);
 
 	/* Despite requesting a normal glyph, FreeType may have returned a bitmap */
-	aa = (slot->bitmap.palette_mode == FT_PIXEL_MODE_GRAY);
+	aa = (slot->bitmap.pixel_mode == FT_PIXEL_MODE_GRAY);
 
 	/* Add 1 pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel */
 	width  = max(1, slot->bitmap.width + (size == FS_NORMAL));
