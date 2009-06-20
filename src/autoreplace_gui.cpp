@@ -107,7 +107,7 @@ class ReplaceVehicleWindow : public Window {
 
 	/** Figure out if an engine should be added to a list.
 	 * @param e            The EngineID.
-	 * @param draw_left    If \c true, the the left list is drawn (the engines specific to the railtype you selected).
+	 * @param draw_left    If \c true, the left list is drawn (the engines specific to the railtype you selected).
 	 * @param show_engines If \c true, the locomotives are drawn, else the wagons are drawn (never both).
 	 * @return \c true if the engine should be in the list (based on this check), else \c false.
 	 */
