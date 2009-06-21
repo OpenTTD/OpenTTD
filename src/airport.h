@@ -131,31 +131,31 @@ struct AirportFTAbuildup;
 
 /** Finite sTate mAchine --> FTA */
 struct AirportFTAClass {
-	public:
-		enum Flags {
-			AIRPLANES   = 0x1,
-			HELICOPTERS = 0x2,
-			ALL         = AIRPLANES | HELICOPTERS,
-			SHORT_STRIP = 0x4
-		};
+public:
+	enum Flags {
+		AIRPLANES   = 0x1,
+		HELICOPTERS = 0x2,
+		ALL         = AIRPLANES | HELICOPTERS,
+		SHORT_STRIP = 0x4
+	};
 
-		AirportFTAClass(
-			const AirportMovingData *moving_data,
-			const byte *terminals,
-			const byte *helipads,
-			const byte *entry_points,
-			Flags flags,
-			const AirportFTAbuildup *apFA,
-			const TileIndexDiffC *depots,
-			byte nof_depots,
-			uint size_x,
-			uint size_y,
-			uint8 noise_level,
-			byte delta_z,
-			byte catchment,
-			Year first_available,
-			Year last_available
-		);
+	AirportFTAClass(
+		const AirportMovingData *moving_data,
+		const byte *terminals,
+		const byte *helipads,
+		const byte *entry_points,
+		Flags flags,
+		const AirportFTAbuildup *apFA,
+		const TileIndexDiffC *depots,
+		byte nof_depots,
+		uint size_x,
+		uint size_y,
+		uint8 noise_level,
+		byte delta_z,
+		byte catchment,
+		Year first_available,
+		Year last_available
+	);
 
 	~AirportFTAClass();
 
@@ -166,7 +166,7 @@ struct AirportFTAClass {
 	}
 
 	/** Is this airport available at this date? */
-		bool IsAvailable() const;
+	bool IsAvailable() const;
 
 	const AirportMovingData *moving_data;
 	struct AirportFTA *layout;            ///< state machine for airport
@@ -189,7 +189,7 @@ struct AirportFTAClass {
 DECLARE_ENUM_AS_BIT_SET(AirportFTAClass::Flags)
 
 
-/** internal structure used in openttd - Finite sTate mAchine --> FTA */
+/** Internal structure used in openttd - Finite sTate mAchine --> FTA */
 struct AirportFTA {
 	AirportFTA *next;        ///< possible extra movement choices from this position
 	uint64 block;            ///< 64 bit blocks (st->airport_flags), should be enough for the most complex airports

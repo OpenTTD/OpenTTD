@@ -178,7 +178,7 @@ static const byte _airport_sections_commuter[] = {
 	APT_RUNWAY_END_FENCE_SE, APT_RUNWAY_2,   APT_RUNWAY_2,           APT_RUNWAY_2,           APT_RUNWAY_END_FENCE_SE
 };
 
-/** Tiles for Heliport */
+/** Tiles for _heliport */
 static const byte _airport_sections_heliport[] = {
 	APT_HELIPORT,
 };
@@ -198,7 +198,7 @@ static const byte _airport_sections_helistation[] = {
 const byte * const _airport_sections[] = {
 	_airport_sections_country,           // Country Airfield (small)
 	_airport_sections_town,              // City Airport (large)
-	_airport_sections_heliport,          // Heliport
+	_airport_sections_heliport,          // _heliport
 	_airport_sections_metropolitan,      // Metropolitain Airport (large)
 	_airport_sections_international,     // International Airport (xlarge)
 	_airport_sections_commuter,          // Commuter Airport (small)
@@ -216,22 +216,22 @@ assert_compile(NUM_AIRPORTS == lengthof(_airport_sections));
  * - false: give a summarized report which only shows current and next position */
 //#define DEBUG_AIRPORT false
 
-static AirportFTAClass *DummyAirport;
-static AirportFTAClass *CountryAirport;
-static AirportFTAClass *CityAirport;
-static AirportFTAClass *Oilrig;
-static AirportFTAClass *Heliport;
-static AirportFTAClass *MetropolitanAirport;
-static AirportFTAClass *InternationalAirport;
-static AirportFTAClass *CommuterAirport;
-static AirportFTAClass *HeliDepot;
-static AirportFTAClass *IntercontinentalAirport;
-static AirportFTAClass *HeliStation;
+static AirportFTAClass *_dummy_airport;
+static AirportFTAClass *_country_airport;
+static AirportFTAClass *_city_airport;
+static AirportFTAClass *_oilrig;
+static AirportFTAClass *_heliport;
+static AirportFTAClass *_metropolitan_airport;
+static AirportFTAClass *_international_airport;
+static AirportFTAClass *_commuter_airport;
+static AirportFTAClass *_heli_depot;
+static AirportFTAClass *_intercontinental_airport;
+static AirportFTAClass *_heli_station;
 
 
 void InitializeAirports()
 {
-	DummyAirport = new AirportFTAClass(
+	_dummy_airport = new AirportFTAClass(
 		_airport_moving_data_dummy,
 		NULL,
 		NULL,
@@ -246,7 +246,7 @@ void InitializeAirports()
 		MAX_YEAR + 1, MAX_YEAR + 1
 	);
 
-	CountryAirport = new AirportFTAClass(
+	_country_airport = new AirportFTAClass(
 		_airport_moving_data_country,
 		_airport_terminal_country,
 		NULL,
@@ -261,7 +261,7 @@ void InitializeAirports()
 		0, 1959
 	);
 
-	CityAirport = new AirportFTAClass(
+	_city_airport = new AirportFTAClass(
 		_airport_moving_data_town,
 		_airport_terminal_city,
 		NULL,
@@ -276,7 +276,7 @@ void InitializeAirports()
 		1955, MAX_YEAR
 	);
 
-	MetropolitanAirport = new AirportFTAClass(
+	_metropolitan_airport = new AirportFTAClass(
 		_airport_moving_data_metropolitan,
 		_airport_terminal_metropolitan,
 		NULL,
@@ -291,7 +291,7 @@ void InitializeAirports()
 		1980, MAX_YEAR
 	);
 
-	InternationalAirport = new AirportFTAClass(
+	_international_airport = new AirportFTAClass(
 		_airport_moving_data_international,
 		_airport_terminal_international,
 		_airport_helipad_international,
@@ -306,7 +306,7 @@ void InitializeAirports()
 		1990, MAX_YEAR
 	);
 
-	IntercontinentalAirport = new AirportFTAClass(
+	_intercontinental_airport = new AirportFTAClass(
 		_airport_moving_data_intercontinental,
 		_airport_terminal_intercontinental,
 		_airport_helipad_intercontinental,
@@ -321,7 +321,7 @@ void InitializeAirports()
 		2002, MAX_YEAR
 	);
 
-	Heliport = new AirportFTAClass(
+	_heliport = new AirportFTAClass(
 		_airport_moving_data_heliport,
 		NULL,
 		_airport_helipad_heliport_oilrig,
@@ -336,7 +336,7 @@ void InitializeAirports()
 		1963, MAX_YEAR
 	);
 
-	Oilrig = new AirportFTAClass(
+	_oilrig = new AirportFTAClass(
 		_airport_moving_data_oilrig,
 		NULL,
 		_airport_helipad_heliport_oilrig,
@@ -351,7 +351,7 @@ void InitializeAirports()
 		MAX_YEAR + 1, MAX_YEAR + 1
 	);
 
-	CommuterAirport = new AirportFTAClass(
+	_commuter_airport = new AirportFTAClass(
 		_airport_moving_data_commuter,
 		_airport_terminal_commuter,
 		_airport_helipad_commuter,
@@ -366,7 +366,7 @@ void InitializeAirports()
 		1983, MAX_YEAR
 	);
 
-	HeliDepot = new AirportFTAClass(
+	_heli_depot = new AirportFTAClass(
 		_airport_moving_data_helidepot,
 		NULL,
 		_airport_helipad_helidepot,
@@ -381,7 +381,7 @@ void InitializeAirports()
 		1976, MAX_YEAR
 	);
 
-	HeliStation = new AirportFTAClass(
+	_heli_station = new AirportFTAClass(
 		_airport_moving_data_helistation,
 		NULL,
 		_airport_helipad_helistation,
@@ -399,16 +399,16 @@ void InitializeAirports()
 
 void UnInitializeAirports()
 {
-	delete DummyAirport;
-	delete CountryAirport;
-	delete CityAirport;
-	delete Heliport;
-	delete MetropolitanAirport;
-	delete InternationalAirport;
-	delete CommuterAirport;
-	delete HeliDepot;
-	delete IntercontinentalAirport;
-	delete HeliStation;
+	delete _dummy_airport;
+	delete _country_airport;
+	delete _city_airport;
+	delete _heliport;
+	delete _metropolitan_airport;
+	delete _international_airport;
+	delete _commuter_airport;
+	delete _heli_depot;
+	delete _intercontinental_airport;
+	delete _heli_station;
 }
 
 
@@ -676,16 +676,16 @@ const AirportFTAClass *GetAirport(const byte airport_type)
 	 * needs constant change if more airports are added */
 	switch (airport_type) {
 		default:               NOT_REACHED();
-		case AT_SMALL:         return CountryAirport;
-		case AT_LARGE:         return CityAirport;
-		case AT_METROPOLITAN:  return MetropolitanAirport;
-		case AT_HELIPORT:      return Heliport;
-		case AT_OILRIG:        return Oilrig;
-		case AT_INTERNATIONAL: return InternationalAirport;
-		case AT_COMMUTER:      return CommuterAirport;
-		case AT_HELIDEPOT:     return HeliDepot;
-		case AT_INTERCON:      return IntercontinentalAirport;
-		case AT_HELISTATION:   return HeliStation;
-		case AT_DUMMY:         return DummyAirport;
+		case AT_SMALL:         return _country_airport;
+		case AT_LARGE:         return _city_airport;
+		case AT_METROPOLITAN:  return _metropolitan_airport;
+		case AT_HELIPORT:      return _heliport;
+		case AT_OILRIG:        return _oilrig;
+		case AT_INTERNATIONAL: return _international_airport;
+		case AT_COMMUTER:      return _commuter_airport;
+		case AT_HELIDEPOT:     return _heli_depot;
+		case AT_INTERCON:      return _intercontinental_airport;
+		case AT_HELISTATION:   return _heli_station;
+		case AT_DUMMY:         return _dummy_airport;
 	}
 }
