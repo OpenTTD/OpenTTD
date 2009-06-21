@@ -178,7 +178,7 @@ static const byte _airport_sections_commuter[] = {
 	APT_RUNWAY_END_FENCE_SE, APT_RUNWAY_2,   APT_RUNWAY_2,           APT_RUNWAY_2,           APT_RUNWAY_END_FENCE_SE
 };
 
-/** Tiles for _heliport */
+/** Tiles for Heliport */
 static const byte _airport_sections_heliport[] = {
 	APT_HELIPORT,
 };
@@ -198,7 +198,7 @@ static const byte _airport_sections_helistation[] = {
 const byte * const _airport_sections[] = {
 	_airport_sections_country,           // Country Airfield (small)
 	_airport_sections_town,              // City Airport (large)
-	_airport_sections_heliport,          // _heliport
+	_airport_sections_heliport,          // Heliport
 	_airport_sections_metropolitan,      // Metropolitain Airport (large)
 	_airport_sections_international,     // International Airport (xlarge)
 	_airport_sections_commuter,          // Commuter Airport (small)
