@@ -695,7 +695,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 	/* General vehicle properties */
 	switch (variable - 0x80) {
-		case 0x00: return v->type + 2;
+		case 0x00: return v->type + 0x10;
 		case 0x01: return MapOldSubType(v);
 		case 0x04: return v->index;
 		case 0x05: return GB(v->index, 8, 8);
