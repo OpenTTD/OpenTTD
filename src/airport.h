@@ -102,7 +102,7 @@ static const uint64
 	TERM_GROUP2_EXIT2_block  = 1ULL << 20,
 	PRE_HELIPAD_block        = 1ULL << 21,
 
-/* blocks for new airports */
+	/* blocks for new airports */
 	TERM7_block              = 1ULL << 22,
 	TERM8_block              = 1ULL << 23,
 	TERM9_block              = 1ULL << 24,
@@ -116,7 +116,7 @@ static const uint64
 	RUNWAY_OUT2_block        = 1ULL << 10,   ///< note re-uses TAXIWAY_BUSY
 	HELIPAD_GROUP_block      = 1ULL << 13,   ///< note re-uses AIRPORT_ENTRANCE
 	OUT_WAY_block2           = 1ULL << 31,
-/* end of new blocks */
+	/* end of new blocks */
 
 	NOTHING_block            = 1ULL << 30;
 
@@ -157,15 +157,15 @@ struct AirportFTAClass {
 			Year last_available
 		);
 
-		~AirportFTAClass();
+	~AirportFTAClass();
 
-		const AirportMovingData *MovingData(byte position) const
-		{
-			assert(position < nofelements);
-			return &moving_data[position];
-		}
+	const AirportMovingData *MovingData(byte position) const
+	{
+		assert(position < nofelements);
+		return &moving_data[position];
+	}
 
-		/** Is this airport available at this date? */
+	/** Is this airport available at this date? */
 		bool IsAvailable() const;
 
 	const AirportMovingData *moving_data;
