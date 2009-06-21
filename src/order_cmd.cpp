@@ -129,6 +129,28 @@ uint32 Order::Pack() const
 	return this->dest << 16 | this->flags << 8 | this->type;
 }
 
+uint16 Order::MapOldOrder() const
+{
+	uint16 order = this->GetType();
+	switch (this->type) {
+		case OT_GOTO_STATION:
+			if (this->GetUnloadType() & OUFB_UNLOAD) SetBit(order, 5);
+			if (this->GetLoadType() & OLFB_FULL_LOAD) SetBit(order, 6);
+			if (this->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) SetBit(order, 7);
+			order |= GB(this->GetDestination(), 0, 8) << 8;
+			break;
+		case OT_GOTO_DEPOT:
+			if (!(this->GetDepotOrderType() & ODTFB_PART_OF_ORDERS)) SetBit(order, 6);
+			SetBit(order, 7);
+			order |= GB(this->GetDestination(), 0, 8) << 8;
+			break;
+		case OT_LOADING:
+			if (this->GetLoadType() & OLFB_FULL_LOAD) SetBit(order, 6);
+			break;
+	}
+	return order;
+}
+
 Order::Order(uint32 packed)
 {
 	this->type    = (OrderType)GB(packed,  0,  8);

@@ -233,6 +233,13 @@ public:
 	uint32 Pack() const;
 
 	/**
+	 * Pack this order into a 16 bits integer as close to the TTD
+	 * representation as possible.
+	 * @return the TTD-like packed representation.
+	 */
+	uint16 MapOldOrder() const;
+
+	/**
 	 * Converts this order from an old savegame's version;
 	 * it moves all bits to the new location.
 	 */

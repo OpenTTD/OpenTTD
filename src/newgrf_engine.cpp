@@ -130,10 +130,18 @@ uint32 GetEngineGRFID(EngineID engine)
 
 static int MapOldSubType(const Vehicle *v)
 {
-	if (v->type != VEH_TRAIN) return v->subtype;
-	if (IsTrainEngine(v)) return 0;
-	if (IsFreeWagon(v)) return 4;
-	return 2;
+	switch (v->type) {
+		case VEH_TRAIN:
+			if (IsTrainEngine(v)) return 0;
+			if (IsFreeWagon(v)) return 4;
+			return 2;
+		case VEH_ROAD:
+		case VEH_SHIP:     return 0;
+		case VEH_AIRCRAFT:
+		case VEH_DISASTER: return v->subtype;
+		case VEH_EFFECT:   return v->subtype << 1;
+		default: NOT_REACHED();
+	}
 }
 
 
@@ -687,12 +695,12 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 	/* General vehicle properties */
 	switch (variable - 0x80) {
-		case 0x00: return v->type;
+		case 0x00: return v->type + 2;
 		case 0x01: return MapOldSubType(v);
 		case 0x04: return v->index;
 		case 0x05: return GB(v->index, 8, 8);
-		case 0x0A: return v->current_order.Pack();
-		case 0x0B: return GB(v->current_order.Pack(), 8, 8);
+		case 0x0A: return v->current_order.MapOldOrder();
+		case 0x0B: return v->current_order.GetDestination();
 		case 0x0C: return v->GetNumOrders();
 		case 0x0D: return v->cur_order_index;
 		case 0x10: return v->load_unload_time_rem;
