@@ -13,6 +13,8 @@
 #include "table/sprites.h"
 #include "table/control_codes.h"
 
+static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
+
 /** Semi-constant for the height of the different sizes of fonts. */
 int _font_height[FS_END];
 
@@ -36,8 +38,6 @@ enum {
 	FACE_COLOUR = 1,
 	SHADOW_COLOUR = 2,
 };
-
-static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
 
 /** Get the font loaded into a Freetype face by using a font-name.
  * If no appropiate font is found, the function returns an error */
