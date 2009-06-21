@@ -8,6 +8,7 @@
 #include "direction_type.h"
 #include "map_type.h"
 #include "tile_type.h"
+#include "date_type.h"
 
 /** Current limits for airports */
 enum {
@@ -151,7 +152,9 @@ struct AirportFTAClass {
 			uint size_y,
 			uint8 noise_level,
 			byte delta_z,
-			byte catchment
+			byte catchment,
+			Year first_available,
+			Year last_available
 		);
 
 		~AirportFTAClass();
@@ -161,6 +164,9 @@ struct AirportFTAClass {
 			assert(position < nofelements);
 			return &moving_data[position];
 		}
+
+		/** Is this airport available at this date? */
+		bool IsAvailable() const;
 
 	const AirportMovingData *moving_data;
 	struct AirportFTA *layout;            ///< state machine for airport
@@ -176,6 +182,8 @@ struct AirportFTAClass {
 	uint8 noise_level;                    ///< noise that this airport generates
 	byte delta_z;                         ///< Z adjustment for helicopter pads
 	byte catchment;
+	Year first_available;                 ///< the year this airport becomes available
+	Year last_available;                  ///< the year this airport expires
 };
 
 DECLARE_ENUM_AS_BIT_SET(AirportFTAClass::Flags)
@@ -193,13 +201,6 @@ struct AirportFTA {
 void InitializeAirports();
 void UnInitializeAirports();
 const AirportFTAClass *GetAirport(const byte airport_type);
-
-/** Get buildable airport bitmask.
- * @return get all buildable airports at this given time, bitmasked.
- * Bit 0 means the small airport is buildable, etc.
- * @todo set availability of airports by year, instead of airplane
- */
-uint32 GetValidAirports();
 
 extern const byte * const _airport_sections[];
 

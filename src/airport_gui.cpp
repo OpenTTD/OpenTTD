@@ -224,23 +224,14 @@ public:
 	{
 		int i; // airport enabling loop
 		uint16 y_noise_offset = 0;
-		uint32 avail_airports;
 		const AirportFTAClass *airport;
 
-		avail_airports = GetValidAirports();
-
 		this->RaiseWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
-		if (!HasBit(avail_airports, 0) && _selected_airport_type == AT_SMALL) _selected_airport_type = AT_LARGE;
-		if (!HasBit(avail_airports, 1) && _selected_airport_type == AT_LARGE) _selected_airport_type = AT_SMALL;
+		if (!GetAirport(AT_SMALL)->IsAvailable() && _selected_airport_type == AT_SMALL) _selected_airport_type = AT_LARGE;
+		if (!GetAirport(AT_LARGE)->IsAvailable() && _selected_airport_type == AT_LARGE) _selected_airport_type = AT_SMALL;
 		this->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
 
-		/* 'Country Airport' starts at widget BAW_SMALL_AIRPORT, and if its bit is set, it is
-		 * available, so take its opposite value to set the disabled state.
-		 * There are 9 buildable airports
-		 * XXX TODO : all airports should be held in arrays, with all relevant data.
-		 * This should be part of newgrf-airports, i suppose
-		 */
-		for (i = 0; i < BAW_AIRPORT_COUNT; i++) this->SetWidgetDisabledState(i + BAW_SMALL_AIRPORT, !HasBit(avail_airports, i));
+		for (i = 0; i < BAW_AIRPORT_COUNT; i++) this->SetWidgetDisabledState(i + BAW_SMALL_AIRPORT, !GetAirport(i)->IsAvailable());
 
 		/* select default the coverage area to 'Off' (16) */
 		airport = GetAirport(_selected_airport_type);

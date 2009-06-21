@@ -963,7 +963,6 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permite
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Permite mai multe seturi NewGRF simultan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Schimbarea acestei setări nu este permisă cand există vehicule in joc.
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Permite întotdeauna aeroporturi mici: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Avertizeaza daca trenul este pierdut: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Verificarea ordinelor vehiculelor: {ORANGE}{STRING}

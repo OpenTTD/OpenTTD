@@ -955,7 +955,6 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Atļaut
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Iespējot vairākus NewGRF transporta līdzekļu komplektus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Šo parametru nav iespējams izmainīt, kad tur ir transportlīdzekļi.
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Vienmēr atļaut mazas lidostas: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Brīdināt, ja vilciens apmaldās: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Pārskatīt transportu rīkojumus: {ORANGE}{STRING}

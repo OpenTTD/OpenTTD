@@ -1005,7 +1005,6 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Dovoli 
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Omogoči večkratni set NewGRF pogona: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sprememba teh nastavitev ni mogoča, ko so tam vozila.
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Vedno dovoli majhna letališča: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Opozori, če se vlak izgubi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Pregled ukazov vozila: {ORANGE}{STRING}

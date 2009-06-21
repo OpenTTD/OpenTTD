@@ -987,7 +987,6 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Leisti 
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Leisti kelis NewGRF transporto pr. rinkinius vienu metu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Neįmanoma pakeisti nuostatos kai yra tr. priemonių.
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Visada leisti statyti mažus oro uostus: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Perspėti apie traukinio praradimą: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Peržiūrėti tr. pr. užduotis: {ORANGE}{STRING}

@@ -1202,7 +1202,7 @@ static SettingEntry _settings_construction[] = {
 	SettingEntry("construction.autoslope"),
 	SettingEntry("construction.extra_dynamite"),
 	SettingEntry("construction.longbridges"),
-	SettingEntry("station.always_small_airport"),
+	SettingEntry("station.never_expire_airports"),
 	SettingEntry("construction.freeform_edges"),
 };
 /** Construction sub-page */

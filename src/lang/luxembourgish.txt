@@ -963,7 +963,6 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Erlaabt
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}E puer NewGRF-Päk aktivéiren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Déi Astellung kann net geännert gin wann do Gefierer sin.
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Erlaab ëmmer kleng Fluchhäfen: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Warnen wann en Zuch verluer geet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Opträg vun den Gefierer nopréifen: {ORANGE}{STRING}

@@ -765,7 +765,6 @@ STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Membena
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :seperti industri lain
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Membolehkan berbilang set enjin NewGRF: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Selalu membenarkan lapangan terbang yang kecil: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Memperingatkan jika satu kereta api hilang jalan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :tidak

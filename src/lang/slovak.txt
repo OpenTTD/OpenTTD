@@ -1021,7 +1021,6 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Povolit
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Povolit viaceré NewGRF sety s rušnami: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Zmena tohto nastavenia nie je možná, pokial sa tu nachádzajú vozidlá.
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Vždy povolit stavbu malých letísk: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Upozornit ak vlak nedokáže nájst cestu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Obnovenie prikazov vozidla: {ORANGE}{STRING}

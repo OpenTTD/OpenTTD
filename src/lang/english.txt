@@ -963,7 +963,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Allow b
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Enable multiple NewGRF engine sets: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Changing this setting is not possible when there are vehicles.
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Always allow small airports: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Airports never expire: {ORANGE}{STRING1}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Warn if train is lost: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Review vehicles' orders: {ORANGE}{STRING1}

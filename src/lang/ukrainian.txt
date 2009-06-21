@@ -1079,7 +1079,6 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Доз�
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Дозволити декілька NewGRF наборів транспорту: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Цю настройку не можна змінювати, якщо є транспорт.
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Будувати малі аеропорти можна завжди: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Повідомляти, якщо поїзд загубився {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Показ транспортних наказів: {ORANGE}{STRING}

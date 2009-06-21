@@ -950,7 +950,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}可在�
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}允許按 Ctrl 鍵興建相鄰車站： {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}允許載入多個 NewGRF 車輛組：{ORANGE}{STRING}
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}永遠可以興建小機場：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}列車迷路時警告：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}檢查交通工具指令：{ORANGE}{STRING}

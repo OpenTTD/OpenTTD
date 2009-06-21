@@ -1338,7 +1338,6 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Pozwól
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Zezwól na wiele zestawów NewGRF: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Zmiana tego ustawienia nie jest możliwa, gdy znajdują się tutaj pojazdy.
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Zawsze zezwalaj budować małe lotniska: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Ostrzegaj jeśli pociąg się zgubi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Kontroluj polecenia pojazdów: {ORANGE}{STRING}

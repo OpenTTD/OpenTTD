@@ -945,7 +945,6 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Vliegtu
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Laattoe skyf-deur pad stop op dorp besit paaie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Laattoe gebou van aangrensend stasies: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Altyd laattoe klein lughawenst: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Waarsku as trein verloor is: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Bespreek voertuig se opdrae: {ORANGE}{STRING}

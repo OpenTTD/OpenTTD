@@ -961,7 +961,6 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Caniat�
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Galluogi defnyddio mwy nag un o setiau injian NewGRF: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Nid yw hi'n bosib newid y gosodiadau pan mae cerbydau'n bodoli.
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Caniatáu meysydd awyr bach drwy gydol y gêm: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Rhybuddio os yw'r trên ar goll: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Adolygu gorchmynion y cerbyd: {ORANGE}{STRING}

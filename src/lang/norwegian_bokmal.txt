@@ -948,7 +948,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillat 
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillat bygging av nærliggende stasjoner: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Sett i gang flere ny grafikk kjerne sets: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Alltid tillat bygging av små flyplasser: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Vis en advarsel hvis et tog har kjørt seg vill{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Inspiser kjøretøyenes ordrer: {ORANGE}{STRING}

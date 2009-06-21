@@ -329,7 +329,7 @@ struct StationSettings {
 	bool   nonuniform_stations;              ///< allow nonuniform train stations
 	bool   adjacent_stations;                ///< allow stations to be built directly adjacent to other stations
 	bool   distant_join_stations;            ///< allow to join non-adjacent stations
-	bool   always_small_airport;             ///< always allow small airports
+	bool   never_expire_airports;            ///< never expire airports
 	byte   station_spread;                   ///< amount a station may spread
 };
 

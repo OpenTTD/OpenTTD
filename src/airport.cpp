@@ -242,7 +242,8 @@ void InitializeAirports()
 		0,
 		0, 0, 0,
 		0,
-		0
+		0,
+		MAX_YEAR + 1, MAX_YEAR + 1
 	);
 
 	CountryAirport = new AirportFTAClass(
@@ -256,7 +257,8 @@ void InitializeAirports()
 		lengthof(_airport_depots_country),
 		4, 3, 3,
 		0,
-		4
+		4,
+		0, 1959
 	);
 
 	CityAirport = new AirportFTAClass(
@@ -270,7 +272,8 @@ void InitializeAirports()
 		lengthof(_airport_depots_city),
 		6, 6, 5,
 		0,
-		5
+		5,
+		1955, MAX_YEAR
 	);
 
 	MetropolitanAirport = new AirportFTAClass(
@@ -284,7 +287,8 @@ void InitializeAirports()
 		lengthof(_airport_depots_metropolitan),
 		6, 6, 8,
 		0,
-		6
+		6,
+		1980, MAX_YEAR
 	);
 
 	InternationalAirport = new AirportFTAClass(
@@ -298,7 +302,8 @@ void InitializeAirports()
 		lengthof(_airport_depots_international),
 		7, 7, 17,
 		0,
-		8
+		8,
+		1990, MAX_YEAR
 	);
 
 	IntercontinentalAirport = new AirportFTAClass(
@@ -312,7 +317,8 @@ void InitializeAirports()
 		lengthof(_airport_depots_intercontinental),
 		9, 11, 25,
 		0,
-		10
+		10,
+		2002, MAX_YEAR
 	);
 
 	Heliport = new AirportFTAClass(
@@ -326,7 +332,8 @@ void InitializeAirports()
 		0,
 		1, 1, 1,
 		60,
-		4
+		4,
+		1963, MAX_YEAR
 	);
 
 	Oilrig = new AirportFTAClass(
@@ -340,7 +347,8 @@ void InitializeAirports()
 		0,
 		1, 1, 0,
 		54,
-		3
+		3,
+		MAX_YEAR + 1, MAX_YEAR + 1
 	);
 
 	CommuterAirport = new AirportFTAClass(
@@ -354,7 +362,8 @@ void InitializeAirports()
 		lengthof(_airport_depots_commuter),
 		5, 4, 4,
 		0,
-		4
+		4,
+		1983, MAX_YEAR
 	);
 
 	HeliDepot = new AirportFTAClass(
@@ -368,7 +377,8 @@ void InitializeAirports()
 		lengthof(_airport_depots_helidepot),
 		2, 2, 2,
 		0,
-		4
+		4,
+		1976, MAX_YEAR
 	);
 
 	HeliStation = new AirportFTAClass(
@@ -382,7 +392,8 @@ void InitializeAirports()
 		lengthof(_airport_depots_helistation),
 		4, 2, 3,
 		0,
-		4
+		4,
+		1980, MAX_YEAR
 	);
 }
 
@@ -424,7 +435,9 @@ AirportFTAClass::AirportFTAClass(
 	uint size_y_,
 	byte noise_level_,
 	byte delta_z_,
-	byte catchment_
+	byte catchment_,
+	Year first_available_,
+	Year last_available_
 ) :
 	moving_data(moving_data_),
 	terminals(terminals_),
@@ -438,7 +451,9 @@ AirportFTAClass::AirportFTAClass(
 	size_y(size_y_),
 	noise_level(noise_level_),
 	delta_z(delta_z_),
-	catchment(catchment_)
+	catchment(catchment_),
+	first_available(first_available_),
+	last_available(last_available_)
 {
 	byte nofterminalgroups, nofhelipadgroups;
 
@@ -485,7 +500,6 @@ AirportFTAClass::AirportFTAClass(
 #endif
 }
 
-
 AirportFTAClass::~AirportFTAClass()
 {
 	for (uint i = 0; i < nofelements; i++) {
@@ -497,6 +511,13 @@ AirportFTAClass::~AirportFTAClass()
 		};
 	}
 	free(layout);
+}
+
+bool AirportFTAClass::IsAvailable() const
+{
+	if (_cur_year < this->first_available) return false;
+	if (_settings_game.station.never_expire_airports) return true;
+	return _cur_year <= this->last_available;
 }
 
 /** Get the number of elements of a source Airport state automata
@@ -667,21 +688,4 @@ const AirportFTAClass *GetAirport(const byte airport_type)
 		case AT_HELISTATION:   return HeliStation;
 		case AT_DUMMY:         return DummyAirport;
 	}
-}
-
-
-uint32 GetValidAirports()
-{
-	uint32 mask = 0;
-
-	if (_cur_year <  1960 || _settings_game.station.always_small_airport) SetBit(mask, 0);  // small airport
-	if (_cur_year >= 1955) SetBit(mask, 1); // city airport
-	if (_cur_year >= 1963) SetBit(mask, 2); // heliport
-	if (_cur_year >= 1980) SetBit(mask, 3); // metropolitan airport
-	if (_cur_year >= 1990) SetBit(mask, 4); // international airport
-	if (_cur_year >= 1983) SetBit(mask, 5); // commuter airport
-	if (_cur_year >= 1976) SetBit(mask, 6); // helidepot
-	if (_cur_year >= 2002) SetBit(mask, 7); // intercontinental airport
-	if (_cur_year >= 1980) SetBit(mask, 8); // helistation
-	return mask;
 }

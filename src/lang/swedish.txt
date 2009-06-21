@@ -963,7 +963,6 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillåt
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Tillåt flera NewGRF-set: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det är inte möjligt att ändra denna inställning när det finns fordon
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Tillåt alltid små flygplatser: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Varna om tåg åker vilse: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Granska fordonens destinationer: {ORANGE}{STRING}

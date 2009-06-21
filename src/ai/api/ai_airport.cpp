@@ -12,7 +12,7 @@
 
 /* static */ bool AIAirport::IsValidAirportType(AirportType type)
 {
-	return type >= AT_SMALL && type <= AT_HELISTATION && HasBit(::GetValidAirports(), type);
+	return type >= 0 && type < NUM_AIRPORTS && ::GetAirport(type)->IsAvailable();
 }
 
 /* static */ Money AIAirport::GetPrice(AirportType type)

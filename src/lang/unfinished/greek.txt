@@ -951,7 +951,6 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Επι�
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Επιτρέπεται η χρήση πολλαπλών μηχανών από τα NewGRF: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Δεν είναι δυνατή η αλλαγή αυτής της ρύθμισης όταν υπάρχουν οχήματα.
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Επιτρέπονται τα μικρά αεροδρόμια πάντα: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Προειδοποίηση αν χαθεί τρένο: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Επανεξέταση οδηγιών τρένων: {ORANGE}{STRING}

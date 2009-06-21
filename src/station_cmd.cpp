@@ -1718,15 +1718,17 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (distant_join && (!_settings_game.station.distant_join_stations || !Station::IsValidID(station_to_join))) return CMD_ERROR;
 
-	/* Check if a valid, buildable airport was chosen for construction */
-	if (p1 >= NUM_AIRPORTS || !HasBit(GetValidAirports(), p1)) return CMD_ERROR;
+	if (p1 >= NUM_AIRPORTS) return CMD_ERROR;
 
 	if (!CheckIfAuthorityAllowsNewStation(tile, flags)) {
 		return CMD_ERROR;
 	}
 
-	Town *t = ClosestTownFromTile(tile, UINT_MAX);
+	/* Check if a valid, buildable airport was chosen for construction */
 	const AirportFTAClass *afc = GetAirport(p1);
+	if (!afc->IsAvailable()) return CMD_ERROR;
+
+	Town *t = ClosestTownFromTile(tile, UINT_MAX);
 	int w = afc->size_x;
 	int h = afc->size_y;
 	Station *st = NULL;

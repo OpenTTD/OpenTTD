@@ -5294,7 +5294,7 @@ static void GRFUnsafe(byte *buf, size_t len)
 
 static void InitializeGRFSpecial()
 {
-	_ttdpatch_flags[0] =  ((_settings_game.station.always_small_airport ? 1 : 0) << 0x0C)  // keepsmallairport
+	_ttdpatch_flags[0] = ((_settings_game.station.never_expire_airports ? 1 : 0) << 0x0C)  // keepsmallairport
 	                   |                                                      (1 << 0x0D)  // newairports
 	                   |                                                      (1 << 0x0E)  // largestations
 	                   |      ((_settings_game.construction.longbridges ? 1 : 0) << 0x0F)  // longbridges

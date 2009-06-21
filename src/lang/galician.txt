@@ -928,7 +928,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permiti
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permiti-la construcción de estacións contiguas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Activar motor para múltiples NewGRF: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Avisar se un tren se perde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Revisa-las ordes do vehículo: {ORANGE}{STRING}

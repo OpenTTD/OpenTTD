@@ -955,7 +955,6 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Пре�
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Позвалявай допрени гари: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Няколко NewGRF алгоритъма едновременно: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Винаги могат да се строят малки летища: {ORANGE}{STRING.n}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Предупреждение при загубен влак: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Преглед на заповеди: {ORANGE}{STRING}

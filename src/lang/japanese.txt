@@ -947,7 +947,6 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}他社�
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}隣接した駅の建設を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}複数の NewGRF エンジンセットを有効にする: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}常に小型空港の建設を許容：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}列車が行方不明となった場合は通告：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}列車の指令をレビュー：{ORANGE}{STRING}

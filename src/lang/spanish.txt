@@ -964,7 +964,6 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permiti
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Activar motor  de multiples NewGRF: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Este cambio no es posible cuando tiene vehículos
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Permitir siempre aeropuertos pequeños: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Avisar si el tren se pierde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Revisar ordenes de los vehículos: {ORANGE}{STRING}

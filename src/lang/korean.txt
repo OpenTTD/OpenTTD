@@ -962,7 +962,6 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}정거�
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}여러 개의 NewGRF 엔진 세트를 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}이미 차량이 존재하면 이 설정을 변경하실 수 없습니다.
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}소형 공항의 건설을 허용 : {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}열차가 길을 잃으면 경고 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}차량의 경로 검사 : {ORANGE}{STRING}

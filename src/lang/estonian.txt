@@ -1020,7 +1020,6 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Jaamade
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Mitme NewGRF sõidukikomplekti lubamine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sõidukite olemasolul ei saa seda seadet muuta.
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Väikesed lennuväljad mängu lõpuni: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Hoiatamine rongide eksimisel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Sõidukite sihtpunktide ülevaade: {ORANGE}{STRING}
