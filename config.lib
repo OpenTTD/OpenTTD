@@ -1027,6 +1027,72 @@ check_params() {
 	fi
 }
 
+make_compiler_cflags() {
+	# Params:
+	# $1 - compiler
+	# $2 - the current cflags
+	# $3 - variable to finally write to
+
+	flags="$2"
+
+	if [ `echo $1 | cut -c 1-3` = "icc" ]; then
+		# Enable some things only for certain ICC versions
+		cc_version=`$1 -dumpversion | cut -c 1-4`
+
+
+		if [ "$cc_version" = "10.1" ]; then
+			flags="$flags -Wno-multichar"
+		fi
+
+		if [ "$cc_version" = "11.0" ]; then
+			# warning 1899: multicharacter character literal (potential portability problem) (e.g. 'FOOD')
+			# vec report defaults to telling where it did loop vectorisation, which is not very important
+			flags="$flags -vec-report=0 -wd1899"
+		fi
+	else
+		# Enable some things only for certain GCC versions
+		cc_version=`$1 -dumpversion | cut -c 1,3`
+
+		if [ $cc_version -lt 30 ]; then
+			log 1 "configure: error: gcc older than 3.0 can't compile OpenTTD because of its poor template support"
+			exit 1
+		fi
+
+		flags="$flags -Wall -Wno-multichar -Wsign-compare -Wundef"
+		flags="$flags -Wwrite-strings -Wpointer-arith"
+		flags="$flags -Wno-uninitialized"
+
+		flags="$flags -W -Wno-unused-parameter -Wformat=2"
+		flags="$flags -Wredundant-decls"
+
+		if [ $enable_assert -eq 0 ]; then
+			# Do not warn about unused variables when building without asserts
+			flags="$flags -Wno-unused-variable"
+		fi
+
+		if [ $cc_version -ge 40 ]; then
+			# GCC 4.0+ complains about that we break strict-aliasing.
+			#  On most places we don't see how to fix it, and it doesn't
+			#  break anything. So disable strict-aliasing to make the
+			#  compiler all happy.
+			flags="$flags -fno-strict-aliasing"
+			# Warn about casting-out 'const' with regular C-style cast.
+			#  The preferred way is const_cast<>() which doesn't warn.
+			flags="$flags -Wcast-qual"
+		fi
+
+		if [ $cc_version -ge 42 ]; then
+			# GCC 4.2+ automatically assumes that signed overflows do
+			# not occur in signed arithmetics, whereas we are not
+			# sure that they will not happen. It furthermore complains
+			# about it's own optimized code in some places.
+			flags="$flags -fno-strict-overflow"
+		fi
+	fi
+
+	eval "$3=\"$flags\""
+}
+
 make_cflags_and_ldflags() {
 	# General CFlags for BUILD
 	CFLAGS_BUILD=""
@@ -1080,72 +1146,22 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -DNO_THREADS"
 	fi
 
-	if [ `echo $cc_host | cut -c 1-3` = "icc" ]; then
-		# Enable some things only for certain ICC versions
-		cc_version=`$cc_host -dumpversion | cut -c 1-4`
+	make_compiler_cflags "$cc_build" "$CFLAGS_BUILD" "CFLAGS_BUILD"
+	make_compiler_cflags "$cc_host" "$CFLAGS" "CFLAGS"
 
-
-		if [ "$cc_version" = "10.1" ]; then
-			CFLAGS="$CFLAGS -Wno-multichar"
-		fi
-
-		if [ "$cc_version" = "11.0" ]; then
-			# warning 1899: multicharacter character literal (potential portability problem) (e.g. 'FOOD')
-			# vec report defaults to telling where it did loop vectorisation, which is not very important
-			CFLAGS="$CFLAGS -vec-report=0 -wd1899"
-		fi
-	else
-		# Enable some things only for certain GCC versions
-		cc_version=`$cc_host -dumpversion | cut -c 1,3`
-
-		if [ $cc_version -lt 30 ]; then
-			log 1 "configure: error: gcc older than 3.0 can't compile OpenTTD because of its poor template support"
-			exit 1
-		fi
-
-		CFLAGS="$CFLAGS -Wall -Wno-multichar -Wsign-compare -Wundef"
-		CFLAGS="$CFLAGS -Wwrite-strings -Wpointer-arith"
-		CFLAGS="$CFLAGS -Wno-uninitialized"
-
-		CFLAGS="$CFLAGS -W -Wno-unused-parameter -Wformat=2"
-		CFLAGS="$CFLAGS -Wredundant-decls"
-
-		if [ $enable_assert -eq 0 ]; then
-			# Do not warn about unused variables when building without asserts
-			CFLAGS="$CFLAGS -Wno-unused-variable"
-		fi
-
+	if [ "`echo $1 | cut -c 1-3`" != "icc" ]; then
 		if [ "$os" = "CYGWIN" ]; then
-			CFLAGS="$CFLAGS -mwin32"
+			flags="$flags -mwin32"
 			LDFLAGS="$LDFLAGS -mwin32"
 		fi
 		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ]; then
-			CFLAGS="$CFLAGS -mno-cygwin"
+			flags="$flags -mno-cygwin"
 			LDFLAGS="$LDFLAGS -mno-cygwin"
 		fi
 
 		if [ "$os" = "CYGWIN" ] || [ "$os" = "MINGW" ]; then
 			LDFLAGS="$LDFLAGS -Wl,--subsystem,windows"
 			LIBS="$LIBS -lws2_32 -lwinmm -lgdi32 -ldxguid -lole32"
-		fi
-
-		if [ $cc_version -ge 40 ]; then
-			# GCC 4.0+ complains about that we break strict-aliasing.
-			#  On most places we don't see how to fix it, and it doesn't
-			#  break anything. So disable strict-aliasing to make the
-			#  compiler all happy.
-			CFLAGS="$CFLAGS -fno-strict-aliasing"
-			# Warn about casting-out 'const' with regular C-style cast.
-			#  The preferred way is const_cast<>() which doesn't warn.
-			CFLAGS="$CFLAGS -Wcast-qual"
-		fi
-
-		if [ $cc_version -ge 42 ]; then
-			# GCC 4.2+ automatically assumes that signed overflows do
-			# not occur in signed arithmetics, whereas we are not
-			# sure that they will not happen. It furthermore complains
-			# about it's own optimized code in some places.
-			CFLAGS="$CFLAGS -fno-strict-overflow"
 		fi
 	fi
 
