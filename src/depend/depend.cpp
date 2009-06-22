@@ -812,6 +812,7 @@ int main(int argc, char *argv[])
 	bool ignorenext = true;
 	char *filename = NULL;
 	char *ext = NULL;
+	char *delimiter = NULL;
 	bool append = false;
 	bool verbose = false;
 
@@ -852,6 +853,11 @@ int main(int argc, char *argv[])
 				ext = strdup(&argv[i][2]);
 				continue;
 			}
+			/* Starting string delimiter */
+			if (strncmp(argv[i], "-s", 2) == 0) {
+				if (delimiter != NULL) continue;
+				delimiter = strdup(&argv[i][2]);
+			}
 			/* Verbose */
 			if (strncmp(argv[i], "-v", 2) == 0) verbose = true;
 			continue;
@@ -861,6 +867,9 @@ int main(int argc, char *argv[])
 
 	/* Default output file is Makefile */
 	if (filename == NULL) filename = strdup("Makefile");
+
+	/* Default delimiter string */
+	if (delimiter == NULL) delimiter = strdup("# DO NOT DELETE");
 
 	char backup[PATH_MAX];
 	strcpy(backup, filename);
@@ -881,18 +890,25 @@ int main(int argc, char *argv[])
 		fclose(src);
 	}
 
-	FILE *dst = fopen(backup, "wb");
-	if (content != NULL) fwrite(content, 1, size, dst);
-	fclose(dst);
+	FILE *dst = fopen(filename, "w");
+	bool found_delimiter = false;
 
-	/* Then append it to the real file. */
-	src = fopen(backup, "r");
-	dst = fopen(filename, "w");
-	while (fgets(content, size, src) != NULL) {
-		fputs(content, dst);
-		if (!append && !strncmp(content, "# DO NOT DELETE", 15)) break;
+	if (size != 0) {
+		src = fopen(backup, "wb");
+		fwrite(content, 1, size, src);
+		fclose(src);
+
+		/* Then append it to the real file. */
+		src = fopen(backup, "rb");
+		while (fgets(content, size, src) != NULL) {
+			fputs(content, dst);
+			if (!strncmp(content, delimiter, strlen(delimiter))) found_delimiter = true;
+			if (!append && found_delimiter) break;
+		}
+		fclose(src);
 	}
-	if (ftell(src) == 0) fprintf(dst, "\n# DO NOT DELETE\n");
+	if (!found_delimiter) fprintf(dst, "\n%s\n", delimiter);
+
 	for (StringMap::iterator it = _files.begin(); it != _files.end(); it++) {
 		for (StringSet::iterator h = it->second->begin(); h != it->second->end(); h++) {
 			fprintf(dst, "%s: %s\n", it->first, *h);
@@ -901,8 +917,8 @@ int main(int argc, char *argv[])
 
 	/* Clean up our mess. */
 	fclose(dst);
-	fclose(src);
 
+	free(delimiter);
 	free(filename);
 	free(ext);
 	free(content);
