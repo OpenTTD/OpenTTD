@@ -1032,8 +1032,6 @@ make_cflags_and_ldflags() {
 	CFLAGS_BUILD=""
 	# General CFlags for HOST
 	CFLAGS="$CFLAGS -D$os"
-	# CFlags for HOST and C-Compiler
-	CC_FLAGS=""
 	# Libs to compile. In fact this is just LDFLAGS
 	LIBS="-lstdc++"
 	# LDFLAGS used for HOST
@@ -1112,15 +1110,9 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -W -Wno-unused-parameter -Wformat=2"
 		CFLAGS="$CFLAGS -Wredundant-decls"
 
-		CC_CFLAGS="$CC_CFLAGS -Wstrict-prototypes"
-
 		if [ $enable_assert -eq 0 ]; then
 			# Do not warn about unused variables when building without asserts
 			CFLAGS="$CFLAGS -Wno-unused-variable"
-		fi
-
-		if [ $cc_version -ge 34 ]; then
-			CC_CFLAGS="$CC_CFLAGS -Wdeclaration-after-statement -Wold-style-definition"
 		fi
 
 		if [ "$os" = "CYGWIN" ]; then
@@ -1414,7 +1406,7 @@ make_cflags_and_ldflags() {
 
 	CFLAGS="$CFLAGS -DGLOBAL_DATA_DIR=\\\\\"$prefix_dir/$data_dir\\\\\""
 
-	log 1 "using CFLAGS... $CFLAGS $CC_CFLAGS"
+	log 1 "using CFLAGS... $CFLAGS"
 	log 1 "using LDFLAGS... $LIBS $LDFLAGS"
 
 	# Makedepend doesn't like something like: -isysroot /OSX/blabla
@@ -2603,7 +2595,6 @@ make_sed() {
 		s@!!WINDRES!!@$windres@g;
 		s@!!STRIP!!@$strip $strip_arg@g;
 		s@!!LIPO!!@$lipo@g;
-		s@!!CC_CFLAGS!!@$CC_CFLAGS@g;
 		s@!!CFLAGS!!@$T_CFLAGS@g;
 		s@!!CFLAGS_BUILD!!@$CFLAGS_BUILD@g;
 		s@!!STRGEN_FLAGS!!@$strgen_flags@g;

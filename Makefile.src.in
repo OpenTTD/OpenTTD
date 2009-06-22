@@ -4,7 +4,6 @@ CC_BUILD     = !!CC_BUILD!!
 CXX_BUILD    = !!CXX_BUILD!!
 WINDRES      = !!WINDRES!!
 STRIP        = !!STRIP!!
-CC_CFLAGS    = !!CC_CFLAGS!!
 CFLAGS       = !!CFLAGS!!
 CFLAGS_BUILD = !!CFLAGS_BUILD!!
 LIBS         = !!LIBS!!
@@ -100,7 +99,7 @@ REV_NR := 0
 endif
 
 # This helps to recompile if flags change
-RES := $(shell if [ "`cat $(CONFIG_CACHE_COMPILER) 2>/dev/null`" != "$(CC_CFLAGS) $(CFLAGS)" ]; then echo "$(CC_CFLAGS) $(CFLAGS)" > $(CONFIG_CACHE_COMPILER); fi )
+RES := $(shell if [ "`cat $(CONFIG_CACHE_COMPILER) 2>/dev/null`" != "$(CFLAGS)" ]; then echo "$(CFLAGS)" > $(CONFIG_CACHE_COMPILER); fi )
 RES := $(shell if [ "`cat $(CONFIG_CACHE_LINKER) 2>/dev/null`" != "$(LDFLAGS) $(LIBS)" ]; then echo "$(LDFLAGS) $(LIBS)" > $(CONFIG_CACHE_LINKER); fi )
 RES := $(shell if [ "`cat $(CONFIG_CACHE_ENDIAN) 2>/dev/null`" != "$(ENDIAN_FORCE)" ]; then echo "$(ENDIAN_FORCE)" > $(CONFIG_CACHE_ENDIAN); fi )
 
@@ -126,10 +125,6 @@ endif
 endif
 
 # Find the deps via GCC. Rarely wrong, but a bit slow
-
-$(OBJS_C:%.o=%.d): %.d: $(SRC_DIR)/%.c $(FILE_DEP)
-	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.c=%.c)'
-	$(Q)$(CC_HOST) $(CC_CFLAGS) $(CFLAGS) -MM $< | sed 's@^$(@F:%.d=%.o):@$@ $(@:%.d=%.o):@' > $@
 
 $(OBJS_CPP:%.o=%.d): %.d: $(SRC_DIR)/%.cpp $(FILE_DEP)
 	$(E) '$(STAGE) DEP $(<:$(SRC_DIR)/%.cpp=%.cpp)'
@@ -218,10 +213,6 @@ endif
 
 
 # Compile all the files according to the targets
-
-$(OBJS_C): %.o: $(SRC_DIR)/%.c $(DEP_MASK) $(FILE_DEP)
-	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.c=%.c)'
-	$(Q)$(CC_HOST) $(CC_CFLAGS) $(CFLAGS) -c -o $@ $<
 
 $(OBJS_CPP): %.o: $(SRC_DIR)/%.cpp $(DEP_MASK) $(FILE_DEP)
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
