@@ -152,7 +152,7 @@ ifeq ("$(SRC_OBJS_DIR)/$(DEPEND)","$(MAKEDEPEND)")
 DEP := $(MAKEDEPEND)
 $(SRC_OBJS_DIR)/$(DEPEND): $(SRC_DIR)/depend/depend.cpp
 	$(E) '$(STAGE) Compiling and linking $(DEPEND)'
-	$(Q)$(CXX_HOST) -o $@ $<
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -o $@ $<
 endif
 
 # Make sure that only 'make depend' ALWAYS triggers a recheck
