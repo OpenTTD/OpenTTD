@@ -964,6 +964,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Bau ang
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Mehrere NewGRF Fahrzeugsets erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Diese Einstellung kann nicht geändert werden solange Fahrzeuge im Spiel sind.
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Flughäfen veralten nie: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Warnen, wenn sich ein Zug verirrt hat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Fahrpläne prüfen: {ORANGE}{STRING}

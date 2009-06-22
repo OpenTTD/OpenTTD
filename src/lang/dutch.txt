@@ -963,6 +963,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Bouwen 
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Activeer meerdere NewGRF treinsets: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Deze instelling kan niet gewijzigd worden als er voertuigen zijn.
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Vliegvelden verlopen niet: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Waarschuwen als trein verdwaald is: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Herzie voertuigorders: {ORANGE}{STRING}

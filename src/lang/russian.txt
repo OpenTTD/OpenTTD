@@ -564,9 +564,13 @@ STR_AGE_RED                                                     :{RED}{COMMA} {P
 ############ range for service numbers ends
 
 STR_VEHICLE_TRAIN                                               :Поезд
+STR_VEHICLE_TRAIN.gen                                           :ж/д транспорта
 STR_VEHICLE_ROAD_VEHICLE                                        :Автотранспорт
+STR_VEHICLE_ROAD_VEHICLE.gen                                    :автотранспорта
 STR_VEHICLE_SHIP                                                :Корабль
+STR_VEHICLE_SHIP.gen                                            :кораблей
 STR_VEHICLE_AIRCRAFT                                            :Воздушный транспорт
+STR_VEHICLE_AIRCRAFT.gen                                        :воздушного транспорта
 STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}Транспортное средство «{VEHICLE}» устарело
 STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}Транспортное средство «{VEHICLE}» сильно устарело
 STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}Транспортное средство «{VEHICLE}» очень сильно устарело и требует срочной замены
@@ -1028,19 +1032,19 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - К
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} не может найти путь для продолжения движения.
 STR_TRAIN_IS_LOST                                               :{WHITE}Транспортное средство {VEHICLE} заблудилось.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Доход ТС {VEHICLE} в прошлом году составил {CURRENCY}
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Доход ТС «{VEHICLE}» в прошлом году составил {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Создана зона евро!{}{}Теперь в вашей стране в качестве единой валюты используется евро!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}У ТС {VEHICLE} не хватает заданий
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}У ТС {VEHICLE} нет заданий
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}У ТС {VEHICLE} повторяющиеся задания
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}У ТС {VEHICLE} неправильное место назначения
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}У ТС «{VEHICLE}» не хватает заданий
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}У ТС «{VEHICLE}» нет заданий
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}У ТС «{VEHICLE}» повторяющиеся задания
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}У ТС «{VEHICLE}» неправильное место назначения
 # end of order system
 
 STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Ошибка автообновления для {VEHICLE}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}ТС {VEHICLE} слишком длинное после замены
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}ТС «{VEHICLE}» слишком длинное после замены
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Нельзя применить правила автозамены/обновления.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(денег мало)
 
@@ -1096,6 +1100,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Раз�
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Включить поддержку нескольких наборов NewGRF с транспортом: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Изменение этого параметра невозможно, если в игре есть транспортные средства.
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Аэропорты не устаревают: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Предупреждать, если поезд заблудился: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Проверять маршруты на правильность: {ORANGE}{STRING}
@@ -1886,9 +1891,9 @@ STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Прим
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}То, что можно сделать в этом городе - кликните для получения доп. сведений
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Выполнить выделенное действие в списке выше
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Доступные действия:
-STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Малая рекламная компания
-STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Средняя рекламная компания
-STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Большая рекламная компания
+STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Малая рекламная кампания
+STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Средняя рекламная кампания
+STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Большая рекламная кампания
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Профинансировать ремонт городских дорог
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Установить статую владельца компании
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Профинансировать строительство новых зданий
@@ -2118,8 +2123,8 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Прои
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Произведено за прошлый месяц:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% перевезено)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Показать предприятие в основном окне
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}Новое предприятие! {STRING} строится возле г.{NBSP}{TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}Новое предприятие! {STRING} заложен возле г.{NBSP}{TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}Новое предприятие! {STRING} стро{G 0 и и и я}тся возле г.{NBSP}{TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}Новое предприятие! {STRING} заложен{G 0 "" а о ы} возле г.{NBSP}{TOWN}!
 STR_INDUSTRY_BUILD_COST                                         :{BLACK}Цена: {YELLOW}{CURRENCY}
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Построить здесь это предприятие невозможно...
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...лес можно сажать только выше линии снега
@@ -2913,7 +2918,7 @@ STR_CARGO_N_A                                                   :отсутст�
 STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}Невозможно продать рельсовый транспорт...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Невозможно найти дорогу к депо
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Невозможно остановить/запустить поезд...
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Осмотр каждые: {LTBLUE}{COMMA}дней{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Осмотр каждые {LTBLUE}{COMMA}дней{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Интервал обслуж.: {LTBLUE}{COMMA}%{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Поезда - нажмите для получения справки
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Поезда - кликните для получения информации, используйте перетаскивание для изменения состава
@@ -3364,7 +3369,7 @@ STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} корабл{P ь я ей}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} ед. авиатранспорта
 
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Начать замену
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Прекратить замену
 STR_NOT_REPLACING                                               :{BLACK}Нет замены
