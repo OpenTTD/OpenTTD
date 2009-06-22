@@ -534,7 +534,7 @@ static void HandlePragma(char *str)
 	} else if (!memcmp(str, "winlangid ", 10)) {
 		const char *buf = str + 10;
 		long langid = strtol(buf, NULL, 16);
-		if (langid > UINT16_MAX || langid < 0) {
+		if (langid > (long)UINT16_MAX || langid < 0) {
 			error("Invalid winlangid %s", buf);
 		}
 		_lang_winlangid = (uint16)langid;
