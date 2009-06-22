@@ -110,7 +110,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 							uint m = *src_n;
 							/* In case the m-channel is zero, do not remap this pixel in any way */
 							if (m == 0) {
-								*dst = *src_px;
+								*dst = src_px->data;
 							} else {
 								uint r = remap[m];
 								if (r != 0) *dst = this->LookupColourInPalette(r);
@@ -162,7 +162,9 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 						/* faster than memcpy(), n is usually low */
 						src_n += n;
 						do {
-							*dst++ = *src_px++;
+							*dst = src_px->data;
+							dst++;
+							src_px++;
 						} while (--n != 0);
 					} else {
 						src_n += n;

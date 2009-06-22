@@ -138,14 +138,15 @@ struct DrawPixelInfo {
 };
 
 /** Structure to access the alpha, red, green, and blue channels from a 32 bit number. */
-struct Colour {
+union Colour {
+	uint32 data; ///< Conversion of the channel information to a 32 bit number.
+	struct {
 #if TTD_ENDIAN == TTD_BIG_ENDIAN
-	uint8 a, r, g, b; ///< colour channels in BE order
+		uint8 a, r, g, b; ///< colour channels in BE order
 #else
-	uint8 b, g, r, a; ///< colour channels in LE order
+		uint8 b, g, r, a; ///< colour channels in LE order
 #endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
-
-	operator uint32 () const { return *(uint32 *)this; } ///< Conversion of the channel information to a 32 bit number.
+	};
 };
 
 /** Available font sizes */

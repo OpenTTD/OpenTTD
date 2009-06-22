@@ -97,7 +97,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 							uint m = *src_n;
 							/* In case the m-channel is zero, do not remap this pixel in any way */
 							if (m == 0) {
-								*dst = *src_px;
+								*dst = src_px->data;
 								*anim = 0;
 							} else {
 								uint r = remap[m];
@@ -161,7 +161,7 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 							uint m = *src_n++;
 							/* Above 217 (PALETTE_ANIM_SIZE_START) is palette animation */
 							*anim++ = m;
-							*dst++ = (m >= PALETTE_ANIM_SIZE_START) ? this->LookupColourInPalette(m) : *src_px;
+							*dst++ = (m >= PALETTE_ANIM_SIZE_START) ? this->LookupColourInPalette(m) : src_px->data;
 							src_px++;
 						} while (--n != 0);
 					} else {

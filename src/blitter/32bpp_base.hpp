@@ -41,7 +41,7 @@ public:
 	 */
 	static inline uint32 LookupColourInPalette(uint index)
 	{
-		return _cur_palette[index];
+		return _cur_palette[index].data;
 	}
 
 	/**
