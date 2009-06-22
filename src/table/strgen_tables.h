@@ -67,7 +67,7 @@ static const CmdStruct _cmd_structs[] = {
 
 	{"STATIONFEATURES", EmitSingleChar, SCC_STATION_FEATURES,   1, C_NONE}, // station features string, icons of the features
 	{"INDUSTRY",        EmitSingleChar, SCC_INDUSTRY_NAME,      1, C_NONE}, // industry, takes an industry #
-	{"CARGO",           EmitSingleChar, SCC_CARGO,              2, C_NONE},
+	{"CARGO",           EmitSingleChar, SCC_CARGO,              1, C_NONE},
 	{"POWER",           EmitSingleChar, SCC_POWER,              1, C_NONE},
 	{"VOLUME",          EmitSingleChar, SCC_VOLUME,             1, C_NONE},
 	{"VOLUME_S",        EmitSingleChar, SCC_VOLUME_SHORT,       1, C_NONE},
