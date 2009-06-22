@@ -1063,7 +1063,7 @@ static void WriteLangfile(const char *filename)
 	fwrite(&hdr, sizeof(hdr), 1, f);
 
 	for (int i = 0; i != 32; i++) {
-		for (int j = 0; j != in_use[i]; j++) {
+		for (uint j = 0; j != in_use[i]; j++) {
 			const LangString *ls = _strings[(i << 11) + j];
 			const Case *casep;
 			const char *cmdp;
