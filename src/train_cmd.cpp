@@ -3561,8 +3561,12 @@ static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
 		int x_diff = v->x_pos - tcc->v->x_pos;
 		int y_diff = v->y_pos - tcc->v->y_pos;
 
-		/* needed to disable possible crash of competitor train in station by building diagonal track at its end */
-		if (x_diff * x_diff + y_diff * y_diff > 25) return NULL;
+		/* Needed to disable possible crash of competitor train in station by building diagonal track at its end.
+		 * The second check is false when (abs(first), abs(second)) is: a) 5, 0  b) 4, <=3  c) 3, <=4, d) 2-, <=5
+		 * Sum of these two is at most 2 + 5 == 4 + 3 == 7. So we can just test if sum of abs() is > 7 to prevent
+		 * multiplying. Simply, when sum of abs() is >= 8, the sum of squares can't be <= 25.
+		 * Even gcc3.4 seems to do abs() branchless (using arithmetics or conditional moves). */
+		if (abs(x_diff) + abs(y_diff) > 7 || x_diff * x_diff + y_diff * y_diff > 25) return NULL;
 
 		/* crash both trains */
 		tcc->num += TrainCrashed(Train::From(tcc->v));
