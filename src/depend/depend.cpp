@@ -857,6 +857,7 @@ int main(int argc, char *argv[])
 			if (strncmp(argv[i], "-s", 2) == 0) {
 				if (delimiter != NULL) continue;
 				delimiter = strdup(&argv[i][2]);
+				continue;
 			}
 			/* Verbose */
 			if (strncmp(argv[i], "-v", 2) == 0) verbose = true;
