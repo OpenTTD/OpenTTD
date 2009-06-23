@@ -4446,13 +4446,7 @@ bool Train::Tick()
 
 		this->current_order_time++;
 
-		VehicleID index = this->index;
-
 		if (!TrainLocoHandler(this, false)) return false;
-
-		/* make sure vehicle wasn't deleted. */
-		assert(Vehicle::Get(index) == this);
-		assert(IsFrontEngine(this));
 
 		return TrainLocoHandler(this, true);
 	} else if (IsFreeWagon(this) && (this->vehstatus & VS_CRASHED)) {

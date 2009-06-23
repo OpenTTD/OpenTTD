@@ -2038,10 +2038,7 @@ bool Aircraft::Tick()
 
 	for (uint i = 0; i != 2; i++) {
 		/* stop if the aircraft was deleted */
-		VehicleID index = this->index;
 		if (!AircraftEventHandler(this, i)) return false;
-		assert(Vehicle::Get(index) == this);
-		assert(IsNormalAircraft(this));
 	}
 
 	return true;
