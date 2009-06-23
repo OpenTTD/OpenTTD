@@ -38,7 +38,6 @@
 	extern int _debug_yapf_level;
 	extern int _debug_freetype_level;
 	extern int _debug_sl_level;
-	extern int _debug_station_level;
 	extern int _debug_gamelog_level;
 	extern int _debug_desync_level;
 

@@ -29,7 +29,6 @@ int _debug_npf_level;
 int _debug_yapf_level;
 int _debug_freetype_level;
 int _debug_sl_level;
-int _debug_station_level;
 int _debug_gamelog_level;
 int _debug_desync_level;
 
@@ -55,7 +54,6 @@ struct DebugLevel {
 	DEBUG_LEVEL(yapf),
 	DEBUG_LEVEL(freetype),
 	DEBUG_LEVEL(sl),
-	DEBUG_LEVEL(station),
 	DEBUG_LEVEL(gamelog),
 	DEBUG_LEVEL(desync),
 	};
