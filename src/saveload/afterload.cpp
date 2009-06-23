@@ -5,6 +5,7 @@
 #include "../stdafx.h"
 #include "../void_map.h"
 #include "../signs_base.h"
+#include "../roadstop_base.h"
 #include "../window_func.h"
 #include "../fios.h"
 #include "../train.h"

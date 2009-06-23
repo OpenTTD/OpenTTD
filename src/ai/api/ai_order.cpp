@@ -8,6 +8,7 @@
 #include "../ai_instance.hpp"
 #include "../../debug.h"
 #include "../../vehicle_base.h"
+#include "../../roadstop_base.h"
 #include "../../depot_base.h"
 #include "../../station_map.h"
 #include "../../waypoint.h"

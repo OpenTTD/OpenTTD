@@ -9,6 +9,7 @@
 #include "../../command_func.h"
 #include "../../debug.h"
 #include "../../station_map.h"
+#include "../../roadstop_base.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../company_func.h"

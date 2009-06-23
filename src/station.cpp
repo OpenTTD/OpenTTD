@@ -22,13 +22,12 @@
 #include "settings_type.h"
 #include "subsidy_func.h"
 #include "core/pool_func.hpp"
+#include "roadstop_base.h"
 
 #include "table/strings.h"
 
 StationPool _station_pool("Station");
 INSTANTIATE_POOL_METHODS(Station)
-RoadStopPool _roadstop_pool("RoadStop");
-INSTANTIATE_POOL_METHODS(RoadStop)
 
 Station::Station(TileIndex tile) :
 	xy(tile),
@@ -437,56 +436,7 @@ StationRect& StationRect::operator = (Rect src)
 }
 
 
-/************************************************************************/
-/*                     RoadStop implementation                          */
-/************************************************************************/
-
-/** Initializes a RoadStop */
-RoadStop::RoadStop(TileIndex tile) :
-	xy(tile),
-	status(3) // stop is free
-{
-}
-
-/** De-Initializes a RoadStops. This includes clearing all slots that vehicles might
-  * have and unlinks it from the linked list of road stops at the given station
-  */
-RoadStop::~RoadStop()
-{
-	if (CleaningPool()) return;
-
-	/* Clear the slot assignment of all vehicles heading for this road stop */
-	if (num_vehicles != 0) {
-		RoadVehicle *rv;
-		FOR_ALL_ROADVEHICLES(rv) {
-			if (rv->slot == this) ClearSlot(rv);
-		}
-	}
-	assert(num_vehicles == 0);
-}
-
-/**
- * Get the next road stop accessible by this vehicle.
- * @param v the vehicle to get the next road stop for.
- * @return the next road stop accessible.
- */
-RoadStop *RoadStop::GetNextRoadStop(const RoadVehicle *v) const
-{
-	for (RoadStop *rs = this->next; rs != NULL; rs = rs->next) {
-		/* The vehicle cannot go to this roadstop (different roadtype) */
-		if ((GetRoadTypes(rs->xy) & v->compatible_roadtypes) == ROADTYPES_NONE) continue;
-		/* The vehicle is articulated and can therefor not go the a standard road stop */
-		if (IsStandardRoadStopTile(rs->xy) && RoadVehHasArticPart(v)) continue;
-
-		/* The vehicle can actually go to this road stop. So, return it! */
-		return rs;
-	}
-
-	return NULL;
-}
-
 void InitializeStations()
 {
 	_station_pool.CleanPool();
-	_roadstop_pool.CleanPool();
 }

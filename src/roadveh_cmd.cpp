@@ -30,6 +30,7 @@
 #include "depot_base.h"
 #include "effectvehicle_func.h"
 #include "settings_type.h"
+#include "roadstop_base.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

@@ -30,9 +30,8 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 
 bool HasStationInUse(StationID station, CompanyID company);
 
-RoadStop * GetRoadStopByTile(TileIndex tile, RoadStopType type);
+RoadStop *GetRoadStopByTile(TileIndex tile, RoadStopType type);
 uint GetNumRoadStops(const Station *st, RoadStopType type);
-RoadStop * AllocateRoadStop();
 
 void ClearSlot(struct RoadVehicle *v);
 

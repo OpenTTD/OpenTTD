@@ -7,6 +7,7 @@
 #include "landscape.h"
 #include "debug.h"
 #include "station_map.h"
+#include "roadstop_base.h"
 #include "newgrf_commons.h"
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"

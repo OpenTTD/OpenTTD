@@ -48,6 +48,7 @@
 #include "gamelog.h"
 #include "cheat_type.h"
 #include "animated_tile_func.h"
+#include "roadstop_base.h"
 #include "functions.h"
 #include "elrail_func.h"
 #include "rev.h"

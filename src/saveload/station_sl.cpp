@@ -4,6 +4,7 @@
 
 #include "../stdafx.h"
 #include "../station_base.h"
+#include "../roadstop_base.h"
 #include "../core/bitmath_func.hpp"
 #include "../core/alloc_func.hpp"
 #include "../variables.h"

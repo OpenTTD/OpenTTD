@@ -30,6 +30,7 @@
 #include "../company_func.h"
 #include "../date_func.h"
 #include "../autoreplace_base.h"
+#include "../roadstop_base.h"
 #include "../statusbar_gui.h"
 #include "../fileio_func.h"
 #include "../gamelog.h"
