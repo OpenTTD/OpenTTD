@@ -17,6 +17,7 @@
 #include "company_type.h"
 #include "industry_type.h"
 #include "core/geometry_type.hpp"
+#include "core/bitmath_func.hpp"
 #include "viewport_type.h"
 #include <list>
 
@@ -51,26 +52,99 @@ struct GoodsEntry {
 
 /** A Stop for a Road Vehicle */
 struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
+	enum RoadStopStatusFlags {
+		RSSFB_BAY0_FREE  = 0, ///< Non-zero when bay 0 is free
+		RSSFB_BAY1_FREE  = 1, ///< Non-zero when bay 1 is free
+		RSSFB_BAY_COUNT  = 2, ///< Max. number of bays
+		RSSFB_ENTRY_BUSY = 7, ///< Non-zero when roadstop entry is busy
+	};
+
 	static const uint LIMIT           = 16;  ///< The maximum amount of roadstops that are allowed at a single station
-	static const uint MAX_BAY_COUNT   =  2;  ///< The maximum number of loading bays
 	static const uint MAX_VEHICLES    = 64;  ///< The maximum number of vehicles that can allocate a slot to this roadstop
 
 	TileIndex        xy;                    ///< Position on the map
-	byte             status;                ///< Current status of the Stop. Like which spot is taken. Access using *Bay and *Busy functions.
+	byte             status;                ///< Current status of the Stop, @see RoadStopSatusFlag. Access using *Bay and *Busy functions.
 	byte             num_vehicles;          ///< Number of vehicles currently slotted to this stop
 	struct RoadStop  *next;                 ///< Next stop of the given type at this station
 
 	RoadStop(TileIndex tile = INVALID_TILE);
 	~RoadStop();
 
-	/* For accessing status */
-	bool HasFreeBay() const;
-	bool IsFreeBay(uint nr) const;
-	uint AllocateBay();
-	void AllocateDriveThroughBay(uint nr);
-	void FreeBay(uint nr);
-	bool IsEntranceBusy() const;
-	void SetEntranceBusy(bool busy);
+	/**
+	 * Checks whether there is a free bay in this road stop
+	 * @return is at least one bay free?
+	 */
+	FORCEINLINE bool HasFreeBay() const
+	{
+		return GB(this->status, 0, RSSFB_BAY_COUNT) != 0;
+	}
+
+	/**
+	 * Checks whether the given bay is free in this road stop
+	 * @param nr bay to check
+	 * @return is given bay free?
+	 */
+	FORCEINLINE bool IsFreeBay(uint nr) const
+	{
+		assert(nr < RSSFB_BAY_COUNT);
+		return HasBit(this->status, nr);
+	}
+
+	/**
+	 * Allocates a bay
+	 * @return the allocated bay number
+	 * @pre this->HasFreeBay()
+	 */
+	FORCEINLINE uint AllocateBay()
+	{
+		assert(this->HasFreeBay());
+
+		/* Find the first free bay. If the bit is set, the bay is free. */
+		uint bay_nr = 0;
+		while (!HasBit(this->status, bay_nr)) bay_nr++;
+
+		ClrBit(this->status, bay_nr);
+		return bay_nr;
+	}
+
+	/**
+	 * Allocates a bay in a drive-through road stop
+	 * @param nr the number of the bay to allocate
+	 */
+	FORCEINLINE void AllocateDriveThroughBay(uint nr)
+	{
+		assert(nr < RSSFB_BAY_COUNT);
+		ClrBit(this->status, nr);
+	}
+
+	/**
+	 * Frees the given bay
+	 * @param nr the number of the bay to free
+	 */
+	FORCEINLINE void FreeBay(uint nr)
+	{
+		assert(nr < RSSFB_BAY_COUNT);
+		SetBit(this->status, nr);
+	}
+
+
+	/**
+	 * Checks whether the entrance of the road stop is occupied by a vehicle
+	 * @return is entrance busy?
+	 */
+	FORCEINLINE bool IsEntranceBusy() const
+	{
+		return HasBit(this->status, RSSFB_ENTRY_BUSY);
+	}
+
+	/**
+	 * Makes an entrance occupied or free
+	 * @param busy if true, marks busy; free otherwise
+	 */
+	FORCEINLINE void SetEntranceBusy(bool busy)
+	{
+		SB(this->status, RSSFB_ENTRY_BUSY, 1, busy);
+	}
 
 	RoadStop *GetNextRoadStop(const struct RoadVehicle *v) const;
 };

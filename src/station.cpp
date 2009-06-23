@@ -465,69 +465,6 @@ RoadStop::~RoadStop()
 	assert(num_vehicles == 0);
 }
 
-/** Checks whether there is a free bay in this road stop */
-bool RoadStop::HasFreeBay() const
-{
-	return GB(status, 0, MAX_BAY_COUNT) != 0;
-}
-
-/** Checks whether the given bay is free in this road stop */
-bool RoadStop::IsFreeBay(uint nr) const
-{
-	assert(nr < MAX_BAY_COUNT);
-	return HasBit(status, nr);
-}
-
-/**
- * Allocates a bay
- * @return the allocated bay number
- * @pre this->HasFreeBay()
- */
-uint RoadStop::AllocateBay()
-{
-	assert(HasFreeBay());
-
-	/* Find the first free bay. If the bit is set, the bay is free. */
-	uint bay_nr = 0;
-	while (!HasBit(status, bay_nr)) bay_nr++;
-
-	ClrBit(status, bay_nr);
-	return bay_nr;
-}
-
-/**
- * Allocates a bay in a drive-through road stop
- * @param nr the number of the bay to allocate
- */
-void RoadStop::AllocateDriveThroughBay(uint nr)
-{
-	assert(nr < MAX_BAY_COUNT);
-	ClrBit(status, nr);
-}
-
-/**
- * Frees the given bay
- * @param nr the number of the bay to free
- */
-void RoadStop::FreeBay(uint nr)
-{
-	assert(nr < MAX_BAY_COUNT);
-	SetBit(status, nr);
-}
-
-
-/** Checks whether the entrance of the road stop is occupied by a vehicle */
-bool RoadStop::IsEntranceBusy() const
-{
-	return HasBit(status, 7);
-}
-
-/** Makes an entrance occupied or free */
-void RoadStop::SetEntranceBusy(bool busy)
-{
-	SB(status, 7, 1, busy);
-}
-
 /**
  * Get the next road stop accessible by this vehicle.
  * @param v the vehicle to get the next road stop for.
