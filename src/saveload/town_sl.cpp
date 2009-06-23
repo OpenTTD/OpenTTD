@@ -110,9 +110,9 @@ static const SaveLoad _town_desc[] = {
 	    SLE_VAR(Town, new_act_food,          SLE_UINT16),
 	    SLE_VAR(Town, new_act_water,         SLE_UINT16),
 
-	SLE_CONDVAR(Town, time_until_rebuild,    SLE_UINT8,                  0, 53),
-	SLE_CONDVAR(Town, grow_counter,          SLE_UINT8,                  0, 53),
-	SLE_CONDVAR(Town, growth_rate,           SLE_UINT8,                  0, 53),
+	SLE_CONDVAR(Town, time_until_rebuild,    SLE_FILE_U8 | SLE_VAR_U16,  0, 53),
+	SLE_CONDVAR(Town, grow_counter,          SLE_FILE_U8 | SLE_VAR_U16,  0, 53),
+	SLE_CONDVAR(Town, growth_rate,           SLE_FILE_U8 | SLE_VAR_I16,  0, 53),
 
 	SLE_CONDVAR(Town, time_until_rebuild,    SLE_UINT16,                54, SL_MAX_VERSION),
 	SLE_CONDVAR(Town, grow_counter,          SLE_UINT16,                54, SL_MAX_VERSION),

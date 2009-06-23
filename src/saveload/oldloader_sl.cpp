@@ -523,36 +523,36 @@ static const OldChunks town_chunk[] = {
 	OCL_NULL( 2 ),         ///< population,        no longer in use
 	OCL_SVAR( OC_UINT16, Town, townnametype ),
 	OCL_SVAR( OC_UINT32, Town, townnameparts ),
-	OCL_SVAR(  OC_UINT8, Town, grow_counter ),
+	OCL_SVAR(  OC_FILE_U8 | OC_VAR_U16, Town, grow_counter ),
 	OCL_NULL( 1 ),         ///< sort_index,        no longer in use
 	OCL_NULL( 4 ),         ///< sign-coordinates,  no longer in use
 	OCL_NULL( 2 ),         ///< namewidth,         no longer in use
-	OCL_SVAR( OC_UINT16, Town, flags12 ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, Town, flags12 ),
 	OCL_NULL( 10 ),        ///< radius,            no longer in use
 
-	OCL_SVAR( OC_UINT16, Town, ratings[0] ),
-	OCL_SVAR( OC_UINT16, Town, ratings[1] ),
-	OCL_SVAR( OC_UINT16, Town, ratings[2] ),
-	OCL_SVAR( OC_UINT16, Town, ratings[3] ),
-	OCL_SVAR( OC_UINT16, Town, ratings[4] ),
-	OCL_SVAR( OC_UINT16, Town, ratings[5] ),
-	OCL_SVAR( OC_UINT16, Town, ratings[6] ),
-	OCL_SVAR( OC_UINT16, Town, ratings[7] ),
+	OCL_SVAR( OC_INT16, Town, ratings[0] ),
+	OCL_SVAR( OC_INT16, Town, ratings[1] ),
+	OCL_SVAR( OC_INT16, Town, ratings[2] ),
+	OCL_SVAR( OC_INT16, Town, ratings[3] ),
+	OCL_SVAR( OC_INT16, Town, ratings[4] ),
+	OCL_SVAR( OC_INT16, Town, ratings[5] ),
+	OCL_SVAR( OC_INT16, Town, ratings[6] ),
+	OCL_SVAR( OC_INT16, Town, ratings[7] ),
 
 	OCL_SVAR( OC_FILE_U32 | OC_VAR_U16, Town, have_ratings ),
 	OCL_SVAR( OC_FILE_U32 | OC_VAR_U16, Town, statues ),
 	OCL_NULL( 2 ),         ///< num_houses,        no longer in use
-	OCL_SVAR(  OC_UINT8, Town, time_until_rebuild ),
-	OCL_SVAR(  OC_UINT8, Town, growth_rate ),
+	OCL_SVAR(  OC_FILE_U8 | OC_VAR_U16, Town, time_until_rebuild ),
+	OCL_SVAR(  OC_FILE_U8 | OC_VAR_I16, Town, growth_rate ),
 
-	OCL_SVAR( OC_UINT16, Town, new_max_pass ),
-	OCL_SVAR( OC_UINT16, Town, new_max_mail ),
-	OCL_SVAR( OC_UINT16, Town, new_act_pass ),
-	OCL_SVAR( OC_UINT16, Town, new_act_mail ),
-	OCL_SVAR( OC_UINT16, Town, max_pass ),
-	OCL_SVAR( OC_UINT16, Town, max_mail ),
-	OCL_SVAR( OC_UINT16, Town, act_pass ),
-	OCL_SVAR( OC_UINT16, Town, act_mail ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, new_max_pass ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, new_max_mail ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, new_act_pass ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, new_act_mail ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, max_pass ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, max_mail ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, act_pass ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Town, act_mail ),
 
 	OCL_SVAR(  OC_UINT8, Town, pct_pass_transported ),
 	OCL_SVAR(  OC_UINT8, Town, pct_mail_transported ),
