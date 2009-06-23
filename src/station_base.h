@@ -51,7 +51,6 @@ struct GoodsEntry {
 
 /** A Stop for a Road Vehicle */
 struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
-	static const int  cDebugCtorLevel =  5;  ///< Debug level on which Contructor / Destructor messages are printed
 	static const uint LIMIT           = 16;  ///< The maximum amount of roadstops that are allowed at a single station
 	static const uint MAX_BAY_COUNT   =  2;  ///< The maximum number of loading bays
 	static const uint MAX_VEHICLES    = 64;  ///< The maximum number of vehicles that can allocate a slot to this roadstop
@@ -165,8 +164,6 @@ public:
 	uint8 cached_anim_triggers; ///< Combined animation trigger bitmask, used to determine if trigger processing should happen.
 
 	StationRect rect; ///< Station spread out rectangle (not saved) maintained by StationRect_xxx() functions
-
-	static const int cDebugCtorLevel = 5;
 
 	Station(TileIndex tile = INVALID_TILE);
 	~Station();

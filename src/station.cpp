@@ -30,24 +30,17 @@ INSTANTIATE_POOL_METHODS(Station)
 RoadStopPool _roadstop_pool("RoadStop");
 INSTANTIATE_POOL_METHODS(RoadStop)
 
-Station::Station(TileIndex tile)
+Station::Station(TileIndex tile) :
+	xy(tile),
+	train_tile(INVALID_TILE),
+	airport_tile(INVALID_TILE),
+	dock_tile(INVALID_TILE),
+	indtype(IT_INVALID),
+	time_since_load(255),
+	time_since_unload(255),
+	last_vehicle_type(VEH_INVALID)
 {
-	DEBUG(station, cDebugCtorLevel, "I+%3d", index);
-
-	xy = tile;
-	airport_tile = dock_tile = train_tile = INVALID_TILE;
-	bus_stops = truck_stops = NULL;
-	had_vehicle_of_type = 0;
-	time_since_load = 255;
-	time_since_unload = 255;
-	delete_ctr = 0;
-	facilities = 0;
-
-	last_vehicle_type = VEH_INVALID;
-	indtype = IT_INVALID;
-
-	random_bits = 0; // Random() must be called when station is really built (DC_EXEC)
-	waiting_triggers = 0;
+	/* this->random_bits is set in Station::AddFacility() */
 }
 
 /**
@@ -58,8 +51,6 @@ Station::Station(TileIndex tile)
  */
 Station::~Station()
 {
-	DEBUG(station, cDebugCtorLevel, "I-%3d", index);
-
 	free(this->name);
 	free(this->speclist);
 
@@ -453,11 +444,8 @@ StationRect& StationRect::operator = (Rect src)
 /** Initializes a RoadStop */
 RoadStop::RoadStop(TileIndex tile) :
 	xy(tile),
-	status(3), // stop is free
-	num_vehicles(0),
-	next(NULL)
+	status(3) // stop is free
 {
-	DEBUG(ms, cDebugCtorLevel,  "I+ at %d[0x%x]", tile, tile);
 }
 
 /** De-Initializes a RoadStops. This includes clearing all slots that vehicles might
@@ -475,8 +463,6 @@ RoadStop::~RoadStop()
 		}
 	}
 	assert(num_vehicles == 0);
-
-	DEBUG(ms, cDebugCtorLevel , "I- at %d[0x%x]", xy, xy);
 }
 
 /** Checks whether there is a free bay in this road stop */
