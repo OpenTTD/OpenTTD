@@ -527,7 +527,7 @@ static const OldChunks town_chunk[] = {
 	OCL_NULL( 1 ),         ///< sort_index,        no longer in use
 	OCL_NULL( 4 ),         ///< sign-coordinates,  no longer in use
 	OCL_NULL( 2 ),         ///< namewidth,         no longer in use
-	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, Town, flags12 ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, Town, flags ),
 	OCL_NULL( 10 ),        ///< radius,            no longer in use
 
 	OCL_SVAR( OC_INT16, Town, ratings[0] ),

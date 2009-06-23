@@ -123,7 +123,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	 * bit 0 = Building funds received
 	 * bit 1 = CHURCH
 	 * bit 2 = STADIUM */
-	byte flags12;
+	byte flags;
 
 	/* level of noise that all the airports are generating */
 	uint16 noise_reached;
@@ -272,11 +272,11 @@ static const byte TOWN_GROWTH_FREQUENCY = 70;
  * construction. */
 static const byte TOWN_HOUSE_COMPLETED = 3;
 
-/** This enum is used in conjonction with town->flags12.
+/** This enum is used in conjonction with town->flags.
  * IT simply states what bit is used for.
  * It is pretty unrealistic (IMHO) to only have one church/stadium
  * per town, NO MATTER the population of it.
- * And there are 5 more bits available on flags12...
+ * And there are 5 more bits available on flags...
  */
 enum {
 	TOWN_IS_FUNDED      = 0,   ///< Town has received some funds for

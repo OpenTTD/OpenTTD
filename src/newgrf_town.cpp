@@ -30,7 +30,7 @@ uint32 TownGetVariable(byte variable, byte parameter, bool *available, const Tow
 		case 0x82: return ClampToU16(t->population);
 		case 0x83: return GB(ClampToU16(t->population), 8, 8);
 		case 0x8A: return t->grow_counter;
-		case 0x92: return t->flags12;  // In original game, 0x92 and 0x93 are really one word. Since flags12 is a byte, this is to adjust
+		case 0x92: return t->flags;  // In original game, 0x92 and 0x93 are really one word. Since flags is a byte, this is to adjust
 		case 0x93: return 0;
 		case 0x94: return ClampToU16(t->squared_town_zone_radius[0]);
 		case 0x95: return GB(ClampToU16(t->squared_town_zone_radius[0]), 8, 8);

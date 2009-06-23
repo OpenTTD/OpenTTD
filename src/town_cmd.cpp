@@ -488,7 +488,7 @@ static void TileLoop_Town(TileIndex tile)
 	_current_company = OWNER_TOWN;
 
 	if ((hs->building_flags & BUILDING_HAS_1_TILE) &&
-			HasBit(t->flags12, TOWN_IS_FUNDED) &&
+			HasBit(t->flags, TOWN_IS_FUNDED) &&
 			CanDeleteHouse(tile) &&
 			GetHouseAge(tile) >= hs->minimum_life &&
 			--t->time_until_rebuild == 0) {
@@ -656,7 +656,7 @@ static bool GrowTown(Town *t);
 
 static void TownTickHandler(Town *t)
 {
-	if (HasBit(t->flags12, TOWN_IS_FUNDED)) {
+	if (HasBit(t->flags, TOWN_IS_FUNDED)) {
 		int i = t->grow_counter - 1;
 		if (i < 0) {
 			if (GrowTown(t)) {
@@ -1460,7 +1460,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	t->num_houses = 0;
 	t->time_until_rebuild = 10;
 	UpdateTownRadius(t);
-	t->flags12 = 0;
+	t->flags = 0;
 	t->population = 0;
 	t->grow_counter = 0;
 	t->growth_rate = 250;
@@ -2121,7 +2121,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 			SetBit(oneof, TOWN_HAS_STADIUM);
 		}
 
-		if (t->flags12 & oneof) continue;
+		if (t->flags & oneof) continue;
 
 		/* Make sure there is no slope? */
 		bool noslope = (hs->building_flags & TILE_NOT_SLOPED) != 0;
@@ -2146,7 +2146,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 		t->num_houses++;
 
 		/* Special houses that there can be only one of. */
-		t->flags12 |= oneof;
+		t->flags |= oneof;
 
 		byte construction_counter = 0;
 		byte construction_stage = 0;
@@ -2233,9 +2233,9 @@ void ClearTownHouse(Town *t, TileIndex tile)
 
 	/* Clear flags for houses that only may exist once/town. */
 	if (hs->building_flags & BUILDING_IS_CHURCH) {
-		ClrBit(t->flags12, TOWN_HAS_CHURCH);
+		ClrBit(t->flags, TOWN_HAS_CHURCH);
 	} else if (hs->building_flags & BUILDING_IS_STADIUM) {
-		ClrBit(t->flags12, TOWN_HAS_STADIUM);
+		ClrBit(t->flags, TOWN_HAS_STADIUM);
 	}
 
 	/* Do the actual clearing of tiles */
@@ -2404,7 +2404,7 @@ static void TownActionFundBuildings(Town *t)
 	/* Build next tick */
 	t->grow_counter = 1;
 	/* If we were not already growing */
-	SetBit(t->flags12, TOWN_IS_FUNDED);
+	SetBit(t->flags, TOWN_IS_FUNDED);
 	/* And grow for 3 months */
 	t->fund_buildings_months = 3;
 }
@@ -2591,7 +2591,7 @@ static void UpdateTownGrowRate(Town *t)
 
 	InvalidateWindow(WC_TOWN_AUTHORITY, t->index);
 
-	ClrBit(t->flags12, TOWN_IS_FUNDED);
+	ClrBit(t->flags, TOWN_IS_FUNDED);
 	if (_settings_game.economy.town_growth_rate == 0 && t->fund_buildings_months == 0) return;
 
 	/** Towns are processed every TOWN_GROWTH_FREQUENCY ticks, and this is the
@@ -2630,7 +2630,7 @@ static void UpdateTownGrowRate(Town *t)
 	if (m <= t->grow_counter)
 		t->grow_counter = m;
 
-	SetBit(t->flags12, TOWN_IS_FUNDED);
+	SetBit(t->flags, TOWN_IS_FUNDED);
 }
 
 static void UpdateTownAmounts(Town *t)

@@ -70,7 +70,7 @@ static const SaveLoad _town_desc[] = {
 	    SLE_VAR(Town, townnameparts,         SLE_UINT32),
 	SLE_CONDSTR(Town, name,                  SLE_STR, 0, 84, SL_MAX_VERSION),
 
-	    SLE_VAR(Town, flags12,               SLE_UINT8),
+	    SLE_VAR(Town, flags,                 SLE_UINT8),
 	SLE_CONDVAR(Town, statues,               SLE_FILE_U8  | SLE_VAR_U16, 0, 103),
 	SLE_CONDVAR(Town, statues,               SLE_UINT16,               104, SL_MAX_VERSION),
 
