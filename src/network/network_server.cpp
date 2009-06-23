@@ -1230,10 +1230,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MOVE)
 {
 	CompanyID company_id = (Owner)p->Recv_uint8();
 
-	/* Check if the company is valid */
-	if (!Company::IsValidID(company_id) && company_id != COMPANY_SPECTATOR) return;
-	/* We don't allow moving to AI companies */
-	if (company_id != COMPANY_SPECTATOR && Company::Get(company_id)->is_ai) return;
+	/* Check if the company is valid, we don't allow moving to AI companies */
+	if (company_id != COMPANY_SPECTATOR && !Company::IsValidHumanID(company_id)) return;
 
 	/* Check if we require a password for this company */
 	if (company_id != COMPANY_SPECTATOR && !StrEmpty(_network_company_states[company_id].password)) {

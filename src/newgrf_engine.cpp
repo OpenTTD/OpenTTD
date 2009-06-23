@@ -585,7 +585,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 		case 0x43: // Company information
 			if (!HasBit(v->vcache.cache_valid, 3)) {
-				v->vcache.cached_var43 = v->owner | (Company::Get(v->owner)->is_ai ? 0x10000 : 0) | (LiveryHelper(v->engine_type, v) << 24);
+				v->vcache.cached_var43 = v->owner | (Company::IsHumanID(v->owner) ? 0 : 0x10000) | (LiveryHelper(v->engine_type, v) << 24);
 				SetBit(v->vcache.cache_valid, 3);
 			}
 			return v->vcache.cached_var43;

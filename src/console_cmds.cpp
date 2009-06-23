@@ -666,7 +666,7 @@ DEF_CONSOLE_CMD(ConJoinCompany)
 		return true;
 	}
 
-	if (company_id != COMPANY_SPECTATOR && Company::Get(company_id)->is_ai) {
+	if (company_id != COMPANY_SPECTATOR && !Company::IsHumanID(company_id)) {
 		IConsoleError("Cannot join AI company.");
 		return true;
 	}
@@ -709,7 +709,7 @@ DEF_CONSOLE_CMD(ConMoveClient)
 		return true;
 	}
 
-	if (company_id != COMPANY_SPECTATOR && Company::Get(company_id)->is_ai) {
+	if (company_id != COMPANY_SPECTATOR && !Company::IsHumanID(company_id)) {
 		IConsoleError("You cannot move clients to AI companies.");
 		return true;
 	}
@@ -741,15 +741,14 @@ DEF_CONSOLE_CMD(ConResetCompany)
 	if (argc != 2) return false;
 
 	CompanyID index = (CompanyID)(atoi(argv[1]) - 1);
-	const Company *c = Company::GetIfValid(index);
 
 	/* Check valid range */
-	if (c == NULL) {
+	if (!Company::IsValidID(index)) {
 		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
 		return true;
 	}
 
-	if (c->is_ai) {
+	if (!Company::IsHumanID(index)) {
 		IConsoleError("Company is owned by an AI.");
 		return true;
 	}
@@ -1064,7 +1063,7 @@ DEF_CONSOLE_CMD(ConReloadAI)
 		return true;
 	}
 
-	if (IsHumanCompany(company_id)) {
+	if (Company::IsHumanID(company_id)) {
 		IConsoleWarning("Company is not controlled by an AI.");
 		return true;
 	}
@@ -1101,7 +1100,7 @@ DEF_CONSOLE_CMD(ConStopAI)
 		return true;
 	}
 
-	if (IsHumanCompany(company_id)) {
+	if (Company::IsHumanID(company_id)) {
 		IConsoleWarning("Company is not controlled by an AI.");
 		return true;
 	}

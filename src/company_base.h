@@ -82,14 +82,19 @@ struct Company : CompanyPool::PoolItem<&_company_pool> {
 
 	static FORCEINLINE bool IsValidAiID(size_t index)
 	{
-		const Company *c = GetIfValid(index);
+		const Company *c = Company::GetIfValid(index);
 		return c != NULL && c->is_ai;
 	}
 
 	static FORCEINLINE bool IsValidHumanID(size_t index)
 	{
-		const Company *c = GetIfValid(index);
+		const Company *c = Company::GetIfValid(index);
 		return c != NULL && !c->is_ai;
+	}
+
+	static FORCEINLINE bool IsHumanID(size_t index)
+	{
+		return !Company::Get(index)->is_ai;
 	}
 };
 
@@ -97,12 +102,6 @@ struct Company : CompanyPool::PoolItem<&_company_pool> {
 #define FOR_ALL_COMPANIES(var) FOR_ALL_COMPANIES_FROM(var, 0)
 
 Money CalculateCompanyValue(const Company *c);
-
-static inline bool IsHumanCompany(CompanyID company)
-{
-	return !Company::Get(company)->is_ai;
-}
-
 
 extern uint _next_competitor_start;
 extern uint _cur_company_tick_index;

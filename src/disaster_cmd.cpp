@@ -62,7 +62,7 @@ static void DisasterClearSquare(TileIndex tile)
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if (IsHumanCompany(GetTileOwner(tile)) && !IsRailWaypoint(tile)) {
+			if (Company::IsHumanID(GetTileOwner(tile)) && !IsRailWaypoint(tile)) {
 				CompanyID old_company = _current_company;
 				_current_company = OWNER_WATER;
 				DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
@@ -555,7 +555,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 		TileIndex tile = tile_org;
 		do {
 			if (IsPlainRailTile(tile) &&
-					IsHumanCompany(GetTileOwner(tile))) {
+					Company::IsHumanID(GetTileOwner(tile))) {
 				break;
 			}
 			tile = TILE_MASK(tile + 1);
