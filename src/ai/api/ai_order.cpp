@@ -345,7 +345,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 				order.MakeGoToDepot(::GetStationIndex(destination), odtf, onsf, odaf);
 			} else {
 				if (::IsTileType(destination, MP_STATION)) return false;
-				order.MakeGoToDepot(::GetDepotByTile(destination)->index, odtf, onsf, odaf);
+				order.MakeGoToDepot(::Depot::GetByTile(destination)->index, odtf, onsf, odaf);
 			}
 			break;
 		}

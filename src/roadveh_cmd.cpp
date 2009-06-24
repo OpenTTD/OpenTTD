@@ -374,7 +374,7 @@ static const Depot *FindClosestRoadDepot(const RoadVehicle *v)
 
 			NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, v->tile, ReverseTrackdir(trackdir), false, TRANSPORT_ROAD, v->compatible_roadtypes, v->owner, INVALID_RAILTYPES, 0);
 
-			if (ftd.best_bird_dist == 0) return GetDepotByTile(ftd.node.tile); // Target found
+			if (ftd.best_bird_dist == 0) return Depot::GetByTile(ftd.node.tile); // Target found
 		} break;
 
 		default:
@@ -389,7 +389,7 @@ static const Depot *FindClosestRoadDepot(const RoadVehicle *v)
 				FollowTrack(v->tile, PATHFIND_FLAGS_NONE, TRANSPORT_ROAD, v->compatible_roadtypes, d, EnumRoadSignalFindDepot, NULL, &rfdd);
 			}
 
-			if (rfdd.best_length != UINT_MAX) return GetDepotByTile(rfdd.tile);
+			if (rfdd.best_length != UINT_MAX) return Depot::GetByTile(rfdd.tile);
 		} break;
 	}
 

@@ -100,7 +100,7 @@ static const Depot *FindClosestShipDepot(const Vehicle *v)
 		Trackdir trackdir = v->GetVehicleTrackdir();
 		NPFFoundTargetData ftd = NPFRouteToDepotTrialError(v->tile, trackdir, false, TRANSPORT_WATER, 0, v->owner, INVALID_RAILTYPES);
 
-		if (ftd.best_bird_dist == 0) return GetDepotByTile(ftd.node.tile); // Found target
+		if (ftd.best_bird_dist == 0) return Depot::GetByTile(ftd.node.tile); // Found target
 
 		return NULL; // Did not find target
 	}

@@ -177,7 +177,7 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 
 	if (flags & DC_EXEC) {
 		/* Kill the depot, which is registered at the northernmost tile. Use that one */
-		delete GetDepotByTile(tile2 < tile ? tile2 : tile);
+		delete Depot::GetByTile(tile2 < tile ? tile2 : tile);
 
 		MakeWaterKeepingClass(tile,  GetTileOwner(tile));
 		MakeWaterKeepingClass(tile2, GetTileOwner(tile2));

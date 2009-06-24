@@ -17,10 +17,10 @@ INSTANTIATE_POOL_METHODS(Depot)
 
 /**
  * Gets a depot from a tile
- *
+ * @param tile tile with depot
  * @return Returns the depot if the tile had a depot, else it returns NULL
  */
-Depot *GetDepotByTile(TileIndex tile)
+/* static */ Depot *Depot::GetByTile(TileIndex tile)
 {
 	/* A ship depot is multiple tiles. The north most tile is
 	 * always the ->xy tile, so make sure we always look for

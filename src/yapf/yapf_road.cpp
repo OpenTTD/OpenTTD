@@ -403,7 +403,7 @@ public:
 		Node *n = Yapf().GetBestNode();
 		TileIndex depot_tile = n->m_segment_last_tile;
 		assert(IsRoadDepotTile(depot_tile));
-		Depot *ret = GetDepotByTile(depot_tile);
+		Depot *ret = Depot::GetByTile(depot_tile);
 		return ret;
 	}
 };
@@ -478,7 +478,7 @@ Depot *YapfFindNearestRoadDepot(const Vehicle *v)
 	/* handle the case when our vehicle is already in the depot tile */
 	if (IsRoadDepotTile(tile)) {
 		/* only what we need to return is the Depot* */
-		return GetDepotByTile(tile);
+		return Depot::GetByTile(tile);
 	}
 
 	/* default is YAPF type 2 */

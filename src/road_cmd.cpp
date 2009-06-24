@@ -882,7 +882,7 @@ static CommandCost RemoveRoadDepot(TileIndex tile, DoCommandFlag flags)
 
 	if (flags & DC_EXEC) {
 		DoClearSquare(tile);
-		delete GetDepotByTile(tile);
+		delete Depot::GetByTile(tile);
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_road_depot);

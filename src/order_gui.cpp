@@ -300,7 +300,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			case MP_RAILWAY:
 				if (v->type == VEH_TRAIN && IsTileOwner(tile, _local_company)) {
 					if (IsRailDepot(tile)) {
-						order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS,
+						order.MakeGoToDepot(Depot::GetByTile(tile)->index, ODTFB_PART_OF_ORDERS,
 								_settings_client.gui.new_nonstop ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 						if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
 						return order;
@@ -310,7 +310,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 			case MP_ROAD:
 				if (IsRoadDepot(tile) && v->type == VEH_ROAD && IsTileOwner(tile, _local_company)) {
-					order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS,
+					order.MakeGoToDepot(Depot::GetByTile(tile)->index, ODTFB_PART_OF_ORDERS,
 							_settings_client.gui.new_nonstop ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 					if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
 					return order;
@@ -331,7 +331,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				if (IsShipDepot(tile) && IsTileOwner(tile, _local_company)) {
 					TileIndex tile2 = GetOtherShipDepotTile(tile);
 
-					order.MakeGoToDepot(GetDepotByTile(tile < tile2 ? tile : tile2)->index, ODTFB_PART_OF_ORDERS, ONSF_STOP_EVERYWHERE);
+					order.MakeGoToDepot(Depot::GetByTile(tile < tile2 ? tile : tile2)->index, ODTFB_PART_OF_ORDERS, ONSF_STOP_EVERYWHERE);
 					if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
 					return order;
 				}

@@ -341,7 +341,7 @@ struct DepotWindow : Window {
 		if (this->type == VEH_AIRCRAFT) {
 			SetDParam(0, GetStationIndex(tile)); // Airport name
 		} else {
-			Depot *depot = GetDepotByTile(tile);
+			Depot *depot = Depot::GetByTile(tile);
 			assert(depot != NULL);
 
 			SetDParam(0, depot->town_index);
@@ -815,7 +815,7 @@ struct DepotWindow : Window {
 					TileIndex tile = this->window_number;
 					byte vehtype = this->type;
 
-					SetDParam(0, (vehtype == VEH_AIRCRAFT) ? GetStationIndex(tile) : GetDepotByTile(tile)->town_index);
+					SetDParam(0, (vehtype == VEH_AIRCRAFT) ? GetStationIndex(tile) : Depot::GetByTile(tile)->town_index);
 					ShowQuery(
 						confirm_captions[vehtype],
 						STR_DEPOT_SELL_CONFIRMATION_TEXT,
