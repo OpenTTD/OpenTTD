@@ -3530,6 +3530,16 @@ static uint CountPassengersInTrain(const Train *v)
  */
 static uint TrainCrashed(Train *v)
 {
+	/* Try to re-reserve track under already crashed train too */
+	for (const Train *u = v; u != NULL; u = u->Next()) {
+		TrackBits trackbits = u->track;
+		if (trackbits == TRACK_BIT_WORMHOLE) {
+			/* Vehicle is inside a wormhole, v->track contains no useful value then. */
+			trackbits = DiagDirToDiagTrackBits(GetTunnelBridgeDirection(u->tile));
+		}
+		TryReserveRailTrack(u->tile, TrackBitsToTrack(trackbits));
+	}
+
 	/* do not crash train twice */
 	if (v->vehstatus & VS_CRASHED) return 0;
 
@@ -3543,51 +3553,44 @@ static uint TrainCrashed(Train *v)
 }
 
 struct TrainCollideChecker {
-	Vehicle *v;  ///< vehicle we are testing for collision
-	uint num;    ///< number of dead if train collided
+	Train *v; ///< vehicle we are testing for collision
+	uint num; ///< number of victims if train collided
 };
 
 static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
 {
 	TrainCollideChecker *tcc = (TrainCollideChecker*)data;
 
-	if (v->type != VEH_TRAIN) return NULL;
+	/* not a train or in depot */
+	if (v->type != VEH_TRAIN || Train::From(v)->track == TRACK_BIT_DEPOT) return NULL;
 
 	/* get first vehicle now to make most usual checks faster */
-	Vehicle *coll = v->First();
+	Train *coll = Train::From(v)->First();
 
-	/* can't collide with own wagons && can't crash in depot && the same height level */
-	if (coll != tcc->v && Train::From(v)->track != TRACK_BIT_DEPOT && abs(v->z_pos - tcc->v->z_pos) < 6) {
-		int x_diff = v->x_pos - tcc->v->x_pos;
-		int y_diff = v->y_pos - tcc->v->y_pos;
+	/* can't collide with own wagons */
+	if (coll == tcc->v) return NULL;
 
-		/* Needed to disable possible crash of competitor train in station by building diagonal track at its end.
-		 * The second check is false when (abs(first), abs(second)) is: a) 5, 0  b) 4, <=3  c) 3, <=4, d) 2-, <=5
-		 * Sum of these two is at most 2 + 5 == 4 + 3 == 7. So we can just test if sum of abs() is > 7 to prevent
-		 * multiplying. Simply, when sum of abs() is >= 8, the sum of squares can't be <= 25.
-		 * Even gcc3.4 seems to do abs() branchless (using arithmetics or conditional moves). */
-		if (abs(x_diff) + abs(y_diff) > 7 || x_diff * x_diff + y_diff * y_diff > 25) return NULL;
+	int x_diff = v->x_pos - tcc->v->x_pos;
+	int y_diff = v->y_pos - tcc->v->y_pos;
 
-		/* crash both trains */
-		tcc->num += TrainCrashed(Train::From(tcc->v));
-		tcc->num += TrainCrashed(Train::From(coll));
+	/* Do fast calculation to check whether trains are not in close vicinity
+	 * and quickly reject trains distant enough for any collision.
+	 * Differences are shifted by 7, mapping range [-7 .. 8] into [0 .. 15]
+	 * Differences are then ORed and then we check for any higher bits */
+	uint hash = (y_diff + 7) | (x_diff + 7);
+	if (hash & ~15) return NULL;
 
-		/* Try to reserve all tiles directly under the crashed trains.
-		 * As there might be more than two trains involved, we have to do that for all vehicles */
-		const Train *u;
-		FOR_ALL_TRAINS(u) {
-			if ((u->vehstatus & VS_CRASHED) && u->track != TRACK_BIT_DEPOT) {
-				TrackBits trackbits = u->track;
-				if (trackbits == TRACK_BIT_WORMHOLE) {
-					/* Vehicle is inside a wormhole, v->track contains no useful value then. */
-					trackbits = DiagDirToDiagTrackBits(GetTunnelBridgeDirection(u->tile));
-				}
-				TryReserveRailTrack(u->tile, TrackBitsToTrack(trackbits));
-			}
-		}
-	}
+	/* Slower check using multiplication */
+	if (x_diff * x_diff + y_diff * y_diff > 25) return NULL;
 
-	return NULL;
+	/* Happens when there is a train under bridge next to bridge head */
+	if (abs(v->z_pos - tcc->v->z_pos) > 5) return NULL;
+
+	/* crash both trains */
+	tcc->num += TrainCrashed(tcc->v);
+	tcc->num += TrainCrashed(coll);
+
+	return NULL; // continue searching
 }
 
 /**
