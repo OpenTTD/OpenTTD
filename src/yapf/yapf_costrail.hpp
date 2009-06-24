@@ -543,7 +543,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 
 			/* Station platform-length penalty. */
 			if ((end_segment_reason & ESRB_STATION) != ESRB_NONE) {
-				Station *st = GetStationByTile(n.GetLastTile());
+				Station *st = Station::GetByTile(n.GetLastTile());
 				assert(st != NULL);
 				uint platform_length = st->GetPlatformLength(n.GetLastTile(), ReverseDiagDir(TrackdirToExitdir(n.GetLastTrackdir())));
 				/* Reduce the extra cost caused by passing-station penalty (each station receives it in the segment cost). */

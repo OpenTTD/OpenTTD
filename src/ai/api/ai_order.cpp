@@ -10,7 +10,7 @@
 #include "../../vehicle_base.h"
 #include "../../roadstop_base.h"
 #include "../../depot_base.h"
-#include "../../station_map.h"
+#include "../../station_base.h"
 #include "../../waypoint.h"
 
 /**

@@ -9,7 +9,6 @@
 #include "road_map.h"
 #include "water_map.h"
 #include "station_func.h"
-#include "station_base.h"
 #include "rail.h"
 
 typedef byte StationGfx;
@@ -22,11 +21,6 @@ static inline StationID GetStationIndex(TileIndex t)
 {
 	assert(IsTileType(t, MP_STATION));
 	return (StationID)_m[t].m2;
-}
-
-static inline Station *GetStationByTile(TileIndex t)
-{
-	return Station::Get(GetStationIndex(t));
 }
 
 

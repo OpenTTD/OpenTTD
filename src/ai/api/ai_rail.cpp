@@ -6,7 +6,7 @@
 #include "ai_map.hpp"
 #include "ai_station.hpp"
 #include "../../debug.h"
-#include "../../station_map.h"
+#include "../../station_base.h"
 #include "../../company_func.h"
 #include "../../waypoint.h"
 #include "../../newgrf_generic.h"

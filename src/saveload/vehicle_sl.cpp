@@ -8,6 +8,7 @@
 #include "../roadveh.h"
 #include "../ship.h"
 #include "../aircraft.h"
+#include "../station_base.h"
 #include "../effectvehicle_base.h"
 
 #include "saveload.h"

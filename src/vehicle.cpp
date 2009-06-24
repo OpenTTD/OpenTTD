@@ -31,6 +31,7 @@
 #include "vehicle_func.h"
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
+#include "station_base.h"
 #include "ai/ai.hpp"
 #include "core/smallmap_type.hpp"
 #include "depot_func.h"

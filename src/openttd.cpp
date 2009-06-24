@@ -54,6 +54,7 @@
 #include "rev.h"
 #include "highscore.h"
 #include "thread.h"
+#include "station_base.h"
 
 #include "newgrf_commons.h"
 

@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include "landscape.h"
 #include "roadveh.h"
-#include "station_map.h"
+#include "station_base.h"
 #include "command_func.h"
 #include "news_func.h"
 #include "pathfind.h"
@@ -1639,7 +1639,7 @@ again:
 			v->frame == RVC_DRIVE_THROUGH_STOP_FRAME))) {
 
 		RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
-		Station *st = GetStationByTile(v->tile);
+		Station *st = Station::GetByTile(v->tile);
 
 		/* Vehicle is at the stop position (at a bay) in a road stop.
 		 * Note, if vehicle is loading/unloading it has already been handled,

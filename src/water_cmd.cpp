@@ -32,6 +32,7 @@
 #include "newgrf_cargo.h"
 #include "effectvehicle_func.h"
 #include "tunnelbridge_map.h"
+#include "station_base.h"
 #include "ai/ai.hpp"
 
 #include "table/sprites.h"
@@ -740,7 +741,7 @@ static void FloodVehicles(TileIndex tile)
 	byte z = 0;
 
 	if (IsTileType(tile, MP_STATION) && IsAirport(tile)) {
-		const Station *st = GetStationByTile(tile);
+		const Station *st = Station::GetByTile(tile);
 		const AirportFTAClass *airport = st->Airport();
 		z = 1 + airport->delta_z;
 		for (uint x = 0; x < airport->size_x; x++) {
@@ -756,7 +757,7 @@ static void FloodVehicles(TileIndex tile)
 
 	/* if non-uniform stations are disabled, flood some train in this train station (if there is any) */
 	if (!_settings_game.station.nonuniform_stations && IsTileType(tile, MP_STATION) && GetStationType(tile) == STATION_RAIL) {
-		const Station *st = GetStationByTile(tile);
+		const Station *st = Station::GetByTile(tile);
 
 		BEGIN_TILE_LOOP(t, st->trainst_w, st->trainst_h, st->train_tile)
 			if (st->TileBelongsToRailStation(t)) {
@@ -790,7 +791,7 @@ static void FloodVehicle(Vehicle *v)
 				 * because that's always the shadow. Except for the heliport, because
 				 * that station has a big z_offset for the aircraft. */
 				if (!IsTileType(v->tile, MP_STATION) || !IsAirport(v->tile) || GetTileMaxZ(v->tile) != 0) return;
-				const Station *st = GetStationByTile(v->tile);
+				const Station *st = Station::GetByTile(v->tile);
 				const AirportFTAClass *airport = st->Airport();
 
 				if (v->z_pos != airport->delta_z + 1) return;

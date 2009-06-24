@@ -20,7 +20,7 @@
 #include "landscape.h"
 
 #include "industry_map.h"
-#include "station_map.h"
+#include "station_base.h"
 #include "command_func.h"
 #include "news_func.h"
 #include "town.h"
@@ -228,7 +228,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 		if (IsValidTile(v->tile) &&
 				IsTileType(v->tile, MP_STATION) &&
 				IsAirport(v->tile)) {
-			Station *st = GetStationByTile(v->tile);
+			Station *st = Station::GetByTile(v->tile);
 			CLRBITS(st->airport_flags, RUNWAY_IN_block);
 			AI::NewEvent(GetTileOwner(v->tile), new AIEventDisasterZeppelinerCleared(st->index));
 		}
@@ -268,7 +268,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 	if (IsValidTile(v->tile) &&
 			IsTileType(v->tile, MP_STATION) &&
 			IsAirport(v->tile)) {
-		SETBITS(GetStationByTile(v->tile)->airport_flags, RUNWAY_IN_block);
+		SETBITS(Station::GetByTile(v->tile)->airport_flags, RUNWAY_IN_block);
 	}
 
 	return true;

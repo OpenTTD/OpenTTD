@@ -12,6 +12,7 @@
 #include "core/bitmath_func.hpp"
 #include "economy_func.h"
 #include "slope_type.h"
+#include "strings_type.h"
 
 enum RailTypeFlag {
 	RTF_CATENARY = 0,  ///< Set if the rail type should have catenary drawn

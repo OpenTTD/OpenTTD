@@ -8,7 +8,7 @@
 #include "../../tile_type.h"
 #include "../../industry.h"
 #include "../../strings_func.h"
-#include "../../station_map.h"
+#include "../../station_base.h"
 #include "table/strings.h"
 
 /* static */ int32 AIIndustry::GetIndustryCount()

@@ -19,7 +19,7 @@
 #include "gfx_func.h"
 #include "widgets/dropdown_func.h"
 #include "newgrf_cargo.h"
-#include "station_map.h"
+#include "station_base.h"
 #include "tilehighlight_func.h"
 #include "core/smallmap_type.hpp"
 #include "company_base.h"
@@ -1136,7 +1136,7 @@ static const Station *FindStationsNearby(TileIndex tile, int w, int h, bool dist
 
 	/* Check the inside, to return, if we sit on another station */
 	BEGIN_TILE_LOOP(t, w, h, tile)
-		if (t < MapSize() && IsTileType(t, MP_STATION)) return GetStationByTile(t);
+		if (t < MapSize() && IsTileType(t, MP_STATION)) return Station::GetByTile(t);
 	END_TILE_LOOP(t, w, h, tile)
 
 	/* Look for deleted stations */

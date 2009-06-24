@@ -15,6 +15,7 @@
 #include "aircraft.h"
 #include "core/smallmap_type.hpp"
 #include "settings_type.h"
+#include "station_base.h"
 
 int _traininfo_vehicle_pitch = 0;
 int _traininfo_vehicle_width = 29;

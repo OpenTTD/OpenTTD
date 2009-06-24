@@ -24,6 +24,7 @@
 #include "tilehighlight_func.h"
 #include "network/network.h"
 #include "settings_type.h"
+#include "station_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

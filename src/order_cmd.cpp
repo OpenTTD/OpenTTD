@@ -23,6 +23,7 @@
 #include "core/pool_func.hpp"
 #include "aircraft.h"
 #include "roadveh.h"
+#include "station_base.h"
 
 #include "table/strings.h"
 

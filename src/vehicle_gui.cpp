@@ -16,7 +16,7 @@
 #include "gfx_func.h"
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
-#include "station_map.h"
+#include "station_base.h"
 #include "roadveh.h"
 #include "train.h"
 #include "depot_base.h"

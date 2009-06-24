@@ -6,7 +6,7 @@
 #include "openttd.h"
 #include "clear_map.h"
 #include "industry_map.h"
-#include "station_map.h"
+#include "station_base.h"
 #include "train.h"
 #include "landscape.h"
 #include "viewport_func.h"

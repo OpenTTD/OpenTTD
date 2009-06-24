@@ -18,6 +18,7 @@
 #include "industry_type.h"
 #include "core/geometry_type.hpp"
 #include "viewport_type.h"
+#include "station_map.h"
 #include <list>
 
 typedef Pool<Station, StationID, 32, 64000> StationPool;
@@ -161,6 +162,11 @@ public:
 	bool IsBuoy() const;
 
 	uint GetCatchmentRadius() const;
+
+	static FORCEINLINE Station *GetByTile(TileIndex tile)
+	{
+		return Station::Get(GetStationIndex(tile));
+	}
 };
 
 #define FOR_ALL_STATIONS_FROM(var, start) FOR_ALL_ITEMS_FROM(Station, station_index, var, start)

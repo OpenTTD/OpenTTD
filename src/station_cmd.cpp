@@ -31,6 +31,7 @@
 #include "string_func.h"
 #include "animated_tile_func.h"
 #include "elrail_func.h"
+#include "station_base.h"
 #include "roadstop_base.h"
 
 #include "table/strings.h"
@@ -45,7 +46,7 @@ bool IsHangar(TileIndex t)
 {
 	assert(IsTileType(t, MP_STATION));
 
-	const Station *st = GetStationByTile(t);
+	const Station *st = Station::GetByTile(t);
 	const AirportFTAClass *apc = st->Airport();
 
 	for (uint i = 0; i < apc->nof_depots; i++) {
@@ -57,7 +58,7 @@ bool IsHangar(TileIndex t)
 
 RoadStop *GetRoadStopByTile(TileIndex tile, RoadStopType type)
 {
-	const Station *st = GetStationByTile(tile);
+	const Station *st = Station::GetByTile(tile);
 
 	for (RoadStop *rs = st->GetPrimaryRoadStop(type);; rs = rs->next) {
 		if (rs->xy == tile) return rs;
@@ -1179,7 +1180,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 		}
 
 		/* Check ownership of station */
-		Station *st = GetStationByTile(tile2);
+		Station *st = Station::GetByTile(tile2);
 		if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) {
 			continue;
 		}
@@ -1576,7 +1577,7 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 {
 	/* Make sure the specified tile is a road stop of the correct type */
 	if (!IsTileType(tile, MP_STATION) || !IsRoadStop(tile) || (uint32)GetRoadStopType(tile) != GB(p2, 0, 1)) return CMD_ERROR;
-	Station *st = GetStationByTile(tile);
+	Station *st = Station::GetByTile(tile);
 	/* Save the stop info before it is removed */
 	bool is_drive_through = IsDriveThroughStopTile(tile);
 	RoadTypes rts = GetRoadTypes(tile);
@@ -2208,7 +2209,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 	if (IsCustomStationSpecIndex(ti->tile)) {
 		/* look for customization */
-		st = GetStationByTile(ti->tile);
+		st = Station::GetByTile(ti->tile);
 		statspec = st->speclist[GetCustomStationSpecIndex(ti->tile)].spec;
 
 		if (statspec != NULL) {
@@ -2365,7 +2366,7 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 			}
 		}
 	}
-	td->build_date = GetStationByTile(tile)->build_date;
+	td->build_date = Station::GetByTile(tile)->build_date;
 
 	const StationSpec *spec = GetStationSpec(tile);
 
@@ -2860,7 +2861,7 @@ void FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod, StationList
 			TileIndex cur_tile = TileAddWrap(tile, dx, dy);
 			if (cur_tile == INVALID_TILE || !IsTileType(cur_tile, MP_STATION)) continue;
 
-			Station *st = GetStationByTile(cur_tile);
+			Station *st = Station::GetByTile(cur_tile);
 
 			if (st->IsBuoy()) continue; // bouys don't accept cargo
 
@@ -2999,7 +3000,7 @@ void BuildOilRig(TileIndex tile)
 
 void DeleteOilRig(TileIndex tile)
 {
-	Station *st = GetStationByTile(tile);
+	Station *st = Station::GetByTile(tile);
 
 	MakeWaterKeepingClass(tile, OWNER_NONE);
 	MarkTileDirtyByTile(tile);
@@ -3087,7 +3088,7 @@ static CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 		}
 	}
 
-	Station *st = GetStationByTile(tile);
+	Station *st = Station::GetByTile(tile);
 
 	switch (GetStationType(tile)) {
 		case STATION_RAIL:    return RemoveRailroadStation(st, tile, flags);

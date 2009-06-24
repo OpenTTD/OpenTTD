@@ -7,7 +7,7 @@
 #include "landscape.h"
 #include "timetable.h"
 #include "command_func.h"
-#include "station_map.h"
+#include "station_base.h"
 #include "news_func.h"
 #include "company_func.h"
 #include "npf.h"

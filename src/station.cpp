@@ -22,6 +22,7 @@
 #include "settings_type.h"
 #include "subsidy_func.h"
 #include "core/pool_func.hpp"
+#include "station_base.h"
 #include "roadstop_base.h"
 
 #include "table/strings.h"

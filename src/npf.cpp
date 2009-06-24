@@ -12,6 +12,7 @@
 #include "tunnelbridge_map.h"
 #include "functions.h"
 #include "vehicle_base.h"
+#include "station_base.h"
 #include "tunnelbridge.h"
 #include "pbs.h"
 #include "settings_type.h"
@@ -514,7 +515,7 @@ static void NPFSaveTargetData(AyStar *as, OpenListNode *current)
 		/* If the target is a station skip to platform end. */
 		if (IsRailwayStationTile(target->node.tile)) {
 			DiagDirection dir = TrackdirToExitdir(target->node.direction);
-			uint len = GetStationByTile(target->node.tile)->GetPlatformLength(target->node.tile, dir);
+			uint len = Station::GetByTile(target->node.tile)->GetPlatformLength(target->node.tile, dir);
 			TileIndex end_tile = TILE_ADD(target->node.tile, (len - 1) * TileOffsByDiagDir(dir));
 
 			/* Update only end tile, trackdir of a station stays the same. */

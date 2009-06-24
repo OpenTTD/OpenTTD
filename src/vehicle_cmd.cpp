@@ -6,6 +6,7 @@
 #include "roadveh.h"
 #include "gfx_func.h"
 #include "news_func.h"
+#include "airport.h"
 #include "command_func.h"
 #include "company_func.h"
 #include "vehicle_gui.h"

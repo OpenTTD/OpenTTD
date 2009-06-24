@@ -6,7 +6,7 @@
 #include "ai_industry.hpp"
 #include "../../tile_map.h"
 #include "../../industry_map.h"
-#include "../../station_map.h"
+#include "../../station_base.h"
 #include "../../settings_type.h"
 
 void AITileList::FixRectangleSpan(TileIndex &t1, TileIndex &t2)
