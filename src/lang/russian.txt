@@ -1,14 +1,14 @@
 ##name Russian
 ##ownname Русский
 ##isocode ru_RU
-##winlangid 0x0419
-##grflangid 0x07
 ##plural 6
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
-##case m f n p nom gen dat acc abl pre
+##winlangid 0x0419
+##grflangid 0x07
 ##gender m f n p
+##case m f n p nom gen dat acc abl pre
 
 #
 
@@ -28,192 +28,192 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Прин
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Отправляются: {GOLD}
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Пассажиры
-STR_CARGO_PLURAL_PASSENGERS.acc                                 :пассажиров
 STR_CARGO_PLURAL_PASSENGERS.gen                                 :пассажиров
+STR_CARGO_PLURAL_PASSENGERS.acc                                 :пассажиров
 STR_CARGO_PLURAL_COAL                                           :Уголь
-STR_CARGO_PLURAL_COAL.acc                                       :уголь
 STR_CARGO_PLURAL_COAL.gen                                       :угля
+STR_CARGO_PLURAL_COAL.acc                                       :уголь
 STR_CARGO_PLURAL_MAIL                                           :Почта
-STR_CARGO_PLURAL_MAIL.acc                                       :почту
 STR_CARGO_PLURAL_MAIL.gen                                       :почты
+STR_CARGO_PLURAL_MAIL.acc                                       :почту
 STR_CARGO_PLURAL_OIL                                            :Нефть
-STR_CARGO_PLURAL_OIL.acc                                        :нефть
 STR_CARGO_PLURAL_OIL.gen                                        :нефти
+STR_CARGO_PLURAL_OIL.acc                                        :нефть
 STR_CARGO_PLURAL_LIVESTOCK                                      :Скот
-STR_CARGO_PLURAL_LIVESTOCK.acc                                  :скот
 STR_CARGO_PLURAL_LIVESTOCK.gen                                  :скота
+STR_CARGO_PLURAL_LIVESTOCK.acc                                  :скот
 STR_CARGO_PLURAL_GOODS                                          :Товары
-STR_CARGO_PLURAL_GOODS.acc                                      :товары
 STR_CARGO_PLURAL_GOODS.gen                                      :товаров
+STR_CARGO_PLURAL_GOODS.acc                                      :товары
 STR_CARGO_PLURAL_GRAIN                                          :Зерно
-STR_CARGO_PLURAL_GRAIN.acc                                      :зерно
 STR_CARGO_PLURAL_GRAIN.gen                                      :зерна
+STR_CARGO_PLURAL_GRAIN.acc                                      :зерно
 STR_CARGO_PLURAL_WOOD                                           :Дерево
-STR_CARGO_PLURAL_WOOD.acc                                       :дерево
 STR_CARGO_PLURAL_WOOD.gen                                       :дерева
+STR_CARGO_PLURAL_WOOD.acc                                       :дерево
 STR_CARGO_PLURAL_IRON_ORE                                       :Железная руда
-STR_CARGO_PLURAL_IRON_ORE.acc                                   :железную руду
 STR_CARGO_PLURAL_IRON_ORE.gen                                   :железной руды
+STR_CARGO_PLURAL_IRON_ORE.acc                                   :железную руду
 STR_CARGO_PLURAL_STEEL                                          :Сталь
-STR_CARGO_PLURAL_STEEL.acc                                      :сталь
 STR_CARGO_PLURAL_STEEL.gen                                      :стали
+STR_CARGO_PLURAL_STEEL.acc                                      :сталь
 STR_CARGO_PLURAL_VALUABLES                                      :Драгоценности
-STR_CARGO_PLURAL_VALUABLES.acc                                  :драгоценности
 STR_CARGO_PLURAL_VALUABLES.gen                                  :драгоценностей
+STR_CARGO_PLURAL_VALUABLES.acc                                  :драгоценности
 STR_CARGO_PLURAL_COPPER_ORE                                     :Медная руда
-STR_CARGO_PLURAL_COPPER_ORE.acc                                 :медную руду
 STR_CARGO_PLURAL_COPPER_ORE.gen                                 :медной руды
+STR_CARGO_PLURAL_COPPER_ORE.acc                                 :медную руду
 STR_CARGO_PLURAL_MAIZE                                          :Кукуруза
-STR_CARGO_PLURAL_MAIZE.acc                                      :кукурузу
 STR_CARGO_PLURAL_MAIZE.gen                                      :кукурузы
+STR_CARGO_PLURAL_MAIZE.acc                                      :кукурузу
 STR_CARGO_PLURAL_FRUIT                                          :Фрукты
-STR_CARGO_PLURAL_FRUIT.acc                                      :фрукты
 STR_CARGO_PLURAL_FRUIT.gen                                      :фруктов
+STR_CARGO_PLURAL_FRUIT.acc                                      :фрукты
 STR_CARGO_PLURAL_DIAMONDS                                       :Алмазы
-STR_CARGO_PLURAL_DIAMONDS.acc                                   :алмазы
 STR_CARGO_PLURAL_DIAMONDS.gen                                   :алмазов
+STR_CARGO_PLURAL_DIAMONDS.acc                                   :алмазы
 STR_CARGO_PLURAL_FOOD                                           :Продукты
-STR_CARGO_PLURAL_FOOD.acc                                       :продукты
 STR_CARGO_PLURAL_FOOD.gen                                       :продуктов
+STR_CARGO_PLURAL_FOOD.acc                                       :продукты
 STR_CARGO_PLURAL_PAPER                                          :Бумага
-STR_CARGO_PLURAL_PAPER.acc                                      :бумагу
 STR_CARGO_PLURAL_PAPER.gen                                      :бумаги
+STR_CARGO_PLURAL_PAPER.acc                                      :бумагу
 STR_CARGO_PLURAL_GOLD                                           :Золото
-STR_CARGO_PLURAL_GOLD.acc                                       :золото
 STR_CARGO_PLURAL_GOLD.gen                                       :золота
+STR_CARGO_PLURAL_GOLD.acc                                       :золото
 STR_CARGO_PLURAL_WATER                                          :Вода
-STR_CARGO_PLURAL_WATER.acc                                      :воду
 STR_CARGO_PLURAL_WATER.gen                                      :воды
+STR_CARGO_PLURAL_WATER.acc                                      :воду
 STR_CARGO_PLURAL_WHEAT                                          :Пшеница
-STR_CARGO_PLURAL_WHEAT.acc                                      :пшеницу
 STR_CARGO_PLURAL_WHEAT.gen                                      :пшеницы
+STR_CARGO_PLURAL_WHEAT.acc                                      :пшеницу
 STR_CARGO_PLURAL_RUBBER                                         :Каучук
-STR_CARGO_PLURAL_RUBBER.acc                                     :каучук
 STR_CARGO_PLURAL_RUBBER.gen                                     :каучука
+STR_CARGO_PLURAL_RUBBER.acc                                     :каучук
 STR_CARGO_PLURAL_SUGAR                                          :Сахар
-STR_CARGO_PLURAL_SUGAR.acc                                      :сахар
 STR_CARGO_PLURAL_SUGAR.gen                                      :сахара
+STR_CARGO_PLURAL_SUGAR.acc                                      :сахар
 STR_CARGO_PLURAL_TOYS                                           :Игрушки
-STR_CARGO_PLURAL_TOYS.acc                                       :игрушки
 STR_CARGO_PLURAL_TOYS.gen                                       :игрушек
+STR_CARGO_PLURAL_TOYS.acc                                       :игрушки
 STR_CARGO_PLURAL_CANDY                                          :Конфеты
-STR_CARGO_PLURAL_CANDY.acc                                      :конфеты
 STR_CARGO_PLURAL_CANDY.gen                                      :конфет
+STR_CARGO_PLURAL_CANDY.acc                                      :конфеты
 STR_CARGO_PLURAL_COLA                                           :Кола
-STR_CARGO_PLURAL_COLA.acc                                       :колу
 STR_CARGO_PLURAL_COLA.gen                                       :колы
+STR_CARGO_PLURAL_COLA.acc                                       :колу
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Сахарная вата
-STR_CARGO_PLURAL_COTTON_CANDY.acc                               :сахарную вату
 STR_CARGO_PLURAL_COTTON_CANDY.gen                               :сахарной ваты
+STR_CARGO_PLURAL_COTTON_CANDY.acc                               :сахарную вату
 STR_CARGO_PLURAL_BUBBLES                                        :Пузырьки
-STR_CARGO_PLURAL_BUBBLES.acc                                    :пузырьки
 STR_CARGO_PLURAL_BUBBLES.gen                                    :пузырьков
+STR_CARGO_PLURAL_BUBBLES.acc                                    :пузырьки
 STR_CARGO_PLURAL_TOFFEE                                         :Ириски
-STR_CARGO_PLURAL_TOFFEE.acc                                     :ириски
 STR_CARGO_PLURAL_TOFFEE.gen                                     :ирисок
+STR_CARGO_PLURAL_TOFFEE.acc                                     :ириски
 STR_CARGO_PLURAL_BATTERIES                                      :Батарейки
-STR_CARGO_PLURAL_BATTERIES.acc                                  :батарейки
 STR_CARGO_PLURAL_BATTERIES.gen                                  :батареек
+STR_CARGO_PLURAL_BATTERIES.acc                                  :батарейки
 STR_CARGO_PLURAL_PLASTIC                                        :Пластик
-STR_CARGO_PLURAL_PLASTIC.acc                                    :пластик
 STR_CARGO_PLURAL_PLASTIC.gen                                    :пластика
+STR_CARGO_PLURAL_PLASTIC.acc                                    :пластик
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Газировка
-STR_CARGO_PLURAL_FIZZY_DRINKS.acc                               :газировку
 STR_CARGO_PLURAL_FIZZY_DRINKS.gen                               :газировки
+STR_CARGO_PLURAL_FIZZY_DRINKS.acc                               :газировку
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Пассажиры
-STR_CARGO_SINGULAR_PASSENGER.acc                                :пассажиров
 STR_CARGO_SINGULAR_PASSENGER.gen                                :пассажиров
+STR_CARGO_SINGULAR_PASSENGER.acc                                :пассажиров
 STR_CARGO_SINGULAR_COAL                                         :Уголь
-STR_CARGO_SINGULAR_COAL.acc                                     :уголь
 STR_CARGO_SINGULAR_COAL.gen                                     :угля
+STR_CARGO_SINGULAR_COAL.acc                                     :уголь
 STR_CARGO_SINGULAR_MAIL                                         :Почта
-STR_CARGO_SINGULAR_MAIL.acc                                     :почту
 STR_CARGO_SINGULAR_MAIL.gen                                     :почты
+STR_CARGO_SINGULAR_MAIL.acc                                     :почту
 STR_CARGO_SINGULAR_OIL                                          :Нефть
-STR_CARGO_SINGULAR_OIL.acc                                      :нефть
 STR_CARGO_SINGULAR_OIL.gen                                      :нефти
+STR_CARGO_SINGULAR_OIL.acc                                      :нефть
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Скот
-STR_CARGO_SINGULAR_LIVESTOCK.acc                                :скот
 STR_CARGO_SINGULAR_LIVESTOCK.gen                                :скота
+STR_CARGO_SINGULAR_LIVESTOCK.acc                                :скот
 STR_CARGO_SINGULAR_GOODS                                        :Товары
-STR_CARGO_SINGULAR_GOODS.acc                                    :товары
 STR_CARGO_SINGULAR_GOODS.gen                                    :товаров
+STR_CARGO_SINGULAR_GOODS.acc                                    :товары
 STR_CARGO_SINGULAR_GRAIN                                        :Зерно
-STR_CARGO_SINGULAR_GRAIN.acc                                    :зерно
 STR_CARGO_SINGULAR_GRAIN.gen                                    :зерна
+STR_CARGO_SINGULAR_GRAIN.acc                                    :зерно
 STR_CARGO_SINGULAR_WOOD                                         :Дерево
-STR_CARGO_SINGULAR_WOOD.acc                                     :дерево
 STR_CARGO_SINGULAR_WOOD.gen                                     :дерева
+STR_CARGO_SINGULAR_WOOD.acc                                     :дерево
 STR_CARGO_SINGULAR_IRON_ORE                                     :Железная руда
-STR_CARGO_SINGULAR_IRON_ORE.acc                                 :железную руду
 STR_CARGO_SINGULAR_IRON_ORE.gen                                 :железной руды
+STR_CARGO_SINGULAR_IRON_ORE.acc                                 :железную руду
 STR_CARGO_SINGULAR_STEEL                                        :Сталь
-STR_CARGO_SINGULAR_STEEL.acc                                    :сталь
 STR_CARGO_SINGULAR_STEEL.gen                                    :стали
+STR_CARGO_SINGULAR_STEEL.acc                                    :сталь
 STR_CARGO_SINGULAR_VALUABLES                                    :Драгоценности
-STR_CARGO_SINGULAR_VALUABLES.acc                                :драгоценности
 STR_CARGO_SINGULAR_VALUABLES.gen                                :драгоценностей
+STR_CARGO_SINGULAR_VALUABLES.acc                                :драгоценности
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Медная руда
-STR_CARGO_SINGULAR_COPPER_ORE.acc                               :медную руду
 STR_CARGO_SINGULAR_COPPER_ORE.gen                               :медной руды
+STR_CARGO_SINGULAR_COPPER_ORE.acc                               :медную руду
 STR_CARGO_SINGULAR_MAIZE                                        :Кукуруза
-STR_CARGO_SINGULAR_MAIZE.acc                                    :кукурузу
 STR_CARGO_SINGULAR_MAIZE.gen                                    :кукурузы
+STR_CARGO_SINGULAR_MAIZE.acc                                    :кукурузу
 STR_CARGO_SINGULAR_FRUIT                                        :Фрукты
-STR_CARGO_SINGULAR_FRUIT.acc                                    :фрукты
 STR_CARGO_SINGULAR_FRUIT.gen                                    :фруктов
+STR_CARGO_SINGULAR_FRUIT.acc                                    :фрукты
 STR_CARGO_SINGULAR_DIAMOND                                      :Алмазы
-STR_CARGO_SINGULAR_DIAMOND.acc                                  :алмазы
 STR_CARGO_SINGULAR_DIAMOND.gen                                  :алмазов
+STR_CARGO_SINGULAR_DIAMOND.acc                                  :алмазы
 STR_CARGO_SINGULAR_FOOD                                         :Продукты
-STR_CARGO_SINGULAR_FOOD.acc                                     :продукты
 STR_CARGO_SINGULAR_FOOD.gen                                     :продуктов
+STR_CARGO_SINGULAR_FOOD.acc                                     :продукты
 STR_CARGO_SINGULAR_PAPER                                        :Бумага
-STR_CARGO_SINGULAR_PAPER.acc                                    :бумагу
 STR_CARGO_SINGULAR_PAPER.gen                                    :бумаги
+STR_CARGO_SINGULAR_PAPER.acc                                    :бумагу
 STR_CARGO_SINGULAR_GOLD                                         :Золото
-STR_CARGO_SINGULAR_GOLD.acc                                     :золото
 STR_CARGO_SINGULAR_GOLD.gen                                     :золота
+STR_CARGO_SINGULAR_GOLD.acc                                     :золото
 STR_CARGO_SINGULAR_WATER                                        :Вода
-STR_CARGO_SINGULAR_WATER.acc                                    :воду
 STR_CARGO_SINGULAR_WATER.gen                                    :воды
+STR_CARGO_SINGULAR_WATER.acc                                    :воду
 STR_CARGO_SINGULAR_WHEAT                                        :Пшеница
-STR_CARGO_SINGULAR_WHEAT.acc                                    :пшеницу
 STR_CARGO_SINGULAR_WHEAT.gen                                    :пшеницы
+STR_CARGO_SINGULAR_WHEAT.acc                                    :пшеницу
 STR_CARGO_SINGULAR_RUBBER                                       :Каучук
-STR_CARGO_SINGULAR_RUBBER.acc                                   :каучук
 STR_CARGO_SINGULAR_RUBBER.gen                                   :каучука
+STR_CARGO_SINGULAR_RUBBER.acc                                   :каучук
 STR_CARGO_SINGULAR_SUGAR                                        :Сахар
-STR_CARGO_SINGULAR_SUGAR.acc                                    :сахар
 STR_CARGO_SINGULAR_SUGAR.gen                                    :сахара
+STR_CARGO_SINGULAR_SUGAR.acc                                    :сахар
 STR_CARGO_SINGULAR_TOY                                          :Игрушки
-STR_CARGO_SINGULAR_TOY.acc                                      :игрушки
 STR_CARGO_SINGULAR_TOY.gen                                      :игрушек
+STR_CARGO_SINGULAR_TOY.acc                                      :игрушки
 STR_CARGO_SINGULAR_CANDY                                        :Конфеты
-STR_CARGO_SINGULAR_CANDY.acc                                    :конфеты
 STR_CARGO_SINGULAR_CANDY.gen                                    :конфет
+STR_CARGO_SINGULAR_CANDY.acc                                    :конфеты
 STR_CARGO_SINGULAR_COLA                                         :Кола
-STR_CARGO_SINGULAR_COLA.acc                                     :колу
 STR_CARGO_SINGULAR_COLA.gen                                     :колы
+STR_CARGO_SINGULAR_COLA.acc                                     :колу
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Сахарная вата
-STR_CARGO_SINGULAR_COTTON_CANDY.acc                             :сахарную вату
 STR_CARGO_SINGULAR_COTTON_CANDY.gen                             :сахарной ваты
+STR_CARGO_SINGULAR_COTTON_CANDY.acc                             :сахарную вату
 STR_CARGO_SINGULAR_BUBBLE                                       :Пузырьки
-STR_CARGO_SINGULAR_BUBBLE.acc                                   :пузырьки
 STR_CARGO_SINGULAR_BUBBLE.gen                                   :пузырьков
+STR_CARGO_SINGULAR_BUBBLE.acc                                   :пузырьки
 STR_CARGO_SINGULAR_TOFFEE                                       :Ириски
-STR_CARGO_SINGULAR_TOFFEE.acc                                   :ириски
 STR_CARGO_SINGULAR_TOFFEE.gen                                   :ирисок
+STR_CARGO_SINGULAR_TOFFEE.acc                                   :ириски
 STR_CARGO_SINGULAR_BATTERY                                      :Батарейки
-STR_CARGO_SINGULAR_BATTERY.acc                                  :батарейки
 STR_CARGO_SINGULAR_BATTERY.gen                                  :батареек
+STR_CARGO_SINGULAR_BATTERY.acc                                  :батарейки
 STR_CARGO_SINGULAR_PLASTIC                                      :Пластик
-STR_CARGO_SINGULAR_PLASTIC.acc                                  :пластик
 STR_CARGO_SINGULAR_PLASTIC.gen                                  :пластика
+STR_CARGO_SINGULAR_PLASTIC.acc                                  :пластик
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Газировка
-STR_CARGO_SINGULAR_FIZZY_DRINK.acc                              :газировку
 STR_CARGO_SINGULAR_FIZZY_DRINK.gen                              :газировки
+STR_CARGO_SINGULAR_FIZZY_DRINK.acc                              :газировку
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} пассажир{P "" а ов}
 STR_QUANTITY_COAL                                               :{WEIGHT} угля
@@ -1450,7 +1450,7 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Года
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Количество лет{}в игре
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}ИНФОРМАЦИЯ ОБ ИГРЕ
-STR_NETWORK_CLIENTS                                             :{SILVER}Клиенты:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Клиенты: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Язык: {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Климат: {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Размер карты: {WHITE}{COMMA}x{COMMA}
@@ -1737,14 +1737,14 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Выбо
 STR_RAILROAD_TRACK                                              :Рельсы
 STR_RAILROAD_TRAIN_DEPOT                                        :Ж/Д депо
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...область принадлежит другой компании
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ж/Д путь с обычным сигналом
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ж/Д путь с пресигналами
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ж/Д путь с выходными сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ж/д путь с обычным сигналом
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ж/д путь с пресигналами
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ж/д путь с выходными сигналами
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ж/д путь с комбо-сигналами
 STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Ж/д пути с ПМС сигналами
 STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Ж/д пути с односторонними ПМС сигналами
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Рельсы и нормальными и пре-сигналами
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Рельсы и нормальными и выходными сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Рельсы с нормальными и пре-сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Рельсы с нормальными и выходными сигналами
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Ж/д путь с нормальными и комбо-сигналами
 STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Ж/д пути с обычными и ПМС сигналами
 STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Ж/д пути с обычными и односторонними ПМС сигналами
