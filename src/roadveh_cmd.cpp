@@ -31,6 +31,7 @@
 #include "effectvehicle_func.h"
 #include "settings_type.h"
 #include "roadstop_base.h"
+#include "cargotype.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

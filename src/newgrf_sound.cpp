@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "engine_base.h"
+#include "newgrf.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
 #include "vehicle_base.h"

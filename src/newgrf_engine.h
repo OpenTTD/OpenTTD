@@ -5,7 +5,6 @@
 #ifndef NEWGRF_ENGINE_H
 #define NEWGRF_ENGINE_H
 
-#include "newgrf.h"
 #include "direction_type.h"
 #include "newgrf_cargo.h"
 

@@ -30,6 +30,7 @@
 #include "settings_type.h"
 #include "ai/ai.hpp"
 #include "pathfind.h"
+#include "landscape_type.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

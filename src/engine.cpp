@@ -9,6 +9,7 @@
 #include "news_func.h"
 #include "variables.h"
 #include "aircraft.h"
+#include "newgrf.h"
 #include "newgrf_engine.h"
 #include "group.h"
 #include "strings_func.h"

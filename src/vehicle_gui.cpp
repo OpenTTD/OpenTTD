@@ -31,6 +31,7 @@
 #include "vehiclelist.h"
 #include "settings_type.h"
 #include "articulated_vehicles.h"
+#include "cargotype.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

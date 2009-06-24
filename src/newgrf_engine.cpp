@@ -7,6 +7,7 @@
 #include "train.h"
 #include "roadveh.h"
 #include "company_func.h"
+#include "newgrf.h"
 #include "newgrf_engine.h"
 #include "newgrf_spritegroup.h"
 #include "date_func.h"

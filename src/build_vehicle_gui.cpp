@@ -24,6 +24,7 @@
 #include "window_gui.h"
 #include "engine_gui.h"
 #include "settings_type.h"
+#include "cargotype.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
