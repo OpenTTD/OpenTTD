@@ -310,7 +310,7 @@ AIInfo *AIScanner::FindInfo(const char *nameParam, int versionParam)
 		snprintf(ai_name_compare, sizeof(ai_name_compare), "%s", (*it).second->GetName());
 		strtolower(ai_name_compare);
 
-		if (strcasecmp(ai_name, ai_name_compare) == 0 && (*it).second->CanLoadFromVersion(versionParam)) {
+		if (strcasecmp(ai_name, ai_name_compare) == 0 && (*it).second->CanLoadFromVersion(versionParam) && version == -1 || (*it).second->GetVersion() > version) {
 			version = (*it).second->GetVersion();
 			info = (*it).second;
 		}
