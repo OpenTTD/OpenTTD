@@ -1120,6 +1120,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Dozvolj
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Dozvoljeno više NewGRF kolekcija mišina: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Promena ovog podešavanja nije moguća dok postoje vozila.
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Nezastarevanje aerodroma: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Upozorenje ako se voz izgubi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Provera naredbi vozila: {ORANGE}{STRING}
@@ -1215,10 +1216,49 @@ STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Najviš
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Najviše letilica po igraču: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Najviše brodova po igraču: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Računar ne može da koristi železnički prevoz: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Računar ne može da koristi drumski prevoz: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Računar ne može da koristi vazdušni prevoz: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Računar ne može da koristi vodni prevoz: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Dozvoljena VI u mrežnoj partiji: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Najviše operacija pre suspenzije VI: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervali servisiranja u procentimaČ {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Uobičajni servisni interval vozova: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Uobičajni servisni interval vozova: {ORANGE}nema
+STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Uobičajni servisni interval drumskih vozila: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Uobičajni servisni interval drumskih vozila: {ORANGE}nema
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Uobičajni servisni interval letilica: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Uobičajni servisni interval letilica: {ORANGE}nema
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Uobičajni servisni interval brodova: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Uobičajni servisni interval brodova: {ORANGE}nema
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Isključeno servisiranje kada nepostoje kvarovi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Uključeno ograničenje brzine kod vagona: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Nepostoji posebna električna pruga: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Vesti u boji se objavljuju od: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Početna godina: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Uključena glatka ekonomija (više, manjih promena): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Dozvoljena kupovina deonica drugih kompanija: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Tokom povlačenja, signalizacija se postavljaja na svakih: {ORANGE}{STRING} pločoca
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatsko postavljanje semafora do: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Omogućena traka za signalizaciju:{ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Uobičajna vrsta signalizacije za izgradnju: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blok signalizacija
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Putna signalizacija
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Jednosmerna putna signalizacija
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Ciklični izbor vrste signalizcije: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Samo blok
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Samo putna
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Sva
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Plan gradnje novih puteva u naseljima: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :originalno
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :napredno
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 mreže
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 mreže
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :proizvoljan plan
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Naseljima je dozvoljeno da grade kolovoze: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Naseljima je dozvoljeno da kontrolišu nivo buke aerodroma: {ORANGE}{STRING}
 
@@ -1353,26 +1393,96 @@ STR_LANDINFO_LOCK                                               :Brana
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Ovde je nemoguće postavljanje reke...
 STR_LANDINFO_RIVER                                              :Reka
 
+STR_BUOY_IS_IN_USE                                              :{WHITE}...plovak se koristi!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Kordinate: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
+STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Deo stanice se ne može ukloniti...
+STR_CANT_CONVERT_RAIL                                           :{WHITE}Vrsta pruge se ovde ne može promeniti...
+STR_CONVERT_RAIL_TIP                                            :{BLACK}Promena/Nadogradnja vrste pruge
 
+STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Prevucite ovde lokomotivu kako bi prodali ceo voz
 
+STR_DRAG_DROP                                                   :{BLACK}Prevlačenje
+STR_STATION_DRAG_DROP                                           :{BLACK}Gradnja stanice prevlačenjem
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Odaberite klasu stanice za gradnju
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Odaberite vrstu stanice za gradnju
 
+STR_FAST_FORWARD                                                :{BLACK}Ubrzavanje partije
+STR_MESSAGE_HISTORY                                             :{WHITE}Arhiva Vesti
+STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Spisak skorašnjih novosti
+STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Sva zabranjena
+STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Sva dozvoljena
 
+STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Fabrike
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% prevezeno)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% prevezeno)
+STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Imena fabrika - kliknite na ime kako bi otišli do fabrike
 
+STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...previše blizu druge fabrike
 
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Prepravlja voz kako bi prevozio drugu vrstu tereta
+STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Prepavi voz
+STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Označite vrstu tovara za prepravljanje voza
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Prepravlja voz za prevoz označene vrste tovara
+STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Voz se ne može prepraviti...
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Promena proizvodnje
 
 ############ network gui strings
 
+STR_NETWORK_MULTIPLAYER                                         :{WHITE}Mrežna partija
 
+STR_NETWORK_PLAYER_NAME                                         :{BLACK}Ime igrača:
+STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Sa ovim imenom će Vas drugi igrači (pre)poznavati
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Unesite Vaše ime
+STR_NETWORK_CONNECTION                                          :{BLACK}Povezivanje:
+STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Izaberite način poveivanja između interneta ili lokalne mreže (LAN)
 
+STR_NETWORK_START_SERVER                                        :{BLACK}Pokreni server
+STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Pokrenite sopstveni server
 
+STR_NETWORK_GAME_NAME                                           :{BLACK}Naziv
+STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Naziv partije
+STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Jezik, verzija servera, itd.
+STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Kliknite na partiju sa spiska da bi je obeležili
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Server na koji ste se priključili prošli put:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Kliknite kako bi ste označili server na kome ste igrali prošli put
 
+STR_NETWORK_FIND_SERVER                                         :{BLACK}Pronađi server
+STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Pretražuje mrežu kako bi pronašao servere
+STR_NETWORK_ADD_SERVER                                          :{BLACK}Dodaj server
+STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Dodaje server na spisak na kojem se prikazuju aktivne partije.
+STR_NETWORK_ENTER_IP                                            :{BLACK}Unesite adresu računara-servera
 
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Igrači
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Priključeno igrača / najviše igrača{}Aktivnio kompanija / najviše kompanija
 
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Veličina mape
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Veličina mape u partiji{}Kliknite da bi pređali po veličini
 
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Datum
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Trenutni datum u partiji
 
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Godina
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Ukupan broj godina{}koliko traje partija
 
+STR_NETWORK_GAME_INFO                                           :{SILVER}PODACI O PARTIJI
+STR_NETWORK_CLIENTS                                             :{SILVER}Igrača: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Jezik: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Klima: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Veličina mape: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Verzija servera: {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa servera: {WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}Početni datum: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Trenutni datum: {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD                                            :{SILVER}Zaštićeno šifrom!
+STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER JE VAN MREŽE
+STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER JE POPUNJEN
+STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}NEODGOVARAJUĆA VERZIJA
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF NEPOKLAPANJE
 
 
 
