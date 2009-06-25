@@ -108,7 +108,6 @@ public:
 
 		/* Because build_date is not set yet in every TileDesc, we make sure it is empty */
 		TileDesc td;
-		AcceptedCargo ac;
 
 		td.build_date = INVALID_DATE;
 
@@ -130,7 +129,9 @@ public:
 
 		td.grf = NULL;
 
-		GetAcceptedCargo(tile, ac);
+		AcceptedCargo ac;
+		memset(ac, 0, sizeof(AcceptedCargo));
+		AddAcceptedCargo(tile, ac);
 		GetTileDesc(tile, &td);
 
 		uint line_nr = 0;

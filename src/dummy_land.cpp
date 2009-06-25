@@ -33,11 +33,6 @@ static CommandCost ClearTile_Dummy(TileIndex tile, DoCommandFlag flags)
 }
 
 
-static void GetAcceptedCargo_Dummy(TileIndex tile, AcceptedCargo ac)
-{
-	/* not used */
-}
-
 static void GetTileDesc_Dummy(TileIndex tile, TileDesc *td)
 {
 	td->str = STR_EMPTY;
@@ -79,7 +74,7 @@ extern const TileTypeProcs _tile_type_dummy_procs = {
 	DrawTile_Dummy,           // draw_tile_proc
 	GetSlopeZ_Dummy,          // get_slope_z_proc
 	ClearTile_Dummy,          // clear_tile_proc
-	GetAcceptedCargo_Dummy,   // get_accepted_cargo_proc
+	NULL,                     // get_accepted_cargo_proc
 	GetTileDesc_Dummy,        // get_tile_desc_proc
 	GetTileTrackStatus_Dummy, // get_tile_track_status_proc
 	ClickTile_Dummy,          // click_tile_proc

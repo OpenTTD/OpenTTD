@@ -1247,12 +1247,6 @@ static Foundation GetFoundation_TunnelBridge(TileIndex tile, Slope tileh)
 	return IsTunnel(tile) ? FOUNDATION_NONE : GetBridgeFoundation(tileh, DiagDirToAxis(GetTunnelBridgeDirection(tile)));
 }
 
-
-static void GetAcceptedCargo_TunnelBridge(TileIndex tile, AcceptedCargo ac)
-{
-	/* not used */
-}
-
 static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 {
 	TransportType tt = GetTunnelBridgeTransportType(tile);
@@ -1546,7 +1540,7 @@ extern const TileTypeProcs _tile_type_tunnelbridge_procs = {
 	DrawTile_TunnelBridge,           // draw_tile_proc
 	GetSlopeZ_TunnelBridge,          // get_slope_z_proc
 	ClearTile_TunnelBridge,          // clear_tile_proc
-	GetAcceptedCargo_TunnelBridge,   // get_accepted_cargo_proc
+	NULL,                            // get_accepted_cargo_proc
 	GetTileDesc_TunnelBridge,        // get_tile_desc_proc
 	GetTileTrackStatus_TunnelBridge, // get_tile_track_status_proc
 	ClickTile_TunnelBridge,          // click_tile_proc

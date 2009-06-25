@@ -118,11 +118,6 @@ static Foundation GetFoundation_Clear(TileIndex tile, Slope tileh)
 	return FOUNDATION_NONE;
 }
 
-static void GetAcceptedCargo_Clear(TileIndex tile, AcceptedCargo ac)
-{
-	/* unused */
-}
-
 static void AnimateTile_Clear(TileIndex tile)
 {
 	/* unused */
@@ -363,7 +358,7 @@ extern const TileTypeProcs _tile_type_clear_procs = {
 	DrawTile_Clear,           ///< draw_tile_proc
 	GetSlopeZ_Clear,          ///< get_slope_z_proc
 	ClearTile_Clear,          ///< clear_tile_proc
-	GetAcceptedCargo_Clear,   ///< get_accepted_cargo_proc
+	NULL,                     ///< get_accepted_cargo_proc
 	GetTileDesc_Clear,        ///< get_tile_desc_proc
 	GetTileTrackStatus_Clear, ///< get_tile_track_status_proc
 	ClickTile_Clear,          ///< click_tile_proc

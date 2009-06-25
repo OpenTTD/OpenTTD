@@ -16,6 +16,7 @@
 #include "direction_type.h"
 #include "track_type.h"
 #include "transport_type.h"
+#include "tile_map.h"
 
 /** The returned bits of VehicleEnterTile. */
 enum VehicleEnterTileStatus {
@@ -73,7 +74,7 @@ typedef CommandCost ClearTileProc(TileIndex tile, DoCommandFlag flags);
  * @param tile Tile queried for its accepted cargo
  * @param res  Storage destination of the cargo accepted
  */
-typedef void GetAcceptedCargoProc(TileIndex tile, AcceptedCargo res);
+typedef void AddAcceptedCargoProc(TileIndex tile, AcceptedCargo res);
 
 /**
  * Tile callback function signature for obtaining a tile description
@@ -136,7 +137,7 @@ struct TileTypeProcs {
 	DrawTileProc *draw_tile_proc;                  ///< Called to render the tile and its contents to the screen
 	GetSlopeZProc *get_slope_z_proc;
 	ClearTileProc *clear_tile_proc;
-	GetAcceptedCargoProc *get_accepted_cargo_proc; ///< Return accepted cargo of the tile
+	AddAcceptedCargoProc *add_accepted_cargo_proc; ///< Adds accepted cargo of the tile to cargo array supplied as parameter
 	GetTileDescProc *get_tile_desc_proc;           ///< Get a description of a tile (for the 'land area information' tool)
 	GetTileTrackStatusProc *get_tile_track_status_proc; ///< Get available tracks and status of a tile
 	ClickTileProc *click_tile_proc;                ///< Called when tile is clicked
@@ -153,10 +154,16 @@ extern const TileTypeProcs * const _tile_type_procs[16];
 
 TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side = INVALID_DIAGDIR);
 VehicleEnterTileStatus VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);
-void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac);
 void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner);
 void AnimateTile(TileIndex tile);
 bool ClickTile(TileIndex tile);
 void GetTileDesc(TileIndex tile, TileDesc *td);
+
+static inline void AddAcceptedCargo(TileIndex tile, AcceptedCargo ac)
+{
+	AddAcceptedCargoProc *proc = _tile_type_procs[GetTileType(tile)]->add_accepted_cargo_proc;
+	if (proc == NULL) return;
+	proc(tile, ac);
+}
 
 #endif /* TILE_CMD_H */

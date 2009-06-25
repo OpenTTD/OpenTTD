@@ -544,11 +544,6 @@ static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlag flags)
 	return CommandCost(EXPENSES_CONSTRUCTION, num * _price.remove_trees);
 }
 
-static void GetAcceptedCargo_Trees(TileIndex tile, AcceptedCargo ac)
-{
-	/* not used */
-}
-
 static void GetTileDesc_Trees(TileIndex tile, TileDesc *td)
 {
 	TreeType tt = GetTreeType(tile);
@@ -773,7 +768,7 @@ extern const TileTypeProcs _tile_type_trees_procs = {
 	DrawTile_Trees,           // draw_tile_proc
 	GetSlopeZ_Trees,          // get_slope_z_proc
 	ClearTile_Trees,          // clear_tile_proc
-	GetAcceptedCargo_Trees,   // get_accepted_cargo_proc
+	NULL,                     // get_accepted_cargo_proc
 	GetTileDesc_Trees,        // get_tile_desc_proc
 	GetTileTrackStatus_Trees, // get_tile_track_status_proc
 	ClickTile_Trees,          // click_tile_proc

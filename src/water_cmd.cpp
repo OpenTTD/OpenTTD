@@ -682,11 +682,6 @@ static Foundation GetFoundation_Water(TileIndex tile, Slope tileh)
 	return FOUNDATION_NONE;
 }
 
-static void GetAcceptedCargo_Water(TileIndex tile, AcceptedCargo ac)
-{
-	/* not used */
-}
-
 static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 {
 	switch (GetWaterTileType(tile)) {
@@ -1160,7 +1155,7 @@ extern const TileTypeProcs _tile_type_water_procs = {
 	DrawTile_Water,           // draw_tile_proc
 	GetSlopeZ_Water,          // get_slope_z_proc
 	ClearTile_Water,          // clear_tile_proc
-	GetAcceptedCargo_Water,   // get_accepted_cargo_proc
+	NULL,                     // get_accepted_cargo_proc
 	GetTileDesc_Water,        // get_tile_desc_proc
 	GetTileTrackStatus_Water, // get_tile_track_status_proc
 	ClickTile_Water,          // click_tile_proc

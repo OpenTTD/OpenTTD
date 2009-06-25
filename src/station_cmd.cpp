@@ -524,13 +524,7 @@ void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
 	for (int yc = y1; yc != y2; yc++) {
 		for (int xc = x1; xc != x2; xc++) {
 			TileIndex tile = TileXY(xc, yc);
-
-			if (!IsTileType(tile, MP_STATION)) {
-				AcceptedCargo ac;
-
-				GetAcceptedCargo(tile, ac);
-				for (uint i = 0; i < lengthof(ac); ++i) accepts[i] += ac[i];
-			}
+			AddAcceptedCargo(tile, accepts);
 		}
 	}
 }
@@ -2348,11 +2342,6 @@ static Foundation GetFoundation_Station(TileIndex tile, Slope tileh)
 	return FlatteningFoundation(tileh);
 }
 
-static void GetAcceptedCargo_Station(TileIndex tile, AcceptedCargo ac)
-{
-	/* not used */
-}
-
 static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 {
 	td->owner[0] = GetTileOwner(tile);
@@ -3163,7 +3152,7 @@ extern const TileTypeProcs _tile_type_station_procs = {
 	DrawTile_Station,           // draw_tile_proc
 	GetSlopeZ_Station,          // get_slope_z_proc
 	ClearTile_Station,          // clear_tile_proc
-	GetAcceptedCargo_Station,   // get_accepted_cargo_proc
+	NULL,                       // get_accepted_cargo_proc
 	GetTileDesc_Station,        // get_tile_desc_proc
 	GetTileTrackStatus_Station, // get_tile_track_status_proc
 	ClickTile_Station,          // click_tile_proc

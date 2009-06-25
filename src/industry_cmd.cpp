@@ -354,7 +354,7 @@ static Foundation GetFoundation_Industry(TileIndex tile, Slope tileh)
 	return FlatteningFoundation(tileh);
 }
 
-static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
+static void AddAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 {
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
@@ -385,8 +385,7 @@ static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 
 	for (byte i = 0; i < lengthof(itspec->accepts_cargo); i++) {
 		CargoID a = accepts_cargo[i];
-		/* Only set the value once. */
-		if (a != CT_INVALID && ac[a] == 0) ac[a] = acceptance[i];
+		if (a != CT_INVALID) ac[a] += acceptance[i];
 	}
 }
 
@@ -2385,7 +2384,7 @@ extern const TileTypeProcs _tile_type_industry_procs = {
 	DrawTile_Industry,           // draw_tile_proc
 	GetSlopeZ_Industry,          // get_slope_z_proc
 	ClearTile_Industry,          // clear_tile_proc
-	GetAcceptedCargo_Industry,   // get_accepted_cargo_proc
+	AddAcceptedCargo_Industry,   // add_accepted_cargo_proc
 	GetTileDesc_Industry,        // get_tile_desc_proc
 	GetTileTrackStatus_Industry, // get_tile_track_status_proc
 	ClickTile_Industry,          // click_tile_proc

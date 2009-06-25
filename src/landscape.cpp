@@ -500,12 +500,6 @@ void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner)
 	_tile_type_procs[GetTileType(tile)]->change_tile_owner_proc(tile, old_owner, new_owner);
 }
 
-void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac)
-{
-	memset(ac, 0, sizeof(AcceptedCargo));
-	_tile_type_procs[GetTileType(tile)]->get_accepted_cargo_proc(tile, ac);
-}
-
 void AnimateTile(TileIndex tile)
 {
 	_tile_type_procs[GetTileType(tile)]->animate_tile_proc(tile);

@@ -569,7 +569,7 @@ static void GetProducedCargo_Town(TileIndex tile, CargoID *b)
 	}
 }
 
-static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
+static void AddAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 {
 	const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
 	CargoID accepts[3];
@@ -594,13 +594,13 @@ static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 	if (HasBit(hs->callback_mask, CBM_HOUSE_CARGO_ACCEPTANCE)) {
 		uint16 callback = GetHouseCallback(CBID_HOUSE_CARGO_ACCEPTANCE, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 		if (callback != CALLBACK_FAILED) {
-			if (accepts[0] != CT_INVALID) ac[accepts[0]] = GB(callback, 0, 4);
-			if (accepts[1] != CT_INVALID) ac[accepts[1]] = GB(callback, 4, 4);
+			if (accepts[0] != CT_INVALID) ac[accepts[0]] += GB(callback, 0, 4);
+			if (accepts[1] != CT_INVALID) ac[accepts[1]] += GB(callback, 4, 4);
 			if (_settings_game.game_creation.landscape != LT_TEMPERATE && HasBit(callback, 12)) {
 				/* The 'S' bit indicates food instead of goods */
-				ac[CT_FOOD] = GB(callback, 8, 4);
+				ac[CT_FOOD] += GB(callback, 8, 4);
 			} else {
-				if (accepts[2] != CT_INVALID) ac[accepts[2]] = GB(callback, 8, 4);
+				if (accepts[2] != CT_INVALID) ac[accepts[2]] += GB(callback, 8, 4);
 			}
 			return;
 		}
@@ -608,7 +608,7 @@ static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 
 	/* No custom acceptance, so fill in with the default values */
 	for (uint8 i = 0; i < lengthof(accepts); i++) {
-		if (accepts[i] != CT_INVALID) ac[accepts[i]] = hs->cargo_acceptance[i];
+		if (accepts[i] != CT_INVALID) ac[accepts[i]] += hs->cargo_acceptance[i];
 	}
 }
 
@@ -2883,7 +2883,7 @@ extern const TileTypeProcs _tile_type_town_procs = {
 	DrawTile_Town,           // draw_tile_proc
 	GetSlopeZ_Town,          // get_slope_z_proc
 	ClearTile_Town,          // clear_tile_proc
-	GetAcceptedCargo_Town,   // get_accepted_cargo_proc
+	AddAcceptedCargo_Town,   // add_accepted_cargo_proc
 	GetTileDesc_Town,        // get_tile_desc_proc
 	GetTileTrackStatus_Town, // get_tile_track_status_proc
 	ClickTile_Town,          // click_tile_proc
