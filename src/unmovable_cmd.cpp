@@ -319,11 +319,6 @@ static void GetTileDesc_Unmovable(TileIndex tile, TileDesc *td)
 	td->owner[0] = GetTileOwner(tile);
 }
 
-static void AnimateTile_Unmovable(TileIndex tile)
-{
-	/* not used */
-}
-
 static void TileLoop_Unmovable(TileIndex tile)
 {
 	if (!IsCompanyHQ(tile)) return;
@@ -505,7 +500,7 @@ extern const TileTypeProcs _tile_type_unmovable_procs = {
 	GetTileDesc_Unmovable,          // get_tile_desc_proc
 	GetTileTrackStatus_Unmovable,   // get_tile_track_status_proc
 	ClickTile_Unmovable,            // click_tile_proc
-	AnimateTile_Unmovable,          // animate_tile_proc
+	NULL,                           // animate_tile_proc
 	TileLoop_Unmovable,             // tile_loop_clear
 	ChangeTileOwner_Unmovable,      // change_tile_owner_clear
 	NULL,                           // get_produced_cargo_proc

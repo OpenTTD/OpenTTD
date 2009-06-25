@@ -2074,11 +2074,6 @@ static Foundation GetFoundation_Track(TileIndex tile, Slope tileh)
 	return IsPlainRail(tile) ? GetRailFoundation(tileh, GetTrackBits(tile)) : FlatteningFoundation(tileh);
 }
 
-static void AnimateTile_Track(TileIndex tile)
-{
-	/* not used */
-}
-
 static void TileLoop_Track(TileIndex tile)
 {
 	RailGroundType old_ground = GetRailGroundType(tile);
@@ -2615,11 +2610,11 @@ extern const TileTypeProcs _tile_type_rail_procs = {
 	DrawTile_Track,           // draw_tile_proc
 	GetSlopeZ_Track,          // get_slope_z_proc
 	ClearTile_Track,          // clear_tile_proc
-	NULL,                     // get_accepted_cargo_proc
+	NULL,                     // add_accepted_cargo_proc
 	GetTileDesc_Track,        // get_tile_desc_proc
 	GetTileTrackStatus_Track, // get_tile_track_status_proc
 	ClickTile_Track,          // click_tile_proc
-	AnimateTile_Track,        // animate_tile_proc
+	NULL,                     // animate_tile_proc
 	TileLoop_Track,           // tile_loop_clear
 	ChangeTileOwner_Track,    // change_tile_owner_clear
 	NULL,                     // get_produced_cargo_proc

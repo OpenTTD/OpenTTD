@@ -39,20 +39,9 @@ static void GetTileDesc_Dummy(TileIndex tile, TileDesc *td)
 	td->owner[0] = OWNER_NONE;
 }
 
-static void AnimateTile_Dummy(TileIndex tile)
-{
-	/* not used */
-}
-
 static void TileLoop_Dummy(TileIndex tile)
 {
 	/* not used */
-}
-
-static bool ClickTile_Dummy(TileIndex tile)
-{
-	/* not used */
-	return false;
 }
 
 static void ChangeTileOwner_Dummy(TileIndex tile, Owner old_owner, Owner new_owner)
@@ -74,11 +63,11 @@ extern const TileTypeProcs _tile_type_dummy_procs = {
 	DrawTile_Dummy,           // draw_tile_proc
 	GetSlopeZ_Dummy,          // get_slope_z_proc
 	ClearTile_Dummy,          // clear_tile_proc
-	NULL,                     // get_accepted_cargo_proc
+	NULL,                     // add_accepted_cargo_proc
 	GetTileDesc_Dummy,        // get_tile_desc_proc
 	GetTileTrackStatus_Dummy, // get_tile_track_status_proc
-	ClickTile_Dummy,          // click_tile_proc
-	AnimateTile_Dummy,        // animate_tile_proc
+	NULL,                     // click_tile_proc
+	NULL,                     // animate_tile_proc
 	TileLoop_Dummy,           // tile_loop_clear
 	ChangeTileOwner_Dummy,    // change_tile_owner_clear
 	NULL,                     // get_produced_cargo_proc

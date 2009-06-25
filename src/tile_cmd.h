@@ -155,8 +155,6 @@ extern const TileTypeProcs * const _tile_type_procs[16];
 TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side = INVALID_DIAGDIR);
 VehicleEnterTileStatus VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);
 void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner);
-void AnimateTile(TileIndex tile);
-bool ClickTile(TileIndex tile);
 void GetTileDesc(TileIndex tile, TileDesc *td);
 
 static inline void AddAcceptedCargo(TileIndex tile, AcceptedCargo ac)
@@ -164,6 +162,20 @@ static inline void AddAcceptedCargo(TileIndex tile, AcceptedCargo ac)
 	AddAcceptedCargoProc *proc = _tile_type_procs[GetTileType(tile)]->add_accepted_cargo_proc;
 	if (proc == NULL) return;
 	proc(tile, ac);
+}
+
+static inline void AnimateTile(TileIndex tile)
+{
+	AnimateTileProc *proc = _tile_type_procs[GetTileType(tile)]->animate_tile_proc;
+	if (proc == NULL) return;
+	proc(tile);
+}
+
+static inline bool ClickTile(TileIndex tile)
+{
+	ClickTileProc *proc = _tile_type_procs[GetTileType(tile)]->click_tile_proc;
+	if (proc == NULL) return false;
+	return proc(tile);
 }
 
 #endif /* TILE_CMD_H */

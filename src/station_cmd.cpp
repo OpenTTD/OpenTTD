@@ -3152,7 +3152,7 @@ extern const TileTypeProcs _tile_type_station_procs = {
 	DrawTile_Station,           // draw_tile_proc
 	GetSlopeZ_Station,          // get_slope_z_proc
 	ClearTile_Station,          // clear_tile_proc
-	NULL,                       // get_accepted_cargo_proc
+	NULL,                       // add_accepted_cargo_proc
 	GetTileDesc_Station,        // get_tile_desc_proc
 	GetTileTrackStatus_Station, // get_tile_track_status_proc
 	ClickTile_Station,          // click_tile_proc

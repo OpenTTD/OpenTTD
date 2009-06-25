@@ -557,11 +557,6 @@ static void GetTileDesc_Trees(TileIndex tile, TileDesc *td)
 	td->owner[0] = GetTileOwner(tile);
 }
 
-static void AnimateTile_Trees(TileIndex tile)
-{
-	/* not used */
-}
-
 static void TileLoopTreesDesert(TileIndex tile)
 {
 	switch (GetTropicZone(tile)) {
@@ -737,12 +732,6 @@ void OnTick_Trees()
 	}
 }
 
-static bool ClickTile_Trees(TileIndex tile)
-{
-	/* not used */
-	return false;
-}
-
 static TrackStatus GetTileTrackStatus_Trees(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
 	return 0;
@@ -768,11 +757,11 @@ extern const TileTypeProcs _tile_type_trees_procs = {
 	DrawTile_Trees,           // draw_tile_proc
 	GetSlopeZ_Trees,          // get_slope_z_proc
 	ClearTile_Trees,          // clear_tile_proc
-	NULL,                     // get_accepted_cargo_proc
+	NULL,                     // add_accepted_cargo_proc
 	GetTileDesc_Trees,        // get_tile_desc_proc
 	GetTileTrackStatus_Trees, // get_tile_track_status_proc
-	ClickTile_Trees,          // click_tile_proc
-	AnimateTile_Trees,        // animate_tile_proc
+	NULL,                     // click_tile_proc
+	NULL,                     // animate_tile_proc
 	TileLoop_Trees,           // tile_loop_clear
 	ChangeTileOwner_Trees,    // change_tile_owner_clear
 	NULL,                     // get_produced_cargo_proc

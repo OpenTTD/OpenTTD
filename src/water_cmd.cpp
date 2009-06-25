@@ -702,11 +702,6 @@ static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 	td->owner[0] = GetTileOwner(tile);
 }
 
-static void AnimateTile_Water(TileIndex tile)
-{
-	/* not used */
-}
-
 static void FloodVehicle(Vehicle *v);
 
 /**
@@ -1155,11 +1150,11 @@ extern const TileTypeProcs _tile_type_water_procs = {
 	DrawTile_Water,           // draw_tile_proc
 	GetSlopeZ_Water,          // get_slope_z_proc
 	ClearTile_Water,          // clear_tile_proc
-	NULL,                     // get_accepted_cargo_proc
+	NULL,                     // add_accepted_cargo_proc
 	GetTileDesc_Water,        // get_tile_desc_proc
 	GetTileTrackStatus_Water, // get_tile_track_status_proc
 	ClickTile_Water,          // click_tile_proc
-	AnimateTile_Water,        // animate_tile_proc
+	NULL,                     // animate_tile_proc
 	TileLoop_Water,           // tile_loop_clear
 	ChangeTileOwner_Water,    // change_tile_owner_clear
 	NULL,                     // get_produced_cargo_proc

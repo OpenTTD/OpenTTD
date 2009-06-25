@@ -500,16 +500,6 @@ void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner)
 	_tile_type_procs[GetTileType(tile)]->change_tile_owner_proc(tile, old_owner, new_owner);
 }
 
-void AnimateTile(TileIndex tile)
-{
-	_tile_type_procs[GetTileType(tile)]->animate_tile_proc(tile);
-}
-
-bool ClickTile(TileIndex tile)
-{
-	return _tile_type_procs[GetTileType(tile)]->click_tile_proc(tile);
-}
-
 void GetTileDesc(TileIndex tile, TileDesc *td)
 {
 	_tile_type_procs[GetTileType(tile)]->get_tile_desc_proc(tile, td);

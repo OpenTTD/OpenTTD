@@ -1281,11 +1281,6 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 }
 
 
-static void AnimateTile_TunnelBridge(TileIndex tile)
-{
-	/* not used */
-}
-
 static void TileLoop_TunnelBridge(TileIndex tile)
 {
 	bool snow_or_desert = HasTunnelBridgeSnowOrDesert(tile);
@@ -1308,13 +1303,6 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 			break;
 	}
 }
-
-static bool ClickTile_TunnelBridge(TileIndex tile)
-{
-	/* not used */
-	return false;
-}
-
 
 static TrackStatus GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
@@ -1540,11 +1528,11 @@ extern const TileTypeProcs _tile_type_tunnelbridge_procs = {
 	DrawTile_TunnelBridge,           // draw_tile_proc
 	GetSlopeZ_TunnelBridge,          // get_slope_z_proc
 	ClearTile_TunnelBridge,          // clear_tile_proc
-	NULL,                            // get_accepted_cargo_proc
+	NULL,                            // add_accepted_cargo_proc
 	GetTileDesc_TunnelBridge,        // get_tile_desc_proc
 	GetTileTrackStatus_TunnelBridge, // get_tile_track_status_proc
-	ClickTile_TunnelBridge,          // click_tile_proc
-	AnimateTile_TunnelBridge,        // animate_tile_proc
+	NULL,                            // click_tile_proc
+	NULL,                            // animate_tile_proc
 	TileLoop_TunnelBridge,           // tile_loop_clear
 	ChangeTileOwner_TunnelBridge,    // change_tile_owner_clear
 	NULL,                            // get_produced_cargo_proc

@@ -1632,7 +1632,7 @@ extern const TileTypeProcs _tile_type_road_procs = {
 	DrawTile_Road,           // draw_tile_proc
 	GetSlopeZ_Road,          // get_slope_z_proc
 	ClearTile_Road,          // clear_tile_proc
-	NULL,                    // get_accepted_cargo_proc
+	NULL,                    // add_accepted_cargo_proc
 	GetTileDesc_Road,        // get_tile_desc_proc
 	GetTileTrackStatus_Road, // get_tile_track_status_proc
 	ClickTile_Road,          // click_tile_proc
