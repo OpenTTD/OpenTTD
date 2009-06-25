@@ -1,12 +1,12 @@
 ##name German
 ##ownname Deutsch
 ##isocode de_DE
-##winlangid 0x0407
-##grflangid 0x02
 ##plural 0
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x0407
+##grflangid 0x02
 ##gender m w n p
 
 #
@@ -1314,14 +1314,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Jahre
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Jahre{}die das Spiel schon läuft
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPIEL-INFO
-STR_NETWORK_CLIENTS                                             :{SILVER}Teilnehmer:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Sprache:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Landschaft:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Spielfeldgröße:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Serverversion:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serveradresse:  {WHITE}{STRING}
-STR_NETWORK_START_DATE                                          :{SILVER}Startdatum:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Aktuelles Datum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CLIENTS                                             :{SILVER}Teilnehmer: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Sprache: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Landschaft: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Spielfeldgröße: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Serverversion: {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serveradresse: {WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}Startdatum: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Aktuelles Datum: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Passwortgeschützt!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER VOLL
@@ -1403,7 +1403,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Lettisch
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Mehrspielerlobby
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Spieleintritt vorbereiten:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Spieleintritt vorbereiten: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Eine Liste aller Firmen, die sich im Spiel befinden. Man kann einer Firma beitreten oder eine eigene Firma gründen, sofern ein Platz frei ist.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Neues Unternehmen
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Ein neues Unternehmen gründen
@@ -1416,16 +1416,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Aktualis
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}Firmenprofil
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Firmenname:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Gründung:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Firmenwert:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Kontostand:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Einkommen (letzes Jahr):  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Leistung:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Firmenname: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Gründung: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Firmenwert: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Kontostand: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Einkommen (letzes Jahr): {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Leistung: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Fahrzeuge:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Stationen:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Spieler:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Fahrzeuge: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Stationen: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Spieler: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Verbinden...
 
@@ -2210,7 +2210,7 @@ STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Betriebsgewinndiagramm
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Kontostand
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Kredit
-STR_MAX_LOAN                                                    :{WHITE}Maximaler Kredit:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Maximaler Kredit: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{SKIP}{SKIP}{CURRENCY} leihen
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}{SKIP}{SKIP}{CURRENCY} zurückzahlen
@@ -2932,7 +2932,7 @@ STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Neue Sch
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Schiff bauen
 STR_CLONE_SHIP                                                  :{BLACK}Schiff kopieren
 STR_CLONE_SHIP_INFO                                             :{BLACK}Baut eine Kopie des Schiffes. Strg+Klick erzeugt gemeinsamen Fahrplan
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Baut eine Kopie des Schiffes. Klicke diese Schaltfläche und dann auf eine Schiff innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Baut eine Kopie des Schiffes. Klicke diese Schaltfläche und dann auf eine Schiff innerhalb oder außerhalb der Werft. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Schiff muss in der Werft angehalten werden
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Schiff kann nicht verkauft werden...
 STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Schiff kann nicht gebaut werden...
@@ -2988,7 +2988,7 @@ STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Neue Flugzeuge
 STR_CLONE_AIRCRAFT                                              :{BLACK}Flugzeug kopieren
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Baut eine Kopie des Flugzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Baut eine Kopie des Flugzeuges. Klicke auf diese Schaltfläche und dann auf ein Flugzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Baut eine Kopie des Flugzeuges. Klicke auf diese Schaltfläche und dann auf ein Flugzeug innerhalb oder außerhalb des Hangars. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Neue Flugzeuge
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Flugzeug bauen
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Flugzeug kann nicht gebaut werden...
@@ -3278,14 +3278,14 @@ STR_MAGLEV_VEHICLES                                             :Magnetschwebeba
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.: {GOLD}{VELOCITY}{BLACK}  Leistung: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.: {GOLD}{VELOCITY}{BLACK} Leistung: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Geschwindigkeit: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Betriebskosten: {GOLD}{CURRENCY} pro Jahr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazität: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Entwurf: {GOLD}{NUM}{BLACK} Betriebsdauer: {GOLD}{COMMA} Jahr{P "" e}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Zuverlässigkeit: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kosten: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Geschw.: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapazität: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Angetriebene Waggons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_S}
@@ -3412,9 +3412,9 @@ STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Transpar
 STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Transparenz für Industrien einstellen.  Strg+Klick, um Umschalten zu verhindern.
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Transparenz für Gebäude wie Bahnhöfe, Depots und Wegpunkte einstellen.  Strg+Klick, um Umschalten zu verhindern.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Transparenz für Brücken einstellen. Strg+Klick, um Umschalten zu verhindern.
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparenz für Bauten wie Leuchttürme und Sendemasten einstellen.  Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparenz für Bauten wie Leuchttürme und Sendemasten einstellen. Strg+Klick, um Umschalten zu verhindern.
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Transparenz für Oberleitungen. Strg+Klick, um Umschalten zu verhindern.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparenz für Ladestandsanzeige einstellen.  Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparenz für Ladestandsanzeige einstellen. Strg+Klick, um Umschalten zu verhindern.
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Objekte unsichtbar statt transparent machen
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3540,9 +3540,9 @@ STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Blocksig
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein Blocksignal, gibt jedoch das Signal an Einfahr- und Kombinationssignale im vorherliegenden Block weiter.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinationssignal (Lichtsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Pfadsignal (Lichtsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Pfadsignale können von hinten durchfahren werden.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Pfadsignal (Lichtsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern ein Pfad zum nächsten Signal reserviert werden kann. Normale Pfadsignale können von hinten durchfahren werden.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Einseitiges Pfadsignal (Lichtsignal):{}Erlaubt mehreren Zügen, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg+Klicken ändert die bestehende Bauform.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg+Klick ändert die bestehende Bauform.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Abstand der Signale beim automatischen Bau durch Ziehen
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Signalabstand verringern
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Signalabstand erhöhen

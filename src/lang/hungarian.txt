@@ -1,12 +1,12 @@
 ##name Hungarian
 ##ownname Magyar
 ##isocode hu_HU
-##winlangid 0x040e
-##grflangid 0x24
 ##plural 2
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x040e
+##grflangid 0x24
 ##case t ba
 
 #
@@ -29,8 +29,8 @@ STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Utas
 STR_CARGO_PLURAL_PASSENGERS.t                                   :Utast
 STR_CARGO_PLURAL_COAL                                           :Szén
-STR_CARGO_PLURAL_COAL.ba                                        :Szénbe
 STR_CARGO_PLURAL_COAL.t                                         :Szenet
+STR_CARGO_PLURAL_COAL.ba                                        :Szénbe
 STR_CARGO_PLURAL_MAIL                                           :Levél
 STR_CARGO_PLURAL_MAIL.t                                         :Levelet
 STR_CARGO_PLURAL_OIL                                            :Olaj
@@ -1347,14 +1347,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Évek
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}A játékban eltelt évek száma
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}JÁTÉK INFÓ
-STR_NETWORK_CLIENTS                                             :{SILVER}Játékos:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Nyelv:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Tájtípus:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}A pálya nagysága:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Szerver verzió:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}A szerver címe:  {WHITE}{STRING}
-STR_NETWORK_START_DATE                                          :{SILVER}Kezdési dátum:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Jelenlegi dátum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CLIENTS                                             :{SILVER}Kliensek: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Nyelv: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Tájtípus: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}A pálya nagysága: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Szerver verzió: {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}A szerver címe: {WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}Kezdési dátum: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Jelenlegi dátum: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Jelszóval védve!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SZERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SZERVER TELE
@@ -1379,7 +1379,7 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Hálózat / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (reklámoz)
 STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} kliens
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maximum hány játékos lehet:
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Játékosok max. száma:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Válaszd ki hány játékos kapcsolódhat maximum. Nem szükséges pont ennyi embernek éppen kapcsolódva lennie.
 STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} vállalat
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max cégszám:
@@ -1436,7 +1436,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Lett
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Hálózati-játék beállítások
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Készülődés a kapcsolódáshoz:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Készülődés a kapcsolódáshoz: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Egy lista az összes cégről aki játékban van. Alapíthatsz újat, beléphetsz egybe, vagy csak nézheted őket megfigyelőként
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Új vállalat
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Új vállalatot alapít
@@ -1449,16 +1449,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Szerver 
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}CÉG INFÓ
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}A cég neve:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Beiktatás:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}A cég értéke:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Jelenlegi összeg:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Előző évi bevétel:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Teljesítmény:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}A cég neve: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Beiktatás: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}A cég értéke: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Jelenlegi összeg: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Előző évi bevétel: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Teljesítmény: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Járművek:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Állomások:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Játékosok:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Járművek: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Állomások: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Játékosok: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Kapcsolódás...
 
@@ -1485,23 +1485,23 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Kliens l
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Megfigyelés
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Új vállalat
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Nem található a hálózati csatoló, vagy nincs hálózati támogatás (ENABLE_NETWORK)
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nem található semmilyen hálózati játék
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} A szerver nem reagált a kérésre
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} NewGRF eltérés(ek) miatt nem sikerült kapcsolódni
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Hálózat - Játék szinkronizáció sikertelen.
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Hálózat - Játék kapcsolat elveszett.
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nem sikerült a szerver játékmentés betöltése.
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Nem tudtam elindítani a szervert.
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Nem tudtam kapcsolódni.
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} A(z) {NUM}. játékos kapcsolata elveszett.
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Protokoll-hiba keletkezett és megszakadt a kapcsolat.
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} A te gépeden lévő és a szerveren lévő programnak nem egyezik meg a verziója.
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Rossz jelszó.
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} A szerver tele van
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Ki vagy tiltva erről a szerverről
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Ki lettél rúgva a szerverről
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Ez a szerver nem engedi a csalást
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Nem található a hálózati csatoló, vagy a játékban nincs hálózati támogatás (ENABLE_NETWORK)
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Nem található semmilyen hálózati játék
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}A szerver nem reagált a kérésre
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}NewGRF eltérés(ek) miatt nem sikerült kapcsolódni
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Hálózat - Játék szinkronizáció sikertelen
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Hálózat - Játék kapcsolat elveszett
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Nem sikerült a szerver játékmentés betöltése
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Nem tudtam elindítani a szervert
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Nem tudtam kapcsolódni
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}A(z) {NUM}. játékos kapcsolata elveszett
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Protokoll-hiba keletkezett és megszakadt a kapcsolat
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}A gépeden és a szerveren lévő programnak nem egyezik meg a verziója
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Rossz jelszó
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}A szerver tele van
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Ki vagy tiltva erről a szerverről
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Ki lettél rúgva a szerverről
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Ez a szerver nem engedi a csalást
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :általános hiba
@@ -1514,7 +1514,7 @@ STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nem engedélyez
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :ismeretlen csomag érkezett
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :rossz verzió
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :a név már használva van
-STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :rossz játék-jelszó
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :rossz jelszó
 STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :hibás cég azonosító (wrong company-id in DoCommand)
 STR_NETWORK_ERR_CLIENT_KICKED                                   :a szerver kirúgott
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :csalni próbált
@@ -2280,7 +2280,7 @@ STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Működési nyereség grafikon
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banki egyenleg
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Kölcsön
-STR_MAX_LOAN                                                    :{WHITE}Max. kölcsön:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Max. kölcsön: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Kölcsönkér {SKIP}{SKIP}{CURRENCY}
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Visszafizet {SKIP}{SKIP}{CURRENCY}
@@ -3355,7 +3355,7 @@ STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacit�
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Kifejlesztve: {GOLD}{NUM}{BLACK} Élettartam: {GOLD}{COMMA} év
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. üzemképesség: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Ár: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Súly: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Súly: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Sebesség: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitás: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Meghajtott vagonok: {GOLD}+{POWER}{BLACK} Súly: {GOLD}+{WEIGHT_S}

@@ -1,14 +1,14 @@
 ##name Ukrainian
 ##ownname Українська
 ##isocode uk_UA
-##winlangid 0x0422
-##grflangid 0x33
 ##plural 6
 ##textdir ltr
-##case r d z
-##gender m f s mn
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x0422
+##grflangid 0x33
+##gender m f s mn
+##case r d z
 
 #
 
@@ -445,6 +445,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Пок�
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Покинути гру
 STR_SORT_ORDER_TIP                                              :{BLACK}Виберіть порядок сортування (спадаючий/зростаючий)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Виберіть критерій сортування
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Обрати критерій виборки
 STR_SORT_BY                                                     :{BLACK}Сортувати
 
 STR_SORT_BY_POPULATION                                          :{BLACK}за населенням
@@ -467,6 +468,8 @@ STR_SORT_BY_LENGTH                                              :за довжи
 STR_SORT_BY_LIFE_TIME                                           :Залишок строку служби
 STR_SORT_BY_FACILITY                                            :за типом станції
 STR_SORT_BY_WAITING                                             :за ціною вантажу
+STR_SORT_BY_RATING_MAX                                          :Найвищий рейтинг вантажу
+STR_SORT_BY_RATING_MIN                                          :Найнижчий рейтинг вантажу
 STR_ENGINE_SORT_ENGINE_ID                                       :за ID (класичне)
 STR_ENGINE_SORT_COST                                            :за ціною
 STR_ENGINE_SORT_POWER                                           :за потужністю
@@ -746,7 +749,7 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Розм
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Поставити маяк
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Поставити ретранслятор
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Позначити територію пустелі.{}Натисніть і утримуйте CTRL, щоб відмінити
-STR_CREATE_LAKE                                                 :{BLACK}Позначити, де буде вода.{}Make a canal, unless CTRL is held down at sea level, when it will flood the surroundings instead
+STR_CREATE_LAKE                                                 :{BLACK}Позначити, де буде вода.{}Робити канал, поки не натиснений Ctrl на рівні моря, - тоді будуть затоплені околиці
 STR_CREATE_RIVER                                                :{BLACK}Прокласти річки.
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Видалити
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Видалити місто повністю
@@ -762,7 +765,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Збер
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Грати за сценарієм
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Грати з карти висот
 STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Почати нову гру, використавши карту висот за ландшафт
-STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Ви дійсно бажаєте вийти зі сценарію?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Ви дійсно бажаєте вийти з цього сценарію?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...можливо будувати лише у містах з населенням не менш 1200
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Перенести початкову дату на 1 рік назад
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Перенести початкову дату на 1 рік вперед
@@ -977,6 +980,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Вибе
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Основна графіка
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Оберіть, яку основну графіку використовувати
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} відсутн{P ий их их}/пошкоджен{P ий их их} файл{P "" а ів}
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Додаткова інформація про базовий набір графіки
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Помилка автозбереження
 
@@ -1079,6 +1084,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Доз�
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Дозволити декілька NewGRF наборів транспорту: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Цю настройку не можна змінювати, якщо є транспорт.
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Аеропорти ніколи не старіють: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Повідомляти, якщо поїзд загубився {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Показ транспортних наказів: {ORANGE}{STRING}
@@ -1428,14 +1434,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Роки
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Кількість років{}впродовж яких іде гра
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}Інформація про гру
-STR_NETWORK_CLIENTS                                             :{SILVER}Клієнт:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Мова:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Шаблон:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Розмір карти:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версія серверу:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адреса серверу:  {WHITE}{STRING}
-STR_NETWORK_START_DATE                                          :{SILVER}Дата початку:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Поточна дата:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CLIENTS                                             :{SILVER}Клієнти: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Мова: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Шаблон: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Розмір карти: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версія серверу: {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адреса серверу: {WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}Дата початку: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Поточна дата: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Захищено паролем!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}Сервер відключений
 STR_NETWORK_SERVER_FULL                                         :{SILVER}Сервер зайнятий
@@ -1517,7 +1523,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Латвійс�
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Мережева гра - кімната
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Підготовка до з'єднання:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Підготовка до з'єднання: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Список всіх компаній присутніх у цій грі. Ви можете як приєднатись до компанії так і створити нову, якщо є вільне місце
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Нова компанія
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Створити нову компанію
@@ -1530,16 +1536,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Онов
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}Інформація про компанію
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Назва компанії:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Засновано:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Вартість компанії:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Поточний баланс:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Прибуток торік:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Продуктивність:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Назва компанії: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Засновано: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Вартість компанії: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Поточний баланс: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Прибуток торік: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Продуктивність: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Транспорт:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Станцій:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Гравців:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Транспорт: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Станцій: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Гравців: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}З'єднання...
 
@@ -1566,15 +1572,15 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Спис
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Спостерігати
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Нова компанія
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Не знайдено мережевого пристрою або скомпільовано без ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Не знайдено жодної мережної гри
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Сервер не відповів на запит
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Не можна з'єднатись внаслідок неспівпадання NewGRF
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Помилка синхронізації з мережною грою
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} З'єднання втрачено
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Неможливо завантажити гру
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Неможливо створити сервер
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Неможливо з'єднатися
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Не знайдено мережевого пристрою або скомпільовано без ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Не знайдено жодної мережної гри
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Сервер не відповів на запит
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Не можна з'єднатись внаслідок неспівпадання NewGRF
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Помилка синхронізації з мережною грою
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}З'єднання втрачено
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Неможливо завантажити гру
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Неможливо запустити сервер
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Неможливо з'єднатися
 STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Тайм-аут з'єднання #{NUM}
 STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Помилка протоколу - з'єднання розірвано
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Версія клієнта не співпадає з версією сервера
@@ -3304,6 +3310,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Пер�
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Перехід на євро: {ORANGE}ні
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Відображення: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Налаштування іншої грошової одиниці
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Зменшити кількість своєї валюти за 1 фунт (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Збільшити кількість своєї валюти за 1 фунт (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Встановити обмінний курс своєї валюти до 1 фунта (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Встановити роздільник для своєї валюти
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Встановити префікс для своєї валюти
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Встановити суфікс для своєї валюти
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Перейти на Євро раніше
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Перейти на Євро пізніше
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Визначити рік введення Євро
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 фунтів (£) у вашій валюті
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3410,6 +3426,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Наді
 STR_PURCHASE_INFO_COST                                          :{BLACK}Ціна: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вага: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ціна: {GOLD}{CURRENCY}{BLACK}  Швидкість: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Місткість: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Потужність: {GOLD}+{POWER}{BLACK} Вага: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Переобладнати на: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи вантажів
@@ -3702,6 +3719,7 @@ STR_AI_RANDOM_AI                                                :Випадко�
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметри AI
 STR_AI_AUTHOR                                                   :{BLACK}Автор: {STRING}
 STR_AI_VERSION                                                  :{BLACK}Версія: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Один з поточних AI зазнав краху. Будь ласка, повідомте про це автора AI зі знімком налагоджувального вікна AI.
 ########
 

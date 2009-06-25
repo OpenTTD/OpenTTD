@@ -1,12 +1,12 @@
 ##name Dutch
 ##ownname Nederlands
 ##isocode nl_NL
-##winlangid 0x0413
-##grflangid 0x1f
 ##plural 0
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x0413
+##grflangid 0x1f
 
 #
 
@@ -1300,7 +1300,7 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}IP adres
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Spelers
-STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Spelers online / spelers maximaal
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Spelers online / spelers maximaal{}Bedrijven online / bedrijven maximaal
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Kaart grootte
@@ -1313,14 +1313,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Jaren
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Aantal jaren{}het spel draait
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPEL INFORMATIE
-STR_NETWORK_CLIENTS                                             :{SILVER}Spelers:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Taal:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Klimaat:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Kaartgrootte:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Server versie:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server adres:  {WHITE}{STRING}
-STR_NETWORK_START_DATE                                          :{SILVER}Start datum:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Huidige datum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CLIENTS                                             :{SILVER}Spelers: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Taal: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Klimaat: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Kaartgrootte: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Server versie: {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server adres: {WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}Start datum: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Huidige datum: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Beveiligd met wachtwoord!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER VOL
@@ -1345,7 +1345,7 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (adverteren)
 STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} speler{P "" s}
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maximaal aantal spelers
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maximaal aantal spelers:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Kies een maximaal aantal toegestane spelers. Niet alle posities hoeven gebruikt te worden.
 STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} bedr{P ijf ijven}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max bedrijven:
@@ -1402,7 +1402,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Lets
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multiplayer lobby
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Klaar om deel te nemen:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Klaar om deel te nemen: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Een lijst met alle bedrijven die momenteel in dit spel bestaan. Je kan meedoen met een bestaand bedrijf of een nieuw bedrijf beginnen.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nieuw bedrijf
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Start een nieuw bedrijf
@@ -1415,16 +1415,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Ververs 
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}BEDRIJFSINFORMATIE
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Bedrijfsnaam:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Begonnen in:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Bedrijfswaarde:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Huidige kas:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Inkomen vorig jaar:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Prestatie:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Bedrijfsnaam: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Begonnen in: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Bedrijfswaarde: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Huidige kas: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Inkomen vorig jaar: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Prestatie: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Voertuigen:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Stations:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Spelers:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Voertuigen: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Stations: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Spelers: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Verbinden...
 
@@ -1451,23 +1451,23 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Spelersl
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Kijk toe
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nieuw Bedrijf
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Geen netwerkapparaten gevonden of gecompileerd zonder ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Kon geen enkel netwerkspel vinden
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} De server beantwoorde het verzoek niet
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Kan geen verbinding maken, je hebt niet dezelfde NewGRF files als de server
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Netwerkspel synchronisatie mislukt.
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Netwerkspel verbinding kwijt.
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Kon server-opgeslagen spel niet laden
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Kan server niet starten.
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Kan geen verbinding maken.
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Verbinding #{NUM} duurde te lang.
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Er is een protocolfout gemaakt en onze verbinding is gesloten.
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} De revisie van deze client komt niet overeen met de revisie van de server.
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Ongeldig wachtwoord.
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} De server is vol
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Geen netwerkapparaten gevonden of gecompileerd zonder ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Kon geen enkel netwerkspel vinden
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}De server beantwoorde het verzoek niet
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Kan geen verbinding maken, je hebt niet dezelfde NewGRF files als de server
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Netwerkspel synchronisatie mislukt.
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Netwerkspel verbinding kwijt
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Kon server-opgeslagen spel niet laden
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Kan server niet starten
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Kan geen verbinding maken
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Verbinding #{NUM} duurde te lang
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Er is een protocolfout gemaakt en onze verbinding is gesloten
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}De revisie van deze client komt niet overeen met de revisie van de server
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Ongeldig wachtwoord
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}De server is vol
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Je bent verbannen van deze server
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Je bent van de server geschopt
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Vals spelen is niet toegestaan op deze server
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Je bent van de server geschopt
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Vals spelen is niet toegestaan op deze server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :algemene fout
@@ -1476,7 +1476,7 @@ STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :kan kaart niet 
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :verbinding verbroken
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protocol fout
 STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :Niet gelijke NewGRF instelling
-STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :niet toegelaten
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :niet toegestaan
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :raar pakket ontvangen
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :foute revisie
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :naam al in gebruik
@@ -2209,7 +2209,7 @@ STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Bedrijfswinst Grafiek
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banksaldo
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lening
-STR_MAX_LOAN                                                    :{WHITE}Max lening:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Max lening: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Leen {SKIP}{SKIP}{CURRENCY}
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Betaal {SKIP}{SKIP}{CURRENCY} terug
@@ -3085,7 +3085,7 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Totaal a
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Instellingen
 STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Toon NewGRF instellingen
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf instellingen
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF instellingen
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Wijzigingen doorvoeren
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Palet omzetten
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Verander het palet van het geselecteerd NewGRF bestand.{}Gebruik deze mogelijkheid wanneer de afbeeldingen er paars uit zien in het spel, van dit NewGRF bestand
@@ -3198,7 +3198,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Geef all
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Geef alle schepen weer die dit station in hun opdrachtenlijst hebben
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Gedeelde orders van {COMMA} voertuig{P "" en}
-STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Toon alle voertuigen met de zelfde orders
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Toon alle voertuigen met deze zelfde orders
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Je staat op het punt alle voertuigen in het depot te verkopen. Weet je het zeker?
@@ -3277,14 +3277,14 @@ STR_MAGLEV_VEHICLES                                             :Maglev Voertuig
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Snelheid: {GOLD}{VELOCITY}{BLACK}   Kracht: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Snelheid: {GOLD}{VELOCITY}{BLACK} Kracht: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Snelheid: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Onderhoudskosten: {GOLD}{CURRENCY}/jr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capaciteit: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Ontworpen: {GOLD}{NUM}{BLACK} Levensduur: {GOLD}{COMMA} jaar
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Betrouwbaarheid: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kosten: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Snelheid: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capaciteit: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Aangedreven wagons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_S}
