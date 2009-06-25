@@ -961,6 +961,12 @@ static bool ChangeDynamicEngines(int32 p1)
 	return true;
 }
 
+static bool StationCatchmentChanged(int32 p1)
+{
+	Station::RecomputeIndustriesNearForAll();
+	return true;
+}
+
 #ifdef ENABLE_NETWORK
 
 static bool UpdateClientName(int32 p1)

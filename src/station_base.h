@@ -77,6 +77,8 @@ struct StationRect : public Rect {
 	StationRect& operator = (Rect src);
 };
 
+typedef SmallVector<Industry *, 2> IndustryVector;
+
 /** Station data structure */
 struct Station : StationPool::PoolItem<&_station_pool> {
 public:
@@ -132,6 +134,8 @@ public:
 	std::list<Vehicle *> loading_vehicles;
 	GoodsEntry goods[NUM_CARGO];  ///< Goods at this station
 
+	IndustryVector industries_near; ///< Cached list of industries near the station that can accept cargo, @see DeliverGoodsToIndustry()
+
 	uint16 random_bits;
 	byte waiting_triggers;
 	uint8 cached_anim_triggers; ///< Combined animation trigger bitmask, used to determine if trigger processing should happen.
@@ -160,6 +164,9 @@ public:
 	uint GetPlatformLength(TileIndex tile, DiagDirection dir) const;
 	uint GetPlatformLength(TileIndex tile) const;
 	bool IsBuoy() const;
+
+	void RecomputeIndustriesNear();
+	static void RecomputeIndustriesNearForAll();
 
 	uint GetCatchmentRadius() const;
 

@@ -905,6 +905,9 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 	return BigMulS(dist * time_factor * num_pieces, _cargo_payment_rates[cargo_type], 21);
 }
 
+/**
+ * @note THIS STRUCTURE WILL BE REMOVED SOON!
+ */
 struct FindIndustryToDeliverData {
 	const Rect *rect;            ///< Station acceptance rectangle
 	CargoID cargo_type;          ///< Cargo type that was delivered
@@ -914,6 +917,9 @@ struct FindIndustryToDeliverData {
 	uint cargo_index;            ///< Index of cargo_type in acceptance list of ind
 };
 
+/**
+ * @note THIS FUNCTION WILL BE REMOVED SOON!
+ */
 static bool FindIndustryToDeliver(TileIndex ind_tile, void *user_data)
 {
 	FindIndustryToDeliverData *callback_data = (FindIndustryToDeliverData *)user_data;
@@ -958,10 +964,11 @@ static bool FindIndustryToDeliver(TileIndex ind_tile, void *user_data)
  * @param cargo_type Type of cargo delivered
  * @param nun_pieces Amount of cargo delivered
  * @param industry_set The destination industry will be inserted into this set
+ * @note THIS FUNCTION WILL BE REMOVED SOON!
  */
-static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int num_pieces, SmallIndustryList *industry_set)
+static Industry *DeliverGoodsToIndustryCheckOldStyle(const Station *st, CargoID cargo_type, int num_pieces)
 {
-	if (st->rect.IsEmpty()) return;
+	if (st->rect.IsEmpty()) return NULL;
 
 	/* Compute acceptance rectangle */
 	int catchment_radius = st->GetCatchmentRadius();
@@ -992,16 +999,57 @@ static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int nu
 	 *  2) The industries in the catchment area temporarily reject the cargo, and the daily station loop has not yet updated station acceptance.
 	 *  3) The results of callbacks CBID_INDUSTRY_REFUSE_CARGO and CBID_INDTILE_CARGO_ACCEPTANCE are inconsistent. (documented behaviour)
 	 */
-	if (CircularTileSearch(&start_tile, 2 * max_radius + 1, FindIndustryToDeliver, &callback_data)) {
-		Industry *best = callback_data.ind;
-		uint accepted_cargo_index = callback_data.cargo_index;
-		assert(best != NULL);
+	if (CircularTileSearch(&start_tile, 2 * max_radius + 1, FindIndustryToDeliver, &callback_data)) return callback_data.ind;
+
+	return NULL;
+}
+
+
+/**
+ * Transfer goods from station to industry.
+ * All cargo is delivered to the nearest (Manhattan) industry to the station sign, which is inside the acceptance rectangle and actually accepts the cargo.
+ * @param st The station that accepted the cargo
+ * @param cargo_type Type of cargo delivered
+ * @param nun_pieces Amount of cargo delivered
+ * @param industry_set The destination industry will be inserted into this set
+ */
+static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int num_pieces, SmallIndustryList *industry_set)
+{
+	/* Find the nearest industrytile to the station sign inside the catchment area, whose industry accepts the cargo.
+	 * This fails in three cases:
+	 *  1) The station accepts the cargo because there are enough houses around it accepting the cargo.
+	 *  2) The industries in the catchment area temporarily reject the cargo, and the daily station loop has not yet updated station acceptance.
+	 *  3) The results of callbacks CBID_INDUSTRY_REFUSE_CARGO and CBID_INDTILE_CARGO_ACCEPTANCE are inconsistent. (documented behaviour)
+	 */
+
+	for (uint i = 0; i < st->industries_near.Length(); i++) {
+		Industry *ind = st->industries_near[i];
+		const IndustrySpec *indspec = GetIndustrySpec(ind->type);
+
+		uint cargo_index;
+		for (cargo_index = 0; cargo_index < lengthof(ind->accepts_cargo); cargo_index++) {
+			if (cargo_type == ind->accepts_cargo[cargo_index]) break;
+		}
+		/* Check if matching cargo has been found */
+		if (cargo_index >= lengthof(ind->accepts_cargo)) continue;
+
+		/* Check if industry temporarily refuses acceptance */
+		if (HasBit(indspec->callback_flags, CBM_IND_REFUSE_CARGO)) {
+			uint16 res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO, 0, GetReverseCargoTranslation(cargo_type, indspec->grf_prop.grffile), ind, ind->type, ind->xy);
+			if (res == 0) continue;
+		}
 
 		/* Insert the industry into industry_set, if not yet contained */
-		if (industry_set != NULL) industry_set->Include(best);
+		if (industry_set != NULL) industry_set->Include(ind);
 
-		best->incoming_cargo_waiting[accepted_cargo_index] = min(num_pieces + best->incoming_cargo_waiting[accepted_cargo_index], 0xFFFF);
+		assert(DeliverGoodsToIndustryCheckOldStyle(st, cargo_type, num_pieces) == ind); // safety check, will be removed soon
+
+		ind->incoming_cargo_waiting[cargo_index] = min(num_pieces + ind->incoming_cargo_waiting[cargo_index], 0xFFFF);
+
+		return;
 	}
+
+	assert(DeliverGoodsToIndustryCheckOldStyle(st, cargo_type, num_pieces) == NULL); // safety check, will be removed soon
 }
 
 /**

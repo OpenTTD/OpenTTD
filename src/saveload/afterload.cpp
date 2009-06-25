@@ -226,6 +226,8 @@ static bool InitializeWindowsAndCaches()
 
 	SetCachedEngineCounts();
 
+	Station::RecomputeIndustriesNearForAll();
+
 	/* Towns have a noise controlled number of airports system
 	 * So each airport's noise value must be added to the town->noise_reached value
 	 * Reset each town's noise_reached value to '0' before. */

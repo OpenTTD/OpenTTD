@@ -24,6 +24,7 @@ static int32 ConvertLandscape(const char *value);
 static int32 CheckNoiseToleranceLevel(const char *value);
 static bool CheckFreeformEdges(int32 p1);
 static bool ChangeDynamicEngines(int32 p1);
+static bool StationCatchmentChanged(int32 p1);
 
 #ifdef ENABLE_NETWORK
 static bool UpdateClientName(int32 p1);
@@ -398,7 +399,7 @@ const SettingDesc _settings[] = {
 	    SDT_BOOL(GameSettings, station.nonuniform_stations,                                         0,NN,  true,                    STR_CONFIG_SETTING_NONUNIFORM_STATIONS,    NULL),
 	     SDT_VAR(GameSettings, station.station_spread,               SLE_UINT8,                     0, 0,    12,     4,      64, 0, STR_CONFIG_SETTING_STATION_SPREAD,         InvalidateStationBuildWindow),
 	    SDT_BOOL(GameSettings, order.serviceathelipad,                                              0, 0,  true,                    STR_CONFIG_SETTING_SERVICEATHELIPAD,       NULL),
-	    SDT_BOOL(GameSettings, station.modified_catchment,                                          0, 0,  true,                    STR_CONFIG_SETTING_CATCHMENT,              NULL),
+	    SDT_BOOL(GameSettings, station.modified_catchment,                                          0, 0,  true,                    STR_CONFIG_SETTING_CATCHMENT,              StationCatchmentChanged),
 	SDT_CONDBOOL(GameSettings, order.gradual_loading,                           40, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_GRADUAL_LOADING,        NULL),
 	SDT_CONDBOOL(GameSettings, construction.road_stop_on_town_road,             47, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD,      NULL),
 	SDT_CONDBOOL(GameSettings, construction.road_stop_on_competitor_road,      114, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD,NULL),

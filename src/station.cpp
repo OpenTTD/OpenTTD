@@ -24,6 +24,7 @@
 #include "core/pool_func.hpp"
 #include "station_base.h"
 #include "roadstop_base.h"
+#include "industry_map.h"
 
 #include "table/strings.h"
 
@@ -270,6 +271,88 @@ uint Station::GetCatchmentRadius() const
 	return ret;
 }
 
+/** Rect and pointer to IndustryVector */
+struct RectAndIndustryVector {
+	Rect rect;
+	IndustryVector *industries_near;
+};
+
+/**
+ * Callback function for  Station::RecomputeIndustriesNear()
+ * Tests whether tile is an industry and possibly adds
+ * the industry to station's industries_near list.
+ * @param ind_tile tile to check
+ * @param user_data pointer to RectAndIndustryVector
+ * @return always false, we want to search all tiles
+ */
+static bool FindIndustryToDeliver(TileIndex ind_tile, void *user_data)
+{
+	/* Only process industry tiles */
+	if (!IsTileType(ind_tile, MP_INDUSTRY)) return false;
+
+	RectAndIndustryVector *riv = (RectAndIndustryVector *)user_data;
+	Industry *ind = GetIndustryByTile(ind_tile);
+
+	/* Don't check further if this industry is already in the list */
+	if (riv->industries_near->Contains(ind)) return false;
+
+	/* Only process tiles in the station acceptance rectangle */
+	int x = TileX(ind_tile);
+	int y = TileY(ind_tile);
+	if (x < riv->rect.left || x > riv->rect.right || y < riv->rect.top || y > riv->rect.bottom) return false;
+
+	/* Include only industries that can accept cargo */
+	uint cargo_index;
+	for (cargo_index = 0; cargo_index < lengthof(ind->accepts_cargo); cargo_index++) {
+		if (ind->accepts_cargo[cargo_index] != CT_INVALID) break;
+	}
+	if (cargo_index >= lengthof(ind->accepts_cargo)) return false;
+
+	*riv->industries_near->Append() = ind;
+
+	return false;
+}
+
+/**
+ * Recomputes Station::industries_near, list of industries possibly
+ * accepting cargo in station's catchment radius
+ */
+void Station::RecomputeIndustriesNear()
+{
+	this->industries_near.Reset();
+	if (this->rect.IsEmpty()) return;
+
+	/* Compute acceptance rectangle */
+	int catchment_radius = this->GetCatchmentRadius();
+
+	RectAndIndustryVector riv = {
+		{
+			max<int>(this->rect.left   - catchment_radius, 0),
+			max<int>(this->rect.top    - catchment_radius, 0),
+			min<int>(this->rect.right  + catchment_radius, MapMaxX()),
+			min<int>(this->rect.bottom + catchment_radius, MapMaxY())
+		},
+		&this->industries_near
+	};
+
+	/* Compute maximum extent of acceptance rectangle wrt. station sign */
+	TileIndex start_tile = this->xy;
+	uint max_radius = max(
+		max(DistanceManhattan(start_tile, TileXY(riv.rect.left , riv.rect.top)), DistanceManhattan(start_tile, TileXY(riv.rect.left , riv.rect.bottom))),
+		max(DistanceManhattan(start_tile, TileXY(riv.rect.right, riv.rect.top)), DistanceManhattan(start_tile, TileXY(riv.rect.right, riv.rect.bottom)))
+	);
+
+	CircularTileSearch(&start_tile, 2 * max_radius + 1, &FindIndustryToDeliver, &riv);
+}
+
+/**
+ * Recomputes Station::industries_near for all stations
+ */
+/* static */ void Station::RecomputeIndustriesNearForAll()
+{
+	Station *st;
+	FOR_ALL_STATIONS(st) st->RecomputeIndustriesNear();
+}
 
 /************************************************************************/
 /*                     StationRect implementation                       */

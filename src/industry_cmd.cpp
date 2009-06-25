@@ -167,6 +167,8 @@ Industry::~Industry()
 	DeleteIndustryNews(this->index);
 	DeleteWindowById(WC_INDUSTRY_VIEW, this->index);
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 0);
+
+	Station::RecomputeIndustriesNearForAll();
 }
 
 static void IndustryDrawSugarMine(const TileInfo *ti)
@@ -1576,6 +1578,8 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 		for (j = 0; j != 50; j++) PlantRandomFarmField(i);
 	}
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 0);
+
+	Station::RecomputeIndustriesNearForAll();
 }
 
 /** Helper function for Build/Fund an industry
