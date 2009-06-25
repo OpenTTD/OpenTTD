@@ -1171,7 +1171,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 	/* Do the action for every tile into the area */
 	BEGIN_TILE_LOOP(tile2, size_x, size_y, tile) {
 		/* Make sure the specified tile is a railroad station */
-		if (!IsTileType(tile2, MP_STATION) || !IsRailwayStation(tile2)) {
+		if (!IsRailwayStationTile(tile2)) {
 			continue;
 		}
 

@@ -747,7 +747,7 @@ void DeallocateSpecFromStation(Station *st, byte specindex)
 
 	/* Check all tiles over the station to check if the specindex is still in use */
 	BEGIN_TILE_LOOP(tile, st->trainst_w, st->trainst_h, st->train_tile) {
-		if (IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st->index && IsRailwayStation(tile) && GetCustomStationSpecIndex(tile) == specindex) {
+		if (IsRailwayStationTile(tile) && GetStationIndex(tile) == st->index && GetCustomStationSpecIndex(tile) == specindex) {
 			return;
 		}
 	} END_TILE_LOOP(tile, st->trainst_w, st->trainst_h, st->train_tile)

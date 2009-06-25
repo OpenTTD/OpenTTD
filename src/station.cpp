@@ -188,7 +188,7 @@ void Station::MarkTilesDirty(bool cargo_change) const
 
 bool Station::TileBelongsToRailStation(TileIndex tile) const
 {
-	return IsTileType(tile, MP_STATION) && GetStationIndex(tile) == index && IsRailwayStation(tile);
+	return IsRailwayStationTile(tile) && GetStationIndex(tile) = this->index;
 }
 
 /** Obtain the length of a platform
