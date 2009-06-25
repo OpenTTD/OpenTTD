@@ -13,8 +13,6 @@
 
 CargoSpec _cargo[NUM_CARGO];
 
-static const byte INVALID_CARGO = 0xFF;
-
 /* Bitmask of cargo types available */
 uint32 _cargo_mask;
 
@@ -52,19 +50,6 @@ void SetupCargoForClimate(LandscapeID l)
 			}
 		}
 	}
-}
-
-
-const CargoSpec *GetCargo(CargoID c)
-{
-	assert(c < lengthof(_cargo));
-	return &_cargo[c];
-}
-
-
-bool CargoSpec::IsValid() const
-{
-	return bitnum != INVALID_CARGO;
 }
 
 

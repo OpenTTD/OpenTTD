@@ -160,15 +160,27 @@ public:
 	 * @ingroup dirty
 	 */
 	void MarkTilesDirty(bool cargo_change) const;
-	bool TileBelongsToRailStation(TileIndex tile) const;
+
 	uint GetPlatformLength(TileIndex tile, DiagDirection dir) const;
 	uint GetPlatformLength(TileIndex tile) const;
-	bool IsBuoy() const;
-
 	void RecomputeIndustriesNear();
 	static void RecomputeIndustriesNearForAll();
 
 	uint GetCatchmentRadius() const;
+
+	FORCEINLINE bool TileBelongsToRailStation(TileIndex tile) const
+	{
+		return IsRailwayStationTile(tile) && GetStationIndex(tile) == this->index;
+	}
+
+	/**
+	 * Determines whether a station is a buoy only.
+	 * @todo Ditch this encoding of buoys
+	 */
+	FORCEINLINE bool IsBuoy() const
+	{
+		return (this->had_vehicle_of_type & HVOT_BUOY) != 0;
+	}
 
 	static FORCEINLINE Station *GetByTile(TileIndex tile)
 	{

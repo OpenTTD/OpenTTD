@@ -186,11 +186,6 @@ void Station::MarkTilesDirty(bool cargo_change) const
 	}
 }
 
-bool Station::TileBelongsToRailStation(TileIndex tile) const
-{
-	return IsRailwayStationTile(tile) && GetStationIndex(tile) == this->index;
-}
-
 /** Obtain the length of a platform
  * @pre tile must be a railway station tile
  * @param tile A tile that contains the platform in question
@@ -239,14 +234,6 @@ uint Station::GetPlatformLength(TileIndex tile, DiagDirection dir) const
 	} while (IsCompatibleTrainStationTile(tile, start_tile));
 
 	return length;
-}
-
-/** Determines whether a station is a buoy only.
- * @todo Ditch this encoding of buoys
- */
-bool Station::IsBuoy() const
-{
-	return (had_vehicle_of_type & HVOT_BUOY) != 0;
 }
 
 /** Determines the catchment radius of the station

@@ -22,6 +22,8 @@ enum TownEffect {
 };
 
 
+static const byte INVALID_CARGO = 0xFF;
+
 struct CargoSpec {
 	uint8 bitnum;
 	CargoLabel label;
@@ -48,9 +50,11 @@ struct CargoSpec {
 	const struct GRFFile *grffile;   ///< NewGRF where 'group' belongs to
 	const struct SpriteGroup *group;
 
-	bool IsValid() const;
+	bool IsValid() const
+	{
+		return this->bitnum != INVALID_CARGO;
+	}
 };
-
 
 extern uint32 _cargo_mask;
 extern CargoSpec _cargo[NUM_CARGO];
@@ -58,13 +62,19 @@ extern CargoSpec _cargo[NUM_CARGO];
 
 /* Set up the default cargo types for the given landscape type */
 void SetupCargoForClimate(LandscapeID l);
-/* Retrieve cargo details for the given cargo ID */
-const CargoSpec *GetCargo(CargoID c);
 /* Get the cargo icon for a given cargo ID */
 SpriteID GetCargoSprite(CargoID i);
 /* Get the cargo ID with the cargo label */
 CargoID GetCargoIDByLabel(CargoLabel cl);
 CargoID GetCargoIDByBitnum(uint8 bitnum);
+
+/* Retrieve cargo details for the given cargo ID */
+static inline const CargoSpec *GetCargo(CargoID c)
+{
+	assert(c < lengthof(_cargo));
+	return &_cargo[c];
+}
+
 
 static inline bool IsCargoInClass(CargoID c, uint16 cc)
 {
