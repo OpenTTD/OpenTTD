@@ -77,7 +77,7 @@ const char *GetDebugString();
 #define TOC(str, count)\
 	__sum__ += ottd_rdtsc() - _xxx_;\
 	if (++__i__ == count) {\
-		DEBUG(misc, 0, "[%s] %" OTTD_PRINTF64 "u [avg: %.1f]\n", str, __sum__, __sum__/(double)__i__);\
+		DEBUG(misc, 0, "[%s] " OTTD_PRINTF64 " [avg: %.1f]\n", str, __sum__, __sum__/(double)__i__);\
 		__i__ = 0;\
 		__sum__ = 0;\
 	}\
