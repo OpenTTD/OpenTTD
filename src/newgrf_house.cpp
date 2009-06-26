@@ -369,7 +369,7 @@ static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *grou
 	const HouseSpec *hs = GetHouseSpecs(house_id);
 	SpriteID palette = hs->random_colour[TileHash2Bit(ti->x, ti->y)] + PALETTE_RECOLOUR_START;
 	if (HasBit(hs->callback_mask, CBM_HOUSE_COLOUR)) {
-		uint16 callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, GetTownByTile(ti->tile), ti->tile);
+		uint16 callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, Town::GetByTile(ti->tile), ti->tile);
 		if (callback != CALLBACK_FAILED) {
 			/* If bit 14 is set, we should use a 2cc colour map, else use the callback value. */
 			palette = HasBit(callback, 14) ? GB(callback, 0, 8) + SPR_2CCMAP_BASE : callback;
@@ -421,7 +421,7 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 
 	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
-	NewHouseResolver(&object, house_id, ti->tile, GetTownByTile(ti->tile));
+	NewHouseResolver(&object, house_id, ti->tile, Town::GetByTile(ti->tile));
 
 	group = SpriteGroup::Resolve(hs->spritegroup, &object);
 	if (group == NULL || group->type != SGT_TILELAYOUT) {
@@ -443,7 +443,7 @@ void AnimateNewHouseTile(TileIndex tile)
 	bool frame_set_by_callback = false;
 
 	if (HasBit(hs->callback_mask, CBM_HOUSE_ANIMATION_SPEED)) {
-		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_SPEED, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_SPEED, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 		if (callback_res != CALLBACK_FAILED) animation_speed = Clamp(callback_res & 0xFF, 2, 16);
 	}
 
@@ -458,7 +458,7 @@ void AnimateNewHouseTile(TileIndex tile)
 
 	if (HasBit(hs->callback_mask, CBM_HOUSE_ANIMATION_NEXT_FRAME)) {
 		uint32 param = (hs->extra_flags & CALLBACK_1A_RANDOM_BITS) ? Random() : 0;
-		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_NEXT_FRAME, param, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_NEXT_FRAME, param, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 
 		if (callback_res != CALLBACK_FAILED) {
 			frame_set_by_callback = true;
@@ -525,7 +525,7 @@ bool CanDeleteHouse(TileIndex tile)
 	}
 
 	if (HasBit(hs->callback_mask, CBM_HOUSE_DENY_DESTRUCTION)) {
-		uint16 callback_res = GetHouseCallback(CBID_HOUSE_DENY_DESTRUCTION, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback_res = GetHouseCallback(CBID_HOUSE_DENY_DESTRUCTION, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 		return (callback_res == CALLBACK_FAILED || callback_res == 0);
 	} else {
 		return !(hs->extra_flags & BUILDING_IS_PROTECTED);
@@ -538,7 +538,7 @@ static void AnimationControl(TileIndex tile, uint16 random_bits)
 
 	if (HasBit(hs->callback_mask, CBM_HOUSE_ANIMATION_START_STOP)) {
 		uint32 param = (hs->extra_flags & SYNCHRONISED_CALLBACK_1B) ? (GB(Random(), 0, 16) | random_bits << 16) : Random();
-		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_START_STOP, param, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_START_STOP, param, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 
 		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(hs->grffile, tile, callback_res);
 	}
@@ -575,9 +575,9 @@ bool NewHouseTileLoop(TileIndex tile)
 
 	/* Check callback 21, which determines if a house should be destroyed. */
 	if (HasBit(hs->callback_mask, CBM_HOUSE_DESTRUCTION)) {
-		uint16 callback_res = GetHouseCallback(CBID_HOUSE_DESTRUCTION, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback_res = GetHouseCallback(CBID_HOUSE_DESTRUCTION, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 		if (callback_res != CALLBACK_FAILED && GB(callback_res, 0, 8) > 0) {
-			ClearTownHouse(GetTownByTile(tile), tile);
+			ClearTownHouse(Town::GetByTile(tile), tile);
 			return false;
 		}
 	}
@@ -598,7 +598,7 @@ static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, byte base_rando
 
 	if (hs->spritegroup == NULL) return;
 
-	NewHouseResolver(&object, hid, tile, GetTownByTile(tile));
+	NewHouseResolver(&object, hid, tile, Town::GetByTile(tile));
 
 	object.callback = CBID_RANDOM_TRIGGER;
 	object.trigger = trigger;

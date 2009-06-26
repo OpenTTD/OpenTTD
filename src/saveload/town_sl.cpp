@@ -42,7 +42,7 @@ void UpdateHousesAndTowns()
 			SetHouseType(t, house_id);
 		}
 
-		town = GetTownByTile(t);
+		town = Town::GetByTile(t);
 		IncreaseBuildingCount(town, house_id);
 		if (IsHouseCompleted(t)) town->population += GetHouseSpecs(house_id)->population;
 

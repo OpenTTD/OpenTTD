@@ -80,7 +80,7 @@ Town::~Town()
 	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
 		switch (GetTileType(tile)) {
 			case MP_HOUSE:
-				if (GetTownByTile(tile) == this) DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+				if (Town::GetByTile(tile) == this) DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				break;
 
 			case MP_ROAD:
@@ -380,14 +380,14 @@ static void MakeSingleHouseBigger(TileIndex tile)
 
 	/* Check and/or  */
 	if (HasBit(hs->callback_mask, CBM_HOUSE_CONSTRUCTION_STATE_CHANGE)) {
-		uint16 callback_res = GetHouseCallback(CBID_HOUSE_CONSTRUCTION_STATE_CHANGE, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback_res = GetHouseCallback(CBID_HOUSE_CONSTRUCTION_STATE_CHANGE, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(hs->grffile, tile, callback_res);
 	}
 
 	if (IsHouseCompleted(tile)) {
 		/* Now that construction is complete, we can add the population of the
 		 * building to the town. */
-		ChangePopulation(GetTownByTile(tile), hs->population);
+		ChangePopulation(Town::GetByTile(tile), hs->population);
 		ResetHouseAge(tile);
 	}
 	MarkTileDirtyByTile(tile);
@@ -435,7 +435,7 @@ static void TileLoop_Town(TileIndex tile)
 		AddAnimatedTile(tile);
 	}
 
-	Town *t = GetTownByTile(tile);
+	Town *t = Town::GetByTile(tile);
 	uint32 r = Random();
 
 	if (HasBit(hs->callback_mask, CBM_HOUSE_PRODUCE_CARGO)) {
@@ -516,7 +516,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 
 	int rating = hs->remove_rating_decrease;
 	_cleared_town_rating += rating;
-	Town *t = _cleared_town = GetTownByTile(tile);
+	Town *t = _cleared_town = Town::GetByTile(tile);
 
 	if (Company::IsValidID(_current_company)) {
 		if (rating > t->ratings[_current_company] && !(flags & DC_NO_TEST_TOWN_RATING) && !_cheats.magic_bulldozer.value) {
@@ -537,7 +537,7 @@ static void GetProducedCargo_Town(TileIndex tile, CargoID *b)
 {
 	HouseID house_id = GetHouseType(tile);
 	const HouseSpec *hs = GetHouseSpecs(house_id);
-	Town *t = GetTownByTile(tile);
+	Town *t = Town::GetByTile(tile);
 
 	if (HasBit(hs->callback_mask, CBM_HOUSE_PRODUCE_CARGO)) {
 		for (uint i = 0; i < 256; i++) {
@@ -572,7 +572,7 @@ static void AddAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 
 	/* Check for custom accepted cargo types */
 	if (HasBit(hs->callback_mask, CBM_HOUSE_ACCEPT_CARGO)) {
-		uint16 callback = GetHouseCallback(CBID_HOUSE_ACCEPT_CARGO, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback = GetHouseCallback(CBID_HOUSE_ACCEPT_CARGO, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 		if (callback != CALLBACK_FAILED) {
 			/* Replace accepted cargo types with translated values from callback */
 			accepts[0] = GetCargoTranslation(GB(callback,  0, 5), hs->grffile);
@@ -583,7 +583,7 @@ static void AddAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 
 	/* Check for custom cargo acceptance */
 	if (HasBit(hs->callback_mask, CBM_HOUSE_CARGO_ACCEPTANCE)) {
-		uint16 callback = GetHouseCallback(CBID_HOUSE_CARGO_ACCEPTANCE, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback = GetHouseCallback(CBID_HOUSE_CARGO_ACCEPTANCE, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 		if (callback != CALLBACK_FAILED) {
 			if (accepts[0] != CT_INVALID) ac[accepts[0]] += GB(callback, 0, 4);
 			if (accepts[1] != CT_INVALID) ac[accepts[1]] += GB(callback, 4, 4);
@@ -611,7 +611,7 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 
 	td->str = hs->building_name;
 
-	uint16 callback_res = GetHouseCallback(CBID_HOUSE_CUSTOM_NAME, house_completed ? 1 : 0, 0, house, GetTownByTile(tile), tile);
+	uint16 callback_res = GetHouseCallback(CBID_HOUSE_CUSTOM_NAME, house_completed ? 1 : 0, 0, house, Town::GetByTile(tile), tile);
 	if (callback_res != CALLBACK_FAILED) {
 		StringID new_name = GetGRFStringID(hs->grffile->grfid, 0xD000 + callback_res);
 		if (new_name != STR_NULL && new_name != STR_UNDEFINED) {
@@ -1214,7 +1214,7 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 
 		if (IsTileType(tile, MP_ROAD) && !IsRoadDepot(tile) && HasTileRoadType(tile, ROADTYPE_ROAD)) {
 			/* Don't allow building over roads of other cities */
-			if (IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN) && GetTownByTile(tile) != t) {
+			if (IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN) && Town::GetByTile(tile) != t) {
 				_grow_town_result = GROWTH_SUCCEED;
 			} else if (IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_NONE) && _game_mode == GM_EDITOR) {
 				/* If we are in the SE, and this road-piece has no town owner yet, it just found an
@@ -2715,7 +2715,7 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 			/* FALL THROUGH */
 
 		case MP_HOUSE:
-			return GetTownByTile(tile);
+			return Town::GetByTile(tile);
 
 		default:
 			return CalcClosestTownFromTile(tile, threshold);

@@ -135,12 +135,12 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 		return ((this->population / _settings_game.economy.town_noise_population[_settings_game.difficulty.town_council_tolerance]) + 3);
 	}
-};
 
-static inline Town *GetTownByTile(TileIndex tile)
-{
-	return Town::Get(GetTownIndex(tile));
-}
+	static FORCEINLINE Town *GetByTile(TileIndex tile)
+	{
+		return Town::Get(GetTownIndex(tile));
+	}
+};
 
 uint32 GetWorldPopulation();
 
