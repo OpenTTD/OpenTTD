@@ -12,6 +12,7 @@
 #include "newgrf_commons.h"
 #include "station_map.h"
 #include "tree_map.h"
+#include "core/mem_func.hpp"
 
 /** Constructor of generic class
  * @param offset end of original data for this entity. i.e: houses = 110
@@ -146,11 +147,11 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 		return;
 	}
 
-	memcpy(&_house_specs[house_id], hs, sizeof(*hs));
+	MemCpyT(HouseSpec::Get(house_id), hs);
 
 	/* Now add the overrides. */
 	for (int i = 0; i != max_offset; i++) {
-		HouseSpec *overridden_hs = GetHouseSpecs(i);
+		HouseSpec *overridden_hs = HouseSpec::Get(i);
 
 		if (entity_overrides[i] != hs->local_id || grfid_overrides[i] != hs->grffile->grfid) continue;
 

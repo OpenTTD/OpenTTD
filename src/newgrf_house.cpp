@@ -58,7 +58,7 @@ void InitializeBuildingCounts()
  */
 void IncreaseBuildingCount(Town *t, HouseID house_id)
 {
-	HouseClassID class_id = GetHouseSpecs(house_id)->class_id;
+	HouseClassID class_id = HouseSpec::Get(house_id)->class_id;
 
 	if (!_loaded_newgrf_features.has_newhouses) return;
 
@@ -79,7 +79,7 @@ void IncreaseBuildingCount(Town *t, HouseID house_id)
  */
 void DecreaseBuildingCount(Town *t, HouseID house_id)
 {
-	HouseClassID class_id = GetHouseSpecs(house_id)->class_id;
+	HouseClassID class_id = HouseSpec::Get(house_id)->class_id;
 
 	if (!_loaded_newgrf_features.has_newhouses) return;
 
@@ -113,7 +113,7 @@ static void HouseSetTriggers(const ResolverObject *object, int triggers)
 static uint32 GetNumHouses(HouseID house_id, const Town *town)
 {
 	uint8 map_id_count, town_id_count, map_class_count, town_class_count;
-	HouseClassID class_id = GetHouseSpecs(house_id)->class_id;
+	HouseClassID class_id = HouseSpec::Get(house_id)->class_id;
 
 	map_id_count     = ClampU(_building_counts.id_count[house_id], 0, 255);
 	map_class_count  = ClampU(_building_counts.class_count[class_id], 0, 255);
@@ -144,7 +144,7 @@ static bool SearchNearbyHouseID(TileIndex tile, void *user_data)
 {
 	if (IsTileType(tile, MP_HOUSE)) {
 		HouseID house = GetHouseType(tile); // tile been examined
-		const HouseSpec *hs = GetHouseSpecs(house);
+		const HouseSpec *hs = HouseSpec::Get(house);
 		if (hs->grffile != NULL) { // must be one from a grf file
 			SearchNearbyHouseData *nbhd = (SearchNearbyHouseData *)user_data;
 
@@ -167,7 +167,7 @@ static bool SearchNearbyHouseClass(TileIndex tile, void *user_data)
 {
 	if (IsTileType(tile, MP_HOUSE)) {
 		HouseID house = GetHouseType(tile); // tile been examined
-		const HouseSpec *hs = GetHouseSpecs(house);
+		const HouseSpec *hs = HouseSpec::Get(house);
 		if (hs->grffile != NULL) { // must be one from a grf file
 			SearchNearbyHouseData *nbhd = (SearchNearbyHouseData *)user_data;
 
@@ -190,7 +190,7 @@ static bool SearchNearbyHouseGRFID(TileIndex tile, void *user_data)
 {
 	if (IsTileType(tile, MP_HOUSE)) {
 		HouseID house = GetHouseType(tile); // tile been examined
-		const HouseSpec *hs = GetHouseSpecs(house);
+		const HouseSpec *hs = HouseSpec::Get(house);
 		if (hs->grffile != NULL) { // must be one from a grf file
 			SearchNearbyHouseData *nbhd = (SearchNearbyHouseData *)user_data;
 
@@ -226,7 +226,7 @@ static uint32 GetDistanceFromNearbyHouse(uint8 parameter, TileIndex tile, HouseI
 	if (searchradius < 1) return 0; // do not use a too low radius
 
 	SearchNearbyHouseData nbhd;
-	nbhd.hs = GetHouseSpecs(house);
+	nbhd.hs = HouseSpec::Get(house);
 	nbhd.north_tile = tile + GetHouseNorthPart(house); // modifies 'house'!
 
 	/* Use a pointer for the tile to start the search. Will be required for calculating the distance*/
@@ -281,7 +281,7 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 
 		/* Building counts for new houses with id = parameter. */
 		case 0x61: {
-			const HouseSpec *hs = GetHouseSpecs(house_id);
+			const HouseSpec *hs = HouseSpec::Get(house_id);
 			if (hs->grffile == NULL) return 0;
 
 			HouseID new_house = _house_mngr.GetID(parameter, hs->grffile->grfid);
@@ -341,7 +341,7 @@ static void NewHouseResolver(ResolverObject *res, HouseID house_id, TileIndex ti
 	res->reseed          = 0;
 	res->count           = 0;
 
-	const HouseSpec *hs = GetHouseSpecs(house_id);
+	const HouseSpec *hs = HouseSpec::Get(house_id);
 	res->grffile         = (hs != NULL ? hs->grffile : NULL);
 }
 
@@ -355,7 +355,7 @@ uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, House
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;
 
-	group = SpriteGroup::Resolve(GetHouseSpecs(house_id)->spritegroup, &object);
+	group = SpriteGroup::Resolve(HouseSpec::Get(house_id)->spritegroup, &object);
 	if (group == NULL) return CALLBACK_FAILED;
 
 	return group->GetCallbackResult();
@@ -366,7 +366,7 @@ static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *grou
 	const DrawTileSprites *dts = group->dts;
 	const DrawTileSeqStruct *dtss;
 
-	const HouseSpec *hs = GetHouseSpecs(house_id);
+	const HouseSpec *hs = HouseSpec::Get(house_id);
 	SpriteID palette = hs->random_colour[TileHash2Bit(ti->x, ti->y)] + PALETTE_RECOLOUR_START;
 	if (HasBit(hs->callback_mask, CBM_HOUSE_COLOUR)) {
 		uint16 callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, Town::GetByTile(ti->tile), ti->tile);
@@ -415,7 +415,7 @@ static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *grou
 
 void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 {
-	const HouseSpec *hs = GetHouseSpecs(house_id);
+	const HouseSpec *hs = HouseSpec::Get(house_id);
 	const SpriteGroup *group;
 	ResolverObject object;
 
@@ -438,7 +438,7 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 
 void AnimateNewHouseTile(TileIndex tile)
 {
-	const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
+	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 	byte animation_speed = hs->animation_speed;
 	bool frame_set_by_callback = false;
 
@@ -516,7 +516,7 @@ void ChangeHouseAnimationFrame(const GRFFile *file, TileIndex tile, uint16 callb
 
 bool CanDeleteHouse(TileIndex tile)
 {
-	const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
+	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 
 	/* Humans are always allowed to remove buildings, as is water and
 	 * anyone using the scenario editor. */
@@ -534,7 +534,7 @@ bool CanDeleteHouse(TileIndex tile)
 
 static void AnimationControl(TileIndex tile, uint16 random_bits)
 {
-	const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
+	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 
 	if (HasBit(hs->callback_mask, CBM_HOUSE_ANIMATION_START_STOP)) {
 		uint32 param = (hs->extra_flags & SYNCHRONISED_CALLBACK_1B) ? (GB(Random(), 0, 16) | random_bits << 16) : Random();
@@ -546,7 +546,7 @@ static void AnimationControl(TileIndex tile, uint16 random_bits)
 
 bool NewHouseTileLoop(TileIndex tile)
 {
-	const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
+	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 
 	if (GetHouseProcessingTime(tile) > 0) {
 		DecHouseProcessingTime(tile);
@@ -594,7 +594,7 @@ static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, byte base_rando
 	assert(IsTileType(tile, MP_HOUSE));
 
 	HouseID hid = GetHouseType(tile);
-	HouseSpec *hs = GetHouseSpecs(hid);
+	HouseSpec *hs = HouseSpec::Get(hid);
 
 	if (hs->spritegroup == NULL) return;
 

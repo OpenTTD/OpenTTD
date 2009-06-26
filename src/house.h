@@ -122,14 +122,12 @@ struct HouseSpec {
 	 */
 	Money GetRemovalCost() const;
 
+	static FORCEINLINE HouseSpec *Get(size_t house_id)
+	{
+		assert(house_id < HOUSE_MAX);
+		extern HouseSpec _house_specs[];
+		return &_house_specs[house_id];
+	}
 };
-
-extern HouseSpec _house_specs[];
-
-static inline HouseSpec *GetHouseSpecs(HouseID house_id)
-{
-	assert(house_id < HOUSE_MAX);
-	return &_house_specs[house_id];
-}
 
 #endif /* HOUSE_H */

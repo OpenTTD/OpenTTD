@@ -193,7 +193,7 @@ static inline void MakeHouseTile(TileIndex t, TownID tid, byte counter, byte sta
 	SetHouseCompleted(t, stage == TOWN_HOUSE_COMPLETED);
 	_m[t].m5 = IsHouseCompleted(t) ? 0 : (stage << 3 | counter);
 	SetHouseAnimationFrame(t, 0);
-	_me[t].m7 = GetHouseSpecs(type)->processing_time;
+	_me[t].m7 = HouseSpec::Get(type)->processing_time;
 }
 
 /**

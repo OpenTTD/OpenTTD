@@ -41,6 +41,7 @@
 #include "map_func.h"
 #include <map>
 #include "core/alloc_type.hpp"
+#include "core/mem_func.hpp"
 
 #include "table/strings.h"
 #include "table/build_industry.h"
@@ -1473,7 +1474,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, byt
 				if (subs_id == 0xFF) {
 					/* Instead of defining a new house, a substitute house id
 					 * of 0xFF disables the old house with the current id. */
-					_house_specs[hid + i].enabled = false;
+					HouseSpec::Get(hid + i)->enabled = false;
 					continue;
 				} else if (subs_id >= NEW_HOUSE_OFFSET) {
 					/* The substitute id must be one of the original houses. */
@@ -1486,7 +1487,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, byt
 
 				housespec = *house;
 
-				memcpy(housespec, &_house_specs[subs_id], sizeof(_house_specs[subs_id]));
+				MemCpyT(housespec, HouseSpec::Get(subs_id));
 
 				housespec->enabled = true;
 				housespec->local_id = hid + i;
@@ -5826,7 +5827,7 @@ static void FinaliseHouseArray()
 
 	if (min_year != 0) {
 		for (int i = 0; i < HOUSE_MAX; i++) {
-			HouseSpec *hs = GetHouseSpecs(i);
+			HouseSpec *hs = HouseSpec::Get(i);
 
 			if (hs->enabled && hs->min_year == min_year) hs->min_year = 0;
 		}

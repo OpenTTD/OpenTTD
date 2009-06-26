@@ -35,7 +35,7 @@ void UpdateHousesAndTowns()
 		if (!IsTileType(t, MP_HOUSE)) continue;
 
 		house_id = GetHouseType(t);
-		if (!GetHouseSpecs(house_id)->enabled && house_id >= NEW_HOUSE_OFFSET) {
+		if (!HouseSpec::Get(house_id)->enabled && house_id >= NEW_HOUSE_OFFSET) {
 			/* The specs for this type of house are not available any more, so
 			 * replace it with the substitute original house type. */
 			house_id = _house_mngr.GetSubstituteID(house_id);
@@ -44,7 +44,7 @@ void UpdateHousesAndTowns()
 
 		town = Town::GetByTile(t);
 		IncreaseBuildingCount(town, house_id);
-		if (IsHouseCompleted(t)) town->population += GetHouseSpecs(house_id)->population;
+		if (IsHouseCompleted(t)) town->population += HouseSpec::Get(house_id)->population;
 
 		/* Increase the number of houses for every house, but only once. */
 		if (GetHouseNorthPart(house_id) == 0) town->num_houses++;
