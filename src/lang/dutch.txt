@@ -1088,12 +1088,12 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Bij sle
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Plaats automatisch semafoor seinen voor: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activeer sein GUI: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Seintype die standaard moet worden gebouwd: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normaal
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Geavanceerd
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Eenrichting geavanceerd
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normale seinen
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Pbs seinen
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Eenrichting pbs seinen
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Blader door seintypen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Alleen normaal
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Alleen geavanceerd
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Alleen pbs
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Allemaal
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Wegpatroon voor nieuwe steden: {ORANGE}{STRING}
@@ -1601,26 +1601,26 @@ STR_RAILROAD_TRACK                                              :Spoor
 STR_RAILROAD_TRAIN_DEPOT                                        :Treindepot
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...gebied is van ander bedrijf
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Spoor met normale seinen
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Spoor met voorseinen
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Spoor met begin-seinen
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Spoor met uitgangseinen
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Spoor met combinatieseinen
 STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Spoor met pbs-seinen
-STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Treinrails met eenrichtings geavanceerde seinen
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Spoor met normale en pre-seinen
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Spoor met normale en uitgangs-signalen
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Spoor met normale en dubbele-signalen
-STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Treinrails met gewoon en geavanceerde seinen
-STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Treinrails met gewoon en eenrichtings geavanceerde seinen
-STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Spoor met pre- en uitgangs- signalen
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Spoor met pre- en dubbele- signalen
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Treinrails met vóór- en geavanceerde seinen
-STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Treinrails met vóór- en eenrichtings geavanceerde seinen
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Spoor met uitgangs- en dubbele- signalen
-STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Treinrails met exit- en geavanceerde seinen
-STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Treinrails met exit- en eenrichtings geavanceerde seinen
-STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Treinrails met combo- en geavanceerde seinen
-STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Treinrails met combo- en eenrichtings geavanceerde seinen
-STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Treinrails met geavanceerde en eenrichtings geavanceerde seinen
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Spoor met eenrichtings-pbs seinen
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Spoor met normale en begin-seinen
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Spoor met nromale en uitgangs-signalen
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Spoor met normale en combinatie-signalen
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Treinrails met normale en pbs-seinen
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Treinrails met normale en eenrichtings pbs-seinen
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Spoor met begin- en uitgangs- signalen
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Spoor met begin- en combinatie- signalen
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Treinrails met begin- en pbs-seinen
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Treinrails met begin- en eenrichtings pbs- seinen
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Spoor met uitgangs- en combinatie- signalen
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Treinrails met uitgangs- en pbs-seinen
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Treinrails met begin- en eenrichtings pbs seinen
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Treinrails met combinatie- en pbs- seinen
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Treinrails met combinatie- en eenrichtings pbs seinen
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Treinrails met pbs en eenrichtings pbs seinen
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Treinstation moet eerst verwijderd worden
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Bouw een losstaand station
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Station samenvoegen
@@ -3405,15 +3405,15 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...deze 
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...weg is in de verkeerde richting
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Doorzichtigheidsopties
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Wissel doorzichtigheid voor stationsnamen
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Wissel doorzichtigheid voor bomen
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Wissel doorzichtigheid voor huizen
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Wissel doorzichtigheid voor industrieën
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Wissel doorzichtigheid voor gebouwen zoals stations, depots, controleposten en bovenleiding
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Wissel doorzichtigheid voor bruggen
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Wissel doorzichtigheid voor structuren zoals vuurtoren en antennes, in de toekomst misschien voor eyecandy
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Wissel doorzichtigheid voor stationsnamen. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Wissel doorzichtigheid voor bomen. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Wissel doorzichtigheid voor huizen. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Wissel doorzichtigheid voor industrieën. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Wissel doorzichtigheid voor gebouwen zoals stations, depots en controleposten. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Wissel doorzichtigheid voor bruggen. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Wissel doorzichtigheid voor structuren zoals vuurtoren en antennes. Ctrl+Klik om vast te zetten.
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Doorzichtigheid voor bovenleiding. Ctrl+klik voor onthouden.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Schakel tussen doorzichtigheid voor laad indicatoren
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Wissel doorzichtigheid voor laad indicatoren. Ctrl+Klik om vast te zetten.
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Zet object op onzichtbaar in plaats van doorzichtig
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3530,21 +3530,21 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Verander
 STR_SIGNAL_SELECTION                                            :{WHITE}Sein keuze
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kan sein hier niet ombouwen...
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standaard sein (semafoor){}Seinen zijn nodig om te voorkomen dat treinen botsen bij een netwerk met meer dan een trein.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Ingangssein (semafoor){}Groen zolang als er een of meer groene exitseinen zijn volgend na dit sein. Anders is deze rood.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Exitsein (semafoor){}Gedraagt zich hetzelfde als een gewoon sein, maar is nodig om ingangs- en combo-voor-seinen te sturen.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combo-Sein (semafoor){}Het combo sein gedraagt zicht als zowel Ingangs- als exit-sein. Zo kun je grote netwerken van voorseinen maken.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Geavanceerde seinen (semaphoor){}Een geavanceerd sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Geavanceerde seinen kunnen van achteren worden gepasseerd.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Eenrichtings geavanceerde seinen (semaphoor){}Een geavanceerd sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtings geavanceerde seinen kunnen niet van achteren worden gepasseerd.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standaard sein (electric){}Seinen zijn nodig om te voorkomen dat treinen botsen bij netwerken met meer dan een trein.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Beginsein (semafoor){}Groen zolang als er een of meer groene uitgangsseinen zijn volgend na dit sein. Anders is deze rood.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Uitgangssein (semafoor){}Gedraagt zich hetzelfde als een gewoon sein, maar is nodig om ingangs- en combinatie-seinen te sturen.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combinatiesein (semafoor){}Het combinatiesein gedraagt zicht als zowel Ingangs- als uitgangs-sein. Zo kun je grote netwerken van beginseinen maken.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Pbs seinen (semafoor){}Een pbs sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Pbs seinen kunnen van achteren worden gepasseerd.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Eenrichtings pbs seinen (semafoor){}Een pbs sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtings pbs seinen kunnen niet van achteren worden gepasseerd.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standaard sein (elektrisch){}Seinen zijn nodig om te voorkomen dat treinen botsen bij netwerken met meer dan een trein.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Ingangssein (electric){}Groen wanneer er meer dan een groen exit-sein is in het volgende traject. Anders is deze rood.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exit-sein (electric){}Gedraagt zich hetzelfde als een standaard sein, maar is nodig om ingangs- & combo voorseinen aan te sturen.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-sein (electric){}Het combo sein gedraagt zicht als zowel ingangs- als exit-sein. Zo kun je grote netwerken van voorseinen maken.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Geavanceerde seinen (elektrisch){}Een geavanceerd sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Geavanceerde seinen kunnen van achteren worden gepasseerd.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Eenrichtings geavanceerde seinen (elektrisch){}Een geavanceerd sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtings geavanceerde seinen kunnen niet van achteren worden gepasseerd.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Uitgangssein (elektrisch){}Gedraagt zich hetzelfde als een standaard sein, maar is nodig om ingangs- & combinatie-seinen aan te sturen.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combinatiesein (electric){}Het combinatiesein gedraagt zicht als zowel ingangs- als uitgangs-sein. Zo kun je grote netwerken van beginseinen maken.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Pbs seinen (elektrisch){}Een pbs sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Pbs seinen kunnen van achteren worden gepasseerd.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Eenrichtings pbs seinen (elektrisch){}Een pbs sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtings pbs seinen kunnen niet van achteren worden gepasseerd.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Sein ombouwen{}Wanneer geselecteerd, door te klikken op een bestaand seintype, zal het sein worden omgebouwd naar het geselecteerde seintype en varianten, Ctrl+klik schakelt tussen de bestaande varianten.
-STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Sleep sein dichtheid
-STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Verklein gesleepte sein dichtheid
-STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Vergroot gesleepte sein dichtheid
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Sleep-sein dichtheid
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Verklein sleep-sein dichtheid
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Vergroot sleep-sein dichtheid
 ########
 
 ############ on screen keyboard
@@ -3597,7 +3597,7 @@ STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI bibliotheek
 STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Hoogtemap
-STR_CONTENT_TITLE                                               :{WHITE}Er worden gegevens gedownload
+STR_CONTENT_TITLE                                               :{WHITE}Download extra content
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
 STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Type van de gegevens
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Naam

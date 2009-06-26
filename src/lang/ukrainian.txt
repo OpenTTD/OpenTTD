@@ -1070,6 +1070,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Зав�
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Показувати сигнали за напрямом руху: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Показувати вікно фінансів в кінці року: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Нові накази - 'без зупинки': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Нові накази для поїзда - зупинятися у {ORANGE}{STRING}{LTBLUE} платформи
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :ближнього кінця
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :середині
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :далекого кінця
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Ставати транспорту в чергу: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Прокручувати вікно, коли курсор з краю: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Дозволити підкупляти місцеву владу: {ORANGE}{STRING}
@@ -1451,7 +1455,7 @@ STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Приєднатися
 
 
-STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Створити нову мережну гру
+STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Створити нову мережеву гру
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Назва гри:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Назва гри відображатиметься іншим гравцям у меню мережної гри
@@ -1581,14 +1585,14 @@ STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}З'єд�
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Неможливо завантажити гру
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Неможливо запустити сервер
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Неможливо з'єднатися
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Тайм-аут з'єднання #{NUM}
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Помилка протоколу - з'єднання розірвано
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Версія клієнта не співпадає з версією сервера
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Пароль невірний
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Сервер переповнений
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Вас відключено від цього серверу
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Вас відключено від гри
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} На цьому сервері грати нечесно не можна
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Тайм-аут з'єднання #{NUM}
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Помилка протоколу - з'єднання розірвано
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Версія клієнта не співпадає з версією сервера
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Пароль невірний
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Сервер переповнений
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Вас відключено від цього серверу
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Вас відключено від гри
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}На цьому сервері грати нечесно не можна
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :фатальна помилка
@@ -1659,7 +1663,7 @@ STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...фа�
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...неможливо конвертувати. Треба 8 чи 24-bit PNG формат.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...помилка (можливо, зіпсований файл).
 
-STR_BMPMAP_ERROR                                                :{WHITE}Не можу завантажити ландшафт з BMP...
+STR_BMPMAP_ERROR                                                :{WHITE}Неможливо завантажити ландшафт з BMP...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...неможливо перетворити тип зображення
 
 ##id 0x0800
@@ -2006,7 +2010,7 @@ STR_STATION_DESCRIPTION_BUOY                                    :Бакен
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...бакен на шляху
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...станція занадто велика
 STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...неоднорідні станції відключені
-STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Утримуйте CTRL для вибору декількох пунктів
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Утримуйте Ctrl для вибору декількох пунктів
 
 STR_UNDEFINED                                                   :(невизначено)
 STR_STAT_CLASS_DFLT                                             :Звичайна станція
@@ -2367,7 +2371,7 @@ STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Графік операційного прибутку
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Рахунок
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Позика
-STR_MAX_LOAN                                                    :{WHITE}Макс. позика:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Макс. позика: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Позичити {SKIP}{SKIP}{CURRENCY}
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Повернути {SKIP}{SKIP}{CURRENCY}
@@ -2402,6 +2406,7 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Вибр
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Генерувати нове випадкове обличчя
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Ключ
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Показ ключа до графіків
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Показати детальні оцінки ефективності
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Ключ до графіків компанії
 STR_GRAPH_KEY_COMPANY_SELECTION                                 :{BLACK}Натисніть тут для вкл./відкл. графіку окремої компанії
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Доставка одиниці вантажу
@@ -2776,6 +2781,9 @@ STR_ORDER_GO_TO                                                 :Прямува�
 STR_ORDER_GO_NON_STOP_TO                                        :Прямувати без зупинок до
 STR_ORDER_GO_VIA                                                :Прямувати через
 STR_ORDER_GO_NON_STOP_VIA                                       :Прямувати без зупинок через
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[ближній кінець]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[середина]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[дальній кінець]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Повністю завантажити будь-який вид вантажу
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Завантажитись при нагоді
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Повністю завантажити всі вантажі
@@ -2960,6 +2968,19 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Очис
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Очистити лічильник запізнення, щоб транспорт встигнув
 STR_SERVICE_HINT                                                :{BLACK}Пропустити це завдання, доки не буде потрібне обслуговування
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ціна: {CURRENCY} Вага: {WEIGHT_S}{}Швидкість: {VELOCITY}{}Потужність: {POWER}{}Вартість експлуатації: {CURRENCY}/рік{}Місткість: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Вартість: {CURRENCY} Макс. швидкість: {VELOCITY}{}Місткість: {CARGO}, {CARGO}{}Вартість експлуатації: {CURRENCY}/рік
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Вартість: {CURRENCY} Макс. швидкість: {VELOCITY}{}Місткість: {CARGO}{}Вартість експлуатації: {CURRENCY}/рік
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Вартість експлуатації: {LTBLUE}{CURRENCY}/рік
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_S} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вага: {LTBLUE}{WEIGHT_S} {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY} {BLACK}Макс. тяга: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Дохід цього року: {LTBLUE}{CURRENCY} (торік: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Аварії після останнього техогляду: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Побудований: {LTBLUE}{NUM}{BLACK} Вартість: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Місткість: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Місткість: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Місткість: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Зламався
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Зупинений
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Неможливо проїхати сигнал - небезпечно...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Аварія!
@@ -3298,6 +3319,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Потя
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' надає некоректну інформацію.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Інформація про вантаж/переобладнання для '{1:ENGINE}' відрізняється від списку покупки після побудови. Це може спричинити невідповідності під час автооновлення/заміни.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' спричинив нескінченний цикл у виклику виробництва
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Гра була записана у версії без підтримки трамваїв. Усі трамваї були видалені.
 
