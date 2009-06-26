@@ -7,6 +7,7 @@
 #include "station_map.h"
 #include "core/pool_func.hpp"
 #include "roadstop_base.h"
+#include "station_base.h"
 
 RoadStopPool _roadstop_pool("RoadStop");
 INSTANTIATE_POOL_METHODS(RoadStop)
@@ -46,6 +47,23 @@ RoadStop *RoadStop::GetNextRoadStop(const RoadVehicle *v) const
 	}
 
 	return NULL;
+}
+
+/**
+ * Find a roadstop at given tile
+ * @param tile tile with roadstop
+ * @param type roadstop type
+ * @return pointer to RoadStop
+ * @pre there has to be roadstop of given type there!
+ */
+/* static */ RoadStop *RoadStop::GetByTile(TileIndex tile, RoadStopType type)
+{
+	const Station *st = Station::GetByTile(tile);
+
+	for (RoadStop *rs = st->GetPrimaryRoadStop(type);; rs = rs->next) {
+		if (rs->xy == tile) return rs;
+		assert(rs->next != NULL);
+	}
 }
 
 void InitializeRoadStops()

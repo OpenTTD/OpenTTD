@@ -114,6 +114,8 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	}
 
 	RoadStop *GetNextRoadStop(const struct RoadVehicle *v) const;
+
+	static RoadStop *GetByTile(TileIndex tile, RoadStopType type);
 };
 
 #define FOR_ALL_ROADSTOPS_FROM(var, start) FOR_ALL_ITEMS_FROM(RoadStop, roadstop_index, var, start)

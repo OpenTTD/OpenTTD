@@ -56,17 +56,6 @@ bool IsHangar(TileIndex t)
 	return false;
 }
 
-RoadStop *GetRoadStopByTile(TileIndex tile, RoadStopType type)
-{
-	const Station *st = Station::GetByTile(tile);
-
-	for (RoadStop *rs = st->GetPrimaryRoadStop(type);; rs = rs->next) {
-		if (rs->xy == tile) return rs;
-		assert(rs->next != NULL);
-	}
-}
-
-
 static uint GetNumRoadStopsInStation(const Station *st, RoadStopType type)
 {
 	uint num = 0;
@@ -1513,10 +1502,10 @@ static CommandCost RemoveRoadStop(Station *st, DoCommandFlag flags, TileIndex ti
 	RoadStop *cur_stop;
 	if (is_truck) { // truck stop
 		primary_stop = &st->truck_stops;
-		cur_stop = GetRoadStopByTile(tile, ROADSTOP_TRUCK);
+		cur_stop = RoadStop::GetByTile(tile, ROADSTOP_TRUCK);
 	} else {
 		primary_stop = &st->bus_stops;
-		cur_stop = GetRoadStopByTile(tile, ROADSTOP_BUS);
+		cur_stop = RoadStop::GetByTile(tile, ROADSTOP_BUS);
 	}
 
 	assert(cur_stop != NULL);
@@ -2560,7 +2549,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 		if (rv->state < RVSB_IN_ROAD_STOP && !IsReversingRoadTrackdir((Trackdir)rv->state) && rv->frame == 0) {
 			if (IsRoadStop(tile) && IsRoadVehFront(v)) {
 				/* Attempt to allocate a parking bay in a road stop */
-				RoadStop *rs = GetRoadStopByTile(tile, GetRoadStopType(tile));
+				RoadStop *rs = RoadStop::GetByTile(tile, GetRoadStopType(tile));
 
 				if (IsDriveThroughStopTile(tile)) {
 					if (!rv->current_order.ShouldStopAtStation(v, station_id)) return VETSB_CONTINUE;

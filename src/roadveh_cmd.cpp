@@ -496,7 +496,7 @@ void RoadVehicle::UpdateDeltaXY(Direction direction)
 
 static void ClearCrashedStation(RoadVehicle *v)
 {
-	RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
+	RoadStop *rs = RoadStop::GetByTile(v->tile, GetRoadStopType(v->tile));
 
 	/* Mark the station entrance as not busy */
 	rs->SetEntranceBusy(false);
@@ -1040,7 +1040,7 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 			} else {
 				/* Proper station type, check if there is free loading bay */
 				if (!_settings_game.pf.roadveh_queue && IsStandardRoadStopTile(tile) &&
-						!GetRoadStopByTile(tile, rstype)->HasFreeBay()) {
+						!RoadStop::GetByTile(tile, rstype)->HasFreeBay()) {
 					/* Station is full and RV queuing is off */
 					trackdirs = TRACKDIR_BIT_NONE;
 				}
@@ -1491,7 +1491,7 @@ again:
 				return false;
 			}
 			if (IsRoadStop(v->tile)) {
-				RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
+				RoadStop *rs = RoadStop::GetByTile(v->tile, GetRoadStopType(v->tile));
 
 				/* Vehicle is leaving a road stop tile, mark bay as free
 				 * For drive-through stops, only do it if the vehicle stopped here */
@@ -1640,7 +1640,7 @@ again:
 			GetRoadStopType(v->tile) == (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK) &&
 			v->frame == RVC_DRIVE_THROUGH_STOP_FRAME))) {
 
-		RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
+		RoadStop *rs = RoadStop::GetByTile(v->tile, GetRoadStopType(v->tile));
 		Station *st = Station::GetByTile(v->tile);
 
 		/* Vehicle is at the stop position (at a bay) in a road stop.
@@ -1655,7 +1655,7 @@ again:
 
 				/* Check if next inline bay is free */
 				if (IsDriveThroughStopTile(next_tile) && (GetRoadStopType(next_tile) == type) && GetStationIndex(v->tile) == GetStationIndex(next_tile)) {
-					RoadStop *rs_n = GetRoadStopByTile(next_tile, type);
+					RoadStop *rs_n = RoadStop::GetByTile(next_tile, type);
 
 					if (rs_n->IsFreeBay(HasBit(v->state, RVS_USING_SECOND_BAY)) && rs_n->num_vehicles < RoadStop::MAX_VEHICLES) {
 						/* Bay in next stop along is free - use it */
