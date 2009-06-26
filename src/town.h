@@ -140,6 +140,8 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	{
 		return Town::Get(GetTownIndex(tile));
 	}
+
+	static Town *GetRandom();
 };
 
 uint32 GetWorldPopulation();
@@ -178,28 +180,6 @@ bool CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType type);
 
 
 TileIndexDiff GetHouseNorthPart(HouseID &house);
-
-/**
- * Return a random valid town.
- */
-static inline Town *GetRandomTown()
-{
-	int num = RandomRange((uint16)Town::GetNumItems());
-	TownID index = INVALID_TOWN;
-
-	while (num >= 0) {
-		num--;
-
-		index++;
-		/* Make sure we have a valid town */
-		while (!Town::IsValidID(index)) {
-			index++;
-			assert(index < Town::GetPoolSize());
-		}
-	}
-
-	return Town::Get(index);
-}
 
 Town *CalcClosestTownFromTile(TileIndex tile, uint threshold = UINT_MAX, const Town *ignore = NULL);
 

@@ -119,6 +119,30 @@ void Town::InitializeLayout(TownLayout layout)
 	this->layout = TileHash(TileX(this->xy), TileY(this->xy)) % (NUM_TLS - 1);
 }
 
+/**
+ * Return a random valid town.
+ * @return random town, NULL if there are no towns
+ */
+/* static */ Town *Town::GetRandom()
+{
+	if (Town::GetNumItems() == 0) return NULL;
+	int num = RandomRange((uint16)Town::GetNumItems());
+	size_t index = MAX_UVALUE(size_t);
+
+	while (num >= 0) {
+		num--;
+		index++;
+
+		/* Make sure we have a valid town */
+		while (!Town::IsValidID(index)) {
+			index++;
+			assert(index < Town::GetPoolSize());
+		}
+	}
+
+	return Town::Get(index);
+}
+
 Money HouseSpec::GetRemovalCost() const
 {
 	return (_price.remove_house * this->removal_cost) >> 8;

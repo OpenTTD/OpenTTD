@@ -135,6 +135,8 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 
 	Industry(TileIndex tile = INVALID_TILE) : xy(tile) {}
 	~Industry();
+
+	static Industry *GetRandom();
 };
 
 struct IndustryTileTable {
@@ -298,30 +300,6 @@ static inline uint8 GetIndustryTypeCount(IndustryType type)
 static inline void ResetIndustryCounts()
 {
 	memset(&_industry_counts, 0, sizeof(_industry_counts));
-}
-
-/**
- * Return a random valid industry.
- */
-static inline Industry *GetRandomIndustry()
-{
-	if (Industry::GetNumItems() == 0) return NULL;
-
-	int num = RandomRange((uint16)Industry::GetNumItems());
-	IndustryID index = INVALID_INDUSTRY;
-
-	while (num >= 0) {
-		num--;
-		index++;
-
-		/* Make sure we have a valid industry */
-		while (!Industry::IsValidID(index)) {
-			index++;
-			assert(index < Industry::GetPoolSize());
-		}
-	}
-
-	return Industry::Get(index);
 }
 
 #define FOR_ALL_INDUSTRIES_FROM(var, start) FOR_ALL_ITEMS_FROM(Industry, industry_index, var, start)

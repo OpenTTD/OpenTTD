@@ -126,10 +126,10 @@ static void FindSubsidyPassengerRoute(FoundRoute *fr)
 
 	fr->distance = UINT_MAX;
 
-	fr->from = from = GetRandomTown();
+	fr->from = from = Town::GetRandom();
 	if (from == NULL || from->population < 400) return;
 
-	fr->to = to = GetRandomTown();
+	fr->to = to = Town::GetRandom();
 	if (from == to || to == NULL || to->population < 400 || to->pct_pass_transported > 42)
 		return;
 
@@ -144,7 +144,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 
 	fr->distance = UINT_MAX;
 
-	fr->from = i = GetRandomIndustry();
+	fr->from = i = Industry::GetRandom();
 	if (i == NULL) return;
 
 	/* Randomize cargo type */
@@ -170,7 +170,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 
 	if (cs->town_effect == TE_GOODS || cs->town_effect == TE_FOOD) {
 		/*  The destination is a town */
-		Town *t = GetRandomTown();
+		Town *t = Town::GetRandom();
 
 		/* Only want big towns */
 		if (t == NULL || t->population < 900) return;
@@ -179,7 +179,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 		fr->to = t;
 	} else {
 		/* The destination is an industry */
-		Industry *i2 = GetRandomIndustry();
+		Industry *i2 = Industry::GetRandom();
 
 		/* The industry must accept the cargo */
 		if (i2 == NULL || i == i2 ||

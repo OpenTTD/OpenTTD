@@ -171,6 +171,32 @@ Industry::~Industry()
 	Station::RecomputeIndustriesNearForAll();
 }
 
+
+/**
+ * Return a random valid industry.
+ * @return random industry, NULL if there are no industries
+ */
+/* static */ Industry *Industry::GetRandom()
+{
+	if (Industry::GetNumItems() == 0) return NULL;
+	int num = RandomRange((uint16)Industry::GetNumItems());
+	size_t index = MAX_UVALUE(size_t);
+
+	while (num >= 0) {
+		num--;
+		index++;
+
+		/* Make sure we have a valid industry */
+		while (!Industry::IsValidID(index)) {
+			index++;
+			assert(index < Industry::GetPoolSize());
+		}
+	}
+
+	return Industry::Get(index);
+}
+
+
 static void IndustryDrawSugarMine(const TileInfo *ti)
 {
 	const DrawIndustryAnimationStruct *d;
@@ -2289,7 +2315,7 @@ void IndustryDailyLoop()
 		if (Chance16(3, 100)) {
 			MaybeNewIndustry();
 		} else {
-			Industry *i = GetRandomIndustry();
+			Industry *i = Industry::GetRandom();
 			if (i != NULL) ChangeIndustryProduction(i, false);
 		}
 	}
