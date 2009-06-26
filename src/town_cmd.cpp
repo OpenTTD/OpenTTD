@@ -43,6 +43,7 @@
 #include "subsidy_func.h"
 #include "core/smallmap_type.hpp"
 #include "core/pool_func.hpp"
+#include "town.h"
 
 #include "table/strings.h"
 #include "table/town_land.h"

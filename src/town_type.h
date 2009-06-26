@@ -8,11 +8,7 @@
 #include "core/enum_type.hpp"
 
 typedef uint16 TownID;
-typedef uint16 HouseID;
-typedef uint16 HouseClassID;
-
 struct Town;
-struct HouseSpec;
 
 /** Supported initial town sizes */
 enum TownSize {

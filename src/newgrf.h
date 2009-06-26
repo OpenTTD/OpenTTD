@@ -11,6 +11,7 @@
 #include "industry_type.h"
 #include "station_type.h"
 #include "rail_type.h"
+#include "house_type.h"
 
 enum GrfLoadingStage {
 	GLS_FILESCAN,

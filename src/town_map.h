@@ -5,8 +5,9 @@
 #ifndef TOWN_MAP_H
 #define TOWN_MAP_H
 
-#include "town.h"
 #include "tile_map.h"
+#include "town_type.h"
+#include "house.h"
 
 /**
  * Get the index of which town this house/street is attached to.
@@ -31,16 +32,6 @@ static inline void SetTownIndex(TileIndex t, TownID index)
 {
 	assert(IsTileType(t, MP_HOUSE) || IsTileType(t, MP_ROAD));
 	_m[t].m2 = index;
-}
-
-/**
- * Gets the town associated with the house or road tile
- * @param t the tile to get the town of
- * @return the town
- */
-static inline Town *GetTownByTile(TileIndex t)
-{
-	return Town::Get(GetTownIndex(t));
 }
 
 /**

@@ -21,6 +21,7 @@
 #include "company_func.h"
 #include "animated_tile_func.h"
 #include "company_base.h"
+#include "town.h"
 
 static BuildingCounts<uint32> _building_counts;
 static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];

@@ -28,6 +28,7 @@
 #include "station_map.h"
 #include "functions.h"
 #include "elrail_func.h"
+#include "town.h"
 
 #include "table/strings.h"
 #include "table/railtypes.h"

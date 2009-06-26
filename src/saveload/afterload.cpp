@@ -28,6 +28,7 @@
 #include "../company_func.h"
 #include "../road_cmd.h"
 #include "../ai/ai.hpp"
+#include "../town.h"
 
 #include "table/strings.h"
 

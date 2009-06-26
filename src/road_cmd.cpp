@@ -27,6 +27,7 @@
 #include "effectvehicle_func.h"
 #include "elrail_func.h"
 #include "roadveh.h"
+#include "town.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

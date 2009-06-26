@@ -8,6 +8,7 @@
 #include "town_type.h"
 #include "newgrf_callbacks.h"
 #include "tile_cmd.h"
+#include "house_type.h"
 
 /**
  * Makes class IDs unique to each GRF file.

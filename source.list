@@ -194,6 +194,8 @@ group_type.h
 gui.h
 heightmap.h
 highscore.h
+house.h
+house_type.h
 industry.h
 industry_type.h
 ini_type.h
