@@ -1288,12 +1288,6 @@ static Foundation GetFoundation_Road(TileIndex tile, Slope tileh)
 	}
 }
 
-static void AnimateTile_Road(TileIndex tile)
-{
-	if (IsLevelCrossing(tile)) MarkTileDirtyByTile(tile);
-}
-
-
 static const Roadside _town_road_types[][2] = {
 	{ ROADSIDE_GRASS,         ROADSIDE_GRASS },
 	{ ROADSIDE_PAVED,         ROADSIDE_PAVED },
@@ -1637,7 +1631,7 @@ extern const TileTypeProcs _tile_type_road_procs = {
 	GetTileDesc_Road,        // get_tile_desc_proc
 	GetTileTrackStatus_Road, // get_tile_track_status_proc
 	ClickTile_Road,          // click_tile_proc
-	AnimateTile_Road,        // animate_tile_proc
+	NULL,                    // animate_tile_proc
 	TileLoop_Road,           // tile_loop_clear
 	ChangeTileOwner_Road,    // change_tile_owner_clear
 	NULL,                    // get_produced_cargo_proc
