@@ -363,10 +363,19 @@ public:
 	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y);
 };
 
+/** Nested widget container flags, */
+enum NWidContainerFlags {
+	NCB_EQUALSIZE = 0, ///< Containers should keep all their (resizing) children equally large.
+
+	NC_NONE = 0,                       ///< All flags cleared.
+	NC_EQUALSIZE = 1 << NCB_EQUALSIZE, ///< Value of the #NCB_EQUALSIZE flag.
+};
+DECLARE_ENUM_AS_BIT_SET(NWidContainerFlags);
+
 /** Container with pre/inter/post child space. */
 class NWidgetPIPContainer : public NWidgetContainer {
 public:
-	NWidgetPIPContainer(WidgetType tp);
+	NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags = NC_NONE);
 
 	void SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post);
 
@@ -374,16 +383,17 @@ public:
 	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y);
 
 protected:
-	uint8 pip_pre;     ///< Amount of space before first widget.
-	uint8 pip_inter;   ///< Amount of space between widgets.
-	uint8 pip_post;    ///< Amount of space after last widget.
+	NWidContainerFlags flags; ///< Flags of the container.
+	uint8 pip_pre;            ///< Amount of space before first widget.
+	uint8 pip_inter;          ///< Amount of space between widgets.
+	uint8 pip_post;           ///< Amount of space after last widget.
 };
 
 /** Horizontal container.
  * @ingroup NestedWidgets */
 class NWidgetHorizontal : public NWidgetPIPContainer {
 public:
-	NWidgetHorizontal();
+	NWidgetHorizontal(NWidContainerFlags flags = NC_NONE);
 
 	int SetupSmallestSize();
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
@@ -395,7 +405,7 @@ public:
  * @ingroup NestedWidgets */
 class NWidgetHorizontalLTR : public NWidgetHorizontal {
 public:
-	NWidgetHorizontalLTR();
+	NWidgetHorizontalLTR(NWidContainerFlags flags = NC_NONE);
 
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
 
@@ -406,7 +416,7 @@ public:
  * @ingroup NestedWidgets */
 class NWidgetVertical : public NWidgetPIPContainer {
 public:
-	NWidgetVertical();
+	NWidgetVertical(NWidContainerFlags flags = NC_NONE);
 
 	int SetupSmallestSize();
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
@@ -561,6 +571,7 @@ struct NWidgetPart {
 		NWidgetPartPaddings padding;     ///< Part with paddings.
 		NWidgetPartPIP pip;              ///< Part with pre/inter/post spaces.
 		NWidgetFunctionType *func_ptr;   ///< Part with a function call.
+		NWidContainerFlags cont_flags;   ///< Part with container flags.
 	} u;
 };
 
@@ -763,14 +774,16 @@ static inline NWidgetPart NWidget(WidgetType tp, Colours col, int16 idx)
 
 /**
  * Widget part function for starting a new horizontal container, vertical container, or spacer widget.
- * @param tp Type of the new nested widget, #NWID_HORIZONTAL(_LTR), #NWID_VERTICAL, #NWID_SPACER, #NWID_SELECTION, or #NWID_LAYERED.
+ * @param tp         Type of the new nested widget, #NWID_HORIZONTAL(_LTR), #NWID_VERTICAL, #NWID_SPACER, #NWID_SELECTION, or #NWID_LAYERED.
+ * @param cont_flags Flags for the containers (#NWID_HORIZONTAL(_LTR) and #NWID_VERTICAL).
  * @ingroup NestedWidgetParts
  */
-static inline NWidgetPart NWidget(WidgetType tp)
+static inline NWidgetPart NWidget(WidgetType tp, NWidContainerFlags cont_flags = NC_NONE)
 {
 	NWidgetPart part;
 
 	part.type = tp;
+	part.u.cont_flags = cont_flags;
 
 	return part;
 }

@@ -131,7 +131,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 
 		/* 'generate game' and 'load game' buttons */
-		NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_GENERATE_GAME), SetMinimalSize(158, 12),
 								SetDataTip(STR_INTRO_NEW_GAME, STR_INTRO_TOOLTIP_NEW_GAME),
@@ -143,7 +143,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
 		/* 'play scenario' and 'play heightmap' buttons */
-		NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_PLAY_SCENARIO), SetMinimalSize(158, 12),
 								SetDataTip(STR_INTRO_PLAY_SCENARIO, STR_INTRO_TOOLTIP_PLAY_SCENARIO),
@@ -155,7 +155,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
 		/* 'edit scenario' and 'play multiplayer' buttons */
-		NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_EDIT_SCENARIO), SetMinimalSize(158, 12),
 								SetDataTip(STR_INTRO_SCENARIO_EDITOR, STR_INTRO_TOOLTIP_SCENARIO_EDITOR),
@@ -185,7 +185,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 		NWidget(NWID_SPACER), SetMinimalSize(0, 7),
 
 		/* 'game options' and 'difficulty options' buttons */
-		NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_OPTIONS), SetMinimalSize(158, 12),
 								SetDataTip(STR_INTRO_GAME_OPTIONS, STR_INTRO_TOOLTIP_GAME_OPTIONS),
@@ -197,7 +197,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
 		/* 'advanced settings' and 'newgrf settings' buttons */
-		NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_SETTINGS_OPTIONS), SetMinimalSize(158, 12),
 								SetDataTip(STR_CONFIG_SETTING, STR_CONFIG_SETTING_TIP),
@@ -209,7 +209,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
 		/* 'online content' and 'ai settings' buttons */
-		NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_CONTENT_DOWNLOAD), SetMinimalSize(158, 12),
 								SetDataTip(STR_CONTENT_INTRO_BUTTON, STR_CONTENT_INTRO_BUTTON_TIP),

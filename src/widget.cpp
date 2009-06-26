@@ -1340,8 +1340,9 @@ NWidgetCore *NWidgetStacked::GetWidgetFromPos(int x, int y)
 	return NULL;
 }
 
-NWidgetPIPContainer::NWidgetPIPContainer(WidgetType tp) : NWidgetContainer(tp)
+NWidgetPIPContainer::NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags) : NWidgetContainer(tp)
 {
+	this->flags = flags;
 }
 
 /**
@@ -1379,7 +1380,7 @@ NWidgetCore *NWidgetPIPContainer::GetWidgetFromPos(int x, int y)
 }
 
 /** Horizontal container widget. */
-NWidgetHorizontal::NWidgetHorizontal() : NWidgetPIPContainer(NWID_HORIZONTAL)
+NWidgetHorizontal::NWidgetHorizontal(NWidContainerFlags flags) : NWidgetPIPContainer(NWID_HORIZONTAL, flags)
 {
 }
 
@@ -1393,11 +1394,22 @@ int NWidgetHorizontal::SetupSmallestSize()
 	this->resize_x = 0;     // smallest non-zero child widget resize step.
 	this->resize_y = 1;     // smallest common child resize step
 
-	if (this->head != NULL) this->head->padding_left += this->pip_pre;
+	/* 1. Forward call, collect biggest nested array index, and longest child length. */
+	uint longest = 0; // Longest child found.
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 		int idx = child_wid->SetupSmallestSize();
 		biggest_index = max(biggest_index, idx);
-
+		longest = max(longest, child_wid->smallest_x);
+	}
+	/* 2. For containers that must maintain equal width, extend child minimal size. */
+	if (this->flags & NC_EQUALSIZE) {
+		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+			if (child_wid->fill_x) child_wid->smallest_x = longest;
+		}
+	}
+	/* 3. Move PIP space to the childs, compute smallest, fill, and resize values of the container. */
+	if (this->head != NULL) this->head->padding_left += this->pip_pre;
+	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 		if (child_wid->next != NULL) {
 			child_wid->padding_right += this->pip_inter;
 		} else {
@@ -1503,7 +1515,7 @@ void NWidgetHorizontal::StoreWidgets(Widget *widgets, int length, bool left_movi
 }
 
 /** Horizontal left-to-right container widget. */
-NWidgetHorizontalLTR::NWidgetHorizontalLTR() : NWidgetHorizontal()
+NWidgetHorizontalLTR::NWidgetHorizontalLTR(NWidContainerFlags flags) : NWidgetHorizontal(flags)
 {
 	this->type = NWID_HORIZONTAL_LTR;
 }
@@ -1519,7 +1531,7 @@ void NWidgetHorizontalLTR::StoreWidgets(Widget *widgets, int length, bool left_m
 }
 
 /** Vertical container widget. */
-NWidgetVertical::NWidgetVertical() : NWidgetPIPContainer(NWID_VERTICAL)
+NWidgetVertical::NWidgetVertical(NWidContainerFlags flags) : NWidgetPIPContainer(NWID_VERTICAL, flags)
 {
 }
 
@@ -1533,11 +1545,22 @@ int NWidgetVertical::SetupSmallestSize()
 	this->resize_x = 1;     // smallest common child resize step
 	this->resize_y = 0;     // smallest non-zero child widget resize step.
 
-	if (this->head != NULL) this->head->padding_top += this->pip_pre;
+	/* 1. Forward call, collect biggest nested array index, and longest child length. */
+	uint highest = 0; // Highest child found.
 	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 		int idx = child_wid->SetupSmallestSize();
 		biggest_index = max(biggest_index, idx);
-
+		highest = max(highest, child_wid->smallest_y);
+	}
+	/* 2. For containers that must maintain equal width, extend child minimal size. */
+	if (this->flags & NC_EQUALSIZE) {
+		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+			if (child_wid->fill_y) child_wid->smallest_y = highest;
+		}
+	}
+	/* 3. Move PIP space to the childs, compute smallest, fill, and resize values of the container. */
+	if (this->head != NULL) this->head->padding_top += this->pip_pre;
+	for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 		if (child_wid->next != NULL) {
 			child_wid->padding_bottom += this->pip_inter;
 		} else {
@@ -2173,13 +2196,13 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 
 			case NWID_HORIZONTAL:
 				if (*dest != NULL) return num_used;
-				*dest = new NWidgetHorizontal();
+				*dest = new NWidgetHorizontal(parts->u.cont_flags);
 				*fill_dest = true;
 				break;
 
 			case NWID_HORIZONTAL_LTR:
 				if (*dest != NULL) return num_used;
-				*dest = new NWidgetHorizontalLTR();
+				*dest = new NWidgetHorizontalLTR(parts->u.cont_flags);
 				*fill_dest = true;
 				break;
 
@@ -2193,7 +2216,7 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 
 			case NWID_VERTICAL:
 				if (*dest != NULL) return num_used;
-				*dest = new NWidgetVertical();
+				*dest = new NWidgetVertical(parts->u.cont_flags);
 				*fill_dest = true;
 				break;
 
