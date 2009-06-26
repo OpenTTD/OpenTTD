@@ -1151,6 +1151,8 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 	int size_x = ex - sx + 1;
 	int size_y = ey - sy + 1;
 
+	SmallVector<Station *, 4> affected_stations;
+
 	/* Do the action for every tile into the area */
 	BEGIN_TILE_LOOP(tile2, size_x, size_y, tile) {
 		/* Make sure the specified tile is a railroad station */
@@ -1203,12 +1205,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 
 			DeallocateSpecFromStation(st, specindex);
 
-			/* now we need to make the "spanned" area of the railway station smaller
-			 * if we deleted something at the edges.
-			 * we also need to adjust train_tile. */
-			MakeRailwayStationAreaSmaller(st);
-			st->MarkTilesDirty(false);
-			UpdateStationSignCoord(st);
+			affected_stations.Include(st);
 
 			if (v != NULL) {
 				/* Restore station reservation. */
@@ -1217,18 +1214,29 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 				for (; v->Next() != NULL; v = v->Next()) ;
 				if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
 			}
-
-			/* if we deleted the whole station, delete the train facility. */
-			if (st->train_tile == INVALID_TILE) {
-				st->facilities &= ~FACIL_TRAIN;
-				InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_TRAINS);
-				UpdateStationVirtCoordDirty(st);
-				DeleteStationIfEmpty(st);
-			}
-
-			st->RecomputeIndustriesNear();
 		}
 	} END_TILE_LOOP(tile2, size_x, size_y, tile)
+
+	for (Station **stp = affected_stations.Begin(); stp != affected_stations.End(); stp++) {
+		Station *st = *stp;
+
+		/* now we need to make the "spanned" area of the railway station smaller
+		 * if we deleted something at the edges.
+		 * we also need to adjust train_tile. */
+		MakeRailwayStationAreaSmaller(st);
+		st->MarkTilesDirty(false);
+		UpdateStationSignCoord(st);
+
+		/* if we deleted the whole station, delete the train facility. */
+		if (st->train_tile == INVALID_TILE) {
+			st->facilities &= ~FACIL_TRAIN;
+			InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_TRAINS);
+			UpdateStationVirtCoordDirty(st);
+			DeleteStationIfEmpty(st);
+		}
+
+		st->RecomputeIndustriesNear();
+	}
 
 	/* If we've not removed any tiles, give an error */
 	if (quantity == 0) return CMD_ERROR;
