@@ -1535,7 +1535,7 @@ extern const TileTypeProcs _tile_type_tunnelbridge_procs = {
 	NULL,                            // animate_tile_proc
 	TileLoop_TunnelBridge,           // tile_loop_clear
 	ChangeTileOwner_TunnelBridge,    // change_tile_owner_clear
-	NULL,                            // get_produced_cargo_proc
+	NULL,                            // add_produced_cargo_proc
 	VehicleEnter_TunnelBridge,       // vehicle_enter_tile_proc
 	GetFoundation_TunnelBridge,      // get_foundation_proc
 	TerraformTile_TunnelBridge,      // terraform_tile_proc

@@ -103,7 +103,7 @@ typedef TrackStatus GetTileTrackStatusProc(TileIndex tile, TransportType mode, u
  * @param tile Tile being queried
  * @param b    Destination array of produced cargo
  */
-typedef void GetProducedCargoProc(TileIndex tile, CargoID *b);
+typedef void AddProducedCargoProc(TileIndex tile, AcceptedCargo ac);
 typedef bool ClickTileProc(TileIndex tile);
 typedef void AnimateTileProc(TileIndex tile);
 typedef void TileLoopProc(TileIndex tile);
@@ -144,7 +144,7 @@ struct TileTypeProcs {
 	AnimateTileProc *animate_tile_proc;
 	TileLoopProc *tile_loop_proc;
 	ChangeTileOwnerProc *change_tile_owner_proc;
-	GetProducedCargoProc *get_produced_cargo_proc; ///< Return produced cargo of the tile
+	AddProducedCargoProc *add_produced_cargo_proc; ///< Adds produced cargo of the tile to cargo array supplied as parameter
 	VehicleEnterTileProc *vehicle_enter_tile_proc; ///< Called when a vehicle enters a tile
 	GetFoundationProc *get_foundation_proc;
 	TerraformTileProc *terraform_tile_proc;        ///< Called when a terraforming operation is about to take place
@@ -160,6 +160,13 @@ void GetTileDesc(TileIndex tile, TileDesc *td);
 static inline void AddAcceptedCargo(TileIndex tile, AcceptedCargo ac)
 {
 	AddAcceptedCargoProc *proc = _tile_type_procs[GetTileType(tile)]->add_accepted_cargo_proc;
+	if (proc == NULL) return;
+	proc(tile, ac);
+}
+
+static inline void AddProducedCargo(TileIndex tile, AcceptedCargo ac)
+{
+	AddProducedCargoProc *proc = _tile_type_procs[GetTileType(tile)]->add_produced_cargo_proc;
 	if (proc == NULL) return;
 	proc(tile, ac);
 }

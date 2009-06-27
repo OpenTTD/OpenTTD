@@ -555,7 +555,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 	return cost;
 }
 
-static void GetProducedCargo_Town(TileIndex tile, CargoID *b)
+static void AddProducedCargo_Town(TileIndex tile, AcceptedCargo ac)
 {
 	HouseID house_id = GetHouseType(tile);
 	const HouseSpec *hs = HouseSpec::Get(house_id);
@@ -570,14 +570,14 @@ static void GetProducedCargo_Town(TileIndex tile, CargoID *b)
 			CargoID cargo = GetCargoTranslation(GB(callback, 8, 7), hs->grffile);
 
 			if (cargo == CT_INVALID) continue;
-			*(b++) = cargo;
+			ac[cargo]++;
 		}
 	} else {
 		if (hs->population > 0) {
-			*(b++) = CT_PASSENGERS;
+			ac[CT_PASSENGERS]++;
 		}
 		if (hs->mail_generation > 0) {
-			*(b++) = CT_MAIL;
+			ac[CT_MAIL]++;
 		}
 	}
 }
@@ -2903,7 +2903,7 @@ extern const TileTypeProcs _tile_type_town_procs = {
 	AnimateTile_Town,        // animate_tile_proc
 	TileLoop_Town,           // tile_loop_clear
 	ChangeTileOwner_Town,    // change_tile_owner_clear
-	GetProducedCargo_Town,   // get_produced_cargo_proc
+	AddProducedCargo_Town,   // add_produced_cargo_proc
 	NULL,                    // vehicle_enter_tile_proc
 	GetFoundation_Town,      // get_foundation_proc
 	TerraformTile_Town,      // terraform_tile_proc

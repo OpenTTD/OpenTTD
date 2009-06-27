@@ -1634,7 +1634,7 @@ extern const TileTypeProcs _tile_type_road_procs = {
 	NULL,                    // animate_tile_proc
 	TileLoop_Road,           // tile_loop_clear
 	ChangeTileOwner_Road,    // change_tile_owner_clear
-	NULL,                    // get_produced_cargo_proc
+	NULL,                    // add_produced_cargo_proc
 	VehicleEnter_Road,       // vehicle_enter_tile_proc
 	GetFoundation_Road,      // get_foundation_proc
 	TerraformTile_Road,      // terraform_tile_proc

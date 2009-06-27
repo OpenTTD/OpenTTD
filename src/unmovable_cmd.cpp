@@ -503,7 +503,7 @@ extern const TileTypeProcs _tile_type_unmovable_procs = {
 	NULL,                           // animate_tile_proc
 	TileLoop_Unmovable,             // tile_loop_clear
 	ChangeTileOwner_Unmovable,      // change_tile_owner_clear
-	NULL,                           // get_produced_cargo_proc
+	NULL,                           // add_produced_cargo_proc
 	NULL,                           // vehicle_enter_tile_proc
 	GetFoundation_Unmovable,        // get_foundation_proc
 	TerraformTile_Unmovable,        // terraform_tile_proc

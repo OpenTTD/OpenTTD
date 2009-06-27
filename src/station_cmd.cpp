@@ -465,19 +465,7 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 	for (int yc = y1; yc != y2; yc++) {
 		for (int xc = x1; xc != x2; xc++) {
 			TileIndex tile = TileXY(xc, yc);
-
-			if (!IsTileType(tile, MP_STATION)) {
-				GetProducedCargoProc *gpc = _tile_type_procs[GetTileType(tile)]->get_produced_cargo_proc;
-				if (gpc != NULL) {
-					CargoID cargos[256]; // Required for CBID_HOUSE_PRODUCE_CARGO.
-					memset(cargos, CT_INVALID, sizeof(cargos));
-
-					gpc(tile, cargos);
-					for (uint i = 0; i < lengthof(cargos); ++i) {
-						if (cargos[i] != CT_INVALID) produced[cargos[i]]++;
-					}
-				}
-			}
+			AddProducedCargo(tile, produced);
 		}
 	}
 }
@@ -3156,7 +3144,7 @@ extern const TileTypeProcs _tile_type_station_procs = {
 	AnimateTile_Station,        // animate_tile_proc
 	TileLoop_Station,           // tile_loop_clear
 	ChangeTileOwner_Station,    // change_tile_owner_clear
-	NULL,                       // get_produced_cargo_proc
+	NULL,                       // add_produced_cargo_proc
 	VehicleEnter_Station,       // vehicle_enter_tile_proc
 	GetFoundation_Station,      // get_foundation_proc
 	TerraformTile_Station,      // terraform_tile_proc
