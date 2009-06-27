@@ -483,7 +483,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 			 * but once SETX is used you cannot be sure the actual content of the
 			 * string is centered, so it doesn't really matter. */
 			align = SA_LEFT | SA_FORCE;
-			initial_left = left = max(left, (left + right - GetStringBoundingBox(str).width) / 2);
+			initial_left = left = max(left, (left + right - (int)GetStringBoundingBox(str).width) / 2);
 		}
 
 		/* We add the begin of the string, but don't add it twice */
@@ -798,7 +798,7 @@ Dimension GetStringBoundingBox(const char *str)
 {
 	FontSize size = _cur_fontsize;
 	Dimension br;
-	int max_width;
+	uint max_width;
 	WChar c;
 
 	br.width = br.height = max_width = 0;
@@ -809,10 +809,10 @@ Dimension GetStringBoundingBox(const char *str)
 			br.width += GetCharacterWidth(size, c);
 		} else {
 			switch (c) {
-				case SCC_SETX: br.width = max((int)*str++, br.width); break;
+				case SCC_SETX: br.width = max((uint)*str++, br.width); break;
 				case SCC_SETXY:
-					br.width  = max((int)*str++, br.width);
-					br.height = max((int)*str++, br.height);
+					br.width  = max((uint)*str++, br.width);
+					br.height = max((uint)*str++, br.height);
 					break;
 				case SCC_TINYFONT: size = FS_SMALL; break;
 				case SCC_BIGFONT:  size = FS_LARGE; break;

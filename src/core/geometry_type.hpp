@@ -25,8 +25,8 @@ struct Point {
 
 /** Dimensions (a width and height) of a rectangle in 2D */
 struct Dimension {
-	int width;
-	int height;
+	uint width;
+	uint height;
 };
 
 /** Specification of a rectangle with absolute coordinates of all edges */

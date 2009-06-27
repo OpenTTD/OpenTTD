@@ -555,8 +555,8 @@ int ttd_main(int argc, char *argv[])
 
 	/* The width and height must be at least 1 pixel, this
 	 * way all internal drawing routines work correctly. */
-	if (_cur_resolution.width  <= 0) _cur_resolution.width  = 1;
-	if (_cur_resolution.height <= 0) _cur_resolution.height = 1;
+	if (_cur_resolution.width  == 0) _cur_resolution.width  = 1;
+	if (_cur_resolution.height == 0) _cur_resolution.height = 1;
 
 #if defined(ENABLE_NETWORK)
 	if (dedicated_host) {

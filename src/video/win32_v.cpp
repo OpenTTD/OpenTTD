@@ -738,7 +738,7 @@ static void FindResolutions()
 			uint j;
 
 			for (j = 0; j < n; j++) {
-				if (_resolutions[j].width == (int)dm.dmPelsWidth && _resolutions[j].height == (int)dm.dmPelsHeight) break;
+				if (_resolutions[j].width == dm.dmPelsWidth && _resolutions[j].height == dm.dmPelsHeight) break;
 			}
 
 			/* In the previous loop we have checked already existing/added resolutions if
@@ -776,7 +776,7 @@ const char *VideoDriver_Win32::Start(const char * const *parm)
 
 	FindResolutions();
 
-	DEBUG(driver, 2, "Resolution for display: %dx%d", _cur_resolution.width, _cur_resolution.height);
+	DEBUG(driver, 2, "Resolution for display: %ux%u", _cur_resolution.width, _cur_resolution.height);
 
 	/* fullscreen uses those */
 	_wnd.width_org  = _cur_resolution.width;

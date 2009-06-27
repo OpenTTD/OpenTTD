@@ -124,8 +124,8 @@ static void GetVideoModes()
 	} else {
 		int n = 0;
 		for (int i = 0; modes[i]; i++) {
-			int w = modes[i]->w;
-			int h = modes[i]->h;
+			uint w = modes[i]->w;
+			uint h = modes[i]->h;
 			int j;
 			for (j = 0; j < n; j++) {
 				if (_resolutions[j].width == w && _resolutions[j].height == h) break;
@@ -142,7 +142,7 @@ static void GetVideoModes()
 	}
 }
 
-static void GetAvailableVideoMode(int *w, int *h)
+static void GetAvailableVideoMode(uint *w, uint *h)
 {
 	/* All modes available? */
 	if (_all_modes || _num_resolutions == 0) return;
@@ -154,9 +154,9 @@ static void GetAvailableVideoMode(int *w, int *h)
 
 	/* Use the closest possible resolution */
 	int best = 0;
-	uint delta = abs((_resolutions[0].width - *w) * (_resolutions[0].height - *h));
+	uint delta = Delta(_resolutions[0].width, *w) * Delta(_resolutions[0].height, *h);
 	for (int i = 1; i != _num_resolutions; ++i) {
-		uint newdelta = abs((_resolutions[i].width - *w) * (_resolutions[i].height - *h));
+		uint newdelta = Delta(_resolutions[i].width, *w) * Delta(_resolutions[i].height, *h);
 		if (newdelta < delta) {
 			best = i;
 			delta = newdelta;
@@ -177,7 +177,7 @@ static void GetAvailableVideoMode(int *w, int *h)
 #define SDL_LoadBMP(file)	SDL_LoadBMP_RW(SDL_CALL SDL_RWFromFile(file, "rb"), 1)
 #endif
 
-static bool CreateMainSurface(int w, int h)
+static bool CreateMainSurface(uint w, uint h)
 {
 	SDL_Surface *newscreen, *icon;
 	char caption[50];
@@ -185,7 +185,7 @@ static bool CreateMainSurface(int w, int h)
 
 	GetAvailableVideoMode(&w, &h);
 
-	DEBUG(driver, 1, "SDL: using mode %dx%dx%d", w, h, bpp);
+	DEBUG(driver, 1, "SDL: using mode %ux%ux%d", w, h, bpp);
 
 	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
 

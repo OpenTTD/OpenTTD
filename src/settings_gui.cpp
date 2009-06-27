@@ -89,8 +89,8 @@ static int GetCurRes()
 	int i;
 
 	for (i = 0; i != _num_resolutions; i++) {
-		if (_resolutions[i].width == _screen.width &&
-				_resolutions[i].height == _screen.height) {
+		if ((int)_resolutions[i].width == _screen.width &&
+				(int)_resolutions[i].height == _screen.height) {
 			break;
 		}
 	}
