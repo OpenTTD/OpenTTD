@@ -92,12 +92,12 @@ AITileList_IndustryAccepting::AITileList_IndustryAccepting(IndustryID industry_i
 
 		/* Only add the tile if it accepts the cargo (sometimes just 1 tile of an
 		 *  industry triggers the acceptance). */
-		AcceptedCargo accepts;
-		::GetAcceptanceAroundTiles(accepts, cur_tile, 1, 1, radius);
+		CargoArray acceptance;
+		::GetAcceptanceAroundTiles(acceptance, cur_tile, 1, 1, radius);
 		{
 			bool cargo_accepts = false;
 			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-				if (i->accepts_cargo[j] != CT_INVALID && accepts[i->accepts_cargo[j]] != 0) cargo_accepts = true;
+				if (i->accepts_cargo[j] != CT_INVALID && acceptance[i->accepts_cargo[j]] != 0) cargo_accepts = true;
 			}
 			if (!cargo_accepts) continue;
 		}
@@ -130,12 +130,12 @@ AITileList_IndustryProducing::AITileList_IndustryProducing(IndustryID industry_i
 
 		/* Only add the tile if it produces the cargo (a bug in OpenTTD makes this
 		 *  inconsitance). */
-		AcceptedCargo produces;
-		::GetProductionAroundTiles(produces, cur_tile, 1, 1, radius);
+		CargoArray produced;
+		::GetProductionAroundTiles(produced, cur_tile, 1, 1, radius);
 		{
 			bool cargo_produces = false;
 			for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-				if (i->produced_cargo[j] != CT_INVALID && produces[i->produced_cargo[j]] != 0) cargo_produces = true;
+				if (i->produced_cargo[j] != CT_INVALID && produced[i->produced_cargo[j]] != 0) cargo_produces = true;
 			}
 			if (!cargo_produces) continue;
 		}

@@ -847,7 +847,7 @@ struct DepotWindow : Window {
 		if (this->type == VEH_TRAIN) v = gdvp.wagon;
 
 		if (v != NULL && mode == MODE_DRAG_VEHICLE) {
-			AcceptedCargo capacity, loaded;
+			CargoArray capacity, loaded;
 			memset(capacity, 0, sizeof(capacity));
 			memset(loaded, 0, sizeof(loaded));
 

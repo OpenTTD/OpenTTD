@@ -55,7 +55,7 @@ enum CargoTypes {
 	CT_INVALID      = 0xFF
 };
 
-/** Array for storing amounts of accepted cargo */
-typedef uint AcceptedCargo[NUM_CARGO];
+/** Array for storing amounts of cargo */
+typedef uint CargoArray[NUM_CARGO];
 
 #endif /* CARGO_TYPE_H */

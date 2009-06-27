@@ -441,10 +441,10 @@ static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *c
  * @param h Y extent of the area
  * @param rad Search radius in addition to the given area
  */
-void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
+void GetProductionAroundTiles(CargoArray produced, TileIndex tile,
 	int w, int h, int rad)
 {
-	memset(produced, 0, sizeof(AcceptedCargo)); // sizeof(AcceptedCargo) != sizeof(produced) (== sizeof(uint *))
+	memset(produced, 0, sizeof(CargoArray)); // sizeof(CargoArray) != sizeof(produced) (== sizeof(uint *))
 
 	int x = TileX(tile);
 	int y = TileY(tile);
@@ -478,10 +478,10 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
  * @param h Y extent of area
  * @param rad Search radius in addition to given area
  */
-void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
+void GetAcceptanceAroundTiles(CargoArray acceptance, TileIndex tile,
 	int w, int h, int rad)
 {
-	memset(accepts, 0, sizeof(AcceptedCargo)); // sizeof(AcceptedCargo) != sizeof(accepts) (== sizeof(uint *))
+	memset(acceptance, 0, sizeof(CargoArray)); // sizeof(CargoArray) != sizeof(acceptance) (== sizeof(uint *))
 
 	int x = TileX(tile);
 	int y = TileY(tile);
@@ -501,7 +501,7 @@ void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
 	for (int yc = y1; yc != y2; yc++) {
 		for (int xc = x1; xc != x2; xc++) {
 			TileIndex tile = TileXY(xc, yc);
-			AddAcceptedCargo(tile, accepts);
+			AddAcceptedCargo(tile, acceptance);
 		}
 	}
 }
@@ -519,22 +519,22 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	uint old_acc = GetAcceptanceMask(st);
 
 	/* And retrieve the acceptance. */
-	AcceptedCargo accepts;
+	CargoArray acceptance;
 	if (!st->rect.IsEmpty()) {
 		GetAcceptanceAroundTiles(
-			accepts,
+			acceptance,
 			TileXY(st->rect.left, st->rect.top),
 			st->rect.right  - st->rect.left + 1,
 			st->rect.bottom - st->rect.top  + 1,
 			st->GetCatchmentRadius()
 		);
 	} else {
-		memset(accepts, 0, sizeof(accepts));
+		memset(acceptance, 0, sizeof(acceptance));
 	}
 
 	/* Adjust in case our station only accepts fewer kinds of goods */
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		uint amt = min(accepts[i], 15);
+		uint amt = min(acceptance[i], 15);
 
 		/* Make sure the station can accept the goods type. */
 		bool is_passengers = IsCargoInClass(i, CC_PASSENGERS);

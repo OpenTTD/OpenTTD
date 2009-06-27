@@ -129,9 +129,9 @@ public:
 
 		td.grf = NULL;
 
-		AcceptedCargo ac;
-		memset(ac, 0, sizeof(AcceptedCargo));
-		AddAcceptedCargo(tile, ac);
+		CargoArray acceptance;
+		memset(acceptance, 0, sizeof(CargoArray));
+		AddAcceptedCargo(tile, acceptance);
 		GetTileDesc(tile, &td);
 
 		uint line_nr = 0;
@@ -230,7 +230,7 @@ public:
 		bool found = false;
 
 		for (CargoID i = 0; i < NUM_CARGO; ++i) {
-			if (ac[i] > 0) {
+			if (acceptance[i] > 0) {
 				/* Add a comma between each item. */
 				if (found) {
 					*strp++ = ',';
@@ -239,8 +239,8 @@ public:
 				found = true;
 
 				/* If the accepted value is less than 8, show it in 1/8:ths */
-				if (ac[i] < 8) {
-					SetDParam(0, ac[i]);
+				if (acceptance[i] < 8) {
+					SetDParam(0, acceptance[i]);
 					SetDParam(1, GetCargo(i)->name);
 					strp = GetString(strp, STR_LAND_AREA_INFORMATION_CARGO_EIGHTS, lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
 				} else {
@@ -811,7 +811,7 @@ void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool 
 }
 
 
-static int DrawStationCoverageText(const AcceptedCargo cargo,
+static int DrawStationCoverageText(const CargoArray cargos,
 	int str_x, int str_y, StationCoverageType sct, bool supplies)
 {
 	bool first = true;
@@ -827,7 +827,7 @@ static int DrawStationCoverageText(const AcceptedCargo cargo,
 			case SCT_ALL: break;
 			default: NOT_REACHED();
 		}
-		if (cargo[i] >= (supplies ? 1U : 8U)) {
+		if (cargos[i] >= (supplies ? 1U : 8U)) {
 			if (first) {
 				first = false;
 			} else {
@@ -863,14 +863,14 @@ static int DrawStationCoverageText(const AcceptedCargo cargo,
 int DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad, bool supplies)
 {
 	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
-	AcceptedCargo cargo;
+	CargoArray cargos;
 	if (tile < MapSize()) {
 		if (supplies) {
-			GetProductionAroundTiles(cargo, tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE , rad);
+			GetProductionAroundTiles(cargos, tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE , rad);
 		} else {
-			GetAcceptanceAroundTiles(cargo, tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE , rad);
+			GetAcceptanceAroundTiles(cargos, tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE , rad);
 		}
-		return DrawStationCoverageText(cargo, sx, sy, sct, supplies);
+		return DrawStationCoverageText(cargos, sx, sy, sct, supplies);
 	}
 
 	return sy;

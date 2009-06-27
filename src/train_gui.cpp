@@ -182,8 +182,8 @@ static void TrainDetailsCapacityTab(const Vehicle *v, int left, int right, int y
  */
 int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 {
-	AcceptedCargo act_cargo;
-	AcceptedCargo max_cargo;
+	CargoArray act_cargo;
+	CargoArray max_cargo;
 	int num = 0;
 
 	if (det_tab == TDW_TAB_TOTALS) { // Total cargo tab
@@ -272,8 +272,8 @@ void DrawTrainDetails(const Vehicle *v, int left, int right, int y, int vscroll_
 			if (v == NULL) return;
 		}
 	} else {
-		AcceptedCargo act_cargo;
-		AcceptedCargo max_cargo;
+		CargoArray act_cargo;
+		CargoArray max_cargo;
 		Money         feeder_share = 0;
 
 		memset(max_cargo, 0, sizeof(max_cargo));
