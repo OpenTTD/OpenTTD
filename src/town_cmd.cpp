@@ -555,7 +555,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 	return cost;
 }
 
-static void AddProducedCargo_Town(TileIndex tile, CargoArray produced)
+static void AddProducedCargo_Town(TileIndex tile, CargoArray &produced)
 {
 	HouseID house_id = GetHouseType(tile);
 	const HouseSpec *hs = HouseSpec::Get(house_id);
@@ -582,7 +582,7 @@ static void AddProducedCargo_Town(TileIndex tile, CargoArray produced)
 	}
 }
 
-static void AddAcceptedCargo_Town(TileIndex tile, CargoArray acceptance)
+static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 	CargoID accepts[3];

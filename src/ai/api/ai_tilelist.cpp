@@ -92,8 +92,7 @@ AITileList_IndustryAccepting::AITileList_IndustryAccepting(IndustryID industry_i
 
 		/* Only add the tile if it accepts the cargo (sometimes just 1 tile of an
 		 *  industry triggers the acceptance). */
-		CargoArray acceptance;
-		::GetAcceptanceAroundTiles(acceptance, cur_tile, 1, 1, radius);
+		CargoArray acceptance = ::GetAcceptanceAroundTiles(cur_tile, 1, 1, radius);
 		{
 			bool cargo_accepts = false;
 			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
@@ -130,8 +129,7 @@ AITileList_IndustryProducing::AITileList_IndustryProducing(IndustryID industry_i
 
 		/* Only add the tile if it produces the cargo (a bug in OpenTTD makes this
 		 *  inconsitance). */
-		CargoArray produced;
-		::GetProductionAroundTiles(produced, cur_tile, 1, 1, radius);
+		CargoArray produced = ::GetProductionAroundTiles(cur_tile, 1, 1, radius);
 		{
 			bool cargo_produces = false;
 			for (byte j = 0; j < lengthof(i->produced_cargo); j++) {

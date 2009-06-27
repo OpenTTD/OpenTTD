@@ -179,8 +179,7 @@
 {
 	if (!::IsValidTile(tile) || width <= 0 || height <= 0 || radius <= 0) return -1;
 
-	CargoArray acceptance;
-	::GetAcceptanceAroundTiles(acceptance, tile, width, height, _settings_game.station.modified_catchment ? radius : (int)CA_UNMODIFIED);
+	CargoArray acceptance = ::GetAcceptanceAroundTiles(tile, width, height, _settings_game.station.modified_catchment ? radius : (int)CA_UNMODIFIED);
 	return acceptance[cargo_type];
 }
 
@@ -188,8 +187,7 @@
 {
 	if (!::IsValidTile(tile) || width <= 0 || height <= 0 || radius <= 0) return -1;
 
-	CargoArray produced;
-	::GetProductionAroundTiles(produced, tile, width, height, _settings_game.station.modified_catchment ? radius : (int)CA_UNMODIFIED);
+	CargoArray produced = ::GetProductionAroundTiles(tile, width, height, _settings_game.station.modified_catchment ? radius : (int)CA_UNMODIFIED);
 	return produced[cargo_type];
 }
 

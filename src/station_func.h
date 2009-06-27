@@ -22,8 +22,8 @@ void FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod, StationList
 void ShowStationViewWindow(StationID station);
 void UpdateAllStationVirtCoord();
 
-void GetProductionAroundTiles(CargoArray produced, TileIndex tile, int w, int h, int rad);
-void GetAcceptanceAroundTiles(CargoArray acceptance, TileIndex tile, int w, int h, int rad);
+CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad);
+CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad);
 
 const DrawTileSprites *GetStationTileLayout(StationType st, byte gfx);
 void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image);

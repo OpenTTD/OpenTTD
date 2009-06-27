@@ -577,7 +577,6 @@ static int CDECL VehicleCargoSorter(const Vehicle * const *a, const Vehicle * co
 {
 	const Vehicle *v;
 	CargoArray diff;
-	memset(diff, 0, sizeof(diff));
 
 	/* Append the cargo of the connected weagons */
 	for (v = *a; v != NULL; v = v->Next()) diff[v->cargo_type] += v->cargo_cap;

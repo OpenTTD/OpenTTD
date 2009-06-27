@@ -38,7 +38,6 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 		StringID subtype_text[NUM_CARGO];
 		char capacity[512];
 
-		memset(max_cargo, 0, sizeof(max_cargo));
 		memset(subtype_text, 0, sizeof(subtype_text));
 
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) {

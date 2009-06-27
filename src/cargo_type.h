@@ -55,7 +55,31 @@ enum CargoTypes {
 	CT_INVALID      = 0xFF
 };
 
-/** Array for storing amounts of cargo */
-typedef uint CargoArray[NUM_CARGO];
+/** Class for storing amounts of cargo */
+struct CargoArray {
+private:
+	uint amount[NUM_CARGO];
+
+public:
+	FORCEINLINE CargoArray()
+	{
+		this->Clear();
+	}
+
+	FORCEINLINE void Clear()
+	{
+		memset(this->amount, 0, sizeof(this->amount));
+	}
+
+	FORCEINLINE uint &operator[](CargoID cargo)
+	{
+		return this->amount[cargo];
+	}
+
+	FORCEINLINE const uint &operator[](CargoID cargo) const
+	{
+		return this->amount[cargo];
+	}
+};
 
 #endif /* CARGO_TYPE_H */

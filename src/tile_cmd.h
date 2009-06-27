@@ -74,7 +74,7 @@ typedef CommandCost ClearTileProc(TileIndex tile, DoCommandFlag flags);
  * @param tile        Tile queried for its accepted cargo
  * @param acceptance  Storage destination of the cargo acceptance in 1/8
  */
-typedef void AddAcceptedCargoProc(TileIndex tile, CargoArray acceptance);
+typedef void AddAcceptedCargoProc(TileIndex tile, CargoArray &acceptance);
 
 /**
  * Tile callback function signature for obtaining a tile description
@@ -103,7 +103,7 @@ typedef TrackStatus GetTileTrackStatusProc(TileIndex tile, TransportType mode, u
  * @param tile      Tile being queried
  * @param produced  Destination array for produced cargo
  */
-typedef void AddProducedCargoProc(TileIndex tile, CargoArray produced);
+typedef void AddProducedCargoProc(TileIndex tile, CargoArray &produced);
 typedef bool ClickTileProc(TileIndex tile);
 typedef void AnimateTileProc(TileIndex tile);
 typedef void TileLoopProc(TileIndex tile);
@@ -157,14 +157,14 @@ VehicleEnterTileStatus VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y
 void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner);
 void GetTileDesc(TileIndex tile, TileDesc *td);
 
-static inline void AddAcceptedCargo(TileIndex tile, CargoArray acceptance)
+static inline void AddAcceptedCargo(TileIndex tile, CargoArray &acceptance)
 {
 	AddAcceptedCargoProc *proc = _tile_type_procs[GetTileType(tile)]->add_accepted_cargo_proc;
 	if (proc == NULL) return;
 	proc(tile, acceptance);
 }
 
-static inline void AddProducedCargo(TileIndex tile, CargoArray produced)
+static inline void AddProducedCargo(TileIndex tile, CargoArray &produced)
 {
 	AddProducedCargoProc *proc = _tile_type_procs[GetTileType(tile)]->add_produced_cargo_proc;
 	if (proc == NULL) return;

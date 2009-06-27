@@ -291,7 +291,7 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 	return CommandCost();
 }
 
-static void AddAcceptedCargo_Unmovable(TileIndex tile, CargoArray acceptance)
+static void AddAcceptedCargo_Unmovable(TileIndex tile, CargoArray &acceptance)
 {
 	if (!IsCompanyHQ(tile)) return;
 

@@ -434,17 +434,15 @@ static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *c
 }
 
 /**
- * Get a list of the cargo types being produced around the tile (in a rectangle).
- * @param produced Destination array of produced cargo
+ * Get the cargo types being produced around the tile (in a rectangle).
  * @param tile Northtile of area
  * @param w X extent of the area
  * @param h Y extent of the area
  * @param rad Search radius in addition to the given area
  */
-void GetProductionAroundTiles(CargoArray produced, TileIndex tile,
-	int w, int h, int rad)
+CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad)
 {
-	memset(produced, 0, sizeof(CargoArray)); // sizeof(CargoArray) != sizeof(produced) (== sizeof(uint *))
+	CargoArray produced;
 
 	int x = TileX(tile);
 	int y = TileY(tile);
@@ -468,20 +466,20 @@ void GetProductionAroundTiles(CargoArray produced, TileIndex tile,
 			AddProducedCargo(tile, produced);
 		}
 	}
+
+	return produced;
 }
 
 /**
- * Get a list of the cargo types that are accepted around the tile.
- * @param accepts Destination array of accepted cargo
+ * Get the acceptance of cargos around the tile in 1/8.
  * @param tile Center of the search area
  * @param w X extent of area
  * @param h Y extent of area
  * @param rad Search radius in addition to given area
  */
-void GetAcceptanceAroundTiles(CargoArray acceptance, TileIndex tile,
-	int w, int h, int rad)
+CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad)
 {
-	memset(acceptance, 0, sizeof(CargoArray)); // sizeof(CargoArray) != sizeof(acceptance) (== sizeof(uint *))
+	CargoArray acceptance;
 
 	int x = TileX(tile);
 	int y = TileY(tile);
@@ -504,6 +502,8 @@ void GetAcceptanceAroundTiles(CargoArray acceptance, TileIndex tile,
 			AddAcceptedCargo(tile, acceptance);
 		}
 	}
+
+	return acceptance;
 }
 
 /** Update the acceptance for a station.
@@ -521,15 +521,12 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	/* And retrieve the acceptance. */
 	CargoArray acceptance;
 	if (!st->rect.IsEmpty()) {
-		GetAcceptanceAroundTiles(
-			acceptance,
+		acceptance = GetAcceptanceAroundTiles(
 			TileXY(st->rect.left, st->rect.top),
 			st->rect.right  - st->rect.left + 1,
 			st->rect.bottom - st->rect.top  + 1,
 			st->GetCatchmentRadius()
 		);
-	} else {
-		memset(acceptance, 0, sizeof(acceptance));
 	}
 
 	/* Adjust in case our station only accepts fewer kinds of goods */

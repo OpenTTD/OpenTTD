@@ -130,7 +130,6 @@ public:
 		td.grf = NULL;
 
 		CargoArray acceptance;
-		memset(acceptance, 0, sizeof(CargoArray));
 		AddAcceptedCargo(tile, acceptance);
 		GetTileDesc(tile, &td);
 
@@ -811,7 +810,7 @@ void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool 
 }
 
 
-static int DrawStationCoverageText(const CargoArray cargos,
+static int DrawStationCoverageText(const CargoArray &cargos,
 	int str_x, int str_y, StationCoverageType sct, bool supplies)
 {
 	bool first = true;
@@ -863,12 +862,12 @@ static int DrawStationCoverageText(const CargoArray cargos,
 int DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad, bool supplies)
 {
 	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
-	CargoArray cargos;
 	if (tile < MapSize()) {
+		CargoArray cargos;
 		if (supplies) {
-			GetProductionAroundTiles(cargos, tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE , rad);
+			cargos = GetProductionAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
 		} else {
-			GetAcceptanceAroundTiles(cargos, tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE , rad);
+			cargos = GetAcceptanceAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
 		}
 		return DrawStationCoverageText(cargos, sx, sy, sct, supplies);
 	}

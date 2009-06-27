@@ -848,8 +848,6 @@ struct DepotWindow : Window {
 
 		if (v != NULL && mode == MODE_DRAG_VEHICLE) {
 			CargoArray capacity, loaded;
-			memset(capacity, 0, sizeof(capacity));
-			memset(loaded, 0, sizeof(loaded));
 
 			/* Display info for single (articulated) vehicle, or for whole chain starting with selected vehicle */
 			bool whole_chain = (this->type == VEH_TRAIN && _ctrl_pressed);

@@ -380,7 +380,7 @@ static Foundation GetFoundation_Industry(TileIndex tile, Slope tileh)
 	return FlatteningFoundation(tileh);
 }
 
-static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray acceptance)
+static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance)
 {
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
@@ -868,7 +868,7 @@ static TrackStatus GetTileTrackStatus_Industry(TileIndex tile, TransportType mod
 	return 0;
 }
 
-static void AddProducedCargo_Industry(TileIndex tile, CargoArray produced)
+static void AddProducedCargo_Industry(TileIndex tile, CargoArray &produced)
 {
 	const Industry *i = GetIndustryByTile(tile);
 
