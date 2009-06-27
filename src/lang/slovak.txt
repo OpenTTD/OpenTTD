@@ -5,10 +5,10 @@
 ##grflangid 0x16
 ##plural 6
 ##textdir ltr
-##case g
-##gender m z s
 ##digitsep .
 ##digitsepcur .
+##case g
+##gender m z s
 
 #
 
@@ -387,6 +387,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Si si i
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Ukoncit hru
 STR_SORT_ORDER_TIP                                              :{BLACK}Vyber sposob triedenia (zostupny/vzostupny)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Vyber kriterium triedenia
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Vybrať kritériá filtrovania
 STR_SORT_BY                                                     :{BLACK}Usporiadat
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populacia
@@ -409,6 +410,8 @@ STR_SORT_BY_LENGTH                                              :Dlžka
 STR_SORT_BY_LIFE_TIME                                           :Zostávajúca životnost
 STR_SORT_BY_FACILITY                                            :Typ stanice
 STR_SORT_BY_WAITING                                             :Mnozstvo cakajuceho nakladu
+STR_SORT_BY_RATING_MAX                                          :Hodnotenie najlepšej prepravy
+STR_SORT_BY_RATING_MIN                                          :Hodnotenie najhoršej prepravy
 STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (netriedené)
 STR_ENGINE_SORT_COST                                            :Cena
 STR_ENGINE_SORT_POWER                                           :Výkon
@@ -919,6 +922,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vyber fo
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Základná sada grafiky
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Zvoľte sadu grafiky, ktorá má byť použitá
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Dodatočné informácie o základnom grafickom sete
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autoulozenie zlyhalo
 
@@ -1007,6 +1011,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Zobrazo
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Zobrazovat žel. signály na rovnakej strane ako jazdia vozidlá: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Zobrazit rozpocet na konci roku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nové príkazy sú štandardne 'non-stop': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nové príkazy vlaku na zastavenie štandardne v {ORANGE}{STRING}{LTBLUE} stanici
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :blízky cieľ
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :stred
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ďaleký cieľ
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Radenie cestných vozidiel (podla množstva nákladu): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Posúvat pohlad ked je kurzor myši na okraji okna: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Umoznit podplacanie miestnej spravy: {ORANGE}{STRING}
@@ -2301,6 +2309,7 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Vyber ze
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Nahodna nova tvar
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Vyb.
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Vybrat polozky na grafe
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Ukázať detailné hodnotenie výkonu
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Vyber poloziek na grafe
 STR_GRAPH_KEY_COMPANY_SELECTION                                 :{BLACK}Kliknut pre zobrazenie tejto polozky na grafe
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Dopravenych jednotiek nakladu
@@ -2675,6 +2684,9 @@ STR_ORDER_GO_TO                                                 :Choď do
 STR_ORDER_GO_NON_STOP_TO                                        :Choď non-stop do
 STR_ORDER_GO_VIA                                                :Choď cez
 STR_ORDER_GO_NON_STOP_VIA                                       :Choď non-stop cez
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[blízky koniec]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[stred]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[blízky koniec]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Plne nalož cokolvek
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Nalož pri dostupnosti
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Plne nalož všetko
@@ -2859,6 +2871,19 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Vymazat 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Resetnút pocítadlo meškania, takye vozidlo pojde presne
 STR_SERVICE_HINT                                                :{BLACK}Vynechat tento prikaz pokial nie je potrebna oprava
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Hmotnost: {WEIGHT_S}{}Rýchlost: {VELOCITY}  Výkon: {POWER}{}Náklady na prevádzku: {CURRENCY}/rok{}Kapacita: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Cena: {CURRENCY} Max. Rýchlost: {VELOCITY}{}Kapacita: {CARGO}, {CARGO}{}Prevádzkové náklady: {CURRENCY}/yr
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Cena: {CURRENCY} Max. Rýchlosť: {VELOCITY}{}Kapacita: {CARGO}{}Prevádzkové náklady: {CURRENCY}/yr
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Prevádzkové náklady: {LTBLUE}{CURRENCY}/yr
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. rýchlosť: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Hmotnosť: {LTBLUE}{WEIGHT_S} {BLACK}Sila: {LTBLUE}{POWER}{BLACK} Max. rýchlosť: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Hmotnosť: {LTBLUE}{WEIGHT_S} {BLACK}Sila: {LTBLUE}{POWER}{BLACK} Max. rýchlosť: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit tento rok: {LTBLUE}{CURRENCY} (minulý rok: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Spoľahlivosť: {LTBLUE}{COMMA}%  {BLACK}Poruchy od posledného servisu: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Vyrobený: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacita: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacita: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacita: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Pokazený
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zastavene
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemozno pustit vlak na cervenu ked hrozi nebezpecenstvo...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Znicene!
@@ -3197,6 +3222,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{V
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' poskytuje nekorektné informácie.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informácia o zmene nákladu pre'{1:ENGINE}' sa líši od kúpneho listu. Môže to spôsobiť, že nové vozidlá sa nebudú prerábať na určitý tovar korektne.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' spôsobilo nekonečnú slučku v spätnom odvolávaní produckie.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Hra bola uložená vo verzii bez elektriciek. Vsetky elektricky boli odstránené.
 
@@ -3209,6 +3235,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Prechod
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Prechod na Euro: {ORANGE}nikdy
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Nahlad: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmenit parametre vlastnej meny
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Zníženie hodnoty vašej meny oproti jednej libre (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Zvýšenie hodnoty vašej meny oproti jednej libre (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Nastaviť kurz pre vašu menu oproti libre (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Nastaviť oddeľovač meny
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Nastavit prefix pre vašu menu
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Nastaviť suffix pre vašu menu
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Zmeniť skôr na Euro
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Zmeniť na Euro neskôr
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Nastaviť rok, kedy zmeniť menu na Euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 libier (£) vo vašej mene
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3315,6 +3351,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. spo
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanane vagony: {GOLD}+{POWER}{BLACK} Hmotnost: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prestavatelne na: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Všetky druhy nákladu
@@ -3607,6 +3644,7 @@ STR_AI_RANDOM_AI                                                :Náhodná AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametre AI
 STR_AI_AUTHOR                                                   :{BLACK}Autor: {STRING}
 STR_AI_VERSION                                                  :{BLACK}Verzia: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Jedna z AI padla. Prosím nahláste to autorovi AI a priložte screenshot Debugovacej obrazovky AI.
 ########
 
