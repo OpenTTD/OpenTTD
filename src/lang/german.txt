@@ -1654,7 +1654,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Straße 
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Straßenbahnabschnitt bauen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Staßenbahnabschnitt bauen mit automatischer Wahl der Ausrichtung
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Fahrzeugdepot bauen (zum Bau und zur Wartung von Fahrzeugen)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Straßenbahndepot bauen (zum Erstellen und Warten von Straßenbahnen)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Straßenbahndepot bauen (zum Bau und zur Wartung von Straßenbahnen)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Busbahnhof bauen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Lkw-Ladeplatz bauen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Straßenbahnhaltestelle bauen
@@ -2667,7 +2667,7 @@ STR_GO_TO_NEAREST_DEPOT                                         :{STRING}{G 2 m 
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Gehe immer
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Wartung wenn nötig
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Wartung, wenn nötig
 STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
 
 STR_ORDER_CONDITIONAL                                           :Bedingter Sprung zu Auftrag
@@ -2726,7 +2726,7 @@ STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Neue Ein
 STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Neue Magnetzüge
 STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Eisenbahnfahrzeuge
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Fahrzeug bauen
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Fahrzeug kaufen
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Fahrzeug kopieren
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Baut eine Kopie des Fahrzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Baut eine Kopie des Fahrzeuges. Klicke diese Schaltfläche und dann auf ein Fahrzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
@@ -2749,7 +2749,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Zur Auft
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Aufträge)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Ende der Aufträge - -
 STR_SERVICE                                                     :{BLACK}Wartung
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Schienenfahrzeug kann nicht gebaut werden...
+STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Schienenfahrzeug kann nicht gekauft werden...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK}  Wert: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Wert: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2778,11 +2778,11 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Wartungs
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Wartungsintervall: {LTBLUE}{COMMA}%{BLACK}   Letzte Wartung: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Züge - für Einzelheiten auf den jeweiligen Zug klicken
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Züge - für Einzelheiten auf den Zug klicken; Waggon ziehen, um ihn an-/abzukoppeln
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Neues Schienenfahrzeug bauen
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Neues Schienenfahrzeug kaufen
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Schienenfahrzeug hierher ziehen, um es zu verkaufen
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Hauptansicht zum Zugdepot scrollen
 STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Zugfahrzeugliste - Einzelheiten durch Anklicken des Fahrzeuges
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Angewähltes Fahrzeug bauen
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Angewähltes Fahrzeug kaufen
 STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Umbenennen der Waggontypen
 STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Laufende Zugbewegung - Klicke hier, um den Zug anzuhalten / zu starten
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Anzeige der Aufträge
@@ -2867,8 +2867,8 @@ STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Fahrzeugdepot
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Neue Fahrzeuge
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Neue Fahrzeuge
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Fahrzeug bauen
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Fahrzeug kann nicht gebaut werden...
+STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Fahrzeug kaufen
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Fahrzeug kann nicht gekauft werden...
 STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...muss in einem Fahrzeugdepot angehalten werden
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Fahrzeug kann nicht verkauft werden...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Fahrzeug kann nicht angehalten {} oder losgeschickt werden...
@@ -2887,11 +2887,11 @@ STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Das Fahr
 STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Das Fahrzeug zur Umkehr zwingen
 STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Einzelheiten des Fahrzeuges anzeigen
 STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Straßenfahrzeuge - für Einzelheiten auf das Fahrzeug klicken
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Neues Fahrzeug bauen
+STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Neues Fahrzeug kaufen
 STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Ziehe Fahrzeug hierher, um es zu verkaufen
 STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Hauptansicht zum Fahrzeugdepot scrollen
 STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Fahrzeugauswahlliste - Klicke auf ein Fahrzeug für Einzelheiten
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Ausgewähltes Fahrzeug bauen
+STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Ausgewähltes Fahrzeug kaufen
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapazität: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2929,7 +2929,7 @@ STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} W
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Neue Schiffe
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Schiff{P "" e}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Neue Schiffe
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Schiff bauen
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Schiff kaufen
 STR_CLONE_SHIP                                                  :{BLACK}Schiff kopieren
 STR_CLONE_SHIP_INFO                                             :{BLACK}Baut eine Kopie des Schiffes. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Baut eine Kopie des Schiffes. Klicke diese Schaltfläche und dann auf eine Schiff innerhalb oder außerhalb der Werft. Strg+Klick erzeugt gemeinsamen Fahrplan
@@ -2947,12 +2947,12 @@ STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Hafen bauen
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Werft bauen (für den Bau und die Wartung von Schiffen)
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schiffe - für Einzelheiten auf das Schiff klicken
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Neues Schiff bauen
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Neues Schiff kaufen
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Ziehe Schiff hierher, um es zu verkaufen
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Hauptansicht zur Werft scrollen
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Schiffe - für Einzelheiten auf das Schiff klicken
 STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Schiffauswahliste - für Einzelheiten auf das Schiff klicken
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Ausgewähltes Schiff bauen
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Ausgewähltes Schiff kaufen
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Laufende Schiffsbewegung - Klicke hier, um das Schiff anzuhalten / zu starten
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Aufträge des Schiffes
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Hauptansicht zum Schiff scrollen
@@ -2990,7 +2990,7 @@ STR_CLONE_AIRCRAFT                                              :{BLACK}Flugzeug
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Baut eine Kopie des Flugzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Baut eine Kopie des Flugzeuges. Klicke auf diese Schaltfläche und dann auf ein Flugzeug innerhalb oder außerhalb des Hangars. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Neue Flugzeuge
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Flugzeug bauen
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Flugzeug kaufen
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Flugzeug kann nicht gebaut werden...
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Flugzeug{P "" e}
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Flugzeug kann nicht in den Hangar geschickt werden...
@@ -3008,11 +3008,11 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Flughafenbau
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Flughafen bauen
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flugzeuge - für Einzelheiten auf das Flugzeug klicken
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flugzeuge - für Einzelheiten auf das Flugzeug klicken
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Neues Flugzeug bauen
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Neues Flugzeug kaufen
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Zum Verkauf des Flugzeuges hierher ziehen
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Hauptansicht zum Hangar scrollen
 STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Flugzeugauswahlliste - Klick auf das Flugzeug zeigt weitere Einzelheiten an
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Augewähltes Flugzeug bauen
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Augewähltes Flugzeug kaufen
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Laufende Flugzeugbewegung - Klick zum Anhalten bzw. losschicken
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Zeige Aufträge für das Flugzeug
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Hauptansicht zum Flugzeug scrollen
@@ -3210,10 +3210,10 @@ STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Alle Fah
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Alle Schiffe in der Werft verkaufen
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Alle Flugzeuge im Hangar verkaufen
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Züge, die dieses Depot anfahren, auflisten
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Fahrzeuge, die dieses Depot anfahren, auflisten
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Alle Züge, die dieses Depot anfahren, auflisten
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Alle Fahrzeuge, die dieses Depot anfahren, auflisten
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Alle Schiffe, die diese Werft anfahren, auflisten
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Flugzeuge, die diesen Flughafen anfliegen, auflisten
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Alle Flugzeuge, die einen Hangar dieses Flughafens ansteuern, auflisten
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Alle Züge im Depot automatisch ersetzen
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Alle Fahrzeuge im Depot automatisch ersetzen
