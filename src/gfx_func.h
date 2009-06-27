@@ -83,6 +83,7 @@ enum {
 void RedrawScreenRect(int left, int top, int right, int bottom);
 void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
+Dimension GetSpriteSize(SpriteID sprid);
 void DrawSprite(SpriteID img, SpriteID pal, int x, int y, const SubSprite *sub = NULL);
 
 /** How to align the to-be drawn text. */
@@ -106,6 +107,7 @@ void GfxDrawLine(int left, int top, int right, int bottom, int colour);
 void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3);
 
 Dimension GetStringBoundingBox(const char *str);
+Dimension GetStringBoundingBox(StringID strid);
 uint32 FormatStringLinebreaks(char *str, int maxw);
 int GetStringHeight(StringID str, int maxw);
 void LoadStringWidthTable();

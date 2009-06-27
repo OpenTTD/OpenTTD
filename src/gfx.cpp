@@ -831,6 +831,20 @@ Dimension GetStringBoundingBox(const char *str)
 }
 
 /**
+ * Get bounding box of a string. Uses parameters set by #DParam if needed.
+ * Has the same restrictions as #GetStringBoundingBox(const char *str).
+ * @param strid String to examine.
+ * @return Width and height of the bounding box for the string in pixels.
+ */
+Dimension GetStringBoundingBox(StringID strid)
+{
+	char buffer[DRAW_STRING_BUFFER];
+
+	GetString(buffer, strid, lastof(buffer));
+	return GetStringBoundingBox(buffer);
+}
+
+/**
  * Draw single character horizontally centered around (x,y)
  * @param c           Character (glyph) to draw
  * @param x           X position to draw character
@@ -924,6 +938,22 @@ skip_cont:;
 			DEBUG(misc, 0, "[utf8] unknown string command character %d", c);
 		}
 	}
+}
+
+/**
+ * Get the size of a sprite.
+ * @param sprid Sprite to examine.
+ * @return Sprite size in pixels.
+ * @note The size assumes (0, 0) as top-left coordinate and ignores any part of the sprite drawn at the left or above that position.
+ */
+Dimension GetSpriteSize(SpriteID sprid)
+{
+	const Sprite *sprite = GetSprite(sprid, ST_NORMAL);
+
+	Dimension d;
+	d.width  = max<int>(0, sprite->x_offs + sprite->width);
+	d.height = max<int>(0, sprite->y_offs + sprite->height);
+	return d;
 }
 
 /**
