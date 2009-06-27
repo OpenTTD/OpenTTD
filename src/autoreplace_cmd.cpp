@@ -182,7 +182,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool 
 			/* Now we found a cargo type being carried on the train and we will see if it is possible to carry to this one */
 			if (HasBit(available_cargo_types, v->cargo_type)) {
 				/* Do we have to refit the vehicle, or is it already carrying the right cargo? */
-				uint16 *default_capacity = GetCapacityOfArticulatedParts(engine_type, v->type);
+				CargoArray default_capacity = GetCapacityOfArticulatedParts(engine_type, v->type);
 				for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
 					if (cid != v->cargo_type && default_capacity[cid] > 0) return v->cargo_type;
 				}
@@ -198,7 +198,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool 
 		if (part_of_chain && !VerifyAutoreplaceRefitForOrders(v, engine_type)) return CT_INVALID; // Some refit orders lose their effect
 
 		/* Do we have to refit the vehicle, or is it already carrying the right cargo? */
-		uint16 *default_capacity = GetCapacityOfArticulatedParts(engine_type, v->type);
+		CargoArray default_capacity = GetCapacityOfArticulatedParts(engine_type, v->type);
 		for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
 			if (cid != cargo_type && default_capacity[cid] > 0) return cargo_type;
 		}

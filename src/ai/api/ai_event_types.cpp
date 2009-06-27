@@ -35,7 +35,7 @@ int32 AIEventEnginePreview::GetCapacity()
 	switch (e->type) {
 		case VEH_ROAD:
 		case VEH_TRAIN: {
-			uint16 *capacities = GetCapacityOfArticulatedParts(engine, e->type);
+			CargoArray capacities = GetCapacityOfArticulatedParts(engine, e->type);
 			for (CargoID c = 0; c < NUM_CARGO; c++) {
 				if (capacities[c] == 0) continue;
 				return capacities[c];

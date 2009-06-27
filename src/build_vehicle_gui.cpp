@@ -414,9 +414,9 @@ static GUIEngineList::FilterFunction * const _filter_funcs[] = {
 
 static int DrawCargoCapacityInfo(int left, int right, int y, EngineID engine, VehicleType type, bool refittable)
 {
-	uint16 *cap = GetCapacityOfArticulatedParts(engine, type);
+	CargoArray cap = GetCapacityOfArticulatedParts(engine, type);
 
-	for (uint c = 0; c < NUM_CARGO; c++) {
+	for (CargoID c = 0; c < NUM_CARGO; c++) {
 		if (cap[c] == 0) continue;
 
 		SetDParam(0, c);

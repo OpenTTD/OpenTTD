@@ -78,10 +78,9 @@ static inline uint32 GetAvailableVehicleCargoTypes(EngineID engine, VehicleType 
 	return cargos;
 }
 
-uint16 *GetCapacityOfArticulatedParts(EngineID engine, VehicleType type)
+CargoArray GetCapacityOfArticulatedParts(EngineID engine, VehicleType type)
 {
-	static uint16 capacity[NUM_CARGO];
-	memset(capacity, 0, sizeof(capacity));
+	CargoArray capacity;
 
 	CargoID cargo_type;
 	uint16 cargo_capacity = GetVehicleDefaultCapacity(engine, type, &cargo_type);
@@ -239,12 +238,11 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 
 	uint32 purchase_refit_union = GetUnionOfArticulatedRefitMasks(v->engine_type, v->type, true);
 	uint32 purchase_refit_intersection = GetIntersectionOfArticulatedRefitMasks(v->engine_type, v->type, true);
-	uint16 *purchase_default_capacity = GetCapacityOfArticulatedParts(v->engine_type, v->type);
+	CargoArray purchase_default_capacity = GetCapacityOfArticulatedParts(v->engine_type, v->type);
 
 	uint32 real_refit_union = 0;
 	uint32 real_refit_intersection = UINT_MAX;
-	uint16 real_default_capacity[NUM_CARGO];
-	memset(real_default_capacity, 0, sizeof(real_default_capacity));
+	CargoArray real_default_capacity;
 
 	do {
 		uint32 refit_mask = GetAvailableVehicleCargoTypes(v->engine_type, v->type, true);

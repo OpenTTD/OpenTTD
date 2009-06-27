@@ -139,8 +139,8 @@ uint GetTotalCapacityOfArticulatedParts(EngineID engine, VehicleType type)
 {
 	uint total = 0;
 
-	uint16 *cap = GetCapacityOfArticulatedParts(engine, type);
-	for (uint c = 0; c < NUM_CARGO; c++) {
+	CargoArray cap = GetCapacityOfArticulatedParts(engine, type);
+	for (CargoID c = 0; c < NUM_CARGO; c++) {
 		total += cap[c];
 	}
 
