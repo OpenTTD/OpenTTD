@@ -1519,6 +1519,9 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
  */
 void LoadUnloadStation(Station *st)
 {
+	/* No vehicle is here... */
+	if (st->loading_vehicles.empty()) return;
+
 	int cargo_left[NUM_CARGO];
 
 	for (uint i = 0; i < NUM_CARGO; i++) cargo_left[i] = st->goods[i].cargo.Count();
