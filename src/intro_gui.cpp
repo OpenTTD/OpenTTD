@@ -59,14 +59,19 @@ struct SelectGameWindow : public Window {
 	{
 		this->InitNested(desc);
 		this->LowerWidget(_settings_newgame.game_creation.landscape + SGI_TEMPERATE_LANDSCAPE);
+		this->SetLandscapeButtons();
 	}
 
-	virtual void OnPaint()
+	void SetLandscapeButtons()
 	{
 		this->SetWidgetLoweredState(SGI_TEMPERATE_LANDSCAPE, _settings_newgame.game_creation.landscape == LT_TEMPERATE);
 		this->SetWidgetLoweredState(SGI_ARCTIC_LANDSCAPE,    _settings_newgame.game_creation.landscape == LT_ARCTIC);
 		this->SetWidgetLoweredState(SGI_TROPIC_LANDSCAPE,    _settings_newgame.game_creation.landscape == LT_TROPIC);
 		this->SetWidgetLoweredState(SGI_TOYLAND_LANDSCAPE,   _settings_newgame.game_creation.landscape == LT_TOYLAND);
+	}
+
+	virtual void OnPaint()
+	{
 		SetDParam(0, STR_DIFFICULTY_LEVEL_EASY + _settings_newgame.difficulty.diff_level);
 		this->DrawWidgets();
 	}
@@ -105,6 +110,7 @@ struct SelectGameWindow : public Window {
 			case SGI_TROPIC_LANDSCAPE: case SGI_TOYLAND_LANDSCAPE:
 				this->RaiseWidget(_settings_newgame.game_creation.landscape + SGI_TEMPERATE_LANDSCAPE);
 				SetNewLandscapeType(widget - SGI_TEMPERATE_LANDSCAPE);
+				this->SetLandscapeButtons();
 				break;
 
 			case SGI_OPTIONS:         ShowGameOptions(); break;
@@ -132,36 +138,30 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 		/* 'generate game' and 'load game' buttons */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_GENERATE_GAME), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_NEW_GAME, STR_INTRO_TOOLTIP_NEW_GAME),
+								SetDataTip(STR_INTRO_NEW_GAME, STR_INTRO_TOOLTIP_NEW_GAME), SetPadding(0, 0, 0, 10),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_LOAD_GAME), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_LOAD_GAME, STR_INTRO_TOOLTIP_LOAD_GAME),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+								SetDataTip(STR_INTRO_LOAD_GAME, STR_INTRO_TOOLTIP_LOAD_GAME), SetPadding(0, 10, 0, 0),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
 		/* 'play scenario' and 'play heightmap' buttons */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_PLAY_SCENARIO), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_PLAY_SCENARIO, STR_INTRO_TOOLTIP_PLAY_SCENARIO),
+								SetDataTip(STR_INTRO_PLAY_SCENARIO, STR_INTRO_TOOLTIP_PLAY_SCENARIO), SetPadding(0, 0, 0, 10),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_PLAY_HEIGHTMAP), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_PLAY_HEIGHTMAP, STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+								SetDataTip(STR_INTRO_PLAY_HEIGHTMAP, STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP), SetPadding(0, 10, 0, 0),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
 		/* 'edit scenario' and 'play multiplayer' buttons */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_EDIT_SCENARIO), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_SCENARIO_EDITOR, STR_INTRO_TOOLTIP_SCENARIO_EDITOR),
+								SetDataTip(STR_INTRO_SCENARIO_EDITOR, STR_INTRO_TOOLTIP_SCENARIO_EDITOR), SetPadding(0, 0, 0, 10),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_PLAY_NETWORK), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_MULTIPLAYER, STR_INTRO_TOOLTIP_MULTIPLAYER),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+								SetDataTip(STR_INTRO_MULTIPLAYER, STR_INTRO_TOOLTIP_MULTIPLAYER), SetPadding(0, 10, 0, 0),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 7),
@@ -186,36 +186,30 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 
 		/* 'game options' and 'difficulty options' buttons */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_OPTIONS), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_GAME_OPTIONS, STR_INTRO_TOOLTIP_GAME_OPTIONS),
+								SetDataTip(STR_INTRO_GAME_OPTIONS, STR_INTRO_TOOLTIP_GAME_OPTIONS), SetPadding(0, 0, 0, 10),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_DIFFICULTIES), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_DIFFICULTY, STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+								SetDataTip(STR_INTRO_DIFFICULTY, STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS), SetPadding(0, 10, 0, 0),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
 		/* 'advanced settings' and 'newgrf settings' buttons */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_SETTINGS_OPTIONS), SetMinimalSize(158, 12),
-								SetDataTip(STR_CONFIG_SETTING, STR_CONFIG_SETTING_TIP),
+								SetDataTip(STR_CONFIG_SETTING, STR_CONFIG_SETTING_TIP), SetPadding(0, 0, 0, 10),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_GRF_SETTINGS), SetMinimalSize(158, 12),
-								SetDataTip(STR_NEWGRF_SETTINGS_BUTTON, STR_NEWGRF_SETTINGS_BUTTON_TIP),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+								SetDataTip(STR_NEWGRF_SETTINGS_BUTTON, STR_NEWGRF_SETTINGS_BUTTON_TIP), SetPadding(0, 10, 0, 0),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 
 		/* 'online content' and 'ai settings' buttons */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_CONTENT_DOWNLOAD), SetMinimalSize(158, 12),
-								SetDataTip(STR_CONTENT_INTRO_BUTTON, STR_CONTENT_INTRO_BUTTON_TIP),
+								SetDataTip(STR_CONTENT_INTRO_BUTTON, STR_CONTENT_INTRO_BUTTON_TIP), SetPadding(0, 0, 0, 10),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_AI_SETTINGS), SetMinimalSize(158, 12),
-								SetDataTip(STR_AI_SETTINGS_BUTTON, STR_AI_SETTINGS_BUTTON_TIP),
-			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+								SetDataTip(STR_AI_SETTINGS_BUTTON, STR_AI_SETTINGS_BUTTON_TIP), SetPadding(0, 10, 0, 0),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
