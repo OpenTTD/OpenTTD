@@ -963,7 +963,6 @@ static bool FindIndustryToDeliver(TileIndex ind_tile, void *user_data)
  * @param st The station that accepted the cargo
  * @param cargo_type Type of cargo delivered
  * @param nun_pieces Amount of cargo delivered
- * @param industry_set The destination industry will be inserted into this set
  * @note THIS FUNCTION WILL BE REMOVED SOON!
  */
 static Industry *DeliverGoodsToIndustryCheckOldStyle(const Station *st, CargoID cargo_type, int num_pieces)
@@ -1004,6 +1003,8 @@ static Industry *DeliverGoodsToIndustryCheckOldStyle(const Station *st, CargoID 
 	return NULL;
 }
 
+/** The industries we've currently brought cargo to. */
+static SmallIndustryList _cargo_delivery_destinations;
 
 /**
  * Transfer goods from station to industry.
@@ -1011,9 +1012,8 @@ static Industry *DeliverGoodsToIndustryCheckOldStyle(const Station *st, CargoID 
  * @param st The station that accepted the cargo
  * @param cargo_type Type of cargo delivered
  * @param nun_pieces Amount of cargo delivered
- * @param industry_set The destination industry will be inserted into this set
  */
-static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int num_pieces, SmallIndustryList *industry_set)
+static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int num_pieces)
 {
 	/* Find the nearest industrytile to the station sign inside the catchment area, whose industry accepts the cargo.
 	 * This fails in three cases:
@@ -1039,8 +1039,8 @@ static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int nu
 			if (res == 0) continue;
 		}
 
-		/* Insert the industry into industry_set, if not yet contained */
-		if (industry_set != NULL) industry_set->Include(ind);
+		/* Insert the industry into _cargo_delivery_destinations, if not yet contained */
+		_cargo_delivery_destinations.Include(ind);
 
 		assert(DeliverGoodsToIndustryCheckOldStyle(st, cargo_type, num_pieces) == ind); // safety check, will be removed soon
 
@@ -1059,11 +1059,10 @@ static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int nu
  * @param dest Station the cargo has been unloaded
  * @param source_tile The origin of the cargo for distance calculation
  * @param days_in_transit Travel time
- * @param industry_set The delivered industry will be inserted into this set, if not yet contained
  * @param company The company delivering the cargo
  * The cargo is just added to the stockpile of the industry. It is due to the caller to trigger the industry's production machinery
  */
-static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, StationID dest, TileIndex source_tile, byte days_in_transit, SmallIndustryList *industry_set, Company *company)
+static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, StationID dest, TileIndex source_tile, byte days_in_transit, Company *company)
 {
 	bool subsidised = false;
 
@@ -1088,7 +1087,7 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 	if (cs->town_effect == TE_WATER) s_to->town->new_act_water += num_pieces;
 
 	/* Give the goods to the industry. */
-	DeliverGoodsToIndustry(s_to, cargo_type, num_pieces, industry_set);
+	DeliverGoodsToIndustry(s_to, cargo_type, num_pieces);
 
 	/* Determine profit */
 	Money profit = GetTransportedGoodsIncome(num_pieces, DistanceManhattan(source_tile, s_to->xy), days_in_transit, cargo_type);
@@ -1167,10 +1166,6 @@ void VehiclePayment(Vehicle *front_v)
 	/* Start unloading in at the first possible moment */
 	front_v->load_unload_time_rem = 1;
 
-	/* Collect delivered industries */
-	static SmallIndustryList industry_set;
-	industry_set.Clear();
-
 	for (Vehicle *v = front_v; v != NULL; v = v->Next()) {
 		/* No cargo to unload */
 		if (v->cargo_cap == 0 || v->cargo.Empty() || (front_v->current_order.GetUnloadType() & OUFB_NO_UNLOAD)) continue;
@@ -1194,7 +1189,7 @@ void VehiclePayment(Vehicle *front_v)
 				st->time_since_unload = 0;
 
 				/* handle end of route payment */
-				Money profit = DeliverGoods(cp->count, v->cargo_type, cp->source, last_visited, cp->source_xy, cp->days_in_transit, &industry_set, company);
+				Money profit = DeliverGoods(cp->count, v->cargo_type, cp->source, last_visited, cp->source_xy, cp->days_in_transit, company);
 				cp->paid_for = true;
 				route_profit   += profit; // display amount paid for final route delivery, A-D of a chain A-B-C-D
 				vehicle_profit += profit - cp->feeder_share;                    // whole vehicle is not payed for transfers picked up earlier
@@ -1224,11 +1219,12 @@ void VehiclePayment(Vehicle *front_v)
 		v->cargo.InvalidateCache();
 	}
 
-	/* Call the production machinery of industries only once for every vehicle chain */
-	const Industry * const *isend = industry_set.End();
-	for (Industry **iid = industry_set.Begin(); iid != isend; iid++) {
+	/* Call the production machinery of industries */
+	const Industry * const *isend = _cargo_delivery_destinations.End();
+	for (Industry **iid = _cargo_delivery_destinations.Begin(); iid != isend; iid++) {
 		TriggerIndustryProduction(*iid);
 	}
+	_cargo_delivery_destinations.Clear();
 
 	if (virtual_profit > 0) {
 		ShowFeederIncomeAnimation(front_v->x_pos, front_v->y_pos, front_v->z_pos, virtual_profit);
