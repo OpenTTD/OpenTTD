@@ -35,6 +35,7 @@
 #include "signs_base.h"
 #include "subsidy_func.h"
 #include "station_base.h"
+#include "economy_base.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -1141,6 +1142,83 @@ static void TriggerIndustryProduction(Industry *i)
 }
 
 /**
+ * Makes us a new cargo payment helper.
+ * @param front The front of the train
+ * @param destinations List to add the destinations of 'our' cargo to
+ */
+CargoPayment::CargoPayment(Vehicle *front) :
+	front(front),
+	route_profit(0),
+	visual_profit(0),
+	owner(NULL),
+	current_station(front->last_station_visited)
+{
+}
+
+CargoPayment::~CargoPayment()
+{
+	if (this->visual_profit == 0) return;
+
+	CompanyID old_company = _current_company;
+	_current_company = this->front->owner;
+
+	SubtractMoneyFromCompany(CommandCost(this->front->GetExpenseType(true), -this->route_profit));
+
+	if (this->route_profit != 0) {
+		if (IsLocalCompany() && !PlayVehicleSound(this->front, VSE_LOAD_UNLOAD)) {
+			SndPlayVehicleFx(SND_14_CASHTILL, this->front);
+		}
+
+		ShowCostOrIncomeAnimation(this->front->x_pos, this->front->y_pos, this->front->z_pos, -this->visual_profit);
+	} else {
+		ShowFeederIncomeAnimation(this->front->x_pos, this->front->y_pos, this->front->z_pos, this->visual_profit);
+	}
+
+	_current_company = old_company;
+}
+
+/**
+ * Handle payment for final delivery of the given cargo packet.
+ * @param cp The cargo packet to pay for.
+ * @param count The number of packets to pay for.
+ */
+void CargoPayment::PayFinalDelivery(CargoPacket *cp, uint count)
+{
+	if (this->owner == NULL) {
+		this->owner = Company::Get(this->front->owner);
+	}
+
+	/* Handle end of route payment */
+	Money profit = DeliverGoods(count, this->ct, cp->source, this->current_station, cp->source_xy, cp->days_in_transit, this->owner);
+	this->route_profit += profit;
+
+	/* The vehicle's profit is whatever route profit there is minus feeder shares. */
+	this->visual_profit += profit - cp->feeder_share;
+
+	cp->paid_for = true;
+}
+
+/**
+ * Handle payment for transfer of the given cargo packet.
+ * @param cp The cargo packet to pay for.
+ * @param count The number of packets to pay for.
+ */
+void CargoPayment::PayTransfer(CargoPacket *cp, uint count)
+{
+	Money profit = GetTransportedGoodsIncome(
+		count,
+		/* pay transfer vehicle for only the part of transfer it has done: ie. cargo_loaded_at_xy to here */
+		DistanceManhattan(cp->loaded_at_xy, Station::Get(this->current_station)->xy),
+		cp->days_in_transit,
+		this->ct);
+
+	this->visual_profit += profit; // accumulate transfer profits for whole vehicle
+	cp->feeder_share    += profit; // account for the (virtual) profit already made for the cargo packet
+
+	cp->paid_for = true;
+}
+
+/**
  * Performs the vehicle payment _and_ marks the vehicle to be unloaded.
  * @param front_v the vehicle to be unloaded
  */
@@ -1154,17 +1232,14 @@ void VehiclePayment(Vehicle *front_v)
 
 	StationID last_visited = front_v->last_station_visited;
 	Station *st = Station::Get(last_visited);
-	Company *company = Company::Get(front_v->owner);
-
-	/* The owner of the train wants to be paid */
-	CompanyID old_company = _current_company;
-	_current_company = front_v->owner;
 
 	/* At this moment loading cannot be finished */
 	ClrBit(front_v->vehicle_flags, VF_LOADING_FINISHED);
 
 	/* Start unloading in at the first possible moment */
 	front_v->load_unload_time_rem = 1;
+
+	CargoPayment payment(front_v);
 
 	for (Vehicle *v = front_v; v != NULL; v = v->Next()) {
 		/* No cargo to unload */
@@ -1179,6 +1254,8 @@ void VehiclePayment(Vehicle *front_v)
 		GoodsEntry *ge = &st->goods[v->cargo_type];
 		const CargoList::List *cargos = v->cargo.Packets();
 
+		payment.SetCargo(v->cargo_type);
+
 		for (CargoList::List::const_iterator it = cargos->begin(); it != cargos->end(); it++) {
 			CargoPacket *cp = *it;
 			if (!cp->paid_for &&
@@ -1188,28 +1265,14 @@ void VehiclePayment(Vehicle *front_v)
 				/* Deliver goods to the station */
 				st->time_since_unload = 0;
 
-				/* handle end of route payment */
-				Money profit = DeliverGoods(cp->count, v->cargo_type, cp->source, last_visited, cp->source_xy, cp->days_in_transit, company);
-				cp->paid_for = true;
-				route_profit   += profit; // display amount paid for final route delivery, A-D of a chain A-B-C-D
-				vehicle_profit += profit - cp->feeder_share;                    // whole vehicle is not payed for transfers picked up earlier
+				payment.PayFinalDelivery(cp, cp->count);
 
 				result |= 1;
 
 				SetBit(v->vehicle_flags, VF_CARGO_UNLOADING);
 			} else if (front_v->current_order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) {
 				if (!cp->paid_for && (front_v->current_order.GetUnloadType() & OUFB_TRANSFER) != 0) {
-					Money profit = GetTransportedGoodsIncome(
-						cp->count,
-						/* pay transfer vehicle for only the part of transfer it has done: ie. cargo_loaded_at_xy to here */
-						DistanceManhattan(cp->loaded_at_xy, Station::Get(last_visited)->xy),
-						cp->days_in_transit,
-						v->cargo_type);
-
-					front_v->profit_this_year += profit << 8;
-					virtual_profit   += profit; // accumulate transfer profits for whole vehicle
-					cp->feeder_share += profit; // account for the (virtual) profit already made for the cargo packet
-					cp->paid_for      = true;   // record that the cargo has been paid for to eliminate double counting
+					payment.PayTransfer(cp, cp->count);
 				}
 				result |= 2;
 
@@ -1225,23 +1288,6 @@ void VehiclePayment(Vehicle *front_v)
 		TriggerIndustryProduction(*iid);
 	}
 	_cargo_delivery_destinations.Clear();
-
-	if (virtual_profit > 0) {
-		ShowFeederIncomeAnimation(front_v->x_pos, front_v->y_pos, front_v->z_pos, virtual_profit);
-	}
-
-	if (route_profit != 0) {
-		front_v->profit_this_year += vehicle_profit << 8;
-		SubtractMoneyFromCompany(CommandCost(front_v->GetExpenseType(true), -route_profit));
-
-		if (IsLocalCompany() && !PlayVehicleSound(front_v, VSE_LOAD_UNLOAD)) {
-			SndPlayVehicleFx(SND_14_CASHTILL, front_v);
-		}
-
-		ShowCostOrIncomeAnimation(front_v->x_pos, front_v->y_pos, front_v->z_pos, -vehicle_profit);
-	}
-
-	_current_company = old_company;
 }
 
 /**

@@ -168,6 +168,7 @@ direction_func.h
 direction_type.h
 music/dmusic.h
 driver.h
+economy_base.h
 economy_func.h
 economy_type.h
 effectvehicle_base.h

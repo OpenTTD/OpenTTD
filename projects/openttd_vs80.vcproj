@@ -960,6 +960,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\economy_base.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\economy_func.h"
 				>
 			</File>
