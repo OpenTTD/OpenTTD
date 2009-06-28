@@ -5,7 +5,7 @@
 #ifndef WINDOW_GUI_H
 #define WINDOW_GUI_H
 
-#include "core/geometry_type.hpp"
+#include "core/geometry_func.hpp"
 #include "vehicle_type.h"
 #include "viewport_type.h"
 #include "company_type.h"

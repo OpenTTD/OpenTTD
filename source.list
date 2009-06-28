@@ -367,6 +367,8 @@ core/bitmath_func.hpp
 core/endian_func.hpp
 core/endian_type.hpp
 core/enum_type.hpp
+core/geometry_func.cpp
+core/geometry_func.hpp
 core/geometry_type.hpp
 core/math_func.cpp
 core/math_func.hpp

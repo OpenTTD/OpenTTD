@@ -1696,6 +1696,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\core\geometry_func.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\geometry_func.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\core\geometry_type.hpp"
 				>
 			</File>
