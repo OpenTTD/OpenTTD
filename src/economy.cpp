@@ -1060,20 +1060,18 @@ static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int nu
  * @param source_tile The origin of the cargo for distance calculation
  * @param days_in_transit Travel time
  * @param industry_set The delivered industry will be inserted into this set, if not yet contained
+ * @param company The company delivering the cargo
  * The cargo is just added to the stockpile of the industry. It is due to the caller to trigger the industry's production machinery
  */
-static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, StationID dest, TileIndex source_tile, byte days_in_transit, SmallIndustryList *industry_set)
+static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, StationID dest, TileIndex source_tile, byte days_in_transit, SmallIndustryList *industry_set, Company *company)
 {
 	bool subsidised = false;
 
 	assert(num_pieces > 0);
 
 	/* Update company statistics */
-	{
-		Company *c = Company::Get(_current_company);
-		c->cur_economy.delivered_cargo += num_pieces;
-		SetBit(c->cargo_types, cargo_type);
-	}
+	company->cur_economy.delivered_cargo += num_pieces;
+	SetBit(company->cargo_types, cargo_type);
 
 	const Station *s_to = Station::Get(dest);
 
@@ -1157,6 +1155,7 @@ void VehiclePayment(Vehicle *front_v)
 
 	StationID last_visited = front_v->last_station_visited;
 	Station *st = Station::Get(last_visited);
+	Company *company = Company::Get(front_v->owner);
 
 	/* The owner of the train wants to be paid */
 	CompanyID old_company = _current_company;
@@ -1195,7 +1194,7 @@ void VehiclePayment(Vehicle *front_v)
 				st->time_since_unload = 0;
 
 				/* handle end of route payment */
-				Money profit = DeliverGoods(cp->count, v->cargo_type, cp->source, last_visited, cp->source_xy, cp->days_in_transit, &industry_set);
+				Money profit = DeliverGoods(cp->count, v->cargo_type, cp->source, last_visited, cp->source_xy, cp->days_in_transit, &industry_set, company);
 				cp->paid_for = true;
 				route_profit   += profit; // display amount paid for final route delivery, A-D of a chain A-B-C-D
 				vehicle_profit += profit - cp->feeder_share;                    // whole vehicle is not payed for transfers picked up earlier
