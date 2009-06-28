@@ -27,6 +27,57 @@ enum FrameFlags {
 
 DECLARE_ENUM_AS_BIT_SET(FrameFlags);
 
+/** Distances used in drawing widgets. */
+enum WidgetDrawDistances {
+	/* WWT_IMGBTN, WWT_IMGBTN_2 */
+	WD_IMGBTN_LEFT = 1,         ///< Left offset of the image in the button.
+	WD_IMGBTN_TOP = 1,          ///< Top offset of image in the button.
+
+	/* WWT_INSET */
+	WD_INSET_LEFT  = 2,         ///< Left offset of string.
+	WD_INSET_RIGHT = 2,         ///< Right offset of string.
+	WD_INSET_TOP   = 1,         ///< Top offset of string.
+
+	WD_VSCROLLBAR_WIDTH = 12,   ///< Width of a vertical scrollbar.
+
+	WD_HSCROLLBAR_HEIGHT = 12,  ///< Height of a horizontal scrollbar.
+
+	/* FrameRect widgets, all text buttons, panel, editbox */
+	WD_FRAMERECT_LEFT = 2,      ///< Offset at left to draw the frame rectangular area
+	WD_FRAMERECT_RIGHT = 2,     ///< Offset at right to draw the frame rectangular area
+	WD_FRAMERECT_TOP = 1,       ///< Offset at top to draw the frame rectangular area
+	WD_FRAMERECT_BOTTOM = 1,    ///< Offset at bottom to draw the frame rectangular area
+
+	/* WWT_FRAME */
+	WD_FRAMETEXT_LEFT = 6,      ///< Left offset of the text of the frame.
+	WD_FRAMETEXT_RIGHT = 6,     ///< Right offset of the text of the frame.
+
+	/* WWT_STICKYBOX */
+	WD_STICKY_WIDTH = 12,       ///< Width of a sticky box widget.
+	WD_STICKY_LEFT = 2,         ///< Left offset of sticky sprite.
+	WD_STICKY_TOP = 3,          ///< Top offset of sticky sprite.
+
+	/* WWT_RESIZEBOX */
+	WD_RESIZE_WIDTH = 12,       ///< Width of a resize box widget.
+	WD_RESIZE_TOP = 3,          ///< Top offset of resize sprite.
+
+	/* WWT_CLOSEBOX */
+	WD_CLOSEBOX_WIDTH = 11,     ///< Width of a close box widget.
+	WD_CLOSEBOX_TOP = 2,        ///< Distance between the top of the close box widget, and the string.
+
+	/* WWT_CAPTION */
+	WD_CAPTION_HEIGHT = 14,     ///< Height of a title bar.
+	WD_CAPTIONTEXT_LEFT = 2,    ///< Offset of the caption text at the left.
+	WD_CAPTIONTEXT_RIGHT = 2,   ///< Offset of the caption text at the right.
+	WD_CAPTIONTEXT_TOP = 2,     ///< Offset of the caption text at the top.
+
+	/* Dropdown widget. */
+	WD_DROPDOWN_HEIGHT = 12,    ///< Height of a drop down widget.
+	WD_DROPDOWNTEXT_LEFT = 2,   ///< Left offset of the dropdown widget string.
+	WD_DROPDOWNTEXT_RIGHT = 14, ///< Right offset of the dropdown widget string.
+	WD_DROPDOWNTEXT_TOP = 1,    ///< Top offset of the dropdown widget string.
+};
+
 /* wiget.cpp */
 void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, FrameFlags flags);
 
@@ -434,9 +485,18 @@ public:
 	/*** Event handling ***/
 
 	/**
-	 * This window is currently being repainted.
+	 * The window must be repainted.
+	 * @note This method should not change any state, it should only use drawing functions.
 	 */
 	virtual void OnPaint() {}
+
+	/**
+	 * Draw the contents of a nested widget.
+	 * @param r      Rectangle occupied by the widget.
+	 * @param widget Number of the widget to draw.
+	 * @note This method may not change any state, it may only use drawing functions.
+	 */
+	virtual void DrawWidget(const Rect &r, int widget) const {}
 
 	/**
 	 * Called when window gains focus

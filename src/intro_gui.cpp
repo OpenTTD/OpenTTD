@@ -72,8 +72,15 @@ struct SelectGameWindow : public Window {
 
 	virtual void OnPaint()
 	{
-		SetDParam(0, STR_DIFFICULTY_LEVEL_EASY + _settings_newgame.difficulty.diff_level);
 		this->DrawWidgets();
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget == SGI_DIFFICULTIES) {
+			SetDParam(0, STR_DIFFICULTY_LEVEL_EASY + _settings_newgame.difficulty.diff_level);
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, STR_INTRO_DIFFICULTY, TC_FROMSTRING, SA_CENTER);
+		}
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -189,7 +196,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_OPTIONS), SetMinimalSize(158, 12),
 								SetDataTip(STR_INTRO_GAME_OPTIONS, STR_INTRO_TOOLTIP_GAME_OPTIONS), SetPadding(0, 0, 0, 10),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_DIFFICULTIES), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_DIFFICULTY, STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS), SetPadding(0, 10, 0, 0),
+								SetDataTip(STR_NULL, STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS), SetPadding(0, 10, 0, 0),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),

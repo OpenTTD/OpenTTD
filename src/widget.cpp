@@ -223,43 +223,6 @@ int GetWidgetFromPos(const Window *w, int x, int y)
 	return found_index;
 }
 
-/** Distances used in drawing widgets. */
-enum WidgetDrawDistances {
-	WD_IMGBTN_LEFT = 1,         ///< Left offset of the image in the button.
-	WD_IMGBTN_TOP = 1,          ///< Top offset of image in the button.
-
-	WD_INSET_LEFT  = 2,         ///< Left offset of string.
-	WD_INSET_RIGHT = 2,         ///< Right offset of string.
-	WD_INSET_TOP   = 1,         ///< Top offset of string.
-
-	WD_VSCROLLBAR_WIDTH = 12,   ///< Width of a vertical scrollbar.
-
-	WD_HSCROLLBAR_HEIGHT = 12,  ///< Height of a horizontal scrollbar.
-
-	WD_FRAMETEXT_LEFT = 6,      ///< Left offset of the text of the frame.
-	WD_FRAMETEXT_RIGHT = 6,     ///< Right offset of the text of the frame.
-
-	WD_STICKY_WIDTH = 12,       ///< Width of a sticky box widget.
-	WD_STICKY_LEFT = 2,         ///< Left offset of sticky sprite.
-	WD_STICKY_TOP = 3,          ///< Top offset of sticky sprite.
-
-	WD_RESIZE_WIDTH = 12,       ///< Width of a resize box widget.
-	WD_RESIZE_TOP = 3,          ///< Top offset of resize sprite.
-
-	WD_CLOSEBOX_WIDTH = 11,     ///< Width of a close box widget.
-	WD_CLOSEBOX_TOP = 2,        ///< Distance between the top of the close box widget, and the string.
-
-	WD_CAPTION_HEIGHT = 14,     ///< Height of a title bar.
-	WD_CAPTIONTEXT_LEFT = 2,    ///< Offset of the caption text at the left.
-	WD_CAPTIONTEXT_RIGHT = 2,   ///< Offset of the caption text at the right.
-	WD_CAPTIONTEXT_TOP = 2,     ///< Offset of the caption text at the top.
-
-	WD_DROPDOWN_HEIGHT = 12,    ///< Height of a drop down widget.
-	WD_DROPDOWNTEXT_LEFT = 2,   ///< Left offset of the dropdown widget string.
-	WD_DROPDOWNTEXT_RIGHT = 14, ///< Right offset of the dropdown widget string.
-	WD_DROPDOWNTEXT_TOP = 1,    ///< Top offset of the dropdown widget string.
-};
-
 /**
  * Draw frame rectangle.
  * @param left   Left edge of the frame
@@ -327,6 +290,7 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
  */
 static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, StringID str)
 {
+	if (str == STR_NULL) return;
 	if ((type & WWT_MASK) == WWT_TEXTBTN_2 && clicked) str++;
 	DrawString(r.left + clicked, r.right + clicked, ((r.top + r.bottom + 1) >> 1) - (FONT_HEIGHT_NORMAL / 2) + clicked, str, TC_FROMSTRING, SA_CENTER);
 }
@@ -582,7 +546,7 @@ static inline void DrawCaption(const Rect &r, Colours colour, Owner owner, Strin
 		GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, _colour_gradient[_company_colours[owner]][4]);
 	}
 
-	DrawString(r.left + WD_CAPTIONTEXT_LEFT, r.right - WD_CAPTIONTEXT_RIGHT, r.top + WD_CAPTIONTEXT_TOP, str, TC_FROMSTRING, SA_CENTER);
+	if (str != STR_NULL) DrawString(r.left + WD_CAPTIONTEXT_LEFT, r.right - WD_CAPTIONTEXT_RIGHT, r.top + WD_CAPTIONTEXT_TOP, str, TC_FROMSTRING, SA_CENTER);
 }
 
 static inline void DrawDropdown(const Rect &r, Colours colour, bool clicked, StringID str)
@@ -1001,6 +965,7 @@ inline void NWidgetBase::StoreSizePosition(SizingType sizing, uint x, uint y, ui
 /**
  * @fn void Draw(const Window *w)
  * Draw the widgets of the tree.
+ * The function calls #Window::DrawWidget for each widget with a non-negative index, after the widget itself is painted.
  * @param w Window that owns the tree.
  */
 
@@ -1831,6 +1796,7 @@ void NWidgetBackground::Draw(const Window *w)
 	}
 
 	if (this->child != NULL) this->child->Draw(w);
+	if (this->index >= 0) w->DrawWidget(r, this->index);
 
 	if (this->IsDisabled()) {
 		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
@@ -2050,6 +2016,7 @@ void NWidgetLeaf::Draw(const Window *w)
 		default:
 			NOT_REACHED();
 	}
+	if (this->index >= 0) w->DrawWidget(r, this->index);
 
 	if (this->IsDisabled()) {
 		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
