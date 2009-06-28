@@ -429,6 +429,7 @@ public:
 	void DeleteChildWindows() const;
 
 	void SetDirty() const;
+	void ReInit();
 
 	/*** Event handling ***/
 

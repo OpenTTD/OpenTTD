@@ -32,6 +32,8 @@ void DeleteConstructionWindows();
 void HideVitalWindows();
 void ShowVitalWindows();
 
+void ReInitAllWindows();
+
 void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_index);
 void InvalidateWindow(WindowClass cls, WindowNumber number);
 void InvalidateWindowClasses(WindowClass cls);

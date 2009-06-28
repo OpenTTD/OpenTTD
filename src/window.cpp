@@ -560,6 +560,48 @@ void SetWindowDirty(const Window *w)
 	if (w != NULL) w->SetDirty();
 }
 
+/** Re-initialize a window.
+ * @todo Extend the function to handle viewports.
+ */
+void Window::ReInit()
+{
+	if (this->nested_root == NULL) return; // Only nested widget windows can re-initialize.
+
+	this->SetDirty(); // Mark whole current window as dirty.
+
+	/* Save current size. */
+	int window_width  = this->width;
+	int window_height = this->height;
+
+	/* Re-initialize the window from the ground up. No need to change the nested_array, as all widgets stay where they are. */
+	this->nested_root->SetupSmallestSize();
+	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, false, false, false);
+	this->width  = this->nested_root->smallest_x;
+	this->height = this->nested_root->smallest_y;
+	this->resize.width  = this->nested_root->smallest_x;
+	this->resize.height = this->nested_root->smallest_y;
+	this->resize.step_width  = this->nested_root->resize_x;
+	this->resize.step_height = this->nested_root->resize_y;
+
+	/* Resize as close to the original size as possible. */
+	window_width  = max(window_width,  this->width);
+	window_height = max(window_height, this->height);
+	int dx = (this->resize.step_width  == 0) ? 0 : window_width  - this->width;
+	int dy = (this->resize.step_height == 0) ? 0 : window_height - this->height;
+	/* dx and dy has to go by step.. calculate it.
+	 * The cast to int is necessary else dx/dy are implicitly casted to unsigned int, which won't work. */
+	if (this->resize.step_width  > 1) dx -= dx % (int)this->resize.step_width;
+	if (this->resize.step_height > 1) dy -= dy % (int)this->resize.step_height;
+
+	if (dx == 0 && dy == 0) return; // No resize needed.
+
+	ResizeWindow(this, dx, dy); // Sets post-resize dirty blocks.
+	Point diff;
+	diff.x = dx;
+	diff.y = dy;
+	this->OnResize(diff);
+}
+
 /** Find the Window whose parent pointer points to this window
  * @param w parent Window to find child of
  * @return a Window pointer that is the child of w, or NULL otherwise */
@@ -2486,6 +2528,16 @@ void HideVitalWindows()
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 	DeleteWindowById(WC_MAIN_TOOLBAR, 0);
 	DeleteWindowById(WC_STATUS_BAR, 0);
+}
+
+/** Re-initialize all windows. */
+void ReInitAllWindows()
+{
+	Window *w;
+
+	FOR_ALL_WINDOWS_FROM_BACK(w) {
+		w->ReInit();
+	}
 }
 
 /**
