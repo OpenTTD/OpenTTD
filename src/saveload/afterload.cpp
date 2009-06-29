@@ -29,6 +29,7 @@
 #include "../road_cmd.h"
 #include "../ai/ai.hpp"
 #include "../town.h"
+#include "../economy_base.h"
 
 #include "table/strings.h"
 
@@ -546,6 +547,13 @@ bool AfterLoadGame()
 	 *   But this exeption is not true for non dedicated network_servers! */
 	if (!Company::IsValidID(COMPANY_FIRST) && (!_networking || (_networking && _network_server && !_network_dedicated)))
 		DoStartupNewCompany(false);
+
+	/* Fix the cache for cargo payments. */
+	CargoPayment *cp;
+	FOR_ALL_CARGO_PAYMENTS(cp) {
+		cp->front->cargo_payment = cp;
+		cp->current_station = cp->front->last_station_visited;
+	}
 
 	if (CheckSavegameVersion(72)) {
 		/* Locks/shiplifts in very old savegames had OWNER_WATER as owner */
@@ -1269,13 +1277,8 @@ bool AfterLoadGame()
 		 * stored to stop people cheating and cashing in several times. This
 		 * wasn't enough though as it was cleared when the vehicle started
 		 * loading again, even if it didn't actually load anything, so now the
-		 * amount of cargo that has been paid for is stored. */
+		 * amount that has been paid is stored. */
 		FOR_ALL_VEHICLES(v) {
-			const CargoList::List *packets = v->cargo.Packets();
-			for (CargoList::List::const_iterator it = packets->begin(); it != packets->end(); it++) {
-				CargoPacket *cp = *it;
-				cp->paid_for = HasBit(v->vehicle_flags, 2);
-			}
 			ClrBit(v->vehicle_flags, 2);
 			v->cargo.InvalidateCache();
 		}
@@ -1868,6 +1871,21 @@ bool AfterLoadGame()
 				if (u == NULL || u->type != VEH_ROAD || !IsRoadVehFront(u)) {
 					delete v;
 				}
+			}
+		}
+
+		/* We didn't store cargo payment yet, so make them for vehicles that are
+		 * currently at a station and loading/unloading. If they don't get any
+		 * payment anymore they just removed in the next load/unload cycle.
+		 * However, some 0.7 versions might have cargo payment. For those we just
+		 * add cargopayment for the vehicles that don't have it.
+		 */
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			std::list<Vehicle *>::iterator iter;
+			for (iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end(); ++iter) {
+				Vehicle *v = *iter;
+				if (v->cargo_payment == NULL) v->cargo_payment = new CargoPayment(v);
 			}
 		}
 	}

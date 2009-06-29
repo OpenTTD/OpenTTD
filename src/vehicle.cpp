@@ -38,6 +38,7 @@
 #include "settings_type.h"
 #include "network/network.h"
 #include "core/pool_func.hpp"
+#include "economy_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -446,6 +447,7 @@ static AutoreplaceMap _vehicles_to_autoreplace;
 void InitializeVehicles()
 {
 	_vehicle_pool.CleanPool();
+	_cargo_payment_pool.CleanPool();
 
 	_vehicles_to_autoreplace.Reset();
 	ResetVehiclePosHash();
@@ -1442,7 +1444,7 @@ void Vehicle::BeginLoading()
 
 	Station::Get(this->last_station_visited)->loading_vehicles.push_back(this);
 
-	VehiclePayment(this);
+	PrepareUnload(this);
 
 	InvalidateWindow(GetWindowClassForVehicleType(this->type), this->owner);
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
@@ -1457,6 +1459,8 @@ void Vehicle::BeginLoading()
 void Vehicle::LeaveStation()
 {
 	assert(current_order.IsType(OT_LOADING));
+
+	delete this->cargo_payment;
 
 	/* Only update the timetable if the vehicle was supposed to stop here. */
 	if (current_order.GetNonStopType() != ONSF_STOP_EVERYWHERE) UpdateVehicleTimetable(this, false);

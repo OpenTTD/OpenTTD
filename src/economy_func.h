@@ -34,7 +34,7 @@ void StartupIndustryDailyChanges(bool init_counter);
 Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type);
 uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount);
 
-void VehiclePayment(Vehicle *front_v);
+void PrepareUnload(Vehicle *front_v);
 void LoadUnloadStation(Station *st);
 
 Money GetPriceByIndex(uint8 index);

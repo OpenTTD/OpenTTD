@@ -36,9 +36,15 @@
 #include "subsidy_func.h"
 #include "station_base.h"
 #include "economy_base.h"
+#include "core/pool_func.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"
+
+
+/* Initialize the cargo payment-pool */
+CargoPaymentPool _cargo_payment_pool("CargoPayment");
+INSTANTIATE_POOL_METHODS(CargoPayment)
 
 /**
  * Multiply two integer values and shift the results to right.
@@ -1148,15 +1154,16 @@ static void TriggerIndustryProduction(Industry *i)
  */
 CargoPayment::CargoPayment(Vehicle *front) :
 	front(front),
-	route_profit(0),
-	visual_profit(0),
-	owner(NULL),
 	current_station(front->last_station_visited)
 {
 }
 
 CargoPayment::~CargoPayment()
 {
+	if (this->CleaningPool()) return;
+
+	this->front->cargo_payment = NULL;
+
 	if (this->visual_profit == 0) return;
 
 	CompanyID old_company = _current_company;
@@ -1195,8 +1202,6 @@ void CargoPayment::PayFinalDelivery(CargoPacket *cp, uint count)
 
 	/* The vehicle's profit is whatever route profit there is minus feeder shares. */
 	this->visual_profit += profit - cp->feeder_share;
-
-	cp->paid_for = true;
 }
 
 /**
@@ -1215,80 +1220,30 @@ void CargoPayment::PayTransfer(CargoPacket *cp, uint count)
 
 	this->visual_profit += profit; // accumulate transfer profits for whole vehicle
 	cp->feeder_share    += profit; // account for the (virtual) profit already made for the cargo packet
-
-	cp->paid_for = true;
 }
 
 /**
- * Performs the vehicle payment _and_ marks the vehicle to be unloaded.
+ * Prepare the vehicle to be unloaded.
  * @param front_v the vehicle to be unloaded
  */
-void VehiclePayment(Vehicle *front_v)
+void PrepareUnload(Vehicle *front_v)
 {
-	int result = 0;
-
-	Money vehicle_profit = 0; // Money paid to the train
-	Money route_profit   = 0; // The grand total amount for the route. A-D of transfer chain A-B-C-D
-	Money virtual_profit = 0; // The virtual profit for entire vehicle chain
-
-	StationID last_visited = front_v->last_station_visited;
-	Station *st = Station::Get(last_visited);
-
 	/* At this moment loading cannot be finished */
 	ClrBit(front_v->vehicle_flags, VF_LOADING_FINISHED);
 
 	/* Start unloading in at the first possible moment */
 	front_v->load_unload_time_rem = 1;
 
-	CargoPayment payment(front_v);
-
-	for (Vehicle *v = front_v; v != NULL; v = v->Next()) {
-		/* No cargo to unload */
-		if (v->cargo_cap == 0 || v->cargo.Empty() || (front_v->current_order.GetUnloadType() & OUFB_NO_UNLOAD)) continue;
-
-		/* All cargo has already been paid for, no need to pay again */
-		if (!v->cargo.UnpaidCargo()) {
-			SetBit(v->vehicle_flags, VF_CARGO_UNLOADING);
-			continue;
-		}
-
-		GoodsEntry *ge = &st->goods[v->cargo_type];
-		const CargoList::List *cargos = v->cargo.Packets();
-
-		payment.SetCargo(v->cargo_type);
-
-		for (CargoList::List::const_iterator it = cargos->begin(); it != cargos->end(); it++) {
-			CargoPacket *cp = *it;
-			if (!cp->paid_for &&
-					cp->source != last_visited &&
-					HasBit(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE) &&
-					(front_v->current_order.GetUnloadType() & OUFB_TRANSFER) == 0) {
-				/* Deliver goods to the station */
-				st->time_since_unload = 0;
-
-				payment.PayFinalDelivery(cp, cp->count);
-
-				result |= 1;
-
-				SetBit(v->vehicle_flags, VF_CARGO_UNLOADING);
-			} else if (front_v->current_order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) {
-				if (!cp->paid_for && (front_v->current_order.GetUnloadType() & OUFB_TRANSFER) != 0) {
-					payment.PayTransfer(cp, cp->count);
-				}
-				result |= 2;
-
+	if ((front_v->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0) {
+		for (Vehicle *v = front_v; v != NULL; v = v->Next()) {
+			if (v->cargo_cap > 0 && !v->cargo.Empty()) {
 				SetBit(v->vehicle_flags, VF_CARGO_UNLOADING);
 			}
 		}
-		v->cargo.InvalidateCache();
 	}
 
-	/* Call the production machinery of industries */
-	const Industry * const *isend = _cargo_delivery_destinations.End();
-	for (Industry **iid = _cargo_delivery_destinations.Begin(); iid != isend; iid++) {
-		TriggerIndustryProduction(*iid);
-	}
-	_cargo_delivery_destinations.Clear();
+	assert(front_v->cargo_payment == NULL);
+	front_v->cargo_payment = new CargoPayment(front_v);
 }
 
 /**
@@ -1337,6 +1292,8 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 	v->cur_speed = 0;
 
+	CargoPayment *payment = v->cargo_payment;
+
 	for (; v != NULL; v = v->Next()) {
 		if (v->cargo_cap == 0) continue;
 
@@ -1358,9 +1315,11 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			bool remaining = false; // Are there cargo entities in this vehicle that can still be unloaded here?
 			bool accepted  = false; // Is the cargo accepted by the station?
 
+			payment->SetCargo(v->cargo_type);
+
 			if (HasBit(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE) && !(u->current_order.GetUnloadType() & OUFB_TRANSFER)) {
 				/* The cargo has reached it's final destination, the packets may now be destroyed */
-				remaining = v->cargo.MoveTo(NULL, amount_unloaded, CargoList::MTA_FINAL_DELIVERY, last_visited);
+				remaining = v->cargo.MoveTo(NULL, amount_unloaded, CargoList::MTA_FINAL_DELIVERY, payment, last_visited);
 
 				result |= 1;
 				accepted = true;
@@ -1372,7 +1331,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			 * station is still accepting the cargo in the vehicle. It doesn't
 			 * accept cargo that was loaded at the same station. */
 			if ((u->current_order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) && (!accepted || v->cargo.Count() == cargo_count)) {
-				remaining = v->cargo.MoveTo(&ge->cargo, amount_unloaded);
+				remaining = v->cargo.MoveTo(&ge->cargo, amount_unloaded, u->current_order.GetUnloadType() & OUFB_TRANSFER ? CargoList::MTA_TRANSFER : CargoList::MTA_UNLOAD, payment);
 				SetBit(ge->acceptance_pickup, GoodsEntry::PICKUP);
 
 				result |= 2;
@@ -1449,7 +1408,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			completely_emptied = false;
 			anything_loaded = true;
 
-			ge->cargo.MoveTo(&v->cargo, cap, CargoList::MTA_CARGO_LOAD, st->xy);
+			ge->cargo.MoveTo(&v->cargo, cap, CargoList::MTA_CARGO_LOAD, NULL, st->xy);
 
 			st->time_since_load = 0;
 			st->last_vehicle_type = v->type;
@@ -1484,6 +1443,8 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	}
 
 	v = u;
+
+	if (!anything_unloaded) delete payment;
 
 	if (anything_loaded || anything_unloaded) {
 		if (_settings_game.order.gradual_loading) {
@@ -1573,6 +1534,13 @@ void LoadUnloadStation(Station *st)
 		Vehicle *v = *iter;
 		if (!(v->vehstatus & (VS_STOPPED | VS_CRASHED))) LoadUnloadVehicle(v, cargo_left);
 	}
+
+	/* Call the production machinery of industries */
+	const Industry * const *isend = _cargo_delivery_destinations.End();
+	for (Industry **iid = _cargo_delivery_destinations.Begin(); iid != isend; iid++) {
+		TriggerIndustryProduction(*iid);
+	}
+	_cargo_delivery_destinations.Clear();
 }
 
 void CompaniesMonthlyLoop()

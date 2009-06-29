@@ -125,4 +125,7 @@ enum ExpensesType {
 /** The "steps" in loan size, in British Pounds! */
 static const int LOAN_INTERVAL = 10000;
 
+struct CargoPayment;
+typedef uint32 CargoPaymentID;
+
 #endif /* ECONOMY_TYPE_H */

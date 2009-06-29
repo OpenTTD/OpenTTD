@@ -91,7 +91,9 @@ public:
 
 	Money profit_this_year;        ///< Profit this year << 8, low 8 bits are fract
 	Money profit_last_year;        ///< Profit last year << 8, low 8 bits are fract
-	Money value;
+	Money value;                   ///< Value of the vehicle
+
+	CargoPayment *cargo_payment;   ///< The cargo payment we're currently in
 
 	/* Used for timetabling. */
 	uint32 current_order_time;     ///< How many ticks have passed since this order started.
