@@ -1163,6 +1163,7 @@ CargoPayment::~CargoPayment()
 	_current_company = this->front->owner;
 
 	SubtractMoneyFromCompany(CommandCost(this->front->GetExpenseType(true), -this->route_profit));
+	this->front->profit_this_year += this->visual_profit << 8;
 
 	if (this->route_profit != 0) {
 		if (IsLocalCompany() && !PlayVehicleSound(this->front, VSE_LOAD_UNLOAD)) {
