@@ -445,7 +445,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Пок�
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Покинути гру
 STR_SORT_ORDER_TIP                                              :{BLACK}Виберіть порядок сортування (спадаючий/зростаючий)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Виберіть критерій сортування
-STR_FILTER_CRITERIA_TIP                                         :{BLACK}Обрати критерій виборки
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Оберіть критерій виборки
 STR_SORT_BY                                                     :{BLACK}Сортувати
 
 STR_SORT_BY_POPULATION                                          :{BLACK}за населенням
@@ -1074,7 +1074,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Нов�
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :ближнього кінця
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :середині
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :далекого кінця
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Ставати транспорту в чергу: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Організація черги транспорту (з квантовими ефектами): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Прокручувати вікно, коли курсор з краю: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Дозволити підкупляти місцеву владу: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Дозволити купувати ексклюзивні права на перевезення: {ORANGE}{STRING}
@@ -1175,7 +1175,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Перша з �
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Остання з доступних
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Найчастіше використовувана
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Показувати резервні шляхи: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Залишити інстументи активними після використання: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Залишити інструменти активними після використання: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Групувати витрати у вікні фінансів компанії: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Показувати засоби будівництва, коли нема відповідного транспорту: {ORANGE}{STRING}
