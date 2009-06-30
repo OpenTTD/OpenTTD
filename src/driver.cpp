@@ -61,8 +61,8 @@ Driver *DriverFactoryBase::SelectDriver(const char *name, Driver::Type type)
 	if (GetDrivers().size() == 0) return NULL;
 
 	if (StrEmpty(name)) {
-		/* Probe for this driver */
-		for (int priority = 10; priority >= 0; priority--) {
+		/* Probe for this driver, but do not fall back to dedicated/null! */
+		for (int priority = 10; priority > 0; priority--) {
 			Drivers::iterator it = GetDrivers().begin();
 			for (; it != GetDrivers().end(); ++it) {
 				DriverFactoryBase *d = (*it).second;

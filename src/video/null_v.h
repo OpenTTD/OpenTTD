@@ -27,7 +27,7 @@ public:
 
 class FVideoDriver_Null: public VideoDriverFactory<FVideoDriver_Null> {
 public:
-	static const int priority = 1;
+	static const int priority = 0;
 	/* virtual */ const char *GetName() { return "null"; }
 	/* virtual */ const char *GetDescription() { return "Null Video Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new VideoDriver_Null(); }
