@@ -1,7 +1,7 @@
 STRGEN USAGE
 ------------
 This guide is only interesting for people who want to alter something
-themselves without access to WT2 (translator2.openttd.org). Please note that
+themselves without access to translator.openttd.org. Please note that
 your compiled language file will only be compatible with the OpenTTD version
 you have downloaded english.txt, the master language file, for. While this is
 not always true, namely when changes in the code have not touched language

@@ -381,10 +381,8 @@ The following libraries are used by OpenTTD for:
 See http://www.openttd.org/development for up-to-date information.
 
 The use of the online Translator service, located at
-http://translator2.openttd.org/, is highly encouraged. For a username/password
-combo you should contact the development team, either by mail, IRC or the
-forums. The system is straightforward to use, and if you have any problems,
-read the online help located there.
+http://translator.openttd.org/, is highly encouraged. For getting an account
+simply follow the guidelines in the FAQ of the translator website.
 
 If for some reason the website is down for a longer period of time, the
 information below might be of help.

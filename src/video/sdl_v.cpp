@@ -426,11 +426,14 @@ const char *VideoDriver_SDL::Start(const char * const *parm)
 	const char *s = SdlOpen(SDL_INIT_VIDEO);
 	if (s != NULL) return s;
 
+	GetVideoModes();
+	if (!CreateMainSurface(_cur_resolution.width, _cur_resolution.height)) {
+		return SDL_CALL SDL_GetError();
+	}
+
 	SDL_CALL SDL_VideoDriverName(buf, 30);
 	DEBUG(driver, 1, "SDL: using driver '%s'", buf);
 
-	GetVideoModes();
-	CreateMainSurface(_cur_resolution.width, _cur_resolution.height);
 	MarkWholeScreenDirty();
 
 	SDL_CALL SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);

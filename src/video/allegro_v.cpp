@@ -404,7 +404,7 @@ int _allegro_instance_count = 0;
 
 const char *VideoDriver_Allegro::Start(const char * const *parm)
 {
-	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, NULL)) return NULL;
+	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, NULL)) return "Failed to set up Allegro";
 	_allegro_instance_count++;
 
 	install_timer();
@@ -425,7 +425,9 @@ const char *VideoDriver_Allegro::Start(const char * const *parm)
 #endif
 
 	GetVideoModes();
-	CreateMainSurface(_cur_resolution.width, _cur_resolution.height);
+	if (!CreateMainSurface(_cur_resolution.width, _cur_resolution.height)) {
+		return "Failed to set up Allegro video";
+	}
 	MarkWholeScreenDirty();
 	set_close_button_callback(HandleExitGameRequest);
 
