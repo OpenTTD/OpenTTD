@@ -1367,7 +1367,7 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Hálózat / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (reklámoz)
 STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} kliens
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maximum hány játékos lehet:
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Játékosok max. száma:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Válaszd ki hány játékos kapcsolódhat maximum. Nem szükséges pont ennyi embernek éppen kapcsolódva lennie.
 STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} vállalat
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max cégszám:
@@ -1502,7 +1502,7 @@ STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nem engedélyez
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :ismeretlen csomag érkezett
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :rossz verzió
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :a név már használva van
-STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :rossz játék-jelszó
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :rossz jelszó
 STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :hibás cég azonosító (wrong company-id in DoCommand)
 STR_NETWORK_ERR_CLIENT_KICKED                                   :a szerver kirúgott
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :csalni próbált

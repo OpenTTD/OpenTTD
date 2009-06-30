@@ -732,7 +732,6 @@ STR_OFF                                                         :Vypnute
 STR_SUMMARY                                                     :Obsah
 STR_FULL                                                        :Plne
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Zoznam miest
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -770,6 +769,7 @@ STR_02DE_MAP_OF_WORLD                                           :Mapa sveta
 STR_EXTRA_VIEW_PORT                                             :Dalsi pohlad
 STR_SIGN_LIST                                                   :Zoznam popisov
 STR_02DF_TOWN_DIRECTORY                                         :Zoznam miest
+STR_02BB_TOWN_DIRECTORY                                         :Zoznam miest
 STR_TOWN_POPULATION                                             :{BLACK}Svetova populacia: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pohlad {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Pohlad podla mapy
@@ -796,6 +796,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Automati
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Vyber interval automatickeho ukladania
 STR_02F7_OFF                                                    :Vypnute
+STR_AUTOSAVE_1_MONTH                                            :Každý mesiac
 STR_02F8_EVERY_3_MONTHS                                         :Každé 3 mesiace
 STR_02F9_EVERY_6_MONTHS                                         :Každých 6 mesiacov
 STR_02FA_EVERY_12_MONTHS                                        :Každých 12 mesiacov
@@ -916,7 +917,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Základn
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Zvoľte sadu grafiky, ktorá má byť použitá
 
-STR_AUTOSAVE_1_MONTH                                            :Každý mesiac
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autoulozenie zlyhalo
 
 STR_MONTH_JAN                                                   :Januar
@@ -2308,6 +2308,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Vyber ze
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Nahodna nova tvar
 STR_704C_KEY                                                    :{BLACK}Vyb.
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Vybrat polozky na grafe
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Ukázať detailné hodnotenie výkonu
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Vyber poloziek na grafe
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Kliknut pre zobrazenie tejto polozky na grafe
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Dopravenych jednotiek nakladu
@@ -2866,12 +2867,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Vymazat 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Resetnút pocítadlo meškania, takye vozidlo pojde presne
 STR_SERVICE_HINT                                                :{BLACK}Vynechat tento prikaz pokial nie je potrebna oprava
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Hmotnost: {WEIGHT_S}{}Rýchlost: {VELOCITY}  Výkon: {POWER}{}Náklady na prevádzku: {CURRENCY}/rok{}Kapacita: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Pokazene
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Náklady na prevádzku: {LTBLUE}{CURRENCY}/rok
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_S}  {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rýchlost: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_S} {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rýchlost: {LTBLUE}{VELOCITY} {BLACK}Max. T.S.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Hmotnosť: {LTBLUE}{WEIGHT_S} {BLACK}Sila: {LTBLUE}{POWER}{BLACK} Max. rýchlosť: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zisk tento rok: {LTBLUE}{CURRENCY}  (predchadzajuci rok: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolahlivost: {LTBLUE}{COMMA}%  {BLACK}Pocet poruch od posledneho servisu: {LTBLUE}{COMMA}
+STR_885C_BROKEN_DOWN                                            :{RED}Pokazený
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Náklady na prevádzku: {LTBLUE}{CURRENCY}/rok
 STR_8861_STOPPED                                                :{RED}Zastavene
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Nemozno pustit vlak na cervenu ked hrozi nebezpecenstvo...
 STR_8863_CRASHED                                                :{RED}Znicene!
@@ -3239,6 +3240,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{V
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' poskytuje nekorektné informácie.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informácia o zmene nákladu pre'{1:ENGINE}' sa líši od kúpneho listu. Môže to spôsobiť, že nové vozidlá sa nebudú prerábať na určitý tovar korektne.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' spôsobilo nekonečnú slučku v spätnom odvolávaní produckie.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Hra bola uložená vo verzii bez elektriciek. Vsetky elektricky boli odstránené.
 

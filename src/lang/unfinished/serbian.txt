@@ -1203,10 +1203,49 @@ STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Najviš
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Najviše letilica po igraču: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Najviše brodova po igraču: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Računar ne može da koristi železnički prevoz: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Računar ne može da koristi drumski prevoz: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Računar ne može da koristi vazdušni prevoz: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Računar ne može da koristi vodni prevoz: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Dozvoljena VI u mrežnoj partiji: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Najviše operacija pre suspenzije VI: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervali servisiranja u procentimaČ {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Uobičajni servisni interval vozova: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Uobičajni servisni interval vozova: {ORANGE}nema
+STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Uobičajni servisni interval drumskih vozila: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Uobičajni servisni interval drumskih vozila: {ORANGE}nema
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Uobičajni servisni interval letilica: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Uobičajni servisni interval letilica: {ORANGE}nema
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Uobičajni servisni interval brodova: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Uobičajni servisni interval brodova: {ORANGE}nema
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Isključeno servisiranje kada nepostoje kvarovi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Uključeno ograničenje brzine kod vagona: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Nepostoji posebna električna pruga: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Vesti u boji se objavljuju od: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Početna godina: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Uključena glatka ekonomija (više, manjih promena): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Dozvoljena kupovina deonica drugih kompanija: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Tokom povlačenja, signalizacija se postavljaja na svakih: {ORANGE}{STRING} pločoca
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatsko postavljanje semafora do: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Omogućena traka za signalizaciju:{ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Uobičajna vrsta signalizacije za izgradnju: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blok signalizacija
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Putna signalizacija
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Jednosmerna putna signalizacija
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Ciklični izbor vrste signalizcije: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Samo blok
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Samo putna
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Sva
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Plan gradnje novih puteva u naseljima: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :originalno
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :napredno
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 mreže
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 mreže
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :proizvoljan plan
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Naseljima je dozvoljeno da grade kolovoze: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Naseljima je dozvoljeno da kontrolišu nivo buke aerodroma: {ORANGE}{STRING}
 
@@ -1341,26 +1380,88 @@ STR_LANDINFO_LOCK                                               :Brana
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Ovde je nemoguće postavljanje reke...
 STR_LANDINFO_RIVER                                              :Reka
 
+STR_BUOY_IS_IN_USE                                              :{WHITE}...plovak se koristi!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Kordinate: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
+STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Deo stanice se ne može ukloniti...
+STR_CANT_CONVERT_RAIL                                           :{WHITE}Vrsta pruge se ovde ne može promeniti...
+STR_CONVERT_RAIL_TIP                                            :{BLACK}Promena/Nadogradnja vrste pruge
 
+STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Prevucite ovde lokomotivu kako bi prodali ceo voz
 
+STR_DRAG_DROP                                                   :{BLACK}Prevlačenje
+STR_STATION_DRAG_DROP                                           :{BLACK}Gradnja stanice prevlačenjem
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Odaberite klasu stanice za gradnju
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Odaberite vrstu stanice za gradnju
 
+STR_FAST_FORWARD                                                :{BLACK}Ubrzavanje partije
+STR_MESSAGE_HISTORY                                             :{WHITE}Arhiva Vesti
+STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Spisak skorašnjih novosti
+STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Sva zabranjena
+STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Sva dozvoljena
 
+STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Fabrike
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% prevezeno)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% prevezeno)
+STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Imena fabrika - kliknite na ime kako bi otišli do fabrike
 
+STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...previše blizu druge fabrike
 
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Prepravlja voz kako bi prevozio drugu vrstu tereta
+STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Prepavi voz
+STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Označite vrstu tovara za prepravljanje voza
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Prepravlja voz za prevoz označene vrste tovara
+STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Voz se ne može prepraviti...
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Promena proizvodnje
 
 ############ network gui strings
 
+STR_NETWORK_MULTIPLAYER                                         :{WHITE}Mrežna partija
 
+STR_NETWORK_PLAYER_NAME                                         :{BLACK}Ime igrača:
+STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Sa ovim imenom će Vas drugi igrači (pre)poznavati
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Unesite Vaše ime
+STR_NETWORK_CONNECTION                                          :{BLACK}Povezivanje:
+STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Izaberite način poveivanja između interneta ili lokalne mreže (LAN)
 
+STR_NETWORK_START_SERVER                                        :{BLACK}Pokreni server
+STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Pokrenite sopstveni server
 
+STR_NETWORK_GAME_NAME                                           :{BLACK}Naziv
+STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Naziv partije
+STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Jezik, verzija servera, itd.
+STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Kliknite na partiju sa spiska da bi je obeležili
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Server na koji ste se priključili prošli put:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Kliknite kako bi ste označili server na kome ste igrali prošli put
 
+STR_NETWORK_FIND_SERVER                                         :{BLACK}Pronađi server
+STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Pretražuje mrežu kako bi pronašao servere
+STR_NETWORK_ADD_SERVER                                          :{BLACK}Dodaj server
+STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Dodaje server na spisak na kojem se prikazuju aktivne partije.
+STR_NETWORK_ENTER_IP                                            :{BLACK}Unesite adresu računara-servera
 
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Igrači
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Priključeno igrača / najviše igrača{}Aktivnio kompanija / najviše kompanija
 
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Veličina mape
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Veličina mape u partiji{}Kliknite da bi pređali po veličini
 
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Datum
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Trenutni datum u partiji
 
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Godina
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Ukupan broj godina{}koliko traje partija
 
+STR_NETWORK_GAME_INFO                                           :{SILVER}PODACI O PARTIJI
+STR_NETWORK_PASSWORD                                            :{SILVER}Zaštićeno šifrom!
+STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER JE VAN MREŽE
+STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER JE POPUNJEN
+STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}NEODGOVARAJUĆA VERZIJA
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF NEPOKLAPANJE
 
 
 
@@ -1501,6 +1602,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Nemoguć
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Nemoguće je ukloniti signalizaciju odatle...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orijentacija železničkog depoa
 STR_1015_RAILROAD_CONSTRUCTION                                  :Izgradnja železničke pruge
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Izgradnja elektrifikovane železničke pruge
 STR_1016_MONORAIL_CONSTRUCTION                                  :Izgradnja jednošinske pruge (Monorail)
 STR_1017_MAGLEV_CONSTRUCTION                                    :Izgradnja magnetne pruge (MagLev)
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Izgradnja železničke pruge
@@ -1515,11 +1617,36 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Izbor or
 STR_1021_RAILROAD_TRACK                                         :Železnička pruga
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Železnički depo
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...zemljište je u vlasništvu druge kompanije
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Pruga sa blok signalizacijom
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Pruga sa predsignalizacijom
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Pruga sa izlaznom signalizacijom
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Pruga sa ulzno-izlaznom signalizacijom
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Pruga sa putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Pruga sa jednosmernom putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Pruga sa predsignalizacijom i blok signalizacijom
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Pruga sa blok i izlaznom signalizacijom
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Pruga sa blok i ulazno-izlaznom signalizacijom
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Pruga sa blok i putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Pruga sa blok i jednosmernom putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Pruga sa predsignalizacijom i izlaznom signalizacijom
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Pruga sa predsignalizacijom i ulazno-izlaznom signalizacijom
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Pruga sa predsignalizacijom i putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Pruga sa predsignalizacijom i jednosmernom putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Pruga sa izlaznom i ulazno-izlaznom signalizacijom
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Pruga sa izlaznom i putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Pruga sa izlaznom i jednosmernom putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Pruga sa ulazno-izlaznom i putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Pruga sa ulazno-izlaznom i jednosmernom putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Pruga sa putnom i jednosmernom putnom signalizacijom
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Mora se prvo ukloniti železnička stanica
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Izgradi zasebnu stanicu
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Pridruži stanicu
 
 
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Neophodno je prvo ukloniti put
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Putni radovi u toku
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Izgradnja puta
 STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Tramvaj Konstrukcija
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Izbor drumskog mosta
@@ -2351,11 +2478,93 @@ STR_8070_TOY_VAN                                                :Vagon za Igrač
 STR_8071_BATTERY_TRUCK                                          :Vagon za Baterije
 STR_8072_FIZZY_DRINK_TRUCK                                      :Vagon za Bezalkoholna Pića
 STR_8073_PLASTIC_TRUCK                                          :Vagon za Plastiku
+STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Poruka od proizvođača vozila
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Upravo smo završili projektovanje novog vozila {STRING} - da li ste zainteresovani za jednogodišnja eksluzivna prava upotrebe ovog vozila, kako bi smo proverili radne osobine pre puštanja u masovnu proizvodnju?
+STR_8102_RAILROAD_LOCOMOTIVE                                    :železničko vučno vozilo
+STR_8103_ROAD_VEHICLE                                           :drumsko vozilo
+STR_8104_AIRCRAFT                                               :letilica
+STR_8105_SHIP                                                   :brod
+STR_8106_MONORAIL_LOCOMOTIVE                                    :jednopružno žel. vučno vozilo
+STR_8107_MAGLEV_LOCOMOTIVE                                      :megnetno žel. vučno vozilo
 
 ##id 0x8800
+STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Železnički Depo
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi voz stiže na stanicu {STATION}!
+STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Opširnije)
+STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Voz se tu upravo nalazi
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Direktno
+STR_ORDER_GO_TO                                                 :Idi do
+STR_ORDER_GO_NON_STOP_TO                                        :Idi direktno do
+STR_ORDER_GO_VIA                                                :Idi preko
+STR_ORDER_GO_NON_STOP_VIA                                       :Idi direktno preko
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pun utovar bilo kog
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Utovar ako ima
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Pun utovar svega
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pun utovar bilo kog
+STR_ORDER_DROP_NO_LOADING                                       :Bez utovara
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Iztovar svega
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Iztovar ako prihvata
+STR_ORDER_DROP_UNLOAD                                           :Iztovar svega
+STR_ORDER_DROP_TRANSFER                                         :Prevoz
+STR_ORDER_DROP_NO_UNLOADING                                     :Bez iztovara
+STR_ORDER_FULL_LOAD                                             :(Pun utovar)
+STR_ORDER_FULL_LOAD_ANY                                         :(Pun utovar bilo kog)
+STR_ORDER_NO_LOAD                                               :(Bez utovara)
+STR_ORDER_UNLOAD                                                :(Iztovar i utovar)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Iztovar i pun utovar svega)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Iztovar i pun utovar bilo kog)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Iztovar bez utovara)
+STR_ORDER_TRANSFER                                              :(Prevoz i utovar)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Prevoz i pun utovar svega)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Prevoz i pun utovar bilo kog)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Prevoz bez utovara)
+STR_ORDER_NO_UNLOAD                                             :(Bez iztovara i utovar)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Bez iztovara i pun utovar svega)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Bez iztovara i pun utovar bilo kog)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Promena načina zaustavljnja u označenoj naredbi
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Promena načina utovara u označenoj naredbi
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Promena načina iztovara u označenoj naredbi
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Dodavanje složene naredbe
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idi do najbližeg depoa
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Idi do najbližeg hangara
+STR_ORDER_NEAREST_DEPOT                                         :najbliži
+STR_ORDER_NEAREST_HANGAR                                        :najbliži Hangar
+STR_ORDER_SERVICE_AT                                            :Servisiranje u
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Diektno na servisiranje u
+STR_ORDER_TRAIN_DEPOT                                           :Železnički Depo
+STR_ORDER_ROAD_DEPOT                                            :Drumski Depo
+STR_ORDER_SHIP_DEPOT                                            :Brodogradilište
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Uvek
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Servis po potrebi
+STR_ORDER_DROP_HALT_DEPOT                                       :Zaustavljanje
 
+STR_ORDER_CONDITIONAL                                           :Uslovna naredba skoka
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Skok na osnovu podatka o vozilu
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kako se upoređuje podatak o vozilu sa unetom vrednošću
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Vrednost za poređenje sa podatkom o vozilu
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Unos vrednosti za poređenje
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procenat natovarenog
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Pouzdanost
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Najveća brzina
+STR_ORDER_CONDITIONAL_AGE                                       :Starost vozila (godine)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Servis
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Uvek
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :jednako
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :različito od
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :manje od
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :manje ili jednako
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :veće od
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :veće ili jednako
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :potreban
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :nepotreban
 STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 STR_CONDITIONAL_UNCONDITIONAL                                   :Pređi na naredbu {COMMA}
 STR_CONDITIONAL_NUM                                             :Pređi na naredbu {COMMA} kada je {STRING} {STRING} {COMMA}
@@ -2894,13 +3103,96 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Promena 
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}VI Podešavanja
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Prikazuje VI podešavanja
+STR_AI_DEBUG                                                    :{WHITE}VI Korekcija
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Naziv VI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno učitavanje
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Zaustavlja Veštačku Inteligenciju, ponovo učitava skriptu, i restartuje je
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Prozor VI Korekcije je dostupna samo na serveru
+STR_AI_CONFIG_CAPTION                                           :{WHITE}VI Podešavanja
+STR_AI_CHANGE                                                   :{BLACK}Odabiranje
+STR_AI_CONFIGURE                                                :{BLACK}Podešavanje
+STR_AI_CHANGE_TIP                                               :{BLACK}Učitavanje druge Veštačke Inteligencije
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Podešavanje parametara Veštačke Iteligencije
+STR_AI_LIST_TIP                                                 :{BLACK}Sve VI će biti učitane u sledećoj partiji
+STR_AI_LIST_CAPTION                                             :{WHITE}Dostupne VI
+STR_AI_AILIST_TIP                                               :{BLACK}Kliknite kako biste izabrali Veštačku Inteligenciju
+STR_AI_ACCEPT                                                   :{BLACK}Prihvati
+STR_AI_ACCEPT_TIP                                               :{BLACK}Izabira označenu Veštačku Inteligenciju
+STR_AI_CANCEL                                                   :{BLACK}Otkaži
+STR_AI_CANCEL_TIP                                               :{BLACK}Ne menja izbor Veštačke Inteligencije
+STR_AI_CLOSE                                                    :{BLACK}Zatvori
+STR_AI_RESET                                                    :{BLACK}Resetuj
+STR_AI_HUMAN_PLAYER                                             :Ljudsko biće
+STR_AI_RANDOM_AI                                                :Proizvoljna VI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}VI Parametri
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Jedna od VI je krahirala. Molimo vas da prijavite grešku autoru VI-e sa slikom prozora VI Korekcije .
 ########
 
 ############ town controlled noise level
+STR_NOISE_IN_TOWN                                               :{BLACK}Nivo buke u naselju: {ORANGE}{COMMA}{BLACK}  najviše: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Proizvedena buka: {GOLD}{COMMA}
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD je napravljen bez podrške za "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... preuzimanje dodataka nije moguće!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Osnovna grafika
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :VI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :VI biblioteke
+STR_CONTENT_TYPE_SCENARIO                                       :Scenario
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Visinska mapa
+STR_CONTENT_TITLE                                               :{WHITE}Dodaci za preuzimanje
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Vrsta
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Vrsta dodatka
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Naziv
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Naziv dodatka
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Kliknite kako biste videli detalje{}Kliknite na kvadratić kako biste ga označili za skidanje
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Označi sve
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Obeležava sve dodatke za preuzimanje
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Obeleži ažurirana
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Obeležava sve preuzete dodatke koje imaju novija izdanja za preuzimanje
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznači sve
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Otkazuje preuzimanje svih dodataka
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Unes filter teksta
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Unesite ključnu reč kako bi se filtriralo spisak
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter po ključu/nazivu:
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Preuzmi
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Započinje preuzimanje odabranih dodataka
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Ukupna količina za preuzimanje: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}PODACI O DODATKU
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Dodatak nije označen preuzimanje
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Dodatak je označena za preuzimanje
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Ovaj dodatak je označen za preuzimanje zbog zavisnosti
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Ovo već imate
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Ovaj dodatak je nepoznat i ne može se preuzeti sa OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ovaj dodatak je zamena za postojeci {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Naziv: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Izdanje: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Opis: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Vrsta: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Veličina: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Označeno zbog: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Zavisnosti: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Ključne reči: {WHITE}{STRING}
 
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Preuzimanje dodataka...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Zahtevanje datoteka...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Trenutno se preuzima {STRING} ({NUM} od {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Preuzimanje je završeno
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} od {BYTES} preuzetih ({NUM} %)
 
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Neuspešno povezivanje sa serverom sa dodacima...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Neuspešno preuzimanje...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... prekinula se veza
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... datoteka se nije mogla zapisati
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Preuzeta datoteka se ne može otpakovati
 
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Spisak Dodataka na Mreži
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Pregled novih i ažureiranih dodatka za preuzimanje
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Traži nedostajući fajl na Mreži
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Pretražuje za nedostajuću dodataku na Internetu
 ########

@@ -1289,7 +1289,7 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Saisir l
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clients
-STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clients en ligne / clients max
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clients en ligne / clients max{}Compagnies en ligne / compagnies max
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Taille
@@ -2846,7 +2846,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Ce véhicule es
 STR_TIMETABLE_TOTAL_TIME                                        :Cet horaire prendra {STRING} pour s'achever
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Cet horaire prendra au moins {STRING} pour s'achever (horaire incomplet)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoremplir
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Remplit·l'horaire·automatiquement·avec·les·valeurs·du·prochain·trajet (Ctrl-clic pour essayer de préserver les temps d'attente)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Remplit l'horaire automatiquement avec les valeurs du prochain trajet (Ctrl-clic pour essayer de préserver les temps d'attente)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Véhicule Routier présent

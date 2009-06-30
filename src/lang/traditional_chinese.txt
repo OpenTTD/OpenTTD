@@ -329,9 +329,9 @@ STR_SORT_BY_NAME                                                :{BLACK}名稱
 STR_SORT_BY_DROPDOWN_NAME                                       :名稱
 STR_SORT_BY_DATE                                                :{BLACK}日期
 STR_SORT_BY_NUMBER                                              :編號
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :上年盈利
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :去年盈利
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :本年盈利
-STR_SORT_BY_AGE                                                 :使用年數
+STR_SORT_BY_AGE                                                 :年齡
 STR_SORT_BY_RELIABILITY                                         :可靠性
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :總容量，依貨物種類排序
 STR_SORT_BY_MAX_SPEED                                           :極速
@@ -427,7 +427,7 @@ STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}於地�
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}於地圖上顯示植被
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}於地圖上顯示土地所有人
 STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}於地圖上開關市鎮名稱
-STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}本年利潤：{CURRENCY} (去年利潤：{CURRENCY})
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}本年盈利：{CURRENCY} (去年盈利：{CURRENCY})
 
 ############ range for service numbers starts
 STR_AGE                                                         :{COMMA} 年 ({COMMA})
@@ -663,7 +663,6 @@ STR_OFF                                                         :關閉
 STR_SUMMARY                                                     :摘要
 STR_FULL                                                        :詳細
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :市鎮清冊
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -701,6 +700,7 @@ STR_02DE_MAP_OF_WORLD                                           :世界地圖
 STR_EXTRA_VIEW_PORT                                             :打開新視野
 STR_SIGN_LIST                                                   :標誌清單
 STR_02DF_TOWN_DIRECTORY                                         :市鎮清冊
+STR_02BB_TOWN_DIRECTORY                                         :市鎮清冊
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}視野 {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}將視窗視野移到主視野
@@ -727,6 +727,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}自動�
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}選擇自動存檔頻率
 STR_02F7_OFF                                                    :關閉
+STR_AUTOSAVE_1_MONTH                                            :每個月
 STR_02F8_EVERY_3_MONTHS                                         :每 3 個月
 STR_02F9_EVERY_6_MONTHS                                         :每 6 個月
 STR_02FA_EVERY_12_MONTHS                                        :每 12 個月
@@ -847,7 +848,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}基本�
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}選擇使用的基礎圖片組
 
-STR_AUTOSAVE_1_MONTH                                            :每個月
 STR_AUTOSAVE_FAILED                                             :{WHITE}自動儲存失敗
 
 STR_MONTH_JAN                                                   :一月
@@ -885,7 +885,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - �
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} 無法尋得路徑
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} 迷路了
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}去年的利潤是 {CURRENCY}
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}去年的盈利是 {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}歐洲貨幣統一！{}{}你的國家已採用歐元作為唯一的交易貨幣！
 
 # Start of order review system.
@@ -943,10 +943,12 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}允許�
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}不規則形狀車站：{ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}貨物重量倍率，以模擬較重列車：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}飛機速度比例：{ORANGE}{STRING} 分之一
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}可在市鎮內興建路邊車站：{ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}可在市鎮所屬道路上建設路邊車站：{ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}可在競爭對手所有的道路上建設路邊車站：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}允許按 Ctrl 鍵興建相鄰車站： {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}允許載入多個 NewGRF 車輛組：{ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}當此項目為交通工具時不能變更此設定。
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}永遠可以興建小機場：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}列車迷路時警告：{ORANGE}{STRING}
@@ -2237,6 +2239,7 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}選擇�
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}隨機產生新臉孔
 STR_704C_KEY                                                    :{BLACK}圖例
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}顯示圖例
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}顯示詳細營運評比
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}顯示公司圖表的圖例
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}點選這裡開關圖表上的公司資料
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}運送貨物量
@@ -2258,7 +2261,7 @@ STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}無法購買公司...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}貨物運價
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}運輸日數
-STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}將 10 單位 (或 10,000 升) 貨物運送 20 格的價格
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}將 10 單位 (或 10,000 升) 貨物運送 20 格的費用
 STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}切換貨物圖示開關
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :維修技工
@@ -2666,7 +2669,7 @@ STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}輸入�
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :裝載進度 (%)
 STR_ORDER_CONDITIONAL_RELIABILITY                               :可靠度
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :極速
-STR_ORDER_CONDITIONAL_AGE                                       :使用年限
+STR_ORDER_CONDITIONAL_AGE                                       :車輛年齡 (年)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :需要維護
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :總是
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :等於
@@ -3125,7 +3128,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :未預期的 sp
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :未知的動作 0 屬性
 STR_NEWGRF_ERROR_INVALID_ID                                     :嘗試使用的 ID 無效
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 包含了毀損的 sprite。所有毀損的 sprite會以紅色問號 (？) 顯示。
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :包含8個多重指令
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :包含多個 Action 8 指令。
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}載入所選的設定值
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}儲存設定值
@@ -3274,18 +3277,18 @@ STR_MAGLEV_VEHICLES                                             :磁浮列車
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}價格：{GOLD}{CURRENCY}{BLACK} 重量：{GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}費用：{GOLD}{CURRENCY}{BLACK} 載重：{GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK}   功率：{GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}速度：{GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}營運成本：{GOLD}{CURRENCY} / 年
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}營運成本：{GOLD}{CURRENCY}/年
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}容量：{GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}設計年份：{GOLD}{NUM}{BLACK} 使用年限：{GOLD}{COMMA} 年
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}最大可靠度：{GOLD}{COMMA}%
-STR_PURCHASE_INFO_COST                                          :{BLACK}價格：{GOLD}{CURRENCY}
+STR_PURCHASE_INFO_COST                                          :{BLACK}費用：{GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}重量：{GOLD}{WEIGHT_S}  ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}價格：{GOLD}{CURRENCY}{BLACK} 速度：{GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}費用：{GOLD}{CURRENCY}{BLACK} 速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}容量：{GOLD}乘客 {COMMA} 人，郵件 {COMMA} 袋
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}動力車廂：{GOLD}+{POWER}{BLACK} 重量：{GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}動力車廂：{GOLD}+{POWER}{BLACK} 載重：{GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}可改裝成：{GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :所有貨物類型
 STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD}除了

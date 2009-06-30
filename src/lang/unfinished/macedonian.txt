@@ -590,6 +590,7 @@ STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Игра
 
 
 
+STR_AUTOSAVE_1_MONTH                                            :Секој месец
 ############ range for menu starts
 ############ range ends here
 
@@ -606,7 +607,6 @@ STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Игра
 
 
 
-STR_AUTOSAVE_1_MONTH                                            :Секој месец
 STR_AUTOSAVE_FAILED                                             :{WHITE}Автоматското снимање неуспешно
 
 

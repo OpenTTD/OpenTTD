@@ -214,7 +214,7 @@ STR_00B3_MESSAGE_FROM                                           :{YELLOW}{STRING
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Ettevaatust!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Seda ei saa teha....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Seda ala ei saa puhastada....
-STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Algupärane autorikaitse {COPYRIGHT} 1995 Chris Sawyer, kõik õigused kaitstud
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Algne autorikaitse {COPYRIGHT} 1995 Chris Sawyer, kõik õigused kaitstud
 STR_00B7_VERSION                                                :{BLACK}OpenTTD osa {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD meeskond
 
@@ -369,7 +369,7 @@ STR_015C_SAVE_GAME                                              :Salvesta mäng
 STR_015D_LOAD_GAME                                              :Laadi mäng
 STR_015E_QUIT_GAME                                              :Lahku mängust
 STR_015F_QUIT                                                   :Välju
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Kas te soovite lõpetada selle mängu?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Kas te soovite selle mängu lõpetada?
 STR_0161_QUIT_GAME                                              :{WHITE}Mängu lõpetamine
 STR_SORT_ORDER_TIP                                              :{BLACK}Sorteerimise järjekorra valimine (kahanev/kasvav)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Sorteerimistingimuse valimine
@@ -657,7 +657,7 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...liiga
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...liiga lähedal teisele linnale
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...ebasobiv koht
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...liiga palju linnu
-STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Ühtegi linna ei saa ehitada...
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Ei saa ühtegi linna ehitada...
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...pole enam ruumi kaardil
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Linna suuruse suurendamine
 STR_023C_EXPAND                                                 :{BLACK}Laienda
@@ -739,10 +739,10 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Läbin
 ############ range ends here
 
 ############ range for menu starts
-STR_02D5_LAND_BLOCK_INFO                                        :Maapinna andmed
+STR_02D5_LAND_BLOCK_INFO                                        :Maaala andmed
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Lülita konsool sisse/välja
-STR_AI_DEBUG_MENU                                               :Tehismõistuse tõrge
+STR_AI_DEBUG_MENU                                               :Tehismõistuse debug
 STR_02D7_SCREENSHOT_CTRL_S                                      :Ekraanitõmmis (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Hiiglaslik ekraanitõmmis (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :'OpenTTD' kohta
@@ -940,8 +940,8 @@ STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Sihtpunk
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Jagatud sihtpunktide lõpp - -
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} ei leia jätkamiseks rada.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} on kadunud.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Sõiduki {VEHICLE} tulud olid eelmisel aastal {CURRENCY}
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} on eksinud.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} tulud eelmisel aastal olid {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Euroopa rahaliit!{}{}Nüüdsest on riigi igapäevaseks käiberahaks Euro!
 
 # Start of order review system.
@@ -952,10 +952,10 @@ STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}Sõiduki
 STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}Sõiduki {VEHICLE} käskudes on väär jaam
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Uuendus ebaõnnestus sõidukil {VEHICLE} {}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Sõiduk {VEHICLE} on pärast asendamist liiga pikk
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}{VEHICLE} uuendamine ebaõnnestus {}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} on pärast asendamist liiga pikk
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Automaatse asendamise/uuendamise reegleid ei ole rakendatud
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(rahapiir)
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(rahalimiit)
 
 STR_CONFIG_SETTING                                              :{BLACK}Täpsemad seaded
 STR_CONFIG_SETTING_TIP                                          :{BLACK}Näidata täpsemaid seadeid
@@ -974,7 +974,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Algupärane
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistlik
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Rongidel ja laevadel keelatakse 90 kraadised pöörded: {ORANGE}{STRING} {LTBLUE} (vajab NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Kõrvuti ehitatud jaamade ühendamine: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Eemalasetsevate jaamade liitmine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Mitte kõrvuti asetsevate jaamade liitmine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Täiustatud laadimisalgoritm: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Veovahendite järkjärguline laadimine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflatsioon: {ORANGE}{STRING}
@@ -1014,9 +1014,9 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jah, kuid jäta
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :kõikidest veovahenditest
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Hoiata kui rongi sissetulek on negatiivne: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Sõidukid ei aegu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Vananenud sõidukite moderniseerimine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Vananenud sõidukite uuendamine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Piirvanuse saavutanud veovahendit uuendatakse {ORANGE}{STRING}{LTBLUE} kuu piires
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Nõutud rahasumma moderniseerimiseks: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Nõutud rahasumma uuendamiseks: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Veateadete kestus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Rahvaarv alevike nimesiltidel: {ORANGE}{STRING}
 
@@ -1124,11 +1124,11 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Elektri
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Värvilised uudised ilmuvad aastast {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Alustamise aeg: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Sujuv majandus (tihedamad, kuid kergemad muutused): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Sujuv majandus (rohkem, väiksemad muutused): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Aktsiatehingud teiste ettevõtetega: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Venitades rajatavate signaalide paigaldustihedus: {ORANGE}{STRING} ühik(ut)
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Semafore ehitatakse enne: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Signaaliliides: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Signaalide paigutamise graafiline kasutajaliides: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Vaikimisi ehitatav signaalide liik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Tavaline
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Täiustatud
@@ -1177,23 +1177,23 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Suhtlem
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaalid
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kauba käsitlemine
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Arvutimängijad
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Moderniseerimine
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Uuendamine
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Hooldamine
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Marsruutimine
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Rongid
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Linnad
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Tööstused
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Rongide marsruuter: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Rongide marsruudileidja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(ebasoovitatav)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(soovitatav)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Maanteesõidukite marsruuter: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(soovitatud)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Maanteesõidukite marsruudileidja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Algne {RED}(ebasoovitatav)
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(soovitatav)
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laevade marsruuter: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Algne {BLUE}(soovitatav)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(soovitatud)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laevade marsruudileidja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Algne {BLUE}(soovitatud)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(ebasoovitatav)
 
@@ -1219,10 +1219,10 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Mängim
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Maagiline buldooser (eemaldamatute rajatiste lammutamine): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnelid võivad üksteist läbida: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Seisatuse ajal ehitamine: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktiivlennukid ei kuku (tihti) alla väikestel lennuväljadel: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktiivlennukid ei kuku (tihti) väikestel lennuväljadel alla: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Vaheta kliimat: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Muuda kuupäeva: {ORANGE} {DATE_SHORT}
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Muutuvad tootmisväärtused: {ORANGE}{STRING}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Tootmisväärtuste muutmine: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Suudub meldepunkti: {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Suundub {WAYPOINT}, {VELOCITY}
@@ -1248,7 +1248,7 @@ STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Muuda r�
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Meldepunkti ei saa siia rajada...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Meldepunkti ei saa siit eemaldada...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Rööbaste ehitamine kasutades "venitamist"
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Rööbaste ehitamine kasutades "lohistamist"
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...kaardil puudub linn
 STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Kaarditekitamine katkes...{}...linnadele pole sobilike kohti
@@ -1518,11 +1518,11 @@ STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :ei saa kaarti l
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :ühendus katkes
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokolli viga
 STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF-i kokkusobimatus
-STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :Keelatud
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :keelatud
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :kahtlane pakett vastu võetud
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :vale osa
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nimi on juba kasutusel
-STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :vale mängu parool
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :vale parool
 STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :vale ettevõtte id DoCommand-is
 STR_NETWORK_ERR_CLIENT_KICKED                                   :server viskas välja
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :üritas pettust kasutada
@@ -1575,12 +1575,12 @@ STR_NETWORK_SEND                                                :{BLACK}Saada
 
 ##### PNG-MAP-Loader
 
-STR_PNGMAP_ERROR                                                :{WHITE}Ei saa maapinda PNG failist laadida...
+STR_PNGMAP_ERROR                                                :{WHITE}Ei suuda laadida maastiku PNG failist...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...faili ei leitud.
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...ei suutnud pilditüüpi teisendada. Vaja läheb 8 või 24-bitist PNG pilti.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...midagi läks just valesti. Vabandust. (tõenäoliselt rikutud fail)
 
-STR_BMPMAP_ERROR                                                :{WHITE}Ei suuda laadida maad BMP failist...
+STR_BMPMAP_ERROR                                                :{WHITE}Ei suuda laadida maastikku BMP failist...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...ei suutnud muuta pildi tüüpi.
 
 ##id 0x0800
@@ -1600,7 +1600,7 @@ STR_080B_ROUGH_LAND                                             :Konarlik maa
 STR_080C_BARE_LAND                                              :Lage maa
 STR_080D_GRASS                                                  :Rohi
 STR_080E_FIELDS                                                 :Põllud
-STR_080F_SNOW_COVERED_LAND                                      :Lumekattega maa
+STR_080F_SNOW_COVERED_LAND                                      :Lumine maa
 STR_0810_DESERT                                                 :Kõrb
 
 ##id 0x1000
@@ -1876,12 +1876,12 @@ STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Kohaliku
 ############ range for rating starts
 STR_3035_APPALLING                                              :Kohutav
 STR_3036_VERY_POOR                                              :Väga halb
-STR_3037_POOR                                                   :Kehv
+STR_3037_POOR                                                   :Vilets
 STR_3038_MEDIOCRE                                               :Keskpärane
 STR_3039_GOOD                                                   :Hea
 STR_303A_VERY_GOOD                                              :Väga hea
 STR_303B_EXCELLENT                                              :Suurepärane
-STR_303C_OUTSTANDING                                            :Eesrindlik
+STR_303C_OUTSTANDING                                            :Suurepärane
 ############ range for rating ends
 
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
@@ -1946,7 +1946,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Laevarem
 STR_3804_WATER                                                  :Vesi
 STR_3805_COAST_OR_RIVERBANK                                     :Kallas
 STR_3806_SHIP_DEPOT                                             :Laevaremonditehas
-STR_AQUEDUCT                                                    :Veejuhe
+STR_AQUEDUCT                                                    :Akvedukt
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...vette ei saa ehitada
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Kanal tuleb enne lammutada
 
@@ -2080,15 +2080,15 @@ STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Terasest võres
 STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Terasest ulgtoestikuga raudteesild
 STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Raudbetoonist raudteerippsild
 STR_501F_WOODEN_RAIL_BRIDGE                                     :Puitraudteesild
-STR_5020_CONCRETE_RAIL_BRIDGE                                   :Betoonraudteesild
-STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Terasest raudteerippsild
-STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Terasraamistikuga sõiduteesild
-STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Terasest ulgtoestikuga sõiduteesild
-STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Raudbetoonist sõidutee rippsild
-STR_5025_WOODEN_ROAD_BRIDGE                                     :Puidust sõiduteesild
-STR_5026_CONCRETE_ROAD_BRIDGE                                   :Betoonist sõiduteesild
+STR_5020_CONCRETE_RAIL_BRIDGE                                   :Betoonist raudteesild
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Terasest autoteerippsild
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Terasraamistikuga autoteesild
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Terasest ulgtoestikuga autoteesild
+STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Raudbetoonist autotee rippsild
+STR_5025_WOODEN_ROAD_BRIDGE                                     :Puidust autoteesild
+STR_5026_CONCRETE_ROAD_BRIDGE                                   :Betoonist autoteesild
 STR_5027_TUBULAR_RAIL_BRIDGE                                    :Torujas raudteesild
-STR_5028_TUBULAR_ROAD_BRIDGE                                    :Torujas sõiduteesild
+STR_5028_TUBULAR_ROAD_BRIDGE                                    :Torujas autoteesild
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Mingi objekt on ees
@@ -2768,12 +2768,12 @@ STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Ainult d
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} rong{P "" i}
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Uued rööbassõidukid
-STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Uus elektriraudteeveerem
-STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Uus monorelssveerem
-STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Uus magnethõljukveerem
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Uus elektriraudteesõiduk
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Uus monorelsssõiduk
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Uus magnethõljuksõiduk
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Rööbassõidukid
 
-STR_881F_BUILD_VEHICLE                                          :{BLACK}Ehita veovahend
+STR_881F_BUILD_VEHICLE                                          :{BLACK}Ehita sõiduk
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Kloonimine
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}See paljundab mootorsõidukit. CTRL-klõps jagab sihtpunkte
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}See paljundab mootorsõidukit. Klõpsa seda nuppu, ning seejärel mootorsõidukil depoos või sellest väljas. CTRL-klõps jagab sihtpunkte
@@ -2830,7 +2830,7 @@ STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Tiri ron
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Keskenda põhivaade rongidepoo kohale
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Nimekiri raudteesõidukitest - andmete saamiseks klõpsa raudteesõidukile
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Ehita valitud raudteesõiduk
-STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Vaheta raudteesõiduki tüübinime
+STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Muuda raudteesõiduki tüübinime
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Praegune rongi tegevus - vajuta siia et peatada/käivitada rong
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Näita rongi sihtpunkte
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Vaate viimine rongi asukohale
@@ -2938,7 +2938,7 @@ STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Veovahen
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Ehita uus mootorsõiduk
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Et müüa, tiri sõiduk siia
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Vii vaade garaaþi asukohale
-STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Mootorsõiduki valimisnimekiri - andmete saamiseks klõpsa sõidukile
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Mootorsõidukite nimekiri - andmete saamiseks klõpsa sõidukile
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Ehita valitud mootorsõiduk
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Hind: {CURRENCY}{}Tippkiirus: {VELOCITY}{}Käituskulud: {CURRENCY}/aastas{}Kandevõime: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kandevõime: {LTBLUE}
@@ -2959,7 +2959,7 @@ STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Transpordivahendit ei saa ümber pöörata...
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Mitmest osast koosnevaid veovahendeid ei saa ümber pöörata
 STR_9034_RENAME                                                 :{BLACK}Nimevahetus
-STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Vaheta mootorsõiduki tüübinime
+STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Muuda mootorsõiduki tüübinime
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Vaheta mootorsõiduki tüübinime
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Mootorsõiduki tüübinime ei saa vahetada...
 
@@ -3027,7 +3027,7 @@ STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Poid ei 
 STR_BUILD_AQUEDUCT                                              :{BLACK}Ehita veejuhe
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Siia ei saa veejuhet ehitada...
 STR_9836_RENAME                                                 :{BLACK}Nimevahetus
-STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Laeva tüübinime vahetamine
+STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Laeva tüübinime muutmine
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Laeva tüübinime vahetamine
 STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Laeva tüübinime ei saa vahetada...
 STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Seadista kaubalaev teisele veosele
@@ -3079,7 +3079,7 @@ STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lennuk -
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Ehita uus lennuk
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Müümiseks tiri lennuk siia
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Vii vaade angaarile
-STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Lennuki valikute nimekiri - info saamiseks vajuta lennukile
+STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Lennukite nimekiri - info saamiseks vajuta lennukile
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Ehita valitud lennuk
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Praegune lennuki tegevus - vajuta siia et käivitada või peatada lennukit
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Näita lennuki sihtpunke
@@ -3096,7 +3096,7 @@ STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Lennuõnnetus!{}Lennukil lõppes kütus, {COMMA} surid tules!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Nimevahetus
-STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Lennuki tüübinime vahetamine
+STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Lennuki tüübinime muutmine
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Lennuki tüübinime vahetamine
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Lennuki tüübinime ei saa vahetada...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Seadista lennuk teistsuguse kauba kandmiseks ümber
@@ -3591,15 +3591,15 @@ STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Siin ei 
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Läbisõidusignaal (semafor){}Signaale läheb tarvis vältimaks kokkupõrkeid enam kui ühe rongiga rööbasteedel.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Sissesõidusignaal (semafor){}Roheline, kuni vähemalt üks väljasõidusignaal on roheline. Muudel juhtudel näitab punast.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Väljasõidusignaal (semafor){}Käitub samamoodi, nagu läbisõidusignaal, kuid läheb vaja et sissesõidu- ja mitmik-hoiatussignaalid näitaksid õiget värvi.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Mitmiksignaal (semafor){}Mitmiksignaal toimib nii sissesõidu-, kui ka väljasõidusignaalina. See võimaldab ehitada laialiulatuvaid hoiatussignaalide harusid.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Täiustatud signaal (semafor){}Kui rong saab ohutuks peatumiseks piisavalt vahemaad varuda, siis täiustatud signaalidega saab signaalivahedesse siseneda korraga mitu rongi. Täiustatud signaalidest saab tagant mööduda.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Ühesuunaline täiustatud signaal (semafor){}Kui rong saab ohutuks peatumiseks piisavalt vahemaad varuda, siis täiustatud signaalidega saab signaalivahedesse siseneda korraga mitu rongi. Ühesuunalistest täiustatud signaalidest ei saa tagant mööduda.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombineeritud signaal (semafor){}Kombineeritud signaal toimib nii sissesõidu-, kui ka väljasõidusignaalina. See võimaldab ehitada laialiulatuvaid hoiatussignaalide harusid.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Täiustatud signaal (semafor){}Kui rongide tee kahe signaali vahel kordagi ei ristu, siis täiustatud signaalidega saab signaalivahedesse siseneda korraga mitu rongi. Täiustatud signaalidest saab tagant mööduda.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Ühesuunaline täiustatud signaal (semafor){}Kui rongide tee kahe signaali vahel kordagi ei ristu, siis täiustatud signaalidega saab signaalivahedesse siseneda korraga mitu rongi. Ühesuunalistest täiustatud signaalidest ei saa tagant mööduda.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Läbisõidusignaal (elektriline){}Signaale läheb tarvis vältimaks kokkupõrkeid enam kui ühe rongiga rööbasteedel.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Sissesõidusignaal (elektriline){}Roheline, kuni vähemalt üks väljasõidusignaal on roheline. Muudel juhtudel näitab punast.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Väljasõidusignaal (elektriline){}Käitub samamoodi, nagu läbisõidusignaal, kuid läheb vaja et sissesõidu- ja mitmik-hoiatussignaalid näitaksid õiget värvi.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Mitmiksignaal (elektriline){}Mitmiksignaal toimib nii sisse-, kui ka väljasõidusignaalina. See võimaldab ehitada laialiulatuvaid sissesõidusignaalide harusid.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Täiustatud signaal (elektriline){}Kui rong saab ohutuks peatumiseks piisavalt vahemaad varuda, siis täiustatud signaalidega saab signaalivahedesse siseneda korraga mitu rongi. Täiustatud signaalidest saab tagant mööduda.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Ühesuunaline täiustatud signaal (elektriline){}Kui rong saab ohutuks peatumiseks piisavalt vahemaad varuda, siis täiustatud signaalidega saab signaalivahedesse siseneda korraga mitu rongi. Ühesuunalistest täiustatud signaalidest ei saa tagant mööduda.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombineeritud signaal (elektriline){}Kombineeritud signaal toimib nii sisse-, kui ka väljasõidusignaalina. See võimaldab ehitada laialiulatuvaid sissesõidusignaalide harusid.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Täiustatud signaal (elektriline){}Kui rongide tee kahe signaali vahel kordagi ei ristu, siis täiustatud signaalidega saab signaalivahedesse siseneda korraga mitu rongi. Täiustatud signaalidest saab tagant mööduda.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Ühesuunaline täiustatud signaal (elektriline){}Kui rongide tee kahe signaali vahel kordagi ei ristu, siis täiustatud signaalidega saab signaalivahedesse siseneda korraga mitu rongi. Ühesuunalistest täiustatud signaalidest ei saa tagant mööduda.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signaalide teisendamine{}Kui see on valitud, siis olemasoleval signaalil klõpsates teisendatakse see määratud signaalitüübiks ja -variandiks. Samal ajal CTRL klahvi all hoides lülitutakse olemasoleva variandi vahel.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Signaalide paigaldustihedus
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Kahanda signaalide paigaldustihedust
@@ -3614,16 +3614,16 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Tehismõistuse seaded
 STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Näita tehismõistuse seadeid
-STR_AI_DEBUG                                                    :{WHITE}Tehismõistuse tõrkeotsing
+STR_AI_DEBUG                                                    :{WHITE}Tehismõistuse debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Tehismõistuse nimi
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Laadi tehismõistus uuesti
-STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Sulge tehismõistus, laadi skript uuesti, ning taaskäivita tehismõistus
-STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Tehismõistuse silumise aken on saadaval vaid serverile
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Sulge tehismõistus, laadi skript uuesti ning taaskäivita tehismõistus
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Tehismõistuse debugi akent saab vaadata ainult server
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Tehismõistuse seadistus
 STR_AI_CHANGE                                                   :{BLACK}Vali tehismõistus
 STR_AI_CONFIGURE                                                :{BLACK}Seadista
 STR_AI_CHANGE_TIP                                               :{BLACK}Laadi teine tehismõistus
-STR_AI_CONFIGURE_TIP                                            :{BLACK}Seadista tehismõistuse parameetreid
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Muuda tehismõistuse parameetreid
 STR_AI_LIST_TIP                                                 :{BLACK}Kõik järgmises mängus laaditavad tehismõistused
 STR_AI_LIST_CAPTION                                             :{WHITE}Saadaval tehismõistused
 STR_AI_AILIST_TIP                                               :{BLACK}Klõpsa tehismõistuse valimiseks
@@ -3633,12 +3633,12 @@ STR_AI_CANCEL                                                   :{BLACK}Loobu
 STR_AI_CANCEL_TIP                                               :{BLACK}Ära muuda tehismõistust
 STR_AI_CLOSE                                                    :{BLACK}Sulge
 STR_AI_RESET                                                    :{BLACK}Nulli
-STR_AI_HUMAN_PLAYER                                             :Inimmängija
+STR_AI_HUMAN_PLAYER                                             :Inimene
 STR_AI_RANDOM_AI                                                :Suvaline tehismõistus
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Tehismõistuse muutujad
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Tehismõistuse parameetrid
 STR_AI_AUTHOR                                                   :Autor:
 STR_AI_VERSION                                                  :Versioon:
-STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Tõrge ühe töötava tehismõistusega. Palun teavitage sellest tehismõistuse autorit koos ekraanipildiga tehismõistuse tõrkeotsingu aknast.
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Tõrge ühe töötava tehismõistusega. Palun teavitage sellest tehismõistuse autorit koos ekraanitõmmisega tehismõistuse tõrkeotsingu aknast.
 ########
 
 ############ town controlled noise level

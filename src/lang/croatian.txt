@@ -730,7 +730,6 @@ STR_OFF                                                         :Isključeno
 STR_SUMMARY                                                     :Sažetak
 STR_FULL                                                        :Puno
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Popis gradova
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -768,6 +767,7 @@ STR_02DE_MAP_OF_WORLD                                           :Karta svijeta
 STR_EXTRA_VIEW_PORT                                             :Dodatni pogled
 STR_SIGN_LIST                                                   :Popis znakova
 STR_02DF_TOWN_DIRECTORY                                         :Direktorij gradova
+STR_02BB_TOWN_DIRECTORY                                         :Popis gradova
 STR_TOWN_POPULATION                                             :{BLACK}Svjetsko stanovništvo: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pogled {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiraj u pogled
@@ -794,6 +794,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Automats
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Odaberi interval između automatskih spremanja igre
 STR_02F7_OFF                                                    :Isključeno
+STR_AUTOSAVE_1_MONTH                                            :Svaki mjesec
 STR_02F8_EVERY_3_MONTHS                                         :Svaka 3 mjeseca
 STR_02F9_EVERY_6_MONTHS                                         :Svakih 6 mjeseci
 STR_02FA_EVERY_12_MONTHS                                        :Svakih 12 mjeseci
@@ -914,7 +915,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Osnovni 
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Odaberi osnovni grafički set za igru
 
-STR_AUTOSAVE_1_MONTH                                            :Svaki mjesec
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatsko spremanje neuspješno
 
 STR_MONTH_JAN                                                   :Siječanj

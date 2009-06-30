@@ -660,7 +660,6 @@ STR_OFF                                                         :כבוי
 STR_SUMMARY                                                     :תמצית
 STR_FULL                                                        :מלא
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :מדריך הערים
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -698,6 +697,7 @@ STR_02DE_MAP_OF_WORLD                                           :מפת העול
 STR_EXTRA_VIEW_PORT                                             :השקפה נוספת
 STR_SIGN_LIST                                                   :רשימת שלטים
 STR_02DF_TOWN_DIRECTORY                                         :מדריך ערים
+STR_02BB_TOWN_DIRECTORY                                         :מדריך הערים
 STR_TOWN_POPULATION                                             :{BLACK}אוכלוסיית העולם: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}השקפה {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}העתק להשקפה
@@ -724,6 +724,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}שמיר
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}בחר פרק זמן בין שמירות אוטומטיות
 STR_02F7_OFF                                                    :כבוי
+STR_AUTOSAVE_1_MONTH                                            :מידי חודש
 STR_02F8_EVERY_3_MONTHS                                         :כל 3 חודשים
 STR_02F9_EVERY_6_MONTHS                                         :כל 6 חודשים
 STR_02FA_EVERY_12_MONTHS                                        :כל 12 חודשים
@@ -844,7 +845,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}סט ג�
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}בחר בסט גרפיקה בסיסי לשימוש
 
-STR_AUTOSAVE_1_MONTH                                            :מידי חודש
 STR_AUTOSAVE_FAILED                                             :{WHITE}שמירה אוטומטית נכשלה
 
 STR_MONTH_JAN                                                   :ינואר

@@ -666,7 +666,6 @@ STR_OFF                                                         :изключе�
 STR_SUMMARY                                                     :Обобщение
 STR_FULL                                                        :Пълно
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Списък от градовете
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -704,6 +703,7 @@ STR_02DE_MAP_OF_WORLD                                           :Карта на
 STR_EXTRA_VIEW_PORT                                             :Допълнителна камера
 STR_SIGN_LIST                                                   :Списък с табели
 STR_02DF_TOWN_DIRECTORY                                         :Списък със селищата
+STR_02BB_TOWN_DIRECTORY                                         :Списък от градовете
 STR_TOWN_POPULATION                                             :{BLACK}Световна популация: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Камера {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Преместване на камерата

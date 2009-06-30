@@ -539,7 +539,7 @@ STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Κάντ
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Εναλλαγή τυχαίας αναπαραγωγής on/off στο πρόγραμμα
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Εμφάνιση παραθύρου επιλογής μουσικού κομματιού
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Κάντε κλίκ στην υπηρεσία για κεντράρισμα στην βιομηχανία/πόλη
-STR_01FE_DIFFICULTY                                             :{BLACK}{G=f}Δυσκολία ({STRING})
+STR_01FE_DIFFICULTY                                             :{G=f}{BLACK}Δυσκολία ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Τελευταίο μήνυμα/αναφορά νέων
 STR_0201_MESSAGE_SETTINGS                                       :Ρυθμίσεις μηνυμάτων
@@ -608,6 +608,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Αδύν
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...δεν υπάρχει αλλος χώρος στον χάρτη
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Αύξηση μεγέθους πόλεως
 STR_023C_EXPAND                                                 :{BLACK}Επέκταση
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Η πόλη δεν θα οικοδομεί δρόμους. Μπορείτε να ενεργοποιήσετε την κατασκευή οδών μέσω των Προχωρημένων Επιλογών->Οικονομία->Πόλεις.
 STR_023D_RANDOM_TOWN                                            :{BLACK}Τυχαία Πόλη
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Χτίσιμο πόλης σε τυχαία τοποθεσία
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Αδύνατο να χτιστεί {G ο η το} {STRING} εδώ...
@@ -637,7 +638,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Αποθ
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Παιξτε το Σενάριο
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Παίξτε Heightmap
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Εκκίνηση νέου παιχνιδιού, χρησιμοποιώντας heightmap για χάρτη
-STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Είστε σίγουροι οτι θέλετε ναφύγετε από το πίστα;
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Είστε σίγουροι οτι θέλετε να παρατήσετε το σενάριο;
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...μπορεί να χτιστεί μόνο σε πόλεις με πληθυσμό άνω των 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο πίσω
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο μπροστά
@@ -665,7 +666,6 @@ STR_OFF                                                         :Κλειστό
 STR_SUMMARY                                                     :Περιγραφή
 STR_FULL                                                        :Ολόκληρο
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Καταλογος πόλεων
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -703,6 +703,7 @@ STR_02DE_MAP_OF_WORLD                                           :Χάρτης τ
 STR_EXTRA_VIEW_PORT                                             :Πρόσθετη εμφάνιση
 STR_SIGN_LIST                                                   :Λίστα ταμπελών
 STR_02DF_TOWN_DIRECTORY                                         :Κατάλογος πόλεων
+STR_02BB_TOWN_DIRECTORY                                         :Καταλογος πόλεων
 STR_TOWN_POPULATION                                             :{BLACK}Παγκόσμιος πληθυσμός: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Εμφάνιση {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Αντιγραφή στην εμφάνιση
@@ -729,6 +730,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Αυτό
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Επιλογή διάκενου ανάμεσα στις αυτόματες αποθηκεύσεις
 STR_02F7_OFF                                                    :Ανενεργό
+STR_AUTOSAVE_1_MONTH                                            :Κάθε μήνα
 STR_02F8_EVERY_3_MONTHS                                         :Κάθε 3 μήνες
 STR_02F9_EVERY_6_MONTHS                                         :Κάθε 6 μήνες
 STR_02FA_EVERY_12_MONTHS                                        :Κάθε 12 μήνες
@@ -849,7 +851,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Βασι
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί
 
-STR_AUTOSAVE_1_MONTH                                            :Κάθε μήνα
 STR_AUTOSAVE_FAILED                                             :{WHITE}Το αυτόματο σώσιμο απέτυχε
 
 STR_MONTH_JAN                                                   :Ιανουάριος
@@ -936,6 +937,7 @@ STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Βιο�
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Εμφάνιση ολόκληρης ημερομηνίες στη γραμμή κατάστασης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Εμφάνιση σήμανσης στην πλευρά οδήγησης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Εμφάνιση παράθυρου οικονομικών στο τέλος του έτους: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Οι νέες οδηγίες είναι 'non-stop' από προεπιλογή: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Ουρά οχημάτων (με κβαντικά εφφέ): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Μετακίνηση παραθύρου όταν είναι το ποντίκι στην άκρη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Επιτρέπεται η δωροδοκία της τοπικής αρχής: {ORANGE}{STRING}

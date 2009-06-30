@@ -796,7 +796,7 @@ STR_TOWNNAME_CZECH                                              :Tschechisch
 STR_TOWNNAME_SWISS                                              :Schweizerisch
 STR_TOWNNAME_DANISH                                             :Dänisch
 STR_TOWNNAME_TURKISH                                            :Türkisch
-STR_TOWNNAME_ITALIAN                                            :italienisch
+STR_TOWNNAME_ITALIAN                                            :Italienisch
 STR_TOWNNAME_CATALAN                                            :Katalanisch
 ############ end of townname region
 
@@ -1333,7 +1333,7 @@ STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (ankündigen)
-STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} Client{P "" s}
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} Teilnehmer
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max. Teilnehmeranzahl:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Auswahl der maximal erlaubten Anzahl von Teilnehmern. Nicht alle Slots müssen belegt werden.
 STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} Firm{P a en}
@@ -1393,8 +1393,8 @@ STR_NETWORK_GAME_LOBBY                                          :{WHITE}Mehrspie
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Spieleintritt vorbereiten:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Eine Liste aller Firmen, die sich im Spiel befinden. Man kann einer Firma beitreten oder eine eigene Firma gründen, sofern ein Platz frei ist.
-STR_NETWORK_NEW_COMPANY                                         :{BLACK}Neues Unternehmen
-STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Ein neues Unternehmen gründen
+STR_NETWORK_NEW_COMPANY                                         :{BLACK}Neue Firma
+STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Eine neue Firma gründen
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Beim Spiel zusehen
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Als Zuschauer dem Spiel zusehen
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Firma beitreten
@@ -1512,7 +1512,7 @@ STR_NETWORK_CLIENTLIST_NONE                                     :(keiner)
 STR_NETWORK_CLIENTLIST_KICK                                     :Hinauswerfen
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Geld schenken
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Mit allen sprechen
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Mit eigener Firma sprechen
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Mit Firma sprechen
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Private Nachricht
 
 
@@ -1525,7 +1525,7 @@ STR_NETWORK_SEND                                                :{BLACK}Abschick
 STR_PNGMAP_ERROR                                                :{WHITE}Landschaft kann nicht aus PNG-Datei geladen werden...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...Datei nicht gefunden.
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...Bildtyp kann nicht umgewandelt werden. 8- oder 24-bit-PNG-Datei erforderlich.
-STR_PNGMAP_ERR_MISC                                             :{WHITE}...irgend etwas ging schief. Sorry. (Vielleicht eine kaputte Datei?)
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...irgendetwas ging schief. Sorry. (Vielleicht eine kaputte Datei?)
 
 STR_BMPMAP_ERROR                                                :{WHITE}Landschaft kann nicht aus BMP-Datei geladen werden...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...Bildtyp kann nicht umgewandelt werden.
@@ -1578,7 +1578,7 @@ STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Bau elektrifizi
 STR_1016_MONORAIL_CONSTRUCTION                                  :Einschienenbahnbau
 STR_1017_MAGLEV_CONSTRUCTION                                    :Magnetschwebebahnbau
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Gleise legen
-STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Zugdepot bauen (zum Bau und zur Wartung von Zügen)
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Zugdepot bauen (zum Kauf und zur Wartung von Zügen)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Bahnhof bauen
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Signale errichten
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Eisenbahnbrücke bauen
@@ -1641,8 +1641,8 @@ STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Straße 
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Straße bauen mit automatischer Wahl der Ausrichtung
 STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Straßenbahnabschnitt bauen
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Staßenbahnabschnitt bauen mit automatischer Wahl der Ausrichtung
-STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Fahrzeugdepot bauen (zum Bau und zur Wartung von Fahrzeugen)
-STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Straßenbahndepot bauen (zum Erstellen und Warten von Straßenbahnen)
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Fahrzeugdepot bauen (zum Kauf und zur Wartung von Fahrzeugen)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Straßenbahndepot bauen (zum Kauf und zur Wartung von Straßenbahnen)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Busbahnhof bauen
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Lkw-Ladeplatz bauen
 STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Straßenbahnhaltestelle bauen
@@ -2170,7 +2170,7 @@ STR_HOSTILE                                                     :Gering
 
 ##id 0x7000
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_7002_COMPANY                                                :(Unternehmen {COMMA})
+STR_7002_COMPANY                                                :(Firma {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Neues Gesicht
 STR_7005_COLOUR_SCHEME                                          :{BLACK}Farbschema
 STR_7006_COLOUR_SCHEME                                          :{GOLD}Farbschema
@@ -2657,11 +2657,11 @@ STR_ORDER_TRAIN_DEPOT                                           :{G=n}Zugdepot
 STR_ORDER_ROAD_DEPOT                                            :{G=n}Straßenfahrzeugdepot
 STR_ORDER_SHIP_DEPOT                                            :{G=w}Werft
 STR_GO_TO_DEPOT                                                 :{STRING}{G 2 "m" "r" "m" " den"} {2:STRING} {1:TOWN}
-STR_GO_TO_NEAREST_DEPOT                                         :{STRING}{G 2 m r m "den"} {STRING} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING}{G 2 m r m " den"} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Gehe immer
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Wartung wenn nötig
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Wartung, wenn nötig
 STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
 
 STR_ORDER_CONDITIONAL                                           :Bedingter Sprung zu Auftrag
@@ -2720,7 +2720,7 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Neue Ein
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Neue Magnetzüge
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Eisenbahnfahrzeuge
 
-STR_881F_BUILD_VEHICLE                                          :{BLACK}Fahrzeug bauen
+STR_881F_BUILD_VEHICLE                                          :{BLACK}Fahrzeug kaufen
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Fahrzeug kopieren
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Baut eine Kopie des Fahrzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Baut eine Kopie des Fahrzeuges. Klicke diese Schaltfläche und dann auf ein Fahrzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
@@ -2743,7 +2743,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Zur Auft
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Aufträge)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Ende der Aufträge - -
 STR_SERVICE                                                     :{BLACK}Wartung
-STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Schienenfahrzeug kann nicht gebaut werden...
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Schienenfahrzeug kann nicht gekauft werden...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK}  Wert: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Wert: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
@@ -2772,11 +2772,11 @@ STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Wartungs
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Wartungsintervall: {LTBLUE}{COMMA}%{BLACK}   Letzte Wartung: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Züge - für Einzelheiten auf den jeweiligen Zug klicken
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Züge - für Einzelheiten auf den Zug klicken; Waggon ziehen, um ihn an-/abzukoppeln
-STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Neues Schienenfahrzeug bauen
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Neues Schienenfahrzeug kaufen
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Schienenfahrzeug hierher ziehen, um es zu verkaufen
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Hauptansicht zum Zugdepot scrollen
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Zugfahrzeugliste - Einzelheiten durch Anklicken des Fahrzeuges
-STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Angewähltes Fahrzeug bauen
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Angewähltes Fahrzeug kaufen
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Umbenennen der Waggontypen
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Laufende Zugbewegung - Klicke hier, um den Zug anzuhalten / zu starten
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Anzeige der Aufträge
@@ -2855,8 +2855,8 @@ STR_9002                                                        :{WHITE}{VEHICLE
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Fahrzeugdepot
 STR_9004_NEW_VEHICLES                                           :{BLACK}Neue Fahrzeuge
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Neue Fahrzeuge
-STR_9007_BUILD_VEHICLE                                          :{BLACK}Fahrzeug bauen
-STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Fahrzeug kann nicht gebaut werden...
+STR_9007_BUILD_VEHICLE                                          :{BLACK}Fahrzeug kaufen
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Fahrzeug kann nicht gekauft werden...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Einzelheiten)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}  Betriebskosten: {LTBLUE}{CURRENCY} pro Jahr
 STR_900E_MAX_SPEED                                              :{BLACK}Höchstgeschwindigk.: {LTBLUE}{VELOCITY}
@@ -2882,11 +2882,11 @@ STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Das Fahr
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Das Fahrzeug zur Umkehr zwingen
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Einzelheiten des Fahrzeuges anzeigen
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Straßenfahrzeuge - für Einzelheiten auf das Fahrzeug klicken
-STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Neues Fahrzeug bauen
+STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Neues Fahrzeug kaufen
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Ziehe Fahrzeug hierher, um es zu verkaufen
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Hauptansicht zum Fahrzeugdepot scrollen
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Fahrzeugauswahlliste - Klicke auf ein Fahrzeug für Einzelheiten
-STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Ausgewähltes Fahrzeug bauen
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Ausgewähltes Fahrzeug kaufen
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kosten: {CURRENCY}{}Geschwindigk.: {VELOCITY}{}Betriebskosten: {CURRENCY} pro Jahr{}Ladevermögen: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapazität: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
@@ -2925,10 +2925,10 @@ STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} W
 STR_9804_NEW_SHIPS                                              :{BLACK}Neue Schiffe
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Schiff{P "" e}
 STR_9808_NEW_SHIPS                                              :{WHITE}Neue Schiffe
-STR_9809_BUILD_SHIP                                             :{BLACK}Schiff bauen
+STR_9809_BUILD_SHIP                                             :{BLACK}Schiff kaufen
 STR_CLONE_SHIP                                                  :{BLACK}Schiff kopieren
 STR_CLONE_SHIP_INFO                                             :{BLACK}Baut eine Kopie des Schiffes. Strg+Klick erzeugt gemeinsamen Fahrplan
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Baut eine Kopie des Schiffes. Klicke diese Schaltfläche und dann auf eine Schiff innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Baut eine Kopie des Schiffes. Klicke diese Schaltfläche und dann auf eine Schiff innerhalb oder außerhalb der Werft. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Schiff muss in der Werft angehalten werden
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Schiff kann nicht verkauft werden...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Schiff kann nicht gebaut werden...
@@ -2952,12 +2952,12 @@ STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Hafen bauen
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Werft bauen (für den Bau und die Wartung von Schiffen)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Schiffe - für Einzelheiten auf das Schiff klicken
-STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Neues Schiff bauen
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Neues Schiff kaufen
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Ziehe Schiff hierher, um es zu verkaufen
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Hauptansicht zur Werft scrollen
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Schiffe - für Einzelheiten auf das Schiff klicken
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Schiffauswahliste - für Einzelheiten auf das Schiff klicken
-STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Ausgewähltes Schiff bauen
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Ausgewähltes Schiff kaufen
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Laufende Schiffsbewegung - Klicke hier, um das Schiff anzuhalten / zu starten
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Aufträge des Schiffes
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Hauptansicht zum Schiff scrollen
@@ -2994,9 +2994,9 @@ STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Neue Flugzeuge
 STR_CLONE_AIRCRAFT                                              :{BLACK}Flugzeug kopieren
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Baut eine Kopie des Flugzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Baut eine Kopie des Flugzeuges. Klicke auf diese Schaltfläche und dann auf ein Flugzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Baut eine Kopie des Flugzeuges. Klicke auf diese Schaltfläche und dann auf ein Flugzeug innerhalb oder außerhalb des Hangars. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Neue Flugzeuge
-STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Flugzeug bauen
+STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Flugzeug kaufen
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Flugzeug kann nicht gebaut werden...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Flugzeug{P "" e}
 STR_A00A                                                        :{WHITE}{VEHICLE}
@@ -3023,11 +3023,11 @@ STR_A01D_AIRPORT_CONSTRUCTION                                   :Flughafenbau
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Flughafen bauen
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Flugzeuge - für Einzelheiten auf das Flugzeug klicken
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Flugzeuge - für Einzelheiten auf das Flugzeug klicken
-STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Neues Flugzeug bauen
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Neues Flugzeug kaufen
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Zum Verkauf des Flugzeuges hierher ziehen
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Hauptansicht zum Hangar scrollen
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Flugzeugauswahlliste - Klick auf das Flugzeug zeigt weitere Einzelheiten an
-STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Augewähltes Flugzeug bauen
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Augewähltes Flugzeug kaufen
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Laufende Flugzeugbewegung - Klick zum Anhalten bzw. losschicken
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Zeige Aufträge für das Flugzeug
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Hauptansicht zum Flugzeug scrollen
@@ -3216,10 +3216,10 @@ STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Alle Fah
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Alle Schiffe in der Werft verkaufen
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Alle Flugzeuge im Hangar verkaufen
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Züge, die dieses Depot anfahren, auflisten
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Fahrzeuge, die dieses Depot anfahren, auflisten
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Alle Züge, die dieses Depot anfahren, auflisten
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Alle Fahrzeuge, die dieses Depot anfahren, auflisten
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Alle Schiffe, die diese Werft anfahren, auflisten
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Flugzeuge, die diesen Flughafen anfliegen, auflisten
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Alle Flugzeuge, die einen Hangar dieses Flughafens ansteuern, auflisten
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Alle Züge im Depot automatisch ersetzen
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Alle Fahrzeuge im Depot automatisch ersetzen
@@ -3418,9 +3418,9 @@ STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Transpar
 STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Transparenz für Industrien einstellen.  Strg+Klick, um Umschalten zu verhindern.
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Transparenz für Gebäude wie Bahnhöfe, Depots und Wegpunkte einstellen.  Strg+Klick, um Umschalten zu verhindern.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Transparenz für Brücken einstellen. Strg+Klick, um Umschalten zu verhindern.
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparenz für Bauten wie Leuchttürme und Sendemasten einstellen.  Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparenz für Bauten wie Leuchttürme und Sendemasten einstellen. Strg+Klick, um Umschalten zu verhindern.
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Transparenz für Oberleitungen. Strg+Klick, um Umschalten zu verhindern.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparenz für Ladestandsanzeige einstellen.  Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparenz für Ladestandsanzeige einstellen. Strg+Klick, um Umschalten zu verhindern.
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Objekte unsichtbar statt transparent machen
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3546,9 +3546,9 @@ STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Blocksig
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein Blocksignal, gibt jedoch das Signal an Einfahr- und Kombinationssignale im vorherliegenden Block weiter.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinationssignal (Lichtsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Pfadsignal (Lichtsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Pfadsignale können von hinten durchfahren werden.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Pfadsignal (Lichtsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern ein Pfad zum nächsten Signal reserviert werden kann. Normale Pfadsignale können von hinten durchfahren werden.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Einseitiges Pfadsignal (Lichtsignal):{}Erlaubt mehreren Zügen, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg+Klicken ändert die bestehende Bauform.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg+Klick ändert die bestehende Bauform.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Abstand der Signale beim automatischen Bau durch Ziehen
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Signalabstand verringern
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Signalabstand erhöhen

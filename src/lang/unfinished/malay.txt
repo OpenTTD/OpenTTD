@@ -13,6 +13,7 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Keluar p
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Terlalu hampir ke tepi peta
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Tidak cukup wang - memerlukan {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
+STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Memerlukan tanah rata
 STR_0008_WAITING                                                :{BLACK}Menunggu: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
@@ -20,6 +21,7 @@ STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORT
 STR_000C_ACCEPTS                                                :{BLACK}Menerima: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Menerima: {GOLD}
 STR_SUPPLIES                                                    :{BLACK}Bekalan-berkalan: {GOLD}
+STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Penumpang
 STR_0010_COAL                                                   :Arang Batu
 STR_0011_MAIL                                                   :Surat
@@ -82,6 +84,7 @@ STR_004A_TOFFEE                                                 :Toffee
 STR_004B_BATTERY                                                :Bateri
 STR_004C_PLASTIC                                                :Plastik
 STR_004D_FIZZY_DRINK                                            :Minuman Bergas
+STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} penumpang{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} arang batu
 STR_QUANTITY_MAIL                                               :{COMMA} bag{P "" s} surat
@@ -113,6 +116,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} tofi
 STR_QUANTITY_BATTERIES                                          :{COMMA} bateri
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastik
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} minuman bergas
+STR_ABBREV_NOTHING                                              :
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}MAP-{STRING}
@@ -520,6 +524,7 @@ STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Penyunting Senario
+STR_0223_LAND_GENERATION                                        :{WHITE}Pembentukan Tanah
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Meningkatan penyebaran kawasan tanah untuk dinaikkan/diturunkan
@@ -527,6 +532,7 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Menurunk
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Hasilkan secara rawak
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Membentuk lanskap semula
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Membentuk lanskap semula
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Keluarkan semua harta pemain dari peta
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Pembentukan lanskap
 STR_022F_TOWN_GENERATION                                        :{BLACK}Pembentukan bandar
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Pembentukan industri
@@ -556,11 +562,13 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Letak ka
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Letak rumah api
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Letak alat pemancar
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Pilih kawasan gurun {}Tekan dan kekalkan CTRL untuk menanggalkannya
+STR_CREATE_RIVER                                                :{BLACK}Letak sungai.
 STR_0290_DELETE                                                 :{BLACK}Buang
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Buang bandar ini sepenuhnya
 STR_0292_SAVE_SCENARIO                                          :Simpan senario
 STR_0293_LOAD_SCENARIO                                          :Muat Senario
 STR_0294_QUIT_EDITOR                                            :Hentikan penyunting
+STR_0295                                                        :
 STR_0296_QUIT                                                   :Berhenti
 STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Simpan senario, muat senario, Meninggal penyunting senario, Keluar
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Muat Senario
@@ -573,16 +581,27 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}... peng
 STR_02A1_SMALL                                                  :{BLACK}Kecil
 STR_02A2_MEDIUM                                                 :{BLACK}Sederhana
 STR_02A3_LARGE                                                  :{BLACK}Besar
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Rambang
+STR_FOUND_TOWN_CITY                                             :{BLACK}Bandar
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Pilih saiz bandar
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Saiz bandar
 
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Susunan jalan raya bandar:
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Jalan raya lebih baik
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}Grid 2x2
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}Grid 3x3
+STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Tunjukkan utusan atau laporan berita terakhir
+STR_OFF                                                         :Padam
+STR_FULL                                                        :Penuh
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Direktori Bandar
+STR_02BD                                                        :{BLACK}{STRING}
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Pilihan permainan
 STR_02C6_DIFFICULTY_SETTINGS                                    :Tetapan kesukaran
+STR_NEWGRF_SETTINGS                                             :Tetapan NewGRF
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Paparkan nama bandar
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Paparkan nama stesyen
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Paparkan tanda
@@ -593,6 +612,7 @@ STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Bangun
 
 ############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informasi kawasan tanah
+STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Togolkan konsol
 STR_02D7_SCREENSHOT_CTRL_S                                      :Tangkap gambar skrin (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Tangkap gambar skrin besar (Ctrl-G)
@@ -606,6 +626,7 @@ STR_02DD_SUBSIDIES                                              :Subsidi
 STR_02DE_MAP_OF_WORLD                                           :Peta Dunia
 STR_SIGN_LIST                                                   :Senarai isyarat
 STR_02DF_TOWN_DIRECTORY                                         :Direktori bandar
+STR_02BB_TOWN_DIRECTORY                                         :Direktori Bandar
 STR_TOWN_POPULATION                                             :{BLACK}Populasi Dunia: {COMMA}
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unit kewangan

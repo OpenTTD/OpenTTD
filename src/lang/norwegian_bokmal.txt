@@ -663,7 +663,6 @@ STR_OFF                                                         :Av
 STR_SUMMARY                                                     :Sammendrag
 STR_FULL                                                        :Fullt
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Byoversikt
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -701,6 +700,7 @@ STR_02DE_MAP_OF_WORLD                                           :Verdenskart
 STR_EXTRA_VIEW_PORT                                             :Ekstra vindu
 STR_SIGN_LIST                                                   :Skiltliste
 STR_02DF_TOWN_DIRECTORY                                         :Byoversikt
+STR_02BB_TOWN_DIRECTORY                                         :Byoversikt
 STR_TOWN_POPULATION                                             :{BLACK}Verdensbefolkning: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vindu {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopier til vindu
@@ -734,6 +734,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Hver 12. måned
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Start nytt spill
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Last inn et lagret spill
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Spesiallag en spillverden eller et scenario
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Start et flerspiller-spill
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Vis spillinnstillinger
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Vis vanskelighetsgrad
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Start et nytt spill som bruker et scenario
@@ -1041,6 +1042,7 @@ STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Hindre 
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Hindre datamaskinen i å bygge fly: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Hindre datamaskinen i å bygge skip: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillat AIer i flerspiller: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikeholdsintervaller i prosent: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard vedlikeholdsintervall for tog: {ORANGE}{STRING} dager
@@ -1671,6 +1673,8 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Sentrer 
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Bytt navn på byen
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passasjerer forrige måned: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post forrige måned: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Godsbehov for byekspansjon:
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} levert sist måned
 STR_200F_TALL_OFFICE_BLOCK                                      :Høyhus
 STR_2010_OFFICE_BLOCK                                           :Kontorblokk
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Leilighetsblokk

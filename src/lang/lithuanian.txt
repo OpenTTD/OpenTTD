@@ -699,7 +699,6 @@ STR_OFF                                                         :Isjungta
 STR_SUMMARY                                                     :Santrauka
 STR_FULL                                                        :Pilnas
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Miestų sąrašas
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -737,6 +736,7 @@ STR_02DE_MAP_OF_WORLD                                           :Žemėlapis
 STR_EXTRA_VIEW_PORT                                             :Papildomas peržiūros langas
 STR_SIGN_LIST                                                   :Ženklų sąrašas
 STR_02DF_TOWN_DIRECTORY                                         :Miestų sąrašas
+STR_02BB_TOWN_DIRECTORY                                         :Miestų sąrašas
 STR_TOWN_POPULATION                                             :{BLACK}Pasaulio populiacija: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Peržiūros langas {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopijuoti į peržiūros langą
@@ -763,6 +763,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Automati
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Pasirink, kaip dažnai išsaugoti žaidimą
 STR_02F7_OFF                                                    :Išjungta
+STR_AUTOSAVE_1_MONTH                                            :Kiekvieną mėnesį
 STR_02F8_EVERY_3_MONTHS                                         :Kas 3 mėnesius
 STR_02F9_EVERY_6_MONTHS                                         :Kas 6 mėnesius
 STR_02FA_EVERY_12_MONTHS                                        :Kas 12 mėnesių
@@ -882,7 +883,6 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Pasirink
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Bazinis grafikos rinkinys
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Pasirinkti naudojimui bazinę grafikos rinkinį
 
-STR_AUTOSAVE_1_MONTH                                            :Kiekvieną mėnesį
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatinis išsaugojimas nepavyko
 
 STR_MONTH_JAN                                                   :Sausis

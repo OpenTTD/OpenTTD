@@ -654,7 +654,6 @@ STR_OFF                                                         :Apagado
 STR_SUMMARY                                                     :Sumario
 STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Directorio de cidades
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -691,6 +690,7 @@ STR_02DE_MAP_OF_WORLD                                           :Mapa do Mundo
 STR_EXTRA_VIEW_PORT                                             :Fiestra Extra
 STR_SIGN_LIST                                                   :Lista de sinais
 STR_02DF_TOWN_DIRECTORY                                         :Directorio de cidades
+STR_02BB_TOWN_DIRECTORY                                         :Directorio de cidades
 STR_TOWN_POPULATION                                             :{BLACK}Poboación mundial: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar a vista
@@ -717,6 +717,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Autograb
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Selecciona o intervalo entre autograbados
 STR_02F7_OFF                                                    :Apagado
+STR_AUTOSAVE_1_MONTH                                            :Cada mes
 STR_02F8_EVERY_3_MONTHS                                         :Cada 3 meses
 STR_02F9_EVERY_6_MONTHS                                         :Cada 6 meses
 STR_02FA_EVERY_12_MONTHS                                        :Cada 12 meses
@@ -832,7 +833,6 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formato 
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecciona o formato a utilizar nas capturas de pantalla
 
-STR_AUTOSAVE_1_MONTH                                            :Cada mes
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autograbado fallido
 
 STR_MONTH_JAN                                                   :Xaneiro

@@ -707,7 +707,6 @@ STR_OFF                                                         :Izključeno
 STR_SUMMARY                                                     :Povzetek
 STR_FULL                                                        :Polno
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Imenik mest
 STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -745,6 +744,7 @@ STR_02DE_MAP_OF_WORLD                                           :Zemljevid sveta
 STR_EXTRA_VIEW_PORT                                             :Dodaten pogled
 STR_SIGN_LIST                                                   :Seznam napisov
 STR_02DF_TOWN_DIRECTORY                                         :Imenik mest
+STR_02BB_TOWN_DIRECTORY                                         :Imenik mest
 STR_TOWN_POPULATION                                             :{BLACK}Svetovno prebivalstvo: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pogled {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiraj na pogled
@@ -771,6 +771,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Samo-shr
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Izberi časovni interval samodejnega shranjevanja igre
 STR_02F7_OFF                                                    :Izključeno
+STR_AUTOSAVE_1_MONTH                                            :Vsak mesec
 STR_02F8_EVERY_3_MONTHS                                         :Vsake 3 mesece
 STR_02F9_EVERY_6_MONTHS                                         :Vsakih 6 mesecev
 STR_02FA_EVERY_12_MONTHS                                        :Vsakih 12 mesecev
@@ -891,7 +892,6 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}Osnovni 
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Izberi osnovni komplet grafik za uporabo
 
-STR_AUTOSAVE_1_MONTH                                            :Vsak mesec
 STR_AUTOSAVE_FAILED                                             :{WHITE}Samodejno shranjevanje spodletelo
 
 STR_MONTH_JAN                                                   :Januar
@@ -1810,7 +1810,6 @@ STR_2059_IGLOO                                                  :Iglu
 STR_205A_TEPEES                                                 :Tipiji
 STR_205B_TEAPOT_HOUSE                                           :Čajnik-hiša
 STR_205C_PIGGY_BANK                                             :Prašičkova banka
-STR_205C_PIGGY_BANK.r                                           :Prašičkove banke
 
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
@@ -2880,12 +2879,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Počisti
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Resetiraj števec zamud, da bodo vozila točna
 STR_SERVICE_HINT                                                :{BLACK}Preskoči ta ukaz, razen če je potreben servis
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Teža: {WEIGHT_S}{}Hitrost: {VELOCITY}  Moč: {POWER}{}Cena delovanja: {CURRENCY}/leto{}Zmogljivost: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}V okvari
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Cena delovanja: {LTBLUE}{CURRENCY}/leto
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Teža: {LTBLUE}{WEIGHT_S}  {BLACK}Moč: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Teža: {LTBLUE}{WEIGHT_S} {BLACK}Moč: {LTBLUE}{POWER}{BLACK} Največja hitrost: {LTBLUE}{VELOCITY} {BLACK}Max. v.sila: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Teža: {LTBLUE}{WEIGHT_S} {BLACK}Moč: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Letošnji dobiček: {LTBLUE}{CURRENCY}  (lanski: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zanseljivost: {LTBLUE}{COMMA}%  {BLACK}Št. okvar od zadnjega servisa: {LTBLUE}{COMMA}
+STR_885C_BROKEN_DOWN                                            :{RED}V okvari
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Cena delovanja: {LTBLUE}{CURRENCY}/leto
 STR_8861_STOPPED                                                :{RED}Ustavljeno
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Ni mogoče, da vlak v nevarnosti pelje mimo semaforjev ...
 STR_8863_CRASHED                                                :{RED}Uničen!
