@@ -343,6 +343,8 @@ STR_SORT_BY_LENGTH                                              :Længde
 STR_SORT_BY_LIFE_TIME                                           :Resterende levetid
 STR_SORT_BY_FACILITY                                            :Stationstype
 STR_SORT_BY_WAITING                                             :Værdi af ventende fragt
+STR_SORT_BY_RATING_MAX                                          :Højeste værdi af last
+STR_SORT_BY_RATING_MIN                                          :Laveste værdi af last
 STR_ENGINE_SORT_ENGINE_ID                                       :Lokomotiv ID (klassisk)
 STR_ENGINE_SORT_COST                                            :Omkostning
 STR_ENGINE_SORT_POWER                                           :Drivmiddel
@@ -961,6 +963,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillad 
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Muliggør flere NewGRF køretøjssæt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Denne indstilling kan ikke ændres, når der er køretøjer.
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lufthavnenes levealder udløber aldrig: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Advar hvis tog er faret vild: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Kontroller køretøjers ordreliste: {ORANGE}{STRING}

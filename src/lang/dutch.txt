@@ -308,16 +308,16 @@ STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Prestatiegrafie
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Bedrijfswaardegrafiek
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Ladingsprijzen
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Bedrijfscompetitietabel
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detail prestatiewaarde
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Gedetaileerde prestatiewaarde
 ############ range for menu ends
 
 STR_ABOUT_OPENTTD                                               :{WHITE}Over OpenTTD
 STR_FILE_MENU_SAVE_GAME                                         :Spel opslaan
 STR_FILE_MENU_LOAD_GAME                                         :Spel laden
-STR_FILE_MENU_QUIT_GAME                                         :Spel stoppen
+STR_FILE_MENU_QUIT_GAME                                         :Verlaat spel
 STR_FILE_MENU_EXIT                                              :Afsluiten
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Weet je zeker dat je dit spel wilt afsluiten?
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Spel stoppen
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Verlaat spel
 STR_SORT_ORDER_TIP                                              :{BLACK}Selecteer sorteerrichting (aflopend/oplopend)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Selecteer sorteringscriteria
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}Kies filter criteria
@@ -341,7 +341,7 @@ STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Waarde
 STR_SORT_BY_LENGTH                                              :Lengte
 STR_SORT_BY_LIFE_TIME                                           :Resterende levensverwachting
-STR_SORT_BY_FACILITY                                            :Station type
+STR_SORT_BY_FACILITY                                            :Stationstype
 STR_SORT_BY_WAITING                                             :Waarde van wachtende vracht
 STR_SORT_BY_RATING_MAX                                          :Hoogste vracht waardering
 STR_SORT_BY_RATING_MIN                                          :Laagste vracht waardering

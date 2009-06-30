@@ -16,6 +16,7 @@ STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Keluar p
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Terlalu hampir ke tepi peta
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Tidak cukup wang - memerlukan {CURRENCY}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_EMPTY                                                       :
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Memerlukan tanah rata
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Menunggu: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
@@ -23,6 +24,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Menerima: {WHITE}
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Menerima: {GOLD}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Bekalan-berkalan: {GOLD}
+STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Penumpang
 STR_CARGO_PLURAL_COAL                                           :Arang Batu
 STR_CARGO_PLURAL_MAIL                                           :Surat
@@ -54,6 +56,7 @@ STR_CARGO_PLURAL_TOFFEE                                         :Tofi
 STR_CARGO_PLURAL_BATTERIES                                      :Bateri
 STR_CARGO_PLURAL_PLASTIC                                        :Plastik
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Minuman Bergas
+STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Penumpang
 STR_CARGO_SINGULAR_COAL                                         :Arang batu
 STR_CARGO_SINGULAR_MAIL                                         :Surat
@@ -85,6 +88,7 @@ STR_CARGO_SINGULAR_TOFFEE                                       :Toffee
 STR_CARGO_SINGULAR_BATTERY                                      :Bateri
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastik
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Minuman Bergas
+STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} penumpang{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} arang batu
 STR_QUANTITY_MAIL                                               :{COMMA} bag{P "" s} surat
@@ -116,6 +120,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} tofi
 STR_QUANTITY_BATTERIES                                          :{COMMA} bateri
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastik
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} minuman bergas
+STR_ABBREV_NOTHING                                              :
 STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
 STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}MAP-{STRING}
@@ -521,6 +526,7 @@ STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT
 STR_BLUE_NUMBER                                                 :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Penyunting Senario
+STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Pembentukan Tanah
 STR_ARROW_UP                                                    :{BLACK}{UPARROW}
 STR_ARROW_DOWN                                                  :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Meningkatan penyebaran kawasan tanah untuk dinaikkan/diturunkan
@@ -528,6 +534,7 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Menurunk
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Hasilkan secara rawak
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Membentuk lanskap semula
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Membentuk lanskap semula
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Keluarkan semua harta pemain dari peta
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Pembentukan lanskap
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Pembentukan bandar
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Pembentukan industri
@@ -557,11 +564,13 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Letak ka
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Letak rumah api
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Letak alat pemancar
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Pilih kawasan gurun {}Tekan dan kekalkan CTRL untuk menanggalkannya
+STR_CREATE_RIVER                                                :{BLACK}Letak sungai.
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Buang
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Buang bandar ini sepenuhnya
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Simpan senario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Muat Senario
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Hentikan penyunting
+STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Berhenti
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Simpan senario, muat senario, Meninggal penyunting senario, Keluar
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Muat Senario
@@ -574,16 +583,28 @@ STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... peng
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Kecil
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Sederhana
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Besar
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Rambang
+STR_FOUND_TOWN_CITY                                             :{BLACK}Bandar
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Pilih saiz bandar
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Saiz bandar
 
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Susunan jalan raya bandar:
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Jalan raya lebih baik
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}Grid 2x2
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}Grid 3x3
 
+STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Tunjukkan utusan atau laporan berita terakhir
+STR_OFF                                                         :Padam
+STR_FULL                                                        :Penuh
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
+STR_BLACK_STRING                                                :{BLACK}{STRING}
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pilihan permainan
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Tetapan kesukaran
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Tetapan NewGRF
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Paparkan nama bandar
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Paparkan nama stesyen
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Paparkan tanda
@@ -594,6 +615,7 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Bangun
 
 ############ range for menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasi kawasan tanah
+STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Togolkan konsol
 STR_ABOUT_MENU_SCREENSHOT                                       :Tangkap gambar skrin (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tangkap gambar skrin besar (Ctrl-G)
@@ -715,6 +737,7 @@ STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{S
 
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Maklumat tambahan tentang set grafik asas ini
 
 
 STR_MONTH_JAN                                                   :Januari
@@ -1186,6 +1209,13 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Tetapkan kadar pertukaran mata wang anda untuk stau Paun (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Tetapkan pemisah mata wang anda
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Tetapkan permulaan untuk mata wang anda
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Tetapkan akhiran untuk mata wang anda
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Tukar ke Euro dahulu
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Tetapkan tahun untuk menukar ke Euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}Mata wang anda berbanding 10000 Pound (£)
 
 
 

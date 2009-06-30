@@ -802,7 +802,7 @@ STR_TOWNNAME_CZECH                                              :Tschechisch
 STR_TOWNNAME_SWISS                                              :Schweizerisch
 STR_TOWNNAME_DANISH                                             :Dänisch
 STR_TOWNNAME_TURKISH                                            :Türkisch
-STR_TOWNNAME_ITALIAN                                            :italienisch
+STR_TOWNNAME_ITALIAN                                            :Italienisch
 STR_TOWNNAME_CATALAN                                            :Katalanisch
 ############ end of townname region
 
@@ -1345,7 +1345,7 @@ STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (ankündigen)
-STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} Client{P "" s}
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} Teilnehmer
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max. Teilnehmeranzahl:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Auswahl der maximal erlaubten Anzahl von Teilnehmern. Nicht alle Slots müssen belegt werden.
 STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} Firm{P a en}
@@ -1405,8 +1405,8 @@ STR_NETWORK_GAME_LOBBY                                          :{WHITE}Mehrspie
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Spieleintritt vorbereiten: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Eine Liste aller Firmen, die sich im Spiel befinden. Man kann einer Firma beitreten oder eine eigene Firma gründen, sofern ein Platz frei ist.
-STR_NETWORK_NEW_COMPANY                                         :{BLACK}Neues Unternehmen
-STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Ein neues Unternehmen gründen
+STR_NETWORK_NEW_COMPANY                                         :{BLACK}Neue Firma
+STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Eine neue Firma gründen
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Beim Spiel zusehen
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Als Zuschauer dem Spiel zusehen
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Firma beitreten
@@ -1524,7 +1524,7 @@ STR_NETWORK_CLIENTLIST_NONE                                     :(keiner)
 STR_NETWORK_CLIENTLIST_KICK                                     :Hinauswerfen
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Geld schenken
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Mit allen sprechen
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Mit eigener Firma sprechen
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Mit Firma sprechen
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Private Nachricht
 
 
@@ -1537,7 +1537,7 @@ STR_NETWORK_SEND                                                :{BLACK}Abschick
 STR_PNGMAP_ERROR                                                :{WHITE}Landschaft kann nicht aus PNG-Datei geladen werden...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...Datei nicht gefunden.
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...Bildtyp kann nicht umgewandelt werden. 8- oder 24-bit-PNG-Datei erforderlich.
-STR_PNGMAP_ERR_MISC                                             :{WHITE}...irgend etwas ging schief. Sorry. (Vielleicht eine kaputte Datei?)
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...irgendetwas ging schief. Sorry. (Vielleicht eine kaputte Datei?)
 
 STR_BMPMAP_ERROR                                                :{WHITE}Landschaft kann nicht aus BMP-Datei geladen werden...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...Bildtyp kann nicht umgewandelt werden.
@@ -2173,7 +2173,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Gering
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_NUM                                                 :(Unternehmen {COMMA})
+STR_COMPANY_NUM                                                 :(Firma {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Neues Gesicht
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Farbschema
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Farbschema

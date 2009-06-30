@@ -852,6 +852,7 @@ STR_OPTIONS_BASE_GRF                                            :{BLACK}基本�
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}選擇使用的基礎圖片組
 STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} 檔案遺失／損毀
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}關於基礎圖形集的額外資訊
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}自動儲存失敗
 
@@ -954,6 +955,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}允許�
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}允許載入多個 NewGRF 車輛組：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}當此項目為交通工具時不能變更此設定。
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}機場永不過期: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}列車迷路時警告：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}檢查交通工具指令：{ORANGE}{STRING}
@@ -3147,7 +3149,12 @@ STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}改用�
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}預覽：{ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}變更自訂幣值參數
 STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}設定貨幣的分隔符
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}為你的貨幣指定前置字串
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}為你的貨幣指定後置字串
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}早點切換為歐元(Euro)
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}晚點切換為歐元(Euro)
 STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}設定兌換成歐元的年代
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}將10000 Pound (£)換算成你的幣值
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}

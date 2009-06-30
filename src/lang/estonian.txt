@@ -1370,14 +1370,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Kestnud
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Mitu aastat{}on mäng kestnud
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}MÄNGU ANDMED
-STR_NETWORK_CLIENTS                                             :{SILVER}Kliendid:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Keel:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Ruudustik:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Kaardi suurus:  {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Kliendid: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Keel: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Ruudustik: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Kaardi suurus: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Osa serveris:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serveri aadress:  {WHITE}{STRING}
-STR_NETWORK_START_DATE                                          :{SILVER}Aeg alguses:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Aeg hetkel:  {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serveri aadress: {WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}Aeg alguses: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Aeg hetkel: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Parooliga kaitstud!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER ON MAAS
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER ON TÄIS
@@ -1459,7 +1459,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Läti
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Võrgumängu jututuba
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Ühinemiseks valmistumine:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Liitumiseks valmistumine: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Nimekiri mängus oelvatest ettevõtetest. Saad liituda ühega või alustada uut, kui on vabu kohti
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Uus ettevõte
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Uue ettevõtte loomine
@@ -1472,16 +1472,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Serveri 
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}ETTEVÕTTE ANDMED
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Ettevõtte nimi:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Avamine:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Firmaväärtus:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Rahaline seis:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Eelmise aasta tulud:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Suutlikus:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Ettevõtte nimi: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Avamine: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Firmaväärtus: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Rahaline seis: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Eelmise aasta tulud: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Suutlikus: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Sõidukid:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Jaamad:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Mängijad:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Sõidukid: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Jaamad: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Mängijad: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Ühendumine...
 
@@ -1508,22 +1508,22 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klientid
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Jälgi
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Uus Ettevõte
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Võrgukaarti ei leitud või kompileeritud ilma võtmeta ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Ei leidnud ühtegi võrgumängu
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Server ei vastanud päringule
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Ühendus nurjus NewGRF-i kokkusobimatuse tõttu
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Võrgumäng läks sünkroonist välja
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Võrgumängu ühendus katkes
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Mängu laadimine nurjus
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Ei saa uut serverit alustada
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Ei õnneust ühendada
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} #{NUM}. ühendusel sai aeg otsa
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Tekkis protokolliviga ja ühendus katkes
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Võrgukaarti ei leitud või kompileeritud ilma võtmeta ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Ei leidnud ühtegi võrgumängu
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Server ei vastanud päringule
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Ühendus ebaõnnestus NewGRF-i sobimatuse tõttu
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Võrgumängu sünkroonimine ebaõnnestus
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Võrgumängu ühendus katkes
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Salvestatud mängu laadimine ebaõnnestus
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Ei saa uut serverit alustada
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Ei õnnestu ühendada
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}#{NUM}. ühendus aegus
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Tekkis protokolliviga ja ühendus katkes
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Kliendi osa ei vasta serveri osaga
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Vale parool
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Server on täis
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Vale parool
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Server on täis
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Sinu sisenemine siia serverisse on keelatud
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Sind visati mängust välja
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Sind visati mängust välja
 STR_NETWORK_ERR_CHEATER                                         :{WHITE}Selles serveris on petmine keelatud
 
 ############ Leave those lines in this order!!
@@ -1533,11 +1533,11 @@ STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :ei saa kaarti l
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :ühendus katkes
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokolli viga
 STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF-i kokkusobimatus
-STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :Keelatud
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :keelatud
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :kahtlane pakett vastu võetud
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :vale osa
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nimi on juba kasutusel
-STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :vale mängu parool
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :vale parool
 STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :vale ettevõtte id DoCommand-is
 STR_NETWORK_ERR_CLIENT_KICKED                                   :server viskas välja
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :üritas pettust kasutada
@@ -1590,7 +1590,7 @@ STR_NETWORK_SEND                                                :{BLACK}Saada
 
 ##### PNG-MAP-Loader
 
-STR_PNGMAP_ERROR                                                :{WHITE}Ei saa maapinda PNG failist laadida...
+STR_PNGMAP_ERROR                                                :{WHITE}Ei suuda laadida maastiku PNG failist...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...faili ei leitud.
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...ei suutnud pilditüüpi teisendada. Vaja läheb 8 või 24-bitist PNG pilti.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...midagi läks just valesti. Vabandust. (tõenäoliselt rikutud fail)

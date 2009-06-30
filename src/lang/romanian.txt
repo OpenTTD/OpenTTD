@@ -624,7 +624,7 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Plaseaz�
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Plasează far
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Plasează transmiţător
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Defineşte suprafaţa de deşert.{}Apasă şi menţine apăsat CTRL pentru a o şterge
-STR_CREATE_LAKE                                                 :{BLACK}Defineste zona apei.{}Creeaza un canal, mai putin cand CTRL este apasat la nivelul marii, cand va inunda, in loc, imprejurimile
+STR_CREATE_LAKE                                                 :{BLACK}Defineşte zona apei.{}Creează un canal, mai puţin când Ctrl este apăsat la nivelul mării, când va inunda, in loc, imprejurimile
 STR_CREATE_RIVER                                                :{BLACK}Amplasează râuri.
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Şterge
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Şterge acest oraş
@@ -963,6 +963,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permite
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Permite mai multe seturi NewGRF simultan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Schimbarea acestei setări nu este permisă cand există vehicule in joc.
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Aeroporturile nu expiră niciodată: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Avertizeaza daca trenul este pierdut: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Verificarea ordinelor vehiculelor: {ORANGE}{STRING}
@@ -1312,14 +1313,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Ani
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Numbarul de ani{}de cand ruleaza jocul
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO JOC
-STR_NETWORK_CLIENTS                                             :{SILVER}Clienţi:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Limba:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Marimea hartii:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versiune server:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa serverului:  {WHITE}{STRING}
-STR_NETWORK_START_DATE                                          :{SILVER}Data de inceput:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data curentă:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CLIENTS                                             :{SILVER}Clienţi: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Limba: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Tileset: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Marimea hartii: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versiune server: {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa serverului: {WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}Data de început: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data curentă: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Protejat cu parola!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER PLIN
@@ -1344,7 +1345,7 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (fă reclamă)
 STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} client{P "" i}
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Numar maxim de clienti
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Număr maxim de clienţi:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Alege un număr maxim de clienţi. Nu trebuie ocupate toate locurile.
 STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} compan{P ie ii}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maximum companii:
@@ -1401,7 +1402,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Letonă
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Chatul jocului multiplayer
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}In pregatire pentru joc:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}În pregătire pentru joc: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Lista companiilor din jocul curent. Poti colabora cu o companie sau sa infiintezi una
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Companie nouă
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Fondează o companie nouă
@@ -1414,16 +1415,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Actualiz
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFO COMPANIE
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Numele companiei:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inaugurarea:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Valoarea companiei:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balanţa curentă:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Venituri anul trecut:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Performanta:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Numele companiei: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inaugurarea: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Valoarea companiei: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balanţa curentă: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Venituri anul trecut: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Performanţa: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Vehicule:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Statii:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Jucatori:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Vehicule: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Staţii: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Jucători: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Conectare...
 
@@ -1450,23 +1451,23 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista de
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Observă
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Companie nouă
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Nu a fost detectată o placă sau jocul a fost compilat fără ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Nu a fost găsit nici un joc în reţea
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Nu am detectat o placă de reţea sau jocul a fost compilat fără ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Nu am găsit niciun joc în reţea
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Serverul nu a răspuns cererii
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Nu m-am putut conecta din cauza unei nepotriviri NewGRF
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Sincronizarea jocului în reţea a eşuat.
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Conexiunea jocului în reţea a fost întreruptă.
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nu am reuşit să încarc jocul-server salvat.
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Nu m-am putut conecta din cauza unei nepotriviri NewGRF
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Sincronizarea jocului în reţea a eşuat.
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Conexiunea jocului în reţea a fost întreruptă.
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Nu am reuşit să încarc jocul salvat.
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Nu pot porni serverul.
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Nu pot efectua conectarea.
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Conexiunea #{NUM} a expirat.
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Conexiunea #{NUM} a expirat.
 STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Eroare de protocol. Conexiunea a fost închisă.
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Versiunea acestui client este diferită de cea a serverului.
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Parola greşită.
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Serverul este plin
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Parolă greşită.
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Serverul este plin
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Acessul tău este interzis pe acest server
-STR_NETWORK_ERR_KICKED                                          :{WHITE}Ai fost dat afară de pe server
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Cheat-urile nu sunt permise pe acest server
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Ai fost dat afară din joc
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Cheat-urile nu sunt permise pe acest server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :eroare generală
@@ -1532,12 +1533,12 @@ STR_NETWORK_SEND                                                :{BLACK}Trimite
 
 ##### PNG-MAP-Loader
 
-STR_PNGMAP_ERROR                                                :{WHITE}Nu pot incarca peisajul din PNG...
+STR_PNGMAP_ERROR                                                :{WHITE}Nu pot încărca peisajul din PNG...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...fisierul lipseste.
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nu am reusit conversia tipului de imagine. Introdu un imagine PNG 8 sau 24-bit.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...ceva a mers gresit. Scuze. (probabil fisierul este defect)
 
-STR_BMPMAP_ERROR                                                :{WHITE}Nu pot incarca peisajul din BMP...
+STR_BMPMAP_ERROR                                                :{WHITE}Nu pot încărca peisajul din BMP...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nu am putut converti tipul de imagine.
 
 ##id 0x0800
@@ -1603,23 +1604,23 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Cale ferată cu
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Cale ferată cu pre-semafoare
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Cale ferată cu semafoare de ieşire
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Cale ferata cu semnale combinate
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Cale ferata cu semnalizare avansata
-STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Cale ferata cu semnalizare avansata in sens unic
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Cale ferată cu semnalizare avansată
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Cale ferată cu semnalizare avansată în sens unic
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Cale ferată cu semafoare normale şi pre-semafoare
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Cale ferată cu semafoare normale şi semafoare de ieşire
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Cale ferata cu semnale normale si combinate
-STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Cale ferata cu semnalizare normala si avansata
-STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Cale ferata cu semnalizare normala si avansata in sens unic
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Cale ferată cu semnale normale şi combinate
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Cale ferată cu semnalizare normală şi avansată
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Cale ferată cu semnalizare normală şi avansată în sens unic
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Cale ferată cu pre-semafoare şi semafoare de ieşire
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Cale ferata cu pre-semnalizate si cu semnale combinate
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Cale ferata cu pre-semnalizare si semnalizare avansata
-STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Cale ferata cu pre-semnalizare si semnalizare avansata in sens unic
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Cale ferată cu pre-semnalizare şi semnalizare avansată
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Cale ferată cu pre-semnalizare şi semnalizare avansată în sens unic
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Cale ferata cu post-semnalizate si cu semnale combinate
-STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Cale ferata cu post-semnalizare si semnalizare avansata
-STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Cale ferata cu post-semnalizare si semnalizare avansata in sens unic
-STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Cale cerata cu semnalizare combinata si avansata
-STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Cale ferata cu semnalizare combinata si avansata in sens unic
-STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Cale ferata cu semnalizare avansata si avansata in sens unic
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Cale ferată cu post-semnalizare şi semnalizare avansată
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Cale ferată cu post-semnalizare şi semnalizare avansată în sens unic
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Cale ferată cu semnalizare combinată şi avansată
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Cale ferată cu semnalizare combinată şi avansată în sens unic
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Cale ferată cu semnalizare avansată şi avansată în sens unic
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Trebuie mai intai sa demolati gara
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Construieşte o staţie separată
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Contopeşte (uneşte) staţia
@@ -1884,7 +1885,7 @@ STR_STATION_DESCRIPTION_BUOY                                    :Baliză
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...baliză în cale
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...staţie prea mare
 STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...staţiile neuniforme nu sunt permise
-STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Tine apãsat CTRL pentru a alege mai mult decât un obiect
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Ţine apăsat Ctrl pentru a alege mai mult decât un obiect
 
 STR_UNDEFINED                                                   :(sir nedefinit)
 STR_STAT_CLASS_DFLT                                             :Statie implicitã
@@ -2208,7 +2209,7 @@ STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graficul profitului din operare
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balanţă curentă
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Credite
-STR_MAX_LOAN                                                    :{WHITE}Limită credite:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Limită credit: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Împrumută {SKIP}{SKIP}{CURRENCY}
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Plăteşte înapoi {SKIP}{SKIP}{CURRENCY}
@@ -2338,7 +2339,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Arata sc
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Arata schemele de culori pentru avioane
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Alege culoarea primară pentru schema selectată
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Alege culoarea secundară pentru schema selectată
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Alege o schema de culori pentru modificare sau mai multe scheme, folosind CTRL+click. Apasa pe casuta pentru a comuta schema
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Alege o schemă de culori pentru modificare sau mai multe scheme, folosind Ctrl+clic. Apasă pe căsuţă pentru a comuta schema
 
 ##id 0x8000
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (Aburi)
@@ -2726,17 +2727,17 @@ STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Vehicule
 
 STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Cumpără vehicul
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clonare vehicul
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Acest buton va crea o copie a autovehiculului. Control+clic pentru comenzi sincronizate
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Acest buton va crea o copie a autovehiculului. Apasă acest buton, apoi fă clic pe un autovehicul din joc. Control+clic pentru a crea comenzi sincronizate
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Acest buton va crea o copie a autovehiculului. Ctrl+clic va împărţi comenzile
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Acest buton va crea o copie a autovehiculului. Apasă acest buton, apoi dă clic pe un autovehicul din interiorul sau afara depoului. Ctrl+clic va împărţi comenzile
 STR_CLONE_TRAIN                                                 :{BLACK}Clonare tren
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Acest buton va crea o copie a întregului tren. Control+clic pentru comenzi sincronizate
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Acest buton va crea o copie a întregului tren. Apasă acest buton, apoi fă clic pe un tren din joc. Control+clic pentru a crea comenzi sincronizate
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Acest buton va crea o copie a întregului tren. Ctrl+clic a împărţi comenzile
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Acest buton va crea o copie a trenului, cu tot cu vagoane. Apasă acest buton, apoi dă clic pe un tren din interiorul sau exteriorul depoului. Ctrl+clic va împărţi comenzile
 STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Nume nou
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Treci la următoarea
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Şterge
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Mergi la
 STR_REFIT                                                       :{BLACK}Rearanjeaza
-STR_REFIT_TIP                                                   :{BLACK}Alege tipul de marfa pentru rearanjare. Control+click pt a anula rearanjarea
+STR_REFIT_TIP                                                   :{BLACK}Alege tipul de marfă pentru rearanjarea în comandă. Ctrl+clic pentru a anula rearanjarea
 STR_REFIT_ORDER                                                 :(Rearanjeaza in {STRING})
 STR_REFIT_STOP_ORDER                                            :(Modifică pentru {STRING} şi opreşte)
 STR_STOP_ORDER                                                  :(Stop)
@@ -2857,7 +2858,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Momentan
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Acest orar va lua {STRING} pentru finalizare
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Acest orar va lua cel putin {STRING} pentru finalizare (nu in intregime programat)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-completare
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Completeaza tabla cu timpuri automat cu valorile pentru urmatoarea calatorie (CTRL-clci pentru a incerca sa pastrati timpurile de asteptare)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Completează automat tabela cu timpi cu valorile pentru urmatoarea călătorie (CTRL-clic pentru a încerca să păstraţi timpii de aşteptare)
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Autovehicul in cale
@@ -2929,8 +2930,8 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nave noi
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Construieşte navă
 STR_CLONE_SHIP                                                  :{BLACK}Clonare navă
-STR_CLONE_SHIP_INFO                                             :{BLACK}Acest buton va crea o copie a navei. Control+clic pentru comenzi sincronizate
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Acest buton va crea o copie a navei. Apasă acest buton, apoi fă clic pe o navă din joc. Control+clic pentru a crea comenzi sincronizate
+STR_CLONE_SHIP_INFO                                             :{BLACK}Acest buton va crea o copie a navei. Ctrl+clic va împărţi comenzile
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Acest buton va crea o copie a navei. Apasă acest buton, apoi dă clic pe o navă din interiorul sau exteriorul depoului. Ctrl+clic va împărţi comenzile
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Nava trebuie să fie staţionată într-un şantier
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Nu pot vinde nava...
 STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Nu pot construi nava...
@@ -2985,8 +2986,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Nu se po
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Aeronavă nouă
 STR_CLONE_AIRCRAFT                                              :{BLACK}Clonare aeronavă
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Acest buton va crea o copie a aeronavei. Control+clic pentru comenzi sincronizate
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Acest buton va crea o copie a aeronavei. Apasă acest buton, apoi fă clic pe o aeronavă din joc. Control+clic pentru a crea comenzi sincronizate
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Acest buton va crea o copie a aeronavei. Ctrl+clic va împărţi comenzile
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Acest buton va crea o copie a aeronavei. Apasă acest buton, apoi dă clic pe o aeronavă din interiorul sau exteriorul hangarului. Ctrl+clic va împărţi comenzile
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Aeronavă nouă
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Cumpără aeronavă
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Nu se poate cumpăra aeronava...
@@ -3084,7 +3085,7 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Punctaju
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Setari NewGRF
 STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Afişează setarile NewGRF
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Setari Newgrf
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Setări Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplică schimbările
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Comuta paleta
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Schimba paleta la NewGRF ul selectat .{} Efectueaza acest lucru cand graficele din acest NewGRF sunt roz in joc
@@ -3139,7 +3140,7 @@ STR_NEWGRF_ADD_FILE                                             :{BLACK}Adauga l
 STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Adauga fisierul NewGRF ales in configuratie
 STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Redetecteaza fisierele
 STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Actualizeaza lista de fisiere NewGRF disponibile
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nu pot adauga fisierul: ID GRF duplicat
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nu pot adăuga fişierul: ID GRF duplicat
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Nici un fisier potrivit
 STR_NEWGRF_DISABLED                                             :{RED}Dezactivat
@@ -3276,14 +3277,14 @@ STR_MAGLEV_VEHICLES                                             :Vehicule Pernă
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Greutate: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteza: {GOLD}{VELOCITY}{BLACK}   Putere: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteză: {GOLD}{VELOCITY}{BLACK} Putere: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Viteza: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cost de rulare: {GOLD}{CURRENCY}/an
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitate: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}An aparitie: {GOLD}{NUM}{BLACK} Durata de viata: {GOLD}{COMMA} years
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Eficienţă max.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Greutate: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Greutate: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Viteza: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitate: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoane electrificate: {GOLD}+{POWER}{BLACK} Greutate: {GOLD}+{WEIGHT_S}
@@ -3411,7 +3412,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Comută 
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Comuta transparenta pentru construibile, precum statii, depouri, indicatoare si linii electrificate. Ctrl-Click pentru blocare.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Comută transparenţa pentru poduri. Ctrl-Click pentru blocare.
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Comută transparenţa pentru structuri gen faruri şi antene. Ctrl-Click pentru blocare.
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Comuta transparenta pentru catenar. CTRL+clic pentru blocare.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Comută transparenţa pentru catenar. Ctrl+clic pentru blocare.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Comută transparenţa pentru indicatorii de încarcare. Ctrl-Click pentru blocare.
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Seteaza obiectele ca invizibile în loc de transparente
 
@@ -3450,7 +3451,7 @@ STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Nu pot e
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Nu pot adauga vehiculul in acest grup...
 STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Nu pot adauga vehicule partajate in grup...
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupuri - Da click pe un grup pentru lista completa a vehiculelor acestuia
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupuri - Dă clic pe un grup pentru lista completă a vehiculelor acestuia
 STR_GROUP_CREATE_TIP                                            :{BLACK}Da click pentru a creea un grup
 STR_GROUP_DELETE_TIP                                            :{BLACK}Şterge grupul selectat
 STR_GROUP_RENAME_TIP                                            :{BLACK}Redenumeste grupul selectat
@@ -3528,12 +3529,12 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Schimba 
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Alegere Semnal
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Nu se pot transforma semnalele...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Semnal standard (semafor){}Semnalele sunt necesare pentru prevenirea deraierii trenurilor pe retele de cai ferate cu mai mult decat un tren.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Semnal standard (semafor){}Acesta este cel mai simplu tip de semnal, permiţând numai unui tren să fie în acelaşi bloc, la un moment dat.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Semnal de intrare (semafor){}Verde, atat timp cat exista unul sau mai multe semnale verzi de iesire din sectiunea urmatoare a caii ferate. Altfel indica rosu.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Semnal de iesire (semafor){}Se comporta in acelasi fel ca semnalul normal but este necesar pentru declansarea culorii corecte la intrari si presemnalizatoare combinate.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Semnal de ieşire (semafor){}Se comportă în acelaşi fel ca semnalul normal, dar este necesar pentru declanşarea culorii corecte la presemnalizatoarele de intrari şi combinate.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Semnal combinat (semafor){}Semnalul combinat se comporta atat ca semnal de intrare si iesire. Acest lucru permite constructiile "arborilor" mari de presemnalizare.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Semnal (semafor){}Un semnal va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire pe linie. Semnalele pot fi parcurse îm ambele sensuri.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Semnal de sens unic (semafor){}Un semnal va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire pe linie. Semnalul de sens unic nu poate fi parcurs în sens opus.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Semnal de sens unic (semafor){}Un semnal de cale permite trecerea simultană a mai multor trenuri prin blocurile de semnale, dacă trenul poate rezerva o cale până la un punct sigur pentru oprire. Semnalele de sens unic nu pot fi parcurse în sens opus.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Semnal standard (electric){}Semnalele sunt necesare pentru prevenirea deraierii trenurilor pe retele de cai ferate cu mai mult decat un tren.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Semnal de intrare (electric){}Verde atat timp cat exista unul sau mai multe semnale de iesire in sectiunea urmatoare a caii ferate. Altfel indica rosu.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Semnal de iesire (electric){}Se comporta in acelasi fel ca semnalul normal, dar este necesar pentru declansarea culorii corecte la intrari si presemnalizatoare combinate.

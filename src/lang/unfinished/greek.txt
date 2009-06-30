@@ -321,6 +321,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Είσ�
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Εγκατάλειψη Παιχνιδιού
 STR_SORT_ORDER_TIP                                              :{BLACK}Επιλογή σειράς ταξινόμησης  (καθοδικά/ανοδικά)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Επιλογή κριτηρίου ταξινόμησης
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Επιλέξτε κριτήρια φιλτραρίσματος
 STR_SORT_BY                                                     :{BLACK}Ταξινόμηση κατά
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Πληθυσμός
@@ -343,6 +344,8 @@ STR_SORT_BY_LENGTH                                              :Μήκος
 STR_SORT_BY_LIFE_TIME                                           :Υπόλοιπη διάρκεια ζωής
 STR_SORT_BY_FACILITY                                            :Τύπος σταθμού
 STR_SORT_BY_WAITING                                             :Αξία φορτίου σε αναμονή
+STR_SORT_BY_RATING_MAX                                          :Υψηλότερη βαθμολογία φορτίου
+STR_SORT_BY_RATING_MIN                                          :Χαμηλότερη βαθμολογία φορτίου
 STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (κλασσική ταξινόμηση)
 STR_ENGINE_SORT_COST                                            :Κόστος
 STR_ENGINE_SORT_POWER                                           :Δύναμη
@@ -539,7 +542,7 @@ STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Κάντ
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Εναλλαγή τυχαίας αναπαραγωγής on/off στο πρόγραμμα
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Εμφάνιση παραθύρου επιλογής μουσικού κομματιού
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}Κάντε κλίκ στην υπηρεσία για κεντράρισμα στην βιομηχανία/πόλη
-STR_INTRO_DIFFICULTY                                            :{BLACK}{G=f}Δυσκολία ({STRING})
+STR_INTRO_DIFFICULTY                                            :{G=f}{BLACK}Δυσκολία ({STRING})
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Τελευταίο μήνυμα/αναφορά νέων
 STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Ρυθμίσεις μηνυμάτων
@@ -608,6 +611,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Αδύν
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...δεν υπάρχει αλλος χώρος στον χάρτη
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Αύξηση μεγέθους πόλεως
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Επέκταση
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Η πόλη δεν θα οικοδομεί δρόμους. Μπορείτε να ενεργοποιήσετε την κατασκευή οδών μέσω των Προχωρημένων Επιλογών->Οικονομία->Πόλεις.
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Τυχαία Πόλη
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Χτίσιμο πόλης σε τυχαία τοποθεσία
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Αδύνατο να χτιστεί {G ο η το} {STRING} εδώ...
@@ -637,7 +641,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Αποθ
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Παιξτε το Σενάριο
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Παίξτε Heightmap
 STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Εκκίνηση νέου παιχνιδιού, χρησιμοποιώντας heightmap για χάρτη
-STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Είστε σίγουροι οτι θέλετε ναφύγετε από το πίστα;
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Είστε σίγουροι οτι θέλετε να παρατήσετε το σενάριο;
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...μπορεί να χτιστεί μόνο σε πόλεις με πληθυσμό άνω των 1200
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο πίσω
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο μπροστά
@@ -852,6 +856,8 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Επιλ
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Βασικό σετ γραφικών
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} αρχείο που λείπε ή είναι κατεστραμμένο{P "" s}
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Επιπλέον πληροφορίες σχετικά με το βασικό σετ γραφικών
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Το αυτόματο σώσιμο απέτυχε
 
@@ -939,6 +945,7 @@ STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Βιο�
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Εμφάνιση ολόκληρης ημερομηνίες στη γραμμή κατάστασης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Εμφάνιση σήμανσης στην πλευρά οδήγησης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Εμφάνιση παράθυρου οικονομικών στο τέλος του έτους: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Οι νέες οδηγίες είναι 'non-stop' από προεπιλογή: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Ουρά οχημάτων (με κβαντικά εφφέ): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Μετακίνηση παραθύρου όταν είναι το ποντίκι στην άκρη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Επιτρέπεται η δωροδοκία της τοπικής αρχής: {ORANGE}{STRING}
@@ -951,6 +958,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Επι�
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Επιτρέπεται η χρήση πολλαπλών μηχανών από τα NewGRF: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Δεν είναι δυνατή η αλλαγή αυτής της ρύθμισης όταν υπάρχουν οχήματα.
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Τα αεροδρόμια δεν λήγουν ποτέ: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Προειδοποίηση αν χαθεί τρένο: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Επανεξέταση οδηγιών τρένων: {ORANGE}{STRING}
@@ -2171,6 +2179,9 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}όχημ
 
 
 
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Το όχημα αυτό τρέχει {STRING} αργά
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Το χρονοδιάγραμμα αυτό θα χρειαστεί τουλάχιστον {STRING} για να ολοκληρωθεί.
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Το χρονοδιάγραμμα αυτό θα χρειαστεί τουλάχιστον {STRING} για να ολοκληρωθεί (δεν είναι όλα τα χρονοδιαγράμματα)
 
 ##id 0x9000
 
@@ -2213,6 +2224,16 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Τρέν
 
 
 
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Μείωση του ποσού της ισοτιμίας σας για μία λίρα (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Αύξηση του ποσού της ισοτιμίας σας για μία λίρα (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Ρυθμίστε τη συναλλαγματική ισοτιμία του νομίσματος για μια λίρα (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Ορίστε το διαχωριστικό για το νόμισμά σας
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Ορίστε το πρόθεμα για το νόμισμά σας
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Ορίστε το επίθεμα για το νόμισμά σας
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Να γίνει η μετάβαση σε Ευρώ νωρίτερα
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Να γίνει η μετάβαση σε Ευρώ αργότερα
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Θέστε το χρόνο που γίνεται η μετάβαση σε Ευρώ
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Λίρες (£) στο νόμισμά σας
 
 
 
@@ -2284,6 +2305,7 @@ STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Κατα
 ########
 
 ############ AI GUI
+STR_AI_URL                                                      :{BLACK}Ιστιοσελίδα: {STRING}
 ########
 
 ############ town controlled noise level
