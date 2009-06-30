@@ -553,10 +553,13 @@ int ttd_main(int argc, char *argv[])
 	if (startyear != INVALID_YEAR) _settings_newgame.game_creation.starting_year = startyear;
 	if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
 
-	/* The width and height must be at least 1 pixel, this
-	 * way all internal drawing routines work correctly. */
-	if (_cur_resolution.width  == 0) _cur_resolution.width  = 1;
-	if (_cur_resolution.height == 0) _cur_resolution.height = 1;
+	/*
+	 * The width and height must be at least 1 pixel and width times
+	 * height must still fit within a 32 bits integer, this way all
+	 * internal drawing routines work correctly.
+	 */
+	_cur_resolution.width  = ClampU(_cur_resolution.width,  1, UINT16_MAX);
+	_cur_resolution.height = ClampU(_cur_resolution.height, 1, UINT16_MAX);
 
 #if defined(ENABLE_NETWORK)
 	if (dedicated_host) {
