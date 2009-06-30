@@ -1,12 +1,12 @@
 ##name English (UK)
 ##ownname English (UK)
 ##isocode en_GB
-##winlangid 0x0809
-##grflangid 0x01
 ##plural 0
 ##textdir ltr
 ##digitsep ,
 ##digitsepcur ,
+##winlangid 0x0809
+##grflangid 0x01
 
 #
 

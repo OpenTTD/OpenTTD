@@ -1,12 +1,12 @@
 ##name Spanish
 ##ownname Español (ES)
 ##isocode es_ES
-##winlangid 0x0c0a
-##grflangid 0x04
 ##plural 0
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x0c0a
+##grflangid 0x04
 ##gender masculino femenino
 
 #
@@ -964,6 +964,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permiti
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Activar motor  de multiples NewGRF: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Este cambio no es posible cuando tiene vehículos
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Aeropuertos nunca caducan: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Avisar si el tren se pierde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Revisar ordenes de los vehículos: {ORANGE}{STRING}

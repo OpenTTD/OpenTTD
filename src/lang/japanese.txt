@@ -1,12 +1,12 @@
 ##name Japanese
 ##ownname 日本語
 ##isocode ja_JP
-##winlangid 0x0411
-##grflangid 0x39
 ##plural 1
 ##textdir ltr
 ##digitsep ,
 ##digitsepcur ,
+##winlangid 0x0411
+##grflangid 0x39
 
 #
 
@@ -655,6 +655,7 @@ STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}この�
 STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}オリジナル
 STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}改善した道路
 STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2の格子
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 格子
 STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}ランダム
 
 STR_NEWS_MESSAGE                                                :{STRING} - {STRING}
@@ -847,8 +848,10 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}スク�
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}スクリーンショットのファイルフォーマットを選択します
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}ベースGRFセット
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}使用するGRFの選択
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}ベースGRFセットについての追加情報
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}自動保存に失敗しました
 
@@ -885,6 +888,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}指令�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}指令リストをコピーできません...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 共有指令の終了- -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} は目的地への経路を見つけられません。
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} が迷っています。
 STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}昨年 {VEHICLE} の利益は {CURRENCY}。
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}欧州通貨統合！{}{}我が国はここからユーロを通貨として使用！
@@ -2722,7 +2726,9 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}この�
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}この指令を移動できません...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}実行中の指令はスキップできません...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}選択した指令へスキップできません...
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}乗り物は全ての駅に行くことが出来ません
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}その駅に行けません
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}命令を共有使用とする乗り物はその駅に行くことが出来ません。
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}この車輌を移動できません...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}ダブルヘッドの場合、後部の機関車は常に前部の機関車について行きます
 STR_CARGO_N_A                                                   :N/A{SKIP}

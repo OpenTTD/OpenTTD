@@ -1,12 +1,12 @@
 ##name Portuguese
 ##ownname Português
 ##isocode pt_PT
-##winlangid 0x0816
-##grflangid 0x36
 ##plural 0
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x0816
+##grflangid 0x36
 
 #
 
@@ -320,6 +320,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Tem a c
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandonar jogo
 STR_SORT_ORDER_TIP                                              :{BLACK}Seleccione forma de ordenação (descendente/ascendente)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Seleccione critério de ordenação
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Seleccione o critério de filtragem/procura
 STR_SORT_BY                                                     :{BLACK}Ordenar por
 
 STR_SORT_BY_POPULATION                                          :{BLACK}População
@@ -342,6 +343,8 @@ STR_SORT_BY_LENGTH                                              :Comprimento
 STR_SORT_BY_LIFE_TIME                                           :Restante tempo de vida
 STR_SORT_BY_FACILITY                                            :Tipo de Estação
 STR_SORT_BY_WAITING                                             :Valor da carga em espera
+STR_SORT_BY_RATING_MAX                                          :Maior carga
+STR_SORT_BY_RATING_MIN                                          :Menor carga
 STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (ordernação clássica)
 STR_ENGINE_SORT_COST                                            :Custo
 STR_ENGINE_SORT_POWER                                           :Potência
@@ -940,6 +943,9 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Mostrar
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Mostrar sinais no lado da circulação: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Mostrar janela das finanças no fim do ano: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}New orders are 'non-stop' by default: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :perto do fim
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :no meio
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :longe do fim
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Fila de veículos de estrada (com efeitos de quantidade): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Deslocar janela quando o rato está na borda do mapa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permitir o suborno da autoridade local: {ORANGE}{STRING}
@@ -2608,6 +2614,9 @@ STR_ORDER_GO_TO                                                 :Ir para
 STR_ORDER_GO_NON_STOP_TO                                        :Ir, sem paragens, para
 STR_ORDER_GO_VIA                                                :Ir via
 STR_ORDER_GO_NON_STOP_VIA                                       :Ir, sem paragens, via
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[perto do fim]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[no meio]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[longe do fim]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Carga completa de qualquer mercadoria
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carregar se disponível
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Carga completa de todas as mercadorias

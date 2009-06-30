@@ -1,12 +1,12 @@
 ##name Serbian
 ##ownname Srpski
 ##isocode srp
-##winlangid 0x7c1a
-##grflangid 0x0d
 ##plural 6
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x7c1a
+##grflangid 0x0d
 ##case nom big gen dat aku vok lok ins
 ##gender muški ženski srednji
 
@@ -1650,6 +1650,7 @@ STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nemoguć
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Nemoguće je ukloniti signalizaciju odatle...
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orijentacija železničkog depoa
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Izgradnja železničke pruge
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Izgradnja elektrifikovane železničke pruge
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Izgradnja jednošinske pruge (Monorail)
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Izgradnja magnetne pruge (MagLev)
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Izgradnja železničke pruge
@@ -1664,11 +1665,36 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Izbor or
 STR_RAILROAD_TRACK                                              :Železnička pruga
 STR_RAILROAD_TRAIN_DEPOT                                        :Železnički depo
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...zemljište je u vlasništvu druge kompanije
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Pruga sa blok signalizacijom
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Pruga sa predsignalizacijom
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Pruga sa izlaznom signalizacijom
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Pruga sa ulzno-izlaznom signalizacijom
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Pruga sa putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Pruga sa jednosmernom putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Pruga sa predsignalizacijom i blok signalizacijom
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Pruga sa blok i izlaznom signalizacijom
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Pruga sa blok i ulazno-izlaznom signalizacijom
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Pruga sa blok i putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Pruga sa blok i jednosmernom putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Pruga sa predsignalizacijom i izlaznom signalizacijom
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Pruga sa predsignalizacijom i ulazno-izlaznom signalizacijom
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Pruga sa predsignalizacijom i putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Pruga sa predsignalizacijom i jednosmernom putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Pruga sa izlaznom i ulazno-izlaznom signalizacijom
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Pruga sa izlaznom i putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Pruga sa izlaznom i jednosmernom putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Pruga sa ulazno-izlaznom i putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Pruga sa ulazno-izlaznom i jednosmernom putnom signalizacijom
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Pruga sa putnom i jednosmernom putnom signalizacijom
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Mora se prvo ukloniti železnička stanica
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Izgradi zasebnu stanicu
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Pridruži stanicu
 
 
 
 ##id 0x1800
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Neophodno je prvo ukloniti put
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Putni radovi u toku
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Izgradnja puta
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tramvaj Konstrukcija
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Izbor drumskog mosta
@@ -2492,11 +2518,96 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Vagon za Igrač
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Vagon za Baterije
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Vagon za Bezalkoholna Pića
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Vagon za Plastiku
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Poruka od proizvođača vozila
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Upravo smo završili projektovanje novog vozila {STRING} - da li ste zainteresovani za jednogodišnja eksluzivna prava upotrebe ovog vozila, kako bi smo proverili radne osobine pre puštanja u masovnu proizvodnju?
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :železničko vučno vozilo
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :drumsko vozilo
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :letilica
+STR_ENGINE_PREVIEW_SHIP                                         :brod
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :jednopružno žel. vučno vozilo
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :megnetno žel. vučno vozilo
 
 ##id 0x8800
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Železnički Depo
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi voz stiže na stanicu {STATION}!
+STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Opširnije)
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Voz se tu upravo nalazi
+STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Direktno
+STR_ORDER_GO_TO                                                 :Idi do
+STR_ORDER_GO_NON_STOP_TO                                        :Idi direktno do
+STR_ORDER_GO_VIA                                                :Idi preko
+STR_ORDER_GO_NON_STOP_VIA                                       :Idi direktno preko
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[pri početku]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[na sredini]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[pri kraju]
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pun utovar bilo kog
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Utovar ako ima
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Pun utovar svega
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pun utovar bilo kog
+STR_ORDER_DROP_NO_LOADING                                       :Bez utovara
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Iztovar svega
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Iztovar ako prihvata
+STR_ORDER_DROP_UNLOAD                                           :Iztovar svega
+STR_ORDER_DROP_TRANSFER                                         :Prevoz
+STR_ORDER_DROP_NO_UNLOADING                                     :Bez iztovara
+STR_ORDER_FULL_LOAD                                             :(Pun utovar)
+STR_ORDER_FULL_LOAD_ANY                                         :(Pun utovar bilo kog)
+STR_ORDER_NO_LOAD                                               :(Bez utovara)
+STR_ORDER_UNLOAD                                                :(Iztovar i utovar)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Iztovar i pun utovar svega)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Iztovar i pun utovar bilo kog)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Iztovar bez utovara)
+STR_ORDER_TRANSFER                                              :(Prevoz i utovar)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Prevoz i pun utovar svega)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Prevoz i pun utovar bilo kog)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Prevoz bez utovara)
+STR_ORDER_NO_UNLOAD                                             :(Bez iztovara i utovar)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Bez iztovara i pun utovar svega)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Bez iztovara i pun utovar bilo kog)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Promena načina zaustavljnja u označenoj naredbi
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Promena načina utovara u označenoj naredbi
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Promena načina iztovara u označenoj naredbi
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Dodavanje složene naredbe
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idi do najbližeg depoa
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Idi do najbližeg hangara
+STR_ORDER_NEAREST_DEPOT                                         :najbliži
+STR_ORDER_NEAREST_HANGAR                                        :najbliži Hangar
+STR_ORDER_SERVICE_AT                                            :Servisiranje u
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Diektno na servisiranje u
+STR_ORDER_TRAIN_DEPOT                                           :Železnički Depo
+STR_ORDER_ROAD_DEPOT                                            :Drumski Depo
+STR_ORDER_SHIP_DEPOT                                            :Brodogradilište
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Uvek
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Servis po potrebi
+STR_ORDER_DROP_HALT_DEPOT                                       :Zaustavljanje
 
+STR_ORDER_CONDITIONAL                                           :Uslovna naredba skoka
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Skok na osnovu podatka o vozilu
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kako se upoređuje podatak o vozilu sa unetom vrednošću
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Vrednost za poređenje sa podatkom o vozilu
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Unos vrednosti za poređenje
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procenat natovarenog
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Pouzdanost
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Najveća brzina
+STR_ORDER_CONDITIONAL_AGE                                       :Starost vozila (godine)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Servis
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Uvek
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :jednako
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :različito od
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :manje od
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :manje ili jednako
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :veće od
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :veće ili jednako
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :potreban
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :nepotreban
 STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 STR_CONDITIONAL_UNCONDITIONAL                                   :Pređi na naredbu {COMMA}
 STR_CONDITIONAL_NUM                                             :Pređi na naredbu {COMMA} kada je {STRING} {STRING} {COMMA}

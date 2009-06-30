@@ -1,12 +1,12 @@
 ##name Norwegian (Bokmal)
 ##ownname Norsk (bokmål)
 ##isocode nb_NO
-##winlangid 0x0414
-##grflangid 0x2f
 ##plural 0
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x0414
+##grflangid 0x2f
 
 #
 
@@ -320,6 +320,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du s
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Avslutt spill
 STR_SORT_ORDER_TIP                                              :{BLACK}Velg sorteringsrekkefølge (synkende/stigende)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Velg sorteringskriterier
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Velg filtreringskriterier
 STR_SORT_BY                                                     :{BLACK}Sorter etter
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Innbyggertall
@@ -342,6 +343,8 @@ STR_SORT_BY_LENGTH                                              :Lengde
 STR_SORT_BY_LIFE_TIME                                           :Tilovers livs tid
 STR_SORT_BY_FACILITY                                            :Stasjonstype
 STR_SORT_BY_WAITING                                             :Verdi av ventende last
+STR_SORT_BY_RATING_MAX                                          :Høyeste godskvalitet
+STR_SORT_BY_RATING_MIN                                          :Laveste godskvalitet
 STR_ENGINE_SORT_ENGINE_ID                                       :MaskinID (klassisk type)
 STR_ENGINE_SORT_COST                                            :Kostnad
 STR_ENGINE_SORT_POWER                                           :Kraft
@@ -737,6 +740,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Hver 12. måned
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start nytt spill
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Last inn et lagret spill
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Spesiallag en spillverden eller et scenario
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Start et flerspiller-spill
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Vis spillinnstillinger
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Vis vanskelighetsgrad
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Start et nytt spill som bruker et scenario
@@ -1044,6 +1048,7 @@ STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Hindre 
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Hindre datamaskinen i å bygge fly: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Hindre datamaskinen i å bygge skip: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillat AIer i flerspiller: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikeholdsintervaller i prosent: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard vedlikeholdsintervall for tog: {ORANGE}{STRING} dager
@@ -1674,6 +1679,8 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Sentrer 
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Bytt navn på byen
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passasjerer forrige måned: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post forrige måned: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Godsbehov for byekspansjon:
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} levert sist måned
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Høyhus
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Kontorblokk
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Leilighetsblokk
@@ -2774,6 +2781,7 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Fjern va
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nullstill senhetstelleren slik at kjøretøyet ankommer i tide
 STR_SERVICE_HINT                                                :{BLACK}Hopp over ordren med mindre vedlikehold trengs.
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koster: {CURRENCY} Vekt: {WEIGHT_S}{}Fart: {VELOCITY}  Kraft: {POWER}{}Driftkostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Kostnad: {CURRENCY} Max. Hastighet: {VELOCITY}{}Kapasitet: {CARGO}, {CARGO}{}Løpende kostnader: {CURRENCY}/yr
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoppet
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikke tvinge tog til å kjøre på rødt lys ved fare...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Krasjet
