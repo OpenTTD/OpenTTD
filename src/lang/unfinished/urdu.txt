@@ -1,13 +1,13 @@
 ##name Urdu
 ##ownname Urdu
 ##isocode ur_PK
-##winlangid 0x0420
-##grflangid 0x5c
 ##plural 0
 ##textdir rtl
-##gender m f
 ##digitsep ٬
 ##digitsepcur ٬
+##winlangid 0x0420
+##grflangid 0x5c
+##gender m f
 
 #
 

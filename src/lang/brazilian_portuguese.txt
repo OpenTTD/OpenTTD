@@ -1,13 +1,14 @@
 ##name Portuguese (Brazilian)
 ##ownname Português (BR)
 ##isocode pt_BR
-##winlangid 0x0416
-##grflangid 0x37
 ##plural 2
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x0416
+##grflangid 0x37
 ##gender m f
+##case m f
 
 #
 

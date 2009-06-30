@@ -1,14 +1,14 @@
 ##name Czech
 ##ownname Čeština
 ##isocode cs_CZ
-##winlangid 0x0405
-##grflangid 0x15
 ##plural 10
 ##textdir ltr
 ##digitsep {NBSP}
 ##digitsepcur {NBSP}
-##case nom gen dat acc voc loc ins big small
+##winlangid 0x0405
+##grflangid 0x15
 ##gender m f n
+##case nom gen dat acc voc loc ins big small
 
 #
 
@@ -28,102 +28,102 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Přijím
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Poskytuje: {GOLD}
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :cestující
-STR_CARGO_PLURAL_PASSENGERS.big                                 :Cestující
 STR_CARGO_PLURAL_PASSENGERS.gen                                 :cestujících
+STR_CARGO_PLURAL_PASSENGERS.big                                 :Cestující
 STR_CARGO_PLURAL_COAL                                           :uhlí
 STR_CARGO_PLURAL_COAL.big                                       :Uhlí
 STR_CARGO_PLURAL_MAIL                                           :pošta
+STR_CARGO_PLURAL_MAIL.gen                                       :pošty
 STR_CARGO_PLURAL_MAIL.acc                                       :poštu
 STR_CARGO_PLURAL_MAIL.big                                       :Pošta
-STR_CARGO_PLURAL_MAIL.gen                                       :pošty
 STR_CARGO_PLURAL_OIL                                            :ropa
+STR_CARGO_PLURAL_OIL.gen                                        :ropy
 STR_CARGO_PLURAL_OIL.acc                                        :ropu
 STR_CARGO_PLURAL_OIL.big                                        :Ropa
-STR_CARGO_PLURAL_OIL.gen                                        :ropy
 STR_CARGO_PLURAL_LIVESTOCK                                      :dobytek
-STR_CARGO_PLURAL_LIVESTOCK.big                                  :Dobytek
 STR_CARGO_PLURAL_LIVESTOCK.gen                                  :dobytka
+STR_CARGO_PLURAL_LIVESTOCK.big                                  :Dobytek
 STR_CARGO_PLURAL_GOODS                                          :zboží
 STR_CARGO_PLURAL_GOODS.big                                      :Zboží
 STR_CARGO_PLURAL_GRAIN                                          :zrní
 STR_CARGO_PLURAL_GRAIN.big                                      :Zrní
 STR_CARGO_PLURAL_WOOD                                           :dřevo
-STR_CARGO_PLURAL_WOOD.big                                       :Dřevo
 STR_CARGO_PLURAL_WOOD.gen                                       :dřeva
+STR_CARGO_PLURAL_WOOD.big                                       :Dřevo
 STR_CARGO_PLURAL_IRON_ORE                                       :železná ruda
+STR_CARGO_PLURAL_IRON_ORE.gen                                   :železné rudy
 STR_CARGO_PLURAL_IRON_ORE.acc                                   :železnou rudu
 STR_CARGO_PLURAL_IRON_ORE.big                                   :Železná ruda
-STR_CARGO_PLURAL_IRON_ORE.gen                                   :železné rudy
 STR_CARGO_PLURAL_STEEL                                          :ocel
-STR_CARGO_PLURAL_STEEL.big                                      :Ocel
 STR_CARGO_PLURAL_STEEL.gen                                      :oceli
+STR_CARGO_PLURAL_STEEL.big                                      :Ocel
 STR_CARGO_PLURAL_VALUABLES                                      :ceniny
-STR_CARGO_PLURAL_VALUABLES.big                                  :Ceniny
 STR_CARGO_PLURAL_VALUABLES.gen                                  :cenin
+STR_CARGO_PLURAL_VALUABLES.big                                  :Ceniny
 STR_CARGO_PLURAL_COPPER_ORE                                     :měděná ruda
+STR_CARGO_PLURAL_COPPER_ORE.gen                                 :měděné rudy
 STR_CARGO_PLURAL_COPPER_ORE.acc                                 :měděnou rudu
 STR_CARGO_PLURAL_COPPER_ORE.big                                 :Měděná ruda
-STR_CARGO_PLURAL_COPPER_ORE.gen                                 :měděné rudy
 STR_CARGO_PLURAL_MAIZE                                          :kukuřice
 STR_CARGO_PLURAL_MAIZE.acc                                      :kukuřici
 STR_CARGO_PLURAL_MAIZE.big                                      :Kukuřice
 STR_CARGO_PLURAL_FRUIT                                          :ovoce
 STR_CARGO_PLURAL_FRUIT.big                                      :Ovoce
 STR_CARGO_PLURAL_DIAMONDS                                       :diamanty
-STR_CARGO_PLURAL_DIAMONDS.big                                   :Diamanty
 STR_CARGO_PLURAL_DIAMONDS.gen                                   :diamantů
+STR_CARGO_PLURAL_DIAMONDS.big                                   :Diamanty
 STR_CARGO_PLURAL_FOOD                                           :jídlo
-STR_CARGO_PLURAL_FOOD.big                                       :Jídlo
 STR_CARGO_PLURAL_FOOD.gen                                       :jídlo
+STR_CARGO_PLURAL_FOOD.big                                       :Jídlo
 STR_CARGO_PLURAL_PAPER                                          :papír
-STR_CARGO_PLURAL_PAPER.big                                      :Papír
 STR_CARGO_PLURAL_PAPER.gen                                      :papíru
+STR_CARGO_PLURAL_PAPER.big                                      :Papír
 STR_CARGO_PLURAL_GOLD                                           :zlato
-STR_CARGO_PLURAL_GOLD.big                                       :Zlato
 STR_CARGO_PLURAL_GOLD.gen                                       :zlata
+STR_CARGO_PLURAL_GOLD.big                                       :Zlato
 STR_CARGO_PLURAL_WATER                                          :voda
+STR_CARGO_PLURAL_WATER.gen                                      :vody
 STR_CARGO_PLURAL_WATER.acc                                      :vodu
 STR_CARGO_PLURAL_WATER.big                                      :Voda
-STR_CARGO_PLURAL_WATER.gen                                      :vody
 STR_CARGO_PLURAL_WHEAT                                          :pšenice
 STR_CARGO_PLURAL_WHEAT.acc                                      :pšenici
 STR_CARGO_PLURAL_WHEAT.big                                      :Pšenice
 STR_CARGO_PLURAL_RUBBER                                         :kaučuk
-STR_CARGO_PLURAL_RUBBER.big                                     :Kaučuk
 STR_CARGO_PLURAL_RUBBER.gen                                     :kaučuku
+STR_CARGO_PLURAL_RUBBER.big                                     :Kaučuk
 STR_CARGO_PLURAL_SUGAR                                          :cukr
-STR_CARGO_PLURAL_SUGAR.big                                      :Cukr
 STR_CARGO_PLURAL_SUGAR.gen                                      :cukru
+STR_CARGO_PLURAL_SUGAR.big                                      :Cukr
 STR_CARGO_PLURAL_TOYS                                           :hračky
-STR_CARGO_PLURAL_TOYS.big                                       :Hračky
 STR_CARGO_PLURAL_TOYS.gen                                       :hraček
+STR_CARGO_PLURAL_TOYS.big                                       :Hračky
 STR_CARGO_PLURAL_CANDY                                          :bonbony
-STR_CARGO_PLURAL_CANDY.big                                      :Bonbony
 STR_CARGO_PLURAL_CANDY.gen                                      :bonbonů
+STR_CARGO_PLURAL_CANDY.big                                      :Bonbony
 STR_CARGO_PLURAL_COLA                                           :kola
+STR_CARGO_PLURAL_COLA.gen                                       :koly
 STR_CARGO_PLURAL_COLA.acc                                       :kolu
 STR_CARGO_PLURAL_COLA.big                                       :Kola
-STR_CARGO_PLURAL_COLA.gen                                       :koly
 STR_CARGO_PLURAL_COTTON_CANDY                                   :cukrová vata
+STR_CARGO_PLURAL_COTTON_CANDY.gen                               :cukrové vaty
 STR_CARGO_PLURAL_COTTON_CANDY.acc                               :cukrovou vatu
 STR_CARGO_PLURAL_COTTON_CANDY.big                               :Cukrová vata
-STR_CARGO_PLURAL_COTTON_CANDY.gen                               :cukrové vaty
 STR_CARGO_PLURAL_BUBBLES                                        :bubliny
-STR_CARGO_PLURAL_BUBBLES.big                                    :Bubliny
 STR_CARGO_PLURAL_BUBBLES.gen                                    :bublin
+STR_CARGO_PLURAL_BUBBLES.big                                    :Bubliny
 STR_CARGO_PLURAL_TOFFEE                                         :karamel
-STR_CARGO_PLURAL_TOFFEE.big                                     :Karamel
 STR_CARGO_PLURAL_TOFFEE.gen                                     :karamelu
+STR_CARGO_PLURAL_TOFFEE.big                                     :Karamel
 STR_CARGO_PLURAL_BATTERIES                                      :baterie
-STR_CARGO_PLURAL_BATTERIES.big                                  :Baterie
 STR_CARGO_PLURAL_BATTERIES.gen                                  :baterií
+STR_CARGO_PLURAL_BATTERIES.big                                  :Baterie
 STR_CARGO_PLURAL_PLASTIC                                        :plast
-STR_CARGO_PLURAL_PLASTIC.big                                    :Plast
 STR_CARGO_PLURAL_PLASTIC.gen                                    :plastu
+STR_CARGO_PLURAL_PLASTIC.big                                    :Plast
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :limonáda
+STR_CARGO_PLURAL_FIZZY_DRINKS.gen                               :limonád
 STR_CARGO_PLURAL_FIZZY_DRINKS.acc                               :limonádu
 STR_CARGO_PLURAL_FIZZY_DRINKS.big                               :Limonáda
-STR_CARGO_PLURAL_FIZZY_DRINKS.gen                               :limonád
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :cestujících
 STR_CARGO_SINGULAR_COAL                                         :uhlí
@@ -2669,17 +2669,17 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Vrtulník Power
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Zpráva od výrobce dopravních prostředků
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Právě jsme vyvinuli nov{G ou ý é} {STRING.acc}. Měl byste zájem o roční výhradní právo na používání tohoto prostředku, aby byl otestován před uvedením na trh?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}lokomotiva
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.acc                      :{G=f}lokomotivu
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.dat                      :
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.acc                      :{G=f}lokomotivu
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}silniční vozidlo
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}letadlo
 STR_ENGINE_PREVIEW_SHIP                                         :{G=f}loď
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}lokomotiva pro monorail
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.acc                      :{G=f}lokomotivu pro monorail
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.dat                      :
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.acc                      :{G=f}lokomotivu pro monorail
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}lokomotiva Maglev
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.acc                        :{G=f}lokomotivu Maglev
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.dat                        :
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.acc                        :{G=f}lokomotivu Maglev
 
 ##id 0x8800
 STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Železniční depo {TOWN}

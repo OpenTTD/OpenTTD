@@ -1,13 +1,13 @@
 ##name Hebrew
 ##ownname עברית
 ##isocode he_IL
-##winlangid 0x040d
-##grflangid 0x61
 ##plural 2
 ##textdir rtl
-##gender m f
 ##digitsep ,
 ##digitsepcur ,
+##winlangid 0x040d
+##grflangid 0x61
+##gender m f
 
 #
 

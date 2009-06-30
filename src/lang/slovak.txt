@@ -1,14 +1,14 @@
 ##name Slovak
 ##ownname Slovensky
 ##isocode sk_SK
-##winlangid 0x041b
-##grflangid 0x16
 ##plural 6
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
-##case g
+##winlangid 0x041b
+##grflangid 0x16
 ##gender m z s
+##case g
 
 #
 

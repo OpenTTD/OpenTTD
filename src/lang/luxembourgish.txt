@@ -1,12 +1,12 @@
 ##name Luxembourgish
 ##ownname Lëtzebuergesch
 ##isocode lb_LU
-##winlangid 0x046e
-##grflangid 0x23
 ##plural 0
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x046e
+##grflangid 0x23
 
 #
 

@@ -1,13 +1,13 @@
 ##name Norwegian (Nynorsk)
 ##ownname Norsk, Nynorsk
 ##isocode nn_NO
-##winlangid 0x0814
-##grflangid 0x0e
 ##plural 0
 ##textdir ltr
-##gender masculine feminine neuter
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x0814
+##grflangid 0x0e
+##gender masculine feminine neuter
 
 #
 

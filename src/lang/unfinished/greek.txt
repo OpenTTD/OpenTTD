@@ -1,13 +1,13 @@
 ##name Greek
 ##ownname Ελληνικά
 ##isocode el_GR
-##winlangid 0x0408
-##grflangid 0x1e
 ##plural 0
 ##textdir ltr
-##gender m f n
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x0408
+##grflangid 0x1e
+##gender m f n
 
 #
 

@@ -1,14 +1,14 @@
 ##name Croatian
 ##ownname Hrvatski
 ##isocode hr_HR
-##winlangid 0x041a
-##grflangid 0x38
 ##plural 6
 ##textdir ltr
-##case nom gen dat aku vok lok ins
-##gender male female middle
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x041a
+##grflangid 0x38
+##gender male female middle
+##case nom gen dat aku vok lok ins
 
 #
 
@@ -91,8 +91,8 @@ STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gazirana pića
 STR_CARGO_PLURAL_FIZZY_DRINKS.gen                               :gaziranih pića
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Putnik
-STR_CARGO_SINGULAR_PASSENGER.aku                                :putnika
 STR_CARGO_SINGULAR_PASSENGER.gen                                :putnika
+STR_CARGO_SINGULAR_PASSENGER.aku                                :putnika
 STR_CARGO_SINGULAR_COAL                                         :Ugljen
 STR_CARGO_SINGULAR_COAL.gen                                     :ugljena
 STR_CARGO_SINGULAR_MAIL                                         :Pošta

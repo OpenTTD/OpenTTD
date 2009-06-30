@@ -1,14 +1,14 @@
 ##name Italian
 ##ownname Italiano
 ##isocode it_IT
-##winlangid 0x0410
-##grflangid 0x27
 ##plural 0
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
-##case ms mp fs fp
+##winlangid 0x0410
+##grflangid 0x27
 ##gender m f
+##case ms mp fs fp
 
 #
 

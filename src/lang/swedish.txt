@@ -1,12 +1,12 @@
 ##name Swedish
 ##ownname Svenska
 ##isocode sv_SE
-##winlangid 0x081d
-##grflangid 0x2e
 ##plural 0
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x081d
+##grflangid 0x2e
 
 #
 

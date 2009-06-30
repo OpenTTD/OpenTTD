@@ -1,14 +1,14 @@
 ##name Latvian
 ##ownname Latviešu
 ##isocode lv_LV
-##winlangid 0x0426
-##grflangid 0x2a
 ##plural 3
 ##textdir ltr
-##case kas
-##gender m f
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x0426
+##grflangid 0x2a
+##gender m f
+##case kas
 
 #
 

@@ -1,12 +1,12 @@
 ##name Welsh
 ##ownname Cymraeg
 ##isocode cy_GB
-##winlangid 0x0452
-##grflangid 0x0f
 ##plural 0
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x0452
+##grflangid 0x0f
 
 #
 

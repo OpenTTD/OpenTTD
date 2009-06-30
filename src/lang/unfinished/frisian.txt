@@ -1,12 +1,12 @@
 ##name Frisian
 ##ownname Frysk
 ##isocode fy_NL
-##winlangid 0x0462
-##grflangid 0x32
 ##plural 0
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x0462
+##grflangid 0x32
 
 #
 

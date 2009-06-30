@@ -1,14 +1,14 @@
 ##name Polish
 ##ownname Polski
 ##isocode pl_PL
-##winlangid 0x0415
-##grflangid 0x30
 ##plural 7
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
-##case d c b n m w
+##winlangid 0x0415
+##grflangid 0x30
 ##gender m f n
+##case d c b n m w
 
 #
 
@@ -28,438 +28,438 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Akceptuj
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Zasoby: {GOLD}
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Pasażerowie
-STR_CARGO_PLURAL_PASSENGERS.b                                   :pasażerów
-STR_CARGO_PLURAL_PASSENGERS.c                                   :pasażerom
 STR_CARGO_PLURAL_PASSENGERS.d                                   :pasażerów
-STR_CARGO_PLURAL_PASSENGERS.m                                   :pasażerach
+STR_CARGO_PLURAL_PASSENGERS.c                                   :pasażerom
+STR_CARGO_PLURAL_PASSENGERS.b                                   :pasażerów
 STR_CARGO_PLURAL_PASSENGERS.n                                   :pasażerami
+STR_CARGO_PLURAL_PASSENGERS.m                                   :pasażerach
 STR_CARGO_PLURAL_PASSENGERS.w                                   :pasażerowie
 STR_CARGO_PLURAL_COAL                                           :Węgiel
-STR_CARGO_PLURAL_COAL.b                                         :węgiel
-STR_CARGO_PLURAL_COAL.c                                         :węglowi
 STR_CARGO_PLURAL_COAL.d                                         :węgla
-STR_CARGO_PLURAL_COAL.m                                         :węglu
+STR_CARGO_PLURAL_COAL.c                                         :węglowi
+STR_CARGO_PLURAL_COAL.b                                         :węgiel
 STR_CARGO_PLURAL_COAL.n                                         :węglem
+STR_CARGO_PLURAL_COAL.m                                         :węglu
 STR_CARGO_PLURAL_COAL.w                                         :węglu
 STR_CARGO_PLURAL_MAIL                                           :Poczta
-STR_CARGO_PLURAL_MAIL.b                                         :pocztę
-STR_CARGO_PLURAL_MAIL.c                                         :poczcie
 STR_CARGO_PLURAL_MAIL.d                                         :poczty
-STR_CARGO_PLURAL_MAIL.m                                         :poczcie
+STR_CARGO_PLURAL_MAIL.c                                         :poczcie
+STR_CARGO_PLURAL_MAIL.b                                         :pocztę
 STR_CARGO_PLURAL_MAIL.n                                         :pocztą
+STR_CARGO_PLURAL_MAIL.m                                         :poczcie
 STR_CARGO_PLURAL_MAIL.w                                         :poczto
 STR_CARGO_PLURAL_OIL                                            :Ropa
-STR_CARGO_PLURAL_OIL.b                                          :ropę
-STR_CARGO_PLURAL_OIL.c                                          :ropie
 STR_CARGO_PLURAL_OIL.d                                          :ropy
-STR_CARGO_PLURAL_OIL.m                                          :ropie
+STR_CARGO_PLURAL_OIL.c                                          :ropie
+STR_CARGO_PLURAL_OIL.b                                          :ropę
 STR_CARGO_PLURAL_OIL.n                                          :ropą
+STR_CARGO_PLURAL_OIL.m                                          :ropie
 STR_CARGO_PLURAL_OIL.w                                          :ropo
 STR_CARGO_PLURAL_LIVESTOCK                                      :Żywiec
-STR_CARGO_PLURAL_LIVESTOCK.b                                    :żywiec
-STR_CARGO_PLURAL_LIVESTOCK.c                                    :żywcowi
 STR_CARGO_PLURAL_LIVESTOCK.d                                    :żywca
-STR_CARGO_PLURAL_LIVESTOCK.m                                    :żywcu
+STR_CARGO_PLURAL_LIVESTOCK.c                                    :żywcowi
+STR_CARGO_PLURAL_LIVESTOCK.b                                    :żywiec
 STR_CARGO_PLURAL_LIVESTOCK.n                                    :żywcem
+STR_CARGO_PLURAL_LIVESTOCK.m                                    :żywcu
 STR_CARGO_PLURAL_LIVESTOCK.w                                    :żywcze
 STR_CARGO_PLURAL_GOODS                                          :Towary
-STR_CARGO_PLURAL_GOODS.b                                        :towary
-STR_CARGO_PLURAL_GOODS.c                                        :towarom
 STR_CARGO_PLURAL_GOODS.d                                        :towarów
-STR_CARGO_PLURAL_GOODS.m                                        :towarach
+STR_CARGO_PLURAL_GOODS.c                                        :towarom
+STR_CARGO_PLURAL_GOODS.b                                        :towary
 STR_CARGO_PLURAL_GOODS.n                                        :towarami
+STR_CARGO_PLURAL_GOODS.m                                        :towarach
 STR_CARGO_PLURAL_GOODS.w                                        :towary
 STR_CARGO_PLURAL_GRAIN                                          :Zboże
-STR_CARGO_PLURAL_GRAIN.b                                        :zboże
-STR_CARGO_PLURAL_GRAIN.c                                        :zbożu
 STR_CARGO_PLURAL_GRAIN.d                                        :zboża
-STR_CARGO_PLURAL_GRAIN.m                                        :zbożu
+STR_CARGO_PLURAL_GRAIN.c                                        :zbożu
+STR_CARGO_PLURAL_GRAIN.b                                        :zboże
 STR_CARGO_PLURAL_GRAIN.n                                        :zbożem
+STR_CARGO_PLURAL_GRAIN.m                                        :zbożu
 STR_CARGO_PLURAL_GRAIN.w                                        :zboże
 STR_CARGO_PLURAL_WOOD                                           :Drewno
-STR_CARGO_PLURAL_WOOD.b                                         :drewno
-STR_CARGO_PLURAL_WOOD.c                                         :drewnu
 STR_CARGO_PLURAL_WOOD.d                                         :drewna
-STR_CARGO_PLURAL_WOOD.m                                         :drewnie
+STR_CARGO_PLURAL_WOOD.c                                         :drewnu
+STR_CARGO_PLURAL_WOOD.b                                         :drewno
 STR_CARGO_PLURAL_WOOD.n                                         :drewnem
+STR_CARGO_PLURAL_WOOD.m                                         :drewnie
 STR_CARGO_PLURAL_WOOD.w                                         :drewno
 STR_CARGO_PLURAL_IRON_ORE                                       :Ruda żelaza
-STR_CARGO_PLURAL_IRON_ORE.b                                     :rudę żelaza
-STR_CARGO_PLURAL_IRON_ORE.c                                     :rudzie żelaza
 STR_CARGO_PLURAL_IRON_ORE.d                                     :rudy żelaza
-STR_CARGO_PLURAL_IRON_ORE.m                                     :rudzie żelaza
+STR_CARGO_PLURAL_IRON_ORE.c                                     :rudzie żelaza
+STR_CARGO_PLURAL_IRON_ORE.b                                     :rudę żelaza
 STR_CARGO_PLURAL_IRON_ORE.n                                     :rudą żelaza
+STR_CARGO_PLURAL_IRON_ORE.m                                     :rudzie żelaza
 STR_CARGO_PLURAL_IRON_ORE.w                                     :rudo żelaza
 STR_CARGO_PLURAL_STEEL                                          :Stal
-STR_CARGO_PLURAL_STEEL.b                                        :stal
-STR_CARGO_PLURAL_STEEL.c                                        :stali
 STR_CARGO_PLURAL_STEEL.d                                        :stali
-STR_CARGO_PLURAL_STEEL.m                                        :stali
+STR_CARGO_PLURAL_STEEL.c                                        :stali
+STR_CARGO_PLURAL_STEEL.b                                        :stal
 STR_CARGO_PLURAL_STEEL.n                                        :stalą
+STR_CARGO_PLURAL_STEEL.m                                        :stali
 STR_CARGO_PLURAL_STEEL.w                                        :stali
 STR_CARGO_PLURAL_VALUABLES                                      :Kosztowności
-STR_CARGO_PLURAL_VALUABLES.b                                    :kosztowności
-STR_CARGO_PLURAL_VALUABLES.c                                    :kosztownościom
 STR_CARGO_PLURAL_VALUABLES.d                                    :kosztowności
-STR_CARGO_PLURAL_VALUABLES.m                                    :kosztownościach
+STR_CARGO_PLURAL_VALUABLES.c                                    :kosztownościom
+STR_CARGO_PLURAL_VALUABLES.b                                    :kosztowności
 STR_CARGO_PLURAL_VALUABLES.n                                    :kosztownościami
+STR_CARGO_PLURAL_VALUABLES.m                                    :kosztownościach
 STR_CARGO_PLURAL_VALUABLES.w                                    :kosztowności
 STR_CARGO_PLURAL_COPPER_ORE                                     :Ruda miedzi
-STR_CARGO_PLURAL_COPPER_ORE.b                                   :rudę miedzi
-STR_CARGO_PLURAL_COPPER_ORE.c                                   :rudzie miedzi
 STR_CARGO_PLURAL_COPPER_ORE.d                                   :rudy miedzi
-STR_CARGO_PLURAL_COPPER_ORE.m                                   :rudzie miedzi
+STR_CARGO_PLURAL_COPPER_ORE.c                                   :rudzie miedzi
+STR_CARGO_PLURAL_COPPER_ORE.b                                   :rudę miedzi
 STR_CARGO_PLURAL_COPPER_ORE.n                                   :rudą miedzi
+STR_CARGO_PLURAL_COPPER_ORE.m                                   :rudzie miedzi
 STR_CARGO_PLURAL_COPPER_ORE.w                                   :rudo miedzi
 STR_CARGO_PLURAL_MAIZE                                          :Kukurydza
-STR_CARGO_PLURAL_MAIZE.b                                        :kukurydzę
-STR_CARGO_PLURAL_MAIZE.c                                        :kukurydzy
 STR_CARGO_PLURAL_MAIZE.d                                        :kukurydzy
-STR_CARGO_PLURAL_MAIZE.m                                        :kukurydzy
+STR_CARGO_PLURAL_MAIZE.c                                        :kukurydzy
+STR_CARGO_PLURAL_MAIZE.b                                        :kukurydzę
 STR_CARGO_PLURAL_MAIZE.n                                        :kukurydzą
+STR_CARGO_PLURAL_MAIZE.m                                        :kukurydzy
 STR_CARGO_PLURAL_MAIZE.w                                        :kukurydzo
 STR_CARGO_PLURAL_FRUIT                                          :Owoce
-STR_CARGO_PLURAL_FRUIT.b                                        :owoce
-STR_CARGO_PLURAL_FRUIT.c                                        :owocom
 STR_CARGO_PLURAL_FRUIT.d                                        :owoców
-STR_CARGO_PLURAL_FRUIT.m                                        :owocach
+STR_CARGO_PLURAL_FRUIT.c                                        :owocom
+STR_CARGO_PLURAL_FRUIT.b                                        :owoce
 STR_CARGO_PLURAL_FRUIT.n                                        :owocami
+STR_CARGO_PLURAL_FRUIT.m                                        :owocach
 STR_CARGO_PLURAL_FRUIT.w                                        :owoce
 STR_CARGO_PLURAL_DIAMONDS                                       :Diamenty
-STR_CARGO_PLURAL_DIAMONDS.b                                     :diamenty
-STR_CARGO_PLURAL_DIAMONDS.c                                     :diamentom
 STR_CARGO_PLURAL_DIAMONDS.d                                     :diamentów
-STR_CARGO_PLURAL_DIAMONDS.m                                     :diamentach
+STR_CARGO_PLURAL_DIAMONDS.c                                     :diamentom
+STR_CARGO_PLURAL_DIAMONDS.b                                     :diamenty
 STR_CARGO_PLURAL_DIAMONDS.n                                     :diamentami
+STR_CARGO_PLURAL_DIAMONDS.m                                     :diamentach
 STR_CARGO_PLURAL_DIAMONDS.w                                     :diamenty
 STR_CARGO_PLURAL_FOOD                                           :Żywność
-STR_CARGO_PLURAL_FOOD.b                                         :żywność
-STR_CARGO_PLURAL_FOOD.c                                         :żywności
 STR_CARGO_PLURAL_FOOD.d                                         :żywności
-STR_CARGO_PLURAL_FOOD.m                                         :żywności
+STR_CARGO_PLURAL_FOOD.c                                         :żywności
+STR_CARGO_PLURAL_FOOD.b                                         :żywność
 STR_CARGO_PLURAL_FOOD.n                                         :żywnością
+STR_CARGO_PLURAL_FOOD.m                                         :żywności
 STR_CARGO_PLURAL_FOOD.w                                         :żywności
 STR_CARGO_PLURAL_PAPER                                          :Papier
-STR_CARGO_PLURAL_PAPER.b                                        :papier
-STR_CARGO_PLURAL_PAPER.c                                        :papierowi
 STR_CARGO_PLURAL_PAPER.d                                        :papieru
-STR_CARGO_PLURAL_PAPER.m                                        :papierze
+STR_CARGO_PLURAL_PAPER.c                                        :papierowi
+STR_CARGO_PLURAL_PAPER.b                                        :papier
 STR_CARGO_PLURAL_PAPER.n                                        :papierem
+STR_CARGO_PLURAL_PAPER.m                                        :papierze
 STR_CARGO_PLURAL_PAPER.w                                        :papierze
 STR_CARGO_PLURAL_GOLD                                           :Złoto
-STR_CARGO_PLURAL_GOLD.b                                         :złoto
-STR_CARGO_PLURAL_GOLD.c                                         :złotu
 STR_CARGO_PLURAL_GOLD.d                                         :złota
-STR_CARGO_PLURAL_GOLD.m                                         :złocie
+STR_CARGO_PLURAL_GOLD.c                                         :złotu
+STR_CARGO_PLURAL_GOLD.b                                         :złoto
 STR_CARGO_PLURAL_GOLD.n                                         :złotem
+STR_CARGO_PLURAL_GOLD.m                                         :złocie
 STR_CARGO_PLURAL_GOLD.w                                         :złoto
 STR_CARGO_PLURAL_WATER                                          :Woda
-STR_CARGO_PLURAL_WATER.b                                        :wodę
-STR_CARGO_PLURAL_WATER.c                                        :wodzie
 STR_CARGO_PLURAL_WATER.d                                        :wody
-STR_CARGO_PLURAL_WATER.m                                        :wodzie
+STR_CARGO_PLURAL_WATER.c                                        :wodzie
+STR_CARGO_PLURAL_WATER.b                                        :wodę
 STR_CARGO_PLURAL_WATER.n                                        :wodą
+STR_CARGO_PLURAL_WATER.m                                        :wodzie
 STR_CARGO_PLURAL_WATER.w                                        :wodo
 STR_CARGO_PLURAL_WHEAT                                          :Pszenica
-STR_CARGO_PLURAL_WHEAT.b                                        :pszenicę
-STR_CARGO_PLURAL_WHEAT.c                                        :pszenicy
 STR_CARGO_PLURAL_WHEAT.d                                        :pszenicy
-STR_CARGO_PLURAL_WHEAT.m                                        :pszenicy
+STR_CARGO_PLURAL_WHEAT.c                                        :pszenicy
+STR_CARGO_PLURAL_WHEAT.b                                        :pszenicę
 STR_CARGO_PLURAL_WHEAT.n                                        :pszenicą
+STR_CARGO_PLURAL_WHEAT.m                                        :pszenicy
 STR_CARGO_PLURAL_WHEAT.w                                        :pszenico
 STR_CARGO_PLURAL_RUBBER                                         :Kauczuk
-STR_CARGO_PLURAL_RUBBER.b                                       :kauczuk
-STR_CARGO_PLURAL_RUBBER.c                                       :kauczukowi
 STR_CARGO_PLURAL_RUBBER.d                                       :kauczuku
-STR_CARGO_PLURAL_RUBBER.m                                       :kauczuku
+STR_CARGO_PLURAL_RUBBER.c                                       :kauczukowi
+STR_CARGO_PLURAL_RUBBER.b                                       :kauczuk
 STR_CARGO_PLURAL_RUBBER.n                                       :kauczukiem
+STR_CARGO_PLURAL_RUBBER.m                                       :kauczuku
 STR_CARGO_PLURAL_RUBBER.w                                       :kauczuku
 STR_CARGO_PLURAL_SUGAR                                          :Cukier
-STR_CARGO_PLURAL_SUGAR.b                                        :cukier
-STR_CARGO_PLURAL_SUGAR.c                                        :cukrowi
 STR_CARGO_PLURAL_SUGAR.d                                        :cukru
-STR_CARGO_PLURAL_SUGAR.m                                        :cukrze
+STR_CARGO_PLURAL_SUGAR.c                                        :cukrowi
+STR_CARGO_PLURAL_SUGAR.b                                        :cukier
 STR_CARGO_PLURAL_SUGAR.n                                        :cukrem
+STR_CARGO_PLURAL_SUGAR.m                                        :cukrze
 STR_CARGO_PLURAL_SUGAR.w                                        :cukrze
 STR_CARGO_PLURAL_TOYS                                           :Zabawki
-STR_CARGO_PLURAL_TOYS.b                                         :zabawki
-STR_CARGO_PLURAL_TOYS.c                                         :zabawkom
 STR_CARGO_PLURAL_TOYS.d                                         :zabawek
-STR_CARGO_PLURAL_TOYS.m                                         :zabawkach
+STR_CARGO_PLURAL_TOYS.c                                         :zabawkom
+STR_CARGO_PLURAL_TOYS.b                                         :zabawki
 STR_CARGO_PLURAL_TOYS.n                                         :zabawkami
+STR_CARGO_PLURAL_TOYS.m                                         :zabawkach
 STR_CARGO_PLURAL_TOYS.w                                         :zabawki
 STR_CARGO_PLURAL_CANDY                                          :Słodycze
-STR_CARGO_PLURAL_CANDY.b                                        :słodycze
-STR_CARGO_PLURAL_CANDY.c                                        :słodyczom
 STR_CARGO_PLURAL_CANDY.d                                        :słodyczy
-STR_CARGO_PLURAL_CANDY.m                                        :słodyczach
+STR_CARGO_PLURAL_CANDY.c                                        :słodyczom
+STR_CARGO_PLURAL_CANDY.b                                        :słodycze
 STR_CARGO_PLURAL_CANDY.n                                        :słodyczami
+STR_CARGO_PLURAL_CANDY.m                                        :słodyczach
 STR_CARGO_PLURAL_CANDY.w                                        :słodycze
 STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_COLA.b                                         :colę
-STR_CARGO_PLURAL_COLA.c                                         :coli
 STR_CARGO_PLURAL_COLA.d                                         :coli
-STR_CARGO_PLURAL_COLA.m                                         :coli
+STR_CARGO_PLURAL_COLA.c                                         :coli
+STR_CARGO_PLURAL_COLA.b                                         :colę
 STR_CARGO_PLURAL_COLA.n                                         :colą
+STR_CARGO_PLURAL_COLA.m                                         :coli
 STR_CARGO_PLURAL_COLA.w                                         :colo
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Wata cukrowa
-STR_CARGO_PLURAL_COTTON_CANDY.b                                 :watę cukrową
-STR_CARGO_PLURAL_COTTON_CANDY.c                                 :wacie cukrowej
 STR_CARGO_PLURAL_COTTON_CANDY.d                                 :waty cukrowej
-STR_CARGO_PLURAL_COTTON_CANDY.m                                 :wacie cukrowej
+STR_CARGO_PLURAL_COTTON_CANDY.c                                 :wacie cukrowej
+STR_CARGO_PLURAL_COTTON_CANDY.b                                 :watę cukrową
 STR_CARGO_PLURAL_COTTON_CANDY.n                                 :watą cukrową
+STR_CARGO_PLURAL_COTTON_CANDY.m                                 :wacie cukrowej
 STR_CARGO_PLURAL_COTTON_CANDY.w                                 :wato cukrowa
 STR_CARGO_PLURAL_BUBBLES                                        :Bąbelki
-STR_CARGO_PLURAL_BUBBLES.b                                      :bąbelki
-STR_CARGO_PLURAL_BUBBLES.c                                      :bąbelkom
 STR_CARGO_PLURAL_BUBBLES.d                                      :bąbelków
-STR_CARGO_PLURAL_BUBBLES.m                                      :bąbelkach
+STR_CARGO_PLURAL_BUBBLES.c                                      :bąbelkom
+STR_CARGO_PLURAL_BUBBLES.b                                      :bąbelki
 STR_CARGO_PLURAL_BUBBLES.n                                      :bąbelkami
+STR_CARGO_PLURAL_BUBBLES.m                                      :bąbelkach
 STR_CARGO_PLURAL_BUBBLES.w                                      :bąbelki
 STR_CARGO_PLURAL_TOFFEE                                         :Toffi
-STR_CARGO_PLURAL_TOFFEE.b                                       :toffi
-STR_CARGO_PLURAL_TOFFEE.c                                       :toffi
 STR_CARGO_PLURAL_TOFFEE.d                                       :toffi
-STR_CARGO_PLURAL_TOFFEE.m                                       :toffi
+STR_CARGO_PLURAL_TOFFEE.c                                       :toffi
+STR_CARGO_PLURAL_TOFFEE.b                                       :toffi
 STR_CARGO_PLURAL_TOFFEE.n                                       :toffi
+STR_CARGO_PLURAL_TOFFEE.m                                       :toffi
 STR_CARGO_PLURAL_TOFFEE.w                                       :toffi
 STR_CARGO_PLURAL_BATTERIES                                      :Baterie
-STR_CARGO_PLURAL_BATTERIES.b                                    :baterie
-STR_CARGO_PLURAL_BATTERIES.c                                    :bateriom
 STR_CARGO_PLURAL_BATTERIES.d                                    :baterii
-STR_CARGO_PLURAL_BATTERIES.m                                    :bateriach
+STR_CARGO_PLURAL_BATTERIES.c                                    :bateriom
+STR_CARGO_PLURAL_BATTERIES.b                                    :baterie
 STR_CARGO_PLURAL_BATTERIES.n                                    :bateriami
+STR_CARGO_PLURAL_BATTERIES.m                                    :bateriach
 STR_CARGO_PLURAL_BATTERIES.w                                    :baterie
 STR_CARGO_PLURAL_PLASTIC                                        :Plastik
-STR_CARGO_PLURAL_PLASTIC.b                                      :plastik
-STR_CARGO_PLURAL_PLASTIC.c                                      :plastikowi
 STR_CARGO_PLURAL_PLASTIC.d                                      :plastiku
-STR_CARGO_PLURAL_PLASTIC.m                                      :plastiku
+STR_CARGO_PLURAL_PLASTIC.c                                      :plastikowi
+STR_CARGO_PLURAL_PLASTIC.b                                      :plastik
 STR_CARGO_PLURAL_PLASTIC.n                                      :plastikiem
+STR_CARGO_PLURAL_PLASTIC.m                                      :plastiku
 STR_CARGO_PLURAL_PLASTIC.w                                      :plastiku
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Napoje gazowane
-STR_CARGO_PLURAL_FIZZY_DRINKS.b                                 :napoje gazowane
-STR_CARGO_PLURAL_FIZZY_DRINKS.c                                 :napojom gazowanym
 STR_CARGO_PLURAL_FIZZY_DRINKS.d                                 :napoi gazowanych
-STR_CARGO_PLURAL_FIZZY_DRINKS.m                                 :napojach gazowanych
+STR_CARGO_PLURAL_FIZZY_DRINKS.c                                 :napojom gazowanym
+STR_CARGO_PLURAL_FIZZY_DRINKS.b                                 :napoje gazowane
 STR_CARGO_PLURAL_FIZZY_DRINKS.n                                 :napojami gazowanymi
+STR_CARGO_PLURAL_FIZZY_DRINKS.m                                 :napojach gazowanych
 STR_CARGO_PLURAL_FIZZY_DRINKS.w                                 :napoje gazowane
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Pasażer
-STR_CARGO_SINGULAR_PASSENGER.b                                  :pasażera
-STR_CARGO_SINGULAR_PASSENGER.c                                  :pasażerowi
 STR_CARGO_SINGULAR_PASSENGER.d                                  :pasażera
-STR_CARGO_SINGULAR_PASSENGER.m                                  :pasażerze
+STR_CARGO_SINGULAR_PASSENGER.c                                  :pasażerowi
+STR_CARGO_SINGULAR_PASSENGER.b                                  :pasażera
 STR_CARGO_SINGULAR_PASSENGER.n                                  :pasażerem
+STR_CARGO_SINGULAR_PASSENGER.m                                  :pasażerze
 STR_CARGO_SINGULAR_PASSENGER.w                                  :pasażerze
 STR_CARGO_SINGULAR_COAL                                         :Węgiel
-STR_CARGO_SINGULAR_COAL.b                                       :węgiel
-STR_CARGO_SINGULAR_COAL.c                                       :węglowi
 STR_CARGO_SINGULAR_COAL.d                                       :węgla
-STR_CARGO_SINGULAR_COAL.m                                       :węglu
+STR_CARGO_SINGULAR_COAL.c                                       :węglowi
+STR_CARGO_SINGULAR_COAL.b                                       :węgiel
 STR_CARGO_SINGULAR_COAL.n                                       :węglem
+STR_CARGO_SINGULAR_COAL.m                                       :węglu
 STR_CARGO_SINGULAR_COAL.w                                       :węglu
 STR_CARGO_SINGULAR_MAIL                                         :Poczta
-STR_CARGO_SINGULAR_MAIL.b                                       :pocztę
-STR_CARGO_SINGULAR_MAIL.c                                       :poczcie
 STR_CARGO_SINGULAR_MAIL.d                                       :poczty
-STR_CARGO_SINGULAR_MAIL.m                                       :poczcie
+STR_CARGO_SINGULAR_MAIL.c                                       :poczcie
+STR_CARGO_SINGULAR_MAIL.b                                       :pocztę
 STR_CARGO_SINGULAR_MAIL.n                                       :pocztą
+STR_CARGO_SINGULAR_MAIL.m                                       :poczcie
 STR_CARGO_SINGULAR_MAIL.w                                       :poczto
 STR_CARGO_SINGULAR_OIL                                          :Ropa
-STR_CARGO_SINGULAR_OIL.b                                        :ropę
-STR_CARGO_SINGULAR_OIL.c                                        :ropie
 STR_CARGO_SINGULAR_OIL.d                                        :ropy
-STR_CARGO_SINGULAR_OIL.m                                        :ropie
+STR_CARGO_SINGULAR_OIL.c                                        :ropie
+STR_CARGO_SINGULAR_OIL.b                                        :ropę
 STR_CARGO_SINGULAR_OIL.n                                        :ropą
+STR_CARGO_SINGULAR_OIL.m                                        :ropie
 STR_CARGO_SINGULAR_OIL.w                                        :ropo
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Żywiec
-STR_CARGO_SINGULAR_LIVESTOCK.b                                  :żywiec
-STR_CARGO_SINGULAR_LIVESTOCK.c                                  :żywcowi
 STR_CARGO_SINGULAR_LIVESTOCK.d                                  :żywca
-STR_CARGO_SINGULAR_LIVESTOCK.m                                  :żywcu
+STR_CARGO_SINGULAR_LIVESTOCK.c                                  :żywcowi
+STR_CARGO_SINGULAR_LIVESTOCK.b                                  :żywiec
 STR_CARGO_SINGULAR_LIVESTOCK.n                                  :żywcem
+STR_CARGO_SINGULAR_LIVESTOCK.m                                  :żywcu
 STR_CARGO_SINGULAR_LIVESTOCK.w                                  :żywcu
 STR_CARGO_SINGULAR_GOODS                                        :Towar
-STR_CARGO_SINGULAR_GOODS.b                                      :towar
-STR_CARGO_SINGULAR_GOODS.c                                      :towarowi
 STR_CARGO_SINGULAR_GOODS.d                                      :towaru
-STR_CARGO_SINGULAR_GOODS.m                                      :towarze
+STR_CARGO_SINGULAR_GOODS.c                                      :towarowi
+STR_CARGO_SINGULAR_GOODS.b                                      :towar
 STR_CARGO_SINGULAR_GOODS.n                                      :towarem
+STR_CARGO_SINGULAR_GOODS.m                                      :towarze
 STR_CARGO_SINGULAR_GOODS.w                                      :towarze
 STR_CARGO_SINGULAR_GRAIN                                        :Zboże
-STR_CARGO_SINGULAR_GRAIN.b                                      :zboże
-STR_CARGO_SINGULAR_GRAIN.c                                      :zbożu
 STR_CARGO_SINGULAR_GRAIN.d                                      :zboża
-STR_CARGO_SINGULAR_GRAIN.m                                      :zbożu
+STR_CARGO_SINGULAR_GRAIN.c                                      :zbożu
+STR_CARGO_SINGULAR_GRAIN.b                                      :zboże
 STR_CARGO_SINGULAR_GRAIN.n                                      :zbożem
+STR_CARGO_SINGULAR_GRAIN.m                                      :zbożu
 STR_CARGO_SINGULAR_GRAIN.w                                      :zboże
 STR_CARGO_SINGULAR_WOOD                                         :Drewno
-STR_CARGO_SINGULAR_WOOD.b                                       :drewno
-STR_CARGO_SINGULAR_WOOD.c                                       :drewnu
 STR_CARGO_SINGULAR_WOOD.d                                       :drewna
-STR_CARGO_SINGULAR_WOOD.m                                       :drewnie
+STR_CARGO_SINGULAR_WOOD.c                                       :drewnu
+STR_CARGO_SINGULAR_WOOD.b                                       :drewno
 STR_CARGO_SINGULAR_WOOD.n                                       :drewnem
+STR_CARGO_SINGULAR_WOOD.m                                       :drewnie
 STR_CARGO_SINGULAR_WOOD.w                                       :drewno
 STR_CARGO_SINGULAR_IRON_ORE                                     :Ruda żelaza
-STR_CARGO_SINGULAR_IRON_ORE.b                                   :rudę żelaza
-STR_CARGO_SINGULAR_IRON_ORE.c                                   :rudzie żelaza
 STR_CARGO_SINGULAR_IRON_ORE.d                                   :rudy żelaza
-STR_CARGO_SINGULAR_IRON_ORE.m                                   :rudzie żelaza
+STR_CARGO_SINGULAR_IRON_ORE.c                                   :rudzie żelaza
+STR_CARGO_SINGULAR_IRON_ORE.b                                   :rudę żelaza
 STR_CARGO_SINGULAR_IRON_ORE.n                                   :rudą żelaza
+STR_CARGO_SINGULAR_IRON_ORE.m                                   :rudzie żelaza
 STR_CARGO_SINGULAR_IRON_ORE.w                                   :rudo żelaza
 STR_CARGO_SINGULAR_STEEL                                        :Stal
-STR_CARGO_SINGULAR_STEEL.b                                      :stal
-STR_CARGO_SINGULAR_STEEL.c                                      :stali
 STR_CARGO_SINGULAR_STEEL.d                                      :stali
-STR_CARGO_SINGULAR_STEEL.m                                      :stali
+STR_CARGO_SINGULAR_STEEL.c                                      :stali
+STR_CARGO_SINGULAR_STEEL.b                                      :stal
 STR_CARGO_SINGULAR_STEEL.n                                      :stalą
+STR_CARGO_SINGULAR_STEEL.m                                      :stali
 STR_CARGO_SINGULAR_STEEL.w                                      :stali
 STR_CARGO_SINGULAR_VALUABLES                                    :Kosztowność
-STR_CARGO_SINGULAR_VALUABLES.b                                  :kosztowność
-STR_CARGO_SINGULAR_VALUABLES.c                                  :kosztowności
 STR_CARGO_SINGULAR_VALUABLES.d                                  :kosztowności
-STR_CARGO_SINGULAR_VALUABLES.m                                  :kosztowności
+STR_CARGO_SINGULAR_VALUABLES.c                                  :kosztowności
+STR_CARGO_SINGULAR_VALUABLES.b                                  :kosztowność
 STR_CARGO_SINGULAR_VALUABLES.n                                  :kosztownością
+STR_CARGO_SINGULAR_VALUABLES.m                                  :kosztowności
 STR_CARGO_SINGULAR_VALUABLES.w                                  :kosztowności
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Ruda miedzi
-STR_CARGO_SINGULAR_COPPER_ORE.b                                 :rudę miedzi
-STR_CARGO_SINGULAR_COPPER_ORE.c                                 :rudzie miedzi
 STR_CARGO_SINGULAR_COPPER_ORE.d                                 :rudy miedzi
-STR_CARGO_SINGULAR_COPPER_ORE.m                                 :rudzie miedzi
+STR_CARGO_SINGULAR_COPPER_ORE.c                                 :rudzie miedzi
+STR_CARGO_SINGULAR_COPPER_ORE.b                                 :rudę miedzi
 STR_CARGO_SINGULAR_COPPER_ORE.n                                 :rudą miedzi
+STR_CARGO_SINGULAR_COPPER_ORE.m                                 :rudzie miedzi
 STR_CARGO_SINGULAR_COPPER_ORE.w                                 :rudo miedzi
 STR_CARGO_SINGULAR_MAIZE                                        :Kukurydza
-STR_CARGO_SINGULAR_MAIZE.b                                      :kukurydzę
-STR_CARGO_SINGULAR_MAIZE.c                                      :kukurydzy
 STR_CARGO_SINGULAR_MAIZE.d                                      :kukurydzy
-STR_CARGO_SINGULAR_MAIZE.m                                      :kukurydzy
+STR_CARGO_SINGULAR_MAIZE.c                                      :kukurydzy
+STR_CARGO_SINGULAR_MAIZE.b                                      :kukurydzę
 STR_CARGO_SINGULAR_MAIZE.n                                      :kukurydzą
+STR_CARGO_SINGULAR_MAIZE.m                                      :kukurydzy
 STR_CARGO_SINGULAR_MAIZE.w                                      :kukurydzo
 STR_CARGO_SINGULAR_FRUIT                                        :Owoc
-STR_CARGO_SINGULAR_FRUIT.b                                      :owoc
-STR_CARGO_SINGULAR_FRUIT.c                                      :owocowi
 STR_CARGO_SINGULAR_FRUIT.d                                      :owoca
-STR_CARGO_SINGULAR_FRUIT.m                                      :owocu
+STR_CARGO_SINGULAR_FRUIT.c                                      :owocowi
+STR_CARGO_SINGULAR_FRUIT.b                                      :owoc
 STR_CARGO_SINGULAR_FRUIT.n                                      :owocem
+STR_CARGO_SINGULAR_FRUIT.m                                      :owocu
 STR_CARGO_SINGULAR_FRUIT.w                                      :owocu
 STR_CARGO_SINGULAR_DIAMOND                                      :Diament
-STR_CARGO_SINGULAR_DIAMOND.b                                    :diament
-STR_CARGO_SINGULAR_DIAMOND.c                                    :diamentowi
 STR_CARGO_SINGULAR_DIAMOND.d                                    :diamentu
-STR_CARGO_SINGULAR_DIAMOND.m                                    :diamencie
+STR_CARGO_SINGULAR_DIAMOND.c                                    :diamentowi
+STR_CARGO_SINGULAR_DIAMOND.b                                    :diament
 STR_CARGO_SINGULAR_DIAMOND.n                                    :diamentem
+STR_CARGO_SINGULAR_DIAMOND.m                                    :diamencie
 STR_CARGO_SINGULAR_DIAMOND.w                                    :diamencie
 STR_CARGO_SINGULAR_FOOD                                         :Żywność
-STR_CARGO_SINGULAR_FOOD.b                                       :żywność
-STR_CARGO_SINGULAR_FOOD.c                                       :żywności
 STR_CARGO_SINGULAR_FOOD.d                                       :żywności
-STR_CARGO_SINGULAR_FOOD.m                                       :żywności
+STR_CARGO_SINGULAR_FOOD.c                                       :żywności
+STR_CARGO_SINGULAR_FOOD.b                                       :żywność
 STR_CARGO_SINGULAR_FOOD.n                                       :żywnością
+STR_CARGO_SINGULAR_FOOD.m                                       :żywności
 STR_CARGO_SINGULAR_FOOD.w                                       :żywności
 STR_CARGO_SINGULAR_PAPER                                        :Papier
-STR_CARGO_SINGULAR_PAPER.b                                      :papier
-STR_CARGO_SINGULAR_PAPER.c                                      :papierowi
 STR_CARGO_SINGULAR_PAPER.d                                      :papieru
-STR_CARGO_SINGULAR_PAPER.m                                      :papierze
+STR_CARGO_SINGULAR_PAPER.c                                      :papierowi
+STR_CARGO_SINGULAR_PAPER.b                                      :papier
 STR_CARGO_SINGULAR_PAPER.n                                      :papierem
+STR_CARGO_SINGULAR_PAPER.m                                      :papierze
 STR_CARGO_SINGULAR_PAPER.w                                      :papierze
 STR_CARGO_SINGULAR_GOLD                                         :Złoto
-STR_CARGO_SINGULAR_GOLD.b                                       :złoto
-STR_CARGO_SINGULAR_GOLD.c                                       :złotu
 STR_CARGO_SINGULAR_GOLD.d                                       :złota
-STR_CARGO_SINGULAR_GOLD.m                                       :złocie
+STR_CARGO_SINGULAR_GOLD.c                                       :złotu
+STR_CARGO_SINGULAR_GOLD.b                                       :złoto
 STR_CARGO_SINGULAR_GOLD.n                                       :złotem
+STR_CARGO_SINGULAR_GOLD.m                                       :złocie
 STR_CARGO_SINGULAR_GOLD.w                                       :złoto
 STR_CARGO_SINGULAR_WATER                                        :Woda
-STR_CARGO_SINGULAR_WATER.b                                      :wodę
-STR_CARGO_SINGULAR_WATER.c                                      :wodzie
 STR_CARGO_SINGULAR_WATER.d                                      :wody
-STR_CARGO_SINGULAR_WATER.m                                      :wodzie
+STR_CARGO_SINGULAR_WATER.c                                      :wodzie
+STR_CARGO_SINGULAR_WATER.b                                      :wodę
 STR_CARGO_SINGULAR_WATER.n                                      :wodą
+STR_CARGO_SINGULAR_WATER.m                                      :wodzie
 STR_CARGO_SINGULAR_WATER.w                                      :wodo
 STR_CARGO_SINGULAR_WHEAT                                        :Pszenica
-STR_CARGO_SINGULAR_WHEAT.b                                      :pszenicę
-STR_CARGO_SINGULAR_WHEAT.c                                      :pszenicy
 STR_CARGO_SINGULAR_WHEAT.d                                      :pszenicy
-STR_CARGO_SINGULAR_WHEAT.m                                      :pszenicy
+STR_CARGO_SINGULAR_WHEAT.c                                      :pszenicy
+STR_CARGO_SINGULAR_WHEAT.b                                      :pszenicę
 STR_CARGO_SINGULAR_WHEAT.n                                      :pszenicą
+STR_CARGO_SINGULAR_WHEAT.m                                      :pszenicy
 STR_CARGO_SINGULAR_WHEAT.w                                      :pszenico
 STR_CARGO_SINGULAR_RUBBER                                       :Kauczuk
-STR_CARGO_SINGULAR_RUBBER.b                                     :kauczuk
-STR_CARGO_SINGULAR_RUBBER.c                                     :kauczukowi
 STR_CARGO_SINGULAR_RUBBER.d                                     :kauczuku
-STR_CARGO_SINGULAR_RUBBER.m                                     :kauczuku
+STR_CARGO_SINGULAR_RUBBER.c                                     :kauczukowi
+STR_CARGO_SINGULAR_RUBBER.b                                     :kauczuk
 STR_CARGO_SINGULAR_RUBBER.n                                     :kauczukiem
+STR_CARGO_SINGULAR_RUBBER.m                                     :kauczuku
 STR_CARGO_SINGULAR_RUBBER.w                                     :kauczuku
 STR_CARGO_SINGULAR_SUGAR                                        :Cukier
-STR_CARGO_SINGULAR_SUGAR.b                                      :cukier
-STR_CARGO_SINGULAR_SUGAR.c                                      :cukrowi
 STR_CARGO_SINGULAR_SUGAR.d                                      :cukru
-STR_CARGO_SINGULAR_SUGAR.m                                      :cukrze
+STR_CARGO_SINGULAR_SUGAR.c                                      :cukrowi
+STR_CARGO_SINGULAR_SUGAR.b                                      :cukier
 STR_CARGO_SINGULAR_SUGAR.n                                      :cukrem
+STR_CARGO_SINGULAR_SUGAR.m                                      :cukrze
 STR_CARGO_SINGULAR_SUGAR.w                                      :cukrze
 STR_CARGO_SINGULAR_TOY                                          :Zabawka
-STR_CARGO_SINGULAR_TOY.b                                        :zabawkę
-STR_CARGO_SINGULAR_TOY.c                                        :zabawce
 STR_CARGO_SINGULAR_TOY.d                                        :zabawki
-STR_CARGO_SINGULAR_TOY.m                                        :zabawce
+STR_CARGO_SINGULAR_TOY.c                                        :zabawce
+STR_CARGO_SINGULAR_TOY.b                                        :zabawkę
 STR_CARGO_SINGULAR_TOY.n                                        :zabawką
+STR_CARGO_SINGULAR_TOY.m                                        :zabawce
 STR_CARGO_SINGULAR_TOY.w                                        :zabawko
 STR_CARGO_SINGULAR_CANDY                                        :Słodycz
-STR_CARGO_SINGULAR_CANDY.b                                      :słodycz
-STR_CARGO_SINGULAR_CANDY.c                                      :słodyczy
 STR_CARGO_SINGULAR_CANDY.d                                      :słodyczy
-STR_CARGO_SINGULAR_CANDY.m                                      :słodyczy
+STR_CARGO_SINGULAR_CANDY.c                                      :słodyczy
+STR_CARGO_SINGULAR_CANDY.b                                      :słodycz
 STR_CARGO_SINGULAR_CANDY.n                                      :słodyczą
+STR_CARGO_SINGULAR_CANDY.m                                      :słodyczy
 STR_CARGO_SINGULAR_COLA                                         :Cola
-STR_CARGO_SINGULAR_COLA.b                                       :colę
-STR_CARGO_SINGULAR_COLA.c                                       :coli
 STR_CARGO_SINGULAR_COLA.d                                       :coli
-STR_CARGO_SINGULAR_COLA.m                                       :coli
+STR_CARGO_SINGULAR_COLA.c                                       :coli
+STR_CARGO_SINGULAR_COLA.b                                       :colę
 STR_CARGO_SINGULAR_COLA.n                                       :colą
+STR_CARGO_SINGULAR_COLA.m                                       :coli
 STR_CARGO_SINGULAR_COLA.w                                       :colo
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Wata cukrowa
-STR_CARGO_SINGULAR_COTTON_CANDY.b                               :watę cukrową
-STR_CARGO_SINGULAR_COTTON_CANDY.c                               :wacie cukrowej
 STR_CARGO_SINGULAR_COTTON_CANDY.d                               :waty cukrowej
-STR_CARGO_SINGULAR_COTTON_CANDY.m                               :wacie cukrowej
+STR_CARGO_SINGULAR_COTTON_CANDY.c                               :wacie cukrowej
+STR_CARGO_SINGULAR_COTTON_CANDY.b                               :watę cukrową
 STR_CARGO_SINGULAR_COTTON_CANDY.n                               :watą cukrową
+STR_CARGO_SINGULAR_COTTON_CANDY.m                               :wacie cukrowej
 STR_CARGO_SINGULAR_COTTON_CANDY.w                               :wato cukrowa
 STR_CARGO_SINGULAR_BUBBLE                                       :Bąbelek
-STR_CARGO_SINGULAR_BUBBLE.b                                     :bąbelek
-STR_CARGO_SINGULAR_BUBBLE.c                                     :bąbelkowi
 STR_CARGO_SINGULAR_BUBBLE.d                                     :bąbelka
-STR_CARGO_SINGULAR_BUBBLE.m                                     :bąbelku
+STR_CARGO_SINGULAR_BUBBLE.c                                     :bąbelkowi
+STR_CARGO_SINGULAR_BUBBLE.b                                     :bąbelek
 STR_CARGO_SINGULAR_BUBBLE.n                                     :bąbelkiem
+STR_CARGO_SINGULAR_BUBBLE.m                                     :bąbelku
 STR_CARGO_SINGULAR_BUBBLE.w                                     :bąbelku
 STR_CARGO_SINGULAR_TOFFEE                                       :Toffi
-STR_CARGO_SINGULAR_TOFFEE.b                                     :toffi
-STR_CARGO_SINGULAR_TOFFEE.c                                     :toffi
 STR_CARGO_SINGULAR_TOFFEE.d                                     :toffi
-STR_CARGO_SINGULAR_TOFFEE.m                                     :toffi
+STR_CARGO_SINGULAR_TOFFEE.c                                     :toffi
+STR_CARGO_SINGULAR_TOFFEE.b                                     :toffi
 STR_CARGO_SINGULAR_TOFFEE.n                                     :toffi
+STR_CARGO_SINGULAR_TOFFEE.m                                     :toffi
 STR_CARGO_SINGULAR_TOFFEE.w                                     :toffi
 STR_CARGO_SINGULAR_BATTERY                                      :Bateria
-STR_CARGO_SINGULAR_BATTERY.b                                    :baterię
-STR_CARGO_SINGULAR_BATTERY.c                                    :baterii
 STR_CARGO_SINGULAR_BATTERY.d                                    :baterii
-STR_CARGO_SINGULAR_BATTERY.m                                    :baterii
+STR_CARGO_SINGULAR_BATTERY.c                                    :baterii
+STR_CARGO_SINGULAR_BATTERY.b                                    :baterię
 STR_CARGO_SINGULAR_BATTERY.n                                    :baterią
+STR_CARGO_SINGULAR_BATTERY.m                                    :baterii
 STR_CARGO_SINGULAR_BATTERY.w                                    :baterio
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastik
-STR_CARGO_SINGULAR_PLASTIC.b                                    :plastik
-STR_CARGO_SINGULAR_PLASTIC.c                                    :plastikowi
 STR_CARGO_SINGULAR_PLASTIC.d                                    :plastiku
-STR_CARGO_SINGULAR_PLASTIC.m                                    :plastiku
+STR_CARGO_SINGULAR_PLASTIC.c                                    :plastikowi
+STR_CARGO_SINGULAR_PLASTIC.b                                    :plastik
 STR_CARGO_SINGULAR_PLASTIC.n                                    :plastikiem
+STR_CARGO_SINGULAR_PLASTIC.m                                    :plastiku
 STR_CARGO_SINGULAR_PLASTIC.w                                    :plastiku
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Napój gazowany
-STR_CARGO_SINGULAR_FIZZY_DRINK.b                                :napój gazowany
-STR_CARGO_SINGULAR_FIZZY_DRINK.c                                :napojowi gazowanemu
 STR_CARGO_SINGULAR_FIZZY_DRINK.d                                :napoju gazowanego
-STR_CARGO_SINGULAR_FIZZY_DRINK.m                                :napoju gazowanym
+STR_CARGO_SINGULAR_FIZZY_DRINK.c                                :napojowi gazowanemu
+STR_CARGO_SINGULAR_FIZZY_DRINK.b                                :napój gazowany
 STR_CARGO_SINGULAR_FIZZY_DRINK.n                                :napojem gazowanym
+STR_CARGO_SINGULAR_FIZZY_DRINK.m                                :napoju gazowanym
 STR_CARGO_SINGULAR_FIZZY_DRINK.w                                :napoju gazowany
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} pasażer{P "" ów ów}
@@ -1250,11 +1250,11 @@ STR_NO_ORDERS_VEL                                               :{LTBLUE}Bez pol
 
 STR_PASSENGERS                                                  :pasażerów
 STR_BAGS                                                        :worki
-STR_BAGS.b                                                      :worki
-STR_BAGS.c                                                      :workom
 STR_BAGS.d                                                      :worków
-STR_BAGS.m                                                      :workach
+STR_BAGS.c                                                      :workom
+STR_BAGS.b                                                      :worki
 STR_BAGS.n                                                      :workami
+STR_BAGS.m                                                      :workach
 STR_BAGS.w                                                      :worki
 STR_TONS                                                        :ton
 STR_LITERS                                                      :litrów

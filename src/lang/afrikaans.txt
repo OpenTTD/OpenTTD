@@ -1,12 +1,12 @@
 ##name Afrikaans
 ##ownname Conray
 ##isocode af_ZA
-##winlangid 0x0436
-##grflangid 0x1b
 ##plural 0
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x0436
+##grflangid 0x1b
 ##gender male
 
 #

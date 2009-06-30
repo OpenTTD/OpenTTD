@@ -1,12 +1,12 @@
 ##name Romanian
 ##ownname Românã
 ##isocode ro_RO
-##winlangid 0x0418
-##grflangid 0x28
 ##plural 0
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x0418
+##grflangid 0x28
 
 #
 

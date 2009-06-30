@@ -1,12 +1,12 @@
 ##name Turkish
 ##ownname Türkçe
 ##isocode tr_TR
-##winlangid 0x041f
-##grflangid 0x3e
 ##plural 1
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
+##winlangid 0x041f
+##grflangid 0x3e
 
 #
 

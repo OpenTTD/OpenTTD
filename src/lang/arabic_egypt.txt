@@ -1,12 +1,12 @@
 ##name Arabic (Egypt)
 ##ownname Arabic (Egypt)
 ##isocode ar_EG
-##winlangid 0x0c01
-##grflangid 0x14
 ##plural 1
 ##textdir rtl
 ##digitsep ٬
 ##digitsepcur ٬
+##winlangid 0x0c01
+##grflangid 0x14
 
 #
 
