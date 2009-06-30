@@ -7,7 +7,6 @@
 ##digitsepcur .
 ##winlangid 0x0403
 ##grflangid 0x22
-##case news subs
 
 #
 

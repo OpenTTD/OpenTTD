@@ -8,7 +8,6 @@
 ##winlangid 0x0416
 ##grflangid 0x37
 ##gender m f
-##case m f
 
 #
 

@@ -7,7 +7,6 @@
 ##digitsepcur .
 ##winlangid 0x0414
 ##grflangid 0x2f
-##gender masculinum neutrium femininum
 
 #
 
