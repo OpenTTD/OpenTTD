@@ -45,16 +45,16 @@ extern int _allegro_instance_count;
 
 const char *SoundDriver_Allegro::Start(const char * const *parm)
 {
-	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, NULL)) return NULL;
+	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, NULL)) return "Failed to set up Allegro";
 	_allegro_instance_count++;
 
 	/* Initialise the sound */
-	if (install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, NULL) != 0) return NULL;
+	if (install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, NULL) != 0) return "Failed to set up Allegro sound";
 
 	/* Okay, there's no soundcard */
 	if (digi_card == DIGI_NONE) {
 		DEBUG(driver, 0, "allegro: no sound card found");
-		return NULL;
+		return "No sound card found";
 	}
 
 	_stream = play_audio_stream(BUFFER_SIZE, 16, true, 11025, 255, 128);
