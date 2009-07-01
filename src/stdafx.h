@@ -123,6 +123,7 @@
 	#define CDECL
 	#define __int64 long long
 	#define GCC_PACK __attribute__((packed))
+	#define UNUSED __attribute__((unused))
 	/* Warn about functions using 'printf' format syntax. First argument determines which parameter
 	 * is the format string, second argument is start of values passed to printf. */
 	#define WARN_FORMAT(string, args) __attribute__ ((format (printf, string, args)))
@@ -133,6 +134,7 @@
 	#define FORCEINLINE inline
 	#define CDECL
 	#define GCC_PACK
+	#define UNUSED
 	#define WARN_FORMAT(string, args)
 	#include <malloc.h>
 #endif /* __WATCOMC__ */
@@ -184,6 +186,9 @@
 		#define CDECL _cdecl
 	#endif
 
+	#define GCC_PACK
+	#define UNUSED
+
 	int CDECL snprintf(char *str, size_t size, const char *format, ...) WARN_FORMAT(3, 4);
 	#if defined(WINCE)
 		int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap);
@@ -201,9 +206,6 @@
 	#if defined(_WIN64) || defined(WIN64)
 		#define fseek _fseeki64
 	#endif /* _WIN64 || WIN64 */
-
-
-	#define GCC_PACK
 
 	/* This is needed to zlib uses the stdcall calling convention on visual studio */
 	#if defined(WITH_ZLIB) || defined(WITH_PNG)
@@ -304,7 +306,7 @@ typedef unsigned char byte;
 #if defined(__OS2__)
 	#define assert_compile(expr)
 #else
-	#define assert_compile(expr) extern const int __ct_assert__[1 - 2 * !(expr)]
+	#define assert_compile(expr) extern const int __ct_assert__[1 - 2 * !(expr)] UNUSED
 #endif /* __OS2__ */
 
 /* Check if the types have the bitsizes like we are using them */

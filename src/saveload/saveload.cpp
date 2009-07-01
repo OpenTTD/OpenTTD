@@ -1498,11 +1498,10 @@ static size_t ReferenceToInt(const void *obj, SLRefType rt)
  * @param rt SLRefType type of the object the pointer is sought of
  * @return Return the index converted to a pointer of any type
  */
-
-assert_compile(sizeof(size_t) <= sizeof(void *));
-
 static void *IntToReference(size_t index, SLRefType rt)
 {
+	assert_compile(sizeof(size_t) <= sizeof(void *));
+
 	assert(_sl.action == SLA_PTRS);
 
 	/* After version 4.3 REF_VEHICLE_OLD is saved as REF_VEHICLE,

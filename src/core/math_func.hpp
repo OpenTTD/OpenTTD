@@ -116,12 +116,10 @@ static FORCEINLINE T Align(const T x, uint n)
  * @return The smallest multiple of n equal or greater than x
  * @see Align()
  */
-
-assert_compile(sizeof(size_t) == sizeof(void *));
-
 template <typename T>
 static FORCEINLINE T *AlignPtr(T *x, uint n)
 {
+	assert_compile(sizeof(size_t) == sizeof(void *));
 	return (T *)Align((size_t)x, n);
 }
 
