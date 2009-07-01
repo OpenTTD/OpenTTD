@@ -1337,8 +1337,14 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 				result |= 2;
 			} else if (!accepted) {
 				/* The order changed while unloading (unset unload/transfer) or the
-				 * station does not accept goods anymore. */
+				 * station does not accept our goods. */
 				ClrBit(v->vehicle_flags, VF_CARGO_UNLOADING);
+
+				/* Say we loaded something, otherwise we'll think we didn't unload
+				 * something and we didn't load something, so we must be finished
+				 * at this station. Setting the unloaded means that we will get a
+				 * retry for loading in the next cycle. */
+				anything_unloaded = true;
 				continue;
 			}
 
