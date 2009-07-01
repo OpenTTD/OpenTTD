@@ -1085,7 +1085,7 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 		const Station *s_from = Station::Get(source);
 
 		/* Check if a subsidy applies. */
-		subsidised = CheckSubsidised(s_from, s_to, cargo_type);
+		subsidised = CheckSubsidised(s_from, s_to, cargo_type, company->index);
 	}
 
 	/* Increase town's counter for some special goods types */

@@ -16,7 +16,7 @@ Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode);
 void DeleteSubsidyWithTown(TownID index);
 void DeleteSubsidyWithIndustry(IndustryID index);
 void DeleteSubsidyWithStation(StationID index);
-bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type);
+bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type, CompanyID company);
 void SubsidyMonthlyHandler();
 
 #endif /* SUBSIDY_FUNC_H */

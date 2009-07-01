@@ -284,7 +284,7 @@ no_add:;
 		InvalidateWindow(WC_SUBSIDIES_LIST, 0);
 }
 
-bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type)
+bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type, CompanyID company)
 {
 	Subsidy *s;
 	TileIndex xy;
@@ -336,7 +336,7 @@ bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type)
 			InjectDParam(1);
 
 			char *company_name = MallocT<char>(MAX_LENGTH_COMPANY_NAME_BYTES);
-			SetDParam(0, _current_company);
+			SetDParam(0, company);
 			GetString(company_name, STR_COMPANY_NAME, company_name + MAX_LENGTH_COMPANY_NAME_BYTES - 1);
 
 			SetDParamStr(0, company_name);
