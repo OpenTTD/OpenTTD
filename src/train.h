@@ -327,11 +327,16 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
 
 	/**
-	 * Check if a vehicle is front engine
-	 * @param v vehicle to check
-	 * @return Returns true if vehicle is a front engine
+	 * Check if train is a front engine
+	 * @return Returns true if train is a front engine
 	 */
 	FORCEINLINE bool IsFrontEngine() const { return HasBit(this->subtype, TS_FRONT); }
+
+	/**
+	 * Check if train is a free wagon (got no engine in front of it)
+	 * @return Returns true if train is a free wagon
+	 */
+	FORCEINLINE bool IsFreeWagon() const { return HasBit(this->subtype, TS_FREE_WAGON); }
 };
 
 #define FOR_ALL_TRAINS(var) FOR_ALL_VEHICLES_OF_TYPE(Train, var)

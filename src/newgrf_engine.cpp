@@ -135,7 +135,7 @@ static int MapOldSubType(const Vehicle *v)
 	switch (v->type) {
 		case VEH_TRAIN:
 			if (IsTrainEngine(v)) return 0;
-			if (IsFreeWagon(v)) return 4;
+			if (Train::From(v)->IsFreeWagon()) return 4;
 			return 2;
 		case VEH_ROAD:
 		case VEH_SHIP:     return 0;

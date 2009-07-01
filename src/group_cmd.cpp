@@ -368,7 +368,7 @@ void SetTrainGroupID(Train *v, GroupID new_g)
  */
 void UpdateTrainGroupID(Train *v)
 {
-	assert(v->IsFrontEngine() || IsFreeWagon(v));
+	assert(v->IsFrontEngine() || v->IsFreeWagon());
 
 	GroupID new_g = v->IsFrontEngine() ? v->group_id : (GroupID)DEFAULT_GROUP;
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {

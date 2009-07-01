@@ -217,7 +217,7 @@ void TrainConsistChanged(Train *v, bool same_length)
 {
 	uint16 max_speed = UINT16_MAX;
 
-	assert(v->IsFrontEngine() || IsFreeWagon(v));
+	assert(v->IsFrontEngine() || v->IsFreeWagon());
 
 	const RailVehicleInfo *rvi_v = RailVehInfo(v->engine_type);
 	EngineID first_engine = v->IsFrontEngine() ? v->engine_type : INVALID_ENGINE;
@@ -752,7 +752,7 @@ static void NormalizeTrainVehInDepot(const Train *u)
 {
 	const Train *v;
 	FOR_ALL_TRAINS(v) {
-		if (IsFreeWagon(v) && v->tile == u->tile &&
+		if (v->IsFreeWagon() && v->tile == u->tile &&
 				v->track == TRACK_BIT_DEPOT) {
 			if (CmdFailed(DoCommand(0, v->index | (u->index << 16), 1, DC_EXEC,
 					CMD_MOVE_RAIL_VEHICLE)))
@@ -1030,7 +1030,7 @@ static void AddWagonToConsist(Train *v, Train *dest)
  */
 static void NormaliseTrainConsist(Train *v)
 {
-	if (IsFreeWagon(v)) return;
+	if (v->IsFreeWagon()) return;
 
 	assert(v->IsFrontEngine());
 
@@ -4459,7 +4459,7 @@ bool Train::Tick()
 		if (!TrainLocoHandler(this, false)) return false;
 
 		return TrainLocoHandler(this, true);
-	} else if (IsFreeWagon(this) && (this->vehstatus & VS_CRASHED)) {
+	} else if (this->IsFreeWagon() && (this->vehstatus & VS_CRASHED)) {
 		/* Delete flooded standalone wagon chain */
 		if (++this->crash_anim_pos >= 4400) {
 			delete this;
