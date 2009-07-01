@@ -1315,14 +1315,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Anni
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Numero di anni{}da cui la partita è in corso
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMAZIONI PARTITA
-STR_NETWORK_CLIENTS                                             :{SILVER}Client:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Lingua:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Paesaggio:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Dimensione mappa:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versione server:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Indirizzo del server:  {WHITE}{STRING}
-STR_NETWORK_START_DATE                                          :{SILVER}Data di inizio:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data corrente:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CLIENTS                                             :{SILVER}Client: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Lingua: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Paesaggio: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Dimensione mappa: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versione server: {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Indirizzo del server: {WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}Data di inizio: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data corrente: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Protetto da password!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER PIENO
@@ -1404,7 +1404,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Lèttone
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Stanza principale partita multigiocatore
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparazione all'ingresso in:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparazione all'ingresso in: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Elenco di tutte le compagnie attualmente nella partita. È possibile unirsi ad una di esse o fondarne una nuova se è disponibile un posto
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nuova compagnia
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Crea una nuova compagnia
@@ -1417,16 +1417,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Aggiorna
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFORMAZIONI COMPAGNIA
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nome compagnia:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inaugurazione:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Valore compagnia:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Bilancio corrente:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Incassi anno scorso:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Prestazioni:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nome compagnia: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inaugurazione: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Valore compagnia: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Saldo corrente: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Incassi anno scorso: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Prestazioni: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Veicoli:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Stazioni:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Giocatori:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Veicoli: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Stazioni: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Giocatori: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Connessione...
 
@@ -1453,23 +1453,23 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Elenco d
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Diventa spettatore
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nuova compagnia
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Nessun dispositivo di rete trovato o compilato senza ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Impossibile trovare partite in rete
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Il server non ha risposto alla richiesta
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Impossibile connettersi a causa di file NewGRF differenti
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Sincronizzazione alla partita in rete fallita
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Connessione alla partita in rete persa.
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Impossibile caricare la partita salvata
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Impossibile avviare il server
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Impossibile connettersi
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Tempo scaduto per la connessione #{NUM}
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Un errore di protocollo ha chiuso la connessione
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} La revisione di questo client non corrisponde a quella del server
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Password errata
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Il server è pieno
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Sei stato bannato da questo server
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Sei stato espulso dalla partita
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} I trucchi non sono ammessi su questo server
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Nessun dispositivo di rete trovato o compilato senza ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Impossibile trovare partite in rete
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Il server non ha risposto alla richiesta
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Impossibile connettersi a causa di file NewGRF differenti
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Sincronizzazione alla partita in rete fallita
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Connessione alla partita in rete persa.
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Impossibile caricare la partita salvata
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Impossibile avviare il server
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Impossibile connettersi
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Tempo scaduto per la connessione #{NUM}
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Un errore di protocollo ha chiuso la connessione
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}La revisione di questo client non corrisponde a quella del server
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Password errata
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Il server è pieno
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Sei stato bandito da questo server
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Sei stato espulso dalla partita
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}I trucchi non sono ammessi su questo server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :errore generale
@@ -1535,12 +1535,12 @@ STR_NETWORK_SEND                                                :{BLACK}Invia
 
 ##### PNG-MAP-Loader
 
-STR_PNGMAP_ERROR                                                :{WHITE}Impossibile caricare il terreno il terreno dal file PNG...
+STR_PNGMAP_ERROR                                                :{WHITE}Impossibile caricare il terreno dal file PNG...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...file non trovato.
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...impossibile convertire il tipo di immagine. È richiesta un'immagine PNG a 8 o 24 bit.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...qualcosa non ha funzionato (probabilimente il file è corrotto)
 
-STR_BMPMAP_ERROR                                                :{WHITE}Impossibile caricare il terreno dalla bitmap...
+STR_BMPMAP_ERROR                                                :{WHITE}Impossibile caricare il terreno dal file BMP...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...impossibile convertire il tipo di immagine
 
 ##id 0x0800
@@ -1887,7 +1887,7 @@ STR_STATION_DESCRIPTION_BUOY                                    :Boa
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...boa di mezzo
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...stazione troppo estesa
 STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...stazioni non uniformi disabilitate
-STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Tenere premuto CTRL per scegliere più di un oggetto
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Tenere premuto CTRL per selezionare più di un elemento
 
 STR_UNDEFINED                                                   :(stringa non definita)
 STR_STAT_CLASS_DFLT                                             :Stazione predefinita
@@ -2209,9 +2209,9 @@ STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafico 
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafico profitto operativo
-STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bilancio bancario
+STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo bancario
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Prestito
-STR_MAX_LOAN                                                    :{WHITE}Prestito massimo:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Prestito massimo: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Chiedi in prestito {SKIP}{SKIP}{CURRENCY}
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Ripaga {SKIP}{SKIP}{CURRENCY}
@@ -2739,7 +2739,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Salta
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Elimina
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Vai a
 STR_REFIT                                                       :{BLACK}Riadatta
-STR_REFIT_TIP                                                   :{BLACK}Selezionare il tipo di carico per il quale riadattare in questo ordine.  Premere CTRL+clic per rimuovere l'istruzione di riadattamento
+STR_REFIT_TIP                                                   :{BLACK}Selezionare il tipo di carico per il quale riadattare in questo ordine. Premere CTRL+clic per rimuovere l'istruzione di riadattamento
 STR_REFIT_ORDER                                                 :(Riadatta per {STRING})
 STR_REFIT_STOP_ORDER                                            :(Riadatta per {STRING} e ferma)
 STR_STOP_ORDER                                                  :(Ferma)
@@ -3279,14 +3279,14 @@ STR_MAGLEV_VEHICLES                                             :Veicoli maglev
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Costo: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocità: {GOLD}{VELOCITY}{BLACK}   Potenza: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocità: {GOLD}{VELOCITY}{BLACK} Potenza: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocità: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Costo d'esercizio: {GOLD}{CURRENCY}/anno
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacità: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Progettato nel: {GOLD}{NUM}{BLACK} Vita: {GOLD}{COMMA} anni
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Affidabilità massima: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Costo: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Costo: {GOLD}{CURRENCY}{BLACK} Velocità: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacità: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoni alimentati: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}

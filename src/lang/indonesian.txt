@@ -33,7 +33,7 @@ STR_CARGO_PLURAL_LIVESTOCK                                      :Ternak
 STR_CARGO_PLURAL_GOODS                                          :Barang jadi
 STR_CARGO_PLURAL_GRAIN                                          :Gandum
 STR_CARGO_PLURAL_WOOD                                           :Kayu
-STR_CARGO_PLURAL_IRON_ORE                                       :Biji besi
+STR_CARGO_PLURAL_IRON_ORE                                       :Bijih besi
 STR_CARGO_PLURAL_STEEL                                          :Baja
 STR_CARGO_PLURAL_VALUABLES                                      :Barang berharga
 STR_CARGO_PLURAL_COPPER_ORE                                     :Biji Tembaga
@@ -103,16 +103,16 @@ STR_QUANTITY_VALUABLES                                          :{COMMA} kantong
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} bijih tembaga
 STR_QUANTITY_MAIZE                                              :{WEIGHT} tepung jagung
 STR_QUANTITY_FRUIT                                              :{WEIGHT} buah-buahan
-STR_QUANTITY_DIAMONDS                                           :{COMMA} karung intan
+STR_QUANTITY_DIAMONDS                                           :{COMMA} kantong intan
 STR_QUANTITY_FOOD                                               :{WEIGHT} makanan
 STR_QUANTITY_PAPER                                              :{WEIGHT}  kertas
-STR_QUANTITY_GOLD                                               :{COMMA} karung emas
+STR_QUANTITY_GOLD                                               :{COMMA} kantong emas
 STR_QUANTITY_WATER                                              :{VOLUME} air
 STR_QUANTITY_WHEAT                                              :{WEIGHT}  gandum
 STR_QUANTITY_RUBBER                                             :{VOLUME} karet
 STR_QUANTITY_SUGAR                                              :{WEIGHT} gula
 STR_QUANTITY_TOYS                                               :{COMMA} mainan
-STR_QUANTITY_SWEETS                                             :{COMMA} karung manisan
+STR_QUANTITY_SWEETS                                             :{COMMA} kantong manisan
 STR_QUANTITY_COLA                                               :{VOLUME} cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} Harum manis
 STR_QUANTITY_BUBBLES                                            :{COMMA} gelembung
@@ -624,7 +624,7 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Meletakk
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Menempatkan Mercusuar
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Meletakkan Pemancar
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Menentukan wilayah gurun {} Klik dan tahan CTRL untuk menghapusnya
-STR_CREATE_LAKE                                                 :{BLACK}Membuat areal perairan .{}Membuat sebuah kanal, kecuali jika CTRL ditekan pada level yang sejajar dengan laut, maka air akan memenuhi permukaan
+STR_CREATE_LAKE                                                 :{BLACK}Membuat area perairan .{}Membuat kanal, kecuali jika CTRL ditekan pada level yang sejajar dengan laut, maka air akan memenuhi permukaan
 STR_CREATE_RIVER                                                :{BLACK}Membuat Sungai
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Hapus
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Hapus kota ini habis
@@ -889,27 +889,27 @@ STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
-STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Tidak dapat menyamakan perintah...
+STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Tidak dapat berbagi perintah...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Tidak dapat meniru perintah...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Akhir Perintah Bersama - -
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} tidak menemukan arah selanjutnya.
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} kehilangan arah.
 STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Tahun lalu {VEHICLE} merugi sebanyak {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Persatuan Moneter Eropa{}{}Euro, diperkenalkan sebagai satu-satunya mata uang untuk bertransaksi di negara anda!
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Moneter Eropa Bersatu!{}{}Euro, diperkenalkan sebagai satu-satunya mata uang untuk bertransaksi di negara anda!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}Daftar perintah {VEHICLE} terlalu sedikit
 STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} memiliki perintah yang terabaikan
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} memiliki perintah yang sama atau ganda
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} memiliki stasion yang salah pada perintahnya
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} memiliki perintah ganda
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} memiliki perintah menuju stasiun yg salah
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Peremajaan {VEHICLE}{}{STRING} gagal
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Peremajaan {VEHICLE} gagal{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} jadi terlalu panjang setelah diganti
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Tidak ada aturan peremajaan otomatis yang digunakan
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(batas uang)
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(batas min. uang)
 
 STR_CONFIG_SETTING                                              :{BLACK}Pengaturan lanjutan
 STR_CONFIG_SETTING_TIP                                          :{BLACK}Tampilkan Pengaturan lanjutan
@@ -1171,9 +1171,9 @@ STR_TOYLAND_LANDSCAPE                                           :Lansekap 'Taman
 
 STR_CHEATS                                                      :{WHITE}Kode Curang
 STR_CHEATS_TIP                                                  :{BLACK}Daftar cek ini mengindikasikan bahwa anda telah menggunakan kode curang ini sebelumnya
-STR_CHEATS_WARNING                                              :{BLACK}Peringatan! Anda akan menghianati para pesaing lainya. Ingat, tindakan ini akan terus teringat untuk selamanya.
+STR_CHEATS_WARNING                                              :{BLACK}Peringatan! Anda akan mencurangi pemain lainya. Kecurangan ini akan tetap tercatat selama game berjalan.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tambah uang sebanyak {CURRENCY}
-STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Memainkan sebagai pemain: {ORANGE}{COMMA}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain sebagai pemain: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (hancurkan industri, mercu suar dsb): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Terowongan boleh menerobos terowongan lain: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Membangun saat mode "BERHENTI": {ORANGE}{STRING}
@@ -1217,7 +1217,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Bangun industri
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Dukung Peta dengan penempatan industri secara otomatis
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Tidak dapat membangkitkan/membuat industri...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Buka toolbar lansekap untuk menaikan/menurunkan tanah, tumbuh-tumbuhan, dsb.
+STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Buka toolbar lansekap untuk menaik-turunkan tanah, menanam pohon, dsb.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Proses Lansekap
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Permukaan tanah
 

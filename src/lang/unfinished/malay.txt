@@ -121,6 +121,19 @@ STR_QUANTITY_BATTERIES                                          :{COMMA} bateri
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastik
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} minuman bergas
 STR_ABBREV_NOTHING                                              :
+STR_ABBREV_COAL                                                 :{TINYFONT}BA
+STR_ABBREV_MAIL                                                 :{TINYFONT}SR
+STR_ABBREV_OIL                                                  :{TINYFONT}MI
+STR_ABBREV_GOODS                                                :{TINYFONT}BR
+STR_ABBREV_WOOD                                                 :{TINYFONT}KA
+STR_ABBREV_FRUIT                                                :{TINYFONT}BU
+STR_ABBREV_FOOD                                                 :{TINYFONT}MK
+STR_ABBREV_PAPER                                                :{TINYFONT}KR
+STR_ABBREV_GOLD                                                 :{TINYFONT}EM
+STR_ABBREV_WATER                                                :{TINYFONT}AR
+STR_ABBREV_RUBBER                                               :{TINYFONT}GT
+STR_ABBREV_SUGAR                                                :{TINYFONT}GU
+STR_ABBREV_TOYS                                                 :{TINYFONT}MA
 STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
 STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}MAP-{STRING}
@@ -232,6 +245,7 @@ STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARG
 STR_INTRO_NEW_GAME                                              :{BLACK}Permainan Baru
 STR_INTRO_LOAD_GAME                                             :{BLACK}Muat Permainan
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Ramai pemain
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Pengarang Senario
 
 STR_MAPSIZE                                                     :{BLACK}Saiz peta:
 STR_BY                                                          :{BLACK}*
@@ -576,6 +590,7 @@ STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Simpan s
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Muat Senario
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Simpan Senario
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Main Senario
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Anda pasti mahu meninggalkan senario ini?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... hanya boleh dibina di bandar dengan populasi lebih atau sama dengan 1200
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pindah tarikh permulaan 1 tahun belakang
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Pindah tarikh permulaan 1 tahun ke hadapan
@@ -737,6 +752,7 @@ STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{S
 
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} fail hilang/rosak{P "" s}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Maklumat tambahan tentang set grafik asas ini
 
 
@@ -770,6 +786,8 @@ STR_NOTHING                                                     :
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} tidak boleh mencari arah jalan untuk teruskan jalan
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} telah hilang jalan.
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -788,6 +806,7 @@ STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Membena
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :seperti industri lain
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Membolehkan berbilang set enjin NewGRF: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lapangan terbang tidak akan tamat tempohnya: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Memperingatkan jika satu kereta api hilang jalan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :tidak
@@ -891,6 +910,12 @@ STR_CONVERT_RAIL_TIP                                            :{BLACK}Menukark
 
 
 
+STR_NETWORK_LANGUAGE                                            :{SILVER}Bahasa: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Saiz peta: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versi pelayan: {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Alamat pelayan: {WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}Tarikh permulaan: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Tarikh sekarang: {WHITE}{DATE_SHORT}
 
 
 
@@ -915,7 +940,13 @@ STR_NETWORK_LANG_DUTCH                                          :Belanda
 
 
 
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nama syarikat: {WHITE}{STRING}
+STR_NETWORK_VALUE                                               :{SILVER}Nilai syarikat: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Pendapatan tahun lepas: {WHITE}{CURRENCY}
 
+STR_NETWORK_VEHICLES                                            :{SILVER}Kenderaan: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Stesen-stesen: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Pemain: {WHITE}{STRING}
 
 
 ############ Leave those lines in this order!!
@@ -926,6 +957,12 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} 
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Masukkan jumlah wang anda hendak memberikan
 
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Tidak boleh jumpa permainan rangkaian
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Pelayan itu tidak menjawabkan permohonan ini
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Tidak boleh sambung kerana NewGRF yang tidak sama
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Permainan rangkaan telah dihilang
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Tidak boleh memulakan pelayan ini
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Tidak boleh bersambung
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Kata laluan salah
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Anda telah ditendang keluar daripada permainan ini
 
@@ -1031,6 +1068,10 @@ STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} m
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Penarafan syarikat pengangkutan:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STATION} ke {STATION} akan dibayar tambahan 50% untuk tahun hadapan!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STATION} ke {STATION} akan dibayar dua kali ganda untuk tahun hadapan!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STATION} ke {STATION} akan dibayar tiga kali ganda untuk tahun hadapan!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STATION} ke {STATION} akan dibayar empat kali ganda untuk tahun hadapan!
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Pangsapuri
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Kedai-kedai dan pejabat-pejabat
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Kedai-kedai dan pejabat-pejabat
@@ -1177,6 +1218,11 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diese
 
 
 
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Kenderaan ini sedang berjalan mengikuti jadual
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Kenderaan ini sedang berjalan {STRING} lewat
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Kenderaan ini sedang berjalan {STRING} awal
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Jadual waktu ini akan mengambil {STRING} untuk menghabis
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Jadual waktu ini akan mengambil sekurangnya {STRING} untuk dilengkapi (bukan semua dijadualkan)
 
 ##id 0x9000
 
@@ -1209,11 +1255,14 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kadar pertukaran: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Tukar ke Euro: {ORANGE}{5:NUM}
 STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Tetapkan kadar pertukaran mata wang anda untuk stau Paun (£)
 STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Tetapkan pemisah mata wang anda
 STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Tetapkan permulaan untuk mata wang anda
 STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Tetapkan akhiran untuk mata wang anda
 STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Tukar ke Euro dahulu
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Tukar ke Euro kemudian
 STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Tetapkan tahun untuk menukar ke Euro
 STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}Mata wang anda berbanding 10000 Pound (£)
 
@@ -1257,6 +1306,7 @@ STR_SHORT_DATE                                                  :{WHITE}{DATE_TI
 ############ End of list of rail types
 
 
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Muatan: {GOLD}{CARGO}, {CARGO}
 
 ########### For showing numbers in widgets
 
@@ -1284,6 +1334,7 @@ STR_SHORT_DATE                                                  :{WHITE}{DATE_TI
 
 
 
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Kumpulan - klik sebuah kumpulan untuk menaraikan semua kenderaan di dalam kumpulan
 
 
 
@@ -1303,12 +1354,16 @@ STR_FACE_NO                                                     :Tidak
 ########
 
 ############ AI GUI
+STR_AI_AUTHOR                                                   :{BLACK}Penulis: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Versi: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 ########
 
 ############ town controlled noise level
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pilih pengingkatan
 
 
 

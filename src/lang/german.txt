@@ -453,7 +453,7 @@ STR_LAND_AREA_INFORMATION_OWNER_N_A                             :k.A.
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Eigentümer: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Straßenbesitzer: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Straßenbahnbesitzer: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Schienenbesitzer: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Gleisbesitzer: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Gehört zur Gemeinde: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Keine
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Name
@@ -560,7 +560,7 @@ STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Änderu
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Produktionsänderung von Industrien, die der Spieler bedient
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Produktionsänderung von Industrien, die ein Wettbewerber bedient
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Produktionsänderungen anderer Industrien
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Rat / Informationen zu Fahrzeugen des Unternehmens
+STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Rat / Informationen zu Fahrzeugen der Firma
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Neue Fahrzeuge
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Änderungen akzeptierter Fracht
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subventionen
@@ -568,7 +568,7 @@ STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Allgeme
 STR_MESSAGES_ALL                                                :{YELLOW}Einstellung für alle Nachrichtenarten (an/aus/Ticker)
 STR_MESSAGE_SOUND                                               :{YELLOW}Sound für Tickermeldungen abspielen
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...zu weit vom vorherigen Bestimmungsort entfernt
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Beste Unternehmen, die {NUM} erreichten{}(Schwierigkeitsgrad {STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Beste Firmen, die {NUM} erreichten{}(Schwierigkeitsgrad {STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Firmentabelle in {NUM}
 STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Geschäftsmann
@@ -645,7 +645,7 @@ STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Soll da
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...kann nur in Städten mit mehr als 1200 Einwohnern gebaut werden
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Startdatum auf 1 Jahr früher setzen
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Startdatum auf 1 Jahr später setzen
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...Brücke muss an beiden Seiten auf dem Land enden
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...Brücke muss an beiden Seiten auf Land enden
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Klein
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Mittel
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Groß
@@ -920,7 +920,7 @@ STR_CONFIG_SETTING_OFF                                          :Aus
 STR_CONFIG_SETTING_ON                                           :An
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Fahrzeuggeschwindigkeit in der Statusleiste anzeigen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Das Bauen an Hängen und Küsten erlauben: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Landschaftsbau unter Gebäuden, Schienen, usw. erlauben: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Landschaftsbau unter Gebäuden, Gleisen, usw. erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Stationsarten haben verschieden große Einzugsgebiete: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Entfernung von weiteren Straßen, Brücken, usw. erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Bau von sehr langen Zügen erlauben: {ORANGE}{STRING}
@@ -1050,7 +1050,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Magnetschwebeba
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :erster verfügbarer
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :letzter verfügbarer
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :meistbenutzer
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Reservierte Schienen hervorheben: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Reservierte Gleise hervorheben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Belasse Bauwerkzeuge aktiv nach Benutzung: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Zwischensummen für Kategorien bei Firmenausgaben:{ORANGE}{STRING}
 
@@ -1141,7 +1141,7 @@ STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Wartung
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Wegsuche
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Züge
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Städte
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Unternehmen
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrien
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pathfinder für Züge: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Not recommended)
@@ -1174,7 +1174,7 @@ STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TIP                                                  :{BLACK}Die Kontrollkästchen zeigen an, ob dieser Cheat schonmal verwendet worden ist.
 STR_CHEATS_WARNING                                              :{BLACK}Achtung! Hiermit betrügt man seine Mitspieler. Man sollte bedenken, dass sie das niemals verzeihen werden.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Kontostand um {CURRENCY} erhöhen
-STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiele das Unternehmen: {ORANGE}{COMMA}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiele die Firma: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Mächtigeres Abrisswerkzeug: {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnel dürfen sich kreuzen: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Bauen im Pausenmodus: {ORANGE}{STRING}
@@ -1203,7 +1203,7 @@ STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Wegpunktname ändern
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Wegpunktname kann nicht geändert werden...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Wegpunkt (auf vorhandener Schiene) bauen
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Wegpunkt (auf vorhandenem Gleis) bauen
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Wegpunkt kann hier nicht gebaut werden...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Wegpunkt kann hier nicht entfernt werden...
 
@@ -1482,7 +1482,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :Unerwartetes Da
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :Falsche Version
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :Name wird bereits verwendet
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :Falsches Spielpasswort
-STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :Falsche Unternehmens-ID in DoCommand
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :Falsche Firmen-ID in DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :vom Server hinausgeworfen
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :hat versucht zu mogeln
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :Server voll
@@ -1763,13 +1763,13 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Statue des Firm
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Neue Gebäude finanzieren
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Exklusive Transportrechte kaufen
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Die Stadtverwaltung bestechen
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Im Ort eine kleine Werbekampagne starten, um mehr Passagier- und Frachtaufträge für das eigene Unternehmen zu gewinnen.{}Kosten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Im Ort eine mittlere Werbekampagne starten, um mehr Passagier- und Frachtaufträge für das eigene Unternehmen zu gewinnen.{}Kosten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Im Ort eine große Werbekampagne starten, um mehr Passagier- und Frachtaufträge für das eigene Unternehmen zu gewinnen.{}Kosten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Im Ort eine kleine Werbekampagne starten, um mehr Passagier- und Frachtaufträge für die eigene Firma zu gewinnen.{}Kosten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Im Ort eine mittlere Werbekampagne starten, um mehr Passagier- und Frachtaufträge für die eigene Firma zu gewinnen.{}Kosten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Im Ort eine große Werbekampagne starten, um mehr Passagier- und Frachtaufträge für die eigene Firma zu gewinnen.{}Kosten: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}Die örtlichen Straßenreparaturen finanzieren. Der Straßenverkehr wird bis zu 6 Monate beeinträchtigt.{}Kosten: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Eine Statue zu Ehren der eigenen Firma errichten.{}Kosten: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Bau von Geschäftsgebäuden im Ort finanzieren.{}Kosten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Für ein  Jahr die exklusiven Transportrechte in der Stadt kaufen. Die Stadtverwaltung erlaubt dann nur Passagier- und Frachttransporte des eigenen Unternehmens.{}Kosten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Für ein Jahr die exklusiven Transportrechte in der Stadt kaufen. Die Stadtverwaltung erlaubt dann nur Passagier- und Frachttransporte der eigenen Firma.{}Kosten: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Die Stadtverwaltung bestechen, um die eigene Bewertung zu verbessern. Dabei riskiert man allerdings eine harte Strafe, falls man ertappt wird.{}Kosten: {CURRENCY}
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Verkehrschaos in {TOWN}!{}{}Straßensanierungsprogramm finanziert durch {STRING} wird 6 Monate lang Verzögerungen im Verkehr bewirken!
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
@@ -2307,7 +2307,7 @@ STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kauf von
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Verkauf von 25% der Aktien dieser Firma nicht möglich...
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% Eigentum von {COMPANY})
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BLACK}{BIGFONT}{STRING} wurde von {STRING} übernommen!
-STR_PROTECTED                                                   :{WHITE}Dieses Unternehmen ist noch nicht an der Börse...
+STR_PROTECTED                                                   :{WHITE}Diese Firma ist noch nicht alt genug, um an der Börse gehandelt zu werden...
 
 STR_LIVERY_DEFAULT                                              :Standardlackierung
 STR_LIVERY_STEAM                                                :Dampflok
@@ -2327,7 +2327,7 @@ STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Lastwagen
 STR_LIVERY_PASSENGER_SHIP                                       :Passagierfähre
 STR_LIVERY_FREIGHT_SHIP                                         :Frachter
-STR_LIVERY_HELICOPTER                                           :Helikopter
+STR_LIVERY_HELICOPTER                                           :Hubschrauber
 STR_LIVERY_SMALL_PLANE                                          :Kleines Flugzeug
 STR_LIVERY_LARGE_PLANE                                          :Großraumflugzeug
 STR_LIVERY_PASSENGER_TRAM                                       :Straßenbahn
@@ -2722,7 +2722,7 @@ STR_VEHICLE_LIST_CAPTION_TRAINS                                 :{WHITE}{COMPANY
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Neues Schienenfahrzeug
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Neue E-Loks
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Neue Einschienenbahnzüge
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Neues Einschienenbahn-Fahrzeug
 STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Neue Magnetzüge
 STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Eisenbahnfahrzeuge
 
@@ -2751,7 +2751,7 @@ STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - En
 STR_SERVICE                                                     :{BLACK}Wartung
 STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Schienenfahrzeug kann nicht gekauft werden...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK}  Wert: {LTBLUE}{CURRENCY}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Wert: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK} Wert: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Laden / Entladen
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Abfahrt
@@ -2797,8 +2797,8 @@ STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Zeige Ei
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Zeige Einzelheiten zu den Schienenfahrzeugen
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Zeige Kapazität jedes Fahrzeugs
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Frachtübersicht des Zuges anzeigen, aufgeteilt nach Frachttyp
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Auftragsliste - zum Markieren hier anklicken. STRG + Klick springt zum Bahnhof
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Überspringe den laufenden Auftrag, und starte den nächsten. STRG + Klick überspringt den ausgewählten
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Auftragsliste - zum Markieren hier anklicken. Strg+Klick springt zum Bahnhof
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Überspringe den laufenden Auftrag, und starte den nächsten. Strg+Klick überspringt den ausgewählten
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Lösche den markierten Auftrag
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Füge einen neuen Auftrag vor dem markierten Auftrag ein, oder setze ihn ans Ende der Liste
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Fahrplan - Einträge anklicken um sie zu markieren.
@@ -3073,7 +3073,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Geld:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Kredit:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Gesamt:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Anzahl an Fahrzeugen (Straßenfahrzeuge, Züge, Schiffe und Flugzeuge/Helikopter)
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Anzahl an Fahrzeugen (Straßenfahrzeuge, Züge, Schiffe und Flugzeuge/Hubschrauber)
 STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Anzahl an Stationen (Jeder Teil einer Station zählt einzeln: Bahnhof, Ladeplatz, Busbahnhof, Flugplatz, Hafen)
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Geringster Gewinn der Fahrzeuge, die älter als 2 Jahre sind
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Geringste Monatseinnahmen in den letzten 12 Quartalen
@@ -3093,7 +3093,7 @@ STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Farbpale
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Parameter setzen
 STR_NEWGRF_FILENAME                                             :{BLACK}Dateiname: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}Palette: {SILVER}{STRING}
-STR_NEWGRF_GRF_ID                                               :{BLACK}GRF-ID: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}NewGRF-ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5-Summe: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Änderungen während eines laufenden Spiels können zum Absturz von OpenTTD führen.{}Trotzdem fortfahren?
 
@@ -3149,7 +3149,7 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Passend
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatible NewGRF(s) für fehlende Dateien geladen
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fehlende NewGRF-Dateien wurden deaktiviert.
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF-Datei(en) fehlen
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}NewGRF-Datei(en) fehlen
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Das Beenden der Pause kann OpenTTD zum Absturz bringen. Bitte keine Fehlerberichte bei auftretenden Fehlern senden. {}Pause wirklich beenden?
 
 STR_NEWGRF_BROKEN                                               :{WHITE}Verhalten des NewGRFs '{STRING}' wird voraussichtlich zu Synchronisationsfehlern und/oder Absturz des Spiels führen.
@@ -3234,7 +3234,7 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Zu erset
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Loktyp auswählen, der anstelle des links gewählten Loktyps verwendet werden soll
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klick zum Abbrechen der Ersetzung des Loktyps auf der linken Seite
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klick zum Ersetzen des Loktyps auf der linken Seite mit dem auf der rechten Seite
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Schienentyp auswählen, für den Loks ersetzt werden sollen
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Gleistyp auswählen, für den Loks ersetzt werden sollen
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Hier wird angezeigt, gegen welche Lok die auf der linken Seite gewählte ersetzt wird
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon-Entfernung: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ursprüngliche Länge des Zugs beibehalten, indem (vorne beginnend) Waggons entfernt werden, falls das Ersetzen der Lokomotive den Zug verlängern würde.
@@ -3536,7 +3536,7 @@ STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Ausfahrs
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombinationssignal (Formsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Pfadsignal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalabschnitt zu befahren, sofern ein Pfad reserviert werden kann. Pfadsignale können von hinten durchfahren werden.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Einseitiges Pfadsignal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalabschnitt zu befahren, sofern ein Pfad reserviert werden kann. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Blocksignal (Lichtsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Schienensystem.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Blocksignal (Lichtsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Gleissystem.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein Blocksignal, gibt jedoch das Signal an Einfahr- und Kombinationssignale im vorherliegenden Block weiter.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinationssignal (Lichtsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
@@ -3603,19 +3603,19 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Art
 STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Art der Erweiterung
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Name
 STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Name der Erweiterung
-STR_CONTENT_MATRIX_TIP                                          :{BLACK}Auf eine Zeile klicken, um Details zu sehen{}Checkbox anklicken, um zum Download auszuwählen
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Auf eine Zeile klicken, um Details zu sehen{}Checkbox anklicken, um zum Herunterladen auszuwählen
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Alles wählen
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Alle Erweiterungen zum Herunterladen auswählen
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Upgrades auswählen
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Alle Erweiterungen, die einen bestehenden Inhalt verbessern, auswählen
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Alles abwählen
-STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Keine Erweiterung zum Download auswählen
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Keine Erweiterung zum Herunterladen auswählen
 STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Gib einen Filter ein
 STR_CONTENT_FILTER_TIP                                          :{BLACK}Gib ein Stichwort in die Filterliste ein
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter für Stichworte oder Namen:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Herunterladen
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Beginne die ausgewählten Erweiterung(en) herunterzuladen
-STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Gesamtgröße der Downloads: {WHITE}{BYTES}
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Gesamtgröße der ausgewählten Erweiterungen: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}Beschreibung der Erweiterung
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Diese ist nicht zum Herunterladen ausgewählt
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Dies ist zum Herunterladen ausgewählt
@@ -3628,7 +3628,7 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Version
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Beschreibung: {WHITE}{STRING}
 STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Typ: {WHITE}{STRING}
-STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Download-Größe: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Gesamtgröße der Erweiterungen: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Gewählt weil: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Abhängigkeiten: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Stichworte: {WHITE}{STRING}

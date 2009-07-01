@@ -321,6 +321,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Is jy s
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Verlaat Spel
 STR_SORT_ORDER_TIP                                              :{BLACK}Selekteer sorteer orde (afklimende/klimende)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Selekteer sorteer maatstaf
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Selekteer filtrering kriteria
 STR_SORT_BY                                                     :{BLACK}Sorteer by
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populasie
@@ -343,6 +344,8 @@ STR_SORT_BY_LENGTH                                              :Lengte
 STR_SORT_BY_LIFE_TIME                                           :Leeftyd oor
 STR_SORT_BY_FACILITY                                            :Stasie tipe
 STR_SORT_BY_WAITING                                             :Wagtend vrag waarde
+STR_SORT_BY_RATING_MAX                                          :Hoogste vrag gradering
+STR_SORT_BY_RATING_MIN                                          :Laagte vrag gradering
 STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (klassieke sorteer)
 STR_ENGINE_SORT_COST                                            :Koste
 STR_ENGINE_SORT_POWER                                           :Krag
@@ -844,6 +847,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Kies die
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis grafiek stel
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Kies die Basiese grafiek stel om te gebruik
 STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} verlore / korrupte ler{P "" s}
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Addisioneel informasie oor die basis grapfieke stel
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Outostoor het misluk
 
@@ -945,6 +949,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Vliegtu
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Laattoe skyf-deur pad stop op dorp besit paaie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Laattoe gebou van aangrensend stasies: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lughawes verval nooit nie: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Waarsku as trein verloor is: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Bespreek voertuig se opdrae: {ORANGE}{STRING}
@@ -1414,7 +1419,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klient L
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nuwe Maatskapy
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Geen netwerk ontwerp gevind of voldoen sonder ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Kan nie enige netwerk spele vind nie
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Kan nie enige netwerk speletjies vind nie
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Die verskaffer het nie die versoek geantwoord nie
 STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Kan nie konnekteer te danke aan newgrf mispas nie
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Netwerk-Spel sinchroniseering gedop
@@ -3094,6 +3099,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Verwiss
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Verwissel na Euro: {ORANGE}nooit
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Voorskou: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}verander gebruiklike koers parameter
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Verlaag die hoeveelheid van jou koers vir een Pond (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Verhoog die hoeveelheid van jou koers vir een Pond (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Stel die wissel koers vir jou koers vir een Pond (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Stel die skeier vir jou koers
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Stel die voorvoegsel teks vir jou koers
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Stel die agtervoegsel teks vir jou koers
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Skakel na Euro vroeër
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Skakel na Euro later
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Stel die jaar om na Euro toe te skakel
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Pond (£) in jou koers
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3495,5 +3510,12 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Jy het 
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Jy het hierdie reeds
 
 
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... verbinding verloor
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... lêer nie skryfbaar nie
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kon nie die afgelaaide lêer dekompakteer
 
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Kyk Na Aanlyn Inhoud
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Kyk vir nuwe of bygewerkde inhoud om af te laai
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Vind vermisde inhoud aanlyn
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Kyk of die vermisde inhoud aanlyn kan gevind word
 ########
