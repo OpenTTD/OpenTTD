@@ -4,27 +4,27 @@
 
 #include "ai_subsidy.hpp"
 #include "ai_date.hpp"
-#include "../../subsidy_type.h"
+#include "../../subsidy_base.h"
 #include "../../station_base.h"
 #include "../../cargotype.h"
 
 /* static */ bool AISubsidy::IsValidSubsidy(SubsidyID subsidy_id)
 {
-	return subsidy_id < lengthof(_subsidies) && _subsidies[subsidy_id].cargo_type != CT_INVALID;
+	return Subsidy::IsValidID(subsidy_id);
 }
 
 /* static */ bool AISubsidy::IsAwarded(SubsidyID subsidy_id)
 {
 	if (!IsValidSubsidy(subsidy_id)) return false;
 
-	return _subsidies[subsidy_id].age >= 12;
+	return Subsidy::Get(subsidy_id)->age >= 12;
 }
 
 /* static */ AICompany::CompanyID AISubsidy::GetAwardedTo(SubsidyID subsidy_id)
 {
 	if (!IsAwarded(subsidy_id)) return AICompany::COMPANY_INVALID;
 
-	return (AICompany::CompanyID)((byte)Station::Get(_subsidies[subsidy_id].from)->owner);
+	return (AICompany::CompanyID)((byte)Station::Get(Subsidy::Get(subsidy_id)->from)->owner);
 }
 
 /* static */ int32 AISubsidy::GetExpireDate(SubsidyID subsidy_id)
@@ -35,9 +35,9 @@
 	int month = AIDate::GetMonth(AIDate::GetCurrentDate());
 
 	if (IsAwarded(subsidy_id)) {
-		month += 24 - _subsidies[subsidy_id].age;
+		month += 24 - Subsidy::Get(subsidy_id)->age;
 	} else {
-		month += 12 - _subsidies[subsidy_id].age;
+		month += 12 - Subsidy::Get(subsidy_id)->age;
 	}
 
 	year += (month - 1) / 12;
@@ -50,7 +50,7 @@
 {
 	if (!IsValidSubsidy(subsidy_id)) return CT_INVALID;
 
-	return _subsidies[subsidy_id].cargo_type;
+	return Subsidy::Get(subsidy_id)->cargo_type;
 }
 
 /* static */ bool AISubsidy::SourceIsTown(SubsidyID subsidy_id)
@@ -65,7 +65,7 @@
 {
 	if (!IsValidSubsidy(subsidy_id)) return INVALID_STATION;
 
-	return _subsidies[subsidy_id].from;
+	return Subsidy::Get(subsidy_id)->from;
 }
 
 /* static */ bool AISubsidy::DestinationIsTown(SubsidyID subsidy_id)
@@ -87,5 +87,5 @@
 {
 	if (!IsValidSubsidy(subsidy_id)) return INVALID_STATION;
 
-	return _subsidies[subsidy_id].to;
+	return Subsidy::Get(subsidy_id)->to;
 }

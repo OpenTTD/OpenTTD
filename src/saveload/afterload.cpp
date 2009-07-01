@@ -31,7 +31,7 @@
 #include "../town.h"
 #include "../economy_base.h"
 #include "../animated_tile_func.h"
-#include "../subsidy_type.h"
+#include "../subsidy_base.h"
 
 #include "table/strings.h"
 

@@ -15,6 +15,7 @@
 #include "gfx_func.h"
 #include "gui.h"
 #include "subsidy_func.h"
+#include "subsidy_base.h"
 
 #include "table/strings.h"
 

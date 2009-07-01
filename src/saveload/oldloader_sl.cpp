@@ -12,7 +12,7 @@
 #include "../train.h"
 #include "../signs_base.h"
 #include "../station_base.h"
-#include "../subsidy_type.h"
+#include "../subsidy_base.h"
 #include "../debug.h"
 #include "../depot_base.h"
 #include "../newgrf_config.h"
@@ -1475,7 +1475,7 @@ static const OldChunks subsidy_chunk[] = {
 
 static bool LoadOldSubsidy(LoadgameState *ls, int num)
 {
-	return LoadChunk(ls, &_subsidies[num], subsidy_chunk);
+	return LoadChunk(ls, &Subsidy::array[num], subsidy_chunk);
 }
 
 static const OldChunks game_difficulty_chunk[] = {

@@ -1476,11 +1476,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\subsidy_func.h"
+				RelativePath=".\..\src\subsidy_base.h"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\subsidy_type.h"
+				RelativePath=".\..\src\subsidy_func.h"
 				>
 			</File>
 			<File

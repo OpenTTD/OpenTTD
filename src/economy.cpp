@@ -33,6 +33,7 @@
 #include "autoreplace_func.h"
 #include "company_gui.h"
 #include "signs_base.h"
+#include "subsidy_base.h"
 #include "subsidy_func.h"
 #include "station_base.h"
 #include "economy_base.h"

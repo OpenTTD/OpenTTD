@@ -3,7 +3,7 @@
 /** @file subsidy_sl.cpp Code handling saving and loading of subsidies */
 
 #include "../stdafx.h"
-#include "../subsidy_type.h"
+#include "../subsidy_base.h"
 
 #include "saveload.h"
 
@@ -21,7 +21,7 @@ void Save_SUBS()
 {
 	Subsidy *s;
 	FOR_ALL_SUBSIDIES(s) {
-		SlSetArrayIndex(s - _subsidies);
+		SlSetArrayIndex(s->Index());
 		SlObject(s, _subsidies_desc);
 	}
 }
@@ -29,8 +29,9 @@ void Save_SUBS()
 void Load_SUBS()
 {
 	int index;
-	while ((index = SlIterateArray()) != -1)
-		SlObject(&_subsidies[index], _subsidies_desc);
+	while ((index = SlIterateArray()) != -1) {
+		SlObject(&Subsidy::array[index], _subsidies_desc);
+	}
 }
 
 extern const ChunkHandler _subsidy_chunk_handlers[] = {

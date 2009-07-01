@@ -2869,11 +2869,6 @@ void TownsYearlyLoop()
 void InitializeTowns()
 {
 	_town_pool.CleanPool();
-
-	memset(_subsidies, 0, sizeof(_subsidies));
-	for (Subsidy *s = _subsidies; s != endof(_subsidies); s++) {
-		s->cargo_type = CT_INVALID;
-	}
 }
 
 static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)

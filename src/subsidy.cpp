@@ -13,11 +13,43 @@
 #include "cargotype.h"
 #include "strings_func.h"
 #include "window_func.h"
-#include "subsidy_type.h"
+#include "subsidy_base.h"
 
 #include "table/strings.h"
 
-Subsidy _subsidies[MAX_COMPANIES];
+/* static */ Subsidy Subsidy::array[MAX_COMPANIES];
+
+/**
+ * Allocates one subsidy
+ * @return pointer to first invalid subsidy, NULL if there is none
+ */
+/* static */ Subsidy *Subsidy::AllocateItem()
+{
+	for (Subsidy *s = Subsidy::array; s < endof(Subsidy::array); s++) {
+		if (!s->IsValid()) return s;
+	}
+
+	return NULL;
+}
+
+/**
+ * Resets the array of subsidies marking all invalid
+ */
+/* static */ void Subsidy::Clean()
+{
+	memset(Subsidy::array, 0, sizeof(Subsidy::array));
+	for (Subsidy *s = Subsidy::array; s < endof(Subsidy::array); s++) {
+		s->cargo_type = CT_INVALID;
+	}
+}
+
+/**
+ * Initializes subsidies, files don't have to include subsidy_base,h this way
+ */
+void InitializeSubsidies()
+{
+	Subsidy::Clean();
+}
 
 Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode)
 {
@@ -220,7 +252,7 @@ void SubsidyMonthlyLoop()
 			AddNewsItem(STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->from, (NewsReferenceType)reftype.b, s->to);
 			s->cargo_type = CT_INVALID;
 			modified = true;
-			AI::BroadcastNewEvent(new AIEventSubsidyOfferExpired(s - _subsidies));
+			AI::BroadcastNewEvent(new AIEventSubsidyOfferExpired(s->Index()));
 		} else if (s->age == 2 * 12 - 1) {
 			st = Station::Get(s->to);
 			if (st->owner == _local_company) {
@@ -229,7 +261,7 @@ void SubsidyMonthlyLoop()
 			}
 			s->cargo_type = CT_INVALID;
 			modified = true;
-			AI::BroadcastNewEvent(new AIEventSubsidyExpired(s - _subsidies));
+			AI::BroadcastNewEvent(new AIEventSubsidyExpired(s->Index()));
 		} else {
 			s->age++;
 		}
@@ -238,11 +270,8 @@ void SubsidyMonthlyLoop()
 	/* 25% chance to go on */
 	if (Chance16(1, 4)) {
 		/*  Find a free slot*/
-		s = _subsidies;
-		while (s->cargo_type != CT_INVALID) {
-			if (++s == endof(_subsidies))
-				goto no_add;
-		}
+		s = Subsidy::AllocateItem();
+		if (s == NULL) goto no_add;
 
 		n = 1000;
 		do {
@@ -266,7 +295,7 @@ void SubsidyMonthlyLoop()
 					s->age = 0;
 					Pair reftype = SetupSubsidyDecodeParam(s, 0);
 					AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->from, (NewsReferenceType)reftype.b, s->to);
-					AI::BroadcastNewEvent(new AIEventSubsidyOffer(s - _subsidies));
+					AI::BroadcastNewEvent(new AIEventSubsidyOffer(s->Index()));
 					modified = true;
 					break;
 				}
@@ -340,7 +369,7 @@ bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type,
 				(NewsReferenceType)reftype.a, s->from, (NewsReferenceType)reftype.b, s->to,
 				company_name
 			);
-			AI::BroadcastNewEvent(new AIEventSubsidyAwarded(s - _subsidies));
+			AI::BroadcastNewEvent(new AIEventSubsidyAwarded(s->Index()));
 
 			InvalidateWindow(WC_SUBSIDIES_LIST, 0);
 			return true;
