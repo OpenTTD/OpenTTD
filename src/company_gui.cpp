@@ -1485,50 +1485,34 @@ static void DrawCompanyVehiclesAmount(CompanyID company, int right)
 {
 	const int x = 110;
 	int y = 63;
-	const Vehicle *v;
-	uint train = 0;
-	uint road  = 0;
-	uint air   = 0;
-	uint ship  = 0;
+	uint amounts[] = { 0, 0, 0, 0 };
 
 	DrawString(x, right, y, STR_COMPANY_VIEW_VEHICLES_TITLE);
 
+	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		if (v->owner == company) {
-			switch (v->type) {
-				case VEH_TRAIN:    if (IsFrontEngine(v)) train++; break;
-				case VEH_ROAD:     if (IsRoadVehFront(v)) road++; break;
-				case VEH_AIRCRAFT: if (IsNormalAircraft(v)) air++; break;
-				case VEH_SHIP:     ship++; break;
-				default: break;
+			if (v->IsPrimaryVehicle()) {
+				assert((size_t)v->type < lengthof(amounts));
+				amounts[v->type]++;
 			}
 		}
 	}
 
-	if (train + road + air + ship == 0) {
+	if (amounts[0] + amounts[1] + amounts[2] + amounts[3] == 0) {
 		DrawString(x + 70, right, y, STR_COMPANY_VIEW_VEHICLES_NONE);
 	} else {
-		if (train != 0) {
-			SetDParam(0, train);
-			DrawString(x + 70, right, y, STR_TRAINS);
-			y += 10;
-		}
+		static const StringID strings[] = {
+			STR_TRAINS, STR_ROAD_VEHICLES, STR_SHIPS, STR_AIRCRAFT
+		};
+		assert_compile(lengthof(amounts) == lengthof(strings));
 
-		if (road != 0) {
-			SetDParam(0, road);
-			DrawString(x + 70, right, y, STR_ROAD_VEHICLES);
-			y += 10;
-		}
-
-		if (air != 0) {
-			SetDParam(0, air);
-			DrawString(x + 70, right, y, STR_AIRCRAFT);
-			y += 10;
-		}
-
-		if (ship != 0) {
-			SetDParam(0, ship);
-			DrawString(x + 70, right, y, STR_SHIPS);
+		for (uint i = 0; i < lengthof(amounts); i++) {
+			if (amounts[i] != 0) {
+				SetDParam(0, amounts[i]);
+				DrawString(x + 70, right, y, strings[i]);
+				y += 10;
+			}
 		}
 	}
 }
