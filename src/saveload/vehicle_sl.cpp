@@ -47,8 +47,8 @@ void ConnectMultiheadedTrains()
 			for (Train *u = v; u != NULL; u = GetNextVehicle(u)) {
 				if (u->other_multiheaded_part != NULL) continue; // we already linked this one
 
-				if (IsMultiheaded(u)) {
-					if (!IsTrainEngine(u)) {
+				if (u->IsMultiheaded()) {
+					if (!u->IsEngine()) {
 						/* we got a rear car without a front car. We will convert it to a front one */
 						SetTrainEngine(u);
 						u->spritenum--;
@@ -59,10 +59,10 @@ void ConnectMultiheadedTrains()
 					Train *w;
 					if (sequential_matching) {
 						for (w = GetNextVehicle(u); w != NULL; w = GetNextVehicle(w)) {
-							if (w->engine_type != eid || w->other_multiheaded_part != NULL || !IsMultiheaded(w)) continue;
+							if (w->engine_type != eid || w->other_multiheaded_part != NULL || !w->IsMultiheaded()) continue;
 
 							/* we found a car to partner with this engine. Now we will make sure it face the right way */
-							if (IsTrainEngine(w)) {
+							if (w->IsEngine()) {
 								ClearTrainEngine(w);
 								w->spritenum++;
 							}
@@ -71,9 +71,9 @@ void ConnectMultiheadedTrains()
 					} else {
 						uint stack_pos = 0;
 						for (w = GetNextVehicle(u); w != NULL; w = GetNextVehicle(w)) {
-							if (w->engine_type != eid || w->other_multiheaded_part != NULL || !IsMultiheaded(w)) continue;
+							if (w->engine_type != eid || w->other_multiheaded_part != NULL || !w->IsMultiheaded()) continue;
 
-							if (IsTrainEngine(w)) {
+							if (w->IsEngine()) {
 								stack_pos++;
 							} else {
 								if (stack_pos == 0) break;
@@ -310,7 +310,7 @@ void AfterLoadVehicles(bool part_of_load)
 
 		if (v->type == VEH_TRAIN) {
 			Train *t = Train::From(v);
-			if (t->IsFrontEngine() || IsFreeWagon(t)) {
+			if (t->IsFrontEngine() || t->IsFreeWagon()) {
 				t->tcache.last_speed = t->cur_speed; // update displayed train speed
 				TrainConsistChanged(t, false);
 			}
@@ -322,11 +322,14 @@ void AfterLoadVehicles(bool part_of_load)
 	/* Stop non-front engines */
 	if (CheckSavegameVersion(112)) {
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_TRAIN && !Train::From(v)->IsFrontEngine()) {
-				if (IsTrainEngine(v)) v->vehstatus |= VS_STOPPED;
-				/* cur_speed is now relevant for non-front parts - nonzero breaks
-				 * moving-wagons-inside-depot- and autoreplace- code */
-				v->cur_speed = 0;
+			if (v->type == VEH_TRAIN) {
+				Train *t = Train::From(v);
+ 				if (!t->IsFrontEngine()) {
+					if (t->IsEngine()) t->vehstatus |= VS_STOPPED;
+					/* cur_speed is now relevant for non-front parts - nonzero breaks
+					 * moving-wagons-inside-depot- and autoreplace- code */
+					t->cur_speed = 0;
+				}
 			}
 			/* trains weren't stopping gradually in old OTTD versions (and TTO/TTD)
 			 * other vehicle types didn't have zero speed while stopped (even in 'recent' OTTD versions) */

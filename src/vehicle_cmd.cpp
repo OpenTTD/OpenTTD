@@ -367,7 +367,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	v = v_front;
 
 	do {
-		if (v->type == VEH_TRAIN && IsRearDualheaded(v)) {
+		if (v->type == VEH_TRAIN && Train::From(v)->IsRearDualheaded()) {
 			/* we build the rear ends of multiheaded trains with the front ones */
 			continue;
 		}
@@ -437,7 +437,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 					if (CmdSucceeded(cost)) total_cost.AddCost(cost);
 				}
 
-				if (w->type == VEH_TRAIN && EngineHasArticPart(w)) {
+				if (w->type == VEH_TRAIN && Train::From(w)->EngineHasArticPart()) {
 					w = GetNextArticPart(Train::From(w));
 				} else if (w->type == VEH_ROAD && RoadVehHasArticPart(w)) {
 					w = w->Next();
@@ -453,7 +453,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 				}
 			}
 
-			if (v->type == VEH_TRAIN && EngineHasArticPart(v)) {
+			if (v->type == VEH_TRAIN && Train::From(v)->EngineHasArticPart()) {
 				v = GetNextArticPart(Train::From(v));
 			} else if (v->type == VEH_ROAD && RoadVehHasArticPart(v)) {
 				v = v->Next();

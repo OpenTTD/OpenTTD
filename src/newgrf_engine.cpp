@@ -134,7 +134,7 @@ static int MapOldSubType(const Vehicle *v)
 {
 	switch (v->type) {
 		case VEH_TRAIN:
-			if (IsTrainEngine(v)) return 0;
+			if (Train::From(v)->IsEngine()) return 0;
 			if (Train::From(v)->IsFreeWagon()) return 4;
 			return 2;
 		case VEH_ROAD:
@@ -679,9 +679,9 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 			if (v->type == VEH_TRAIN) {
 				const Train *t = Train::From(v);
-				const Train *u = IsTrainWagon(v) && HasBit(v->vehicle_flags, VRF_POWEREDWAGON) ? t->First() : t;
+				const Train *u = t->IsWagon() && HasBit(t->vehicle_flags, VRF_POWEREDWAGON) ? t->First() : t;
 				RailType railtype = GetRailType(v->tile);
-				bool powered = IsTrainEngine(v) || (IsTrainWagon(v) && HasBit(v->vehicle_flags, VRF_POWEREDWAGON));
+				bool powered = t->IsEngine() || (t->IsWagon() && HasBit(t->vehicle_flags, VRF_POWEREDWAGON));
 				bool has_power = powered && HasPowerOnRail(u->railtype, railtype);
 				bool is_electric = powered && u->railtype == RAILTYPE_ELECTRIC;
 

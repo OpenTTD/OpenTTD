@@ -92,7 +92,7 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
 	assert(!part_of_chain || new_head->IsPrimaryVehicle());
 	/* Loop through source parts */
 	for (Vehicle *src = old_veh; src != NULL; src = src->Next()) {
-		if (!part_of_chain && src->type == VEH_TRAIN && src != old_veh && src != Train::From(old_veh)->other_multiheaded_part && !IsArticulatedPart(src)) {
+		if (!part_of_chain && src->type == VEH_TRAIN && src != old_veh && src != Train::From(old_veh)->other_multiheaded_part && !Train::From(src)->IsArticulatedPart()) {
 			/* Skip vehicles, which do not belong to old_veh */
 			src = GetLastEnginePart(Train::From(src));
 			continue;
@@ -101,7 +101,7 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
 
 		/* Find free space in the new chain */
 		for (Vehicle *dest = new_head; dest != NULL && src->cargo.Count() > 0; dest = dest->Next()) {
-			if (!part_of_chain && dest->type == VEH_TRAIN && dest != new_head && dest != Train::From(new_head)->other_multiheaded_part && !IsArticulatedPart(dest)) {
+			if (!part_of_chain && dest->type == VEH_TRAIN && dest != new_head && dest != Train::From(new_head)->other_multiheaded_part && !Train::From(dest)->IsArticulatedPart()) {
 				/* Skip vehicles, which do not belong to new_head */
 				dest = GetLastEnginePart(Train::From(dest));
 				continue;
@@ -214,9 +214,9 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool 
  */
 static EngineID GetNewEngineType(const Vehicle *v, const Company *c)
 {
-	assert(v->type != VEH_TRAIN || !IsArticulatedPart(v));
+	assert(v->type != VEH_TRAIN || !Train::From(v)->IsArticulatedPart());
 
-	if (v->type == VEH_TRAIN && IsRearDualheaded(v)) {
+	if (v->type == VEH_TRAIN && Train::From(v)->IsRearDualheaded()) {
 		/* we build the rear ends of multiheaded trains with the front ones */
 		return INVALID_ENGINE;
 	}
@@ -347,8 +347,8 @@ static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, 
  */
 static CommandCost ReplaceFreeUnit(Vehicle **single_unit, DoCommandFlag flags, bool *nothing_to_do)
 {
-	Vehicle *old_v = *single_unit;
-	assert(old_v->type == VEH_TRAIN && !IsArticulatedPart(old_v) && !IsRearDualheaded(old_v));
+	Train *old_v = Train::From(*single_unit);
+	assert(!old_v->IsArticulatedPart() && !old_v->IsRearDualheaded());
 
 	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES, 0);
 
@@ -618,7 +618,7 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
 	bool free_wagon = false;
 	if (v->type == VEH_TRAIN) {
 		Train *t = Train::From(v);
-		if (IsArticulatedPart(t) || IsRearDualheaded(t)) return CMD_ERROR;
+		if (t->IsArticulatedPart() || t->IsRearDualheaded()) return CMD_ERROR;
 		free_wagon = !t->IsFrontEngine();
 		if (free_wagon && t->First()->IsFrontEngine()) return CMD_ERROR;
 	} else {

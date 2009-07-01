@@ -200,8 +200,8 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 		}
 		num++; // needs one more because first line is description string
 	} else {
-		for (const Vehicle *v = Vehicle::Get(veh_id) ; v != NULL ; v = v->Next()) {
-			if (!IsArticulatedPart(v) || v->cargo_cap != 0) num++;
+		for (const Train *v = Train::Get(veh_id) ; v != NULL ; v = v->Next()) {
+			if (!v->IsArticulatedPart() || v->cargo_cap != 0) num++;
 		}
 	}
 
@@ -219,11 +219,11 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
  * @param vscroll_cap Number of lines currently displayed
  * @param det_tab Selected details tab
  */
-void DrawTrainDetails(const Vehicle *v, int left, int right, int y, int vscroll_pos, uint16 vscroll_cap, TrainDetailsWindowTabs det_tab)
+void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_pos, uint16 vscroll_cap, TrainDetailsWindowTabs det_tab)
 {
 	/* draw the first 3 details tabs */
 	if (det_tab != TDW_TAB_TOTALS) {
-		const Vehicle *u = v;
+		const Train *u = v;
 		int x = 1;
 		for (;;) {
 			if (--vscroll_pos < 0 && vscroll_pos >= -vscroll_cap) {
@@ -235,7 +235,7 @@ void DrawTrainDetails(const Vehicle *v, int left, int right, int y, int vscroll_
 					DrawSprite(u->GetImage(DIR_W), pal, x + WagonLengthToPixels(4 + dx), y + 6 + (is_custom_sprite(RailVehInfo(u->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
 					dx += Train::From(u)->tcache.cached_veh_length;
 					u = u->Next();
-				} while (u != NULL && IsArticulatedPart(u) && u->cargo_cap == 0);
+				} while (u != NULL && u->IsArticulatedPart() && u->cargo_cap == 0);
 
 				int px = x + WagonLengthToPixels(dx) + 2;
 				int py = y + 2;
@@ -248,7 +248,7 @@ void DrawTrainDetails(const Vehicle *v, int left, int right, int y, int vscroll_
 
 					case TDW_TAB_INFO:
 						/* Only show name and value for the 'real' part */
-						if (!IsArticulatedPart(v)) {
+						if (!v->IsArticulatedPart()) {
 							TrainDetailsInfoTab(v, px, right, py);
 						}
 						break;
@@ -264,7 +264,7 @@ void DrawTrainDetails(const Vehicle *v, int left, int right, int y, int vscroll_
 				/* Move to the next line */
 				do {
 					v = v->Next();
-				} while (v != NULL && IsArticulatedPart(v) && v->cargo_cap == 0);
+				} while (v != NULL && v->IsArticulatedPart() && v->cargo_cap == 0);
 			}
 			if (v == NULL) return;
 		}

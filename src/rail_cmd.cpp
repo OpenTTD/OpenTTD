@@ -1232,12 +1232,15 @@ CommandCost CmdRemoveSignalTrack(TileIndex tile, DoCommandFlag flags, uint32 p1,
 /** Update power of train under which is the railtype being converted */
 Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
 {
+	if (v->type != VEH_TRAIN) return NULL;
+
 	/* Similiar checks as in TrainPowerChanged() */
 
-	if (v->type == VEH_TRAIN && !IsArticulatedPart(v)) {
-		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
-		if (GetVehicleProperty(v, 0x0B, rvi->power) != 0) TrainPowerChanged(Train::From(v)->First());
-	}
+	Train *t = Train::From(v);
+	if (t->IsArticulatedPart()) return NULL;
+
+	const RailVehicleInfo *rvi = RailVehInfo(t->engine_type);
+	if (GetVehicleProperty(t, 0x0B, rvi->power) != 0) TrainPowerChanged(t->First());
 
 	return NULL;
 }

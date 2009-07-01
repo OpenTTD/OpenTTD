@@ -700,7 +700,7 @@ static bool UpdateConsists(int32 p1)
 	Train *t;
 	FOR_ALL_TRAINS(t) {
 		/* Update the consist of all trains so the maximum speed is set correctly. */
-		if (t->IsFrontEngine() || IsFreeWagon(t)) TrainConsistChanged(t, true);
+		if (t->IsFrontEngine() || t->IsFreeWagon()) TrainConsistChanged(t, true);
 	}
 	return true;
 }

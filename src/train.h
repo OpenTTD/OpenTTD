@@ -69,16 +69,6 @@ static inline void ClearFrontEngine(Vehicle *v)
 	ClrBit(v->subtype, TS_FRONT);
 }
 
-/** Check if a vehicle is an articulated part of an engine
- * @param v vehicle to check
- * @return Returns true if vehicle is an articulated part
- */
-static inline bool IsArticulatedPart(const Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	return HasBit(v->subtype, TS_ARTICULATED_PART);
-}
-
 /** Set a vehicle to be an articulated part
  * @param v vehicle to change
  */
@@ -95,16 +85,6 @@ static inline void ClearArticulatedPart(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
 	ClrBit(v->subtype, TS_ARTICULATED_PART);
-}
-
-/** Check if a vehicle is a wagon
- * @param v vehicle to check
- * @return Returns true if vehicle is a wagon
- */
-static inline bool IsTrainWagon(const Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	return HasBit(v->subtype, TS_WAGON);
 }
 
 /** Set a vehicle to be a wagon
@@ -125,16 +105,6 @@ static inline void ClearTrainWagon(Vehicle *v)
 	ClrBit(v->subtype, TS_WAGON);
 }
 
-/** Check if a vehicle is an engine (can be first in a train)
- * @param v vehicle to check
- * @return Returns true if vehicle is an engine
- */
-static inline bool IsTrainEngine(const Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	return HasBit(v->subtype, TS_ENGINE);
-}
-
 /** Set engine status
  * @param v vehicle to change
  */
@@ -151,16 +121,6 @@ static inline void ClearTrainEngine(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
 	ClrBit(v->subtype, TS_ENGINE);
-}
-
-/** Check if a vehicle is a free wagon (got no engine in front of it)
- * @param v vehicle to check
- * @return Returns true if vehicle is a free wagon
- */
-static inline bool IsFreeWagon(const Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	return HasBit(v->subtype, TS_FREE_WAGON);
 }
 
 /** Set if a vehicle is a free wagon
@@ -181,15 +141,6 @@ static inline void ClearFreeWagon(Vehicle *v)
 	ClrBit(v->subtype, TS_FREE_WAGON);
 }
 
-/** Check if a vehicle is a multiheaded engine
- * @param v vehicle to check
- * @return Returns true if vehicle is a multiheaded engine
- */
-static inline bool IsMultiheaded(const Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	return HasBit(v->subtype, TS_MULTIHEADED);
-}
 
 /** Set if a vehicle is a multiheaded engine
  * @param v vehicle to change
@@ -207,26 +158,6 @@ static inline void ClearMultiheaded(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
 	ClrBit(v->subtype, TS_MULTIHEADED);
-}
-
-/** Check if an engine has an articulated part.
- * @param v Vehicle.
- * @return True if the engine has an articulated part.
- */
-static inline bool EngineHasArticPart(const Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	return (v->Next() != NULL && IsArticulatedPart(v->Next()));
-}
-
-/** Tell if we are dealing with the rear end of a multiheaded engine.
- * @param v Vehicle.
- * @return True if the engine is the rear part of a dualheaded engine.
- */
-static inline bool IsRearDualheaded(const Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	return (IsMultiheaded(v) && !IsTrainEngine(v));
 }
 
 void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2);
@@ -337,18 +268,56 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	 * @return Returns true if train is a free wagon
 	 */
 	FORCEINLINE bool IsFreeWagon() const { return HasBit(this->subtype, TS_FREE_WAGON); }
+
+	/**
+	 * Check if a vehicle is an engine (can be first in a train)
+	 * @return Returns true if vehicle is an engine
+	 */
+	FORCEINLINE bool IsEngine() const { return HasBit(this->subtype, TS_ENGINE); }
+
+	/**
+	 * Check if a train is a wagon
+	 * @param v vehicle to check
+	 * @return Returns true if vehicle is a wagon
+	 */
+	FORCEINLINE bool IsWagon() const { return HasBit(this->subtype, TS_WAGON); }
+
+	/**
+	 * Check if train is a multiheaded engine
+	 * @return Returns true if vehicle is a multiheaded engine
+	 */
+	FORCEINLINE bool IsMultiheaded() const { return HasBit(this->subtype, TS_MULTIHEADED); }
+
+	/**
+	 * Tell if we are dealing with the rear end of a multiheaded engine.
+	 * @return True if the engine is the rear part of a dualheaded engine.
+	 */
+	FORCEINLINE bool IsRearDualheaded() const { return this->IsMultiheaded() && !this->IsEngine(); }
+
+	/**
+	 * Check if train is an articulated part of an engine
+	 * @return Returns true if train is an articulated part
+	 */
+	FORCEINLINE bool IsArticulatedPart() const { return HasBit(this->subtype, TS_ARTICULATED_PART); }
+
+	/**
+	 * Check if an engine has an articulated part.
+	 * @return True if the engine has an articulated part.
+	 */
+	FORCEINLINE bool EngineHasArticPart() const { return this->Next() != NULL && this->Next()->IsArticulatedPart(); }
+
 };
 
 #define FOR_ALL_TRAINS(var) FOR_ALL_VEHICLES_OF_TYPE(Train, var)
 
 /**
  * Get the next part of a multi-part engine.
- * Will only work on a multi-part engine (EngineHasArticPart(v) == true),
+ * Will only work on a multi-part engine (v->EngineHasArticPart() == true),
  * Result is undefined for normal engine.
  */
 static inline Train *GetNextArticPart(const Train *v)
 {
-	assert(EngineHasArticPart(v));
+	assert(v->EngineHasArticPart());
 	return v->Next();
 }
 
@@ -358,8 +327,7 @@ static inline Train *GetNextArticPart(const Train *v)
  */
 static inline Train *GetLastEnginePart(Train *v)
 {
-	assert(v->type == VEH_TRAIN);
-	while (EngineHasArticPart(v)) v = GetNextArticPart(v);
+	while (v->EngineHasArticPart()) v = GetNextArticPart(v);
 	return v;
 }
 
@@ -369,8 +337,7 @@ static inline Train *GetLastEnginePart(Train *v)
  */
 static inline Train *GetNextVehicle(const Train *v)
 {
-	assert(v->type == VEH_TRAIN);
-	while (EngineHasArticPart(v)) v = GetNextArticPart(v);
+	while (v->EngineHasArticPart()) v = GetNextArticPart(v);
 
 	/* v now contains the last artic part in the engine */
 	return v->Next();
@@ -382,10 +349,8 @@ static inline Train *GetNextVehicle(const Train *v)
  */
 static inline Train *GetPrevVehicle(const Train *w)
 {
-	assert(w->type == VEH_TRAIN);
-
 	Train *v = w->Previous();
-	while (v != NULL && IsArticulatedPart(v)) v = v->Previous();
+	while (v != NULL && v->IsArticulatedPart()) v = v->Previous();
 
 	return v;
 }
@@ -396,9 +361,8 @@ static inline Train *GetPrevVehicle(const Train *w)
  */
 static inline Train *GetNextUnit(const Train *v)
 {
-	assert(v->type == VEH_TRAIN);
 	Train *w = GetNextVehicle(v);
-	if (w != NULL && IsRearDualheaded(w)) w = GetNextVehicle(w);
+	if (w != NULL && w->IsRearDualheaded()) w = GetNextVehicle(w);
 
 	return w;
 }
@@ -409,9 +373,8 @@ static inline Train *GetNextUnit(const Train *v)
  */
 static inline Train *GetPrevUnit(const Train *v)
 {
-	assert(v->type == VEH_TRAIN);
 	Train *w = GetPrevVehicle(v);
-	if (w != NULL && IsRearDualheaded(w)) w = GetPrevVehicle(w);
+	if (w != NULL && w->IsRearDualheaded()) w = GetPrevVehicle(w);
 
 	return w;
 }

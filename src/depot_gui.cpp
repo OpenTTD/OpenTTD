@@ -453,7 +453,7 @@ struct DepotWindow : Window {
 				while (v != NULL && (x -= v->tcache.cached_veh_length) >= 0) v = v->Next();
 
 				/* if an articulated part was selected, find its parent */
-				while (v != NULL && IsArticulatedPart(v)) v = v->Previous();
+				while (v != NULL && v->IsArticulatedPart()) v = v->Previous();
 
 				d->wagon = v;
 
@@ -860,7 +860,7 @@ struct DepotWindow : Window {
 					loaded  [w->cargo_type] += w->cargo.Count();
 				}
 
-				if (w->type == VEH_TRAIN && !EngineHasArticPart(w)) {
+				if (w->type == VEH_TRAIN && !Train::From(w)->EngineHasArticPart()) {
 					num++;
 					if (!whole_chain) break;
 				}
