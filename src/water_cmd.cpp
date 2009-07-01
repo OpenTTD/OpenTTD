@@ -798,18 +798,20 @@ static void FloodVehicle(Vehicle *v)
 
 			switch (v->type) {
 				default: NOT_REACHED();
-				case VEH_TRAIN:
-					if (IsFrontEngine(v)) {
+				case VEH_TRAIN: {
+					Train *t = Train::From(v);
+					if (t->IsFrontEngine()) {
 						pass += 4; // driver
 						/* FreeTrainTrackReservation() calls GetVehicleTrackdir() that doesn't like crashed vehicles.
 						 * In this case, v->direction matches v->u.rail.track, so we can do this (it wasn't crashed before) */
-						v->vehstatus &= ~VS_CRASHED;
-						FreeTrainTrackReservation(Train::From(v));
-						v->vehstatus |= VS_CRASHED;
+						t->vehstatus &= ~VS_CRASHED;
+						FreeTrainTrackReservation(t);
+						t->vehstatus |= VS_CRASHED;
 					}
-					Train::From(v)->crash_anim_pos = 4000; // max 4440, disappear pretty fast
+					t->crash_anim_pos = 4000; // max 4440, disappear pretty fast
 					InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 					break;
+				}
 
 				case VEH_ROAD:
 					if (IsRoadVehFront(v)) pass += 1; // driver

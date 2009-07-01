@@ -26,7 +26,7 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	const Vehicle *found = NULL;
 	const Train *t;
 	FOR_ALL_TRAINS(t) {
-		if (IsFrontEngine(t) && t->tile == tile &&
+		if (t->IsFrontEngine() && t->tile == tile &&
 				t->track == TRACK_BIT_DEPOT) {
 			if (found != NULL) return; // must be exactly one.
 			found = t;

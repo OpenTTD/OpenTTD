@@ -1374,7 +1374,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 			vdir = DirToDiagDir(t->direction);
 
 			if (t->track != TRACK_BIT_WORMHOLE && dir == vdir) {
-				if (IsFrontEngine(t) && fc == _tunnel_fractcoord_1[dir]) {
+				if (t->IsFrontEngine() && fc == _tunnel_fractcoord_1[dir]) {
 					if (!PlayVehicleSound(t, VSE_TUNNEL) && RailVehInfo(t->engine_type)->engclass == 0) {
 						SndPlayVehicleFx(SND_05_TRAIN_THROUGH_TUNNEL, v);
 					}

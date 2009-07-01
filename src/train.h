@@ -51,17 +51,6 @@ enum TrainSubtype {
 	TS_MULTIHEADED       = 5, ///< Engine is a multiheaded
 };
 
-
-/** Check if a vehicle is front engine
- * @param v vehicle to check
- * @return Returns true if vehicle is a front engine
- */
-static inline bool IsFrontEngine(const Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	return HasBit(v->subtype, TS_FRONT);
-}
-
 /** Set front engine state
  * @param v vehicle to change
  */
@@ -324,7 +313,7 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	void UpdateDeltaXY(Direction direction);
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_TRAIN_INC : EXPENSES_TRAIN_RUN; }
 	void PlayLeaveStationSound() const;
-	bool IsPrimaryVehicle() const { return IsFrontEngine(this); }
+	bool IsPrimaryVehicle() const { return this->IsFrontEngine(); }
 	SpriteID GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->tcache.last_speed; }
 	int GetDisplayMaxSpeed() const { return this->tcache.cached_max_speed; }
@@ -336,6 +325,13 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	Trackdir GetVehicleTrackdir() const;
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
+
+	/**
+	 * Check if a vehicle is front engine
+	 * @param v vehicle to check
+	 * @return Returns true if vehicle is a front engine
+	 */
+	FORCEINLINE bool IsFrontEngine() const { return HasBit(this->subtype, TS_FRONT); }
 };
 
 #define FOR_ALL_TRAINS(var) FOR_ALL_VEHICLES_OF_TYPE(Train, var)

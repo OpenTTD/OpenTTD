@@ -28,7 +28,7 @@ void ConnectMultiheadedTrains()
 	}
 
 	FOR_ALL_TRAINS(v) {
-		if (IsFrontEngine(v) || IsFreeWagon(v)) {
+		if (v->IsFrontEngine() || IsFreeWagon(v)) {
 			/* Two ways to associate multiheaded parts to each other:
 			 * sequential-matching: Trains shall be arranged to look like <..>..<..>..<..>..
 			 * bracket-matching:    Free vehicle chains shall be arranged to look like ..<..<..>..<..>..>..
@@ -42,7 +42,7 @@ void ConnectMultiheadedTrains()
 			 *   This is why two matching strategies are needed.
 			 */
 
-			bool sequential_matching = IsFrontEngine(v);
+			bool sequential_matching = v->IsFrontEngine();
 
 			for (Train *u = v; u != NULL; u = GetNextVehicle(u)) {
 				if (u->other_multiheaded_part != NULL) continue; // we already linked this one
@@ -308,9 +308,12 @@ void AfterLoadVehicles(bool part_of_load)
 	FOR_ALL_VEHICLES(v) {
 		assert(v->first != NULL);
 
-		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) {
-			if (IsFrontEngine(v)) Train::From(v)->tcache.last_speed = v->cur_speed; // update displayed train speed
-			TrainConsistChanged(Train::From(v), false);
+		if (v->type == VEH_TRAIN) {
+			Train *t = Train::From(v);
+			if (t->IsFrontEngine() || IsFreeWagon(t)) {
+				t->tcache.last_speed = t->cur_speed; // update displayed train speed
+				TrainConsistChanged(t, false);
+			}
 		} else if (v->type == VEH_ROAD && IsRoadVehFront(v)) {
 			RoadVehUpdateCache(RoadVehicle::From(v));
 		}
@@ -319,7 +322,7 @@ void AfterLoadVehicles(bool part_of_load)
 	/* Stop non-front engines */
 	if (CheckSavegameVersion(112)) {
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_TRAIN && !IsFrontEngine(v)) {
+			if (v->type == VEH_TRAIN && !Train::From(v)->IsFrontEngine()) {
 				if (IsTrainEngine(v)) v->vehstatus |= VS_STOPPED;
 				/* cur_speed is now relevant for non-front parts - nonzero breaks
 				 * moving-wagons-inside-depot- and autoreplace- code */

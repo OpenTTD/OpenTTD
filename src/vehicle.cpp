@@ -518,7 +518,7 @@ void Vehicle::PreDestructor()
 		}
 	}
 
-	if (this->type != VEH_TRAIN || (this->type == VEH_TRAIN && (IsFrontEngine(this) || IsFreeWagon(this)))) {
+	if (this->type != VEH_TRAIN || (this->type == VEH_TRAIN && (Train::From(this)->IsFrontEngine() || IsFreeWagon(this)))) {
 		InvalidateWindowData(WC_VEHICLE_DEPOT, this->tile);
 	}
 
@@ -959,18 +959,20 @@ uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *colour)
 void VehicleEnterDepot(Vehicle *v)
 {
 	switch (v->type) {
-		case VEH_TRAIN:
+		case VEH_TRAIN: {
+			Train *t = Train::From(v);
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 			/* Clear path reservation */
-			SetDepotWaypointReservation(v->tile, false);
-			if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(v->tile);
+			SetDepotWaypointReservation(t->tile, false);
+			if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(t->tile);
 
-			if (!IsFrontEngine(v)) v = v->First();
-			UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
-			v->load_unload_time_rem = 0;
-			ClrBit(Train::From(v)->flags, VRF_TOGGLE_REVERSE);
-			TrainConsistChanged(Train::From(v), true);
+			if (!t->IsFrontEngine()) t = t->First();
+			UpdateSignalsOnSegment(t->tile, INVALID_DIAGDIR, t->owner);
+			t->load_unload_time_rem = 0;
+			ClrBit(t->flags, VRF_TOGGLE_REVERSE);
+			TrainConsistChanged(t, true);
 			break;
+		}
 
 		case VEH_ROAD:
 			InvalidateWindowClasses(WC_ROADVEH_LIST);

@@ -210,7 +210,7 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		switch (v->type) {
 			default: NOT_REACHED();
 			case VEH_TRAIN:
-				SetTrainGroupID(v, new_g);
+				SetTrainGroupID(Train::From(v), new_g);
 				break;
 			case VEH_ROAD:
 			case VEH_SHIP:
@@ -342,11 +342,11 @@ void RemoveVehicleFromGroup(const Vehicle *v)
  * @param v     First vehicle of the chain.
  * @param new_g index of array group
  */
-void SetTrainGroupID(Vehicle *v, GroupID new_g)
+void SetTrainGroupID(Train *v, GroupID new_g)
 {
 	if (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g)) return;
 
-	assert(v->type == VEH_TRAIN && IsFrontEngine(v));
+	assert(v->IsFrontEngine());
 
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
 		if (IsEngineCountable(u)) UpdateNumEngineGroup(u->engine_type, u->group_id, new_g);
@@ -366,11 +366,11 @@ void SetTrainGroupID(Vehicle *v, GroupID new_g)
  * @note Called in CmdBuildRailVehicle, CmdBuildRailWagon, CmdMoveRailVehicle, CmdSellRailWagon
  * @param v First vehicle of the chain.
  */
-void UpdateTrainGroupID(Vehicle *v)
+void UpdateTrainGroupID(Train *v)
 {
-	assert(v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v)));
+	assert(v->IsFrontEngine() || IsFreeWagon(v));
 
-	GroupID new_g = IsFrontEngine(v) ? v->group_id : (GroupID)DEFAULT_GROUP;
+	GroupID new_g = v->IsFrontEngine() ? v->group_id : (GroupID)DEFAULT_GROUP;
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
 		if (IsEngineCountable(u)) UpdateNumEngineGroup(u->engine_type, u->group_id, new_g);
 

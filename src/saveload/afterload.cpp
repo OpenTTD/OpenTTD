@@ -985,7 +985,7 @@ bool AfterLoadGame()
 		}
 
 		FOR_ALL_TRAINS(v) {
-			if (IsFrontEngine(v) || IsFreeWagon(v)) TrainConsistChanged(v, true);
+			if (v->IsFrontEngine() || IsFreeWagon(v)) TrainConsistChanged(v, true);
 		}
 
 	}
@@ -1344,7 +1344,7 @@ bool AfterLoadGame()
 		Vehicle *v;
 		/* Added a FIFO queue of vehicles loading at stations */
 		FOR_ALL_VEHICLES(v) {
-			if ((v->type != VEH_TRAIN || IsFrontEngine(v)) &&  // for all locs
+			if ((v->type != VEH_TRAIN || Train::From(v)->IsFrontEngine()) &&  // for all locs
 					!(v->vehstatus & (VS_STOPPED | VS_CRASHED)) && // not stopped or crashed
 					v->current_order.IsType(OT_LOADING)) {         // loading
 				Station::Get(v->last_station_visited)->loading_vehicles.push_back(v);

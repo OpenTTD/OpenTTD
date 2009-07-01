@@ -350,7 +350,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (v->type == VEH_TRAIN && (!IsFrontEngine(v) || Train::From(v)->crash_anim_pos >= 4400)) return CMD_ERROR;
+	if (v->type == VEH_TRAIN && (!Train::From(v)->IsFrontEngine() || Train::From(v)->crash_anim_pos >= 4400)) return CMD_ERROR;
 
 	/* check that we can allocate enough vehicles */
 	if (!(flags & DC_EXEC)) {
@@ -386,7 +386,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 				SetBit(Train::From(w)->flags, VRF_REVERSE_DIRECTION);
 			}
 
-			if (v->type == VEH_TRAIN && !IsFrontEngine(v)) {
+			if (v->type == VEH_TRAIN && !Train::From(v)->IsFrontEngine()) {
 				/* this s a train car
 				 * add this unit to the end of the train */
 				CommandCost result = DoCommand(0, (w_rear->index << 16) | w->index, 1, flags, CMD_MOVE_RAIL_VEHICLE);

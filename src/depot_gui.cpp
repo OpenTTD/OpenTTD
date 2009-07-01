@@ -437,11 +437,11 @@ struct DepotWindow : Window {
 
 		switch (this->type) {
 			case VEH_TRAIN: {
-				const Vehicle *v = *veh;
+				const Train *v = Train::From(*veh);
 				d->head = d->wagon = v;
 
 				/* either pressed the flag or the number, but only when it's a loco */
-				if (x < 0 && IsFrontEngine(v)) return (x >= -10) ? MODE_START_STOP : MODE_SHOW_VEHICLE;
+				if (x < 0 && v->IsFrontEngine()) return (x >= -10) ? MODE_START_STOP : MODE_SHOW_VEHICLE;
 
 				skip = (skip * 8) / _traininfo_vehicle_width;
 				x = (x * 8) / _traininfo_vehicle_width;
@@ -450,7 +450,7 @@ struct DepotWindow : Window {
 				x += skip;
 
 				/* find the vehicle in this row that was clicked */
-				while (v != NULL && (x -= Train::From(v)->tcache.cached_veh_length) >= 0) v = v->Next();
+				while (v != NULL && (x -= v->tcache.cached_veh_length) >= 0) v = v->Next();
 
 				/* if an articulated part was selected, find its parent */
 				while (v != NULL && IsArticulatedPart(v)) v = v->Previous();
@@ -564,7 +564,7 @@ struct DepotWindow : Window {
 		if (!v->IsPrimaryVehicle()) {
 			v = v->First();
 			/* Do nothing when clicking on a train in depot with no loc attached */
-			if (v->type == VEH_TRAIN && !IsFrontEngine(v)) return;
+			if (v->type == VEH_TRAIN && !Train::From(v)->IsFrontEngine()) return;
 		}
 
 		switch (v->type) {
@@ -950,7 +950,7 @@ struct DepotWindow : Window {
 							DoCommandP(Vehicle::Get(sel)->tile, Vehicle::Get(sel)->index, true, CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_ERROR_CAN_T_MAKE_VEHICLE_TURN));
 						} else if (gdvp.wagon == NULL || gdvp.wagon->index != sel) {
 							TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
-						} else if (gdvp.head != NULL && IsFrontEngine(gdvp.head)) {
+						} else if (gdvp.head != NULL && Train::From(gdvp.head)->IsFrontEngine()) {
 							ShowVehicleViewWindow(gdvp.head);
 						}
 					}
@@ -977,7 +977,7 @@ struct DepotWindow : Window {
 
 					int sell_cmd = (v->type == VEH_TRAIN && (widget == DEPOT_WIDGET_SELL_CHAIN || _ctrl_pressed)) ? 1 : 0;
 
-					bool is_engine = (!(v->type == VEH_TRAIN && !IsFrontEngine(v)));
+					bool is_engine = (v->type != VEH_TRAIN || Train::From(v)->IsFrontEngine());
 
 					if (is_engine) {
 						_backup_orders_tile = v->tile;

@@ -700,7 +700,7 @@ static bool UpdateConsists(int32 p1)
 	Train *t;
 	FOR_ALL_TRAINS(t) {
 		/* Update the consist of all trains so the maximum speed is set correctly. */
-		if (IsFrontEngine(t) || IsFreeWagon(t)) TrainConsistChanged(t, true);
+		if (t->IsFrontEngine() || IsFreeWagon(t)) TrainConsistChanged(t, true);
 	}
 	return true;
 }
@@ -736,7 +736,7 @@ static bool TrainAccelerationModelChanged(int32 p1)
 {
 	Train *t;
 	FOR_ALL_TRAINS(t) {
-		if (IsFrontEngine(t)) {
+		if (t->IsFrontEngine()) {
 			t->tcache.cached_max_curve_speed = GetTrainCurveSpeedLimit(t);
 			UpdateTrainAcceleration(t);
 		}

@@ -568,7 +568,7 @@ bool SettingsDisableElrail(int32 p1)
 	/* Fix the total power and acceleration for trains */
 	FOR_ALL_TRAINS(t) {
 		/* power and acceleration is cached only for front engines */
-		if (IsFrontEngine(t)) {
+		if (t->IsFrontEngine()) {
 			TrainPowerChanged(t);
 			UpdateTrainAcceleration(t);
 		}
