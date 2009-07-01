@@ -174,7 +174,7 @@ static inline void AddProducedCargo(TileIndex tile, CargoArray &produced)
 static inline void AnimateTile(TileIndex tile)
 {
 	AnimateTileProc *proc = _tile_type_procs[GetTileType(tile)]->animate_tile_proc;
-	if (proc == NULL) return;
+	assert(proc != NULL);
 	proc(tile);
 }
 

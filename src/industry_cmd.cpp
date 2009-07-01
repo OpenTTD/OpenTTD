@@ -141,6 +141,10 @@ Industry::~Industry()
 			if (GetIndustryIndex(tile_cur) == this->index) {
 				/* MakeWaterKeepingClass() can also handle 'land' */
 				MakeWaterKeepingClass(tile_cur, OWNER_NONE);
+
+				/* MakeWaterKeepingClass() doesn't remove animation if the tiles
+				 * become watery, but be on the safe side an always remote it. */
+				DeleteAnimatedTile(tile_cur);
 			}
 		} else if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			DeleteOilRig(tile_cur);

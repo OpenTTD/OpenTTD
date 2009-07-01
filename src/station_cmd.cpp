@@ -1003,6 +1003,8 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 					}
 				}
 
+				/* Remove animation if overbuilding */
+				DeleteAnimatedTile(tile);
 				byte old_specindex = IsTileType(tile, MP_STATION) ? GetCustomStationSpecIndex(tile) : 0;
 				MakeRailStation(tile, st->owner, st->index, axis, layout & ~1, (RailType)GB(p1, 0, 4));
 				/* Free the spec if we overbuild something */
@@ -2948,6 +2950,7 @@ void BuildOilRig(TileIndex tile)
 	st->string_id = GenerateStationName(st, tile, STATIONNAMING_OILRIG);
 
 	assert(IsTileType(tile, MP_INDUSTRY));
+	DeleteAnimatedTile(tile);
 	MakeOilrig(tile, st->index, GetWaterClass(tile));
 
 	st->owner = OWNER_NONE;
