@@ -31,6 +31,7 @@
 #include "../town.h"
 #include "../economy_base.h"
 #include "../animated_tile_func.h"
+#include "../subsidy_type.h"
 
 #include "table/strings.h"
 
@@ -1912,6 +1913,36 @@ bool AfterLoadGame()
 			} else {
 				i++;
 			}
+		}
+
+		/* Delete invalid subsidies possibly present in old versions (but converted to new savegame) */
+		for (Subsidy *s = _subsidies; s < endof(_subsidies); s++) {
+			if (s->cargo_type == CT_INVALID) continue;
+			if (s->age >= 12) {
+				/* Station -> Station */
+				const Station *from = Station::GetIfValid(s->from);
+				const Station *to = Station::GetIfValid(s->to);
+				if (from != NULL && to != NULL && from->owner == to->owner && Company::IsValidID(from->owner)) continue;
+			} else {
+				const CargoSpec *cs = GetCargo(s->cargo_type);
+				switch (cs->town_effect) {
+					case TE_PASSENGERS:
+					case TE_MAIL:
+						/* Town -> Town */
+						if (Town::IsValidID(s->from) && Town::IsValidID(s->to)) continue;
+						break;
+					case TE_GOODS:
+					case TE_FOOD:
+						/* Industry -> Town */
+						if (Industry::IsValidID(s->from) && Town::IsValidID(s->to)) continue;
+						break;
+					default:
+						/* Industry -> Industry */
+						if (Industry::IsValidID(s->from) && Industry::IsValidID(s->to)) continue;
+						break;
+				}
+			}
+			s->cargo_type = CT_INVALID;
 		}
 	}
 
