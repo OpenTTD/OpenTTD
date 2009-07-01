@@ -8,7 +8,8 @@
 
 AISubsidyList::AISubsidyList()
 {
-	for (uint i = 0; i < lengthof(_subsidies); i++) {
-		if (AISubsidy::IsValidSubsidy(i)) this->AddItem(i);
+	const Subsidy *s;
+	FOR_ALL_SUBSIDIES(s) {
+		this->AddItem(s - _subsidies);
 	}
 }

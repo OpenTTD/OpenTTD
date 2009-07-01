@@ -18,4 +18,8 @@ struct Subsidy {
 
 extern Subsidy _subsidies[MAX_COMPANIES];
 
+#define FOR_ALL_SUBSIDIES_FROM(var, start) for (var = &_subsidies[start]; var < endof(_subsidies); var++) \
+		if (var->cargo_type != CT_INVALID)
+#define FOR_ALL_SUBSIDIES(var) FOR_ALL_SUBSIDIES_FROM(var, 0)
+
 #endif /* SUBSIDY_TYPE_H */

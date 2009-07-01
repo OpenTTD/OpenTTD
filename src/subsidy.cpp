@@ -69,9 +69,8 @@ Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode)
 void DeleteSubsidyWithTown(TownID index)
 {
 	Subsidy *s;
-
-	for (s = _subsidies; s != endof(_subsidies); s++) {
-		if (s->cargo_type != CT_INVALID && s->age < 12) {
+	FOR_ALL_SUBSIDIES(s) {
+		if (s->age < 12) {
 			const CargoSpec *cs = GetCargo(s->cargo_type);
 			if (((cs->town_effect == TE_PASSENGERS || cs->town_effect == TE_MAIL) && (index == s->from || index == s->to)) ||
 				((cs->town_effect == TE_GOODS || cs->town_effect == TE_FOOD) && index == s->to)) {
@@ -84,9 +83,8 @@ void DeleteSubsidyWithTown(TownID index)
 void DeleteSubsidyWithIndustry(IndustryID index)
 {
 	Subsidy *s;
-
-	for (s = _subsidies; s != endof(_subsidies); s++) {
-		if (s->cargo_type != CT_INVALID && s->age < 12) {
+	FOR_ALL_SUBSIDIES(s) {
+		if (s->age < 12) {
 			const CargoSpec *cs = GetCargo(s->cargo_type);
 			if (cs->town_effect != TE_PASSENGERS && cs->town_effect != TE_MAIL &&
 				(index == s->from || (cs->town_effect != TE_GOODS && cs->town_effect != TE_FOOD && index == s->to))) {
@@ -98,12 +96,11 @@ void DeleteSubsidyWithIndustry(IndustryID index)
 
 void DeleteSubsidyWithStation(StationID index)
 {
-	Subsidy *s;
 	bool dirty = false;
 
-	for (s = _subsidies; s != endof(_subsidies); s++) {
-		if (s->cargo_type != CT_INVALID && s->age >= 12 &&
-				(s->from == index || s->to == index)) {
+	Subsidy *s;
+	FOR_ALL_SUBSIDIES(s) {
+		if (s->age >= 12 && (s->from == index || s->to == index)) {
 			s->cargo_type = CT_INVALID;
 			dirty = true;
 		}
@@ -196,8 +193,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 static bool CheckSubsidyDuplicate(Subsidy *s)
 {
 	const Subsidy *ss;
-
-	for (ss = _subsidies; ss != endof(_subsidies); ss++) {
+	FOR_ALL_SUBSIDIES(ss) {
 		if (s != ss &&
 				ss->from == s->from &&
 				ss->to == s->to &&
@@ -212,15 +208,13 @@ static bool CheckSubsidyDuplicate(Subsidy *s)
 
 void SubsidyMonthlyLoop()
 {
-	Subsidy *s;
 	Station *st;
 	uint n;
 	FoundRoute fr;
 	bool modified = false;
 
-	for (s = _subsidies; s != endof(_subsidies); s++) {
-		if (s->cargo_type == CT_INVALID) continue;
-
+	Subsidy *s;
+	FOR_ALL_SUBSIDIES(s) {
 		if (s->age == 12 - 1) {
 			Pair reftype = SetupSubsidyDecodeParam(s, 1);
 			AddNewsItem(STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->from, (NewsReferenceType)reftype.b, s->to);
@@ -290,7 +284,7 @@ bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type,
 	TileIndex xy;
 
 	/* check if there is an already existing subsidy that applies to us */
-	for (s = _subsidies; s != endof(_subsidies); s++) {
+	FOR_ALL_SUBSIDIES(s) {
 		if (s->cargo_type == cargo_type &&
 				s->age >= 12 &&
 				s->from == from->index &&
@@ -300,7 +294,7 @@ bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type,
 	}
 
 	/* check if there's a new subsidy that applies.. */
-	for (s = _subsidies; s != endof(_subsidies); s++) {
+	FOR_ALL_SUBSIDIES(s) {
 		if (s->cargo_type == cargo_type && s->age < 12) {
 			/* Check distance from source */
 			const CargoSpec *cs = GetCargo(cargo_type);

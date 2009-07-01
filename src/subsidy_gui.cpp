@@ -43,8 +43,10 @@ struct SubsidyListWindow : Window {
 		if (y < 0) return;
 
 		uint num = 0;
-		for (const Subsidy *s = _subsidies; s != endof(_subsidies); s++) {
-			if (s->cargo_type != CT_INVALID && s->age < 12) {
+
+		const Subsidy *s;
+		FOR_ALL_SUBSIDIES(s) {
+			if (s->age < 12) {
 				y -= FONT_HEIGHT_NORMAL;
 				if (y < 0) {
 					this->HandleClick(s);
@@ -62,8 +64,8 @@ struct SubsidyListWindow : Window {
 		y -= 11; // "Services already subsidised:"
 		if (y < 0) return;
 
-		for (const Subsidy *s = _subsidies; s != endof(_subsidies); s++) {
-			if (s->cargo_type != CT_INVALID && s->age >= 12) {
+		FOR_ALL_SUBSIDIES(s) {
+			if (s->age >= 12) {
 				y -= FONT_HEIGHT_NORMAL;
 				if (y < 0) {
 					this->HandleClick(s);
@@ -127,8 +129,8 @@ struct SubsidyListWindow : Window {
 		y += FONT_HEIGHT_NORMAL;
 		uint num = 0;
 
-		for (s = _subsidies; s != endof(_subsidies); s++) {
-			if (s->cargo_type != CT_INVALID && s->age < 12) {
+		FOR_ALL_SUBSIDIES(s) {
+			if (s->age < 12) {
 				/* Displays the two offered towns */
 				SetupSubsidyDecodeParam(s, 1);
 				SetDParam(7, _date - ymd.day + 384 - s->age * 32);
@@ -149,8 +151,8 @@ struct SubsidyListWindow : Window {
 		y += FONT_HEIGHT_NORMAL;
 		num = 0;
 
-		for (s = _subsidies; s != endof(_subsidies); s++) {
-			if (s->cargo_type != CT_INVALID && s->age >= 12) {
+		FOR_ALL_SUBSIDIES(s) {
+			if (s->age >= 12) {
 				SetupSubsidyDecodeParam(s, 1);
 				SetDParam(3, Station::Get(s->to)->owner);
 				SetDParam(4, _date - ymd.day + 768 - s->age * 32);

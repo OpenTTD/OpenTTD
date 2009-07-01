@@ -1916,8 +1916,8 @@ bool AfterLoadGame()
 		}
 
 		/* Delete invalid subsidies possibly present in old versions (but converted to new savegame) */
-		for (Subsidy *s = _subsidies; s < endof(_subsidies); s++) {
-			if (s->cargo_type == CT_INVALID) continue;
+		Subsidy *s;
+		FOR_ALL_SUBSIDIES(s) {
 			if (s->age >= 12) {
 				/* Station -> Station */
 				const Station *from = Station::GetIfValid(s->from);

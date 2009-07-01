@@ -19,15 +19,10 @@ static const SaveLoad _subsidies_desc[] = {
 
 void Save_SUBS()
 {
-	int i;
 	Subsidy *s;
-
-	for (i = 0; i != lengthof(_subsidies); i++) {
-		s = &_subsidies[i];
-		if (s->cargo_type != CT_INVALID) {
-			SlSetArrayIndex(i);
-			SlObject(s, _subsidies_desc);
-		}
+	FOR_ALL_SUBSIDIES(s) {
+		SlSetArrayIndex(s - _subsidies);
+		SlObject(s, _subsidies_desc);
 	}
 }
 
