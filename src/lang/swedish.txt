@@ -963,6 +963,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillåt
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Tillåt flera NewGRF-set: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det är inte möjligt att ändra denna inställning när det finns fordon
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Flygplatser blir aldrig gamla: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Varna om tåg åker vilse: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Granska fordonens destinationer: {ORANGE}{STRING}
@@ -1299,7 +1300,7 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}IP-adres
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klienter
-STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienter online / Klienter max
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienter online / klienter max{}Företag online / företag max
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Kartstorlek
@@ -1312,14 +1313,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}År
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Antal år{}som spelet pågår
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPELINFO
-STR_NETWORK_CLIENTS                                             :{SILVER}Klienter:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Språk:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Klimat:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Kartstorlek:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Serverversion:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server adress:  {WHITE}{STRING}
-STR_NETWORK_START_DATE                                          :{SILVER}Startdatum:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Nuvarande datum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CLIENTS                                             :{SILVER}Klienter: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Språk: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Klimat: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Kartstorlek: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Serverversion: {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serveradress: {WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}Startdatum: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Nuvarande datum: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Lösenordsskyddat!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER AVSTÄNGD
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER FULL
@@ -1401,7 +1402,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Lettiska
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Nätverksspel
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Förbereder att ansluta:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Förbereder att ansluta: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}En lista på alla nuvarande företag som är i spelet. Du kan antingen ansluta till ett befintligt eller starta ett nytt på en ledig plats
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nytt företag
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Starta ett nytt företag
@@ -1415,15 +1416,15 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Uppdater
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}FÖRETAGSINFO
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Företagsnamn: {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Etableringsår:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Företagsvärde:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Nuvarande saldo:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Förra årets inkomst:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Prestandabetyg:  {WHITE}{NUM}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Etableringsår: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Företagsvärde: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Nuvarande saldo: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Förra årets inkomst: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Prestandabetyg: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Fordon:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Stationer:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Spelare:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Fordon: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Stationer: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Spelare: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Ansluter...
 
@@ -1453,20 +1454,20 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nytt fö
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Inget nätverkskort funnet eller så är spelet kompilerat utan ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Kunde inte hitta några nätverksspel
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Servern svarade inte på förfrågan
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Kunde inte ansluta på grund av att NewGRF är omaka
-STR_NETWORK_ERR_DESYNC                                          :{WHITE}Nätverk, Spelsynkronisering misslyckades
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Kunde inte ansluta på grund av att NewGRF är omaka
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Synkronisering av nätverks-spel misslyckades
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Nätverk, koppling förlorad
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Kunde inte ladda det sparade spelet från servern
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Kunde inte starta servern.
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Kunde inte ansluta.
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Nätverkskoppling #{NUM} förlorad (klient slutade svara)
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Ett protokollfel uppstod och anslutningen stängdes.
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Servern har en annan version än denna klient.
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Fel lösenord.
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Servern är full
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Du är bannlyst från den här servern
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Du är utkastad från servern
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Fusk är inte tillåtet på denna server
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Kunde inte ladda det sparade spelet
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Kunde inte starta servern.
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Kunde inte ansluta.
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Nätverkskoppling #{NUM} timeout
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Ett protokollfel uppstod och anslutningen stängdes.
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Servern har en annan version än denna klient.
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Fel lösenord
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Servern är full
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Du är bannlyst från den här servern
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Du blev utkastad från spelet
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Fusk är inte tillåtet på denna server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :allmänt fel
@@ -1537,7 +1538,7 @@ STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...hitta
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kunde inte konvertera bildtyp. 8 eller 24-bitars PNG-bild krävs.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...nånting gick fel. Ursäkta. (förmodligen korumperad fil)
 
-STR_BMPMAP_ERROR                                                :{WHITE}Kan inte ladda landskap ifrån BMP...
+STR_BMPMAP_ERROR                                                :{WHITE}Kan inte ladda landskap från BMP...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kunde inte konvertera bildformat.
 
 ##id 0x0800
@@ -1607,14 +1608,14 @@ STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Järnväg med a
 STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Järnväg med avancerade envägs-signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Järnväg med normala signaler och för-signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Järnväg med normala signaler och utfarts-signaler
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Tågspår med normal- och kombinationsignaler
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Järnväg med normal- och kombinationsignaler
 STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Järnväg med normala samt avancerade signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Järnväg med normala signaler samt avancerade envägs-signaler
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Järnväg med för- och utfarts-signaler
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Tågspår med för- och kombinationsignaler
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Järnväg med för- och kombinationsignaler
 STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Järnväg med för-signaler samt avancerade signaler
 STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Järnväg med för-signaler samt avancerade envägs-signaler
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Tågspår med utgångs- och kombinationsignaler
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Järnväg med utgångs- och kombinationsignaler
 STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Järnväg med utfarts-signaler samt avancerade signaler
 STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Järnväg med utfarts-signaler samt avancerade envägs-signaler
 STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Järnväg med kombinations-signaler samt avancerade signaler
@@ -1761,14 +1762,14 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bygg staty öve
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Bekosta nya byggnader
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Köp exklusiva transporträttigheter
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Muta de lokala myndigheterna
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Starta en liten lokal reklamkampanj, för att attrahera fler passagerare och gods till dina tranporttjänster.{}  Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Starta en mellanstor lokal reklamkampanj, för att attrahera fler passagerare och gods till dina tranporttjänster.{}  Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Starta en stor lokal reklamkampanj, för att attrahera fler passagerare och gods till dina tranporttjänster.{}  Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Bekosta ombyggnad av stadens vägnätverk. Orsakar ansenliga störningar för vägtrafik i upp till 6 månader.{}  Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} Bygg en staty i ditt företags ära.{} Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} Bekosta uppbyggnad av nya kommersiella byggnader i staden.{}  Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} Köp 1 års exklusiv transporträttighet i staden. Stadens myndigheter kommer bara tillåta passagerare och gods till användning för ditt företags stationer.{} Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} Muta de lokala myndigheterna för att öka din värdering, på risken av att få höga böter om du blir upptäckt.{}  Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Starta en liten lokal reklamkampanj, för att attrahera fler passagerare och gods till dina tranporttjänster.{}Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Starta en mellanstor lokal reklamkampanj, för att attrahera fler passagerare och gods till dina tranporttjänster.{}Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Starta en stor lokal reklamkampanj, för att attrahera fler passagerare och gods till dina tranporttjänster.{}Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}Bekosta ombyggnad av stadens vägnätverk. Orsakar ansenliga störningar för vägtrafik i upp till 6 månader.{}Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Bygg en staty i ditt företags ära.{}Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Bekosta uppbyggnad av nya kommersiella byggnader i staden.{}Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} Köp 1 års exklusiv transporträttighet i staden. Stadens myndigheter kommer bara tillåta passagerare och gods till användning för ditt företags stationer.{}Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} Muta de lokala myndigheterna för att öka din värdering, med risk för att få höga böter om du blir upptäckt.{} Kostnad: {CURRENCY}
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Trafikkaos i {TOWN}!{}{}Vägombyggnadsprogram bekostat av {STRING} medför 6 månader av elände för bilister!
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -2208,7 +2209,7 @@ STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graf över vinst
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banksaldo
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lån
-STR_MAX_LOAN                                                    :{WHITE}Maxlån:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Maxlån: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Låna {SKIP}{SKIP}{CURRENCY}
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Återbetala {SKIP}{SKIP}{CURRENCY}
@@ -2338,7 +2339,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Visa fä
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Visa färgschema för flygplan
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Välj huvudfärg för det aktuella schemat
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Välj andravalsfärgen för det aktuella schemat
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Välj en färg att ändra eller välj flera genom CTRL+klick. Bocka för rutan för att använda scheman
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Välj ett färgschema att ändra eller välj flera genom CTRL+klick. Bocka för rutan för att använda scheman
 
 ##id 0x8000
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (Ånga)
@@ -2726,17 +2727,17 @@ STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Rälsfor
 
 STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Bygg fordon
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klona fordon
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Det här bygger en kopia av fordonet. Control-klickning gör så att de delar order
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Det här bygger en kopia av ett fordon. Tryck på den här knappen och sen på ett vägfordon inuti eller utanför depån. Control-klickning gör så att de delar order
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Det här bygger en kopia av fordonet. Ctrl-klick gör så att de delar order
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Det här bygger en kopia av ett fordon. Tryck på den här knappen och sen på ett vägfordon inuti eller utanför depån. Ctrl-klick gör så att de delar order
 STR_CLONE_TRAIN                                                 :{BLACK}Klona tåg
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Det här bygger en kopia av tåget inklusive alla vagnar. Control-klickning gör så att de delar order
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Det här bygger en kopia av ett tåg inklusive alla vagnar. Tryck på den här knappen och sen på ett tåg inuti eller utanför depån. Control-klickning gör så att de delar order
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Det här bygger en kopia av tåget inklusive alla vagnar. Ctrl-klick gör så att de delar order
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Det här bygger en kopia av ett tåg inklusive alla vagnar. Tryck på den här knappen och sen på ett tåg inuti eller utanför depån. Ctrl-klick gör så att de delar order
 STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Byt namn på
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Skippa
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Ta bort
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Gå Till
 STR_REFIT                                                       :{BLACK}Anpassa
-STR_REFIT_TIP                                                   :{BLACK}Välj vilken godstyp anpassningen ska göras i denna order. CTRL+ klicka för att ta bort anpassningsordern
+STR_REFIT_TIP                                                   :{BLACK}Välj vilken godstyp anpassningen ska göras i denna order. Ctrl-klick för att ta bort anpassningsordern
 STR_REFIT_ORDER                                                 :(Anpassa för {STRING})
 STR_REFIT_STOP_ORDER                                            :(Anpassa för {STRING} och stanna)
 STR_STOP_ORDER                                                  :(Stanna)
@@ -2857,7 +2858,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Detta fo
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Den här tidtabellen kommer ta {STRING} att slutföra
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Denna tidtabell kommer att ta åtminstonde {STRING} att slutföra (allt är inte inlagt i en tidtabell)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofyll
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll i tidtabellen automatiskt med värden från nästa resa (Ctrl-klicka för att försöka behålla väntetiderna)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll i tidtabellen automatiskt med värden från nästa resa (Ctrl+klick för att försöka behålla väntetiderna)
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Vägfordon i vägen
@@ -2929,8 +2930,8 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nytt skepp
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Bygg skepp
 STR_CLONE_SHIP                                                  :{BLACK}Klona skepp
-STR_CLONE_SHIP_INFO                                             :{BLACK}Det här bygger en kopia av skeppet. Control-klickning gör så att de delar order
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Det här bygger en kopia av ett skepp. Tryck på den här och sedan på ett skepp inuti eller utanför depån. Control-klickning gör att de delar order
+STR_CLONE_SHIP_INFO                                             :{BLACK}Det här bygger en kopia av skeppet. Ctrl-klick gör så att de delar order
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Det här bygger en kopia av ett skepp. Tryck på den här och sedan på ett skepp inuti eller utanför depån. Ctrl-klick gör så att de delar order
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Skepp måste vara stoppat i depå
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan inte sälja skepp...
 STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Kan inte bygga skepp...
@@ -2985,8 +2986,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan inte
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} flygplanshangar
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nytt flygplan
 STR_CLONE_AIRCRAFT                                              :{BLACK}Klona flygplan
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Det här bygger en kopia av flygplanet. Control-klickning gör så de delar order
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Det här bygger en kopia av ett flygplan. Tryck på den här knappen och sedan på ett flygplan inuti eller utanför hangaren. Control-klickning gör så de delar order
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Det här bygger en kopia av flygplanet. Ctrl-klick gör så att de delar order
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Det här bygger en kopia av ett flygplan. Tryck på den här knappen och sedan på ett flygplan inuti eller utanför hangaren. Ctrl-klick gör så att de delar order
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nytt flygplan
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Bygg flygplan
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kan inte bygga flygplan...
@@ -3084,7 +3085,7 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Totalt a
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Inställningar
 STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Visa inställningar för NewGRF
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf inställningar
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-inställningar
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Spara ändringar
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Byt palett
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Ändra palett för markerad NewGRF.{}Gör detta när grafiken från denna NewGRF är rosa i spelet
@@ -3276,14 +3277,14 @@ STR_MAGLEV_VEHICLES                                             :Maglevfordon
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Vikt: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighet: {GOLD}{VELOCITY}{BLACK}   Kraft: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighet: {GOLD}{VELOCITY}{BLACK} Kraft: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hastighet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Driftkostnader: {GOLD}{CURRENCY}/år
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacitet: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designår: {GOLD}{NUM}{BLACK} Livslängd: {GOLD}{COMMA} år
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. tillförlitlighet: {GOLD}{COMMA} %
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kostnad: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vikt: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vikt: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Hastighet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitet: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motoriserade vagnar: {GOLD}+{POWER}{BLACK} Vikt: {GOLD}+{WEIGHT_S}
@@ -3404,15 +3405,15 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...detta
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...vägen pekar i fel riktning
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Genomskinlighetsinställningar
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Växla genomskinlighet för stationsskyltar
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Växla genomskinlighet för träd
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Växla genomskinlighet för byggnader
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Växla genomskinlighet för industrier
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Växla genomskinlighet för byggnader såsom stationer, depåer, riktmärken eller kedjelinje
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Växla genomskinlighet för industrier
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Växla genomskinlighet för byggnader såsom fyrar och antenner, kanske i framtiden även ögongodis
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Växla genomskinlighet för stationsskyltar. Ctrl+klick för att låsa.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Växla genomskinlighet för träd. Ctrl+klick för att låsa.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Växla genomskinlighet för byggnader. Ctrl+klick för att låsa.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Växla genomskinlighet för industrier. Ctrl+klick för att låsa.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Växla genomskinlighet för byggnader såsom stationer, depåer, riktmärken eller kedjelinje. Ctrl+klick för att låsa.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Växla genomskinlighet för broar. Ctrl+klick för att låsa.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Växla genomskinlighet för byggnader såsom fyrar och antenner. Ctrl+klick för att låsa.
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Växla genomskinlighet för kedjebro. CTRL+klick för att låsa.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Växla genomskinlighet för lastningsindikatörer
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Växla genomskinlighet för lastningsindikatörer. CTRL+klick för att låsa.
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Gör object osynliga istället för genomskinliga
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3450,7 +3451,7 @@ STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Kan inte
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Kan inte lägga till fordon i denna grupp...
 STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Kan inte lägga till delade fordon i denna grupp...
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Gripper - Klicka på en grupp för att lista alla fordon i gruppen
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupper - klicka på en grupp för att lista alla fordon i gruppen
 STR_GROUP_CREATE_TIP                                            :{BLACK}Klicka för att skapa en grupp
 STR_GROUP_DELETE_TIP                                            :{BLACK}Ta bort vald grupp
 STR_GROUP_RENAME_TIP                                            :{BLACK}Byt namn på vald grupp
@@ -3528,18 +3529,18 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Ändra s
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Signalval
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kan inte konvertera signaler här...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standardsignal (semafor){}Signaler är nödvändiga för att tåg inte skall krasha i järnvägsnät innehållande mer än ett tåg.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standardsignal (semafor){}Detta är den enklaste typen av signal, som tillåter endast ett tåg per block vid samma tidpunkt.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}För-signal (semafor){}Grön så länge det finns en eller flera gröna utfarts-signaler på efterföljande bit av spår, annars visas rött.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Utfarts-signal (semafor){}Fungerar på samma sätt som en vanlig signal men behövs för att utlösa korrekt färg på In- eller kombinations-signaler.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombinationssignal (semafor){}Kombinationssignalen fungerar helt enkelt som både en För- och Utfarts-signal. Denna tillåter dig att bygga stora "träd" av För-signaler.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Avancerad signal (semafor){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån, men priotieras ej.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Avancerad envägs-signal (semafor){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån, men priotieras icke
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Normal signal (elektrisk){}Signaler behövs för att se till att tåg inte kraschar på nätverk med mer än ett tåg.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Avancerad signal (semafor){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Avancerad envägs-signal (semafor){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Normal signal (elektrisk){}Detta är den enklaste typen av signal, som tillåter endast ett tåg per block vid samma tidpunkt.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}För-signal (elektrisk){}Grön så länge det finns en eller flera gröna utfarts-signaler på efterföljande bit av spår, annars visas rött.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Utfarts-signal (elektrisk){}Fungerar på samma sätt som en vanlig signal men behövs för att utlösa korrekt färg på In- eller kombinations-signaler.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinationssignal (elektrisk){}Kombinationssignalen fungerar helt enkelt som både en För- och Utfarts-signal. Denna tillåter dig att bygga stora "träd" av För-signaler.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Avancerad signal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån, men priotieras icke
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Avancerad envägs-signal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån, men priotieras icke
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Avancerad signal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Avancerad envägs-signal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade envägs-signaler kan inte passeras bakifrån.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Konvertera Signal{}När markerad, klicka på en existerande signal för att konvertera den till vald signal-typ och variant. CTRL-klick ändrar den existerande varianten
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Dragen signals täthet
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Minska dragen signals täthet

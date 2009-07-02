@@ -1314,14 +1314,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}진행 �
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}게임이 진행된 년도 수
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}게임 정보
-STR_NETWORK_CLIENTS                                             :{SILVER}클라이언트:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}언어:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}기후:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}맵 크기:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}서버 버전:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}서버 주소:  {WHITE}{STRING}
-STR_NETWORK_START_DATE                                          :{SILVER}시작 날짜:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}현재 날짜:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CLIENTS                                             :{SILVER}클라이언트: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}언어: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}기후: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}맵 크기: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}서버 버전: {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}서버 주소: {WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}시작 날짜: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}현재 날짜: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}암호가 걸려있습니다!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}서버 오프라인
 STR_NETWORK_SERVER_FULL                                         :{SILVER}서버가 꽉 참
@@ -1403,7 +1403,7 @@ STR_NETWORK_LANG_LATVIAN                                        :라트비아
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}멀티플레이 준비
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}참가 준비중:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}참가 준비중: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}이 게임에 있는 회사의 목록입니다. 다른 회사에 같이 참가하거나 (빈 슬롯이 있을 경우) 새로운 회사로 시작할 수 있습니다.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}새 회사
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}새 회사를 만듭니다
@@ -1416,16 +1416,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}서버 �
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}회사 정보
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}회사 이름:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}설립:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}회사가치:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}재정 수익:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}작년 수익:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}퍼포먼스:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}회사 이름: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}설립: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}회사가치: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}재정 수익: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}작년 수익: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}퍼포먼스: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}차량:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}역:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}플레이어:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}차량: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}역: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}플레이어: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}접속중...
 
@@ -1763,14 +1763,14 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :회사 소유�
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :새 건물에 투자
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :수송 권한 독점권 구입
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :지역 당국에 뇌물 먹이기
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} 더 많은 승객과 화물을 유치하기 위해 소규모의 광고 캠페인을 시작합니다.{}  가격: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} 더 많은 승객과 화물을 유치하기 위해 중간 규모의 광고 캠페인을 시작합니다.{}  가격: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} 더 많은 승객과 화물을 유치하기 위해 대규모의 광고 캠페인을 시작합니다.{}  가격: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} 도시 도로 네트워크망의 재공사에 투자합니다. 앞으로 6개월간 도로 혼잡을 야기시킬 수 있습니다.{}  가격: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} 당신 회사의 명예의 동상을 건설합니다.{}  가격: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} 도시 상업 건물의 건설에 투자합니다.{}  가격: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} 1년간의 수송 권한 독점권을 구입합니다. 도시 당국은 오직 당신 회사의 역에만 승객과 화물을 허용할 것입니다.{}  가격: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} 성취도를 올리기 위해 처벌을 감수하고 지역 당국에 뇌물을 줍니다.{}  가격: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} 더 많은 승객과 화물을 유치하기 위해 소규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} 더 많은 승객과 화물을 유치하기 위해 중간 규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} 더 많은 승객과 화물을 유치하기 위해 대규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} 도시 도로 네트워크망의 재공사에 투자합니다. 앞으로 6개월간 도로 혼잡을 야기시킬 수 있습니다.{}가격: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} 당신 회사의 명예의 동상을 건설합니다.{}가격: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} 도시 상업 건물의 건설에 투자합니다.{}가격: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} 1년간의 수송 권한 독점권을 구입합니다. 도시 당국은 오직 당신 회사의 역에만 승객과 화물을 허용할 것입니다.{}가격: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} 성취도를 올리기 위해 처벌을 감수하고 지역 당국에 뇌물을 줍니다.{}가격: {CURRENCY}
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}{TOWN}의 교통 혼잡!{}{}{STRING}에 의한 도로 재공사 프로그램이 운전자들에게 6개월간의 고통을 가져왔습니다!
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -2210,7 +2210,7 @@ STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}경영 수익 그래프
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}소유금
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}대출
-STR_MAX_LOAN                                                    :{WHITE}최대 대출:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}최대 대출: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{SKIP}{SKIP}{CURRENCY} 빌리기
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}{SKIP}{SKIP}{CURRENCY} 갚기
@@ -3278,14 +3278,14 @@ STR_MAGLEV_VEHICLES                                             :자기부상
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}가격: {GOLD}{CURRENCY}{BLACK} 중량: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}속력: {GOLD}{VELOCITY}{BLACK}   힘: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}속력: {GOLD}{VELOCITY}{BLACK} 힘: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}속력: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}운행비용: {GOLD}{CURRENCY}/년
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}수송량: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}개발: {GOLD}{NUM}{BLACK} 수명: {GOLD}{COMMA}년
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}최고 신뢰도: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}가격: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}중량: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}중량: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}가격: {GOLD}{CURRENCY}{BLACK} 속력: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}수용량: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}전원 화물차: {GOLD}+{POWER}{BLACK} 중량: {GOLD}+{WEIGHT_S}
