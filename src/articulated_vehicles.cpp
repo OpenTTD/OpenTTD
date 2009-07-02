@@ -322,7 +322,7 @@ void AddArticulatedParts(Vehicle *first, VehicleType type)
 					t->cargo_cap = 0;
 				}
 
-				SetArticulatedPart(t);
+				t->SetArticulatedPart();
 			} break;
 
 			case VEH_ROAD: {

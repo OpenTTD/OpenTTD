@@ -51,114 +51,6 @@ enum TrainSubtype {
 	TS_MULTIHEADED       = 5, ///< Engine is a multiheaded
 };
 
-/** Set front engine state
- * @param v vehicle to change
- */
-static inline void SetFrontEngine(Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	SetBit(v->subtype, TS_FRONT);
-}
-
-/** Remove the front engine state
- * @param v vehicle to change
- */
-static inline void ClearFrontEngine(Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	ClrBit(v->subtype, TS_FRONT);
-}
-
-/** Set a vehicle to be an articulated part
- * @param v vehicle to change
- */
-static inline void SetArticulatedPart(Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	SetBit(v->subtype, TS_ARTICULATED_PART);
-}
-
-/** Clear a vehicle from being an articulated part
- * @param v vehicle to change
- */
-static inline void ClearArticulatedPart(Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	ClrBit(v->subtype, TS_ARTICULATED_PART);
-}
-
-/** Set a vehicle to be a wagon
- * @param v vehicle to change
- */
-static inline void SetTrainWagon(Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	SetBit(v->subtype, TS_WAGON);
-}
-
-/** Clear wagon property
- * @param v vehicle to change
- */
-static inline void ClearTrainWagon(Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	ClrBit(v->subtype, TS_WAGON);
-}
-
-/** Set engine status
- * @param v vehicle to change
- */
-static inline void SetTrainEngine(Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	SetBit(v->subtype, TS_ENGINE);
-}
-
-/** Clear engine status
- * @param v vehicle to change
- */
-static inline void ClearTrainEngine(Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	ClrBit(v->subtype, TS_ENGINE);
-}
-
-/** Set if a vehicle is a free wagon
- * @param v vehicle to change
- */
-static inline void SetFreeWagon(Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	SetBit(v->subtype, TS_FREE_WAGON);
-}
-
-/** Clear a vehicle from being a free wagon
- * @param v vehicle to change
- */
-static inline void ClearFreeWagon(Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	ClrBit(v->subtype, TS_FREE_WAGON);
-}
-
-
-/** Set if a vehicle is a multiheaded engine
- * @param v vehicle to change
- */
-static inline void SetMultiheaded(Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	SetBit(v->subtype, TS_MULTIHEADED);
-}
-
-/** Clear multiheaded engine property
- * @param v vehicle to change
- */
-static inline void ClearMultiheaded(Vehicle *v)
-{
-	assert(v->type == VEH_TRAIN);
-	ClrBit(v->subtype, TS_MULTIHEADED);
-}
 
 void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2);
@@ -256,6 +148,69 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	Trackdir GetVehicleTrackdir() const;
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
+
+	/**
+	 * Set front engine state
+	 */
+	FORCEINLINE void SetFrontEngine() { SetBit(this->subtype, TS_FRONT); }
+
+	/**
+	 * Remove the front engine state
+	 */
+	FORCEINLINE void ClearFrontEngine() { ClrBit(this->subtype, TS_FRONT); }
+
+	/**
+	 * Set a vehicle to be an articulated part
+	 */
+	FORCEINLINE void SetArticulatedPart() { SetBit(this->subtype, TS_ARTICULATED_PART); }
+
+	/**
+	 * Clear a vehicle from being an articulated part
+	 */
+	FORCEINLINE void ClearArticulatedPart() { ClrBit(this->subtype, TS_ARTICULATED_PART); }
+
+	/**
+	 * Set a vehicle to be a wagon
+	 */
+	FORCEINLINE void SetWagon() { SetBit(this->subtype, TS_WAGON); }
+
+	/**
+	 * Clear wagon property
+	 */
+	FORCEINLINE void ClearWagon() { ClrBit(this->subtype, TS_WAGON); }
+
+	/**
+	 * Set engine status
+	 * @param v vehicle to change
+	 */
+	FORCEINLINE void SetEngine() { SetBit(this->subtype, TS_ENGINE); }
+
+	/**
+	 * Clear engine status
+	 */
+	FORCEINLINE void ClearEngine() { ClrBit(this->subtype, TS_ENGINE); }
+
+	/**
+	 * Set if a vehicle is a free wagon
+	 */
+	FORCEINLINE void SetFreeWagon() { SetBit(this->subtype, TS_FREE_WAGON); }
+
+	/**
+	 * Clear a vehicle from being a free wagon
+	 * @param v vehicle to change
+	 */
+	FORCEINLINE void ClearFreeWagon() { ClrBit(this->subtype, TS_FREE_WAGON); }
+
+	/**
+	 * Set if a vehicle is a multiheaded engine
+	 */
+	FORCEINLINE void SetMultiheaded() { SetBit(this->subtype, TS_MULTIHEADED); }
+
+	/**
+	 * Clear multiheaded engine property
+	 */
+	FORCEINLINE void ClearMultiheaded() { ClrBit(this->subtype, TS_MULTIHEADED); }
+
 
 	/**
 	 * Check if train is a front engine

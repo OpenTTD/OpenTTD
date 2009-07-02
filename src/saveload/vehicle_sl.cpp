@@ -50,7 +50,7 @@ void ConnectMultiheadedTrains()
 				if (u->IsMultiheaded()) {
 					if (!u->IsEngine()) {
 						/* we got a rear car without a front car. We will convert it to a front one */
-						SetTrainEngine(u);
+						u->SetEngine();
 						u->spritenum--;
 					}
 
@@ -63,7 +63,7 @@ void ConnectMultiheadedTrains()
 
 							/* we found a car to partner with this engine. Now we will make sure it face the right way */
 							if (w->IsEngine()) {
-								ClearTrainEngine(w);
+								w->ClearEngine();
 								w->spritenum++;
 							}
 							break;
@@ -87,7 +87,7 @@ void ConnectMultiheadedTrains()
 						u->other_multiheaded_part = w;
 					} else {
 						/* we got a front car and no rear cars. We will fake this one for forget that it should have been multiheaded */
-						ClearMultiheaded(u);
+						u->ClearMultiheaded();
 					}
 				}
 			}
@@ -106,42 +106,42 @@ void ConvertOldMultiheadToNew()
 
 	FOR_ALL_TRAINS(t) {
 		if (HasBit(t->subtype, 7) && ((t->subtype & ~0x80) == 0 || (t->subtype & ~0x80) == 4)) {
-			for (Vehicle *u = t; u != NULL; u = u->Next()) {
+			for (Train *u = t; u != NULL; u = u->Next()) {
 				const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
 
 				ClrBit(u->subtype, 7);
 				switch (u->subtype) {
 					case 0: // TS_Front_Engine
-						if (rvi->railveh_type == RAILVEH_MULTIHEAD) SetMultiheaded(u);
-						SetFrontEngine(u);
-						SetTrainEngine(u);
+						if (rvi->railveh_type == RAILVEH_MULTIHEAD) u->SetMultiheaded();
+						u->SetFrontEngine();
+						u->SetEngine();
 						break;
 
 					case 1: // TS_Artic_Part
 						u->subtype = 0;
-						SetArticulatedPart(u);
+						u->SetArticulatedPart();
 						break;
 
 					case 2: // TS_Not_First
 						u->subtype = 0;
 						if (rvi->railveh_type == RAILVEH_WAGON) {
 							/* normal wagon */
-							SetTrainWagon(u);
+							u->SetWagon();
 							break;
 						}
 						if (rvi->railveh_type == RAILVEH_MULTIHEAD && rvi->image_index == u->spritenum - 1) {
 							/* rear end of a multiheaded engine */
-							SetMultiheaded(u);
+							u->SetMultiheaded();
 							break;
 						}
-						if (rvi->railveh_type == RAILVEH_MULTIHEAD) SetMultiheaded(u);
-						SetTrainEngine(u);
+						if (rvi->railveh_type == RAILVEH_MULTIHEAD) u->SetMultiheaded();
+						u->SetEngine();
 						break;
 
 					case 4: // TS_Free_Car
 						u->subtype = 0;
-						SetTrainWagon(u);
-						SetFreeWagon(u);
+						u->SetWagon();
+						u->SetFreeWagon();
 						break;
 					default: NOT_REACHED();
 				}

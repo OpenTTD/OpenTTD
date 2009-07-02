@@ -704,12 +704,12 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 		v->vehstatus = VS_HIDDEN | VS_DEFPAL;
 
 //		v->subtype = 0;
-		SetTrainWagon(v);
+		v->SetWagon();
 
 		if (u != NULL) {
 			u->SetNext(v);
 		} else {
-			SetFreeWagon(v);
+			v->SetFreeWagon();
 			InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		}
 
@@ -784,8 +784,8 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
 	u->build_year = v->build_year;
 	u->cur_image = SPR_IMG_QUERY;
 	u->random_bits = VehicleRandomBits();
-	SetMultiheaded(v);
-	SetMultiheaded(u);
+	v->SetMultiheaded();
+	u->SetMultiheaded();
 	v->SetNext(u);
 	VehicleMove(u, false);
 
@@ -886,8 +886,8 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		v->group_id = DEFAULT_GROUP;
 
 //		v->subtype = 0;
-		SetFrontEngine(v);
-		SetTrainEngine(v);
+		v->SetFrontEngine();
+		v->SetEngine();
 
 		VehicleMove(v, false);
 
@@ -971,7 +971,7 @@ static Train *UnlinkWagon(Train *v, Train *first)
 		v = GetNextVehicle(v);
 		if (v == NULL) return NULL;
 
-		if (v->IsWagon()) SetFreeWagon(v);
+		if (v->IsWagon()) v->SetFreeWagon();
 
 		/* First can be an articulated engine, meaning GetNextVehicle() isn't
 		 * v->Next(). Thus set the next vehicle of the last articulated part
@@ -1020,8 +1020,8 @@ static void AddWagonToConsist(Train *v, Train *dest)
 	v->SetNext(NULL);
 	dest->SetNext(v);
 	v->SetNext(next);
-	ClearFreeWagon(v);
-	ClearFrontEngine(v);
+	v->ClearFreeWagon();
+	v->ClearFrontEngine();
 }
 
 /*
@@ -1302,7 +1302,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			if (src->IsEngine()) {
 				if (!src->IsFrontEngine()) {
 					/* setting the type to 0 also involves setting up the orders field. */
-					SetFrontEngine(src);
+					src->SetFrontEngine();
 					assert(src->orders.list == NULL);
 
 					/* Decrease the engines number of the src engine_type */
@@ -1314,7 +1314,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 					src->group_id = DEFAULT_GROUP;
 				}
 			} else {
-				SetFreeWagon(src);
+				src->SetFreeWagon();
 			}
 			dst_head = src;
 		} else {
@@ -1331,8 +1331,8 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 			if (src->IsFrontEngine() || src->IsFreeWagon()) {
 				InvalidateWindowData(WC_VEHICLE_DEPOT, src->tile);
-				ClearFrontEngine(src);
-				ClearFreeWagon(src);
+				src->ClearFrontEngine();
+				src->ClearFreeWagon();
 				src->unitnumber = 0; // doesn't occupy a unitnumber anymore.
 			}
 
@@ -1504,7 +1504,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 				/* 4 If the second wagon was an engine, update it to front_engine
 				 * which UnlinkWagon() has changed to TS_Free_Car */
-				if (switch_engine) SetFrontEngine(first);
+				if (switch_engine) first->SetFrontEngine();
 
 				/* 5. If the train still exists, update its acceleration, window, etc. */
 				if (first != NULL) {
