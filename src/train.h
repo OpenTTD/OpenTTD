@@ -259,7 +259,7 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	 * Check if an engine has an articulated part.
 	 * @return True if the engine has an articulated part.
 	 */
-	FORCEINLINE bool EngineHasArticPart() const { return this->Next() != NULL && this->Next()->IsArticulatedPart(); }
+	FORCEINLINE bool HasArticulatedPart() const { return this->Next() != NULL && this->Next()->IsArticulatedPart(); }
 
 };
 
@@ -267,12 +267,12 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 
 /**
  * Get the next part of a multi-part engine.
- * Will only work on a multi-part engine (v->EngineHasArticPart() == true),
+ * Will only work on a multi-part engine (v->HasArticulatedPart() == true),
  * Result is undefined for normal engine.
  */
 static inline Train *GetNextArticPart(const Train *v)
 {
-	assert(v->EngineHasArticPart());
+	assert(v->HasArticulatedPart());
 	return v->Next();
 }
 
@@ -282,7 +282,7 @@ static inline Train *GetNextArticPart(const Train *v)
  */
 static inline Train *GetLastEnginePart(Train *v)
 {
-	while (v->EngineHasArticPart()) v = GetNextArticPart(v);
+	while (v->HasArticulatedPart()) v = GetNextArticPart(v);
 	return v;
 }
 
@@ -292,7 +292,7 @@ static inline Train *GetLastEnginePart(Train *v)
  */
 static inline Train *GetNextVehicle(const Train *v)
 {
-	while (v->EngineHasArticPart()) v = GetNextArticPart(v);
+	while (v->HasArticulatedPart()) v = GetNextArticPart(v);
 
 	/* v now contains the last artic part in the engine */
 	return v->Next();

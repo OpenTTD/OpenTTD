@@ -860,7 +860,7 @@ struct DepotWindow : Window {
 					loaded  [w->cargo_type] += w->cargo.Count();
 				}
 
-				if (w->type == VEH_TRAIN && !Train::From(w)->EngineHasArticPart()) {
+				if (w->type == VEH_TRAIN && !Train::From(w)->HasArticulatedPart()) {
 					num++;
 					if (!whole_chain) break;
 				}

@@ -437,9 +437,9 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 					if (CmdSucceeded(cost)) total_cost.AddCost(cost);
 				}
 
-				if (w->type == VEH_TRAIN && Train::From(w)->EngineHasArticPart()) {
+				if (w->type == VEH_TRAIN && Train::From(w)->HasArticulatedPart()) {
 					w = GetNextArticPart(Train::From(w));
-				} else if (w->type == VEH_ROAD && RoadVehicle::From(w)->RoadVehHasArticPart()) {
+				} else if (w->type == VEH_ROAD && RoadVehicle::From(w)->HasArticulatedPart()) {
 					w = w->Next();
 				} else {
 					break;
@@ -453,9 +453,9 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 				}
 			}
 
-			if (v->type == VEH_TRAIN && Train::From(v)->EngineHasArticPart()) {
+			if (v->type == VEH_TRAIN && Train::From(v)->HasArticulatedPart()) {
 				v = GetNextArticPart(Train::From(v));
-			} else if (v->type == VEH_ROAD && RoadVehicle::From(v)->RoadVehHasArticPart()) {
+			} else if (v->type == VEH_ROAD && RoadVehicle::From(v)->HasArticulatedPart()) {
 				v = v->Next();
 			} else {
 				break;

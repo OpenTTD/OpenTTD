@@ -916,7 +916,7 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 	if (IsTileType(v->tile, MP_STATION)) return;
 
 	/* For now, articulated road vehicles can't overtake anything. */
-	if (v->RoadVehHasArticPart()) return;
+	if (v->HasArticulatedPart()) return;
 
 	/* Vehicles are not driving in same direction || direction is not a diagonal direction */
 	if (v->direction != u->direction || !(v->direction & 1)) return;
@@ -1027,7 +1027,7 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 	} else if (IsTileType(tile, MP_STATION) && IsStandardRoadStopTile(tile)) {
 		/* Standard road stop (drive-through stops are treated as normal road) */
 
-		if (!IsTileOwner(tile, v->owner) || GetRoadStopDir(tile) == enterdir || v->RoadVehHasArticPart()) {
+		if (!IsTileOwner(tile, v->owner) || GetRoadStopDir(tile) == enterdir || v->HasArticulatedPart()) {
 			/* different station owner or wrong orientation or the vehicle has articulated parts */
 			trackdirs = TRACKDIR_BIT_NONE;
 		} else {

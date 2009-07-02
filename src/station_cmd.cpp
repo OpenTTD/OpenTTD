@@ -2570,7 +2570,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 
 				/* For normal (non drive-through) road stops
 				 * Check if station is busy or if there are no free bays or whether it is a articulated vehicle. */
-				if (rs->IsEntranceBusy() || !rs->HasFreeBay() || rv->RoadVehHasArticPart()) return VETSB_CANNOT_ENTER;
+				if (rs->IsEntranceBusy() || !rs->HasFreeBay() || rv->HasArticulatedPart()) return VETSB_CANNOT_ENTER;
 
 				SetBit(rv->state, RVS_IN_ROAD_STOP);
 

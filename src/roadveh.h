@@ -151,7 +151,7 @@ struct RoadVehicle : public SpecializedVehicle<RoadVehicle, VEH_ROAD> {
 	 * Check if an engine has an articulated part.
 	 * @return True if the engine has an articulated part.
 	 */
-	FORCEINLINE bool RoadVehHasArticPart() const { return this->Next() != NULL && this->Next()->IsArticulatedPart(); }
+	FORCEINLINE bool HasArticulatedPart() const { return this->Next() != NULL && this->Next()->IsArticulatedPart(); }
 };
 
 #define FOR_ALL_ROADVEHICLES(var) FOR_ALL_VEHICLES_OF_TYPE(RoadVehicle, var)

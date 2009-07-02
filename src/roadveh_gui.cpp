@@ -26,7 +26,7 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 {
 	const RoadVehicle *rv = RoadVehicle::From(v);
 
-	uint y_offset = rv->RoadVehHasArticPart() ? 15 : 0;
+	uint y_offset = rv->HasArticulatedPart() ? 15 : 0;
 	StringID str;
 	Money feeder_share = 0;
 
@@ -35,7 +35,7 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 	SetDParam(2, v->value);
 	DrawString(left, right, y + y_offset, STR_VEHICLE_INFO_BUILT_VALUE);
 
-	if (rv->RoadVehHasArticPart()) {
+	if (rv->HasArticulatedPart()) {
 		CargoArray max_cargo;
 		StringID subtype_text[NUM_CARGO];
 		char capacity[512];

@@ -207,11 +207,11 @@ bool IsArticulatedVehicleCarryingDifferentCargos(const Vehicle *v, CargoID *carg
 
 		switch (v->type) {
 			case VEH_TRAIN:
-				v = Train::From(v)->EngineHasArticPart() ? GetNextArticPart(Train::From(v)) : NULL;
+				v = Train::From(v)->HasArticulatedPart() ? GetNextArticPart(Train::From(v)) : NULL;
 				break;
 
 			case VEH_ROAD:
-				v = RoadVehicle::From(v)->RoadVehHasArticPart() ? v->Next() : NULL;
+				v = RoadVehicle::From(v)->HasArticulatedPart() ? v->Next() : NULL;
 				break;
 
 			default:
@@ -254,11 +254,11 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 
 		switch (v->type) {
 			case VEH_TRAIN:
-				v = Train::From(v)->EngineHasArticPart() ? GetNextArticPart(Train::From(v)) : NULL;
+				v = Train::From(v)->HasArticulatedPart() ? GetNextArticPart(Train::From(v)) : NULL;
 				break;
 
 			case VEH_ROAD:
-				v = RoadVehicle::From(v)->RoadVehHasArticPart() ? v->Next() : NULL;
+				v = RoadVehicle::From(v)->HasArticulatedPart() ? v->Next() : NULL;
 				break;
 
 			default:
