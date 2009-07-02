@@ -815,14 +815,14 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 	int offset = this->IsWidgetLowered(widget) ? 1 : 0;
 	int base, top;
 	if (this->widget != NULL) {
-		base = offset + (_dynlang.text_dir == TD_LTR ? this->widget[widget].right - 11 : this->widget[widget].left);
+		base = offset + (_dynlang.text_dir == TD_LTR ? this->widget[widget].right - WD_SORTBUTTON_ARROW_WIDTH : this->widget[widget].left);
 		top = this->widget[widget].top;
 	} else {
 		assert(this->nested_array != NULL);
-		base = offset + this->nested_array[widget]->pos_x + (_dynlang.text_dir == TD_LTR ? this->nested_array[widget]->current_x - 11 : 0);
+		base = offset + this->nested_array[widget]->pos_x + (_dynlang.text_dir == TD_LTR ? this->nested_array[widget]->current_x - WD_SORTBUTTON_ARROW_WIDTH : 0);
 		top = this->nested_array[widget]->pos_y;
 	}
-	DrawString(base, base + 11, top + 1 + offset, state == SBS_DOWN ? DOWNARROW : UPARROW, TC_BLACK, SA_CENTER);
+	DrawString(base, base + WD_SORTBUTTON_ARROW_WIDTH, top + 1 + offset, state == SBS_DOWN ? DOWNARROW : UPARROW, TC_BLACK, SA_CENTER);
 }
 
 

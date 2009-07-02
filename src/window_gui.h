@@ -76,6 +76,8 @@ enum WidgetDrawDistances {
 	WD_DROPDOWNTEXT_LEFT = 2,   ///< Left offset of the dropdown widget string.
 	WD_DROPDOWNTEXT_RIGHT = 14, ///< Right offset of the dropdown widget string.
 	WD_DROPDOWNTEXT_TOP = 1,    ///< Top offset of the dropdown widget string.
+
+	WD_SORTBUTTON_ARROW_WIDTH = 11, ///< Width of up/down arrow of sort button state.
 };
 
 /* wiget.cpp */
