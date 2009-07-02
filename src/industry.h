@@ -161,7 +161,7 @@ struct IndustrySpec {
 	byte num_table;                       ///< Number of elements in the table
 	uint8 cost_multiplier;                ///< Base construction cost multiplier.
 	uint32 removal_cost_multiplier;       ///< Base removal cost multiplier.
-	uint16 raw_industry_cost_multiplier;  ///< Multiplier for the raw industries cost
+	uint16 raw_industry_cost_multiplier;  ///< Base construction cost multiplier when building raw industries like secondary. (not modifiable by NewGRFs)
 	uint32 prospecting_chance;            ///< Chance prospecting succeeds
 	IndustryType conflicting[3];          ///< Industries this industry cannot be close to
 	byte check_proc;                      ///< Index to a procedure to check for conflicting circumstances
