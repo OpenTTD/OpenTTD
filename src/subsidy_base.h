@@ -8,6 +8,8 @@
 #include "cargo_type.h"
 #include "company_type.h"
 
+typedef uint16 SubsidyID; ///< ID of a subsidy
+
 /** Struct about subsidies, offered and awarded */
 struct Subsidy {
 	CargoID cargo_type; ///< Cargo type involved in this subsidy, CT_INVALID for invalid subsidy
@@ -19,7 +21,7 @@ struct Subsidy {
 	 * Determines index of this subsidy
 	 * @return index (in the Subsidy::array array)
 	 */
-	FORCEINLINE size_t Index() const
+	FORCEINLINE SubsidyID Index() const
 	{
 		return this - Subsidy::array;
 	}

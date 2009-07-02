@@ -90,6 +90,7 @@ typedef OverflowSafeInt64 Money; //!< Money, stored in a 32bit/64bit safe way. F
 typedef uint16 SignID;       //!< The ID of a sign.
 typedef uint16 StationID;    //!< The ID of a station.
 typedef uint16 StringID;     //!< The ID of a string.
+typedef uint16 SubsidyID;    //!< The ID of a subsidy.
 typedef uint32 TileIndex;    //!< The ID of a tile (just named differently).
 typedef uint16 TownID;       //!< The ID of a town.
 typedef uint16 VehicleID;    //!< The ID of a vehicle.
@@ -98,6 +99,5 @@ typedef uint16 WaypointID;   //!< The ID of a waypoint.
 /* Types we defined ourself, as the OpenTTD core doesn't have them (yet) */
 typedef uint AIErrorType;    //!< The types of errors inside the NoAI framework.
 typedef BridgeType BridgeID; //!< The ID of a bridge.
-typedef uint16 SubsidyID;    //!< The ID of a subsidy.
 
 #endif /* AI_TYPES_HPP */
