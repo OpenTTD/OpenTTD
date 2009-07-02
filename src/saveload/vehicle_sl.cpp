@@ -314,8 +314,11 @@ void AfterLoadVehicles(bool part_of_load)
 				t->tcache.last_speed = t->cur_speed; // update displayed train speed
 				TrainConsistChanged(t, false);
 			}
-		} else if (v->type == VEH_ROAD && IsRoadVehFront(v)) {
-			RoadVehUpdateCache(RoadVehicle::From(v));
+		} else if (v->type == VEH_ROAD) {
+			RoadVehicle *rv = RoadVehicle::From(v);
+			if (rv->IsRoadVehFront()) {
+				RoadVehUpdateCache(rv);
+			}
 		}
 	}
 

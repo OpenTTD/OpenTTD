@@ -439,7 +439,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 				if (w->type == VEH_TRAIN && Train::From(w)->EngineHasArticPart()) {
 					w = GetNextArticPart(Train::From(w));
-				} else if (w->type == VEH_ROAD && RoadVehHasArticPart(w)) {
+				} else if (w->type == VEH_ROAD && RoadVehicle::From(w)->RoadVehHasArticPart()) {
 					w = w->Next();
 				} else {
 					break;
@@ -455,7 +455,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 			if (v->type == VEH_TRAIN && Train::From(v)->EngineHasArticPart()) {
 				v = GetNextArticPart(Train::From(v));
-			} else if (v->type == VEH_ROAD && RoadVehHasArticPart(v)) {
+			} else if (v->type == VEH_ROAD && RoadVehicle::From(v)->RoadVehHasArticPart()) {
 				v = v->Next();
 			} else {
 				break;

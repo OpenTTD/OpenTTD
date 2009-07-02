@@ -813,11 +813,12 @@ static void FloodVehicle(Vehicle *v)
 					break;
 				}
 
-				case VEH_ROAD:
-					if (IsRoadVehFront(v)) pass += 1; // driver
-					RoadVehicle::From(v)->crashed_ctr = 2000; // max 2220, disappear pretty fast
+				case VEH_ROAD: {
+					RoadVehicle *rv = RoadVehicle::From(v);
+					if (rv->IsRoadVehFront()) pass += 1; // driver
+					rv->crashed_ctr = 2000; // max 2220, disappear pretty fast
 					InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
-					break;
+				} break;
 
 				case VEH_AIRCRAFT:
 					pass += 2; // driver

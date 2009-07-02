@@ -1355,7 +1355,7 @@ struct VehicleDetailsWindow : Window {
 			case VEH_ROAD: {
 				this->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_QUERY_RENAME_ROAD_CAPTION;
 
-				if (!RoadVehHasArticPart(v)) break;
+				if (!RoadVehicle::From(v)->RoadVehHasArticPart()) break;
 
 				/* Draw the text under the vehicle instead of next to it, minus the
 				 * height already allocated for the cargo of the first vehicle. */

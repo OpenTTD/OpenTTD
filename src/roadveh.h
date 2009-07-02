@@ -72,36 +72,6 @@ enum RoadVehicleSubType {
 	RVST_ARTIC_PART,
 };
 
-static inline bool IsRoadVehFront(const Vehicle *v)
-{
-	assert(v->type == VEH_ROAD);
-	return v->subtype == RVST_FRONT;
-}
-
-static inline void SetRoadVehFront(Vehicle *v)
-{
-	assert(v->type == VEH_ROAD);
-	v->subtype = RVST_FRONT;
-}
-
-static inline bool IsRoadVehArticPart(const Vehicle *v)
-{
-	assert(v->type == VEH_ROAD);
-	return v->subtype == RVST_ARTIC_PART;
-}
-
-static inline void SetRoadVehArticPart(Vehicle *v)
-{
-	assert(v->type == VEH_ROAD);
-	v->subtype = RVST_ARTIC_PART;
-}
-
-static inline bool RoadVehHasArticPart(const Vehicle *v)
-{
-	assert(v->type == VEH_ROAD);
-	return v->Next() != NULL && IsRoadVehArticPart(v->Next());
-}
-
 
 void CcBuildRoadVeh(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
@@ -142,7 +112,7 @@ struct RoadVehicle : public SpecializedVehicle<RoadVehicle, VEH_ROAD> {
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_ROADVEH_INC : EXPENSES_ROADVEH_RUN; }
-	bool IsPrimaryVehicle() const { return IsRoadVehFront(this); }
+	bool IsPrimaryVehicle() const { return this->IsRoadVehFront(); }
 	SpriteID GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->cur_speed / 2; }
 	int GetDisplayMaxSpeed() const { return this->max_speed / 2; }
@@ -154,6 +124,34 @@ struct RoadVehicle : public SpecializedVehicle<RoadVehicle, VEH_ROAD> {
 	Trackdir GetVehicleTrackdir() const;
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
+
+	/**
+	 * Check if vehicle is a front engine
+	 * @return Returns true if vehicle is a front engine
+	 */
+	FORCEINLINE bool IsRoadVehFront() const { return this->subtype == RVST_FRONT; }
+
+	/**
+	 * Set front engine state
+	 */
+	FORCEINLINE void SetRoadVehFront() { this->subtype = RVST_FRONT; }
+
+	/**
+	 * Check if vehicl is an articulated part of an engine
+	 * @return Returns true if vehicle is an articulated part
+	 */
+	FORCEINLINE bool IsArticulatedPart() const { return this->subtype == RVST_ARTIC_PART; }
+
+	/**
+	 * Set a vehicle to be an articulated part
+	 */
+	FORCEINLINE void SetArticulatedPart() { this->subtype = RVST_ARTIC_PART; }
+
+	/**
+	 * Check if an engine has an articulated part.
+	 * @return True if the engine has an articulated part.
+	 */
+	FORCEINLINE bool RoadVehHasArticPart() const { return this->Next() != NULL && this->Next()->IsArticulatedPart(); }
 };
 
 #define FOR_ALL_ROADVEHICLES(var) FOR_ALL_VEHICLES_OF_TYPE(RoadVehicle, var)

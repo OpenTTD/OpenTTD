@@ -412,7 +412,7 @@
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 	switch (v->type) {
-		case VEH_ROAD: return ::RoadVehHasArticPart(v);
+		case VEH_ROAD: return ::RoadVehicle::From(v)->RoadVehHasArticPart();
 		case VEH_TRAIN: return ::Train::From(v)->EngineHasArticPart();
 		default: NOT_REACHED();
 	}

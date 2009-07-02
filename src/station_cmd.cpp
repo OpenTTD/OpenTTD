@@ -2542,7 +2542,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 	} else if (v->type == VEH_ROAD) {
 		RoadVehicle *rv = RoadVehicle::From(v);
 		if (rv->state < RVSB_IN_ROAD_STOP && !IsReversingRoadTrackdir((Trackdir)rv->state) && rv->frame == 0) {
-			if (IsRoadStop(tile) && IsRoadVehFront(v)) {
+			if (IsRoadStop(tile) && rv->IsRoadVehFront()) {
 				/* Attempt to allocate a parking bay in a road stop */
 				RoadStop *rs = RoadStop::GetByTile(tile, GetRoadStopType(tile));
 
@@ -2570,7 +2570,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 
 				/* For normal (non drive-through) road stops
 				 * Check if station is busy or if there are no free bays or whether it is a articulated vehicle. */
-				if (rs->IsEntranceBusy() || !rs->HasFreeBay() || RoadVehHasArticPart(v)) return VETSB_CANNOT_ENTER;
+				if (rs->IsEntranceBusy() || !rs->HasFreeBay() || rv->RoadVehHasArticPart()) return VETSB_CANNOT_ENTER;
 
 				SetBit(rv->state, RVS_IN_ROAD_STOP);
 
