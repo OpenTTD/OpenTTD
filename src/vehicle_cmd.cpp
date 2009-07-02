@@ -404,7 +404,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			}
 			w_rear = w; // trains needs to know the last car in the train, so they can add more in next loop
 		}
-	} while (v->type == VEH_TRAIN && (v = GetNextVehicle(Train::From(v))) != NULL);
+	} while (v->type == VEH_TRAIN && (v = Train::From(v)->GetNextVehicle()) != NULL);
 
 	if ((flags & DC_EXEC) && v_front->type == VEH_TRAIN) {
 		/* for trains this needs to be the front engine due to the callback function */
@@ -438,7 +438,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 				}
 
 				if (w->type == VEH_TRAIN && Train::From(w)->HasArticulatedPart()) {
-					w = GetNextArticPart(Train::From(w));
+					w = Train::From(w)->GetNextArticPart();
 				} else if (w->type == VEH_ROAD && RoadVehicle::From(w)->HasArticulatedPart()) {
 					w = w->Next();
 				} else {
@@ -454,7 +454,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			}
 
 			if (v->type == VEH_TRAIN && Train::From(v)->HasArticulatedPart()) {
-				v = GetNextArticPart(Train::From(v));
+				v = Train::From(v)->GetNextArticPart();
 			} else if (v->type == VEH_ROAD && RoadVehicle::From(v)->HasArticulatedPart()) {
 				v = v->Next();
 			} else {
@@ -462,8 +462,8 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			}
 		} while (v != NULL);
 
-		if ((flags & DC_EXEC) && v->type == VEH_TRAIN) w = GetNextVehicle(Train::From(w));
-	} while (v->type == VEH_TRAIN && (v = GetNextVehicle(Train::From(v))) != NULL);
+		if ((flags & DC_EXEC) && v->type == VEH_TRAIN) w = Train::From(w)->GetNextVehicle();
+	} while (v->type == VEH_TRAIN && (v = Train::From(v)->GetNextVehicle()) != NULL);
 
 	if (flags & DC_EXEC) {
 		/*

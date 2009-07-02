@@ -968,7 +968,7 @@ static Train *UnlinkWagon(Train *v, Train *first)
 {
 	/* unlinking the first vehicle of the chain? */
 	if (v == first) {
-		v = GetNextVehicle(v);
+		v = v->GetNextVehicle();
 		if (v == NULL) return NULL;
 
 		if (v->IsWagon()) v->SetFreeWagon();
@@ -982,8 +982,8 @@ static Train *UnlinkWagon(Train *v, Train *first)
 	}
 
 	Train *u;
-	for (u = first; GetNextVehicle(u) != v; u = GetNextVehicle(u)) {}
-	GetLastEnginePart(u)->SetNext(GetNextVehicle(v));
+	for (u = first; u->GetNextVehicle() != v; u = u->GetNextVehicle()) {}
+	u->GetLastEnginePart()->SetNext(v->GetNextVehicle());
 	return first;
 }
 
@@ -1034,7 +1034,7 @@ static void NormaliseTrainConsist(Train *v)
 
 	assert(v->IsFrontEngine());
 
-	for (; v != NULL; v = GetNextVehicle(v)) {
+	for (; v != NULL; v = v->GetNextVehicle()) {
 		if (!v->IsMultiheaded() || !v->IsEngine()) continue;
 
 		/* make sure that there are no free cars before next engine */
@@ -1094,7 +1094,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		dst_head = dst->First();
 		if (dst_head->tile != src_head->tile) return CMD_ERROR;
 		/* Now deal with articulated part of destination wagon */
-		dst = GetLastEnginePart(dst);
+		dst = dst->GetLastEnginePart();
 	} else {
 		dst_head = NULL;
 	}
@@ -1126,8 +1126,9 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			 * row that are being moved. */
 			if (HasBit(p2, 0)) {
 				const Train *u;
-				for (u = src_head; u != src && u != NULL; u = GetNextVehicle(u))
+				for (u = src_head; u != src && u != NULL; u = u->GetNextVehicle()) {
 					src_len--;
+				}
 			} else {
 				/* If moving only one vehicle, just count that. */
 				src_len = 1;
@@ -1141,8 +1142,9 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			}
 		} else {
 			/* Abort if we're creating a new train on an existing row. */
-			if (src_len > max_len && src == src_head && GetNextVehicle(src_head)->IsEngine())
+			if (src_len > max_len && src == src_head && src_head->GetNextVehicle()->IsEngine()) {
 				return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
+			}
 		}
 	}
 
@@ -1157,7 +1159,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	/* When we move the front vehicle, the second vehicle might need a unitnumber */
 	if (!HasBit(p2, 0) && (src->IsFreeWagon() || (src->IsFrontEngine() && dst == NULL)) && (flags & DC_AUTOREPLACE) == 0) {
-		Train *second = GetNextUnit(src);
+		Train *second = src->GetNextUnit();
 		if (second != NULL && second->IsEngine() && GetFreeUnitNumber(VEH_TRAIN) > _settings_game.vehicle.max_trains) {
 			return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 		}
@@ -1268,7 +1270,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		/* If we move the front Engine and if the second vehicle is not an engine
 		   add the whole vehicle to the DEFAULT_GROUP */
 		if (src->IsFrontEngine() && !IsDefaultGroupID(src->group_id)) {
-			Train *v = GetNextVehicle(src);
+			Train *v = src->GetNextVehicle();
 
 			if (v != NULL && v->IsEngine()) {
 				v->group_id   = src->group_id;
@@ -1280,8 +1282,8 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			/* unlink ALL wagons */
 			if (src != src_head) {
 				Train *v = src_head;
-				while (GetNextVehicle(v) != src) v = GetNextVehicle(v);
-				GetLastEnginePart(v)->SetNext(NULL);
+				while (v->GetNextVehicle() != src) v = v->GetNextVehicle();
+				v->GetLastEnginePart()->SetNext(NULL);
 			} else {
 				InvalidateWindowData(WC_VEHICLE_DEPOT, src_head->tile); // We removed a line
 				src_head = NULL;
@@ -1291,7 +1293,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			if (src_head == dst_head) dst_head = NULL;
 			/* unlink single wagon from linked list */
 			src_head = UnlinkWagon(src, src_head);
-			GetLastEnginePart(src)->SetNext(NULL);
+			src->GetLastEnginePart()->SetNext(NULL);
 		}
 
 		if (dst == NULL) {
@@ -1340,8 +1342,8 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			{
 				Train *v;
 
-				for (v = src; GetNextVehicle(v) != NULL; v = GetNextVehicle(v)) {}
-				GetLastEnginePart(v)->SetNext(dst->Next());
+				for (v = src; v->GetNextVehicle() != NULL; v = v->GetNextVehicle()) {}
+				v->GetLastEnginePart()->SetNext(dst->Next());
 			}
 			dst->SetNext(src);
 		}
@@ -1460,7 +1462,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			/* 2. We are selling the front vehicle, some special action might be required
 			 * here, so take attention */
 			if (v == first) {
-				Train *new_f = GetNextVehicle(first);
+				Train *new_f = first->GetNextVehicle();
 
 				/* 2.2 If there are wagons present after the deleted front engine, check
 				 * if the second wagon (which will be first) is an engine. If it is one,
@@ -1521,7 +1523,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			 * If we encounter a matching rear-engine to a front-engine
 			 * earlier in the chain (before deletion), leave it alone */
 			for (Train *tmp; v != NULL; v = tmp) {
-				tmp = GetNextVehicle(v);
+				tmp = v->GetNextVehicle();
 
 				if (v->IsMultiheaded()) {
 					if (v->IsEngine()) {
@@ -1537,7 +1539,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 							 * deleted here. However, because tmp has already
 							 * been set it needs to be updated now so that the
 							 * loop never sees the rear part. */
-							if (tmp == rear) tmp = GetNextVehicle(tmp);
+							if (tmp == rear) tmp = tmp->GetNextVehicle();
 
 							if (flags & DC_EXEC) {
 								first = UnlinkWagon(rear, first);
@@ -4439,7 +4441,7 @@ Money Train::GetRunningCost() const
 		if (v->IsMultiheaded()) cost_factor /= 2;
 
 		cost += cost_factor * GetPriceByIndex(rvi->running_cost_class);
-	} while ((v = GetNextVehicle(v)) != NULL);
+	} while ((v = v->GetNextVehicle()) != NULL);
 
 	return cost;
 }

@@ -37,21 +37,6 @@ enum VehicleRailFlags {
 	VRF_TRAIN_STUCK    = 8,
 };
 
-
-/** enum to handle train subtypes
- * Do not access it directly unless you have to. Use the access functions below
- * This is an enum to tell what bit to access as it is a bitmask
- */
-enum TrainSubtype {
-	TS_FRONT             = 0, ///< Leading engine of a train
-	TS_ARTICULATED_PART  = 1, ///< Articulated part of an engine
-	TS_WAGON             = 2, ///< Wagon
-	TS_ENGINE            = 3, ///< Engine, that can be front engines, but might be placed behind another engine
-	TS_FREE_WAGON        = 4, ///< First in a wagon chain (in depot)
-	TS_MULTIHEADED       = 5, ///< Engine is a multiheaded
-};
-
-
 void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
@@ -149,6 +134,21 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
 
+
+	/**
+	 * enum to handle train subtypes
+	 * Do not access it directly unless you have to. Use the access functions below
+	 * This is an enum to tell what bit to access as it is a bitmask
+	 */
+	enum TrainSubtype {
+		TS_FRONT             = 0, ///< Leading engine of a train
+		TS_ARTICULATED_PART  = 1, ///< Articulated part of an engine
+		TS_WAGON             = 2, ///< Wagon
+		TS_ENGINE            = 3, ///< Engine, that can be front engine, but might be placed behind another engine
+		TS_FREE_WAGON        = 4, ///< First in a wagon chain (in depot)
+		TS_MULTIHEADED       = 5, ///< Engine is multiheaded
+	};
+
 	/**
 	 * Set front engine state
 	 */
@@ -181,7 +181,6 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 
 	/**
 	 * Set engine status
-	 * @param v vehicle to change
 	 */
 	FORCEINLINE void SetEngine() { SetBit(this->subtype, TS_ENGINE); }
 
@@ -197,7 +196,6 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 
 	/**
 	 * Clear a vehicle from being a free wagon
-	 * @param v vehicle to change
 	 */
 	FORCEINLINE void ClearFreeWagon() { ClrBit(this->subtype, TS_FREE_WAGON); }
 
@@ -232,7 +230,6 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 
 	/**
 	 * Check if a train is a wagon
-	 * @param v vehicle to check
 	 * @return Returns true if vehicle is a wagon
 	 */
 	FORCEINLINE bool IsWagon() const { return HasBit(this->subtype, TS_WAGON); }
@@ -261,77 +258,80 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	 */
 	FORCEINLINE bool HasArticulatedPart() const { return this->Next() != NULL && this->Next()->IsArticulatedPart(); }
 
+
+	/**
+	 * Get the next part of a multi-part engine.
+	 * Will only work on a multi-part engine (this->EngineHasArticPart() == true),
+	 * Result is undefined for normal engine.
+	 * @return next part of articulated engine
+	 */
+	FORCEINLINE Train *GetNextArticPart() const
+	{
+		assert(this->HasArticulatedPart());
+		return this->Next();
+	}
+
+	/**
+	 * Get the last part of a multi-part engine.
+	 * @return Last part of the engine.
+	 */
+	FORCEINLINE Train *GetLastEnginePart()
+	{
+		Train *v = this;
+		while (v->HasArticulatedPart()) v = v->GetNextArticPart();
+		return v;
+	}
+
+	/**
+	 * Get the next real (non-articulated part) vehicle in the consist.
+	 * @return Next vehicle in the consist.
+	 */
+	FORCEINLINE Train *GetNextVehicle() const
+	{
+		const Train *v = this;
+		while (v->HasArticulatedPart()) v = v->GetNextArticPart();
+
+		/* v now contains the last artic part in the engine */
+		return v->Next();
+	}
+
+	/**
+	 * Get the previous real (non-articulated part) vehicle in the consist.
+	 * @return Previous vehicle in the consist.
+	 */
+	FORCEINLINE Train *GetPrevVehicle() const
+	{
+		Train *v = this->Previous();
+		while (v != NULL && v->IsArticulatedPart()) v = v->Previous();
+
+		return v;
+	}
+
+	/**
+	 * Get the next real (non-articulated part and non rear part of dualheaded engine) vehicle in the consist.
+	 * @return Next vehicle in the consist.
+	 */
+	FORCEINLINE Train *GetNextUnit() const
+	{
+		Train *v = this->GetNextVehicle();
+		if (v != NULL && v->IsRearDualheaded()) v = v->GetNextVehicle();
+
+		return v;
+	}
+
+	/**
+	 * Get the previous real (non-articulated part and non rear part of dualheaded engine) vehicle in the consist.
+	 * @return Previous vehicle in the consist.
+	 */
+	FORCEINLINE Train *GetPrevUnit()
+	{
+		Train *v = this->GetPrevVehicle();
+		if (v != NULL && v->IsRearDualheaded()) v = v->GetPrevVehicle();
+
+		return v;
+	}
 };
 
 #define FOR_ALL_TRAINS(var) FOR_ALL_VEHICLES_OF_TYPE(Train, var)
-
-/**
- * Get the next part of a multi-part engine.
- * Will only work on a multi-part engine (v->HasArticulatedPart() == true),
- * Result is undefined for normal engine.
- */
-static inline Train *GetNextArticPart(const Train *v)
-{
-	assert(v->HasArticulatedPart());
-	return v->Next();
-}
-
-/** Get the last part of a multi-part engine.
- * @param v Vehicle.
- * @return Last part of the engine.
- */
-static inline Train *GetLastEnginePart(Train *v)
-{
-	while (v->HasArticulatedPart()) v = GetNextArticPart(v);
-	return v;
-}
-
-/** Get the next real (non-articulated part) vehicle in the consist.
- * @param v Vehicle.
- * @return Next vehicle in the consist.
- */
-static inline Train *GetNextVehicle(const Train *v)
-{
-	while (v->HasArticulatedPart()) v = GetNextArticPart(v);
-
-	/* v now contains the last artic part in the engine */
-	return v->Next();
-}
-
-/** Get the previous real (non-articulated part) vehicle in the consist.
- * @param w Vehicle.
- * @return Previous vehicle in the consist.
- */
-static inline Train *GetPrevVehicle(const Train *w)
-{
-	Train *v = w->Previous();
-	while (v != NULL && v->IsArticulatedPart()) v = v->Previous();
-
-	return v;
-}
-
-/** Get the next real (non-articulated part and non rear part of dualheaded engine) vehicle in the consist.
- * @param v Vehicle.
- * @return Next vehicle in the consist.
- */
-static inline Train *GetNextUnit(const Train *v)
-{
-	Train *w = GetNextVehicle(v);
-	if (w != NULL && w->IsRearDualheaded()) w = GetNextVehicle(w);
-
-	return w;
-}
-
-/** Get the previous real (non-articulated part and non rear part of dualheaded engine) vehicle in the consist.
- * @param v Vehicle.
- * @return Previous vehicle in the consist.
- */
-static inline Train *GetPrevUnit(const Train *v)
-{
-	Train *w = GetPrevVehicle(v);
-	if (w != NULL && w->IsRearDualheaded()) w = GetPrevVehicle(w);
-
-	return w;
-}
 
 #endif /* TRAIN_H */

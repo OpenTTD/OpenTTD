@@ -94,7 +94,7 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
 	for (Vehicle *src = old_veh; src != NULL; src = src->Next()) {
 		if (!part_of_chain && src->type == VEH_TRAIN && src != old_veh && src != Train::From(old_veh)->other_multiheaded_part && !Train::From(src)->IsArticulatedPart()) {
 			/* Skip vehicles, which do not belong to old_veh */
-			src = GetLastEnginePart(Train::From(src));
+			src = Train::From(src)->GetLastEnginePart();
 			continue;
 		}
 		if (src->cargo_type >= NUM_CARGO || src->cargo.Count() == 0) continue;
@@ -103,7 +103,7 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
 		for (Vehicle *dest = new_head; dest != NULL && src->cargo.Count() > 0; dest = dest->Next()) {
 			if (!part_of_chain && dest->type == VEH_TRAIN && dest != new_head && dest != Train::From(new_head)->other_multiheaded_part && !Train::From(dest)->IsArticulatedPart()) {
 				/* Skip vehicles, which do not belong to new_head */
-				dest = GetLastEnginePart(Train::From(dest));
+				dest = Train::From(dest)->GetLastEnginePart();
 				continue;
 			}
 			if (dest->cargo_type != src->cargo_type) continue;
@@ -406,7 +406,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 		uint16 old_total_length = (Train::From(old_head)->tcache.cached_total_length + TILE_SIZE - 1) / TILE_SIZE * TILE_SIZE;
 
 		int num_units = 0; ///< Number of units in the chain
-		for (Train *w = Train::From(old_head); w != NULL; w = GetNextUnit(w)) num_units++;
+		for (Train *w = Train::From(old_head); w != NULL; w = w->GetNextUnit()) num_units++;
 
 		Train **old_vehs = CallocT<Train *>(num_units); ///< Will store vehicles of the old chain in their order
 		Train **new_vehs = CallocT<Train *>(num_units); ///< New vehicles corresponding to old_vehs or NULL if no replacement
@@ -416,7 +416,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 		 * Note: The replacement vehicles can only successfully build as long as the old vehicles are still in their chain */
 		int i;
 		Train *w;
-		for (w = Train::From(old_head), i = 0; w != NULL; w = GetNextUnit(w), i++) {
+		for (w = Train::From(old_head), i = 0; w != NULL; w = w->GetNextUnit(), i++) {
 			assert(i < num_units);
 			old_vehs[i] = w;
 
@@ -432,10 +432,10 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 		/* Note: When autoreplace has already failed here, old_vehs[] is not completely initialized. But it is also not needed. */
 		if (cost.Succeeded()) {
 			/* Separate the head, so we can start constructing the new chain */
-			Train *second = GetNextUnit(Train::From(old_head));
+			Train *second = Train::From(old_head)->GetNextUnit();
 			if (second != NULL) cost.AddCost(MoveVehicle(second, NULL, DC_EXEC | DC_AUTOREPLACE, true));
 
-			assert(GetNextUnit(new_head) == NULL);
+			assert(Train::From(new_head)->GetNextUnit() == NULL);
 
 			/* Append engines to the new chain
 			 * We do this from back to front, so that the head of the temporary vehicle chain does not change all the time.
@@ -479,7 +479,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 					} else {
 						/* We have reached 'last_engine', continue with the next engine towards the front */
 						assert(append == last_engine);
-						last_engine = GetPrevUnit(last_engine);
+						last_engine = last_engine->GetPrevUnit();
 					}
 				}
 			}
@@ -538,10 +538,10 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 			 * Note: The vehicle attach callback is disabled here :) */
 			if ((flags & DC_EXEC) == 0) {
 				/* Separate the head, so we can reattach the old vehicles */
-				Train *second = GetNextUnit(Train::From(old_head));
+				Train *second = Train::From(old_head)->GetNextUnit();
 				if (second != NULL) MoveVehicle(second, NULL, DC_EXEC | DC_AUTOREPLACE, true);
 
-				assert(GetNextUnit(Train::From(old_head)) == NULL);
+				assert(Train::From(old_head)->GetNextUnit() == NULL);
 
 				for (int i = num_units - 1; i > 0; i--) {
 					CommandCost ret = MoveVehicle(old_vehs[i], old_head, DC_EXEC | DC_AUTOREPLACE, false);
@@ -633,7 +633,7 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
 	bool any_replacements = false;
 	while (w != NULL && !any_replacements) {
 		any_replacements = (GetNewEngineType(w, c) != INVALID_ENGINE);
-		w = (!free_wagon && w->type == VEH_TRAIN ? GetNextUnit(Train::From(w)) : NULL);
+		w = (!free_wagon && w->type == VEH_TRAIN ? Train::From(w)->GetNextUnit() : NULL);
 	}
 
 	if (any_replacements) {

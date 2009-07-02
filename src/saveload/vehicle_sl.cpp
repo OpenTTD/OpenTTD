@@ -44,7 +44,7 @@ void ConnectMultiheadedTrains()
 
 			bool sequential_matching = v->IsFrontEngine();
 
-			for (Train *u = v; u != NULL; u = GetNextVehicle(u)) {
+			for (Train *u = v; u != NULL; u = u->GetNextVehicle()) {
 				if (u->other_multiheaded_part != NULL) continue; // we already linked this one
 
 				if (u->IsMultiheaded()) {
@@ -58,7 +58,7 @@ void ConnectMultiheadedTrains()
 					EngineID eid = u->engine_type;
 					Train *w;
 					if (sequential_matching) {
-						for (w = GetNextVehicle(u); w != NULL; w = GetNextVehicle(w)) {
+						for (w = u->GetNextVehicle(); w != NULL; w = w->GetNextVehicle()) {
 							if (w->engine_type != eid || w->other_multiheaded_part != NULL || !w->IsMultiheaded()) continue;
 
 							/* we found a car to partner with this engine. Now we will make sure it face the right way */
@@ -70,7 +70,7 @@ void ConnectMultiheadedTrains()
 						}
 					} else {
 						uint stack_pos = 0;
-						for (w = GetNextVehicle(u); w != NULL; w = GetNextVehicle(w)) {
+						for (w = u->GetNextVehicle(); w != NULL; w = w->GetNextVehicle()) {
 							if (w->engine_type != eid || w->other_multiheaded_part != NULL || !w->IsMultiheaded()) continue;
 
 							if (w->IsEngine()) {
