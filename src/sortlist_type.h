@@ -12,6 +12,7 @@
 #include "core/smallvec_type.hpp"
 #include "date_type.h"
 
+/** Flags of the sort list. */
 enum SortListFlags {
 	VL_NONE       = 0,      ///< no sort
 	VL_DESC       = 1 << 0, ///< sort descending or ascending
@@ -23,20 +24,27 @@ enum SortListFlags {
 };
 DECLARE_ENUM_AS_BIT_SET(SortListFlags);
 
+/** Data structure describing how to show the list (what sort direction and criterium). */
 struct Listing {
 	bool order;    ///< Ascending/descending
 	byte criteria; ///< Sorting criteria
 };
+/** Data structure describing what to show in the list (filter criteria). */
 struct Filtering {
 	bool state;    ///< Filter on/off
 	byte criteria; ///< Filtering criteria
 };
 
+/**
+ * List template of 'things' \p T to sort in a GUI.
+ * @tparam T Type of data stored in the list to represent each item.
+ * @tparam F Type of data fed as additional value to the filter function. @see FilterFunction
+ */
 template <typename T, typename F = const char*>
 class GUIList : public SmallVector<T, 32> {
 public:
-	typedef int CDECL SortFunction(const T*, const T*);
-	typedef bool CDECL FilterFunction(const T*, F);
+	typedef int CDECL SortFunction(const T*, const T*); ///< Signature of sort function.
+	typedef bool CDECL FilterFunction(const T*, F);     ///< Signature of filter function.
 
 protected:
 	SortFunction * const *sort_func_list;     ///< the sort criteria functions
@@ -274,7 +282,7 @@ public:
 	}
 
 	/**
-	 * Overload of Sort()
+	 * Overload of #Sort(SortFunction *compare)
 	 * Overloaded to reduce external code
 	 *
 	 * @return true if the list sequence has been altered
