@@ -402,6 +402,8 @@ public:
 		this->SetWidgetDisabledState(NCLWW_SELECT_ALL, !show_select_all);
 		this->SetWidgetDisabledState(NCLWW_SELECT_UPDATE, !show_select_upgrade);
 
+		this->widget[NCLWW_CANCEL].data = filesize == 0 ? STR_AI_CLOSE : STR_AI_CANCEL;
+
 		this->DrawWidgets();
 
 		/* Edit box to filter for keywords */
