@@ -418,7 +418,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fenster 
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titelleiste verschieben, um das Fenster zu bewegen
 STR_STICKY_BUTTON                                               :{BLACK}Fenster wird nicht durch die "schließe alle Fenster"-Taste geschlossen
 STR_RESIZE_BUTTON                                               :{BLACK}Klicken und Ziehen zum Größe ändern
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hier klicken, um zum Standardspielstandsverzeichnis zu gehen
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hier klicken, um zum Standardverzeichnis für Spielstände zu gehen
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Gebäude usw. auf einem Planquadrat abreißen
 STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}Land absenken
 STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Land anheben
@@ -1351,9 +1351,9 @@ STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Auswahl 
 STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} Firm{P a en}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max. Firmenanzahl:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Begrenzt den Server auf eine gewisse Anzahl an Firmen
-STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} Beobachter
-STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max. Beobachteranzahl:
-STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begrenzt den Server auf eine gewisse Anzahl an Beobachter
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} Zuschauer
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max. Zuschaueranzahl:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begrenzt den Server auf eine gewisse Anzahl an Zuschauern
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Gesprochene Sprachen:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Damit andere Spieler wissen, welche Sprache auf diesem Server gesprochen wird.
 STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2624,12 +2624,12 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[am Anfang]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[in der Mitte]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[am Ende]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Vollladen einer Fracht
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lade wenn verfügbar
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lade, wenn verfügbar
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Vollladen jeder Fracht
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Vollladen einer Fracht
 STR_ORDER_DROP_NO_LOADING                                       :Nicht beladen
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Alles entladen
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Entladen falls akzeptiert
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Entladen, falls akzeptiert
 STR_ORDER_DROP_UNLOAD                                           :Alles entladen
 STR_ORDER_DROP_TRANSFER                                         :Umladen
 STR_ORDER_DROP_NO_UNLOADING                                     :Nicht entladen
@@ -3603,7 +3603,7 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Art
 STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Art der Erweiterung
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Name
 STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Name der Erweiterung
-STR_CONTENT_MATRIX_TIP                                          :{BLACK}Auf eine Zeile klicken, um Details zu sehen{}Checkbox anklicken, um zum Herunterladen auszuwählen
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Auf eine Zeile klicken, um Details zu sehen{}Kontrollkästchen anklicken, um zum Herunterladen auszuwählen
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Alles wählen
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Alle Erweiterungen zum Herunterladen auswählen
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Upgrades auswählen

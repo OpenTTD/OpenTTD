@@ -948,6 +948,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{ORANGE}{STRING
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Enable multiple NewGRF engine sets: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}החלפת הגדרה זו לא אפשרית כאשר יש רכבים
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}בטל התיישנות נמלי תעופה: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{ORANGE}{STRING}{LTBLUE} :התרע על רכבות אבודות
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{ORANGE}{STRING}{LTBLUE} :בדוק מסלולי נסיעה
@@ -3121,6 +3122,7 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{ORANGE}{5:NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{ORANGE} ללא {LTBLUE} :החלפה ליורו
 STR_CURRENCY_PREVIEW                                            :{ORANGE}{6:CURRENCY}{LTBLUE} :צפיה מקדימה
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}שנה פרמטר עבור מטבע מותאם אישית
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 ליש"ט (£) במטבע שלך
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}

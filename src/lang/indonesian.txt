@@ -1424,7 +1424,7 @@ STR_NETWORK_PERFORMANCE                                         :{SILVER}Perform
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Kendaraan: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_STATIONS                                            :{SILVER}Stasiun: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Para pemain:  {WHITE}{STRING}
+STR_NETWORK_PLAYERS                                             :{SILVER}Para pemain: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Menghubungkan...
 
@@ -1451,23 +1451,23 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Daftar k
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Menonton
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Buat Perusahaan
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Tak menemukan perangkat jaringan atau dibuat tanpa ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Tidak menemukan permainan di jaringan
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Server tidak merespon
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Tak dapat tersambung karena NewGRF tidak cocok
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Permainan jaringan gagal disinkronkan
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Koneksi ke permainan jaringan terputus
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Tak dapat memuat game tersimpan
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Tak dapat memulai server
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Tak dapat tersambung
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Waktu Koneksi #{NUM} telah habis
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Kesalahan protokol, koneksi ditutup
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Revisi pada klien tidak sama dengan revisi pada server
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Kata kunci salah
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Server penuh
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Anda ditolak memasuki server ini
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Anda diusir dari permainan
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Tidak boleh curang di server ini
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Tak menemukan perangkat jaringan atau kompilasi tanpa "ENABLE_NETWORK"
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Tidak menemukan permainan di jaringan
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Server tidak merespon
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Tak dapat tersambung karena NewGRF tidak cocok
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Sinkronisasi permainan jaringan gagal
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Koneksi ke permainan jaringan terputus
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Tak dapat membuka game tersimpan
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Tak dapat memulai server
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Tak dapat tersambung
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Waktu Koneksi #{NUM} telah habis
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Kesalahan protokol, koneksi ditutup
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Revisi pada klien tidak sama dengan revisi pada server
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Kata kunci salah
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Server penuh
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Anda ditolak memasuki server ini
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Anda diusir dari permainan
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Tidak boleh curang di server ini
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :Kesalahan umum
@@ -2209,7 +2209,7 @@ STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafik keuntungan operasional
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo Bank
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Pinjaman
-STR_MAX_LOAN                                                    :{WHITE}Pinjaman Maks:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Pinjaman Maks: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pinjam {SKIP}{SKIP}{CURRENCY}
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Bayar {SKIP}{SKIP}{CURRENCY}
@@ -2727,11 +2727,11 @@ STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Semua Ke
 
 STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Membuat Kendaraan
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Gandakan
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Untuk membuat kendaraan yang sama persis. Ctrl-klik akan memberi perintah bersama
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Untuk membuat kendaraan yang sama persis. Klik tombol ini lalu klik kendaraan yang ingin digandakan, baik didalam maupun diluar depo.Ctrl-klik akan memberi perintah bersama
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Untuk membuat kendaraan yang sama persis. Ctrl-klik akan membuat perintah berbagi
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Untuk membuat kendaraan yang sama persis. Klik tombol ini lalu klik kendaraan yang ingin digandakan, baik didalam maupun diluar depo.Ctrl-klik akan membuat perintah berbagi
 STR_CLONE_TRAIN                                                 :{BLACK}Gandakan
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Untuk membuat kereta api yang sama persis termasuk gerbongnya. Ctrl-klik akan memberi perintah bersama
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Untuk membuat kereta yang sama persis. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar depo. the Ctrl-klik akan memberi perintah bersama
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Untuk membuat kereta api yang sama persis termasuk gerbongnya. Ctrl-klik akan membuat perintah berbagi
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Untuk membuat kereta yang sama persis. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar depo. the Ctrl-klik akan membuat perintah berbagi
 STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Ubah Nama
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Lewati
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Hapus
@@ -2931,7 +2931,7 @@ STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Kapal Ba
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Membuat Kapal
 STR_CLONE_SHIP                                                  :{BLACK}Gandakan
 STR_CLONE_SHIP_INFO                                             :{BLACK}Untuk menggandakan satu unit kapal. Kontrol-klik akan berbagi perintah
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Untuk menggandakan satu unit Kapal . Klik tombol ini dan kemudian pada satu kapal di dalam atau diluar galangan. Kontrol-klik akan berbagi perintah
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Untuk menggandakan satu unit Kapal . Klik tombol ini dan kemudian pada satu kapal di dalam atau diluar galangan. Kontrol-klik untuk berbagi perintah
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Kapal harus berhenti di galangan
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Tidak dapat menjual kapal...
 STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Tidak dapat membuat kapal...
@@ -2986,8 +2986,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Tidak da
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar Pesawat
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Buat Pesawat
 STR_CLONE_AIRCRAFT                                              :{BLACK}Gandakan
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Untuk menggandakan satu unit Pesawat. Kontrol-klik akan berbagi perintah
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Untuk menggandakan satu unit Pesawat. Klik tombol ini dan kemudian pada satu Pesawat Udara didalam atau diluar hangar. Kontrol-klik akan berbagi perintah/tujuannya
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Untuk menggandakan satu unit Pesawat. Kontrol-klik untuk berbagi perintah
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Untuk menggandakan satu unit Pesawat. Klik tombol ini dan kemudian pada satu Pesawat Udara didalam atau diluar hangar. Kontrol-klik untuk berbagi perintah
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Buat Pesawat
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Buat Pesawat
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Tidak dapat membuat pesawat ...
@@ -3277,14 +3277,14 @@ STR_MAGLEV_VEHICLES                                             :Kereta Maglev
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Biaya: {GOLD}{CURRENCY}{BLACK} Berat: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Kecepatan: {GOLD}{VELOCITY}{BLACK}   Daya: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Kecepatan: {GOLD}{VELOCITY}{BLACK} Daya: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Kecepatan: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Biaya Operasional: {GOLD}{CURRENCY}/thn
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasitas: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Desain: {GOLD}{NUM}{BLACK} Usia: {GOLD}{COMMA} tahun
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Kehandalan Maks.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Biaya: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Berat: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Berat: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Biaya: {GOLD}{CURRENCY}{BLACK} Kecepatan: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Daya Muat: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Daya Gerbong: {GOLD}+{POWER}{BLACK} Berat: {GOLD}+{WEIGHT_S}
