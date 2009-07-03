@@ -1073,8 +1073,14 @@ void ShowStationViewWindow(StationID station)
 	AllocateWindowDescFront<StationViewWindow>(&_station_view_desc, station);
 }
 
+/** Struct containing TileIndex and StationID */
+struct TileAndStation {
+	TileIndex tile;    ///< TileIndex
+	StationID station; ///< StationID
+};
+
+static SmallVector<TileAndStation, 8> _deleted_stations_nearby;
 static SmallVector<StationID, 8> _stations_nearby_list;
-static SmallMap<TileIndex, StationID, 8> _deleted_stations_nearby;
 
 /** Context for FindStationsNearby */
 struct FindNearbyStationContext {
@@ -1093,11 +1099,14 @@ static bool AddNearbyStation(TileIndex tile, void *user_data)
 {
 	FindNearbyStationContext *ctx = (FindNearbyStationContext *)user_data;
 
-	/* First check if there was a deleted station here */
-	SmallPair<TileIndex, StationID> *dst = _deleted_stations_nearby.Find(tile);
-	if (dst != _deleted_stations_nearby.End()) {
-		_stations_nearby_list.Include(dst->second);
-		return false;
+	/* First check if there were deleted stations here */
+	for (uint i = 0; i < _deleted_stations_nearby.Length(); i++) {
+		TileAndStation *ts = _deleted_stations_nearby.Get(i);
+		if (ts->tile == tile) {
+			*_stations_nearby_list.Append() = _deleted_stations_nearby[i].station;
+			_deleted_stations_nearby.Erase(ts);
+			i--;
+		}
 	}
 
 	/* Check if own station and if we stay within station spread */
@@ -1145,7 +1154,9 @@ static const Station *FindStationsNearby(TileIndex tile, int w, int h, bool dist
 		if (st->facilities == 0 && st->owner == _local_company) {
 			/* Include only within station spread (yes, it is strictly less than) */
 			if (max(DistanceMax(tile, st->xy), DistanceMax(TILE_ADDXY(tile, w - 1, h - 1), st->xy)) < _settings_game.station.station_spread) {
-				_deleted_stations_nearby.Insert(st->xy, st->index);
+				TileAndStation *ts = _deleted_stations_nearby.Append();
+				ts->tile = st->xy;
+				ts->station = st->index;
 
 				/* Add the station when it's within where we're going to build */
 				if (IsInsideBS(TileX(st->xy), TileX(ctx.tile), ctx.w) &&
