@@ -537,23 +537,21 @@ private:
 
 	GUITownList towns;
 
-	void BuildTownList()
+	void BuildSortTownList()
 	{
-		if (!this->towns.NeedRebuild()) return;
+		if (this->towns.NeedRebuild()) {
+			this->towns.Clear();
 
-		this->towns.Clear();
+			const Town *t;
+			FOR_ALL_TOWNS(t) {
+				*this->towns.Append() = t;
+			}
 
-		const Town *t;
-		FOR_ALL_TOWNS(t) {
-			*this->towns.Append() = t;
+			this->towns.Compact();
+			this->towns.RebuildDone();
+			SetVScrollCount(this, this->towns.Length()); // Update scrollbar as well.
 		}
-
-		this->towns.Compact();
-		this->towns.RebuildDone();
-	}
-
-	void SortTownList()
-	{
+		/* Always sort the towns. */
 		last_town = NULL;
 		this->towns.Sort();
 	}
@@ -598,6 +596,7 @@ public:
 		this->towns.SetListing(this->last_sorting);
 		this->towns.SetSortFuncs(this->sorter_funcs);
 		this->towns.ForceRebuild();
+		this->BuildSortTownList();
 	}
 
 	~TownDirectoryWindow()
@@ -607,11 +606,6 @@ public:
 
 	virtual void OnPaint()
 	{
-		this->BuildTownList();
-		this->SortTownList();
-
-		SetVScrollCount(this, this->towns.Length());
-
 		this->DrawWidgets();
 	}
 
@@ -659,6 +653,7 @@ public:
 				} else {
 					this->towns.SetSortType(0);
 				}
+				this->BuildSortTownList();
 				this->SetDirty();
 				break;
 
@@ -668,6 +663,7 @@ public:
 				} else {
 					this->towns.SetSortType(1);
 				}
+				this->BuildSortTownList();
 				this->SetDirty();
 				break;
 
@@ -694,6 +690,7 @@ public:
 
 	virtual void OnHundredthTick()
 	{
+		this->BuildSortTownList();
 		this->SetDirty();
 	}
 
@@ -709,6 +706,7 @@ public:
 		} else {
 			this->towns.ForceResort();
 		}
+		this->BuildSortTownList();
 	}
 };
 
