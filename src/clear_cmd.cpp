@@ -123,11 +123,6 @@ static void GetAcceptedCargo_Clear(TileIndex tile, AcceptedCargo ac)
 	/* unused */
 }
 
-static void AnimateTile_Clear(TileIndex tile)
-{
-	/* unused */
-}
-
 void TileLoopClearHelper(TileIndex tile)
 {
 	byte self;
@@ -317,12 +312,6 @@ get_out:;
 	} while (--i);
 }
 
-static bool ClickTile_Clear(TileIndex tile)
-{
-	/* not used */
-	return false;
-}
-
 static TrackStatus GetTileTrackStatus_Clear(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
 	return 0;
@@ -369,8 +358,8 @@ extern const TileTypeProcs _tile_type_clear_procs = {
 	GetAcceptedCargo_Clear,   ///< get_accepted_cargo_proc
 	GetTileDesc_Clear,        ///< get_tile_desc_proc
 	GetTileTrackStatus_Clear, ///< get_tile_track_status_proc
-	ClickTile_Clear,          ///< click_tile_proc
-	AnimateTile_Clear,        ///< animate_tile_proc
+	NULL,                     ///< click_tile_proc
+	NULL,                     ///< animate_tile_proc
 	TileLoop_Clear,           ///< tile_loop_clear
 	ChangeTileOwner_Clear,    ///< change_tile_owner_clear
 	NULL,                     ///< get_produced_cargo_proc

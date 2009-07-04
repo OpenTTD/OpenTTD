@@ -511,16 +511,6 @@ static void TileLoop_Town(TileIndex tile)
 	_current_company = OWNER_NONE;
 }
 
-/**
- * Dummy tile callback function for handling tile clicks in towns
- * @param tile unused
- */
-static bool ClickTile_Town(TileIndex tile)
-{
-	/* not used */
-	return false;
-}
-
 static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 {
 	if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
@@ -2772,7 +2762,7 @@ extern const TileTypeProcs _tile_type_town_procs = {
 	GetAcceptedCargo_Town,   // get_accepted_cargo_proc
 	GetTileDesc_Town,        // get_tile_desc_proc
 	GetTileTrackStatus_Town, // get_tile_track_status_proc
-	ClickTile_Town,          // click_tile_proc
+	NULL,                    // click_tile_proc
 	AnimateTile_Town,        // animate_tile_proc
 	TileLoop_Town,           // tile_loop_clear
 	ChangeTileOwner_Town,    // change_tile_owner_clear

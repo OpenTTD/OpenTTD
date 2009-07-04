@@ -510,16 +510,6 @@ void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac)
 	_tile_type_procs[GetTileType(tile)]->get_accepted_cargo_proc(tile, ac);
 }
 
-void AnimateTile(TileIndex tile)
-{
-	_tile_type_procs[GetTileType(tile)]->animate_tile_proc(tile);
-}
-
-bool ClickTile(TileIndex tile)
-{
-	return _tile_type_procs[GetTileType(tile)]->click_tile_proc(tile);
-}
-
 void GetTileDesc(TileIndex tile, TileDesc *td)
 {
 	_tile_type_procs[GetTileType(tile)]->get_tile_desc_proc(tile, td);

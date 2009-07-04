@@ -16,6 +16,7 @@
 #include "direction_type.h"
 #include "track_type.h"
 #include "transport_type.h"
+#include "tile_map.h"
 
 /** The returned bits of VehicleEnterTile. */
 enum VehicleEnterTileStatus {
@@ -155,8 +156,20 @@ TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode
 VehicleEnterTileStatus VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);
 void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac);
 void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner);
-void AnimateTile(TileIndex tile);
-bool ClickTile(TileIndex tile);
 void GetTileDesc(TileIndex tile, TileDesc *td);
+
+static inline void AnimateTile(TileIndex tile)
+{
+	AnimateTileProc *proc = _tile_type_procs[GetTileType(tile)]->animate_tile_proc;
+	assert(proc != NULL);
+	proc(tile);
+}
+
+static inline bool ClickTile(TileIndex tile)
+{
+	ClickTileProc *proc = _tile_type_procs[GetTileType(tile)]->click_tile_proc;
+	if (proc == NULL) return false;
+	return proc(tile);
+}
 
 #endif /* TILE_CMD_H */

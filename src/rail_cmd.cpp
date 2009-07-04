@@ -2078,11 +2078,6 @@ static void GetAcceptedCargo_Track(TileIndex tile, AcceptedCargo ac)
 	/* not used */
 }
 
-static void AnimateTile_Track(TileIndex tile)
-{
-	/* not used */
-}
-
 static void TileLoop_Track(TileIndex tile)
 {
 	RailGroundType old_ground = GetRailGroundType(tile);
@@ -2621,7 +2616,7 @@ extern const TileTypeProcs _tile_type_rail_procs = {
 	GetTileDesc_Track,        // get_tile_desc_proc
 	GetTileTrackStatus_Track, // get_tile_track_status_proc
 	ClickTile_Track,          // click_tile_proc
-	AnimateTile_Track,        // animate_tile_proc
+	NULL,                     // animate_tile_proc
 	TileLoop_Track,           // tile_loop_clear
 	ChangeTileOwner_Track,    // change_tile_owner_clear
 	NULL,                     // get_produced_cargo_proc
