@@ -588,15 +588,14 @@ private:
 public:
 	TownDirectoryWindow(const WindowDesc *desc) : Window()
 	{
-		this->townline_height = FONT_HEIGHT_NORMAL;
-		this->InitNested(desc, 0);
-
-		this->vscroll.cap = this->nested_array[TDW_CENTERTOWN]->current_y / this->resize.step_height;
-
 		this->towns.SetListing(this->last_sorting);
 		this->towns.SetSortFuncs(this->sorter_funcs);
 		this->towns.ForceRebuild();
 		this->BuildSortTownList();
+
+		this->townline_height = FONT_HEIGHT_NORMAL;
+		this->InitNested(desc, 0);
+		this->vscroll.cap = this->nested_array[TDW_CENTERTOWN]->current_y / this->resize.step_height;
 	}
 
 	~TownDirectoryWindow()
