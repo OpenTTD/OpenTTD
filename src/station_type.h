@@ -5,6 +5,8 @@
 #ifndef STATION_TYPE_H
 #define STATION_TYPE_H
 
+#include "core/enum_type.hpp"
+
 typedef uint16 StationID;
 typedef uint16 RoadStopID;
 
@@ -32,15 +34,17 @@ enum RoadStopType {
 	ROADSTOP_TRUCK   ///< A standard stop for trucks
 };
 
-enum {
+enum StationFacility {
 	FACIL_TRAIN      = 0x01,
 	FACIL_TRUCK_STOP = 0x02,
 	FACIL_BUS_STOP   = 0x04,
 	FACIL_AIRPORT    = 0x08,
 	FACIL_DOCK       = 0x10,
 };
+DECLARE_ENUM_AS_BIT_SET(StationFacility);
+typedef SimpleTinyEnumT<StationFacility, byte> StationFacilityByte;
 
-enum {
+enum StationHadVehicleOfType {
 //	HVOT_PENDING_DELETE = 1 << 0, // not needed anymore
 	HVOT_TRAIN    = 1 << 1,
 	HVOT_BUS      = 1 << 2,
@@ -51,6 +55,8 @@ enum {
 	 * can we do? ;-) */
 	HVOT_BUOY     = 1 << 6
 };
+DECLARE_ENUM_AS_BIT_SET(StationHadVehicleOfType);
+typedef SimpleTinyEnumT<StationHadVehicleOfType, byte> StationHadVehicleOfTypeByte;
 
 enum CatchmentArea {
 	CA_NONE            =  0,

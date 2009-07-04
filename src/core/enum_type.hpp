@@ -145,6 +145,20 @@ struct SimpleTinyEnumT {
 		this->m_val = (storage_type)u;
 		return *this;
 	}
+
+	/** Bit math (or) assignment operator (from enum_type) */
+	FORCEINLINE SimpleTinyEnumT &operator |= (enum_type e)
+	{
+		this->m_val = (storage_type)((enum_type)this->m_val | e);
+		return *this;
+	}
+
+	/** Bit math (and) assignment operator (from enum_type) */
+	FORCEINLINE SimpleTinyEnumT &operator &= (enum_type e)
+	{
+		this->m_val = (storage_type)((enum_type)this->m_val & e);
+		return *this;
+	}
 };
 
 #endif /* ENUM_TYPE_HPP */

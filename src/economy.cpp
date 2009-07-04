@@ -112,7 +112,7 @@ Money CalculateCompanyValue(const Company *c)
 	uint num = 0;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->owner == owner) num += CountBits(st->facilities);
+		if (st->owner == owner) num += CountBits((byte)st->facilities);
 	}
 
 	value += num * _price.station_value * 25;
@@ -184,7 +184,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 		const Station *st;
 
 		FOR_ALL_STATIONS(st) {
-			if (st->owner == owner) num += CountBits(st->facilities);
+			if (st->owner == owner) num += CountBits((byte)st->facilities);
 		}
 		_score_part[owner][SCORE_STATIONS] = num;
 	}

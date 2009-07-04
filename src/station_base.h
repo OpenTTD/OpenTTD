@@ -110,13 +110,13 @@ public:
 
 	ViewportSign sign;
 
-	byte had_vehicle_of_type;
+	StationHadVehicleOfTypeByte had_vehicle_of_type;
 
 	byte time_since_load;
 	byte time_since_unload;
 	byte delete_ctr;
 	OwnerByte owner;
-	byte facilities;
+	StationFacilityByte facilities;
 	byte airport_type;
 
 	/* trainstation width/height */
@@ -145,7 +145,7 @@ public:
 	Station(TileIndex tile = INVALID_TILE);
 	~Station();
 
-	void AddFacility(byte new_facility_bit, TileIndex facil_xy);
+	void AddFacility(StationFacility new_facility_bit, TileIndex facil_xy);
 
 	/**
 	 * Mark the sign of a station dirty for repaint.
