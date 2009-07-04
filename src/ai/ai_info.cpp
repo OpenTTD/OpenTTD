@@ -142,12 +142,13 @@ SQInteger AIInfo::AddSetting(HSQUIRRELVM vm)
 		if (strcmp(key, "name") == 0) {
 			const SQChar *sqvalue;
 			if (SQ_FAILED(sq_getstring(vm, -1, &sqvalue))) return SQ_ERROR;
-			config.name = strdup(FS2OTTD(sqvalue));
+			char *name = strdup(FS2OTTD(sqvalue));
 			char *s;
 			/* Don't allow '=' and ',' in configure setting names, as we need those
 			 *  2 chars to nicely store the settings as a string. */
-			while ((s = (char *)strchr(config.name, '=')) != NULL) *s = '_';
-			while ((s = (char *)strchr(config.name, ',')) != NULL) *s = '_';
+			while ((s = strchr(name, '=')) != NULL) *s = '_';
+			while ((s = strchr(name, ',')) != NULL) *s = '_';
+			config.name = name;
 			items |= 0x001;
 		} else if (strcmp(key, "description") == 0) {
 			const SQChar *sqdescription;
