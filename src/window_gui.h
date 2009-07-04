@@ -501,6 +501,20 @@ public:
 	virtual void DrawWidget(const Rect &r, int widget) const {}
 
 	/**
+	 * Compute size of the contents of a widget.
+	 * If no useful size can be computed, return null-size (both width and height \c 0).
+	 * @param widget Number of the widget to get the size of.
+	 * @return Size of the contents of the widget.
+	 * @note If the contents ever becomes larger than what is returned here, the window should be re-initialized (with #Window::ReInit),
+	 *       and this function should return a larger size.
+	 */
+	virtual Dimension GetWidgetContentSize(int widget)
+	{
+		Dimension d = {0, 0};
+		return d;
+	}
+
+	/**
 	 * Called when window gains focus
 	 */
 	virtual void OnFocus() {}

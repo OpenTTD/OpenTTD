@@ -574,7 +574,7 @@ void Window::ReInit()
 	int window_height = this->height;
 
 	/* Re-initialize the window from the ground up. No need to change the nested_array, as all widgets stay where they are. */
-	this->nested_root->SetupSmallestSize();
+	this->nested_root->SetupSmallestSize(this);
 	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, false, false, false);
 	this->width  = this->nested_root->smallest_x;
 	this->height = this->nested_root->smallest_y;
@@ -884,7 +884,7 @@ void Window::Initialize(int x, int y, int min_width, int min_height,
 	if (nested_root != NULL) {
 		this->nested_root = nested_root;
 		/* Setup nested_array pointers into the tree. */
-		int biggest_index = this->nested_root->SetupSmallestSize();
+		int biggest_index = this->nested_root->SetupSmallestSize(this);
 		this->nested_array_size = (uint)(biggest_index + 1);
 		this->nested_array = CallocT<NWidgetCore *>(this->nested_array_size);
 		this->nested_root->FillNestedArray(this->nested_array, this->nested_array_size);

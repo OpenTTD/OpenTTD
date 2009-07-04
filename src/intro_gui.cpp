@@ -83,6 +83,18 @@ struct SelectGameWindow : public Window {
 		}
 	}
 
+	virtual Dimension GetWidgetContentSize(int widget)
+	{
+		Dimension d = {0, 0};
+		if (widget == SGI_DIFFICULTIES) {
+			for (uint i = STR_DIFFICULTY_LEVEL_EASY; i <= STR_DIFFICULTY_LEVEL_CUSTOM; i++) {
+				SetDParam(0, STR_DIFFICULTY_LEVEL_EASY + _settings_newgame.difficulty.diff_level);
+				d = maxdim(d, GetStringBoundingBox(STR_INTRO_DIFFICULTY));
+			}
+		}
+		return d;
+	}
+
 	virtual void OnClick(Point pt, int widget)
 	{
 #ifdef ENABLE_NETWORK

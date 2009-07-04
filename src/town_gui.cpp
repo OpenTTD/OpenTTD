@@ -643,6 +643,43 @@ public:
 		}
 	}
 
+	virtual Dimension GetWidgetContentSize(int widget)
+	{
+		Dimension d = {0, 0};
+		switch (widget) {
+			case TDW_SORTNAME: {
+				d = GetStringBoundingBox(STR_SORT_BY_NAME);
+				d.width += WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the word is centered, also looks nice.
+				break;
+			}
+
+			case TDW_SORTPOPULATION: {
+				d = GetStringBoundingBox(STR_SORT_BY_POPULATION);
+				d.width += WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the word is centered, also looks nice.
+				break;
+			}
+
+			case TDW_CENTERTOWN:
+				for (uint i = 0; i < this->towns.Length(); i++) {
+					const Town *t = this->towns[i];
+
+					assert(t != NULL);
+
+					SetDParam(0, t->index);
+					SetDParam(1, 10000000); // 10^7
+					d = maxdim(d, GetStringBoundingBox(STR_TOWN_DIRECTORY_TOWN));
+				}
+				d.width += 2 + 2; // Text is rendered with 2 pixel offset at both sides.
+				break;
+
+			case TDW_EMPTYBOTTOM:
+				SetDParam(0, 1000000000); // 10^9
+				d = GetStringBoundingBox(STR_TOWN_POPULATION);
+				break;
+		}
+		return d;
+	}
+
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
@@ -676,7 +713,7 @@ public:
 				if (id_v >= this->towns.Length()) return; // click out of town bounds
 
 				const Town *t = this->towns[id_v];
-				assert(t->xy != INVALID_TILE);
+				assert(t != NULL);
 				if (_ctrl_pressed) {
 					ShowExtraViewPortWindow(t->xy);
 				} else {
