@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "station_base.h"
 #include "oldpool_func.h"
+#include "economy_base.h"
 
 /* Initialize the cargopacket-pool */
 DEFINE_OLD_POOL_GENERIC(CargoPacket, CargoPacket)
@@ -27,7 +28,6 @@ CargoPacket::CargoPacket(StationID source, uint16 count)
 	this->count           = count;
 	this->days_in_transit = 0;
 	this->feeder_share    = 0;
-	this->paid_for        = false;
 }
 
 CargoPacket::~CargoPacket()
@@ -37,7 +37,7 @@ CargoPacket::~CargoPacket()
 
 bool CargoPacket::SameSource(const CargoPacket *cp) const
 {
-	return this->source_xy == cp->source_xy && this->days_in_transit == cp->days_in_transit && this->paid_for == cp->paid_for;
+	return this->source_xy == cp->source_xy && this->days_in_transit == cp->days_in_transit;
 }
 
 /*
@@ -79,11 +79,6 @@ bool CargoList::Empty() const
 uint CargoList::Count() const
 {
 	return count;
-}
-
-bool CargoList::UnpaidCargo() const
-{
-	return unpaid_cargo;
 }
 
 Money CargoList::FeederShare() const
@@ -146,9 +141,10 @@ void CargoList::Truncate(uint count)
 	InvalidateCache();
 }
 
-bool CargoList::MoveTo(CargoList *dest, uint count, CargoList::MoveToAction mta, uint data)
+bool CargoList::MoveTo(CargoList *dest, uint count, CargoList::MoveToAction mta, CargoPayment *payment, uint data)
 {
 	assert(mta == MTA_FINAL_DELIVERY || dest != NULL);
+	assert(mta == MTA_UNLOAD || mta == MTA_CARGO_LOAD || payment != NULL);
 	CargoList tmp;
 
 	while (!packets.empty() && count > 0) {
@@ -161,20 +157,25 @@ bool CargoList::MoveTo(CargoList *dest, uint count, CargoList::MoveToAction mta,
 					if (cp->source == data) {
 						tmp.Append(cp);
 					} else {
+						payment->PayFinalDelivery(cp, cp->count);
 						count -= cp->count;
 						delete cp;
 					}
-					break;
+					continue; // of the loop
+
 				case MTA_CARGO_LOAD:
 					cp->loaded_at_xy = data;
-					/* When cargo is moved into another vehicle you have *always* paid for it */
-					cp->paid_for     = false;
-					/* FALL THROUGH */
-				case MTA_OTHER:
-					count -= cp->count;
-					dest->packets.push_back(cp);
+					break;
+
+				case MTA_TRANSFER:
+					payment->PayTransfer(cp, cp->count);
+					break;
+
+				case MTA_UNLOAD:
 					break;
 			}
+			count -= cp->count;
+			dest->packets.push_back(cp);
 		} else {
 			/* Can move only part of the packet, so split it into two pieces */
 			if (mta != MTA_FINAL_DELIVERY) {
@@ -189,11 +190,13 @@ bool CargoList::MoveTo(CargoList *dest, uint count, CargoList::MoveToAction mta,
 
 				cp_new->days_in_transit = cp->days_in_transit;
 				cp_new->feeder_share    = fs;
-				/* When cargo is moved into another vehicle you have *always* paid for it */
-				cp_new->paid_for        = (mta == MTA_CARGO_LOAD) ? false : cp->paid_for;
 
 				cp_new->count = count;
 				dest->packets.push_back(cp_new);
+
+				if (mta == MTA_TRANSFER) payment->PayTransfer(cp_new, count);
+			} else {
+				payment->PayFinalDelivery(cp, count);
 			}
 			cp->count -= count;
 
@@ -205,7 +208,7 @@ bool CargoList::MoveTo(CargoList *dest, uint count, CargoList::MoveToAction mta,
 
 	if (mta == MTA_FINAL_DELIVERY && !tmp.Empty()) {
 		/* There are some packets that could not be delivered at the station, put them back */
-		tmp.MoveTo(this, UINT_MAX);
+		tmp.MoveTo(this, UINT_MAX, MTA_UNLOAD, NULL);
 		tmp.packets.clear();
 	}
 
@@ -219,7 +222,6 @@ void CargoList::InvalidateCache()
 {
 	empty = packets.empty();
 	count = 0;
-	unpaid_cargo = false;
 	feeder_share = 0;
 	source = INVALID_STATION;
 	days_in_transit = 0;
@@ -229,7 +231,6 @@ void CargoList::InvalidateCache()
 	uint dit = 0;
 	for (List::const_iterator it = packets.begin(); it != packets.end(); it++) {
 		count        += (*it)->count;
-		unpaid_cargo |= !(*it)->paid_for;
 		dit          += (*it)->days_in_transit * (*it)->count;
 		feeder_share += (*it)->feeder_share;
 	}

@@ -136,4 +136,7 @@ enum {
 	LOAN_INTERVAL_OLD_AI = 50000,
 };
 
+struct CargoPayment;
+typedef uint32 CargoPaymentID;
+
 #endif /* ECONOMY_TYPE_H */

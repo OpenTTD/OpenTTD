@@ -29,7 +29,6 @@ struct CargoPacket : PoolItem<CargoPacket, CargoPacketID, &_CargoPacket_pool> {
 
 	uint16 count;           ///< The amount of cargo in this packet
 	byte days_in_transit;   ///< Amount of days this packet has been in transit
-	bool paid_for;          ///< Have we been paid for this cargo packet?
 
 	/**
 	 * Creates a new cargo packet
@@ -85,7 +84,8 @@ public:
 	enum MoveToAction {
 		MTA_FINAL_DELIVERY, ///< "Deliver" the packet to the final destination, i.e. destroy the packet
 		MTA_CARGO_LOAD,     ///< Load the packet onto a vehicle, i.e. set the last loaded station ID
-		MTA_OTHER           ///< "Just" move the packet to another cargo list
+		MTA_TRANSFER,       ///< The cargo is moved as part of a transfer
+		MTA_UNLOAD,         ///< The cargo is moved as part of a forced unload
 	};
 
 private:
@@ -93,7 +93,6 @@ private:
 
 	bool empty;           ///< Cache for whether this list is empty or not
 	uint count;           ///< Cache for the number of cargo entities
-	bool unpaid_cargo;    ///< Cache for the unpaid cargo
 	Money feeder_share;   ///< Cache for the feeder share
 	StationID source;     ///< Cache for the source of the packet
 	uint days_in_transit; ///< Cache for the number of days in transit
@@ -128,12 +127,6 @@ public:
 	 * @return the before mentioned number
 	 */
 	uint Count() const;
-
-	/**
-	 * Is there some cargo that has not been paid for?
-	 * @return true if and only if there is such a cargo
-	 */
-	bool UnpaidCargo() const;
 
 	/**
 	 * Returns total sum of the feeder share for all packets
@@ -175,18 +168,23 @@ public:
 	 * Depending on the value of mta the side effects of this function differ:
 	 *  - MTA_FINAL_DELIVERY: destroys the packets that do not originate from a specific station
 	 *  - MTA_CARGO_LOAD:     sets the loaded_at_xy value of the moved packets
-	 *  - MTA_OTHER:          just move without side effects
+	 *  - MTA_TRANSFER:       just move without side effects
+	 *  - MTA_UNLOAD:         just move without side effects
 	 * @param dest  the destination to move the cargo to
 	 * @param count the amount of cargo entities to move
 	 * @param mta   how to handle the moving (side effects)
 	 * @param data  Depending on mta the data of this variable differs:
 	 *              - MTA_FINAL_DELIVERY - station ID of packet's origin not to remove
 	 *              - MTA_CARGO_LOAD     - station's tile index of load
-	 *              - MTA_OTHER          - unused
-	 * @param mta == MTA_FINAL_DELIVERY || dest != NULL
+	 *              - MTA_TRANSFER       - unused
+	 *              - MTA_UNLOAD         - unused
+	 * @param payment The payment helper
+	 *
+	 * @pre mta == MTA_FINAL_DELIVERY || dest != NULL
+	 * @pre mta == MTA_UNLOAD || mta == MTA_CARGO_LOAD || payment != NULL
 	 * @return true if there are still packets that might be moved from this cargo list
 	 */
-	bool MoveTo(CargoList *dest, uint count, CargoList::MoveToAction mta = MTA_OTHER, uint data = 0);
+	bool MoveTo(CargoList *dest, uint count, CargoList::MoveToAction mta, CargoPayment *payment, uint data = 0);
 
 	/** Invalidates the cached data and rebuild it */
 	void InvalidateCache();

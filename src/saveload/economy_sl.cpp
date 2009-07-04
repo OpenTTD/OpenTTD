@@ -4,8 +4,11 @@
 
 #include "../stdafx.h"
 #include "../economy_func.h"
+#include "../economy_base.h"
 
 #include "saveload.h"
+
+bool _cargo_payment_savegame = false;
 
 /** Prices */
 static void SaveLoad_PRIC()
@@ -51,7 +54,37 @@ static void Load_ECMY()
 	StartupIndustryDailyChanges(CheckSavegameVersion(102));  // old savegames will need to be initialized
 }
 
+static const SaveLoad _cargopayment_desc[] = {
+	SLE_REF(CargoPayment, front,         REF_VEHICLE),
+	SLE_VAR(CargoPayment, route_profit,  SLE_INT64),
+	SLE_VAR(CargoPayment, visual_profit, SLE_INT64),
+
+	SLE_END()
+};
+
+static void Save_CAPY()
+{
+	CargoPayment *cp;
+	FOR_ALL_CARGO_PAYMENTS(cp) {
+		SlSetArrayIndex(cp->index);
+		SlObject(cp, _cargopayment_desc);
+	}
+}
+
+static void Load_CAPY()
+{
+	int index;
+
+	while ((index = SlIterateArray()) != -1) {
+		CargoPayment *cp = new (index) CargoPayment();
+		SlObject(cp, _cargopayment_desc);
+	}
+
+	_cargo_payment_savegame = true;
+}
+
 extern const ChunkHandler _economy_chunk_handlers[] = {
+	{ 'CAPY', Save_CAPY,     Load_CAPY,     CH_ARRAY},
 	{ 'PRIC', SaveLoad_PRIC, SaveLoad_PRIC, CH_RIFF | CH_AUTO_LENGTH},
 	{ 'CAPR', SaveLoad_CAPR, SaveLoad_CAPR, CH_RIFF | CH_AUTO_LENGTH},
 	{ 'ECMY', Save_ECMY,     Load_ECMY,     CH_RIFF | CH_LAST},
