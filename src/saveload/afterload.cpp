@@ -28,6 +28,7 @@
 #include "../company_func.h"
 #include "../road_cmd.h"
 #include "../ai/ai.hpp"
+#include "../animated_tile_func.h"
 
 #include "table/strings.h"
 
@@ -1842,6 +1843,60 @@ bool AfterLoadGame()
 					delete v;
 				}
 			}
+		}
+	}
+
+	if (CheckSavegameVersion(122)) {
+		/* Animated tiles would sometimes not be actually animated or
+		 * in case of old savegames duplicate. */
+
+		extern TileIndex *_animated_tile_list;
+		extern uint _animated_tile_count;
+
+		for (uint i = 0; i < _animated_tile_count; /* Nothing */) {
+			/* Remove if tile is not animated */
+			bool remove = _tile_type_procs[GetTileType(_animated_tile_list[i])]->animate_tile_proc == NULL;
+
+			/* and remove if duplicate */
+			for (uint j = 0; !remove && j < i; j++) {
+				remove = _animated_tile_list[i] == _animated_tile_list[j];
+			}
+
+			if (remove) {
+				DeleteAnimatedTile(_animated_tile_list[i]);
+			} else {
+				i++;
+			}
+		}
+
+		/* Delete invalid subsidies possibly present in old versions (but converted to new savegame) */
+		for (Subsidy *s = _subsidies; s < endof(_subsidies); s++) {
+			if (s->cargo_type == CT_INVALID) continue;
+			if (s->age >= 12) {
+				/* Station -> Station */
+				const Station *from = IsValidStationID(s->from) ? GetStation(s->from) : NULL;
+				const Station *to = IsValidStationID(s->to) ? GetStation(s->to) : NULL;
+				if (from != NULL && to != NULL && from->owner == to->owner && IsValidCompanyID(from->owner)) continue;
+			} else {
+				const CargoSpec *cs = GetCargo(s->cargo_type);
+				switch (cs->town_effect) {
+					case TE_PASSENGERS:
+					case TE_MAIL:
+						/* Town -> Town */
+						if (IsValidTownID(s->from) && IsValidTownID(s->to)) continue;
+						break;
+					case TE_GOODS:
+					case TE_FOOD:
+						/* Industry -> Town */
+						if (IsValidIndustryID(s->from) && IsValidTownID(s->to)) continue;
+						break;
+					default:
+						/* Industry -> Industry */
+						if (IsValidIndustryID(s->from) && IsValidIndustryID(s->to)) continue;
+						break;
+				}
+			}
+			s->cargo_type = CT_INVALID;
 		}
 	}
 

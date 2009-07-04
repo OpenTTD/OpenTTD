@@ -354,7 +354,11 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 
 		/* Check if the engine is registered in the override manager */
 		EngineID engine = _engine_mngr.GetID(type, internal_id, scope_grfid);
-		if (engine != INVALID_ENGINE) return GetEngine(engine);
+		if (engine != INVALID_ENGINE) {
+			Engine *e = GetEngine(engine);
+			if (e->grffile == NULL) e->grffile = file;
+			return e;
+		}
 	}
 
 	/* Check if there is an unreserved slot */

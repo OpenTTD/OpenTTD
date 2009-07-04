@@ -22,6 +22,7 @@
 #include "effectvehicle_func.h"
 #include "landscape_type.h"
 #include "settings_type.h"
+#include "animated_tile_func.h"
 
 #include "table/sprites.h"
 
@@ -471,6 +472,9 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 
 void DoClearSquare(TileIndex tile)
 {
+	/* If the tile can have animation and we clear it, delete it from the animated tile list. */
+	if (_tile_type_procs[GetTileType(tile)]->animate_tile_proc != NULL) DeleteAnimatedTile(tile);
+
 	MakeClear(tile, CLEAR_GRASS, _generating_world ? 3 : 0);
 	MarkTileDirtyByTile(tile);
 }
