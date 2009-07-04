@@ -415,15 +415,15 @@ STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUP
 STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Das Wartungsintervall kann nicht geändert werden...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fenster schließen
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titelleiste verschieben, um das Fenster zu bewegen
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titelleiste klicken und ziehen, um das Fenster zu verschieben
 STR_STICKY_BUTTON                                               :{BLACK}Fenster wird nicht durch die "schließe alle Fenster"-Taste geschlossen
-STR_RESIZE_BUTTON                                               :{BLACK}Klicken und Ziehen zum Größe ändern
+STR_RESIZE_BUTTON                                               :{BLACK}Klicken und Ziehen zum Ändern der Größe des Fensters
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hier klicken, um zum Standardverzeichnis für Spielstände zu gehen
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Gebäude usw. auf einem Planquadrat abreißen
 STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}Land absenken
 STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Land anheben
-STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bildlaufleiste - Liste auf- und abwärts blättern
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bildlaufleiste - Liste nach links und rechts blättern
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bildlaufleiste: Liste auf- und abwärts blättern
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bildlaufleiste: Liste nach links und rechts blättern
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Höhenlinien auf der Weltkarte anzeigen
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Fahrzeuge auf der Weltkarte anzeigen
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Industrien auf der Weltkarte anzeigen
@@ -744,16 +744,16 @@ STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Ein neue
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ein gespeichertes Spiel laden
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Eine eigene Spielwelt / eigenes Szenario kreieren
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Mehrspieler-Spiel beginnen
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Spieleinstellungen anzeigen
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Schwierigkeitsgrad anzeigen
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Starte ein neues Spiel in einem eigenen Szenario
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Spieleinstellungen anzeigen und / oder ändern
+STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Schwierigkeitsgrad anzeigen und / oder ändern
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Starte ein neues Spiel basierend auf einem Szenario
 STR_INTRO_QUIT                                                  :{BLACK}Beenden
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' beenden
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...kann nur in Städten gebaut werden
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}'gemäßigte' Landschaft auswählen
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}'subarktische' Landschaft auswählen
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}'subtropische' Landschaft auswählen
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Landschaft mit gemäßigtem Klima auswählen
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Landschaft mit subarktischem Klima auswählen
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Landschaft mit subtropischem Klima auswählen
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}'fantastische' Landschaft auswählen
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Liste aller Industrien oder Errichtung und Finanzierung einer neuen Industrie
 
@@ -913,7 +913,7 @@ STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Keine Er
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(Geld fehlt)
 
 STR_CONFIG_SETTING                                              :{BLACK}Erweiterte Einstellungen
-STR_CONFIG_SETTING_TIP                                          :{BLACK}Erweiterte Einstellungen treffen
+STR_CONFIG_SETTING_TIP                                          :{BLACK}Erweiterte Einstellungen anzeigen und / oder ändern
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Erweiterte Einstellungen
 
 STR_CONFIG_SETTING_OFF                                          :Aus
@@ -3085,11 +3085,11 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Der von 
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Erreichte Punkte von der maximal erreichbaren Anzahl
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF-Einstellungen
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}NewGRF-Einstellungen anzeigen
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}NewGRF-Einstellungen anzeigen und / oder ändern
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Einstellungen
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Übernehmen
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Palette ändern
-STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Farbpalette der ausgewählten NewGRF ändern.{}Ausführen wenn die Grafiken der NewGRF im Spiel pink dargestellt werden
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Farbpalette des ausgewählten NewGRF ändern.{}Nutze dieses, wenn die Grafiken des NewGRF im Spiel pink dargestellt werden
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Parameter setzen
 STR_NEWGRF_FILENAME                                             :{BLACK}Dateiname: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}Palette: {SILVER}{STRING}
@@ -3117,7 +3117,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Es wurde versuc
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} enthält kaputte Sprites. Diese werden als rote Fragezeichen (?) dargestellt.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Enthält mehrere Aktion 8 Einträge.
 
-STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Ausgewählte Voreinstellung laden
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Gespeicherte Voreinstellung aus Liste auswählen
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Speichern
 STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Aktuelle Liste als Voreinstellung speichern
 STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Name der Voreinstellung
@@ -3555,7 +3555,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :°!"§$%&/()=?`
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Einstellungen für die KI
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Einstellungen für KI anzeigen
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Einstellungen für KI anzeigen und / oder ändern
 STR_AI_DEBUG                                                    :{WHITE}KI Debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name der KI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}KI erneut laden
@@ -3564,9 +3564,9 @@ STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}KI Debu
 STR_AI_CONFIG_CAPTION                                           :{WHITE}KI einstellen
 STR_AI_CHANGE                                                   :{BLACK}KI wählen
 STR_AI_CONFIGURE                                                :{BLACK}Einstellungen
-STR_AI_CHANGE_TIP                                               :{BLACK}Lade eine andere KI
-STR_AI_CONFIGURE_TIP                                            :{BLACK}Stelle die Parameter der KI ein
-STR_AI_LIST_TIP                                                 :{BLACK}Alle KIs, die im nächsten Spiel geladen werden
+STR_AI_CHANGE_TIP                                               :{BLACK}Eine andere KI für diesen Eintrag auswählen
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Einstellungen für die KI anzeigen und / oder ändern
+STR_AI_LIST_TIP                                                 :{BLACK}Liste aller KIs, die im nächsten Spiel geladen werden
 STR_AI_LIST_CAPTION                                             :{WHITE}Verfügbare KIs
 STR_AI_AILIST_TIP                                               :{BLACK}Klicken, um eine KI auszuwählen
 STR_AI_ACCEPT                                                   :{BLACK}Anwenden
