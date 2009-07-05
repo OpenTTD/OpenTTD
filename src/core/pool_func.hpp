@@ -108,6 +108,7 @@ DEFINE_POOL_METHOD(void)::FreeItem(size_t index)
 	this->data[index] = NULL;
 	this->first_free = min(this->first_free, index);
 	this->items--;
+	if (!this->cleaning) Titem::PostDestructor(index);
 }
 
 DEFINE_POOL_METHOD(void)::CleanPool()

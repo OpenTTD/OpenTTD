@@ -221,6 +221,15 @@ struct Pool {
 		{
 			return Tpool->items;
 		}
+
+		/**
+		 * Dummy function called after destructor of each member.
+		 * If you want to use it, override it in PoolItem's subclass.
+		 * @param index index of deleted item
+		 * @note when this function is called, PoolItem::Get(index) == NULL.
+		 * @note it's called only when !CleaningPool()
+		 */
+		static FORCEINLINE void PostDestructor(size_t index) { }
 	};
 
 private:

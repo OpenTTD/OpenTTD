@@ -186,6 +186,8 @@ public:
 	{
 		return Station::Get(GetStationIndex(tile));
 	}
+
+	static void PostDestructor(size_t index);
 };
 
 #define FOR_ALL_STATIONS_FROM(var, start) FOR_ALL_ITEMS_FROM(Station, station_index, var, start)
