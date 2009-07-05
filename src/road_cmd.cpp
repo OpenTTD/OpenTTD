@@ -1248,7 +1248,7 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
  * @param ignore town that should be ignored (because we are deleting it now)
  * @pre invalidate == true implies _generating_world == true
  */
-void UpdateNearestTownForRoadTiles(bool invalidate, const Town *ignore)
+void UpdateNearestTownForRoadTiles(bool invalidate)
 {
 	assert(!invalidate || _generating_world);
 
@@ -1256,7 +1256,7 @@ void UpdateNearestTownForRoadTiles(bool invalidate, const Town *ignore)
 		if (IsTileType(t, MP_ROAD) && !HasTownOwnedRoad(t)) {
 			TownID tid = (TownID)INVALID_TOWN;
 			if (!invalidate) {
-				const Town *town = CalcClosestTownFromTile(t, UINT_MAX, ignore);
+				const Town *town = CalcClosestTownFromTile(t);
 				if (town != NULL) tid = town->index;
 			}
 			SetTownIndex(t, tid);

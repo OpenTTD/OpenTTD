@@ -102,8 +102,17 @@ Town::~Town()
 	DeleteSubsidyWithTown(this->index);
 
 	MarkWholeScreenDirty();
+}
 
-	UpdateNearestTownForRoadTiles(false, this);
+
+/**
+ * Invalidating of the "nearest town cache" has to be done
+ * after removing item from the pool.
+ * @param index index of deleted item
+ */
+void Town::PostDestructor(size_t index)
+{
+	UpdateNearestTownForRoadTiles(false);
 }
 
 /**
@@ -2694,14 +2703,13 @@ bool CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags)
 }
 
 
-Town *CalcClosestTownFromTile(TileIndex tile, uint threshold, const Town *ignore)
+Town *CalcClosestTownFromTile(TileIndex tile, uint threshold)
 {
 	Town *t;
 	uint best = threshold;
 	Town *best_town = NULL;
 
 	FOR_ALL_TOWNS(t) {
-		if (t == ignore) continue;
 		uint dist = DistanceManhattan(tile, t->xy);
 		if (dist < best) {
 			best = dist;

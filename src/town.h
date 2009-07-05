@@ -142,6 +142,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	}
 
 	static Town *GetRandom();
+	static void PostDestructor(size_t index);
 };
 
 uint32 GetWorldPopulation();
@@ -181,7 +182,7 @@ bool CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType type);
 
 TileIndexDiff GetHouseNorthPart(HouseID &house);
 
-Town *CalcClosestTownFromTile(TileIndex tile, uint threshold = UINT_MAX, const Town *ignore = NULL);
+Town *CalcClosestTownFromTile(TileIndex tile, uint threshold = UINT_MAX);
 
 #define FOR_ALL_TOWNS_FROM(var, start) FOR_ALL_ITEMS_FROM(Town, town_index, var, start)
 #define FOR_ALL_TOWNS(var) FOR_ALL_TOWNS_FROM(var, 0)
