@@ -88,7 +88,7 @@ struct SelectGameWindow : public Window {
 		Dimension d = {0, 0};
 		if (widget == SGI_DIFFICULTIES) {
 			for (uint i = STR_DIFFICULTY_LEVEL_EASY; i <= STR_DIFFICULTY_LEVEL_CUSTOM; i++) {
-				SetDParam(0, STR_DIFFICULTY_LEVEL_EASY + _settings_newgame.difficulty.diff_level);
+				SetDParam(0, i);
 				d = maxdim(d, GetStringBoundingBox(STR_INTRO_DIFFICULTY));
 			}
 		}
