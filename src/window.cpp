@@ -593,7 +593,10 @@ void Window::ReInit()
 	if (this->resize.step_width  > 1) dx -= dx % (int)this->resize.step_width;
 	if (this->resize.step_height > 1) dy -= dy % (int)this->resize.step_height;
 
-	if (dx == 0 && dy == 0) return; // No resize needed.
+	if (dx == 0 && dy == 0) { // No resize needed.
+		this->SetDirty();
+		return;
+	}
 
 	ResizeWindow(this, dx, dy); // Sets post-resize dirty blocks.
 	Point diff;
