@@ -604,17 +604,47 @@ static const RailBuildingGUIButtonData _rail_build_button_data[] = {
  * @param clicked_widget Widget clicked in the toolbar
  */
 struct BuildRailToolbarWindow : Window {
-	BuildRailToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	BuildRailToolbarWindow(const WindowDesc *desc, WindowNumber window_number, RailType railtype) : Window()
 	{
+		this->InitNested(desc);
+		this->SetupRailToolbar(railtype);
 		this->DisableWidget(RTW_REMOVE);
 
-		this->FindWindowPlacementAndResize(desc);
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
 
 	~BuildRailToolbarWindow()
 	{
 		if (_settings_client.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0, false);
+	}
+
+	/** Configures the rail toolbar for railtype given
+	 * @param railtype the railtype to display
+	 * @param w the window to modify
+	 */
+	void SetupRailToolbar(RailType railtype)
+	{
+		const RailtypeInfo *rti = GetRailTypeInfo(railtype);
+
+		assert(railtype < RAILTYPE_END);
+		this->nested_array[RTW_CAPTION]->widget_data      = rti->strings.toolbar_caption;
+		this->nested_array[RTW_BUILD_NS]->widget_data     = rti->gui_sprites.build_ns_rail;
+		this->nested_array[RTW_BUILD_X]->widget_data      = rti->gui_sprites.build_x_rail;
+		this->nested_array[RTW_BUILD_EW]->widget_data     = rti->gui_sprites.build_ew_rail;
+		this->nested_array[RTW_BUILD_Y]->widget_data      = rti->gui_sprites.build_y_rail;
+		this->nested_array[RTW_AUTORAIL]->widget_data     = rti->gui_sprites.auto_rail;
+		this->nested_array[RTW_BUILD_DEPOT]->widget_data  = rti->gui_sprites.build_depot;
+		this->nested_array[RTW_CONVERT_RAIL]->widget_data = rti->gui_sprites.convert_rail;
+		this->nested_array[RTW_BUILD_TUNNEL]->widget_data = rti->gui_sprites.build_tunnel;
+	}
+
+	/** Switch to another rail type.
+	 * @param railtype New rail type.
+	 */
+	void ModifyRailType(RailType railtype)
+	{
+		this->SetupRailToolbar(railtype);
+		this->ReInit();
 	}
 
 	void UpdateRemoveWidgetStatus(int clicked_widget)
@@ -757,34 +787,6 @@ struct BuildRailToolbarWindow : Window {
 	}
 };
 
-/** Widget definition for the rail toolbar */
-static const Widget _build_rail_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_BLACK_CROSS,                STR_TOOLTIP_CLOSE_WINDOW},                      // RTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   337,     0,    13, STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // RTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   338,   349,     0,    13, 0x0,                            STR_STICKY_BUTTON},                             // RTW_STICKY
-
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   110,   113,    14,    35, 0x0,                            STR_NULL},                                      // RTW_SPACER
-
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    21,    14,    35, SPR_IMG_RAIL_NS,                STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK}, // RTW_BUILD_NS
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    22,    43,    14,    35, SPR_IMG_RAIL_NE,                STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK}, // RTW_BUILD_X
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    44,    65,    14,    35, SPR_IMG_RAIL_EW,                STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK}, // RTW_BUILD_EW
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    66,    87,    14,    35, SPR_IMG_RAIL_NW,                STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK}, // RTW_BUILD_Y
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    88,   109,    14,    35, SPR_IMG_AUTORAIL,               STR_BUILD_AUTORAIL_TIP},                        // RTW_AUTORAIL
-
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   114,   135,    14,    35, SPR_IMG_DYNAMITE,               STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC},            // RTW_DEMOLISH
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   136,   157,    14,    35, SPR_IMG_DEPOT_RAIL,             STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING}, // RTW_BUILD_DEPOT
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   158,   179,    14,    35, SPR_IMG_WAYPOINT,               STR_CONVERT_RAIL_TO_WAYPOINT_TIP},              // RTW_BUILD_WAYPOINT
-
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   180,   221,    14,    35, SPR_IMG_RAIL_STATION,           STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION},  // RTW_BUILD_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   222,   243,    14,    35, SPR_IMG_RAIL_SIGNALS,           STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS},  // RTW_BUILD_SIGNALS
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   244,   285,    14,    35, SPR_IMG_BRIDGE,                 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE},   // RTW_BUILD_BRIDGE
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   286,   305,    14,    35, SPR_IMG_TUNNEL_RAIL,            STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL},   // RTW_BUILD_TUNNEL
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   306,   327,    14,    35, SPR_IMG_REMOVE,                 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR}, // RTW_REMOVE
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   328,   349,    14,    35, SPR_IMG_CONVERT_RAIL,           STR_CONVERT_RAIL_TIP},                             // RTW_CONVERT_RAIL
-
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_build_rail_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, RTW_CLOSEBOX),
@@ -814,29 +816,9 @@ static const WindowDesc _build_rail_desc(
 	WDP_ALIGN_TBR, 22, 350, 36, 350, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	_build_rail_widgets, _nested_build_rail_widgets, lengthof(_nested_build_rail_widgets)
+	NULL, _nested_build_rail_widgets, lengthof(_nested_build_rail_widgets)
 );
 
-
-/** Configures the rail toolbar for railtype given
- * @param railtype the railtype to display
- * @param w the window to modify
- */
-static void SetupRailToolbar(RailType railtype, Window *w)
-{
-	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
-
-	assert(railtype < RAILTYPE_END);
-	w->widget[RTW_CAPTION].data = rti->strings.toolbar_caption;
-	w->widget[RTW_BUILD_NS].data = rti->gui_sprites.build_ns_rail;
-	w->widget[RTW_BUILD_X].data = rti->gui_sprites.build_x_rail;
-	w->widget[RTW_BUILD_EW].data = rti->gui_sprites.build_ew_rail;
-	w->widget[RTW_BUILD_Y].data = rti->gui_sprites.build_y_rail;
-	w->widget[RTW_AUTORAIL].data = rti->gui_sprites.auto_rail;
-	w->widget[RTW_BUILD_DEPOT].data = rti->gui_sprites.build_depot;
-	w->widget[RTW_CONVERT_RAIL].data = rti->gui_sprites.convert_rail;
-	w->widget[RTW_BUILD_TUNNEL].data = rti->gui_sprites.build_tunnel;
-}
 
 /**
  * Open the build rail toolbar window for a specific rail type.
@@ -860,8 +842,7 @@ void ShowBuildRailToolbar(RailType railtype, int button)
 	if (button < 0 || w == NULL) {
 		DeleteWindowByClass(WC_BUILD_TOOLBAR);
 		_cur_railtype = railtype;
-		w = AllocateWindowDescFront<BuildRailToolbarWindow>(&_build_rail_desc, TRANSPORT_RAIL);
-		SetupRailToolbar(railtype, w);
+		w = new BuildRailToolbarWindow(&_build_rail_desc, TRANSPORT_RAIL, railtype);
 	}
 
 	_remove_button_clicked = false;
@@ -1919,13 +1900,9 @@ void ReinitGuiAfterToggleElrail(bool disable)
 {
 	extern RailType _last_built_railtype;
 	if (disable && _last_built_railtype == RAILTYPE_ELECTRIC) {
-		Window *w;
 		_last_built_railtype = _cur_railtype = RAILTYPE_RAIL;
-		w = FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL);
-		if (w != NULL) {
-			SetupRailToolbar(_cur_railtype, w);
-			w->SetDirty();
-		}
+		BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL));
+		if (w != NULL) w->ModifyRailType(_cur_railtype);
 	}
 	MarkWholeScreenDirty();
 }
@@ -1973,11 +1950,8 @@ static void SetDefaultRailGui()
 	}
 
 	_last_built_railtype = _cur_railtype = rt;
-	Window *w = FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL);
-	if (w != NULL) {
-		SetupRailToolbar(_cur_railtype, w);
-		w->SetDirty();
-	}
+	BuildRailToolbarWindow *w = dynamic_cast<BuildRailToolbarWindow *>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL));
+	if (w != NULL) w->ModifyRailType(_cur_railtype);
 }
 
 /**
