@@ -375,8 +375,6 @@ static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint1
  */
 static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_clicked, bool bar_dragged, bool down_clicked, const Scrollbar *scrollbar)
 {
-	assert(r.right - r.left == WD_VSCROLLBAR_WIDTH - 1); // To ensure the same sizes are used everywhere!
-
 	/* draw up/down buttons */
 	DrawFrameRect(r.left, r.top, r.right, r.top + 9, colour, (up_clicked) ? FR_LOWERED : FR_NONE);
 	DrawString(r.left + up_clicked, r.right + up_clicked, r.top + up_clicked, UPARROW, TC_BLACK, SA_CENTER);
@@ -412,8 +410,6 @@ static inline void DrawVerticalScrollbar(const Rect &r, Colours colour, bool up_
  */
 static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool left_clicked, bool bar_dragged, bool right_clicked, const Scrollbar *scrollbar)
 {
-	assert(r.bottom - r.top == WD_HSCROLLBAR_HEIGHT - 1); // To ensure the same sizes are used everywhere!
-
 	DrawFrameRect(r.left, r.top, r.left + 9, r.bottom, colour, left_clicked ? FR_LOWERED : FR_NONE);
 	DrawSprite(SPR_ARROW_LEFT, PAL_NONE, r.left + 1 + left_clicked, r.top + 1 + left_clicked);
 
@@ -491,7 +487,6 @@ static inline void DrawFrame(const Rect &r, Colours colour, StringID str)
  */
 static inline void DrawStickyBox(const Rect &r, Colours colour, bool clicked)
 {
-	assert(r.right - r.left == WD_STICKY_WIDTH - 1); // To ensure the same sizes are used everywhere!
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 	DrawSprite((clicked) ? SPR_PIN_UP : SPR_PIN_DOWN, PAL_NONE, r.left + WD_STICKY_LEFT + clicked, r.top + WD_STICKY_TOP + clicked);
 }
@@ -505,7 +500,6 @@ static inline void DrawStickyBox(const Rect &r, Colours colour, bool clicked)
  */
 static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bool clicked)
 {
-	assert(r.right - r.left == WD_RESIZE_WIDTH - 1); // To ensure the same sizes are used everywhere!
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 	if (at_left) {
 		DrawSprite(SPR_WINDOW_RESIZE_LEFT, PAL_NONE, r.left + 2 + clicked, r.top + 3 + clicked);
@@ -523,8 +517,6 @@ static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bo
 static inline void DrawCloseBox(const Rect &r, Colours colour, StringID str)
 {
 	assert(str == STR_BLACK_CROSS || str == STR_SILVER_CROSS); // black or silver cross
-	assert(r.right - r.left == WD_CLOSEBOX_WIDTH - 1); // To ensure the same sizes are used everywhere
-
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_NONE);
 	DrawString(r.left, r.right, r.top + WD_CLOSEBOX_TOP, str, TC_FROMSTRING, SA_CENTER);
 }
@@ -538,7 +530,6 @@ static inline void DrawCloseBox(const Rect &r, Colours colour, StringID str)
  */
 static inline void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str)
 {
-	assert(r.bottom - r.top == WD_CAPTION_HEIGHT - 1); // To ensure the same sizes are used everywhere!
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_BORDERONLY);
 	DrawFrameRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, colour, (owner == INVALID_OWNER) ? FR_LOWERED | FR_DARKENED : FR_LOWERED | FR_DARKENED | FR_BORDERONLY);
 
@@ -551,8 +542,6 @@ static inline void DrawCaption(const Rect &r, Colours colour, Owner owner, Strin
 
 static inline void DrawDropdown(const Rect &r, Colours colour, bool clicked, StringID str)
 {
-	assert(r.bottom - r.top == WD_DROPDOWN_HEIGHT - 1); // ensure consistent size
-
 	if (_dynlang.text_dir == TD_LTR) {
 		DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, colour, FR_NONE);
 		DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, colour, clicked ? FR_LOWERED : FR_NONE);
