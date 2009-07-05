@@ -815,6 +815,7 @@ static bool DifficultyChange(int32)
 			ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
 			_settings_newgame.difficulty.diff_level = 3;
 		}
+		InvalidateWindowClasses(WC_SELECT_GAME);
 	} else {
 		_settings_game.difficulty.diff_level = 3;
 	}
