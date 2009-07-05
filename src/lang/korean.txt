@@ -21,7 +21,7 @@ STR_EMPTY                                                       :
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}평지가 필요합니다!
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}대기: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({2:STATION}에서 온 {0:SHORTCARGO})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({1:STATION}에서 온 {0:SHORTCARGO})
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}받음: {WHITE}
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}받음: {GOLD}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}공급: {GOLD}

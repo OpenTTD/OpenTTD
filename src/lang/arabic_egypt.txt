@@ -963,6 +963,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}الس�
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}السماح بتعدد محركات NewGFR {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE} تغير هذا الخيار غير متاح عندما يكون هناك عربات
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE} المطارات لا تنتهي صلاحيتها {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}عرض تحذير عندما يضيع قطار: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}استعراض اوامر العربات: {ORANGE}{STRING}
@@ -1102,7 +1103,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :شبكة 2*2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :شبكة 3*3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :عشوائي
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE} السماح للمدن ببناء طرق: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}السماح للمدن بالتحكم في ضجيج المطارات: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}السماح للمدن بالتحكم بضجيج المطارات: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}موقع شريط الأدوات الرئيسي:  {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :يسار

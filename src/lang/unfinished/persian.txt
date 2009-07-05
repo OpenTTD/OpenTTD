@@ -508,6 +508,7 @@ STR_6                                                           :{BLACK}6
 
 
 
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK} اطلاعات اضافه در مورد بسته ی گرافیکی پایه
 
 
 
@@ -1407,7 +1408,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}هواپ
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}نمیتوان هواپیما را فروخت
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :ساختمان فرودگاه
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}ساخت فرودگاه
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}هواپیما - برای اطلاعاتبیشتر روی هواپیماکلیک کنید
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}هواپیما - برای اطلاعات بیشتر روی هواپیما کلیک کنید
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}هواپیما - برای اطلاعاتبیشتر روی هواپیماکلیک کنید
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}ساخت هواپیمای جدید
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}برای فروش هواپیما آن را به اینجا بکش

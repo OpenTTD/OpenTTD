@@ -332,7 +332,7 @@ STR_SORT_BY_DROPDOWN_NAME                                       :名稱
 STR_SORT_BY_DATE                                                :{BLACK}日期
 STR_SORT_BY_NUMBER                                              :編號
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :去年盈利
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :本年盈利
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :今年盈利
 STR_SORT_BY_AGE                                                 :年齡
 STR_SORT_BY_RELIABILITY                                         :可靠性
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :總容量，依貨物種類排序
@@ -343,6 +343,8 @@ STR_SORT_BY_LENGTH                                              :長度
 STR_SORT_BY_LIFE_TIME                                           :剩餘年限
 STR_SORT_BY_FACILITY                                            :車站種類
 STR_SORT_BY_WAITING                                             :等候客貨總值
+STR_SORT_BY_RATING_MAX                                          :最高運輸評價
+STR_SORT_BY_RATING_MIN                                          :最低運輸評價
 STR_ENGINE_SORT_ENGINE_ID                                       :引擎編號
 STR_ENGINE_SORT_COST                                            :價值
 STR_ENGINE_SORT_POWER                                           :功率
@@ -428,7 +430,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}於地�
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}於地圖上顯示植被
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}於地圖上顯示土地所有人
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}於地圖上開關市鎮名稱
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}本年盈利：{CURRENCY} (去年盈利：{CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}今年盈利：{CURRENCY} (去年盈利：{CURRENCY})
 
 ############ range for service numbers starts
 STR_AGE                                                         :{COMMA} 年 ({COMMA})
@@ -607,6 +609,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}不能�
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...地圖沒有足夠空間
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}擴大市鎮大小
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}擴展
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}此市鎮不會自動興建道路。你可以到 [進階設定] -> [經濟] -> [市鎮] 中啟用 [市鎮可以興建道路] 選項。
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}隨機市鎮
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}隨機選址建立市鎮
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}不能在這裡建造 {STRING} ...
@@ -636,7 +639,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}儲存�
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}以此場景開始
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}載入高度圖
 STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}以高度圖為地形開始新遊戲
-STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}你要離開這個場景嗎？
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}你確定要離開這個場景嗎？
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...只能在市鎮人口超過 1200 人的地方建造
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}將開始時間往前 1 年
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}將開始時間往後 1 年
@@ -941,6 +944,9 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}永遠�
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}於駕駛側顯示號誌：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}於年末顯示財政視窗：{ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}設定指令時預設選擇「直達」指令：{ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :近端
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :中間
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :遠端
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}車輛排隊 (量子效應)：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}滑鼠在視窗邊緣時移動視窗：{ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}可向地方政府行賄：{ORANGE}{STRING}
@@ -1415,7 +1421,7 @@ STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}去年�
 STR_NETWORK_PERFORMANCE                                         :{SILVER}效率：{WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}交通工具：{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}車站： {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}車站：{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_PLAYERS                                             :{SILVER}玩家：{WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}正在連線...
@@ -1443,23 +1449,23 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}用戶�
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}旁觀者
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新公司
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} 找不到網路裝置，或未以 ENABLE_NETWORK 編譯
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} 找不到任何網路遊戲
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} 伺服器沒有回應請求
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} 因 NewGRF 不符合而無法連線
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} 網路遊戲同步失敗
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} 網路遊戲失去連線
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} 無法載入遊戲
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} 無法啟動伺服器
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} 無法連線
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} 連線 #{NUM} 逾時
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} 通訊協定錯誤，連線已關閉
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} 用戶端的版本與伺服器不符
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} 密碼錯誤
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} 伺服器已滿
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} 您被伺服器封鎖了
-STR_NETWORK_ERR_KICKED                                          :{WHITE} 您被踢出遊戲
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} 此伺服器不允許作弊
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}找不到網路裝置，或未以 ENABLE_NETWORK 編譯
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}找不到任何網路遊戲
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}伺服器沒有回應請求
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}因 NewGRF 不符合而無法連線
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}網路遊戲同步失敗
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}網路遊戲失去連線
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}無法載入遊戲
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}無法啟動伺服器
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}無法連線
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}連線 #{NUM} 逾時
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}通訊協定錯誤，連線已關閉
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}用戶端的版本與伺服器不符
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}密碼錯誤
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}伺服器已滿
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}您被伺服器封鎖了
+STR_NETWORK_ERR_KICKED                                          :{WHITE}您被踢出遊戲
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}此伺服器不允許作弊
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :一般錯誤
@@ -1525,7 +1531,7 @@ STR_NETWORK_SEND                                                :{BLACK}傳送
 
 ##### PNG-MAP-Loader
 
-STR_PNGMAP_ERROR                                                :{WHITE}無法從 PNG 載入地形...
+STR_PNGMAP_ERROR                                                :{WHITE}無法從 PNG 檔載入地形...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...找不到檔案
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...無法轉換影像格式，需要 8 或 24-bit PNG 影像
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...出現一點狀況，抱歉 (或許是檔案損毀)
@@ -1605,7 +1611,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :有閉塞及路
 STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :有閉塞及單向路徑號誌的鐵軌
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :有入口及出口號誌的鐵軌
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :有入口及組合號誌的鐵軌
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :有預告及進階號誌的鐵軌
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :有預告及路徑號誌的鐵軌
 STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :有入口及單向路徑號誌的鐵軌
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :有出口及組合號誌的鐵軌
 STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :有出口及路徑號誌的鐵軌
@@ -1754,14 +1760,14 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :建造公司所
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :出資建造新建築物
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :購買專屬運輸權
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :向地方政府行賄
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} 開始進行小型地方廣告活動，為您的運輸服務吸引更多乘客 與貨物。{}  費用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} 開始進行中型地方廣告活動，為您的運輸服務吸引更多乘客 與貨物。{}  費用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} 開始進行大型地方廣告活動，為您的運輸服務吸引更多乘客 與貨物。{}  費用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} 出資重建城內道路網。將對往後六個月的道路運輸造成可觀 的衝擊。{}  費用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} 建造雕像紀念您的公司。{}  花費：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} 在此市鎮內建造新的商業建築。{}  費用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} 購買此市鎮一年的專屬運輸權。地方政府將只讓乘客與貨物 使用您的運輸服務。{}  費用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} 冒著被抓到嚴懲的風險，向地方政府行賄以提高評價{}  費用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}開始進行小型地方廣告活動，為您的運輸服務吸引更多乘客 與貨物。{}費用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}開始進行中型地方廣告活動，為您的運輸服務吸引更多乘客 與貨物。{}費用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}開始進行大型地方廣告活動，為您的運輸服務吸引更多乘客 與貨物。{}費用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}出資重建城內道路網。將對往後六個月的道路運輸造成可觀 的衝擊。{}費用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}建造雕像紀念您的公司。{} 花費：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}在此市鎮內建造新的商業建築。{} 費用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}購買此市鎮一年的專屬運輸權。地方政府將只讓乘客與貨物 使用您的運輸服務。{} 費用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}冒著被抓到嚴懲的風險，向地方政府行賄以提高評價{}費用：{CURRENCY}
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}{TOWN} 交通大亂！{}{}{STRING} 出資的道路重建計劃為用路人帶來六個月的惡夢！
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -2089,7 +2095,7 @@ STR_SV_STNAME_UPPER                                             :{STRING} 台地
 STR_SV_STNAME_LOWER                                             :{STRING} 盆地
 STR_SV_STNAME_HELIPORT                                          :{STRING} 直升機坪
 STR_SV_STNAME_FOREST                                            :{STRING} 森林
-STR_SV_STNAME_FALLBACK                                          :{STRING} 車站  #{NUM}
+STR_SV_STNAME_FALLBACK                                          :{STRING} 車站 #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2611,6 +2617,9 @@ STR_ORDER_GO_TO                                                 :前往
 STR_ORDER_GO_NON_STOP_TO                                        :直達
 STR_ORDER_GO_VIA                                                :經由
 STR_ORDER_GO_NON_STOP_VIA                                       :直達且經由
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[近端]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[中間]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[遠端]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}滿載任一種類客貨
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :有則裝載
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :滿載所有種類客貨
@@ -2719,8 +2728,8 @@ STR_CLONE_ROAD_VEHICLE                                          :{BLACK}複製�
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}這會將購買一部相同的車輛，按住 CTRL 點選還可共享指令
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}這會購買一部相同的車輛，按下按鈕之後再點選於車庫内或外的車輛，按住 CTRL 點選還可共享指令
 STR_CLONE_TRAIN                                                 :{BLACK}複製列車
-STR_CLONE_TRAIN_INFO                                            :{BLACK}這會購買一列一樣的列車，包含所有車廂，按住 CTRL 點選還可共享指令
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}這會購買一列一樣的列車，包含所有車廂，按下按鈕之後再點選機廠内外的其他列車。按住 CTRL 點選還可共享指令
+STR_CLONE_TRAIN_INFO                                            :{BLACK}這會購買一列相同的列車，包含所有車廂，按住 CTRL 點選還可共享指令
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}這會購買一列相同的列車，包含所有車廂，按下按鈕之後再點選機廠内外的其他列車。按住 CTRL 點選還可共享指令
 STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}更名
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}跳過
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}刪除
@@ -2799,6 +2808,15 @@ STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}費用�
 STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}費用：{CURRENCY} 最高速度：{VELOCITY}{}容量：{CARGO}{}營運成本：{CURRENCY}/年
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}年齡：{LTBLUE}{STRING}{BLACK}   營運成本：{LTBLUE}{CURRENCY}/年
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最高速度：{LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}載重：{LTBLUE}{WEIGHT_S} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最高速度：{LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}載重：{LTBLUE}{WEIGHT_S} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最高速度：{LTBLUE}{VELOCITY} {BLACK}最大牽引力：{LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年盈利：{LTBLUE}{CURRENCY} (去年盈利：{CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}可靠度：{LTBLUE}{COMMA}%  {BLACK}上次維護後的故障率：{LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}興建：{LTBLUE}{NUM}{BLACK} 價值：{LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}容量：{LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}容量：{LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}容量：{LTBLUE}{CARGO}，{CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}故障
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}停止
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}無法讓列車通過險阻號誌...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}撞毀！
@@ -2838,7 +2856,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}此交�
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}此時刻表跑完全程需時 {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}此時刻表跑完全程至少需時 {STRING} (此表尚未完成)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動製表
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}以下站火舞價值自動填充時間表 (按住CTRL-點擊以維持等待時間)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}自動以下次運轉的時間編寫時刻表 (按住 CTRL 可保持等待時間)
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}前方有汽車
@@ -2910,8 +2928,8 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}購買船舶
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}購買船舶
 STR_CLONE_SHIP                                                  :{BLACK}複製船舶
-STR_CLONE_SHIP_INFO                                             :{BLACK}這會購買一艘一樣的船舶，按住 CTRL 點選還可共享指令
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}這會購買一艘一樣的船舶，按下按鈕之後再點選船塢内或外的船舶，按住 CTRL 點選還可共享指令
+STR_CLONE_SHIP_INFO                                             :{BLACK}這會購買一艘相同的船舶，按住 CTRL 點選還可共享指令
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}這會購買一艘相同的船舶，按下按鈕之後再點選船塢内或外的船舶，按住 CTRL 點選還可共享指令
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}船舶必須停在船塢内
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}無法出售船舶...
 STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}無法購買船舶...
@@ -2966,8 +2984,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}無法�
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} 機棚
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}購買飛機
 STR_CLONE_AIRCRAFT                                              :{BLACK}複製飛機
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}這會購買一架一樣的飛機，按住 CTRL 點選還可共享指令
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}這會購買一架一樣的飛機，按下此鈕之後再點選機棚内或外的飛機，按住 CTRL 點選還可共享指令
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}這會購買一架相同的飛機，按住 CTRL 點選還可共享指令
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}這會購買一架相同的飛機，按下此鈕之後再點選機棚内或外的飛機，按住 CTRL 點選還可共享指令
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}購買飛機
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}購買飛機
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}無法購買飛機...
@@ -3093,7 +3111,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :將 {STRING} �
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :未預期的 sprite
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :未知的動作 0 屬性
 STR_NEWGRF_ERROR_INVALID_ID                                     :嘗試使用的 ID 無效
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 包含了毀損的 sprite。所有毀損的 sprite會以紅色問號 (？) 顯示。
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 包含了毀損的 sprite。所有毀損的 sprite 會以紅色問號 (？) 顯示。
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :包含多個 Action 8 指令。
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}載入所選的設定值
@@ -3148,6 +3166,9 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}改用�
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}改用歐元：{ORANGE}永不改用
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}預覽：{ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}變更自訂幣值參數
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}降低自訂幣值對 1 英鎊 (£) 的匯率
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}提升自訂幣值對 1 英鎊 (£) 的匯率
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}設定自訂幣值對 1 英鎊 (£) 的匯率
 STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}設定貨幣的分隔符
 STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}為你的貨幣指定前置字串
 STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}為你的貨幣指定後置字串
@@ -3252,15 +3273,16 @@ STR_MAGLEV_VEHICLES                                             :磁浮列車
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}費用：{GOLD}{CURRENCY}{BLACK} 載重：{GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK}   功率：{GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK} 功率：{GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}營運成本：{GOLD}{CURRENCY}/年
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}容量：{GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}設計年份：{GOLD}{NUM}{BLACK} 使用年限：{GOLD}{COMMA} 年
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}最大可靠度：{GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}費用：{GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}載重：{GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}載重：{GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}費用：{GOLD}{CURRENCY}{BLACK} 速度：{GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}容量：{GOLD}{CARGO}，{CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}動力車廂：{GOLD}+{POWER}{BLACK} 載重：{GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}可改裝成：{GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :所有貨物類型
@@ -3554,6 +3576,7 @@ STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI 參�
 STR_AI_AUTHOR                                                   :{BLACK}作者： {STRING}
 STR_AI_VERSION                                                  :{BLACK}版本： {NUM}
 STR_AI_URL                                                      :{BLACK}URL: {STRING}
+STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}正在運行中的其中一個 AI 發生錯誤。請打開「AI 除錯」視窗後擷取螢幕圖片，將此問題回報給 AI 作者。
 ########
 
 ############ town controlled noise level

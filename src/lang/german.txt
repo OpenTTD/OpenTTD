@@ -1720,7 +1720,7 @@ STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Geschäftshaus
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :Stadion
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Alte Häuser
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Stadtverwaltung
-STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Zeige Einzelheiten der Stadtverwaltung
+STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Öffnet Fenster zur Interaktion mit der Stadtverwaltung
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Stadtverwaltung {TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Bewertung der Transportfirma:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
@@ -1866,9 +1866,9 @@ STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Ausricht
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Ausrichtung der Güterverladestelle auswählen
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Hauptansicht zur Station scrollen
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Stationsbewertung anzeigen
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Name der Station ändern
+STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Namen der Station ändern
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Zeige Liste der akzeptierten Frachten
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen - Klicke auf den Namen, um die Station anzuzeigen
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen - Klicke auf den Namen, um die Hauptansicht zur Station zu scrollen
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Wähle die Größe/Art des Flughafens
 STR_STATION_SIGN                                                :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
@@ -2833,7 +2833,7 @@ STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Zugtyp u
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Zugtyp kann nicht umbenannt werden...
 STR_CLEAR_TIME                                                  :{BLACK}Zeit löschen
 STR_RESET_LATENESS                                              :{BLACK}Verspätung löschen
-STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Wegpunktname ändern
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Namen des Wegpunkts ändern
 
 STR_TRAIN_STOPPING                                              :{RED}Halte an
 STR_TRAIN_STOPPING_VEL                                          :{RED}Halte an, {VELOCITY}
