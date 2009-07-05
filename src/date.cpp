@@ -268,6 +268,7 @@ void IncreaseDate()
 	CompaniesYearlyLoop();
 	VehiclesYearlyLoop();
 	TownsYearlyLoop();
+	InvalidateWindowClassesData(WC_BUILD_STATION);
 #ifdef ENABLE_NETWORK
 	if (_network_server) NetworkServerYearlyLoop();
 #endif /* ENABLE_NETWORK */

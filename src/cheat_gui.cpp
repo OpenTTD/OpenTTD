@@ -98,6 +98,7 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	SetDate(ConvertYMDToDate(_cur_year + p2, ymd.month, ymd.day));
 	EnginesMonthlyLoop();
 	SetWindowDirty(FindWindowById(WC_STATUS_BAR, 0));
+	InvalidateWindowClassesData(WC_BUILD_STATION, 0);
 	ResetSignalVariant();
 	return _cur_year;
 }

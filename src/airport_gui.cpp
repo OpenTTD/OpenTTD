@@ -207,6 +207,7 @@ public:
 		this->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
 		this->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
 		this->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
+		this->OnInvalidateData();
 
 		if (_settings_game.economy.station_noise_level) {
 			ResizeWindowForWidget(this, BAW_BOTTOMPANEL, 0, 10);
@@ -222,27 +223,12 @@ public:
 
 	virtual void OnPaint()
 	{
-		int i; // airport enabling loop
-		uint16 y_noise_offset = 0;
-		const AirportFTAClass *airport;
-
-		this->RaiseWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
-		if (!GetAirport(AT_SMALL)->IsAvailable() && _selected_airport_type == AT_SMALL) _selected_airport_type = AT_LARGE;
-		if (!GetAirport(AT_LARGE)->IsAvailable() && _selected_airport_type == AT_LARGE) _selected_airport_type = AT_SMALL;
-		this->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
-
-		for (i = 0; i < BAW_AIRPORT_COUNT; i++) this->SetWidgetDisabledState(i + BAW_SMALL_AIRPORT, !GetAirport(i)->IsAvailable());
-
-		/* select default the coverage area to 'Off' (16) */
-		airport = GetAirport(_selected_airport_type);
-		SetTileSelectSize(airport->size_x, airport->size_y);
-
-		int rad = _settings_game.station.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
-
-		if (_settings_client.gui.station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
-
 		this->DrawWidgets();
 
+		const AirportFTAClass *airport = GetAirport(_selected_airport_type);
+		int rad = _settings_game.station.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
+
+		uint16 y_noise_offset = 0;
 		/* only show the station (airport) noise, if the noise option is activated */
 		if (_settings_game.economy.station_noise_level) {
 			/* show the noise of the selected airport */
@@ -261,17 +247,44 @@ public:
 		}
 	}
 
+	void SelectOtherAirport(byte airport_id)
+	{
+		this->RaiseWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
+		_selected_airport_type = airport_id;
+		this->LowerWidget(airport_id + BAW_SMALL_AIRPORT);
+
+		const AirportFTAClass *airport = GetAirport(airport_id);
+		SetTileSelectSize(airport->size_x, airport->size_y);
+
+		int rad = _settings_game.station.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
+		if (_settings_client.gui.station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
+
+		this->SetDirty();
+	}
+
+	virtual void OnInvalidateData(int data = 0)
+	{
+		if (!GetAirport(_selected_airport_type)->IsAvailable()) {
+			for (int i = 0; i < BAW_AIRPORT_COUNT; i++) {
+				if (GetAirport(i)->IsAvailable()) {
+					this->SelectOtherAirport(i);
+					break;
+				}
+			}
+		}
+		for (int i = 0; i < BAW_AIRPORT_COUNT; i++) {
+			this->SetWidgetDisabledState(i + BAW_SMALL_AIRPORT, !GetAirport(i)->IsAvailable());
+		}
+	}
+
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
 			case BAW_SMALL_AIRPORT: case BAW_CITY_AIRPORT: case BAW_HELIPORT: case BAW_METRO_AIRPORT:
 			case BAW_INTERNATIONAL_AIRPORT: case BAW_COMMUTER_AIRPORT: case BAW_HELIDEPOT:
 			case BAW_INTERCONTINENTAL_AIRPORT: case BAW_HELISTATION:
-				this->RaiseWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
-				_selected_airport_type = widget - BAW_SMALL_AIRPORT;
-				this->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
+				this->SelectOtherAirport(widget - BAW_SMALL_AIRPORT);
 				SndPlayFx(SND_15_BEEP);
-				this->SetDirty();
 				DeleteWindowById(WC_SELECT_STATION, 0);
 				break;
 
