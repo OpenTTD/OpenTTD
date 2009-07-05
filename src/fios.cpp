@@ -572,13 +572,15 @@ public:
 
 		Md5 checksum;
 		uint8 buffer[1024];
+		char basename[MAX_PATH]; ///< \a filename without the extension.
 		size_t len, size;
 
 		/* open the scenario file, but first get the name.
 		 * This is safe as we check on extension which
 		 * must always exist. */
-		*(char *)strrchr(filename, '.') = '\0';
-		f = FioFOpenFile(filename, "rb", SCENARIO_DIR, &size);
+		strecpy(basename, filename, lastof(basename));
+		*strrchr(basename, '.') = '\0';
+		f = FioFOpenFile(basename, "rb", SCENARIO_DIR, &size);
 		if (f == NULL) return false;
 
 		/* calculate md5sum */
