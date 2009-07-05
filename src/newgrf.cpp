@@ -5420,12 +5420,9 @@ static void ResetCustomStations()
 
 static void ResetCustomHouses()
 {
-	GRFFile *file;
-	uint i;
-
-	for (file = _first_grffile; file != NULL; file = file->next) {
+	for (GRFFile *file = _first_grffile; file != NULL; file = file->next) {
 		if (file->housespec == NULL) continue;
-		for (i = 0; i < HOUSE_MAX; i++) {
+		for (uint i = 0; i < HOUSE_MAX; i++) {
 			free(file->housespec[i]);
 		}
 
@@ -5436,56 +5433,45 @@ static void ResetCustomHouses()
 
 static void ResetCustomIndustries()
 {
-	GRFFile *file;
-
-	for (file = _first_grffile; file != NULL; file = file->next) {
-		uint i;
+	for (GRFFile *file = _first_grffile; file != NULL; file = file->next) {
 		/* We are verifiying both tiles and industries specs loaded from the grf file
 		 * First, let's deal with industryspec */
 		if (file->industryspec != NULL) {
 
-			for (i = 0; i < NUM_INDUSTRYTYPES; i++) {
+			for (uint i = 0; i < NUM_INDUSTRYTYPES; i++) {
 				IndustrySpec *ind = file->industryspec[i];
+				if (ind == NULL) continue;
 
-				if (ind != NULL) {
-					/* We need to remove the sounds array */
-					if (HasBit(ind->cleanup_flag, CLEAN_RANDOMSOUNDS)) {
-						free((void*)ind->random_sounds);
-					}
-
-					/* We need to remove the tiles layouts */
-					if (HasBit(ind->cleanup_flag, CLEAN_TILELSAYOUT) && ind->table != NULL) {
-						for (int j = 0; j < ind->num_table; j++) {
-							/* remove the individual layouts */
-							if (ind->table[j] != NULL) {
-								free((void*)ind->table[j]);
-							}
-						}
-						/* remove the layouts pointers */
-						free((void*)ind->table);
-						ind->table = NULL;
-					}
-
-					free(ind);
-					ind = NULL;
+				/* We need to remove the sounds array */
+				if (HasBit(ind->cleanup_flag, CLEAN_RANDOMSOUNDS)) {
+					free((void*)ind->random_sounds);
 				}
+
+				/* We need to remove the tiles layouts */
+				if (HasBit(ind->cleanup_flag, CLEAN_TILELSAYOUT) && ind->table != NULL) {
+					for (int j = 0; j < ind->num_table; j++) {
+						/* remove the individual layouts */
+						free((void*)ind->table[j]);
+					}
+					/* remove the layouts pointers */
+					free((void*)ind->table);
+					ind->table = NULL;
+				}
+
+				free(ind);
 			}
 
 			free(file->industryspec);
 			file->industryspec = NULL;
 		}
 
-		if (file->indtspec != NULL) {
-			for (i = 0; i < NUM_INDUSTRYTILES; i++) {
-				if (file->indtspec[i] != NULL) {
-					free(file->indtspec[i]);
-					file->indtspec[i] = NULL;
-				}
-			}
-
-			free(file->indtspec);
-			file->indtspec = NULL;
+		if (file->indtspec == NULL) continue;
+		for (uint i = 0; i < NUM_INDUSTRYTILES; i++) {
+			free(file->indtspec[i]);
 		}
+
+		free(file->indtspec);
+		file->indtspec = NULL;
 	}
 }
 
