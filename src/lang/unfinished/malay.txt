@@ -126,6 +126,7 @@ STR_ABBREV_MAIL                                                 :{TINYFONT}SR
 STR_ABBREV_OIL                                                  :{TINYFONT}MI
 STR_ABBREV_GOODS                                                :{TINYFONT}BR
 STR_ABBREV_WOOD                                                 :{TINYFONT}KA
+STR_ABBREV_STEEL                                                :{TINYFONT}BS
 STR_ABBREV_FRUIT                                                :{TINYFONT}BU
 STR_ABBREV_FOOD                                                 :{TINYFONT}MK
 STR_ABBREV_PAPER                                                :{TINYFONT}KR
@@ -296,11 +297,13 @@ STR_FILE_MENU_EXIT                                              :Keluar
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Anda pasti mahu meninggalkan permainan ini?
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Tinggalkan Permainan
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Pilih kriteria aturan
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Pilih kriteria tapisan
 STR_SORT_BY                                                     :{BLACK}Menyusun mengikuti
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Bilangan Penduduk
 STR_SORT_BY_PRODUCTION                                          :Pengeluaran
 STR_SORT_BY_TYPE                                                :Jenis
+STR_SORT_BY_TRANSPORTED                                         :Telah dihantarkan
 STR_SORT_BY_NAME                                                :{BLACK}Nama
 STR_SORT_BY_DROPDOWN_NAME                                       :Nama
 STR_SORT_BY_DATE                                                :{BLACK}Tarikh

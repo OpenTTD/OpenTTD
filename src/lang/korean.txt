@@ -26,69 +26,69 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}받음: 
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}받음: {GOLD}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}공급: {GOLD}
 STR_CARGO_PLURAL_NOTHING                                        :
-STR_CARGO_PLURAL_PASSENGERS                                     :승객
-STR_CARGO_PLURAL_COAL                                           :석탄
-STR_CARGO_PLURAL_MAIL                                           :우편
-STR_CARGO_PLURAL_OIL                                            :석유
-STR_CARGO_PLURAL_LIVESTOCK                                      :가축
-STR_CARGO_PLURAL_GOODS                                          :상품
-STR_CARGO_PLURAL_GRAIN                                          :곡물
-STR_CARGO_PLURAL_WOOD                                           :목재
-STR_CARGO_PLURAL_IRON_ORE                                       :철광석
-STR_CARGO_PLURAL_STEEL                                          :철
-STR_CARGO_PLURAL_VALUABLES                                      :귀금속
-STR_CARGO_PLURAL_COPPER_ORE                                     :구리광석
-STR_CARGO_PLURAL_MAIZE                                          :옥수수
-STR_CARGO_PLURAL_FRUIT                                          :과일
-STR_CARGO_PLURAL_DIAMONDS                                       :다이아몬드
-STR_CARGO_PLURAL_FOOD                                           :식품
-STR_CARGO_PLURAL_PAPER                                          :종이
-STR_CARGO_PLURAL_GOLD                                           :금
-STR_CARGO_PLURAL_WATER                                          :물
-STR_CARGO_PLURAL_WHEAT                                          :밀
-STR_CARGO_PLURAL_RUBBER                                         :고무
-STR_CARGO_PLURAL_SUGAR                                          :설탕
-STR_CARGO_PLURAL_TOYS                                           :장난감
-STR_CARGO_PLURAL_CANDY                                          :사탕
-STR_CARGO_PLURAL_COLA                                           :콜라
-STR_CARGO_PLURAL_COTTON_CANDY                                   :솜사탕
-STR_CARGO_PLURAL_BUBBLES                                        :거품
-STR_CARGO_PLURAL_TOFFEE                                         :태피
-STR_CARGO_PLURAL_BATTERIES                                      :배터리
-STR_CARGO_PLURAL_PLASTIC                                        :플라스틱
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :탄산음료
+STR_CARGO_PLURAL_PASSENGERS                                     :{G=m}승객
+STR_CARGO_PLURAL_COAL                                           :{G=m}석탄
+STR_CARGO_PLURAL_MAIL                                           :{G=m}우편
+STR_CARGO_PLURAL_OIL                                            :{G=f}석유
+STR_CARGO_PLURAL_LIVESTOCK                                      :{G=m}가축
+STR_CARGO_PLURAL_GOODS                                          :{G=m}상품
+STR_CARGO_PLURAL_GRAIN                                          :{G=m}곡물
+STR_CARGO_PLURAL_WOOD                                           :{G=f}목재
+STR_CARGO_PLURAL_IRON_ORE                                       :{G=m}철광석
+STR_CARGO_PLURAL_STEEL                                          :{G=m}철
+STR_CARGO_PLURAL_VALUABLES                                      :{G=m}귀금속
+STR_CARGO_PLURAL_COPPER_ORE                                     :{G=m}구리광석
+STR_CARGO_PLURAL_MAIZE                                          :{G=f}옥수수
+STR_CARGO_PLURAL_FRUIT                                          :{G=m}과일
+STR_CARGO_PLURAL_DIAMONDS                                       :{G=f}다이아몬드
+STR_CARGO_PLURAL_FOOD                                           :{G=m}식품
+STR_CARGO_PLURAL_PAPER                                          :{G=f}종이
+STR_CARGO_PLURAL_GOLD                                           :{G=m}금
+STR_CARGO_PLURAL_WATER                                          :{G=m}물
+STR_CARGO_PLURAL_WHEAT                                          :{G=m}밀
+STR_CARGO_PLURAL_RUBBER                                         :{G=f}고무
+STR_CARGO_PLURAL_SUGAR                                          :{G=m}설탕
+STR_CARGO_PLURAL_TOYS                                           :{G=m}장난감
+STR_CARGO_PLURAL_CANDY                                          :{G=m}사탕
+STR_CARGO_PLURAL_COLA                                           :{G=f}콜라
+STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=m}솜사탕
+STR_CARGO_PLURAL_BUBBLES                                        :{G=m}거품
+STR_CARGO_PLURAL_TOFFEE                                         :{G=f}태피
+STR_CARGO_PLURAL_BATTERIES                                      :{G=f}배터리
+STR_CARGO_PLURAL_PLASTIC                                        :{G=m}플라스틱
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=f}탄산음료
 STR_CARGO_SINGULAR_NOTHING                                      :
-STR_CARGO_SINGULAR_PASSENGER                                    :승객
-STR_CARGO_SINGULAR_COAL                                         :석탄
-STR_CARGO_SINGULAR_MAIL                                         :우편
-STR_CARGO_SINGULAR_OIL                                          :석유
-STR_CARGO_SINGULAR_LIVESTOCK                                    :가축
-STR_CARGO_SINGULAR_GOODS                                        :상품
-STR_CARGO_SINGULAR_GRAIN                                        :곡물
-STR_CARGO_SINGULAR_WOOD                                         :목재
-STR_CARGO_SINGULAR_IRON_ORE                                     :철광석
-STR_CARGO_SINGULAR_STEEL                                        :철
-STR_CARGO_SINGULAR_VALUABLES                                    :귀금속
-STR_CARGO_SINGULAR_COPPER_ORE                                   :구리 광석
-STR_CARGO_SINGULAR_MAIZE                                        :옥수수
-STR_CARGO_SINGULAR_FRUIT                                        :과일
-STR_CARGO_SINGULAR_DIAMOND                                      :다이아몬드
-STR_CARGO_SINGULAR_FOOD                                         :식품
-STR_CARGO_SINGULAR_PAPER                                        :종이
-STR_CARGO_SINGULAR_GOLD                                         :금
-STR_CARGO_SINGULAR_WATER                                        :물
-STR_CARGO_SINGULAR_WHEAT                                        :밀
-STR_CARGO_SINGULAR_RUBBER                                       :고무
-STR_CARGO_SINGULAR_SUGAR                                        :설탕
-STR_CARGO_SINGULAR_TOY                                          :장난감
-STR_CARGO_SINGULAR_CANDY                                        :사탕
-STR_CARGO_SINGULAR_COLA                                         :콜라
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :솜사탕
-STR_CARGO_SINGULAR_BUBBLE                                       :거품
-STR_CARGO_SINGULAR_TOFFEE                                       :태피
-STR_CARGO_SINGULAR_BATTERY                                      :배터리
-STR_CARGO_SINGULAR_PLASTIC                                      :플라스틱
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :탄산음료
+STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}승객
+STR_CARGO_SINGULAR_COAL                                         :{G=m}석탄
+STR_CARGO_SINGULAR_MAIL                                         :{G=m}우편
+STR_CARGO_SINGULAR_OIL                                          :{G=f}석유
+STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=m}가축
+STR_CARGO_SINGULAR_GOODS                                        :{G=m}상품
+STR_CARGO_SINGULAR_GRAIN                                        :{G=m}곡물
+STR_CARGO_SINGULAR_WOOD                                         :{G=f}목재
+STR_CARGO_SINGULAR_IRON_ORE                                     :{G=m}철광석
+STR_CARGO_SINGULAR_STEEL                                        :{G=m}철
+STR_CARGO_SINGULAR_VALUABLES                                    :{G=m}귀금속
+STR_CARGO_SINGULAR_COPPER_ORE                                   :{G=m}구리광석
+STR_CARGO_SINGULAR_MAIZE                                        :{G=f}옥수수
+STR_CARGO_SINGULAR_FRUIT                                        :{G=m}과일
+STR_CARGO_SINGULAR_DIAMOND                                      :{G=f}다이아몬드
+STR_CARGO_SINGULAR_FOOD                                         :{G=m}식품
+STR_CARGO_SINGULAR_PAPER                                        :{G=f}종이
+STR_CARGO_SINGULAR_GOLD                                         :{G=m}금
+STR_CARGO_SINGULAR_WATER                                        :{G=m}물
+STR_CARGO_SINGULAR_WHEAT                                        :{G=m}밀
+STR_CARGO_SINGULAR_RUBBER                                       :{G=f}고무
+STR_CARGO_SINGULAR_SUGAR                                        :{G=m}설탕
+STR_CARGO_SINGULAR_TOY                                          :{G=m}장난감
+STR_CARGO_SINGULAR_CANDY                                        :{G=m}사탕
+STR_CARGO_SINGULAR_COLA                                         :{G=f}콜라
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=m}솜사탕
+STR_CARGO_SINGULAR_BUBBLE                                       :{G=m}거품
+STR_CARGO_SINGULAR_TOFFEE                                       :{G=f}태피
+STR_CARGO_SINGULAR_BATTERY                                      :{G=f}배터리
+STR_CARGO_SINGULAR_PLASTIC                                      :{G=m}플라스틱
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}탄산음료
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :승객 {COMMA}명
 STR_QUANTITY_COAL                                               :석탄 {WEIGHT}
@@ -353,7 +353,7 @@ STR_ENGINE_SORT_INTRO_DATE                                      :도입 날짜
 STR_ENGINE_SORT_RUNNING_COST                                    :운행비용
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :힘/운행비용
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :화물 수송량
-STR_NO_WAITING_CARGO                                            :{BLACK}대기중인 화물이 없습니다.
+STR_NO_WAITING_CARGO                                            :{BLACK}대기 중인 화물이 없습니다.
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}모든 시설 선택
 STR_SELECT_ALL_TYPES                                            :{BLACK}모든 종류의 화물을 선택 (대기하지 않는 화물 포함)
 STR_AVAILABLE_TRAINS                                            :{BLACK}사용 가능 열차
@@ -442,9 +442,9 @@ STR_VEHICLE_TRAIN                                               :열차
 STR_VEHICLE_ROAD_VEHICLE                                        :자동차
 STR_VEHICLE_SHIP                                                :선박
 STR_VEHICLE_AIRCRAFT                                            :항공기
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE}(이)가 오래되었습니다
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE}(이)가 너무 오래되었습니다
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE}(이)가 너무 오래되어 교체가 시급합니다
+STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE}{G 0 "이" "가"} 오래되었습니다
+STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE}{G 0 "이" "가"} 매우 오래되었습니다
+STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE}{G 0 "이" "가"} 너무 오래되어 교체가 시급합니다
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}이 지역의 지형 정보
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}초기화 가격: {LTBLUE}없음
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}초기화 가격: {RED}{CURRENCY}
@@ -614,7 +614,7 @@ STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}확장�
 STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}마을이 도로를 짓지 않습니다. [고급설정->경제->도시]에서 도로를 지을 수 있도록 설정을 변경하실 수 있습니다.
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}무작위 마을 건설
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}무작위로 마을를 건설합니다.
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING}을/를 여기에 건설할 수 없습니다...
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}여기에 {STRING}{G 0 "을" "를"} 건설할 수 없습니다...
 STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...마을을 먼저 만드십시오
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...한 마을에 하나만 건설 가능합니다!
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}나무 심기
@@ -779,8 +779,8 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  게�
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}저장중입니다,{}끝날때까지 기다려주세요
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Street 스타일 음악' 프로그램 선택
 
-STR_6                                                           :{BLACK}6
-STR_7                                                           :{BLACK}7
+STR_6                                                           :{G=m}{BLACK}6
+STR_7                                                           :{G=m}{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :영어 (기본)
@@ -788,7 +788,7 @@ STR_TOWNNAME_FRENCH                                             :프랑스어
 STR_TOWNNAME_GERMAN                                             :독일어
 STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :영어 (추가)
 STR_TOWNNAME_LATIN_AMERICAN                                     :라틴아메리카어
-STR_TOWNNAME_SILLY                                              :Silly
+STR_TOWNNAME_SILLY                                              :바보같은 마을 이름
 STR_TOWNNAME_SWEDISH                                            :스웨덴어
 STR_TOWNNAME_DUTCH                                              :네덜란드어
 STR_TOWNNAME_FINNISH                                            :핀란드어
@@ -861,31 +861,31 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}기본 �
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}자동 저장 실패
 
-STR_MONTH_JAN                                                   :1월
-STR_MONTH_FEB                                                   :2월
-STR_MONTH_MAR                                                   :3월
-STR_MONTH_APR                                                   :4월
-STR_MONTH_MAY                                                   :5월
-STR_MONTH_JUN                                                   :6월
-STR_MONTH_JUL                                                   :7월
-STR_MONTH_AUG                                                   :8월
-STR_MONTH_SEP                                                   :9월
-STR_MONTH_OCT                                                   :10월
-STR_MONTH_NOV                                                   :11월
-STR_MONTH_DEC                                                   :12월
+STR_MONTH_JAN                                                   :{G=m}1월
+STR_MONTH_FEB                                                   :{G=m}2월
+STR_MONTH_MAR                                                   :{G=m}3월
+STR_MONTH_APR                                                   :{G=m}4월
+STR_MONTH_MAY                                                   :{G=m}5월
+STR_MONTH_JUN                                                   :{G=m}6월
+STR_MONTH_JUL                                                   :{G=m}7월
+STR_MONTH_AUG                                                   :{G=m}8월
+STR_MONTH_SEP                                                   :{G=m}9월
+STR_MONTH_OCT                                                   :{G=m}10월
+STR_MONTH_NOV                                                   :{G=m}11월
+STR_MONTH_DEC                                                   :{G=m}12월
 
-STR_HEADING_FOR_STATION                                         :{LTBLUE}{STATION}(으)로 향하는 중
-STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}{STATION}(으)로 향하는 중 ({VELOCITY})
+STR_HEADING_FOR_STATION                                         :{LTBLUE}{STATION}{G 0 "으" ""}로 향하는 중
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}{STATION}{G 0 "으" ""}로 향하는 중 ({VELOCITY})
 STR_NO_ORDERS                                                   :{LTBLUE}경로 없음
 STR_NO_ORDERS_VEL                                               :{LTBLUE}경로 없음 ({VELOCITY})
 
-STR_PASSENGERS                                                  :승객
-STR_BAGS                                                        :자루
-STR_TONS                                                        :톤
-STR_LITERS                                                      :리터
-STR_ITEMS                                                       :품목
-STR_CRATES                                                      :상자
-STR_RES_OTHER                                                   :기타
+STR_PASSENGERS                                                  :{G=m}승객
+STR_BAGS                                                        :{G=f}자루
+STR_TONS                                                        :{G=m}톤
+STR_LITERS                                                      :{G=f}리터
+STR_ITEMS                                                       :{G=m}품목
+STR_CRATES                                                      :{G=f}상자
+STR_RES_OTHER                                                   :{G=f}기타
 STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
@@ -894,10 +894,10 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}경로�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}경로를 복사할 수 없습니다...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 공유된 경로의 끝 - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE}(이)가 계속 진행할 경로를 찾을 수 없습니다.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE}(이)가 길을 잃었습니다.
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE}{G 0 "이" "가"} 진행할 경로를 찾지 못했습니다.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE}{G 0 "이" "가"} 길을 잃었습니다.
 STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY} 입니다.
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}유럽 화폐단위 통일!{}{}유로화가 당신 나라의 일상 거래에서의 유일한 화폐 단위가 되었습니다!
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}유럽 화폐단위 통일!{}{}국가의 단일 유통 화폐로 유로화가 도입되었습니다!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -908,7 +908,7 @@ STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE
 # end of order system
 
 STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}{VEHICLE}의 자동교체에 실패하였습니다{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE}(이)가 교체 이후 너무 오래되었습니다
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE}{G 0 "이" "가"} 교체된지 너무 오래되었습니다
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}자동대체/갱신 규칙이 적용되지 않았습니다.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(자금 제한)
 
@@ -1172,7 +1172,7 @@ STR_TOYLAND_LANDSCAPE                                           :장난감 나�
 
 STR_CHEATS                                                      :{WHITE}치트
 STR_CHEATS_TIP                                                  :{BLACK}체크박스는 이전에 사용한 치트를 나타냅니다.
-STR_CHEATS_WARNING                                              :{BLACK}경고! 당신은 경쟁자를 속이고 있습니다. 그러한 창피는 영원히 지워지지 않으리란 것을 명심하십시오.
+STR_CHEATS_WARNING                                              :{BLACK}경고! 치트는 경쟁자를 속이는 행위입니다. 치트 기록은 절대로 지워지지 않음을 명심하십시오.
 STR_CHEAT_MONEY                                                 :{LTBLUE}재정을 {CURRENCY} 만큼 증가
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}다음 회사로 플레이중: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설, 움직이지 못하는 것들 제거) : {ORANGE}{STRING}
@@ -1278,7 +1278,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}생산�
 STR_NETWORK_MULTIPLAYER                                         :{WHITE}멀티 플레이
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}플레이어 이름:
-STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}다른 사람이 당신을 확인할 이름입니다
+STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}다른 사람들에게 보여줄 당신의 이름입니다.
 STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}이름을 입력하세요
 STR_NETWORK_CONNECTION                                          :{BLACK}접속방법:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}인터넷/네트워크 게임중에 하나를 선택하세요.
@@ -1432,7 +1432,7 @@ STR_NETWORK_CONNECTING                                          :{WHITE}접속�
 ############ Leave those lines in this order!!
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) 접속중입니다..
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) 권한 부여중..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) 대기중..
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) 기다리는 중..
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) 맵 다운로드중..
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) 데이터 처리중..
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) 등록중..
@@ -1440,7 +1440,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) �
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}게임 정보 가져오는 중..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}회사 정보 가져오는 중..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM}명의 접속자가 앞에서 대기중입니다.
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM}명의 접속자가 먼저 기다리고 있습니다
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} 다운로드
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}접속 끊기
@@ -1700,8 +1700,8 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}도시 �
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}지난달 승객수: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}지난달 우편수: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
 STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}마을이 성장하기 위해 필요한 화물:
-STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK}(이)가 필요함
-STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK}(이)가 지난달에 수송됨
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK}{G 0 "이" "가"} 필요함
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK}{G 0 "이" "가"} 지난달에 수송됨
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :고층 사무 구획
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :사무 구획
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :소규모의 평지 구획
@@ -1732,7 +1732,7 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}이미 �
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{1:STATION}에서 {2:STATION}까지 {0:STRING} 수송{YELLOW} ({3:COMPANY}{YELLOW}, {DATE_SHORT}까지)
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}보조금 제공 계약 파기:{}{}{1:STRING}에서 {2:STRING}까지의 {0:STRING} 수송은 더이상 보조금을 지급하지 않습니다.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}보조금 제공 철회:{}{}지역 당국은 {1:STATION}에서 {2:STATION}까지의 {0:STRING} 수송에 대한 보조금을 철회하였습니다.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}보조금 제공 안내:{}{}처음으로 {1:STRING}에서 {2:STRING}까지의 {0:STRING}을/를 수송하는 회사는 지역 당국으로부터 보조금을 받게 될 것입니다!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}보조금 제공 안내:{}{}처음으로 {1:STRING}에서 {2:STRING}까지의 {0:STRING}{G 0 "을" "를"} 수송하는 회사는 지역 당국으로부터 보조금을 받게 될 것입니다!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}{0:STRING}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 50%의 추가 보조금을 내년까지 받게 됩니다!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}{0:STRING}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 2배의 추가 보조금을 내년까지 받게 됩니다!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}{0:STRING}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 3배의 추가 보조금을 내년까지 받게 됩니다!
@@ -1840,10 +1840,10 @@ STR_CARGO_RATING_OUTSTANDING                                    :매우 훌륭�
 ############ range for rating ends
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION}에서 더이상 {STRING}을/를 받지 않습니다.
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION}에서 더이상 {STRING}/{STRING}을/를 받지 않습니다.
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION}에서 {STRING}을/를 받습니다.
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION}에서 {STRING}/{STRING}을/를 받습니다.
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION}에서 더 이상 {STRING}{G 1 "을" "를"} 받지 않습니다.
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION}에서 더 이상 {STRING}/{STRING}{G 2 "을" "를"} 받지 않습니다.
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION}에서 이제 {STRING}{G 1 "을" "를"} 받을 수 있습니다.
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION}에서 이제 {STRING}/{STRING}{G 2 "을" "를"} 받을 수 있습니다.
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}버스 정류장 방향
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}트럭 적하장 방향
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}승객 전차 정거장 방향
@@ -1931,7 +1931,7 @@ STR_LOAD_HEIGHTMAP                                              :{WHITE}Heightma
 STR_SAVE_OSKTITLE                                               :{BLACK}게임을 저장할 파일명을 입력하세요
 
 ##id 0x4800
-STR_OBJECT_IN_THE_WAY                                           :{WHITE}중간에 {STRING}이/가 있습니다
+STR_OBJECT_IN_THE_WAY                                           :{WHITE}중간에 {STRING}{G 0 "이" "가"} 있습니다.
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_NAME_COAL_MINE                                     :석탄 광산
 STR_INDUSTRY_NAME_POWER_STATION                                 :발전소
@@ -1987,20 +1987,20 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}생산: 
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}지난달 생산량:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% 수송됨)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}이 산업시설이 있는 곳으로 이동
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}새 {STRING}이/가 {TOWN} 근처에 지어지고 있습니다!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}새 {STRING}이/가 {TOWN} 근처에서 자라나고 있습니다!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}새 {STRING}{G 0 "이" "가"} {TOWN} 근처에 지어지고 있습니다!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}새 {STRING}{G 0 "이" "가"} {TOWN} 근처에서 자라나고 있습니다!
 STR_INDUSTRY_BUILD_COST                                         :{BLACK}가격: {YELLOW}{CURRENCY}
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}여기에 이 산업시설을 건설할 수 없습니다...
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...숲은 만년설 높이 이상의 고도에만 심을 수 있습니다.
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT}{STRING}의 긴급폐쇄를 알립니다!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}연결된 수요가 없는 관계로 {STRING}의 긴급 폐쇄를 알립니다!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}근처에 나무 고갈로 인한 {STRING}의 긴급 폐쇄를 알립니다!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY}이/가 생산량을 늘렸습니다!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY}{G 0 "이" "가"} 생산량을 늘렸습니다!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BLACK}{BIGFONT}{INDUSTRY}에서 새 석탄 광맥을 찾았습니다!{}생산량이 2배가 되었습니다!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BLACK}{BIGFONT}{INDUSTRY}에서 새 유전을 찾았습니다!{}생산량이 2배가 되었습니다!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BLACK}{BIGFONT}{INDUSTRY}에서 향상된 농업 기술을 발견해 생산량이 2배가 되었습니다!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY}의 생산량이 50%로 떨어졌습니다.
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BLACK}{BIGFONT}{INDUSTRY}이/가 곤충떼의 습격으로 황폐화되었습니다!{}생산량이 50%로 떨어졌습니다.
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BLACK}{BIGFONT}{INDUSTRY}{G 0 "이" "가"} 곤충떼의 습격으로 황폐화되었습니다!{}생산량이 50%로 떨어졌습니다.
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...맵 가장자리에만 위치할 수 있습니다.
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BLACK}{BIGFONT}{1:INDUSTRY}의 {0:STRING} 생산량이 {2:COMMA}% 증가하였습니다!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BLACK}{BIGFONT}{1:INDUSTRY}의 {0:STRING} 생산량이 {2:COMMA}% 감소하였습니다!
@@ -2255,15 +2255,15 @@ STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}회사 �
 STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_OTHER                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BLACK}{BIGFONT}운송회사에 문제가 생김!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BLACK}{BIGFONT}{STRING}이/가 퍼포먼스가 오르지 않아 곧 팔리거나 파산될 위기에 처했습니다!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BLACK}{BIGFONT}성취도를 바로 올리지 못하면 {STRING}{G 0 "은" "는"} 팔리거나 파산할 것입니다!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(매니저)
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BLACK}{BIGFONT}운송 회사 합병!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING}이/가 {STRING}에게 {CURRENCY}의 가격으로 인수합병되었습니다!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING}{G 0 "이" "가"} {STRING}에게 {CURRENCY}의 가격으로 인수합병되었습니다!
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}저희 회사를 거두어주실 운송회사를 찾고있습니다.{}{}저희 {COMPANY} 회사를 {CURRENCY}의 가격으로 인수합병하시겠습니까?
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BLACK}{BIGFONT}파산!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BLACK}{BIGFONT}{STRING}가 채권자에 의해 파산되고 모든 자산이 팔렸습니다!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BLACK}{BIGFONT}새 운송회사 등장!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING}이/가 {TOWN}에서 공사를 시작했습니다!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING}{G 0 "이" "가"} {TOWN}에서 공사를 시작했습니다!
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}회사를 인수할 수 없습니다...
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}화물 운송단가 비율
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{BLACK}{TINYFONT}통과시간
@@ -2600,7 +2600,7 @@ STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Tricario 헬리
 STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Guru X2 헬리콥터
 STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut 헬리콥터
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}차량 제조 안내 메시지
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}저희는 방금 전에 {STRING}을/를 개발했습니다. - 1년 먼저 이 차량을 사용하시어 모두에게 공개되기 전에 어떻게 작동하는지 확인할 수 있도록 해주시겠습니까?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}저희는 이제 막 {STRING}{G 0 "을" "를"} 개발했습니다. 1년 먼저 이 차량을 사용하셔서 모두에게 공개되기 전에 잘 작동하는지 확인해주시겠습니까?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :철도 기관차
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :자동차
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :항공기
@@ -2713,7 +2713,7 @@ STR_UNKNOWN_STATION                                             :알수없는 �
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}비어있음
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} (출발지: {STATION})
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} (출발지: {STATION}) (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE}(이)가 차량기지에 있습니다
+STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE}{G 0 "이" "가"} 차량기지 안에서 대기 중입니다
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}새 열차
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}열차가 너무 깁니다!
@@ -2872,7 +2872,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}자동�
 STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...차고 안에서 정지해있어야 합니다!
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}자동차를 팔 수 없습니다...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}자동차를 운행/정지시킬 수 없습니다...
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE}(이)가 차고에 있습니다
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE}{G 0 "이" "가"} 차고에서 대기 중입니다
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}{TOWN} 차고로 가는 중
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}{TOWN} 차고로 가는 중 ({VELOCITY})
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}{TOWN} 차고로 점검하러 가는중
@@ -2943,7 +2943,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}{TOWN} 
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}{TOWN} 정박소로 가는 중 ({VELOCITY})
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN} 정박소로 점검하러 가는 중
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} 정박소로 점검하러 가는 중 ({VELOCITY})
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE}(이)가 정박소에 있습니다
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE}{G 0 "이" "가"} 정박소 안에서 대기 중입니다
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}항구 건설
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}정박소 만들기 (선박 제작 및 점검용)
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요
@@ -2998,7 +2998,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATIO
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION}공항 격납고로 가는 중 ({VELOCITY})
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}{STATION}공항 격납고로 점검하러 가는 중
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}{STATION}공항 격납고로 점검하러 가는 중 ({VELOCITY})
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE}(이)가 격납고에 있습니다
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE}{G 0 "이" "가"} 격납고 안에서 대기 중입니다
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}중간에 항공기가 있습니다
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}항공기를 운행/중지시킬 수 없습니다...
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}항공기가 운항중입니다
@@ -3102,15 +3102,15 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}경고: {S
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}오류: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}치명적 오류: {SILVER}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING}은 OpenTTD에서 보고된 TTD패치 버전에서 작동하지 않을 것입니다.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING}은/는 {STRING} 버젼의 TTD를 위한 것입니다.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING}(은)는 {STRING}(와)과 사용되도록 디자인되었습니다
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING}{G 0 "은" "는"} {STRING} 버전의 TTD를 위한 것입니다.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING}{G 0 "은" "는"} {STRING}{G 1 "와" "과"} 같이 사용해야 합니다
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}{STRING}의 부적절한 파라미터: 파라미터 {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING}은/는 반드시 {STRING}이전에 불러와야 합니다.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING}은/는 반드시 {STRING}다음에 불러와야 합니다.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING}{G 0 "은" "는"} 반드시 {STRING} 앞에 불러와야 합니다.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING}{G 0 "은" "는"} 반드시 {STRING} 뒤에 불러와야 합니다.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING}는 OpenTTD {STRING} 버전이나 그 이상이 필요합니다.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 파일 자체는 번역용으로 디자인됨
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :NewGRF이 너무 많습니다.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{1:STRING}를 포함한 정적 NewGRF {0:STRING}(을)를 불러오는 것은 비동기화를 야기시킬 수 있습니다.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{1:STRING}를 포함한 정적 NewGRF {0:STRING}{G 0 "을" "를"} 불러오는 것은 비동기화를 일으킬 수 있습니다.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :예기치 않은 스프라이트
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :알수없는 액션 0 속성
 STR_NEWGRF_ERROR_INVALID_ID                                     :유효하지 않은 ID 사용 시도
@@ -3153,8 +3153,8 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF 파
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시정지를 해제하면 오류가 발생할 수도 있습니다. 차후에 나오는 오류에 대해서 버그 리포트를 제출하지 마십시오.{}정말로 일시정지를 해제하시겠습니까?
 
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}'는 비동기화 혹은 충돌을 일으킬 수 있습니다.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'이/가 차고 안에 있지 않으면 차량 길이가 바뀝니다.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'의 열차 '{0:VEHICLE}'은/는 유효하지 않은 길이를 가지고 있습니다. NewGRF에 의한 문제일 수 있으며 비동기화/충돌을 일으킬 수 있습니다.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고 안에 있지 않으면 차량 길이가 바뀝니다.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'의 열차 '{0:VEHICLE}'의 길이값이 유효하지 않습니다. NewGRF에 의한 문제일 것입니다. 게임이 비동기화/충돌을 일으킬 수 있습니다.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' 의 정보가 잘못되었습니다
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGINE}을 위한 화물/개조 정보가 건설 후 구매 목록과 다릅니다. 이것은 자동교체에서 개조를 실패를 초래할 수 있습니다.
@@ -3248,23 +3248,23 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}항공�
 STR_ENGINES                                                     :기관차
 STR_WAGONS                                                      :화물차
 
-STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}이 차량기지 내의 모든 열차의 운행을 중지시킵니다.
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}이 차량기지 안에 있는 모든 열차의 운행을 중지시킵니다.
 STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}이 차고 내의 모든 자동차의 운행을 중지시킵니다.
-STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}이 정박소 내의 모든 선박의 운행을 중지시킵니다.
-STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}이 격납고 내의 모든 항공기의 운행을 중지시킵니다.
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}이 정박소 안에 있는 모든 선박의 운행을 중지시킵니다.
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}이 격납고 안에 있는 모든 항공기의 운행을 중지시킵니다.
 
-STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}이 차량기지 내의 모든 열차의 운행을 시작합니다.
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}이 차량기지 안에 있는 모든 열차의 운행을 시작합니다.
 STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}이 차고 내의 모든 자동차의 운행을 시작합니다.
-STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}이 정박소 내의 모든 선박의 운행을 시작합니다.
-STR_MASS_START_HANGAR_TIP                                       :{BLACK}이 격납고 내의 모든 항공기의 운행을 시작합니다.
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}이 정박소 안에 있는 모든 선박의 운행을 시작합니다.
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}이 격납고 안에 있는 모든 항공기의 운행을 시작합니다.
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}이 목록의 모든 차량의 운행을 중지시킵니다.
-STR_MASS_START_LIST_TIP                                         :{BLACK}이 목록의 모든 차량의 운행을 시작합니다.
+STR_MASS_START_LIST_TIP                                         :{BLACK}이 목록에 있는 모든 차량의 운행을 시작합니다.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}팻말 목록 - 팻말 {COMMA}개
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}경로 수리에 실패하여 {VEHICLE}(이)가 멈췄습니다
+STR_ORDER_REFIT_FAILED                                          :{WHITE}경로 수리에 실패하여 {VEHICLE}{G 0 "이" "가"} 멈췄습니다
 
 ############ Lists rail types
 
@@ -3296,9 +3296,9 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 �
 
 ########### For showing numbers in widgets
 
-STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
-STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
-STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
+STR_NUM_1                                                       :{G=m}{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{G=f}{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{G=m}{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 
@@ -3314,8 +3314,8 @@ STR_TREE_PLACER                                                 :{BLACK}나무 �
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Heightmap 방향:
 STR_TERRAIN_TYPE                                                :{BLACK}지형 종류:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}해수면:
-STR_SMOOTHNESS                                                  :{BLACK}부드러움:
-STR_SNOW_LINE_HEIGHT                                            :{BLACK}만년설:
+STR_SMOOTHNESS                                                  :{BLACK}지표면을 깎는 방식:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}만년설 고도:
 STR_DATE                                                        :{BLACK}날짜:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}도시의 수:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}산업시설 수:
@@ -3323,8 +3323,8 @@ STR_GENERATE_DATE                                               :{BLACK}{DATE_LO
 STR_SNOW_LINE_UP                                                :{BLACK}만년설 높이를 1칸 높입니다
 STR_SNOW_LINE_DOWN                                              :{BLACK}만년설 높이를 1칸 낮춥니다
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}만년설의 높이를 변경
-STR_START_DATE_QUERY_CAPT                                       :{WHITE}시작 년도를 변경합니다.
-STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}맵 크기에 대한 경고
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}시작 연도를 변경합니다.
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}맵 크기 경고
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}원본 맵의 크기를 많이 조정하는 것은 좋지 않습니다. 만들기를 계속하시겠습니까?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Heightmap 이름:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}크기: {ORANGE}{NUM} x {NUM}
@@ -3338,13 +3338,13 @@ STR_WORLD_GENERATION                                            :{BLACK}지형 �
 STR_TREE_GENERATION                                             :{BLACK}나무 심는 중
 STR_UNMOVABLE_GENERATION                                        :{BLACK}움직일수 없는 객체 만드는 중
 STR_CLEARING_TILES                                              :{BLACK}거친 암석지대 만드는 중
-STR_SETTINGUP_GAME                                              :{BLACK}게임 셋업중
+STR_SETTINGUP_GAME                                              :{BLACK}게임 설정 중
 STR_PREPARING_TILELOOP                                          :{BLACK}타일 루프 작동중
 STR_PREPARING_GAME                                              :{BLACK}게임 준비중
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}이 행위는 난이도를 사용자 설정으로 변경합니다
-STR_SE_FLAT_WORLD                                               :{WHITE}평평한 땅
+STR_SE_FLAT_WORLD                                               :{WHITE}평평한 지형
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}평평한 땅 만들기
-STR_SE_RANDOM_LAND                                              :{WHITE}무작위 땅
+STR_SE_RANDOM_LAND                                              :{WHITE}무작위 지형
 STR_SE_NEW_WORLD                                                :{BLACK}새 시나리오 만들기
 STR_SE_CAPTION                                                  :{WHITE}시나리오 종류
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}평지의 높이를 1칸 낮춥니다.

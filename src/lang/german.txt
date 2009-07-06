@@ -1163,7 +1163,7 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-Abmes
 STR_CONFIG_SETTING_DISABLED                                     :ausgeschaltet
 STR_CONFIG_SETTING_INT32                                        :{NUM}
 STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
-STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Einstellungswert ändern
+STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Wert der Einstellung ändern
 
 STR_TEMPERATE_LANDSCAPE                                         :Gemäßigt
 STR_SUB_ARCTIC_LANDSCAPE                                        :Subarktisch
@@ -1200,7 +1200,7 @@ STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Z{P ug üge}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Wegpunktname ändern
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namen des Wegpunkts ändern
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Wegpunktname kann nicht geändert werden...
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Wegpunkt (auf vorhandenem Gleis) bauen
