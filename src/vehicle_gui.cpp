@@ -298,27 +298,31 @@ struct RefitWindow : public Window {
 
 		switch (v->type) {
 			case VEH_TRAIN:
-				this->widget[VRW_MATRIX].tooltips = STR_RAIL_SELECT_TYPE_OF_CARGO_FOR;
-				this->widget[VRW_REFITBUTTON].data = STR_RAIL_REFIT_VEHICLE;
-				this->widget[VRW_REFITBUTTON].tooltips = STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED;
+				this->widget[VRW_SELECTHEADER].tooltips = STR_RAIL_SELECT_TYPE_OF_CARGO_FOR;
+				this->widget[VRW_MATRIX].tooltips       = STR_RAIL_SELECT_TYPE_OF_CARGO_FOR;
+				this->widget[VRW_REFITBUTTON].data      = STR_RAIL_REFIT_VEHICLE;
+				this->widget[VRW_REFITBUTTON].tooltips  = STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED;
 				break;
 
 			case VEH_ROAD:
-				this->widget[VRW_MATRIX].tooltips = STR_ROAD_SELECT_TYPE_OF_CARGO_FOR;
-				this->widget[VRW_REFITBUTTON].data = STR_REFIT_ROAD_VEHICLE;
-				this->widget[VRW_REFITBUTTON].tooltips = STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED;
+				this->widget[VRW_SELECTHEADER].tooltips = STR_ROAD_SELECT_TYPE_OF_CARGO_FOR;
+				this->widget[VRW_MATRIX].tooltips       = STR_ROAD_SELECT_TYPE_OF_CARGO_FOR;
+				this->widget[VRW_REFITBUTTON].data      = STR_REFIT_ROAD_VEHICLE;
+				this->widget[VRW_REFITBUTTON].tooltips  = STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED;
 				break;
 
 			case VEH_SHIP:
-				this->widget[VRW_MATRIX].tooltips = STR_REFIT_SHIP_LIST_TOOLTIP;
-				this->widget[VRW_REFITBUTTON].data = STR_REFIT_SHIP_REFIT_BUTTON;
-				this->widget[VRW_REFITBUTTON].tooltips = STR_REFIT_SHIP_REFIT_TOOLTIP;
+				this->widget[VRW_SELECTHEADER].tooltips = STR_REFIT_SHIP_LIST_TOOLTIP;
+				this->widget[VRW_MATRIX].tooltips       = STR_REFIT_SHIP_LIST_TOOLTIP;
+				this->widget[VRW_REFITBUTTON].data      = STR_REFIT_SHIP_REFIT_BUTTON;
+				this->widget[VRW_REFITBUTTON].tooltips  = STR_REFIT_SHIP_REFIT_TOOLTIP;
 				break;
 
 			case VEH_AIRCRAFT:
-				this->widget[VRW_MATRIX].tooltips = STR_REFIT_AIRCRAFT_LIST_TOOLTIP;
-				this->widget[VRW_REFITBUTTON].data = STR_REFIT_AIRCRAFT_REFIT_BUTTON;
-				this->widget[VRW_REFITBUTTON].tooltips = STR_REFIT_AIRCRAFT_REFIT_TOOLTIP;
+				this->widget[VRW_SELECTHEADER].tooltips = STR_REFIT_AIRCRAFT_LIST_TOOLTIP;
+				this->widget[VRW_MATRIX].tooltips       = STR_REFIT_AIRCRAFT_LIST_TOOLTIP;
+				this->widget[VRW_REFITBUTTON].data      = STR_REFIT_AIRCRAFT_REFIT_BUTTON;
+				this->widget[VRW_REFITBUTTON].tooltips  = STR_REFIT_AIRCRAFT_REFIT_TOOLTIP;
 				break;
 
 			default: NOT_REACHED();
@@ -416,8 +420,8 @@ struct RefitWindow : public Window {
 static const Widget _vehicle_refit_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,   STR_TOOLTIP_CLOSE_WINDOW},             // VRW_CLOSEBOX
 	{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   239,     0,    13, STR_REFIT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // VRW_CAPTION
-	{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   239,    14,    27, STR_REFIT_TITLE,   STR_REFIT_SHIP_LIST_TOOLTIP},          // VRW_SELECTHEADER
-	{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   227,    28,   139, 0x801,             STR_EMPTY},                            // VRW_MATRIX
+	{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   239,    14,    27, STR_REFIT_TITLE,   STR_NULL},                             // VRW_SELECTHEADER
+	{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   227,    28,   139, 0x801,             STR_NULL},                             // VRW_MATRIX
 	{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_GREY,   228,   239,    28,   139, 0x0,               STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // VRW_SCROLLBAR
 	{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,     0,   239,   140,   161, 0x0,               STR_NULL},                             // VRW_INFOPANEL
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   227,   162,   173, 0x0,               STR_NULL},                             // VRW_REFITBUTTON
@@ -430,10 +434,10 @@ static const NWidgetPart _nested_vehicle_refit_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, VRW_CLOSEBOX),
 		NWidget(WWT_CAPTION, COLOUR_GREY, VRW_CAPTION), SetDataTip(STR_REFIT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_TEXTBTN, COLOUR_GREY, VRW_SELECTHEADER), SetMinimalSize(240, 14), SetDataTip(STR_REFIT_TITLE, STR_REFIT_SHIP_LIST_TOOLTIP),
+	NWidget(WWT_TEXTBTN, COLOUR_GREY, VRW_SELECTHEADER), SetMinimalSize(240, 14), SetDataTip(STR_REFIT_TITLE, STR_NULL),
 	/* Matrix + scrollbar. */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_GREY, VRW_MATRIX), SetMinimalSize(228, 112), SetResize(0, 14), SetDataTip(0x801, STR_EMPTY),
+		NWidget(WWT_MATRIX, COLOUR_GREY, VRW_MATRIX), SetMinimalSize(228, 112), SetResize(0, 14), SetDataTip(0x801, STR_NULL),
 		NWidget(WWT_SCROLLBAR, COLOUR_GREY, VRW_SCROLLBAR),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, VRW_INFOPANEL), SetMinimalSize(240, 22), EndContainer(),
