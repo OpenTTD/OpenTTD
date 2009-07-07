@@ -57,8 +57,8 @@ Station::~Station()
 
 	if (CleaningPool()) return;
 
-	while (!loading_vehicles.empty()) {
-		loading_vehicles.front()->LeaveStation();
+	while (!this->loading_vehicles.empty()) {
+		this->loading_vehicles.front()->LeaveStation();
 	}
 
 	Aircraft *a;
@@ -75,11 +75,11 @@ Station::~Station()
 		}
 	}
 
-	MarkDirty();
+	this->MarkDirty();
 	InvalidateWindowData(WC_STATION_LIST, this->owner, 0);
 
 	DeleteWindowById(WC_STATION_VIEW, index);
-	WindowNumber wno = (index << 16) | VLW_STATION_LIST | this->owner;
+	WindowNumber wno = (this->index << 16) | VLW_STATION_LIST | this->owner;
 	DeleteWindowById(WC_TRAINS_LIST, wno | (VEH_TRAIN << 11));
 	DeleteWindowById(WC_ROADVEH_LIST, wno | (VEH_ROAD << 11));
 	DeleteWindowById(WC_SHIPS_LIST, wno | (VEH_SHIP << 11));
@@ -95,7 +95,7 @@ Station::~Station()
 	DeleteStationNews(this->index);
 
 	for (CargoID c = 0; c < NUM_CARGO; c++) {
-		goods[c].cargo.Truncate(0);
+		this->goods[c].cargo.Truncate(0);
 	}
 
 	CargoPacket *cp;
@@ -142,34 +142,34 @@ RoadStop *Station::GetPrimaryRoadStop(const RoadVehicle *v) const
  * it initializes also 'xy' and 'random_bits' members */
 void Station::AddFacility(StationFacility new_facility_bit, TileIndex facil_xy)
 {
-	if (facilities == 0) {
-		xy = facil_xy;
-		random_bits = Random();
+	if (this->facilities == FACIL_NONE) {
+		this->xy = facil_xy;
+		this->random_bits = Random();
 	}
-	facilities |= new_facility_bit;
-	owner = _current_company;
-	build_date = _date;
+	this->facilities |= new_facility_bit;
+	this->owner = _current_company;
+	this->build_date = _date;
 }
 
 void Station::MarkDirty() const
 {
-	if (sign.width_1 != 0) {
+	if (this->sign.width_1 != 0) {
 		InvalidateWindowWidget(WC_STATION_VIEW, index, SVW_CAPTION);
 
 		/* We use ZOOM_LVL_MAX here, as every viewport can have an other zoom,
 		 *  and there is no way for us to know which is the biggest. So make the
 		 *  biggest area dirty, and we are safe for sure. */
 		MarkAllViewportsDirty(
-			sign.left - 6,
-			sign.top,
-			sign.left + ScaleByZoom(sign.width_1 + 12, ZOOM_LVL_MAX),
-			sign.top + ScaleByZoom(12, ZOOM_LVL_MAX));
+			this->sign.left - 6,
+			this->sign.top,
+			this->sign.left + ScaleByZoom(this->sign.width_1 + 12, ZOOM_LVL_MAX),
+			this->sign.top + ScaleByZoom(12, ZOOM_LVL_MAX));
 	}
 }
 
 void Station::MarkTilesDirty(bool cargo_change) const
 {
-	TileIndex tile = train_tile;
+	TileIndex tile = this->train_tile;
 	int w, h;
 
 	if (tile == INVALID_TILE) return;
@@ -185,7 +185,7 @@ void Station::MarkTilesDirty(bool cargo_change) const
 
 	for (h = 0; h < trainst_h; h++) {
 		for (w = 0; w < trainst_w; w++) {
-			if (TileBelongsToRailStation(tile)) {
+			if (this->TileBelongsToRailStation(tile)) {
 				MarkTileDirtyByTile(tile);
 			}
 			tile += TileDiffXY(1, 0);
@@ -201,14 +201,12 @@ void Station::MarkTilesDirty(bool cargo_change) const
  */
 uint Station::GetPlatformLength(TileIndex tile) const
 {
-	TileIndex t;
-	TileIndexDiff delta;
+	assert(this->TileBelongsToRailStation(tile));
+
+	TileIndexDiff delta = (GetRailStationAxis(tile) == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+
+	TileIndex t = tile;
 	uint len = 0;
-	assert(TileBelongsToRailStation(tile));
-
-	delta = (GetRailStationAxis(tile) == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
-
-	t = tile;
 	do {
 		t -= delta;
 		len++;
@@ -273,7 +271,7 @@ struct RectAndIndustryVector {
 };
 
 /**
- * Callback function for  Station::RecomputeIndustriesNear()
+ * Callback function for Station::RecomputeIndustriesNear()
  * Tests whether tile is an industry and possibly adds
  * the industry to station's industries_near list.
  * @param ind_tile tile to check
@@ -355,12 +353,12 @@ void Station::RecomputeIndustriesNear()
 
 StationRect::StationRect()
 {
-	MakeEmpty();
+	this->MakeEmpty();
 }
 
 void StationRect::MakeEmpty()
 {
-	left = top = right = bottom = 0;
+	this->left = this->top = this->right = this->bottom = 0;
 }
 
 /**
@@ -374,12 +372,16 @@ void StationRect::MakeEmpty()
  */
 bool StationRect::PtInExtendedRect(int x, int y, int distance) const
 {
-	return (left - distance <= x && x <= right + distance && top - distance <= y && y <= bottom + distance);
+	return
+			this->left - distance <= x &&
+			x <= this->right + distance &&
+			this->top - distance <= y &&
+			y <= this->bottom + distance;
 }
 
 bool StationRect::IsEmpty() const
 {
-	return (left == 0 || left > right || top > bottom);
+	return this->left == 0 || this->left > this->right || this->top > this->bottom;
 }
 
 bool StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
@@ -389,13 +391,13 @@ bool StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
 	if (IsEmpty()) {
 		/* we are adding the first station tile */
 		if (mode != ADD_TEST) {
-			left = right = x;
-			top = bottom = y;
+			this->left = this->right = x;
+			this->top = this->bottom = y;
 		}
 	} else if (!PtInExtendedRect(x, y)) {
 		/* current rect is not empty and new point is outside this rect
 		 * make new spread-out rectangle */
-		Rect new_rect = {min(x, left), min(y, top), max(x, right), max(y, bottom)};
+		Rect new_rect = {min(x, this->left), min(y, this->top), max(x, this->right), max(y, this->bottom)};
 
 		/* check new rect dimensions against preset max */
 		int w = new_rect.right - new_rect.left + 1;
@@ -420,7 +422,7 @@ bool StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
 bool StationRect::BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mode)
 {
 	return (mode == ADD_FORCE || (w <= _settings_game.station.station_spread && h <= _settings_game.station.station_spread)) && // important when the old rect is completely inside the new rect, resp. the old one was empty
-			BeforeAddTile(tile, mode) && BeforeAddTile(TILE_ADDXY(tile, w - 1, h - 1), mode);
+			this->BeforeAddTile(tile, mode) && this->BeforeAddTile(TILE_ADDXY(tile, w - 1, h - 1), mode);
 }
 
 /**
@@ -455,40 +457,40 @@ bool StationRect::AfterRemoveTile(Station *st, TileIndex tile)
 	 * do it until we have empty rect or nothing to do */
 	for (;;) {
 		/* check if removed tile is on rect edge */
-		bool left_edge = (x == left);
-		bool right_edge = (x == right);
-		bool top_edge = (y == top);
-		bool bottom_edge = (y == bottom);
+		bool left_edge = (x == this->left);
+		bool right_edge = (x == this->right);
+		bool top_edge = (y == this->top);
+		bool bottom_edge = (y == this->bottom);
 
 		/* can we reduce the rect in either direction? */
-		bool reduce_x = ((left_edge || right_edge) && !ScanForStationTiles(st->index, x, top, x, bottom));
-		bool reduce_y = ((top_edge || bottom_edge) && !ScanForStationTiles(st->index, left, y, right, y));
+		bool reduce_x = ((left_edge || right_edge) && !ScanForStationTiles(st->index, x, this->top, x, this->bottom));
+		bool reduce_y = ((top_edge || bottom_edge) && !ScanForStationTiles(st->index, this->left, y, this->right, y));
 		if (!(reduce_x || reduce_y)) break; // nothing to do (can't reduce)
 
 		if (reduce_x) {
 			/* reduce horizontally */
 			if (left_edge) {
 				/* move left edge right */
-				left = x = x + 1;
+				this->left = x = x + 1;
 			} else {
 				/* move right edge left */
-				right = x = x - 1;
+				this->right = x = x - 1;
 			}
 		}
 		if (reduce_y) {
 			/* reduce vertically */
 			if (top_edge) {
 				/* move top edge down */
-				top = y = y + 1;
+				this->top = y = y + 1;
 			} else {
 				/* move bottom edge up */
-				bottom = y = y - 1;
+				this->bottom = y = y - 1;
 			}
 		}
 
 		if (left > right || top > bottom) {
 			/* can't continue, if the remaining rectangle is empty */
-			MakeEmpty();
+			this->MakeEmpty();
 			return true; // empty remaining rect
 		}
 	}
@@ -500,17 +502,17 @@ bool StationRect::AfterRemoveRect(Station *st, TileIndex tile, int w, int h)
 	assert(PtInExtendedRect(TileX(tile), TileY(tile)));
 	assert(PtInExtendedRect(TileX(tile) + w - 1, TileY(tile) + h - 1));
 
-	bool empty = AfterRemoveTile(st, tile);
+	bool empty = this->AfterRemoveTile(st, tile);
 	if (w != 1 || h != 1) empty = empty || AfterRemoveTile(st, TILE_ADDXY(tile, w - 1, h - 1));
 	return empty;
 }
 
 StationRect& StationRect::operator = (Rect src)
 {
-	left = src.left;
-	top = src.top;
-	right = src.right;
-	bottom = src.bottom;
+	this->left = src.left;
+	this->top = src.top;
+	this->right = src.right;
+	this->bottom = src.bottom;
 	return *this;
 }
 
