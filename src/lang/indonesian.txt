@@ -1010,7 +1010,7 @@ STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Tampilk
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Tidak ada
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Perusahaan milik sendiri
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Semua Perusahaan
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Lebih suka Tim Chat dengan  <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Lebih suka Tim Chat dengan &lt;ENTER>: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Fungsi tombol scroll mouse: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Perbesar Peta
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Geser Peta
@@ -1074,7 +1074,7 @@ STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Standar
 STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Standard jangka servis berkala bus/truk: {ORANGE}Non-aktif
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Standard jangka servis berkala pesawat: {ORANGE}{STRING} hari/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standard jangka servis berkala pesawat: {ORANGE}Non-aktif
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Standard jangka servis berkala  kapal: {ORANGE}{STRING} hari/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Standard jangka servis berkala kapal: {ORANGE}{STRING} hari/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard jangka servis berkala untuk kapal: {ORANGE}Non-aktif
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Tidak perlu servis jika tidak pernah mogok : {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Aktifkan batas kecepatan gerbong: {ORANGE}{STRING}
@@ -2854,7 +2854,7 @@ STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Kendaraa
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ubah Durasi
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Kendaraan ini berjalan tepat waktu
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Kendaraaan ini berjalan terlambat {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Kendaraaan ini berjalan  lebih awal {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Kendaraaan ini berjalan lebih awal {STRING}
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Total durasi seluruh perjalanan akan memakan waktu {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Total durasi seluruh perjalanan akan memakan waktu kurang lebih {STRING} untuk terpenuhi (blm semuanya terjadwal)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatis
@@ -3405,14 +3405,14 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...jalan
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...menghadap pada arah yang salah
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Pengaturan Transparasi
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Tandai transparasi untuk sinyal-sinyal dari stasiun. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Tandai transparasi untuk pepohonan. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Tandai transparasi untuk perumahan. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Tandai transparasi untuk industri. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Tandai transparasi untuk bangunan semacam stasiun, depo dan waypoints. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Tandai transparasi untuk jembatan. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Tandai transparasi untuk struktur bangunan semacam mercusuar dan antena. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Tandai transparasi untuk sinyal-sinyal dari stasiun CTRL+klik untuk mengunci.
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Hidup/matikan transparansi sinyal stasiun. CTRL+klik untuk mengunci.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Hidup/matikan transparansi pepohonan. CTRL+klik untuk mengunci.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Hidup/matikan transparansi perumahan. CTRL+klik untuk mengunci.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Hidup/matikan transparansi industri. CTRL+klik untuk mengunci.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Hidup/matikan transparansi bangunan semacam stasiun, depo dan waypoints. CTRL+klik untuk mengunci.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Hidup/matikan transparansi jembatan. CTRL+klik untuk mengunci.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Hidup/matikan transparansi struktur bangunan semacam mercusuar dan antena. CTRL+klik untuk mengunci.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Hidup/matikan transparansi katenari CTRL+klik untuk mengunci.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Hidup/matikan indikator proses pemuatan kargo. CTRL+klik untuk mengunci.
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Atur obyek menjadi sama sekali tidak nampak daripada transparan.
 
@@ -3451,7 +3451,7 @@ STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Tidak da
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Tidak dapat menambah Kendaraan dalam kelompok ini...
 STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Tidak dapat menambah Kendaraan yang dapat dipakai bersama ke dalam grup...
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Kelompok - Klik pada salah satu kelompok untuk melihat daftar semua kendaraan pada kelompok ini
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Kelompok - Klik salah satu untuk melihat daftar kendaraan pada kelompok tersebut
 STR_GROUP_CREATE_TIP                                            :{BLACK}Klik untuk membuat kelompok
 STR_GROUP_DELETE_TIP                                            :{BLACK}Hapus kelompok terpilih
 STR_GROUP_RENAME_TIP                                            :{BLACK}Ubah Nama kelompok terpilih
@@ -3541,7 +3541,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Sinyal K
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Sinyal Kombo (elektris){}Sinyal Kombo berfungsi ganda, sebagai Sinyal Masuk sekaligus Sinyal keluar. Sehingga kita bisa membuat rangkaian sinyal-sinyal
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Sinyal Jalur (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard  bisa di lewati dari arah belakang.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Sinyal Jalur Searah (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak  bisa di lewati dari arah belakangnya.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Konversi Sinyal{}Jika terpilih, klik pada sinyal yang telah ada, akan mengakibatkan sinyal berubah jenisnya, CTRL-click untuk mengubah secara berturut-turut.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Konversi Sinyal{}Jika terpilih, klik pada sinyal yang telah ada akan mengakibatkan sinyal berubah jenisnya, CTRL-click untuk mengubah secara berturut-turut.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Kerapatan Sinyal
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Kurangi kerapatan sinyal
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Tambah kerapatan sinyal
@@ -3629,8 +3629,8 @@ STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {W
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tipe: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Ukuran: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Terpilih karena: {WHITE}{STRING}
-STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Terkait dengan: {WHITE}{STRING}
-STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tag: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Memerlukan : {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Kata kunci: {WHITE}{STRING}
 
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Mengunduh konten...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Meminta berkas...
@@ -3638,7 +3638,7 @@ STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Sedang m
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Unduhan selesai
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} dari {BYTES} terunduh ({NUM} %)
 
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Tak dapat tersambung ke pelayan konten
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Tak dapat tersambung ke server
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Gagal mengunduh...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... hubungan terputus
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... berkas tak dapat ditulisi

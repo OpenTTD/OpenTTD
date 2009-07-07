@@ -1508,7 +1508,7 @@ STR_NETWORK_LANG_BULGARIAN                                      :Болгарс�
 STR_NETWORK_LANG_CHINESE                                        :Китайский
 STR_NETWORK_LANG_CZECH                                          :Чешский
 STR_NETWORK_LANG_DANISH                                         :Датский
-STR_NETWORK_LANG_DUTCH                                          :Голландский
+STR_NETWORK_LANG_DUTCH                                          :Нидерландский
 STR_NETWORK_LANG_ESPERANTO                                      :Эсперанто
 STR_NETWORK_LANG_FINNISH                                        :Финский
 STR_NETWORK_LANG_HUNGARIAN                                      :Венгерский
@@ -2872,11 +2872,11 @@ STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Поез
 
 STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Построить
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Копировать
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Создает копию автомобиля. Control+щелчок копирует задания
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Создает копию автомобиля. Щелкнуть на кнопке и затем на машине внутри или снаружи гаража. Control+щелчок копирует и задания
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Создаёт копию автомобиля. Control+щелчок копирует задания
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Создаёт копию автомобиля. Щёлкнуть на кнопке и затем на машине внутри или снаружи гаража. Control+щелчок копирует и задания
 STR_CLONE_TRAIN                                                 :{BLACK}Копировать состав
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Создает копию поезда, включая все вагоны. Control+клик копирует задания
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Создает копию поезда, включая все вагоны. Щёлкнуть на кнопке и затем на поезде внутри или снаружи депо. Control+клик копирует задания
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Создаёт копию поезда, включая все вагоны. Control+клик копирует задания
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Создаёт копию поезда, включая все вагоны. Щёлкнуть на кнопке и затем на поезде внутри или снаружи депо. Control+клик копирует задания
 STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Переимен.
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Пропуск
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Удалить
@@ -3131,7 +3131,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Здес
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}Ангар {STATION}
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Новое судно
 STR_CLONE_AIRCRAFT                                              :{BLACK}Копировать
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Создает копию самолёта. Control-клик - копирует задания
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Создаёт копию самолёта. Control+клик - копирует задания
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Построить копию возд. судна. Нажмите на кнопку, а потом на возд. судно в/вне ангара. Ctrl+click - также скопирует и задание.
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Новый
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Построить

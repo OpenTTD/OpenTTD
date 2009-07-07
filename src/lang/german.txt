@@ -100,20 +100,20 @@ STR_QUANTITY_GRAIN                                              :{WEIGHT} Getrei
 STR_QUANTITY_WOOD                                               :{WEIGHT} Holz
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} Eisenerz
 STR_QUANTITY_STEEL                                              :{WEIGHT} Stahl
-STR_QUANTITY_VALUABLES                                          :{COMMA} {P Sack Säcke} mit Wertsachen
+STR_QUANTITY_VALUABLES                                          :{COMMA} {P Sack Säcke} Wertsachen
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} Kupfererz
 STR_QUANTITY_MAIZE                                              :{WEIGHT} Mais
 STR_QUANTITY_FRUIT                                              :{WEIGHT} Früchte
-STR_QUANTITY_DIAMONDS                                           :{COMMA} {P Sack Säcke} mit Diamanten
+STR_QUANTITY_DIAMONDS                                           :{COMMA} {P Sack Säcke} Diamanten
 STR_QUANTITY_FOOD                                               :{WEIGHT} Nahrungsmittel
 STR_QUANTITY_PAPER                                              :{WEIGHT} Papier
-STR_QUANTITY_GOLD                                               :{COMMA} {P Sack Säcke} mit Gold
+STR_QUANTITY_GOLD                                               :{COMMA} {P Sack Säcke} Gold
 STR_QUANTITY_WATER                                              :{VOLUME} Wasser
 STR_QUANTITY_WHEAT                                              :{WEIGHT} Weizen
 STR_QUANTITY_RUBBER                                             :{VOLUME} Kautschuk
 STR_QUANTITY_SUGAR                                              :{WEIGHT} Zucker
 STR_QUANTITY_TOYS                                               :{COMMA} Spielzeug{P "" e}
-STR_QUANTITY_SWEETS                                             :{COMMA} {P Sack Säcke} mit Bonbons
+STR_QUANTITY_SWEETS                                             :{COMMA} {P Sack Säcke} Bonbons
 STR_QUANTITY_COLA                                               :{VOLUME} Cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} Zuckerwatte
 STR_QUANTITY_BUBBLES                                            :{COMMA} Luftblase{P "" n}
@@ -343,7 +343,7 @@ STR_SORT_BY_VALUE                                               :Wert
 STR_SORT_BY_LENGTH                                              :Länge
 STR_SORT_BY_LIFE_TIME                                           :Verbleibende Betriebsdauer
 STR_SORT_BY_FACILITY                                            :Stationsart
-STR_SORT_BY_WAITING                                             :Menge der wartenden Fracht
+STR_SORT_BY_WAITING                                             :Wert der wartenden Fracht
 STR_SORT_BY_RATING_MAX                                          :Beste Bewertung
 STR_SORT_BY_RATING_MIN                                          :Schlechteste Bewertung
 STR_ENGINE_SORT_ENGINE_ID                                       :Baureihe
@@ -538,7 +538,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Programm
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Lösche laufendes Programm  (nur für Benutzerdefiniert 1 und 2)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Musikeinstellungen speichern
 STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Klicke auf den Musiktitel, um ihn in das laufende Programm zu übernehmen (nur für Benutzerdefiniert 1 und 2)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klicke auf einen Musiktitel, um ihn aus der aktuellen Liste zu entfernen(Custom1 or Custom2 only)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klicke auf einen Musiktitel, um ihn aus der aktuellen Liste zu entfernen (nur für Benutzerdefiniert 1 und 2)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Zufällige Wiedergabe an/aus
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Zeige Musiktitelauswahl
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}Klick auf Dienstleistung scrollt Hauptansicht zur Industrie/Stadt
@@ -713,9 +713,9 @@ STR_TOWN_MENU_TOWN_DIRECTORY                                    :Städteverzeich
 STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ansicht {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}In Zusatzansicht
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopieren der Position im Hauptfenster in diese Zusatzansicht
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Aktuelle Position der Hauptansicht in diese Zusatzansicht kopieren
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Aus Zusatzansicht
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopieren der Position dieser Zusatzansicht ins Hauptfenster
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Hauptansicht zur Position dieser Zusatzansicht scrollen
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Währung
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
@@ -776,7 +776,7 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screensh
 STR_TERRAFORM_TOOLTIP_PURCHASE_LAND                             :{BLACK}Land für künftige Nutzung kaufen
 STR_STATUSBAR_AUTOSAVE                                          :{RED}Autosicherung
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPEICHERE SPIEL  *  *
-STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Speichern läuft,{}bitte warten bis beendet!
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Speichern läuft,{}bitte warten, bis es beendet ist!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Wähle 'Ezy Street style music'-Programm
 
 STR_6                                                           :{BLACK}6
@@ -839,7 +839,7 @@ STR_CURR_CUSTOM                                                 :Eigene...
 
 STR_OPTIONS_LANG                                                :{BLACK}Sprache
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Sprache für die Oberfläche aussuchen
+STR_OPTIONS_LANG_TIP                                            :{BLACK}Sprache für die Oberfläche auswählen
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Vollbild
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}OpenTTD im Vollbildmodus spielen
@@ -1004,7 +1004,7 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Eines od
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maximale Stationsgröße: {ORANGE}{STRING} {RED}(Hoher Wert verlangsamt das Spiel)
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Landeplatz automatisch warten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Werkzeugleiste für Landschaftsbau an die Bauwerkzeuge binden: {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Bei Rechtsklick Ansicht in die Gegenrichtung verschieben: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Scrollrichtung invertieren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Optimierten Bildlauf in den Ansichten verwenden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Beim Bauen Tooltip mit Abmessungen anzeigen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Anzeigen der Firmenlackierungen: {ORANGE}{STRING}
@@ -1178,7 +1178,7 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiele 
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Mächtigeres Abrisswerkzeug: {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnel dürfen sich kreuzen: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Bauen im Pausenmodus: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Flugzeuge stürzen auf kleinen Flughäfen nicht häufiger ab: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Düsenflugzeuge stürzen auf kleinen Flughäfen nicht häufiger ab: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Wechsle Klima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ändere Datum: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiviere Veränderung der Produktionswerte: {ORANGE}{STRING}
@@ -1266,10 +1266,10 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industri
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...zu nah an einer anderen Industrie
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Umrüstung des Zuges zur Beförderung anderer Frachten
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Zug auf eine andere Fracht umrüsten
 STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Zug umrüsten
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Die Fracht auswählen, die der Zug befördern soll
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Umrüstung des Zuges auf die ausgewählte Frachtart
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Zug auf die ausgewählte Fracht umrüsten
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Zug kann nicht umgerüstet werden...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Produktion ändern
 
@@ -1283,7 +1283,7 @@ STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Bitte ei
 STR_NETWORK_CONNECTION                                          :{BLACK}Verbindung:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Zwischen Spiel im Internet und LAN wählen
 
-STR_NETWORK_START_SERVER                                        :{BLACK}Server Starten
+STR_NETWORK_START_SERVER                                        :{BLACK}Server starten
 STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Einen eigenen Server starten
 
 STR_NETWORK_GAME_NAME                                           :{BLACK}Name
@@ -1297,7 +1297,7 @@ STR_NETWORK_FIND_SERVER                                         :{BLACK}Server s
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Netzwerk nach einem Server durchsuchen
 STR_NETWORK_ADD_SERVER                                          :{BLACK}Server hinzufügen
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Fügt einen Server zu der Liste von Servern hinzu, die immer nach laufenden Spielen kontrolliert werden.
-STR_NETWORK_ENTER_IP                                            :{BLACK}IP Adresse des Servers eingeben
+STR_NETWORK_ENTER_IP                                            :{BLACK}IP-Adresse des Servers eingeben
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Teilnehmer
@@ -1325,13 +1325,13 @@ STR_NETWORK_CURRENT_DATE                                        :{SILVER}Aktuell
 STR_NETWORK_PASSWORD                                            :{SILVER}Passwortgeschützt!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER VOLL
-STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}Versionskonflikt festgestellt
-STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF KONFLIKT
+STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSIONSKONFLIKT
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF-KONFLIKT
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Spiel betreten
 
 
-STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Neues Spiel beginnen
+STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Neues Mehrspieler-Spiel beginnen
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Spielname:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Der Name des Spieles wird anderen Spielern im Mehrspielerdialog angezeigt
@@ -1354,7 +1354,7 @@ STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Begrenzt
 STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} Zuschauer
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max. Zuschaueranzahl:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begrenzt den Server auf eine gewisse Anzahl an Zuschauern
-STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Gesprochene Sprachen:
+STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Gesprochene Sprache:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Damit andere Spieler wissen, welche Sprache auf diesem Server gesprochen wird.
 STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Spiel beginnen
@@ -1410,7 +1410,7 @@ STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Eine neu
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Beim Spiel zusehen
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Als Zuschauer dem Spiel zusehen
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Firma beitreten
-STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Beim Verwalten der Firma helfen
+STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Beim Verwalten der ausgewählten Firma helfen
 STR_NETWORK_REFRESH                                             :{BLACK}Aktualisieren
 STR_NETWORK_REFRESH_TIP                                         :{BLACK}Aktualisiert die Serverinformationen
 
@@ -1888,7 +1888,7 @@ STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...Bahnh
 STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...ungleichförmige Stationen deaktiviert
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Strg gedrückt halten, um mehrere Einträge auszuwählen
 
-STR_UNDEFINED                                                   :(nicht definierter Wert)
+STR_UNDEFINED                                                   :(nicht definierter String)
 STR_STAT_CLASS_DFLT                                             :Standardstation
 STR_STAT_CLASS_WAYP                                             :Wegpunkte
 
@@ -1916,7 +1916,7 @@ STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Laufwerk
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Spielspeicherung fehlgeschlagen{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Datei kann nicht gelöscht werden
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Laden des Spieles fehlgeschlagen{}{STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :interner Fehler: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interner Fehler: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Spielstandsdatei defekt - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spielstand wurde mit neuerer Version erstellt
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datei kann nicht gelesen werden
@@ -2072,7 +2072,7 @@ STR_SV_STNAME_EAST                                              :{STRING} Ost
 STR_SV_STNAME_WEST                                              :{STRING} West
 STR_SV_STNAME_CENTRAL                                           :{STRING} Zentrum
 STR_SV_STNAME_TRANSFER                                          :{STRING} Transfer
-STR_SV_STNAME_HALT                                              :{STRING} Halt
+STR_SV_STNAME_HALT                                              :{STRING} Haltepunkt
 STR_SV_STNAME_VALLEY                                            :{STRING} Tal
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Höhe
 STR_SV_STNAME_WOODS                                             :{STRING} Waldrand
@@ -2847,7 +2847,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Neue{G r "" s ""} {STRING} jetzt erhältlich!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Kann dieses Schrottfahrzeug nicht mehr verkaufen ...
-STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Kann zerstörtes Fahrzeug nicht nachrüsten...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Kann zerstörtes Fahrzeug nicht umrüsten...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kein Fahrplan für das Fahrzeug...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Fahrzeuge halten nur an Stationen.
@@ -2907,16 +2907,16 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Die erste Frachtstraßenbahn erreicht {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Fahrzeug verunglückt!{}Fahrer stirbt in Inferno nach Zusammenstoß mit Zug
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Fahrzeug verunglückt!{}{COMMA} {P stirbt sterben} in Inferno nach Zusammenstoß mit Zug
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Das Fahrzeug kann nicht wenden...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Fahrzeuge, die aus mehreren Einheiten bestehen, können nicht wenden.
+STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Fahrzeug kann nicht umgedreht werden...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Fahrzeuge, die aus mehreren Einheiten bestehen, können nicht umgedreht werden.
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Umbenennen
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Fahrzeug umbenennen
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Fahrzeug umbenennen
 STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Fahrzeug kann nicht umbenannt werden...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Straßenfahrzeug für den Transport anderer Güter umrüsten
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Straßenfahrzeug erneuern
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Straßenfahrzeug für den Transport des markierten Gutes umrüsten
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Straßenfahrzeug auf eine andere Fracht umrüsten
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Straßenfahrzeug umrüsten
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Straßenfahrzeug auf die ausgewählte Fracht umrüsten
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Straßenfahrzeug kann nicht umgerüstet werden...
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Die Fracht auswählen, die das Straßenfahrzeug befördern soll
 
@@ -2971,12 +2971,12 @@ STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Umbenenn
 STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Schiff umbenennen
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Schiff umbenennen
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Schiffstyp kann nicht umbenannt werden...
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Umrüstung des Schiffes zur Beförderung anderer Frachtarten
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Schiff auf eine andere Fracht umrüsten
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Umrüsten)
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Schiff umrüsten
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Die Fracht auswählen, die das Schiff befördern soll
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Umrüstung des Schiffes auf die ausgewählte Frachtart
-STR_REFIT_TITLE                                                 :{GOLD}Wähle Frachtart für die Beförderung:
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Schiff auf die markierte Fracht umrüsten
+STR_REFIT_TITLE                                                 :{GOLD}Neue Fracht wählen:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Neue Kapazität: {GOLD}{CARGO}{}{BLACK}Kosten der Umrüstung: {GOLD}{CURRENCY}
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Schiff kann nicht umgerüstet werden...
 STR_REFITTABLE                                                  :(umrüstbar)
@@ -3030,10 +3030,10 @@ STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Umbenenn
 STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Flugzeug umbenennen
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Flugzeug umbenennen
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Flugzeug kann nicht umbenannt werden...
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Umrüstung des Flugzeuges zum Transport anderer Frachten
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Flugzeug auf eine andere Fracht umrüsten
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Flugzeug umrüsten
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Die Fracht auswählen, die das Flugzeug befördern soll
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Umrüstung des Flugzeuges auf die ausgewählte Frachtart
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Flugzeug auf die ausgewählte Fracht umrüsten
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Flugzeug kann nicht umgerüstet werden...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Fahrplan)
@@ -3131,9 +3131,9 @@ STR_NEWGRF_MOVEUP                                               :{BLACK}Nach obe
 STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Die ausgewählte NewGRF-Datei in der Liste nach oben verschieben
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Nach unten
 STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Die ausgewählte NewGRF-Datei in der Liste nach unten verschieben
-STR_NEWGRF_FILE_TIP                                             :{BLACK}Eine Liste der installierten NewGRF-Dateien. Zum Ändern der Einstellungen Datei auswählen
-STR_NEWGRF_PARAMETER                                            :{BLACK}Einstellung: {SILVER}{STRING}
-STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Neue NewGRF-Einstellungen abspeichern
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Eine Liste der installierten NewGRF-Dateien. Zum Ändern der Parameter Datei auswählen
+STR_NEWGRF_PARAMETER                                            :{BLACK}Parameter: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}NewGRF-Parameter eingeben
 STR_NEWGRF_NO_INFO                                              :{BLACK}Keine Informationen verfügbar
 
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Verfügbare NewGRF-Dateien
@@ -3368,19 +3368,19 @@ STR_BORDER_RANDOMIZE                                            :{BLACK}Zufälli
 STR_BORDER_MANUAL                                               :{BLACK}Manuell
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}klein
+STR_SMALL_AIRPORT                                               :{BLACK}Klein
 STR_CITY_AIRPORT                                                :{BLACK}Stadt
-STR_METRO_AIRPORT                                               :{BLACK}städtischer Flughafen
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}internationaler Flughafen
+STR_METRO_AIRPORT                                               :{BLACK}Großraum
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}International
 STR_COMMUTER_AIRPORT                                            :{BLACK}Nahverkehr
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinental
 STR_HELIPORT                                                    :{BLACK}Hubschrauberlandeplatz
 STR_HELIDEPOT                                                   :{BLACK}Hubschrauberhalle
 STR_HELISTATION                                                 :{BLACK}Hubschrauberstation
 
-STR_SMALL_AIRPORTS                                              :{BLACK}kleine Flughäfen
-STR_LARGE_AIRPORTS                                              :{BLACK}große Flughäfen
-STR_HUB_AIRPORTS                                                :{BLACK}Großflughäfen
+STR_SMALL_AIRPORTS                                              :{BLACK}Kleine Flughäfen
+STR_LARGE_AIRPORTS                                              :{BLACK}Große Flughäfen
+STR_HUB_AIRPORTS                                                :{BLACK}Luftfahrt-Drehkreuze
 STR_HELIPORTS                                                   :{BLACK}Flughäfen für Hubschrauber
 
 ############ Tooltip measurment
@@ -3436,8 +3436,8 @@ STR_GROUP_DEFAULT_ROADS                                         :Ungruppierte Fa
 STR_GROUP_DEFAULT_SHIPS                                         :Ungruppierte Schiffe
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ungruppierte Flugzeuge
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
-STR_GROUP_ADD_SHARED_VEHICLE                                    :Gemeinsam genutzte Fahrzeuge hinzufügen
-STR_GROUP_REMOVE_ALL_VEHICLES                                   :Alle Fahrzeuge entfernen
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Gemeinsame F. hinzufügen
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Liste leeren
 
 STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Z{P ug üge}
 STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Fahrzeug{P "" e}
@@ -3450,7 +3450,7 @@ STR_GROUP_CAN_T_DELETE                                          :{WHITE}Gruppe k
 STR_GROUP_CAN_T_RENAME                                          :{WHITE}Gruppe kann nicht umbenannt werden...
 STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Entfernen aller Fahrzeuge dieser Gruppe nicht möglich...
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Fahrzeug kann nicht zu dieser Gruppe hinzugefügt werden...
-STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Gemeinsam genutztes Fahrzeug kann nicht zur Gruppe hinzugefügt werden...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Fahrzeuge mit gemeinsamen Fahrplan können nicht zur Gruppe hinzugefügt werden...
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Gruppen - Klick auf eine Gruppe zeigt Liste aller Fahrzeuge der Gruppe an
 STR_GROUP_CREATE_TIP                                            :{BLACK}Neue Gruppe erstellen

@@ -1496,7 +1496,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spel hervat (cl
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :vertrekt
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} heeft zich bij het spel gevoegd
-STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} heeft zich gevoeg bij bedrijf #{2:NUM}
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} heeft zich gevoegd bij bedrijf #{2:NUM}
 STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} kijkt nu toe
 STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} heeft een nieuw bedrijf opgericht (#{2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} heeft het spel verlaten ({2:STRING})
