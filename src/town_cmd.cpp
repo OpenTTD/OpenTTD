@@ -350,7 +350,7 @@ void UpdateTownVirtCoord(Town *t)
 	Point pt = RemapCoords2(TileX(t->xy) * TILE_SIZE, TileY(t->xy) * TILE_SIZE);
 	SetDParam(0, t->index);
 	SetDParam(1, t->population);
-	UpdateViewportSignPos(&t->sign, pt.x, pt.y - 24,
+	t->sign.UpdatePosition(pt.x, pt.y - 24,
 		_settings_client.gui.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL);
 	MarkTownSignDirty(t);
 }

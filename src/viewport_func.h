@@ -8,7 +8,6 @@
 #include "gfx_type.h"
 #include "viewport_type.h"
 #include "vehicle_type.h"
-#include "strings_type.h"
 #include "window_type.h"
 #include "tile_type.h"
 
@@ -19,7 +18,6 @@ void InitializeWindowViewport(Window *w, int x, int y, int width, int height, ui
 ViewPort *IsPtInWindowViewport(const Window *w, int x, int y);
 Point GetTileBelowCursor();
 void UpdateViewportPosition(Window *w);
-void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str);
 
 bool DoZoomInOutWindow(int how, Window *w);
 void ZoomInOrOutToCursorWindow(bool in, Window * w);

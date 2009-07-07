@@ -380,7 +380,7 @@ void Station::UpdateVirtCoord()
 
 	SetDParam(0, this->index);
 	SetDParam(1, this->facilities);
-	UpdateViewportSignPos(&this->sign, pt.x, pt.y, STR_STATION_SIGN);
+	this->sign.UpdatePosition(pt.x, pt.y, STR_STATION_SIGN);
 }
 
 /** Update the virtual coords needed to draw the station sign for all stations. */

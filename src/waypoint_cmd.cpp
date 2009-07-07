@@ -32,7 +32,7 @@ void UpdateWaypointSign(Waypoint *wp)
 {
 	Point pt = RemapCoords2(TileX(wp->xy) * TILE_SIZE, TileY(wp->xy) * TILE_SIZE);
 	SetDParam(0, wp->index);
-	UpdateViewportSignPos(&wp->sign, pt.x, pt.y - 0x20, STR_WAYPOINT_VIEWPORT);
+	wp->sign.UpdatePosition(pt.x, pt.y - 0x20, STR_WAYPOINT_VIEWPORT);
 }
 
 /**

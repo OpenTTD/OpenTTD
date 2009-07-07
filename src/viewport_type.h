@@ -6,6 +6,7 @@
 #define VIEWPORT_TYPE_H
 
 #include "zoom_type.h"
+#include "strings_type.h"
 
 /**
  * Data structure for viewport, display of a part of the world
@@ -28,6 +29,8 @@ struct ViewportSign {
 	int32 left;
 	int32 top;
 	uint16 width_1, width_2;
+
+	void UpdatePosition(int center, int top, StringID str);
 };
 
 enum {

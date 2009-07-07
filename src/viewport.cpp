@@ -1279,23 +1279,26 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 	}
 }
 
-void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str)
+/**
+ * Update the position of the viewport sign.
+ * @param center the (preferred) center of the viewport sign
+ * @param top    the new top of the sign
+ * @param str    the string to show in the sign
+ */
+void ViewportSign::UpdatePosition(int center, int top, StringID str)
 {
-	char buffer[256];
-	uint w;
+	this->top = top;
 
-	sign->top = top;
+	char buffer[DRAW_STRING_BUFFER];
 
 	GetString(buffer, str, lastof(buffer));
-	w = GetStringBoundingBox(buffer).width + 3;
-	sign->width_1 = w;
-	sign->left = left - w / 2;
+	this->width_1 = GetStringBoundingBox(buffer).width + 3;
+	this->left = center - this->width_1 / 2;
 
 	/* zoomed out version */
 	_cur_fontsize = FS_SMALL;
-	w = GetStringBoundingBox(buffer).width + 3;
+	this->width_2 = GetStringBoundingBox(buffer).width + 3;
 	_cur_fontsize = FS_NORMAL;
-	sign->width_2 = w;
 }
 
 

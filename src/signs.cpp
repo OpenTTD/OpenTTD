@@ -42,7 +42,7 @@ void UpdateSignVirtCoords(Sign *si)
 {
 	Point pt = RemapCoords(si->x, si->y, si->z);
 	SetDParam(0, si->index);
-	UpdateViewportSignPos(&si->sign, pt.x, pt.y - 6, STR_SIGN_WHITE);
+	si->sign.UpdatePosition(pt.x, pt.y - 6, STR_SIGN_WHITE);
 }
 
 /** Update the coordinates of all signs */
