@@ -161,6 +161,8 @@ public:
 	 */
 	void MarkTilesDirty(bool cargo_change) const;
 
+	void UpdateVirtCoord();
+
 	uint GetPlatformLength(TileIndex tile, DiagDirection dir) const;
 	uint GetPlatformLength(TileIndex tile) const;
 	void RecomputeIndustriesNear();

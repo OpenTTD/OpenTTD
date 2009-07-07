@@ -366,19 +366,21 @@ static Station *GetClosestDeletedStation(TileIndex tile)
 	return best_station;
 }
 
-/** Update the virtual coords needed to draw the station sign.
- * @param st Station to update for.
+/**
+ * Update the virtual coords needed to draw the station sign and
+ * mark the station sign dirty.
+ * @ingroup dirty
  */
-static void UpdateStationVirtCoord(Station *st)
+void Station::UpdateVirtCoord()
 {
-	Point pt = RemapCoords2(TileX(st->xy) * TILE_SIZE, TileY(st->xy) * TILE_SIZE);
+	Point pt = RemapCoords2(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE);
 
 	pt.y -= 32;
-	if ((st->facilities & FACIL_AIRPORT) && st->airport_type == AT_OILRIG) pt.y -= 16;
+	if ((this->facilities & FACIL_AIRPORT) && this->airport_type == AT_OILRIG) pt.y -= 16;
 
-	SetDParam(0, st->index);
-	SetDParam(1, st->facilities);
-	UpdateViewportSignPos(&st->sign, pt.x, pt.y, STR_STATION_SIGN);
+	SetDParam(0, this->index);
+	SetDParam(1, this->facilities);
+	UpdateViewportSignPos(&this->sign, pt.x, pt.y, STR_STATION_SIGN);
 }
 
 /** Update the virtual coords needed to draw the station sign for all stations. */
@@ -387,7 +389,7 @@ void UpdateAllStationVirtCoord()
 	Station *st;
 
 	FOR_ALL_STATIONS(st) {
-		UpdateStationVirtCoord(st);
+		st->UpdateVirtCoord();
 	}
 }
 
@@ -402,7 +404,7 @@ void UpdateAllStationVirtCoord()
 static void UpdateStationVirtCoordDirty(Station *st)
 {
 	st->MarkDirty();
-	UpdateStationVirtCoord(st);
+	st->UpdateVirtCoord();
 	st->MarkDirty();
 }
 
@@ -2819,7 +2821,7 @@ CommandCost CmdRenameStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		free(st->name);
 		st->name = reset ? NULL : strdup(text);
 
-		UpdateStationVirtCoord(st);
+		st->UpdateVirtCoord();
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 1);
 		MarkWholeScreenDirty();
 	}
