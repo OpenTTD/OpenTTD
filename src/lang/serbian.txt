@@ -2810,7 +2810,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Naziv vo
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Nemoguće nazvati voz...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Naziv voza
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Sudar Vozova!{}{COMMA} {P "" su je} poginu{P o la lo} u eksploziji nakon sudara
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Nije moguće obrnuti smer kretanja voza...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nije moguće obrnuti smer kretanja voza...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Promena naziva vrste šinskog vozila
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nemoguća promena naziva vrste šinskog vozila...
 STR_CLEAR_TIME                                                  :{BLACK}Ukloni Vreme
@@ -2889,8 +2889,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi teretni tamvaj stiže na stanicu {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Saobraćajna nesreća!{}Vozač je poginuo u eksploziji nakon sudara sa vozom
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Saobraćajna nesreća!{}{COMMA} {P "" je su} poginu{P o la lo} u eksploziji nakon sudara sa vozom
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Nemoguće okretanje vozila...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Ne može se okrenuti vozilo od više delova
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Ne može se okrenuti vozilo od više delova
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Promena naziva
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Promenite naziv vrste drumskog vozila
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Naziv vrste drumskog vozila

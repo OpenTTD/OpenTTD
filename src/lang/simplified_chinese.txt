@@ -2826,7 +2826,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}给列�
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}不能给列车命名...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}给列车命名
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}列车相撞!{}{COMMA} 人在爆炸中丧生
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}不能命令列车调头...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}不能命令列车调头...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}重命名车辆的类型
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}不能重命名车辆的类型...
 STR_CLEAR_TIME                                                  :{BLACK}清除时间
@@ -2905,8 +2905,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}市民欢庆~. . .{}首辆货运电车抵达 {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，司机在事故中丧生！
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，{COMMA} 人在事故中丧生！
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}不能命令汽车掉头……
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}不能命令多节的汽车掉头
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}不能命令多节的汽车掉头
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}重命名
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}重命名汽车型号
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}重命名汽车型号

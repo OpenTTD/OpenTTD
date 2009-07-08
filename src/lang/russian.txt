@@ -2972,7 +2972,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Назв
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Невозможно назвать поезд...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Назвать поезд
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Столкновение поездов!{}{COMMA} человек{P "" а ""} погиб{P "" ло ло} в огне!
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Невозможно развернуть поезд...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Невозможно развернуть поезд...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Переименовать тип вагона
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Невозможно переименовать...
 STR_CLEAR_TIME                                                  :{BLACK}Сбросить время
@@ -3051,8 +3051,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Жители празднуют . . .{}Первый грузовой трамвай прибыл на {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}АВАРИЯ!{}Водитель погиб при столкновении с поездом
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}АВАРИЯ!{}{COMMA} человек{P "" а ""} погиб{P "" ло ло} при столкновении с поездом!
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Невозможно развернуть автомобиль...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Невозможно развернуть многосоставной транспорт
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Невозможно развернуть многосоставной транспорт
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Переимен.
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Переименовать автомобиль
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Переименовать автомобиль

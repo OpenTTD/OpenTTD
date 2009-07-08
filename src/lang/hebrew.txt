@@ -2786,7 +2786,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}תן ש�
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}לא ניתן לתת שם לרכבת
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}תן שם לרכבת
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT} !התנגשות רכבות {}{NBSP} נספו בפיצוץ כתוצאה מהתאונה {COMMA}
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}לא ניתן לשנות את כיוון  הנסיעה של הרכבת
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}לא ניתן לשנות את כיוון  הנסיעה של הרכבת
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}שנה את שם סוג קרון הרכבת
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}לא ניתן לשנות את שם סוג הקרון
 STR_CLEAR_TIME                                                  :{BLACK}אפס זמן
@@ -2865,8 +2865,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}!{STATION} התושבים חוגגים... {}חשמלית משא ראשונה הגיעה ל
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}תאונת כלי רכב!{}נהג נהרג לאחר התנגשות ברכבת
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}תאונת כלי רכב!{}{NBSP}נהרגו לאחר התנגשות עם רכבת {COMMA}
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}לא ניתן לכפות על כלי הרכב להסתובב...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}.לא ניתן לסובב כלי רכב מורכבים
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}.לא ניתן לסובב כלי רכב מורכבים
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}שנה שם
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}שנה את שם סוג כלי הרכב
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}שנה את שם סוג כלי הרכב

@@ -2825,7 +2825,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Zuch ben
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kann den Zuch net benennen...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Zuch benennen
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Zuch Accident!{}{COMMA} stiewen an der Explosioun nom Accident
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Kann d'Richtung vum Zuch net änneren...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kann d'Richtung vum Zuch net änneren...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Zuchgefierttyp ëmbenennen
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kann den Zuchgefierttyp net ëmbenennen...
 STR_CLEAR_TIME                                                  :{BLACK}Zäit läschen
@@ -2904,8 +2904,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Biirger feieren . . .{}Eischten Wueren-Tram kënnt bei  {STATION} un!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Stroossengefiert onfall!{}Fuerer stieft an der Explosioun no Onfall mam Zuch
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Stroossengefiertaccident!{}{COMMA} stiewen an der Explosioun no Onfall mam Zuch
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Kann d'Gefiert net dréinen...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kann keng Gefierer aus e puer Unitéiten emdréinen
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kann keng Gefierer aus e puer Unitéiten emdréinen
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Ëmbenennen
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Gefierttyp ëmbenennen
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Gefiertentyp ëmbenennen

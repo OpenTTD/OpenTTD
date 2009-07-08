@@ -2800,7 +2800,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nosaukt 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Nevar nosaukt vilcienu...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nosaukt vilcienu
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Vilciena avārija!{}{COMMA} mirušie
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Vilcienu nevar apgriezt...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Vilcienu nevar apgriezt...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Pārsaukt vilciena vagona tipu
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nevar pārsaukt vilciena vagona tipu...
 STR_CLEAR_TIME                                                  :{BLACK}Notīrīt laiku
@@ -2879,8 +2879,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Pilsoņi līksmo . . .{}Pirmais kravas tramvajs ierodas {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Autotransporta avārija!{}Vadītājs mirst uzreiz pēc sadursmes ar vilcienu.
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Autotransporta avārija!{}{COMMA} mirst pēc sadursmes ar vilcienu
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Transportl. nevar apgriezties...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Nevar pagriezt transportlīdzekļus, kas sastāv no vairākām daļām
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nevar pagriezt transportlīdzekļus, kas sastāv no vairākām daļām
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Pārsaukt
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Pārsaukt transportl. tipu
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Pārsaukt transportl. tipu

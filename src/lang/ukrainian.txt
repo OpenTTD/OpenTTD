@@ -2989,7 +2989,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Назв
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Неможливо назвати поїзд...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Назвати поїзд
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Аварія!{}Поїзди зіткнулися.{}{COMMA} загинуло.
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Неможливо розвернути поїзд...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Неможливо розвернути поїзд...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Перейменувати тип поїзду
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Неможливо перейменувати тип поїзду...
 STR_CLEAR_TIME                                                  :{BLACK}Очистити час
@@ -3068,8 +3068,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Жителі святкують . . .{}Перший вантажний трамвай прибув на {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Аварія!{}Водій загинув при зіткненні авто з поїздом
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Аварія!{}{COMMA} загинуло при зіткненні авто з поїздом
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Неможливо розвернути авто...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Неможливо розвернути довгий транспорт
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Неможливо розвернути довгий транспорт
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Зміна назви
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Перейменувати тип авто
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Перейменувати тип авто

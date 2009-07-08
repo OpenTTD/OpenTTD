@@ -2809,7 +2809,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Renomear
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Não é possível renomear comboio...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Renomear comboio
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Acidente Ferroviário!{}{COMMA} mortos numa explosão após a colisão
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Não é possível inverter a direcção do comboio...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Não é possível inverter a direcção do comboio...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renomear tipo de veículo ferroviário
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Não é possível renomear tipo de veículo ferroviário...
 STR_CLEAR_TIME                                                  :{BLACK}Apagar Tempo
@@ -2888,8 +2888,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro eléctrico de mercadorias chega a {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Acidente de Veículo de Estrada!{}Condutor morre na explosão após a colisão com um comboio
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Acidente de Veículo de Estrada!{}{COMMA} morrem na explosão após a colisão com um comboio
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Não é possível fazer o veículo dar a volta...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Não é possível virar comboios compostos por unidades múltiplas
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Não é possível virar comboios compostos por unidades múltiplas
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Renomear
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Renomear tipo de veículo de estrada
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Renomear tipo de veículo de estrada

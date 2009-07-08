@@ -2827,7 +2827,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Treni ad
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Tren adlandırılamıyor...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Treni adlandır
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Tren Kazasi!{}{COMMA} ölü var.
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Tren çevrilemez...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Tren çevrilemez...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Tren yeniden adlandırılamaz
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Tren yeniden adlandırılamaz...
 STR_CLEAR_TIME                                                  :{BLACK}Zamanı Temizle
@@ -2906,8 +2906,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yük tramvayı geldi!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Trafik kazasi!{}Trenle çarpisan aracın soförü feci şekilde can verdi
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Trafik kazasi!{}{COMMA} kişi patlamadan kurtulamadı
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Araç döndürülemiyor...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Birden fazla birimden oluşan araçlar çevrilemez
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Birden fazla birimden oluşan araçlar çevrilemez
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}İsim
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Araç türünü yeniden adlandır
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Araç türünü yeniden adlandır

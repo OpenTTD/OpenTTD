@@ -2828,7 +2828,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Name des
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Zug kann nicht benannt werden...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Name des Zuges
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Zugunglück!{}{COMMA} {P stirbt sterben} in einem Feuerball nach Zusammenstoß
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Die Zugbewegung kann nicht umgekehrt werden...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Die Zugbewegung kann nicht umgekehrt werden...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Zugtyp umbenennen
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Zugtyp kann nicht umbenannt werden...
 STR_CLEAR_TIME                                                  :{BLACK}Zeit löschen
@@ -2907,8 +2907,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Die erste Frachtstraßenbahn erreicht {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Fahrzeug verunglückt!{}Fahrer stirbt in Inferno nach Zusammenstoß mit Zug
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Fahrzeug verunglückt!{}{COMMA} {P stirbt sterben} in Inferno nach Zusammenstoß mit Zug
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Fahrzeug kann nicht umgedreht werden...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Fahrzeuge, die aus mehreren Einheiten bestehen, können nicht umgedreht werden.
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Fahrzeuge, die aus mehreren Einheiten bestehen, können nicht umgedreht werden.
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Umbenennen
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Fahrzeug umbenennen
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Fahrzeug umbenennen

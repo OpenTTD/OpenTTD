@@ -2884,7 +2884,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Anna ron
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Ei saa nimetada rongi...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Rongi nimi
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}RONGIKOKKUPÕRGE!{}{COMMA} surid tules peale kokkusõitmist
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Ei saa rongi ümber pöörata.
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ei saa rongi ümber pöörata.
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Vaheta rongivaguni tüübinime
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Raudteesõiduki tüübinime ei saa vahetada...
 STR_CLEAR_TIME                                                  :{BLACK}Tühista aeg
@@ -2963,8 +2963,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Kodanikud tähistavad . . .{}Esimene kaubatramm saabus trammijaama {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Rongikokkupõrge!{}Juht suri peale õnnetust tules
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Mootorsõiduki kokkupõrge rongiga!{}{COMMA} inimest suri õnnetuses
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Transpordivahendit ei saa ümber pöörata...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Mitmest osast koosnevaid veovahendeid ei saa ümber pöörata
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Mitmest osast koosnevaid veovahendeid ei saa ümber pöörata
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Nimevahetus
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Muuda mootorsõiduki tüübinime
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Vaheta mootorsõiduki tüübinime

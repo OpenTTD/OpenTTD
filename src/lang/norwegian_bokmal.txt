@@ -2790,7 +2790,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Navngi t
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kan ikke navngi tog...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Navngi tog
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Togkrasj!{}{COMMA} dør i kollisjonen
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Kan ikke snu toget...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan ikke snu toget...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Gi tog/vogn nytt navn
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan ikke gi tog/vogn nytt navn...
 STR_CLEAR_TIME                                                  :{BLACK}Nullstill tid
@@ -2869,8 +2869,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Borgerne jubler . . .{}Første frakttrikk ankommer {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Kollisjon!{}Sjåfør dør etter kollisjon med tog
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Kollisjon!{}{COMMA} dør etter kollisjon med tog
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Kan ikke snu kjøretøy...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan ikke snu kjøretøy som består av flere deler
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan ikke snu kjøretøy som består av flere deler
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Endre navn
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Endre navnet til kjøretøytypen
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Endre navnet til kjøretøytypen

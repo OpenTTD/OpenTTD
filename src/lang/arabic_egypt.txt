@@ -2827,7 +2827,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}اسم �
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}لا يمكن تسمية القطار ...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK} اسم القطار
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}تحطم قطار! {}{COMMA} مات في حريق بعد الحادث
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}لا يمكن عكس اتجاة القطار...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}لا يمكن عكس اتجاة القطار...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}اعادة تسمية عربات القطار
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}لا يمكن اعادة تسمية عربات القطار ...
 STR_CLEAR_TIME                                                  :{BLACK}مسح الوقت
@@ -2906,8 +2906,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}المواطنون يحتفلون . . . {}بوصول اول عربة ترام لمحطة  {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}العربة تحطمت !{}السائق توفي في شعلة الحريق بعد الاصطدام بقطار
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}العربة تحطمت !{}{COMMA} توفي في شعلة الحريق بعد الاصطدام بقطار
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}لايمكن للعربة أن تدور للخلف...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}لا يمكن انعطاف العربات المكونة من اكثر من وحدة.
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}لا يمكن انعطاف العربات المكونة من اكثر من وحدة.
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}أعد التسمية
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK} اعادة تسمية العربة
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE} اعادة تسمية العربة

@@ -2828,7 +2828,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nombrar 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}No se puede nombrar tren...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nombrar tren
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}¡Siniestro ferroviario!{}{COMMA} fallecidos en la explosión de la colisión
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}No se puede revertir la dirección...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}No se puede revertir la dirección...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renombrar tipo de vehículo
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}No se puede renombrar tipo de vehículo...
 STR_CLEAR_TIME                                                  :{BLACK}Limpiar Horario
@@ -2907,8 +2907,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Ciudadanos celebran . . .{}Llega primer tranvía de carga a {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}¡Accidente de tráfico!{}El conductor fallece en la explosión tras la colisión con el tren
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Accidente de tráfico!{}{COMMA} fallecidos en la explosión tras la colisión con el tren
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}No se puede hacer girar al vehículo...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}No se pude dar la vuelta a un vehículo compuesto por múltiples unidades
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}No se pude dar la vuelta a un vehículo compuesto por múltiples unidades
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Renombrar
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Renombrar tipo de vehículo
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Renombrar tipo de vehículo

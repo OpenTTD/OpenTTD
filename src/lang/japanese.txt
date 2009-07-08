@@ -2789,7 +2789,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}列車�
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}列車に名前を付けられません...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}列車に名前を付ける
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}列車事故！{}{COMMA}人が死亡
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}列車を逆転できません...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}列車を逆転できません...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}鉄道車両の名称を変更
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}鉄道車両の名称を変更できません...
 STR_CLEAR_TIME                                                  :{BLACK}時間を消去
@@ -2866,8 +2866,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}町民の祝賀{}初貨物用路面電車が{STATION}駅に到着！
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}交通事故！{}列車に衝突、運転者が死亡
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}交通事故！{}列車に衝突、{COMMA}人が死亡
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}車両を逆転できません...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}多数の部分を含む車両が逆転できません
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}多数の部分を含む車両が逆転できません
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}名称変更
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}道路車両の名称を変更
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}道路車両の名称を変更

@@ -2459,7 +2459,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nomu tra
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Ne povas nomi trajnon...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nomu trajnon
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Trajna Kraŝo!{}{COMMA} mortis pro fajro post kolizio
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Ne povas inversigi direkton de trajno...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ne povas inversigi direkton de trajno...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renomu trajnan veturiltipon
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Ne povas renomi trajnan veturiltipon...
 
@@ -2519,8 +2519,7 @@ STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Enloĝantoj festas . . .{}Unua ŝarĝaŭto alvenas en {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Vojveturila kraŝo!{}Veturanto mortas pro fajro post kolizio kun trajno
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Vojveturila Kraŝo!{}{COMMA} mortas pro fajro post kolizio kun trajno
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Ne povas ĉirkaŭturni veturilon...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Ne povas turni veturilojn konsistantaj el pluraj unuoj
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Ne povas turni veturilojn konsistantaj el pluraj unuoj
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Renomu
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Renomu vojveturilan tipon
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Renomu vojveturilan tipon

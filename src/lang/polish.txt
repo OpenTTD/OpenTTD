@@ -3232,7 +3232,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nazwa po
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Nie można zmienić nazwy pociągu...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nazwa pociągu
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Wypadek kolejowy!{}{COMMA} ofiar{P a y ""} w kolizji
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Nie można odwrócić kierunku jazdy pociągu...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nie można odwrócić kierunku jazdy pociągu...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Zmiana nazwy typu pociągu
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nie można zmienić nazwy typu pojazdu...
 STR_CLEAR_TIME                                                  :{BLACK}Usuń czas
@@ -3311,8 +3311,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwszy tramwaj towarowy przybył do {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Wypadek samochodowy!{}Kierowca zginął w zderzeniu z pociągiem
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Wypadek samochodowy!{}{COMMA} ofiar{P a y ""} zderzenia z pociągiem
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Nie można zawrócić samochodu...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Nie można obracać pociągów z podwójnymi lokomotywami
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nie można obracać pociągów z podwójnymi lokomotywami
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Zmień nazwę
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Zmień nazwę typu samochodu
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Zmień nazwę typu samochodu

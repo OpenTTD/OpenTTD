@@ -2828,7 +2828,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}열차 �
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}열차 이름을 지정할 수 없습니다...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}열차 이름 지정
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}열차 충돌 사고!{}충돌로 인한 폭발로 {COMMA}명의 사망자가 발생하였습니다!
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}열차를 회차시킬 수 없습니다...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}열차를 회차시킬 수 없습니다...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}열차 차량 타입 이름 재지정
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}차량 타입의 이름을 다시 지정할 수 없습니다...
 STR_CLEAR_TIME                                                  :{BLACK}시간 초기화
@@ -2907,8 +2907,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}{STATION}에 처음으로 화물 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 운전사가 사망했습니다!
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 {COMMA}명이 사망했습니다!
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}자동차를 돌릴 수 없습니다...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}여러대의 차량이 연결된 차량은 회차시킬 수 없습니다
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}여러대의 차량이 연결된 차량은 회차시킬 수 없습니다
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}이름 지정
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}자동차 타입의 이름 지정
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}자동차 타입의 이름 지정

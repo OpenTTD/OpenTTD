@@ -2901,7 +2901,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Pojmenov
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Nelze pojmenovat vlak...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Pojmenovat vlak
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Železniční neštěstí!{}Při srážce {COMMA} {P člověk lidé lidí} přiš{P el li lo} o život v plamenech.
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Nelze obrátit vlak...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nelze obrátit vlak...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Přejmenovat typ železničního vozidla
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nemohu přejmenovat typ železničního vozidla...
 STR_CLEAR_TIME                                                  :{BLACK}Smazat čas
@@ -2980,8 +2980,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První nákladní tramvaj přijíždí do {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Dopravní nehoda!{}Řidič zahynul v plamenech při srážce s vlakem
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Dopravní nehoda!{}{COMMA} {P člověk lidé lidí} zahynul{P "" i o} v plamenech při srážce s vlakem
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Nelze otočit vozidlo...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Nelze otáčet vozidla složená z více strojů
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nelze otáčet vozidla složená z více strojů
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Přejmenovat
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Přejmenovat typ silničního vozidla
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Přejmenovat typ silničního vozidla

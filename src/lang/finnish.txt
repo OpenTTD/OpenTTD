@@ -2827,7 +2827,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nimeä j
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Junaa ei voi nimetä...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nimeä juna
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Junakolari!{}{COMMA} kuolee törmäyksen jälkeisessä tulipallossa.
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Junan suuntaa ei voi kääntää...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Junan suuntaa ei voi kääntää...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Nimeä juna(vaunu)n tyyppi uudelleen.
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Juna(vaunu)n tyyppiä ei voi uudelleennimetä...
 STR_CLEAR_TIME                                                  :{BLACK}Nollaa aika
@@ -2906,8 +2906,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen rahtiraitiovaunu saapuu asemalle {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Ajoneuvokolari!{}Kuljettaja kuolee junaan törmäyksen jälkeisessä tulipallossa
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Ajoneuvokolari!{}{COMMA} kuolee junaan törmäyksen jälkeisessä tulipallossa
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Ajoneuvoa ei voi pakottaa kääntymään ympäri...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Ei voi kääntää moniosaista ajoneuvoa
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Ei voi kääntää moniosaista ajoneuvoa
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Nimeä
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Nimeä ajoneuvon tyyppi uudelleen
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Nimeä ajoneuvon tyyppi uudelleen

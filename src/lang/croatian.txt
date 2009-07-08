@@ -2866,7 +2866,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Imenuj v
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Nije moguće imenovati vlak...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Imenuj vlak
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Vlak se sudario!{}{COMMA} poginu{P o la lih} u eksploziji nakon sudara
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Nije moguće promijeniti smjer vlaka...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nije moguće promijeniti smjer vlaka...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Preimenuj vrstu vagona
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nije moguće preimenovati vrstu vagona...
 STR_CLEAR_TIME                                                  :{BLACK}Obriši vrijeme
@@ -2945,8 +2945,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Građani slave . . .{}Prvi teretni tramvaj je stigao na postaju {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Sudar cestovnog vozila!{}Vozač poginuo u eksploziji nakon sudara s vlakom
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Sudar cestovnog vozila!{}{COMMA} poginulih u eksploziji nakon sudara s vlakom
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Nije moguće natjerati vozilo da se okrene...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Ne mogu okreniti vozila koja se sastoje od više jedinica
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Ne mogu okreniti vozila koja se sastoje od više jedinica
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Preimenuj
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Preimenuj vrstu cestovnog vozila
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Preimenuj vrstu cestovnog vozila

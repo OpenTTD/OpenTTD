@@ -1357,7 +1357,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}نام �
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}نمیتوان برای قطار نام انتخاب کرد...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}نام گذاری قطار
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}تصادف قطار!{}{COMMA} مرگ در انفجار حاصل از برخورد
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}جهت قطار را نمی شود تغییر داد...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}جهت قطار را نمی شود تغییر داد...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}تغییر نام انواع قطار ها
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}نمی شود انواع قطار ها را تغییر نام داد...
 
@@ -1379,7 +1379,6 @@ STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}شهروندان ورود اولین کامیون را به . . .{}{STATION} تبریک گفتند!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}تصادف ماشین!{}راننده پس از تصادف با قطار در آتش سوخت
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}تصادف ماشین!{}راننده پس از تصادف با قطار{COMMA} در آتش سوخت
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}ماشین نمی تواند دور بزند...
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}تغییر نام
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}تغییر نام انواع ماشین ها
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}تغییر نام انواع ماشین ها

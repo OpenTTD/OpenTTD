@@ -2894,7 +2894,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Pomenova
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Vlak nemozno pomenovat ...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Pomenovat vlak
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Vlakove nestastie!{}{COMMA} mrtv{P i i ych} pri poziari po kolizii
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Nemozno zmenit smer vlaku ...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nemozno zmenit smer vlaku ...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Premenovat typ vlaku
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Typ vlaku nemoze byt premenovany ...
 STR_CLEAR_TIME                                                  :{BLACK}Vymazat cas
@@ -2973,8 +2973,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvá nákladná elektricka dorazila do stanice {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Dopravna nehoda!{}Vodic zahynul po kolizii s vlakom
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Dopravna nehoda!{}{COMMA} mrtvych po kolizii s vlakom
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Nemozno otocit vozidlo ...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Nie je mozne otacat vozidla zlozené z viacerych jednotiek
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nie je mozne otacat vozidla zlozené z viacerych jednotiek
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Premenovat
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Premenovat typ automobilu
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Premenovat typ automobilu

@@ -2827,7 +2827,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Hernoem 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kan trein niet zo noemen...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Trein benaming
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Trein Ongeluk!{}{COMMA} gedood in een vuurbal na de botsing
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Kan de richting van de trein niet omdraaien...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan de richting van de trein niet omdraaien...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Hernoem trein voertuig type
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan het trein voertuig type niet hernoemen...
 STR_CLEAR_TIME                                                  :{BLACK}Reset de tijd
@@ -2906,8 +2906,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Inwoners feesten . . .{}Eerste vracht tram arriveert in {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Wegvoertuig gebotst!{}Bestuurder verongelukt door treinbotsing
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Wegvoertuig gebotst!{}{COMMA} verongelukt door treinbotsing
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Kan voertuig niet omdraaien...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan voertuigen bestaande uit meerdere eenheden niet omdraaien
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan voertuigen bestaande uit meerdere eenheden niet omdraaien
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Hernoem
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Hernoem wegvoertuigtype
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Hernoem wegvoertuigtype

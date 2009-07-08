@@ -2799,7 +2799,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Traukini
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Negali pakeisti traukinio vardo...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Traukinio vardas
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Traukinio avarija!{}{COMMA} zuvo liepsnose po katastrofos
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Traukinio vaziavimo krypties pakeisti negalima...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Traukinio vaziavimo krypties pakeisti negalima...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Pervardinti traukinio tipa
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Neimanoma pervardinti traukinio tipo...
 STR_CLEAR_TIME                                                  :{BLACK}Ištrinti laiką
@@ -2876,8 +2876,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Miestelėnai švenčia . . .{}Pirmas krovininis tramvajus atvyko į {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Automobilio avarija!{}Automobilio vairuotojas zuvo po susidurimo su traukiniu
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Automobilio avarija!{}Žuvo {COMMA} keleiv(P is iai ių) automobiliui susidūrus su traukiniu
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Automobilis negali apsisukti...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}negalima pajudinti automobiliu sudarytu is keliu vienetu
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}negalima pajudinti automobiliu sudarytu is keliu vienetu
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Pervardinti
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Pervardinti automobiliu tipa
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Pervardinti automobiliu tipa

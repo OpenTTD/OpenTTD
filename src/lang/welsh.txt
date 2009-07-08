@@ -2819,7 +2819,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Enwi tr�
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Methu enwi trên...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Enwi trên
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Trên wedi crashio!{}Bu {COMMA} farw yn y ddamwain
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Methu gwrthdroi cyfeiriad  trên...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Methu gwrthdroi cyfeiriad  trên...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Ailenwi math y cerbyd trên
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Methu ailenwi math y cerbyd trên...
 STR_CLEAR_TIME                                                  :{BLACK}Clirio Amser
@@ -2898,8 +2898,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{} Mae'r tram nwyddau cyntaf wedi cyrraedd {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Damwain Cerbyd Ffordd!{}Bu gyrrwr farw mewn damwain â thrên
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Damwain Cerbyd Ffordd!{}Bu farw {COMMA} mewn damwain â thrên
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Methu peri i gerbyd droi rownd...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Methu troi cerbydau sy'n meddu ar sawl uned
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Methu troi cerbydau sy'n meddu ar sawl uned
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Ailenwi
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Ailenwi'r math cerbyd ffordd
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Ailenwi'r math cerbyd ffordd

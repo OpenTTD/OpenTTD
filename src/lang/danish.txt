@@ -2827,7 +2827,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Giv toge
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kan ikke give toget navn...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Giv toget et navn
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Tog forulykket!{}{COMMA} døde i flammerne efter kollision
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Kan ikke vende retningen af toget...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan ikke vende retningen af toget...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Omdøb tog-/togvognstypen
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan ikke omdøbe tog-/togvognstypen...
 STR_CLEAR_TIME                                                  :{BLACK}Nulstil tid
@@ -2906,8 +2906,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første fragt-sporvogn ankommer til {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Lastbil forulykket!{}Chauffør dør i flammerne efter sammenstød med tog
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Bus forulykket!{}{COMMA} dør i flammerne efter kollision med et tog
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Kan ikke få køretøjet til at vende...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan ikke vende et køretøj, der består af flere enheder
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan ikke vende et køretøj, der består af flere enheder
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Omdøb
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Omdøb køretøjstypen
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Omdøb køretøjstypen

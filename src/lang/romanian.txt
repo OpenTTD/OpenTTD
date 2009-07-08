@@ -2827,7 +2827,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Numele t
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Nu se poate denumi trenul...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Numele trenului
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Accident feroviar!{}{COMMA} victime în urma unei coliziuni
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}Nu se poate schimba sensul de mers al trenului...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nu se poate schimba sensul de mers al trenului...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Redenumeste modelul vehiculului feroviar
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nu se poate redenumi modelul de vehicul...
 STR_CLEAR_TIME                                                  :{BLACK}Curata timp
@@ -2906,8 +2906,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Cetăţenii sărbătoresc . . .{}sosirea primului primul tramvai pentru marfă la {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Accident rutier!{}Şoferul decedat în urma coliziunii cu un tren
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Accident rutier!{}{COMMA} victime în urma coliziunii cu un tren
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}Nu pot întoarce autovehiculul...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Nu se pot întoarce vehiculele alcătuite din mai multe unităţi
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nu se pot întoarce vehiculele alcătuite din mai multe unităţi
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Nume nou
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Redenumeşte modelul de autovehicul
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Redenumeşte modelul de autovehicul

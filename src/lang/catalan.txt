@@ -2827,7 +2827,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Anomena 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}No es pot anomenar el tren...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Anomena tren
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Accident de Tren!{}{COMMA} moren en una bola de foc després de la col·lisió
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}No es pot invertir la direcció del tren...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}No es pot invertir la direcció del tren...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Reanomena el tipus d'element del tren
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}No es pot reanomenar el tipus d'element del tren...
 STR_CLEAR_TIME                                                  :{BLACK}Esborra Temps
@@ -2906,8 +2906,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Els ciutadans celebren . . .{}El primer tramvia de mercaderies arriba a {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Accident d'automòbil!{}El conductor mor en una bola de foc després de la col·lisió amb un tren
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Accident d'automòbil!{}{COMMA} moren en una bola de foc després d'una col·lisió amb un tren
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}No es pot fer que el vehicle torni...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}No es poden girar vehicles que estan formats per múltiples unitats
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}No es poden girar vehicles que estan formats per múltiples unitats
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Reanomena
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Reanomena tipus d'automòbil
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Reanomena tipus d'automòbil

@@ -2825,7 +2825,7 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}為列�
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}無法為列車命名...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}為列車命名
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}列車事故！{}衝撞後 {COMMA} 人死在火球下
-STR_ERROR_CAN_T_REVERSE_DIRECTION                               :{WHITE}無法倒轉列車方向...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}無法倒轉列車方向...
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}重新命名列車類型
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}無法修改列車類型名稱...
 STR_CLEAR_TIME                                                  :{BLACK}清除時刻表
@@ -2904,8 +2904,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛載貨電車抵達 {STATION}！
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}車禍！{}駕駛在與列車對撞後罹難
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}車禍！{}車輛在與列車對撞後，造成 {COMMA} 人罹難
-STR_ERROR_CAN_T_MAKE_VEHICLE_TURN                               :{WHITE}無法使車輛掉頭...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}無法迴轉由多節車廂組成的車輛
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}無法迴轉由多節車廂組成的車輛
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}更名
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}為車輛類型更名
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}為車輛類型更名
