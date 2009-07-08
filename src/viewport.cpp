@@ -1043,7 +1043,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 				if (bottom > t->sign.top &&
 						top    < t->sign.top + 12 &&
 						right  > t->sign.left &&
-						left   < t->sign.left + t->sign.width_1) {
+						left   < t->sign.left + t->sign.width_normal) {
 					AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
 						_settings_client.gui.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
 						t->index, t->population);
@@ -1059,7 +1059,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 				if (bottom > t->sign.top &&
 						top    < t->sign.top + 24 &&
 						right  > t->sign.left &&
-						left   < t->sign.left + t->sign.width_1 * 2) {
+						left   < t->sign.left + t->sign.width_normal * 2) {
 					AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
 						_settings_client.gui.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
 						t->index, t->population);
@@ -1076,7 +1076,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 				if (bottom > t->sign.top &&
 						top    < t->sign.top + ScaleByZoom(12, dpi->zoom) &&
 						right  > t->sign.left &&
-						left   < t->sign.left + ScaleByZoom(t->sign.width_2, dpi->zoom)) {
+						left   < t->sign.left + ScaleByZoom(t->sign.width_small, dpi->zoom)) {
 					AddStringToDraw(t->sign.left + 5, t->sign.top + 1, STR_TOWN_LABEL_TINY_BLACK, t->index, 0);
 					AddStringToDraw(t->sign.left + 1, t->sign.top - 3, STR_TOWN_LABEL_TINY_WHITE, t->index, 0);
 				}
@@ -1113,8 +1113,8 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 				if (bottom > st->sign.top &&
 						top    < st->sign.top + 12 &&
 						right  > st->sign.left &&
-						left   < st->sign.left + st->sign.width_1) {
-					AddStation(st, STR_STATION_SIGN, st->sign.width_1);
+						left   < st->sign.left + st->sign.width_normal) {
+					AddStation(st, STR_STATION_SIGN, st->sign.width_normal);
 				}
 			}
 			break;
@@ -1126,8 +1126,8 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 				if (bottom > st->sign.top &&
 						top    < st->sign.top + 24 &&
 						right  > st->sign.left &&
-						left   < st->sign.left + st->sign.width_1 * 2) {
-					AddStation(st, STR_STATION_SIGN, st->sign.width_1);
+						left   < st->sign.left + st->sign.width_normal * 2) {
+					AddStation(st, STR_STATION_SIGN, st->sign.width_normal);
 				}
 			}
 			break;
@@ -1141,8 +1141,8 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 				if (bottom > st->sign.top &&
 						top    < st->sign.top + ScaleByZoom(12, dpi->zoom) &&
 						right  > st->sign.left &&
-						left   < st->sign.left + ScaleByZoom(st->sign.width_2, dpi->zoom)) {
-					AddStation(st, STR_STATION_SIGN_TINY, st->sign.width_2 | 0x8000);
+						left   < st->sign.left + ScaleByZoom(st->sign.width_small, dpi->zoom)) {
+					AddStation(st, STR_STATION_SIGN_TINY, st->sign.width_small | 0x8000);
 				}
 			}
 			break;
@@ -1177,8 +1177,8 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 				if (bottom > si->sign.top &&
 						top    < si->sign.top + 12 &&
 						right  > si->sign.left &&
-						left   < si->sign.left + si->sign.width_1) {
-					AddSign(si, STR_SIGN_WHITE, si->sign.width_1);
+						left   < si->sign.left + si->sign.width_normal) {
+					AddSign(si, STR_SIGN_WHITE, si->sign.width_normal);
 				}
 			}
 			break;
@@ -1190,8 +1190,8 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 				if (bottom > si->sign.top &&
 						top    < si->sign.top + 24 &&
 						right  > si->sign.left &&
-						left   < si->sign.left + si->sign.width_1 * 2) {
-					AddSign(si, STR_SIGN_WHITE, si->sign.width_1);
+						left   < si->sign.left + si->sign.width_normal * 2) {
+					AddSign(si, STR_SIGN_WHITE, si->sign.width_normal);
 				}
 			}
 			break;
@@ -1205,8 +1205,8 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 				if (bottom > si->sign.top &&
 						top    < si->sign.top + ScaleByZoom(12, dpi->zoom) &&
 						right  > si->sign.left &&
-						left   < si->sign.left + ScaleByZoom(si->sign.width_2, dpi->zoom)) {
-					AddSign(si, IsTransparencySet(TO_SIGNS) ? STR_SIGN_SMALL_WHITE : STR_SIGN_SMALL_BLACK, si->sign.width_2 | 0x8000);
+						left   < si->sign.left + ScaleByZoom(si->sign.width_small, dpi->zoom)) {
+					AddSign(si, IsTransparencySet(TO_SIGNS) ? STR_SIGN_SMALL_WHITE : STR_SIGN_SMALL_BLACK, si->sign.width_small | 0x8000);
 				}
 			}
 			break;
@@ -1241,8 +1241,8 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 				if (bottom > wp->sign.top &&
 						top    < wp->sign.top + 12 &&
 						right  > wp->sign.left &&
-						left   < wp->sign.left + wp->sign.width_1) {
-					AddWaypoint(wp, STR_WAYPOINT_VIEWPORT, wp->sign.width_1);
+						left   < wp->sign.left + wp->sign.width_normal) {
+					AddWaypoint(wp, STR_WAYPOINT_VIEWPORT, wp->sign.width_normal);
 				}
 			}
 			break;
@@ -1254,8 +1254,8 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 				if (bottom > wp->sign.top &&
 						top    < wp->sign.top + 24 &&
 						right  > wp->sign.left &&
-						left   < wp->sign.left + wp->sign.width_1 * 2) {
-					AddWaypoint(wp, STR_WAYPOINT_VIEWPORT, wp->sign.width_1);
+						left   < wp->sign.left + wp->sign.width_normal * 2) {
+					AddWaypoint(wp, STR_WAYPOINT_VIEWPORT, wp->sign.width_normal);
 				}
 			}
 			break;
@@ -1269,8 +1269,8 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 				if (bottom > wp->sign.top &&
 						top    < wp->sign.top + ScaleByZoom(12, dpi->zoom) &&
 						right  > wp->sign.left &&
-						left   < wp->sign.left + ScaleByZoom(wp->sign.width_2, dpi->zoom)) {
-					AddWaypoint(wp, STR_WAYPOINT_VIEWPORT_TINY, wp->sign.width_2 | 0x8000);
+						left   < wp->sign.left + ScaleByZoom(wp->sign.width_small, dpi->zoom)) {
+					AddWaypoint(wp, STR_WAYPOINT_VIEWPORT_TINY, wp->sign.width_small | 0x8000);
 				}
 			}
 			break;
@@ -1292,12 +1292,12 @@ void ViewportSign::UpdatePosition(int center, int top, StringID str)
 	char buffer[DRAW_STRING_BUFFER];
 
 	GetString(buffer, str, lastof(buffer));
-	this->width_1 = GetStringBoundingBox(buffer).width + 3;
-	this->left = center - this->width_1 / 2;
+	this->width_normal = GetStringBoundingBox(buffer).width + 3;
+	this->left = center - this->width_normal / 2;
 
 	/* zoomed out version */
 	_cur_fontsize = FS_SMALL;
-	this->width_2 = GetStringBoundingBox(buffer).width + 3;
+	this->width_small = GetStringBoundingBox(buffer).width + 3;
 	_cur_fontsize = FS_NORMAL;
 }
 
@@ -1314,7 +1314,7 @@ void ViewportSign::MarkDirty() const
 	MarkAllViewportsDirty(
 		this->left - 6,
 		this->top  - 3,
-		this->left + ScaleByZoom(this->width_1 + 12, ZOOM_LVL_MAX),
+		this->left + ScaleByZoom(this->width_normal + 12, ZOOM_LVL_MAX),
 		this->top  + ScaleByZoom(12, ZOOM_LVL_MAX));
 }
 
@@ -1845,7 +1845,7 @@ static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
 				if (y >= t->sign.top &&
 						y < t->sign.top + 12 &&
 						x >= t->sign.left &&
-						x < t->sign.left + t->sign.width_1) {
+						x < t->sign.left + t->sign.width_normal) {
 					ShowTownViewWindow(t->index);
 					return true;
 				}
@@ -1859,7 +1859,7 @@ static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
 				if (y >= t->sign.top &&
 						y < t->sign.top + 24 &&
 						x >= t->sign.left &&
-						x < t->sign.left + t->sign.width_1 * 2) {
+						x < t->sign.left + t->sign.width_normal * 2) {
 					ShowTownViewWindow(t->index);
 					return true;
 				}
@@ -1875,7 +1875,7 @@ static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
 				if (y >= t->sign.top &&
 						y < t->sign.top + ScaleByZoom(12, vp->zoom) &&
 						x >= t->sign.left &&
-						x < t->sign.left + ScaleByZoom(t->sign.width_2, vp->zoom)) {
+						x < t->sign.left + ScaleByZoom(t->sign.width_small, vp->zoom)) {
 					ShowTownViewWindow(t->index);
 					return true;
 				}
@@ -1903,7 +1903,7 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 				if (y >= st->sign.top &&
 						y < st->sign.top + 12 &&
 						x >= st->sign.left &&
-						x < st->sign.left + st->sign.width_1) {
+						x < st->sign.left + st->sign.width_normal) {
 					ShowStationViewWindow(st->index);
 					return true;
 				}
@@ -1917,7 +1917,7 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 				if (y >= st->sign.top &&
 						y < st->sign.top + 24 &&
 						x >= st->sign.left &&
-						x < st->sign.left + st->sign.width_1 * 2) {
+						x < st->sign.left + st->sign.width_normal * 2) {
 					ShowStationViewWindow(st->index);
 					return true;
 				}
@@ -1933,7 +1933,7 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 				if (y >= st->sign.top &&
 						y < st->sign.top + ScaleByZoom(12, vp->zoom) &&
 						x >= st->sign.left &&
-						x < st->sign.left + ScaleByZoom(st->sign.width_2, vp->zoom)) {
+						x < st->sign.left + ScaleByZoom(st->sign.width_small, vp->zoom)) {
 					ShowStationViewWindow(st->index);
 					return true;
 				}
@@ -1962,7 +1962,7 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 				if (y >= si->sign.top &&
 						y <  si->sign.top + 12 &&
 						x >= si->sign.left &&
-						x <  si->sign.left + si->sign.width_1) {
+						x <  si->sign.left + si->sign.width_normal) {
 					HandleClickOnSign(si);
 					return true;
 				}
@@ -1976,7 +1976,7 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 				if (y >= si->sign.top &&
 						y <  si->sign.top + 24 &&
 						x >= si->sign.left &&
-						x <  si->sign.left + si->sign.width_1 * 2) {
+						x <  si->sign.left + si->sign.width_normal * 2) {
 					HandleClickOnSign(si);
 					return true;
 				}
@@ -1992,7 +1992,7 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 				if (y >= si->sign.top &&
 						y <  si->sign.top + ScaleByZoom(12, vp->zoom) &&
 						x >= si->sign.left &&
-						x <  si->sign.left + ScaleByZoom(si->sign.width_2, vp->zoom)) {
+						x <  si->sign.left + ScaleByZoom(si->sign.width_small, vp->zoom)) {
 					HandleClickOnSign(si);
 					return true;
 				}
@@ -2020,7 +2020,7 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 				if (y >= wp->sign.top &&
 						y < wp->sign.top + 12 &&
 						x >= wp->sign.left &&
-						x < wp->sign.left + wp->sign.width_1) {
+						x < wp->sign.left + wp->sign.width_normal) {
 					ShowWaypointWindow(wp);
 					return true;
 				}
@@ -2034,7 +2034,7 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 				if (y >= wp->sign.top &&
 						y < wp->sign.top + 24 &&
 						x >= wp->sign.left &&
-						x < wp->sign.left + wp->sign.width_1 * 2) {
+						x < wp->sign.left + wp->sign.width_normal * 2) {
 					ShowWaypointWindow(wp);
 					return true;
 				}
@@ -2050,7 +2050,7 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 				if (y >= wp->sign.top &&
 						y < wp->sign.top + ScaleByZoom(12, vp->zoom) &&
 						x >= wp->sign.left &&
-						x < wp->sign.left + ScaleByZoom(wp->sign.width_2, vp->zoom)) {
+						x < wp->sign.left + ScaleByZoom(wp->sign.width_small, vp->zoom)) {
 					ShowWaypointWindow(wp);
 					return true;
 				}

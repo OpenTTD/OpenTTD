@@ -1438,7 +1438,6 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			if (Company::IsValidID(_current_company)) {
 				SetBit(st->town->have_ratings, _current_company);
 			}
-			st->sign.width_1 = 0;
 		}
 	}
 
@@ -1795,7 +1794,6 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			if (Company::IsValidID(_current_company)) {
 				SetBit(st->town->have_ratings, _current_company);
 			}
-			st->sign.width_1 = 0;
 		}
 	}
 
@@ -1931,7 +1929,6 @@ CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		if (Company::IsValidID(_current_company)) {
 			SetBit(st->town->have_ratings, _current_company);
 		}
-		st->sign.width_1 = 0;
 		st->dock_tile = tile;
 		st->facilities |= FACIL_DOCK;
 		/* Buoys are marked in the Station struct by this flag. Yes, it is this
@@ -2947,7 +2944,6 @@ void BuildOilRig(TileIndex tile)
 
 	Station *st = new Station(tile);
 	st->town = ClosestTownFromTile(tile, UINT_MAX);
-	st->sign.width_1 = 0;
 
 	st->string_id = GenerateStationName(st, tile, STATIONNAMING_OILRIG);
 

@@ -153,7 +153,7 @@ void Station::AddFacility(StationFacility new_facility_bit, TileIndex facil_xy)
 
 void Station::MarkDirty() const
 {
-	if (this->sign.width_1 != 0) {
+	if (this->sign.width_normal != 0) {
 		InvalidateWindowWidget(WC_STATION_VIEW, index, SVW_CAPTION);
 		this->sign.MarkDirty();
 	}

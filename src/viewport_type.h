@@ -25,10 +25,12 @@ struct ViewPort {
 	ZoomLevel zoom;
 };
 
+/** Location information about a sign as seen on the viewport */
 struct ViewportSign {
-	int32 left;
-	int32 top;
-	uint16 width_1, width_2;
+	int32 left; ///< The left most position of the sign
+	int32 top;  ///< THe top of the sign
+	uint16 width_normal; ///< The width when not zoomed out (normal font)
+	uint16 width_small;  ///< The width when zoomed out (small font)
 
 	void UpdatePosition(int center, int top, StringID str);
 	void MarkDirty() const;
