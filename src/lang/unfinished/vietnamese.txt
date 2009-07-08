@@ -1,0 +1,377 @@
+##name Vietnamese (VI)
+##ownname Vietnamese (VI)
+##isocode vi_VN
+##winlangid 0x042a
+##grflangid 0x54
+##plural 0
+
+#
+
+##id 0x0000
+STR_NULL                                                        :
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Vượt qua giới hạn bản đồ
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Quá gần mép bản đồ
+STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Yêu cầu nền đất phẳng
+STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Đang chờ: {WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Chấp nhận: {WHITE}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Chấp nhận: {GOLD}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Cung cấp: {GOLD}
+STR_CARGO_PLURAL_PASSENGERS                                     :Hành khách
+STR_CARGO_PLURAL_COAL                                           :Than
+STR_CARGO_PLURAL_MAIL                                           :Thư
+STR_CARGO_PLURAL_OIL                                            :Dầu
+STR_CARGO_PLURAL_LIVESTOCK                                      :Gia súc
+STR_CARGO_PLURAL_GOODS                                          :Hàng hóa
+STR_CARGO_PLURAL_GRAIN                                          :Ngũ cốc
+STR_CARGO_PLURAL_WOOD                                           :Gỗ
+STR_CARGO_PLURAL_IRON_ORE                                       :Quặng sắt
+STR_CARGO_PLURAL_STEEL                                          :Thép
+STR_CARGO_PLURAL_VALUABLES                                      :Đáng giá
+STR_CARGO_PLURAL_COPPER_ORE                                     :Quặng đồng
+STR_CARGO_PLURAL_MAIZE                                          :Ngô
+STR_CARGO_PLURAL_FRUIT                                          :Trái cây
+STR_CARGO_PLURAL_DIAMONDS                                       :Kim cương
+STR_CARGO_PLURAL_FOOD                                           :Lương thực
+STR_CARGO_PLURAL_PAPER                                          :Giấy
+STR_CARGO_PLURAL_GOLD                                           :Vàng
+STR_CARGO_PLURAL_WATER                                          :Nước
+STR_CARGO_PLURAL_WHEAT                                          :Bột mì
+STR_CARGO_PLURAL_RUBBER                                         :Cao su
+STR_CARGO_PLURAL_SUGAR                                          :Đường
+STR_CARGO_PLURAL_TOYS                                           :Đồ chơi
+STR_CARGO_PLURAL_CANDY                                          :Kẹo
+STR_CARGO_PLURAL_COLA                                           :Nước cola
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Kẹo bông
+STR_CARGO_PLURAL_TOFFEE                                         :Kẹo bơ cứng
+STR_CARGO_PLURAL_BATTERIES                                      :Pin
+STR_CARGO_PLURAL_PLASTIC                                        :Chất dẻo
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Đồ uống có ga
+STR_CARGO_SINGULAR_PASSENGER                                    :Hành khách
+STR_CARGO_SINGULAR_COAL                                         :Than
+STR_CARGO_SINGULAR_MAIL                                         :Thư
+STR_CARGO_SINGULAR_OIL                                          :Dầu
+STR_CARGO_SINGULAR_LIVESTOCK                                    :Gia súc
+STR_CARGO_SINGULAR_GOODS                                        :Hàng hóa
+STR_CARGO_SINGULAR_GRAIN                                        :Ngũ cốc
+STR_CARGO_SINGULAR_WOOD                                         :Gỗ
+STR_CARGO_SINGULAR_IRON_ORE                                     :Quặng sắt
+STR_CARGO_SINGULAR_STEEL                                        :Thép
+STR_CARGO_SINGULAR_VALUABLES                                    :Đáng giá
+STR_CARGO_SINGULAR_COPPER_ORE                                   :Quặng đồng
+STR_CARGO_SINGULAR_MAIZE                                        :Ngô
+STR_CARGO_SINGULAR_FRUIT                                        :Trái cây
+STR_CARGO_SINGULAR_DIAMOND                                      :Kim cương
+STR_CARGO_SINGULAR_FOOD                                         :Lương thực
+STR_CARGO_SINGULAR_PAPER                                        :Giấy
+STR_CARGO_SINGULAR_GOLD                                         :Vàng
+STR_CARGO_SINGULAR_WATER                                        :Nước
+STR_CARGO_SINGULAR_WHEAT                                        :Bột mì
+STR_CARGO_SINGULAR_RUBBER                                       :Cao su
+STR_CARGO_SINGULAR_SUGAR                                        :Đường
+STR_CARGO_SINGULAR_TOY                                          :Đồ chơi
+STR_CARGO_SINGULAR_CANDY                                        :Kẹo
+STR_CARGO_SINGULAR_COLA                                         :Nước cola
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Kẹo bông
+STR_CARGO_SINGULAR_TOFFEE                                       :Kẹo bơ cứng
+STR_CARGO_SINGULAR_BATTERY                                      :Pin
+STR_CARGO_SINGULAR_PLASTIC                                      :Chất dẻo
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Đồ uống có ga
+STR_QUANTITY_PASSENGERS                                         :{COMMA} hành khách{P "" s}
+STR_QUANTITY_COAL                                               :{WEIGHT} than
+STR_QUANTITY_MAIL                                               :{COMMA} túi{P "" s} thư
+STR_QUANTITY_OIL                                                :{VOLUME} dầu
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} loại{P "" s} gia súc
+STR_QUANTITY_GOODS                                              :{COMMA} thùng{P "" s} hàng
+STR_QUANTITY_GRAIN                                              :{WEIGHT} ngũ cốc
+STR_QUANTITY_WOOD                                               :{WEIGHT} gỗ
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} quặng sắt
+STR_QUANTITY_STEEL                                              :{WEIGHT} thép
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} quặng đồng
+STR_QUANTITY_MAIZE                                              :{WEIGHT} ngô
+STR_QUANTITY_FRUIT                                              :{WEIGHT} hoa quả
+STR_QUANTITY_DIAMONDS                                           :{COMMA} túi{P "" s} kim cương
+STR_QUANTITY_FOOD                                               :{WEIGHT} lương thực
+STR_QUANTITY_PAPER                                              :{WEIGHT} giấy
+STR_QUANTITY_GOLD                                               :{COMMA} túi{P "" s} vàng
+STR_QUANTITY_WATER                                              :{VOLUME} nước
+STR_QUANTITY_WHEAT                                              :{WEIGHT} bột mì
+STR_QUANTITY_RUBBER                                             :{VOLUME} cao su
+STR_QUANTITY_SUGAR                                              :{WEIGHT} đường
+STR_QUANTITY_TOYS                                               :{COMMA} đồ chơi{P "" s}
+STR_QUANTITY_SWEETS                                             :{COMMA} túi{P "" s} kẹo
+STR_QUANTITY_COLA                                               :{VOLUME} of nước cola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} kẹo bông
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} kẹo bơ cứng
+STR_QUANTITY_BATTERIES                                          :{COMMA} pin{P y ies}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} chất dẻo
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} đồ uống có ga{P "" s}
+STR_SMALLMAP_CAPTION                                            :{WHITE}Bản đồ - {STRING}
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Tùy chọn Trò chơi
+STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Thông điệp
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Tin nhắn từ {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Chú ý!
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Không thể làm việc này....
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Không thể dọn dẹp khu vực này....
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD phiên bản {REV}
+STR_QUIT_CAPTION                                                :{WHITE}Thoát
+STR_YES                                                         :{BLACK}Đồng ý
+STR_NO                                                          :{BLACK}Không đồng ý
+STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Bạn có chắc chắn muốn thoát khỏi OpenTTD và trở lại {STRING}?
+STR_JUST_NOTHING                                                :Không màu
+STR_COLOUR_DARK_BLUE                                            :Xanh da trời đậm
+STR_COLOUR_PALE_GREEN                                           :Xanh lá cây nhạt
+STR_COLOUR_PINK                                                 :Hồng
+STR_COLOUR_YELLOW                                               :Vàng
+STR_COLOUR_RED                                                  :Đỏ
+STR_COLOUR_LIGHT_BLUE                                           :Xanh da trời nhạt
+STR_COLOUR_GREEN                                                :Xanh lá cây
+STR_COLOUR_DARK_GREEN                                           :Xanh lá cây đậm
+STR_COLOUR_BLUE                                                 :Xanh da trời
+STR_COLOUR_CREAM                                                :Kem
+STR_COLOUR_MAUVE                                                :Tím nhạt
+STR_COLOUR_PURPLE                                               :Tím sẫm
+STR_COLOUR_ORANGE                                               :Cam
+STR_COLOUR_BROWN                                                :Nâu
+STR_COLOUR_GREY                                                 :Xám
+STR_COLOUR_WHITE                                                :Trắng
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Quá nhiều phương tiện trong trò chơi
+STR_BUTTON_LOCATION                                             :{BLACK}Vị trí
+STR_SMALLMAP_TYPE_CONTOURS                                      :Địa hình
+STR_SMALLMAP_TYPE_VEHICLES                                      :Phương tiện
+STR_SMALLMAP_TYPE_INDUSTRIES                                    :Ngành kinh doanh
+STR_SMALLMAP_TYPE_ROUTES                                        :Tuyến
+STR_SMALLMAP_TYPE_VEGETATION                                    :Cây cối
+STR_SMALLMAP_TYPE_OWNERS                                        :Chủ sở hữu
+STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}Đường bộ
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}Đường ray
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}Ga tàu/Sân bay/Bến cảng
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}Tòa nhà/Ngành nghề
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}Phương tiện
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}Tàu hỏa
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}Xe cộ
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}Tàu thủy
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}Máy bay
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Tuyến vận tải
+STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}Rừng
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Ga tàu hỏa
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Truck Loading Bay
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}Bến xe buýt
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}Sân bay/Bãi đỗ trực thăng
+STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}Cảng biển
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}Đất gồ ghề
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}Đất cỏ
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}Đất trơ trụi
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}Cánh đồng
+STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}Cây cối
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}Đá
+STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}Nước
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}Không có chủ sở hữu
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}Thị trấn
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}Ngành công nghiệp
+STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}Sa mạc
+STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}Tuyết
+STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Thông điệp
+STR_DEFAULT                                                     :{BLACK}Mặc định
+STR_QUERY_CANCEL                                                :{BLACK}Thôi
+STR_QUERY_OK                                                    :{BLACK}Đồng ý
+STR_QUERY_RENAME                                                :{BLACK}Đổi tên
+STR_ERROR_OWNED_BY                                              :{WHITE}...sở hữu bởi {STRING}
+STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Toa xe
+STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Thông tin
+STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Sức chứa
+STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Tổng số toa xe
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Tổng số toa xe (sức chứa) của đoàn tàu:
+STR_INTRO_NEW_GAME                                              :{BLACK}Chơi mới
+STR_INTRO_LOAD_GAME                                             :{BLACK}Tải
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Nhiều người chơi
+STR_MAPSIZE                                                     :{BLACK}Kích thước bản đồ:
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Tùy chọn trò chơi
+STR_COMPANY_SOMEONE                                             :ai đó{SKIP}{SKIP}
+STR_UNITS_POWER_METRIC                                          :{COMMA}mã lực
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tấn{P "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lít{P "" s}
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Biều đồ lợi nhuận hoạt động
+STR_GRAPH_MENU_INCOME_GRAPH                                     :Biểu đồ thu nhập
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Biểu đồ toa xe phân phối
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Biểu đồ lịch sử năng suất
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Biểu đồ giá trị công ty
+STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD
+STR_FILE_MENU_SAVE_GAME                                         :Lưu trò chơi
+STR_FILE_MENU_LOAD_GAME                                         :Tải trò chơi
+STR_FILE_MENU_QUIT_GAME                                         :Thoát trò chơi
+STR_FILE_MENU_EXIT                                              :Thoát
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bạn có chắc chắn muốn thoát khỏi trò chơi không?
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Thoát
+STR_SORT_ORDER_TIP                                              :{BLACK}Chọn thứ tự sắp xếp (giảm dần/tăng dần)
+STR_SORT_CRITERIA_TIP                                           :{BLACK}Chọn tiêu chí sắp xếp
+STR_SORT_BY                                                     :{BLACK}Sắp xếp bởi
+STR_SORT_BY_POPULATION                                          :{BLACK}Dân số
+STR_SORT_BY_PRODUCTION                                          :Sản lượng
+STR_SORT_BY_TYPE                                                :Loại
+STR_SORT_BY_TRANSPORTED                                         :Dung lượng đã vận chuyển
+STR_SORT_BY_NAME                                                :{BLACK}Tên
+STR_SORT_BY_DROPDOWN_NAME                                       :Tên
+STR_SORT_BY_DATE                                                :{BLACK}Ngày tháng
+STR_SORT_BY_NUMBER                                              :Số
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Lợi nhuận năm trước
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Lợi nhuận năm nay
+STR_SORT_BY_AGE                                                 :Tuổi
+STR_SORT_BY_RELIABILITY                                         :Độ tin cậy
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Tổng sức chứa của loại toa xe
+STR_SORT_BY_MAX_SPEED                                           :Tốc độ lớn nhất
+STR_SORT_BY_MODEL                                               :Kiểu
+STR_SORT_BY_VALUE                                               :Giá trị
+STR_SORT_BY_LENGTH                                              :Chiều dài
+STR_SORT_BY_LIFE_TIME                                           :Thời gian sử dụng còn lại
+STR_SORT_BY_FACILITY                                            :Kiểu nhà ga
+STR_ENGINE_SORT_COST                                            :Chi phí
+STR_ENGINE_SORT_POWER                                           :Lực
+STR_ENGINE_SORT_INTRO_DATE                                      :Ngày giới thiệu
+STR_ENGINE_SORT_RUNNING_COST                                    :Chi phí chạy
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Năng lượng/Chi phí chạy
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Dung lượng toa xe
+STR_NO_WAITING_CARGO                                            :{BLACK}Không có bất kỳ loại toa xe nào đang chờ
+STR_SELECT_ALL_TYPES                                            :{BLACK}Chọn tất cả loại toa xe (including no waiting cargo)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Tàu sẵn có
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Xe sẵn có
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Máy bay sẵn có
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Xam danh sách các động cơ thiết kế cho loại toa xe này.
+STR_MANAGE_LIST                                                 :{BLACK}Quản lý danh sách
+STR_MANAGE_LIST_TIP                                             :{BLACK}Gửi chỉ dẫn tới toàn bộ phương tiện trong danh sách
+STR_REPLACE_VEHICLES                                            :Thay phương tiện
+STR_SEND_TRAIN_TO_DEPOT                                         :Gửi về xưởng
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Gửi về xưởng
+STR_SEND_SHIP_TO_DEPOT                                          :Gửi về xưởng
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Gửi về Hangar
+STR_SEND_FOR_SERVICING                                          :Gửi tới dịch vụ sửa chữa
+STR_MONTH_ABBREV_JAN                                            :T1
+STR_MONTH_ABBREV_FEB                                            :T2
+STR_MONTH_ABBREV_MAR                                            :T3
+STR_MONTH_ABBREV_APR                                            :T4
+STR_MONTH_ABBREV_MAY                                            :T5
+STR_MONTH_ABBREV_JUN                                            :T6
+STR_MONTH_ABBREV_JUL                                            :T7
+STR_MONTH_ABBREV_AUG                                            :T8
+STR_MONTH_ABBREV_SEP                                            :T9
+STR_MONTH_ABBREV_OCT                                            :T10
+STR_MONTH_ABBREV_NOV                                            :T11
+STR_MONTH_ABBREV_DEC                                            :T12
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tạm dừng trò chơi
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lưu, thoat trò chơi, thoát
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Hiển thị danh sách công ty
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Hiển thị bản đồ
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Hiển thị bản đồ, thư mục thành phố
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Hiển thị thư mục thành phố
+STR_AGE                                                         :{COMMA} năm{P "" s} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} năm{P "" s} ({COMMA})
+STR_VEHICLE_TRAIN                                               :Tàu
+STR_VEHICLE_ROAD_VEHICLE                                        :Xe cộ
+STR_VEHICLE_SHIP                                                :Tàu thủy
+STR_VEHICLE_AIRCRAFT                                            :Máy bay
+STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} đang cũ đi
+STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} đang xuống cấp
+STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} đang xuống cấp trầm trọng và cần được thay thế ngay lập tức
+STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Tên
+STR_TOOLBAR_SOUND_MUSIC                                         :Âm thanh/aamm nhạc
+STR_MENU_LOAD_HEIGHTMAP                                         :Tải bản đồ độ cao
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Thoat khỏi trình biên tập
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Thoát
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Tùy chọn trò chơi
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Thiết lập độ khó
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Thiết lập cao cấp
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Thiết lập độ trong suốt
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Hiển thị địa danh
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Hiển thị tên nhà ga
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Hiển thị ký hiệu
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Đơn vị tiền tệ
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Lựa chọn đơn vị tiền tệ
+STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Đơn vị đo lường
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Lựa chọn đơn vị đo lường
+STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Xe cộ
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Chọn phía đường lái xe
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Lái bên trái
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Lái bên phải
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Tên thành phố
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Lựa chọn kiểu tên thành phố
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Lưu tự động
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Lựa chọn khoảng thời gian tự động lưu
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Tắt
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Hàng tháng
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Mỗi 3 tháng
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Mỗi 6 tháng
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Mỗi 12 tháng
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Chơi mới
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Tải trò chơi
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Hiển thị tùy chọn trò chơi
+STR_INTRO_QUIT                                                  :{BLACK}Thoát
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Thoát 'OpenTTD'
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...chỉ có thể được xây trong thành phố
+STR_JUST_RAW_STRING                                             :{STRING}
+STR_CURR_GBP                                                    :Bảng Anh (£)
+STR_CURR_USD                                                    :Đô-la Mỹ ($)
+STR_CURR_YEN                                                    :Yên (¥)
+STR_CURR_ATS                                                    :Shilling Úc (ATS)
+STR_CURR_BEF                                                    :Phơ-răng Bỉ (BEF)
+STR_CURR_CHF                                                    :Phơ-răng Thụy Sỹ (CHF)
+STR_CURR_CUSTOM                                                 :Tùy chọn...
+STR_OPTIONS_LANG                                                :{BLACK}Ngôn ngữ
+STR_OPTIONS_LANG_TIP                                            :{BLACK}Lựa chọn sử dụng ngôn ngữ giao diện
+STR_OPTIONS_FULLSCREEN                                          :{BLACK}Toàn màn hình
+STR_MONTH_JAN                                                   :Tháng Một
+STR_MONTH_FEB                                                   :Tháng Hai
+STR_MONTH_MAR                                                   :Tháng Ba
+STR_MONTH_APR                                                   :Tháng Tư
+STR_MONTH_MAY                                                   :Tháng Năm
+STR_MONTH_JUN                                                   :Tháng Sáu
+STR_MONTH_JUL                                                   :Tháng Bảy
+STR_MONTH_AUG                                                   :Tháng Tám
+STR_MONTH_SEP                                                   :Tháng Chín
+STR_MONTH_OCT                                                   :Tháng Mười
+STR_MONTH_NOV                                                   :Tháng Mười Một
+STR_MONTH_DEC                                                   :Tháng Mười Hai
+STR_PASSENGERS                                                  :hành khách
+STR_BAGS                                                        :túi
+STR_TONS                                                        :tấn
+STR_LITERS                                                      :lít
+STR_ITEMS                                                       :mặt hàng
+STR_CRATES                                                      :thùng
+STR_RES_OTHER                                                   :khác
+STR_INDUSTRY_NAME_COAL_MINE                                     :Mỏ than
+STR_INDUSTRY_NAME_POWER_STATION                                 :Nhà máy điện
+STR_INDUSTRY_NAME_SAWMILL                                       :Nhà máy cưa
+STR_INDUSTRY_NAME_FOREST                                        :Rừng
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :Nhà máy lọc dầu
+STR_INDUSTRY_NAME_OIL_RIG                                       :Dàn khoan dầu
+STR_INDUSTRY_NAME_FACTORY                                       :Nhà máy
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :Nhà in
+STR_INDUSTRY_NAME_STEEL_MILL                                    :Nhà máy thép
+STR_INDUSTRY_NAME_FARM                                          :Nông trại
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Mỏ đồng
+STR_INDUSTRY_NAME_OIL_WELLS                                     :Giếng dầu
+STR_INDUSTRY_NAME_BANK                                          :Ngân hàng
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Nhà máy chế biến thực phẩm
+STR_INDUSTRY_NAME_PAPER_MILL                                    :Nhà máy giấy
+STR_INDUSTRY_NAME_GOLD_MINE                                     :Mỏ vàng
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Ngân hàng
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Mỏ kim cương
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Mỏ sắt
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Nhà máy chế biến hoa quả
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Nhà máy cao su
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Nhà máy nước
+STR_INDUSTRY_NAME_WATER_TOWER                                   :Tháp nước
+STR_INDUSTRY_NAME_FACTORY_2                                     :Nhà máy
+STR_INDUSTRY_NAME_FARM_2                                        :Nông trại
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :Nhà máy chế biến gỗ
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Nhà máy chế biến kẹo bông
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Nhà máy sản xuất kẹo
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :Nhà máy sản xuất pin
+STR_INDUSTRY_NAME_COLA_WELLS                                    :Nhà máy chế biến nước cola
+STR_INDUSTRY_NAME_TOY_SHOP                                      :Cửa hàng đồ chơi
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :Nhà máy sản xuất đồ chơi
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Nhà máy chế biến chất dẻo
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Nhà máy chế biến nước uống có ga
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :Mỏ đường
+STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Toa xe đợi để xử lý:
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Sản lượng tháng trước:
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} tăng sản lượng!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} sản lượng giảm 50%
