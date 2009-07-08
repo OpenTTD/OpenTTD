@@ -725,7 +725,7 @@ STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{S
 STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Auswahl der Maßeinheiten
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Fahrzeuge
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Wähle auf welcher Straßenseite der Verkehr fahren soll
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Wähle, auf welcher Straßenseite der Verkehr fahren soll
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Linksverkehr
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Rechtsverkehr
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Städtenamen
@@ -1553,7 +1553,7 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Geschät
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Geschätzte Einnahmen: {CURRENCY}
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Land kann nicht angehoben werden...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Land kann nicht abgesenkt werden...
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kann dieses Land nicht anpassen...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kann dieses Land nicht einebnen...
 STR_CLEAR_LAND_DESCRIPTION_ROCKS                                :Felsen
 STR_CLEAR_LAND_DESCRIPTION_ROUGH_LAND                           :Unebenes Land
 STR_CLEAR_LAND_DESCRIPTION_BARE_LAND                            :Kahles Land

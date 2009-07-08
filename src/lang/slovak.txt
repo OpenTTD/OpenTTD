@@ -922,6 +922,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vyber fo
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Základná sada grafiky
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Zvoľte sadu grafiky, ktorá má byť použitá
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} chýbajúci/poškodený súbor{P "" "y" "ov"}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Dodatočné informácie o základnom grafickom sete
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autoulozenie zlyhalo
@@ -1029,6 +1030,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Povolit
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Povolit viaceré NewGRF sety s rušnami: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Zmena tohto nastavenia nie je možná, pokial sa tu nachádzajú vozidlá.
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Letiská nikdy neexiprujú: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Upozornit ak vlak nedokáže nájst cestu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Obnovenie prikazov vozidla: {ORANGE}{STRING}

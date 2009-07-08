@@ -262,6 +262,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :gazirano piće
 STR_CARGO_SINGULAR_FIZZY_DRINK.big                              :Gazirano piće
 STR_CARGO_SINGULAR_FIZZY_DRINK.gen                              :gaziranog pića
 STR_CARGO_SINGULAR_FIZZY_DRINK.aku                              :gazirano piće
+STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} putnik{P "" a a}
 STR_QUANTITY_COAL                                               :{WEIGHT} nad ugalj
 STR_QUANTITY_MAIL                                               :{COMMA} džak{P "" a ova} pošte
@@ -1484,11 +1485,51 @@ STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER 
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}NEODGOVARAJUĆA VERZIJA
 STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF NEPOKLAPANJE
 
+STR_NETWORK_JOIN_GAME                                           :{BLACK}Priključi se
 
 
+STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Pokreni novu mrežnu partiju
 
+STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Naziv partije:
+STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Naziv partije će se prikazati na spisku izbora mrežnih partija drugih igrača
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Unos naziva mrežne partije
+STR_NETWORK_SET_PASSWORD                                        :{BLACK}Postavi lozinku
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Ukoliko ne želite da bude javno dostupna zaštitite Vašu partiju lozinkom
+STR_NETWORK_SELECT_MAP                                          :{BLACK}Odaberite mapu:
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Koju mapu želite da igrate?
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
+STR_NETWORK_LAN                                                 :LAN
+STR_NETWORK_INTERNET                                            :Internet
+STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
+STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (sa oglašavanjem)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} igrač{P "" a a}
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Najviše igrača:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Odaberite koliko najviše može da ima igrača. Nemoraju sva mesta da budu popunjena
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} kompanij{P a e a}
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Najviše kompanija:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Odaberite koliko najviše može biti kompanija na serveru
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} posmatrač{P "" a a}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Najviše posmatrača:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Odaberite koliko najviše može biti posmatrača na serveru
+STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Govorni jezik:
+STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Drugi igrači će znati sa kojim jezikom se razgovara na serveru
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_GAME                                          :{BLACK}Pokreni partiju
+STR_NETWORK_START_GAME_TIP                                      :{BLACK}Pokreće novu mrežnu partiju sa proizvoljnom mapom, ili scenarijom
+STR_NETWORK_LOAD_GAME                                           :{BLACK}Učitaj Partiju
+STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Nastavlja ranije sačuvanu mrežnu partiju (proverite da li ste postavljeni igrač kao ranije)
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :Bilo koji
+STR_NETWORK_LANG_ENGLISH                                        :Engleski
+STR_NETWORK_LANG_GERMAN                                         :Nemački
+STR_NETWORK_LANG_FRENCH                                         :Francuski
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazilski
+STR_NETWORK_LANG_BULGARIAN                                      :Bugraski
+STR_NETWORK_LANG_CHINESE                                        :Kineski
+STR_NETWORK_LANG_CZECH                                          :Češki
+STR_NETWORK_LANG_DANISH                                         :Danski
+STR_NETWORK_LANG_DUTCH                                          :Holandski
 STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
 STR_NETWORK_LANG_FINNISH                                        :Finski
 STR_NETWORK_LANG_HUNGARIAN                                      :Mađarski
@@ -1598,29 +1639,78 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :primljen nepozn
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :pogrešna revizija
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :ime se već koristi
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :pogrešna lozinka
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :pogrešan id kompanije u mrežnom paketu (DoCommand)
+STR_NETWORK_ERR_CLIENT_KICKED                                   :izbačen od strane servera
+STR_NETWORK_ERR_CLIENT_CHEATER                                  :pokušaj korišćenja varanja
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server je pun
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Partija pauzirana (nema dovoljno igrača)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Partija nastavljena (ima dovoljno igrača)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Partija pauzirana (igrač se priključuje)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Partija nastavljena (igrač je priključen)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Partija nastavljena (igrač nije priključen)
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :napušta
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} se priključio partiji
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} se pridružio kompaniji #{2:NUM}
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} se pridružio posmatračima
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} je osnovao novu kompaniju (#{2:NUM})
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} je napustio partiju ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} je promenio/la ime u {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} je dao vašoj kompaniji {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Dali ste {1:STRING} {2:CURRENCY}
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Ekipi] :
+STR_NETWORK_CHAT_COMPANY                                        :[Ekipi] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Ekipi] Za {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privatno] :
+STR_NETWORK_CHAT_CLIENT                                         :[Privatno] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatno] Za {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Svima] :
+STR_NETWORK_CHAT_ALL                                            :[Svima] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Unesite tekst poruke za razgovor
+STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Server je zatvorio sesiju
+STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Server se ponovo pokreće...{}Molimo sačekajte...
+
+STR_NETWORK_SERVER                                              :Server
+STR_NETWORK_CLIENT                                              :Igrač
+STR_NETWORK_SPECTATORS                                          :Posmatrači
+
+STR_NETWORK_CLIENTLIST_NONE                                     :(niko)
+STR_NETWORK_CLIENTLIST_KICK                                     :Izbaci
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Daj novac
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Razgovaraj sa svima
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Razgovaraj sa ekipom
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privatna poruka
 
 
-
-
+STR_NETWORK_SEND                                                :{BLACK}Pošalji
 
 ############ end network gui strings
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERROR                                                :{WHITE}Ne može se naparaviti reljef iz PNG slike...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...datoteka nije nađena.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...ne može se preraditi vrsta slike. Potrebna je 8 ili 24-bitna PNG slika.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...nešto nije uredu. Žao nam je. (verovatno je datoteka oštećena)
 
+STR_BMPMAP_ERROR                                                :{WHITE}Ne može se naparaviti reljef iz BMP slike...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...ne može se preraditi vrsta slike.
 
 ##id 0x0800
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Trošak: {CURRENCY}
 STR_INCOME_FLOAT_COST                                           :{RED}Trošak: {CURRENCY}
 STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Prihod: {CURRENCY}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Prihod: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transfer: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Procena troška: {CURRENCY}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Procena zarade: {CURRENCY}
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nije izvodljivo ovde podići zemljište...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Nije izvodljivo ovde spustiti zemljište...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Nije izvodljivo ovde poravnati zemljište...
 STR_CLEAR_LAND_DESCRIPTION_ROCKS                                :Stene
 STR_CLEAR_LAND_DESCRIPTION_ROUGH_LAND                           :Grub teren
 STR_CLEAR_LAND_DESCRIPTION_BARE_LAND                            :Ogoljeno tlo
@@ -1635,10 +1725,13 @@ STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Nemoguć
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Iskopavanje bi oštetilo tunel
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}...teren je već na nivou mora
 STR_ERROR_TOO_HIGH                                              :{WHITE}...previsoko
+STR_ALREADY_LEVELLED                                            :{WHITE}... već je ravno
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nedostaje odgovarajuća železnička pruga
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}...već izgrađeno
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Potrebno je prvo ukloniti železničku prugu
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Put je jednosmeran ili je blokiran
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Izgradnja železničke pruge
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Izgradnja elektrifikovane železničke pruge
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Izgradnja jednošinske pruge (Monorail)
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Izgradnja magnetne pruge (MagLev)
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Izbor železničkog mosta
