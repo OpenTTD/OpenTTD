@@ -60,6 +60,5 @@ void ShowWaypointWindow(const Waypoint *wp);
 void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype);
 void UpdateAllWaypointSigns();
 void UpdateWaypointSign(Waypoint *wp);
-void RedrawWaypointSign(const Waypoint *wp);
 
 #endif /* WAYPOINT_H */

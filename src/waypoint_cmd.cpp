@@ -36,18 +36,6 @@ void UpdateWaypointSign(Waypoint *wp)
 }
 
 /**
- * Redraw the sign of a waypoint
- * @param wp Waypoint to redraw sign */
-void RedrawWaypointSign(const Waypoint *wp)
-{
-	MarkAllViewportsDirty(
-		wp->sign.left - 6,
-		wp->sign.top,
-		wp->sign.left + (wp->sign.width_1 << 2) + 12,
-		wp->sign.top + 48);
-}
-
-/**
  * Set the default name for a waypoint
  * @param wp Waypoint to work on
  */
@@ -192,7 +180,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 				}
 			}
 
-			RedrawWaypointSign(wp);
+			wp->sign.MarkDirty();
 			wp->xy = tile;
 			InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
 		}
@@ -224,7 +212,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 		if (wp->town_index == INVALID_TOWN) MakeDefaultWaypointName(wp);
 
 		UpdateWaypointSign(wp);
-		RedrawWaypointSign(wp);
+		wp->sign.MarkDirty();
 		YapfNotifyTrackLayoutChange(tile, AxisToTrack(axis));
 	}
 
@@ -254,7 +242,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justre
 		wp = GetWaypointByTile(tile);
 
 		wp->deleted = 30; // let it live for this many days before we do the actual deletion.
-		RedrawWaypointSign(wp);
+		wp->sign.MarkDirty();
 
 		Train *v = NULL;
 		if (justremove) {

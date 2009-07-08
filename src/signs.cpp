@@ -54,26 +54,6 @@ void UpdateAllSignVirtCoords()
 }
 
 /**
- * Marks the region of a sign as dirty.
- *
- * This function marks the sign in all viewports as dirty for repaint.
- *
- * @param si Pointer to the Sign
- * @ingroup dirty
- */
-void MarkSignDirty(Sign *si)
-{
-	/* We use ZOOM_LVL_MAX here, as every viewport can have an other zoom,
-	 *  and there is no way for us to know which is the biggest. So make the
-	 *  biggest area dirty, and we are safe for sure. */
-	MarkAllViewportsDirty(
-		si->sign.left - 6,
-		si->sign.top  - 3,
-		si->sign.left + ScaleByZoom(si->sign.width_1 + 12, ZOOM_LVL_MAX),
-		si->sign.top  + ScaleByZoom(12, ZOOM_LVL_MAX));
-}
-
-/**
  *
  * Initialize the signs
  *

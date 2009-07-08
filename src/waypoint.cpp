@@ -88,7 +88,7 @@ Waypoint::~Waypoint()
 	DeleteWindowById(WC_WAYPOINT_VIEW, this->index);
 	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, this->index);
 
-	RedrawWaypointSign(this);
+	this->sign.MarkDirty();
 }
 
 void InitializeWaypoints()

@@ -1,5 +1,5 @@
-##name Vietnamese (VI)
-##ownname Vietnamese (VI)
+##name Vietnamese
+##ownname Vietnamese
 ##isocode vi_VN
 ##winlangid 0x042a
 ##grflangid 0x54

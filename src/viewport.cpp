@@ -1301,6 +1301,22 @@ void ViewportSign::UpdatePosition(int center, int top, StringID str)
 	_cur_fontsize = FS_NORMAL;
 }
 
+/**
+ * Mark the sign dirty in all viewports.
+ *
+ * @ingroup dirty
+ */
+void ViewportSign::MarkDirty() const
+{
+	/* We use ZOOM_LVL_MAX here, as every viewport can have an other zoom,
+	 *  and there is no way for us to know which is the biggest. So make the
+	 *  biggest area dirty, and we are safe for sure. */
+	MarkAllViewportsDirty(
+		this->left - 6,
+		this->top  - 3,
+		this->left + ScaleByZoom(this->width_1 + 12, ZOOM_LVL_MAX),
+		this->top  + ScaleByZoom(12, ZOOM_LVL_MAX));
+}
 
 static void ViewportDrawTileSprites(const TileSpriteToDrawVector *tstdv)
 {

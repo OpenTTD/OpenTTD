@@ -31,6 +31,7 @@ struct ViewportSign {
 	uint16 width_1, width_2;
 
 	void UpdatePosition(int center, int top, StringID str);
+	void MarkDirty() const;
 };
 
 enum {

@@ -32,12 +32,6 @@ void InitializeLandscapeVariables(bool only_constants);
  */
 void MarkTileDirtyByTile(TileIndex tile);
 
-/**
- * Mark all viewports dirty for repaint.
- *
- * @ingroup dirty
- */
-void MarkAllViewportsDirty(int left, int top, int right, int bottom);
 void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost);
 void ShowFeederIncomeAnimation(int x, int y, int z, Money cost);
 

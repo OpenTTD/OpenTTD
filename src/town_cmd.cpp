@@ -322,37 +322,19 @@ static bool IsCloseToTown(TileIndex tile, uint dist)
 }
 
 /**
- * Marks the town sign as needing a repaint.
- *
- * This function marks the area of the sign of a town as dirty for repaint.
- *
- * @param t Town requesting town sign for repaint
- * @ingroup dirty
- */
-static void MarkTownSignDirty(Town *t)
-{
-	MarkAllViewportsDirty(
-		t->sign.left - 6,
-		t->sign.top - 3,
-		t->sign.left + t->sign.width_1 * 4 + 12,
-		t->sign.top + 45
-	);
-}
-
-/**
  * Resize the sign(label) of the town after changes in
  * population (creation or growth or else)
  * @param t Town to update
  */
 void UpdateTownVirtCoord(Town *t)
 {
-	MarkTownSignDirty(t);
+	t->sign.MarkDirty();
 	Point pt = RemapCoords2(TileX(t->xy) * TILE_SIZE, TileY(t->xy) * TILE_SIZE);
 	SetDParam(0, t->index);
 	SetDParam(1, t->population);
 	t->sign.UpdatePosition(pt.x, pt.y - 24,
 		_settings_client.gui.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL);
-	MarkTownSignDirty(t);
+	t->sign.MarkDirty();
 }
 
 /** Update the virtual coords needed to draw the town sign for all towns. */
