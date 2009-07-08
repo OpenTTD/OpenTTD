@@ -75,7 +75,7 @@ Station::~Station()
 		}
 	}
 
-	this->MarkDirty();
+	this->sign.MarkDirty();
 	InvalidateWindowData(WC_STATION_LIST, this->owner, 0);
 
 	DeleteWindowById(WC_STATION_VIEW, index);
@@ -149,14 +149,6 @@ void Station::AddFacility(StationFacility new_facility_bit, TileIndex facil_xy)
 	this->facilities |= new_facility_bit;
 	this->owner = _current_company;
 	this->build_date = _date;
-}
-
-void Station::MarkDirty() const
-{
-	if (this->sign.width_normal != 0) {
-		InvalidateWindowWidget(WC_STATION_VIEW, index, SVW_CAPTION);
-		this->sign.MarkDirty();
-	}
 }
 
 void Station::MarkTilesDirty(bool cargo_change) const

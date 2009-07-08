@@ -148,13 +148,6 @@ public:
 	void AddFacility(StationFacility new_facility_bit, TileIndex facil_xy);
 
 	/**
-	 * Mark the sign of a station dirty for repaint.
-	 *
-	 * @ingroup dirty
-	 */
-	void MarkDirty() const;
-
-	/**
 	 * Marks the tiles of the station as dirty.
 	 *
 	 * @ingroup dirty

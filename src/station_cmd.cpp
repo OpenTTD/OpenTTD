@@ -403,9 +403,9 @@ void UpdateAllStationVirtCoord()
  */
 static void UpdateStationVirtCoordDirty(Station *st)
 {
-	st->MarkDirty();
+	st->sign.MarkDirty();
 	st->UpdateVirtCoord();
-	st->MarkDirty();
+	st->sign.MarkDirty();
 }
 
 /** Get a mask of the cargo types that the station accepts.
