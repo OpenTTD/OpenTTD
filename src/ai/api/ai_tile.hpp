@@ -305,7 +305,7 @@ public:
 	 * @pre AIMap::IsValidTile(tile).
 	 * @pre width > 0.
 	 * @pre height > 0.
-	 * @pre radius > 0.
+	 * @pre radius >= 0.
 	 * @return Value below 8 means no acceptance; the more the better.
 	 */
 	static int32 GetCargoAcceptance(TileIndex tile, CargoID cargo_type, int width, int height, int radius);
@@ -322,7 +322,7 @@ public:
 	 * @pre AIMap::IsValidTile(tile).
 	 * @pre width > 0.
 	 * @pre height > 0.
-	 * @pre radius > 0.
+	 * @pre radius >= 0.
 	 * @return The tiles that produce this cargo within radius of the tile.
 	 * @note Town(houses) are not included in the value.
 	 */
