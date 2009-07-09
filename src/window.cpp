@@ -1203,30 +1203,35 @@ restart:
  * However if it falls too extremely outside window positions, reposition
  * it to an automatic place.
  *
- * @param *desc         The pointer to the WindowDesc to be created
- * @param window_number the window number of the new window
+ * @param *desc         The pointer to the WindowDesc to be created.
+ * @param sm_width      Smallest width of the window.
+ * @param sm_height     Smallest height of the window.
+ * @param window_number The window number of the new window.
  *
- * @return Coordinate of the top-left corner of the new window
+ * @return Coordinate of the top-left corner of the new window.
  */
-static Point LocalGetWindowPlacement(const WindowDesc *desc, int window_number)
+static Point LocalGetWindowPlacement(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
 {
 	Point pt;
 	Window *w;
+
+	int16 default_width  = max(desc->default_width,  sm_width);
+	int16 default_height = max(desc->default_height, sm_height);
 
 	if (desc->parent_cls != 0 /* WC_MAIN_WINDOW */ &&
 			(w = FindWindowById(desc->parent_cls, window_number)) != NULL &&
 			w->left < _screen.width - 20 && w->left > -60 && w->top < _screen.height - 20) {
 
 		pt.x = w->left + ((desc->parent_cls == WC_BUILD_TOOLBAR || desc->parent_cls == WC_SCEN_LAND_GEN) ? 0 : 10);
-		if (pt.x > _screen.width + 10 - desc->default_width) {
-			pt.x = (_screen.width + 10 - desc->default_width) - 20;
+		if (pt.x > _screen.width + 10 - default_width) {
+			pt.x = (_screen.width + 10 - default_width) - 20;
 		}
 		pt.y = w->top + ((desc->parent_cls == WC_BUILD_TOOLBAR || desc->parent_cls == WC_SCEN_LAND_GEN) ? 36 : 10);
 	} else {
 		switch (desc->left) {
 			case WDP_ALIGN_TBR: // Align the right side with the top toolbar
 				w = FindWindowById(WC_MAIN_TOOLBAR, 0);
-				pt.x = (w->left + w->width) - desc->default_width;
+				pt.x = (w->left + w->width) - default_width;
 				break;
 
 			case WDP_ALIGN_TBL: // Align the left side with the top toolbar
@@ -1234,10 +1239,10 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int window_number)
 				break;
 
 			case WDP_AUTO: // Find a good automatic position for the window
-				return GetAutoPlacePosition(desc->default_width, desc->default_height);
+				return GetAutoPlacePosition(default_width, default_height);
 
 			case WDP_CENTER: // Centre the window horizontally
-				pt.x = (_screen.width - desc->default_width) / 2;
+				pt.x = (_screen.width - default_width) / 2;
 				break;
 
 			default:
@@ -1247,7 +1252,7 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int window_number)
 
 		switch (desc->top) {
 			case WDP_CENTER: // Centre the window vertically
-				pt.y = (_screen.height - desc->default_height) / 2;
+				pt.y = (_screen.height - default_height) / 2;
 				break;
 
 			/* WDP_AUTO sets the position at once and is controlled by desc->left.
@@ -1279,7 +1284,7 @@ Window::Window(const WindowDesc *desc, WindowNumber window_number)
 {
 	this->InitializeData(desc->cls, desc->GetWidgets(), NULL, window_number);
 	this->desc_flags = desc->flags;
-	Point pt = LocalGetWindowPlacement(desc, window_number);
+	Point pt = LocalGetWindowPlacement(desc, desc->minimum_width, desc->minimum_height, window_number);
 	this->InitializePositionSize(pt.x, pt.y, desc->minimum_width, desc->minimum_height);
 }
 
@@ -1293,7 +1298,7 @@ void Window::InitNested(const WindowDesc *desc, WindowNumber window_number)
 	NWidgetBase *nested_root = MakeNWidgets(desc->nwid_parts, desc->nwid_length);
 	this->InitializeData(desc->cls, NULL, nested_root, window_number);
 	this->desc_flags = desc->flags;
-	Point pt = LocalGetWindowPlacement(desc, window_number);
+	Point pt = LocalGetWindowPlacement(desc, this->nested_root->smallest_x, this->nested_root->smallest_y, window_number);
 	this->InitializePositionSize(pt.x, pt.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
 	this->FindWindowPlacementAndResize(desc->default_width, desc->default_height);
 }
