@@ -697,6 +697,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT
 
 ##id 0x9000
 
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Không thể làm xe quay lại được...
 
 
 ##id 0x9800

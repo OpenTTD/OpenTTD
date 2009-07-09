@@ -625,7 +625,7 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Setja kl
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Setja vita
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Setja sendi
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Afmarkaðu eyðimörk.{}Smelltu og haltu CTRL til að fjarlægja hana
-STR_CREATE_LAKE                                                 :{BLACK}Skilgreina vantssvæði.{}Grafa skipaskurð, nema CTRL sé haldið niðri við sjávarmál, þá flæðir það umhverfið í staðin.
+STR_CREATE_LAKE                                                 :{BLACK}Skilgreina vantssvæði.{}Grafa skipaskurð, nema CTRL sé haldið niðri við sjávarmál, þá flæðir yfir umhverfið í staðin.
 STR_CREATE_RIVER                                                :{BLACK}Búa til fljót.
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Eyða
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Eyða þessum bæ algjörlega
@@ -964,6 +964,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Heimila
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Virkja mörg NewGRF vélasöfn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ekki er hægt að breyta þessari stillingu þegar til eru farartæki.
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Alltaf hægt að byggja allar gerðir flugvalla: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Gera viðvart ef lest týnist: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Fara yfir áætlanir farartækja: {ORANGE}{STRING}
@@ -2828,6 +2829,8 @@ STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Get ekki
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Skýrðu lestina
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Lestarslys!{}{COMMA} deyja í sprengingu eftir árekstur
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Get ekki snúið lest við...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Get ekki snúið lestinni við...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Get ekki snúið vögnum sem tilheyra vagnapari
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Endurskíra lestargerð
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Get ekki endurskírt lestargerð...
 STR_CLEAR_TIME                                                  :{BLACK}Hreinsa tíma
@@ -2906,7 +2909,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsti farmsporvagn kemur við á {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Bílslys!{}Bílstjóri deyr í sprengingu eftir árekstur við lest
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Bílslys!{}{COMMA} deyja í sprengingu eftir árekstur við lest
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Get ekki snúið vögnum sem tilheyra vagnapari
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Get ekki snúið bifreiðinni við...
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Endurnefna
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Endurnefna tegund bifreiðar
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Endurnefna tegund bifreiðar
