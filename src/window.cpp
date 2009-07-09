@@ -866,22 +866,14 @@ static void AssignWidgetToWindow(Window *w, const Widget *widget)
 }
 
 /**
- * Initializes a new Window.
- * This function is called the constructors.
- * See descriptions for those functions for usage
- * Only addition here is window_number, which is the window_number being assigned to the new window
- * @param x             Offset in pixels from the left of the screen of the new window.
- * @param y             Offset in pixels from the top of the screen of the new window.
- * @param min_width     Minimum width in pixels of the window
- * @param min_height    Minimum height in pixels of the window
+ * Initializes the data (except the position and initial size) of a new Window.
  * @param cls           Class of the window, used for identification and grouping. @see WindowClass
- * @param *widget       Pointer to the window layout and various elements. @see Widget
+ * @param *widget       Pointer to the widget array. @see Widget
  * @param nested_root   Root of the nested widget tree.
  * @param window_number Number being assigned to the new window
  * @return Window pointer of the newly created window
  */
-void Window::Initialize(int x, int y, int min_width, int min_height,
-				WindowClass cls, const Widget *widget, NWidgetBase *nested_root, int window_number)
+void Window::InitializeData(WindowClass cls, const Widget *widget, NWidgetBase *nested_root, int window_number)
 {
 	/* If available, initialize nested widget tree. */
 	if (nested_root != NULL) {
@@ -893,24 +885,17 @@ void Window::Initialize(int x, int y, int min_width, int min_height,
 		this->nested_root->FillNestedArray(this->nested_array, this->nested_array_size);
 		/* Initialize to smallest size. */
 		this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, false, false, false);
-		min_width = this->nested_root->smallest_x;
-		min_height = this->nested_root->smallest_y;
 	}
 	/* Else, all data members of nested widgets have been set to 0 by the #ZeroedMemoryAllocator base class. */
 
-	/* Set up window properties */
+	/* Set up window properties,
+	 * this->left, this->top, this->width, this->height, this->resize.width, and this->resize.height are initialized later. */
 	this->window_class = cls;
 	this->flags4 = WF_WHITE_BORDER_MASK; // just opened windows have a white border
 	this->owner = INVALID_OWNER;
-	this->left = x;
-	this->top = y;
-	this->width = min_width;
-	this->height = min_height;
 	AssignWidgetToWindow(this, widget);
 	this->focused_widget = NULL;
 	this->nested_focus = NULL;
-	this->resize.width = min_width;
-	this->resize.height = min_height;
 	this->resize.step_width  = (this->nested_root != NULL) ? this->nested_root->resize_x : 1;
 	this->resize.step_height = (this->nested_root != NULL) ? this->nested_root->resize_y : 1;
 	this->window_number = window_number;
@@ -964,6 +949,23 @@ void Window::Initialize(int x, int y, int min_width, int min_height,
 }
 
 /**
+ * Set the position and smallest size of the window.
+ * @param x          Offset in pixels from the left of the screen of the new window.
+ * @param y          Offset in pixels from the top of the screen of the new window.
+ * @param sm_width   Smallest width in pixels of the window.
+ * @param sm_height  Smallest height in pixels of the window.
+ */
+void Window::InitializePositionSize(int x, int y, int sm_width, int sm_height)
+{
+	this->left = x;
+	this->top = y;
+	this->width = sm_width;
+	this->height = sm_height;
+	this->resize.width = sm_width;
+	this->resize.height = sm_height;
+}
+
+/**
  * Resize window towards the default size.
  * Prior to construction, a position for the new window (for its default size)
  * has been found with LocalGetWindowPlacement(). Initially, the window is
@@ -971,7 +973,7 @@ void Window::Initialize(int x, int y, int min_width, int min_height,
  * done here.
  * @param def_width default width in pixels of the window
  * @param def_height default height in pixels of the window
- * @see Window::Window(), Window::Initialize()
+ * @see Window::Window(), Window::InitializeData(), Window::InitializePositionSize()
  */
 void Window::FindWindowPlacementAndResize(int def_width, int def_height)
 {
@@ -1050,7 +1052,8 @@ void Window::FindWindowPlacementAndResize(const WindowDesc *desc)
  */
 Window::Window(int x, int y, int width, int height, WindowClass cls, const Widget *widget)
 {
-	this->Initialize(x, y, width, height, cls, widget, NULL, 0);
+	this->InitializeData(cls, widget, NULL, 0);
+	this->InitializePositionSize(x, y, width, height);
 }
 
 /**
@@ -1274,9 +1277,10 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int window_number)
  */
 Window::Window(const WindowDesc *desc, WindowNumber window_number)
 {
-	Point pt = LocalGetWindowPlacement(desc, window_number);
-	this->Initialize(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->cls, desc->GetWidgets(), NULL, window_number);
+	this->InitializeData(desc->cls, desc->GetWidgets(), NULL, window_number);
 	this->desc_flags = desc->flags;
+	Point pt = LocalGetWindowPlacement(desc, window_number);
+	this->InitializePositionSize(pt.x, pt.y, desc->minimum_width, desc->minimum_height);
 }
 
 /**
@@ -1287,9 +1291,10 @@ Window::Window(const WindowDesc *desc, WindowNumber window_number)
 void Window::InitNested(const WindowDesc *desc, WindowNumber window_number)
 {
 	NWidgetBase *nested_root = MakeNWidgets(desc->nwid_parts, desc->nwid_length);
-	Point pt = LocalGetWindowPlacement(desc, window_number);
-	this->Initialize(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->cls, NULL, nested_root, window_number); // min_width and min_height are not used.
+	this->InitializeData(desc->cls, NULL, nested_root, window_number);
 	this->desc_flags = desc->flags;
+	Point pt = LocalGetWindowPlacement(desc, window_number);
+	this->InitializePositionSize(pt.x, pt.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
 	this->FindWindowPlacementAndResize(desc->default_width, desc->default_height);
 }
 

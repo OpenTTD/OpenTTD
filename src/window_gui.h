@@ -190,8 +190,8 @@ struct Window : ZeroedMemoryAllocator {
 	};
 
 protected:
-	void Initialize(int x, int y, int min_width, int min_height,
-			WindowClass cls, const Widget *widget, NWidgetBase *nwid, int window_number);
+	void InitializeData(WindowClass cls, const Widget *widget, NWidgetBase *nwid, int window_number);
+	void InitializePositionSize(int x, int y, int min_width, int min_height);
 	void FindWindowPlacementAndResize(int def_width, int def_height);
 	void FindWindowPlacementAndResize(const WindowDesc *desc);
 
