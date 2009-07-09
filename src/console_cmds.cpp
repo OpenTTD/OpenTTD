@@ -1863,10 +1863,6 @@ void IConsoleStdLibRegister()
 	IConsoleAliasRegister("name",                  "setting client_name %+");
 	IConsoleAliasRegister("server_name",           "setting server_name %+");
 	IConsoleAliasRegister("server_port",           "setting server_port %+");
-	IConsoleAliasRegister("server_ip",             "setting server_bind_ip %+");
-	IConsoleAliasRegister("server_bind_ip",        "setting server_bind_ip %+");
-	IConsoleAliasRegister("server_ip_bind",        "setting server_bind_ip %+");
-	IConsoleAliasRegister("server_bind",           "setting server_bind_ip %+");
 	IConsoleAliasRegister("server_advertise",      "setting server_advertise %+");
 	IConsoleAliasRegister("max_clients",           "setting max_clients %+");
 	IConsoleAliasRegister("max_companies",         "setting max_companies %+");
