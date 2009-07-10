@@ -228,21 +228,21 @@ public:
 		const AirportFTAClass *airport = GetAirport(_selected_airport_type);
 		int rad = _settings_game.station.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
 
-		uint16 y_noise_offset = 0;
+		uint16 top = this->widget[BAW_BTN_DOHILIGHT].bottom + WD_PAR_VSEP_NORMAL;
 		/* only show the station (airport) noise, if the noise option is activated */
 		if (_settings_game.economy.station_noise_level) {
 			/* show the noise of the selected airport */
 			SetDParam(0, airport->noise_level);
-			DrawString(2, this->width - 2, 206, STR_STATION_NOISE);
-			y_noise_offset = 10;
+			DrawString(WD_FRAMERECT_LEFT, this->width - WD_FRAMERECT_RIGHT, top, STR_STATION_NOISE);
+			top += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 		}
 
 		/* strings such as 'Size' and 'Coverage Area' */
-		int text_end = DrawStationCoverageAreaText(2, this->widget[BAW_BTN_DOHILIGHT].bottom + 4 + y_noise_offset, SCT_ALL, rad, false);
-		text_end = DrawStationCoverageAreaText(2, text_end + 4, SCT_ALL, rad, true) + 4;
-		if (text_end != this->widget[BAW_BOTTOMPANEL].bottom) {
+		top = DrawStationCoverageAreaText(WD_FRAMERECT_LEFT, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
+		top = DrawStationCoverageAreaText(WD_FRAMERECT_LEFT, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
+		if (top != this->widget[BAW_BOTTOMPANEL].bottom) {
 			this->SetDirty();
-			ResizeWindowForWidget(this, BAW_BOTTOMPANEL, 0, text_end - this->widget[BAW_BOTTOMPANEL].bottom);
+			ResizeWindowForWidget(this, BAW_BOTTOMPANEL, 0, top - this->widget[BAW_BOTTOMPANEL].bottom);
 			this->SetDirty();
 		}
 	}
