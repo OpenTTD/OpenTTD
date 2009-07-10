@@ -1234,12 +1234,20 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 }
 
 
-static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, DoCommandFlag flags)
+/**
+ * Remove a rail road station
+ * @param tile TileIndex been queried
+ * @param flags operation to perform
+ * @return cost or failure of operation
+ */
+static CommandCost RemoveRailroadStation(TileIndex tile, DoCommandFlag flags)
 {
 	/* if there is flooding and non-uniform stations are enabled, remove platforms tile by tile */
 	if (_current_company == OWNER_WATER && _settings_game.station.nonuniform_stations) {
 		return DoCommand(tile, 0, 0, DC_EXEC, CMD_REMOVE_FROM_RAILROAD_STATION);
 	}
+
+	Station *st = Station::GetByTile(tile);
 
 	/* Current company owns the station? */
 	if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) return CMD_ERROR;
@@ -1258,8 +1266,9 @@ static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, DoCommandF
 		do {
 			/* for nonuniform stations, only remove tiles that are actually train station tiles */
 			if (st->TileBelongsToRailStation(tile)) {
-				if (!EnsureNoVehicleOnGround(tile))
+				if (!EnsureNoVehicleOnGround(tile)) {
 					return CMD_ERROR;
+				}
 				cost.AddCost(_price.remove_rail_station);
 				if (flags & DC_EXEC) {
 					/* read variables before the station tile is removed */
@@ -1480,14 +1489,16 @@ static Vehicle *ClearRoadStopStatusEnum(Vehicle *v, void *)
 }
 
 
-/** Remove a bus station
- * @param st Station to remove
- * @param flags operation to perform
+/**
+ * Remove a bus station/truck stop
  * @param tile TileIndex been queried
+ * @param flags operation to perform
  * @return cost or failure of operation
  */
-static CommandCost RemoveRoadStop(Station *st, DoCommandFlag flags, TileIndex tile)
+static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 {
+	Station *st = Station::GetByTile(tile);
+
 	if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) {
 		return CMD_ERROR;
 	}
@@ -1562,7 +1573,7 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 {
 	/* Make sure the specified tile is a road stop of the correct type */
 	if (!IsTileType(tile, MP_STATION) || !IsRoadStop(tile) || (uint32)GetRoadStopType(tile) != GB(p2, 0, 1)) return CMD_ERROR;
-	Station *st = Station::GetByTile(tile);
+
 	/* Save the stop info before it is removed */
 	bool is_drive_through = IsDriveThroughStopTile(tile);
 	RoadTypes rts = GetRoadTypes(tile);
@@ -1572,7 +1583,7 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	Owner road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
 	Owner tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
-	CommandCost ret = RemoveRoadStop(st, flags, tile);
+	CommandCost ret = RemoveRoadStop(tile, flags);
 
 	/* If the stop was a drive-through stop replace the road */
 	if ((flags & DC_EXEC) && CmdSucceeded(ret) && is_drive_through) {
@@ -1843,13 +1854,21 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	return cost;
 }
 
-static CommandCost RemoveAirport(Station *st, DoCommandFlag flags)
+/**
+ * Remove an airport
+ * @param tile TileIndex been queried
+ * @param flags operation to perform
+ * @return cost or failure of operation
+ */
+static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 {
+	Station *st = Station::GetByTile(tile);
+
 	if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) {
 		return CMD_ERROR;
 	}
 
-	TileIndex tile = st->airport_tile;
+	tile = st->airport_tile;
 
 	const AirportFTAClass *afc = st->Airport();
 	int w = afc->size_x;
@@ -1972,12 +1991,18 @@ bool HasStationInUse(StationID station, CompanyID company)
 	return false;
 }
 
-static CommandCost RemoveBuoy(Station *st, DoCommandFlag flags)
+/**
+ * Remove a buoy
+ * @param tile TileIndex been queried
+ * @param flags operation to perform
+ * @return cost or failure of operation
+ */
+static CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
 {
 	/* XXX: strange stuff, allow clearing as invalid company when clearing landscape */
 	if (!Company::IsValidID(_current_company) && !(flags & DC_BANKRUPT)) return_cmd_error(INVALID_STRING_ID);
 
-	TileIndex tile = st->dock_tile;
+	Station *st = Station::GetByTile(tile);
 
 	if (HasStationInUse(st->index, INVALID_COMPANY)) return_cmd_error(STR_BUOY_IS_IN_USE);
 	/* remove the buoy if there is a ship on tile when company goes bankrupt... */
@@ -2124,8 +2149,15 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.build_dock);
 }
 
-static CommandCost RemoveDock(Station *st, DoCommandFlag flags)
+/**
+ * Remove a dock
+ * @param tile TileIndex been queried
+ * @param flags operation to perform
+ * @return cost or failure of operation
+ */
+static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 {
+	Station *st = Station::GetByTile(tile);
 	if (!CheckOwnership(st->owner)) return CMD_ERROR;
 
 	TileIndex tile1 = st->dock_tile;
@@ -3074,21 +3106,19 @@ static CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 		}
 	}
 
-	Station *st = Station::GetByTile(tile);
-
 	switch (GetStationType(tile)) {
-		case STATION_RAIL:    return RemoveRailroadStation(st, tile, flags);
-		case STATION_AIRPORT: return RemoveAirport(st, flags);
+		case STATION_RAIL:    return RemoveRailroadStation(tile, flags);
+		case STATION_AIRPORT: return RemoveAirport(tile, flags);
 		case STATION_TRUCK:
 			if (IsDriveThroughStopTile(tile) && !CanRemoveRoadWithStop(tile, flags))
 				return_cmd_error(STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST);
-			return RemoveRoadStop(st, flags, tile);
+			return RemoveRoadStop(tile, flags);
 		case STATION_BUS:
 			if (IsDriveThroughStopTile(tile) && !CanRemoveRoadWithStop(tile, flags))
 				return_cmd_error(STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST);
-			return RemoveRoadStop(st, flags, tile);
-		case STATION_BUOY:    return RemoveBuoy(st, flags);
-		case STATION_DOCK:    return RemoveDock(st, flags);
+			return RemoveRoadStop(tile, flags);
+		case STATION_BUOY:    return RemoveBuoy(tile, flags);
+		case STATION_DOCK:    return RemoveDock(tile, flags);
 		default: break;
 	}
 
