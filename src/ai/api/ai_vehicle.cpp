@@ -425,3 +425,11 @@
 	Vehicle *v = ::Vehicle::Get(vehicle_id);
 	return v->orders.list != NULL && v->orders.list->GetNumVehicles() > 1;
 }
+
+/* static */ int AIVehicle::GetReliability(VehicleID vehicle_id)
+{
+	if (!IsValidVehicle(vehicle_id)) return -1;
+
+	const Vehicle *v = ::Vehicle::Get(vehicle_id);
+	return v->reliability * 100 >> 16;
+}

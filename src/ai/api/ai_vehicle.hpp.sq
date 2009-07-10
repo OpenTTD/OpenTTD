@@ -142,6 +142,7 @@ void SQAIVehicle_Register(Squirrel *engine) {
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetGroupID,                     "GetGroupID",                     2, ".i");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::IsArticulated,                  "IsArticulated",                  2, ".i");
 	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::HasSharedOrders,                "HasSharedOrders",                2, ".i");
+	SQAIVehicle.DefSQStaticMethod(engine, &AIVehicle::GetReliability,                 "GetReliability",                 2, ".i");
 
 	SQAIVehicle.PostRegister(engine);
 }
