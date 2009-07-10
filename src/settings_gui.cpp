@@ -1479,7 +1479,12 @@ struct GameSettingsWindow : Window {
 					/* Increase or decrease the value and clamp it to extremes */
 					if (x >= 10) {
 						value += step;
-						if ((uint32)value > sdb->max) value = (int32)sdb->max;
+						if (sdb->min < 0) {
+							assert((int32)sdb->max >= 0);
+							if (value > (int32)sdb->max) value = (int32)sdb->max;
+						} else {
+							if ((uint32)value > sdb->max) value = (int32)sdb->max;
+						}
 						if (value < sdb->min) value = sdb->min; // skip between "disabled" and minimum
 					} else {
 						value -= step;
