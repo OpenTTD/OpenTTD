@@ -206,8 +206,8 @@ public:
 	{
 		this->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
 		this->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
-		this->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
 		this->OnInvalidateData();
+		this->SelectOtherAirport(_selected_airport_type);
 
 		if (_settings_game.economy.station_noise_level) {
 			ResizeWindowForWidget(this, BAW_BOTTOMPANEL, 0, 10);
