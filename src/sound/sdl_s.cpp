@@ -30,6 +30,7 @@ const char *SoundDriver_SDL::Start(const char * const *parm)
 	spec.channels = 2;
 	spec.samples = 512;
 	spec.callback = fill_sound_buffer;
+	MxInitialize(spec.freq);
 	SDL_CALL SDL_OpenAudio(&spec, &spec);
 	SDL_CALL SDL_PauseAudio(0);
 	return NULL;

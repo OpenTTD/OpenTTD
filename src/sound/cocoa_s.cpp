@@ -69,6 +69,7 @@ const char *SoundDriver_Cocoa::Start(const char * const *parm)
 	requestedDesc.mBytesPerFrame = requestedDesc.mBitsPerChannel * requestedDesc.mChannelsPerFrame / 8;
 	requestedDesc.mBytesPerPacket = requestedDesc.mBytesPerFrame * requestedDesc.mFramesPerPacket;
 
+	MxInitialize(requestedDesc.mSampleRate);
 
 	/* Locate the default output audio unit */
 	desc.componentType = kAudioUnitType_Output;

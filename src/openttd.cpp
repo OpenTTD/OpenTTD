@@ -18,7 +18,6 @@
 #include "fontcache.h"
 #include "gfxinit.h"
 #include "gui.h"
-#include "mixer.h"
 #include "sound_func.h"
 #include "window_func.h"
 
@@ -584,7 +583,6 @@ int ttd_main(int argc, char *argv[])
 
 	/* Sample catalogue */
 	DEBUG(misc, 1, "Loading sound effects...");
-	MxInitialize(11025);
 	SoundInitialize("sample.cat");
 
 	/* Initialize FreeType */
