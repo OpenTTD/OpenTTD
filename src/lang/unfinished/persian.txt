@@ -20,6 +20,7 @@ STR_EMPTY                                                       :
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}زمین باید مسطح باشد
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}در انتظار: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} منشعب شده از {STATION})
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}قبول می کند: {WHITE}
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}قبول می کند: {GOLD}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}تدارکات: {GOLD}
@@ -110,6 +111,16 @@ STR_QUANTITY_WATER                                              :{VOLUME} آب
 STR_QUANTITY_WHEAT                                              :{WEIGHT} گندم
 STR_QUANTITY_RUBBER                                             :{VOLUME} کائوچو
 STR_QUANTITY_SUGAR                                              :{WEIGHT} شکر
+STR_QUANTITY_TOYS                                               :{COMMA} اسباب بازی{P "" s}
+STR_QUANTITY_SWEETS                                             :{COMMA} بسته{P "" s} شیرینی
+STR_QUANTITY_COLA                                               :{VOLUME} نوشابه
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} پشمک
+STR_QUANTITY_BUBBLES                                            :{COMMA} حباب{P "" s}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} آب نبات
+STR_QUANTITY_BATTERIES                                          :{COMMA}باطری{P y ies}
+STR_QUANTITY_PLASTIC                                            :{VOLUME}پلاستیک
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} نوشیدنی گاز دار{P "" s}
+STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
 STR_ABBREV_COAL                                                 :{TINYFONT}CL
 STR_ABBREV_MAIL                                                 :{TINYFONT}ML
@@ -117,8 +128,10 @@ STR_ABBREV_OIL                                                  :{TINYFONT}OL
 STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
 STR_ABBREV_GOODS                                                :{TINYFONT}GD
 STR_ABBREV_GRAIN                                                :{TINYFONT}GR
+STR_ABBREV_WOOD                                                 :{TINYFONT}چوب
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}OR
 STR_ABBREV_STEEL                                                :{TINYFONT}ST
+STR_ABBREV_VALUABLES                                            :{TINYFONT}قیمتی ها
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CO
 STR_ABBREV_MAIZE                                                :{TINYFONT}MZ
 STR_ABBREV_FRUIT                                                :{TINYFONT}FT
@@ -126,10 +139,16 @@ STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
 STR_ABBREV_FOOD                                                 :{TINYFONT}FD
 STR_ABBREV_PAPER                                                :{TINYFONT}PR
 STR_ABBREV_GOLD                                                 :{TINYFONT}GD
+STR_ABBREV_WATER                                                :{TINYFONT}آب
+STR_ABBREV_WHEAT                                                :{TINYFONT}گندم
 STR_ABBREV_RUBBER                                               :{TINYFONT}RB
+STR_ABBREV_SUGAR                                                :{TINYFONT}شکر
+STR_ABBREV_TOYS                                                 :{TINYFONT}اسباب بازی
+STR_ABBREV_SWEETS                                               :{TINYFONT}شیرینی
 STR_ABBREV_COLA                                                 :{TINYFONT}CL
 STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CF
 STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
+STR_ABBREV_TOFFEE                                               :{TINYFONT}آبنبات
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
@@ -141,6 +160,7 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}نقشه
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}تنظیمات بازی
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}پیام
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}پیام از {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}اخطار!
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}نمی‌توانم انجام دهم
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}این منطقه پاک نمی‌شود
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
@@ -179,8 +199,11 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}ماشی
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}مختصات
+STR_SMALLMAP_TYPE_CONTOURS                                      :حد فاصل ها
 STR_SMALLMAP_TYPE_VEHICLES                                      :وسایل نقلیه
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :کارخانه‌ها
+STR_SMALLMAP_TYPE_ROUTES                                        :راه ها
+STR_SMALLMAP_TYPE_VEGETATION                                    :پوشش گیاهی
 STR_SMALLMAP_TYPE_OWNERS                                        :صاحبان
 STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}جاده ها
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}راه آهن
@@ -199,6 +222,7 @@ STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFON
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}مسیر حمل و نقل
 STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}جنگل
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}ایستگاه قطار
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}ایستگاه بارگیری/تخلیه بار کامیون
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}ایستگاه اتوبوس
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}هواپیما/بالگرد
 STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}اسکله
@@ -216,28 +240,64 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFON
 STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}برف
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}پیغام
 STR_QUERY_CAPTION                                               :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}حالت قراردادی
 STR_QUERY_CANCEL                                                :{BLACK}لغو
 STR_QUERY_OK                                                    :{BLACK}تایید
 STR_QUERY_RENAME                                                :{BLACK}نام گزاری
 
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_ERROR_OWNED_BY                                              :{WHITE} صاحب {STRING} است.
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}محموله
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}اطلاعات
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}ضرفیت ها
+STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}مجموع بار
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}مجموع ظرفیت بار این قطار:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_INTRO_NEW_GAME                                              :{BLACK}بازی جدید
 STR_INTRO_LOAD_GAME                                             :{BLACK}ادامه بازی های قبلی
+STR_INTRO_MULTIPLAYER                                           :{BLACK}بازی چند نفره
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}ساخت سناریو
 
+STR_MAPSIZE                                                     :{BLACK}اندازه نقشه:
+STR_BY                                                          :{BLACK}*
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}تنضیمات بازی
 
+STR_COMPANY_SOMEONE                                             :یک نفر{SKIP}{SKIP}
 
+STR_UNITS_IMPERIAL                                              :شاهنشاهی
+STR_UNITS_METRIC                                                :متری
 
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} مایل در ساعت
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} کیلومتر/ساعت
+STR_UNITS_VELOCITY_SI                                           :{COMMA} متر/ثانیه
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}اسب بخار
+STR_UNITS_POWER_METRIC                                          :{COMMA}اسب بخار
+STR_UNITS_POWER_SI                                              :{COMMA}کیلو وات
 
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}تن
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}کیلوگرم
 
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} تن{P "" s}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} کیلو گرم
 
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}لیتر
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}متر مکعب
 
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} لیتر{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} متر مکعب
 
+STR_UNITS_FORCE_SI                                              :{COMMA} کیلو نیوتن
 
 ############ range for menu starts
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :نمودار سود خالص
@@ -246,14 +306,19 @@ STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :نمودار م
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :نمودار پیشرفت شرکت ها
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :نمودار ارزش شرکت ها
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :نمودار قیمت پرداختی محموله ها
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :جدول اتحادیه شرکتها
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :جزییات امتیازهای کارایی
 ############ range for menu ends
 
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD در باره ی
 STR_FILE_MENU_SAVE_GAME                                         :ذخیره بازی
+STR_FILE_MENU_LOAD_GAME                                         :فراخوانی بازی
 STR_FILE_MENU_QUIT_GAME                                         :رها کردن بازی
 STR_FILE_MENU_EXIT                                              :خروج
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}آیا مطمئن هستی که میخواهی این بازی را از بین ببری؟
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}رها کردن بازی
+STR_SORT_ORDER_TIP                                              :{BLACK}انتخاب طرز مرتب کردن (نزولی/صعودی)
+STR_SORT_CRITERIA_TIP                                           :{BLACK}انتخاب معیار مرتب کردن
 
 
 ############ range for months starts
@@ -1358,6 +1423,8 @@ STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}نمیت
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}نام گذاری قطار
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}تصادف قطار!{}{COMMA} مرگ در انفجار حاصل از برخورد
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}جهت قطار را نمی شود تغییر داد...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}نمیتوان جهت حرکت وسیله را معکوس کرد...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}نمیتوان جهت وسایلی که از چند قطعه تشکیل شده اند را معکوس کرد
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}تغییر نام انواع قطار ها
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}نمی شود انواع قطار ها را تغییر نام داد...
 

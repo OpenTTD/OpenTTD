@@ -930,7 +930,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Me
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} nem talál utat a célpontjához.
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} eltévedt.
 STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} elmúlt évi bevétele {CURRENCY} volt
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Európai Pénzügyi Únió!{}{}Az Euro bevezetésre került mint egyedüli valuta a mindennapi pénzügyi tranzakciókra az országodban!
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Európai Pénzügyi Unió!{}{}Az Euro bevezetésre került mint egyedüli valuta a mindennapi pénzügyi tranzakciókra az országodban!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -1796,14 +1796,14 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Szobor építte
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Új épületek építésének támogatása
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kizárólagos szállítási jogok vétele
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Önkormányzat megvesztegetése
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}  Kis helyi reklámhadjárat indítása, hogy több utast és árut vonzz a megállóidba.{}  Ára: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}  Közepes helyi reklámhadjárat indítása, hogy több utast és árut vonzz a megállóidba.{}  Ára: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}  Nagy helyi reklámhadjárat indítása, hogy több utast és árut vonzz a megállóidba.{}  Ára: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}  A városi úthálózat helyreállításának támogatása. Több, mint hat hónapig jelentősen összezavarja a közúti forgalmat.{}  Ára: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}  Szobor építése a vállalatod tiszteletére.{}  Ára: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}  Új kereskedelmi épületek építésének támogatása a városban.{}  Ára: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}  Egy éves kizárólagos szállítási jogok vétele a városban. Az önkormányzat csak a te állomásaid használatát engedi meg az utasoknak és az áruknak.{}  Ára: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} A megítélésed növelése az önkormányzat megvesztegetésével, komoly büntetést kockáztatva, ha ez kiderül.{} Ára: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Kis helyi reklámhadjárat indítása, hogy több utast és árut vonzz a megállóidba.{}Ára: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Közepes helyi reklámhadjárat indítása, hogy több utast és árut vonzz a megállóidba.{}Ára: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Nagy helyi reklámhadjárat indítása, hogy több utast és árut vonzz a megállóidba.{}Ára: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}A városi úthálózat helyreállításának támogatása. Több, mint hat hónapig jelentősen összezavarja a közúti forgalmat.{}Ára: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Szobor építése a vállalatod tiszteletére.{}Ára: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Új kereskedelmi épületek építésének támogatása a városban.{}Ára: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Egy éves kizárólagos szállítási jogok vétele a városban. Az önkormányzat csak a te állomásaid használatát engedi meg az utasoknak és az áruknak.{}Ára: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}A megítélésed növelése az önkormányzat megvesztegetésével, komoly büntetést kockáztatva, ha ez kiderül.{}Ára: {CURRENCY}
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Közlekedési zűrzavar {TOWN} városában!{}{}{STRING} által indított útjavítás keseríti meg hat hónapig az autóvezetők életét!
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -2899,6 +2899,8 @@ STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Nem neve
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Vonat átnevezése
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Vonatbaleset!{}{COMMA} ember halt meg az ütközésnél
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nem fordíthatod meg a vonatot...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}A járművet nem lehet megfordítani...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Több részből álló járművet nem lehet megfordítani
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Márkanév megváltoztatása
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nem változtathatod meg a márkanevet...
 STR_CLEAR_TIME                                                  :{BLACK}Idő törlése
@@ -2977,7 +2979,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}A lakosság ünnepel . . .{}Első teherszállító-villamos megérkezett {STATION} állomásra!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Közúti baleset!{}A vezető meghalt a vonattal való ütközéskor
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Közúti baleset!{}{COMMA} ember meghalt a vonattal való ütközéskor
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Több részből álló járművet nem lehet megfordítani
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}A közúti jármű nem tud megfordulni...
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Átnevez
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}A közúti jármű márkanevének megváltoztatása
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Márkanév megváltoztatása

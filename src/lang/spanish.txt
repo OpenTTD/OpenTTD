@@ -1811,7 +1811,7 @@ STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Orientac
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Número de andenes
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Longitud de andén
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Demasiado cerca de otra estación de tren
-STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}djunta más de una estación/zona de carga existente
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Adjunta más de una estación/zona de carga existente
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Demasiadas estaciones/zonas de carga
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Demasiadas partes de estación de tren
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paradas de Autobús
@@ -1920,7 +1920,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Error interno: 
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Partida guardada corrupta - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :La partida guardada ha sido realizada con una versión más nueva
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :No se puede leer fichero
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Fichero no escribible
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :No se puede escribir en el fichero
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Comprobación de integridad de los datos fallida.
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Listado de unidades, directorios y juegos guardados
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nombre seleccionado actualmente para el juego guardado
@@ -1952,7 +1952,7 @@ STR_INDUSTRY_NAME_GOLD_MINE                                     :Mina de Oro
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Banco
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Mina de Diamantes
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Mina de Hierro
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Platanción de frutas
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Plantación de Fruta
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Plantación de Caucho
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Suministro de Agua
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Torre de Agua
@@ -1965,10 +1965,10 @@ STR_INDUSTRY_NAME_BATTERY_FARM                                  :Granja de Pilas
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Pozos de Cola
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Tienda de Juguete
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Fábrica de Juguetes
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Fuestes de Plástico
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Fuentes de Plástico
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Fábrica de Refrescos
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Generador de Burbujas
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Cantera de caramelos
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Cantera de Caramelos
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Mina de Azúcar
 
 ############ range for requires starts
@@ -2858,10 +2858,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este vehículo está actualmente en hora
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este vehículo está actualmente retrasado {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este vehículo está actualmente {STRING} adelantado
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Los horarios tomarán  {STRING} para completarse
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Los horarios tomarán {STRING} para completarse
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Estos horarios tomarán {STRING} para completarse (no todos los horarios)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automático
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena la tabla de horarios automáticamente con los valores de la siguiente jornada (CTRL-click para tratar de mantener los tiempos de espera))
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena la tabla de horarios automáticamente con los valores de la siguiente jornada (Ctrl+Click para tratar de mantener los tiempos de espera))
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Vehículo de carretera en camino
@@ -2932,8 +2932,8 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nuevos barcos
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Construir barco
 STR_CLONE_SHIP                                                  :{BLACK}Clonar barco
-STR_CLONE_SHIP_INFO                                             :{BLACK}Esto copiará el barco. Control-click compartirá las ordenes
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Esto construirá una copia del barco. Pulsa este botón y después el barco dentro o fuera del muelle. Control-click compartirá las ordenes
+STR_CLONE_SHIP_INFO                                             :{BLACK}Esto construirá una copia del barco. Ctrl+Click compartirá las órdenes
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Esto construirá una copia del barco. Pulse este botón y después el barco dentro o fuera del muelle. Ctrl+Click compartirá las ordenes
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Barco debe estar detenido en astillero
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}No se puede vender barco...
 STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}No se puede construir barco...
@@ -2988,8 +2988,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}No se pu
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar de aeroplanos
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nueva aeronave
 STR_CLONE_AIRCRAFT                                              :{BLACK}Clonar aeronave
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Esto copiará la aeronave. Control-click compartirá las ordenes
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Esto construirá una copia de la aeronave. Pulsa este botón y después la aeronave dentro o fuera del hangar. Control-click compartirá las ordenes
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Esto construirá una copia de la aeronave. Ctrl+Click compartirá las órdenes
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Esto construirá una copia de la aeronave. Pulse este botón y después en la aeronave dentro o fuera del hangar. Ctrl+Click compartirá las ordenes
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nueva Aeronave
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Construir aeronave
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}No se puede construir aeronave...
@@ -3200,7 +3200,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostrar 
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar todos los barcos que tienen esta estación en su horario
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordenes compartidas de  {COMMA} Vehículo{P "" s}
-STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Ver todos los vehículos que tienen el mismo calendario
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Ver todos los vehículos con el mismo calendario
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vas a vender todos los vehículos que tienes en el depósito.  ¿Estás seguro?
@@ -3279,14 +3279,14 @@ STR_MAGLEV_VEHICLES                                             :Vehículos de L
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidad: {GOLD}{VELOCITY}{BLACK}   Potencia: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidad: {GOLD}{VELOCITY}{BLACK} Potencia: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocidad: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coste de operación: {GOLD}{CURRENCY}/año
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidad: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Diseñado: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} años
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilidad máxima: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Coste: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidad: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidad: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagones con motor: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
@@ -3407,15 +3407,15 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...esta 
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...revestimientos del camino en la dirección incorrecta
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Opciones de Transparencia
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Activar transparencia para las señales de estaciones
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Activar transparencia para los árboles
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Activar transparencia para las casas
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Activar transparencia para las industrias
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Activar transparencias para construcciones como estaciones, depósitos, puntos de paso, etc.
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Activar transparencias para puentes
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Activar transparencias para estructuras como faros, antenas, etc.
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Activar transparencia para la catenaria. CTRL+click para bloquear.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Ajustar transparencia para los indicadores de carga
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Ajustar transparencia para carteles de estaciones. Ctrl+Click para bloquear.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Ajustar transparencia para árboles. Ctrl+Click para bloquear.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Ajustar transparencia para casas. Ctrl+Click para bloquear.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Ajustar transparencia para industrias. Ctrl+Click para bloquear.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Ajustar transparencia para construcciones como estaciones, depósitos o puntos de paso. Ctrl+Click para bloquear.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Ajustar transparencia para puentes. Ctrl+Click para bloquear.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Ajustar transparencia para estructuras como faros, antenas, etc. Ctrl+Click para bloquear.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Ajustar transparencia para catenaria. Ctrl+Click para bloquear.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Ajustar transparencia para los indicadores de carga. Ctrl+Click para bloquear.
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Poner objetos invisibles en vez de transparentes
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3453,7 +3453,7 @@ STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}No se pu
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}No se puede añadir el vehículo a este grupo...
 STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}No se pueden añadir vehículos compartidos al grupo...
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupos - Pulsa en el grupo para ver la lista de vehículos que tiene el grupo
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupos - click en un grupo para ver la lista de sus vehículos
 STR_GROUP_CREATE_TIP                                            :{BLACK}Pulsa para crear un grupo
 STR_GROUP_DELETE_TIP                                            :{BLACK}Borrar el grupo seleccionado
 STR_GROUP_RENAME_TIP                                            :{BLACK}Renombrar el grupo seleccionado
@@ -3543,7 +3543,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Señal d
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo señal (eléctrica){}La señal combo actua como señal de entrada y salida. Esto permite construir grandes "árboles" de preseñales.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Señal Avanzada (electrica){}Un señal avanzada permite a más de un tren entrar a un bloque de señal a la vez, si el tren puede retornar por la vía a un lugar seguro. Pueden ser traspasadas desde atrás.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Señal Avanzada de un sentido (electrica){}Una señal avanzada que permite a más de un tren entrar a un bloque de señal a la vez, si el tren puede retornar a un lugar seguro. Señales de un sentido no permiten ser traspasadas desde atrás.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Convertir señal{}Cuando es seleccionado, pulsando sobre una señal existente la convertiremos a la variante indicada. Pulsa CTRL-click para cambiar de variante.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Convertir señal{}Cuando es seleccionado, pulsar sobre una señal existente la convierte en el tipo y variante indicados. Pulsar Ctrl+Click permite cambiar de variante
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Arrastrar densidad de señales
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Decrementar arrastre de intensidad de señales
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Incrementar arrastre de intensidad de señales
@@ -3608,7 +3608,7 @@ STR_CONTENT_MATRIX_TIP                                          :{BLACK}Pincha e
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Seleccionar todas
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Marca todo el contenido para descarga
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Seleccionar acts.
-STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Marca todo el contenido que es una actualización de contenido existente para descargar
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Marca para descargar todo el contenido existente que ha sido actualizado
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Desmarcar todas
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Marca todo el contenido para no ser descargado
 STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Escribe patrón de filtrado
@@ -3643,7 +3643,7 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}No es posible conectarse al servidor de contenidos...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Descarga erronea...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... conexión perdida
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fichero no escribible
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... no se puede escribir en el fichero
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No ha sido posible descomprimir el fichero descargado
 
 STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Comprobar contenido online

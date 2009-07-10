@@ -347,7 +347,7 @@ STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFON
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}Авиатранспорт
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Маршруты транспорта
 STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}Лес
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Ж/Д станция
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Ж/д станция
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Автостанция
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}Автобусная станция
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}Аэропорт/Вертодром
@@ -582,7 +582,7 @@ STR_LAND_AREA_INFORMATION_OWNER_N_A                             :нет данн
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Владелец: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Владелец дороги: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Владелец трамвая: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Владелец ЖД пути: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Владелец ж/д пути: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Администрация: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Нет
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Имя
@@ -1225,12 +1225,12 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Строить семафоры старого стиля: {ORANGE}до {STRING} года
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Включить меню сигналов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Тип сигнала по умолчанию: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Обычные
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :ПМС
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :одностор. ПМС
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :обычные
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :маршрутные
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :одностор. маршрутные
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Выбор сигналов (Ctrl+клик): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :только обычные
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :только ПМС
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :только маршрутные
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :все
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Тип сети городских дорог для новых городов: {ORANGE}{STRING}
@@ -1732,33 +1732,33 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Уста
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Построить железнодорожный мост
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Строительство ж/д туннеля
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Переключение строительства/уничтожения ж/д путей и сигналов
-STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Постройка моста - кликните на том изображении моста, который вы хотите построить
+STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Выбор моста - кликните на изображении моста, который вы хотите построить
 STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Выбор направления депо
 STR_RAILROAD_TRACK                                              :Рельсы
-STR_RAILROAD_TRAIN_DEPOT                                        :Ж/Д депо
+STR_RAILROAD_TRAIN_DEPOT                                        :Ж/д депо
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...область принадлежит другой компании
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ж/д путь с обычным сигналом
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ж/д путь с пресигналами
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ж/д путь с выходными сигналами
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ж/д путь с комбо-сигналами
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Ж/д пути с ПМС сигналами
-STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Ж/д пути с односторонними ПМС сигналами
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Рельсы с нормальными и пре-сигналами
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Рельсы с нормальными и выходными сигналами
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Ж/д путь с нормальными и комбо-сигналами
-STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Ж/д пути с обычными и ПМС сигналами
-STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Ж/д пути с обычными и односторонними ПМС сигналами
-STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Рельсы с пре- и выходными сигналами
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ж/д путь с пре- и комбо-сигналами
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Ж/д пути с пре- и ПМС сигналами
-STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Ж/д пути с пре- и односторонними ПМС сигналами
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Ж/д путь с выходными и комбо-сигналами
-STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Ж/д пути с выходными и ПМС сигналами
-STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Ж/д пути с выходными и односторонними ПМС сигналами
-STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Ж/д пути с комбо и ПМС сигналами
-STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Ж/д пути с комбо и односторонними ПМС сигналами
-STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ж/д пути с ПМС и односторонними ПМС сигналами
-STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Сначала удалите ЖД станцию
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ж/д пути с обычными сигналами
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ж/д пути со входными сигналами
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ж/д пути с выходными сигналами
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ж/д пути с комбо-сигналами
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Ж/д пути с маршрутными сигналами
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Ж/д пути с одностор. маршрутными сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Ж/д пути с обычными и входными сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Ж/д пути с обычными и выходными сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Ж/д пути с обычными и комбо-сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Ж/д пути с обычными и маршрутными сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Ж/д пути с обычными и одностор. маршр. сигналами
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Ж/д пути со входными и выходными сигналами
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ж/д пути со входными и комбо-сигналами
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Ж/д пути со входными и маршрутными сигналами
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Ж/д пути со входными и одностор. маршр. сигналами
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Ж/д пути с выходными и комбо-сигналами
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Ж/д пути с выходными и маршрутными сигналами
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Ж/д пути с выходными и одностор. маршр. сигналами
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Ж/д пути с комбо- и маршрутными сигналами
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Ж/д пути с комбо- и одностор. маршр. сигналами
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ж/д пути с маршр. и одностор. маршр. сигналами
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Сначала удалите ж/д станцию
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Построить отдельную станцию
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Объединить станции
 
@@ -1941,7 +1941,7 @@ STR_TREE_NAME_RAINFOREST                                        :Джунгли
 STR_TREE_NAME_CACTUS_PLANTS                                     :Кактусы
 
 ##id 0x3000
-STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Выбор Ж/Д станции
+STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Выбор Ж/д станции
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Выбор аэропорта
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Направление
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Число путей
@@ -1949,7 +1949,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Длин
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Слишком близко к другой ж/д станции
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Присоединяется более чем к одной существующей станции
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Слишком много станций и остановок
-STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Слишком большая ЖД станция
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Слишком большая ж/д станция
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Слишком много автобусных остановок
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Слишком много погрузочных станций
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Слишком близко к другой станции
@@ -2008,7 +2008,7 @@ STR_STATION_LIST_TOOLTIP                                        :{BLACK}Назв
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Выберите размер/тип аэропорта
 STR_STATION_SIGN                                                :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
-STR_STATION_DESCRIPTION_RAILROAD_STATION                        :Ж/Д станция
+STR_STATION_DESCRIPTION_RAILROAD_STATION                        :Ж/д станция
 STR_STATION_DESCRIPTION_AIRCRAFT_HANGAR                         :Ангар
 STR_STATION_DESCRIPTION_AIRPORT                                 :Аэропорт
 STR_STATION_DESCRIPTION_TRUCK_LOADING_AREA                      :Погрузочная платформа
@@ -2333,12 +2333,12 @@ STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Расх
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Строительство
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Новая техника
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Обслуживание ЖД
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Обслуживание ж/д
 STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Обслуживание авто
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Обслуживание авиа
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Обслуживание кораблей
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Обслуж. собственности
-STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Доход от ЖД
+STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Доход от ж/д
 STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Доход от автотранспорта
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Доход от авиации
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Доход от водного транспорта
@@ -3379,7 +3379,7 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Выбо
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Выбор типа транспорта, на который следует заменить
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Прекратить замену транспорта
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Начать замену выбранных типов транспорта
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Тип ЖД транспорта, подлежащего замене
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Тип ж/д транспорта, подлежащего замене
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}На какой танспорт происходит замена
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Удаление вагонов: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Разрешить при автозамене сохранять длину поездов путём удаления вагонов (начиная с головы поезда), если при автозамене локомотива увеличится длина поезда.
@@ -3675,18 +3675,18 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Изме
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Выбор сигналов
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Невозможно преобразовать здесь сигнал...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Стандартный светофор (семофор){}Сигналы необходимы для предотвращения аварий поездов на путях.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Входной сигнал (семафор){}Горит зелёным, если хотя бы один из выходных сигналов зелёный на следующей секции путей. Во всех других случаях горит красным.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Выходной светофор (семафор){}Работает как обычный светофор, но его значение (цвет) необходимы для нормальной работы входящих и комбинированных пресигналов.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Комбо-светофор (семафор){}Комбо-светофор работает как сдвоенный входной и выходной светофор. Это позволяет построить большую разветвленную сеть.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}ПМС сигнал. ПМС сигнал позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый поезд может зарезервировать безопасный путь. Поезд может проехать ПМС сигнал, направленный в другую сторону
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Односторонний ПМС сигнал. ПМС сигнал позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый поезд может зарезервировать безопасный путь. Поезд НЕ может проехать односторонний ПМС сигнал, направленный в другую сторону
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Стандартный светофор (электро){}Сигналы необходимы для предотвращения аварий поездов на путях.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Входной светофор (элетро){}Горит зелёным, если хотя бы один из выходных сигналов зелёный на следующей секции путей. Во всех других случаях горит красным.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Выходной светофор (электро){}Работает как обычный светофор, но его значение (цвет) необходимы для нормальной работы входящих и комбинированных пресигналов.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Комбо-светофор (электро){}Комбо-светофор работает как сдвоенный входной и выходной светофор. Это позволяет построить большую разветвленную сеть.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}ПМС сигнал. ПМС сигнал позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый поезд может зарезервировать безопасный путь. Поезд может проехать ПМС сигнал, направленный в другую сторону
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Односторонний ПМС сигнал. ПМС сигнал позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый поезд может зарезервировать безопасный путь. Поезд НЕ может проехать односторонний ПМС сигнал, направленный в другую сторону
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Стандартный семафор{}Не позволяет нескольким поездам одновременно находиться на одном блок-участке.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Входной семафор{}Открыт, если хотя бы один из выходных сигналов на следующей секции путей открыт. В остальных случаях закрыт.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Выходной семафор{}Работает как обычный семафор, но его состояние учитывается при работе входящих и комбинированных сигналов.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Комбинированный семафор{}Работает одновременно как входной и выходной семафор. Это позволяет построить большую разветвлённую сеть.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Маршрутный семафор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Допускает следование поездов в обе стороны.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Односторонний маршрутный семафор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Не допускает следования поездов в обратную сторону.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Стандартный светофор{}Не позволяет нескольким поездам одновременно находиться на одном блок-участке.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Входной светофор{}Открыт, если хотя бы один из выходных сигналов на следующей секции путей открыт. В остальных случаях закрыт.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Выходной светофор{}Работает как обычный светофор, но его состояние учитывается при работе входящих и комбинированных сигналов.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Комбинированный светофор{}Работает одновременно как входной и выходной светофор. Это позволяет построить большую разветвлённую сеть.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Маршрутный светофор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Допускает следование поездов в обе стороны.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Односторонний маршрутный светофор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Не допускает следования поездов в обратную сторону.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Изменение типа сигнала{}Когда кнопка нажата, щёлкните для преобразования существующего сигнала в сигнал выбранного типа и варианта, или щёлкните с нажатым Ctrl для перебора существующих вариантов.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Плотность расстановки сигналов при протягивании.
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Уменьшить плотность сигналов при протягивании
