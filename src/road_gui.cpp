@@ -955,15 +955,14 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 		StationPickerDrawSprite(171, 35, st, INVALID_RAILTYPE, _cur_roadtype, 4);
 		StationPickerDrawSprite(171, 85, st, INVALID_RAILTYPE, _cur_roadtype, 5);
 
-		int text_end = DrawStationCoverageAreaText(2, 147,
-			(this->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY,
-			rad, false);
-		text_end = DrawStationCoverageAreaText(2, text_end + 4,
-			(this->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY,
-			rad, true) + 4;
-		if (text_end > this->widget[BRSW_BACKGROUND].bottom) {
+		/* strings such as 'Size' and 'Coverage Area' */
+		StationCoverageType sct = (this->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY;
+		int top = 147;
+		top = DrawStationCoverageAreaText(this->widget[BRSW_BACKGROUND].left + WD_FRAMERECT_LEFT, this->widget[BRSW_BACKGROUND].right - WD_FRAMERECT_RIGHT, top, sct, rad, false) + WD_PAR_VSEP_NORMAL;
+		top = DrawStationCoverageAreaText(this->widget[BRSW_BACKGROUND].left + WD_FRAMERECT_LEFT, this->widget[BRSW_BACKGROUND].right - WD_FRAMERECT_RIGHT, top, sct, rad, true) + WD_PAR_VSEP_NORMAL;
+		if (top != this->widget[BRSW_BACKGROUND].bottom) {
 			this->SetDirty();
-			ResizeWindowForWidget(this, BRSW_BACKGROUND, 0, text_end - this->widget[BRSW_BACKGROUND].bottom);
+			ResizeWindowForWidget(this, BRSW_BACKGROUND, 0, top - this->widget[BRSW_BACKGROUND].bottom);
 			this->SetDirty();
 		}
 	}

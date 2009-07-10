@@ -233,13 +233,13 @@ public:
 		if (_settings_game.economy.station_noise_level) {
 			/* show the noise of the selected airport */
 			SetDParam(0, airport->noise_level);
-			DrawString(WD_FRAMERECT_LEFT, this->width - WD_FRAMERECT_RIGHT, top, STR_STATION_NOISE);
+			DrawString(this->widget[BAW_BOTTOMPANEL].left + WD_FRAMERECT_LEFT, this->widget[BAW_BOTTOMPANEL].right - WD_FRAMERECT_RIGHT, top, STR_STATION_NOISE);
 			top += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 		}
 
 		/* strings such as 'Size' and 'Coverage Area' */
-		top = DrawStationCoverageAreaText(WD_FRAMERECT_LEFT, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
-		top = DrawStationCoverageAreaText(WD_FRAMERECT_LEFT, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
+		top = DrawStationCoverageAreaText(this->widget[BAW_BOTTOMPANEL].left + WD_FRAMERECT_LEFT, this->widget[BAW_BOTTOMPANEL].right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
+		top = DrawStationCoverageAreaText(this->widget[BAW_BOTTOMPANEL].left + WD_FRAMERECT_LEFT, this->widget[BAW_BOTTOMPANEL].right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
 		if (top != this->widget[BAW_BOTTOMPANEL].bottom) {
 			this->SetDirty();
 			ResizeWindowForWidget(this, BAW_BOTTOMPANEL, 0, top - this->widget[BAW_BOTTOMPANEL].bottom);

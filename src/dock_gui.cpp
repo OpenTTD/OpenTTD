@@ -402,11 +402,13 @@ public:
 			SetTileSelectSize(1, 1);
 		}
 
-		int text_end = DrawStationCoverageAreaText(4, 50, SCT_ALL, rad, false);
-		text_end = DrawStationCoverageAreaText(4, text_end + 4, SCT_ALL, rad, true) + 4;
-		if (text_end != this->widget[BDSW_BACKGROUND].bottom) {
+		/* strings such as 'Size' and 'Coverage Area' */
+		int top = this->widget[BDSW_LT_OFF].bottom + WD_PAR_VSEP_NORMAL;
+		top = DrawStationCoverageAreaText(this->widget[BDSW_BACKGROUND].left + WD_FRAMERECT_LEFT, this->widget[BDSW_BACKGROUND].right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
+		top = DrawStationCoverageAreaText(this->widget[BDSW_BACKGROUND].left + WD_FRAMERECT_LEFT, this->widget[BDSW_BACKGROUND].right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
+		if (top != this->widget[BDSW_BACKGROUND].bottom) {
 			this->SetDirty();
-			ResizeWindowForWidget(this, 2, 0, text_end - this->widget[BDSW_BACKGROUND].bottom);
+			ResizeWindowForWidget(this, BDSW_BACKGROUND, 0, top - this->widget[BDSW_BACKGROUND].bottom);
 			this->SetDirty();
 		}
 	}

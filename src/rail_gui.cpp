@@ -1063,11 +1063,13 @@ public:
 		DrawString(this->widget[BRSW_PLATFORM_LEN_1].left, this->widget[BRSW_PLATFORM_LEN_7].right, 101 + y_offset, STR_STATION_BUILD_PLATFORM_LENGTH, TC_FROMSTRING, SA_CENTER);
 		DrawString(this->widget[BRSW_PLATFORM_LEN_1].left, this->widget[BRSW_PLATFORM_LEN_7].right, 141 + y_offset, STR_STATION_BUILD_COVERAGE_AREA_TITLE, TC_FROMSTRING, SA_CENTER);
 
-		int text_end = DrawStationCoverageAreaText(2, 166 + y_offset, SCT_ALL, rad, false);
-		text_end = DrawStationCoverageAreaText(2, text_end + 4, SCT_ALL, rad, true) + 4;
-		if (text_end != this->widget[BRSW_BACKGROUND].bottom) {
+		/* strings such as 'Size' and 'Coverage Area' */
+		int top = 166 + y_offset;
+		top = DrawStationCoverageAreaText(this->widget[BRSW_BACKGROUND].left + WD_FRAMERECT_LEFT, this->widget[BRSW_BACKGROUND].right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
+		top = DrawStationCoverageAreaText(this->widget[BRSW_BACKGROUND].left + WD_FRAMERECT_LEFT, this->widget[BRSW_BACKGROUND].right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
+		if (top != this->widget[BRSW_BACKGROUND].bottom) {
 			this->SetDirty();
-			ResizeWindowForWidget(this, BRSW_BACKGROUND, 0, text_end - this->widget[BRSW_BACKGROUND].bottom);
+			ResizeWindowForWidget(this, BRSW_BACKGROUND, 0, top - this->widget[BRSW_BACKGROUND].bottom);
 			this->SetDirty();
 		}
 

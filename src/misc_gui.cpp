@@ -811,7 +811,7 @@ void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool 
 
 
 static int DrawStationCoverageText(const CargoArray &cargos,
-	int str_x, int str_y, StationCoverageType sct, bool supplies)
+	int left, int right, int top, StationCoverageType sct, bool supplies)
 {
 	bool first = true;
 
@@ -847,19 +847,20 @@ static int DrawStationCoverageText(const CargoArray &cargos,
 	assert(b < endof(string));
 
 	SetDParamStr(0, string);
-	return DrawStringMultiLine(str_x, str_x + 144, str_y, INT32_MAX, STR_JUST_RAW_STRING);
+	return DrawStringMultiLine(left, right, top, INT32_MAX, STR_JUST_RAW_STRING);
 }
 
 /**
  * Calculates and draws the accepted or supplied cargo around the selected tile(s)
- * @param sx x position where the string is to be drawn
- * @param sy y position where the string is to be drawn
+ * @param left x position where the string is to be drawn
+ * @param right the right most position to draw on
+ * @param top y position where the string is to be drawn
  * @param sct which type of cargo is to be displayed (passengers/non-passengers)
  * @param rad radius around selected tile(s) to be searched
  * @param supplies if supplied cargos should be drawn, else accepted cargos
  * @return Returns the y value below the string that was drawn
  */
-int DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad, bool supplies)
+int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageType sct, int rad, bool supplies)
 {
 	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
 	if (tile < MapSize()) {
@@ -869,10 +870,10 @@ int DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad
 		} else {
 			cargos = GetAcceptanceAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
 		}
-		return DrawStationCoverageText(cargos, sx, sy, sct, supplies);
+		return DrawStationCoverageText(cargos, left, right, top, sct, supplies);
 	}
 
-	return sy;
+	return top;
 }
 
 void CheckRedrawStationCoverage(const Window *w)
