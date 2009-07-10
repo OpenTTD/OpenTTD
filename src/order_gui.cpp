@@ -253,8 +253,15 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
-			SetDParam(2, order->GetDestination());
+			if (v->type == VEH_TRAIN) {
+				SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
+				SetDParam(2, order->GetDestination());
+			} else {
+				SetDParam(1, STR_GO_TO_STATION);
+				SetDParam(2, STR_ORDER_GO_VIA);
+				SetDParam(3, order->GetDestination());
+				SetDParam(4, STR_EMPTY);
+			}
 			break;
 
 		case OT_CONDITIONAL:
@@ -347,6 +354,11 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			IsTileOwner(tile, _local_company)) {
 		order.MakeGoToWaypoint(GetWaypointByTile(tile)->index);
 		if (_settings_client.gui.new_nonstop != _ctrl_pressed) order.SetNonStopType(ONSF_NO_STOP_AT_ANY_STATION);
+		return order;
+	}
+
+	if (IsBuoyTile(tile) && v->type == VEH_SHIP) {
+		order.MakeGoToWaypoint(GetStationIndex(tile));
 		return order;
 	}
 
@@ -857,8 +869,16 @@ public:
 					TileIndex xy = INVALID_TILE;
 
 					switch (ord->GetType()) {
-						case OT_GOTO_STATION:  xy = Station::Get(ord->GetDestination())->xy ; break;
-						case OT_GOTO_WAYPOINT: xy = Waypoint::Get(ord->GetDestination())->xy; break;
+						case OT_GOTO_WAYPOINT:
+							if (this->vehicle->type == VEH_TRAIN) {
+								xy = Waypoint::Get(ord->GetDestination())->xy;
+								break;
+							}
+							/* FALL THROUGH */
+						case OT_GOTO_STATION:
+							xy = Station::Get(ord->GetDestination())->xy;
+							break;
+
 						case OT_GOTO_DEPOT:
 							if ((ord->GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) break;
 							xy = (this->vehicle->type == VEH_AIRCRAFT) ?  Station::Get(ord->GetDestination())->xy : Depot::Get(ord->GetDestination())->xy;

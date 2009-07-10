@@ -411,6 +411,7 @@ static TileIndex GetOrderLocation(const Order& o)
 {
 	switch (o.GetType()) {
 		default: NOT_REACHED();
+		case OT_GOTO_WAYPOINT: // This function is only called for ships, thus waypoints are buoys which are stations.
 		case OT_GOTO_STATION: return Station::Get(o.GetDestination())->xy;
 		case OT_GOTO_DEPOT:   return Depot::Get(o.GetDestination())->xy;
 	}
@@ -418,6 +419,8 @@ static TileIndex GetOrderLocation(const Order& o)
 
 static uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle *v, int conditional_depth = 0)
 {
+	assert(v->type == VEH_SHIP);
+
 	if (cur->IsType(OT_CONDITIONAL)) {
 		if (conditional_depth > v->GetNumOrders()) return 0;
 
@@ -539,10 +542,19 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		}
 
 		case OT_GOTO_WAYPOINT: {
-			if (v->type != VEH_TRAIN) return CMD_ERROR;
+			switch (v->type) {
+				default: return CMD_ERROR;
 
-			const Waypoint *wp = Waypoint::GetIfValid(new_order.GetDestination());
-			if (wp == NULL || !CheckOwnership(wp->owner)) return CMD_ERROR;
+				case VEH_TRAIN: {
+					const Waypoint *wp = Waypoint::GetIfValid(new_order.GetDestination());
+					if (wp == NULL || !CheckOwnership(wp->owner)) return CMD_ERROR;
+				} break;
+
+				case VEH_SHIP: {
+					const Station *st = Station::GetIfValid(new_order.GetDestination());
+					if (st == NULL || (!CheckOwnership(st->owner) && st->owner != OWNER_NONE)) return CMD_ERROR;
+				} break;
+			}
 
 			/* Order flags can be any of the following for waypoints:
 			 * [non-stop]
@@ -597,7 +609,15 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		 * finds the last order in the list. */
 		const Order *o;
 		FOR_VEHICLE_ORDERS(v, o) {
-			if (o->IsType(OT_GOTO_STATION) || o->IsType(OT_GOTO_DEPOT)) prev = o;
+			switch (o->GetType()) {
+				case OT_GOTO_STATION:
+				case OT_GOTO_DEPOT:
+				case OT_GOTO_WAYPOINT:
+					prev = o;
+					break;
+
+				default: break;
+			}
 			if (++n == sel_ord && prev != NULL) break;
 		}
 		if (prev != NULL) {
@@ -877,7 +897,7 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	Order *order = v->GetOrder(sel_ord);
 	switch (order->GetType()) {
 		case OT_GOTO_STATION:
-			if (mof == MOF_COND_VARIABLE || mof == MOF_COND_COMPARATOR || mof == MOF_DEPOT_ACTION || mof == MOF_COND_VALUE || Station::Get(order->GetDestination())->IsBuoy()) return CMD_ERROR;
+			if (mof == MOF_COND_VARIABLE || mof == MOF_COND_COMPARATOR || mof == MOF_DEPOT_ACTION || mof == MOF_COND_VALUE) return CMD_ERROR;
 			break;
 
 		case OT_GOTO_DEPOT:
@@ -1664,7 +1684,11 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			v->dest_tile = Waypoint::Get(order->GetDestination())->xy;
+			if (v->type == VEH_TRAIN) {
+				v->dest_tile = Waypoint::Get(order->GetDestination())->xy;
+			} else {
+				v->dest_tile = Station::Get(order->GetDestination())->xy;
+			}
 			break;
 
 		case OT_CONDITIONAL: {

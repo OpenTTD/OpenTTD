@@ -1944,6 +1944,14 @@ bool AfterLoadGame()
 			}
 			s->cargo_type = CT_INVALID;
 		}
+
+		Order *o;
+		FOR_ALL_ORDERS(o) {
+			/* Buoys are now go to waypoint orders */
+			if (!o->IsType(OT_GOTO_STATION) || !Station::Get(o->GetDestination())->IsBuoy()) continue;
+
+			o->MakeGoToWaypoint(o->GetDestination());
+		}
 	}
 
 	AfterLoadLabelMaps();

@@ -626,8 +626,7 @@ static void ShipController(Ship *v)
 					InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 				} else if (v->dest_tile != 0) {
 					/* We have a target, let's see if we reached it... */
-					if (v->current_order.IsType(OT_GOTO_STATION) &&
-							Station::Get(v->current_order.GetDestination())->IsBuoy() &&
+					if (v->current_order.IsType(OT_GOTO_WAYPOINT) &&
 							DistanceManhattan(v->dest_tile, gp.new_tile) <= 3) {
 						/* We got within 3 tiles of our target buoy, so let's skip to our
 						 * next order */

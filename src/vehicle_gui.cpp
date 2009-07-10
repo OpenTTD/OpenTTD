@@ -1991,9 +1991,9 @@ struct VehicleViewWindow : Window {
 					break;
 
 				case OT_GOTO_WAYPOINT: {
-					assert(v->type == VEH_TRAIN);
+					assert(v->type == VEH_TRAIN || v->type == VEH_SHIP);
 					SetDParam(0, v->current_order.GetDestination());
-					str = STR_HEADING_FOR_WAYPOINT + _settings_client.gui.vehicle_speed;
+					str = (v->type == VEH_TRAIN ? STR_HEADING_FOR_WAYPOINT : STR_HEADING_FOR_STATION) + _settings_client.gui.vehicle_speed;
 					SetDParam(1, v->GetDisplaySpeed());
 					break;
 				}
