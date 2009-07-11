@@ -2737,10 +2737,10 @@ STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Renombra
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Saltarse
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Borrar
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Ir a
-STR_REFIT                                                       :{BLACK}Recargar
-STR_REFIT_TIP                                                   :{BLACK}Selecciona el tipo de carga a recargar en esta orden. Control+click para quitar la orden de recargar
-STR_REFIT_ORDER                                                 :(Recargar en {STRING})
-STR_REFIT_STOP_ORDER                                            :(Reparar en {STRING} y parar)
+STR_REFIT                                                       :{BLACK}Reformar
+STR_REFIT_TIP                                                   :{BLACK}Selecciona el tipo de carga a reformar en esta orden. Ctrl+Click para quitar la orden de reforma
+STR_REFIT_ORDER                                                 :(Reformar en {STRING})
+STR_REFIT_STOP_ORDER                                            :(Reformar en {STRING} y parar)
 STR_STOP_ORDER                                                  :(Parar)
 STR_TIMETABLE_VIEW                                              :{BLACK}Horarios
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Cambiar a la vista de horarios
@@ -2915,10 +2915,10 @@ STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Renombra
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Renombrar tipo de vehículo
 STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}No se puede renombrar tipo de vehículo....
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reparar vehículo de carretera para transportar otro tipo de cargas
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reparar vehículo de carretera
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Reparar vehículo de carretera para transportar la carga seleccionada
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}No se puede reparar vehículo de carretera
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reformar vehículo de carretera para transportar otro tipo de cargas
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reformar vehículo de carretera
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Reformar vehículo de carretera para transportar la carga seleccionada
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}No se puede reformar vehículo de carretera...
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona tipo de carga que transportará el vehículo de carretera
 
 ##id 0x9800
@@ -3290,7 +3290,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidad: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidad: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagones con motor: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Convertible a: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reformable a: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos los tipos de carga
 STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Esfuerzo de Tracción {GOLD}{FORCE}
@@ -3641,12 +3641,12 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Descarga
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} de {BYTES} descargadas ({NUM} %)
 
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}No es posible conectarse al servidor de contenidos...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Descarga erronea...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Descarga errónea...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... conexión perdida
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... no se puede escribir en el fichero
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No ha sido posible descomprimir el fichero descargado
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Comprobar contenido online
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Consultar contenido online
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Comprobar si hay nuevos contenidos actualizados para descargar
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Encontrar contenido perdido en línea
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Comprobar si el contenido que falta puede ser encontrado en línea
