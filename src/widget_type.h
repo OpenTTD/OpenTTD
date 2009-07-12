@@ -477,6 +477,12 @@ public:
 	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y);
 	/* virtual */ NWidgetBase *GetWidgetOfType(WidgetType tp);
 	/* virtual */ Scrollbar *FindScrollbar(Window *w, bool allow_next = true);
+
+	static void InvalidateDimensionCache();
+private:
+	static Dimension stickybox_dimension; ///< Cached size of a stickybox widget.
+	static Dimension resizebox_dimension; ///< Cached size of a resizebox widget.
+	static Dimension closebox_dimension;  ///< Cached size of a closebox widget.
 };
 
 Widget *InitializeNWidgets(NWidgetBase *nwid, bool rtl = false);

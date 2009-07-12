@@ -1337,6 +1337,8 @@ void InitWindowSystem()
 	_focused_window = NULL;
 	_mouseover_last_w = NULL;
 	_scrolling_viewport = 0;
+
+	NWidgetLeaf::InvalidateDimensionCache(); // Reset cached sizes of several widgets.
 }
 
 /**
@@ -2546,8 +2548,9 @@ void HideVitalWindows()
 /** Re-initialize all windows. */
 void ReInitAllWindows()
 {
-	Window *w;
+	NWidgetLeaf::InvalidateDimensionCache(); // Reset cached sizes of several widgets.
 
+	Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		w->ReInit();
 	}

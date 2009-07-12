@@ -20,6 +20,7 @@
 #include "network/network_func.h"
 #include "core/smallvec_type.hpp"
 #include "thread.h"
+#include "window_func.h"
 
 #include "table/palettes.h"
 #include "table/sprites.h"
@@ -1227,6 +1228,8 @@ void LoadStringWidthTable()
 	for (i = 0; i != 224; i++) {
 		_stringwidth_table[FS_LARGE][i] = GetGlyphWidth(FS_LARGE, i + 32);
 	}
+
+	ReInitAllWindows();
 }
 
 /**

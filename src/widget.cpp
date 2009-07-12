@@ -276,9 +276,16 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
 	assert(img != 0);
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 
-	/* show different image when clicked for WWT_IMGBTN_2 */
-	if ((type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++;
-	DrawSprite(img, PAL_NONE, r.left + WD_IMGBTN_LEFT + clicked, r.top + WD_IMGBTN_TOP + clicked);
+	int left, top;
+	if ((type & WWT_MASK) == WWT_IMGBTN_2) {
+		if (clicked) img++; // Show different image when clicked for #WWT_IMGBTN_2.
+		left = WD_IMGBTN2_LEFT;
+		top  = WD_IMGBTN2_TOP;
+	} else {
+		left = WD_IMGBTN_LEFT;
+		top  = WD_IMGBTN_TOP;
+	}
+	DrawSprite(img, PAL_NONE, r.left + left + clicked, r.top + top + clicked);
 }
 
 /**
@@ -488,7 +495,7 @@ static inline void DrawFrame(const Rect &r, Colours colour, StringID str)
 static inline void DrawStickyBox(const Rect &r, Colours colour, bool clicked)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
-	DrawSprite((clicked) ? SPR_PIN_UP : SPR_PIN_DOWN, PAL_NONE, r.left + WD_STICKY_LEFT + clicked, r.top + WD_STICKY_TOP + clicked);
+	DrawSprite((clicked) ? SPR_PIN_UP : SPR_PIN_DOWN, PAL_NONE, r.left + WD_STICKYBOX_LEFT + clicked, r.top + WD_STICKYBOX_TOP + clicked);
 }
 
 /**
@@ -502,9 +509,9 @@ static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bo
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 	if (at_left) {
-		DrawSprite(SPR_WINDOW_RESIZE_LEFT, PAL_NONE, r.left + 2 + clicked, r.top + 3 + clicked);
+		DrawSprite(SPR_WINDOW_RESIZE_LEFT, PAL_NONE, r.left + WD_RESIZEBOX_RIGHT + clicked, r.top + WD_RESIZEBOX_TOP + clicked);
 	} else {
-		DrawSprite(SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.left + 3 + clicked, r.top + WD_RESIZE_TOP + clicked);
+		DrawSprite(SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.left + WD_RESIZEBOX_LEFT + clicked, r.top + WD_RESIZEBOX_TOP + clicked);
 	}
 }
 
@@ -518,7 +525,7 @@ static inline void DrawCloseBox(const Rect &r, Colours colour, StringID str)
 {
 	assert(str == STR_BLACK_CROSS || str == STR_SILVER_CROSS); // black or silver cross
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_NONE);
-	DrawString(r.left, r.right, r.top + WD_CLOSEBOX_TOP, str, TC_FROMSTRING, SA_CENTER);
+	DrawString(r.left + WD_CLOSEBOX_LEFT, r.right - WD_CLOSEBOX_RIGHT, r.top + WD_CLOSEBOX_TOP, str, TC_FROMSTRING, SA_CENTER);
 }
 
 /**
@@ -1819,6 +1826,18 @@ NWidgetBase *NWidgetBackground::GetWidgetOfType(WidgetType tp)
 	return nwid;
 }
 
+/** Reset the cached dimensions. */
+/* static */ void NWidgetLeaf::InvalidateDimensionCache()
+{
+	stickybox_dimension.width = stickybox_dimension.height = 0;
+	resizebox_dimension.width = resizebox_dimension.height = 0;
+	closebox_dimension.width  = closebox_dimension.height  = 0;
+}
+
+Dimension NWidgetLeaf::stickybox_dimension = {0, 0};
+Dimension NWidgetLeaf::resizebox_dimension = {0, 0};
+Dimension NWidgetLeaf::closebox_dimension  = {0, 0};
+
 /**
  * Nested leaf widget.
  * @param tp     Type of leaf widget.
@@ -1881,13 +1900,13 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 
 		case WWT_STICKYBOX:
 			this->SetFill(false, false);
-			this->SetMinimalSize(WD_STICKY_WIDTH, 14);
+			this->SetMinimalSize(WD_STICKYBOX_WIDTH, 14);
 			this->SetDataTip(STR_NULL, STR_STICKY_BUTTON);
 			break;
 
 		case WWT_RESIZEBOX:
 			this->SetFill(false, false);
-			this->SetMinimalSize(WD_RESIZE_WIDTH, 12);
+			this->SetMinimalSize(WD_RESIZEBOX_WIDTH, 12);
 			this->SetDataTip(STR_NULL, STR_RESIZE_BUTTON);
 			break;
 
@@ -1924,8 +1943,24 @@ int NWidgetLeaf::SetupSmallestSize(Window *w)
 			case WWT_SCROLLBAR:
 			case WWT_SCROLL2BAR:
 			case WWT_HSCROLLBAR:
+				break;
+
 			case WWT_STICKYBOX:
+				if (NWidgetLeaf::stickybox_dimension.width == 0) {
+					NWidgetLeaf::stickybox_dimension = maxdim(GetSpriteSize(SPR_PIN_UP), GetSpriteSize(SPR_PIN_DOWN));
+					NWidgetLeaf::stickybox_dimension.width += WD_STICKYBOX_LEFT + WD_STICKYBOX_RIGHT;
+					NWidgetLeaf::stickybox_dimension.height += WD_STICKYBOX_TOP + WD_STICKYBOX_BOTTOM;
+				}
+				d2 = maxdim(d2, NWidgetLeaf::stickybox_dimension);
+				break;
+
 			case WWT_RESIZEBOX:
+				if (NWidgetLeaf::resizebox_dimension.width == 0) {
+					NWidgetLeaf::resizebox_dimension = maxdim(GetSpriteSize(SPR_WINDOW_RESIZE_LEFT), GetSpriteSize(SPR_WINDOW_RESIZE_RIGHT));
+					NWidgetLeaf::resizebox_dimension.width += WD_RESIZEBOX_LEFT + WD_RESIZEBOX_RIGHT;
+					NWidgetLeaf::resizebox_dimension.height += WD_RESIZEBOX_TOP + WD_RESIZEBOX_BOTTOM;
+				}
+				d2 = maxdim(d2, NWidgetLeaf::resizebox_dimension);
 				break;
 
 			case WWT_PUSHBTN:
@@ -1936,15 +1971,25 @@ int NWidgetLeaf::SetupSmallestSize(Window *w)
 
 			case WWT_IMGBTN:
 			case WWT_PUSHIMGBTN:
+				d2 = maxdim(d2, GetSpriteSize(this->widget_data));
+				d2.height += WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM;
+				d2.width += WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT;
+				break;
+
 			case WWT_IMGBTN_2:
 				d2 = maxdim(d2, GetSpriteSize(this->widget_data));
-				d2.height += WD_IMGBTN_TOP;
-				d2.width += WD_IMGBTN_LEFT;
+				d2 = maxdim(d2, GetSpriteSize(this->widget_data + 1));
+				d2.height += WD_IMGBTN2_TOP + WD_IMGBTN2_BOTTOM;
+				d2.width += WD_IMGBTN2_LEFT + WD_IMGBTN2_RIGHT;
 				break;
 
 			case WWT_CLOSEBOX:
-				d2 = maxdim(d2, GetStringBoundingBox(this->widget_data));
-				d2.height += WD_CLOSEBOX_TOP;
+				if (NWidgetLeaf::closebox_dimension.width == 0) {
+					NWidgetLeaf::closebox_dimension = maxdim(GetStringBoundingBox(STR_BLACK_CROSS), GetStringBoundingBox(STR_SILVER_CROSS));
+					NWidgetLeaf::closebox_dimension.width += WD_CLOSEBOX_LEFT + WD_CLOSEBOX_RIGHT;
+					NWidgetLeaf::closebox_dimension.height += WD_CLOSEBOX_TOP + WD_CLOSEBOX_BOTTOM;
+				}
+				d2 = maxdim(d2, NWidgetLeaf::closebox_dimension);
 				break;
 
 			case WWT_TEXTBTN:
@@ -1963,13 +2008,13 @@ int NWidgetLeaf::SetupSmallestSize(Window *w)
 			case WWT_CAPTION:
 				d2 = maxdim(d2, GetStringBoundingBox(this->widget_data));
 				d2.width += WD_CAPTIONTEXT_LEFT + WD_CAPTIONTEXT_RIGHT;
-				d2.height += WD_CAPTIONTEXT_TOP;
+				d2.height += WD_CAPTIONTEXT_TOP + WD_CAPTIONTEXT_BOTTOM;
 				break;
 
 			case WWT_DROPDOWN:
 				d2 = maxdim(d2, GetStringBoundingBox(this->widget_data));
 				d2.width += WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT;
-				d2.height += WD_DROPDOWNTEXT_TOP;
+				d2.height += WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM;
 				break;
 
 			default:

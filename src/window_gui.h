@@ -29,57 +29,75 @@ DECLARE_ENUM_AS_BIT_SET(FrameFlags);
 
 /** Distances used in drawing widgets. */
 enum WidgetDrawDistances {
-	/* WWT_IMGBTN, WWT_IMGBTN_2 */
-	WD_IMGBTN_LEFT = 1,         ///< Left offset of the image in the button.
-	WD_IMGBTN_TOP = 1,          ///< Top offset of image in the button.
+	/* WWT_IMGBTN */
+	WD_IMGBTN_LEFT    = 1,      ///< Left offset of the image in the button.
+	WD_IMGBTN_RIGHT   = 2,      ///< Right offset of the image in the button.
+	WD_IMGBTN_TOP     = 1,      ///< Top offset of image in the button.
+	WD_IMGBTN_BOTTOM  = 2,      ///< Bottom offset of image in the button.
+
+	/* WWT_IMGBTN_2 */
+	WD_IMGBTN2_LEFT   = 1,      ///< Left offset of the images in the button.
+	WD_IMGBTN2_RIGHT  = 3,      ///< Right offset of the images in the button.
+	WD_IMGBTN2_TOP    = 1,      ///< Top offset of images in the button.
+	WD_IMGBTN2_BOTTOM = 3,      ///< Bottom offset of images in the button.
 
 	/* WWT_INSET */
 	WD_INSET_LEFT  = 2,         ///< Left offset of string.
 	WD_INSET_RIGHT = 2,         ///< Right offset of string.
 	WD_INSET_TOP   = 1,         ///< Top offset of string.
 
-	WD_VSCROLLBAR_WIDTH = 12,   ///< Width of a vertical scrollbar.
+	WD_VSCROLLBAR_WIDTH  = 12,  ///< Width of a vertical scrollbar.
 
 	WD_HSCROLLBAR_HEIGHT = 12,  ///< Height of a horizontal scrollbar.
 
 	/* FrameRect widgets, all text buttons, panel, editbox */
-	WD_FRAMERECT_LEFT = 2,      ///< Offset at left to draw the frame rectangular area
-	WD_FRAMERECT_RIGHT = 2,     ///< Offset at right to draw the frame rectangular area
-	WD_FRAMERECT_TOP = 1,       ///< Offset at top to draw the frame rectangular area
+	WD_FRAMERECT_LEFT   = 2,    ///< Offset at left to draw the frame rectangular area
+	WD_FRAMERECT_RIGHT  = 2,    ///< Offset at right to draw the frame rectangular area
+	WD_FRAMERECT_TOP    = 1,    ///< Offset at top to draw the frame rectangular area
 	WD_FRAMERECT_BOTTOM = 1,    ///< Offset at bottom to draw the frame rectangular area
 
 	/* WWT_FRAME */
-	WD_FRAMETEXT_LEFT = 6,      ///< Left offset of the text of the frame.
+	WD_FRAMETEXT_LEFT  = 6,     ///< Left offset of the text of the frame.
 	WD_FRAMETEXT_RIGHT = 6,     ///< Right offset of the text of the frame.
 
 	/* WWT_STICKYBOX */
-	WD_STICKY_WIDTH = 12,       ///< Width of a sticky box widget.
-	WD_STICKY_LEFT = 2,         ///< Left offset of sticky sprite.
-	WD_STICKY_TOP = 3,          ///< Top offset of sticky sprite.
+	WD_STICKYBOX_WIDTH  = 12,   ///< Width of a standard sticky box widget.
+	WD_STICKYBOX_LEFT   = 2,    ///< Left offset of sticky sprite.
+	WD_STICKYBOX_RIGHT  = 2,    ///< Right offset of sticky sprite.
+	WD_STICKYBOX_TOP    = 3,    ///< Top offset of sticky sprite.
+	WD_STICKYBOX_BOTTOM = 1,    ///< Bottom offset of sticky sprite.
 
 	/* WWT_RESIZEBOX */
-	WD_RESIZE_WIDTH = 12,       ///< Width of a resize box widget.
-	WD_RESIZE_TOP = 3,          ///< Top offset of resize sprite.
+	WD_RESIZEBOX_WIDTH  = 12,   ///< Width of a resize box widget.
+	WD_RESIZEBOX_LEFT   = 3,    ///< Left offset of resize sprite.
+	WD_RESIZEBOX_RIGHT  = 2,    ///< Right offset of resize sprite.
+	WD_RESIZEBOX_TOP    = 3,    ///< Top offset of resize sprite.
+	WD_RESIZEBOX_BOTTOM = 4,    ///< Bottom offset of resize sprite.
 
 	/* WWT_CLOSEBOX */
-	WD_CLOSEBOX_WIDTH = 11,     ///< Width of a close box widget.
-	WD_CLOSEBOX_TOP = 2,        ///< Distance between the top of the close box widget, and the string.
+	WD_CLOSEBOX_WIDTH  = 11,    ///< Width of a close box widget.
+	WD_CLOSEBOX_LEFT   = 2,     ///< Left offset of closebox string.
+	WD_CLOSEBOX_RIGHT  = 1,     ///< Right offset of closebox string.
+	WD_CLOSEBOX_TOP    = 2,     ///< Top offset of closebox string.
+	WD_CLOSEBOX_BOTTOM = 2,     ///< Bottom offset of closebox string.
 
 	/* WWT_CAPTION */
-	WD_CAPTION_HEIGHT = 14,     ///< Height of a title bar.
-	WD_CAPTIONTEXT_LEFT = 2,    ///< Offset of the caption text at the left.
-	WD_CAPTIONTEXT_RIGHT = 2,   ///< Offset of the caption text at the right.
-	WD_CAPTIONTEXT_TOP = 2,     ///< Offset of the caption text at the top.
+	WD_CAPTION_HEIGHT     = 14, ///< Height of a title bar.
+	WD_CAPTIONTEXT_LEFT   = 2,  ///< Offset of the caption text at the left.
+	WD_CAPTIONTEXT_RIGHT  = 2,  ///< Offset of the caption text at the right.
+	WD_CAPTIONTEXT_TOP    = 2,  ///< Offset of the caption text at the top.
+	WD_CAPTIONTEXT_BOTTOM = 2,  ///< Offset of the caption text at the bottom.
 
 	/* Dropdown widget. */
-	WD_DROPDOWN_HEIGHT = 12,    ///< Height of a drop down widget.
-	WD_DROPDOWNTEXT_LEFT = 2,   ///< Left offset of the dropdown widget string.
-	WD_DROPDOWNTEXT_RIGHT = 14, ///< Right offset of the dropdown widget string.
-	WD_DROPDOWNTEXT_TOP = 1,    ///< Top offset of the dropdown widget string.
+	WD_DROPDOWN_HEIGHT     = 12, ///< Height of a drop down widget.
+	WD_DROPDOWNTEXT_LEFT   = 2,  ///< Left offset of the dropdown widget string.
+	WD_DROPDOWNTEXT_RIGHT  = 14, ///< Right offset of the dropdown widget string.
+	WD_DROPDOWNTEXT_TOP    = 1,  ///< Top offset of the dropdown widget string.
+	WD_DROPDOWNTEXT_BOTTOM = 1,  ///< Bottom offset of the dropdown widget string.
 
 	WD_SORTBUTTON_ARROW_WIDTH = 11, ///< Width of up/down arrow of sort button state.
 
-	WD_PAR_VSEP_NORMAL = 2,     ///< Amount of vertical space between two paragraphs of text.
+	WD_PAR_VSEP_NORMAL = 2,      ///< Amount of vertical space between two paragraphs of text.
 };
 
 /* wiget.cpp */
