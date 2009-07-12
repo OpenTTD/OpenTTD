@@ -64,7 +64,16 @@ int WagonLengthToPixels(int len)
 	return (len * _traininfo_vehicle_width) / 8;
 }
 
-void DrawTrainImage(const Vehicle *v, int x, int y, VehicleID selection, int count, int skip)
+/**
+ * Draws an image of a whole train
+ * @param v Front vehicle
+ + @param x x Position to start at
+ * @param y y Position to draw at
+ * @param seletion Selected vehicle to draw a frame around
+ * @param max_width Number of pixels space for drawing
+ * @param skip Number of pixels to skip at the front (for scrolling)
+ */
+void DrawTrainImage(const Vehicle *v, int x, int y, VehicleID selection, int max_width, int skip)
 {
 	DrawPixelInfo tmp_dpi, *old_dpi;
 	int dx = -(skip * 8) / _traininfo_vehicle_width;
@@ -72,9 +81,9 @@ void DrawTrainImage(const Vehicle *v, int x, int y, VehicleID selection, int cou
 	int highlight_l = 0;
 	int highlight_r = 0;
 
-	if (!FillDrawPixelInfo(&tmp_dpi, x - 2, y - 1, count + 1, 14)) return;
+	if (!FillDrawPixelInfo(&tmp_dpi, x - 2, y - 1, max_width + 1, 14)) return;
 
-	count = (count * 8) / _traininfo_vehicle_width;
+	int count = (max_width * 8) / _traininfo_vehicle_width;
 
 	old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;

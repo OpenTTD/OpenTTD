@@ -276,7 +276,7 @@ struct DepotWindow : Window {
 				DrawString(this->widget[DEPOT_WIDGET_MATRIX].left, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, TC_FROMSTRING, SA_RIGHT); // Draw the counter
 				break;
 
-			case VEH_ROAD:     DrawRoadVehImage( v, x + 24, sprite_y, this->sel, 1); break;
+			case VEH_ROAD:     DrawRoadVehImage( v, x + 24, sprite_y, this->sel, 28); break;
 			case VEH_SHIP:     DrawShipImage(    v, x + 19, sprite_y - 1, this->sel); break;
 			case VEH_AIRCRAFT: {
 				const Sprite *spr = GetSprite(v->GetImage(DIR_W), ST_NORMAL);

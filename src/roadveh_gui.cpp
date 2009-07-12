@@ -120,12 +120,17 @@ static inline int RoadVehLengthToPixels(int length)
 	return (length * 28) / 8;
 }
 
-void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection, int count)
+/**
+ * Draws an image of a road vehicle chain
+ * @param v Front vehicle
+ + @param x x Position to start at
+ * @param y y Position to draw at
+ * @param seletion Selected vehicle to draw a border around
+ * @param max_width Number of pixels space for drawing
+ */
+void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection, int max_width)
 {
-	/* Road vehicle lengths are measured in eighths of the standard length, so
-	 * count is the number of standard vehicles that should be drawn. If it is
-	 * 0, we draw enough vehicles for 10 standard vehicle lengths. */
-	int max_length = (count == 0) ? 80 : count * 8;
+	int max_length = max_width / 28;
 
 	/* Width of highlight box */
 	int highlight_w = 0;

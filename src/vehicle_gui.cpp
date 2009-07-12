@@ -798,13 +798,22 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y)
 	}
 }
 
-static void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection, int count, int skip)
+/**
+ * Draws an image of a vehicle chain
+ * @param v Front vehicle
+ + @param x x Position to start at
+ * @param y y Position to draw at
+ * @param seletion Selected vehicle to draw a frame around
+ * @param max_width Number of pixels space for drawing
+ * @param skip Number of pixels to skip at the front (for scrolling)
+ */
+static void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection, int max_width, int skip)
 {
 	switch (v->type) {
-		case VEH_TRAIN:    DrawTrainImage(v, x, y, selection, count, skip); break;
-		case VEH_ROAD:     DrawRoadVehImage(v, x, y, selection, count);     break;
-		case VEH_SHIP:     DrawShipImage(v, x, y, selection);               break;
-		case VEH_AIRCRAFT: DrawAircraftImage(v, x, y, selection);           break;
+		case VEH_TRAIN:    DrawTrainImage(v, x, y, selection, max_width, skip); break;
+		case VEH_ROAD:     DrawRoadVehImage(v, x, y, selection, max_width);     break;
+		case VEH_SHIP:     DrawShipImage(v, x, y, selection);                   break;
+		case VEH_AIRCRAFT: DrawAircraftImage(v, x, y, selection);               break;
 		default: NOT_REACHED();
 	}
 }
@@ -1517,7 +1526,7 @@ struct VehicleDetailsWindow : Window {
 			case VEH_ROAD:
 			case VEH_SHIP:
 			case VEH_AIRCRAFT:
-				DrawVehicleImage(v, matrix->left + 3, matrix->top + 1, INVALID_VEHICLE, 0, 0);
+				DrawVehicleImage(v, matrix->left + 3, matrix->top + 1, INVALID_VEHICLE, matrix->right - matrix->left - 5, 0);
 				DrawVehicleDetails(v, matrix->left + 75, matrix->right - 2, matrix->top + 1, this->vscroll.pos, this->vscroll.cap, det_tab);
 				break;
 
