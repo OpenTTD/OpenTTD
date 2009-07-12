@@ -254,12 +254,28 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 
 	/* Our parent's button widget is used to determine where to place the drop
 	 * down list window. */
-	const Widget *wi = &w->widget[button];
+	Rect wi_rect;
+	Colours wi_colour;
+	if (w->nested_array != NULL) {
+		const NWidgetCore *nwi = w->nested_array[button];
+		wi_rect.left   = nwi->pos_x;
+		wi_rect.right  = nwi->pos_x + nwi->current_x - 1;
+		wi_rect.top    = nwi->pos_y;
+		wi_rect.bottom = nwi->pos_y + nwi->current_y - 1;
+		wi_colour = nwi->colour;
+	} else {
+		const Widget *wi = &w->widget[button];
+		wi_rect.left   = wi->left;
+		wi_rect.right  = wi->right;
+		wi_rect.top    = wi->top;
+		wi_rect.bottom = wi->bottom;
+		wi_colour = wi->colour;
+	}
 
 	/* The preferred position is just below the dropdown calling widget */
-	int top = w->top + wi->bottom + 1;
+	int top = w->top + wi_rect.bottom + 1;
 
-	if (width == 0) width = wi->right - wi->left + 1;
+	if (width == 0) width = wi_rect.right - wi_rect.left + 1;
 
 	uint max_item_width = 0;
 
@@ -294,8 +310,8 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 		int screen_top = w3 == NULL ? 0 : w3->top + w3->height;
 
 		/* If not, check if it will fit above the widget */
-		if (w->top + wi->top - height > screen_top) {
-			top = w->top + wi->top - height - 4;
+		if (w->top + wi_rect.top - height > screen_top) {
+			top = w->top + wi_rect.top - height - 4;
 		} else {
 			/* ... and lastly if it won't, enable the scroll bar and fit the
 			 * list in below the widget */
@@ -313,9 +329,9 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 
 	const Widget *wid = InitializeWidgetArrayFromNestedWidgets(_nested_dropdown_menu_widgets, lengthof(_nested_dropdown_menu_widgets),
 													_dropdown_menu_widgets, &generated_dropdown_menu_widgets);
-	DropdownWindow *dw = new DropdownWindow(w->left + wi->left, top, width, height + 4, wid);
+	DropdownWindow *dw = new DropdownWindow(w->left + wi_rect.left, top, width, height + 4, wid);
 
-	dw->widget[0].colour = wi->colour;
+	dw->widget[0].colour = wi_colour;
 	dw->widget[0].right = width - 1;
 	dw->widget[0].bottom = height + 3;
 
@@ -324,7 +340,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 	if (scroll) {
 		/* We're scrolling, so enable the scroll bar and shrink the list by
 		 * the scrollbar's width */
-		dw->widget[1].colour = wi->colour;
+		dw->widget[1].colour = wi_colour;
 		dw->widget[1].right  = dw->widget[0].right;
 		dw->widget[1].left   = dw->widget[1].right - 11;
 		dw->widget[1].bottom = dw->widget[0].bottom;
