@@ -1943,7 +1943,7 @@ int NWidgetLeaf::SetupSmallestSize(Window *w)
 				break;
 
 			case WWT_CLOSEBOX:
-				d2 = maxdim(d2, GetSpriteSize(this->widget_data));
+				d2 = maxdim(d2, GetStringBoundingBox(this->widget_data));
 				d2.height += WD_CLOSEBOX_TOP;
 				break;
 
