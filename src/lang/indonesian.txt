@@ -2827,7 +2827,9 @@ STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nama ker
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Tdak dapat menamai kereta...
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nama kereta
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Kecelakaan Kereta Api!{}{COMMA} mati dalam api setelah kecelakaan
-STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Tidak dapat mengubah arah kereta...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Tidak dapat memutar balik arah kereta...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Tidak dapat memutar balik arah kendaraan...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Tidak dapat membalik arah kendaraan yang terdiri dari beberapa unit
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Ubah nama jenis kereta
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Tidak dapat mengubah nama jenis kereta...
 STR_CLEAR_TIME                                                  :{BLACK}Hapus waktu
@@ -2906,7 +2908,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Trem Barang pertama tiba di {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Terjadi tabrakan!{}Seorang sopir meninggal dalam ledakan setelah ditabrak kereta
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Terjadi tabrakan!{}{COMMA} orang meninggal dalam ledakan setelah ditabrak kereta
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Tidak dapat membalik arah kendaraan yang terdiri dari beberapa unit
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Tidak dapat memutar kendaraan...
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Ganti Nama
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Ganti nama jenis bus/truk
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Ganti nama jenis bus/truk

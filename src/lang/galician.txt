@@ -13,7 +13,7 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Fora do borde do mapa
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Fóra do borde do mapa
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Demasiado cerca do borde do mapa
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Diñeiro insuficiente - necesitas {CURRENCY}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
@@ -1252,14 +1252,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Anos
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Número de anos que{}leva a partida funcionando
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMACIÓN DA PARTIDA
-STR_NETWORK_CLIENTS                                             :{SILVER}Clientes:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Set de Terreo:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamaño:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versión do servidor:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Dirección do servidor:  {WHITE}{STRING}
-STR_NETWORK_START_DATE                                          :{SILVER}Data de comezo:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data actual:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CLIENTS                                             :{SILVER}Clientes: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Set de Terreo: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamaño: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versión do servidor: {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Dirección do servidor: {WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}Data de comezo: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data actual: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}¡Protexido con clave!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVIDOR DESCONECTADO
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVIDOR CHEO
@@ -1341,7 +1341,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Letón
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sala de espera de partida multixogador
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparando para unirse:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparando para unirse: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Unha lista de tódalas compañías nesta patida. Podes unirte a unha ou empezar unha nova se hai algún lugar libre
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nova compañía
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Abrir unha nova compañía
@@ -1354,16 +1354,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Actualiz
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFORMACIÓN DA COMPAÑÍA
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nome da compañía:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inauguración:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Valor da compañía:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balance actual:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Ingresos do ano pasado:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Rendemento:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nome da compañía: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inauguración: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Valor da compañía: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balance actual: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Ingresos do ano pasado: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Rendemento: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Vehículos:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Estacións:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Xogadores:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Vehículos: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Estacións: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Xogadores: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Conectando...
 
@@ -1390,20 +1390,20 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista de
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Non se atoparon dispositivos de rede ou compilouse sen ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Non se atoparon xogos en rede
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} O servidor non respondeu á solicitude
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Non se pode conectar debido a un problema cos NewGRF
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Sincronización da partida en rede fallida
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Perdeuse a conexión da partida en rede
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Non se pode carga-la partida
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Non se pode arranca-lo servidor
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Non se pode conectar
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Conexión #{NUM} fora de tempo
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Produciuse un erro de protocolo e pechouse a conexión
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} A revisión deste cliente no é igual ca revisión do servidor.
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Contrasinal errónea
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} O servidor está cheo
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Non se che permite o acceso a este servidor
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Fuches pateado da partida
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Non se permite facer trampas neste servidor
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Non se pode conectar debido a un problema cos NewGRF
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Sincronización da partida en rede fallida
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Perdeuse a conexión da partida en rede
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Non se pode carga-la partida
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Non se pode arranca-lo servidor
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Non se pode conectar
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Conexión #{NUM} fóra de tempo
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Produciuse un erro de protocolo e pechouse a conexión
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}A revisión deste cliente non é igual ca revisión do servidor.
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Contrasinal errónea
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}O servidor está cheo
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Non se che permite o acceso a este servidor
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Fuches pateado da partida
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Non se permite facer trampas neste servidor
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :erro xeral
@@ -1412,7 +1412,7 @@ STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :no se pode carg
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :perdeuse a conexión
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :erro de protocolo
 STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF erróneo
-STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :Non Autorizado
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :non autorizado
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :recibiuse un paquete extraño
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :revisión errónea
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :o nome xa está en uso
@@ -1454,7 +1454,7 @@ STR_NETWORK_SEND                                                :{BLACK}Enviar
 
 ##### PNG-MAP-Loader
 
-STR_PNGMAP_ERROR                                                :{WHITE}Non se pode cargar o mapa do PNG...
+STR_PNGMAP_ERROR                                                :{WHITE}Non se pode cargar o mapa desde o PNG...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...arquivo non atopado.
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...non se puido convertir o tipo de imaxe. Necesítase unha imaxe PNG de 8 ou 24 bit.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...algo saíu mal. Síntoo. (probablemente o ficheiro esté corrupto)
@@ -1508,7 +1508,7 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orient. 
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construción de Ferrocarrís
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construción de Vías Electrificadas
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construción de Monorraíl
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construcción de MagLev
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construción de MagLev
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construír vía de ferrocarril
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construír depósito de trens (para construír e dar servicio os trens)
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construír estación de ferrocarril
@@ -1521,27 +1521,27 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Seleccio
 STR_RAILROAD_TRACK                                              :Vía de ferrocarril
 STR_RAILROAD_TRAIN_DEPOT                                        :Depósito para trens
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...a área é propiedade doutra compañía
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vía de ferrocarril con sinais normais
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vía de tren con sinais de bloque
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vía de ferrocarril con pre-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Vía de ferrocarril con sinais de saída
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vía de tren con sinais combo
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Vía de tren con sinais avanzadas
-STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Vía de tren con sinais avanzadas dun sentido
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Vía de tren con sinais normais e presinalización
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Vía de tren con sinais normais e de saída
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Vía de tren con sinais normais e combo
-STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Vía de tren con sinais normais e avanzadas
-STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Vía de tren con sinais normais e avanzadas dun sentido
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Vía de tren con sinais de ruta
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Vía de tren con sinais de ruta dun sentido
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Vía de tren con sinais de bloque e presinalización
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Vía de tren con sinais de bloque e de saída
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Vía de tren con sinais de bloque e combo
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Vía de tren con sinais de bloque e de ruta
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Vía de tren con sinais de bloque e de ruta dun sentido
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Vía de tren con presinalización e sinais de saída
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Vía de tren con presinalización e sinais combo
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Vía de tren con presinalización e sinais avanzadas
-STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Vía de tren con presinalización e sinais avanzadas dun sentido
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Vía de tren con presinalización e sinais de ruta
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Vía de tren con presinalización e sinais de ruta dun sentido
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Vía de tren con sinais de saída e sinais combo
-STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Vía de tren con sinais de saída e avanzadas
-STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Vía de tren con sinais de saída e avanzadas dun sentido
-STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Vía de tren con sinais combo e avanzadas
-STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Vía de tren con sinais combo e avanzadas dun sentido
-STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Vía de tren con sinais avanzadas e avanzadas dun sentido
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Vía de tren con sinais de saída e de ruta
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Vía de tren con sinais de saída e de ruta dun sentido
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Vía de tren con sinais combo e de ruta
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Vía de tren con sinais combo e de ruta dun sentido
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Vía de tren con sinais de ruta e de ruta dun sentido
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}debes quita-la estación de tren primeiro
 
 
@@ -1549,8 +1549,8 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}debes qu
 ##id 0x1800
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Debes elimina-la estrada primeiro
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Traballos na estrada en progreso
-STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construcción de Estradas
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construcción de Tranvías
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construción de Estradas
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construción de Tranvías
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecciona a Ponte
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... as estradas dun sentido non poden ter cruces
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Non se pode construí-la estrada aí...
@@ -1565,8 +1565,8 @@ STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Non se p
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Non se pode construí-la estacion de camións...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Non se pode construír a estación de tranvía de pasaxeiros...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Non se pode construír a estación de tranvía de carga...
-STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construcción de Estrada
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Construcción de vías de tranvía
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construción de Estrada
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Construción de vías de tranvía
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construír unha sección de estrada
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construír estrada usando o modo Autoestrada
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construír sección de vía de tranvía
@@ -1583,7 +1583,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Constru�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construír túnel de tranvías
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activar/Desactivar estradas dun sentido
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Intecambiar construír/eliminar para construír estradas
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Cambiar entre construír/quitar para a construcción de tranvías
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Cambia entre construír/quitar para a construción de tranvías
 STR_ROAD_TOOLBAR_TOOLTIP_SELECT_ROAD_VEHICLE_DEPOT              :{BLACK}Seleciona-la orientación do depósito de vehículos de estrada
 STR_ROAD_TOOLBAR_TOOLTIP_SELECT_TRAM_VEHICLE_DEPOT              :{BLACK}Selecciona a orientación do depósito de tranvías
 STR_ROAD_DESCRIPTION_ROAD                                       :Estrada
@@ -1652,7 +1652,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}¡Subsidio concedido a {STRING}!{}{}Polo servicio de transporte de {STRING} dende {STATION} ata {STATION} pagarase o dobre durante o próximo ano!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}¡Subsidio concedido a {STRING}!{}{}Polo servicio de transporte de {STRING} dende {STATION} ata {STATION} pagarase o triple durante o próximo ano!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}¡Subsidio concedido a {STRING}!{}{}Polo servicio de transporte de {STRING} dende {STATION} ata {STATION} pagarase o cuádruple durante o próximo ano!
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}A autoridade local de {TOWN} négase a permiti-la construcción doutro aeroporto
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}A autoridade local de {TOWN} négase a permiti-la construción doutro aeroporto
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Casiñas de campo
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Casas
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Apartamentos
@@ -1672,23 +1672,23 @@ STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Accións
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Campaña publicitaria pequena
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Campaña publicitaria mediana
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Gan campaña publicitaria
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Subvenciona-la reconstrucción das estradas da cidade
+STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Subvenciona-la reconstrución das estradas da cidade
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Construír unha estatua do propietario da compañía
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Subvencionar novos edificios
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Compra-los dereitos de transporte exclusivos
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Suborna-la autoridade local
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Iniciar unha campaña de publicidade pequena, para atraer máis pasaxeiros e mercadorías os teus servicios de transporte.{}  Coste: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Iniciar unha campaña de publicidade mediana, para atraer máis pasaxeiros e mercadorías os teus servicios de transporte.{}  Coste: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Iniciar unha gran campaña de publicidade, para atraer máis pasaxeiros e mercadorías os teus servicios de transporte.{}  Coste: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Subvenciona-la reconstrucción da rede de estradas urbanas. Provoca unha considerable interrupción no tráfico durante seis meses.{}  Coste: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} Construír unha estatua en honor a túa compañía.{} Coste: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} Subvencina-la construcción de novos edificios comerciais na cidade.{}  Coste: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} Compra-los dereitos exclusivos de transporte na cidade durante 1 ano. A autoridade só permitirá que os pasaxeiros e as mercadorías usen as estacións da túa compañía.{} Coste: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} Suborna-la autoridade local para mellora-la túa puntuación, co risco dunha gran penalización se o descobren.{}  Coste: {CURRENCY}
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}¡Caos no tráfico de {TOWN}!{}{}¡O programa de reconstrucción das estradas subvencionado por {STRING} trae 6 meses de miseria para os motoristas!
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Iniciar unha campaña de publicidade pequena, para atraer máis pasaxeiros e mercadorías os teus servicios de transporte.{} Coste: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Iniciar unha campaña de publicidade mediana, para atraer máis pasaxeiros e mercadorías os teus servicios de transporte.{}Coste: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Iniciar unha gran campaña de publicidade, para atraer máis pasaxeiros e mercadorías os teus servicios de transporte.{}Coste: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Subvenciona-la reconstrución da rede de estradas urbanas. Provoca unha considerable interrupción no tráfico durante seis meses.{} Coste: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Construír unha estatua en honor a túa compañía.{}Coste: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} Subvenciona-la construción de novos edificios comerciais na cidade.{} Coste: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Compra-los dereitos exclusivos de transporte na cidade durante 1 ano. A autoridade só permitirá que os pasaxeiros e as mercadorías usen as estacións da túa compañía.{}Coste: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Suborna-la autoridade local para mellora-la túa puntuación, co risco dunha gran penalización se o descobren.{}Coste: {CURRENCY}
+STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}¡Caos no tráfico de {TOWN}!{}{}¡O programa de reconstrución das estradas subvencionado por {STRING} trae 6 meses de miseria para os motoristas!
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DESCRIPTION_UNDER_CONSTRUCTION                         :{STRING} (en construcción)
+STR_TOWN_DESCRIPTION_UNDER_CONSTRUCTION                         :{STRING} (en construción)
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iglú
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tipis
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Casa Tetera
@@ -1898,7 +1898,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produce:
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producción no último mes:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportado)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra-la vista principal na situación da industria
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}¡Nova {STRING} en construcción cerca de {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}¡Nova {STRING} en construción cerca de {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}¡Nova {STRING} cerca de {TOWN}!
 STR_INDUSTRY_BUILD_COST                                         :{BLACK}Coste: {YELLOW}{CURRENCY}
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Non se pode construír ese tipo de industria aí...
@@ -2030,10 +2030,10 @@ STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Nº de 
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Crédito máximo inicial: {ORANGE}{CURRENCY}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Taxa de interés inicial: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Coste de mantemento dos vehículos: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Velocidade de construcción dos opoñentes: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Velocidade de construción dos opoñentes: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Avarías nos vehículos: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Multiplicador de subsidio: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Costes de construcción: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Costes de construción: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Tipo de Terreo: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Cantidade de mares/lagos: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Economía: {ORANGE}{STRING}
@@ -2097,7 +2097,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Non se p
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanzas {BLACK}{COMPANYNUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Gastos/Ingresos
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
-STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construcción
+STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construción
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Novos Vehículos
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Mantemento dos Trens
 STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Mantemento dos Vehículos
@@ -2120,7 +2120,7 @@ STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gráfica de Beneficios Operativos
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balance do Banco
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Préstamo
-STR_MAX_LOAN                                                    :{WHITE}Préstamo Max:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Préstamo Máx: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Solicitar {SKIP}{SKIP}{CURRENCY}
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Devolver {SKIP}{SKIP}{CURRENCY}
@@ -2172,7 +2172,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Buscamos
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BLACK}{BIGFONT}¡Bancarrota!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BLACK}{BIGFONT}{STRING} foi pechada polos acreedores e vendéronse tódalas posesións!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BLACK}{BIGFONT}¡Lanzada unha nova compañía de transporte!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING} comeza a construcción cerca de {TOWN}!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BLACK}{BIGFONT}¡{STRING} comeza a construción cerca de {TOWN}!
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Non se pode compra-la compañía...
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Taxas de Pagamento por Carga
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{BLACK}{TINYFONT}Días en tránsito
@@ -2631,17 +2631,17 @@ STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Vehícul
 
 STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Construír Vehículo
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clonar Vehículo
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Esto construíra unha copia do vehículo. CTRL+Click compartirá as ordes
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Esto construíra unha copia do vehículo. Pincha neste botón e despois nun vehículo dentro ou fora do depósito. CTRL+Click compartirá as ordes
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Esto construirá unha copia do vehículo. CTRL+Click compartirá as ordes
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Esto construirá unha copia do vehículo. Pincha neste botón e despois nun vehículo dentro ou fóra do depósito. CTRL+Click compartirá as ordes
 STR_CLONE_TRAIN                                                 :{BLACK}Clonar Tren
 STR_CLONE_TRAIN_INFO                                            :{BLACK}Esto construirá unha copia do tren incluídos os vagóns. CTRL+Click compartirá as ordes
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Esto construirá unha copia do tren incluídos os vagóns. Pincha neste botón e despois nun tren dentro ou fora do depósito. CTRL+Click compartirá as ordes
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Esto construirá unha copia do tren incluídos os vagóns. Pincha neste botón e despois nun tren dentro ou fóra do depósito. CTRL+Click compartirá as ordes
 STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Renomear
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Saltar
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Borrar
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Ir a
 STR_REFIT                                                       :{BLACK}Reaxustar
-STR_REFIT_TIP                                                   :{BLACK}Selecciona o tipo de carga para reaxustar nesta orde. CTRL+click para quita la instrucción de reaxuste
+STR_REFIT_TIP                                                   :{BLACK}Selecciona o tipo de carga para reaxustar nesta orde. CTRL+click para quita la instrución de reaxuste
 STR_REFIT_ORDER                                                 :(Reaxustar a {STRING})
 STR_REFIT_STOP_ORDER                                            :(Reaxustar a {STRING} e parar)
 STR_STOP_ORDER                                                  :(Parar)
@@ -2716,6 +2716,7 @@ STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}No se po
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Renomear tren
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}¡Accidente Ferroviario!{}{COMMA} mortos na explosión trala colisión
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}No se pode cambia-lo sentido do tren...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Non se pode inverti-la dirección do vehículo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Non se poden xira-los vehículos consistentes de múltiples unidades
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renomea-lo tipo de vehículo de ferrocarril
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Non se pode renomea-lo tipo de vehículo de ferrocarril...
@@ -2747,7 +2748,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este veh
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Levará {STRING} completar este horario
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Este horario levará {STRING} completalo (non está completo)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoencher
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Enche-lo horario automáticamente cos valores da seguinte viaxe (CTRL-click para intentar mante-los tempos de espera)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Enche-lo horario automáticamente cos valores da seguinte viaxe (CTRL+Click para intentar mante-los tempos de espera)
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Haí un vehículo de estrada no camiño
@@ -2794,6 +2795,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Celebración cidadá . . .{}¡Chega o primeiro tranvía de carga a {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}¡Accidente de Tráfico!{}O conductor morre na explosión producida tra-la colisión cun tren
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}¡Accidente de Tráfico!{}{COMMA} mortos na explosión producida tra-la colisión cun tren
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Non se pode xira-lo vehículo...
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Renomear
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Renomea-lo tipo de vehículo de estrada
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Renomea-lo tipo de vehículo de estrada
@@ -2806,8 +2808,8 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Non se p
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona o tipo de carga que levará este vehículo de estrada
 
 ##id 0x9800
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construcción de canais
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construcción de canais
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construción de canais
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construción de canais
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canais
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Non se pode construí-lo peirao aí...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Depósito de Barcos de {TOWN}
@@ -2816,8 +2818,8 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Novos Barcos
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Construír Barco
 STR_CLONE_SHIP                                                  :{BLACK}Clonar Barco
-STR_CLONE_SHIP_INFO                                             :{BLACK}Esto construíra unha copia do barco. CTRL+Click compartirá as ordes
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Esto construíra unha copia do barco. Pincha neste botón e despois nun barco dentro ou fora do depósito. CTRL+Click compartirá as ordes
+STR_CLONE_SHIP_INFO                                             :{BLACK}Esto construirá unha copia do barco. CTRL+Click compartirá as ordes
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Esto construíra unha copia do barco. Pincha neste botón e despois nun barco dentro ou fóra do depósito. CTRL+Click compartirá as ordes
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}O barco debe estar parado no depósito
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}No se pode vende-lo barco...
 STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Non se construí-lo barco...
@@ -2871,8 +2873,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Non se p
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}Hangar de Aeronaves de {STATION}
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nova Aeronave
 STR_CLONE_AIRCRAFT                                              :{BLACK}Clonar Aeronave
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Esto construirá una copia do avión. CTRL-Click compartirá as ordes
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Esto construirá unha copia do avión. Pincha neste botón e nun avión que estea dentro ou fóra do hangar. Control-Click compartirá as ordes
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Esto construirá una copia do avión. CTRL+Click compartirá as ordes
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Esto construirá unha copia do avión. Pincha neste botón e nun avión que estea dentro ou fóra do hangar. CTRL+Click compartirá as ordes
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nova Aeronave
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Construír Aeronave
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Non se pode construí-lo avíon...
@@ -2887,7 +2889,7 @@ STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Non se p
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}O avión está voando
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}O avión debe estar parado no hangar
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Non se pode vende-lo avión...
-STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construcción de Aeroporto
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construción de Aeroporto
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construír aeroporto
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Avións - pincha no avión para máis información
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Avións - pincha no avión para máis información
@@ -3145,14 +3147,14 @@ STR_MAGLEV_VEHICLES                                             :Vehículos Magl
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidade: {GOLD}{VELOCITY}{BLACK}  Potencia: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidade: {GOLD}{VELOCITY}{BLACK} Potencia: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Mantemento: {GOLD}{CURRENCY}/ano
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidade: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Deseñado: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} anos
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilidade Máx.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Coste: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagóns tractores: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Actualizable a: {GOLD}
@@ -3258,15 +3260,15 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...esta 
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...a estrada vai na dirección incorrecta
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Opcións de Transparencia
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Habilitar transparencia para as sinais das estacións. CTRL+click para bloquear.
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Habilitar transparencia para árbores CTRL+click para bloquear.
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Habilitar transparencia para casas. CTRL+click para bloquear.
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Habilitar transparencia para industrias. CTRL+click para bloquear.
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Habilitar transparencia para estacións, depósitos e puntos de ruta. CTRL+click para bloquear.
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Habilitar transparencia para pontes. CTRL+click para bloquear.
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Habilitar transparencia para estructuras coma faros e antenas. CTRL+click para bloquear.
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Activar a transparencia para a catenaria. CTRL+click para bloquear.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Activar transparencia para os indicadores de carga. CTRL+click para bloquear.
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Habilitar transparencia para as sinais das estacións. CTRL+Click para bloquear.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Habilitar transparencia para árbores CTRL+Click para bloquear.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Habilitar transparencia para casas. CTRL+Click para bloquear.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Habilitar transparencia para industrias. CTRL+Click para bloquear.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Habilitar transparencia para estacións, depósitos e puntos de ruta. CTRL+Click para bloquear.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Habilitar transparencia para pontes. CTRL+Click para bloquear.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Habilitar transparencia para estruturas coma faros e antenas. CTRL+Click para bloquear.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Activar a transparencia para a catenaria. CTRL+Click para bloquear.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Activar transparencia para os indicadores de carga. CTRL+Click para bloquear.
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Facer os obxectos invisibles en lugar de transparentes
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3304,7 +3306,7 @@ STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Non se p
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Non se pode engadir o vehículo a este grupo...
 STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Non se poden engadir vehículos compartidos ó grupo...
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupos - Pincha nun grupo para ver unha lista dos vehículos deste grupo
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupos - Pincha nun grupo para ver unha lista de tódolos vehículos dese grupo
 STR_GROUP_CREATE_TIP                                            :{BLACK}Pincha para crear un grupo
 STR_GROUP_DELETE_TIP                                            :{BLACK}Borrar o grupo seleccionado
 STR_GROUP_RENAME_TIP                                            :{BLACK}Renomear o grupo seleccionado
@@ -3382,18 +3384,18 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Cambia-l
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Selección de Sinais
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Non se poden convertí-las sinais aquí...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Sinal Estándar (semáforo){}As sinais son necesarias para evitar que os trens choquen nas redes de ferrocarril con máis dun tren.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Sinal De Bloque (semáforo){}Este é o tipo máis básico de sinal, só permite un tren no mesmo bloque ó mesmo tempo.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Sinal de Entrada(semáforo){}Verde mentras haxa unha ou máis sinais de saída verdes na seguinte sección de vía. Noutro caso estará vermella.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Sinal de Saída (semáforo){}Actúa igual que unha sinal normal pero é necesaria para activar o color correcto nas sinais de entrada e nas combo.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Sinal de Saída (semáforo){}Actúa igual que unha sinal de bloque pero é necesaria para activar a cor correcta nas sinais de entrada e nas pre-sinais combo.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Sinal Combo (semáforo){}A sinal combo funciona coma unha sinal de entrada e saída. Esto permíteche crear "árbores" grandes de presinais.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Sinal Avanzada (semáforo){}Unha sinal avanzada permite entrar a máis dun tren nun bloque ó mesmo tempo, se o tren pode atopar unha ruta a un punto de parada seguro. As sinais avanzadas poden pasarse en sentido contrario.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Sinal Avanzada Dun Sentido (semáforo){}Unha sinal avanzada permite entrar a máis dun tren nun bloque ó mesmo tempo, se o tren pode atopar unha ruta a un punto de parada seguro. As dun sentido non se poden atravesar en sentido contrario.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Sinal Estándar (eléctrica){}As sinais son necesarias para evitar que os trens choquen nas redes de ferrocarril con máis dun tren.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Sinal De Ruta (semáforo){}Unha sinal de ruta permite entrar a máis dun tren nun bloque ó mesmo tempo, se o tren pode atopar unha ruta a un punto de parada seguro. As sinais de ruta estándar poden pasarse en sentido contrario.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Sinal De Ruta Dun Sentido (semáforo){}Unha sinal de ruta permite entrar a máis dun tren nun bloque ó mesmo tempo, se o tren pode atopar unha ruta a un punto de parada seguro. As dun sentido non se poden atravesar en sentido contrario.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Sinal De Bloque (eléctrica){}Este é o tipo máis básico de sinal, permite só un tren no mesmo bloque ó mesmo tempo.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Sinal de Entrada (eléctrica){}Verde mentras haxa unha ou máis sinais de saída verdes na seguinte sección de vía. Noutro caso estará vermella.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Sinal de Saída (eléctrica){}Actúa igual que unha sinal normal pero é necesaria para activar o color correcto nas sinais de entrada e nas combo.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Sinal de Saída (eléctrica){}Actúa igual que unha sinal de bloque pero é necesaria para activar o color correcto nas sinais de entrada e nas pre-sinais combo.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Sinal Combo (eléctrica){}A sinal combo funciona coma unha sinal de entrada e saída. Esto permíteche crear "árbores" grandes de presinais.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Sinal Avanzada (eléctrica){}Unha sinal avanzada permite entrar a máis dun tren nun bloque ó mesmo tempo, se o tren pode atopar unha ruta a un punto de parada seguro. As sinais avanzadas poden pasarse en sentido contrario.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Sinal Avanzada Dun Sentido (eléctrica){}Unha sinal avanzada permite entrar a máis dun tren nun bloque ó mesmo tempo, se o tren pode atopar unha ruta a un punto de parada seguro. As dun sentido non se poden atravesar en sentido contrario.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Sinal De Ruta (eléctrica){}Unha sinal de ruta permite entrar a máis dun tren nun bloque ó mesmo tempo, se o tren pode atopar unha ruta a un punto de parada seguro. As sinais de ruta estándar poden pasarse en sentido contrario.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Sinal De Ruta Dun Sentido (eléctrica){}Unha sinal de ruta permite entrar a máis dun tren nun bloque ó mesmo tempo, se o tren pode atopar unha ruta a un punto de parada seguro. As dun sentido non se poden atravesar en sentido contrario.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Convertir Sinal{}Cando está seleccionado, convertirá o sinal no que se pinche ó tipo e variante seleccionados, CTRL+click cambiará a variante existente.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Densidade de sinais ó arrastrar
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Diminuír a densidade de sinais ó arrastrar

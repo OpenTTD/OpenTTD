@@ -1218,7 +1218,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Viele zufällig
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Das Spielfeld mit zufällig platzierten Industrien füllen
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Industrie kann nicht erzeugt werden...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Die Werkzeugleiste für Landschaftsbau ermöglicht es, Land zu senken/heben, Bäume zu pflanzen, etc.
+STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Landschaftsbau: Land senken/heben, Bäume pflanzen, etc.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landschaftsbau
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Land ausgleichen
 
@@ -1243,7 +1243,7 @@ STR_LANDINFO_COORDS                                             :{BLACK}Koordina
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Dieser Teil des Bahnhofs kann nicht entfernt werden...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Gleistyp kann hier nicht verändert werden...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}in aktuellen Gleistyp umwandeln
+STR_CONVERT_RAIL_TIP                                            :{BLACK}In aktuellen Gleistyp umwandeln
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Lok hierher ziehen, um den ganzen Zug zu verkaufen
 

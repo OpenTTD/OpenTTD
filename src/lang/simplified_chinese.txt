@@ -1312,14 +1312,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}年
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}年数{}游戏正在运行的
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}游戏信息
-STR_NETWORK_CLIENTS                                             :{SILVER}客 户 端：   {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}语　　言：   {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}场景类型：   {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}地图类型：   {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}服务器版本： {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}服务器地址： {WHITE}{STRING}
-STR_NETWORK_START_DATE                                          :{SILVER}开始日期：   {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}当前日期：   {WHITE}{DATE_SHORT}
+STR_NETWORK_CLIENTS                                             :{SILVER}客 户 端: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}语　　言： {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}场景类型: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}地图尺寸: {WHITE}{COMMA}×{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}服务器版本: {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}服务器地址: {WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}开始日期: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}当前日期: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}有密码保护！
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}服务器离线
 STR_NETWORK_SERVER_FULL                                         :{SILVER}服务器满员
@@ -1401,7 +1401,7 @@ STR_NETWORK_LANG_LATVIAN                                        :拉脱维亚语
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}联机游戏大厅
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}正在准备加入： {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}正在准备加入: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}当前参与游戏的公司列表{}您可以加入其中一个公司{}或者在有空位的情况下重建一个公司
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}新公司
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}创建一个新公司
@@ -1414,15 +1414,15 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}刷新�
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}公司信息
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}公司信息：{WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}开业时间：{WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}公司市值：{WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}流动资金：{WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}去年收入：{WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}表现情况：{WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}公司信息: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}开业时间: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}公司市值: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}流动资金: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}去年收入: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}表现评价: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}车辆：{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}车站：{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_VEHICLES                                            :{SILVER}车辆船只: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}站台: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_PLAYERS                                             :{SILVER}玩家：{WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}正在连接……
@@ -1451,21 +1451,21 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}旁观
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新公司
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} 没有网络设备或者编译时未使用 ENABLE_NETWORK 参数
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} 不能找到任何网络游戏
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE} 未找到任何联机游戏
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} 服务器没有响应
 STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} 因为 NewGRF 不匹配而无法连接
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} 网络游戏同步失败
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} 网络游戏被断开
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} 不能读取已保存的游戏
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} 不能启动服务器
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} 不能连接
+STR_NETWORK_ERR_DESYNC                                          :{WHITE} 联机游戏同步失败
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} 联机游戏被断开
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} 无法读取存档
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE} 无法启动服务器模式
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} 无法连接
 STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} 连接 #{NUM} 超时
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} 套接字错误，连接被断开
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} 传输协议错误，连接断开
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} 此客户端版本与服务器端不匹配
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} 错误的密码
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} 密码错误
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} 服务器已经满员
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} 你被该服务器封禁了
-STR_NETWORK_ERR_KICKED                                          :{WHITE} 你被从游戏中踢出来了
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} 您的IP已被该服务器封禁(ban)
+STR_NETWORK_ERR_KICKED                                          :{WHITE} 您已被踢出服务器
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} 此服务器不允许作弊
 
 ############ Leave those lines in this order!!
@@ -1532,12 +1532,12 @@ STR_NETWORK_SEND                                                :{BLACK}发送
 
 ##### PNG-MAP-Loader
 
-STR_PNGMAP_ERROR                                                :{WHITE}不能从 PNG 中读取景观……
+STR_PNGMAP_ERROR                                                :{WHITE}无法从 PNG 文件中读取场景……
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}文件未找到。
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}不能转换图像格式{}请使用 8 位或 24 位 PNG 图片
 STR_PNGMAP_ERR_MISC                                             :{WHITE}似乎出现了一些错误{}(如损坏的文件等)
 
-STR_BMPMAP_ERROR                                                :{WHITE}不能从 BMP 中读取景观……
+STR_BMPMAP_ERROR                                                :{WHITE}无法从 BMP 文件中读取场景……
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}不能转换图像格式。
 
 ##id 0x0800
