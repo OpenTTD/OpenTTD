@@ -362,16 +362,6 @@ static inline DiagDirection GetRoadDepotDirection(TileIndex t)
 RoadBits GetAnyRoadBits(TileIndex tile, RoadType rt, bool straight_tunnel_bridge_entrance = false);
 
 /**
- * Get the accessible track bits for the given tile.
- * Special behaviour:
- *  - road depots: no track bits
- *  - non-drive-through stations: no track bits
- * @param tile the tile to get the track bits for
- * @return the track bits for the given tile
- */
-TrackBits GetAnyRoadTrackBits(TileIndex tile, RoadType rt);
-
-/**
  * Return if the tile is a valid tile for a crossing.
  *
  * @note function is overloaded

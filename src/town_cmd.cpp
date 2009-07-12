@@ -698,17 +698,9 @@ void OnTick_Town()
  */
 static RoadBits GetTownRoadBits(TileIndex tile)
 {
-	TrackBits b = GetAnyRoadTrackBits(tile, ROADTYPE_ROAD);
-	RoadBits r = ROAD_NONE;
+	if (IsRoadDepotTile(tile) || IsStandardRoadStopTile(tile)) return ROAD_NONE;
 
-	if (b == TRACK_BIT_NONE) return r;
-	if (b & TRACK_BIT_X)     r |= ROAD_X;
-	if (b & TRACK_BIT_Y)     r |= ROAD_Y;
-	if (b & TRACK_BIT_UPPER) r |= ROAD_NE | ROAD_NW;
-	if (b & TRACK_BIT_LOWER) r |= ROAD_SE | ROAD_SW;
-	if (b & TRACK_BIT_LEFT)  r |= ROAD_NW | ROAD_SW;
-	if (b & TRACK_BIT_RIGHT) r |= ROAD_NE | ROAD_SE;
-	return r;
+	return GetAnyRoadBits(tile, ROADTYPE_ROAD, true);
 }
 
 /**
@@ -757,7 +749,7 @@ static bool IsNeighborRoadTile(TileIndex tile, const DiagDirection dir, uint dis
  */
 static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 {
-	if (TileX(tile) < 2 || TileX(tile) >= MapMaxX() || TileY(tile) < 2 || TileY(tile) >= MapMaxY()) return false;
+	if (DistanceFromEdge(tile) == 0) return false;
 
 	Slope cur_slope, desired_slope;
 
@@ -905,14 +897,24 @@ static RoadBits GetTownRoadGridElement(Town *t, TileIndex tile, DiagDirection di
 static bool GrowTownWithExtraHouse(Town *t, TileIndex tile)
 {
 	/* We can't look further than that. */
-	if (TileX(tile) < 2 || TileY(tile) < 2 || MapMaxX() <= TileX(tile) || MapMaxY() <= TileY(tile)) return false;
+	if (DistanceFromEdge(tile) == 0) return false;
 
 	uint counter = 0; // counts the house neighbor tiles
 
 	/* Check the tiles E,N,W and S of the current tile for houses */
 	for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
+		/* Count both void and house tiles for checking whether there
+		 * are enough houses in the area. This to make it likely that
+		 * houses get build up to the edge of the map. */
+		switch (GetTileType(TileAddByDiagDir(tile, dir))) {
+			case MP_HOUSE:
+			case MP_VOID:
+				counter++;
+				break;
 
-		if (IsTileType(TileAddByDiagDir(tile, dir), MP_HOUSE)) counter++;
+			default:
+				break;
+		}
 
 		/* If there are enough neighbors stop here */
 		if (counter >= 3) {
@@ -1115,7 +1117,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		/* Don't walk into water. */
 		if (IsWaterTile(house_tile)) return;
 
-		if (!IsValidTile(house_tile) || !IsValidTile(house_tile + TileOffsByDiagDir(target_dir))) return;
+		if (!IsValidTile(house_tile)) return;
 
 		if (_settings_game.economy.allow_town_roads || _generating_world) {
 			switch (t1->layout) {
