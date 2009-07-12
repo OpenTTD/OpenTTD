@@ -293,7 +293,7 @@ public:
 				this->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
 				this->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
 				SndPlayFx(SND_15_BEEP);
-				this->SetDirty();
+				this->SelectOtherAirport(_selected_airport_type);
 				break;
 		}
 	}
