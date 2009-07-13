@@ -180,7 +180,6 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 				}
 			}
 
-			wp->sign.MarkDirty();
 			wp->xy = tile;
 			InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
 		}
@@ -212,7 +211,6 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 		if (wp->town_index == INVALID_TOWN) MakeDefaultWaypointName(wp);
 
 		wp->UpdateVirtCoord();
-		wp->sign.MarkDirty();
 		YapfNotifyTrackLayoutChange(tile, AxisToTrack(axis));
 	}
 
@@ -320,7 +318,6 @@ CommandCost CmdRenameWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		}
 
 		wp->UpdateVirtCoord();
-		MarkWholeScreenDirty();
 	}
 	return CommandCost();
 }

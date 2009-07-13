@@ -327,13 +327,11 @@ static bool IsCloseToTown(TileIndex tile, uint dist)
  */
 void Town::UpdateVirtCoord()
 {
-	this->sign.MarkDirty();
 	Point pt = RemapCoords2(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE);
 	SetDParam(0, this->index);
 	SetDParam(1, this->population);
 	this->sign.UpdatePosition(pt.x, pt.y - 24,
 		_settings_client.gui.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL);
-	this->sign.MarkDirty();
 }
 
 /** Update the virtual coords needed to draw the town sign for all towns. */
@@ -2289,7 +2287,6 @@ CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 1);
 		UpdateAllStationVirtCoords();
 		UpdateAllWaypointVirtCoords();
-		MarkWholeScreenDirty();
 	}
 	return CommandCost();
 }

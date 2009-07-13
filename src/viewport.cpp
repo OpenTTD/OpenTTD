@@ -1287,6 +1287,8 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
  */
 void ViewportSign::UpdatePosition(int center, int top, StringID str)
 {
+	if (this->width_normal != 0) this->MarkDirty();
+
 	this->top = top;
 
 	char buffer[DRAW_STRING_BUFFER];
@@ -1299,6 +1301,8 @@ void ViewportSign::UpdatePosition(int center, int top, StringID str)
 	_cur_fontsize = FS_SMALL;
 	this->width_small = GetStringBoundingBox(buffer).width + 3;
 	_cur_fontsize = FS_NORMAL;
+
+	this->MarkDirty();
 }
 
 /**
