@@ -86,6 +86,7 @@ void DrawTrainImage(const Train *v, int x, int y, VehicleID selection, int max_w
 	_cur_dpi = &tmp_dpi;
 
 	int px = -skip;
+	bool sel_articulated = false;
 	for (; v != NULL && px < max_width; v = v->Next()) {
 		int width = WagonLengthToPixels(Train::From(v)->tcache.cached_veh_length);
 
@@ -94,11 +95,14 @@ void DrawTrainImage(const Train *v, int x, int y, VehicleID selection, int max_w
 			DrawSprite(v->GetImage(DIR_W), pal, px + 16, 7 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
 		}
 
+		if (!v->IsArticulatedPart()) sel_articulated = false;
+
 		if (v->index == selection) {
 			/* Set the highlight position */
 			highlight_l = px + 1;
 			highlight_r = px + width + 1;
-		} else if (_cursor.vehchain && highlight_r != 0) {
+			sel_articulated = true;
+		} else if ((_cursor.vehchain && highlight_r != 0) || sel_articulated) {
 			highlight_r += width;
 		}
 
