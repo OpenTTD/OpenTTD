@@ -240,7 +240,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 
 				u = v;
 				do {
-					SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+					SpriteID pal = (u->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(u);
 					DrawSprite(u->GetImage(DIR_W), pal, x + WagonLengthToPixels(4 + dx), y + 6 + (is_custom_sprite(RailVehInfo(u->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
 					dx += Train::From(u)->tcache.cached_veh_length;
 					u = u->Next();
