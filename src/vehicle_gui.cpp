@@ -811,7 +811,7 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y)
 static void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection, int max_width, int skip)
 {
 	switch (v->type) {
-		case VEH_TRAIN:    DrawTrainImage(v, x, y, selection, max_width, skip); break;
+		case VEH_TRAIN:    DrawTrainImage(Train::From(v), x, y, selection, max_width, skip); break;
 		case VEH_ROAD:     DrawRoadVehImage(v, x, y, selection, max_width);     break;
 		case VEH_SHIP:     DrawShipImage(v, x, y, selection);                   break;
 		case VEH_AIRCRAFT: DrawAircraftImage(v, x, y, selection);               break;

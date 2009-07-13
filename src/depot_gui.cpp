@@ -269,7 +269,7 @@ struct DepotWindow : Window {
 
 		switch (v->type) {
 			case VEH_TRAIN:
-				DrawTrainImage(v, x + 21, sprite_y, this->sel, this->hscroll.cap + 4, this->hscroll.pos);
+				DrawTrainImage(Train::From(v), x + 21, sprite_y, this->sel, this->hscroll.cap + 4, this->hscroll.pos);
 
 				/* Number of wagons relative to a standard length wagon (rounded up) */
 				SetDParam(0, (Train::From(v)->tcache.cached_total_length + 7) / 8);
@@ -366,16 +366,16 @@ struct DepotWindow : Window {
 
 		/* draw the train wagons, that do not have an engine in front */
 		for (; num < maxval; num++, y += 14) {
-			const Vehicle *v = this->wagon_list[num - this->vehicle_list.Length()];
-			const Vehicle *u;
+			const Train *v = Train::From(this->wagon_list[num - this->vehicle_list.Length()]);
 
 			DrawTrainImage(v, x + 50, y, this->sel, this->hscroll.cap - 29, 0);
 			DrawString(x, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 2, STR_DEPOT_NO_ENGINE);
 
 			/* Draw the train counter */
 			i = 0;
-			u = v;
-			do i++; while ((u = u->Next()) != NULL); // Determine length of train
+			for (const Train *u = v; u != NULL; u = u->Next()) {
+				i++;
+			}
 			SetDParam(0, i);                      // Set the counter
 			DrawString(this->widget[DEPOT_WIDGET_MATRIX].left, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, TC_FROMSTRING, SA_RIGHT); // Draw the counter
 		}
@@ -443,14 +443,11 @@ struct DepotWindow : Window {
 				/* either pressed the flag or the number, but only when it's a loco */
 				if (x < 0 && v->IsFrontEngine()) return (x >= -10) ? MODE_START_STOP : MODE_SHOW_VEHICLE;
 
-				skip = (skip * 8) / _traininfo_vehicle_width;
-				x = (x * 8) / _traininfo_vehicle_width;
-
 				/* Skip vehicles that are scrolled off the list */
 				x += skip;
 
 				/* find the vehicle in this row that was clicked */
-				while (v != NULL && (x -= v->tcache.cached_veh_length) >= 0) v = v->Next();
+				while (v != NULL && (x -= WagonLengthToPixels(v->tcache.cached_veh_length)) >= 0) v = v->Next();
 
 				/* if an articulated part was selected, find its parent */
 				while (v != NULL && v->IsArticulatedPart()) v = v->Previous();
@@ -458,8 +455,7 @@ struct DepotWindow : Window {
 				d->wagon = v;
 
 				return MODE_DRAG_VEHICLE;
-				}
-				break;
+			}
 
 			case VEH_ROAD:
 				if (xm >= 24) return MODE_DRAG_VEHICLE;

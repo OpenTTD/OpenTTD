@@ -73,41 +73,37 @@ int WagonLengthToPixels(int len)
  * @param max_width Number of pixels space for drawing
  * @param skip Number of pixels to skip at the front (for scrolling)
  */
-void DrawTrainImage(const Vehicle *v, int x, int y, VehicleID selection, int max_width, int skip)
+void DrawTrainImage(const Train *v, int x, int y, VehicleID selection, int max_width, int skip)
 {
 	DrawPixelInfo tmp_dpi, *old_dpi;
-	int dx = -(skip * 8) / _traininfo_vehicle_width;
 	/* Position of highlight box */
 	int highlight_l = 0;
 	int highlight_r = 0;
 
 	if (!FillDrawPixelInfo(&tmp_dpi, x - 2, y - 1, max_width + 1, 14)) return;
 
-	int count = (max_width * 8) / _traininfo_vehicle_width;
-
 	old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;
 
-	do {
-		int width = Train::From(v)->tcache.cached_veh_length;
+	int px = -skip;
+	for (; v != NULL && px < max_width; v = v->Next()) {
+		int width = WagonLengthToPixels(Train::From(v)->tcache.cached_veh_length);
 
-		if (dx + width > 0) {
-			if (dx <= count) {
-				SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-				DrawSprite(v->GetImage(DIR_W), pal, 16 + WagonLengthToPixels(dx), 7 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
-				if (v->index == selection) {
-					/* Set the highlight position */
-					highlight_l = WagonLengthToPixels(dx) + 1;
-					highlight_r = WagonLengthToPixels(dx + width) + 1;
-				} else if (_cursor.vehchain && highlight_r != 0) {
-					highlight_r += WagonLengthToPixels(width);
-				}
-			}
+		if (px + width > 0) {
+			SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+			DrawSprite(v->GetImage(DIR_W), pal, px + 16, 7 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
 		}
-		dx += width;
 
-		v = v->Next();
-	} while (dx < count && v != NULL);
+		if (v->index == selection) {
+			/* Set the highlight position */
+			highlight_l = px + 1;
+			highlight_r = px + width + 1;
+		} else if (_cursor.vehchain && highlight_r != 0) {
+			highlight_r += width;
+		}
+
+		px += width;
+	}
 
 	if (highlight_l != highlight_r) {
 		/* Draw the highlight. Now done after drawing all the engines, as

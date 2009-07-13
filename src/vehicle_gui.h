@@ -61,7 +61,7 @@ static inline bool ValidVLWFlags(uint16 flags)
 
 int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number);
 
-void DrawTrainImage(const Vehicle *v, int x, int y, VehicleID selection, int max_width, int skip);
+void DrawTrainImage(const Train *v, int x, int y, VehicleID selection, int max_width, int skip);
 void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection, int max_width);
 void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection);
 void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection);
