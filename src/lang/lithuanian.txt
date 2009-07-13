@@ -25,36 +25,67 @@ STR_000D_ACCEPTS                                                :{BLACK}Priima: 
 STR_SUPPLIES                                                    :{BLACK}Tiekia: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Keleivius
+STR_000F_PASSENGERS.ko                                          :Keleivių
 STR_0010_COAL                                                   :Anglį
+STR_0010_COAL.ko                                                :Anglies
 STR_0011_MAIL                                                   :Paštą
+STR_0011_MAIL.ko                                                :Pašto
 STR_0012_OIL                                                    :Naftą
+STR_0012_OIL.ko                                                 :Naftos
 STR_0013_LIVESTOCK                                              :Galvijus
+STR_0013_LIVESTOCK.ko                                           :Galvijų
 STR_0014_GOODS                                                  :Prekes
+STR_0014_GOODS.ko                                               :Prekių
 STR_0015_GRAIN                                                  :Grūdus
+STR_0015_GRAIN.ko                                               :Grūdų
 STR_0016_WOOD                                                   :Medieną
+STR_0016_WOOD.ko                                                :Medienos
 STR_0017_IRON_ORE                                               :Geležies rūdą
+STR_0017_IRON_ORE.ko                                            :Geležies rūdos
 STR_0018_STEEL                                                  :Plieną
+STR_0018_STEEL.ko                                               :Plieno
 STR_0019_VALUABLES                                              :Brangenybes
+STR_0019_VALUABLES.ko                                           :Brangenybių
 STR_001A_COPPER_ORE                                             :Vario rūdą
+STR_001A_COPPER_ORE.ko                                          :Vario rūdos
 STR_001B_MAIZE                                                  :Kukurūzus
+STR_001B_MAIZE.ko                                               :Kukurūzų
 STR_001C_FRUIT                                                  :Vaisius
+STR_001C_FRUIT.ko                                               :Vaisių
 STR_001D_DIAMONDS                                               :Deimantus
+STR_001D_DIAMONDS.ko                                            :Deimantų
 STR_001E_FOOD                                                   :Maistą
+STR_001E_FOOD.ko                                                :Maisto
 STR_001F_PAPER                                                  :Popierių
+STR_001F_PAPER.ko                                               :Popieriaus
 STR_0020_GOLD                                                   :Auksą
+STR_0020_GOLD.ko                                                :Aukso
 STR_0021_WATER                                                  :Vandenį
+STR_0021_WATER.ko                                               :Vandens
 STR_0022_WHEAT                                                  :Kviečius
+STR_0022_WHEAT.ko                                               :Kviečių
 STR_0023_RUBBER                                                 :Kaučiuką
+STR_0023_RUBBER.ko                                              :Kaučiuko
 STR_0024_SUGAR                                                  :Cukrų
+STR_0024_SUGAR.ko                                               :Cukraus
 STR_0025_TOYS                                                   :Žaislus
+STR_0025_TOYS.ko                                                :Žaislų
 STR_0026_CANDY                                                  :Saldumynus
+STR_0026_CANDY.ko                                               :Saldumynų
 STR_0027_COLA                                                   :Kolą
+STR_0027_COLA.ko                                                :Kolos
 STR_0028_COTTON_CANDY                                           :Cukraus vatą
+STR_0028_COTTON_CANDY.ko                                        :Cukraus vatos
 STR_0029_BUBBLES                                                :Burbulus
+STR_0029_BUBBLES.ko                                             :Burbulų
 STR_002A_TOFFEE                                                 :Karamelę
+STR_002A_TOFFEE.ko                                              :Karamelės
 STR_002B_BATTERIES                                              :Baterijas
+STR_002B_BATTERIES.ko                                           :Baterijų
 STR_002C_PLASTIC                                                :Plastmasę
+STR_002C_PLASTIC.ko                                             :Plastmasės
 STR_002D_FIZZY_DRINKS                                           :Gaiviuosius gėrimus
+STR_002D_FIZZY_DRINKS.ko                                        :Gaiviųjų gėrimų
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Keleivių
 STR_0030_COAL                                                   :Anglies
@@ -87,6 +118,7 @@ STR_004A_TOFFEE                                                 :Karamelės
 STR_004B_BATTERY                                                :Baterijų
 STR_004C_PLASTIC                                                :Plastmasės
 STR_004D_FIZZY_DRINK                                            :Gaiviųjų gėrimų
+STR_004D_FIZZY_DRINK.ko                                         :gaiviųjų gėrimų
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} keleivi{P is iai ių}
 STR_QUANTITY_COAL                                               :{WEIGHT} anglies
@@ -2766,6 +2798,12 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Iterpti 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Grafikas - spausti ant nurodymo paryškinant jį.
 STR_SERVICE_HINT                                                :{BLACK}Nevykdyti sios uzduoties iki tol, kol nereikes remonto
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kaina: {CURRENCY} Svoris: {WEIGHT_S}{}Greitis: {VELOCITY}  Galia: {POWER}{}Eksplotacijos išlaidos: {CURRENCY}/metus{}Talpa: {CARGO}
+STR_885C_BROKEN_DOWN                                            :{RED}Sugedo
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatacijos islaidos: {LTBLUE}{CURRENCY}/met
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Svoris: {LTBLUE}{WEIGHT_S}  {BLACK}Galia: {LTBLUE}{POWER}{BLACK} Did. greitis: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Svoris: {LTBLUE}{WEIGHT_S} {BLACK}Galia: {LTBLUE}{POWER}{BLACK} Did. greitis {LTBLUE}{VELOCITY} {BLACK}Did. K.G.: {LTBLUE}{FORCE}
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Pelnas šiais metais: {LTBLUE}{CURRENCY}  (pernai: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Gedimai nuo praeito remonto: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Sustabdyta
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Neimanoma priversti traukinio vaziuoti nesaugiai...
 STR_8863_CRASHED                                                :{RED}Avarija!

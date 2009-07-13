@@ -938,6 +938,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Vliegtu
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Laattoe skyf-deur pad stop op dorp besit paaie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Laattoe gebou van aangrensend stasies: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Altyd laattoe klein lughawenst: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Waarsku as trein verloor is: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Bespreek voertuig se opdrae: {ORANGE}{STRING}
@@ -2753,6 +2754,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Vee uit 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Herstel die laat teller, so dat die  voertuig op tyd is
 STR_SERVICE_HINT                                                :{BLACK}Sprong die opdraag tensy 'n diens nodig is
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kos: {CURRENCY} Gewig: {WEIGHT_S}{}Spoed: {VELOCITY}  Krag: {POWER}{}Loopkoste: {CURRENCY}/jr{}Kapasitiet: {CARGO}
+STR_885C_BROKEN_DOWN                                            :{RED}Komplikasies
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Ouderdom: {LTBLUE}{STRING}{BLACK}   Loopkoste: {LTBLUE}{CURRENCY}/Jr
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewig: {LTBLUE}{WEIGHT_S}  {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Max. spoed: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewig: {LTBLUE}{WEIGHT_S} {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Max. spoed: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profyt die jaar: {LTBLUE}{CURRENCY}  (verlede jaar: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betroubaarheid: {LTBLUE}{COMMA}%  {BLACK}Komplikasies na laaste diens: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Gestop
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kan nie trein forseer om sein te vermy op gevaar...
 STR_8863_CRASHED                                                :{RED}Botsing!

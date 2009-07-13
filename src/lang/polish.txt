@@ -25,68 +25,110 @@ STR_000D_ACCEPTS                                                :{BLACK}Akceptuj
 STR_SUPPLIES                                                    :{BLACK}Zasoby: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Pasażerowie
+STR_000F_PASSENGERS.d                                           :pasażerów
 STR_0010_COAL                                                   :Węgiel
+STR_0010_COAL.d                                                 :węgla
 STR_0011_MAIL                                                   :Poczta
+STR_0011_MAIL.d                                                 :poczty
 STR_0012_OIL                                                    :Ropa
+STR_0012_OIL.d                                                  :ropy
 STR_0013_LIVESTOCK                                              :Żywiec
+STR_0013_LIVESTOCK.d                                            :żywca
 STR_0014_GOODS                                                  :Towary
+STR_0014_GOODS.d                                                :towarów
 STR_0015_GRAIN                                                  :Zboże
+STR_0015_GRAIN.d                                                :zboża
 STR_0016_WOOD                                                   :Drewno
-STR_0017_IRON_ORE                                               :Ruda żelaza
+STR_0016_WOOD.d                                                 :drewna
+STR_0017_IRON_ORE                                               :Ruda Żelaza
+STR_0017_IRON_ORE.d                                             :rudy żelaza
 STR_0018_STEEL                                                  :Stal
+STR_0018_STEEL.d                                                :stali
 STR_0019_VALUABLES                                              :Kosztowności
-STR_001A_COPPER_ORE                                             :Ruda miedzi
+STR_0019_VALUABLES.d                                            :kosztowności
+STR_001A_COPPER_ORE                                             :Ruda Miedzi
+STR_001A_COPPER_ORE.d                                           :rudy miedzi
 STR_001B_MAIZE                                                  :Kukurydza
+STR_001B_MAIZE.d                                                :kukurydzy
 STR_001C_FRUIT                                                  :Owoce
+STR_001C_FRUIT.d                                                :owoców
 STR_001D_DIAMONDS                                               :Diamenty
+STR_001D_DIAMONDS.d                                             :diamentów
 STR_001E_FOOD                                                   :Żywność
+STR_001E_FOOD.d                                                 :żywności
 STR_001F_PAPER                                                  :Papier
-STR_0020_GOLD                                                   :Złoto
+STR_001F_PAPER.d                                                :papieru
+STR_0020_GOLD                                                   :Iloto
+STR_0020_GOLD.d                                                 :złota
 STR_0021_WATER                                                  :Woda
+STR_0021_WATER.d                                                :wody
 STR_0022_WHEAT                                                  :Pszenica
+STR_0022_WHEAT.d                                                :pszenicy
 STR_0023_RUBBER                                                 :Kauczuk
+STR_0023_RUBBER.d                                               :kauczuku
 STR_0024_SUGAR                                                  :Cukier
+STR_0024_SUGAR.d                                                :cukru
 STR_0025_TOYS                                                   :Zabawki
+STR_0025_TOYS.d                                                 :zabawek
 STR_0026_CANDY                                                  :Słodycze
+STR_0026_CANDY.d                                                :słodyczy
 STR_0027_COLA                                                   :Cola
+STR_0027_COLA.d                                                 :coli
 STR_0028_COTTON_CANDY                                           :Wata cukrowa
+STR_0028_COTTON_CANDY.d                                         :waty cukrowej
 STR_0029_BUBBLES                                                :Bąbelki
+STR_0029_BUBBLES.d                                              :bąbelków
 STR_002A_TOFFEE                                                 :Toffi
+STR_002A_TOFFEE.d                                               :toffi
 STR_002B_BATTERIES                                              :Baterie
+STR_002B_BATTERIES.d                                            :baterii
 STR_002C_PLASTIC                                                :Plastik
+STR_002C_PLASTIC.d                                              :plastiku
 STR_002D_FIZZY_DRINKS                                           :Napoje gazowane
+STR_002D_FIZZY_DRINKS.d                                         :napoi gazowanych
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :Pasażer
+STR_002F_PASSENGER                                              :Pasażerowie
+STR_002F_PASSENGER.d                                            :pasażerów
 STR_0030_COAL                                                   :Węgiel
 STR_0031_MAIL                                                   :Poczta
 STR_0032_OIL                                                    :Ropa
 STR_0033_LIVESTOCK                                              :Żywiec
-STR_0034_GOODS                                                  :Towar
+STR_0034_GOODS                                                  :Towary
 STR_0035_GRAIN                                                  :Zboże
 STR_0036_WOOD                                                   :Drewno
 STR_0037_IRON_ORE                                               :Ruda żelaza
 STR_0038_STEEL                                                  :Stal
-STR_0039_VALUABLES                                              :Kosztowność
+STR_0039_VALUABLES                                              :Kosztowności
 STR_003A_COPPER_ORE                                             :Ruda miedzi
 STR_003B_MAIZE                                                  :Kukurydza
-STR_003C_FRUIT                                                  :Owoc
-STR_003D_DIAMOND                                                :Diament
+STR_003C_FRUIT                                                  :Owoce
+STR_003D_DIAMOND                                                :Diamenty
 STR_003E_FOOD                                                   :Żywność
 STR_003F_PAPER                                                  :Papier
 STR_0040_GOLD                                                   :Złoto
 STR_0041_WATER                                                  :Woda
 STR_0042_WHEAT                                                  :Pszenica
 STR_0043_RUBBER                                                 :Kauczuk
+STR_0043_RUBBER.d                                               :kauczuku
 STR_0044_SUGAR                                                  :Cukier
-STR_0045_TOY                                                    :Zabawka
-STR_0046_CANDY                                                  :Słodycz
+STR_0045_TOY                                                    :Zabawki
+STR_0045_TOY.d                                                  :zabawek
+STR_0046_CANDY                                                  :Słodycze
+STR_0046_CANDY.d                                                :słodyczy
 STR_0047_COLA                                                   :Cola
-STR_0048_COTTON_CANDY                                           :Wata cukrowa
-STR_0049_BUBBLE                                                 :Bąbelek
+STR_0047_COLA.d                                                 :coli
+STR_0048_COTTON_CANDY                                           :Wata Cukrowa
+STR_0048_COTTON_CANDY.d                                         :waty cukrowej
+STR_0049_BUBBLE                                                 :Babelki
+STR_0049_BUBBLE.d                                               :bąbelków
 STR_004A_TOFFEE                                                 :Toffi
-STR_004B_BATTERY                                                :Bateria
+STR_004A_TOFFEE.d                                               :toffi
+STR_004B_BATTERY                                                :Baterie
+STR_004B_BATTERY.d                                              :baterii
 STR_004C_PLASTIC                                                :Plastik
-STR_004D_FIZZY_DRINK                                            :Napój gazowany
+STR_004C_PLASTIC.d                                              :plastiku
+STR_004D_FIZZY_DRINK                                            :Napoje Gazowane
+STR_004D_FIZZY_DRINK.d                                          :napoi gazowanych
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} pasażer{P "" ów ów}
 STR_QUANTITY_COAL                                               :{WEIGHT} węgla
@@ -220,6 +262,7 @@ STR_00F7_SHIPS                                                  :{BLACK}{TINYFON
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Samoloty
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Trasy transportowe
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}{G=m}Las
+STR_00FC_FOREST.d                                               :{BLACK}{TINYFONT}{G=m}Lasu
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Stacja kolejowa
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Załadunek ciężarówek
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Przystanek
@@ -1926,42 +1969,78 @@ STR_SAVE_OSKTITLE                                               :{BLACK}Wprowadz
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} na drodze
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :{G=f}Kopalnia Węgla
+STR_4802_COAL_MINE.d                                            :{G=f}kopalni węgla
 STR_4803_POWER_STATION                                          :{G=f}Elektrownia
+STR_4803_POWER_STATION.d                                        :{G=f}elektrowni
 STR_4804_SAWMILL                                                :{G=m}Tartak
+STR_4804_SAWMILL.d                                              :{G=m}tartaku
 STR_4805_FOREST                                                 :{G=m}Las
+STR_4805_FOREST.d                                               :{G=m}lasu
 STR_4806_OIL_REFINERY                                           :{G=f}Rafineria
+STR_4806_OIL_REFINERY.d                                         :{G=f}rafinerii
 STR_4807_OIL_RIG                                                :{G=f}Platforma Wiertnicza
+STR_4807_OIL_RIG.d                                              :{G=f}platformy wiertniczej
 STR_4808_FACTORY                                                :{G=f}Fabryka
+STR_4808_FACTORY.d                                              :{G=f}fabryki
 STR_4809_PRINTING_WORKS                                         :{G=f}Drukarnia
+STR_4809_PRINTING_WORKS.d                                       :{G=f}drukarni
 STR_480A_STEEL_MILL                                             :{G=f}Huta
+STR_480A_STEEL_MILL.d                                           :{G=f}huty
 STR_480B_FARM                                                   :{G=f}Farma
+STR_480B_FARM.d                                                 :{G=f}farmy
 STR_480C_COPPER_ORE_MINE                                        :{G=f}Kopalnia Rudy Miedzi
+STR_480C_COPPER_ORE_MINE.d                                      :{G=f}kopalni rudy miedzi
 STR_480D_OIL_WELLS                                              :{G=m}Pole Naftowe
+STR_480D_OIL_WELLS.d                                            :{G=m}pola naftowego
 STR_480E_BANK                                                   :{G=m}Bank
+STR_480E_BANK.d                                                 :{G=m}banku
 STR_480F_FOOD_PROCESSING_PLANT                                  :{G=f}Przetwórnia Żywności
 STR_4810_PAPER_MILL                                             :{G=m}Zakład Papierniczy
+STR_4810_PAPER_MILL.d                                           :{G=m}zakładu papierniczego
 STR_4811_GOLD_MINE                                              :{G=f}Kopalnia Złota
+STR_4811_GOLD_MINE.d                                            :{G=f}kopalni złota
 STR_4812_BANK                                                   :{G=m}Bank
+STR_4812_BANK.d                                                 :{G=m}banku
 STR_4813_DIAMOND_MINE                                           :{G=f}Kopalnia Diamentów
+STR_4813_DIAMOND_MINE.d                                         :{G=f}kopalni diamentów
 STR_4814_IRON_ORE_MINE                                          :{G=f}Kopalnia Rudy Żelaza
+STR_4814_IRON_ORE_MINE.d                                        :{G=f}kopalni rudy żelaza
 STR_4815_FRUIT_PLANTATION                                       :{G=f}Plantacja Owoców
+STR_4815_FRUIT_PLANTATION.d                                     :{G=f}plantacji owoców
 STR_4816_RUBBER_PLANTATION                                      :{G=f}Plantacja Kauczuku
+STR_4816_RUBBER_PLANTATION.d                                    :{G=f}plantacji kauczuku
 STR_4817_WATER_SUPPLY                                           :{G=n}Ujęcie Wody
+STR_4817_WATER_SUPPLY.d                                         :{G=n}ujęcia wody
 STR_4818_WATER_TOWER                                            :{G=f}Wieża Ciśnień
+STR_4818_WATER_TOWER.d                                          :{G=f}wieży ciśnień
 STR_4819_FACTORY                                                :{G=f}Fabryka
+STR_4819_FACTORY.d                                              :{G=f}fabryki
 STR_481A_FARM                                                   :{G=f}Farma
+STR_481A_FARM.d                                                 :{G=f}farmy
 STR_481B_LUMBER_MILL                                            :{G=m}Tartak
+STR_481B_LUMBER_MILL.d                                          :{G=m}tartaku
 STR_481C_COTTON_CANDY_FOREST                                    :{G=m}Las Waty Cukrowej
+STR_481C_COTTON_CANDY_FOREST.d                                  :{G=m}lasu waty cukrowej
 STR_481D_CANDY_FACTORY                                          :{G=m}Zakład Cukierniczy
+STR_481D_CANDY_FACTORY.d                                        :{G=m}zakładu cukierniczego
 STR_481E_BATTERY_FARM                                           :{G=f}Farma Baterii
+STR_481E_BATTERY_FARM.d                                         :{G=f}farmy baterii
 STR_481F_COLA_WELLS                                             :{G=f}Studnia Coli
+STR_481F_COLA_WELLS.d                                           :{G=f}studni coli
 STR_4820_TOY_SHOP                                               :{G=m}Sklep z Zabawkami
+STR_4820_TOY_SHOP.d                                             :{G=m}sklepu z zabawkami
 STR_4821_TOY_FACTORY                                            :{G=f}Fabryka Zabawek
+STR_4821_TOY_FACTORY.d                                          :{G=f}fabryki zabawek
 STR_4822_PLASTIC_FOUNTAINS                                      :{G=f}Fontanny Plastiku
+STR_4822_PLASTIC_FOUNTAINS.d                                    :{G=f}fontann plastiku
 STR_4823_FIZZY_DRINK_FACTORY                                    :{G=f}Fabryka Napojów Gazowanych
+STR_4823_FIZZY_DRINK_FACTORY.d                                  :{G=f}fabryki napojów gazowanych
 STR_4824_BUBBLE_GENERATOR                                       :{G=m}Generator Bąbelków
+STR_4824_BUBBLE_GENERATOR.d                                     :{G=m}generatora bąbelków
 STR_4825_TOFFEE_QUARRY                                          :{G=f}Odkrywka Toffi
+STR_4825_TOFFEE_QUARRY.d                                        :{G=f}odkrywkę toffi
 STR_4826_SUGAR_MINE                                             :{G=f}Kopalnia Cukru
+STR_4826_SUGAR_MINE.d                                           :{G=f}kopalni cukru
 
 ############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Wymaga: {YELLOW}{STRING}{STRING}
@@ -2597,11 +2676,17 @@ STR_80FF_POWERNAUT_HELICOPTER                                   :Helikopter Powe
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Wiadomość od producenta pojazdów
 STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Właśnie zaprojektowaliśmy now{G y ą e} {STRING.b} - czy jesteś zainteresowany w rocznej wyłączności na użycie tego pojazdu, żebyśmy mogli zobaczyć przed wypuszczeniem na rynek jak się sprawuje?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :{G=f}lokomotywa
+STR_8102_RAILROAD_LOCOMOTIVE.b                                  :{G=f}lokomotywę
 STR_8103_ROAD_VEHICLE                                           :{G=m}samochód
+STR_8103_ROAD_VEHICLE.b                                         :{G=m}samochód
 STR_8104_AIRCRAFT                                               :{G=m}samolot
+STR_8104_AIRCRAFT.b                                             :{G=m}samolot
 STR_8105_SHIP                                                   :{G=m}statek
+STR_8105_SHIP.b                                                 :{G=m}statek
 STR_8106_MONORAIL_LOCOMOTIVE                                    :{G=f}lokomotywa jednoszynowa
+STR_8106_MONORAIL_LOCOMOTIVE.b                                  :{G=f}lokomotywę jednoszynową
 STR_8107_MAGLEV_LOCOMOTIVE                                      :{G=f}lokomotywa MagLev
+STR_8107_MAGLEV_LOCOMOTIVE.b                                    :{G=f}lokomotywę MagLev
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}Zajezdnia w {TOWN}
@@ -2800,6 +2885,9 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj 
 STR_SERVICE_HINT                                                :{BLACK}Pomiń to polecenie jesli serwis nie jest wymagany
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koszt: {CURRENCY} Waga: {WEIGHT_S}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Utrzymanie: {CURRENCY}/rok{}Pojemność: {CARGO}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Waga: {LTBLUE}{WEIGHT_S}  {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Max. prędkość: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Waga: {LTBLUE}{WEIGHT_S} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Max. prędkość: {LTBLUE}{VELOCITY} {BLACK}Max. S.P.: {LTBLUE}{FORCE}
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY}  (w ostatnim roku: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 STR_885C_BROKEN_DOWN                                            :{RED}Zepsuty
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
 STR_8861_STOPPED                                                :{RED}Zatrzymany

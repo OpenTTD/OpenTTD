@@ -2800,6 +2800,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Fjern ti
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Still attende teljaren for forseining, slik at køyretøyet vert presis
 STR_SERVICE_HINT                                                :{BLACK}Hopp over ordren dersom ikkje vedlikehald trengst
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kostnad: {CURRENCY} Vekt: {WEIGHT_S}{}Fart: {VELOCITY}  Kraft: {POWER}{}Driftskostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
+STR_885C_BROKEN_DOWN                                            :{RED}Havarert
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftskostnad: {LTBLUE}{CURRENCY}/år
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vekt: {LTBLUE}{WEIGHT_S}  {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks fart: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vekt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks fart: {LTBLUE}{VELOCITY} {BLACK}Maks trekkraft: {LTBLUE}{FORCE}
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (førre år: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelegskap: {LTBLUE}{COMMA} %  {BLACK}Havari sidan førre vedlikehald: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stoppa
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kan ikkje tvinge tog til å køyre på raudt lys ved fare...
 STR_8863_CRASHED                                                :{RED}Krasja!

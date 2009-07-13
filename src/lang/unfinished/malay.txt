@@ -799,6 +799,7 @@ STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Membena
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :seperti industri lain
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Membolehkan berbilang set enjin NewGRF: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Selalu membenarkan lapangan terbang yang kecil: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Memperingatkan jika satu kereta api hilang jalan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :tidak
@@ -1062,6 +1063,7 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} m
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Penarafan syarikat pengangkutan:
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidi
+STR_202D_UNTIL                                                  :{YELLOW}, sehingga {DATE_SHORT})
 STR_2038_FLATS                                                  :Pangsapuri
 STR_203A_SHOPS_AND_OFFICES                                      :Kedai-kedai dan pejabat-pejabat
 STR_203B_SHOPS_AND_OFFICES                                      :Kedai-kedai dan pejabat-pejabat
@@ -1083,6 +1085,7 @@ STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (sedan
 
 ##id 0x2800
 STR_2802_TREES                                                  :{WHITE}Pokok
+STR_2804_SITE_UNSUITABLE                                        :{WHITE}...kawasan yang tidak sesuai
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Tidak boleh menanam pokok di sini...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...terlalu banyak papan tanda
@@ -1107,6 +1110,7 @@ STR_3033_ACCEPTS                                                :{BLACK}Terima
 
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} tidak lagi menerima {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} tidak lagi menerima {STRING} or {STRING}
+STR_304B_SITE_UNSUITABLE                                        :{WHITE}...kawasan tidak sesuai
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Terlalu rapat dengan perlabuhan lain
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Perlabuhan mesti dirobohkan dahulu
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Pilihkan bilangan platform untuk stesen keretapi
@@ -1217,6 +1221,8 @@ STR_8006_POWERNAUT_DIESEL                                       :Powernaut Diese
 
 
 ##id 0xA000
+STR_A019_CAPACITY                                               :{BLACK}Kapasiti: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Kapasiti: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Bina Lapangan Terbang
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nama kapal terbang

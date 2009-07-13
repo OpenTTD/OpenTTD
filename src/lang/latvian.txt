@@ -2799,6 +2799,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Dzēst l
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Atslēgt skaitītāju,lai transportlīdzeklis būtu laikā
 STR_SERVICE_HINT                                                :{BLACK}Izlaist šo rīkojumu, izņemot, ja vajadzīga apkope
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Svars: {WEIGHT_S}{}Ātrums: {VELOCITY} Jauda: {POWER}{}tekošās izmaksas: {CURRENCY}/yr{}Ietilpība:  {CARGO}
+STR_885C_BROKEN_DOWN                                            :{RED}Salūzis
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vecums: {LTBLUE}{STRING}{BLACK}   Darbības izmaksas: {LTBLUE}{CURRENCY}/gadā
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Svars: {LTBLUE}{WEIGHT_S}  {BLACK} Jauda: {LTBLUE}{POWER}{BLACK} Maksimālais ātrums: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Svars: {LTBLUE}{WEIGHT_S} {BLACK}Jauda: {LTBLUE}{POWER}{BLACK} Maksimālais ātrums: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Peļņa šogad: {LTBLUE}{CURRENCY}  (pērn: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Uzticamība: {LTBLUE}{COMMA}%  {BLACK}Bojājumi kopš pēdējās apkopes: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Apstādināts
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Vilciens nevar šķērsot signālu briesmās...
 STR_8863_CRASHED                                                :{RED}Cietis avārijā!

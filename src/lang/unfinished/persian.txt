@@ -521,6 +521,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}اند�
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK} اخرین پیغام یا گزارش را نشان بده
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
+STR_02BB_TOWN_DIRECTORY                                         :لیست شهر ها
 STR_02BD                                                        :{BLACK}{STRING}
 
 ############ range for menu starts
@@ -545,7 +546,7 @@ STR_02D9_ABOUT_OPENTTD                                          :'OpenTTD' در�
 STR_02DB_OFF                                                    :{BLACK}خاموش
 STR_02DA_ON                                                     :{BLACK}روشن
 STR_02DE_MAP_OF_WORLD                                           :نقشه ی دنیا
-STR_02BB_TOWN_DIRECTORY                                         :لیست شهر ها
+STR_02DF_TOWN_DIRECTORY                                         :لیست شهر ها
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}واحد پول
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
@@ -807,6 +808,10 @@ STR_201E_STADIUM                                                :ورزشگاه
 STR_201F_OLD_HOUSES                                             :خانه قدیمی
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK} امتیازات شرکت
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} از {STRING} به {STRING}
+STR_2028_BY                                                     :{YELLOW} (by {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} از {STATION} به {STATION}{YELLOW} ({COMPANY}
+STR_202D_UNTIL                                                  :{YELLOW}, تا {DATE_SHORT})
 STR_2036_COTTAGES                                               :کلبه ها
 STR_2037_HOUSES                                                 :خانه ها
 STR_2039_TALL_OFFICE_BLOCK                                      :ساختمان اداری بلند
@@ -854,6 +859,7 @@ STR_3002_ORIENTATION                                            :{BLACK} جهت
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK} تعداد خطوط
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}طول ایستگاه
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}به ایستگاه دیگری بسیار نزدیک است
+STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}تعداد ایستگاه ها در این شهر ماکزیمم است
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE} تعداد محوطه های بارگیری/ایستگاه بسیار زیاد شده
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}به محوطه ی بارگیری/ایستگاه دیگری بسیار نزدیک است
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
@@ -882,6 +888,7 @@ STR_303D                                                        :{WHITE}{STRING}
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} دیگر {STRING} قبول نمی کند
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} دیگر {STRING} و {STRING} قبول نمی کند
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} از این پس {STRING} را هم قبول می کند
+STR_304B_SITE_UNSUITABLE                                        :{WHITE}موقعیت مناسب نیست
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}به بندر دیگری بسییار نزدیک است
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}باید اول بندر را تخریب کرد
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}انتخاب جهت ایستگاه راه آهن
@@ -1408,6 +1415,9 @@ STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}لیست
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}لغو دستور فعلی و شروع بعدی. Ctrl+Click دستور انتخاب شده را لغو می کند
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}پاک کردن دستور مشخص شده
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}وارد کردن دستور جدید قبل از دستور مشخص شده. یا اضافه کردن آن به آخر لیست
+STR_885C_BROKEN_DOWN                                            :{RED}از کار افتاده
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}سود این سال: {LTBLUE}{CURRENCY}  (سال قبل: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}قابلیت: {LTBLUE}{COMMA}%  {BLACK}دفعات خراب شدن از آخرین سرویس {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}متوقف شده
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}در هنگام خطر نمی توان علامت عبور قطار را داد
 STR_8863_CRASHED                                                :{RED}تصادف کرده!
@@ -1668,6 +1678,8 @@ STR_AI_RESET                                                    :{BLACK}بازن
 STR_AI_HUMAN_PLAYER                                             :بازیکن آدمیزاد
 STR_AI_RANDOM_AI                                                :انتخاب هوش مصنوعی به صورت اتفاقی
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}پارامترهای هوش مصنوعی
+STR_AI_AUTHOR                                                   :نویسنده:
+STR_AI_VERSION                                                  :version:
 ########
 
 ############ town controlled noise level

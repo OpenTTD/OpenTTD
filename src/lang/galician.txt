@@ -923,6 +923,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permiti
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permiti-la construción de estacións contiguas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Activar motor para múltiples NewGRF: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Avisar se un tren se perde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Revisa-las ordes do vehículo: {ORANGE}{STRING}
@@ -2718,6 +2719,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Quita-la
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reinicia-lo contador de retraso, para que o vehículo vaia en punto
 STR_SERVICE_HINT                                                :{BLACK}Saltar esta orde a non ser que sexa necesario o servicio
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Coste: {CURRENCY} Peso: {WEIGHT_S}{}Velocidade: {VELOCITY}  Potencia: {POWER}{}Coste de Mantemento: {CURRENCY}/ano{}Capacidade: {CARGO}
+STR_885C_BROKEN_DOWN                                            :{RED}Roto
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Coste de Mantemento: {LTBLUE}{CURRENCY}/ano
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_S}  {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Velocidade máx.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Vel. máx.: {LTBLUE}{VELOCITY} {BLACK}T.E. Máx.: {LTBLUE}{FORCE}
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Beneficios este ano: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidade: {LTBLUE}{COMMA}%  {BLACK}Roturas dende o último servicio: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Parado
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Non se pode face-lo tren pasar unha sinal de perigo...
 STR_8863_CRASHED                                                :{RED}¡Estrelado!

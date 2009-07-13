@@ -25,68 +25,130 @@ STR_000D_ACCEPTS                                                :{BLACK}Prijíma
 STR_SUPPLIES                                                    :{BLACK}Dodáva: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Cestujúcich
+STR_000F_PASSENGERS.g                                           :cestujucich
 STR_0010_COAL                                                   :Uhlie
+STR_0010_COAL.g                                                 :uhlia
 STR_0011_MAIL                                                   :Poštu
+STR_0011_MAIL.g                                                 :posty
 STR_0012_OIL                                                    :Ropu
+STR_0012_OIL.g                                                  :ropy
 STR_0013_LIVESTOCK                                              :Dobytok
+STR_0013_LIVESTOCK.g                                            :dobytka
 STR_0014_GOODS                                                  :Tovar
+STR_0014_GOODS.g                                                :tovaru
 STR_0015_GRAIN                                                  :Obilie
+STR_0015_GRAIN.g                                                :obilia
 STR_0016_WOOD                                                   :Drevo
+STR_0016_WOOD.g                                                 :dreva
 STR_0017_IRON_ORE                                               :Železnú rudu
+STR_0017_IRON_ORE.g                                             :zeleznej rudy
 STR_0018_STEEL                                                  :Ocel
+STR_0018_STEEL.g                                                :ocele
 STR_0019_VALUABLES                                              :Cennosti
+STR_0019_VALUABLES.g                                            :cennosti
 STR_001A_COPPER_ORE                                             :Medenná ruda
+STR_001A_COPPER_ORE.g                                           :medennej rudy
 STR_001B_MAIZE                                                  :Kukuricu
+STR_001B_MAIZE.g                                                :kukurice
 STR_001C_FRUIT                                                  :Ovocie
+STR_001C_FRUIT.g                                                :ovocia
 STR_001D_DIAMONDS                                               :Diamanty
+STR_001D_DIAMONDS.g                                             :diamantov
 STR_001E_FOOD                                                   :Jedlo
+STR_001E_FOOD.g                                                 :jedla
 STR_001F_PAPER                                                  :Papier
+STR_001F_PAPER.g                                                :papiera
 STR_0020_GOLD                                                   :Zlato
+STR_0020_GOLD.g                                                 :zlata
 STR_0021_WATER                                                  :Vodu
+STR_0021_WATER.g                                                :vody
 STR_0022_WHEAT                                                  :Psenicu
+STR_0022_WHEAT.g                                                :psenice
 STR_0023_RUBBER                                                 :Kaucuk
+STR_0023_RUBBER.g                                               :kaucuku
 STR_0024_SUGAR                                                  :Cukor
+STR_0024_SUGAR.g                                                :cukru
 STR_0025_TOYS                                                   :Hracky
+STR_0025_TOYS.g                                                 :hraciek
 STR_0026_CANDY                                                  :Cukriky
+STR_0026_CANDY.g                                                :cukrikov
 STR_0027_COLA                                                   :Kofolu
+STR_0027_COLA.g                                                 :kofoly
 STR_0028_COTTON_CANDY                                           :Cukrovu vatu
+STR_0028_COTTON_CANDY.g                                         :cukrovej vaty
 STR_0029_BUBBLES                                                :Bublin
+STR_0029_BUBBLES.g                                              :bublin
 STR_002A_TOFFEE                                                 :Karamelky
+STR_002A_TOFFEE.g                                               :karameliek
 STR_002B_BATTERIES                                              :Baterie
+STR_002B_BATTERIES.g                                            :baterii
 STR_002C_PLASTIC                                                :Zuvaciek
+STR_002C_PLASTIC.g                                              :zuvaciek
 STR_002D_FIZZY_DRINKS                                           :Sumienku
+STR_002D_FIZZY_DRINKS.g                                         :sumienky
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Cestujúci
+STR_002F_PASSENGER.g                                            :cestujucich
 STR_0030_COAL                                                   :Uhlie
+STR_0030_COAL.g                                                 :uhlia
 STR_0031_MAIL                                                   :Posta
+STR_0031_MAIL.g                                                 :posty
 STR_0032_OIL                                                    :Ropa
+STR_0032_OIL.g                                                  :ropy
 STR_0033_LIVESTOCK                                              :Dobytok
+STR_0033_LIVESTOCK.g                                            :dobytka
 STR_0034_GOODS                                                  :Tovar
+STR_0034_GOODS.g                                                :tovaru
 STR_0035_GRAIN                                                  :Obilie
+STR_0035_GRAIN.g                                                :obilia
 STR_0036_WOOD                                                   :Drevo
+STR_0036_WOOD.g                                                 :dreva
 STR_0037_IRON_ORE                                               :Železná ruda
+STR_0037_IRON_ORE.g                                             :zeleznej rudy
 STR_0038_STEEL                                                  :Ocel
+STR_0038_STEEL.g                                                :ocele
 STR_0039_VALUABLES                                              :Cennosti
+STR_0039_VALUABLES.g                                            :cennosti
 STR_003A_COPPER_ORE                                             :Medenná ruda
+STR_003A_COPPER_ORE.g                                           :medennej rudy
 STR_003B_MAIZE                                                  :Kukurica
+STR_003B_MAIZE.g                                                :kukurice
 STR_003C_FRUIT                                                  :Ovocie
+STR_003C_FRUIT.g                                                :ovocia
 STR_003D_DIAMOND                                                :Diamant
+STR_003D_DIAMOND.g                                              :diamantov
 STR_003E_FOOD                                                   :Jedlo
+STR_003E_FOOD.g                                                 :jedla
 STR_003F_PAPER                                                  :Papier
+STR_003F_PAPER.g                                                :papiera
 STR_0040_GOLD                                                   :Zlato
+STR_0040_GOLD.g                                                 :zlata
 STR_0041_WATER                                                  :Voda
+STR_0041_WATER.g                                                :vody
 STR_0042_WHEAT                                                  :Psenica
+STR_0042_WHEAT.g                                                :psenice
 STR_0043_RUBBER                                                 :Kaucuk
+STR_0043_RUBBER.g                                               :kaucuku
 STR_0044_SUGAR                                                  :Cukor
+STR_0044_SUGAR.g                                                :cukru
 STR_0045_TOY                                                    :Hracky
+STR_0045_TOY.g                                                  :hraciek
 STR_0046_CANDY                                                  :Cukriky
+STR_0046_CANDY.g                                                :cukrikov
 STR_0047_COLA                                                   :Kofola
+STR_0047_COLA.g                                                 :kofoly
 STR_0048_COTTON_CANDY                                           :Cukrova vata
+STR_0048_COTTON_CANDY.g                                         :cukrovej vaty
 STR_0049_BUBBLE                                                 :Bubliny
+STR_0049_BUBBLE.g                                               :bublin
 STR_004A_TOFFEE                                                 :Karamel
+STR_004A_TOFFEE.g                                               :karamelu
 STR_004B_BATTERY                                                :Baterie
+STR_004B_BATTERY.g                                              :baterii
 STR_004C_PLASTIC                                                :Zuvacky
+STR_004C_PLASTIC.g                                              :zuvaciek
 STR_004D_FIZZY_DRINK                                            :Sumienka
+STR_004D_FIZZY_DRINK.g                                          :sumienky
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} cestujuci{P "" "" ch}
 STR_QUANTITY_COAL                                               :{WEIGHT} uhlia
@@ -199,8 +261,11 @@ STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Poloha
 STR_00E5_CONTOURS                                               :Vrstevnice
+STR_00E5_CONTOURS.g                                             :vrstevnic
 STR_00E6_VEHICLES                                               :Dopravné prostriedky
+STR_00E6_VEHICLES.g                                             :dopravnych prostriedkov
 STR_00E7_INDUSTRIES                                             :Priemysel
+STR_00E7_INDUSTRIES.g                                           :priemyslu
 STR_00E8_ROUTES                                                 :Trasy
 STR_00E9_VEGETATION                                             :Vegetácia
 STR_00EA_OWNERS                                                 :Vlastníci

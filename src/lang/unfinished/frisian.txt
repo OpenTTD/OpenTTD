@@ -531,6 +531,7 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Samar
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Lit lêste (neis)berjocht sjen
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
+STR_02BB_TOWN_DIRECTORY                                         :Stêden list
 STR_02BD                                                        :{BLACK}{STRING}
 
 ############ range for menu starts
@@ -557,7 +558,7 @@ STR_02DA_ON                                                     :{BLACK}Oan
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Lit Subsydzjes sjen
 STR_02DD_SUBSIDIES                                              :Subsydzjes
 STR_02DE_MAP_OF_WORLD                                           :Kaart fan 'e wrâld
-STR_02BB_TOWN_DIRECTORY                                         :Stêden list
+STR_02DF_TOWN_DIRECTORY                                         :Stêden list
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Muntienheid
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}

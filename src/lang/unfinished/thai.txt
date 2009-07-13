@@ -257,6 +257,8 @@ STR_013B_OWNED_BY                                               :{WHITE}...เ�
 STR_013C_CARGO                                                  :{BLACK}สินค้า
 STR_013D_INFORMATION                                            :{BLACK}ข้อมูล
 STR_013E_CAPACITIES                                             :{BLACK}ปริมาณที่รับได้
+STR_013F_CAPACITY                                               :{BLACK}ความจุ: {LTBLUE}{CARGO}{STRING}
+STR_CAPACITY_MULT                                               :{BLACK}ความจุ: {LTBLUE}{CARGO}{STRING} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}ความจุสินค้าทั้งหมดของรถไฟขบวนนี้:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
@@ -798,7 +800,10 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} �
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}เงินอุดหนุน
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}ให้เงินอุดหนุนสำหรับการบริการ:
+STR_2028_BY                                                     :{YELLOW} (by {DATE_SHORT})
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}การบริการได้เงินอุดหนุนเรียบร้อยแล้ว:
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} เดินทางจาก{STATION} ถึง {STATION}{YELLOW} ({COMPANY}
+STR_202D_UNTIL                                                  :{YELLOW}, จนถึง {DATE_SHORT})
 
 
 ##id 0x2800
@@ -850,7 +855,6 @@ STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}กา�
 
 
 ##id 0x8000
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} เดินทางจาก{STATION} ถึง {STATION}{YELLOW} ({COMPANY}
 STR_8091_FOSTER_WOOD_TRUCK                                      :รถบรรทุกไม้รุ่นฟอสเตอร์
 STR_8092_MORELAND_WOOD_TRUCK                                    :รถบรรทุกไม้รุ่นมัวร์แลนด์
 STR_8093_MPS_IRON_ORE_TRUCK                                     :รถบรรทุกแร่เหล็กรุ่นเอ็มพีเอส

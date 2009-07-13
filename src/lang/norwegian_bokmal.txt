@@ -945,6 +945,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillat 
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillat bygging av nærliggende stasjoner: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Sett i gang flere ny grafikk kjerne sets: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Alltid tillat bygging av små flyplasser: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Vis en advarsel hvis et tog har kjørt seg vill{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Inspiser kjøretøyenes ordrer: {ORANGE}{STRING}
@@ -2783,6 +2784,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Fjern va
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nullstill senhetstelleren slik at kjøretøyet ankommer i tide
 STR_SERVICE_HINT                                                :{BLACK}Hopp over ordren med mindre vedlikehold trengs.
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koster: {CURRENCY} Vekt: {WEIGHT_S}{}Fart: {VELOCITY}  Kraft: {POWER}{}Driftkostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
+STR_885C_BROKEN_DOWN                                            :{RED}Havarert
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftkostnad: {LTBLUE}{CURRENCY}/år
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vekt: {LTBLUE}{WEIGHT_S}  {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. fart: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vekt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Høyeste fart: {LTBLUE}{VELOCITY} {BLACK}Høyeste hastighet.: {LTBLUE}{FORCE}
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (sist år: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Havarier siden forrige vedlikehold: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stoppet
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kan ikke tvinge tog til å kjøre på rødt lys ved fare...
 STR_8863_CRASHED                                                :{RED}Krasjet

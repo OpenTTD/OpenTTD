@@ -1701,9 +1701,11 @@ STR_2024                                                        :{YELLOW}{COMPAN
 STR_2025_SUBSIDIES                                              :{WHITE}סובסידיות
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK} :סובסידיות למימון שירותי הובלה
 STR_2027_FROM_TO                                                :{ORANGE}{1:STRING} ל {STRING} מ {NBSP} {0:STRING}
+STR_2028_BY                                                     :{YELLOW} ( {DATE_SHORT} עד תאריך)
 STR_202A_NONE                                                   :{ORANGE}אין
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK} :שירותים מסובסדים
 STR_202C_FROM_TO                                                :{YELLOW} ({3:COMPANY}) {ORANGE} {2:STATION} ל {NBSP}{1:STATION} מ {NBSP}{0:STRING}
+STR_202D_UNTIL                                                  :{YELLOW}{DATE_SHORT}) עד
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}.פג תוקפה של הצעה למתן סובסידיה{}{}{NBSP}לא תזכה עוד לסבסוד{NBSP} {2:STRING} ל {NBSP}{1:STRING} מ {NBSP}{0:STRING} הובלת
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}.פג תוקפה של  סובסידיה{}{}{NBSP}לא תסובסד עוד{NBSP} {2:STATION} ל {NBSP}{1:STATION} מ {NBSP}{0:STRING} הובלת
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}.הצעה למתן סובסידיה{}{}{NBSP}!יזכה לסובסידיה בת שנה מהרשות המקומית {NBSP} {2:STRING} ל {NBSP}{1:STRING} מ {NBSP}{0:STRING} שירות הובלה ראשון של
@@ -2784,6 +2786,12 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}אפס �
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}אפס את מונה האיחורים על מנת לאפשר לכלי להגיע בזמן
 STR_SERVICE_HINT                                                :{BLACK}דלג על היעד שנבחר אלא אם הכלי זקוק לטיפול
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}{1:WEIGHT_S} :משקל  {NBSP}{0:CURRENCY}  :מחיר {}  {NBSP}{3:POWER} :עצמת מנוע   {NBSP}{2:VELOCITY} :מהירות {NBSP}{}{5:CARGO} : קיבולת {NBSP} לשנה  {NBSP}{4:CURRENCY} :עלות תפעולית
+STR_885C_BROKEN_DOWN                                            :{RED}תקלה
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}לשנה {LTBLUE}{1:CURRENCY} :עלות תפעולית {LTBLUE}{0:STRING}{BLACK} :גיל
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{LTBLUE}{2:VELOCITY}{BLACK} :מהירות מירבית  {LTBLUE}{1:POWER}{BLACK} :עצמת מנוע {LTBLUE}{0:WEIGHT_S}{BLACK} :משקל
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{LTBLUE}{3:FORCE}{BLACK} :סחיבה מירבית {LTBLUE}{2:VELOCITY}{BLACK} :מהירות מירבית  {LTBLUE}{1:POWER}{BLACK} :עצמת מנוע {LTBLUE}{0:WEIGHT_S}{BLACK} :משקל
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{LTBLUE}({1:CURRENCY} :בשנה שעברה){NBSP}{0:CURRENCY}{BLACK} : רווח השנה
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{LTBLUE}{1:COMMA}{BLACK} :תקלות ממועד הטיפול האחרון {LTBLUE}{0:COMMA}%{BLACK} :אמינות
 STR_8861_STOPPED                                                :{RED}נעצרה
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}לא ניתן להכריח את הרכבת לעבור ברמזור בעת סכנה
 STR_8863_CRASHED                                                :{RED}!התרסק/הֿ
@@ -3554,11 +3562,11 @@ STR_AI_RESET                                                    :{BLACK}אתחל
 STR_AI_HUMAN_PLAYER                                             :שחקן אנושי
 STR_AI_RANDOM_AI                                                :בינה מלאכותית אקראית
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}פרמטרים של בינה מלאכותית
+STR_AI_AUTHOR                                                   ::מחבר
+STR_AI_VERSION                                                  :: גירסה
 ########
 
 ############ town controlled noise level
-STR_AI_AUTHOR                                                   ::מחבר
-STR_AI_VERSION                                                  :: גירסה
 STR_NOISE_IN_TOWN                                               :{ORANGE}{1:COMMA}{BLACK} :מירבית {ORANGE}{0:COMMA}{BLACK} :רמת הרעש המותרת בעיר זו
 STR_STATION_NOISE                                               :{GOLD}{COMMA}{BLACK} :רמת הרעש
 ########

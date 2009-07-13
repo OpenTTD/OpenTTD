@@ -2800,8 +2800,10 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Clirio f
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Ailosod y mesurydd hwyrni, fel y bydd y cerbyd ar amser
 STR_SERVICE_HINT                                                :{BLACK}Hepgor y gorchymyn hwn os nad oes angen gwasanaeth
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Côst: {CURRENCY} Pwysau: {WEIGHT_S}{}Cyflymder: {VELOCITY}  Pŵer: {POWER}{}Côst Rhedeg: {CURRENCY}/bl{}Gallu cludo: {CARGO}
+STR_885C_BROKEN_DOWN                                            :{RED}Wedi torri i lawr
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Oed: {LTBLUE}{STRING}{BLACK}   Côst Rhedeg: {LTBLUE}{CURRENCY}/bl
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pwysau: {LTBLUE}{WEIGHT_S}  {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflymder uchaf: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pwys: {LTBLUE}{WEIGHT_S} {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflym. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pwysau: {LTBLUE}{WEIGHT_S} {BLACK}Pwer: {LTBLUE}{POWER}{BLACK} Cyflymder Uchaf: {LTBLUE}{VELOCITY} {BLACK}Uchafswm T.E.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Elw eleni: {LTBLUE}{CURRENCY}  (llynedd: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Dibynadwyedd: {LTBLUE}{COMMA}%  {BLACK}Torri i lawr ers y gwasanaeth diwethaf: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Wedi stopio

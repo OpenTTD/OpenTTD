@@ -895,6 +895,7 @@ STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Pezplii
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permesu trairaj bushaltejoj sur vojoj urboposedataj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permesu konstrui staciojn apude: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Ĉiam permesu malgrandajn flughavenojn: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Avertu se trajno perdiĝas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Atentu veturilajn ordenojn: {ORANGE}{STRING}
@@ -2457,6 +2458,12 @@ STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Forviŝu
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Enigu novan ordenon antaŭ la elektita ordeno, aŭ aldonu fine de la listo
 STR_SERVICE_HINT                                                :{BLACK}Transsaltu ordenon ĝis prizorgo necesos
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kosto: {CURRENCY} Pezo: {WEIGHT_S}{}Rapideco: {VELOCITY}  Forto: {POWER}{}Irkosto: po {CURRENCY} jare{}Kapablo: {CARGO}
+STR_885C_BROKEN_DOWN                                            :{RED}Rompite
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}po {CURRENCY} jare
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pezo: {LTBLUE}{WEIGHT_S}  {BLACK}Forto: {LTBLUE}{POWER}{BLACK} Pleja rapideco: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pezo: {LTBLUE}{WEIGHT_S} {BLACK}Forto: {LTBLUE}{POWER}{BLACK} Pleja rapido: {LTBLUE}{VELOCITY} {BLACK}Pleja tiro: {LTBLUE}{FORCE}
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ĉi-jara gajno: {LTBLUE}{CURRENCY}  (lastjara: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fidebleco: {LTBLUE}{COMMA}%  {BLACK}Rompiĝoj post lasta prizorgo: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Haltis
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Ne povas igi trajnon transiri signalon je danĝero...
 STR_8863_CRASHED                                                :{RED}Kraŝis!

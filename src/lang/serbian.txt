@@ -25,68 +25,240 @@ STR_000D_ACCEPTS                                                :{BLACK}Prihvata
 STR_SUPPLIES                                                    :{BLACK}Zalihe : {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :putnici
+STR_000F_PASSENGERS.aku                                         :putnike
+STR_000F_PASSENGERS.big                                         :Putnici
+STR_000F_PASSENGERS.gen                                         :putnika
 STR_0010_COAL                                                   :ugalj
+STR_0010_COAL.aku                                               :ugalj
+STR_0010_COAL.big                                               :Ugalj
+STR_0010_COAL.gen                                               :uglja
 STR_0011_MAIL                                                   :pošta
+STR_0011_MAIL.aku                                               :poštu
+STR_0011_MAIL.big                                               :Pošta
+STR_0011_MAIL.gen                                               :pošte
 STR_0012_OIL                                                    :nafta
+STR_0012_OIL.aku                                                :naftu
+STR_0012_OIL.big                                                :Nafta
+STR_0012_OIL.gen                                                :nafte
 STR_0013_LIVESTOCK                                              :stoka
+STR_0013_LIVESTOCK.aku                                          :stoku
+STR_0013_LIVESTOCK.big                                          :Stoka
+STR_0013_LIVESTOCK.gen                                          :stoke
 STR_0014_GOODS                                                  :roba
+STR_0014_GOODS.aku                                              :robu
 STR_0015_GRAIN                                                  :žito
+STR_0015_GRAIN.aku                                              :žito
 STR_0016_WOOD                                                   :drvna građa
+STR_0016_WOOD.aku                                               :drvnu građu
 STR_0017_IRON_ORE                                               :ruda gvožđa
+STR_0017_IRON_ORE.aku                                           :rudu gvožđa
 STR_0018_STEEL                                                  :čelik
+STR_0018_STEEL.aku                                              :čelik
 STR_0019_VALUABLES                                              :dragocenosti
+STR_0019_VALUABLES.aku                                          :dragocenosti
+STR_0019_VALUABLES.big                                          :Dragocenosti
+STR_0019_VALUABLES.gen                                          :dragocenosti
 STR_001A_COPPER_ORE                                             :ruda bakra
+STR_001A_COPPER_ORE.aku                                         :rudu bakra
+STR_001A_COPPER_ORE.big                                         :Ruda bakra
+STR_001A_COPPER_ORE.gen                                         :rude bakra
 STR_001B_MAIZE                                                  :kukuruz
+STR_001B_MAIZE.aku                                              :kukuruz
+STR_001B_MAIZE.big                                              :Kukuruz
+STR_001B_MAIZE.gen                                              :kukuruza
 STR_001C_FRUIT                                                  :voće
+STR_001C_FRUIT.aku                                              :voće
+STR_001C_FRUIT.big                                              :Voće
+STR_001C_FRUIT.gen                                              :voća
 STR_001D_DIAMONDS                                               :dijamanti
+STR_001D_DIAMONDS.aku                                           :dijamante
+STR_001D_DIAMONDS.big                                           :Dijamanti
+STR_001D_DIAMONDS.gen                                           :dijamanata
 STR_001E_FOOD                                                   :hrana
+STR_001E_FOOD.aku                                               :hranu
+STR_001E_FOOD.big                                               :Hrana
+STR_001E_FOOD.gen                                               :hrane
 STR_001F_PAPER                                                  :papir
+STR_001F_PAPER.aku                                              :papir
+STR_001F_PAPER.big                                              :Papir
+STR_001F_PAPER.gen                                              :papira
 STR_0020_GOLD                                                   :zlato
+STR_0020_GOLD.aku                                               :zlato
+STR_0020_GOLD.big                                               :Zlato
+STR_0020_GOLD.gen                                               :zlata
 STR_0021_WATER                                                  :voda
+STR_0021_WATER.aku                                              :vodu
+STR_0021_WATER.big                                              :Voda
+STR_0021_WATER.gen                                              :vode
 STR_0022_WHEAT                                                  :pšenica
+STR_0022_WHEAT.aku                                              :pšenicu
+STR_0022_WHEAT.big                                              :Pšenica
+STR_0022_WHEAT.gen                                              :pšenice
 STR_0023_RUBBER                                                 :kaučuk
+STR_0023_RUBBER.aku                                             :kaučuk
+STR_0023_RUBBER.big                                             :Kaučuk
+STR_0023_RUBBER.gen                                             :kaučuka
 STR_0024_SUGAR                                                  :šećer
+STR_0024_SUGAR.aku                                              :šećer
+STR_0024_SUGAR.big                                              :Šećer
+STR_0024_SUGAR.gen                                              :šećera
 STR_0025_TOYS                                                   :igračke
+STR_0025_TOYS.aku                                               :igračke
+STR_0025_TOYS.big                                               :Igračke
+STR_0025_TOYS.gen                                               :igračaka
 STR_0026_CANDY                                                  :slatkiši
+STR_0026_CANDY.aku                                              :slatkiše
+STR_0026_CANDY.big                                              :Slatkiši
+STR_0026_CANDY.gen                                              :slatkiša
 STR_0027_COLA                                                   :kola
+STR_0027_COLA.aku                                               :kolu
+STR_0027_COLA.big                                               :Kola
+STR_0027_COLA.gen                                               :kole
 STR_0028_COTTON_CANDY                                           :šećerna vuna
+STR_0028_COTTON_CANDY.aku                                       :šećernu vunu
+STR_0028_COTTON_CANDY.big                                       :Šećerna vuna
+STR_0028_COTTON_CANDY.gen                                       :šećerne vune
 STR_0029_BUBBLES                                                :mehurići
+STR_0029_BUBBLES.aku                                            :mehuriće
+STR_0029_BUBBLES.big                                            :Mehurići
+STR_0029_BUBBLES.gen                                            :mehurića
 STR_002A_TOFFEE                                                 :karamele
+STR_002A_TOFFEE.aku                                             :karamele
+STR_002A_TOFFEE.big                                             :Karamele
+STR_002A_TOFFEE.gen                                             :karamela
 STR_002B_BATTERIES                                              :baterije
+STR_002B_BATTERIES.aku                                          :baterije
+STR_002B_BATTERIES.big                                          :Baterije
+STR_002B_BATTERIES.gen                                          :baterija
 STR_002C_PLASTIC                                                :plastika
+STR_002C_PLASTIC.aku                                            :plastiku
+STR_002C_PLASTIC.big                                            :Plastika
+STR_002C_PLASTIC.gen                                            :plastike
 STR_002D_FIZZY_DRINKS                                           :Gazirana PiÄa
+STR_002D_FIZZY_DRINKS.aku                                       :gazirana pića
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :putnik
+STR_002F_PASSENGER.aku                                          :putnika
+STR_002F_PASSENGER.big                                          :Putnik
+STR_002F_PASSENGER.gen                                          :putnika
 STR_0030_COAL                                                   :ugalj
+STR_0030_COAL.aku                                               :ugalj
+STR_0030_COAL.big                                               :Ugalj
+STR_0030_COAL.gen                                               :uglja
 STR_0031_MAIL                                                   :pošta
+STR_0031_MAIL.aku                                               :poštu
+STR_0031_MAIL.big                                               :Pošta
+STR_0031_MAIL.gen                                               :pošte
 STR_0032_OIL                                                    :nafta
+STR_0032_OIL.aku                                                :naftu
+STR_0032_OIL.big                                                :Nafta
+STR_0032_OIL.gen                                                :nafte
 STR_0033_LIVESTOCK                                              :stoka
+STR_0033_LIVESTOCK.aku                                          :stoku
+STR_0033_LIVESTOCK.big                                          :Stoka
+STR_0033_LIVESTOCK.gen                                          :stoke
 STR_0034_GOODS                                                  :roba
+STR_0034_GOODS.aku                                              :robu
+STR_0034_GOODS.big                                              :Roba
+STR_0034_GOODS.gen                                              :robe
 STR_0035_GRAIN                                                  :žito
+STR_0035_GRAIN.aku                                              :žito
+STR_0035_GRAIN.big                                              :Žito
+STR_0035_GRAIN.gen                                              :žita
 STR_0036_WOOD                                                   :drvna građa
+STR_0036_WOOD.aku                                               :drvnu građu
+STR_0036_WOOD.big                                               :Drvna građa
+STR_0036_WOOD.gen                                               :drvne građe
 STR_0037_IRON_ORE                                               :ruda gvožđa
+STR_0037_IRON_ORE.aku                                           :rudu gvožđa
+STR_0037_IRON_ORE.big                                           :Ruda gvožđa
+STR_0037_IRON_ORE.gen                                           :rude gvožđa
 STR_0038_STEEL                                                  :čelik
+STR_0038_STEEL.aku                                              :čelik
+STR_0038_STEEL.big                                              :Čelik
+STR_0038_STEEL.gen                                              :čelika
 STR_0039_VALUABLES                                              :dragocenosti
+STR_0039_VALUABLES.aku                                          :dragocenosti
+STR_0039_VALUABLES.big                                          :Dragocenosti
+STR_0039_VALUABLES.gen                                          :dragocenosti
 STR_003A_COPPER_ORE                                             :ruda bakra
+STR_003A_COPPER_ORE.aku                                         :rudu bakra
+STR_003A_COPPER_ORE.big                                         :Ruda bakra
+STR_003A_COPPER_ORE.gen                                         :rude bakra
 STR_003B_MAIZE                                                  :kukuruz
+STR_003B_MAIZE.aku                                              :kukuruz
+STR_003B_MAIZE.big                                              :Kukuruz
+STR_003B_MAIZE.gen                                              :kukuruza
 STR_003C_FRUIT                                                  :VoÄe
+STR_003C_FRUIT.aku                                              :voće
 STR_003D_DIAMOND                                                :dijamant
+STR_003D_DIAMOND.aku                                            :dijamant
+STR_003D_DIAMOND.big                                            :Dijamant
+STR_003D_DIAMOND.gen                                            :dijamanta
 STR_003E_FOOD                                                   :hrana
+STR_003E_FOOD.aku                                               :hranu
+STR_003E_FOOD.big                                               :Hrana
+STR_003E_FOOD.gen                                               :hrane
 STR_003F_PAPER                                                  :papir
+STR_003F_PAPER.aku                                              :papir
+STR_003F_PAPER.big                                              :Papir
+STR_003F_PAPER.gen                                              :papira
 STR_0040_GOLD                                                   :zlato
+STR_0040_GOLD.aku                                               :zlato
+STR_0040_GOLD.big                                               :Zlato
+STR_0040_GOLD.gen                                               :zlata
 STR_0041_WATER                                                  :voda
+STR_0041_WATER.aku                                              :vodu
+STR_0041_WATER.big                                              :Voda
+STR_0041_WATER.gen                                              :vode
 STR_0042_WHEAT                                                  :pšenica
+STR_0042_WHEAT.aku                                              :pšenicu
+STR_0042_WHEAT.big                                              :Pšenica
+STR_0042_WHEAT.gen                                              :pšenice
 STR_0043_RUBBER                                                 :kaučuk
+STR_0043_RUBBER.aku                                             :kaučuk
+STR_0043_RUBBER.big                                             :Kaučuk
+STR_0043_RUBBER.gen                                             :kaučuka
 STR_0044_SUGAR                                                  :šećer
+STR_0044_SUGAR.aku                                              :šećer
+STR_0044_SUGAR.big                                              :Šećer
+STR_0044_SUGAR.gen                                              :šećera
 STR_0045_TOY                                                    :igračka
+STR_0045_TOY.aku                                                :igračku
+STR_0045_TOY.big                                                :Igračka
+STR_0045_TOY.gen                                                :igračke
 STR_0046_CANDY                                                  :slatkiš
+STR_0046_CANDY.aku                                              :slatkiš
+STR_0046_CANDY.big                                              :Slatkiš
+STR_0046_CANDY.gen                                              :slatkiša
 STR_0047_COLA                                                   :kola
+STR_0047_COLA.aku                                               :kolu
+STR_0047_COLA.big                                               :Kola
+STR_0047_COLA.gen                                               :kole
 STR_0048_COTTON_CANDY                                           :šećerna vuna
+STR_0048_COTTON_CANDY.aku                                       :šećernu vunu
+STR_0048_COTTON_CANDY.big                                       :Šećerna vuna
+STR_0048_COTTON_CANDY.gen                                       :šećerne vune
 STR_0049_BUBBLE                                                 :mehurić
+STR_0049_BUBBLE.aku                                             :mehurić
+STR_0049_BUBBLE.big                                             :Mehurić
+STR_0049_BUBBLE.gen                                             :mehurića
 STR_004A_TOFFEE                                                 :karamela
+STR_004A_TOFFEE.aku                                             :karamelu
+STR_004A_TOFFEE.big                                             :Karamela
+STR_004A_TOFFEE.gen                                             :karamele
 STR_004B_BATTERY                                                :baterija
+STR_004B_BATTERY.aku                                            :bateriju
+STR_004B_BATTERY.big                                            :Baterija
+STR_004B_BATTERY.gen                                            :baterije
 STR_004C_PLASTIC                                                :plastika
+STR_004C_PLASTIC.aku                                            :plastiku
+STR_004C_PLASTIC.big                                            :Plastika
+STR_004C_PLASTIC.gen                                            :plastike
 STR_004D_FIZZY_DRINK                                            :gazirano piće
+STR_004D_FIZZY_DRINK.aku                                        :gazirano piće
+STR_004D_FIZZY_DRINK.big                                        :Gazirano piće
+STR_004D_FIZZY_DRINK.gen                                        :gaziranog pića
 STR_QUANTITY_PASSENGERS                                         :{COMMA} putnik{P "" a a}
 STR_QUANTITY_COAL                                               :{WEIGHT} nad ugalj
 STR_QUANTITY_MAIL                                               :{COMMA} džak{P "" a ova} pošte
@@ -403,9 +575,19 @@ STR_AGE_RED                                                     :{RED}{COMMA} go
 ############ range for service numbers ends
 
 STR_019F_TRAIN                                                  :voz
+STR_019F_TRAIN.aku                                              :voz
+STR_019F_TRAIN.big                                              :Voz
+STR_019F_TRAIN.gen                                              :voza
 STR_019C_ROAD_VEHICLE                                           :drumsko vozilo
+STR_019C_ROAD_VEHICLE.aku                                       :drumsko vozilo
+STR_019C_ROAD_VEHICLE.big                                       :Drumsko vozilo
+STR_019C_ROAD_VEHICLE.gen                                       :drumskog vozila
 STR_019E_SHIP                                                   :brod
+STR_019E_SHIP.aku                                               :brod
+STR_019E_SHIP.big                                               :Brod
+STR_019E_SHIP.gen                                               :broda
 STR_019D_AIRCRAFT                                               :letelica
+STR_019D_AIRCRAFT.aku                                           :letelicu
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} zastareva
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} previše zastareva
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} previše zastareva i hitno bi ga/je trebalo zameniti
@@ -536,12 +718,19 @@ STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}{NUM} u Tabeli Lige Kompanija
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Biznismen
+STR_0213_BUSINESSMAN.gen                                        :biznismena
 STR_0214_ENTREPRENEUR                                           :Privrednik
+STR_0214_ENTREPRENEUR.gen                                       :privrednika
 STR_0215_INDUSTRIALIST                                          :Industrijalac
+STR_0215_INDUSTRIALIST.gen                                      :industrijalca
 STR_0216_CAPITALIST                                             :Kapitalista
+STR_0216_CAPITALIST.gen                                         :kapitaliste
 STR_0217_MAGNATE                                                :Magnat
+STR_0217_MAGNATE.gen                                            :magnata
 STR_0218_MOGUL                                                  :Mogul
+STR_0218_MOGUL.gen                                              :mogula
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Tajkun veka
+STR_0219_TYCOON_OF_THE_CENTURY.gen                              :tajkuna veka
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} dostiže status '{STRING}'!

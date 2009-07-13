@@ -24,36 +24,77 @@ STR_000D_ACCEPTS                                                :{BLACK}Sprejema
 STR_SUPPLIES                                                    :{BLACK}Dobavlja: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Potniki
+STR_000F_PASSENGERS.t                                           :Potnike
 STR_0010_COAL                                                   :Premog
+STR_0010_COAL.r                                                 :Premoga
 STR_0011_MAIL                                                   :Pošta
+STR_0011_MAIL.r                                                 :Pošte
+STR_0011_MAIL.t                                                 :Pošto
 STR_0012_OIL                                                    :Nafta
+STR_0012_OIL.r                                                  :Nafte
+STR_0012_OIL.t                                                  :Nafto
 STR_0013_LIVESTOCK                                              :Živina
+STR_0013_LIVESTOCK.r                                            :Živine
+STR_0013_LIVESTOCK.t                                            :Živino
 STR_0014_GOODS                                                  :Izdelki
+STR_0014_GOODS.r                                                :Izdelkov
+STR_0014_GOODS.t                                                :Izdelke
 STR_0015_GRAIN                                                  :Žito
+STR_0015_GRAIN.r                                                :Žita
 STR_0016_WOOD                                                   :Les
+STR_0016_WOOD.r                                                 :Lesa
 STR_0017_IRON_ORE                                               :Železova ruda
+STR_0017_IRON_ORE.r                                             :Železove rude
+STR_0017_IRON_ORE.t                                             :Železovo rudo
 STR_0018_STEEL                                                  :Jeklo
+STR_0018_STEEL.r                                                :Jekla
 STR_0019_VALUABLES                                              :Vrednosti
 STR_001A_COPPER_ORE                                             :Bakrova ruda
+STR_001A_COPPER_ORE.r                                           :Bakrove rude
+STR_001A_COPPER_ORE.t                                           :Bakrovo rudo
 STR_001B_MAIZE                                                  :Koruza
+STR_001B_MAIZE.r                                                :Koruze
+STR_001B_MAIZE.t                                                :Koruzo
 STR_001C_FRUIT                                                  :Sadje
+STR_001C_FRUIT.r                                                :Sadja
 STR_001D_DIAMONDS                                               :Diamanti
+STR_001D_DIAMONDS.r                                             :Diamantov
+STR_001D_DIAMONDS.t                                             :Diamante
 STR_001E_FOOD                                                   :Hrana
+STR_001E_FOOD.r                                                 :Hrane
+STR_001E_FOOD.t                                                 :Hrano
 STR_001F_PAPER                                                  :Papir
+STR_001F_PAPER.r                                                :Papirja
 STR_0020_GOLD                                                   :Zlato
+STR_0020_GOLD.r                                                 :Zlata
 STR_0021_WATER                                                  :Voda
+STR_0021_WATER.r                                                :Vode
+STR_0021_WATER.t                                                :Vodo
 STR_0022_WHEAT                                                  :Pšenica
+STR_0022_WHEAT.r                                                :Pšenice
+STR_0022_WHEAT.t                                                :Pšenico
 STR_0023_RUBBER                                                 :Kavčuk
+STR_0023_RUBBER.r                                               :Kavčuka
 STR_0024_SUGAR                                                  :Sladkor
+STR_0024_SUGAR.r                                                :Sladkorja
 STR_0025_TOYS                                                   :Igrače
+STR_0025_TOYS.r                                                 :Igrač
 STR_0026_CANDY                                                  :Sladkarije
+STR_0026_CANDY.r                                                :Sladkarij
 STR_0027_COLA                                                   :Cockta
+STR_0027_COLA.r                                                 :Cockte
 STR_0028_COTTON_CANDY                                           :Sladkorna pena
+STR_0028_COTTON_CANDY.r                                         :Sladkorne pene
 STR_0029_BUBBLES                                                :Mehurčki
+STR_0029_BUBBLES.r                                              :Mehurčkov
 STR_002A_TOFFEE                                                 :Karamela
+STR_002A_TOFFEE.r                                               :Karamele
 STR_002B_BATTERIES                                              :Baterije
+STR_002B_BATTERIES.r                                            :Baterij
 STR_002C_PLASTIC                                                :Plastika
+STR_002C_PLASTIC.r                                              :Plastike
 STR_002D_FIZZY_DRINKS                                           :Gazirane pijače
+STR_002D_FIZZY_DRINKS.r                                         :Gaziranih pijač
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Potnik
 STR_0030_COAL                                                   :Premog
@@ -1927,42 +1968,79 @@ STR_SAVE_OSKTITLE                                               :{BLACK}Vpiši i
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} na poti
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Premogovnik
+STR_4802_COAL_MINE.r                                            :Premogovnika
 STR_4803_POWER_STATION                                          :Termo elektrarna
+STR_4803_POWER_STATION.r                                        :Termo elektrarne
 STR_4804_SAWMILL                                                :Žaga
+STR_4804_SAWMILL.r                                              :Žage
 STR_4805_FOREST                                                 :Gozd
+STR_4805_FOREST.r                                               :Gozda
 STR_4806_OIL_REFINERY                                           :Naftna rafinerija
+STR_4806_OIL_REFINERY.r                                         :Naftne rafinerije
 STR_4807_OIL_RIG                                                :Naftna ploščad
+STR_4807_OIL_RIG.r                                              :Naftne ploščadi
 STR_4808_FACTORY                                                :Tovarna
+STR_4808_FACTORY.r                                              :Tovarne
 STR_4809_PRINTING_WORKS                                         :Tiskarna
+STR_4809_PRINTING_WORKS.r                                       :Tiskarne
 STR_480A_STEEL_MILL                                             :Jeklarna
+STR_480A_STEEL_MILL.r                                           :Jeklarne
 STR_480B_FARM                                                   :Kmetija
+STR_480B_FARM.r                                                 :Kmetije
 STR_480C_COPPER_ORE_MINE                                        :Rudnik bakra
+STR_480C_COPPER_ORE_MINE.r                                      :Rudnika bakra
 STR_480D_OIL_WELLS                                              :Naftni vrelci
+STR_480D_OIL_WELLS.r                                            :Naftnih vrelcev
 STR_480E_BANK                                                   :Banka
+STR_480E_BANK.r                                                 :Banke
 STR_480F_FOOD_PROCESSING_PLANT                                  :Prehrambeni obrat
+STR_480F_FOOD_PROCESSING_PLANT.r                                :Prehrambenega obrata
 STR_4810_PAPER_MILL                                             :Papirnica
+STR_4810_PAPER_MILL.r                                           :Papirnice
 STR_4811_GOLD_MINE                                              :Rudnik zlata
+STR_4811_GOLD_MINE.r                                            :Rudnika zlata
 STR_4812_BANK                                                   :Banka
+STR_4812_BANK.r                                                 :Banke
 STR_4813_DIAMOND_MINE                                           :Rudnik diamantov
+STR_4813_DIAMOND_MINE.r                                         :Rudnika diamantov
 STR_4814_IRON_ORE_MINE                                          :Rudnik železove rude
+STR_4814_IRON_ORE_MINE.r                                        :Rudnika železove rude
 STR_4815_FRUIT_PLANTATION                                       :Sadovnjak
+STR_4815_FRUIT_PLANTATION.r                                     :Sadovnjaka
 STR_4816_RUBBER_PLANTATION                                      :Plantaža kavčuka
+STR_4816_RUBBER_PLANTATION.r                                    :Plantaže kavčuka
 STR_4817_WATER_SUPPLY                                           :Vodno zajetje
+STR_4817_WATER_SUPPLY.r                                         :Vodnega zajetja
 STR_4818_WATER_TOWER                                            :Vodni stolp
+STR_4818_WATER_TOWER.r                                          :Vodnega stolpa
 STR_4819_FACTORY                                                :Tovarna
+STR_4819_FACTORY.r                                              :Tovarne
 STR_481A_FARM                                                   :Kmetija
+STR_481A_FARM.r                                                 :Kmetije
 STR_481B_LUMBER_MILL                                            :Gozdarski obrat
+STR_481B_LUMBER_MILL.r                                          :Gozdarskega obrata
 STR_481C_COTTON_CANDY_FOREST                                    :Gozd sladkorne pene
+STR_481C_COTTON_CANDY_FOREST.r                                  :Gozda sladkorne pene
 STR_481D_CANDY_FACTORY                                          :Tovarna slaščic
+STR_481D_CANDY_FACTORY.r                                        :Tovarne slaščic
 STR_481E_BATTERY_FARM                                           :Farma baterij
+STR_481E_BATTERY_FARM.r                                         :Farme baterij
 STR_481F_COLA_WELLS                                             :Izvir cockte
+STR_481F_COLA_WELLS.r                                           :Izvira cockte
 STR_4820_TOY_SHOP                                               :Trgovina z igračami
+STR_4820_TOY_SHOP.r                                             :Trgovine z igračami
 STR_4821_TOY_FACTORY                                            :Tovarna igrač
+STR_4821_TOY_FACTORY.r                                          :Tovarne igrač
 STR_4822_PLASTIC_FOUNTAINS                                      :Vrelci plastike
+STR_4822_PLASTIC_FOUNTAINS.r                                    :Vrelcev plastike
 STR_4823_FIZZY_DRINK_FACTORY                                    :Tovarna gaziranih pijač
+STR_4823_FIZZY_DRINK_FACTORY.r                                  :Tovarne gaziranih pijač
 STR_4824_BUBBLE_GENERATOR                                       :Generator mehurčkov
+STR_4824_BUBBLE_GENERATOR.r                                     :Generatorja mehurčkov
 STR_4825_TOFFEE_QUARRY                                          :Jama karamele
+STR_4825_TOFFEE_QUARRY.r                                        :Jame karamele
 STR_4826_SUGAR_MINE                                             :Rudnik sladkorja
+STR_4826_SUGAR_MINE.r                                           :Rudnika sladkorja
 
 ############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Potrebuje: {YELLOW}{STRING}{STRING}
