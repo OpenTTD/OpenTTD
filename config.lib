@@ -1651,24 +1651,22 @@ set_universal_binary_flags() {
 }
 
 check_osx_sdk() {
-cat > tmp.osx.cpp << EOF
-#include <AvailabilityMacros.h>
-#if !defined(MAC_OS_X_VERSION_10_5)
-# error "Need newer SDK"
-#endif
+cat > tmp.osx.mm << EOF
+#include <Cocoa/Cocoa.h>
 int main() {
+	kCGBitmapByteOrder32Host;
 	return 0;
 }
 EOF
-	execute="$cxx_host $CFLAGS -E tmp.osx.cpp -o - 2>&1"
+	execute="$cxx_host $CFLAGS tmp.osx.mm -framework Cocoa -o tmp.osx 2>&1"
 	eval $execute > /dev/null
 	ret=$?
 	log 2 "executing $execute"
 	log 2 "  exit code $ret"
-	rm -f tmp.osx.cpp
+	rm -f tmp.osx.mm tmp.osx
 	if [ "$ret" != "0" ]; then
-		log 1 "I couldn't detect any XCode >= 2.5 on your system"
-		log 1 "please install/upgrade your XCode"
+		log 1 "Your system SDK is probably too old"
+		log 1 "Please install/upgrade your Xcode to >= 2.5"
 
 		exit 1
 	fi
