@@ -1760,7 +1760,7 @@ bool AfterLoadGame()
 		Aircraft *a;
 		FOR_ALL_AIRCRAFT(a) {
 			/* Set engine_type of shadow and rotor */
-			if (!IsNormalAircraft(a)) {
+			if (!a->IsNormalAircraft()) {
 				a->engine_type = a->First()->engine_type;
 			}
 		}

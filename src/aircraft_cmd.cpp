@@ -613,7 +613,7 @@ Money Aircraft::GetRunningCost() const
 
 void Aircraft::OnNewDay()
 {
-	if (!IsNormalAircraft(this)) return;
+	if (!this->IsNormalAircraft()) return;
 
 	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);
 
@@ -2029,7 +2029,7 @@ static bool AircraftEventHandler(Aircraft *v, int loop)
 
 bool Aircraft::Tick()
 {
-	if (!IsNormalAircraft(this)) return true;
+	if (!this->IsNormalAircraft()) return true;
 
 	if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
 
@@ -2074,7 +2074,7 @@ void UpdateAirplanesOnNewStation(const Station *st)
 
 	Aircraft *v;
 	FOR_ALL_AIRCRAFT(v) {
-		if (IsNormalAircraft(v)) {
+		if (v->IsNormalAircraft()) {
 			if (v->targetairport == st->index) { // if heading to this airport
 				/* update position of airplane. If plane is not flying, landing, or taking off
 				 * you cannot delete airport, so it doesn't matter */

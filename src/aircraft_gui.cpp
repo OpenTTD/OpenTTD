@@ -22,13 +22,13 @@
  * @param right The right most coordinate to draw
  * @param y     The y coordinate
  */
-void DrawAircraftDetails(const Vehicle *v, int left, int right, int y)
+void DrawAircraftDetails(const Aircraft *v, int left, int right, int y)
 {
 	int y_offset = (v->Next()->cargo_cap != 0) ? -11 : 0;
 	Money feeder_share = 0;
 
-	for (const Vehicle *u = v ; u != NULL ; u = u->Next()) {
-		if (IsNormalAircraft(u)) {
+	for (const Aircraft *u = v ; u != NULL ; u = u->Next()) {
+		if (u->IsNormalAircraft()) {
 			SetDParam(0, u->engine_type);
 			SetDParam(1, u->build_year);
 			SetDParam(2, u->value);

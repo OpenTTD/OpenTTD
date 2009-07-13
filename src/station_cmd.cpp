@@ -1878,7 +1878,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 
 	const Aircraft *a;
 	FOR_ALL_AIRCRAFT(a) {
-		if (!IsNormalAircraft(a)) continue;
+		if (!a->IsNormalAircraft()) continue;
 		if (a->targetairport == st->index && a->state != FLYING) return CMD_ERROR;
 	}
 

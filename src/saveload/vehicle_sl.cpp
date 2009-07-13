@@ -164,7 +164,7 @@ void UpdateOldAircraft()
 	FOR_ALL_AIRCRAFT(a) {
 		/* airplane has another vehicle with subtype 4 (shadow), helicopter also has 3 (rotor)
 		 * skip those */
-		if (IsNormalAircraft(a)) {
+		if (a->IsNormalAircraft()) {
 			/* airplane in terminal stopped doesn't hurt anyone, so goto next */
 			if ((a->vehstatus & VS_STOPPED) && a->state == 0) {
 				a->state = HANGAR;
@@ -356,7 +356,7 @@ void AfterLoadVehicles(bool part_of_load)
 				break;
 
 			case VEH_AIRCRAFT:
-				if (IsNormalAircraft(v)) {
+				if (Aircraft::From(v)->IsNormalAircraft()) {
 					v->cur_image = v->GetImage(v->direction);
 
 					/* The plane's shadow will have the same image as the plane */

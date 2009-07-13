@@ -63,7 +63,7 @@ Station::~Station()
 
 	Aircraft *a;
 	FOR_ALL_AIRCRAFT(a) {
-		if (!IsNormalAircraft(a)) continue;
+		if (!a->IsNormalAircraft()) continue;
 		if (a->targetairport == this->index) a->targetairport = INVALID_STATION;
 	}
 

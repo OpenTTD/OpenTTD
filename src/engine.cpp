@@ -658,7 +658,7 @@ static void NewVehicleAvailable(Engine *e)
 
 			FOR_ALL_VEHICLES(v) {
 				if (v->type == VEH_TRAIN || v->type == VEH_ROAD || v->type == VEH_SHIP ||
-						(v->type == VEH_AIRCRAFT && IsNormalAircraft(v))) {
+						(v->type == VEH_AIRCRAFT && Aircraft::From(v)->IsNormalAircraft())) {
 					if (v->owner == c->index && v->engine_type == index) {
 						/* The user did prove me wrong, so restore old value */
 						c->block_preview = block_preview;

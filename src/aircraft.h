@@ -21,20 +21,6 @@ enum AircraftSubType {
 };
 
 
-/** Check if the aircraft type is a normal flying device; eg
- * not a rotor or a shadow
- * @param v vehicle to check
- * @return Returns true if the aircraft is a helicopter/airplane and
- * false if it is a shadow or a rotor) */
-static inline bool IsNormalAircraft(const Vehicle *v)
-{
-	assert(v->type == VEH_AIRCRAFT);
-	/* To be fully correct the commented out functionality is the proper one,
-	 * but since value can only be 0 or 2, it is sufficient to only check <= 2
-	 * return (v->subtype == AIR_HELICOPTER) || (v->subtype == AIR_AIRCRAFT); */
-	return v->subtype <= AIR_AIRCRAFT;
-}
-
 /**
  * Calculates cargo capacity based on an aircraft's passenger
  * and mail capacities.
@@ -108,7 +94,7 @@ struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_AIRCRAFT_INC : EXPENSES_AIRCRAFT_RUN; }
-	bool IsPrimaryVehicle() const { return IsNormalAircraft(this); }
+	bool IsPrimaryVehicle() const { return this->IsNormalAircraft(); }
 	SpriteID GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->cur_speed; }
 	int GetDisplayMaxSpeed() const { return this->max_speed; }
@@ -118,6 +104,20 @@ struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	void OnNewDay();
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
+
+	/**
+	 * Check if the aircraft type is a normal flying device; eg
+	 * not a rotor or a shadow
+	 * @return Returns true if the aircraft is a helicopter/airplane and
+	 * false if it is a shadow or a rotor
+	 */
+	FORCEINLINE bool IsNormalAircraft() const
+	{
+		/* To be fully correct the commented out functionality is the proper one,
+		 * but since value can only be 0 or 2, it is sufficient to only check <= 2
+		 * return (this->subtype == AIR_HELICOPTER) || (this->subtype == AIR_AIRCRAFT); */
+		return this->subtype <= AIR_AIRCRAFT;
+	}
 };
 
 #define FOR_ALL_AIRCRAFT(var) FOR_ALL_VEHICLES_OF_TYPE(Aircraft, var)

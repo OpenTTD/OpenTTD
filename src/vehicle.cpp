@@ -478,7 +478,7 @@ uint CountVehiclesInChain(const Vehicle *v)
 bool Vehicle::IsEngineCountable() const
 {
 	switch (this->type) {
-		case VEH_AIRCRAFT: return IsNormalAircraft(this); // don't count plane shadows and helicopter rotors
+		case VEH_AIRCRAFT: return Aircraft::From(this)->IsNormalAircraft(); // don't count plane shadows and helicopter rotors
 		case VEH_TRAIN:
 			return !Train::From(this)->IsArticulatedPart() && // tenders and other articulated parts
 					!Train::From(this)->IsRearDualheaded(); // rear parts of multiheaded engines
