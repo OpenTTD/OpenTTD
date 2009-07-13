@@ -947,7 +947,6 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}他社�
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}隣接した駅の建設を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}複数の NewGRF エンジンセットを有効にする: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}常に小型空港の建設を許容：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}列車が行方不明となった場合は通告：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}列車の指令をレビュー：{ORANGE}{STRING}
@@ -2788,7 +2787,7 @@ STR_8865_NAME_TRAIN                                             :{WHITE}列車�
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}列車に名前を付けられません...
 STR_8867_NAME_TRAIN                                             :{BLACK}列車に名前を付ける
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}列車事故！{}{COMMA}人が死亡
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}列車を逆転できません...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}列車を逆転できません...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}鉄道車両の名称を変更
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}鉄道車両の名称を変更できません...
 STR_CLEAR_TIME                                                  :{BLACK}時間を消去
@@ -2874,8 +2873,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}町民の祝賀{}初貨物用路面電車が{STATION}駅に到着！
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}交通事故！{}列車に衝突、運転者が死亡
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}交通事故！{}列車に衝突、{COMMA}人が死亡
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}車両を逆転できません...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}多数の部分を含む車両が逆転できません
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}多数の部分を含む車両が逆転できません
 STR_9034_RENAME                                                 :{BLACK}名称変更
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}道路車両の名称を変更
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}道路車両の名称を変更

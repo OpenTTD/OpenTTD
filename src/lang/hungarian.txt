@@ -24,68 +24,36 @@ STR_000D_ACCEPTS                                                :{BLACK}Elfogad:
 STR_SUPPLIES                                                    :{BLACK}Termel: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Utas
-STR_000F_PASSENGERS.t                                           :Utast
 STR_0010_COAL                                                   :Szén
-STR_0010_COAL.ba                                                :Szénbe
-STR_0010_COAL.t                                                 :Szenet
 STR_0011_MAIL                                                   :Levél
-STR_0011_MAIL.t                                                 :Levelet
 STR_0012_OIL                                                    :Olaj
-STR_0012_OIL.t                                                  :Olajat
 STR_0013_LIVESTOCK                                              :Állat
-STR_0013_LIVESTOCK.t                                            :Állatot
 STR_0014_GOODS                                                  :Áru
-STR_0014_GOODS.t                                                :Árut
 STR_0015_GRAIN                                                  :Búza
-STR_0015_GRAIN.t                                                :Búzát
 STR_0016_WOOD                                                   :Fa
-STR_0016_WOOD.t                                                 :Fát
 STR_0017_IRON_ORE                                               :Vasérc
-STR_0017_IRON_ORE.t                                             :Vasércet
 STR_0018_STEEL                                                  :Acél
-STR_0018_STEEL.t                                                :Acélt
 STR_0019_VALUABLES                                              :Értéktárgyak
-STR_0019_VALUABLES.t                                            :Értéktárgyakat
 STR_001A_COPPER_ORE                                             :Rézérc
-STR_001A_COPPER_ORE.t                                           :Rézércet
 STR_001B_MAIZE                                                  :Kukorica
-STR_001B_MAIZE.t                                                :Kukoricát
 STR_001C_FRUIT                                                  :Gyümölcs
-STR_001C_FRUIT.t                                                :Gyümölcsöt
 STR_001D_DIAMONDS                                               :Gyémánt
-STR_001D_DIAMONDS.t                                             :Gyémántot
 STR_001E_FOOD                                                   :Étel
-STR_001E_FOOD.t                                                 :Ételt
 STR_001F_PAPER                                                  :Papír
-STR_001F_PAPER.t                                                :Papírt
 STR_0020_GOLD                                                   :Arany
-STR_0020_GOLD.t                                                 :Aranyat
 STR_0021_WATER                                                  :Víz
-STR_0021_WATER.t                                                :Vízet
 STR_0022_WHEAT                                                  :Búza
-STR_0022_WHEAT.t                                                :Búzát
 STR_0023_RUBBER                                                 :Gumi
-STR_0023_RUBBER.t                                               :Gumit
 STR_0024_SUGAR                                                  :Cukor
-STR_0024_SUGAR.t                                                :Cukort
 STR_0025_TOYS                                                   :Játék
-STR_0025_TOYS.t                                                 :Játékot
 STR_0026_CANDY                                                  :Cukorka
-STR_0026_CANDY.t                                                :Cukorkát
 STR_0027_COLA                                                   :Kóla
-STR_0027_COLA.t                                                 :Kólát
 STR_0028_COTTON_CANDY                                           :Vattacukor
-STR_0028_COTTON_CANDY.t                                         :Vattacukrot
 STR_0029_BUBBLES                                                :Buborék
-STR_0029_BUBBLES.t                                              :Buborékot
 STR_002A_TOFFEE                                                 :Tejkaramella
-STR_002A_TOFFEE.t                                               :Tejkaramellát
 STR_002B_BATTERIES                                              :Elem
-STR_002B_BATTERIES.t                                            :Elemet
 STR_002C_PLASTIC                                                :Műanyag
-STR_002C_PLASTIC.t                                              :Műanyagot
 STR_002D_FIZZY_DRINKS                                           :Szénsavas ital
-STR_002D_FIZZY_DRINKS.t                                         :Szénsavas italt
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :utas
 STR_0030_COAL                                                   :szén
@@ -251,7 +219,6 @@ STR_00F7_SHIPS                                                  :{BLACK}{TINYFON
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}REPÜLÖGÉP
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}SZÁLLITÁSI ÚTVONAL
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}ERDÖ
-STR_00FC_FOREST.t                                               :{BLACK}{TINYFONT}erdőt
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}VASÚTÁLLOMÁS
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}TEHERAUTÓ-RAKODÓHELY
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}BUSZMEGÁLLÓ
@@ -922,7 +889,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Me
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} nem talál utat a célpontjához.
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} eltévedt.
 STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} elmúlt évi bevétele {CURRENCY} volt
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Európai Pénzügyi Únió!{}{}Az Euro bevezetésre került mint egyedüli valuta a mindennapi pénzügyi tranzakciókra az országodban!
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Európai Pénzügyi Unió!{}{}Az Euro bevezetésre került mint egyedüli valuta a mindennapi pénzügyi tranzakciókra az országodban!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -1335,14 +1302,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Évek
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}A játékban eltelt évek száma
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}JÁTÉK INFÓ
-STR_NETWORK_CLIENTS                                             :{SILVER}Játékos:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Nyelv:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Tájtípus:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}A pálya nagysága:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Szerver verzió:  {WHITE}{STRING}
+STR_NETWORK_CLIENTS                                             :{SILVER}Kliensek: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Nyelv: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Tájtípus: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}A pálya nagysága: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Szerver verzió: {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}A szerver címe:  {WHITE}{STRING} : {NUM}
-STR_NETWORK_START_DATE                                          :{SILVER}Kezdési dátum:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Jelenlegi dátum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_START_DATE                                          :{SILVER}Kezdési dátum: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Jelenlegi dátum: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Jelszóval védve!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SZERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SZERVER TELE
@@ -1424,7 +1391,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Lett
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Hálózati-játék beállítások
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Készülődés a kapcsolódáshoz:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Készülődés a kapcsolódáshoz: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Egy lista az összes cégről aki játékban van. Alapíthatsz újat, beléphetsz egybe, vagy csak nézheted őket megfigyelőként
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Új vállalat
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Új vállalatot alapít
@@ -1437,16 +1404,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Szerver 
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}CÉG INFÓ
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}A cég neve:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Beiktatás:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}A cég értéke:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Jelenlegi összeg:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Előző évi bevétel:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Teljesítmény:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}A cég neve: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Beiktatás: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}A cég értéke: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Jelenlegi összeg: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Előző évi bevétel: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Teljesítmény: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Járművek:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Állomások:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Játékosok:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Járművek: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Állomások: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Játékosok: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Kapcsolódás...
 
@@ -1473,23 +1440,23 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Kliens l
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Megfigyelés
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Új vállalat
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Nem található a hálózati csatoló, vagy nincs hálózati támogatás (ENABLE_NETWORK)
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nem található semmilyen hálózati játék
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} A szerver nem reagált a kérésre
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} NewGRF eltérés(ek) miatt nem sikerült kapcsolódni
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Hálózat - Játék szinkronizáció sikertelen.
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Hálózat - Játék kapcsolat elveszett.
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nem sikerült a szerver játékmentés betöltése.
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Nem tudtam elindítani a szervert.
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Nem tudtam kapcsolódni.
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} A(z) {NUM}. játékos kapcsolata elveszett.
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Protokoll-hiba keletkezett és megszakadt a kapcsolat.
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} A te gépeden lévő és a szerveren lévő programnak nem egyezik meg a verziója.
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Rossz jelszó.
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} A szerver tele van
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Ki vagy tiltva erről a szerverről
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Ki lettél rúgva a szerverről
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Ez a szerver nem engedi a csalást
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Nem található a hálózati csatoló, vagy a játékban nincs hálózati támogatás (ENABLE_NETWORK)
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Nem található semmilyen hálózati játék
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}A szerver nem reagált a kérésre
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}NewGRF eltérés(ek) miatt nem sikerült kapcsolódni
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Hálózat - Játék szinkronizáció sikertelen
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Hálózat - Játék kapcsolat elveszett
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Nem sikerült a szerver játékmentés betöltése
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Nem tudtam elindítani a szervert
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Nem tudtam kapcsolódni
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}A(z) {NUM}. játékos kapcsolata elveszett
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Protokoll-hiba keletkezett és megszakadt a kapcsolat
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}A gépeden és a szerveren lévő programnak nem egyezik meg a verziója
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Rossz jelszó
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}A szerver tele van
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Ki vagy tiltva erről a szerverről
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Ki lettél rúgva a szerverről
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Ez a szerver nem engedi a csalást
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :általános hiba
@@ -1786,14 +1753,14 @@ STR_204A_BUILD_STATUE_OF_COMPANY                                :Szobor építte
 STR_204B_FUND_NEW_BUILDINGS                                     :Új épületek építésének támogatása
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Kizárólagos szállítási jogok vétele
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Önkormányzat megvesztegetése
-STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}  Kis helyi reklámhadjárat indítása, hogy több utast és árut vonzz a megállóidba.{}  Ára: {CURRENCY}
-STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW}  Közepes helyi reklámhadjárat indítása, hogy több utast és árut vonzz a megállóidba.{}  Ára: {CURRENCY}
-STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}  Nagy helyi reklámhadjárat indítása, hogy több utast és árut vonzz a megállóidba.{}  Ára: {CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW}  A városi úthálózat helyreállításának támogatása. Több, mint hat hónapig jelentősen összezavarja a közúti forgalmat.{}  Ára: {CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW}  Szobor építése a vállalatod tiszteletére.{}  Ára: {CURRENCY}
-STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}  Új kereskedelmi épületek építésének támogatása a városban.{}  Ára: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW}  Egy éves kizárólagos szállítási jogok vétele a városban. Az önkormányzat csak a te állomásaid használatát engedi meg az utasoknak és az áruknak.{}  Ára: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} A megítélésed növelése az önkormányzat megvesztegetésével, komoly büntetést kockáztatva, ha ez kiderül.{} Ára: {CURRENCY}
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}Kis helyi reklámhadjárat indítása, hogy több utast és árut vonzz a megállóidba.{}Ára: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW}Közepes helyi reklámhadjárat indítása, hogy több utast és árut vonzz a megállóidba.{}Ára: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}Nagy helyi reklámhadjárat indítása, hogy több utast és árut vonzz a megállóidba.{}Ára: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW}A városi úthálózat helyreállításának támogatása. Több, mint hat hónapig jelentősen összezavarja a közúti forgalmat.{}Ára: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW}Szobor építése a vállalatod tiszteletére.{}Ára: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}Új kereskedelmi épületek építésének támogatása a városban.{}Ára: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW}Egy éves kizárólagos szállítási jogok vétele a városban. Az önkormányzat csak a te állomásaid használatát engedi meg az utasoknak és az áruknak.{}Ára: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW}A megítélésed növelése az önkormányzat megvesztegetésével, komoly büntetést kockáztatva, ha ez kiderül.{}Ára: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Közlekedési zűrzavar {TOWN} városában!{}{}{STRING} által indított útjavítás keseríti meg hat hónapig az autóvezetők életét!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -1960,79 +1927,42 @@ STR_SAVE_OSKTITLE                                               :{BLACK}Add meg 
 STR_4800_IN_THE_WAY                                             :{WHITE}...{STRING} van az útban
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Szénbánya
-STR_4802_COAL_MINE.t                                            :szénbányát
 STR_4803_POWER_STATION                                          :Erőmű
-STR_4803_POWER_STATION.t                                        :erőművet
 STR_4804_SAWMILL                                                :Fűrésztelep
-STR_4804_SAWMILL.t                                              :fűrésztelepet
 STR_4805_FOREST                                                 :Erdő
-STR_4805_FOREST.t                                               :erdőt
 STR_4806_OIL_REFINERY                                           :Olajfinomító
-STR_4806_OIL_REFINERY.t                                         :olajfinomítót
 STR_4807_OIL_RIG                                                :Olajfúró torony
-STR_4807_OIL_RIG.t                                              :olajfúró tornyot
 STR_4808_FACTORY                                                :Gyár
-STR_4808_FACTORY.t                                              :gyárat
 STR_4809_PRINTING_WORKS                                         :Nyomda
-STR_4809_PRINTING_WORKS.t                                       :nyomdát
 STR_480A_STEEL_MILL                                             :Acélöntő
-STR_480A_STEEL_MILL.t                                           :acélöntőt
 STR_480B_FARM                                                   :Farm
-STR_480B_FARM.t                                                 :farmot
 STR_480C_COPPER_ORE_MINE                                        :Rézércbánya
-STR_480C_COPPER_ORE_MINE.t                                      :rézércbányát
 STR_480D_OIL_WELLS                                              :Olajkút
-STR_480D_OIL_WELLS.t                                            :olajkútat
 STR_480E_BANK                                                   :Bank
-STR_480E_BANK.t                                                 :bankot
 STR_480F_FOOD_PROCESSING_PLANT                                  :Konzervgyár
-STR_480F_FOOD_PROCESSING_PLANT.t                                :konzervgyárat
 STR_4810_PAPER_MILL                                             :Papírgyár
-STR_4810_PAPER_MILL.t                                           :papírgyárat
 STR_4811_GOLD_MINE                                              :Aranybánya
-STR_4811_GOLD_MINE.t                                            :aranybányát
 STR_4812_BANK                                                   :Bank
-STR_4812_BANK.t                                                 :bankot
 STR_4813_DIAMOND_MINE                                           :Gyémántbánya
-STR_4813_DIAMOND_MINE.t                                         :gyémántbányát
 STR_4814_IRON_ORE_MINE                                          :Vasércbánya
-STR_4814_IRON_ORE_MINE.t                                        :vasércbányát
 STR_4815_FRUIT_PLANTATION                                       :Gyümölcsültetvény
-STR_4815_FRUIT_PLANTATION.t                                     :gyümölcsültetvényt
 STR_4816_RUBBER_PLANTATION                                      :Gumifa ültetvény
-STR_4816_RUBBER_PLANTATION.t                                    :gumiültetvényt
 STR_4817_WATER_SUPPLY                                           :Vízforrás
-STR_4817_WATER_SUPPLY.t                                         :vízforrást
 STR_4818_WATER_TOWER                                            :Víztorony
-STR_4818_WATER_TOWER.t                                          :víztornyot
 STR_4819_FACTORY                                                :Gyár
-STR_4819_FACTORY.t                                              :gyárat
 STR_481A_FARM                                                   :Farm
-STR_481A_FARM.t                                                 :farmot
 STR_481B_LUMBER_MILL                                            :Favágó
-STR_481B_LUMBER_MILL.t                                          :favágót
 STR_481C_COTTON_CANDY_FOREST                                    :Vattacukor-erdő
-STR_481C_COTTON_CANDY_FOREST.t                                  :vattacukor-erdőt
 STR_481D_CANDY_FACTORY                                          :Cukorkagyár
-STR_481D_CANDY_FACTORY.t                                        :cukorkagyárat
 STR_481E_BATTERY_FARM                                           :Elemfarm
-STR_481E_BATTERY_FARM.t                                         :elemfarmot
 STR_481F_COLA_WELLS                                             :Kólakút
-STR_481F_COLA_WELLS.t                                           :kólakútat
 STR_4820_TOY_SHOP                                               :Játékbolt
-STR_4820_TOY_SHOP.t                                             :játékboltot
 STR_4821_TOY_FACTORY                                            :Játékgyár
-STR_4821_TOY_FACTORY.t                                          :játékgyárat
 STR_4822_PLASTIC_FOUNTAINS                                      :Műanyagforrás
-STR_4822_PLASTIC_FOUNTAINS.t                                    :műanyagforrást
 STR_4823_FIZZY_DRINK_FACTORY                                    :Üdítőital-gyár
-STR_4823_FIZZY_DRINK_FACTORY.t                                  :üdítőital-gyárat
 STR_4824_BUBBLE_GENERATOR                                       :Buborékgenerátor
-STR_4824_BUBBLE_GENERATOR.t                                     :buborékgenerátort
 STR_4825_TOFFEE_QUARRY                                          :Tejkaramella fejtő
-STR_4825_TOFFEE_QUARRY.t                                        :tejkaramella fejtőt
 STR_4826_SUGAR_MINE                                             :Cukorbánya
-STR_4826_SUGAR_MINE.t                                           :cukorbányát
 
 ############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Felhasznál: {YELLOW}{STRING}{STRING}
@@ -2277,7 +2207,7 @@ STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Működési nyereség grafikon
 STR_7026_BANK_BALANCE                                           :{WHITE}Banki egyenleg
 STR_7027_LOAN                                                   :{WHITE}Kölcsön
-STR_MAX_LOAN                                                    :{WHITE}Max. kölcsön:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Max. kölcsön: {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Kölcsönkér {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Visszafizet {SKIP}{SKIP}{CURRENCY}
@@ -2885,7 +2815,9 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Vonat á
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Nem nevezheted át a vonatot...
 STR_8867_NAME_TRAIN                                             :{BLACK}Vonat átnevezése
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Vonatbaleset!{}{COMMA} ember halt meg az ütközésnél
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nem fordíthatod meg a vonatot...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nem fordíthatod meg a vonatot...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}A járművet nem lehet megfordítani...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Több részből álló járművet nem lehet megfordítani
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Márkanév megváltoztatása
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nem változtathatod meg a márkanevet...
 STR_CLEAR_TIME                                                  :{BLACK}Idő törlése
@@ -2973,8 +2905,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}A lakosság ünnepel . . .{}Első teherszállító-villamos megérkezett {STATION} állomásra!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Közúti baleset!{}A vezető meghalt a vonattal való ütközéskor
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Közúti baleset!{}{COMMA} ember meghalt a vonattal való ütközéskor
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nem fordíthatod vissza a járművet...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Több részből álló járművet nem lehet megfordítani
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}A közúti jármű nem tud megfordulni...
 STR_9034_RENAME                                                 :{BLACK}Átnevez
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}A közúti jármű márkanevének megváltoztatása
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Márkanév megváltoztatása
@@ -3361,7 +3292,7 @@ STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacit�
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Kifejlesztve: {GOLD}{NUM}{BLACK} Élettartam: {GOLD}{COMMA} év
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. üzemképesség: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Ár: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Súly: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Súly: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Sebesség: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitás: {GOLD}{COMMA} utas, {COMMA} csomag levél
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Meghajtott vagonok: {GOLD}+{POWER}{BLACK} Súly: {GOLD}+{WEIGHT_S}

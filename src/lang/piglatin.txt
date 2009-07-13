@@ -2814,7 +2814,6 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Amenay a
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}An'tcay amenay aintray...
 STR_8867_NAME_TRAIN                                             :{BLACK}Amenay aintray
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Aintray Ashcray!{}{COMMA} ieday inway ireballfay afterway ollisioncay
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}An'tcay everseray irectionday ofway aintray...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Enameray aintray ehiclevay ypetay
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}An'tcay enameray aintray ehiclevay ypetay...
 STR_CLEAR_TIME                                                  :{BLACK}Earclay Imetay
@@ -2902,8 +2901,6 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Itizenscay elebratecay . . .{}Irstfay eightfray amtray arrivesway atway {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Oadray Ehiclevay Ashcray!{}Iverdray iesday inway ireballfay afterway ollisioncay ithway aintray
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Oadray Ehiclevay Ashcray!{}{COMMA} ieday inway ireballfay afterway ollisioncay ithway aintray
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}An'tcay akemay ehiclevay urntay aroundway...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}An'tcay urntay ehiclesvay onsistingcay ofway ultiplemay unitsway
 STR_9034_RENAME                                                 :{BLACK}Enameray
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Enameray oadray ehiclevay ypetay
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Enameray oadray ehiclevay ypetay

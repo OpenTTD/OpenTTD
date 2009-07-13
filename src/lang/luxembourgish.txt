@@ -1389,7 +1389,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Lettësch
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multiplayer-Spill Empfang
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Préparéiert fir bäizetrieden:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparéiert fir bäizetrieden:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Eng Lëscht vun den Firmen an dësem Spill. Du kanns enger bäitrieden oder eng nei opmaachen.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nei Firma
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Nei Firma erstellen
@@ -1406,10 +1406,10 @@ STR_NETWORK_COMPANY_NAME                                        :{SILVER}Firmenn
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Grënnung:  {WHITE}{NUM}
 STR_NETWORK_VALUE                                               :{SILVER}Firmenwert:  {WHITE}{CURRENCY}
 STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Kontostand:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Ankommen vum läschten Joër:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Ankommes vum leschten Joër:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Performance:  {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Gefiehrer:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_VEHICLES                                            :{SILVER}Gefierer:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_STATIONS                                            :{SILVER}Statiounen:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_PLAYERS                                             :{SILVER}Spiller:  {WHITE}{STRING}
 
@@ -1439,22 +1439,22 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Nokucken
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nei Firma
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Keng Netzwierkgeräter font oder compiléiert ouni ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Konnt kéng Netzwierkspiller fannen
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Den Server huet nët op d'Unfroo geäntwert
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Konnt sëch weinst NewGRF ënnerscheed nët connèctéieren
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Netzwierksyncronisatioun-Fehler
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Netzwierkverbindung verluer
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Konnt den Spillstand nët lueden
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Konnt den Server nët starten
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Konnt sëch nët connèctéieren
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Connèctioun #{NUM} oofgelaaf
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} En Protokolfehler war entstaanen an d'Connèctioun ass getrennt ginn
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} D'Versioun vum Client stëmmt nët mat där vum Server iwereneen
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Falscht Passwuert
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Dën Server ass voll
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Konnt kéng Netzwierkspiller fannen
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Den Server huet net op d'Ufro geäntwert
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Konnt sech wéinst NewGRF ënnerscheed net connectéieren
+STR_NETWORK_ERR_DESYNC                                          :{WHITE} Netzwierksyncronisatiouns-Fehler
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Netzwierkverbindung verluer
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Konnt den Spillstand net lueden
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Konnt den Server net starten
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Konnt sëch net connectéieren
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Connectioun #{NUM} oofgelaaf
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} En Protokolfehler ass entstaanen an d'Connectioun ass getrennt ginn
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}D'Versioun vum Client stëmmt net mat där vum Server iwerëneen
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Falscht Passwuert
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Den Server ass voll
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Dir sidd vun dësem Server gebannt
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Dir sidd aus dem Spill gekickt ginn
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Cheaten ass op dësem Server nët erlaabt
+STR_NETWORK_ERR_CHEATER                                         :{WHITE} Cheaten ass op dësem Server net erlaabt
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :generellen Fehler
@@ -2812,7 +2812,7 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Zuch ben
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Kann den Zuch net benennen...
 STR_8867_NAME_TRAIN                                             :{BLACK}Zuch benennen
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Zuch Accident!{}{COMMA} stiewen an der Explosioun nom Accident
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kann d'Richtung vum Zuch net änneren...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kann d'Richtung vum Zuch net änneren...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zuchgefierttyp ëmbenennen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kann den Zuchgefierttyp net ëmbenennen...
 STR_CLEAR_TIME                                                  :{BLACK}Zäit läschen
@@ -2895,8 +2895,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Biirger feieren . . .{}Eischten Wueren-Tram kënnt bei  {STATION} un!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Stroossengefiert onfall!{}Fuerer stieft an der Explosioun no Onfall mam Zuch
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Stroossengefiertaccident!{}{COMMA} stiewen an der Explosioun no Onfall mam Zuch
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kann d'Gefiert net dréinen...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kann keng Gefierer aus e puer Unitéiten emdréinen
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kann keng Gefierer aus e puer Unitéiten emdréinen
 STR_9034_RENAME                                                 :{BLACK}Ëmbenennen
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Gefierttyp ëmbenennen
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Gefiertentyp ëmbenennen
@@ -3268,12 +3267,14 @@ STR_MAGLEV_VEHICLES                                             :Magnéitbunn Ge
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Käschten: {GOLD}{CURRENCY}{BLACK} Gewiicht: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.: {GOLD}{VELOCITY}{BLACK} Kraaft: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Geschw.: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Betriibskäschtent: {GOLD}{CURRENCY}/Jr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazitéit: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designt: {GOLD}{NUM}{BLACK} Liewenszäit: {GOLD}{COMMA} Joer
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Zouverläss.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Käschten: {GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewiicht: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Käschten: {GOLD}{CURRENCY}{BLACK} Geschw.: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ugedriwwen Wagonen: {GOLD}+{POWER}{BLACK} Gewiicht: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Embaubaur zu: {GOLD}

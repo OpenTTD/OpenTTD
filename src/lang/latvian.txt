@@ -2799,12 +2799,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Dzēst l
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Atslēgt skaitītāju,lai transportlīdzeklis būtu laikā
 STR_SERVICE_HINT                                                :{BLACK}Izlaist šo rīkojumu, izņemot, ja vajadzīga apkope
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Svars: {WEIGHT_S}{}Ātrums: {VELOCITY} Jauda: {POWER}{}tekošās izmaksas: {CURRENCY}/yr{}Ietilpība:  {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Salūzis
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vecums: {LTBLUE}{STRING}{BLACK}   Darbības izmaksas: {LTBLUE}{CURRENCY}/gadā
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Svars: {LTBLUE}{WEIGHT_S}  {BLACK} Jauda: {LTBLUE}{POWER}{BLACK} Maksimālais ātrums: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Svars: {LTBLUE}{WEIGHT_S} {BLACK}Jauda: {LTBLUE}{POWER}{BLACK} Maksimālais ātrums: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Peļņa šogad: {LTBLUE}{CURRENCY}  (pērn: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Uzticamība: {LTBLUE}{COMMA}%  {BLACK}Bojājumi kopš pēdējās apkopes: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Apstādināts
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Vilciens nevar šķērsot signālu briesmās...
 STR_8863_CRASHED                                                :{RED}Cietis avārijā!
@@ -2813,7 +2807,7 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Nosaukt 
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Nevar nosaukt vilcienu...
 STR_8867_NAME_TRAIN                                             :{BLACK}Nosaukt vilcienu
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Vilciena avārija!{}{COMMA} mirušie
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Vilcienu nevar apgriezt...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Vilcienu nevar apgriezt...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Pārsaukt vilciena vagona tipu
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nevar pārsaukt vilciena vagona tipu...
 STR_CLEAR_TIME                                                  :{BLACK}Notīrīt laiku
@@ -2901,8 +2895,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Pilsoņi līksmo . . .{}Pirmais kravas tramvajs ierodas {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Autotransporta avārija!{}Vadītājs mirst uzreiz pēc sadursmes ar vilcienu.
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Autotransporta avārija!{}{COMMA} mirst pēc sadursmes ar vilcienu
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Transportl. nevar apgriezties...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Nevar pagriezt transportlīdzekļus, kas sastāv no vairākām daļām
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nevar pagriezt transportlīdzekļus, kas sastāv no vairākām daļām
 STR_9034_RENAME                                                 :{BLACK}Pārsaukt
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Pārsaukt transportl. tipu
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Pārsaukt transportl. tipu

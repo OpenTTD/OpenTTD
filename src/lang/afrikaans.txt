@@ -938,7 +938,6 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Vliegtu
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Laattoe skyf-deur pad stop op dorp besit paaie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Laattoe gebou van aangrensend stasies: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Altyd laattoe klein lughawenst: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Waarsku as trein verloor is: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Bespreek voertuig se opdrae: {ORANGE}{STRING}
@@ -1408,7 +1407,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klient L
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nuwe Maatskapy
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Geen netwerk ontwerp gevind of voldoen sonder ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Kan nie enige netwerk spele vind nie
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Kan nie enige netwerk speletjies vind nie
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Die verskaffer het nie die versoek geantwoord nie
 STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Kan nie konnekteer te danke aan newgrf mispas nie
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Netwerk-Spel sinchroniseering gedop
@@ -2754,12 +2753,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Vee uit 
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Herstel die laat teller, so dat die  voertuig op tyd is
 STR_SERVICE_HINT                                                :{BLACK}Sprong die opdraag tensy 'n diens nodig is
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kos: {CURRENCY} Gewig: {WEIGHT_S}{}Spoed: {VELOCITY}  Krag: {POWER}{}Loopkoste: {CURRENCY}/jr{}Kapasitiet: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Komplikasies
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Ouderdom: {LTBLUE}{STRING}{BLACK}   Loopkoste: {LTBLUE}{CURRENCY}/Jr
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewig: {LTBLUE}{WEIGHT_S}  {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Max. spoed: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewig: {LTBLUE}{WEIGHT_S} {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Max. spoed: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profyt die jaar: {LTBLUE}{CURRENCY}  (verlede jaar: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betroubaarheid: {LTBLUE}{COMMA}%  {BLACK}Komplikasies na laaste diens: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Gestop
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kan nie trein forseer om sein te vermy op gevaar...
 STR_8863_CRASHED                                                :{RED}Botsing!
@@ -2768,7 +2761,7 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Benaam t
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Trein kan nie benaam word nie...
 STR_8867_NAME_TRAIN                                             :{BLACK}Benaam trein
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Trein Botsing!{}{COMMA} sterf in vuurbol na botsing
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan nie rigting van trein omkeer nie...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan nie rigting van trein omkeer nie...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Hernoem trein voertuig tipe
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Trein voertuig tipe kan nie hernoem word nie...
 STR_CLEAR_TIME                                                  :{BLACK}Reinig Tyd
@@ -2855,8 +2848,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste vrag trein arriveer by {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Pad Voertuig Botsing!{}Bestuurder sterf in vuurbol na botsing met trein
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Pad voertuig Botsing!{}{COMMA} sterf in vuurbol na botsing met trein
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan nie voertuig forseer om te omdraai nie...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan nie voertuie van veel deele draai nie
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan nie voertuie van veel deele draai nie
 STR_9034_RENAME                                                 :{BLACK}Hernoem
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Hernoem pad voertuig tipe
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Hernoem pad voertuig tipe
@@ -3530,5 +3522,12 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Jy het 
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Jy het hierdie reeds
 
 
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... verbinding verloor
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... lêer nie skryfbaar nie
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kon nie die afgelaaide lêer dekompakteer
 
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Kyk Na Aanlyn Inhoud
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Kyk vir nuwe of bygewerkde inhoud om af te laai
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Vind vermisde inhoud aanlyn
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Kyk of die vermisde inhoud aanlyn kan gevind word
 ########

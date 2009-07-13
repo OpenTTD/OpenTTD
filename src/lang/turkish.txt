@@ -1246,8 +1246,8 @@ STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Hepsini 
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Hepsini aç
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Fabrikalar
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} (%{COMMA} tasindi)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} (%{COMMA}/%{COMMA} tasindi)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} (%{COMMA} taşındı)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} (%{COMMA}/%{COMMA} taşındı)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Fabrika adları - görüntüyü fabrikada merkezlemek için adına tıklayın
 
@@ -1301,14 +1301,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Yıl
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Oyunda geçen{}yıl sayısı
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}OYUN BİLGİSİ
-STR_NETWORK_CLIENTS                                             :{SILVER}İstemciler:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Dil:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Set:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Harita boyutu:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Sunucu sürümü:  {WHITE}{STRING}
+STR_NETWORK_CLIENTS                                             :{SILVER}İstemciler: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Dil: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Set: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Harita boyutu: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Sunucu sürümü: {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Sunucu adresi:  {WHITE}{STRING} : {NUM}
-STR_NETWORK_START_DATE                                          :{SILVER}Başlama tarihi:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Şimdiki tarih:  {WHITE}{DATE_SHORT}
+STR_NETWORK_START_DATE                                          :{SILVER}Başlama tarihi: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Şimdiki tarih: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Parola korumalı!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SUNUCU KAPALI
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SUNUCU DOLU
@@ -1390,7 +1390,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Letonca
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Çok oyunculu oyun lobisi
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Katılmaya hazırlanıyor:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Katılmaya hazırlanıyor: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Oyundaki tüm şirketlerin listesi. Birine katılabilir ya da boş yer varsa yeni bir tane açabilirsiniz
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Yeni şirket
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Yeni bir şirket kur
@@ -1403,10 +1403,10 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Sunucu b
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}ŞİRKET BİLGİSİ
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Şirket adı:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Kurulus:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Şirket değeri:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Şimdiki dengesi:  {WHITE}{CURRENCY}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Şirket adı: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Kurulus: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Şirket değeri: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Şimdiki dengesi: {WHITE}{CURRENCY}
 STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Geçen seneki geliri:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Performans:  {WHITE}{NUM}
 
@@ -1752,14 +1752,14 @@ STR_204A_BUILD_STATUE_OF_COMPANY                                :Şirket sahibin
 STR_204B_FUND_NEW_BUILDINGS                                     :Yeni binalar yapılması için para ver
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Ayrıcalıklı nakliyat haklarını satın al
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Belediyeye rüşvet ver
-STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Müsteri çekmek için duvarlara poster yapıştır.{}  Fiyat: {CURRENCY}
-STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Müsteri çekmek için radyoya reklam ver.{}  Fiyat: {CURRENCY}
-STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Müsteri çekmek için televizyona reklam ver.{}  Fiyat: {CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Yol tamirleri için belediyeye bağış yap. 6 ay boyunca şehrin yolları kullanılamaz.{}  Fiyat: {CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Şirket sahibinin heykelini dik.{} Fiyatı: {CURRENCY}
-STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Şehirde ticari binaların yapımı için bağış yap.{}  Fiyatı: {CURRENCY}
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Müsteri çekmek için duvarlara poster yapıştır.{} Fiyat: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Müsteri çekmek için radyoya reklam ver.{} Fiyat: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Müsteri çekmek için televizyona reklam ver.{} Fiyat: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Yol tamirleri için belediyeye bağış yap. 6 ay boyunca şehrin yolları kullanılamaz.{} Fiyat: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW}Şirket sahibinin heykelini dik.{}Fiyatı: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}Şehirde ticari binaların yapımı için bağış yap.{}Fiyatı: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Bir yıllık ayrıcalıklı nakliyat haklarını satın al. Belediye şehirde sadece senin şirketine yolcu ve kargo taşıma izni verir.{} Fiyat: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Yakalanma riskini göze alarak belediyeye rüşvet ver.{}  Fiyat: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW}Yakalanma riskini göze alarak belediyeye rüşvet ver.{} Fiyat: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK} {TOWN} şehrinde trafik durdu!{}{} {STRING} şirketinin yol yapım çalışmaları başladı!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -2814,7 +2814,7 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Treni ad
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Tren adlandırılamıyor...
 STR_8867_NAME_TRAIN                                             :{BLACK}Treni adlandır
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Tren Kazasi!{}{COMMA} ölü var.
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Tren çevrilemez...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Tren çevrilemez...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Tren yeniden adlandırılamaz
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Tren yeniden adlandırılamaz...
 STR_CLEAR_TIME                                                  :{BLACK}Zamanı Temizle
@@ -2902,8 +2902,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yük tramvayı geldi!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Trafik kazasi!{}Trenle çarpisan aracın soförü feci şekilde can verdi
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Trafik kazasi!{}{COMMA} kişi patlamadan kurtulamadı
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Araç döndürülemiyor...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Birden fazla birimden oluşan araçlar çevrilemez
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Birden fazla birimden oluşan araçlar çevrilemez
 STR_9034_RENAME                                                 :{BLACK}İsim
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Araç türünü yeniden adlandır
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Araç türünü yeniden adlandır

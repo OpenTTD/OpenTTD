@@ -9,19 +9,25 @@
 #
 
 ##id 0x0000
+STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}خارج از نقشه
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}بسیار نزدیک به حاشیه ی نقشه
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}پول به اندازه ی کافی موجود نیست- به {CURRENCY} نیاز است
 STR_0004                                                        :{WHITE}{CURRENCY}
+STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}زمین باید مسطح باشد
 STR_0008_WAITING                                                :{BLACK}در انتظار: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} منشعب شده از {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}قبول می کند: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}قبول می کند: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}تدارکات: {GOLD}
+STR_000E                                                        :
 STR_000F_PASSENGERS                                             :مسافر
 STR_0010_COAL                                                   :ذغال
 STR_0011_MAIL                                                   :پاکت پستی
 STR_0012_OIL                                                    :نفت
+STR_0013_LIVESTOCK                                              :چارپایان
 STR_0014_GOODS                                                  :محصولات مصرفی
 STR_0015_GRAIN                                                  :غله
 STR_0016_WOOD                                                   :چوب
@@ -29,6 +35,7 @@ STR_0017_IRON_ORE                                               :سنگ آهن
 STR_0018_STEEL                                                  :فولاد
 STR_0019_VALUABLES                                              :جواهرات
 STR_001A_COPPER_ORE                                             :سنگ مس
+STR_001B_MAIZE                                                  :ذرت
 STR_001C_FRUIT                                                  :میوه
 STR_001D_DIAMONDS                                               :الماس
 STR_001E_FOOD                                                   :مواد خوراکی
@@ -36,6 +43,7 @@ STR_001F_PAPER                                                  :کاغذ
 STR_0020_GOLD                                                   :طلا
 STR_0021_WATER                                                  :آب
 STR_0022_WHEAT                                                  :گندم
+STR_0023_RUBBER                                                 :کائوچو
 STR_0024_SUGAR                                                  :شکر
 STR_0025_TOYS                                                   :اسباب بازی
 STR_0026_CANDY                                                  :شیرینی
@@ -50,12 +58,15 @@ STR_002F_PASSENGER                                              :مسافر
 STR_0030_COAL                                                   :ذغال
 STR_0031_MAIL                                                   :نامه
 STR_0032_OIL                                                    :نفت
+STR_0033_LIVESTOCK                                              :چارپایان
 STR_0034_GOODS                                                  :محصولات مصرفی
 STR_0035_GRAIN                                                  :غله
 STR_0036_WOOD                                                   :چوب
 STR_0037_IRON_ORE                                               :سنگ آهن
 STR_0038_STEEL                                                  :فولاد
+STR_0039_VALUABLES                                              :اجناس قیمتی
 STR_003A_COPPER_ORE                                             :سنگ مس
+STR_003B_MAIZE                                                  :ذرت
 STR_003C_FRUIT                                                  :میوه
 STR_003D_DIAMOND                                                :الماس
 STR_003E_FOOD                                                   :مواد خوراکی
@@ -63,6 +74,7 @@ STR_003F_PAPER                                                  :کاغذ
 STR_0040_GOLD                                                   :طلا
 STR_0041_WATER                                                  :آب
 STR_0042_WHEAT                                                  :گندم
+STR_0043_RUBBER                                                 :کائوچو
 STR_0044_SUGAR                                                  :شکر
 STR_0045_TOY                                                    :اسباب بازی
 STR_0046_CANDY                                                  :شیرینی
@@ -73,6 +85,39 @@ STR_004A_TOFFEE                                                 :تافی
 STR_004B_BATTERY                                                :باتری
 STR_004C_PLASTIC                                                :پلاستیک
 STR_004D_FIZZY_DRINK                                            :نوشابه گازدار
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} مسافر{P "" s}
+STR_QUANTITY_COAL                                               :{WEIGHT} از زغال سنگ
+STR_QUANTITY_MAIL                                               :{COMMA}بسته{P "" s} از نامه
+STR_QUANTITY_OIL                                                :{VOLUME} نفت
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} فقره{P "" s} از جارپایان
+STR_QUANTITY_GOODS                                              :{COMMA} جعبه{P "" s} محموله تجاری
+STR_QUANTITY_GRAIN                                              :{WEIGHT}حبوبات
+STR_QUANTITY_WOOD                                               :{WEIGHT} چوب
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} سنگ آهن
+STR_QUANTITY_STEEL                                              :{WEIGHT} فولادl
+STR_QUANTITY_VALUABLES                                          :{COMMA} بسته{P "" s} اشیای قیمتی
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} سنگ مس
+STR_QUANTITY_MAIZE                                              :{WEIGHT} ذرت
+STR_QUANTITY_FRUIT                                              :{WEIGHT} میوه
+STR_QUANTITY_DIAMONDS                                           :{COMMA} بسته{P "" s} الماس
+STR_QUANTITY_FOOD                                               :{WEIGHT} غذا
+STR_QUANTITY_PAPER                                              :{WEIGHT} کاغذ
+STR_QUANTITY_GOLD                                               :{COMMA} بسته{P "" s} طلا
+STR_QUANTITY_WATER                                              :{VOLUME} آب
+STR_QUANTITY_WHEAT                                              :{WEIGHT} گندم
+STR_QUANTITY_RUBBER                                             :{VOLUME} کائوچو
+STR_QUANTITY_SUGAR                                              :{WEIGHT} شکر
+STR_QUANTITY_TOYS                                               :{COMMA} اسباب بازی{P "" s}
+STR_QUANTITY_SWEETS                                             :{COMMA} بسته{P "" s} شیرینی
+STR_QUANTITY_COLA                                               :{VOLUME} نوشابه
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} پشمک
+STR_QUANTITY_BUBBLES                                            :{COMMA} حباب{P "" s}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} آب نبات
+STR_QUANTITY_BATTERIES                                          :{COMMA}باطری{P y ies}
+STR_QUANTITY_PLASTIC                                            :{VOLUME}پلاستیک
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} نوشیدنی گاز دار{P "" s}
+STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
 STR_ABBREV_COAL                                                 :{TINYFONT}CL
 STR_ABBREV_MAIL                                                 :{TINYFONT}ML
@@ -80,8 +125,10 @@ STR_ABBREV_OIL                                                  :{TINYFONT}OL
 STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
 STR_ABBREV_GOODS                                                :{TINYFONT}GD
 STR_ABBREV_GRAIN                                                :{TINYFONT}GR
+STR_ABBREV_WOOD                                                 :{TINYFONT}چوب
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}OR
 STR_ABBREV_STEEL                                                :{TINYFONT}ST
+STR_ABBREV_VALUABLES                                            :{TINYFONT}قیمتی ها
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CO
 STR_ABBREV_MAIZE                                                :{TINYFONT}MZ
 STR_ABBREV_FRUIT                                                :{TINYFONT}FT
@@ -89,10 +136,16 @@ STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
 STR_ABBREV_FOOD                                                 :{TINYFONT}FD
 STR_ABBREV_PAPER                                                :{TINYFONT}PR
 STR_ABBREV_GOLD                                                 :{TINYFONT}GD
+STR_ABBREV_WATER                                                :{TINYFONT}آب
+STR_ABBREV_WHEAT                                                :{TINYFONT}گندم
 STR_ABBREV_RUBBER                                               :{TINYFONT}RB
+STR_ABBREV_SUGAR                                                :{TINYFONT}شکر
+STR_ABBREV_TOYS                                                 :{TINYFONT}اسباب بازی
+STR_ABBREV_SWEETS                                               :{TINYFONT}شیرینی
 STR_ABBREV_COLA                                                 :{TINYFONT}CL
 STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CF
 STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
+STR_ABBREV_TOFFEE                                               :{TINYFONT}آبنبات
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
@@ -104,6 +157,7 @@ STR_00B0_MAP                                                    :{WHITE}نقشه
 STR_00B1_GAME_OPTIONS                                           :{WHITE}تنظیمات بازی
 STR_00B2_MESSAGE                                                :{YELLOW}پیام
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}پیام از {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}اخطار!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}نمی‌توانم انجام دهم
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}این منطقه پاک نمی‌شود
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
@@ -142,8 +196,11 @@ STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}ماشی
 STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}مختصات
+STR_00E5_CONTOURS                                               :حد فاصل ها
 STR_00E6_VEHICLES                                               :وسایل نقلیه
 STR_00E7_INDUSTRIES                                             :کارخانه‌ها
+STR_00E8_ROUTES                                                 :راه ها
+STR_00E9_VEGETATION                                             :پوشش گیاهی
 STR_00EA_OWNERS                                                 :صاحبان
 STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}جاده ها
 STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}راه آهن
@@ -162,6 +219,7 @@ STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFON
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}مسیر حمل و نقل
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}جنگل
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}ایستگاه قطار
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}ایستگاه بارگیری/تخلیه بار کامیون
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}ایستگاه اتوبوس
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}هواپیما/بالگرد
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}اسکله
@@ -179,29 +237,65 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}برف
 STR_012C_MESSAGE                                                :{WHITE}پیغام
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}حالت قراردادی
 STR_012E_CANCEL                                                 :{BLACK}لغو
 STR_012F_OK                                                     :{BLACK}تایید
 STR_0130_RENAME                                                 :{BLACK}نام گزاری
 
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE} صاحب {STRING} است.
 STR_013C_CARGO                                                  :{BLACK}محموله
 STR_013D_INFORMATION                                            :{BLACK}اطلاعات
 STR_013E_CAPACITIES                                             :{BLACK}ضرفیت ها
+STR_TOTAL_CARGO                                                 :{BLACK}مجموع بار
 STR_013F_CAPACITY                                               :{BLACK}ضرفیت: {LTBLUE}{CARGO}{STRING}
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}مجموع ظرفیت بار این قطار:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}بازی جدید
 STR_0141_LOAD_GAME                                              :{BLACK}ادامه بازی های قبلی
+STR_MULTIPLAYER                                                 :{BLACK}بازی چند نفره
+STR_SCENARIO_EDITOR                                             :{BLACK}ساخت سناریو
 
+STR_MAPSIZE                                                     :{BLACK}اندازه نقشه:
+STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}تنضیمات بازی
 
+STR_0150_SOMEONE                                                :یک نفر{SKIP}{SKIP}
 
+STR_UNITS_IMPERIAL                                              :شاهنشاهی
+STR_UNITS_METRIC                                                :متری
 
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} مایل در ساعت
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} کیلومتر/ساعت
+STR_UNITS_VELOCITY_SI                                           :{COMMA} متر/ثانیه
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}اسب بخار
+STR_UNITS_POWER_METRIC                                          :{COMMA}اسب بخار
+STR_UNITS_POWER_SI                                              :{COMMA}کیلو وات
 
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}تن
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}کیلوگرم
 
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} تن{P "" s}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} کیلو گرم
 
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}لیتر
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}متر مکعب
 
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} لیتر{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} متر مکعب
 
+STR_UNITS_FORCE_SI                                              :{COMMA} کیلو نیوتن
 
 ############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :نمودار سود خالص
@@ -210,14 +304,19 @@ STR_0156_DELIVERED_CARGO_GRAPH                                  :نمودار م
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :نمودار پیشرفت شرکت ها
 STR_0158_COMPANY_VALUE_GRAPH                                    :نمودار ارزش شرکت ها
 STR_0159_CARGO_PAYMENT_RATES                                    :نمودار قیمت پرداختی محموله ها
+STR_015A_COMPANY_LEAGUE_TABLE                                   :جدول اتحادیه شرکتها
+STR_PERFORMANCE_DETAIL_MENU                                     :جزییات امتیازهای کارایی
 ############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD در باره ی
 STR_015C_SAVE_GAME                                              :ذخیره بازی
+STR_015D_LOAD_GAME                                              :فراخوانی بازی
 STR_015E_QUIT_GAME                                              :رها کردن بازی
 STR_015F_QUIT                                                   :خروج
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}آیا مطمئن هستی که میخواهی این بازی را از بین ببری؟
 STR_0161_QUIT_GAME                                              :{WHITE}رها کردن بازی
+STR_SORT_ORDER_TIP                                              :{BLACK}انتخاب طرز مرتب کردن (نزولی/صعودی)
+STR_SORT_CRITERIA_TIP                                           :{BLACK}انتخاب معیار مرتب کردن
 
 
 ############ range for months starts
@@ -422,7 +521,6 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}اند�
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK} اخرین پیغام یا گزارش را نشان بده
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :لیست شهر ها
 STR_02BD                                                        :{BLACK}{STRING}
 
 ############ range for menu starts
@@ -447,7 +545,7 @@ STR_02D9_ABOUT_OPENTTD                                          :'OpenTTD' در�
 STR_02DB_OFF                                                    :{BLACK}خاموش
 STR_02DA_ON                                                     :{BLACK}روشن
 STR_02DE_MAP_OF_WORLD                                           :نقشه ی دنیا
-STR_02DF_TOWN_DIRECTORY                                         :لیست شهر ها
+STR_02BB_TOWN_DIRECTORY                                         :لیست شهر ها
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}واحد پول
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
@@ -709,10 +807,6 @@ STR_201E_STADIUM                                                :ورزشگاه
 STR_201F_OLD_HOUSES                                             :خانه قدیمی
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK} امتیازات شرکت
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} از {STRING} به {STRING}
-STR_2028_BY                                                     :{YELLOW} (by {DATE_SHORT})
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} از {STATION} به {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, تا {DATE_SHORT})
 STR_2036_COTTAGES                                               :کلبه ها
 STR_2037_HOUSES                                                 :خانه ها
 STR_2039_TALL_OFFICE_BLOCK                                      :ساختمان اداری بلند
@@ -760,7 +854,6 @@ STR_3002_ORIENTATION                                            :{BLACK} جهت
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK} تعداد خطوط
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}طول ایستگاه
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}به ایستگاه دیگری بسیار نزدیک است
-STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}تعداد ایستگاه ها در این شهر ماکزیمم است
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE} تعداد محوطه های بارگیری/ایستگاه بسیار زیاد شده
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}به محوطه ی بارگیری/ایستگاه دیگری بسیار نزدیک است
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
@@ -789,7 +882,6 @@ STR_303D                                                        :{WHITE}{STRING}
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} دیگر {STRING} قبول نمی کند
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} دیگر {STRING} و {STRING} قبول نمی کند
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} از این پس {STRING} را هم قبول می کند
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}موقعیت مناسب نیست
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}به بندر دیگری بسییار نزدیک است
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}باید اول بندر را تخریب کرد
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}انتخاب جهت ایستگاه راه آهن
@@ -1316,9 +1408,6 @@ STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}لیست
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}لغو دستور فعلی و شروع بعدی. Ctrl+Click دستور انتخاب شده را لغو می کند
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}پاک کردن دستور مشخص شده
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}وارد کردن دستور جدید قبل از دستور مشخص شده. یا اضافه کردن آن به آخر لیست
-STR_885C_BROKEN_DOWN                                            :{RED}از کار افتاده
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}سود این سال: {LTBLUE}{CURRENCY}  (سال قبل: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}قابلیت: {LTBLUE}{COMMA}%  {BLACK}دفعات خراب شدن از آخرین سرویس {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}متوقف شده
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}در هنگام خطر نمی توان علامت عبور قطار را داد
 STR_8863_CRASHED                                                :{RED}تصادف کرده!
@@ -1327,7 +1416,9 @@ STR_8865_NAME_TRAIN                                             :{WHITE}نام �
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}نمیتوان برای قطار نام انتخاب کرد...
 STR_8867_NAME_TRAIN                                             :{BLACK}نام گذاری قطار
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}تصادف قطار!{}{COMMA} مرگ در انفجار حاصل از برخورد
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}جهت قطار را نمی شود تغییر داد...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}جهت قطار را نمی شود تغییر داد...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}نمیتوان جهت حرکت وسیله را معکوس کرد...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}نمیتوان جهت وسایلی که از چند قطعه تشکیل شده اند را معکوس کرد
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}تغییر نام انواع قطار ها
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}نمی شود انواع قطار ها را تغییر نام داد...
 
@@ -1356,7 +1447,6 @@ STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}شهروندان ورود اولین کامیون را به . . .{}{STATION} تبریک گفتند!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}تصادف ماشین!{}راننده پس از تصادف با قطار در آتش سوخت
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}تصادف ماشین!{}راننده پس از تصادف با قطار{COMMA} در آتش سوخت
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}ماشین نمی تواند دور بزند...
 STR_9034_RENAME                                                 :{BLACK}تغییر نام
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}تغییر نام انواع ماشین ها
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}تغییر نام انواع ماشین ها
@@ -1437,7 +1527,7 @@ STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}هواپ
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}نمیتوان هواپیما را فروخت
 STR_A01D_AIRPORT_CONSTRUCTION                                   :ساختمان فرودگاه
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}ساخت فرودگاه
-STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}هواپیما - برای اطلاعاتبیشتر روی هواپیماکلیک کنید
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}هواپیما - برای اطلاعات بیشتر روی هواپیما کلیک کنید
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}هواپیما - برای اطلاعاتبیشتر روی هواپیماکلیک کنید
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}ساخت هواپیمای جدید
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}برای فروش هواپیما آن را به اینجا بکش
@@ -1578,8 +1668,6 @@ STR_AI_RESET                                                    :{BLACK}بازن
 STR_AI_HUMAN_PLAYER                                             :بازیکن آدمیزاد
 STR_AI_RANDOM_AI                                                :انتخاب هوش مصنوعی به صورت اتفاقی
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}پارامترهای هوش مصنوعی
-STR_AI_AUTHOR                                                   :نویسنده:
-STR_AI_VERSION                                                  :version:
 ########
 
 ############ town controlled noise level
@@ -1589,4 +1677,9 @@ STR_AI_VERSION                                                  :version:
 
 
 
+STR_AI_AUTHOR                                                   :نویسنده:
+STR_AI_VERSION                                                  :version:
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}بررسی وجود مجموعه ها و به روز رسانی های جدید در اینترنت
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}یافتن مجموعه ای که کم است در اینترنت
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK} بررسی اینکه آیا مجموعه ای که کم است در اینترنت یافت می شود یا نه
 ########

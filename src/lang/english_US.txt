@@ -2814,7 +2814,7 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Name tra
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Can't name train...
 STR_8867_NAME_TRAIN                                             :{BLACK}Name train
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Train Crash!{}{COMMA} die in fireball after collision
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Can't reverse direction of train...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Can't reverse direction of train...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Rename train vehicle type
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Can't rename train vehicle type...
 STR_CLEAR_TIME                                                  :{BLACK}Clear Time
@@ -2902,8 +2902,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Citizens celebrate . . .{}First freight streetcar arrives at {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Road Vehicle Crash!{}Driver dies in fireball after collision with train
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Road Vehicle Crash!{}{COMMA} die in fireball after collision with train
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Can't make vehicle turn around...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Can't turn vehicles consisting of multiple units
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Can't turn vehicles consisting of multiple units
 STR_9034_RENAME                                                 :{BLACK}Rename
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Rename road vehicle type
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Rename road vehicle type

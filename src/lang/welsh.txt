@@ -2800,10 +2800,8 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Clirio f
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Ailosod y mesurydd hwyrni, fel y bydd y cerbyd ar amser
 STR_SERVICE_HINT                                                :{BLACK}Hepgor y gorchymyn hwn os nad oes angen gwasanaeth
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Côst: {CURRENCY} Pwysau: {WEIGHT_S}{}Cyflymder: {VELOCITY}  Pŵer: {POWER}{}Côst Rhedeg: {CURRENCY}/bl{}Gallu cludo: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Wedi torri i lawr
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Oed: {LTBLUE}{STRING}{BLACK}   Côst Rhedeg: {LTBLUE}{CURRENCY}/bl
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pwysau: {LTBLUE}{WEIGHT_S}  {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflymder uchaf: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pwysau: {LTBLUE}{WEIGHT_S} {BLACK}Pwer: {LTBLUE}{POWER}{BLACK} Cyflymder Uchaf: {LTBLUE}{VELOCITY} {BLACK}Uchafswm T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pwys: {LTBLUE}{WEIGHT_S} {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflym. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Elw eleni: {LTBLUE}{CURRENCY}  (llynedd: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Dibynadwyedd: {LTBLUE}{COMMA}%  {BLACK}Torri i lawr ers y gwasanaeth diwethaf: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Wedi stopio
@@ -2814,7 +2812,7 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Enwi tr�
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Methu enwi trên...
 STR_8867_NAME_TRAIN                                             :{BLACK}Enwi trên
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Trên wedi crashio!{}Bu {COMMA} farw yn y ddamwain
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Methu gwrthdroi cyfeiriad  trên...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Methu gwrthdroi cyfeiriad  trên...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Ailenwi math y cerbyd trên
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Methu ailenwi math y cerbyd trên...
 STR_CLEAR_TIME                                                  :{BLACK}Clirio Amser
@@ -2902,8 +2900,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{} Mae'r tram nwyddau cyntaf wedi cyrraedd {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Damwain Cerbyd Ffordd!{}Bu gyrrwr farw mewn damwain â thrên
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Damwain Cerbyd Ffordd!{}Bu farw {COMMA} mewn damwain â thrên
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Methu peri i gerbyd droi rownd...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Methu troi cerbydau sy'n meddu ar sawl uned
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Methu troi cerbydau sy'n meddu ar sawl uned
 STR_9034_RENAME                                                 :{BLACK}Ailenwi
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Ailenwi'r math cerbyd ffordd
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Ailenwi'r math cerbyd ffordd

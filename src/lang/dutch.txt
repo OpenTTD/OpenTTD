@@ -292,7 +292,7 @@ STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} m³
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
@@ -1301,14 +1301,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Jaren
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Aantal jaren{}het spel draait
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPEL INFORMATIE
-STR_NETWORK_CLIENTS                                             :{SILVER}Spelers:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Taal:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Klimaat:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Kaartgrootte:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Server versie:  {WHITE}{STRING}
+STR_NETWORK_CLIENTS                                             :{SILVER}Spelers: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Taal: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Klimaat: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Kaartgrootte: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Server versie: {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server adres:  {WHITE}{STRING} : {NUM}
-STR_NETWORK_START_DATE                                          :{SILVER}Start datum:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Huidige datum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_START_DATE                                          :{SILVER}Start datum: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Huidige datum: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Beveiligd met wachtwoord!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER VOL
@@ -1390,7 +1390,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Lets
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multiplayer lobby
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Klaar om deel te nemen:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Klaar om deel te nemen: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Een lijst met alle bedrijven die momenteel in dit spel bestaan. Je kan meedoen met een bestaand bedrijf of een nieuw bedrijf beginnen.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nieuw bedrijf
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Start een nieuw bedrijf
@@ -1403,16 +1403,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Ververs 
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}BEDRIJFSINFORMATIE
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Bedrijfsnaam:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Begonnen in:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Bedrijfswaarde:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Huidige kas:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Inkomen vorig jaar:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Prestatie:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Bedrijfsnaam: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Begonnen in: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Bedrijfswaarde: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Huidige kas: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Inkomen vorig jaar: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Prestatie: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Voertuigen:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Stations:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Spelers:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Voertuigen: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Stations: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Spelers: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Verbinden...
 
@@ -1439,23 +1439,23 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Spelersl
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Kijk toe
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nieuw Bedrijf
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Geen netwerkapparaten gevonden of gecompileerd zonder ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Kon geen enkel netwerkspel vinden
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} De server beantwoorde het verzoek niet
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Kan geen verbinding maken, je hebt niet dezelfde NewGRF files als de server
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Netwerkspel synchronisatie mislukt.
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Netwerkspel verbinding kwijt.
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Kon server-opgeslagen spel niet laden
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Kan server niet starten.
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Kan geen verbinding maken.
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Verbinding #{NUM} duurde te lang.
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Er is een protocolfout gemaakt en onze verbinding is gesloten.
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} De revisie van deze client komt niet overeen met de revisie van de server.
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Ongeldig wachtwoord.
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} De server is vol
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Geen netwerkapparaten gevonden of gecompileerd zonder ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Kon geen enkel netwerkspel vinden
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}De server beantwoorde het verzoek niet
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Kan geen verbinding maken, je hebt niet dezelfde NewGRF files als de server
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Netwerkspel synchronisatie mislukt.
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Netwerkspel verbinding kwijt
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Kon server-opgeslagen spel niet laden
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Kan server niet starten
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Kan geen verbinding maken
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Verbinding #{NUM} duurde te lang
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Er is een protocolfout gemaakt en onze verbinding is gesloten
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}De revisie van deze client komt niet overeen met de revisie van de server
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Ongeldig wachtwoord
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}De server is vol
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Je bent verbannen van deze server
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Je bent van de server geschopt
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Vals spelen is niet toegestaan op deze server
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Je bent van de server geschopt
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Vals spelen is niet toegestaan op deze server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :algemene fout
@@ -1484,7 +1484,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spel hervat (cl
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :vertrekt
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} heeft zich bij het spel gevoegd
-STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} heeft zich gevoeg bij bedrijf #{2:NUM}
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} heeft zich gevoegd bij bedrijf #{2:NUM}
 STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} kijkt nu toe
 STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} heeft een nieuw bedrijf opgericht (#{2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} heeft het spel verlaten ({2:STRING})
@@ -1752,14 +1752,14 @@ STR_204A_BUILD_STATUE_OF_COMPANY                                :Bouw standbeeld
 STR_204B_FUND_NEW_BUILDINGS                                     :Betaal nieuwe gebouwen
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Koop exclusieve transportrechten
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Koop de gemeenteraad om
-STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Begin een kleine reclamecampagne, om meer passagiers en goederen naar jouw transportdiensten te trekken.{}  Kosten: {CURRENCY}
-STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Begin een middelgrote advertentiecampagne, om meer passagiers en goederen naar jouw transportdiensten te trekken.{}  Kosten: {CURRENCY}
-STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Begin een grote advertentiecampagne, om meer passagiers en goederen naar jouw transportdiensten te trekken.{}  Kosten: {CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Betaal een vernieuwing van het wegdek. Veroorzaakt merkbare verstoring van het wegverkeer tot 6 maanden.{}  Kosten: {CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Bouw een standbeeld ter ere van jouw bedrijf.{} Kosten: {CURRENCY}
-STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Betaal de bouw van nieuwe commerciële gebouwen in het dorp.{}  Kosten: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Koop 1 jaar exclusieve transportrechten in deze plaats. De gemeenteraad staat passagiers en goederen toe alleen jouw stations te gebruiken.{} Kosten: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Koop het plaatselijk gezag om om je rang te verhogen, met het gevaar van een strenge sanctie, wanneer gepakt.{}  Kosten: {CURRENCY}
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}Begin een kleine reclamecampagne, om meer passagiers en goederen naar jouw transportdiensten te trekken.{}Kosten: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW}Begin een middelgrote advertentiecampagne, om meer passagiers en goederen naar jouw transportdiensten te trekken.{}Kosten: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}Begin een grote advertentiecampagne, om meer passagiers en goederen naar jouw transportdiensten te trekken.{}Kosten: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW}Betaal een vernieuwing van het wegdek. Veroorzaakt merkbare verstoring van het wegverkeer tot 6 maanden.{}Kosten: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW}Bouw een standbeeld ter ere van jouw bedrijf.{}Kosten: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}Betaal de bouw van nieuwe commerciële gebouwen in het dorp.{}Kosten: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW}Koop 1 jaar exclusieve transportrechten in deze plaats. De gemeenteraad staat passagiers en goederen toe alleen jouw stations te gebruiken.{}Kosten: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW}Koop het plaatselijk gezag om om je rang te verhogen, met het gevaar van een strenge sanctie, wanneer gepakt.{}Kosten: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Verkeerschaos in {TOWN}!{}{}Wegreparatie betaald door {STRING} zorgt voor 6 maanden van irritatie bij weggebruikers!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -2206,7 +2206,7 @@ STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Bedrijfswinst Grafiek
 STR_7026_BANK_BALANCE                                           :{WHITE}Banksaldo
 STR_7027_LOAN                                                   :{WHITE}Lening
-STR_MAX_LOAN                                                    :{WHITE}Max lening:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Max lening: {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Leen {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Betaal {SKIP}{SKIP}{CURRENCY} terug
@@ -2814,7 +2814,9 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Hernoem 
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Kan trein niet zo noemen...
 STR_8867_NAME_TRAIN                                             :{BLACK}Trein benaming
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Trein Ongeluk!{}{COMMA} gedood in een vuurbal na de botsing
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan de richting van de trein niet omdraaien...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan de richting van de trein niet omdraaien...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kan de richting van het voertuig niet omdraaien...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan voertuigen bestaande uit meerdere eenheden niet omdraaien
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Hernoem trein voertuig type
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan het trein voertuig type niet hernoemen...
 STR_CLEAR_TIME                                                  :{BLACK}Reset de tijd
@@ -2902,8 +2904,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Inwoners feesten . . .{}Eerste vracht tram arriveert in {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Wegvoertuig gebotst!{}Bestuurder verongelukt door treinbotsing
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Wegvoertuig gebotst!{}{COMMA} verongelukt door treinbotsing
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan voertuig niet omdraaien...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan voertuigen bestaande uit meerdere eenheden niet omdraaien
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Kan het voertuig hier niet laten omkeren...
 STR_9034_RENAME                                                 :{BLACK}Hernoem
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Hernoem wegvoertuigtype
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Hernoem wegvoertuigtype
@@ -3283,14 +3284,14 @@ STR_MAGLEV_VEHICLES                                             :Maglev Voertuig
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Snelheid: {GOLD}{VELOCITY}{BLACK}   Kracht: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Snelheid: {GOLD}{VELOCITY}{BLACK} Kracht: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Snelheid: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Onderhoudskosten: {GOLD}{CURRENCY}/jr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capaciteit: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Ontworpen: {GOLD}{NUM}{BLACK} Levensduur: {GOLD}{COMMA} jaar
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Betrouwbaarheid: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kosten: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Snelheid: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capaciteit: {GOLD}{COMMA} passagiers, {COMMA} zakken post
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Aangedreven wagons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_S}

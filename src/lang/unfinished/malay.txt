@@ -117,6 +117,20 @@ STR_QUANTITY_BATTERIES                                          :{COMMA} bateri
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastik
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} minuman bergas
 STR_ABBREV_NOTHING                                              :
+STR_ABBREV_COAL                                                 :{TINYFONT}BA
+STR_ABBREV_MAIL                                                 :{TINYFONT}SR
+STR_ABBREV_OIL                                                  :{TINYFONT}MI
+STR_ABBREV_GOODS                                                :{TINYFONT}BR
+STR_ABBREV_WOOD                                                 :{TINYFONT}KA
+STR_ABBREV_STEEL                                                :{TINYFONT}BS
+STR_ABBREV_FRUIT                                                :{TINYFONT}BU
+STR_ABBREV_FOOD                                                 :{TINYFONT}MK
+STR_ABBREV_PAPER                                                :{TINYFONT}KR
+STR_ABBREV_GOLD                                                 :{TINYFONT}EM
+STR_ABBREV_WATER                                                :{TINYFONT}AR
+STR_ABBREV_RUBBER                                               :{TINYFONT}GT
+STR_ABBREV_SUGAR                                                :{TINYFONT}GU
+STR_ABBREV_TOYS                                                 :{TINYFONT}MA
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}MAP-{STRING}
@@ -230,6 +244,7 @@ STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARG
 STR_0140_NEW_GAME                                               :{BLACK}Permainan Baru
 STR_0141_LOAD_GAME                                              :{BLACK}Muat Permainan
 STR_MULTIPLAYER                                                 :{BLACK}Ramai pemain
+STR_SCENARIO_EDITOR                                             :{BLACK}Pengarang Senario
 
 STR_MAPSIZE                                                     :{BLACK}Saiz peta:
 STR_BY                                                          :{BLACK}*
@@ -285,6 +300,7 @@ STR_SORT_BY                                                     :{BLACK}Menyusun
 STR_SORT_BY_POPULATION                                          :{BLACK}Bilangan Penduduk
 STR_SORT_BY_PRODUCTION                                          :Pengeluaran
 STR_SORT_BY_TYPE                                                :Jenis
+STR_SORT_BY_TRANSPORTED                                         :Telah dihantarkan
 STR_SORT_BY_NAME                                                :{BLACK}Nama
 STR_SORT_BY_DROPDOWN_NAME                                       :Nama
 STR_SORT_BY_DATE                                                :{BLACK}Tarikh
@@ -574,6 +590,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Simpan s
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Muat Senario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Simpan Senario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Main Senario
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Anda pasti mahu meninggalkan senario ini?
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}... hanya boleh dibina di bandar dengan populasi lebih atau sama dengan 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Pindah tarikh permulaan 1 tahun belakang
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Pindah tarikh permulaan 1 tahun ke hadapan
@@ -762,6 +779,8 @@ STR_NOTHING                                                     :
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} tidak boleh mencari arah jalan untuk teruskan jalan
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} telah hilang jalan.
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -780,7 +799,6 @@ STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Membena
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :seperti industri lain
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Membolehkan berbilang set enjin NewGRF: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Selalu membenarkan lapangan terbang yang kecil: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Memperingatkan jika satu kereta api hilang jalan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :tidak
@@ -884,6 +902,11 @@ STR_CONVERT_RAIL_TIP                                            :{BLACK}Menukark
 
 
 
+STR_NETWORK_LANGUAGE                                            :{SILVER}Bahasa: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Saiz peta: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versi pelayan: {WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}Tarikh permulaan: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Tarikh sekarang: {WHITE}{DATE_SHORT}
 
 
 
@@ -908,7 +931,13 @@ STR_NETWORK_LANG_DUTCH                                          :Belanda
 
 
 
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nama syarikat: {WHITE}{STRING}
+STR_NETWORK_VALUE                                               :{SILVER}Nilai syarikat: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Pendapatan tahun lepas: {WHITE}{CURRENCY}
 
+STR_NETWORK_VEHICLES                                            :{SILVER}Kenderaan: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Stesen-stesen: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Pemain: {WHITE}{STRING}
 
 
 ############ Leave those lines in this order!!
@@ -919,6 +948,12 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} 
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Masukkan jumlah wang anda hendak memberikan
 
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Tidak boleh jumpa permainan rangkaian
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Pelayan itu tidak menjawabkan permohonan ini
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Tidak boleh sambung kerana NewGRF yang tidak sama
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Permainan rangkaan telah dihilang
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Tidak boleh memulakan pelayan ini
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Tidak boleh bersambung
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Kata laluan salah
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Anda telah ditendang keluar daripada permainan ini
 
@@ -1027,7 +1062,6 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} m
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Penarafan syarikat pengangkutan:
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidi
-STR_202D_UNTIL                                                  :{YELLOW}, sehingga {DATE_SHORT})
 STR_2038_FLATS                                                  :Pangsapuri
 STR_203A_SHOPS_AND_OFFICES                                      :Kedai-kedai dan pejabat-pejabat
 STR_203B_SHOPS_AND_OFFICES                                      :Kedai-kedai dan pejabat-pejabat
@@ -1049,7 +1083,6 @@ STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (sedan
 
 ##id 0x2800
 STR_2802_TREES                                                  :{WHITE}Pokok
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...kawasan yang tidak sesuai
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Tidak boleh menanam pokok di sini...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...terlalu banyak papan tanda
@@ -1074,7 +1107,6 @@ STR_3033_ACCEPTS                                                :{BLACK}Terima
 
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} tidak lagi menerima {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} tidak lagi menerima {STRING} or {STRING}
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...kawasan tidak sesuai
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Terlalu rapat dengan perlabuhan lain
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Perlabuhan mesti dirobohkan dahulu
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Pilihkan bilangan platform untuk stesen keretapi
@@ -1185,8 +1217,6 @@ STR_8006_POWERNAUT_DIESEL                                       :Powernaut Diese
 
 
 ##id 0xA000
-STR_A019_CAPACITY                                               :{BLACK}Kapasiti: {LTBLUE}{CARGO}, {CARGO}{STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kapasiti: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Bina Lapangan Terbang
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nama kapal terbang
@@ -1275,6 +1305,7 @@ STR_SHORT_DATE                                                  :{WHITE}{DATE_TI
 
 
 
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Kumpulan - klik sebuah kumpulan untuk menaraikan semua kenderaan di dalam kumpulan
 
 
 
@@ -1300,6 +1331,7 @@ STR_FACE_NO                                                     :Tidak
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pilih pengingkatan
 
 
 

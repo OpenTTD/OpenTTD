@@ -558,6 +558,21 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath="..\src\lang\serbian.txt"
+			>
+			<FileConfiguration
+				Name="Debug|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating serbian language file"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					AdditionalDependencies=""
+					Outputs="..\bin\lang\serbian.lng"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath="..\src\lang\simplified_chinese.txt"
 			>
 			<FileConfiguration

@@ -30,7 +30,7 @@ STR_0013_LIVESTOCK                                              :Ternak
 STR_0014_GOODS                                                  :Barang jadi
 STR_0015_GRAIN                                                  :Gandum
 STR_0016_WOOD                                                   :Kayu
-STR_0017_IRON_ORE                                               :Biji besi
+STR_0017_IRON_ORE                                               :Bijih besi
 STR_0018_STEEL                                                  :Baja
 STR_0019_VALUABLES                                              :Barang berharga
 STR_001A_COPPER_ORE                                             :Biji Tembaga
@@ -100,16 +100,16 @@ STR_QUANTITY_VALUABLES                                          :{COMMA} kantong
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} bijih tembaga
 STR_QUANTITY_MAIZE                                              :{WEIGHT} tepung jagung
 STR_QUANTITY_FRUIT                                              :{WEIGHT} buah-buahan
-STR_QUANTITY_DIAMONDS                                           :{COMMA} karung intan
+STR_QUANTITY_DIAMONDS                                           :{COMMA} kantong intan
 STR_QUANTITY_FOOD                                               :{WEIGHT} makanan
 STR_QUANTITY_PAPER                                              :{WEIGHT}  kertas
-STR_QUANTITY_GOLD                                               :{COMMA} karung emas
+STR_QUANTITY_GOLD                                               :{COMMA} kantong emas
 STR_QUANTITY_WATER                                              :{VOLUME} air
 STR_QUANTITY_WHEAT                                              :{WEIGHT}  gandum
 STR_QUANTITY_RUBBER                                             :{VOLUME} karet
 STR_QUANTITY_SUGAR                                              :{WEIGHT} gula
 STR_QUANTITY_TOYS                                               :{COMMA} mainan
-STR_QUANTITY_SWEETS                                             :{COMMA} karung manisan
+STR_QUANTITY_SWEETS                                             :{COMMA} kantong manisan
 STR_QUANTITY_COLA                                               :{VOLUME} cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} Harum manis
 STR_QUANTITY_BUBBLES                                            :{COMMA} gelembung
@@ -621,7 +621,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Meletakk
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Menempatkan Mercusuar
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Meletakkan Pemancar
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Menentukan wilayah gurun {} Klik dan tahan CTRL untuk menghapusnya
-STR_CREATE_LAKE                                                 :{BLACK}Membuat areal perairan .{}Membuat sebuah kanal, kecuali jika CTRL ditekan pada level yang sejajar dengan laut, maka air akan memenuhi permukaan
+STR_CREATE_LAKE                                                 :{BLACK}Membuat area perairan .{}Membuat kanal, kecuali jika CTRL ditekan pada level yang sejajar dengan laut, maka air akan memenuhi permukaan
 STR_CREATE_RIVER                                                :{BLACK}Membuat Sungai
 STR_0290_DELETE                                                 :{BLACK}Hapus
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Hapus kota ini habis
@@ -637,7 +637,7 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Simpan S
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Mainkan Skenario
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Mainkan Heightmap
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Mulai permainan baru, menggunakan heightmap sebagai datarannya
-STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Apakah anda yakin akan keluar dari skenario ini ?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Apa anda yakin mau keluar dari skenario ini ?
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...hanya dapat dibangun pada kota dengan populasi paling sedikit 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Mundurkan tanggal mulai sejauh 1 tahun
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Majukan tanggal mulai sejauh 1 tahun
@@ -881,27 +881,27 @@ STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
-STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Tidak dapat menyamakan perintah...
+STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Tidak dapat berbagi perintah...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Tidak dapat meniru perintah...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Akhir Perintah Bersama - -
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} tidak menemukan arah selanjutnya.
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} kehilangan arah.
 STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Tahun lalu {VEHICLE} merugi sebanyak {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Persatuan Moneter Eropa{}{}Euro, diperkenalkan sebagai satu-satunya mata uang untuk bertransaksi di negara anda!
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Moneter Eropa Bersatu!{}{}Euro, diperkenalkan sebagai satu-satunya mata uang untuk bertransaksi di negara anda!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}Daftar perintah {VEHICLE} terlalu sedikit
 STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} memiliki perintah yang terabaikan
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} memiliki perintah yang sama atau ganda
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} memiliki stasion yang salah pada perintahnya
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} memiliki perintah ganda
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} memiliki perintah menuju stasiun yg salah
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Peremajaan {VEHICLE}{}{STRING} gagal
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Peremajaan {VEHICLE} gagal{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} jadi terlalu panjang setelah diganti
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Tidak ada aturan peremajaan otomatis yang digunakan
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(batas uang)
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(batas min. uang)
 
 STR_CONFIG_SETTING                                              :{BLACK}Pengaturan lanjutan
 STR_CONFIG_SETTING_TIP                                          :{BLACK}Tampilkan Pengaturan lanjutan
@@ -998,7 +998,7 @@ STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Tampilk
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Tidak ada
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Perusahaan milik sendiri
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Semua Perusahaan
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Lebih suka Tim Chat dengan  <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Lebih suka Tim Chat dengan &lt;ENTER>: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Fungsi tombol scroll mouse: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Perbesar Peta
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Geser Peta
@@ -1062,7 +1062,7 @@ STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Standar
 STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Standard jangka servis berkala bus/truk: {ORANGE}Non-aktif
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Standard jangka servis berkala pesawat: {ORANGE}{STRING} hari/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standard jangka servis berkala pesawat: {ORANGE}Non-aktif
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Standard jangka servis berkala  kapal: {ORANGE}{STRING} hari/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Standard jangka servis berkala kapal: {ORANGE}{STRING} hari/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard jangka servis berkala untuk kapal: {ORANGE}Non-aktif
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Tidak perlu servis jika tidak pernah mogok : {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Aktifkan batas kecepatan gerbong: {ORANGE}{STRING}
@@ -1159,9 +1159,9 @@ STR_TOYLAND_LANDSCAPE                                           :Lansekap 'Taman
 
 STR_CHEATS                                                      :{WHITE}Kode Curang
 STR_CHEATS_TIP                                                  :{BLACK}Daftar cek ini mengindikasikan bahwa anda telah menggunakan kode curang ini sebelumnya
-STR_CHEATS_WARNING                                              :{BLACK}Peringatan! Anda akan menghianati para pesaing lainya. Ingat, tindakan ini akan terus teringat untuk selamanya.
+STR_CHEATS_WARNING                                              :{BLACK}Peringatan! Anda akan mencurangi pemain lainya. Kecurangan ini akan tetap tercatat selama game berjalan.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tambah uang sebanyak {CURRENCY}
-STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Memainkan sebagai pemain: {ORANGE}{COMMA}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain sebagai pemain: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (hancurkan industri, mercu suar dsb): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Terowongan boleh menerobos terowongan lain: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Membangun saat mode "BERHENTI": {ORANGE}{STRING}
@@ -1205,7 +1205,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Bangun industri
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Dukung Peta dengan penempatan industri secara otomatis
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Tidak dapat membangkitkan/membuat industri...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Buka toolbar lansekap untuk menaikan/menurunkan tanah, tumbuh-tumbuhan, dsb.
+STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Buka toolbar lansekap untuk menaik-turunkan tanah, menanam pohon, dsb.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Proses Lansekap
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Permukaan tanah
 
@@ -1301,14 +1301,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Tahun
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Jumlah tahun{}permainan telah berjalan
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO PERMAINAN
-STR_NETWORK_CLIENTS                                             :{SILVER}Klien:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Bahasa:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Ukuran "Tileset":  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Ukuran Peta:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versi Server:  {WHITE}{STRING}
+STR_NETWORK_CLIENTS                                             :{SILVER}Klien: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Bahasa: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Ukuran "Tileset": {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Ukuran Peta: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versi Server: {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Alamat Server:  {WHITE}{STRING} : {NUM}
-STR_NETWORK_START_DATE                                          :{SILVER}Tanggal mulai:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Tanggal sekarang:  {WHITE}{DATE_SHORT}
+STR_NETWORK_START_DATE                                          :{SILVER}Tgl mulai: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Tgl sekarang: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Terproteksi dengan kata kunci!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER PENUH
@@ -1390,7 +1390,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Latvia
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Lobi Bermain bersama
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Menyiapkan untuk bergabung:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Persiapan bergabung: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Daftar perusahaan yang ada dalam sesi permainan ini. Anda bisa bergabung dengan salah satu perusahaan, atau membuat perusahaan baru bila masih ada ruang tersisa.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Perusahaan baru
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Ciptakan satu perusahaan baru
@@ -1403,16 +1403,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Periksa 
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFO PERUSAHAAN
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nama Perusahaan:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Pelantikan:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Nilai perusahaan:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Neraca saat ini:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Pemasukan pendapatan tahun terakhir:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Performa:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nama Perusahaan: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Dilantik: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Nilai perusahaan: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Neraca saat ini: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Pendapatan tahun terakhir: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Performa: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Kendaraan:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Stasiun:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Para pemain:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Kendaraan: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Stasiun: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Para pemain: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Menghubungkan...
 
@@ -1439,23 +1439,23 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Daftar k
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Menonton
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Buat Perusahaan
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Tak menemukan perangkat jaringan atau dibuat tanpa ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Tidak menemukan permainan di jaringan
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Server tidak merespon
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Tak dapat tersambung karena NewGRF tidak cocok
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Permainan jaringan gagal disinkronkan
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Koneksi ke permainan jaringan terputus
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Tak dapat memuat game tersimpan
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Tak dapat memulai server
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Tak dapat tersambung
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Waktu Koneksi #{NUM} telah habis
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Kesalahan protokol, koneksi ditutup
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Revisi pada klien tidak sama dengan revisi pada server
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Kata kunci salah
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Server penuh
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Anda ditolak memasuki server ini
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Anda diusir dari permainan
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Tidak boleh curang di server ini
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Tak menemukan perangkat jaringan atau kompilasi tanpa "ENABLE_NETWORK"
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Tidak menemukan permainan di jaringan
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Server tidak merespon
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Tak dapat tersambung karena NewGRF tidak cocok
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Sinkronisasi permainan jaringan gagal
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Koneksi ke permainan jaringan terputus
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Tak dapat membuka game tersimpan
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Tak dapat memulai server
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Tak dapat tersambung
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Waktu Koneksi #{NUM} telah habis
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Kesalahan protokol, koneksi ditutup
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Revisi pada klien tidak sama dengan revisi pada server
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Kata kunci salah
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Server penuh
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Anda ditolak memasuki server ini
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Anda diusir dari permainan
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Tidak boleh curang di server ini
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :Kesalahan umum
@@ -1752,14 +1752,14 @@ STR_204A_BUILD_STATUE_OF_COMPANY                                :Bangun patung p
 STR_204B_FUND_NEW_BUILDINGS                                     :Danai pembangunan gedung baru
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Beli hak transportasi eksklusif
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Suap pemkot setempat
-STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Prakarsai kampanye iklan kecil, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}  Biaya: {CURRENCY}
-STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Prakarsai kampanye iklan sedang, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}  Biaya: {CURRENCY}
-STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Prakarsai kampanye iklan besar, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}  Biaya: {CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW}Danai perbaikan jalan. Akan menyebabkan gangguan pada arus lalu lintas hingga 6 bulan.{}  Biaya: {CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Bangun patung sebagai kebanggaan perusahaan anda.{} Biaya: {CURRENCY}
-STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Biayai pembangunan gedung komersil di kota .{}  Biaya: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Beli hak ekslusif transportasi di kota ini selama 1 tahun. Pemkot hanya mengijinkan penumpang dan kargo menggunakan jasa transportasi perusahaan anda.{} Biaya: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Kolusi dengan pemkot setempat untuk menaikan peringkat, dengan resiko mendapat hukuman jika tertangkap.{}  Biaya: {CURRENCY}
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}Prakarsai kampanye iklan kecil, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Biaya:{CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW}Prakarsai kampanye iklan sedang, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Biaya:{CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}Prakarsai kampanye iklan besar, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Biaya: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW}Danai perbaikan jalan. Akan menyebabkan kemacetan arus lalu lintas hingga 6 bulan.{}Biaya: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW}Bangun patung sebagai kebanggaan perusahaan anda.{}Biaya: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}Biayai pembangunan gedung komersil di kota.{}Biaya: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW}Beli hak monopoli transportasi di kota ini untuk 1 tahun. Penumpang dan kargo di kota ini hanya akan menggunakan stasiun milik perusahaan anda.{} Biaya: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW}Kolusi dengan pemkot agar naik peringkat, beresiko terkena hukuman jika tertangkap.{}Biaya: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Kekacauan lalu lintas di {TOWN}!{}{}Program perbaikan jalan yang dibiayai oleh {STRING} mengakibat kesengsaraan bagi pengendara selama 6 bulan!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -2206,7 +2206,7 @@ STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Grafik keuntungan operasional
 STR_7026_BANK_BALANCE                                           :{WHITE}Saldo Bank
 STR_7027_LOAN                                                   :{WHITE}Pinjaman
-STR_MAX_LOAN                                                    :{WHITE}Pinjaman Maks:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Pinjaman Maks: {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Pinjam {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Bayar {SKIP}{SKIP}{CURRENCY}
@@ -2721,11 +2721,11 @@ STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Semua Ke
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Membuat Kendaraan
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Gandakan
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Untuk membuat kendaraan yang sama persis. Ctrl-klik akan memberi perintah bersama
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Untuk membuat kendaraan yang sama persis. Klik tombol ini lalu klik kendaraan yang ingin digandakan, baik didalam maupun diluar depo.Ctrl-klik akan memberi perintah bersama
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Untuk membuat kendaraan yang sama persis. Ctrl-klik akan membuat perintah berbagi
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Untuk membuat kendaraan yang sama persis. Klik tombol ini lalu klik kendaraan yang ingin digandakan, baik didalam maupun diluar depo.Ctrl-klik akan membuat perintah berbagi
 STR_CLONE_TRAIN                                                 :{BLACK}Gandakan
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Untuk membuat kereta api yang sama persis termasuk gerbongnya. Ctrl-klik akan memberi perintah bersama
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Untuk membuat kereta yang sama persis. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar depo. the Ctrl-klik akan memberi perintah bersama
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Untuk membuat kereta api yang sama persis termasuk gerbongnya. Ctrl-klik akan membuat perintah berbagi
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Untuk membuat kereta yang sama persis. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar depo. the Ctrl-klik akan membuat perintah berbagi
 STR_8820_RENAME                                                 :{BLACK}Ubah Nama
 STR_8823_SKIP                                                   :{BLACK}Lewati
 STR_8824_DELETE                                                 :{BLACK}Hapus
@@ -2814,7 +2814,9 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Nama ker
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Tdak dapat menamai kereta...
 STR_8867_NAME_TRAIN                                             :{BLACK}Nama kereta
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Kecelakaan Kereta Api!{}{COMMA} mati dalam api setelah kecelakaan
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Tidak dapat mengubah arah kereta...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Tidak dapat memutar balik arah kereta...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Tidak dapat memutar balik arah kendaraan...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Tidak dapat membalik arah kendaraan yang terdiri dari beberapa unit
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Ubah nama jenis kereta
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Tidak dapat mengubah nama jenis kereta...
 STR_CLEAR_TIME                                                  :{BLACK}Hapus waktu
@@ -2902,8 +2904,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Trem Barang pertama tiba di {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Terjadi tabrakan!{}Seorang sopir meninggal dalam ledakan setelah ditabrak kereta
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Terjadi tabrakan!{}{COMMA} orang meninggal dalam ledakan setelah ditabrak kereta
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Tidak dapat membalik arah kendaraan...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Tidak dapat membalik arah kendaraan yang terdiri dari beberapa unit
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Tidak dapat memutar kendaraan...
 STR_9034_RENAME                                                 :{BLACK}Ganti Nama
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Ganti nama jenis bus/truk
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Ganti nama jenis bus/truk
@@ -2927,7 +2928,7 @@ STR_9808_NEW_SHIPS                                              :{WHITE}Kapal Ba
 STR_9809_BUILD_SHIP                                             :{BLACK}Membuat Kapal
 STR_CLONE_SHIP                                                  :{BLACK}Gandakan
 STR_CLONE_SHIP_INFO                                             :{BLACK}Untuk menggandakan satu unit kapal. Kontrol-klik akan berbagi perintah
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Untuk menggandakan satu unit Kapal . Klik tombol ini dan kemudian pada satu kapal di dalam atau diluar galangan. Kontrol-klik akan berbagi perintah
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Untuk menggandakan satu unit Kapal . Klik tombol ini dan kemudian pada satu kapal di dalam atau diluar galangan. Kontrol-klik untuk berbagi perintah
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Kapal harus berhenti di galangan
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Tidak dapat menjual kapal...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Tidak dapat membuat kapal...
@@ -2992,8 +2993,8 @@ STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Tidak da
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar Pesawat
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Buat Pesawat
 STR_CLONE_AIRCRAFT                                              :{BLACK}Gandakan
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Untuk menggandakan satu unit Pesawat. Kontrol-klik akan berbagi perintah
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Untuk menggandakan satu unit Pesawat. Klik tombol ini dan kemudian pada satu Pesawat Udara didalam atau diluar hangar. Kontrol-klik akan berbagi perintah/tujuannya
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Untuk menggandakan satu unit Pesawat. Kontrol-klik untuk berbagi perintah
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Untuk menggandakan satu unit Pesawat. Klik tombol ini dan kemudian pada satu Pesawat Udara didalam atau diluar hangar. Kontrol-klik untuk berbagi perintah
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Buat Pesawat
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Buat Pesawat
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Tidak dapat membuat pesawat ...
@@ -3283,14 +3284,14 @@ STR_MAGLEV_VEHICLES                                             :Kereta Maglev
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Biaya: {GOLD}{CURRENCY}{BLACK} Berat: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Kecepatan: {GOLD}{VELOCITY}{BLACK}   Daya: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Kecepatan: {GOLD}{VELOCITY}{BLACK} Daya: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Kecepatan: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Biaya Operasional: {GOLD}{CURRENCY}/thn
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasitas: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Desain: {GOLD}{NUM}{BLACK} Usia: {GOLD}{COMMA} tahun
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Kehandalan Maks.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Biaya: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Berat: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Berat: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Biaya: {GOLD}{CURRENCY}{BLACK} Kecepatan: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasitas: {GOLD}{COMMA} penumpang, {COMMA} kantong dokumen
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Daya Gerbong: {GOLD}+{POWER}{BLACK} Berat: {GOLD}+{WEIGHT_S}
@@ -3411,14 +3412,14 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...jalan
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...menghadap pada arah yang salah
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Pengaturan Transparasi
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Tandai transparasi untuk sinyal-sinyal dari stasiun. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Tandai transparasi untuk pepohonan. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Tandai transparasi untuk perumahan. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Tandai transparasi untuk industri. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Tandai transparasi untuk bangunan semacam stasiun, depo dan waypoints. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Tandai transparasi untuk jembatan. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Tandai transparasi untuk struktur bangunan semacam mercusuar dan antena. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Tandai transparasi untuk sinyal-sinyal dari stasiun CTRL+klik untuk mengunci.
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Hidup/matikan transparansi sinyal stasiun. CTRL+klik untuk mengunci.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Hidup/matikan transparansi pepohonan. CTRL+klik untuk mengunci.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Hidup/matikan transparansi perumahan. CTRL+klik untuk mengunci.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Hidup/matikan transparansi industri. CTRL+klik untuk mengunci.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Hidup/matikan transparansi bangunan semacam stasiun, depo dan waypoints. CTRL+klik untuk mengunci.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Hidup/matikan transparansi jembatan. CTRL+klik untuk mengunci.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Hidup/matikan transparansi struktur bangunan semacam mercusuar dan antena. CTRL+klik untuk mengunci.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Hidup/matikan transparansi katenari CTRL+klik untuk mengunci.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Hidup/matikan indikator proses pemuatan kargo. CTRL+klik untuk mengunci.
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Atur obyek menjadi sama sekali tidak nampak daripada transparan.
 
@@ -3457,7 +3458,7 @@ STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Tidak da
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Tidak dapat menambah Kendaraan dalam kelompok ini...
 STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Tidak dapat menambah Kendaraan yang dapat dipakai bersama ke dalam grup...
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Kelompok - Klik pada salah satu kelompok untuk melihat daftar semua kendaraan pada kelompok ini
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Kelompok - Klik salah satu untuk melihat daftar kendaraan pada kelompok tersebut
 STR_GROUP_CREATE_TIP                                            :{BLACK}Klik untuk membuat kelompok
 STR_GROUP_DELETE_TIP                                            :{BLACK}Hapus kelompok terpilih
 STR_GROUP_RENAME_TIP                                            :{BLACK}Ubah Nama kelompok terpilih
@@ -3547,7 +3548,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Sinyal K
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Sinyal Kombo (elektris){}Sinyal Kombo berfungsi ganda, sebagai Sinyal Masuk sekaligus Sinyal keluar. Sehingga kita bisa membuat rangkaian sinyal-sinyal
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Sinyal Jalur (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard  bisa di lewati dari arah belakang.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Sinyal Jalur Searah (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak  bisa di lewati dari arah belakangnya.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Konversi Sinyal{}Jika terpilih, klik pada sinyal yang telah ada, akan mengakibatkan sinyal berubah jenisnya, CTRL-click untuk mengubah secara berturut-turut.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Konversi Sinyal{}Jika terpilih, klik pada sinyal yang telah ada akan mengakibatkan sinyal berubah jenisnya, CTRL-click untuk mengubah secara berturut-turut.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Kerapatan Sinyal
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Kurangi kerapatan sinyal
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Tambah kerapatan sinyal
@@ -3634,8 +3635,8 @@ STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {W
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tipe: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Ukuran: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Terpilih karena: {WHITE}{STRING}
-STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Terkait dengan: {WHITE}{STRING}
-STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tag: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Memerlukan : {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Kata kunci: {WHITE}{STRING}
 
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Mengunduh konten...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Meminta berkas...
@@ -3643,7 +3644,7 @@ STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Sedang m
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Unduhan selesai
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} dari {BYTES} terunduh ({NUM} %)
 
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Tak dapat tersambung ke pelayan konten
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Tak dapat tersambung ke server
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Gagal mengunduh...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... hubungan terputus
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... berkas tak dapat ditulisi

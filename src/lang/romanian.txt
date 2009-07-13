@@ -1301,14 +1301,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Ani
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Numbarul de ani{}de cand ruleaza jocul
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO JOC
-STR_NETWORK_CLIENTS                                             :{SILVER}Clienţi:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Limba:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Marimea hartii:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versiune server:  {WHITE}{STRING}
+STR_NETWORK_CLIENTS                                             :{SILVER}Clienţi: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Limba: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Tileset: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Marimea hartii: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versiune server: {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa serverului:  {WHITE}{STRING} : {NUM}
-STR_NETWORK_START_DATE                                          :{SILVER}Data de inceput:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data curentă:  {WHITE}{DATE_SHORT}
+STR_NETWORK_START_DATE                                          :{SILVER}Data de început: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data curentă: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Protejat cu parola!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER PLIN
@@ -1390,7 +1390,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Letonă
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Chatul jocului multiplayer
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}In pregatire pentru joc:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}În pregătire pentru joc: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Lista companiilor din jocul curent. Poti colabora cu o companie sau sa infiintezi una
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Companie nouă
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Fondează o companie nouă
@@ -1403,16 +1403,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Actualiz
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFO COMPANIE
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Numele companiei:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inaugurarea:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Valoarea companiei:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balanţa curentă:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Venituri anul trecut:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Performanta:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Numele companiei: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inaugurarea: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Valoarea companiei: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balanţa curentă: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Venituri anul trecut: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Performanţa: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Vehicule:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Statii:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Jucatori:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Vehicule: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Staţii: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Jucători: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Conectare...
 
@@ -1439,23 +1439,23 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista de
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Observă
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Companie nouă
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Nu a fost detectată o placă sau jocul a fost compilat fără ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Nu a fost găsit nici un joc în reţea
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Nu am detectat o placă de reţea sau jocul a fost compilat fără ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Nu am găsit niciun joc în reţea
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Serverul nu a răspuns cererii
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Nu m-am putut conecta din cauza unei nepotriviri NewGRF
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Sincronizarea jocului în reţea a eşuat.
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Conexiunea jocului în reţea a fost întreruptă.
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nu am reuşit să încarc jocul-server salvat.
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Nu m-am putut conecta din cauza unei nepotriviri NewGRF
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Sincronizarea jocului în reţea a eşuat.
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Conexiunea jocului în reţea a fost întreruptă.
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Nu am reuşit să încarc jocul salvat.
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Nu pot porni serverul.
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Nu pot efectua conectarea.
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Conexiunea #{NUM} a expirat.
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Conexiunea #{NUM} a expirat.
 STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Eroare de protocol. Conexiunea a fost închisă.
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Versiunea acestui client este diferită de cea a serverului.
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Parola greşită.
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Serverul este plin
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Parolă greşită.
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Serverul este plin
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Acessul tău este interzis pe acest server
-STR_NETWORK_ERR_KICKED                                          :{WHITE}Ai fost dat afară de pe server
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Cheat-urile nu sunt permise pe acest server
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Ai fost dat afară din joc
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Cheat-urile nu sunt permise pe acest server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :eroare generală
@@ -1752,14 +1752,14 @@ STR_204A_BUILD_STATUE_OF_COMPANY                                :Ridică un monu
 STR_204B_FUND_NEW_BUILDINGS                                     :Finanţează construcţia de noi clădiri
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Cumpără drepturi exclusive de transport
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Mituieşte autoritatea locală
-STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniţiază o campanie publicitară mică pentru a atrage mai mulţi călători şi mai multe mărfuri spre compania ta.{}  Cost: {CURRENCY}
-STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Iniţiază o campanie publicitară medie pentru a atrage mai mulţi călători şi mai multe mărfuri spre compania ta.{}  Cost: {CURRENCY}
-STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniţiază o mare campanie publicitară pentru a atrage mai mulţi călători şi mai multe mărfuri spre compania ta.{}  Cost: {CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Finanţează reconstrucţia străzilor locale. Acest lucru cauzează perturbări majore ale traficului rutier timp de până la 6 luni.{}  Cost: {CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Înalţă o statuie în cinstea companiei tale.{} Cost: {CURRENCY}
-STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finanţează construcţia de noi clădiri comerciale în oraş.{}  Cost: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Cumpără drepturi exclusive în acest oraş pe o perioadă de un an. Autorităţile locale vor permite doar companiei tale să transporte călători şi mărfuri.{} Cost: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Mituieste autoritãtile locale pentru a-ti îmbunãtãti ratingul, dar cu riscul de a fi prins si de a plãti amenzi serioase.{}  Cost: {CURRENCY}
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniţiază o campanie publicitară mică pentru a atrage mai mulţi călători şi mai multe mărfuri spre compania ta.{} Cost: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Iniţiază o campanie publicitară medie pentru a atrage mai mulţi călători şi mai multe mărfuri spre compania ta.{} Cost: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniţiază o mare campanie publicitară pentru a atrage mai mulţi călători şi mai multe mărfuri spre compania ta.{} Cost: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Finanţează reconstrucţia străzilor locale. Acest lucru cauzează perturbări majore ale traficului rutier timp de până la 6 luni.{} Cost: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Construieşte o statuie în cinstea companiei tale.{} Cost: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finanţează construcţia de noi clădiri comerciale în oraş.{} Cost: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Cumpără drepturi exclusive de transport în acest oraş pe o perioadă de un an. Autorităţile locale vor permite doar companiei tale să transporte călători şi mărfuri.{} Cost: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW}Mituieste autoritãtile locale pentru a-ti îmbunãtãti ratingul, dar cu riscul de a fi prins si de a plãti amenzi serioase.{} Cost: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Haos pe străzile din {TOWN}!{}{}Programul finanţat de {STRING} pentru reconstrucţia străzilor aduce 6 luni de haos participanţilor la trafic!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -2206,7 +2206,7 @@ STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graficul profitului din operare
 STR_7026_BANK_BALANCE                                           :{WHITE}Balanţă curentă
 STR_7027_LOAN                                                   :{WHITE}Credite
-STR_MAX_LOAN                                                    :{WHITE}Limită credite:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Limită credit: {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Împrumută {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Plăteşte înapoi {SKIP}{SKIP}{CURRENCY}
@@ -2814,7 +2814,9 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Numele t
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Nu se poate denumi trenul...
 STR_8867_NAME_TRAIN                                             :{BLACK}Numele trenului
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Accident feroviar!{}{COMMA} victime în urma unei coliziuni
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nu se poate schimba sensul de mers al trenului...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nu se poate schimba sensul de mers al trenului...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nu se poate inversa direcţia vehiculului...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nu se pot întoarce vehiculele alcătuite din mai multe unităţi
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Redenumeste modelul vehiculului feroviar
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nu se poate redenumi modelul de vehicul...
 STR_CLEAR_TIME                                                  :{BLACK}Curata timp
@@ -2902,8 +2904,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Cetăţenii sărbătoresc . . .{}sosirea primului primul tramvai pentru marfă la {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Accident rutier!{}Şoferul decedat în urma coliziunii cu un tren
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Accident rutier!{}{COMMA} victime în urma coliziunii cu un tren
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nu pot întoarce autovehiculul...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Nu se pot întoarce vehiculele alcătuite din mai multe unităţi
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Vehicolul nu poate întoarce la 180 de grade...
 STR_9034_RENAME                                                 :{BLACK}Nume nou
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Redenumeşte modelul de autovehicul
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Redenumeşte modelul de autovehicul
@@ -3283,14 +3284,14 @@ STR_MAGLEV_VEHICLES                                             :Vehicule Pernă
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Greutate: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteza: {GOLD}{VELOCITY}{BLACK}   Putere: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteză: {GOLD}{VELOCITY}{BLACK} Putere: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Viteza: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cost de rulare: {GOLD}{CURRENCY}/an
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitate: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}An aparitie: {GOLD}{NUM}{BLACK} Durata de viata: {GOLD}{COMMA} years
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Eficienţă max.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Greutate: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Greutate: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Viteza: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitate: {GOLD}{COMMA} calatori, {COMMA} saci de posta
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoane electrificate: {GOLD}+{POWER}{BLACK} Greutate: {GOLD}+{WEIGHT_S}
@@ -3543,11 +3544,11 @@ STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Semnal (
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Semnal de sens unic (semafor){}Un semnal de cale permite trecerea simultană a mai multor trenuri prin blocurile de semnale, dacă trenul poate rezerva o cale până la un punct sigur pentru oprire. Semnalele de sens unic nu pot fi parcurse în sens opus.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Semnal standard (electric){}Semnalele sunt necesare pentru prevenirea deraierii trenurilor pe retele de cai ferate cu mai mult decat un tren.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Semnal de intrare (electric){}Verde atat timp cat exista unul sau mai multe semnale de iesire in sectiunea urmatoare a caii ferate. Altfel indica rosu.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Semnal de iesire (electric){}Se comporta in acelasi fel ca semnalul normal, dar este necesar pentru declansarea culorii corecte la intrari si presemnalizatoare combinate.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Semnal de ieşire (electric){}Se comporta în acelasi fel ca semnalul normal, dar este necesar pentru declanşarea culorii corecte la intrări şi presemnalizatoare combinate.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Semnal combinat (electric){}Semnalul combinat se comporta atat ca semnalul de intrare si iesire. Acest lucru permite construirea "arborilor" mari de presemnalizare.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Semnal (electric){}Un semnal va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire pe linie. Semnalele pot fi parcurse îm ambele sensuri.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Semnal de sens unic (electric){}Un semnal va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire pe linie. Semnalul de sens unic nu poate fi parcurs în sens opus.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Conversie semnal{}Cand este selectat, click-ul pe un semafor existent il va converti in tipul si varianta aleasa de semnalizare, iar CTRL-click va comuta varianta existenta.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Conversie semnal{}Cand este selectat, click-ul pe un semafor existent îl va converti in tipul si varianta selectată de semnalizare, iar CTRL-click va comuta varianta existenta.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Densitatea semnalelor plasate prin tragerea cu mouse-ul
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Scade densitatea semnalului de tractare
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Mareste densitatea semnalului de tractare

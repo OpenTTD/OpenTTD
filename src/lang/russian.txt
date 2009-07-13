@@ -220,7 +220,7 @@ STR_00F7_SHIPS                                                  :{BLACK}{TINYFON
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Авиатранспорт
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Маршруты транспорта
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Лес
-STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Ж/Д станция
+STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Ж/д станция
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Автостанция
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Автобусная станция
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Аэропорт/Вертодром
@@ -451,7 +451,7 @@ STR_01A6_N_A                                                    :нет данн
 STR_01A7_OWNER                                                  :{BLACK}Владелец: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Владелец дороги: {LTBLUE}{STRING}
 STR_TRAM_OWNER                                                  :{BLACK}Владелец трамвая: {LTBLUE}{STRING}
-STR_RAIL_OWNER                                                  :{BLACK}Владелец ЖД пути: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Владелец ж/д пути: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Администрация: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Нет
 STR_01AA_NAME                                                   :{BLACK}Имя
@@ -596,7 +596,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Вы у�
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Создание ландшафта
 STR_022F_TOWN_GENERATION                                        :{BLACK}Создание городов
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Создание промышленности
-STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Строительство дорог
+STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Строительство автомобильных дорог
 STR_0233_TOWN_GENERATION                                        :{WHITE}Создание городов
 STR_0234_NEW_TOWN                                               :{BLACK}Новый город
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Построить новый город
@@ -623,7 +623,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Разм
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Поставить маяк
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Поставить передатчик
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Задать площадь пустыни.{}Нажмите и держите CTRL для удаления
-STR_CREATE_LAKE                                                 :{BLACK}Создать воду:{}При отжатом CTRL создаётся канал.{}При зажатом CTRL клетка на уровне моря наполняется водой.
+STR_CREATE_LAKE                                                 :{BLACK}Создать канал.{}При зажатом Ctrl клетка на уровне моря наполняется водой.
 STR_CREATE_RIVER                                                :{BLACK}Разместить реки.
 STR_0290_DELETE                                                 :{BLACK}Уничтожить
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Полностью уничтожить этот город
@@ -1078,12 +1078,12 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Строить семафоры старого стиля: {ORANGE}до {STRING} года
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Включить меню сигналов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Тип сигнала по умолчанию: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Обычные
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :ПМС
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :одностор. ПМС
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :обычные
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :маршрутные
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :одностор. маршрутные
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Выбор сигналов (Ctrl+клик): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :только обычные
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :только ПМС
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :только маршрутные
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :все
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Тип сети городских дорог для новых городов: {ORANGE}{STRING}
@@ -1099,7 +1099,7 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Пол�
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :слева
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :в центре
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :справа
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Радиус прилипания окон: {ORANGE}{STRING} пиксел{P ь я ей}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Радиус прилипания окон: {ORANGE}{STRING} пикс.
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Радиус прилипания окон: {ORANGE}отключено
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Макс. число открытых окон (не «приклеенных»): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Макс. число открытых окон (не «приклеенных»): {ORANGE}не ограничено
@@ -1303,14 +1303,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Года
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Количество лет{}в игре
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}ИНФОРМАЦИЯ ОБ ИГРЕ
-STR_NETWORK_CLIENTS                                             :{SILVER}Клиенты:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Язык:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Климат:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Размер карты:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версия сервера:  {WHITE}{STRING}
+STR_NETWORK_CLIENTS                                             :{SILVER}Клиенты: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Язык: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Климат: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Размер карты: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версия сервера: {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адрес сервера:  {WHITE}{STRING} : {NUM}
-STR_NETWORK_START_DATE                                          :{SILVER}Дата начала:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Текущая дата:  {WHITE}{DATE_SHORT}
+STR_NETWORK_START_DATE                                          :{SILVER}Дата начала: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Текущая дата: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Защищено паролем!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}СЕРВЕР ОТКЛЮЧЕН
 STR_NETWORK_SERVER_FULL                                         :{SILVER}СЕРВЕР ЗАПОЛНЕН
@@ -1361,7 +1361,7 @@ STR_NETWORK_LANG_BULGARIAN                                      :Болгарс�
 STR_NETWORK_LANG_CHINESE                                        :Китайский
 STR_NETWORK_LANG_CZECH                                          :Чешский
 STR_NETWORK_LANG_DANISH                                         :Датский
-STR_NETWORK_LANG_DUTCH                                          :Голландский
+STR_NETWORK_LANG_DUTCH                                          :Нидерландский
 STR_NETWORK_LANG_ESPERANTO                                      :Эсперанто
 STR_NETWORK_LANG_FINNISH                                        :Финский
 STR_NETWORK_LANG_HUNGARIAN                                      :Венгерский
@@ -1392,7 +1392,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Латвийс�
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Состояние сетевой игры
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Подготовка соединения:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Подготовка соединения: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Список компаний в игре. Вы можете присоединиться к существующей или основать новую, если есть такая возможность
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Новая компания
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Основать новую компанию
@@ -1405,7 +1405,7 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Обно
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}ИНФОРМАЦИЯ О КОМПАНИИ
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Имя компании:  {WHITE}{STRING}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Имя компании: {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Основана: {WHITE}{NUM}
 STR_NETWORK_VALUE                                               :{SILVER}Оценочная стоимость: {WHITE}{CURRENCY}
 STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Текущий баланс: {WHITE}{CURRENCY}
@@ -1441,23 +1441,23 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Спис
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Наблюдатель
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Новая компания
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Не найдено сетевых устройств или игра скомпилирована без ENABLE_NETWORK (поддержки сети)
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Не смог найти сетевые игры
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Сервер не ответил на запрос
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Невозможно присоединиться из-за несоответствия NewGRF
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Синхронизация сетевой игры не удалась
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Соединение сетевой игры потеряно
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Не смог загрузить сохранение
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Не смог запустить сервер
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Не смог соединиться
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Тайм-аут для соединения #{NUM}
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Произошла ошибка протокола, и соединение было закрыто
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Версия этого клиента не совместима с версией сервера
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Неверный пароль
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Сервер переполнен
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Вам запрещено пользоваться этим сервером
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Вас выкинули из игры
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Чит-коды не разрешены на этом сервере
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Не найдены сетевые устройства или игра скомпилирована без поддержки сети
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Не смог найти сетевые игры
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Сервер не ответил на запрос
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Невозможно присоединиться из-за несоответствия NewGRF
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Синхронизация сетевой игры не удалась
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Соединение сетевой игры потеряно
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Не смог загрузить сохранение
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Не смог запустить сервер
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Не смог соединиться
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Тайм-аут для соединения #{NUM}
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Произошла ошибка протокола, и соединение было закрыто
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Версия этого клиента не совместима с версией сервера
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Неверный пароль
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Сервер переполнен
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Вам запрещено пользоваться этим сервером
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Вас выкинули из игры
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Чит-коды не разрешены на этом сервере
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :общая ошибка
@@ -1574,44 +1574,44 @@ STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Здес
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Невозможно удалить рельсы...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Невозможно удалить светофор...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Направление депо
-STR_1015_RAILROAD_CONSTRUCTION                                  :Строительство ж/д
+STR_1015_RAILROAD_CONSTRUCTION                                  :Строительство железных дорог
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Строительство электрифиц. ж/д
 STR_1016_MONORAIL_CONSTRUCTION                                  :Строительство монорельса
 STR_1017_MAGLEV_CONSTRUCTION                                    :Строительство магнитного транспорта
-STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Проложить рельсы
-STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Построить депо (для приобретения и обслуживания поездов)
-STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Построить новую станцию
-STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Установить сигналы
-STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Построить железнодорожный мост
-STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Строительство ж/д туннеля
-STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Переключение строительства/уничтожения ж/д путей и сигналов
-STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Постройка моста - кликните на том изображении моста, который вы хотите построить
+STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Строительство железной дороги
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Строительство депо (для приобретения и обслуживания поездов)
+STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Строительство ж/д станций
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Установка сигналов
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Строительство ж/д мостов
+STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Строительство ж/д туннелей
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Строительство/удаление ж/д путей, сигналов, станций
+STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Выбор моста - кликните на изображении моста, который вы хотите построить
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Выбор направления депо
 STR_1021_RAILROAD_TRACK                                         :Рельсы
-STR_1023_RAILROAD_TRAIN_DEPOT                                   :Ж/Д депо
+STR_1023_RAILROAD_TRAIN_DEPOT                                   :Ж/д депо
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...область принадлежит другой компании
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ж/д путь с обычным сигналом
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ж/д путь с пресигналами
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ж/д путь с выходными сигналами
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ж/д путь с комбо-сигналами
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Ж/д пути с ПМС сигналами
-STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Ж/д пути с односторонними ПМС сигналами
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Рельсы с нормальными и пре-сигналами
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Рельсы с нормальными и выходными сигналами
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Ж/д путь с нормальными и комбо-сигналами
-STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Ж/д пути с обычными и ПМС сигналами
-STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Ж/д пути с обычными и односторонними ПМС сигналами
-STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Рельсы с пре- и выходными сигналами
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ж/д путь с пре- и комбо-сигналами
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Ж/д пути с пре- и ПМС сигналами
-STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Ж/д пути с пре- и односторонними ПМС сигналами
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Ж/д путь с выходными и комбо-сигналами
-STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Ж/д пути с выходными и ПМС сигналами
-STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Ж/д пути с выходными и односторонними ПМС сигналами
-STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Ж/д пути с комбо и ПМС сигналами
-STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Ж/д пути с комбо и односторонними ПМС сигналами
-STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ж/д пути с ПМС и односторонними ПМС сигналами
-STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Сначала удалите ЖД станцию
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ж/д пути с обычными сигналами
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ж/д пути со входными сигналами
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ж/д пути с выходными сигналами
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ж/д пути с комбинированными сигналами
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Ж/д пути с маршрутными сигналами
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Ж/д пути с одностор. маршрутными сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Ж/д пути с обычными и входными сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Ж/д пути с обычными и выходными сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Ж/д пути с обычными и комбо-сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Ж/д пути с обычными и маршрутными сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Ж/д пути с обычными и одностор. маршр. сигналами
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Ж/д пути со входными и выходными сигналами
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ж/д пути со входными и комбо-сигналами
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Ж/д пути со входными и маршрутными сигналами
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Ж/д пути со входными и одностор. маршр. сигналами
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Ж/д пути с выходными и комбо-сигналами
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Ж/д пути с выходными и маршрутными сигналами
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Ж/д пути с выходными и одностор. маршр. сигналами
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Ж/д пути с комбо- и маршрутными сигналами
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Ж/д пути с комбо- и одностор. маршр. сигналами
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ж/д пути с маршр. и одностор. маршр. сигналами
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Сначала удалите ж/д станцию
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Построить отдельную станцию
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Объединить станции
 
@@ -1620,7 +1620,7 @@ STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Объе
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Сначала удалите дорогу
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Идут дорожные работы...
-STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Строительство дорог
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Строительство автомобильных дорог
 STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Трамваи
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Выберите тип моста
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}...односторонние дороги не могут иметь такое пересечение
@@ -1636,25 +1636,25 @@ STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Здес
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Не могу построить грузовую станцию...
 STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Не могу построить пассажирскую трамвайную остановку...
 STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Не могу построить грузовую трамвайную остановку...
-STR_180A_ROAD_CONSTRUCTION                                      :Строительство дорог
-STR_TRAMWAY_CONSTRUCTION                                        :Трамваи
-STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Проложить дорогу
+STR_180A_ROAD_CONSTRUCTION                                      :Строительство автомобильных дорог
+STR_TRAMWAY_CONSTRUCTION                                        :Строительство трамвайных путей
+STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Строительство автомобильных дорог
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Строительство автодорог в автоматическом режиме
-STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Проложить трамвайные пути
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Строительство трамвайных путей
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Строительство трамвайных путей в автоматическом режиме
-STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Построить гараж (для закупки и обслуживания машин)
-STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Построить трамвайное депо (для закупки и обслуживания трамваев)
-STR_180D_BUILD_BUS_STATION                                      :{BLACK}Построить автобусную остановку
-STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Построить погрузочную станцию
-STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Построить пассажирскую трамвайную остановку
-STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Построить грузовую трамвайную остановку
-STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Построить мост (авто)
-STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Построить трамвайный мост
-STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Построить туннель (авто)
-STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Построить трамвайный туннель
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Строительство гаражей (для закупки и обслуживания машин)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Строительство трамвайных депо (для закупки и обслуживания трамваев)
+STR_180D_BUILD_BUS_STATION                                      :{BLACK}Строительство автобусных остановок
+STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Строительство погрузочных станций
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Строительство пассажирских трамвайных остановок
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Строительство грузовых трамвайных станций
+STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Строительство автомобильных мостов
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Строительство трамвайных мостов
+STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Строительство автомобильных туннелей
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Строительство трамвайных туннелей
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Включить/отключить односторонние дороги
-STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Переключение строительства/удаления автомобильной инфраструктуры
-STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Переключение строительства/удаления трамвайной инфраструктуры
+STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Строительство/удаление автомобильных дорог и станций
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Строительство/удаление трамвайных путей и станций
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Выбор ориентации гаража
 STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Выбор ориентации трамвайного депо
 STR_1814_ROAD                                                   :Дорога
@@ -1754,14 +1754,14 @@ STR_204A_BUILD_STATUE_OF_COMPANY                                :Установ�
 STR_204B_FUND_NEW_BUILDINGS                                     :Профинансировать строительство новых зданий
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Купить эксклюзивные транспортные права
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Взятка местной администрации
-STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Провести малую рекламную кампанию для увеличения грузо- и пассажиропотока на ваших станциях.{} Цена: {CURRENCY}
-STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Провести среднюю рекламную кампанию для увеличения грузо- и пассажиропотока на ваших станциях.{} Цена: {CURRENCY}
-STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Провести большую рекламную кампанию для увеличения грузо- и пассажиропотока на ваших станциях.{} Цена: {CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Профинансировать реконструкцию городской дорожной сети. Вызывает большие нарушения движения на срок до 6 месяцев.{} Цена: {CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Установить статую в честь вашей компании.{} Цена: {CURRENCY}
-STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Профинансировать строительство новых коммерческих зданий в городе.{} Цена: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Купить годовые эксклюзивные права на транспортные перевозки в городе. Городская власть разрешает пользоваться ТОЛЬКО вашими станциями.{} Цена: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Дать взятку городской власти для повышения вашего рейтинга. Существует риск санкций, если факт взятки раскроется{} Цена: {CURRENCY}
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}Провести малую рекламную кампанию для увеличения грузо- и пассажиропотока на ваших станциях.{}Цена: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW}Провести среднюю рекламную кампанию для увеличения грузо- и пассажиропотока на ваших станциях.{}Цена: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}Провести большую рекламную кампанию для увеличения грузо- и пассажиропотока на ваших станциях.{}Цена: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW}Профинансировать реконструкцию городских дорог. Вызывает большие нарушения движения на срок до 6 месяцев.{}Цена: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW}Установить статую в честь вашей компании.{}Цена: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}Профинансировать строительство новых коммерческих зданий в городе.{}Цена: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW}Купить годовые эксклюзивные права на транспортные перевозки в городе. Администрация разрешит пользоваться ТОЛЬКО вашими станциями.{}Цена: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW}Дать взятку городской администрации для повышения рейтинга. Существует риск санкций, если факт взятки раскроется.{}Цена: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Хаос на дорогах города {TOWN}!{}{}Реконструкция дорог, профинансированная {STRING} принесла 6 месяцев пробок на дорогах!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -1797,7 +1797,7 @@ STR_280F_RAINFOREST                                             :Джунгли
 STR_2810_CACTUS_PLANTS                                          :Кактусы
 
 ##id 0x3000
-STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Выбор Ж/Д станции
+STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Выбор ж/д станции
 STR_3001_AIRPORT_SELECTION                                      :{WHITE}Выбор аэропорта
 STR_3002_ORIENTATION                                            :{BLACK}Направление
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Число путей
@@ -1806,7 +1806,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Слиш
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Присоединяется более чем к одной существующей станции
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Слишком много станций и остановок в этом городе. Переименуйте существующие.
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Слишком много станций и остановок
-STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Слишком большая ЖД станция
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Слишком большая ж/д станция
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Слишком много автобусных остановок
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Слишком много погрузочных станций
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Слишком близко к другой станции
@@ -1866,7 +1866,7 @@ STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Назв
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Выберите размер/тип аэропорта
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
-STR_305E_RAILROAD_STATION                                       :Ж/Д станция
+STR_305E_RAILROAD_STATION                                       :Ж/д станция
 STR_305F_AIRCRAFT_HANGAR                                        :Ангар
 STR_3060_AIRPORT                                                :Аэропорт
 STR_3061_TRUCK_LOADING_AREA                                     :Погрузочная платформа
@@ -1880,7 +1880,7 @@ STR_3069_BUOY                                                   :Буй
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...буй на пути
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...станция слишком большая
 STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...использование непрямоугольных станций запрещено
-STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Нажмите и держите CTRL для выбора более одного варианта
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Нажмите и держите Ctrl для выбора более одного варианта
 
 STR_UNDEFINED                                                   :(неопределено)
 STR_STAT_CLASS_DFLT                                             :По умолчанию
@@ -2102,13 +2102,9 @@ STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Сохр
 
 ############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}Лёгкий
-STR_6801_EASY.f                                                 :{BLACK}лёгкая
 STR_6802_MEDIUM                                                 :{BLACK}Средний
-STR_6802_MEDIUM.f                                               :{BLACK}средняя
 STR_6803_HARD                                                   :{BLACK}Тяжёлый
-STR_6803_HARD.f                                                 :{BLACK}тяжёлая
 STR_6804_CUSTOM                                                 :{BLACK}Пользов.
-STR_6804_CUSTOM.f                                               :{BLACK}пользов.
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
@@ -2143,17 +2139,10 @@ STR_681C_SLOW                                                   :Медленн�
 STR_681D_MEDIUM                                                 :Средняя
 STR_681E_FAST                                                   :Быстрая
 STR_681F_VERY_FAST                                              :Очень быстрая
-STR_VERY_LOW                                                    :Очень низкий
-STR_VERY_LOW.n                                                  :Очень низкое
-STR_6820_LOW                                                    :Низкий
-STR_6820_LOW.n                                                  :низкое
-STR_6820_LOW.p                                                  :Низкие
-STR_6821_MEDIUM                                                 :Средний
-STR_6821_MEDIUM.n                                               :среднее
-STR_6821_MEDIUM.p                                               :Средние
-STR_6822_HIGH                                                   :Высокий
-STR_6822_HIGH.n                                                 :высокое
-STR_6822_HIGH.p                                                 :Высокие
+STR_VERY_LOW                                                    :Очень малое
+STR_6820_LOW                                                    :Малое
+STR_6821_MEDIUM                                                 :Среднее
+STR_6822_HIGH                                                   :Большое
 STR_6823_NONE                                                   :Выключено
 STR_6824_REDUCED                                                :Умеренная
 STR_6825_NORMAL                                                 :Обычная
@@ -2198,12 +2187,12 @@ STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Расх
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Строительство
 STR_7012_NEW_VEHICLES                                           :{GOLD}Новая техника
-STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Обслуживание ЖД
+STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Обслуживание ж/д
 STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Обслуживание авто
 STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Обслуживание авиа
 STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Обслуживание кораблей
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Обслуж. собственности
-STR_7018_TRAIN_INCOME                                           :{GOLD}Доход от ЖД
+STR_7018_TRAIN_INCOME                                           :{GOLD}Доход от ж/д
 STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Доход от автотранспорта
 STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Доход от авиации
 STR_701B_SHIP_INCOME                                            :{GOLD}Доход от водного транспорта
@@ -2219,7 +2208,7 @@ STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}График прибыли от основной деятельности
 STR_7026_BANK_BALANCE                                           :{WHITE}Баланс
 STR_7027_LOAN                                                   :{WHITE}Ссуда
-STR_MAX_LOAN                                                    :{WHITE}Макс. Ссуда: {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Макс. ссуда: {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Занять {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Отдать {SKIP}{SKIP}{CURRENCY}
@@ -2349,7 +2338,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Наст
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Настройка цветовой схемы авиатранспорта
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Настройка основного цвета
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Настройка дополнительного цвета
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Выберите цветовую схему для изменения, либо несколько схем с CTRL. Кликните на чекбокс для использования выбранной схемы.
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Выберите цветовую схему для изменения, либо несколько схем с Ctrl. Кликните на чекбокс для использования выбранной схемы.
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Паровоз Kirby Paul Tank
@@ -2734,17 +2723,17 @@ STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Поез
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Построить
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Копировать
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Создает копию автомобиля. Control-щелчок копирует задания
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Создает копию автомобиля. Щелкнуть на кнопке и затем на машине внутри или снаружи гаража. Control-щелчок копирует и задания
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Создаёт копию автомобиля. Control+щелчок копирует задания
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Создаёт копию автомобиля. Щёлкнуть на кнопке и затем на машине внутри или снаружи гаража. Control+щелчок копирует и задания
 STR_CLONE_TRAIN                                                 :{BLACK}Копировать состав
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Создает копию поезда, включая все вагоны. Control-клик копирует задания
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Создает копию поезда, включая все вагоны. Щелкнуть на кнопке и затем на поезде внутри или снаружи депо. Control-клик копирует задания
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Создаёт копию поезда, включая все вагоны. Control+клик копирует задания
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Создаёт копию поезда, включая все вагоны. Щёлкнуть на кнопке и затем на поезде внутри или снаружи депо. Control+клик копирует задания
 STR_8820_RENAME                                                 :{BLACK}Переимен.
 STR_8823_SKIP                                                   :{BLACK}Пропуск
 STR_8824_DELETE                                                 :{BLACK}Удалить
 STR_8826_GO_TO                                                  :{BLACK}Ехать
 STR_REFIT                                                       :{BLACK}Переоб.
-STR_REFIT_TIP                                                   :{BLACK}Выберите тип грузов для переоборудования. CTRL+клик - для удаления.
+STR_REFIT_TIP                                                   :{BLACK}Выберите тип грузов для переоборудования. Ctrl+клик - для удаления.
 STR_REFIT_ORDER                                                 :(Переоборуд. для {STRING})
 STR_REFIT_STOP_ORDER                                            :(Переоборуд. для {STRING} и стоп)
 STR_STOP_ORDER                                                  :(Стоп)
@@ -2793,7 +2782,7 @@ STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Пере
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Текущее действие поезда; кликните для его остановки/запуска
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Показать список заданий
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Показать поезд в основном окне
-STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Отправить поезд в депо. CTRL+клик - только для обслуживания.
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Отправить поезд в депо. Ctrl+клик - только для обслуживания.
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Заставить поезд проехать на красный сигнал светофора
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Развернуть поезд
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Показать информацию о поезде
@@ -2803,8 +2792,8 @@ STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Пока
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Показать сведения о вагонах
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Показать вместимость вагонов
 STR_SHOW_TOTAL_CARGO                                            :{BLACK}Показать общую вместимость поезда по типам грузов
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Показ списка заданий - щёлкните для выделения. Если зажать CTRL - обзор станции.
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Перейти к следующему заданию. CTRL+клик - перейти к выделенному заданию
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Показ списка заданий - щёлкните для выделения. Если зажать Ctrl - обзор станции.
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Перейти к следующему заданию. Ctrl+клик - перейти к выделенному заданию
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Удалить выделенное задание
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Вставить новое задание перед выделенным, или в конец списка
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Расписание - выберите задание.
@@ -2827,7 +2816,9 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Назв
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Невозможно назвать поезд...
 STR_8867_NAME_TRAIN                                             :{BLACK}Назвать поезд
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Столкновение поездов!{}{COMMA} человек{P "" а ""} погиб{P "" ло ло} в огне!
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Невозможно развернуть поезд...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Невозможно развернуть поезд...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Нельзя развернуть поезд...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Невозможно развернуть многосоставной транспорт
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Переименовать тип вагона
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Невозможно переименовать...
 STR_CLEAR_TIME                                                  :{BLACK}Сбросить время
@@ -2890,7 +2881,7 @@ STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Авто
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Текущее действие автомобиля; кликните для его остановки/запуска
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Показать задания
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Показать автомобиль в главном окне
-STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Отправить автомобиль в гараж. CTRL+клик - только для обслуживания.
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Отправить автомобиль в гараж. Ctrl+клик - только для обслуживания.
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Принудительно развернуть автомобиль
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Показать информацию об автомобиле
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Автомобили - кликните для получения справки
@@ -2915,8 +2906,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Жители празднуют . . .{}Первый грузовой трамвай прибыл на {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}АВАРИЯ!{}Водитель погиб при столкновении с поездом
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}АВАРИЯ!{}{COMMA} человек{P "" а ""} погиб{P "" ло ло} при столкновении с поездом!
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Невозможно развернуть автомобиль...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Невозможно развернуть многосоставной транспорт
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Нельзя развернуть машину...
 STR_9034_RENAME                                                 :{BLACK}Переимен.
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Переименовать автомобиль
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Переименовать автомобиль
@@ -2939,8 +2929,8 @@ STR_9805_SHIPS                                                  :{WHITE}{COMPANY
 STR_9808_NEW_SHIPS                                              :{WHITE}Покупка кораблей
 STR_9809_BUILD_SHIP                                             :{BLACK}Купить
 STR_CLONE_SHIP                                                  :{BLACK}Копировать судно
-STR_CLONE_SHIP_INFO                                             :{BLACK}Создает копию корабля. Control-клик копирует задания
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Создает копию корабля. Щелкнуть на кнопке и затем на корабле внутри или снаружи дока. Control-клик копирует задания
+STR_CLONE_SHIP_INFO                                             :{BLACK}Создаёт копию корабля. Control+клик копирует задания
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Создаёт копию корабля. Щёлкнуть на кнопке и затем на корабле внутри или снаружи дока. Control+клик копирует задания
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Корабль должен быть остановлен в доке
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Невозможно продать корабль...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Невозможно построить корабль...
@@ -2973,7 +2963,7 @@ STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Пост
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Текущее действие корабля; кликните для его остановки/запуска
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Показать задания
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Показать корабль в главном окне
-STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Отправить корабль в док. CTRL+клик - только для обслуживания
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Отправить корабль в док. Ctrl+клик - только для обслуживания
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Показать информацию о корабле
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Цена: {CURRENCY} Макс. Скорость: {VELOCITY}{}Емкость: {CARGO}{}Стоимость обслуживания: {CURRENCY}/год
 STR_982F_NAME_SHIP                                              :{BLACK}Название корабля
@@ -3005,8 +2995,8 @@ STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Здес
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}Ангар {STATION}
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Новое судно
 STR_CLONE_AIRCRAFT                                              :{BLACK}Копировать
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Создает копию самолёта. Control-клик - копирует задания
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Построить копию возд. судна. Нажмите на кнопку, а потом на возд. судно в/вне ангара. CTRL+click - также скопирует и задание.
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Создаёт копию самолёта. Control+клик - копирует задания
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Построить копию возд. судна. Нажмите на кнопку, а потом на возд. судно в/вне ангара. Ctrl+click - также скопирует и задание.
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Новый
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Построить
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Невозможно построить возд. транспорт...
@@ -3043,7 +3033,7 @@ STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Пост
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Текущее действие воздушного судна; кликните для его остановки/запуска
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Показать задания
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Показать транспорт в главном окне
-STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Послать авиатранспорт в ангар. CTRL+клик - только для обслуживания.
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Послать авиатранспорт в ангар. Ctrl+клик - только для обслуживания.
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Показать сведения об авиатранспорте.
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Цена: {CURRENCY} Макс. Скорость: {VELOCITY}{}Емкость: {COMMA} пассажиров, {COMMA} почты{}Цена обслуживания: {CURRENCY}/год
 
@@ -3252,7 +3242,7 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Выбо
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Выбор типа транспорта, на который следует заменить
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Прекратить замену транспорта
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Начать замену выбранных типов транспорта
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Тип ЖД транспорта, подлежащего замене
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Тип ж/д транспорта, подлежащего замене
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}На какой танспорт происходит замена
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Удаление вагонов: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Разрешить при автозамене сохранять длину поездов путём удаления вагонов (начиная с головы поезда), если при автозамене локомотива увеличится длина поезда.
@@ -3296,7 +3286,7 @@ STR_MAGLEV_VEHICLES                                             :Магнитн�
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY}{BLACK} Вес: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорость: {GOLD}{VELOCITY}{BLACK}   Мощность: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорость: {GOLD}{VELOCITY}{BLACK} Мощность: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Скорость: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Стоимость обслуживания: {GOLD}{CURRENCY}/год
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ёмкость: {GOLD}{CARGO} {STRING}
@@ -3548,19 +3538,19 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Изме
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Выбор сигналов
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Невозможно преобразовать здесь сигнал...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Стандартный светофор (семофор){}Сигналы необходимы для предотвращения аварий поездов на путях.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Входной сигнал (семафор){}Горит зелёным, если хотя бы один из выходных сигналов зелёный на следующей секции путей. Во всех других случаях горит красным.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Выходной светофор (семафор).{} Работает как обычный светофор, но его значение (цвет) необходимы для нормальной работы входящих и комбинированных пресигналов.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Комбо-светофор (семафор){}Комбо-светофор работает как сдвоенный входной и выходной светофор. Это позволяет построить большую разветвленную сеть.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}ПМС сигнал. ПМС сигнал позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый поезд может зарезервировать безопасный путь. Поезд может проехать ПМС сигнал, направленный в другую сторону
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Односторонний ПМС сигнал. ПМС сигнал позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый поезд может зарезервировать безопасный путь. Поезд НЕ может проехать односторонний ПМС сигнал, направленный в другую сторону
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Стандартный светофор (электро){}Сигналы необходимы для предотвращения аварий поездов на путях.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Входной светофор (элетро){}Горит зелёным, если хотя бы один из выходных сигналов зелёный на следующей секции путей. Во всех других случаях горит красным.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Выходной светофор (электро){}Работает как обычный светофор, но его значение (цвет) необходимы для нормальной работы входящих и комбинированных пресигналов.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Комбо-светофор (электро){}Комбо-светофор работает как сдвоенный входной и выходной светофор. Это позволяет построить большую разветвленную сеть.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}ПМС сигнал. ПМС сигнал позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый поезд может зарезервировать безопасный путь. Поезд может проехать ПМС сигнал, направленный в другую сторону
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Односторонний ПМС сигнал. ПМС сигнал позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый поезд может зарезервировать безопасный путь. Поезд НЕ может проехать односторонний ПМС сигнал, направленный в другую сторону
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Изменение типа сигнала{}Когда кнопка нажата, щелкните для преобразования существующего сигнала в сигнал выбранного типа и варианта,  или щелкните с нажатым Ctrl для переборов существующих вариантов.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Стандартный семафор{}Не позволяет нескольким поездам одновременно находиться на одном блок-участке.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Входной семафор{}Открыт, если хотя бы один из выходных сигналов на следующей секции путей открыт. В остальных случаях закрыт.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Выходной семафор{}Работает как обычный семафор, но его состояние учитывается при работе входящих и комбинированных сигналов.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Комбинированный семафор{}Работает одновременно как входной и выходной семафор. Это позволяет построить большую разветвлённую сеть.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Маршрутный семафор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Допускает следование поездов в обе стороны.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Односторонний маршрутн. семафор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Не допускает следования поездов в обратную сторону.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Стандартный светофор{}Не позволяет нескольким поездам одновременно находиться на одном блок-участке.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Входной светофор{}Открыт, если хотя бы один из выходных сигналов на следующей секции путей открыт. В остальных случаях закрыт.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Выходной светофор{}Работает как обычный светофор, но его состояние учитывается при работе входящих и комбинированных сигналов.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Комбинированный светофор{}Работает одновременно как входной и выходной светофор. Это позволяет построить большую разветвлённую сеть.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Маршрутный светофор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Допускает следование поездов в обе стороны.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Односторонний маршрутн. светофор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Не допускает следования поездов в обратную сторону.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Изменение типа сигнала{}Когда кнопка нажата, щёлкните для преобразования существующего сигнала в сигнал выбранного типа и варианта, или щёлкните с нажатым Ctrl для перебора существующих вариантов.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Плотность расстановки сигналов при протягивании.
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Уменьшить плотность сигналов при протягивании
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Увеличить плотность сигналов при протягивании

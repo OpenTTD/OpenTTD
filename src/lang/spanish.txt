@@ -622,7 +622,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Coloca z
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar faro
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmisor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define área desertica.{}Pulsa y mantén CTRL para quitarla
-STR_CREATE_LAKE                                                 :{BLACK}Define el area de agua.{}Haz un canal, a menos que mantengas pulsado CTRL a nivel del mar, entonces se inundarán los alrededores del lugar
+STR_CREATE_LAKE                                                 :{BLACK}Definir área de agua.{}Crea un canal, a menos que se pulse Ctrl al nivel del mar, en cuyo caso se inundarán los alrededores
 STR_CREATE_RIVER                                                :{BLACK}Colocar rios.
 STR_0290_DELETE                                                 :{BLACK}Borrar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Borrar esta población completamente
@@ -972,7 +972,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max distancia desde los bordes para las Refinerías de Petroleo {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Altura línea nieve: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Aspereza del terreno  (Solo TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Aspereza del terreno (Solo TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muy Suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Áspero
@@ -1013,7 +1013,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desactivado
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Scroll con botón izquierdo: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Usar el formato de fecha  {ORANGE}{STRING}{LTBLUE} para los nombres de los juegos guardados.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Usar el formato de fecha {ORANGE}{STRING}{LTBLUE} para los nombres de partidas guardadas.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :largo (31 Dic 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :corto (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1302,14 +1302,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Años
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Número de años{}que el juego está ejecutado
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO JUEGO
-STR_NETWORK_CLIENTS                                             :{SILVER}Clientes:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Escenario:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamaño Mapa:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versión servidor:  {WHITE}{STRING}
+STR_NETWORK_CLIENTS                                             :{SILVER}Clientes: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Escenario: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamaño Mapa: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versión servidor: {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Dirección servidor:  {WHITE}{STRING} : {NUM}
-STR_NETWORK_START_DATE                                          :{SILVER}Fecha inicio:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Fecha actual:  {WHITE}{DATE_SHORT}
+STR_NETWORK_START_DATE                                          :{SILVER}Fecha inicio: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Fecha actual: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Protegido por contraseña!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVIDOR APAGADO
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVIDOR LLENO
@@ -1334,7 +1334,7 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (anuncio)
 STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} cliente{P "" s}
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máx. clientes permitidos:
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máx clientes:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Seleccione un número máximo de clientes. No todos los slots serán ocupados.
 STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} compañia{P y s}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Máximo compañías:
@@ -1391,7 +1391,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Letón
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sala de estar del juego multijugador
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparando para unirse:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparándose para unirse: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Un listado de empresas actualmente en el juego. Puede unirse a una o emprezarla.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nueva empresa
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Abre una nueva empresa
@@ -1404,16 +1404,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Recargar
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFO EMPRESA
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nombre empresa:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inauguración:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Valor empresa:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balance actual:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Ingresos último año:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Rendimiento:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nombre empresa: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inauguración: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Valor empresa: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balance actual: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Ingresos último año: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Rendimiento: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Vehículos:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Estaciones:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Jugadores:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Vehículos: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Estaciones: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Jugadores: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Conectando...
 
@@ -1440,23 +1440,23 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista de
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Presenciar
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nueva compañía
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} No se han encontrado dispositivos de red o juego compilado sin ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} No se puede encontrar ningún juego en red
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} El servidor no responde a la petición
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} No se puede conectar debido a un problema con los NewGRF
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} La sincronización del juego ha fallado.
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} La conexión con el juego en red se ha perdido.
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} No es posible cargar el juego multijugador.
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} No se puede iniciar el servidor.
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} No se puede conectar.
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Tiempo de espera agotado en conexión #{NUM}.
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Se ha producido un error de protocolo y la conexión ha sido cerrada.
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} La versión de este cliente no corresponde con la versión de este servidor.
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Contraseña incorrecta.
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} El servidor está lleno
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Has sido baneado de este servidor
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Has sido expulsado de este servidor
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Los cheats (trucos) no son permitidos en este servidor
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}No se han encontrado dispositivos de red o juego compilado sin ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}No se pudo encontrar ningún juego en red
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}El servidor no responde a la petición
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}No se pudo conectar debido a incompatibilidad de NewGRF
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}La sincronización del juego en red ha fallado
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}La conexión con el juego en red se ha perdido
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}No se pudo cargar partida
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}No se pudo iniciar servidor
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}No se pudo conectar
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Tiempo de espera agotado en conexión #{NUM}
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Se ha producido un error de protocolo y la conexión ha sido cerrada
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}La versión de este cliente no corresponde con la versión del servidor
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Contraseña incorrecta
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}El servidor está completo
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Se ha prohibido tu acceso al servidor
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Has sido expulsado del servidor
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}No se permiten trucos en este servidor
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :error general
@@ -1469,7 +1469,7 @@ STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :no autorizado
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :recibido paquete extraño
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :versión incorrecta
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :este nombre ya está en uso
-STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :contraseña de juego incorrecta
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :contraseña incorrecta
 STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :error en el id de la empresa en el DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :expulsado por el servidor
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :ha intentado usar un cheat (truco)
@@ -1522,12 +1522,12 @@ STR_NETWORK_SEND                                                :{BLACK}Enviar
 
 ##### PNG-MAP-Loader
 
-STR_PNGMAP_ERROR                                                :{WHITE}No se pudo cargar mapa de altura desde el PNG...
+STR_PNGMAP_ERROR                                                :{WHITE}No se pudo cargar mapa de alturas PNG...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...fichero no encontrado.
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...no se pudo convertir tipo de imagen. Se requiere imagenes PNG de 8 o 24-bits.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...algo ha salido mal. Lo siento (posiblemente el fichero esté corrupto)
 
-STR_BMPMAP_ERROR                                                :{WHITE}No se puede cargar el paisaje desde el BMP...
+STR_BMPMAP_ERROR                                                :{WHITE}No se pudo cargar mapa de alturas BMP...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...no se puede convertir el tipo de imagen.
 
 ##id 0x0800
@@ -1753,14 +1753,14 @@ STR_204A_BUILD_STATUE_OF_COMPANY                                :Poner una estat
 STR_204B_FUND_NEW_BUILDINGS                                     :Pagar la construcción de nuevos edificios
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Comprar la exclusiva de los servicios de transporte
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Sobornar la autoridad local
-STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniciar una pequeña campaña publicitaria local, para atraer más pasajeros y carga a sus servicios de transporte.{}  Coste: {CURRENCY}
-STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Iniciar una mediana campaña publicitaria local, para atraer más pasajeros y carga a sus servicios de transporte.{}  Coste: {CURRENCY}
-STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniciar una gran campaña publicitaria local, para atraer más pasajeros y carga a sus servicios de transporte.{}  Coste: {CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Pagar la reconstrucción de las carreteras locales. Causa una considerable complicación del tráfico durante 6 meses.{}  Coste: {CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Construye una estatua en honor a su empresa.{} Coste: {CURRENCY}
-STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Pagar la construcción de nuevos edificios comerciales en la población.{}  Coste: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Compre la exclusiva durante 1 año de los derechos de transporte en esta población. Las autoridades solo permitirán el uso de las estaciones de su empresa.{} Coste: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Soborne a las autoridades locales para aumentar su ranking, con el riesgo de una severa penalización si es descubierto.{}  Coste: {CURRENCY}
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}Iniciar una pequeña campaña publicitaria local para atraer más pasajeros y carga a sus servicios de transporte.{}Coste: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW}Iniciar una campaña publicitaria local mediana para atraer más pasajeros y carga a sus servicios de transporte.{}Coste: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}Iniciar una gran campaña publicitaria local para atraer más pasajeros y carga a sus servicios de transporte.{}Coste: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW}Pagar la reconstrucción de las carreteras locales. Provoca considerables complicaciones del tráfico durante 6 meses.{}Coste: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW}Construye una estatua en honor a su empresa.{}Coste: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}Pagar la construcción de nuevos edificios comerciales en la población.{}Coste: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW}Comprar en exclusiva los derechos de transporte en esta población durante un año. Las autoridades solo permitirán el uso de las estaciones de su empresa.{}Coste: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW}Sobornar a las autoridades locales para aumentar su ranking, con el riesgo de una severa penalización si es descubierto.{}Coste: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Colapso circulatorio en {TOWN}!{}{}¡Programa de reconstrucción de carreteras patrocinado por {STRING} causa 6 meses de problemas a los conductores!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -1802,7 +1802,7 @@ STR_3002_ORIENTATION                                            :{BLACK}Orientac
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Número de andenes
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Longitud de andén
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Demasiado cerca de otra estación de tren
-STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}djunta más de una estación/zona de carga existente
+STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Adjunta más de una estación/zona de carga existente
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Demasiadas estaciones/zonas de carga en esta población
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Demasiadas estaciones/zonas de carga
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Demasiadas partes de estación de tren
@@ -1888,7 +1888,7 @@ STR_STAT_CLASS_WAYP                                             :Puntos de paso
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientación del astillero
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...debe ser construida sobre el agua
-STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}No se puede contruir un astillero aquí...
+STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}No se puede construir un astillero aquí...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Selecciona orientación del astillero
 STR_3804_WATER                                                  :Agua
 STR_3805_COAST_OR_RIVERBANK                                     :Costa o rivera
@@ -1913,7 +1913,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Error interno: 
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Partida guardada corrupta - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :La partida guardada ha sido realizada con una versión más nueva
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :No se puede leer fichero
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Fichero no escribible
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :No se puede escribir en el fichero
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Comprobación de integridad de los datos fallida.
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Listado de unidades, directorios y juegos guardados
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nombre seleccionado actualmente para el juego guardado
@@ -1945,7 +1945,7 @@ STR_4811_GOLD_MINE                                              :Mina de Oro
 STR_4812_BANK                                                   :Banco
 STR_4813_DIAMOND_MINE                                           :Mina de Diamantes
 STR_4814_IRON_ORE_MINE                                          :Mina de Hierro
-STR_4815_FRUIT_PLANTATION                                       :Platanción de frutas
+STR_4815_FRUIT_PLANTATION                                       :Plantación de Fruta
 STR_4816_RUBBER_PLANTATION                                      :Plantación de Caucho
 STR_4817_WATER_SUPPLY                                           :Suministro de Agua
 STR_4818_WATER_TOWER                                            :Torre de Agua
@@ -1958,10 +1958,10 @@ STR_481E_BATTERY_FARM                                           :Granja de Pilas
 STR_481F_COLA_WELLS                                             :Pozos de Cola
 STR_4820_TOY_SHOP                                               :Tienda de Juguete
 STR_4821_TOY_FACTORY                                            :Fábrica de Juguetes
-STR_4822_PLASTIC_FOUNTAINS                                      :Fuestes de Plástico
+STR_4822_PLASTIC_FOUNTAINS                                      :Fuentes de Plástico
 STR_4823_FIZZY_DRINK_FACTORY                                    :Fábrica de Refrescos
 STR_4824_BUBBLE_GENERATOR                                       :Generador de Burbujas
-STR_4825_TOFFEE_QUARRY                                          :Cantera de caramelos
+STR_4825_TOFFEE_QUARRY                                          :Cantera de Caramelos
 STR_4826_SUGAR_MINE                                             :Mina de Azúcar
 
 ############ range for requires starts
@@ -1987,7 +1987,7 @@ STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}No se pu
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...sólo se puede plantar un bosque sobre la línea nevada
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}¡La industria de {STRING} anuncia cierre inminente!
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemas con el suministro causa que {STRING} anuncie su cierre inminente!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}¡La falta de árboles cercanos causa que  {STRING} anuncie su cierre inmediato!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}¡La falta de árboles cercanos causa que {STRING} anuncie su cierre inmediato!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}¡{INDUSTRY} incrementa su producción!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}¡Nueva veta de carbón encontrada en {INDUSTRY}!{}¡Se espera doblar la producción!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}¡Nuevas reservas de petróleo encontradas en {INDUSTRY}!{}¡Se espera doblar la producción!
@@ -2207,7 +2207,7 @@ STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Gráfico de Beneficio Operativo
 STR_7026_BANK_BALANCE                                           :{WHITE}Saldo en Banco
 STR_7027_LOAN                                                   :{WHITE}Préstamo
-STR_MAX_LOAN                                                    :{WHITE}Préstamo Máx:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Préstamo Máx: {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Pedir Préstamo {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Pagar Préstamo {SKIP}{SKIP}{CURRENCY}
@@ -2337,7 +2337,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Ver esqu
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Mostrar esquema de color de aeronaves
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Selecciona el color primario para el esquema seleccionado
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Selecciona el color secundario para el esquema seleccionado
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Selecciona un esquema de color para cambiarlo, o selecciona varios pulsandoh CTRL+click. Pulsa en la caja para cambiar el uso del esquema
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Selecciona un esquema de color a modificar, o selecciona varios pulsando Ctrl+Click. Pulsa en la caja para cambiar el uso del esquema
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)
@@ -2720,21 +2720,21 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nuevos v
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nuevos vehículos de levitación magnética
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Vehículos de Rail
 
-STR_881F_BUILD_VEHICLE                                          :{BLACK}Contruir Vehículo
+STR_881F_BUILD_VEHICLE                                          :{BLACK}Construir Vehículo
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clonar vehículo
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Esto construirá una copia del vehículo. Control-click compartirá las ordenes
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Esto construirá una copia del vehículo. Pulsa este botón y después el vehículo dentro o fuera del depósito. Control-click compartirá las ordenes
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Esto construirá una copia del vehículo. Ctrl+Click compartirá las órdenes
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Esto construirá una copia del vehículo. Pulse este botón y después el vehículo dentro o fuera del depósito. Ctrl+Click compartirá las ordenes
 STR_CLONE_TRAIN                                                 :{BLACK}Clonar tren
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Esto copiará el tren incluido sus vagones. Control-click compartirá las ordenes
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Esto construirá una copia del tren. Pulsa este botón y después el tren dentro o fuera del depósito. Control-click compartirá las ordenes
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Esto construirá una copia del tren incluyendo sus vagones. Ctrl+Click compartirá las ordenes
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Esto construirá una copia del tren incluyendo sus vagones. Pulse este botón y después el tren dentro o fuera del depósito. Ctrl+Click compartirá las ordenes
 STR_8820_RENAME                                                 :{BLACK}Renombrar
 STR_8823_SKIP                                                   :{BLACK}Saltarse
 STR_8824_DELETE                                                 :{BLACK}Borrar
 STR_8826_GO_TO                                                  :{BLACK}Ir a
-STR_REFIT                                                       :{BLACK}Recargar
-STR_REFIT_TIP                                                   :{BLACK}Selecciona el tipo de carga a recargar en esta orden. Control+click para quitar la orden de recargar
-STR_REFIT_ORDER                                                 :(Recargar en {STRING})
-STR_REFIT_STOP_ORDER                                            :(Reparar en {STRING} y parar)
+STR_REFIT                                                       :{BLACK}Reformar
+STR_REFIT_TIP                                                   :{BLACK}Selecciona el tipo de carga a reformar en esta orden. Ctrl+Click para quitar la orden de reforma
+STR_REFIT_ORDER                                                 :(Reformar en {STRING})
+STR_REFIT_STOP_ORDER                                            :(Reformar en {STRING} y parar)
 STR_STOP_ORDER                                                  :(Parar)
 STR_TIMETABLE_VIEW                                              :{BLACK}Horarios
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Cambiar a la vista de horarios
@@ -2815,7 +2815,9 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Nombrar 
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}No se puede nombrar tren...
 STR_8867_NAME_TRAIN                                             :{BLACK}Nombrar tren
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}¡Siniestro ferroviario!{}{COMMA} fallecidos en la explosión de la colisión
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}No se puede revertir la dirección...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}No se puede revertir la dirección...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}No se puede invertir dirección del vehículo...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}No se pude dar la vuelta a un vehículo compuesto por múltiples unidades
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renombrar tipo de vehículo
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No se puede renombrar tipo de vehículo...
 STR_CLEAR_TIME                                                  :{BLACK}Limpiar Horario
@@ -2846,7 +2848,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Este vehículo 
 STR_TIMETABLE_TOTAL_TIME                                        :Los horarios tomarán  {STRING} para completarse
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Estos horarios tomarán {STRING} para completarse (no todos los horarios)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automático
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena la tabla de horarios automáticamente con los valores de la siguiente jornada (CTRL-click para tratar de mantener los tiempos de espera))
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena la tabla de horarios automáticamente con los valores de la siguiente jornada (Ctrl+Click para tratar de mantener los tiempos de espera))
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vehículo de carretera en camino
@@ -2903,17 +2905,16 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Ciudadanos celebran . . .{}Llega primer tranvía de carga a {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}¡Accidente de tráfico!{}El conductor fallece en la explosión tras la colisión con el tren
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Accidente de tráfico!{}{COMMA} fallecidos en la explosión tras la colisión con el tren
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}No se puede hacer girar al vehículo...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}No se pude dar la vuelta a un vehículo compuesto por múltiples unidades
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}No se puede girar vehículo de carretera...
 STR_9034_RENAME                                                 :{BLACK}Renombrar
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Renombrar tipo de vehículo
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Renombrar tipo de vehículo
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}No se puede renombrar tipo de vehículo....
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reparar vehículo de carretera para transportar otro tipo de cargas
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reparar vehículo de carretera
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Reparar vehículo de carretera para transportar la carga seleccionada
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}No se puede reparar vehículo de carretera
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reformar vehículo de carretera para transportar otro tipo de cargas
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reformar vehículo de carretera
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Reformar vehículo de carretera para transportar la carga seleccionada
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}No se puede reformar vehículo de carretera...
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona tipo de carga que transportará el vehículo de carretera
 
 ##id 0x9800
@@ -2927,8 +2928,8 @@ STR_9805_SHIPS                                                  :{WHITE}{COMPANY
 STR_9808_NEW_SHIPS                                              :{WHITE}Nuevos barcos
 STR_9809_BUILD_SHIP                                             :{BLACK}Construir barco
 STR_CLONE_SHIP                                                  :{BLACK}Clonar barco
-STR_CLONE_SHIP_INFO                                             :{BLACK}Esto copiará el barco. Control-click compartirá las ordenes
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Esto construirá una copia del barco. Pulsa este botón y después el barco dentro o fuera del muelle. Control-click compartirá las ordenes
+STR_CLONE_SHIP_INFO                                             :{BLACK}Esto construirá una copia del barco. Ctrl+Click compartirá las órdenes
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Esto construirá una copia del barco. Pulse este botón y después el barco dentro o fuera del muelle. Ctrl+Click compartirá las ordenes
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Barco debe estar detenido en astillero
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}No se puede vender barco...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}No se puede construir barco...
@@ -2993,8 +2994,8 @@ STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}No se pu
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar de aeroplanos
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nueva aeronave
 STR_CLONE_AIRCRAFT                                              :{BLACK}Clonar aeronave
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Esto copiará la aeronave. Control-click compartirá las ordenes
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Esto construirá una copia de la aeronave. Pulsa este botón y después la aeronave dentro o fuera del hangar. Control-click compartirá las ordenes
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Esto construirá una copia de la aeronave. Ctrl+Click compartirá las órdenes
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Esto construirá una copia de la aeronave. Pulse este botón y después en la aeronave dentro o fuera del hangar. Ctrl+Click compartirá las ordenes
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nueva Aeronave
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construir aeronave
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}No se puede construir aeronave...
@@ -3205,7 +3206,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostrar 
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar todos los barcos que tienen esta estación en su horario
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordenes compartidas de  {COMMA} Vehículo{P "" s}
-STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Ver todos los vehículos que tienen el mismo calendario
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Ver todos los vehículos con el mismo calendario
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vas a vender todos los vehículos que tienes en el depósito.  ¿Estás seguro?
@@ -3284,18 +3285,18 @@ STR_MAGLEV_VEHICLES                                             :Vehículos de L
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidad: {GOLD}{VELOCITY}{BLACK}   Potencia: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidad: {GOLD}{VELOCITY}{BLACK} Potencia: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocidad: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coste de operación: {GOLD}{CURRENCY}/año
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidad: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Diseñado: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} años
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilidad máxima: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Coste: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidad: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidad: {GOLD}{COMMA} pasajeros, {COMMA} sacas de correo
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagones con motor: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Convertible a: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reformable a: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos los tipos de carga
 STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Esfuerzo de Tracción {GOLD}{FORCE}
@@ -3412,15 +3413,15 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...esta 
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...revestimientos del camino en la dirección incorrecta
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Opciones de Transparencia
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Activar transparencia para las señales de estaciones
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Activar transparencia para los árboles
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Activar transparencia para las casas
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Activar transparencia para las industrias
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Activar transparencias para construcciones como estaciones, depósitos, puntos de paso, etc.
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Activar transparencias para puentes
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Activar transparencias para estructuras como faros, antenas, etc.
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Activar transparencia para la catenaria. CTRL+click para bloquear.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Ajustar transparencia para los indicadores de carga
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Ajustar transparencia para carteles de estaciones. Ctrl+Click para bloquear.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Ajustar transparencia para árboles. Ctrl+Click para bloquear.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Ajustar transparencia para casas. Ctrl+Click para bloquear.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Ajustar transparencia para industrias. Ctrl+Click para bloquear.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Ajustar transparencia para construcciones como estaciones, depósitos o puntos de paso. Ctrl+Click para bloquear.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Ajustar transparencia para puentes. Ctrl+Click para bloquear.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Ajustar transparencia para estructuras como faros, antenas, etc. Ctrl+Click para bloquear.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Ajustar transparencia para catenaria. Ctrl+Click para bloquear.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Ajustar transparencia para los indicadores de carga. Ctrl+Click para bloquear.
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Poner objetos invisibles en vez de transparentes
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3458,7 +3459,7 @@ STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}No se pu
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}No se puede añadir el vehículo a este grupo...
 STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}No se pueden añadir vehículos compartidos al grupo...
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupos - Pulsa en el grupo para ver la lista de vehículos que tiene el grupo
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupos - click en un grupo para ver la lista de sus vehículos
 STR_GROUP_CREATE_TIP                                            :{BLACK}Pulsa para crear un grupo
 STR_GROUP_DELETE_TIP                                            :{BLACK}Borrar el grupo seleccionado
 STR_GROUP_RENAME_TIP                                            :{BLACK}Renombrar el grupo seleccionado
@@ -3548,7 +3549,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Señal d
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo señal (eléctrica){}La señal combo actua como señal de entrada y salida. Esto permite construir grandes "árboles" de preseñales.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Señal Avanzada (electrica){}Un señal avanzada permite a más de un tren entrar a un bloque de señal a la vez, si el tren puede retornar por la vía a un lugar seguro. Pueden ser traspasadas desde atrás.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Señal Avanzada de un sentido (electrica){}Una señal avanzada que permite a más de un tren entrar a un bloque de señal a la vez, si el tren puede retornar a un lugar seguro. Señales de un sentido no permiten ser traspasadas desde atrás.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Convertir señal{}Cuando es seleccionado, pulsando sobre una señal existente la convertiremos a la variante indicada. Pulsa CTRL-click para cambiar de variante.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Convertir señal{}Cuando es seleccionado, pulsar sobre una señal existente la convierte en el tipo y variante indicados. Pulsar Ctrl+Click permite cambiar de variante
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Arrastrar densidad de señales
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Decrementar arrastre de intensidad de señales
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Incrementar arrastre de intensidad de señales
@@ -3612,7 +3613,7 @@ STR_CONTENT_MATRIX_TIP                                          :{BLACK}Pincha e
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Seleccionar todas
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Marca todo el contenido para descarga
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Seleccionar acts.
-STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Marca todo el contenido que es una actualización de contenido existente para descargar
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Marca para descargar todo el contenido existente que ha sido actualizado
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Desmarcar todas
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Marca todo el contenido para no ser descargado
 STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Escribe patrón de filtrado
@@ -3645,12 +3646,12 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Descarga
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} de {BYTES} descargadas ({NUM} %)
 
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}No es posible conectarse al servidor de contenidos...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Descarga erronea...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Descarga errónea...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... conexión perdida
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fichero no escribible
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... no se puede escribir en el fichero
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No ha sido posible descomprimir el fichero descargado
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Comprobar contenido online
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Consultar contenido online
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Comprobar si hay nuevos contenidos actualizados para descargar
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Encontrar contenido perdido en línea
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Comprobar si el contenido que falta puede ser encontrado en línea

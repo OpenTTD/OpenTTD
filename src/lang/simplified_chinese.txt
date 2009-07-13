@@ -1158,7 +1158,7 @@ STR_SUB_TROPICAL_LANDSCAPE                                      :沙漠景观
 STR_TOYLAND_LANDSCAPE                                           :奇幻景观
 
 STR_CHEATS                                                      :{WHITE}作弊
-STR_CHEATS_TIP                                                  :{BLACK}标志你是否用过此项作弊手段的单选框
+STR_CHEATS_TIP                                                  :{BLACK}标志您是否用过此作弊选项的单选框
 STR_CHEATS_WARNING                                              :{BLACK}警告！你将要背叛你的盟友，这将被永久记录！
 STR_CHEAT_MONEY                                                 :{LTBLUE}增加 {CURRENCY} 现金
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}作为{ORANGE}{COMMA}进行游戏
@@ -1265,7 +1265,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}改变�
 STR_NETWORK_MULTIPLAYER                                         :{WHITE}联机游戏
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}玩家名称：
-STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}其他玩家将通过这个名字来认识你
+STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}其他玩家将通过该名字来认识您
 STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}请输入大名
 STR_NETWORK_CONNECTION                                          :{BLACK}连接：
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}选择一个 Internet 上的游戏或局域网 (LAN) 中的游戏
@@ -1301,14 +1301,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}年
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}年数{}游戏正在运行的
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}游戏信息
-STR_NETWORK_CLIENTS                                             :{SILVER}客 户 端：   {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}语　　言：   {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}场景类型：   {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}地图类型：   {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}服务器版本： {WHITE}{STRING}
+STR_NETWORK_CLIENTS                                             :{SILVER}客 户 端: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}语　　言： {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}场景类型: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}地图尺寸: {WHITE}{COMMA}×{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}服务器版本: {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}服务器地址： {WHITE}{STRING} : {NUM}
-STR_NETWORK_START_DATE                                          :{SILVER}开始日期：   {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}当前日期：   {WHITE}{DATE_SHORT}
+STR_NETWORK_START_DATE                                          :{SILVER}开始日期: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}当前日期: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}有密码保护！
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}服务器离线
 STR_NETWORK_SERVER_FULL                                         :{SILVER}服务器满员
@@ -1390,7 +1390,7 @@ STR_NETWORK_LANG_LATVIAN                                        :拉脱维亚语
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}联机游戏大厅
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}正在准备加入： {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}正在准备加入: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}当前参与游戏的公司列表{}您可以加入其中一个公司{}或者在有空位的情况下重建一个公司
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}新公司
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}创建一个新公司
@@ -1403,15 +1403,15 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}刷新�
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}公司信息
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}公司信息：{WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}开业时间：{WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}公司市值：{WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}流动资金：{WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}去年收入：{WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}表现情况：{WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}公司信息: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}开业时间: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}公司市值: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}流动资金: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}去年收入: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}表现评价: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}车辆：{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}车站：{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_VEHICLES                                            :{SILVER}车辆船只: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}站台: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_PLAYERS                                             :{SILVER}玩家：{WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}正在连接……
@@ -1440,21 +1440,21 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}旁观
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新公司
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} 没有网络设备或者编译时未使用 ENABLE_NETWORK 参数
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} 不能找到任何网络游戏
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE} 未找到任何联机游戏
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} 服务器没有响应
 STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} 因为 NewGRF 不匹配而无法连接
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} 网络游戏同步失败
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} 网络游戏被断开
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} 不能读取已保存的游戏
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} 不能启动服务器
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} 不能连接
+STR_NETWORK_ERR_DESYNC                                          :{WHITE} 联机游戏同步失败
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} 联机游戏被断开
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} 无法读取存档
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE} 无法启动服务器模式
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} 无法连接
 STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} 连接 #{NUM} 超时
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} 套接字错误，连接被断开
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} 传输协议错误，连接断开
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} 此客户端版本与服务器端不匹配
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} 错误的密码
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} 密码错误
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} 服务器已经满员
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} 你被该服务器封禁了
-STR_NETWORK_ERR_KICKED                                          :{WHITE} 你被从游戏中踢出来了
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} 您的IP已被该服务器封禁(ban)
+STR_NETWORK_ERR_KICKED                                          :{WHITE} 您已被踢出服务器
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} 此服务器不允许作弊
 
 ############ Leave those lines in this order!!
@@ -1521,12 +1521,12 @@ STR_NETWORK_SEND                                                :{BLACK}发送
 
 ##### PNG-MAP-Loader
 
-STR_PNGMAP_ERROR                                                :{WHITE}不能从 PNG 中读取景观……
+STR_PNGMAP_ERROR                                                :{WHITE}无法从 PNG 文件中读取场景……
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}文件未找到。
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}不能转换图像格式{}请使用 8 位或 24 位 PNG 图片
 STR_PNGMAP_ERR_MISC                                             :{WHITE}似乎出现了一些错误{}(如损坏的文件等)
 
-STR_BMPMAP_ERROR                                                :{WHITE}不能从 BMP 中读取景观……
+STR_BMPMAP_ERROR                                                :{WHITE}无法从 BMP 文件中读取场景……
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}不能转换图像格式。
 
 ##id 0x0800
@@ -2814,7 +2814,9 @@ STR_8865_NAME_TRAIN                                             :{WHITE}给列�
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}不能给列车命名...
 STR_8867_NAME_TRAIN                                             :{BLACK}给列车命名
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}列车相撞!{}{COMMA} 人在爆炸中丧生
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}不能命令列车调头...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}不能命令列车调头...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}无法调转车辆方向...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}不能命令多节的汽车掉头
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}重命名车辆的类型
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}不能重命名车辆的类型...
 STR_CLEAR_TIME                                                  :{BLACK}清除时间
@@ -2902,8 +2904,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}市民欢庆~. . .{}首辆货运电车抵达 {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，司机在事故中丧生！
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，{COMMA} 人在事故中丧生！
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}不能命令汽车掉头……
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}不能命令多节的汽车掉头
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}车辆无法调头...
 STR_9034_RENAME                                                 :{BLACK}重命名
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}重命名汽车型号
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}重命名汽车型号

@@ -622,7 +622,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Setja kl
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Setja vita
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Setja sendi
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Afmarkaðu eyðimörk.{}Smelltu og haltu CTRL til að fjarlægja hana
-STR_CREATE_LAKE                                                 :{BLACK}Skilgreina vantssvæði.{}Grafa skipaskurð, nema CTRL sé haldið niðri við sjávarmál, þá flæðir það umhverfið í staðin.
+STR_CREATE_LAKE                                                 :{BLACK}Skilgreina vantssvæði.{}Grafa skipaskurð, nema CTRL sé haldið niðri við sjávarmál, þá flæðir yfir umhverfið í staðin.
 STR_CREATE_RIVER                                                :{BLACK}Búa til fljót.
 STR_0290_DELETE                                                 :{BLACK}Eyða
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Eyða þessum bæ algjörlega
@@ -2815,7 +2815,9 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Skírðu
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Get ekki skírt lest...
 STR_8867_NAME_TRAIN                                             :{BLACK}Skýrðu lestina
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Lestarslys!{}{COMMA} deyja í sprengingu eftir árekstur
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Get ekki snúið lest við...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Get ekki snúið lest við...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Get ekki snúið lestinni við...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Get ekki snúið vögnum sem tilheyra vagnapari
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Endurskíra lestargerð
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Get ekki endurskírt lestargerð...
 STR_CLEAR_TIME                                                  :{BLACK}Hreinsa tíma
@@ -2903,8 +2905,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsti farmsporvagn kemur við á {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Bílslys!{}Bílstjóri deyr í sprengingu eftir árekstur við lest
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Bílslys!{}{COMMA} deyja í sprengingu eftir árekstur við lest
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Get ekki snúið bifreið við...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Get ekki snúið vögnum sem tilheyra vagnapari
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Get ekki snúið bifreiðinni við...
 STR_9034_RENAME                                                 :{BLACK}Endurnefna
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Endurnefna tegund bifreiðar
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Endurnefna tegund bifreiðar

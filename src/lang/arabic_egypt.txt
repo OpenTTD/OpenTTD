@@ -1092,7 +1092,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :شبكة 2*2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :شبكة 3*3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :عشوائي
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE} السماح للمدن ببناء طرق: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}السماح للمدن بالتحكم في ضجيج المطارات: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}السماح للمدن بالتحكم بضجيج المطارات: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}موقع شريط الأدوات الرئيسي:  {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :يسار
@@ -2815,7 +2815,7 @@ STR_8865_NAME_TRAIN                                             :{WHITE}اسم �
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}لا يمكن تسمية القطار ...
 STR_8867_NAME_TRAIN                                             :{BLACK} اسم القطار
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}تحطم قطار! {}{COMMA} مات في حريق بعد الحادث
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}لا يمكن عكس اتجاة القطار...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}لا يمكن عكس اتجاة القطار...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}اعادة تسمية عربات القطار
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}لا يمكن اعادة تسمية عربات القطار ...
 STR_CLEAR_TIME                                                  :{BLACK}مسح الوقت
@@ -2903,8 +2903,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}المواطنون يحتفلون . . . {}بوصول اول عربة ترام لمحطة  {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}العربة تحطمت !{}السائق توفي في شعلة الحريق بعد الاصطدام بقطار
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}العربة تحطمت !{}{COMMA} توفي في شعلة الحريق بعد الاصطدام بقطار
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}لايمكن للعربة أن تدور للخلف...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}لا يمكن انعطاف العربات المكونة من اكثر من وحدة.
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}لا يمكن انعطاف العربات المكونة من اكثر من وحدة.
 STR_9034_RENAME                                                 :{BLACK}أعد التسمية
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK} اعادة تسمية العربة
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE} اعادة تسمية العربة

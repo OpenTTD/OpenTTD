@@ -25,191 +25,68 @@ STR_000D_ACCEPTS                                                :{BLACK}Прий
 STR_SUPPLIES                                                    :{BLACK}Постачає: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :пасажири
-STR_000F_PASSENGERS.r                                           :пасажирів
-STR_000F_PASSENGERS.z                                           :пасажирів
 STR_0010_COAL                                                   :вугілля
-STR_0010_COAL.r                                                 :вугілля
-STR_0010_COAL.z                                                 :вугілля
 STR_0011_MAIL                                                   :пошта
-STR_0011_MAIL.r                                                 :пошти
-STR_0011_MAIL.z                                                 :пошту
 STR_0012_OIL                                                    :нафта
-STR_0012_OIL.r                                                  :нафти
-STR_0012_OIL.z                                                  :нафту
 STR_0013_LIVESTOCK                                              :худоба
-STR_0013_LIVESTOCK.r                                            :худоби
-STR_0013_LIVESTOCK.z                                            :худобу
 STR_0014_GOODS                                                  :товари
-STR_0014_GOODS.r                                                :товарів
-STR_0014_GOODS.z                                                :товари
 STR_0015_GRAIN                                                  :зерно
-STR_0015_GRAIN.r                                                :зерна
-STR_0015_GRAIN.z                                                :зерно
 STR_0016_WOOD                                                   :деревина
-STR_0016_WOOD.r                                                 :деревини
-STR_0016_WOOD.z                                                 :деревину
 STR_0017_IRON_ORE                                               :залізна руда
-STR_0017_IRON_ORE.r                                             :залізної руди
-STR_0017_IRON_ORE.z                                             :залізну руду
 STR_0018_STEEL                                                  :сталь
-STR_0018_STEEL.r                                                :сталі
-STR_0018_STEEL.z                                                :сталь
 STR_0019_VALUABLES                                              :коштовності
-STR_0019_VALUABLES.r                                            :коштовностей
-STR_0019_VALUABLES.z                                            :коштовності
 STR_001A_COPPER_ORE                                             :мідна руда
-STR_001A_COPPER_ORE.r                                           :мідної руди
-STR_001A_COPPER_ORE.z                                           :мідну руду
 STR_001B_MAIZE                                                  :кукурудза
-STR_001B_MAIZE.r                                                :кукурудзи
-STR_001B_MAIZE.z                                                :кукурудзу
 STR_001C_FRUIT                                                  :фрукти
-STR_001C_FRUIT.r                                                :фруктів
-STR_001C_FRUIT.z                                                :фрукти
 STR_001D_DIAMONDS                                               :діаманти
-STR_001D_DIAMONDS.r                                             :діамантів
-STR_001D_DIAMONDS.z                                             :діаманти
 STR_001E_FOOD                                                   :продукти
-STR_001E_FOOD.r                                                 :продуктів
-STR_001E_FOOD.z                                                 :продукти
 STR_001F_PAPER                                                  :папір
-STR_001F_PAPER.r                                                :паперу
-STR_001F_PAPER.z                                                :папір
 STR_0020_GOLD                                                   :золото
-STR_0020_GOLD.r                                                 :золота
-STR_0020_GOLD.z                                                 :золото
 STR_0021_WATER                                                  :вода
-STR_0021_WATER.r                                                :води
-STR_0021_WATER.z                                                :воду
 STR_0022_WHEAT                                                  :пшениця
-STR_0022_WHEAT.r                                                :пшениці
-STR_0022_WHEAT.z                                                :пшеницю
 STR_0023_RUBBER                                                 :каучук
-STR_0023_RUBBER.z                                               :каучук
 STR_0024_SUGAR                                                  :цукор
-STR_0024_SUGAR.r                                                :цукру
-STR_0024_SUGAR.z                                                :цукор
 STR_0025_TOYS                                                   :іграшки
-STR_0025_TOYS.r                                                 :іграшок
-STR_0025_TOYS.z                                                 :іграшки
 STR_0026_CANDY                                                  :солодощі
-STR_0026_CANDY.r                                                :солодощів
-STR_0026_CANDY.z                                                :солодощі
 STR_0027_COLA                                                   :кола
-STR_0027_COLA.r                                                 :коли
-STR_0027_COLA.z                                                 :колу
 STR_0028_COTTON_CANDY                                           :солодка вата
-STR_0028_COTTON_CANDY.r                                         :солодкої вати
-STR_0028_COTTON_CANDY.z                                         :солодку вату
 STR_0029_BUBBLES                                                :бульбашки
-STR_0029_BUBBLES.r                                              :бульбашок
-STR_0029_BUBBLES.z                                              :бульбашки
 STR_002A_TOFFEE                                                 :іриски
-STR_002A_TOFFEE.r                                               :ірисок
-STR_002A_TOFFEE.z                                               :іриски
 STR_002B_BATTERIES                                              :батарейки
-STR_002B_BATTERIES.r                                            :батарейок
-STR_002B_BATTERIES.z                                            :батарейки
 STR_002C_PLASTIC                                                :пластилін
-STR_002C_PLASTIC.r                                              :пластиліну
-STR_002C_PLASTIC.z                                              :пластилін
 STR_002D_FIZZY_DRINKS                                           :газована вода
-STR_002D_FIZZY_DRINKS.r                                         :газованої води
-STR_002D_FIZZY_DRINKS.z                                         :газовану воду
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :пасажири
-STR_002F_PASSENGER.r                                            :пасажирів
-STR_002F_PASSENGER.z                                            :пасажирів
 STR_0030_COAL                                                   :вугілля
-STR_0030_COAL.r                                                 :вугілля
-STR_0030_COAL.z                                                 :вугілля
 STR_0031_MAIL                                                   :пошта
-STR_0031_MAIL.r                                                 :пошти
-STR_0031_MAIL.z                                                 :пошту
 STR_0032_OIL                                                    :нафта
-STR_0032_OIL.r                                                  :нафти
-STR_0032_OIL.z                                                  :нафту
 STR_0033_LIVESTOCK                                              :худоба
-STR_0033_LIVESTOCK.r                                            :худоби
-STR_0033_LIVESTOCK.z                                            :худобу
 STR_0034_GOODS                                                  :товари
-STR_0034_GOODS.r                                                :товарів
-STR_0034_GOODS.z                                                :товари
 STR_0035_GRAIN                                                  :зерно
-STR_0035_GRAIN.r                                                :зерна
-STR_0035_GRAIN.z                                                :зерно
 STR_0036_WOOD                                                   :деревина
-STR_0036_WOOD.r                                                 :деревини
-STR_0036_WOOD.z                                                 :деревину
 STR_0037_IRON_ORE                                               :залізна руда
-STR_0037_IRON_ORE.r                                             :залізної руди
-STR_0037_IRON_ORE.z                                             :залізну руду
 STR_0038_STEEL                                                  :сталь
-STR_0038_STEEL.r                                                :сталі
-STR_0038_STEEL.z                                                :сталь
 STR_0039_VALUABLES                                              :коштовності
-STR_0039_VALUABLES.r                                            :коштовностей
-STR_0039_VALUABLES.z                                            :коштовності
 STR_003A_COPPER_ORE                                             :мідна руда
-STR_003A_COPPER_ORE.r                                           :мідної руди
-STR_003A_COPPER_ORE.z                                           :мідну руду
 STR_003B_MAIZE                                                  :кукурудза
-STR_003B_MAIZE.r                                                :кукурудзи
-STR_003B_MAIZE.z                                                :кукурудзу
 STR_003C_FRUIT                                                  :фрукти
-STR_003C_FRUIT.r                                                :фруктів
-STR_003C_FRUIT.z                                                :фрукти
 STR_003D_DIAMOND                                                :діаманти
-STR_003D_DIAMOND.r                                              :діамантів
-STR_003D_DIAMOND.z                                              :діаманти
 STR_003E_FOOD                                                   :продукти
-STR_003E_FOOD.r                                                 :продуктів
-STR_003E_FOOD.z                                                 :продукти
 STR_003F_PAPER                                                  :папір
-STR_003F_PAPER.r                                                :паперу
-STR_003F_PAPER.z                                                :папір
 STR_0040_GOLD                                                   :золото
-STR_0040_GOLD.r                                                 :золота
-STR_0040_GOLD.z                                                 :золото
 STR_0041_WATER                                                  :вода
-STR_0041_WATER.r                                                :води
-STR_0041_WATER.z                                                :воду
 STR_0042_WHEAT                                                  :пшениця
-STR_0042_WHEAT.r                                                :пшениці
-STR_0042_WHEAT.z                                                :пшеницю
 STR_0043_RUBBER                                                 :каучук
-STR_0043_RUBBER.r                                               :каучуку
-STR_0043_RUBBER.z                                               :каучук
 STR_0044_SUGAR                                                  :цукор
-STR_0044_SUGAR.r                                                :цукру
-STR_0044_SUGAR.z                                                :цукор
 STR_0045_TOY                                                    :іграшки
-STR_0045_TOY.r                                                  :іграшок
-STR_0045_TOY.z                                                  :іграшки
 STR_0046_CANDY                                                  :цукерки
-STR_0046_CANDY.r                                                :цукерок
-STR_0046_CANDY.z                                                :цукерки
 STR_0047_COLA                                                   :кола
-STR_0047_COLA.r                                                 :коли
-STR_0047_COLA.z                                                 :колу
 STR_0048_COTTON_CANDY                                           :солодка вата
-STR_0048_COTTON_CANDY.r                                         :солодкої вати
-STR_0048_COTTON_CANDY.z                                         :солодку вату
 STR_0049_BUBBLE                                                 :бульбашки
-STR_0049_BUBBLE.r                                               :бульбашок
-STR_0049_BUBBLE.z                                               :бульбашки
 STR_004A_TOFFEE                                                 :іриски
-STR_004A_TOFFEE.r                                               :ірисок
-STR_004A_TOFFEE.z                                               :іриски
 STR_004B_BATTERY                                                :батарейки
-STR_004B_BATTERY.r                                              :батарейок
-STR_004B_BATTERY.z                                              :батарейки
 STR_004C_PLASTIC                                                :пластилін
-STR_004C_PLASTIC.r                                              :пластиліну
-STR_004C_PLASTIC.z                                              :пластилін
 STR_004D_FIZZY_DRINK                                            :газована вода
-STR_004D_FIZZY_DRINK.r                                          :газованої води
-STR_004D_FIZZY_DRINK.z                                          :газовану воду
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} пасажир{P "" и iв}
 STR_QUANTITY_COAL                                               :{WEIGHT} вугілля
@@ -1426,14 +1303,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Роки
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Кількість років{}впродовж яких іде гра
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}Інформація про гру
-STR_NETWORK_CLIENTS                                             :{SILVER}Клієнт:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Мова:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Шаблон:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Розмір карти:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версія серверу:  {WHITE}{STRING}
+STR_NETWORK_CLIENTS                                             :{SILVER}Клієнти: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Мова: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Шаблон: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Розмір карти: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версія серверу: {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адреса серверу:  {WHITE}{STRING} : {NUM}
-STR_NETWORK_START_DATE                                          :{SILVER}Дата початку:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Поточна дата:  {WHITE}{DATE_SHORT}
+STR_NETWORK_START_DATE                                          :{SILVER}Дата початку: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Поточна дата: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Захищено паролем!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}Сервер відключений
 STR_NETWORK_SERVER_FULL                                         :{SILVER}Сервер зайнятий
@@ -1515,7 +1392,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Латвійс�
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Мережева гра - кімната
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Підготовка до з'єднання:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Підготовка до з'єднання: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Список всіх компаній присутніх у цій грі. Ви можете як приєднатись до компанії так і створити нову, якщо є вільне місце
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Нова компанія
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Створити нову компанію
@@ -1528,16 +1405,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Онов
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}Інформація про компанію
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Назва компанії:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Засновано:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Вартість компанії:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Поточний баланс:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Прибуток торік:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Продуктивність:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Назва компанії: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Засновано: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Вартість компанії: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Поточний баланс: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Прибуток торік: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Продуктивність: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Транспорт:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Станцій:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Гравців:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Транспорт: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Станцій: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Гравців: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}З'єднання...
 
@@ -1564,23 +1441,23 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Спис
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Спостерігати
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Нова компанія
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Не знайдено мережевого пристрою або скомпільовано без ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Не знайдено жодної мережної гри
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Сервер не відповів на запит
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Не можна з'єднатись внаслідок неспівпадання NewGRF
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Помилка синхронізації з мережною грою
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} З'єднання втрачено
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Неможливо завантажити гру
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Неможливо створити сервер
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Неможливо з'єднатися
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Тайм-аут з'єднання #{NUM}
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Помилка протоколу - з'єднання розірвано
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Версія клієнта не співпадає з версією сервера
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Пароль невірний
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Сервер переповнений
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Вас відключено від цього серверу
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Вас відключено від гри
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} На цьому сервері грати нечесно не можна
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Не знайдено мережевого пристрою або скомпільовано без ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Не знайдено жодної мережної гри
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Сервер не відповів на запит
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Не можна з'єднатись внаслідок неспівпадання NewGRF
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Помилка синхронізації з мережною грою
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}З'єднання втрачено
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Неможливо завантажити гру
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Неможливо запустити сервер
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Неможливо з'єднатися
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Тайм-аут з'єднання #{NUM}
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Помилка протоколу - з'єднання розірвано
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Версія клієнта не співпадає з версією сервера
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Пароль невірний
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Сервер переповнений
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Вас відключено від цього серверу
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Вас відключено від гри
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}На цьому сервері грати нечесно не можна
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :фатальна помилка
@@ -2051,79 +1928,42 @@ STR_SAVE_OSKTITLE                                               :{BLACK}Введ
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} на шляху
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :{G=f}Вугільна шахта
-STR_4802_COAL_MINE.z                                            :{G=f}вугільну шахту
 STR_4803_POWER_STATION                                          :{G=f}Електростанція
-STR_4803_POWER_STATION.z                                        :{G=f}електростанцію
 STR_4804_SAWMILL                                                :{G=f}Лісопилка
-STR_4804_SAWMILL.z                                              :{G=f}лісопилку
 STR_4805_FOREST                                                 :{G=m}Ліс
-STR_4805_FOREST.z                                               :{G=m}ліс
 STR_4806_OIL_REFINERY                                           :{G=m}Нафтопереробний завод
-STR_4806_OIL_REFINERY.z                                         :{G=m}нафтопереробний завод
 STR_4807_OIL_RIG                                                :{G=f}Нафтова платформа
-STR_4807_OIL_RIG.z                                              :{G=f}нафтову платформу
 STR_4808_FACTORY                                                :{G=f}Фабрика
-STR_4808_FACTORY.z                                              :{G=f}фабрику
 STR_4809_PRINTING_WORKS                                         :{G=f}Друкарня
-STR_4809_PRINTING_WORKS.z                                       :{G=f}друкарню
 STR_480A_STEEL_MILL                                             :{G=m}Сталеварний завод
-STR_480A_STEEL_MILL.z                                           :{G=m}сталеварний завод
 STR_480B_FARM                                                   :{G=f}Ферма
-STR_480B_FARM.z                                                 :{G=f}ферму
 STR_480C_COPPER_ORE_MINE                                        :{G=f}Міднорудна шахта
-STR_480C_COPPER_ORE_MINE.z                                      :{G=f}міднорудну шахту
 STR_480D_OIL_WELLS                                              :{G=f}Нафтова свердловина
-STR_480D_OIL_WELLS.z                                            :{G=f}нафтову свердловину
 STR_480E_BANK                                                   :{G=m}Банк
-STR_480E_BANK.z                                                 :{G=m}банк
 STR_480F_FOOD_PROCESSING_PLANT                                  :{G=m}Продуктовий завод
-STR_480F_FOOD_PROCESSING_PLANT.z                                :{G=m}продуктовий завод
 STR_4810_PAPER_MILL                                             :{G=f}Паперова фабрика
-STR_4810_PAPER_MILL.z                                           :{G=f}паперову фабрику
 STR_4811_GOLD_MINE                                              :{G=f}Золоторудна шахта
-STR_4811_GOLD_MINE.z                                            :{G=f}золоторудну шахту
 STR_4812_BANK                                                   :{G=m}Банк
-STR_4812_BANK.z                                                 :{G=m}банк
 STR_4813_DIAMOND_MINE                                           :{G=f}Діамантова шахта
-STR_4813_DIAMOND_MINE.z                                         :{G=f}діамантову шахту
 STR_4814_IRON_ORE_MINE                                          :{G=f}Залізорудна шахта
-STR_4814_IRON_ORE_MINE.z                                        :{G=f}залізорудну шахту
 STR_4815_FRUIT_PLANTATION                                       :{G=m}Фруктовий сад
-STR_4815_FRUIT_PLANTATION.z                                     :{G=m}фруктовий сад
 STR_4816_RUBBER_PLANTATION                                      :{G=m}Каучуковий сад
-STR_4816_RUBBER_PLANTATION.z                                    :{G=m}каучуковий сад
 STR_4817_WATER_SUPPLY                                           :Водопостачання
-STR_4817_WATER_SUPPLY.z                                         :водопостачання
 STR_4818_WATER_TOWER                                            :{G=f}Водонапірна башта
-STR_4818_WATER_TOWER.z                                          :{G=f}водонапірну башту
 STR_4819_FACTORY                                                :{G=f}Фабрика
-STR_4819_FACTORY.z                                              :{G=f}фабрику
 STR_481A_FARM                                                   :{G=f}Ферма
-STR_481A_FARM.z                                                 :{G=f}ферму
 STR_481B_LUMBER_MILL                                            :{G=f}Лісопилка
-STR_481B_LUMBER_MILL.z                                          :{G=f}лісопилку
 STR_481C_COTTON_CANDY_FOREST                                    :{G=m}Ліс солодкої вати
-STR_481C_COTTON_CANDY_FOREST.z                                  :{G=m}ліс солодкої вати
 STR_481D_CANDY_FACTORY                                          :{G=f}Цукеркова фабрика
-STR_481D_CANDY_FACTORY.z                                        :{G=f}цукеркову фабрику
 STR_481E_BATTERY_FARM                                           :Батарейкове поле
-STR_481E_BATTERY_FARM.z                                         :батарейкове поле
 STR_481F_COLA_WELLS                                             :Джерело Кока-коли
-STR_481F_COLA_WELLS.z                                           :джерело Кока-коли
 STR_4820_TOY_SHOP                                               :Іграшковий магазин
-STR_4820_TOY_SHOP.z                                             :іграшковий магазин
 STR_4821_TOY_FACTORY                                            :Іграшкова фабрика
-STR_4821_TOY_FACTORY.z                                          :іграшкову фабрику
 STR_4822_PLASTIC_FOUNTAINS                                      :Пластиліновий фонтан
-STR_4822_PLASTIC_FOUNTAINS.z                                    :пластиліновий фонтан
 STR_4823_FIZZY_DRINK_FACTORY                                    :Завод газованої води
-STR_4823_FIZZY_DRINK_FACTORY.z                                  :завод газованої води
 STR_4824_BUBBLE_GENERATOR                                       :Бульбашкова фабрика
-STR_4824_BUBBLE_GENERATOR.z                                     :бульбашкову фабрику
 STR_4825_TOFFEE_QUARRY                                          :Ірисковий кар'єр
-STR_4825_TOFFEE_QUARRY.z                                        :ірисковий кар'єр
 STR_4826_SUGAR_MINE                                             :Цукрова копальня
-STR_4826_SUGAR_MINE.z                                           :цукрову копальню
 
 ############ range for requires starts
 STR_4827_REQUIRES                                               :{BLACK}Потребує: {YELLOW}{STRING}{STRING}
@@ -2368,7 +2208,7 @@ STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Графік операційного прибутку
 STR_7026_BANK_BALANCE                                           :{WHITE}Рахунок
 STR_7027_LOAN                                                   :{WHITE}Позика
-STR_MAX_LOAN                                                    :{WHITE}Макс. позика:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Макс. позика: {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Позичити {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Повернути {SKIP}{SKIP}{CURRENCY}
@@ -2976,7 +2816,7 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Назв
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Неможливо назвати поїзд...
 STR_8867_NAME_TRAIN                                             :{BLACK}Назвати поїзд
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Аварія!{}Поїзди зіткнулися.{}{COMMA} загинуло.
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Неможливо розвернути поїзд...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Неможливо розвернути поїзд...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Перейменувати тип поїзду
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Неможливо перейменувати тип поїзду...
 STR_CLEAR_TIME                                                  :{BLACK}Очистити час
@@ -3064,8 +2904,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Жителі святкують . . .{}Перший вантажний трамвай прибув на {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Аварія!{}Водій загинув при зіткненні авто з поїздом
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Аварія!{}{COMMA} загинуло при зіткненні авто з поїздом
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Неможливо розвернути авто...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Неможливо розвернути довгий транспорт
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Неможливо розвернути довгий транспорт
 STR_9034_RENAME                                                 :{BLACK}Зміна назви
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Перейменувати тип авто
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Перейменувати тип авто
@@ -3445,14 +3284,14 @@ STR_MAGLEV_VEHICLES                                             :Магнітн�
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ціна: {GOLD}{CURRENCY}{BLACK}   Вага: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Швидкість: {GOLD}{VELOCITY}{BLACK}   Потужність: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Швидкість: {GOLD}{VELOCITY}{BLACK} Потужність: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Швидкість: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Транспортні витрати: {GOLD}{CURRENCY}/рік
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Місткість: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Рік випуску: {GOLD}{NUM}{BLACK} Вік: {GOLD}{COMMA} р{P ік оки оків}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Надійність: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Ціна: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вага: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вага: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ціна: {GOLD}{CURRENCY}{BLACK}  Швидкість: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Місткість: {GOLD}{COMMA} пасажир{P "" и ів}, {COMMA} міш{P ок ки ків} пошти
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Потужність: {GOLD}+{POWER}{BLACK} Вага: {GOLD}+{WEIGHT_S}

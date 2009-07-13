@@ -2800,12 +2800,6 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Fjern ti
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Still attende teljaren for forseining, slik at køyretøyet vert presis
 STR_SERVICE_HINT                                                :{BLACK}Hopp over ordren dersom ikkje vedlikehald trengst
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kostnad: {CURRENCY} Vekt: {WEIGHT_S}{}Fart: {VELOCITY}  Kraft: {POWER}{}Driftskostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
-STR_885C_BROKEN_DOWN                                            :{RED}Havarert
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftskostnad: {LTBLUE}{CURRENCY}/år
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vekt: {LTBLUE}{WEIGHT_S}  {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks fart: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vekt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks fart: {LTBLUE}{VELOCITY} {BLACK}Maks trekkraft: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (førre år: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelegskap: {LTBLUE}{COMMA} %  {BLACK}Havari sidan førre vedlikehald: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stoppa
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kan ikkje tvinge tog til å køyre på raudt lys ved fare...
 STR_8863_CRASHED                                                :{RED}Krasja!
@@ -2814,7 +2808,7 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Namngje 
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Kan ikkje namngje tog...
 STR_8867_NAME_TRAIN                                             :{BLACK}Namngje tog
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Togkrasj!{}{COMMA} døyr i kollisjonen
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan ikkje snu toget...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan ikkje snu toget...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Gje tog/vogn nytt namn
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan ikkje gje tog/vogn nytt namn...
 STR_CLEAR_TIME                                                  :{BLACK}Fjern Tid
@@ -2902,8 +2896,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Innbygjarane feirer . . .{}Første fraktetrikk kjem til {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Kollisjon!{}Sjåfør døyr etter kollisjon med tog
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Kollisjon!{}{COMMA} døyr etter kollisjon med tog
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan ikkje snu...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan ikkje snu køyretøy som er samansette av fleire delar
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan ikkje snu køyretøy som er samansette av fleire delar
 STR_9034_RENAME                                                 :{BLACK}Endre namn
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Endre namnet til køyretøytypen
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Endre namnet til køyretøytypen
