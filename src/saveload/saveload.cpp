@@ -1135,6 +1135,8 @@ static void SlLoadChunks()
 	}
 }
 
+static const char *_sl_ptrs_error; ///< error message if there was an error during fixing pointers, NULL otherwise
+
 /** Fix all pointers (convert index -> pointer) */
 static void SlFixPointers()
 {
@@ -1142,6 +1144,7 @@ static void SlFixPointers()
 	const ChunkHandler * const *chsc;
 
 	_sl.action = SLA_PTRS;
+	_sl_ptrs_error = NULL;
 
 	DEBUG(sl, 1, "Fixing pointers");
 
@@ -1156,6 +1159,9 @@ static void SlFixPointers()
 			ch++;
 		}
 	}
+
+	/* We need to fix all possible pointers even if there were invalid ones. This way pool cleaning will work fine. */
+	if (_sl_ptrs_error != NULL) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, _sl_ptrs_error);
 
 	DEBUG(sl, 1, "All pointers fixed");
 
@@ -1520,41 +1526,55 @@ static void *IntToReference(size_t index, SLRefType rt)
 	switch (rt) {
 		case REF_ORDERLIST:
 			if (OrderList::IsValidID(index)) return OrderList::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid OrderList");
+			_sl_ptrs_error = "Referencing invalid OrderList";
+			break;
 
 		case REF_ORDER:
 			if (Order::IsValidID(index)) return Order::Get(index);
 			/* in old versions, invalid order was used to mark end of order list */
 			if (CheckSavegameVersionOldStyle(5, 2)) return NULL;
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Order");
+			_sl_ptrs_error = "Referencing invalid Order";
+			break;
 
 		case REF_VEHICLE_OLD:
 		case REF_VEHICLE:
 			if (Vehicle::IsValidID(index)) return Vehicle::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Vehicle");
+			_sl_ptrs_error = "Referencing invalid Vehicle";
+			break;
 
 		case REF_STATION:
 			if (Station::IsValidID(index)) return Station::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Station");
+			_sl_ptrs_error = "Referencing invalid Station";
+			break;
 
 		case REF_TOWN:
 			if (Town::IsValidID(index)) return Town::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Town");
+			_sl_ptrs_error = "Referencing invalid Town";
+			break;
 
 		case REF_ROADSTOPS:
 			if (RoadStop::IsValidID(index)) return RoadStop::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid RoadStop");
+			_sl_ptrs_error = "Referencing invalid RoadStop";
+			break;
 
 		case REF_ENGINE_RENEWS:
 			if (EngineRenew::IsValidID(index)) return EngineRenew::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid EngineRenew");
+			_sl_ptrs_error = "Referencing invalid EngineRenew";
+			break;
 
 		case REF_CARGO_PACKET:
 			if (CargoPacket::IsValidID(index)) return CargoPacket::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid CargoPacket");
+			_sl_ptrs_error = "Referencing invalid CargoPacket";
+			break;
 
 		default: NOT_REACHED();
 	}
+
+	/* Print a debug message about each invalid reference */
+	DEBUG(sl, 1, "%s (index = " PRINTF_SIZE ")", _sl_ptrs_error, index);
+
+	/* Return NULL for broken savegames */
+	return NULL;
 }
 
 /** The format for a reader/writer type of a savegame */
