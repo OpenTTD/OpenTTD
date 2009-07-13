@@ -34,14 +34,3 @@ RoadBits GetAnyRoadBits(TileIndex tile, RoadType rt, bool straight_tunnel_bridge
 		default: return ROAD_NONE;
 	}
 }
-
-
-TrackBits GetAnyRoadTrackBits(TileIndex tile, RoadType rt)
-{
-	/* Don't allow local authorities to build roads through road depots or road stops. */
-	if (IsRoadDepotTile(tile) || (IsTileType(tile, MP_STATION) && !IsDriveThroughStopTile(tile)) || !HasTileRoadType(tile, rt)) {
-		return TRACK_BIT_NONE;
-	}
-
-	return TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_ROAD, RoadTypeToRoadTypes(rt)));
-}

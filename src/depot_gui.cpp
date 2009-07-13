@@ -948,7 +948,7 @@ struct DepotWindow : Window {
 					if (this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, &gdvp) == MODE_DRAG_VEHICLE &&
 						sel != INVALID_VEHICLE) {
 						if (gdvp.wagon != NULL && gdvp.wagon->index == sel && _ctrl_pressed) {
-							DoCommandP(GetVehicle(sel)->tile, GetVehicle(sel)->index, true, CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_9033_CAN_T_MAKE_VEHICLE_TURN));
+							DoCommandP(GetVehicle(sel)->tile, GetVehicle(sel)->index, true, CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE));
 						} else if (gdvp.wagon == NULL || gdvp.wagon->index != sel) {
 							TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
 						} else if (gdvp.head != NULL && IsFrontEngine(gdvp.head)) {

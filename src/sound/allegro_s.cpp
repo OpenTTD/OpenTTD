@@ -58,6 +58,7 @@ const char *SoundDriver_Allegro::Start(const char * const *parm)
 	}
 
 	_stream = play_audio_stream(BUFFER_SIZE, 16, true, 11025, 255, 128);
+	MxInitialize(11025);
 	return NULL;
 }
 

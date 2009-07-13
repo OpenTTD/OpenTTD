@@ -65,6 +65,8 @@ const char *SoundDriver_Win32::Start(const char * const *parm)
 	if (waveOutOpen(&_waveout, WAVE_MAPPER, &wfex, (DWORD_PTR)&waveOutProc, 0, CALLBACK_FUNCTION) != MMSYSERR_NOERROR)
 		return "waveOutOpen failed";
 
+	MxInitialize(wfex.nSamplesPerSec);
+
 	PrepareHeader(&_wave_hdr[0]);
 	PrepareHeader(&_wave_hdr[1]);
 	FillHeaders();

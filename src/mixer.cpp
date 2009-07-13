@@ -26,7 +26,7 @@ struct MixerChannel {
 };
 
 static MixerChannel _channels[8];
-static uint32 _play_rate;
+static uint32 _play_rate = 11025;
 
 /**
  * The theoretical maximum volume for a single sound sample. Multiple sound
