@@ -497,6 +497,8 @@ void Vehicle::PreDestructor()
 		Station::Get(this->last_station_visited)->loading_vehicles.remove(this);
 
 		HideFillingPercent(&this->fill_percent_te_id);
+
+		delete this->cargo_payment;
 	}
 
 	if (IsEngineCountable(this)) {
