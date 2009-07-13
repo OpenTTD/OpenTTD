@@ -525,6 +525,14 @@ public:
 	 */
 	static bool HasSharedOrders(VehicleID vehicle_id);
 
+	/**
+	 * Get the current reliability of a vehicle.
+	 * @param vehicle_id The vehicle to check.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The current reliability (0-100%).
+	 */
+	static int GetReliability(VehicleID vehicle_id);
+
 private:
 	/**
 	 * Internal function used by SellWagon(Chain).

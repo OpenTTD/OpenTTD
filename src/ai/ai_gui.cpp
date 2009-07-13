@@ -561,6 +561,7 @@ struct AIDebugWindow : public Window {
 	enum AIDebugWindowWidgets {
 		AID_WIDGET_CLOSEBOX = 0,
 		AID_WIDGET_CAPTION,
+		AID_WIDGET_STICKY,
 		AID_WIDGET_VIEW,
 		AID_WIDGET_NAME_TEXT,
 		AID_WIDGET_RELOAD_TOGGLE,
@@ -768,6 +769,7 @@ CompanyID AIDebugWindow::ai_debug_company = INVALID_COMPANY;
 static const Widget _ai_debug_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},                 // AID_WIDGET_CLOSEBOX
 {    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   298,     0,    13, STR_AI_DEBUG,               STR_018C_WINDOW_TITLE_DRAG_THIS},       // AID_WIDGET_CAPTION
+{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   287,   298,     0,    13, 0x0,                        STR_STICKY_BUTTON },                    // AID_WIDGET_STICKY
 {      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,     0,   298,    14,    40, 0x0,                        STR_NULL},                              // AID_WIDGET_VIEW
 
 {      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,     0,   149,    41,    60, 0x0,                        STR_AI_DEBUG_NAME_TIP},                 // AID_WIDGET_NAME_TEXT
@@ -805,7 +807,7 @@ static const Widget _ai_debug_widgets[] = {
 static const WindowDesc _ai_debug_desc(
 	WDP_AUTO, WDP_AUTO, 299, 241, 299, 241,
 	WC_AI_DEBUG, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_ai_debug_widgets
 );
 

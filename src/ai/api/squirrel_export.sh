@@ -2,6 +2,15 @@
 
 # $Id$
 
+# We really need gawk for this!
+AWK=gawk
+
+${AWK} --version > /dev/null 2> /dev/null
+if [ "$?" != "0" ]; then
+	echo "This script needs gawk to run properly"
+	exit 1
+fi
+
 # This must be called from within the src/ai/api directory.
 
 if [ -z "$1" ]; then
@@ -10,7 +19,7 @@ if [ -z "$1" ]; then
 			# these files should not be changed by this script
 			"ai_controller.hpp" | "ai_object.hpp" | "ai_types.hpp" ) continue;
 		esac
-		awk -f squirrel_export.awk ${f} > ${f}.tmp
+		${AWK} -f squirrel_export.awk ${f} > ${f}.tmp
 		if ! [ -f "${f}.sq" ] || [ -n "`diff -I '$Id' -b ${f}.tmp ${f}.sq 2> /dev/null || echo boo`" ]; then
 			mv ${f}.tmp ${f}.sq
 			echo "Updated: ${f}.sq"
@@ -22,7 +31,7 @@ if [ -z "$1" ]; then
 		fi
 	done
 else
-	awk -f squirrel_export.awk $1 > $1.tmp
+	${AWK} -f squirrel_export.awk $1 > $1.tmp
 	if ! [ -f "${f}.sq" ] || [ -n "`diff -I '$Id' -b $1.sq $1.tmp 2> /dev/null || echo boo`" ]; then
 		mv $1.tmp $1.sq
 		echo "Updated: $1.sq"
@@ -84,7 +93,7 @@ echo "
 { print \$0; }
 " > ${f}.awk
 
-awk -f ${f}.awk ${f} > ${f}.tmp
+${AWK} -f ${f}.awk ${f} > ${f}.tmp
 
 if ! [ -f "${f}" ] || [ -n "`diff -I '$Id' -b ${f} ${f}.tmp 2> /dev/null || echo boo`" ]; then
 	mv ${f}.tmp ${f}

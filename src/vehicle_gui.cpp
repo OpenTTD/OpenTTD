@@ -287,24 +287,28 @@ struct RefitWindow : public Window {
 				this->widget[3].tooltips = STR_RAIL_SELECT_TYPE_OF_CARGO_FOR;
 				this->widget[6].data     = STR_RAIL_REFIT_VEHICLE;
 				this->widget[6].tooltips = STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED;
+				this->widget[2].tooltips = STR_RAIL_SELECT_TYPE_OF_CARGO_FOR;
 				break;
 
 			case VEH_ROAD:
 				this->widget[3].tooltips = STR_ROAD_SELECT_TYPE_OF_CARGO_FOR;
 				this->widget[6].data     = STR_REFIT_ROAD_VEHICLE;
 				this->widget[6].tooltips = STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED;
+				this->widget[2].tooltips = STR_ROAD_SELECT_TYPE_OF_CARGO_FOR;
 				break;
 
 			case VEH_SHIP:
 				this->widget[3].tooltips = STR_983D_SELECT_TYPE_OF_CARGO_FOR;
 				this->widget[6].data     = STR_983C_REFIT_SHIP;
 				this->widget[6].tooltips = STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED;
+				this->widget[2].tooltips = STR_983D_SELECT_TYPE_OF_CARGO_FOR;
 				break;
 
 			case VEH_AIRCRAFT:
 				this->widget[3].tooltips = STR_A03E_SELECT_TYPE_OF_CARGO_FOR;
 				this->widget[6].data     = STR_A03D_REFIT_AIRCRAFT;
 				this->widget[6].tooltips = STR_A03F_REFIT_AIRCRAFT_TO_CARRY;
+				this->widget[2].tooltips = STR_A03E_SELECT_TYPE_OF_CARGO_FOR;
 				break;
 
 			default: NOT_REACHED();
@@ -403,7 +407,8 @@ struct RefitWindow : public Window {
 static const Widget _vehicle_refit_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                            STR_018B_CLOSE_WINDOW},
 	{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   239,     0,    13, STR_983B_REFIT,                      STR_018C_WINDOW_TITLE_DRAG_THIS},
-	{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   239,    14,    27, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, STR_983D_SELECT_TYPE_OF_CARGO_FOR},
+	{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   239,    14,    27, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, NULL},
+
 	{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   227,    28,   139, 0x801,                               STR_EMPTY},
 	{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_GREY,   228,   239,    28,   139, 0x0,                                 STR_0190_SCROLL_BAR_SCROLLS_LIST},
 	{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,     0,   239,   140,   161, 0x0,                                 STR_NULL},
