@@ -645,9 +645,7 @@ static bool v_PositionMainToolbar(int32 p1)
 
 static bool PopulationInLabelActive(int32 p1)
 {
-	Town *t;
-	FOR_ALL_TOWNS(t) UpdateTownVirtCoord(t);
-
+	UpdateAllTownVirtCoords();
 	return true;
 }
 

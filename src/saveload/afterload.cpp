@@ -213,10 +213,10 @@ static bool InitializeWindowsAndCaches()
 	ResetViewportAfterLoadGame();
 
 	/* Update coordinates of the signs. */
-	UpdateAllStationVirtCoord();
+	UpdateAllStationVirtCoords();
 	UpdateAllSignVirtCoords();
 	UpdateAllTownVirtCoords();
-	UpdateAllWaypointSigns();
+	UpdateAllWaypointVirtCoords();
 
 	Company *c;
 	FOR_ALL_COMPANIES(c) {

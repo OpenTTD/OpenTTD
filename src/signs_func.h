@@ -11,7 +11,6 @@ extern SignID _new_sign_id;
 
 void UpdateAllSignVirtCoords();
 void PlaceProc_Sign(TileIndex tile);
-void UpdateSignVirtCoords(Sign *si);
 
 /* signs_gui.cpp */
 void ShowRenameSignWindow(const Sign *si);

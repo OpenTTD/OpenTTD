@@ -324,25 +324,25 @@ static bool IsCloseToTown(TileIndex tile, uint dist)
 /**
  * Resize the sign(label) of the town after changes in
  * population (creation or growth or else)
- * @param t Town to update
  */
-void UpdateTownVirtCoord(Town *t)
+void Town::UpdateVirtCoord()
 {
-	t->sign.MarkDirty();
-	Point pt = RemapCoords2(TileX(t->xy) * TILE_SIZE, TileY(t->xy) * TILE_SIZE);
-	SetDParam(0, t->index);
-	SetDParam(1, t->population);
-	t->sign.UpdatePosition(pt.x, pt.y - 24,
+	this->sign.MarkDirty();
+	Point pt = RemapCoords2(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE);
+	SetDParam(0, this->index);
+	SetDParam(1, this->population);
+	this->sign.UpdatePosition(pt.x, pt.y - 24,
 		_settings_client.gui.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL);
-	t->sign.MarkDirty();
+	this->sign.MarkDirty();
 }
 
 /** Update the virtual coords needed to draw the town sign for all towns. */
 void UpdateAllTownVirtCoords()
 {
 	Town *t;
+
 	FOR_ALL_TOWNS(t) {
-		UpdateTownVirtCoord(t);
+		t->UpdateVirtCoord();
 	}
 }
 
@@ -355,7 +355,7 @@ static void ChangePopulation(Town *t, int mod)
 {
 	t->population += mod;
 	InvalidateWindow(WC_TOWN_VIEW, t->index);
-	UpdateTownVirtCoord(t);
+	t->UpdateVirtCoord();
 
 	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 1);
 }
@@ -1505,7 +1505,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	}
 	t->townnameparts = townnameparts;
 
-	UpdateTownVirtCoord(t);
+	t->UpdateVirtCoord();
 	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 0);
 
 	t->InitializeLayout(layout);
@@ -2285,10 +2285,10 @@ CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		free(t->name);
 		t->name = reset ? NULL : strdup(text);
 
-		UpdateTownVirtCoord(t);
+		t->UpdateVirtCoord();
 		InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 1);
-		UpdateAllStationVirtCoord();
-		UpdateAllWaypointSigns();
+		UpdateAllStationVirtCoords();
+		UpdateAllWaypointVirtCoords();
 		MarkWholeScreenDirty();
 	}
 	return CommandCost();

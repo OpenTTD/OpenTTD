@@ -183,7 +183,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 	}
 }
 
-extern void UpdateAllStationVirtCoord();
+extern void UpdateAllStationVirtCoords();
 
 struct MainWindow : Window
 {
@@ -268,7 +268,7 @@ struct MainWindow : Window
 				break;
 
 			case '2' | WKC_ALT: // Update the coordinates of all station signs
-				UpdateAllStationVirtCoord();
+				UpdateAllStationVirtCoords();
 				break;
 #endif
 

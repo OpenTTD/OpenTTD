@@ -33,16 +33,13 @@ Sign::~Sign()
 }
 
 /**
- *
  * Update the coordinate of one sign
- * @param si Pointer to the Sign
- *
  */
-void UpdateSignVirtCoords(Sign *si)
+void Sign::UpdateVirtCoord()
 {
-	Point pt = RemapCoords(si->x, si->y, si->z);
-	SetDParam(0, si->index);
-	si->sign.UpdatePosition(pt.x, pt.y - 6, STR_SIGN_WHITE);
+	Point pt = RemapCoords(this->x, this->y, this->z);
+	SetDParam(0, this->index);
+	this->sign.UpdatePosition(pt.x, pt.y - 6, STR_SIGN_WHITE);
 }
 
 /** Update the coordinates of all signs */
@@ -50,7 +47,9 @@ void UpdateAllSignVirtCoords()
 {
 	Sign *si;
 
-	FOR_ALL_SIGNS(si) UpdateSignVirtCoords(si);
+	FOR_ALL_SIGNS(si) {
+		si->UpdateVirtCoord();
+	}
 }
 
 /**

@@ -48,7 +48,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint32 townnameparts;
 	char *name;
 
-	/* NOSAVE: Location of name sign, UpdateTownVirtCoord updates this. */
+	/* NOSAVE: Location of name sign, UpdateVirtCoord updates this. */
 	ViewportSign sign;
 
 	/* Makes sure we don't build certain house types twice.
@@ -136,6 +136,8 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 		return ((this->population / _settings_game.economy.town_noise_population[_settings_game.difficulty.town_council_tolerance]) + 3);
 	}
 
+	void UpdateVirtCoord();
+
 	static FORCEINLINE Town *GetByTile(TileIndex tile)
 	{
 		return Town::Get(GetTownIndex(tile));
@@ -147,7 +149,6 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 uint32 GetWorldPopulation();
 
-void UpdateTownVirtCoord(Town *t);
 void UpdateAllTownVirtCoords();
 void InitializeTown();
 void ShowTownViewWindow(TownID town);

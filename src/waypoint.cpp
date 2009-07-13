@@ -20,12 +20,12 @@ INSTANTIATE_POOL_METHODS(Waypoint)
 /**
  * Update all signs
  */
-void UpdateAllWaypointSigns()
+void UpdateAllWaypointVirtCoords()
 {
 	Waypoint *wp;
 
 	FOR_ALL_WAYPOINTS(wp) {
-		UpdateWaypointSign(wp);
+		wp->UpdateVirtCoord();
 	}
 }
 

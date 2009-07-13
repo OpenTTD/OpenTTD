@@ -28,6 +28,8 @@ struct Sign : SignPool::PoolItem<&_sign_pool> {
 
 	/** Destroy the sign */
 	~Sign();
+
+	void UpdateVirtCoord();
 };
 
 #define FOR_ALL_SIGNS_FROM(var, start) FOR_ALL_ITEMS_FROM(Sign, sign_index, var, start)

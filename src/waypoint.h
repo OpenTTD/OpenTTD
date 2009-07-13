@@ -37,6 +37,8 @@ struct Waypoint : WaypointPool::PoolItem<&_waypoint_pool> {
 
 	Waypoint(TileIndex tile = INVALID_TILE) : xy(tile) { }
 	~Waypoint();
+
+	void UpdateVirtCoord();
 };
 
 #define FOR_ALL_WAYPOINTS_FROM(var, start) FOR_ALL_ITEMS_FROM(Waypoint, waypoint_index, var, start)
@@ -58,7 +60,6 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justre
 Station *ComposeWaypointStation(TileIndex tile);
 void ShowWaypointWindow(const Waypoint *wp);
 void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype);
-void UpdateAllWaypointSigns();
-void UpdateWaypointSign(Waypoint *wp);
+void UpdateAllWaypointVirtCoords();
 
 #endif /* WAYPOINT_H */

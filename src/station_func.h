@@ -20,7 +20,7 @@ typedef SmallVector<Station*, 1> StationList;
 void FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod, StationList *stations);
 
 void ShowStationViewWindow(StationID station);
-void UpdateAllStationVirtCoord();
+void UpdateAllStationVirtCoords();
 
 CargoArray GetProductionAroundTiles(TileIndex tile, int w, int h, int rad);
 CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad);

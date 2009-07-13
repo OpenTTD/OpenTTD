@@ -46,7 +46,7 @@ CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		if (!StrEmpty(text)) {
 			si->name = strdup(text);
 		}
-		UpdateSignVirtCoords(si);
+		si->UpdateVirtCoord();
 		si->sign.MarkDirty();
 		InvalidateWindowData(WC_SIGN_LIST, 0, 0);
 		_new_sign_id = si->index;
@@ -82,7 +82,7 @@ CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 			/* Update; mark sign dirty twice, because it can either become longer, or shorter */
 			si->sign.MarkDirty();
-			UpdateSignVirtCoords(si);
+			si->UpdateVirtCoord();
 			si->sign.MarkDirty();
 			InvalidateWindowData(WC_SIGN_LIST, 0, 1);
 		}

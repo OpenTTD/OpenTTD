@@ -367,9 +367,7 @@ static Station *GetClosestDeletedStation(TileIndex tile)
 }
 
 /**
- * Update the virtual coords needed to draw the station sign and
- * mark the station sign dirty.
- * @ingroup dirty
+ * Update the virtual coords needed to draw the station sign.
  */
 void Station::UpdateVirtCoord()
 {
@@ -384,7 +382,7 @@ void Station::UpdateVirtCoord()
 }
 
 /** Update the virtual coords needed to draw the station sign for all stations. */
-void UpdateAllStationVirtCoord()
+void UpdateAllStationVirtCoords()
 {
 	Station *st;
 
