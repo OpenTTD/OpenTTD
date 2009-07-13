@@ -111,7 +111,7 @@ static bool SetBankSource(MixerChannel *mc, const SoundEntry *sound)
 
 	assert(sound->bits_per_sample == 8 && sound->channels == 1 && sound->file_size != 0 && sound->rate != 0);
 
-	MxSetChannelRawSrc(mc, mem, sound->file_size, sound->rate, MX_AUTOFREE);
+	MxSetChannelRawSrc(mc, mem, sound->file_size, sound->rate);
 
 	return true;
 }

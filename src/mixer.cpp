@@ -21,8 +21,6 @@ struct MixerChannel {
 	/* Mixing volume */
 	int volume_left;
 	int volume_right;
-
-	uint flags;
 };
 
 static MixerChannel _channels[8];
@@ -80,7 +78,7 @@ static void mix_int8_to_int16(MixerChannel *sc, int16 *buffer, uint samples)
 
 static void MxCloseChannel(MixerChannel *mc)
 {
-	if (mc->flags & MX_AUTOFREE) free(mc->memory);
+	free(mc->memory);
 	mc->active = false;
 	mc->memory = NULL;
 }
@@ -112,10 +110,9 @@ MixerChannel *MxAllocateChannel()
 	return NULL;
 }
 
-void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, size_t size, uint rate, uint flags)
+void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, size_t size, uint rate)
 {
 	mc->memory = mem;
-	mc->flags = flags;
 	mc->frac_pos = 0;
 	mc->pos = 0;
 
