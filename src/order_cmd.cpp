@@ -1640,10 +1640,12 @@ VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v)
  */
 bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 {
+	if (conditional_depth > v->GetNumOrders()) return false;
+
 	switch (order->GetType()) {
 		case OT_GOTO_STATION:
 			v->dest_tile = v->GetOrderStationLocation(order->GetDestination());
-			break;
+			return true;
 
 		case OT_GOTO_DEPOT:
 			if (v->current_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
@@ -1667,19 +1669,19 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 							AircraftNextAirportPos_and_Order(a);
 						}
 					}
-				} else {
-					if (conditional_depth > v->GetNumOrders()) return false;
-
-					UpdateVehicleTimetable(v, true);
-					v->IncrementOrderIndex();
-
-					/* Get the current order */
-					const Order *order = v->GetOrder(v->cur_order_index);
-					v->current_order = *order;
-					return UpdateOrderDest(v, order, conditional_depth + 1);
+					return true;
 				}
-			} else if (v->type != VEH_AIRCRAFT) {
-				v->dest_tile = Depot::Get(order->GetDestination())->xy;
+
+				UpdateVehicleTimetable(v, true);
+				v->IncrementOrderIndex();
+			} else if ((order->GetDepotOrderType() & ODTFB_SERVICE) && !v->NeedsServicing()) {
+				UpdateVehicleTimetable(v, true);
+				v->IncrementOrderIndex();
+			} else {
+				if (v->type != VEH_AIRCRAFT) {
+					v->dest_tile = Depot::Get(order->GetDestination())->xy;
+				}
+				return true;
 			}
 			break;
 
@@ -1689,11 +1691,9 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 			} else {
 				v->dest_tile = Station::Get(order->GetDestination())->xy;
 			}
-			break;
+			return true;
 
 		case OT_CONDITIONAL: {
-			if (conditional_depth > v->GetNumOrders()) return false;
-
 			VehicleOrderID next_order = ProcessConditionalOrder(order, v);
 			if (next_order != INVALID_VEH_ORDER_ID) {
 				UpdateVehicleTimetable(v, false);
@@ -1703,20 +1703,20 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 				UpdateVehicleTimetable(v, true);
 				v->IncrementOrderIndex();
 			}
-
-			assert(v->cur_order_index < v->GetNumOrders());
-
-			/* Get the current order */
-			const Order *order = v->GetOrder(v->cur_order_index);
-			v->current_order = *order;
-			return UpdateOrderDest(v, order, conditional_depth + 1);
+			break;
 		}
 
 		default:
 			v->dest_tile = 0;
 			return false;
 	}
-	return true;
+
+	assert(v->cur_order_index < v->GetNumOrders());
+
+	/* Get the current order */
+	order = v->GetOrder(v->cur_order_index);
+	v->current_order = *order;
+	return UpdateOrderDest(v, order, conditional_depth + 1);
 }
 
 /**
@@ -1732,11 +1732,6 @@ bool ProcessOrders(Vehicle *v)
 		case OT_GOTO_DEPOT:
 			/* Let a depot order in the orderlist interrupt. */
 			if (!(v->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS)) return false;
-
-			if ((v->current_order.GetDepotOrderType() & ODTFB_SERVICE) && !v->NeedsServicing()) {
-				UpdateVehicleTimetable(v, true);
-				v->IncrementOrderIndex();
-			}
 			break;
 
 		case OT_LOADING:
