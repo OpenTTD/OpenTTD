@@ -559,7 +559,7 @@ public:
 		this->livery_class = LC_OTHER;
 		this->sel = 1;
 		this->LowerWidget(SCLW_WIDGET_CLASS_GENERAL);
-		this->OnInvalidateData(_loaded_newgrf_features.has_2CC);
+		this->OnInvalidateData();
 		this->FindWindowPlacementAndResize(desc);
 	}
 
@@ -692,14 +692,8 @@ public:
 
 	virtual void OnInvalidateData(int data = 0)
 	{
-		static bool has2cc = true;
-
-		if (has2cc == !!data) return;
-
-		has2cc = !!data;
-
-		int r = this->widget[has2cc ? SCLW_WIDGET_SEC_COL_DROPDOWN : SCLW_WIDGET_PRI_COL_DROPDOWN].right;
-		this->SetWidgetHiddenState(SCLW_WIDGET_SEC_COL_DROPDOWN, !has2cc);
+		int r = this->widget[_loaded_newgrf_features.has_2CC ? SCLW_WIDGET_SEC_COL_DROPDOWN : SCLW_WIDGET_PRI_COL_DROPDOWN].right;
+		this->SetWidgetHiddenState(SCLW_WIDGET_SEC_COL_DROPDOWN, !_loaded_newgrf_features.has_2CC);
 		this->widget[SCLW_WIDGET_CAPTION].right = r;
 		this->widget[SCLW_WIDGET_SPACER_CLASS].right = r;
 		this->widget[SCLW_WIDGET_MATRIX].right = r;
