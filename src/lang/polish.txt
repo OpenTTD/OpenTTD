@@ -1338,6 +1338,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Pozwól
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Zezwól na wiele zestawów NewGRF: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Zmiana tego ustawienia nie jest możliwa, gdy znajdują się tutaj pojazdy.
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Pozwól budować stare lotniska: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Ostrzegaj jeśli pociąg się zgubi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Kontroluj polecenia pojazdów: {ORANGE}{STRING}
@@ -3215,14 +3216,22 @@ STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Usuń po
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Wstaw nowe polecenie na końcu listy lub przed zaznaczonym poleceniem
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rozkład jazdy - kliknij na zadaniu aby je zaznaczyć.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmień ilość czasu którą zaznaczone zadanie powinno zająć
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Usuń ilość czas przeznaczoną na zaznaczone zadanie
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Usuń ilość czasu przeznaczoną na zaznaczone zadanie
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj licznik spóźnienia, aby pojazd podróżował zgodnie z rozkładem jazdy
 STR_SERVICE_HINT                                                :{BLACK}Pomiń to polecenie jesli serwis nie jest wymagany
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koszt: {CURRENCY} Waga: {WEIGHT_S}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Utrzymanie: {CURRENCY}/rok{}Pojemność: {CARGO}
 STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Kosztuje: {CURRENCY} Maksymalna prędkość: {VELOCITY}{}Pojemność: {CARGO}, {CARGO}{}Koszt używania: {CURRENCY}/rok
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Koszt: {CURRENCY} Prędkość maksymalna: {VELOCITY}{}Ładowność: {CARGO}{}Koszt utrzymania: {CURRENCY}/rok
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Koszt używania: {LTBLUE}{CURRENCY}/rok
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maksymalna prędkość: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Waga: {LTBLUE}{WEIGHT_S} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Maksymalna prędkość: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Masa: {LTBLUE}{WEIGHT_S} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Prędkość maksymalna: {LTBLUE}{VELOCITY} {BLACK}Maksymalna siła pociągowa: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY} (w zeszłym roku: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Zakupiony: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Ładowność: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Ładowność: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ładowność: {LTBLUE}{CARGO}, {CARGO}{STRING}
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Zepsuty
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zatrzymany
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nie można przepościć pociągu za sygnał, niebezpieczeństwo...
@@ -3233,6 +3242,8 @@ STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Nie moż
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nazwa pociągu
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Wypadek kolejowy!{}{COMMA} ofiar{P a y ""} w kolizji
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nie można odwrócić kierunku jazdy pociągu...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nie można zawrócić pociągu...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nie można obracać pociągów z podwójnymi lokomotywami
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Zmiana nazwy typu pociągu
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nie można zmienić nazwy typu pojazdu...
 STR_CLEAR_TIME                                                  :{BLACK}Usuń czas
@@ -3311,7 +3322,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwszy tramwaj towarowy przybył do {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Wypadek samochodowy!{}Kierowca zginął w zderzeniu z pociągiem
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Wypadek samochodowy!{}{COMMA} ofiar{P a y ""} zderzenia z pociągiem
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nie można obracać pociągów z podwójnymi lokomotywami
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Nie można zawrócić pojazdu...
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Zmień nazwę
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Zmień nazwę typu samochodu
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Zmień nazwę typu samochodu
@@ -3572,6 +3583,12 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Przejś
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Przejście na Euro: {ORANGE}nigdy
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Podgląd: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmień parametr własnej waluty
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Zmniejsz kurs wymiany za jednego Funta (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Zwiększ kurs wymiany za jednego Funta (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Ustal kurs wymiany za jednego Funta (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Ustaw znak oddzielający w twojej walucie
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Ustaw przedrostek dla swojej waluty
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Ustaw symbol dla twojej waluty
 STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Przełącz na Euro wcześniej
 STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Przełącz na Euro później
 STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Ustaw rok przełączenia na Euro

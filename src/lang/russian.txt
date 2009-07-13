@@ -544,7 +544,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заго
 STR_STICKY_BUTTON                                               :{BLACK}Игнорировать нажатия клавиши «Закрыть все окна»
 STR_RESIZE_BUTTON                                               :{BLACK}Нажмите и тащите для изменения размера окна
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Кликните, чтобы перейти к текущей папке загрузки/сохранения по умолчанию
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Уничтожить здания, постройки, траву, деревья в ячейке местности
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Полная очистка прямоугольного участка земли
 STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}Опустить угол земли
 STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Поднять угол земли
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Прокрутка вверх/вниз
@@ -1367,7 +1367,7 @@ STR_BUILD_CANALS_TIP                                            :{BLACK}Стро
 STR_LANDINFO_CANAL                                              :Канал
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Здесь невозможно построить шлюз...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Построить шлюзы
+STR_BUILD_LOCKS_TIP                                             :{BLACK}Строительство шлюзов
 STR_LANDINFO_LOCK                                               :Шлюз
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Здесь невозможно расположить реку...
@@ -2424,7 +2424,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Председ�
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Президент
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Магнат
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Построить штаб
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Построить штаб-квартиру компании / Осмотреть штаб-квартиру компании
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Построить/осмотреть штаб-квартиру компании
 STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Переместить штаб компании в другом месте за 1% оценочной стоимости капитала компании
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Невозможно построить штаб-квартиру компании...
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Осмотреть штаб
@@ -3089,8 +3089,8 @@ STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Сле�
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Обслуж. в доке {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Обслуж. в доке {TOWN}, {VELOCITY}
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} ждёт в доке
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Построить пристань
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Построить док (для строительства и обслуживания кораблей)
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Строительство пристаней
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Строительство доков (для строительства и обслуживания кораблей)
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Корабли - нажмите для получения справки
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Построить новый корабль
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Перетащите сюда корабль, чтобы продать его
@@ -3108,9 +3108,9 @@ STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Назв
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Название корабля
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Не могу назвать корабль...
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Жители празднуют!{}Первый корабль причалил к {STATION}!
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Буй помогает в навигации, если дистанция большая, исользуйте его как точку маршрута
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Не могу построить буй здесь...
-STR_BUILD_AQUEDUCT                                              :{BLACK}Построить акведук
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Буи помогают в навигации на больших расстояниях; используйте их как маршрутные точки
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Не могу установить здесь буй...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Строительство акведуков
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Здесь невозможно построить акведук...
 STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Переимен.
 STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Переименовать
@@ -3150,7 +3150,7 @@ STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Само
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Самолёт должен быть остановлен в ангаре
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Не могу продать авиатранспорт...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Строительство аэропорта
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Построить аэропорт
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Строительство аэропортов
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авиатранспорт - нажмите для получения справки
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авиатранспорт - нажмите для получения справки
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Построить новый авиатранспорт
@@ -3188,7 +3188,7 @@ STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}Автомобиль уничтожен при столкновении с НЛО!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BLACK}{BIGFONT}Взрыв нефтеперегонного завода вблизи {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BLACK}{BIGFONT}Взрыв завода при подозрительных обстоятельствах вблизи {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BLACK}{BIGFONT}НЛО приземлилось возле {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BLACK}{BIGFONT}НЛО приземлилось возле г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BLACK}{BIGFONT}Обвал на угольной шахте вызывает оползень около {TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BLACK}{BIGFONT}ПОТОП!{}{COMMA} человек{P "" а ""} утонул{P "" о о} в результате наводнения!
 

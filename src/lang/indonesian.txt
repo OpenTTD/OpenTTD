@@ -2838,7 +2838,7 @@ STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Ganti na
 
 STR_TRAIN_STOPPING                                              :{RED}Berhenti
 STR_TRAIN_STOPPING_VEL                                          :{RED}Akan berhenti, {VELOCITY}
-STR_INCOMPATIBLE_RAIL_TYPES                                     :Jenis rel tidak sama
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Jenis rel tidak sesuai
 STR_TRAIN_NO_POWER                                              :{RED}Tidak ada daya
 STR_TRAIN_START_NO_CATENARY                                     :Jalur ini mengalami kekurangan "catenary" sehingga kereta api tidak dapat dijalankan
 STR_TRAIN_STUCK                                                 :{ORANGE}Menunggu sampai jalur bebas

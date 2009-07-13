@@ -1183,8 +1183,8 @@ STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}기후 
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}날짜 변경: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}산업시설의 생산량 조절 허가 : {ORANGE}{STRING}
 
-STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}{WAYPOINT}(으)로 향하는 중
-STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}{WAYPOINT}, {VELOCITY}(으)로 향하는 중
+STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}{WAYPOINT}{G 0 "으" ""}로 향하는 중
+STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}{WAYPOINT}{G 0 "으" ""}로 향하는 중, {VELOCITY}
 
 STR_GO_TO_WAYPOINT                                              :완행 경유 {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :직행 경유 {WAYPOINT}
