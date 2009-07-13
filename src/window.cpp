@@ -1992,9 +1992,10 @@ void HandleKeypress(uint32 raw_key)
 		if (_focused_window->OnKeyPress(key, keycode) == Window::ES_HANDLED) return;
 	}
 
-	/* Call the event, start with the uppermost window. */
+	/* Call the event, start with the uppermost window, but ignore the toolbar. */
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
+		if (w->window_class == WC_MAIN_TOOLBAR) continue;
 		if (w->OnKeyPress(key, keycode) == Window::ES_HANDLED) return;
 	}
 
