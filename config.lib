@@ -1613,7 +1613,7 @@ check_strip() {
 	elif [ "$os" = "OSX" ]; then
 		# Most targets have -V in strip, to see if they exists... OSX doesn't.. so execute something
 		echo "int main(int argc, char *argv[]) { }" > strip.test.c
-		$cc_host strip.test.c -o strip.test
+		$cxx_host strip.test.c -o strip.test
 		check_compiler "host strip" "strip" "$host" "$strip" "$STRIP" "strip" "strip" "3" "strip.test"
 		rm -f strip.test.c strip.test
 	else
@@ -1624,7 +1624,7 @@ check_strip() {
 check_lipo() {
 	if [ "$os" = "OSX" ] && [ "$enable_universal" != "0" ]; then
 		echo "int main(int argc, char *argv[]) { }" > lipo.test.c
-		$cc_host lipo.test.c -o lipo.test
+		$cxx_host lipo.test.c -o lipo.test
 		check_compiler "host lipo" "lipo" "$host" "$lipo" "$LIPO" "lipo" "lipo" "4" "-info lipo.test"
 		rm -f lipo.test.c lipo.test
 	fi
