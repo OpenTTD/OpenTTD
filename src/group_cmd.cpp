@@ -215,7 +215,7 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			case VEH_ROAD:
 			case VEH_SHIP:
 			case VEH_AIRCRAFT:
-				if (IsEngineCountable(v)) UpdateNumEngineGroup(v->engine_type, v->group_id, new_g);
+				if (v->IsEngineCountable()) UpdateNumEngineGroup(v->engine_type, v->group_id, new_g);
 				v->group_id = new_g;
 				break;
 		}
@@ -349,7 +349,7 @@ void SetTrainGroupID(Train *v, GroupID new_g)
 	assert(v->IsFrontEngine());
 
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
-		if (IsEngineCountable(u)) UpdateNumEngineGroup(u->engine_type, u->group_id, new_g);
+		if (u->IsEngineCountable()) UpdateNumEngineGroup(u->engine_type, u->group_id, new_g);
 
 		u->group_id = new_g;
 	}
@@ -372,7 +372,7 @@ void UpdateTrainGroupID(Train *v)
 
 	GroupID new_g = v->IsFrontEngine() ? v->group_id : (GroupID)DEFAULT_GROUP;
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
-		if (IsEngineCountable(u)) UpdateNumEngineGroup(u->engine_type, u->group_id, new_g);
+		if (u->IsEngineCountable()) UpdateNumEngineGroup(u->engine_type, u->group_id, new_g);
 
 		u->group_id = new_g;
 	}

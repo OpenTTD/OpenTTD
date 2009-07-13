@@ -386,7 +386,7 @@ void SetCachedEngineCounts()
 
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (!IsEngineCountable(v)) continue;
+		if (!v->IsEngineCountable()) continue;
 
 		assert(v->engine_type < engines);
 

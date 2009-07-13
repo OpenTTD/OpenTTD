@@ -369,7 +369,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 				} else {
 					v->owner = new_owner;
 					v->colourmap = PAL_NONE;
-					if (IsEngineCountable(v)) Company::Get(new_owner)->num_engines[v->engine_type]++;
+					if (v->IsEngineCountable()) Company::Get(new_owner)->num_engines[v->engine_type]++;
 					if (v->IsPrimaryVehicle()) v->unitnumber = unitidgen[v->type].NextID();
 				}
 			}

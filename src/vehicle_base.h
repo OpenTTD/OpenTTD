@@ -511,6 +511,8 @@ public:
 	{
 		return (this->orders.list == NULL) ? NULL : this->orders.list->GetLastOrder();
 	}
+
+	bool IsEngineCountable() const;
 };
 
 #define FOR_ALL_VEHICLES_FROM(var, start) FOR_ALL_ITEMS_FROM(Vehicle, vehicle_index, var, start)

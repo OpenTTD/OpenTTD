@@ -473,17 +473,16 @@ uint CountVehiclesInChain(const Vehicle *v)
 }
 
 /** Check if a vehicle is counted in num_engines in each company struct
- * @param *v Vehicle to test
  * @return true if the vehicle is counted in num_engines
  */
-bool IsEngineCountable(const Vehicle *v)
+bool Vehicle::IsEngineCountable() const
 {
-	switch (v->type) {
-		case VEH_AIRCRAFT: return IsNormalAircraft(v); // don't count plane shadows and helicopter rotors
+	switch (this->type) {
+		case VEH_AIRCRAFT: return IsNormalAircraft(this); // don't count plane shadows and helicopter rotors
 		case VEH_TRAIN:
-			return !Train::From(v)->IsArticulatedPart() && // tenders and other articulated parts
-					!Train::From(v)->IsRearDualheaded(); // rear parts of multiheaded engines
-		case VEH_ROAD: return RoadVehicle::From(v)->IsRoadVehFront();
+			return !Train::From(this)->IsArticulatedPart() && // tenders and other articulated parts
+					!Train::From(this)->IsRearDualheaded(); // rear parts of multiheaded engines
+		case VEH_ROAD: return RoadVehicle::From(this)->IsRoadVehFront();
 		case VEH_SHIP: return true;
 		default: return false; // Only count company buildable vehicles
 	}
@@ -501,7 +500,7 @@ void Vehicle::PreDestructor()
 		delete this->cargo_payment;
 	}
 
-	if (IsEngineCountable(this)) {
+	if (this->IsEngineCountable()) {
 		Company::Get(this->owner)->num_engines[this->engine_type]--;
 		if (this->owner == _local_company) InvalidateAutoreplaceWindow(this->engine_type, this->group_id);
 
