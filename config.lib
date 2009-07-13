@@ -2586,17 +2586,6 @@ make_sed() {
 	T_CFLAGS="$CFLAGS"
 	T_LDFLAGS="$LDFLAGS"
 
-	# We check here if we are PPC, because then we need to enable FOUR_BYTE_BOOL
-	#  We do this here, and not sooner, so universal builds also have this
-	#  automatically correct
-	# FOUR_BYTE_BOOL is needed, because C++ uses 4byte for a bool on PPC, where
-	#  we use 1 byte per bool normally in C part. So convert that last one to 4
-	#  bytes too, but only for PPC.
-	ppc=`$cc_host -dumpmachine | egrep "powerpc|ppc"`
-	if [ -n "$ppc" ]; then
-		T_CFLAGS="$T_CFLAGS -DFOUR_BYTE_BOOL"
-	fi
-
 	SRC_OBJS_DIR="$BASE_SRC_OBJS_DIR/$OBJS_SUBDIR"
 
 	# All the data needed to compile a single target
