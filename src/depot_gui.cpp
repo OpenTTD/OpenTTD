@@ -549,9 +549,8 @@ struct DepotWindow : Window {
 	/**
 	 * Clones a vehicle
 	 * @param *v is the original vehicle to clone
-	 * @param *w is the window of the depot where the clone is build
 	 */
-	void HandleCloneVehClick(const Vehicle *v, const Window *w)
+	void HandleCloneVehClick(const Vehicle *v)
 	{
 		StringID error_str;
 
@@ -901,7 +900,7 @@ struct DepotWindow : Window {
 	{
 		const Vehicle *v = CheckMouseOverVehicle();
 
-		if (v != NULL) HandleCloneVehClick(v, this);
+		if (v != NULL) this->HandleCloneVehClick(v);
 	}
 
 	virtual void OnPlaceObjectAbort()
@@ -923,7 +922,7 @@ struct DepotWindow : Window {
 		/* since OTTD checks all open depot windows, we will make sure that it triggers the one with a clicked clone button */
 		if (v != NULL && this->IsWidgetLowered(DEPOT_WIDGET_CLONE)) {
 			_place_clicked_vehicle = NULL;
-			HandleCloneVehClick(v, this);
+			this->HandleCloneVehClick(v);
 		}
 	}
 
