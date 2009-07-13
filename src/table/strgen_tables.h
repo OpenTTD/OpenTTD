@@ -161,6 +161,7 @@ static const PluralForm _plural_forms[] = {
 	{ 4, "Four forms, special case for 1 and all numbers ending in 02, 03, or 04" },
 	{ 2, "Two forms, singular used for everything ending in 1 but not in 11" },
 	{ 3, "Three forms, special case for 1 and 2, 3, or 4" },
+	{ 2, "Two forms, cases for numbers ending with a consonant and with a vowel" },
 };
 
 /* Flags:

@@ -430,6 +430,32 @@ static int DeterminePluralForm(int64 count)
 		 *   Czech */
 		case 10:
 			return n == 1 ? 0 : n >= 2 && n <= 4 ? 1 : 2;
+
+		/* Two forms, special 'hack' for Korean; singular for numbers ending
+		 *   in a consonant and plural for numbers ending in a vowel.
+		 * Korean doesn't have the concept of plural, but depending on how a
+		 * number is pronounced it needs another version of a particle.
+		 * As such the plural system is misused to give this distinction.
+		 */
+		case 11:
+			switch (n % 10) {
+				case 0: // yeong
+				case 1: // il
+				case 3: // sam
+				case 6: // yuk
+				case 7: // chil
+				case 8: // pal
+					return 0;
+
+				case 2: // i
+				case 4: // sa
+				case 5: // o
+				case 9: // gu
+					return 1;
+
+				default:
+					NOT_REACHED();
+			}
 	}
 }
 

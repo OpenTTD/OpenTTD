@@ -1,7 +1,7 @@
 ##name Korean
 ##ownname 한국어
 ##isocode ko_KR
-##plural 1
+##plural 11
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
