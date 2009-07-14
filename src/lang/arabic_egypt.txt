@@ -449,8 +449,8 @@ STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK} تكل�
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}تكلفة الازالة :  {RED}{CURRENCY}
 STR_REVENUE_WHEN_CLEARED                                        :{BLACK} الدخل عند للتجديد:  {LTBLUE}{CURRENCY}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :غير متاح
-STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}المالك:  {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}مالك الطريق:  {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}المالك: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}مالك الطريق: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}مالك طريق الترام: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}مالك سكة الحديد: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}السلطة المحلية: {LTBLUE}{STRING}
@@ -640,7 +640,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}حفظ �
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}لعب خريطة
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}العب خريطة المرتفعات
 STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}ابدأ لعبة جديدة بواسطة خريطة المرتفعات
-STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}هل تريد الخروج من هذه الخريطة
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}هل تريد الخروج من انشاء الخريطة
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...يمكن بنائة في مدن يزيد سكانها عن 1200 نسمة
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}العودة بتاريخ البدأ سنة واحدة
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}تقديم تاريخ البدأ سنة واحدة لالأمام
@@ -918,7 +918,7 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}الاع
 STR_CONFIG_SETTING_OFF                                          :قفل
 STR_CONFIG_SETTING_ON                                           :فتح
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}عرض سرعة المركبه في شريط الحاله :{ORANGE}{STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}السماح بالبناء على المنحدرات و السواحل:  {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}السماح بالبناء على المنحدرات و السواحل: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}السماح باعادة بناء التلال تحت المباني, الطرق, الخ .-الانحدار الذاتي- {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}السماح بحدود اكثر واقعية للمحطات بحسب الحجم: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}السماح بحذف اكثر من الطرق المملوكة للمدينة و الجسور و غيرها: {ORANGE}{STRING}
@@ -926,30 +926,30 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}الس�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE} موديل تسارع القطارات: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :الاصلي
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :واقعي
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}منع القطارات والسفن من الدوران بزاوية تسعين درجة :  {ORANGE}{STRING} {LTBLUE} (not with NTP)
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}ربط محطات القطار المبنيه بجوار بعض:  {ORANGE}{STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}منع القطارات والسفن من الدوران بزاوية تسعين درجة : {ORANGE}{STRING} {LTBLUE} (not with NTP)
+STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}ربط محطات القطار المبنيه بجوار بعض: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE} السماح بربط محطتين غير متجاورتين : {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}أستخدام خوارزمية التحميل المحسنه: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}تحميل القطارات بالتدريج:  {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}تحميل القطارات بالتدريج: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}التضخم: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}أوصل الحموله للمحطه إذا كان هناك حاجة فقط: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}السمح ببناء جسور طويلة جداً:  {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}السمح ببناء جسور طويلة جداً: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}السماح بأمر الذهاب للورشة: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}طريقة بناء المصانع الأولية يدوية : {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :بدون
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ككل المصانع الأخرى
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :تنقيب
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}السماح بوجود اكثر من مصنع من نفس النوع في المدينة الواحدة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}من الممكن بناء مصانع من نفس النوع بجوار بعض:  {ORANGE}{STRING}
+STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}من الممكن بناء مصانع من نفس النوع بجوار بعض: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}استخدام التاريخ الطويل في لوحة العرض دائما: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}اظهار الاشارات على جهة السائق: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}أعرض نافذة المالية في آخر السنه: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}الامر الجديد - بدون توقف - قياسيا: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}اوامر القطار الجديدة تتوقف قياسيا في  {ORANGE}{STRING}{LTBLUE} رصيف المحطة
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}اوامر القطار الجديدة تتوقف قياسيا في {ORANGE}{STRING}{LTBLUE} رصيف المحطة
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :قرب النهاية
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :وسط
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :النهاية القصوى
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}تسلسل عربات الطريق - بالتأثير الكمي :  {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}تسلسل عربات الطريق - بالتأثير الكمي : {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}حرك الشاشة عندما تكون المؤشر على الحافة: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}السماح برشوة السلطات االمحليه: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}السماح بشراء حقوق النقل الحصري: {ORANGE}{STRING}
@@ -970,7 +970,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}است�
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :لا
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :نعم, بستثناء العربات المتوقفة
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :لكل العربات
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}  حذر عندما يكون الدخل سالبا : {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE} حذر عندما يكون الدخل سالبا :{ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}المركبات لا تنتهي صلاحيتها ابدا : {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}جدد العربات عندما تصبح قديمة : {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}التجديد التلقائي عندما تكون العربة {ORANGE}{STRING}{LTBLUE}شهر قبل / بعد العمر الافتراضي.
@@ -978,12 +978,12 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}الت�
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}زمن عرض الرسالة: {ORANGE}{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}أعرض عدد السكان مع الأسم على العلامه: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}مولد الأرض:  {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}مولد الأرض: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :الأصلي
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :مرتفعات منزلقة
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}المسافة القصزى لمحطات التكرير من الحافة: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}ارتفاع خط الثلج: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE} خشونة التضاريس (سفر التكوين فقط ) :  ({ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE} خشونة التضاريس (سفر التكوين فقط ) :({ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :ناعم جدا
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :ناعم
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :خشن
@@ -1000,7 +1000,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE} الس
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE} مربع او اكثر غير فارغ في الحدود الشمالية
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE} مربع او اكثر من حدود الخريطة لا يكون بحر
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}أكبر توسع للمحطه:  {ORANGE}{STRING} {RED}تحذير: الإعدادات العاليه تبطئ اللعبه
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}أكبر توسع للمحطه: {ORANGE}{STRING} {RED}تحذير: الإعدادات العاليه تبطئ اللعبه
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}صيانة الهيلوكبتر في مهبطها تلقائيا: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}اربط اداة التضاريس الى اداة السكة /الطرق / اموانئ / المطارات{ORANGE}{STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}عكس تحريك الشاشة : {ORANGE}{STRING}
@@ -1010,7 +1010,7 @@ STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}عرض 
 STR_CONFIG_SETTING_LIVERIES_NONE                                :بدون
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :شركتك الخاصة
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :كل الشركات
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}تفضيل الدردشة  <ENTER> : {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}تفضيل الدردشة &lt;ENTER> : {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}وظيفة عجلة التحريك: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :تصغير تكبير الخريطة
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :تحريك الخريطة
@@ -1034,7 +1034,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}است�
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :بدون
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :لشركتك
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :كل الشركات
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}تفعيل مؤشر التحميل:  {ORANGE}{STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}تفعيل مؤشر التحميل: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :بدون
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :لشركتك
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :كل الشركات
@@ -1078,14 +1078,14 @@ STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}فتر�
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}فترات الصيانة القياسية للسفن {ORANGE}غير مفعل
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}الغاء الصيانة عندما يكون التعطيل للمركبات غير مفعل: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}السماح بتحديد سرعة العربات: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}تعطيل سكة القطار الكهربائي:  {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}تعطيل سكة القطار الكهربائي: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}الاخبار الملونة تظهر في: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}سنة البدايه:  {ORANGE}{STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}سنة البدايه: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}السماح بأقتصاد ثابت )تغيرات صغيرة اكثر): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}السماح بشراء حصص من الشركات المنافسة: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}عندما تسحب او توضع الاشارات كل: {ORANGE}{STRING} مربع
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}اتاحة  استخدام الأشارات بالأعلام قبل : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}اتاحة استخدام الأشارات بالأعلام قبل :{ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}السماح باستخدام اشارات واجهة المستخدم الرسومية: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}نوع الاشارة الذي يبنى قياسيا: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :اشارات التوقف
@@ -1105,15 +1105,15 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :عشوائي
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE} السماح للمدن ببناء طرق: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}السماح للمدن بالتحكم بضجيج المطارات: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}موقع شريط الأدوات الرئيسي:  {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}موقع شريط الأدوات الرئيسي: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :يسار
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :متوسط
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :يمين
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}قطر اللقطة للاطار: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}قطر اللقطة للاطار:  {ORANGE}غير مفعل
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE} حدود نعومة النوافذ - غير ملتصقة -  : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE} حدود نعومة النوافذ - غير ملتصقة - :{ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE} حدود نعومة النوافذ - غير ملتصقة - : {ORANGE} غير مفعل
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}سرعة نمو المدينه:  {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}سرعة نمو المدينه: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :بدون
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :بطيء
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :عادي
@@ -1142,7 +1142,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE} قطا
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE} مدن
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE} مصانع
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}موجد الطريق - قصاص الطريق -  للقطارات: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}موجد الطريق- قصاص الطريق - للقطارات:{ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(غير مفضل)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(مفضل)
@@ -1174,7 +1174,7 @@ STR_CHEATS_TIP                                                  :{BLACK}علام
 STR_CHEATS_WARNING                                              :{BLACK}تحذير! انت على وشك ان تخون منافسيك. هذا الخيانة ستبقى عار عليك الى الأبد.
 STR_CHEAT_MONEY                                                 :{LTBLUE}زيادة السيولة بـ {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}العب كشركة{ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}الجرافة السحرية - لازالة المصانع, الاشياء الغير متنقلة.  {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}الجرافة السحرية - لازالة المصانع, الاشياء الغير متنقلة.{ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}يمكن للانفاق ان تتقاطع: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}البناء خلال توقيف اللعبة: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}الطائرات النفاثة لن تتحطم كثيرا في المطارات الصغيرة {ORANGE} {STRING}
@@ -1313,14 +1313,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}سنين
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}عدد السنوات{}اللعبة قائمة
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}معلومات اللعبة
-STR_NETWORK_CLIENTS                                             :{SILVER}عملاء: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}اللغة:   {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}مجموعة المربعات: {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}حجم الخريطة:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}نسخة الخادم:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}عنوان الخادم:  {WHITE}{STRING}
-STR_NETWORK_START_DATE                                          :{SILVER}تاريخ البداية: {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}التاريخ الحالي:   {WHITE}{DATE_SHORT}
+STR_NETWORK_CLIENTS                                             :{SILVER}عملاء:{WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}اللغة:{WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}مجموعة المربعات:{WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}حجم الخريطة: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}نسخة الخادم:{WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}عنوان الخادم:{WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}تاريخ البداية:{WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}التاريخ الحالي:{WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}كلمت السر محمية!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}الخادم غير موجود
 STR_NETWORK_SERVER_FULL                                         :{SILVER}الخادم ممتلئ
@@ -1402,7 +1402,7 @@ STR_NETWORK_LANG_LATVIAN                                        :اللاتفي�
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}ردهة تعدد اللاعبين
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}التحضير لالانضمام الى: {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}التحضير لالانضمام الى:{ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}قائمة بالشركات الموجودة باللعبة ، يمكنك الإنضمام لشركة أو تأسيس واحدة
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}شركة جديدة
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}أنشئ شركة جديدة
@@ -1415,16 +1415,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}حدث �
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}معلومات الشركة
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}أسم الشركة:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}افتتاح: {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}قيمة الشركة:   {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}الرصيد الحالي:   {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}دخل السنة الماضية:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}الأداء:   {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}أسم الشركة:{WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}افتتاح:{WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}قيمة الشركة:{WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}الرصيد الحالي:{WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}دخل السنة الماضية:{WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}الأداء:{WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}مركبة:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}محطات:   {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}لاعبين:   {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}مركبة:{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}محطات:{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}لاعبين:{WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}إتصال...
 
@@ -1451,7 +1451,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}قائم
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE} شاهد
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE} شركة جديدة
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} لايوجد أجهزة شبكة
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} لايوجد أجهزة شبكة او الشبكة معطلة
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} لايوجد ألعاب شبكة
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} الخادم لم يجب على الطلب
 STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} لم يتم الربط بسبب عدم توافق NewGFR
@@ -2828,6 +2828,8 @@ STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}لا ي�
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK} اسم القطار
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}تحطم قطار! {}{COMMA} مات في حريق بعد الحادث
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}لا يمكن عكس اتجاة القطار...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE} لا يمكن تغيير اتجاة العربة ...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}لا يمكن انعطاف العربات المكونة من اكثر من وحدة.
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}اعادة تسمية عربات القطار
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}لا يمكن اعادة تسمية عربات القطار ...
 STR_CLEAR_TIME                                                  :{BLACK}مسح الوقت
@@ -2906,7 +2908,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}المواطنون يحتفلون . . . {}بوصول اول عربة ترام لمحطة  {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}العربة تحطمت !{}السائق توفي في شعلة الحريق بعد الاصطدام بقطار
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}العربة تحطمت !{}{COMMA} توفي في شعلة الحريق بعد الاصطدام بقطار
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}لا يمكن انعطاف العربات المكونة من اكثر من وحدة.
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE} لا يمكن تغيير اتجاة المركبة الان
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}أعد التسمية
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK} اعادة تسمية العربة
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE} اعادة تسمية العربة

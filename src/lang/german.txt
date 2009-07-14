@@ -1596,7 +1596,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Signale 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Eisenbahnbrücke bauen
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Eisenbahntunnel bauen
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Umschalter für Bau/Abriss von aktuellem Bauwerkzeug
-STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Brückenauswahl - klicke auf die gewünschte Brücke, um sie zu bauen
+STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Brückenauswahl - Klicke auf die gewünschte Brücke, um sie zu bauen
 STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Ausrichtung des Zugdepots auswählen
 STR_RAILROAD_TRACK                                              :Gleis
 STR_RAILROAD_TRAIN_DEPOT                                        :Zugdepot
