@@ -1009,13 +1009,74 @@ check_params() {
 	fi
 }
 
+make_compiler_cflags() {
+	# Params:
+	# $1 - compiler
+	# $2 - the current cflags
+	# $3 - variable to finally write to
+
+	flags="$2"
+
+	if [ `echo $1 | cut -c 1-3` = "icc" ]; then
+		# Enable some things only for certain ICC versions
+		cc_version=`$1 -dumpversion | cut -c 1-4`
+
+
+		if [ "$cc_version" = "10.1" ]; then
+			flags="$flags -Wno-multichar"
+		fi
+
+		if [ "$cc_version" = "11.0" ]; then
+			# warning 1899: multicharacter character literal (potential portability problem) (e.g. 'FOOD')
+			# vec report defaults to telling where it did loop vectorisation, which is not very important
+			flags="$flags -vec-report=0 -wd1899"
+		fi
+	else
+		# Enable some things only for certain GCC versions
+		cc_version=`$1 -dumpversion | cut -c 1,3`
+
+		if [ $cc_version -lt 30 ]; then
+			log 1 "configure: error: gcc older than 3.0 can't compile OpenTTD because of its poor template support"
+			exit 1
+		fi
+
+		flags="$flags -Wall -Wno-multichar -Wsign-compare -Wundef"
+		flags="$flags -Wwrite-strings -Wpointer-arith"
+		flags="$flags -Wno-uninitialized"
+
+		flags="$flags -W -Wno-unused-parameter -Wformat=2"
+		flags="$flags -Wredundant-decls"
+
+		if [ $enable_assert -eq 0 ]; then
+			# Do not warn about unused variables when building without asserts
+			flags="$flags -Wno-unused-variable"
+		fi
+
+		if [ $cc_version -ge 40 ]; then
+			# GCC 4.0+ complains about that we break strict-aliasing.
+			#  On most places we don't see how to fix it, and it doesn't
+			#  break anything. So disable strict-aliasing to make the
+			#  compiler all happy.
+			flags="$flags -fno-strict-aliasing"
+		fi
+
+		if [ $cc_version -ge 42 ]; then
+			# GCC 4.2+ automatically assumes that signed overflows do
+			# not occur in signed arithmetics, whereas we are not
+			# sure that they will not happen. It furthermore complains
+			# about it's own optimized code in some places.
+			flags="$flags -fno-strict-overflow"
+		fi
+	fi
+
+	eval "$3=\"$flags\""
+}
+
 make_cflags_and_ldflags() {
 	# General CFlags for BUILD
 	CFLAGS_BUILD=""
 	# General CFlags for HOST
 	CFLAGS="$CFLAGS -D$os"
-	# CFlags for HOST and C-Compiler
-	CC_FLAGS=""
 	# Libs to compile. In fact this is just LDFLAGS
 	LIBS="-lstdc++"
 	# LDFLAGS used for HOST
@@ -1064,80 +1125,22 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -DNO_THREADS"
 	fi
 
-	if [ `echo $cc_host | cut -c 1-3` = "icc" ]; then
-		# Enable some things only for certain ICC versions
-		cc_version=`$cc_host -dumpversion | cut -c 1-4`
+	make_compiler_cflags "$cc_build" "$CFLAGS_BUILD" "CFLAGS_BUILD"
+	make_compiler_cflags "$cc_host" "$CFLAGS" "CFLAGS"
 
-
-		if [ "$cc_version" = "10.1" ]; then
-			CFLAGS="$CFLAGS -Wno-multichar"
-		fi
-	else
-		# Enable some things only for certain GCC versions
-		cc_version=`$cc_host -dumpversion | cut -c 1,3`
-
-		if [ $cc_version -ge 29 ]; then
-			CFLAGS="$CFLAGS -Wall -Wno-multichar -Wsign-compare -Wundef"
-			CFLAGS="$CFLAGS -Wwrite-strings -Wpointer-arith"
-			CFLAGS="$CFLAGS -Wno-uninitialized"
-
-			CC_CFLAGS="$CC_CFLAGS -Wstrict-prototypes"
-		fi
-
-		gcc295=""
-		if [ "$cc_version" = 29 ]; then
-			# Make sure we mark GCC 2.95 flag for Makefile.src.in, as we
-			#  need a lovely hack there to make it compile correctly.
-			gcc295="1"
-
-			# Disable warnings about unused variables when
-			# compiling with asserts disabled
-			if [ $enable_assert -eq 0 ]; then
-				CFLAGS="$CFLAGS -Wno-unused"
-			fi
-		fi
-
-		if [ $cc_version -ge 30 ]; then
-			CFLAGS="$CFLAGS -W -Wno-unused-parameter -Wformat=2"
-			CFLAGS="$CFLAGS -Wredundant-decls"
-			# Do not warn about unused variables when building without asserts
-			if [ $enable_assert -eq 0 ]; then
-				CFLAGS="$CFLAGS -Wno-unused-variable"
-			fi
-		fi
-
-		if [ $cc_version -ge 34 ]; then
-			CC_CFLAGS="$CC_CFLAGS -Wdeclaration-after-statement -Wold-style-definition"
-		fi
-
+	if [ "`echo $1 | cut -c 1-3`" != "icc" ]; then
 		if [ "$os" = "CYGWIN" ]; then
-			CFLAGS="$CFLAGS -mwin32"
+			flags="$flags -mwin32"
 			LDFLAGS="$LDFLAGS -mwin32"
 		fi
 		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ]; then
-			CFLAGS="$CFLAGS -mno-cygwin"
+			flags="$flags -mno-cygwin"
 			LDFLAGS="$LDFLAGS -mno-cygwin"
 		fi
 
 		if [ "$os" = "CYGWIN" ] || [ "$os" = "MINGW" ]; then
 			LDFLAGS="$LDFLAGS -Wl,--subsystem,windows"
 			LIBS="$LIBS -lws2_32 -lwinmm -lgdi32 -ldxguid -lole32"
-		fi
-
-		# GCC 4.0+ complains about that we break strict-aliasing.
-		#  On most places we don't see how to fix it, and it doesn't
-		#  break anything. So disable strict-aliasing to make the
-		#  compiler all happy.
-		if [ $cc_version -ge 40 ]; then
-			CFLAGS="$CFLAGS -fno-strict-aliasing"
-		fi
-
-		# GCC 4.2+ automatically assumes that signed overflows do
-		# not occur in signed arithmetics, whereas we are not
-		# sure that they will not happen. It furthermore complains
-		# about it's own optimized code in some places.
-		if [ $cc_version -ge 42 ]; then
-			CFLAGS="$CFLAGS -fno-strict-overflow"
 		fi
 	fi
 
@@ -1379,7 +1382,7 @@ make_cflags_and_ldflags() {
 	fi
 
 	if [ "$enable_osx_g5" != "0" ]; then
-		CFLAGS="$CFLAGS -mtune=970 -mcpu=970 -mpowerpc-gpopt"
+		CFLAGS="$CFLAGS -mcpu=G5 -mpowerpc64 -mtune=970 -mcpu=970 -mpowerpc-gpopt"
 	fi
 
 	if [ -n "$personal_dir" ]; then
@@ -1392,7 +1395,7 @@ make_cflags_and_ldflags() {
 
 	CFLAGS="$CFLAGS -DGLOBAL_DATA_DIR=\\\\\"$prefix_dir/$data_dir\\\\\""
 
-	log 1 "using CFLAGS... $CFLAGS $CC_CFLAGS"
+	log 1 "using CFLAGS... $CFLAGS"
 	log 1 "using LDFLAGS... $LIBS $LDFLAGS"
 
 	# Makedepend doesn't like something like: -isysroot /OSX/blabla
@@ -1583,7 +1586,7 @@ check_strip() {
 	elif [ "$os" = "OSX" ]; then
 		# Most targets have -V in strip, to see if they exists... OSX doesn't.. so execute something
 		echo "int main(int argc, char *argv[]) { }" > strip.test.c
-		$cc_host strip.test.c -o strip.test
+		$cxx_host strip.test.c -o strip.test
 		check_compiler "host strip" "strip" "$host" "$strip" "$STRIP" "strip" "strip" "3" "strip.test"
 		rm -f strip.test.c strip.test
 	else
@@ -1594,7 +1597,7 @@ check_strip() {
 check_lipo() {
 	if [ "$os" = "OSX" ] && [ "$enable_universal" != "0" ]; then
 		echo "int main(int argc, char *argv[]) { }" > lipo.test.c
-		$cc_host lipo.test.c -o lipo.test
+		$cxx_host lipo.test.c -o lipo.test
 		check_compiler "host lipo" "lipo" "$host" "$lipo" "$LIPO" "lipo" "lipo" "4" "-info lipo.test"
 		rm -f lipo.test.c lipo.test
 	fi
@@ -1621,24 +1624,22 @@ set_universal_binary_flags() {
 }
 
 check_osx_sdk() {
-cat > tmp.osx.cpp << EOF
-#include <AvailabilityMacros.h>
-#if !defined(MAC_OS_X_VERSION_10_5)
-# error "Need newer SDK"
-#endif
+cat > tmp.osx.mm << EOF
+#include <Cocoa/Cocoa.h>
 int main() {
+	kCGBitmapByteOrder32Host;
 	return 0;
 }
 EOF
-	execute="$cxx_host $CFLAGS -E tmp.osx.cpp -o - 2>&1"
+	execute="$cxx_host $CFLAGS tmp.osx.mm -framework Cocoa -o tmp.osx 2>&1"
 	eval $execute > /dev/null
 	ret=$?
 	log 2 "executing $execute"
 	log 2 "  exit code $ret"
-	rm -f tmp.osx.cpp
+	rm -f tmp.osx.mm tmp.osx
 	if [ "$ret" != "0" ]; then
-		log 1 "I couldn't detect any XCode >= 2.5 on your system"
-		log 1 "please install/upgrade your XCode"
+		log 1 "Your system SDK is probably too old"
+		log 1 "Please install/upgrade your Xcode to >= 2.5"
 
 		exit 1
 	fi
@@ -2528,7 +2529,8 @@ detect_cputype() {
 		log 1 "forcing cpu-type... $cpu_type bits"
 		return;
 	fi
-	echo "#include \"src/stdafx.h\"" > tmp.64bit.cpp
+	echo "#define _SQ64 1" > tmp.64bit.cpp
+	echo "#include \"src/stdafx.h\"" >> tmp.64bit.cpp
 	echo "assert_compile(sizeof(size_t) == 8);" >> tmp.64bit.cpp
 	echo "int main() { return 0; }" >> tmp.64bit.cpp
 	execute="$cxx_host $CFLAGS tmp.64bit.cpp -o tmp.64bit -DTESTING 2>&1"
@@ -2546,17 +2548,6 @@ make_sed() {
 	T_CFLAGS="$CFLAGS"
 	T_LDFLAGS="$LDFLAGS"
 
-	# We check here if we are PPC, because then we need to enable FOUR_BYTE_BOOL
-	#  We do this here, and not sooner, so universal builds also have this
-	#  automatically correct
-	# FOUR_BYTE_BOOL is needed, because C++ uses 4byte for a bool on PPC, where
-	#  we use 1 byte per bool normally in C part. So convert that last one to 4
-	#  bytes too, but only for PPC.
-	ppc=`$cc_host -dumpmachine | egrep "powerpc|ppc"`
-	if [ -n "$ppc" ]; then
-		T_CFLAGS="$T_CFLAGS -DFOUR_BYTE_BOOL"
-	fi
-
 	SRC_OBJS_DIR="$BASE_SRC_OBJS_DIR/$OBJS_SUBDIR"
 
 	# All the data needed to compile a single target
@@ -2571,7 +2562,6 @@ make_sed() {
 		s@!!WINDRES!!@$windres@g;
 		s@!!STRIP!!@$strip $strip_arg@g;
 		s@!!LIPO!!@$lipo@g;
-		s@!!CC_CFLAGS!!@$CC_CFLAGS@g;
 		s@!!CFLAGS!!@$T_CFLAGS@g;
 		s@!!CFLAGS_BUILD!!@$CFLAGS_BUILD@g;
 		s@!!STRGEN_FLAGS!!@$strgen_flags@g;
@@ -2622,7 +2612,6 @@ make_sed() {
 		s@!!CONFIGURE_FILES!!@$CONFIGURE_FILES@g;
 		s@!!REVISION!!@$revision@g;
 		s@!!AWK!!@$awk@g;
-		s@!!GCC295!!@$gcc295@g;
 		s@!!DISTCC!!@$distcc@g;
 	"
 

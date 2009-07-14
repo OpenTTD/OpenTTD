@@ -4,7 +4,6 @@ CC_BUILD     = !!CC_BUILD!!
 CXX_BUILD    = !!CXX_BUILD!!
 WINDRES      = !!WINDRES!!
 STRIP        = !!STRIP!!
-CC_CFLAGS    = !!CC_CFLAGS!!
 CFLAGS       = !!CFLAGS!!
 CFLAGS_BUILD = !!CFLAGS_BUILD!!
 LIBS         = !!LIBS!!
@@ -28,7 +27,6 @@ CFLAGS_MAKEDEP= !!CFLAGS_MAKEDEP!!
 SORT         = !!SORT!!
 REVISION     = !!REVISION!!
 AWK          = !!AWK!!
-GCC295       = !!GCC295!!
 CONFIG_CACHE_COMPILER = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_COMPILER!!
 CONFIG_CACHE_LINKER   = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_LINKER!!
 CONFIG_CACHE_ENDIAN   = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_ENDIAN!!
@@ -52,20 +50,6 @@ CFLAGS += -I $(SRC_OBJS_DIR) -I $(LANG_OBJS_DIR)
 CFLAGS_MAKEDEP += -I $(SRC_OBJS_DIR) -I $(LANG_OBJS_DIR) -I $(SCRIPT_SRC_DIR)
 
 ENDIAN_TARGETS := endian_target.h $(ENDIAN_CHECK)
-
-# This 'sed' basicly just removes 'const' from the line if it is a 2+D array
-# For more information, please check:
-#  http://maillist.openttd.org/pipermail/devs/2007-April/000284.html
-#  http://maillist.openttd.org/pipermail/devs/2007-February/000248.html
-GCC295_FIX=sed -r 's@^(\t*)(.*)( const )([A-Za-z0-9_ ]+(\[.*\]){2,})(( = \{)|(;))(.*)$$@\1\2 \4\6\8\9@g'
-# This 'sed' removes the 3rd '4' in the # lines of the -E output of
-#  gcc 2.95.3 and lower, as it should indicate that it is a C-linkage, but the
-#  compiler can't handle that information (just don't ask). So we remove it
-#  and then it compiles happily and without bitching :)
-# Furthermore gcc 2.95 has some trouble with protected and private when
-#  accessing the protected/private stuff of the enclosing class (or the
-#  super class of the enclosing class).
-GCC295_FIX_2=sed -e 's@\(^\# [0-9][0-9]* "[^"]*"[ 0-9]*\) 4$$@\1@g;s@private:@public:@g;s@protected:@public:@g'
 
 # Check if we want to show what we are doing
 ifdef VERBOSE
@@ -114,7 +98,7 @@ REV_NR := 0
 endif
 
 # This helps to recompile if flags change
-RES := $(shell if [ "`cat $(CONFIG_CACHE_COMPILER) 2>/dev/null`" != "$(CC_CFLAGS) $(CFLAGS)" ]; then echo "$(CC_CFLAGS) $(CFLAGS)" > $(CONFIG_CACHE_COMPILER); fi )
+RES := $(shell if [ "`cat $(CONFIG_CACHE_COMPILER) 2>/dev/null`" != "$(CFLAGS)" ]; then echo "$(CFLAGS)" > $(CONFIG_CACHE_COMPILER); fi )
 RES := $(shell if [ "`cat $(CONFIG_CACHE_LINKER) 2>/dev/null`" != "$(LDFLAGS) $(LIBS)" ]; then echo "$(LDFLAGS) $(LIBS)" > $(CONFIG_CACHE_LINKER); fi )
 RES := $(shell if [ "`cat $(CONFIG_CACHE_ENDIAN) 2>/dev/null`" != "$(ENDIAN_FORCE)" ]; then echo "$(ENDIAN_FORCE)" > $(CONFIG_CACHE_ENDIAN); fi )
 
@@ -182,7 +166,7 @@ endif
 
 # Convert x:/... paths to /x/... for mingw
 ifeq ($(OS), MINGW)
-	@cat Makefile.dep.tmp | sed 's@\([a-zA-Z]\):\/@\/\1\/@g' > Makefile.dep.tmp.mingw
+	@cat Makefile.dep.tmp | sed 's@/\([a-zA-Z]\):\/@\/\1\/@g' > Makefile.dep.tmp.mingw
 	@cp Makefile.dep.tmp.mingw Makefile.dep.tmp
 	@rm -f Makefile.dep.tmp.mingw
 endif
@@ -192,7 +176,7 @@ endif
 	@$(AWK) '                           \
 	/^# DO NOT/ { print $$0 ; next}     \
 	/^#/ {next}                         \
-	/:/ {                               \
+	/: / {                               \
 		left = NF - 1;                    \
 		for (n = 2; n <= NF; n++) {       \
 			if (match($$n, "^$(ROOT_DIR)") == 0) { \
@@ -226,17 +210,9 @@ endif
 
 # Compile all the files according to the targets
 
-$(OBJS_C): %.o: $(SRC_DIR)/%.c $(DEP_MASK) $(FILE_DEP)
-	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.c=%.c)'
-	$(Q)$(CC_HOST) $(CC_CFLAGS) $(CFLAGS) -c -o $@ $<
-
 $(OBJS_CPP): %.o: $(SRC_DIR)/%.cpp $(DEP_MASK) $(FILE_DEP)
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
-ifeq ($(GCC295), 1)
-	$(Q)$(CXX_HOST) -E $(CFLAGS) $< | $(GCC295_FIX) | $(GCC295_FIX_2) | $(CXX_HOST) $(CFLAGS) -c -o $@ -x c++ -
-else
 	$(Q)$(CXX_HOST) $(CFLAGS) -c -o $@ $<
-endif
 
 $(OBJS_MM): %.o: $(SRC_DIR)/%.mm $(DEP_MASK) $(FILE_DEP)
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.mm=%.mm)'

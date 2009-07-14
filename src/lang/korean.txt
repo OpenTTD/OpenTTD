@@ -3,7 +3,7 @@
 ##isocode ko_KR
 ##winlangid 0x0412
 ##grflangid 0x3a
-##plural 1
+##plural 11
 ##gender m f
 
 #
