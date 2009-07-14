@@ -20,7 +20,19 @@
 #	error "Compiling 64 bits without _SQ64 set! (or vice versa)"
 #endif
 
+#define MAC_OS_X_VERSION_MIN_REQUIRED MAC_OS_X_VERSION_10_3
+#include <AvailabilityMacros.h>
+
+/* Name conflict */
+#define Rect        OTTDRect
+#define Point       OTTDPoint
+#define WindowClass OTTDWindowClass
+
 #include <CoreServices/CoreServices.h>
+
+#undef Rect
+#undef Point
+#undef WindowClass
 
 /* remove the variables that CoreServices defines, but we define ourselves too */
 #undef bool
@@ -28,7 +40,7 @@
 #undef true
 
 /* Name conflict */
-#define GetTime		OTTD_GetTime
+#define GetTime OTTD_GetTime
 
 #define SL_ERROR OSX_SL_ERROR
 

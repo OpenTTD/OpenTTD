@@ -9,35 +9,16 @@
 #ifdef WITH_COCOA
 #ifdef ENABLE_COCOA_QUARTZ
 
-#include <AvailabilityMacros.h>
+#include "../../stdafx.h"
 
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4
 
+#define Rect  OTTDRect
+#define Point OTTDPoint
 #import <Cocoa/Cocoa.h>
-#import <sys/time.h> /* gettimeofday */
-#import <sys/param.h> /* for MAXPATHLEN */
-#import <unistd.h>
+#undef Rect
+#undef Point
 
-/**
- * Important notice regarding all modifications!!!!!!!
- * There are certain limitations because the file is objective C++.
- * gdb has limitations.
- * C++ and objective C code can't be joined in all cases (classes stuff).
- * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
- */
-
-
-/* Defined in stdbool.h */
-#ifndef __cplusplus
-# ifndef __BEOS__
-#  undef bool
-#  undef false
-#  undef true
-# endif
-#endif
-
-
-#include "../../stdafx.h"
 #include "../../debug.h"
 #include "../../rev.h"
 #include "../../core/geometry_type.hpp"
@@ -46,8 +27,13 @@
 #include "../../gfx_func.h"
 #include "../../functions.h"
 
-#undef Rect
-
+/**
+ * Important notice regarding all modifications!!!!!!!
+ * There are certain limitations because the file is objective C++.
+ * gdb has limitations.
+ * C++ and objective C code can't be joined in all cases (classes stuff).
+ * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
+ */
 
 class WindowQuartzSubdriver;
 

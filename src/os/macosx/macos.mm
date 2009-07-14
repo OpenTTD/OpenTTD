@@ -1,17 +1,19 @@
 /* $Id$ */
 
-#include <AvailabilityMacros.h>
+#include "../../stdafx.h"
+#include "../../core/bitmath_func.hpp"
+#include "../../rev.h"
 
+#define Rect  OTTDRect
+#define Point OTTDPoint
 #include <AppKit/AppKit.h>
+#undef Rect
+#undef Point
 
 #include <mach/mach.h>
 #include <mach/mach_host.h>
 #include <mach/host_info.h>
 #include <mach/machine.h>
-#include <stdio.h>
-#include "../../stdafx.h"
-#include "../../core/bitmath_func.hpp"
-#include "../../rev.h"
 
 #ifndef CPU_SUBTYPE_POWERPC_970
 #define CPU_SUBTYPE_POWERPC_970 ((cpu_subtype_t) 100)

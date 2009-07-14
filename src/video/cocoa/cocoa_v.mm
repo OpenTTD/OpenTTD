@@ -8,13 +8,25 @@
 
 #ifdef WITH_COCOA
 
-#define MAC_OS_X_VERSION_MIN_REQUIRED    MAC_OS_X_VERSION_10_3
-#include <AvailabilityMacros.h>
+#include "../../stdafx.h"
 
+#define Rect  OTTDRect
+#define Point OTTDPoint
 #import <Cocoa/Cocoa.h>
-#import <sys/time.h> /* gettimeofday */
+#undef Rect
+#undef Point
+
+#include "../../openttd.h"
+#include "../../debug.h"
+#include "../../variables.h"
+#include "../../core/geometry_type.hpp"
+#include "cocoa_v.h"
+#include "../../blitter/factory.hpp"
+#include "../../fileio_func.h"
+#include "../../gfx_func.h"
+#include "../../functions.h"
+
 #import <sys/param.h> /* for MAXPATHLEN */
-#import <unistd.h>
 
 /**
  * Important notice regarding all modifications!!!!!!!
@@ -41,28 +53,6 @@ extern "C" OSErr CPSSetFrontProcess(CPSProcessSerNum *psn);
 - (void)setAppleMenu:(NSMenu *)menu;
 @end
 #endif
-
-
-/* Defined in stdbool.h */
-#ifndef __cplusplus
-# ifndef __BEOS__
-#  undef bool
-#  undef false
-#  undef true
-# endif
-#endif
-
-
-#include "../../stdafx.h"
-#include "../../openttd.h"
-#include "../../debug.h"
-#include "../../variables.h"
-#include "../../core/geometry_type.hpp"
-#include "cocoa_v.h"
-#include "../../blitter/factory.hpp"
-#include "../../fileio_func.h"
-#include "../../gfx_func.h"
-#include "../../functions.h"
 
 
 @interface OTTDMain : NSObject

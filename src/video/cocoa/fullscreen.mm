@@ -8,13 +8,18 @@
 
 #ifdef WITH_COCOA
 
-#define MAC_OS_X_VERSION_MIN_REQUIRED    MAC_OS_X_VERSION_10_3
-#include <AvailabilityMacros.h>
+#include "../../stdafx.h"
 
+#define Rect  OTTDRect
+#define Point OTTDPoint
 #import <Cocoa/Cocoa.h>
-#import <sys/time.h> /* gettimeofday */
-#import <sys/param.h> /* for MAXPATHLEN */
-#import <unistd.h>
+#undef Rect
+#undef Point
+
+#include "../../debug.h"
+#include "../../core/geometry_type.hpp"
+#include "cocoa_v.h"
+#include "../../gfx_func.h"
 
 /**
  * Important notice regarding all modifications!!!!!!!
@@ -28,24 +33,6 @@
 /* From Menus.h (according to Xcode Developer Documentation) */
 extern "C" void ShowMenuBar();
 extern "C" void HideMenuBar();
-
-/* Defined in stdbool.h */
-#ifndef __cplusplus
-# ifndef __BEOS__
-#  undef bool
-#  undef false
-#  undef true
-# endif
-#endif
-
-
-#include "../../stdafx.h"
-#include "../../debug.h"
-#include "../../core/geometry_type.hpp"
-#include "cocoa_v.h"
-#include "../../gfx_func.h"
-
-#undef Rect
 
 
 /* Structure for rez switch gamma fades

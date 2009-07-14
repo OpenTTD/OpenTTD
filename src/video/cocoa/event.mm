@@ -8,34 +8,14 @@
 
 #ifdef WITH_COCOA
 
-#define MAC_OS_X_VERSION_MIN_REQUIRED    MAC_OS_X_VERSION_10_3
-#include <AvailabilityMacros.h>
-
-#import <Cocoa/Cocoa.h>
-#import <sys/time.h> /* gettimeofday */
-#import <sys/param.h> /* for MAXPATHLEN */
-#import <unistd.h>
-
-/**
- * Important notice regarding all modifications!!!!!!!
- * There are certain limitations because the file is objective C++.
- * gdb has limitations.
- * C++ and objective C code can't be joined in all cases (classes stuff).
- * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
- */
-
-
-/* Defined in stdbool.h */
-#ifndef __cplusplus
-# ifndef __BEOS__
-#  undef bool
-#  undef false
-#  undef true
-# endif
-#endif
-
-
 #include "../../stdafx.h"
+
+#define Rect  OTTDRect
+#define Point OTTDPoint
+#import <Cocoa/Cocoa.h>
+#undef Rect
+#undef Point
+
 #include "../../openttd.h"
 #include "../../debug.h"
 #include "../../os/macosx/splash.h"
@@ -49,6 +29,16 @@
 #include "../../network/network.h"
 #include "../../core/random_func.hpp"
 #include "../../texteff.hpp"
+
+#import <sys/time.h> /* gettimeofday */
+
+/**
+ * Important notice regarding all modifications!!!!!!!
+ * There are certain limitations because the file is objective C++.
+ * gdb has limitations.
+ * C++ and objective C code can't be joined in all cases (classes stuff).
+ * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
+ */
 
 
 /* Right Mouse Button Emulation enum */

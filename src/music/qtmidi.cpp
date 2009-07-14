@@ -21,35 +21,15 @@
 
 #ifndef NO_QUICKTIME
 
-#define MAC_OS_X_VERSION_MIN_REQUIRED    MAC_OS_X_VERSION_10_3
-#include <AvailabilityMacros.h>
-
-/*
- * OpenTTD includes.
- */
-#define  WindowClass OSX_WindowClass
-#include <QuickTime/QuickTime.h>
-#undef   WindowClass
-
 #include "../stdafx.h"
 #include "qtmidi.h"
-
-/*
- * System includes. We need to workaround with some defines because there's
- * stuff already defined in QuickTime headers.
- */
-#define  OTTD_Random OSX_OTTD_Random
-#undef   OTTD_Random
-#undef   WindowClass
-#undef   SL_ERROR
-#undef   bool
-
-#include <assert.h>
-#include <unistd.h>
-#include <fcntl.h>
-
-/* we need to include debug.h after CoreServices because defining DEBUG will break CoreServices in OSX 10.2 */
 #include "../debug.h"
+
+#define Rect  OTTDRect
+#define Point OTTDPoint
+#include <QuickTime/QuickTime.h>
+#undef Rect
+#undef Point
 
 static FMusicDriver_QtMidi iFMusicDriver_QtMidi;
 
