@@ -65,14 +65,14 @@ enum WidgetDrawDistances {
 	WD_STICKYBOX_LEFT   = 2,    ///< Left offset of sticky sprite.
 	WD_STICKYBOX_RIGHT  = 2,    ///< Right offset of sticky sprite.
 	WD_STICKYBOX_TOP    = 3,    ///< Top offset of sticky sprite.
-	WD_STICKYBOX_BOTTOM = 1,    ///< Bottom offset of sticky sprite.
+	WD_STICKYBOX_BOTTOM = 3,    ///< Bottom offset of sticky sprite.
 
 	/* WWT_RESIZEBOX */
 	WD_RESIZEBOX_WIDTH  = 12,   ///< Width of a resize box widget.
 	WD_RESIZEBOX_LEFT   = 3,    ///< Left offset of resize sprite.
 	WD_RESIZEBOX_RIGHT  = 2,    ///< Right offset of resize sprite.
 	WD_RESIZEBOX_TOP    = 3,    ///< Top offset of resize sprite.
-	WD_RESIZEBOX_BOTTOM = 4,    ///< Bottom offset of resize sprite.
+	WD_RESIZEBOX_BOTTOM = 2,    ///< Bottom offset of resize sprite.
 
 	/* WWT_CLOSEBOX */
 	WD_CLOSEBOX_WIDTH  = 11,    ///< Width of a close box widget.
