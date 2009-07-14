@@ -2019,16 +2019,53 @@ detect_cocoa() {
 		log 1 "checking whether to enable the Quartz window subdriver... no"
 	fi
 
+	detect_quickdraw
+}
+
+detect_quickdraw() {
+	# 0 means no, 1 is auto-detect, 2 is force
+
 	# 64 bits doesn't have quickdraw
 	if [ "$cpu_type" = "64" ]; then
 		enable_cocoa_quickdraw="0"
+		log 1 "checking Quickdraw window subdriver... disabled (64 bits)"
+		return 0
 	fi
 
-	if [ "$enable_cocoa_quickdraw" != "0" ]; then
-		log 1 "checking whether to enable the Quickdraw window subdriver... yes"
-	else
-		log 1 "checking whether to enable the Quickdraw window subdriver... no"
+	if [ "$enable_cocoa_quickdraw" = "0" ]; then
+		log 1 "checking Quickdraw window subdriver... disabled"
+
+		return 0
 	fi
+
+cat > tmp.osx.mm << EOF
+#define MAC_OS_X_VERSION_MAX_ALLOWED MAC_OS_X_VERSION_10_3
+#define MAC_OS_X_VERSION_MIN_REQUIRED MAC_OS_X_VERSION_10_3
+#include <AvailabilityMacros.h>
+#import <Cocoa/Cocoa.h>
+int main(int argc, char *argv[]) { return 0; }
+EOF
+	execute="$cxx_host $CFLAGS tmp.osx.mm -framework Cocoa -o tmp.osx 2>&1"
+	eval $execute > /dev/null
+	ret=$?
+	log 2 "executing $execute"
+	log 2 "  exit code $ret"
+	rm -f tmp.osx.mm tmp.osx
+	if [ "$ret" != "0" ]; then
+		log 1 "checking Quickdraw window subdriver... not found"
+
+		# It was forced, so it should be found.
+		if [ "$enable_cocoa_quickdraw" != "1" ]; then
+			log 1 "configure: error: Quickdraw window driver could not be found"
+			exit 1
+		fi
+
+		enable_cocoa_quickdraw=0
+		return 0
+	fi
+
+	enable_cocoa_quickdraw=1
+	log 1 "checking Quickdraw window subdriver... found"
 }
 
 detect_library() {

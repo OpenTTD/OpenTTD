@@ -5,6 +5,9 @@
 #ifndef MACOS_STDAFX_H
 #define MACOS_STDAFX_H
 
+#define __STDC_LIMIT_MACROS
+#include <stdint.h>
+
 /* We need to include this first as that "depends" on the compiler's setting
  * of __LP64__. So before we define __LP64__ so it can be used. */
 #include <sys/cdefs.h>
