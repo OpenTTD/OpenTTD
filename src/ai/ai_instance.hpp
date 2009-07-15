@@ -118,6 +118,7 @@ private:
 
 	bool is_started;
 	bool is_dead;
+	bool is_save_data_on_stack;
 	int suspend;
 	AISuspendCallbackProc *callback;
 

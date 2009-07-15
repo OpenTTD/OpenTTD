@@ -1470,11 +1470,51 @@ STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER 
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}NEODGOVARAJUĆA VERZIJA
 STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF NEPOKLAPANJE
 
+STR_NETWORK_JOIN_GAME                                           :{BLACK}Priključi se
 
 
+STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Pokreni novu mrežnu partiju
 
+STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Naziv partije:
+STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Naziv partije će se prikazati na spisku izbora mrežnih partija drugih igrača
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Unos naziva mrežne partije
+STR_NETWORK_SET_PASSWORD                                        :{BLACK}Postavi lozinku
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Ukoliko ne želite da bude javno dostupna zaštitite Vašu partiju lozinkom
+STR_NETWORK_SELECT_MAP                                          :{BLACK}Odaberite mapu:
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Koju mapu želite da igrate?
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
+STR_NETWORK_LAN                                                 :LAN
+STR_NETWORK_INTERNET                                            :Internet
+STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
+STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (sa oglašavanjem)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} igrač{P "" a a}
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Najviše igrača:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Odaberite koliko najviše može da ima igrača. Nemoraju sva mesta da budu popunjena
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} kompanij{P a e a}
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Najviše kompanija:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Odaberite koliko najviše može biti kompanija na serveru
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} posmatrač{P "" a a}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Najviše posmatrača:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Odaberite koliko najviše može biti posmatrača na serveru
+STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Govorni jezik:
+STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Drugi igrači će znati sa kojim jezikom se razgovara na serveru
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_GAME                                          :{BLACK}Pokreni partiju
+STR_NETWORK_START_GAME_TIP                                      :{BLACK}Pokreće novu mrežnu partiju sa proizvoljnom mapom, ili scenarijom
+STR_NETWORK_LOAD_GAME                                           :{BLACK}Učitaj Partiju
+STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Nastavlja ranije sačuvanu mrežnu partiju (proverite da li ste postavljeni igrač kao ranije)
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :Bilo koji
+STR_NETWORK_LANG_ENGLISH                                        :Engleski
+STR_NETWORK_LANG_GERMAN                                         :Nemački
+STR_NETWORK_LANG_FRENCH                                         :Francuski
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazilski
+STR_NETWORK_LANG_BULGARIAN                                      :Bugraski
+STR_NETWORK_LANG_CHINESE                                        :Kineski
+STR_NETWORK_LANG_CZECH                                          :Češki
+STR_NETWORK_LANG_DANISH                                         :Danski
+STR_NETWORK_LANG_DUTCH                                          :Holandski
 STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
 STR_NETWORK_LANG_FINNISH                                        :Finski
 STR_NETWORK_LANG_HUNGARIAN                                      :Mađarski
@@ -1584,29 +1624,78 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :primljen nepozn
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :pogrešna revizija
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :ime se već koristi
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :pogrešna lozinka
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :pogrešan id kompanije u mrežnom paketu (DoCommand)
+STR_NETWORK_ERR_CLIENT_KICKED                                   :izbačen od strane servera
+STR_NETWORK_ERR_CLIENT_CHEATER                                  :pokušaj korišćenja varanja
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server je pun
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Partija pauzirana (nema dovoljno igrača)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Partija nastavljena (ima dovoljno igrača)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Partija pauzirana (igrač se priključuje)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Partija nastavljena (igrač je priključen)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Partija nastavljena (igrač nije priključen)
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :napušta
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} se priključio partiji
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} se pridružio kompaniji #{2:NUM}
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} se pridružio posmatračima
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} je osnovao novu kompaniju (#{2:NUM})
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} je napustio partiju ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} je promenio/la ime u {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} je dao vašoj kompaniji {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Dali ste {1:STRING} {2:CURRENCY}
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Ekipi] :
+STR_NETWORK_CHAT_COMPANY                                        :[Ekipi] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Ekipi] Za {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privatno] :
+STR_NETWORK_CHAT_CLIENT                                         :[Privatno] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatno] Za {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Svima] :
+STR_NETWORK_CHAT_ALL                                            :[Svima] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Unesite tekst poruke za razgovor
+STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Server je zatvorio sesiju
+STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Server se ponovo pokreće...{}Molimo sačekajte...
+
+STR_NETWORK_SERVER                                              :Server
+STR_NETWORK_CLIENT                                              :Igrač
+STR_NETWORK_SPECTATORS                                          :Posmatrači
+
+STR_NETWORK_CLIENTLIST_NONE                                     :(niko)
+STR_NETWORK_CLIENTLIST_KICK                                     :Izbaci
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Daj novac
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Razgovaraj sa svima
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Razgovaraj sa ekipom
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privatna poruka
 
 
-
-
+STR_NETWORK_SEND                                                :{BLACK}Pošalji
 
 ############ end network gui strings
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERROR                                                :{WHITE}Ne može se naparaviti reljef iz PNG slike...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...datoteka nije nađena.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...ne može se preraditi vrsta slike. Potrebna je 8 ili 24-bitna PNG slika.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...nešto nije uredu. Žao nam je. (verovatno je datoteka oštećena)
 
+STR_BMPMAP_ERROR                                                :{WHITE}Ne može se naparaviti reljef iz BMP slike...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...ne može se preraditi vrsta slike.
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Trošak: {CURRENCY}
 STR_0801_COST                                                   :{RED}Trošak: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Prihod: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Prihod: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transfer: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Procena troška: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Procena zarade: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Nije izvodljivo ovde podići zemljište...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Nije izvodljivo ovde spustiti zemljište...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Nije izvodljivo ovde poravnati zemljište...
 STR_080A_ROCKS                                                  :Stene
 STR_080B_ROUGH_LAND                                             :Grub teren
 STR_080C_BARE_LAND                                              :Ogoljeno tlo
@@ -1621,10 +1710,13 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Nemoguć
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Iskopavanje bi oštetilo tunel
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}...teren je već na nivou mora
 STR_1004_TOO_HIGH                                               :{WHITE}...previsoko
+STR_ALREADY_LEVELLED                                            :{WHITE}... već je ravno
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nedostaje odgovarajuća železnička pruga
 STR_1007_ALREADY_BUILT                                          :{WHITE}...već izgrađeno
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Potrebno je prvo ukloniti železničku prugu
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Put je jednosmeran ili je blokiran
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Izgradnja železničke pruge
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Izgradnja elektrifikovane železničke pruge
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Izgradnja jednošinske pruge (Monorail)
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Izgradnja magnetne pruge (MagLev)
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Izbor železničkog mosta
@@ -2700,6 +2792,25 @@ STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Prikazuj
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Prebacite se na lokaciju voza
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Pošaljite voz u depo. Sa Ctrl+Klik će otići samo na servis
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Voz će krenuti bez čekanja na signal za slobodan kolosek
+STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Promena smera kretanja voza
+STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Prikazuje podatke o vozu
+STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Povećava period servisiranja
+STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Smanjuje period servisiranja
+STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Prikazuje podatke o tovaru koji se prevozi
+STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Prikazuje podatke o kompoziciji
+STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Prikazuje nosivost svih vozila u kompoziciji
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Prikazuje ukupnu nosivist voza, podeljenu po vrsti tovara
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Spisak naredbi - klikom se obeležava naredba. Sa Ctrl+Klik se prelazi na lokaciju stanice
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Preskače tekuću naredbu, i prelazi na sledeću. Ctrl+Klik preskače naredbe do obeležene
+STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Uklanja obeleženu naredbu
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Ubacuje novu naredbu pre obeležene, ili je dodaje na kraju spiska
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Raspored - klikom se obeležava naredba.
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Menjanje količine vremena za koje će obeležena naredba trajati
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Uklanja vreme koje je određeno za obeleženu naredbu
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Poništava merač kašnjenja, tako da vozilo ide na vreme
+STR_SERVICE_HINT                                                :{BLACK}Preskače ovu naredbu ukoliko servis nije potreban
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY}  Snaga: {POWER}{}Cena Održavanja: {CURRENCY}/god.{}Nosivost: {CARGO}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Težina: {LTBLUE}{WEIGHT_S} {BLACK}Snaga: {LTBLUE}{POWER}{BLACK} Najveća brzina: {LTBLUE}{VELOCITY} {BLACK} Najveća vučna snaga: {LTBLUE}{FORCE}
 STR_885C_BROKEN_DOWN                                            :{RED}Pokvaren
 STR_8861_STOPPED                                                :{RED}Zaustavljen
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Nemoguć je prolaz voza na signal opasnosti...
@@ -2709,6 +2820,9 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Naziv vo
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Nemoguće nazvati voz...
 STR_8867_NAME_TRAIN                                             :{BLACK}Naziv voza
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Sudar Vozova!{}{COMMA} {P "" su je} poginu{P o la lo} u eksploziji nakon sudara
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nije moguće obrnuti smer kretanja voza...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Voz ne može da promeni smer...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Ne može se okrenuti vozilo od više delova
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Promena naziva vrste šinskog vozila
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nemoguća promena naziva vrste šinskog vozila...
 STR_CLEAR_TIME                                                  :{BLACK}Ukloni Vreme
@@ -2782,6 +2896,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi teretni tamvaj stiže na stanicu {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Saobraćajna nesreća!{}Vozač je poginuo u eksploziji nakon sudara sa vozom
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Saobraćajna nesreća!{}{COMMA} {P "" je su} poginu{P o la lo} u eksploziji nakon sudara sa vozom
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Drumsko vozilo ne može da se okrene...
 STR_9034_RENAME                                                 :{BLACK}Promena naziva
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Promenite naziv vrste drumskog vozila
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Naziv vrste drumskog vozila
@@ -2803,9 +2918,66 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Novi Bro
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Brod{P "" a ova}
 STR_9808_NEW_SHIPS                                              :{WHITE}Novi Brodovi
 STR_9809_BUILD_SHIP                                             :{BLACK}Kupi Brod
+STR_CLONE_SHIP                                                  :{BLACK}Kopiraj Brod
+STR_CLONE_SHIP_INFO                                             :{BLACK}Ovim ćete kupiti isti brod. Sa Ctrl+Klik će imati zajedničke naredbe
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Ovim ćete kupiti isti brod. Kliknite na dugme i potom na brod koji je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe
+STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Brod mora biti zaustavljen u depou
+STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Brod se ne može prodati...
+STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Brod se ne može kupiti...
+STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Brod se tu upravo nalazi
+STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Ne može se pokrenuti/zaustaviti brod...
+STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Brod ne može da ode u depo...
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Ide za {TOWN} Brodski Depo
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Ide za {TOWN} Brodski Depo, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servisiranje u {TOWN} Brodskom Depou
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servisiranje u {TOWN} Brodskom Depou, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} čeka u depou
+STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Gradi pristanište
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Gradi brodski depo (za kupovinu i servisiranje brodova)
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Brodovi - kliknite na brod za podatke
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Kupovina novog broda
+STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Ovde prevucite brod kako biste ga prodali
+STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Prebacite se na lokaciju broda
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Brodovi - kliknite na brod za podatke
+STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Spisak probranih brodova - kliknite na brod za više podataka
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Kupite označeni brod
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Trenutno stanje broda - kliknite ovde za zaustavljanje/pokretanje broda
+STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Prikazuje naredbe brodu
+STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Prebacite se na lokaciju broda
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Pošaljite brod u depo. Sa Ctrl+Klik će otići samo na servis
+STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Prikazuje podatke o brodu
+STR_982F_NAME_SHIP                                              :{BLACK}Naziv broda
 
+STR_9831_NAME_SHIP                                              :{WHITE}Naziv broda
+STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Ne može se promeniti naziv broda...
+STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi brod stiže na stanicu {STATION}!
+STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Postavite bovu kako bi služila kao putokaz
+STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Bova se ovde ne može postaviti...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Izgradite akvadukt
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Akvadukt se ovde ne može izgraditi...
+STR_9836_RENAME                                                 :{BLACK}Preimenuj
+STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Promenite naziv vrste broda
+STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Promena naziva vrste broda
+STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Nemoguća promena naziva vrste broda...
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Prepravite brod kako bi prevozio drugu vrstu tereta
+STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Prepravljanje)
+STR_983C_REFIT_SHIP                                             :{BLACK}Prepravi brod
+STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Označite vrstu tovara za prepravljanje broda
+STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Prepravlja brod za prevoz označene vrste tovara
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Izaberite vrstu tereta za prevoz:
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova nosivost: {GOLD}{CARGO}{}{BLACK}Cena prepravke: {GOLD}{CURRENCY}
+STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Brod se ne može prepraviti...
+STR_9842_REFITTABLE                                             :(prepravljiv)
 
 ##id 0xA000
+STR_A000_AIRPORTS                                               :{WHITE}Aerodromi
+STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Aerodrom se ovde ne može izgraditi...
+STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar
+STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nova Letilica
+STR_CLONE_AIRCRAFT                                              :{BLACK}Kopiraj Letilicu
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Ovim ćete kupiti istu letilicu. Sa Ctrl+Klik će imati zajedničke naredbe
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Ovim ćete kupiti istu letilicu. Kliknite na dugme i potom na letilicu koje je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe
+STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nove Letilice
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Napraviti Letelicu
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Letelice se ne može napraviti
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Leteluca

@@ -998,7 +998,7 @@ STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Tampilk
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Tidak ada
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Perusahaan milik sendiri
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Semua Perusahaan
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Lebih suka Tim Chat dengan &lt;ENTER>: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Lebih suka Tim Chat dengan <ENTER>: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Fungsi tombol scroll mouse: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Perbesar Peta
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Geser Peta
@@ -2825,7 +2825,7 @@ STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Ganti na
 
 STR_TRAIN_STOPPING                                              :{RED}Berhenti
 STR_TRAIN_STOPPING_VEL                                          :{RED}Akan berhenti, {VELOCITY}
-STR_INCOMPATIBLE_RAIL_TYPES                                     :Jenis rel tidak sama
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Jenis rel tidak sesuai
 STR_TRAIN_NO_POWER                                              :{RED}Tidak ada daya
 STR_TRAIN_START_NO_CATENARY                                     :Jalur ini mengalami kekurangan "catenary" sehingga kereta api tidak dapat dijalankan
 STR_TRAIN_STUCK                                                 :{ORANGE}Menunggu sampai jalur bebas

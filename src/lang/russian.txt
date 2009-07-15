@@ -388,25 +388,25 @@ STR_016F                                                        :{TINYFONT}{STRI
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}ПАУЗА
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Сохранение игры; Главное меню; Выход
-STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Показать список станций компании
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Список станций
 STR_0174_DISPLAY_MAP                                            :{BLACK}Показать карту
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Показать карту; список городов
-STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Показать список городов
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Список городов
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Показать финансовую информацию компании
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Показать основную информацию о компании
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Показать графики
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Показать рейтинги компаний
-STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Показать список поездов компании
-STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Показать список автотранспорта компании
-STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Показать список кораблей компании
-STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Показать список авиатранспорта компании
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Список поездов
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Список автотранспорта
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Список кораблей
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Список авиатранспорта
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Приблизить
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Уменьшить
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Строительство железных дорог
 STR_0182_BUILD_ROADS                                            :{BLACK}Строительство автомобильных дорог
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Строительство водных коммуникаций
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Строительство аэропортов
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Высадить деревья, поставить знак и т.д.
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Высадка деревьев
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Информация о земле
 STR_0187_OPTIONS                                                :{BLACK}Настройки
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
@@ -417,7 +417,7 @@ STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Заго
 STR_STICKY_BUTTON                                               :{BLACK}Игнорировать нажатия клавиши «Закрыть все окна»
 STR_RESIZE_BUTTON                                               :{BLACK}Нажмите и тащите для изменения размера окна
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Кликните, чтобы перейти к текущей папке загрузки/сохранения по умолчанию
-STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Уничтожить здания, постройки, траву, деревья в ячейке местности
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Полная очистка прямоугольного участка земли
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Опустить угол земли
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Поднять угол земли
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Прокрутка вверх/вниз
@@ -498,7 +498,7 @@ STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Прин
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Музыкальный автомат
 STR_01D3_SOUND_MUSIC                                            :Звук/музыка
-STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Окно настройки звука и музыки
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Настройка звука и музыки
 STR_01D5_ALL                                                    :{TINYFONT}Все
 STR_01D6_OLD_STYLE                                              :{TINYFONT}Старый Стиль
 STR_01D7_NEW_STYLE                                              :{TINYFONT}Новый Стиль
@@ -616,7 +616,7 @@ STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Здес
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...сначала постройте город
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...такой объект уже есть в городе
 STR_0288_PLANT_TREES                                            :{BLACK}Сажать деревья
-STR_0289_PLACE_SIGN                                             :{BLACK}Поместить знак
+STR_0289_PLACE_SIGN                                             :{BLACK}Установка знаков
 STR_028A_RANDOM_TREES                                           :{BLACK}Расставить по карте
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Разместить по карте деревья случайным образом
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Разместить скалы на карте
@@ -768,7 +768,7 @@ STR_0319_PAUSED                                                 :{YELLOW}*  *  �
 STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Скриншот сохранён под именем «{STRING}»
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Не удалось сохранить скриншот
 
-STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Купить землю
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Покупка земли
 STR_032F_AUTOSAVE                                               :{RED}Автосохранение
 STR_SAVING_GAME                                                 :{RED}*  *  СОХРАНЕНИЕ ИГРЫ  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Идёт сохранение,{}пожалуйста, дождитесь завершения!
@@ -868,9 +868,9 @@ STR_MONTH_NOV                                                   :Ноябрь
 STR_MONTH_DEC                                                   :Декабрь
 
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Идёт к {STATION}
-STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Идёт к {STATION}, {VELOCITY}
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Идёт к {STATION}; {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Нет заданий
-STR_NO_ORDERS_VEL                                               :{LTBLUE}Нет заданий, {VELOCITY}
+STR_NO_ORDERS_VEL                                               :{LTBLUE}Нет заданий; {VELOCITY}
 
 STR_PASSENGERS                                                  :пассажиров
 STR_BAGS                                                        :багажа
@@ -888,7 +888,7 @@ STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Нево
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Конец общих заданий - -
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} не может найти путь для продолжения движения.
-STR_TRAIN_IS_LOST                                               :{WHITE}Транспортное средство {VEHICLE} заблудилось.
+STR_TRAIN_IS_LOST                                               :{WHITE}Транспортное средство «{VEHICLE}» заблудилось.
 STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Доход ТС «{VEHICLE}» в прошлом году составил {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Создана зона евро!{}{}Теперь в вашей стране в качестве единой валюты используется евро!
 
@@ -1015,8 +1015,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Выкл.
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Скроллинг по клику левой кнопкой мыши: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Использовать {ORANGE}{STRING}{LTBLUE} формат даты для имён сохранений
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :длинный (31st Dec 2008)
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :короткий (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :длинный (31-е дек 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :короткий (31.12.2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автопауза в начале игры: {ORANGE}{STRING}
@@ -1172,8 +1172,8 @@ STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Сме�
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Изменение даты: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Разрешить изменение производительности: {ORANGE}{STRING}
 
-STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Следует к {WAYPOINT}
-STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Следует к {WAYPOINT}, {VELOCITY}
+STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Идёт к {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Идёт к {WAYPOINT}; {VELOCITY}
 
 STR_GO_TO_WAYPOINT                                              :Ехать через {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Ехать через {WAYPOINT} без остановки
@@ -1192,7 +1192,7 @@ STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Переименовать точку пути
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Невозможно переименовать точку пути...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Превратить рельсы в точку пути
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Установка на рельсах точек пути
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Здесь невозможно поставить точку пути...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Невозможно удалить точку пути...
 
@@ -1213,14 +1213,14 @@ STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Выро
 
 
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Деревья случайного типа
-STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Разместить деревья случайного типа
+STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Высадка деревьев случайного типа
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Здесь невозможно построить канал...
 STR_BUILD_CANALS_TIP                                            :{BLACK}Строительство каналов
 STR_LANDINFO_CANAL                                              :Канал
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Здесь невозможно построить шлюз...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Построить шлюзы
+STR_BUILD_LOCKS_TIP                                             :{BLACK}Строительство шлюзов
 STR_LANDINFO_LOCK                                               :Шлюз
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Здесь невозможно расположить реку...
@@ -1778,8 +1778,8 @@ STR_STATION                                                     :{STATION}
 
 ##id 0x2800
 STR_LANDSCAPING                                                 :Ландшафт
-STR_2800_PLANT_TREES                                            :Высадить деревья
-STR_2801_PLACE_SIGN                                             :Поставить знак
+STR_2800_PLANT_TREES                                            :Высадка деревьев
+STR_2801_PLACE_SIGN                                             :Установка знаков
 STR_2802_TREES                                                  :{WHITE}Деревья
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...уже есть дерево
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...неподходящее место
@@ -2278,7 +2278,7 @@ STR_706C_CHAIRMAN                                               :Председ�
 STR_706D_PRESIDENT                                              :Президент
 STR_706E_TYCOON                                                 :Магнат
 STR_706F_BUILD_HQ                                               :{BLACK}Построить штаб
-STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Построить штаб-квартиру компании / Осмотреть штаб-квартиру компании
+STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Построить/осмотреть штаб-квартиру компании
 STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Переместить штаб компании в другом месте за 1% оценочной стоимости капитала компании
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Невозможно построить штаб-квартиру компании...
 STR_7072_VIEW_HQ                                                :{BLACK}Осмотреть штаб
@@ -2697,10 +2697,10 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :и идти д�
 STR_TIMETABLE_DAYS                                              :{COMMA} д{P ень ня ней}
 STR_TIMETABLE_TICKS                                             :{COMMA} тик{P "" а ов}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Следует в депо {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Следует в Депо {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Идёт в депо {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Идёт в депо {TOWN}; {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Обслуж. в депо {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Обслуж. в депо {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Обслуж. в депо {TOWN}; {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Неверный Маршрут)
 
@@ -2780,7 +2780,7 @@ STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Выбо
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Построить выделенный вагон
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Переименовать тип вагона
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Текущее действие поезда; кликните для его остановки/запуска
-STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Показать список заданий
+STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Показать задания
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Показать поезд в основном окне
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Отправить поезд в депо. Ctrl+клик - только для обслуживания.
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Заставить поезд проехать на красный сигнал светофора
@@ -2826,7 +2826,7 @@ STR_RESET_LATENESS                                              :{BLACK}Сбро
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Переименовать точку пути
 
 STR_TRAIN_STOPPING                                              :{RED}Остановлен
-STR_TRAIN_STOPPING_VEL                                          :{RED}Останавливается, {VELOCITY}
+STR_TRAIN_STOPPING_VEL                                          :{RED}Останавливается; {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :IНесовместимый тип рельс
 STR_TRAIN_NO_POWER                                              :{RED}Нет тока.
 STR_TRAIN_START_NO_CATENARY                                     :Кто-то украл все провода, поезд не может ехать.
@@ -2871,10 +2871,10 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...до�
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Невозможно продать автомобиль...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Невозможно остановить/запустить автомобиль...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} ждёт в гараже
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Следует в Гараж {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Следует в гараж {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Идёт в гараж {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Идёт в гараж {TOWN}; {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Обслуж. в гараже {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Обслуж. в гараже {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Обслуж. в гараже {TOWN}; {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Невозможно отправить машину в гараж...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Невозможно найти гараж
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Автомобили - кликните для получения подробной информации
@@ -2946,13 +2946,13 @@ STR_9817_CAPACITY                                               :{BLACK}Емко
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Не могу остановить/запустить корабль...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Не могу отправить корабль в док...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Невозможно найти док
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Следует в док {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Следует в док {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Идёт в док {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Идёт в док {TOWN}; {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Обслуж. в доке {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Обслуж. в доке {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Обслуж. в доке {TOWN}; {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} ждёт в доке
-STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Построить пристань
-STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Построить док (для строительства и обслуживания кораблей)
+STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Строительство пристаней
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Строительство доков (для строительства и обслуживания кораблей)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Корабли - нажмите для получения справки
 STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Построить новый корабль
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Перетащите сюда корабль, чтобы продать его
@@ -2971,9 +2971,9 @@ STR_982F_NAME_SHIP                                              :{BLACK}Назв
 STR_9831_NAME_SHIP                                              :{WHITE}Название корабля
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Не могу назвать корабль...
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жители празднуют!{}Первый корабль причалил к {STATION}!
-STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Буй помогает в навигации, если дистанция большая, исользуйте его как точку маршрута
-STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Не могу построить буй здесь...
-STR_BUILD_AQUEDUCT                                              :{BLACK}Построить акведук
+STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Буи помогают в навигации на больших расстояниях; используйте их как маршрутные точки
+STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Не могу установить здесь буй...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Строительство акведуков
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Здесь невозможно построить акведук...
 STR_9836_RENAME                                                 :{BLACK}Переимен.
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Переименовать
@@ -3010,9 +3010,9 @@ STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Наде
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Построено: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Невозможно отправить его в ангар...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Летит в Ангар {STATION}
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Следует в Ангар {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Идёт в ангар {STATION}; {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Обслуж. в ангаре {STATION}
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Обслуж. в ангаре {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Обслуж. в ангаре {STATION}; {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} ждёт в ангаре
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}ОН ЛЕТИТ!
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Невозможно остановить/запустить авиатранспорт...
@@ -3022,7 +3022,7 @@ STR_A01A_CAPACITY                                               :{BLACK}Емко
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Самолёт должен быть остановлен в ангаре
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Не могу продать авиатранспорт...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Строительство аэропорта
-STR_A01E_BUILD_AIRPORT                                          :{BLACK}Построить аэропорт
+STR_A01E_BUILD_AIRPORT                                          :{BLACK}Строительство аэропортов
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Авиатранспорт - нажмите для получения справки
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Авиатранспорт - нажмите для получения справки
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Построить новый авиатранспорт
@@ -3061,7 +3061,7 @@ STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT
 STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Автомобиль уничтожен при столкновении с НЛО!
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Взрыв нефтеперегонного завода вблизи {TOWN}!
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Взрыв завода при подозрительных обстоятельствах вблизи {TOWN}!
-STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}НЛО приземлилось возле {TOWN}!
+STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}НЛО приземлилось возле г.{NBSP}{TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Обвал на угольной шахте вызывает оползень около {TOWN}!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}ПОТОП!{}{COMMA} человек{P "" а ""} утонул{P "" о о} в результате наводнения!
 
@@ -3272,7 +3272,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Нажм
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список меток - {COMMA} Мет{P ка ки ок}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Ошибка задания переоборудования {VEHICLE}
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Не удалось переоборудовать {VEHICLE}
 
 ############ Lists rail types
 
@@ -3299,7 +3299,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Емко
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ведущие вагоны: {GOLD}+{POWER}{BLACK} Вес: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Переоборуд. для: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Все типы грузов
-STR_PURCHASE_INFO_ALL_BUT                                       :Все, кроме {GOLD}
+STR_PURCHASE_INFO_ALL_BUT                                       :Всё, кроме {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. тяговое усилие: {GOLD}{FORCE}
 
 ########### For showing numbers in widgets
@@ -3624,11 +3624,11 @@ STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Скач
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Начать загрузку выбранного контента
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Всего для загруки: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}ИНФОРМАЦИЯ О КОНТЕНТЕ
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Вы не выбрали его для загрузки
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Вы выбрали его для загрузки
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Не выбран для загрузки
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Будет загружен
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Этот модуль зависит от другого и будет загружен
-STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Он у вас уже есть
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Этот контент неизвестен и не может быть загружен для OpenTTD
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Уже установлен
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Этот модуль неизвестен и не может быть загружен для OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Он заменит уже имеющийся {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Наименование: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Версия: {WHITE}{STRING}
