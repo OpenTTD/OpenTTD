@@ -574,7 +574,7 @@ void Window::ReInit()
 	int window_height = this->height;
 
 	/* Re-initialize the window from the ground up. No need to change the nested_array, as all widgets stay where they are. */
-	this->nested_root->SetupSmallestSize(this);
+	this->nested_root->SetupSmallestSize(this, false);
 	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, false, false, false);
 	this->width  = this->nested_root->smallest_x;
 	this->height = this->nested_root->smallest_y;
@@ -871,18 +871,18 @@ static void AssignWidgetToWindow(Window *w, const Widget *widget)
  * @param *widget       Pointer to the widget array. @see Widget
  * @param nested_root   Root of the nested widget tree.
  * @param window_number Number being assigned to the new window
+ * @param biggest_index Biggest index of nested widgets in the \a nested_root tree.
  * @return Window pointer of the newly created window
  */
-void Window::InitializeData(WindowClass cls, const Widget *widget, NWidgetBase *nested_root, int window_number)
+void Window::InitializeData(WindowClass cls, const Widget *widget, NWidgetBase *nested_root, int window_number, int biggest_index)
 {
 	/* If available, initialize nested widget tree. */
 	if (nested_root != NULL) {
 		this->nested_root = nested_root;
 		/* Setup nested_array pointers into the tree. */
-		int biggest_index = this->nested_root->SetupSmallestSize(this);
 		this->nested_array_size = (uint)(biggest_index + 1);
 		this->nested_array = CallocT<NWidgetCore *>(this->nested_array_size);
-		this->nested_root->FillNestedArray(this->nested_array, this->nested_array_size);
+		this->nested_root->SetupSmallestSize(this, true);
 		/* Initialize to smallest size. */
 		this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, false, false, false);
 	}
@@ -1052,7 +1052,7 @@ void Window::FindWindowPlacementAndResize(const WindowDesc *desc)
  */
 Window::Window(int x, int y, int width, int height, WindowClass cls, const Widget *widget)
 {
-	this->InitializeData(cls, widget, NULL, 0);
+	this->InitializeData(cls, widget, NULL, 0, -1);
 	this->InitializePositionSize(x, y, width, height);
 }
 
@@ -1282,7 +1282,7 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16 sm_width, int
  */
 Window::Window(const WindowDesc *desc, WindowNumber window_number)
 {
-	this->InitializeData(desc->cls, desc->GetWidgets(), NULL, window_number);
+	this->InitializeData(desc->cls, desc->GetWidgets(), NULL, window_number, -1);
 	this->desc_flags = desc->flags;
 	Point pt = LocalGetWindowPlacement(desc, desc->minimum_width, desc->minimum_height, window_number);
 	this->InitializePositionSize(pt.x, pt.y, desc->minimum_width, desc->minimum_height);
@@ -1295,8 +1295,9 @@ Window::Window(const WindowDesc *desc, WindowNumber window_number)
  */
 void Window::InitNested(const WindowDesc *desc, WindowNumber window_number)
 {
-	NWidgetBase *nested_root = MakeNWidgets(desc->nwid_parts, desc->nwid_length);
-	this->InitializeData(desc->cls, NULL, nested_root, window_number);
+	int biggest_index = -1;
+	NWidgetBase *nested_root = MakeNWidgets(desc->nwid_parts, desc->nwid_length, &biggest_index);
+	this->InitializeData(desc->cls, NULL, nested_root, window_number, biggest_index);
 	this->desc_flags = desc->flags;
 	Point pt = LocalGetWindowPlacement(desc, this->nested_root->smallest_x, this->nested_root->smallest_y, window_number);
 	this->InitializePositionSize(pt.x, pt.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
