@@ -647,14 +647,9 @@ public:
 	{
 		Dimension d = {0, 0};
 		switch (widget) {
-			case TDW_SORTNAME: {
-				d = GetStringBoundingBox(STR_SORT_BY_NAME);
-				d.width += WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the word is centered, also looks nice.
-				break;
-			}
-
+			case TDW_SORTNAME:
 			case TDW_SORTPOPULATION: {
-				d = GetStringBoundingBox(STR_SORT_BY_POPULATION);
+				d = GetStringBoundingBox(this->nested_array[widget]->widget_data);
 				d.width += WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the word is centered, also looks nice.
 				break;
 			}
