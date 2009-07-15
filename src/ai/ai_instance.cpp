@@ -101,6 +101,7 @@ AIInstance::AIInstance(AIInfo *info) :
 	instance(NULL),
 	is_started(false),
 	is_dead(false),
+	is_save_data_on_stack(false),
 	suspend(0),
 	callback(NULL)
 {
@@ -138,10 +139,6 @@ AIInstance::AIInstance(AIInfo *info) :
 
 	/* Register the API functions and classes */
 	this->RegisterAPI();
-
-	/* The topmost stack item is true if there is data from a savegame
-	 * and false otherwise. */
-	sq_pushbool(this->engine->vm, false);
 }
 
 AIInstance::~AIInstance()
@@ -288,6 +285,10 @@ void AIInstance::GameLoop()
 
 	/* If there is a callback to call, call that first */
 	if (this->callback != NULL) {
+		if (this->is_save_data_on_stack) {
+			sq_poptop(this->engine->GetVM());
+			this->is_save_data_on_stack = false;
+		}
 		try {
 			this->callback(this);
 		} catch (AI_VMSuspend e) {
@@ -327,6 +328,10 @@ void AIInstance::GameLoop()
 
 		this->is_started = true;
 		return;
+	}
+	if (this->is_save_data_on_stack) {
+		sq_poptop(this->engine->GetVM());
+		this->is_save_data_on_stack = false;
 	}
 
 	/* Continue the VM */
@@ -546,20 +551,14 @@ void AIInstance::Save()
 	}
 
 	HSQUIRRELVM vm = this->engine->GetVM();
-	if (!this->is_started) {
-		SQBool res;
-		sq_getbool(vm, -1, &res);
-		if (!res) {
-			SaveEmpty();
-			return;
-		}
-		/* Push the loaded savegame data to the top of the stack. */
-		sq_push(vm, -2);
+	if (this->is_save_data_on_stack) {
 		_ai_sl_byte = 1;
 		SlObject(NULL, _ai_byte);
 		/* Save the data that was just loaded. */
 		SaveObject(vm, -1, AISAVE_MAX_DEPTH, false);
-		sq_poptop(vm);
+	} else if (!this->is_started) {
+		SaveEmpty();
+		return;
 	} else if (this->engine->MethodExists(*this->instance, "Save")) {
 		HSQOBJECT savedata;
 		/* We don't want to be interrupted during the save function. */
@@ -576,6 +575,7 @@ void AIInstance::Save()
 		if (!sq_istable(savedata)) {
 			AILog::Error("Save function should return a table.");
 			SaveEmpty();
+			this->engine->CrashOccurred();
 			return;
 		}
 		sq_pushobject(vm, savedata);
@@ -583,11 +583,11 @@ void AIInstance::Save()
 			_ai_sl_byte = 1;
 			SlObject(NULL, _ai_byte);
 			SaveObject(vm, -1, AISAVE_MAX_DEPTH, false);
+			this->is_save_data_on_stack = true;
 		} else {
-			_ai_sl_byte = 0;
-			SlObject(NULL, _ai_byte);
+			SaveEmpty();
+			this->engine->CrashOccurred();
 		}
-		sq_pop(vm, 1);
 	} else {
 		AILog::Warning("Save function is not implemented");
 		_ai_sl_byte = 0;
@@ -674,21 +674,18 @@ void AIInstance::Load(int version)
 	/* Check if there was anything saved at all. */
 	if (_ai_sl_byte == 0) return;
 
-	/* First remove the value "false" since we have data to load. */
-	sq_poptop(vm);
 	sq_pushinteger(vm, version);
 	LoadObjects(vm);
-	sq_pushbool(vm, true);
+	this->is_save_data_on_stack = true;
 }
 
 bool AIInstance::CallLoad()
 {
 	HSQUIRRELVM vm = this->engine->GetVM();
 	/* Is there save data that we should load? */
-	SQBool res;
-	sq_getbool(vm, -1, &res);
-	sq_poptop(vm);
-	if (!res) return true;
+	if (!this->is_save_data_on_stack) return true;
+	/* Whatever happens, after CallLoad the savegame data is removed from the stack. */
+	this->is_save_data_on_stack = false;
 
 	if (!this->engine->MethodExists(*this->instance, "Load")) {
 		AILog::Warning("Loading failed: there was data for the AI to load, but the AI does not have a Load() function.");
