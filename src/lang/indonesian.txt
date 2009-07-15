@@ -1010,7 +1010,7 @@ STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Tampilk
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Tidak ada
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Perusahaan milik sendiri
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Semua Perusahaan
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Lebih suka Tim Chat dengan &lt;ENTER>: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Lebih suka Tim Chat dengan <ENTER>: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Fungsi tombol scroll mouse: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Perbesar Peta
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Geser Peta

@@ -1010,7 +1010,7 @@ STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Näytä
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ei yhtään
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Oma yritys
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Kaikki yritykset
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Suosi ryhmäkeskustelua &lt;ENTER> näppäimellä: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Suosi ryhmäkeskustelua <ENTER> näppäimellä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Hiiren rullan toiminta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoomaa karttaa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Vieritä karttaa

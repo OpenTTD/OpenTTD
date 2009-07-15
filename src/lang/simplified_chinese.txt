@@ -1010,7 +1010,7 @@ STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}显示�
 STR_CONFIG_SETTING_LIVERIES_NONE                                :不显示
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :本公司
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :所有公司
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}按下&lt;ENTER> 时默认与团队交谈：{ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}按下<ENTER> 时默认与团队交谈：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}鼠标滚轮的作用：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :缩放地图
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :滚动地图

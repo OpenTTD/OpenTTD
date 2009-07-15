@@ -1010,7 +1010,7 @@ STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}عرض 
 STR_CONFIG_SETTING_LIVERIES_NONE                                :بدون
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :شركتك الخاصة
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :كل الشركات
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}تفضيل الدردشة &lt;ENTER> : {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}تفضيل الدردشة <ENTER> : {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}وظيفة عجلة التحريك: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :تصغير تكبير الخريطة
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :تحريك الخريطة
