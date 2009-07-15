@@ -169,7 +169,6 @@ public:
 	virtual void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl) = 0;
 
 	virtual void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl) = 0;
-	virtual void FillNestedArray(NWidgetCore **array, uint length) = 0;
 
 	virtual NWidgetCore *GetWidgetFromPos(int x, int y) = 0;
 	virtual NWidgetBase *GetWidgetOfType(WidgetType tp) = 0;
@@ -285,7 +284,6 @@ public:
 	inline bool IsDisabled();
 
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
-	/* virtual */ void FillNestedArray(NWidgetCore **array, uint length);
 
 	virtual Scrollbar *FindScrollbar(Window *w, bool allow_next = true) = 0;
 
@@ -335,7 +333,6 @@ public:
 	~NWidgetContainer();
 
 	void Add(NWidgetBase *wid);
-	/* virtual */ void FillNestedArray(NWidgetCore **array, uint length);
 
 	/** Return whether the container is empty. */
 	inline bool IsEmpty() { return head == NULL; };
@@ -432,7 +429,6 @@ public:
 
 	void SetupSmallestSize(Window *w, bool init_array);
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
-	/* virtual */ void FillNestedArray(NWidgetCore **array, uint length);
 
 	/* virtual */ void Draw(const Window *w);
 	/* virtual */ void Invalidate(const Window *w) const;
@@ -454,7 +450,6 @@ public:
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool allow_resize_x, bool allow_resize_y, bool rtl);
 
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
-	/* virtual */ void FillNestedArray(NWidgetCore **array, uint length);
 
 	/* virtual */ void Draw(const Window *w);
 	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y);
