@@ -86,7 +86,13 @@ struct GraphLegendWindow : Window {
 	}
 };
 
-static NWidgetBase *MakeNWidgetCompanyLines()
+/**
+ * Construct a vertical list of buttons, one for each company.
+ * @param biggest_index Storage for collecting the biggest index used in the returned tree.
+ * @return Panel with company buttons.
+ * @postcond \c *biggest_index contains the largest used index in the tree.
+ */
+static NWidgetBase *MakeNWidgetCompanyLines(int *biggest_index)
 {
 	NWidgetVertical *vert = new NWidgetVertical();
 
@@ -97,6 +103,7 @@ static NWidgetBase *MakeNWidgetCompanyLines()
 		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION);
 		vert->Add(panel);
 	}
+	*biggest_index = GLW_LAST_COMPANY;
 	return vert;
 }
 
@@ -1195,8 +1202,12 @@ struct PerformanceRatingDetailWindow : Window {
 
 CompanyID PerformanceRatingDetailWindow::company = INVALID_COMPANY;
 
-/** Make a vertical list of panels for outputting score details. */
-static NWidgetBase *MakePerformanceDetailPanels()
+/** Make a vertical list of panels for outputting score details.
+ * @param biggest_index Storage for collecting the biggest index used in the returned tree.
+ * @return Panel with performance details.
+ * @postcond \c *biggest_index contains the largest used index in the tree.
+ */
+static NWidgetBase *MakePerformanceDetailPanels(int *biggest_index)
 {
 	const StringID performance_tips[] = {
 		STR_PERFORMANCE_DETAIL_VEHICLES_TIP,
@@ -1221,11 +1232,17 @@ static NWidgetBase *MakePerformanceDetailPanels()
 		panel->SetDataTip(0x0, performance_tips[widnum - PRW_SCORE_FIRST]);
 		vert->Add(panel);
 	}
+	*biggest_index = PRW_SCORE_LAST;
 	return vert;
 }
 
-/** Make a number of rows with button-like graphics, for enabling/disabling each company. */
-static NWidgetBase *MakeCompanyButtonRows()
+/**
+ * Make a number of rows with button-like graphics, for enabling/disabling each company.
+ * @param biggest_index Storage for collecting the biggest index used in the returned tree.
+ * @return Panel with rows of company buttons.
+ * @postcond \c *biggest_index contains the largest used index in the tree.
+ */
+static NWidgetBase *MakeCompanyButtonRows(int *biggest_index)
 {
 	static const int MAX_LENGTH = 8; // Maximal number of company buttons in one row.
 	NWidgetVertical *vert = NULL; // Storage for all rows.
@@ -1252,6 +1269,7 @@ static NWidgetBase *MakeCompanyButtonRows()
 		hor->Add(panel);
 		hor_length++;
 	}
+	*biggest_index = PRW_COMPANY_LAST;
 	if (vert == NULL) return hor; // All buttons fit in a single row.
 
 	if (hor_length > 0 && hor_length < MAX_LENGTH) {

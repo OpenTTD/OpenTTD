@@ -2255,9 +2255,11 @@ bool CompareWidgetArrays(const Widget *orig, const Widget *gen, bool report)
  * @param count Length of the \a parts array.
  * @param dest  Address of pointer to use for returning the composed widget.
  * @param fill_dest Fill the composed widget with child widgets.
+ * @param biggest_index Pointer to biggest nested widget index in the tree encountered so far.
  * @return Number of widget part elements used to compose the widget.
+ * @precond \c biggest_index != NULL.
  */
-static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, bool *fill_dest)
+static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, bool *fill_dest, int *biggest_index)
 {
 	int num_used = 0;
 
@@ -2288,6 +2290,7 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 			case WWT_FRAME:
 				if (*dest != NULL) return num_used;
 				*dest = new NWidgetBackground(parts->type, parts->u.widget.colour, parts->u.widget.index);
+				*biggest_index = max(*biggest_index, (int)parts->u.widget.index);
 				*fill_dest = true;
 				break;
 
@@ -2297,11 +2300,15 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				*fill_dest = true;
 				break;
 
-			case WPT_FUNCTION:
+			case WPT_FUNCTION: {
 				if (*dest != NULL) return num_used;
-				*dest = parts->u.func_ptr();
+				/* Ensure proper functioning even when the called code simply writes its largest index. */
+				int biggest = -1;
+				*dest = parts->u.func_ptr(&biggest);
+				*biggest_index = max(*biggest_index, biggest);
 				*fill_dest = false;
 				break;
+			}
 
 			case NWID_SELECTION:
 			case NWID_LAYERED:
@@ -2391,6 +2398,7 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				if (*dest != NULL) return num_used;
 				assert((parts->type & WWT_MASK) < NWID_HORIZONTAL);
 				*dest = new NWidgetLeaf(parts->type, parts->u.widget.colour, parts->u.widget.index, 0x0, STR_NULL);
+				*biggest_index = max(*biggest_index, (int)parts->u.widget.index);
 				break;
 		}
 		num_used++;
@@ -2405,9 +2413,11 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
  * @param parts  Array with parts of the nested widgets.
  * @param count  Length of the \a parts array.
  * @param parent Container to use for storing the child widgets.
+ * @param biggest_index Pointer to biggest nested widget index in the tree.
  * @return Number of widget part elements used to fill the container.
+ * @postcond \c *biggest_index contains the largest widget index of the tree and \c -1 if no index is used.
  */
-static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase *parent)
+static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase *parent, int *biggest_index)
 {
 	/* Given parent must be either a #NWidgetContainer or a #NWidgetBackground object. */
 	NWidgetContainer *nwid_cont = dynamic_cast<NWidgetContainer *>(parent);
@@ -2418,7 +2428,7 @@ static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase *pare
 	while (true) {
 		NWidgetBase *sub_widget = NULL;
 		bool fill_sub = false;
-		int num_used = MakeNWidget(parts, count - total_used, &sub_widget, &fill_sub);
+		int num_used = MakeNWidget(parts, count - total_used, &sub_widget, &fill_sub, biggest_index);
 		parts += num_used;
 		total_used += num_used;
 
@@ -2433,7 +2443,7 @@ static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase *pare
 		WidgetType tp = sub_widget->type;
 		if (fill_sub && (tp == NWID_HORIZONTAL || tp == NWID_HORIZONTAL_LTR || tp == NWID_VERTICAL
 							|| tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET || tp == NWID_SELECTION || tp == NWID_LAYERED)) {
-			int num_used = MakeWidgetTree(parts, count - total_used, sub_widget);
+			int num_used = MakeWidgetTree(parts, count - total_used, sub_widget, biggest_index);
 			parts += num_used;
 			total_used += num_used;
 		}
@@ -2455,8 +2465,9 @@ static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase *pare
  */
 NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count)
 {
+	int biggest_index = -1;
 	NWidgetContainer *cont = new NWidgetVertical();
-	MakeWidgetTree(parts, count, cont);
+	MakeWidgetTree(parts, count, cont, &biggest_index);
 	return cont;
 }
 

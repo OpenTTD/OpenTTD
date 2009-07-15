@@ -1081,7 +1081,13 @@ NEWS_SETTINGS_LINE(28, NT_GENERAL),
 {   WIDGETS_END},
 };
 
-static NWidgetBase *MakeNewsSettingLines()
+/**
+ * Make nested widget tree for the news settings.
+ * @param biggest_index Storage for collecting the biggest index used in the returned tree.
+ * @return Panel with rows of news settings.
+ * @postcond \c *biggest_index contains the largest used index in the tree.
+ */
+static NWidgetBase *MakeNewsSettingLines(int *biggest_index)
 {
 	const int NEWS_SETTING_HEIGHT = 12; // Height of one line.
 	NWidgetVertical *vert = new NWidgetVertical;
@@ -1110,6 +1116,7 @@ static NWidgetBase *MakeNewsSettingLines()
 
 		vert->Add(hor);
 	}
+	*biggest_index = widnum - 1;
 	return vert;
 }
 

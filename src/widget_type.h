@@ -561,8 +561,12 @@ struct NWidgetPartPIP {
 	uint8 pre, inter, post; ///< Amount of space before/between/after child widgets.
 };
 
-/** Pointer to function returning a nested widget. */
-typedef NWidgetBase *NWidgetFunctionType();
+/** Pointer to function returning a nested widget.
+ * @param biggest_index Pointer to storage for collecting the biggest index used in the nested widget.
+ * @return Nested widget (tree).
+ * @postcond \c *biggest_index must contain the value of the biggest index in the returned tree.
+ */
+typedef NWidgetBase *NWidgetFunctionType(int *biggest_index);
 
 /** Partial widget specification to allow NWidgets to be written nested.
  * @ingroup NestedWidgetParts */
