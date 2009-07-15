@@ -497,17 +497,29 @@ STR_SEND_FOR_SERVICING                                          :Послать 
 
 ############ range for months starts
 STR_MONTH_ABBREV_JAN                                            :Янв
+STR_MONTH_ABBREV_JAN.gen                                        :янв
 STR_MONTH_ABBREV_FEB                                            :Фев
+STR_MONTH_ABBREV_FEB.gen                                        :фев
 STR_MONTH_ABBREV_MAR                                            :Мар
+STR_MONTH_ABBREV_MAR.gen                                        :мар
 STR_MONTH_ABBREV_APR                                            :Апр
+STR_MONTH_ABBREV_APR.gen                                        :апр
 STR_MONTH_ABBREV_MAY                                            :Май
+STR_MONTH_ABBREV_MAY.gen                                        :мая
 STR_MONTH_ABBREV_JUN                                            :Июн
+STR_MONTH_ABBREV_JUN.gen                                        :июн
 STR_MONTH_ABBREV_JUL                                            :Июл
+STR_MONTH_ABBREV_JUL.gen                                        :июл
 STR_MONTH_ABBREV_AUG                                            :Авг
+STR_MONTH_ABBREV_AUG.gen                                        :авг
 STR_MONTH_ABBREV_SEP                                            :Сен
+STR_MONTH_ABBREV_SEP.gen                                        :сен
 STR_MONTH_ABBREV_OCT                                            :Окт
+STR_MONTH_ABBREV_OCT.gen                                        :окт
 STR_MONTH_ABBREV_NOV                                            :Ноя
+STR_MONTH_ABBREV_NOV.gen                                        :ноя
 STR_MONTH_ABBREV_DEC                                            :Дек
+STR_MONTH_ABBREV_DEC.gen                                        :дек
 ############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
@@ -515,18 +527,18 @@ STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRI
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}-
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}ПАУЗА
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Сохранение игры; Главное меню; Выход
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Показать список станций компании
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Список станций
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Показать карту
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Показать карту; список городов
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Показать список городов
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Список городов
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Показать финансовую информацию компании
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Показать основную информацию о компании
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Показать графики
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Показать рейтинги компаний
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Показать список поездов компании
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Показать список автотранспорта компании
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Показать список кораблей компании
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Показать список авиатранспорта компании
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Список поездов
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Список автотранспорта
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Список кораблей
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Список авиатранспорта
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Приблизить
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Уменьшить
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Строительство железных дорог
@@ -1162,8 +1174,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Выкл.
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Скроллинг по клику левой кнопкой мыши: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Использовать {ORANGE}{STRING}{LTBLUE} формат даты для имён сохранений
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :длинный (31st Dec 2008)
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :короткий (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :длинный (31-е дек 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :короткий (31.12.2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автопауза в начале игры: {ORANGE}{STRING}
@@ -2929,7 +2941,7 @@ STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Выбо
 STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Построить выделенный вагон
 STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Переименовать тип вагона
 STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Текущее действие поезда; кликните для его остановки/запуска
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Показать список заданий
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Показать задания
 STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Показать поезд в основном окне
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Отправить поезд в депо. Ctrl+клик - только для обслуживания.
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Заставить поезд проехать на красный сигнал светофора
@@ -3538,7 +3550,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площ
 ############ Date formatting
 STR_DATE_TINY                                                   :{STRING}.{STRING}.{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
-STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING.gen} {NUM}
 STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
@@ -3762,11 +3774,11 @@ STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Скач
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Начать загрузку выбранного контента
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Всего для загруки: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}ИНФОРМАЦИЯ О КОНТЕНТЕ
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Вы не выбрали его для загрузки
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Вы выбрали его для загрузки
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Не выбран для загрузки
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Будет загружен
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Этот модуль зависит от другого и будет загружен
-STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Он у вас уже есть
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Этот контент неизвестен и не может быть загружен для OpenTTD
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Уже установлен
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Этот модуль неизвестен и не может быть загружен для OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Он заменит уже имеющийся {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Наименование: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Версия: {WHITE}{STRING}

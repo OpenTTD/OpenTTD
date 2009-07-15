@@ -165,7 +165,7 @@ STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}不能�
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}不能清除这个区域……
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}原始版权由 {COPYRIGHT} 1995 Chris Sawyer 所有，保留一切权力。
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 版本 {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD 团队
 
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
@@ -324,7 +324,7 @@ STR_FILTER_CRITERIA_TIP                                         :{BLACK}选择�
 STR_SORT_BY                                                     :{BLACK}排序
 
 STR_SORT_BY_POPULATION                                          :{BLACK}人口
-STR_SORT_BY_PRODUCTION                                          :产出
+STR_SORT_BY_PRODUCTION                                          :产量
 STR_SORT_BY_TYPE                                                :类型
 STR_SORT_BY_TRANSPORTED                                         :已运输
 STR_SORT_BY_NAME                                                :{BLACK}名称
@@ -494,7 +494,7 @@ STR_ORDINAL_NUMBER_31ST                                         :31号
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}接受的货物：{LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}接受货物：{LTBLUE}
 
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}爵士点唱机
@@ -805,34 +805,34 @@ STR_TOWNNAME_ITALIAN                                            :意大利
 STR_TOWNNAME_CATALAN                                            :加泰罗尼亚
 ############ end of townname region
 
-STR_CURR_GBP                                                    :磅 (£)
+STR_CURR_GBP                                                    :英镑 (£)
 STR_CURR_USD                                                    :美元 ($)
 STR_CURR_EUR                                                    :欧元 (€)
-STR_CURR_YEN                                                    :元 (¥)
+STR_CURR_YEN                                                    :日元 (¥)
 STR_CURR_ATS                                                    :澳大利亚先令 (ATS)
 STR_CURR_BEF                                                    :比利时法郎 (BEF)
 STR_CURR_CHF                                                    :瑞士法郎 (CHF)
-STR_CURR_CZK                                                    :捷克克郎 (CZK)
+STR_CURR_CZK                                                    :捷克克朗 (CZK)
 STR_CURR_DEM                                                    :德国马克 (DEM)
-STR_CURR_DKK                                                    :丹麦克郎 (DKK)
+STR_CURR_DKK                                                    :丹麦克朗 (DKK)
 STR_CURR_ESP                                                    :西班牙比赛塔 (ESP)
 STR_CURR_FIM                                                    :芬兰马克 (FIM)
 STR_CURR_FRF                                                    :法郎 (FRF)
 STR_CURR_GRD                                                    :希腊德拉克马 (GRD)
-STR_CURR_HUF                                                    :匈牙利福临 (HUF)
-STR_CURR_ISK                                                    :冰岛克郎 (ISK)
+STR_CURR_HUF                                                    :匈牙利福林 (HUF)
+STR_CURR_ISK                                                    :冰岛克朗 (ISK)
 STR_CURR_ITL                                                    :意大利里拉 (ITL)
 STR_CURR_NLG                                                    :荷兰盾 (NLG)
-STR_CURR_NOK                                                    :挪威克郎 (NOK)
+STR_CURR_NOK                                                    :挪威克朗 (NOK)
 STR_CURR_PLN                                                    :波兰兹罗提 (PLN)
 STR_CURR_RON                                                    :罗马尼亚列伊 (RON)
 STR_CURR_RUR                                                    :卢布 (RUR)
-STR_CURR_SIT                                                    :斯洛文尼亚托拉尔 (SIT)
-STR_CURR_SEK                                                    :瑞典克郎 (SEK)
+STR_CURR_SIT                                                    :斯洛文尼亚托拉捷夫 (SIT)
+STR_CURR_SEK                                                    :瑞典克朗 (SEK)
 STR_CURR_TRY                                                    :土耳其里拉 (TRY)
-STR_CURR_SKK                                                    :斯洛伐克克郎 (SKK)
+STR_CURR_SKK                                                    :斯洛伐克克朗 (SKK)
 STR_CURR_BRL                                                    :巴西里亚伊 (BRL)
-STR_CURR_EEK                                                    :爱沙尼亚克鲁恩(EEK)
+STR_CURR_EEK                                                    :爱沙尼亚克鲁恩 (EEK)
 
 STR_CURR_CUSTOM                                                 :自定义……
 
@@ -944,7 +944,7 @@ STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}工业�
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}永远在状态栏中显示长日期：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}在列车前进的方向显示信号灯：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}在年终显示财务报表：{ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}新的调度命令默认为“不停”：  {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}新的调度命令默认为“不停车”： {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}新列车调度计划中默认命令为停靠车站月台 {ORANGE}{STRING}{LTBLUE} 位置
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :近端
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :中间
@@ -1010,7 +1010,7 @@ STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}显示�
 STR_CONFIG_SETTING_LIVERIES_NONE                                :不显示
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :本公司
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :所有公司
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}输入 <ENTER> 时与偏好的团队交谈：{ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}按下&lt;ENTER> 时默认与团队交谈：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}鼠标滚轮的作用：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :缩放地图
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :滚动地图
@@ -1049,7 +1049,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :磁悬浮
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :第一个可用的
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :第后一个可用的
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :最常用的
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}显示保留的轨道： {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}显示预留的轨道： {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}建造工具使用后仍选中： {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}企业财政窗口中的组群支出：{ORANGE}{STRING}
 
@@ -1494,21 +1494,21 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :游戏暂停 (�
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :游戏继续 (玩家链入)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :游戏继续 (玩家链入失败)
 ############ End of leave-in-this-order
-STR_NETWORK_CLIENT_LEAVING                                      :出发
+STR_NETWORK_CLIENT_LEAVING                                      :离开
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} 已加入游戏
 STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} 已加入 #{2:NUM} 公司
 STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} 已作为观众加入
 STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} 成立了新公司 (#{2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} 已离开游戏 ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} 已更改姓名为 {STRING}
-STR_NETWORK_GIVE_MONEY                                          :*** {STRING} 送您公司了 {2:CURRENCY}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} 送给您的公司 {2:CURRENCY}
 STR_NETWORK_GAVE_MONEY_AWAY                                     :*** 您送了 {2:CURRENCY} 给 {1:STRING}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[团队] :
 STR_NETWORK_CHAT_COMPANY                                        :[团队] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[团队] To {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[团队]{STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[私聊] :
 STR_NETWORK_CHAT_CLIENT                                         :[私聊] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[私聊] To {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[私聊]{STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[全体] :
 STR_NETWORK_CHAT_ALL                                            :[全体] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}请输入联机聊天内容
@@ -1621,7 +1621,7 @@ STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :带有出口和
 STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :带有复合和高级信号灯的铁路
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :带有复合和单向高级信号灯的铁路
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :带有高级和单向高级信号灯的铁路
-STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}请先移除火车站
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}请先拆除火车站
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}建造分体车站
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}合并车站
 
@@ -1659,7 +1659,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}建设�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}建设客运电车站
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}建设货运电车站
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}建设公路桥梁
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}建设电车大桥
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}建设电车桥梁
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}建设公路隧道
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}建设电车隧道
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}选择是否建设单行道
@@ -1703,7 +1703,7 @@ STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{BLACK
 STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{BLACK} 上个月已运到： {ORANGE}{CARGO}
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :高层写字楼
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :写字楼
-STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :底层住宅
+STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :小型公寓
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :教堂
 STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :大型写字楼
 STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :别墅
@@ -1717,7 +1717,7 @@ STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :现代写字楼
 STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :仓库
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :写字楼
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :体育馆
-STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :老房子
+STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :旧式住宅
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}地方政府
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}显示地方政府的信息
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} 地方政府
@@ -1739,15 +1739,15 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}地方政府{}不同意在本市范围内再兴建一座机场
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} 考虑到噪音控制，地方当局拒绝修建机场。
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :农舍
-STR_TOWN_BUILDING_NAME_HOUSES_1                                 :房屋
-STR_TOWN_BUILDING_NAME_FLATS_1                                  :平房
+STR_TOWN_BUILDING_NAME_HOUSES_1                                 :住宅
+STR_TOWN_BUILDING_NAME_FLATS_1                                  :公寓
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :高层写字楼
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :商场和写字楼
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :商场和写字楼
 STR_TOWN_BUILDING_NAME_THEATER_1                                :剧院
 STR_TOWN_BUILDING_NAME_STADIUM_2                                :体育场
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :写字楼
-STR_TOWN_BUILDING_NAME_HOUSES_2                                 :房屋
+STR_TOWN_BUILDING_NAME_HOUSES_2                                 :住宅
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :电影院
 STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :购物中心
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}执行
@@ -1762,14 +1762,14 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :为公司设立
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :资助新房屋建设
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :购买运输专营权
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :贿赂地方政府
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}进行小型的广告宣传,吸引更多的旅客和货物选择贵公司的服务.{}  费用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}进行中型的广告宣传,吸引更多的旅客和货物选择贵公司的服务.{}  费用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}进行大型的广告宣传,吸引更多的旅客和货物选择贵公司的服务.{}  费用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} 资助市政道路进行重建，将造成市内交通阻断 6 个月。{}  费用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} 以公司的名义设立一尊塑像。{}  费用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} 资助市内建设新的商业设施。{}  费用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} 购买该市一年的运输专营权, 其间市政府只允许选用{}贵公司的运输服务。{} 费用：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} 贿赂地方政府，但如果被发现可能遭到惩罚。{}  费用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}进行小型的广告宣传,以吸引更多的旅客和货物选择贵公司的服务.{}费用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}进行中型的广告宣传,以吸引更多的旅客和货物选择贵公司的服务.{}费用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}进行大型的广告宣传,以吸引更多的旅客和货物选择贵公司的服务.{}费用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}资助市政道路进行重建，将造成市内交通阻断 6 个月。{}费用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}以公司的名义设立一尊塑像。{}费用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}资助市内建设新的商业设施。{}费用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}购买该市一年的运输专营权, 其间该市的乘客及货物只允许选用贵公司的运输服务。{}费用：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}贿赂地方政府以提高评价，但有被发现后严厉惩罚的风险。{}费用：{CURRENCY}
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}{TOWN}的交通陷入混乱！{}{}由 {STRING} 资助的市政道路重建导致市内交通瘫痪 6 个月！
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -1801,7 +1801,7 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}无法�
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}选择要种植的树木类型
 STR_TREE_NAME_TREES                                             :树木
 STR_TREE_NAME_RAINFOREST                                        :雨林
-STR_TREE_NAME_CACTUS_PLANTS                                     :沙漠植物
+STR_TREE_NAME_CACTUS_PLANTS                                     :仙人掌
 
 ##id 0x3000
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}火车站选单
@@ -2727,19 +2727,19 @@ STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}列车
 
 STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}购买
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}克隆汽车
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}复制这辆汽车{}Ctrl+单击 可以同时复制调度计划
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}复制汽车  按此按钮后{}点击一辆在车库内或外面的汽车即可{}Ctrl+单击 可以同时复制调度计划
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}复制这辆汽车{}Ctrl+单击 可以同时共享调度计划
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}复制汽车 按此按钮后{}点击一辆在车库内或外面的汽车即可{}Ctrl+单击 可以同时共享调度计划
 STR_CLONE_TRAIN                                                 :{BLACK}克隆列车
-STR_CLONE_TRAIN_INFO                                            :{BLACK}复制这辆列车{}Ctrl+单击 可以同时复制调度计划
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}复制列车  按此按钮后{}点击一辆在车库内或外面的列车即可{}Ctrl+单击 可以同时复制调度计划
+STR_CLONE_TRAIN_INFO                                            :{BLACK}复制这列火车{}Ctrl+单击 可以同时共享调度计划
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}复制列车 按此按钮后{}点击一辆在车库内或外面的列车即可{}Ctrl+单击 可以同时共享调度计划
 STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}重命名
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}跳过
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}删除
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}前往
 STR_REFIT                                                       :{BLACK}改装
-STR_REFIT_TIP                                                   :{BLACK}选择要在调度计划中改装的货物类型{}CTRL+单击 可以去掉说明
+STR_REFIT_TIP                                                   :{BLACK}选择要在调度计划中改装的货物类型{}CTRL+单击 可以去掉改装计划
 STR_REFIT_ORDER                                                 :(改装为 {STRING})
-STR_REFIT_STOP_ORDER                                            :(依{STRING}整修并停留)
+STR_REFIT_STOP_ORDER                                            :(改装为{STRING}并停留)
 STR_STOP_ORDER                                                  :(停留)
 STR_TIMETABLE_VIEW                                              :{BLACK}时间表
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}切换到时间表视图
@@ -2931,8 +2931,8 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}购买船只
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}购买船只
 STR_CLONE_SHIP                                                  :{BLACK}克隆船只
-STR_CLONE_SHIP_INFO                                             :{BLACK}复制当前选定的船只{}Ctrl+单击 可以同时复制调度计划
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}复制船只，按此按钮后点击一个在船坞内或外面的船只即可。Ctrl+单击可以同时复制调度计划。
+STR_CLONE_SHIP_INFO                                             :{BLACK}复制当前选定的船只{}Ctrl+单击 可以同时共享调度计划
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}复制船只，按此按钮后点击一个在船坞内或外面的船只即可。Ctrl+单击可以同时共享调度计划。
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}船只必须停靠在船坞内。
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}不能出售船只……
 STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}不能建造船只……
@@ -2987,8 +2987,8 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}不能�
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} 机库
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}购买飞机
 STR_CLONE_AIRCRAFT                                              :{BLACK}克隆飞机
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}复制当前选定的飞机{}Ctrl+单击 可以同时复制调度计划
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK} 复制飞机  按此按钮后 {}点击一个在机库内或外面的飞机即可{}Ctrl+单击 可以同时复制调度计划
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}复制当前选定的飞机{}Ctrl+单击 可以同时共享调度计划
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK} 复制飞机 按此按钮后 {}点击一个在机库内或外面的飞机即可{}Ctrl+单击 可以同时共享调度计划
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}购买飞机
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}购买
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}不能购买飞机……
@@ -3051,7 +3051,7 @@ STR_BRIBE_FAILED                                                :{WHITE}你试�
 STR_BRIBE_FAILED_2                                              :{WHITE}被当地检察机关发现了！
 STR_BUILD_DATE                                                  :{BLACK}建造时间：{LTBLUE}{DATE_LONG}
 
-STR_TILEDESC_STATION_CLASS                                      :{BLACK}车站 列: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}车站分类: {LTBLUE}{STRING}
 STR_TILEDESC_STATION_TYPE                                       :{BLACK}车站类型: {LTBLUE}{STRING}
 STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
@@ -3160,10 +3160,10 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}购买'{1:ENGINE}' 后，将造成货物/运费的参数与购买列表不符，这将有可能造成自动更新/购买不成功。
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 产生了一个死循环
 
-STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}游戏保存为了无电车版. 所有电车都被去掉了。
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}游戏已保存为无电车版。所有电车已被去除。
 
 STR_CURRENCY_WINDOW                                             :{WHITE}自定义货币
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}兑换汇率： {ORANGE}{0:CURRENCY} = {1:COMMA} 磅(£)
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}兑换汇率： {ORANGE}{0:CURRENCY} = {1:COMMA} 英镑(£)
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}分隔符： {ORANGE}{2:STRING}
 STR_CURRENCY_PREFIX                                             :{LTBLUE}前缀： {ORANGE}{3:STRING}
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}后缀： {ORANGE}{4:STRING}
@@ -3262,7 +3262,7 @@ STR_MASS_STOP_LIST_TIP                                          :{BLACK}点击�
 STR_MASS_START_LIST_TIP                                         :{BLACK}点击这里可以启动列表中的{}所有车辆/船只/飞机
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}标志列表 - {COMMA} Sign
+STR_SIGN_LIST_CAPTION                                           :{WHITE}标志列表 - {COMMA} 个标志
 
 STR_ORDER_REFIT_FAILED                                          :{WHITE}重新填充调度计划失败，停止了 {VEHICLE}
 
@@ -3278,14 +3278,14 @@ STR_MAGLEV_VEHICLES                                             :磁悬浮列车
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}售价：{GOLD}{CURRENCY}{BLACK}   重量：{GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK}     功率：{GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK} 功率：{GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}运行费用：{GOLD}{CURRENCY}/年
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}运载能力：{GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}设计日期：{GOLD}{NUM}{BLACK}     寿命：{GOLD}{COMMA} 年
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}最大可靠性：{GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}售价：{GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}重量：{GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}重量：{GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}售价：{GOLD}{CURRENCY}{BLACK}   速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}运载能力：{GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}功率：{GOLD}+{POWER}{BLACK}     重量：{GOLD}+{WEIGHT_S}
@@ -3607,7 +3607,7 @@ STR_CONTENT_MATRIX_TIP                                          :{BLACK}单击�
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}全选
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}选定所有扩展包
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}选择升级
-STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}选择所有扩展包更新
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}更新所有已下载的扩展包
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}取消全选
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}取消全部选择
 STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}输入过滤器字符串

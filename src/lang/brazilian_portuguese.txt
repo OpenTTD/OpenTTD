@@ -2829,6 +2829,8 @@ STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Impossí
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Renomear trem
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Acidente Ferroviário!{} {COMMA} mortos numa explosão após a colisão
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Impossível inverter a direção do trem...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Impossível virar o veículo...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Impossível virar veículos formados por unidades múltiplas
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renomear tipo de veículo ferroviário
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Impossível renomear tipo de veículo ferroviário...
 STR_CLEAR_TIME                                                  :{BLACK}Resetar horário
@@ -2907,7 +2909,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro bonde de carga chega a {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Acidente Rodoviário!{} Condutor morre numa explosão após a colisão com um trem
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Acidente Rodoviário!{} {COMMA} mortos numa explosão após a colisão com um trem
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Impossível virar veículos formados por unidades múltiplas
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Impossível virar o veículo...
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Renomear
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Renomear tipo do automóvel
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Renomear tipo do automóvel
