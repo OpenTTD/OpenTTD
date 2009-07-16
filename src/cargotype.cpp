@@ -56,7 +56,7 @@ void SetupCargoForClimate(LandscapeID l)
 
 CargoID GetCargoIDByLabel(CargoLabel cl)
 {
-	CargoSpec *cs;
+	const CargoSpec *cs;
 	FOR_ALL_CARGOSPECS(cs) {
 		if (cs->label == cl) return cs->Index();
 	}
@@ -74,7 +74,7 @@ CargoID GetCargoIDByBitnum(uint8 bitnum)
 {
 	if (bitnum == INVALID_CARGO) return CT_INVALID;
 
-	CargoSpec *cs;
+	const CargoSpec *cs;
 	FOR_ALL_CARGOSPECS(cs) {
 		if (cs->bitnum == bitnum) return cs->Index();
 	}

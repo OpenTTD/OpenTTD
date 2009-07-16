@@ -70,8 +70,8 @@ struct CargoSpec {
 	}
 
 	/**
-	 * Total number of subsidies, both valid and invalid
-	 * @return length of Subsidy::array
+	 * Total number of cargospecs, both valid and invalid
+	 * @return length of CargoSpec::array
 	 */
 	static FORCEINLINE size_t GetArraySize()
 	{
@@ -90,7 +90,7 @@ struct CargoSpec {
 	}
 
 private:
-	static CargoSpec array[NUM_CARGO];
+	static CargoSpec array[NUM_CARGO]; ///< Array holding all CargoSpecs
 
 	friend void SetupCargoForClimate(LandscapeID l);
 };
