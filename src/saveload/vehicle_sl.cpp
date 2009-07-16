@@ -327,7 +327,7 @@ void AfterLoadVehicles(bool part_of_load)
 		FOR_ALL_VEHICLES(v) {
 			if (v->type == VEH_TRAIN) {
 				Train *t = Train::From(v);
- 				if (!t->IsFrontEngine()) {
+				if (!t->IsFrontEngine()) {
 					if (t->IsEngine()) t->vehstatus |= VS_STOPPED;
 					/* cur_speed is now relevant for non-front parts - nonzero breaks
 					 * moving-wagons-inside-depot- and autoreplace- code */

@@ -1638,7 +1638,7 @@ static bool IsTileAlignedToGrid(TileIndex tile, TownLayout layout)
  */
 struct SpotData {
 	TileIndex tile; ///< holds the tile that was found
-	uint max_dist;	///< holds the distance that tile is from the water
+	uint max_dist;  ///< holds the distance that tile is from the water
 	TownLayout layout; ///< tells us what kind of town we're building
 };
 
