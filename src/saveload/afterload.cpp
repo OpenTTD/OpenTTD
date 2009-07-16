@@ -424,6 +424,9 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Update all waypoints */
+	if (CheckSavegameVersion(12)) FixOldWaypoints();
+
 	if (CheckSavegameVersion(84)) {
 		FOR_ALL_COMPANIES(c) {
 			c->name = CopyFromOldName(c->name_1);
@@ -525,9 +528,6 @@ bool AfterLoadGame()
 			if (c->is_ai && c->ai_instance == NULL) AI::StartNew(c->index);
 		}
 	}
-
-	/* Update all waypoints */
-	if (CheckSavegameVersion(12)) FixOldWaypoints();
 
 	/* make sure there is a town in the game */
 	if (_game_mode == GM_NORMAL && !ClosestTownFromTile(0, UINT_MAX)) {
