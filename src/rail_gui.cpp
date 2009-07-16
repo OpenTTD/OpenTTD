@@ -959,11 +959,6 @@ private:
 
 		return list;
 	}
-/**
- * Window event handler of station build window.
- * @param w Staion build window
- * @param e Window event to handle
- */
 
 public:
 	BuildRailStationWindow(const WindowDesc *desc, Window *parent, bool newstation) : PickerWindowBase(desc, parent)
