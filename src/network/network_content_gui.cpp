@@ -26,14 +26,6 @@ enum DownloadStatusWindowWidgets {
 	NCDSWW_CANCELOK,   ///< Cancel/OK button
 };
 
-/** Widgets for the download window */
-static const Widget _network_content_download_status_window_widget[] = {
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,      0,   349,     0,    13, STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // NCDSWW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,      0,   349,    14,    84, 0x0,                        STR_NULL},                           // NCDSWW_BACKGROUND
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_WHITE,   125,   225,    69,    80, STR_QUERY_CANCEL,           STR_NULL},                           // NCDSWW_CANCELOK
-{   WIDGETS_END},
-};
-
 /** Nested widgets for the download window. */
 static const NWidgetPart _nested_network_content_download_status_window_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY, NCDSWW_CAPTION), SetDataTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -53,7 +45,7 @@ static const WindowDesc _network_content_download_status_window_desc(
 	WDP_CENTER, WDP_CENTER, 350, 85, 350, 85,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_MODAL,
-	_network_content_download_status_window_widget, _nested_network_content_download_status_window_widgets, lengthof(_nested_network_content_download_status_window_widgets)
+	NULL, _nested_network_content_download_status_window_widgets, lengthof(_nested_network_content_download_status_window_widgets)
 );
 
 /** Window for showing the download status of content */
@@ -77,7 +69,6 @@ public:
 	 * @param infos the list to search in
 	 */
 	NetworkContentDownloadStatusWindow() :
-		Window(&_network_content_download_status_window_desc),
 		cur_id(UINT32_MAX)
 	{
 		this->parent = FindWindowById(WC_NETWORK_WINDOW, 1);
@@ -85,7 +76,7 @@ public:
 		_network_content_client.AddCallback(this);
 		_network_content_client.DownloadSelectedContent(this->total_files, this->total_bytes);
 
-		this->FindWindowPlacementAndResize(&_network_content_download_status_window_desc);
+		this->InitNested(&_network_content_download_status_window_desc, 0);
 	}
 
 	/** Free whatever we've allocated */
@@ -129,12 +120,12 @@ public:
 
 	virtual void OnPaint()
 	{
-		/* When downloading is finished change cancel in ok */
-		if (this->downloaded_bytes == this->total_bytes) {
-			this->widget[NCDSWW_CANCELOK].data = STR_QUERY_OK;
-		}
-
 		this->DrawWidgets();
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != NCDSWW_BACKGROUND) return;
 
 		/* Draw nice progress bar :) */
 		DrawFrameRect(20, 18, 20 + (int)((this->width - 40LL) * this->downloaded_bytes / this->total_bytes), 28, COLOUR_MAUVE, FR_NONE);
@@ -142,17 +133,17 @@ public:
 		SetDParam(0, this->downloaded_bytes);
 		SetDParam(1, this->total_bytes);
 		SetDParam(2, this->downloaded_bytes * 100LL / this->total_bytes);
-		DrawString(this->widget[NCDSWW_BACKGROUND].left + 2, this->widget[NCDSWW_BACKGROUND].right - 2, 35, STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, TC_FROMSTRING, SA_CENTER);
+		DrawString(r.left + 2, r.right - 2, 35, STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, TC_FROMSTRING, SA_CENTER);
 
-		if  (this->downloaded_bytes == this->total_bytes) {
-			DrawString(this->widget[NCDSWW_BACKGROUND].left + 2, this->widget[NCDSWW_BACKGROUND].right - 2, 50, STR_CONTENT_DOWNLOAD_COMPLETE, TC_FROMSTRING, SA_CENTER);
+		if (this->downloaded_bytes == this->total_bytes) {
+			DrawString(r.left + 2, r.right - 2, 50, STR_CONTENT_DOWNLOAD_COMPLETE, TC_FROMSTRING, SA_CENTER);
 		} else if (!StrEmpty(this->name)) {
 			SetDParamStr(0, this->name);
 			SetDParam(1, this->downloaded_files);
 			SetDParam(2, this->total_files);
-			DrawStringMultiLine(this->widget[NCDSWW_BACKGROUND].left + 2, this->widget[NCDSWW_BACKGROUND].right - 2, 43, 67, STR_CONTENT_DOWNLOAD_FILE, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(r.left + 2, r.right - 2, 43, 67, STR_CONTENT_DOWNLOAD_FILE, TC_FROMSTRING, SA_CENTER);
 		} else {
-			DrawString(this->widget[NCDSWW_BACKGROUND].left + 2, this->widget[NCDSWW_BACKGROUND].right - 2, 50, STR_CONTENT_DOWNLOAD_INITIALISE, TC_FROMSTRING, SA_CENTER);
+			DrawString(r.left + 2, r.right - 2, 50, STR_CONTENT_DOWNLOAD_INITIALISE, TC_FROMSTRING, SA_CENTER);
 		}
 	}
 
@@ -173,6 +164,11 @@ public:
 			this->receivedTypes.Include(ci->type);
 		}
 		this->downloaded_bytes += bytes;
+
+		/* When downloading is finished change cancel in ok */
+		if (this->downloaded_bytes == this->total_bytes) {
+			this->nested_array[NCDSWW_CANCELOK]->widget_data = STR_QUERY_OK;
+		}
 
 		this->SetDirty();
 	}
