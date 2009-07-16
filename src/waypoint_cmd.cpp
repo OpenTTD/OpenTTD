@@ -45,7 +45,7 @@ static void MakeDefaultWaypointName(Waypoint *wp)
 	uint32 next = 0; // first waypoint number in the bitmap
 	WaypointID idx = 0; // index where we will stop
 
-	wp->town_index = ClosestTownFromTile(wp->xy, UINT_MAX)->index;
+	wp->town = ClosestTownFromTile(wp->xy, UINT_MAX);
 
 	/* Find first unused waypoint number belonging to this town. This can never fail,
 	 * as long as there can be at most 65535 waypoints in total.
@@ -64,7 +64,7 @@ static void MakeDefaultWaypointName(Waypoint *wp)
 		/* check only valid waypoints... */
 		if (lwp != NULL && wp != lwp) {
 			/* only waypoints with 'generic' name within the same city */
-			if (lwp->name == NULL && lwp->town_index == wp->town_index) {
+			if (lwp->name == NULL && lwp->town == wp->town) {
 				/* if lwp->town_cn < next, uint will overflow to '+inf' */
 				uint i = (uint)lwp->town_cn - next;
 
@@ -164,7 +164,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 		if (wp == NULL) {
 			wp = new Waypoint(tile);
 
-			wp->town_index = INVALID_TOWN;
+			wp->town = NULL;
 			wp->name = NULL;
 			wp->town_cn = 0;
 		} else {
@@ -206,7 +206,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 		wp->delete_ctr = 0;
 		wp->build_date = _date;
 
-		if (wp->town_index == INVALID_TOWN) MakeDefaultWaypointName(wp);
+		if (wp->town == NULL) MakeDefaultWaypointName(wp);
 
 		wp->UpdateVirtCoord();
 		YapfNotifyTrackLayoutChange(tile, AxisToTrack(axis));

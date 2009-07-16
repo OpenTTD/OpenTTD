@@ -16,8 +16,6 @@ StringID RemapOldStringID(StringID s);
 char *CopyFromOldName(StringID id);
 void ResetOldNames();
 
-void FixOldWaypoints();
-
 void AfterLoadWaypoints();
 void AfterLoadVehicles(bool part_of_load);
 void AfterLoadStations();

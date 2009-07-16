@@ -424,9 +424,6 @@ bool AfterLoadGame()
 		}
 	}
 
-	/* Update all waypoints */
-	if (CheckSavegameVersion(12)) FixOldWaypoints();
-
 	if (CheckSavegameVersion(84)) {
 		FOR_ALL_COMPANIES(c) {
 			c->name = CopyFromOldName(c->name_1);
@@ -446,12 +443,6 @@ bool AfterLoadGame()
 		FOR_ALL_TOWNS(t) {
 			t->name = CopyFromOldName(t->townnametype);
 			if (t->name != NULL) t->townnametype = SPECSTR_TOWNNAME_START + _settings_game.game_creation.town_name;
-		}
-
-		Waypoint *wp;
-		FOR_ALL_WAYPOINTS(wp) {
-			wp->name = CopyFromOldName(wp->string_id);
-			wp->string_id = STR_NULL;
 		}
 	}
 

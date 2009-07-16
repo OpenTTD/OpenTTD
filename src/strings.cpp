@@ -861,7 +861,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 					buff = strecpy(buff, wp->name, last);
 				} else {
 					int64 temp[2];
-					temp[0] = wp->town_index;
+					temp[0] = wp->town->index;
 					temp[1] = wp->town_cn + 1;
 					StringID str = wp->town_cn == 0 ? STR_WAYPOINTNAME_CITY : STR_WAYPOINTNAME_CITY_SERIAL;
 

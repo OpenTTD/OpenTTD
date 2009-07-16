@@ -20,9 +20,8 @@ extern WaypointPool _waypoint_pool;
 struct Waypoint : WaypointPool::PoolItem<&_waypoint_pool> {
 	TileIndex xy;      ///< Tile of waypoint
 
-	TownID town_index; ///< Town associated with the waypoint
+	Town *town;        ///< Town associated with the waypoint
 	uint16 town_cn;    ///< The Nth waypoint for this town (consecutive number)
-	StringID string_id;///< C000-C03F have special meaning in old games
 	char *name;        ///< Custom name. If not set, town + town_cn is used for naming
 
 	ViewportSign sign; ///< Dimensions of sign (not saved)
