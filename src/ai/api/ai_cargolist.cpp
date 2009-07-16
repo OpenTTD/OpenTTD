@@ -10,11 +10,9 @@
 
 AICargoList::AICargoList()
 {
-	for (byte i = 0; i < NUM_CARGO; i++) {
-		const CargoSpec *c = ::CargoSpec::Get(i);
-		if (c->IsValid()) {
-			this->AddItem(i);
-		}
+	const CargoSpec *cs;
+	FOR_ALL_CARGOSPECS(cs) {
+		this->AddItem(cs->Index());
 	}
 }
 

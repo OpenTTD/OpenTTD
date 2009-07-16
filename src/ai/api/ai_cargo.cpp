@@ -46,7 +46,7 @@
 {
 	if (!IsValidCargo(cargo_type)) return TE_NONE;
 
-	return (AICargo::TownEffect)CargoSpec::Get(cargo_type)->town_effect;
+	return (AICargo::TownEffect)::CargoSpec::Get(cargo_type)->town_effect;
 }
 
 /* static */ Money AICargo::GetCargoIncome(CargoID cargo_type, uint32 distance, uint32 days_in_transit)

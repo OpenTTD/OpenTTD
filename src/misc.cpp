@@ -132,8 +132,11 @@ void InitializeLandscapeVariables(bool only_constants)
 {
 	if (only_constants) return;
 
-	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		_cargo_payment_rates[i] = CargoSpec::Get(i)->initial_payment;
-		_cargo_payment_rates_frac[i] = 0;
+	memset(_cargo_payment_rates, 0, sizeof(_cargo_payment_rates));
+	memset(_cargo_payment_rates_frac, 0, sizeof(_cargo_payment_rates_frac));
+
+	const CargoSpec *cs;
+	FOR_ALL_CARGOSPECS(cs) {
+		_cargo_payment_rates[cs->Index()] = cs->initial_payment;
 	}
 }

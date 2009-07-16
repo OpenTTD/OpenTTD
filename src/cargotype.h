@@ -50,28 +50,49 @@ struct CargoSpec {
 	const struct GRFFile *grffile;   ///< NewGRF where 'group' belongs to
 	const struct SpriteGroup *group;
 
-	bool IsValid() const
+	/**
+	 * Determines index of this cargospec
+	 * @return index (in the CargoSpec::array array)
+	 */
+	FORCEINLINE CargoID Index() const
+	{
+		return this - CargoSpec::array;
+	}
+
+	/**
+	 * Tests for validity of this cargospec
+	 * @return is this cargospec valid?
+	 * @note assert(cs->IsValid()) can be triggered when GRF config is modified
+	 */
+	FORCEINLINE bool IsValid() const
 	{
 		return this->bitnum != INVALID_CARGO;
 	}
 
 	/**
-	 * Retrieve cargo details for the given cargo ID
-	 * @param c ID of cargo
-	 * @pre c is a valid cargo ID
+	 * Total number of subsidies, both valid and invalid
+	 * @return length of Subsidy::array
 	 */
-	static CargoSpec *Get(CargoID c)
+	static FORCEINLINE size_t GetArraySize()
 	{
-		assert(c < lengthof(CargoSpec::cargo));
-		return &CargoSpec::cargo[c];
+		return lengthof(CargoSpec::array);
+	}
+
+	/**
+	 * Retrieve cargo details for the given cargo ID
+	 * @param index ID of cargo
+	 * @pre index is a valid cargo ID
+	 */
+	static FORCEINLINE CargoSpec *Get(size_t index)
+	{
+		assert(index < lengthof(CargoSpec::array));
+		return &CargoSpec::array[index];
 	}
 
 private:
-	static CargoSpec cargo[NUM_CARGO];
+	static CargoSpec array[NUM_CARGO];
 
 	friend void SetupCargoForClimate(LandscapeID l);
-	friend CargoID GetCargoIDByLabel(CargoLabel cl);
-	friend CargoID GetCargoIDByBitnum(uint8 bitnum);
 };
 
 extern uint32 _cargo_mask;
@@ -88,5 +109,9 @@ static inline bool IsCargoInClass(CargoID c, uint16 cc)
 {
 	return (CargoSpec::Get(c)->classes & cc) != 0;
 }
+
+#define FOR_ALL_CARGOSPECS_FROM(var, start) for (size_t cargospec_index = start; var = NULL, cargospec_index < CargoSpec::GetArraySize(); cargospec_index++) \
+		if ((var = CargoSpec::Get(cargospec_index))->IsValid())
+#define FOR_ALL_CARGOSPECS(var) FOR_ALL_CARGOSPECS_FROM(var, 0)
 
 #endif /* CARGOTYPE_H */

@@ -610,11 +610,11 @@ static const SpriteGroup *ResolveStation(ResolverObject *object)
 		ctype = CT_PURCHASE;
 	} else {
 		/* Pick the first cargo that we have waiting */
-		for (CargoID cargo = 0; cargo < NUM_CARGO; cargo++) {
-			const CargoSpec *cs = CargoSpec::Get(cargo);
-			if (cs->IsValid() && object->u.station.statspec->spritegroup[cargo] != NULL &&
-					!object->u.station.st->goods[cargo].cargo.Empty()) {
-				ctype = cargo;
+		const CargoSpec *cs;
+		FOR_ALL_CARGOSPECS(cs) {
+			if (object->u.station.statspec->spritegroup[cs->Index()] != NULL &&
+					!object->u.station.st->goods[cs->Index()].cargo.Empty()) {
+				ctype = cs->Index();
 				break;
 			}
 		}

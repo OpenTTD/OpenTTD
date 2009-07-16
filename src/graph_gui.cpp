@@ -736,8 +736,9 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			BaseGraphWindow(desc, window_number, 2, 24, 200, false, STR_CURRCOMPACT)
 	{
 		uint num_active = 0;
-		for (CargoID c = 0; c < NUM_CARGO; c++) {
-			if (CargoSpec::Get(c)->IsValid()) num_active++;
+		const CargoSpec *cs;
+		FOR_ALL_CARGOSPECS(cs) {
+			num_active++;
 		}
 
 		/* Resize the window to fit the cargo types */
@@ -786,10 +787,9 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		int y = 24;
 
 		uint i = 0;
-		for (CargoID c = 0; c < NUM_CARGO; c++) {
-			const CargoSpec *cs = CargoSpec::Get(c);
-			if (!cs->IsValid()) continue;
 
+		const CargoSpec *cs;
+		FOR_ALL_CARGOSPECS(cs) {
 			/* Only draw labels for widgets that exist. If the widget doesn't
 			 * exist then the local company has used the climate cheat or
 			 * changed the NewGRF configuration with this window open. */
@@ -809,7 +809,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 			this->colours[i] = cs->legend_colour;
 			for (uint j = 0; j != 20; j++) {
-				this->cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, c);
+				this->cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, cs->Index());
 			}
 
 			i++;

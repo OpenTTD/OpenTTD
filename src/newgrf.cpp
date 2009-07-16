@@ -2994,13 +2994,11 @@ static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 			return CT_INVALID;
 		}
 
-		for (CargoID c = 0; c < NUM_CARGO; c++) {
-			const CargoSpec *cs = CargoSpec::Get(c);
-			if (!cs->IsValid()) continue;
-
+		const CargoSpec *cs;
+		FOR_ALL_CARGOSPECS(cs) {
 			if (cs->bitnum == ctype) {
-				grfmsg(6, "TranslateCargo: Cargo bitnum %d mapped to cargo type %d.", ctype, c);
-				return c;
+				grfmsg(6, "TranslateCargo: Cargo bitnum %d mapped to cargo type %d.", ctype, cs->Index());
+				return cs->Index();
 			}
 		}
 
@@ -5698,21 +5696,19 @@ static void CalculateRefitMasks()
 				}
 			} else {
 				/* No cargo table, so use the cargo bitnum values */
-				for (CargoID c = 0; c < NUM_CARGO; c++) {
-					const CargoSpec *cs = CargoSpec::Get(c);
-					if (!cs->IsValid()) continue;
-
-					if (HasBit(ei->refit_mask, cs->bitnum)) SetBit(xor_mask, c);
+				const CargoSpec *cs;
+				FOR_ALL_CARGOSPECS(cs) {
+					if (HasBit(ei->refit_mask, cs->bitnum)) SetBit(xor_mask, cs->Index());
 				}
 			}
 		}
 
 		if (_gted[engine].cargo_allowed != 0) {
 			/* Build up the list of cargo types from the set cargo classes. */
-			for (CargoID i = 0; i < NUM_CARGO; i++) {
-				const CargoSpec *cs = CargoSpec::Get(i);
-				if (_gted[engine].cargo_allowed    & cs->classes) SetBit(mask,     i);
-				if (_gted[engine].cargo_disallowed & cs->classes) SetBit(not_mask, i);
+			const CargoSpec *cs;
+			FOR_ALL_CARGOSPECS(cs) {
+				if (_gted[engine].cargo_allowed    & cs->classes) SetBit(mask,     cs->Index());
+				if (_gted[engine].cargo_disallowed & cs->classes) SetBit(not_mask, cs->Index());
 			}
 		} else if (xor_mask == 0) {
 			/* Don't apply default refit mask to wagons or engines with no capacity */

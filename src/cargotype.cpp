@@ -11,7 +11,7 @@
 #include "table/strings.h"
 #include "table/cargo_const.h"
 
-CargoSpec CargoSpec::cargo[NUM_CARGO];
+CargoSpec CargoSpec::array[NUM_CARGO];
 
 /* Bitmask of cargo types available */
 uint32 _cargo_mask;
@@ -22,8 +22,8 @@ void SetupCargoForClimate(LandscapeID l)
 	assert(l < lengthof(_default_climate_cargo));
 
 	/* Reset and disable all cargo types */
-	memset(CargoSpec::cargo, 0, sizeof(CargoSpec::cargo));
-	for (CargoID i = 0; i < lengthof(CargoSpec::cargo); i++) CargoSpec::Get(i)->bitnum = INVALID_CARGO;
+	memset(CargoSpec::array, 0, sizeof(CargoSpec::array));
+	for (CargoID i = 0; i < lengthof(CargoSpec::array); i++) CargoSpec::Get(i)->bitnum = INVALID_CARGO;
 
 	_cargo_mask = 0;
 
@@ -56,10 +56,9 @@ void SetupCargoForClimate(LandscapeID l)
 
 CargoID GetCargoIDByLabel(CargoLabel cl)
 {
-	for (CargoID c = 0; c < lengthof(CargoSpec::cargo); c++) {
-		CargoSpec *cargo = CargoSpec::Get(c);
-		if (cargo->bitnum == INVALID_CARGO) continue;
-		if (cargo->label == cl) return c;
+	CargoSpec *cs;
+	FOR_ALL_CARGOSPECS(cs) {
+		if (cs->label == cl) return cs->Index();
 	}
 
 	/* No matching label was found, so it is invalid */
@@ -75,8 +74,9 @@ CargoID GetCargoIDByBitnum(uint8 bitnum)
 {
 	if (bitnum == INVALID_CARGO) return CT_INVALID;
 
-	for (CargoID c = 0; c < lengthof(CargoSpec::cargo); c++) {
-		if (CargoSpec::Get(c)->bitnum == bitnum) return c;
+	CargoSpec *cs;
+	FOR_ALL_CARGOSPECS(cs) {
+		if (cs->bitnum == bitnum) return cs->Index();
 	}
 
 	/* No matching label was found, so it is invalid */

@@ -820,11 +820,10 @@ struct BuildVehicleWindow : Window {
 		}
 
 		/* Collect available cargo types for filtering */
-		for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
-			const CargoSpec *cargo = CargoSpec::Get(cid);
-			if (!cargo->IsValid()) continue;
-			if (IsCargoInClass(cid, CC_SPECIAL)) continue; // exclude fake cargo types
-			this->cargo_filter[filter_items] = cid;
+		const CargoSpec *cargo;
+		FOR_ALL_CARGOSPECS(cargo) {
+			if (IsCargoInClass(cargo->Index(), CC_SPECIAL)) continue; // exclude fake cargo types
+			this->cargo_filter[filter_items] = cargo->Index();
 			this->cargo_filter_texts[filter_items] = cargo->name;
 			filter_items++;
 		}

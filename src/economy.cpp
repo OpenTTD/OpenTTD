@@ -832,10 +832,9 @@ void ResetEconomy()
 	/* Test if resetting the economy is needed. */
 	bool needed = false;
 
-	for (CargoID c = 0; c < NUM_CARGO; c++) {
-		const CargoSpec *cs = CargoSpec::Get(c);
-		if (!cs->IsValid()) continue;
-		if (_cargo_payment_rates[c] == 0) {
+	const CargoSpec *cs;
+	FOR_ALL_CARGOSPECS(cs) {
+		if (_cargo_payment_rates[cs->Index()] == 0) {
 			needed = true;
 			break;
 		}
