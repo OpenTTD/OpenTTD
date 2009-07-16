@@ -705,7 +705,7 @@ struct NewGRFWindow : public Window {
 		}
 
 		this->vscroll.cap += delta.y / 14;
-		this->widget[SNGRFS_FILE_LIST].data = (this->vscroll.cap << 8) + 1;
+		this->widget[SNGRFS_FILE_LIST].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		this->SetupNewGRFWindow();
 	}

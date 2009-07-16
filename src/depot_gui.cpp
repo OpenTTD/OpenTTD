@@ -308,8 +308,8 @@ struct DepotWindow : Window {
 		uint16 hnum;
 
 		/* Set the row and number of boxes in each row based on the number of boxes drawn in the matrix */
-		uint16 rows_in_display   = this->widget[DEPOT_WIDGET_MATRIX].data >> 8;
-		uint16 boxes_in_each_row = this->widget[DEPOT_WIDGET_MATRIX].data & 0xFF;
+		uint16 rows_in_display   = GB(this->widget[DEPOT_WIDGET_MATRIX].data, MAT_ROW_START, MAT_ROW_BITS);
+		uint16 boxes_in_each_row = GB(this->widget[DEPOT_WIDGET_MATRIX].data, MAT_COL_START, MAT_COL_BITS);
 
 		/* setup disabled buttons */
 		this->SetWidgetsDisabledState(!IsTileOwner(tile, _local_company),
@@ -397,7 +397,7 @@ struct DepotWindow : Window {
 	{
 		uint xt, row, xm = 0, ym = 0;
 		int pos, skip = 0;
-		uint16 boxes_in_each_row = this->widget[DEPOT_WIDGET_MATRIX].data & 0xFF;
+		uint16 boxes_in_each_row = GB(this->widget[DEPOT_WIDGET_MATRIX].data, MAT_COL_START, MAT_COL_BITS);
 
 		if (this->type == VEH_TRAIN) {
 			xt = 0;
@@ -727,8 +727,8 @@ struct DepotWindow : Window {
 		this->SetupStringsForDepotWindow(type);
 
 		this->widget[DEPOT_WIDGET_MATRIX].data =
-			(this->vscroll.cap * 0x100) // number of rows to draw on the background
-			+ (type == VEH_TRAIN ? 1 : this->hscroll.cap); // number of boxes in each row. Trains always have just one
+			(this->vscroll.cap << MAT_ROW_START) // number of rows to draw on the background
+			+ ((type == VEH_TRAIN ? 1 : this->hscroll.cap) << MAT_COL_START); // number of boxes in each row. Trains always have just one
 
 
 		this->SetWidgetsHiddenState(type != VEH_TRAIN,
@@ -1001,7 +1001,7 @@ struct DepotWindow : Window {
 	{
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
 		this->hscroll.cap += delta.x / (int)this->resize.step_width;
-		this->widget[DEPOT_WIDGET_MATRIX].data = (this->vscroll.cap << 8) + (this->type == VEH_TRAIN ? 1 : this->hscroll.cap);
+		this->widget[DEPOT_WIDGET_MATRIX].data = (this->vscroll.cap << MAT_ROW_START) + ((this->type == VEH_TRAIN ? 1 : this->hscroll.cap) << MAT_COL_START);
 		ResizeDepotButtons(this);
 	}
 

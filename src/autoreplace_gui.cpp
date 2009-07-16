@@ -209,7 +209,7 @@ public:
 		this->vscroll.cap = this->resize.step_height == 14 ? 8 : 4;
 
 		Widget *widget = this->widget;
-		widget[RVW_WIDGET_LEFT_MATRIX].data = widget[RVW_WIDGET_RIGHT_MATRIX].data = (this->vscroll.cap << 8) + 1;
+		widget[RVW_WIDGET_LEFT_MATRIX].data = widget[RVW_WIDGET_RIGHT_MATRIX].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		if (vehicletype != VEH_TRAIN) {
 			/* Since it's not a train we will hide the train only widgets. */
@@ -409,7 +409,7 @@ public:
 
 		Widget *widget = this->widget;
 
-		widget[RVW_WIDGET_LEFT_MATRIX].data = widget[RVW_WIDGET_RIGHT_MATRIX].data = (this->vscroll2.cap << 8) + 1;
+		widget[RVW_WIDGET_LEFT_MATRIX].data = widget[RVW_WIDGET_RIGHT_MATRIX].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		if (delta.x != 0) {
 			/* We changed the width of the window so we have to resize the lists.

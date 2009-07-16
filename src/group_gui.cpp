@@ -241,8 +241,8 @@ public:
 				break;
 		}
 
-		this->widget[GRP_WIDGET_LIST_GROUP].data = (this->vscroll2.cap << 8) + 1;
-		this->widget[GRP_WIDGET_LIST_VEHICLE].data = (this->vscroll.cap << 8) + 1;
+		this->widget[GRP_WIDGET_LIST_GROUP].data = (this->vscroll2.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->widget[GRP_WIDGET_LIST_VEHICLE].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
@@ -671,8 +671,8 @@ public:
 		this->vscroll2.cap += delta.y / PLY_WND_PRC__SIZE_OF_ROW_TINY;
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
 
-		this->widget[GRP_WIDGET_LIST_GROUP].data = (this->vscroll2.cap << 8) + 1;
-		this->widget[GRP_WIDGET_LIST_VEHICLE].data = (this->vscroll.cap << 8) + 1;
+		this->widget[GRP_WIDGET_LIST_GROUP].data = (this->vscroll2.cap << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->widget[GRP_WIDGET_LIST_VEHICLE].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnDropdownSelect(int widget, int index)

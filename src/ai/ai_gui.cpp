@@ -53,7 +53,7 @@ struct AIListWindow : public Window {
 		this->ai_info_list = AI::GetUniqueInfoList();
 		this->resize.step_height = 14;
 		this->vscroll.cap = (this->widget[AIL_WIDGET_LIST].bottom - this->widget[AIL_WIDGET_LIST].top) / 14 + 1;
-		this->widget[AIL_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
+		this->widget[AIL_WIDGET_LIST].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 		SetVScrollCount(this, (int)this->ai_info_list->size() + 1);
 
 		/* Try if we can find the currently selected AI */
@@ -181,7 +181,7 @@ struct AIListWindow : public Window {
 
 		this->vscroll.cap += delta.y / 14;
 		SetVScrollCount(this, (int)this->ai_info_list->size() + 1);
-		this->widget[AIL_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
+		this->widget[AIL_WIDGET_LIST].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 
@@ -265,7 +265,7 @@ struct AISettingsWindow : public Window {
 		this->ai_config = AIConfig::GetConfig(slot);
 		this->resize.step_height = 14;
 		this->vscroll.cap = (this->widget[AIS_WIDGET_BACKGROUND].bottom - this->widget[AIS_WIDGET_BACKGROUND].top) / 14 + 1;
-		this->widget[AIS_WIDGET_BACKGROUND].data = (this->vscroll.cap << 8) + 1;
+		this->widget[AIS_WIDGET_BACKGROUND].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 		SetVScrollCount(this, (int)this->ai_config->GetConfigList()->size());
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -378,7 +378,7 @@ struct AISettingsWindow : public Window {
 		}
 
 		this->vscroll.cap += delta.y / 14;
-		this->widget[AIS_WIDGET_BACKGROUND].data = (this->vscroll.cap << 8) + 1;
+		this->widget[AIS_WIDGET_BACKGROUND].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnTick()
@@ -505,6 +505,7 @@ struct AIConfigWindow : public Window {
 		this->resize.step_height = 14;
 		this->vscroll.cap = (this->widget[AIC_WIDGET_LIST].bottom - this->widget[AIC_WIDGET_LIST].top) / 14 + 1;
 		this->widget[AIC_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
+		this->widget[AIC_WIDGET_LIST].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 		SetVScrollCount(this, MAX_COMPANIES);
 		this->FindWindowPlacementAndResize(&_ai_config_desc);
 	}
@@ -597,7 +598,7 @@ struct AIConfigWindow : public Window {
 	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap += delta.y / 14;
-		this->widget[AIC_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
+		this->widget[AIC_WIDGET_LIST].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnTick()

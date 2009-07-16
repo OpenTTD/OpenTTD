@@ -336,10 +336,10 @@ static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint1
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 
-	int num_columns = GB(data, 0, 8);  // Lower 8 bits of the widget data: Number of columns in the matrix.
+	int num_columns = GB(data, MAT_COL_START, MAT_COL_BITS);  // Lower 8 bits of the widget data: Number of columns in the matrix.
 	int column_width = (r.right - r.left + 1) / num_columns; // Width of a single column in the matrix.
 
-	int num_rows = GB(data, 8, 8); // Upper 8 bits of the widget data: Number of rows in the matrix.
+	int num_rows = GB(data, MAT_ROW_START, MAT_ROW_BITS); // Upper 8 bits of the widget data: Number of rows in the matrix.
 	int row_height = (r.bottom - r.top + 1) / num_rows; // Height of a single row in the matrix.
 
 	int col = _colour_gradient[colour & 0xF][6];

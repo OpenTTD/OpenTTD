@@ -414,7 +414,7 @@ struct RefitWindow : public Window {
 	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
-		this->widget[VRW_MATRIX].data = (this->vscroll.cap << 8) + 1;
+		this->widget[VRW_MATRIX].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 
@@ -967,7 +967,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 		}
 
 
-		this->widget[VLW_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
+		this->widget[VLW_WIDGET_LIST].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		/* Set up sorting. Make the window-specific _sorting variable
 		 * point to the correct global _sorting struct so we are freed
@@ -1184,7 +1184,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
-		this->widget[VLW_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
+		this->widget[VLW_WIDGET_LIST].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnInvalidateData(int data)
@@ -1399,7 +1399,7 @@ struct VehicleDetailsWindow : Window {
 			this->widget[VLD_WIDGET_MIDDLE_DETAILS].right += 12;
 		}
 
-		this->widget[VLD_WIDGET_MIDDLE_DETAILS].data = (this->vscroll.cap << 8) + 1;
+		this->widget[VLD_WIDGET_MIDDLE_DETAILS].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 		this->owner = v->owner;
 
 		this->tab = TDW_TAB_CARGO;
@@ -1603,7 +1603,7 @@ struct VehicleDetailsWindow : Window {
 		if (delta.y == 0) return;
 
 		this->vscroll.cap += delta.y / 14;
-		this->widget[VLD_WIDGET_MIDDLE_DETAILS].data = (this->vscroll.cap << 8) + 1;
+		this->widget[VLD_WIDGET_MIDDLE_DETAILS].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 

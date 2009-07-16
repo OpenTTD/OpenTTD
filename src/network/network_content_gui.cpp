@@ -693,7 +693,7 @@ public:
 	{
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
 
-		this->widget[NCLWW_MATRIX].data = (this->vscroll.cap << 8) + 1;
+		this->widget[NCLWW_MATRIX].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		SetVScrollCount(this, this->content.Length());
 

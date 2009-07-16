@@ -356,7 +356,7 @@ public:
 	{
 		/* Adjust the number of items in the matrix depending of the rezise */
 		this->vscroll.cap  += delta.y / (int)this->resize.step_height;
-		this->widget[DPIW_MATRIX_WIDGET].data = (this->vscroll.cap << 8) + 1;
+		this->widget[DPIW_MATRIX_WIDGET].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)

@@ -642,7 +642,7 @@ public:
 				}
 				this->height = 49 + livery_height[this->livery_class] * 14;
 				this->widget[SCLW_WIDGET_MATRIX].bottom = this->height - 1;
-				this->widget[SCLW_WIDGET_MATRIX].data = livery_height[this->livery_class] << 8 | 1;
+				this->widget[SCLW_WIDGET_MATRIX].data = (livery_height[this->livery_class] << MAT_ROW_START) | (1 << MAT_COL_START);
 				MarkWholeScreenDirty();
 				break;
 			}
@@ -719,7 +719,7 @@ static const NWidgetPart _nested_select_company_livery_widgets [] = {
 		NWidget(WWT_DROPDOWN, COLOUR_GREY, SCLW_WIDGET_PRI_COL_DROPDOWN), SetMinimalSize(125, 12), SetDataTip(STR_BLACK_STRING, STR_LIVERY_PRIMARY_TIP),
 		NWidget(WWT_DROPDOWN, COLOUR_GREY, SCLW_WIDGET_SEC_COL_DROPDOWN), SetMinimalSize(125, 12), SetDataTip(STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN, STR_LIVERY_SECONDARY_TIP),
 	EndContainer(),
-	NWidget(WWT_MATRIX, COLOUR_GREY, SCLW_WIDGET_MATRIX), SetMinimalSize(400, 15), SetDataTip((1 << 8) | 1, STR_LIVERY_PANEL_TIP),
+	NWidget(WWT_MATRIX, COLOUR_GREY, SCLW_WIDGET_MATRIX), SetMinimalSize(400, 15), SetDataTip((1 << MAT_ROW_START) | (1 << MAT_COL_START), STR_LIVERY_PANEL_TIP),
 };
 
 static const Widget _select_company_livery_widgets[] = {

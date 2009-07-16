@@ -65,6 +65,17 @@ enum {
 	WIDGET_LIST_END = -1, ///< indicate the end of widgets' list for vararg functions
 };
 
+/** Bits of the #WWT_MATRIX widget data. */
+enum MatrixWidgetValues {
+	/* Number of column bits of the WWT_MATRIX widget data. */
+	MAT_COL_START = 0, ///< Lowest bit of the number of columns.
+	MAT_COL_BITS  = 8, ///< Number of bits for the number of columns in the matrix.
+
+	/* Number of row bits of the WWT_MATRIX widget data. */
+	MAT_ROW_START = 8, ///< Lowest bit of the number of rows.
+	MAT_ROW_BITS  = 8, ///< Number of bits for the number of rows in the matrix.
+};
+
 /**
  * Window widget types, nested widget types, and nested widget part types.
  */
@@ -81,7 +92,7 @@ enum WidgetType {
 	WWT_TEXTBTN_2,  ///< Button with diff text when clicked
 	WWT_LABEL,      ///< Centered label
 	WWT_TEXT,       ///< Pure simple text
-	WWT_MATRIX,     ///< Grid of rows and columns. Lower 8 bit of the widget data are the number of columns, upper 8 bit are the number of rows.
+	WWT_MATRIX,     ///< Grid of rows and columns. @see MatrixWidgetValues
 	WWT_SCROLLBAR,  ///< Vertical scrollbar
 	WWT_FRAME,      ///< Frame
 	WWT_CAPTION,    ///< Window caption (window title between closebox and stickybox)

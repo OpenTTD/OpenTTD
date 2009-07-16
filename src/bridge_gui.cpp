@@ -226,7 +226,7 @@ public:
 	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
-		this->widget[BBSW_BRIDGE_LIST].data = (this->vscroll.cap << 8) + 1;
+		this->widget[BBSW_BRIDGE_LIST].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 		SetVScrollCount(this, this->bridges->Length());
 
 		this->last_size = max(this->vscroll.cap, this->last_size);

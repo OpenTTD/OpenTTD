@@ -790,7 +790,7 @@ struct BuildVehicleWindow : Window {
 		ResizeWindow(this, 0, vlh - 14);
 		this->resize.step_height = vlh;
 		this->vscroll.cap = 1;
-		this->widget[BUILD_VEHICLE_WIDGET_LIST].data = 0x101;
+		this->widget[BUILD_VEHICLE_WIDGET_LIST].data = (1 << MAT_ROW_START) | (1 << MAT_COL_START);
 
 		this->resize.width  = this->width;
 		this->resize.height = this->height;
@@ -1248,7 +1248,7 @@ struct BuildVehicleWindow : Window {
 		if (delta.y == 0) return;
 
 		this->vscroll.cap += delta.y / (int)GetVehicleListHeight(this->vehicle_type);
-		this->widget[BUILD_VEHICLE_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
+		this->widget[BUILD_VEHICLE_WIDGET_LIST].data = (this->vscroll.cap << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 
