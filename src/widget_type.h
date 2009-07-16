@@ -81,7 +81,7 @@ enum WidgetType {
 	WWT_TEXTBTN_2,  ///< Button with diff text when clicked
 	WWT_LABEL,      ///< Centered label
 	WWT_TEXT,       ///< Pure simple text
-	WWT_MATRIX,     ///< List of items underneath each other
+	WWT_MATRIX,     ///< Grid of rows and columns. Lower 8 bit of the widget data are the number of columns, upper 8 bit are the number of rows.
 	WWT_SCROLLBAR,  ///< Vertical scrollbar
 	WWT_FRAME,      ///< Frame
 	WWT_CAPTION,    ///< Window caption (window title between closebox and stickybox)

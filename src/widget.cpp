@@ -330,43 +330,43 @@ static inline void DrawInset(const Rect &r, Colours colour, StringID str)
  * @param r       Rectangle of the matrix background.
  * @param colour  Colour of the background.
  * @param clicked Matrix is rendered lowered.
- * @param data    Data of the widget.
+ * @param data    Data of the widget, number of rows and columns of the widget.
  */
 static inline void DrawMatrix(const Rect &r, Colours colour, bool clicked, uint16 data)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 
-	int c = GB(data, 0, 8);
-	int amt1 = (r.right - r.left + 1) / c;
+	int num_columns = GB(data, 0, 8);  // Lower 8 bits of the widget data: Number of columns in the matrix.
+	int column_width = (r.right - r.left + 1) / num_columns; // Width of a single column in the matrix.
 
-	int d = GB(data, 8, 8);
-	int amt2 = (r.bottom - r.top + 1) / d;
+	int num_rows = GB(data, 8, 8); // Upper 8 bits of the widget data: Number of rows in the matrix.
+	int row_height = (r.bottom - r.top + 1) / num_rows; // Height of a single row in the matrix.
 
 	int col = _colour_gradient[colour & 0xF][6];
 
 	int x = r.left;
-	for (int ctr = c; ctr > 1; ctr--) {
-		x += amt1;
+	for (int ctr = num_columns; ctr > 1; ctr--) {
+		x += column_width;
 		GfxFillRect(x, r.top + 1, x, r.bottom - 1, col);
 	}
 
 	x = r.top;
-	for (int ctr = d; ctr > 1; ctr--) {
-		x += amt2;
+	for (int ctr = num_rows; ctr > 1; ctr--) {
+		x += row_height;
 		GfxFillRect(r.left + 1, x, r.right - 1, x, col);
 	}
 
 	col = _colour_gradient[colour & 0xF][4];
 
 	x = r.left - 1;
-	for (int ctr = c; ctr > 1; ctr--) {
-		x += amt1;
+	for (int ctr = num_columns; ctr > 1; ctr--) {
+		x += column_width;
 		GfxFillRect(x, r.top + 1, x, r.bottom - 1, col);
 	}
 
 	x = r.top - 1;
-	for (int ctr = d; ctr > 1; ctr--) {
-		x += amt2;
+	for (int ctr = num_rows; ctr > 1; ctr--) {
+		x += row_height;
 		GfxFillRect(r.left + 1, x, r.right - 1, x, col);
 	}
 }
