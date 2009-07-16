@@ -1008,18 +1008,19 @@ bool AfterLoadGame()
 			if (wp->delete_ctr == 0) {
 				const StationSpec *statspec = NULL;
 
-				if (HasBit(_m[wp->xy].m3, 4))
+				if (HasBit(_m[wp->xy].m3, 4)) {
 					statspec = GetCustomStationSpec(STAT_CLASS_WAYP, _m[wp->xy].m4 + 1);
+				}
 
 				if (statspec != NULL) {
-					wp->stat_id = _m[wp->xy].m4 + 1;
-					wp->grfid = statspec->grffile->grfid;
-					wp->localidx = statspec->localidx;
+					wp->spec.spec = statspec;
+					wp->spec.grfid = statspec->grffile->grfid;
+					wp->spec.localidx = statspec->localidx;
 				} else {
 					/* No custom graphics set, so set to default. */
-					wp->stat_id = 0;
-					wp->grfid = 0;
-					wp->localidx = 0;
+					wp->spec.spec = NULL;
+					wp->spec.grfid = 0;
+					wp->spec.localidx = 0;
 				}
 
 				/* Move ground type bits from m2 to m4. */

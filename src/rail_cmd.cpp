@@ -1938,8 +1938,7 @@ static void DrawTile_Track(TileInfo *ti)
 			}
 		} else {
 			/* look for customization */
-			byte stat_id = GetWaypointByTile(ti->tile)->stat_id;
-			const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, stat_id);
+			const StationSpec *statspec = GetWaypointByTile(ti->tile)->spec.spec;
 
 			if (statspec != NULL) {
 				/* emulate station tile - open with building */

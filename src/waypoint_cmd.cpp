@@ -185,24 +185,22 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 		}
 		wp->owner = owner;
 
-		const StationSpec *statspec;
-
 		bool reserved = HasBit(GetTrackReservation(tile), AxisToTrack(axis));
 		MakeRailWaypoint(tile, owner, axis, GetRailType(tile), wp->index);
 		SetDepotWaypointReservation(tile, reserved);
 		MarkTileDirtyByTile(tile);
 
-		statspec = GetCustomStationSpec(STAT_CLASS_WAYP, p1);
+		const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, p1);
 
 		if (statspec != NULL) {
-			wp->stat_id = p1;
-			wp->grfid = statspec->grffile->grfid;
-			wp->localidx = statspec->localidx;
+			wp->spec.spec = statspec;
+			wp->spec.grfid = statspec->grffile->grfid;
+			wp->spec.localidx = statspec->localidx;
 		} else {
 			/* Specified custom graphics do not exist, so use default. */
-			wp->stat_id = 0;
-			wp->grfid = 0;
-			wp->localidx = 0;
+			wp->spec.spec = NULL;
+			wp->spec.grfid = 0;
+			wp->spec.localidx = 0;
 		}
 
 		wp->delete_ctr = 0;

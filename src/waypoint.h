@@ -8,7 +8,7 @@
 #include "waypoint_type.h"
 #include "rail_map.h"
 #include "command_type.h"
-#include "station_type.h"
+#include "station_base.h"
 #include "town_type.h"
 #include "viewport_type.h"
 #include "date_type.h"
@@ -29,9 +29,7 @@ struct Waypoint : WaypointPool::PoolItem<&_waypoint_pool> {
 	Date build_date;   ///< Date of construction
 	OwnerByte owner;   ///< Whom this waypoint belongs to
 
-	byte stat_id;      ///< ID of waypoint within the waypoint class (not saved)
-	uint32 grfid;      ///< ID of GRF file
-	byte localidx;     ///< Index of station within GRF file
+	StationSpecList spec; ///< NewGRF specification of the station
 
 	byte delete_ctr;   ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the waypoint is then is deleted.
 
