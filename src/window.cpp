@@ -1478,8 +1478,8 @@ void ResizeWindow(Window *w, int delta_x, int delta_y)
 	w->SetDirty();
 
 	if (w->nested_root != NULL) {
-		uint new_xinc = max(0u, (w->nested_root->resize_x == 0) ? 0 : (w->nested_root->current_x - w->nested_root->smallest_x) + delta_x);
-		uint new_yinc = max(0u, (w->nested_root->resize_y == 0) ? 0 : (w->nested_root->current_y - w->nested_root->smallest_y) + delta_y);
+		uint new_xinc = max(0, (w->nested_root->resize_x == 0) ? 0 : (int)(w->nested_root->current_x - w->nested_root->smallest_x) + delta_x);
+		uint new_yinc = max(0, (w->nested_root->resize_y == 0) ? 0 : (int)(w->nested_root->current_y - w->nested_root->smallest_y) + delta_y);
 		assert(w->nested_root->resize_x == 0 || new_xinc % w->nested_root->resize_x == 0);
 		assert(w->nested_root->resize_y == 0 || new_yinc % w->nested_root->resize_y == 0);
 
