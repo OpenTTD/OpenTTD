@@ -493,7 +493,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				const Engine *e = Engine::Get(object->u.vehicle.self_type);
 				CargoID cargo_type = e->GetDefaultCargoType();
 				if (cargo_type != CT_INVALID) {
-					const CargoSpec *cs = GetCargo(cargo_type);
+					const CargoSpec *cs = CargoSpec::Get(cargo_type);
 					return (cs->classes << 16) | (cs->weight << 8) | GetEngineGRF(e->index)->cargo_map[cargo_type];
 				} else {
 					return 0x000000FF;
@@ -549,7 +549,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 					/* Skip empty engines */
 					if (u->cargo_cap == 0) continue;
 
-					cargo_classes |= GetCargo(u->cargo_type)->classes;
+					cargo_classes |= CargoSpec::Get(u->cargo_type)->classes;
 					common_cargos[u->cargo_type]++;
 				}
 
@@ -579,7 +579,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 					}
 				}
 
-				uint8 common_bitnum = (common_cargo_type == CT_INVALID ? 0xFF : GetCargo(common_cargo_type)->bitnum);
+				uint8 common_bitnum = (common_cargo_type == CT_INVALID ? 0xFF : CargoSpec::Get(common_cargo_type)->bitnum);
 				v->vcache.cached_var42 = cargo_classes | (common_bitnum << 8) | (common_subtype << 16) | (user_def_data << 24);
 				SetBit(v->vcache.cache_valid, 2);
 			}
@@ -652,7 +652,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			 * ww - cargo unit weight in 1/16 tons, same as cargo prop. 0F.
 			 * cccc - the cargo class value of the cargo transported by the vehicle.
 			 */
-			const CargoSpec *cs = GetCargo(v->cargo_type);
+			const CargoSpec *cs = CargoSpec::Get(v->cargo_type);
 
 			return (cs->classes << 16) | (cs->weight << 8) | GetEngineGRF(v->engine_type)->cargo_map[v->cargo_type];
 		}

@@ -57,8 +57,8 @@
 {
 	if (!IsValidSubsidy(subsidy_id) || IsAwarded(subsidy_id)) return false;
 
-	return GetCargo(GetCargoType(subsidy_id))->town_effect == TE_PASSENGERS ||
-	       GetCargo(GetCargoType(subsidy_id))->town_effect == TE_MAIL;
+	return CargoSpec::Get(GetCargoType(subsidy_id))->town_effect == TE_PASSENGERS ||
+	       CargoSpec::Get(GetCargoType(subsidy_id))->town_effect == TE_MAIL;
 }
 
 /* static */ int32 AISubsidy::GetSource(SubsidyID subsidy_id)
@@ -72,7 +72,7 @@
 {
 	if (!IsValidSubsidy(subsidy_id) || IsAwarded(subsidy_id)) return false;
 
-	switch (GetCargo(GetCargoType(subsidy_id))->town_effect) {
+	switch (CargoSpec::Get(GetCargoType(subsidy_id))->town_effect) {
 		case TE_PASSENGERS:
 		case TE_MAIL:
 		case TE_GOODS:

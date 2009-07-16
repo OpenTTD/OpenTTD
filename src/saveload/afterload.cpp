@@ -1924,7 +1924,7 @@ bool AfterLoadGame()
 				const Station *to = Station::GetIfValid(s->to);
 				if (from != NULL && to != NULL && from->owner == to->owner && Company::IsValidID(from->owner)) continue;
 			} else {
-				const CargoSpec *cs = GetCargo(s->cargo_type);
+				const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
 				switch (cs->town_effect) {
 					case TE_PASSENGERS:
 					case TE_MAIL:

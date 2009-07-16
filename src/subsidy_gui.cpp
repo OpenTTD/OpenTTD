@@ -78,7 +78,7 @@ struct SubsidyListWindow : Window {
 
 	void HandleClick(const Subsidy *s)
 	{
-		TownEffect te = GetCargo(s->cargo_type)->town_effect;
+		TownEffect te = CargoSpec::Get(s->cargo_type)->town_effect;
 		TileIndex xy;
 
 		/* determine from coordinate for subsidy and try to scroll to it */

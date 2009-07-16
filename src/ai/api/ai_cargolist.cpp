@@ -11,7 +11,7 @@
 AICargoList::AICargoList()
 {
 	for (byte i = 0; i < NUM_CARGO; i++) {
-		const CargoSpec *c = ::GetCargo(i);
+		const CargoSpec *c = ::CargoSpec::Get(i);
 		if (c->IsValid()) {
 			this->AddItem(i);
 		}

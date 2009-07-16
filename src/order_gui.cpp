@@ -248,7 +248,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 
 			if (!timetable && order->IsRefit()) {
 				SetDParam(6, (order->GetDepotActionType() & ODATFB_HALT) ? STR_REFIT_STOP_ORDER : STR_REFIT_ORDER);
-				SetDParam(7, GetCargo(order->GetRefitCargo())->name);
+				SetDParam(7, CargoSpec::Get(order->GetRefitCargo())->name);
 			}
 			break;
 

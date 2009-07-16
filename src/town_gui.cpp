@@ -333,7 +333,7 @@ public:
 			CargoID first_water_cargo = CT_INVALID;
 			StringID water_name = STR_CARGO_PLURAL_WATER;
 			for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
-				const CargoSpec *cs = GetCargo(cid);
+				const CargoSpec *cs = CargoSpec::Get(cid);
 				if (first_food_cargo == CT_INVALID && cs->town_effect == TE_FOOD) {
 					first_food_cargo = cid;
 					food_name = cs->name;

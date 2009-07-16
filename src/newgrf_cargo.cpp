@@ -122,7 +122,7 @@ CargoID GetCargoTranslation(uint8 cargo, const GRFFile *grffile, bool usebit)
 uint8 GetReverseCargoTranslation(CargoID cargo, const GRFFile *grffile)
 {
 	/* Note: All grf versions use CargoBit here. Pre-version 7 do NOT use the 'climate dependent' ID. */
-	const CargoSpec *cs = GetCargo(cargo);
+	const CargoSpec *cs = CargoSpec::Get(cargo);
 
 	/* If the GRF contains a translation table (and the cargo is in the table)
 	 * then get the cargo ID for the label */

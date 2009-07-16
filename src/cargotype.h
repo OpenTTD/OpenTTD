@@ -54,11 +54,27 @@ struct CargoSpec {
 	{
 		return this->bitnum != INVALID_CARGO;
 	}
+
+	/**
+	 * Retrieve cargo details for the given cargo ID
+	 * @param c ID of cargo
+	 * @pre c is a valid cargo ID
+	 */
+	static CargoSpec *Get(CargoID c)
+	{
+		assert(c < lengthof(CargoSpec::cargo));
+		return &CargoSpec::cargo[c];
+	}
+
+private:
+	static CargoSpec cargo[NUM_CARGO];
+
+	friend void SetupCargoForClimate(LandscapeID l);
+	friend CargoID GetCargoIDByLabel(CargoLabel cl);
+	friend CargoID GetCargoIDByBitnum(uint8 bitnum);
 };
 
 extern uint32 _cargo_mask;
-extern CargoSpec _cargo[NUM_CARGO];
-
 
 /* Set up the default cargo types for the given landscape type */
 void SetupCargoForClimate(LandscapeID l);
@@ -68,18 +84,9 @@ SpriteID GetCargoSprite(CargoID i);
 CargoID GetCargoIDByLabel(CargoLabel cl);
 CargoID GetCargoIDByBitnum(uint8 bitnum);
 
-/* Retrieve cargo details for the given cargo ID */
-static inline const CargoSpec *GetCargo(CargoID c)
-{
-	assert(c < lengthof(_cargo));
-	return &_cargo[c];
-}
-
-
 static inline bool IsCargoInClass(CargoID c, uint16 cc)
 {
-	return (GetCargo(c)->classes & cc) != 0;
+	return (CargoSpec::Get(c)->classes & cc) != 0;
 }
-
 
 #endif /* CARGOTYPE_H */

@@ -137,7 +137,7 @@ static bool CMSAMine(TileIndex tile)
 		/* The industry extracts something non-liquid, i.e. no oil or plastic, so it is a mine.
 		 * Also the production of passengers and mail is ignored. */
 		if (ind->produced_cargo[i] != CT_INVALID &&
-				(GetCargo(ind->produced_cargo[i])->classes & (CC_LIQUID | CC_PASSENGERS | CC_MAIL)) == 0) {
+				(CargoSpec::Get(ind->produced_cargo[i])->classes & (CC_LIQUID | CC_PASSENGERS | CC_MAIL)) == 0) {
 			return true;
 		}
 	}
@@ -182,7 +182,7 @@ static bool CMSAForest(TileIndex tile)
 
 	for (uint i = 0; i < lengthof(ind->produced_cargo); i++) {
 		/* The industry produces wood. */
-		if (ind->produced_cargo[i] != CT_INVALID && GetCargo(ind->produced_cargo[i])->label == 'WOOD') return true;
+		if (ind->produced_cargo[i] != CT_INVALID && CargoSpec::Get(ind->produced_cargo[i])->label == 'WOOD') return true;
 	}
 
 	return false;
@@ -411,7 +411,7 @@ static uint GetAcceptanceMask(const Station *st)
 static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *cargo, StringID msg)
 {
 	for (uint i = 0; i < num_items; i++) {
-		SetDParam(i + 1, GetCargo(cargo[i])->name);
+		SetDParam(i + 1, CargoSpec::Get(cargo[i])->name);
 	}
 
 	SetDParam(0, st->index);

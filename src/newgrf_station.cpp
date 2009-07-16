@@ -611,7 +611,7 @@ static const SpriteGroup *ResolveStation(ResolverObject *object)
 	} else {
 		/* Pick the first cargo that we have waiting */
 		for (CargoID cargo = 0; cargo < NUM_CARGO; cargo++) {
-			const CargoSpec *cs = GetCargo(cargo);
+			const CargoSpec *cs = CargoSpec::Get(cargo);
 			if (cs->IsValid() && object->u.station.statspec->spritegroup[cargo] != NULL &&
 					!object->u.station.st->goods[cargo].cargo.Empty()) {
 				ctype = cargo;

@@ -1290,7 +1290,7 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 				if (cargo_type == CT_INVALID) cargo_type = e->GetDefaultCargoType();
 				if (cargo_type == CT_INVALID) cargo_type = CT_GOODS; // The vehicle does not carry anything, let's pick some freight cargo
 				if (rvi->railveh_type == RAILVEH_WAGON) {
-					if (!GetCargo(cargo_type)->is_freight) {
+					if (!CargoSpec::Get(cargo_type)->is_freight) {
 						if (parent_engine_type == INVALID_ENGINE) {
 							scheme = LS_PASSENGER_WAGON_STEAM;
 						} else {

@@ -76,7 +76,7 @@ static inline DiagDirection TrainExitDir(Direction direction, TrackBits track)
  */
 byte FreightWagonMult(CargoID cargo)
 {
-	if (!GetCargo(cargo)->is_freight) return 1;
+	if (!CargoSpec::Get(cargo)->is_freight) return 1;
 	return _settings_game.vehicle.freight_trains;
 }
 
@@ -139,7 +139,7 @@ static void TrainCargoChanged(Train *v)
 	uint32 weight = 0;
 
 	for (Train *u = v; u != NULL; u = u->Next()) {
-		uint32 vweight = GetCargo(u->cargo_type)->weight * u->cargo.Count() * FreightWagonMult(u->cargo_type) / 16;
+		uint32 vweight = CargoSpec::Get(u->cargo_type)->weight * u->cargo.Count() * FreightWagonMult(u->cargo_type) / 16;
 
 		/* Vehicle weight is not added for articulated parts. */
 		if (!u->IsArticulatedPart()) {

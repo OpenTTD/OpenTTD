@@ -251,7 +251,7 @@ static RefitOption *DrawVehicleRefitWindow(const RefitList *list, int sel, uint 
 
 		if (i >= pos && i < pos + rows) {
 			/* Draw the cargo name */
-			int last_x = DrawString(2, right, y, GetCargo(refit[i].cargo)->name, colour);
+			int last_x = DrawString(2, right, y, CargoSpec::Get(refit[i].cargo)->name, colour);
 
 			/* If the callback succeeded, draw the cargo suffix */
 			if (refit[i].value != CALLBACK_FAILED) {
@@ -503,7 +503,7 @@ uint ShowRefitOptionsList(int left, int right, int y, EngineID engine)
 			if (!first) b = strecpy(b, ", ", lastof(string));
 			first = false;
 
-			b = InlineString(b, GetCargo(cid)->name);
+			b = InlineString(b, CargoSpec::Get(cid)->name);
 		}
 	}
 

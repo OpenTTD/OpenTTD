@@ -2076,7 +2076,7 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int 
 		default: NOT_REACHED();
 	}
 	SetDParam(2, abs(percent));
-	SetDParam(0, GetCargo(type)->name);
+	SetDParam(0, CargoSpec::Get(type)->name);
 	SetDParam(1, ind->index);
 	AddIndustryNewsItem(
 		percent >= 0 ? STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH : STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH,

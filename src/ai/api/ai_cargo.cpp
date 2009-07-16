@@ -11,13 +11,13 @@
 
 /* static */ bool AICargo::IsValidCargo(CargoID cargo_type)
 {
-	return (cargo_type < NUM_CARGO && ::GetCargo(cargo_type)->IsValid());
+	return (cargo_type < NUM_CARGO && ::CargoSpec::Get(cargo_type)->IsValid());
 }
 
 /* static */ char *AICargo::GetCargoLabel(CargoID cargo_type)
 {
 	if (!IsValidCargo(cargo_type)) return NULL;
-	const CargoSpec *cargo = ::GetCargo(cargo_type);
+	const CargoSpec *cargo = ::CargoSpec::Get(cargo_type);
 
 	/* cargo->label is a uint32 packing a 4 character non-terminated string,
 	 * like "PASS", "COAL", "OIL_". New ones can be defined by NewGRFs */
@@ -32,7 +32,7 @@
 /* static */ bool AICargo::IsFreight(CargoID cargo_type)
 {
 	if (!IsValidCargo(cargo_type)) return false;
-	const CargoSpec *cargo = ::GetCargo(cargo_type);
+	const CargoSpec *cargo = ::CargoSpec::Get(cargo_type);
 	return cargo->is_freight;
 }
 
@@ -46,7 +46,7 @@
 {
 	if (!IsValidCargo(cargo_type)) return TE_NONE;
 
-	return (AICargo::TownEffect)GetCargo(cargo_type)->town_effect;
+	return (AICargo::TownEffect)CargoSpec::Get(cargo_type)->town_effect;
 }
 
 /* static */ Money AICargo::GetCargoIncome(CargoID cargo_type, uint32 distance, uint32 days_in_transit)

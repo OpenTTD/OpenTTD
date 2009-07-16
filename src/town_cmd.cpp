@@ -463,7 +463,7 @@ static void TileLoop_Town(TileIndex tile)
 
 			uint moved = MoveGoodsToStation(tile, 1, 1, cargo, amt);
 
-			const CargoSpec *cs = GetCargo(cargo);
+			const CargoSpec *cs = CargoSpec::Get(cargo);
 			switch (cs->town_effect) {
 				case TE_PASSENGERS:
 					t->new_max_pass += amt;

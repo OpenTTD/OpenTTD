@@ -49,7 +49,7 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoID typ
 	static const uint units_full  = 576; ///< number of units to show station as 'full'
 	static const uint rating_full = 224; ///< rating needed so it is shown as 'full'
 
-	const CargoSpec *cs = GetCargo(type);
+	const CargoSpec *cs = CargoSpec::Get(type);
 	if (!cs->IsValid()) return;
 
 	int colour = cs->rating_colour;
@@ -258,7 +258,7 @@ public:
 		/* Add cargo filter buttons */
 		uint num_active = 0;
 		for (CargoID c = 0; c < NUM_CARGO; c++) {
-			if (GetCargo(c)->IsValid()) num_active++;
+			if (CargoSpec::Get(c)->IsValid()) num_active++;
 		}
 
 		this->widget_count += num_active;
@@ -267,7 +267,7 @@ public:
 
 		uint i = 0;
 		for (CargoID c = 0; c < NUM_CARGO; c++) {
-			if (!GetCargo(c)->IsValid()) continue;
+			if (!CargoSpec::Get(c)->IsValid()) continue;
 
 			Widget *wi = &this->widget[SLW_CARGOSTART + i];
 			wi->type     = WWT_PANEL;
@@ -346,7 +346,7 @@ public:
 
 		uint i = 0;
 		for (CargoID c = 0; c < NUM_CARGO; c++) {
-			const CargoSpec *cs = GetCargo(c);
+			const CargoSpec *cs = CargoSpec::Get(c);
 			if (!cs->IsValid()) continue;
 
 			cg_ofst = HasBit(this->cargo_filter, c) ? 2 : 1;
@@ -457,7 +457,7 @@ public:
 			case SLW_CARGOALL: {
 				uint i = 0;
 				for (CargoID c = 0; c < NUM_CARGO; c++) {
-					if (!GetCargo(c)->IsValid()) continue;
+					if (!CargoSpec::Get(c)->IsValid()) continue;
 					this->LowerWidget(i + SLW_CARGOSTART);
 					i++;
 				}
@@ -507,7 +507,7 @@ public:
 					CargoID c;
 					int i = 0;
 					for (c = 0; c < NUM_CARGO; c++) {
-						if (!GetCargo(c)->IsValid()) continue;
+						if (!CargoSpec::Get(c)->IsValid()) continue;
 						if (widget - SLW_CARGOSTART == i) break;
 						i++;
 					}
@@ -724,7 +724,7 @@ static const NWidgetPart _nested_station_view_widgets[] = {
 
 SpriteID GetCargoSprite(CargoID i)
 {
-	const CargoSpec *cs = GetCargo(i);
+	const CargoSpec *cs = CargoSpec::Get(i);
 	SpriteID sprite;
 
 	if (cs->sprite == 0xFFFF) {
@@ -924,7 +924,7 @@ struct StationViewWindow : public Window {
 						*b++ = ',';
 						*b++ = ' ';
 					}
-					b = InlineString(b, GetCargo(i)->name);
+					b = InlineString(b, CargoSpec::Get(i)->name);
 				}
 			}
 
@@ -945,7 +945,7 @@ struct StationViewWindow : public Window {
 			y += 10;
 
 			for (CargoID i = 0; i < NUM_CARGO; i++) {
-				const CargoSpec *cs = GetCargo(i);
+				const CargoSpec *cs = CargoSpec::Get(i);
 				if (!cs->IsValid()) continue;
 
 				const GoodsEntry *ge = &st->goods[i];

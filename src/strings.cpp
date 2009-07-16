@@ -611,7 +611,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 				/* Short description of cargotypes. Layout:
 				 * 8-bit = cargo type
 				 * 16-bit = cargo count */
-				StringID cargo_str = GetCargo(GetInt32(&argv))->units_volume;
+				StringID cargo_str = CargoSpec::Get(GetInt32(&argv))->units_volume;
 				switch (cargo_str) {
 					case STR_TONS: {
 						int64 args[1];
@@ -750,7 +750,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 				 *   8bit   - cargo type
 				 *   16-bit - cargo count */
 				CargoID cargo = GetInt32(&argv);
-				StringID cargo_str = (cargo == CT_INVALID) ? STR_CARGO_N_A : GetCargo(cargo)->quantifier;
+				StringID cargo_str = (cargo == CT_INVALID) ? STR_CARGO_N_A : CargoSpec::Get(cargo)->quantifier;
 				buff = GetStringWithArgs(buff, cargo_str, argv++, last);
 				break;
 			}

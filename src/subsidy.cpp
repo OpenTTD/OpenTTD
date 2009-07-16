@@ -57,7 +57,7 @@ Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode)
 	NewsReferenceType reftype2 = NR_NONE;
 
 	/* if mode is false, use the singular form */
-	const CargoSpec *cs = GetCargo(s->cargo_type);
+	const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
 	SetDParam(0, mode ? cs->name : cs->name_single);
 
 	if (s->age < 12) {
@@ -103,7 +103,7 @@ void DeleteSubsidyWithTown(TownID index)
 	Subsidy *s;
 	FOR_ALL_SUBSIDIES(s) {
 		if (s->age < 12) {
-			const CargoSpec *cs = GetCargo(s->cargo_type);
+			const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
 			if (((cs->town_effect == TE_PASSENGERS || cs->town_effect == TE_MAIL) && (index == s->from || index == s->to)) ||
 				((cs->town_effect == TE_GOODS || cs->town_effect == TE_FOOD) && index == s->to)) {
 				s->cargo_type = CT_INVALID;
@@ -117,7 +117,7 @@ void DeleteSubsidyWithIndustry(IndustryID index)
 	Subsidy *s;
 	FOR_ALL_SUBSIDIES(s) {
 		if (s->age < 12) {
-			const CargoSpec *cs = GetCargo(s->cargo_type);
+			const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
 			if (cs->town_effect != TE_PASSENGERS && cs->town_effect != TE_MAIL &&
 				(index == s->from || (cs->town_effect != TE_GOODS && cs->town_effect != TE_FOOD && index == s->to))) {
 				s->cargo_type = CT_INVALID;
@@ -192,7 +192,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 	 * or if the pct transported is already large enough */
 	if (total == 0 || trans > 42 || cargo == CT_INVALID) return;
 
-	const CargoSpec *cs = GetCargo(cargo);
+	const CargoSpec *cs = CargoSpec::Get(cargo);
 	if (cs->town_effect == TE_PASSENGERS) return;
 
 	fr->cargo = cargo;
@@ -287,7 +287,7 @@ void SubsidyMonthlyLoop()
 				s->cargo_type = fr.cargo;
 				s->from = ((Industry*)fr.from)->index;
 				{
-					const CargoSpec *cs = GetCargo(fr.cargo);
+					const CargoSpec *cs = CargoSpec::Get(fr.cargo);
 					s->to = (cs->town_effect == TE_GOODS || cs->town_effect == TE_FOOD) ? ((Town*)fr.to)->index : ((Industry*)fr.to)->index;
 				}
 	add_subsidy:
@@ -326,7 +326,7 @@ bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type,
 	FOR_ALL_SUBSIDIES(s) {
 		if (s->cargo_type == cargo_type && s->age < 12) {
 			/* Check distance from source */
-			const CargoSpec *cs = GetCargo(cargo_type);
+			const CargoSpec *cs = CargoSpec::Get(cargo_type);
 			if (cs->town_effect == TE_PASSENGERS || cs->town_effect == TE_MAIL) {
 				xy = Town::Get(s->from)->xy;
 			} else {

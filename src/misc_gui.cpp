@@ -240,10 +240,10 @@ public:
 				/* If the accepted value is less than 8, show it in 1/8:ths */
 				if (acceptance[i] < 8) {
 					SetDParam(0, acceptance[i]);
-					SetDParam(1, GetCargo(i)->name);
+					SetDParam(1, CargoSpec::Get(i)->name);
 					strp = GetString(strp, STR_LAND_AREA_INFORMATION_CARGO_EIGHTS, lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
 				} else {
-					strp = GetString(strp, GetCargo(i)->name, lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
+					strp = GetString(strp, CargoSpec::Get(i)->name, lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
 				}
 			}
 		}
@@ -834,7 +834,7 @@ static int DrawStationCoverageText(const CargoArray &cargos,
 				*b++ = ',';
 				*b++ = ' ';
 			}
-			b = InlineString(b, GetCargo(i)->name);
+			b = InlineString(b, CargoSpec::Get(i)->name);
 		}
 	}
 

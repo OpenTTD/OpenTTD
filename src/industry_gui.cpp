@@ -261,7 +261,7 @@ public:
 		for (byte j = 0; j < lengthof(indsp->accepts_cargo); j++) {
 			if (indsp->accepts_cargo[j] == CT_INVALID) continue;
 			if (p > 0) str++;
-			SetDParam(p++, GetCargo(indsp->accepts_cargo[j])->name);
+			SetDParam(p++, CargoSpec::Get(indsp->accepts_cargo[j])->name);
 			SetDParam(p++, GetCargoSuffix(j, CST_FUND, NULL, this->selected_type, indsp));
 		}
 		DrawString(x_str, right, y_str, str);
@@ -275,7 +275,7 @@ public:
 		for (byte j = 0; j < lengthof(indsp->produced_cargo); j++) {
 			if (indsp->produced_cargo[j] == CT_INVALID) continue;
 			if (p > 0) str++;
-			SetDParam(p++, GetCargo(indsp->produced_cargo[j])->name);
+			SetDParam(p++, CargoSpec::Get(indsp->produced_cargo[j])->name);
 			SetDParam(p++, GetCargoSuffix(j + 3, CST_FUND, NULL, this->selected_type, indsp));
 		}
 		DrawString(x_str, right, y_str, str);
@@ -522,7 +522,7 @@ public:
 				if (i->accepts_cargo[j] == CT_INVALID) continue;
 				has_accept = true;
 				if (p > 0) str++;
-				SetDParam(p++, GetCargo(i->accepts_cargo[j])->name);
+				SetDParam(p++, CargoSpec::Get(i->accepts_cargo[j])->name);
 				SetDParam(p++, GetCargoSuffix(j, CST_VIEW, i, i->type, ind));
 			}
 			if (has_accept) {

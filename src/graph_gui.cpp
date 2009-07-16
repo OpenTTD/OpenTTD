@@ -737,7 +737,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	{
 		uint num_active = 0;
 		for (CargoID c = 0; c < NUM_CARGO; c++) {
-			if (GetCargo(c)->IsValid()) num_active++;
+			if (CargoSpec::Get(c)->IsValid()) num_active++;
 		}
 
 		/* Resize the window to fit the cargo types */
@@ -787,7 +787,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 		uint i = 0;
 		for (CargoID c = 0; c < NUM_CARGO; c++) {
-			const CargoSpec *cs = GetCargo(c);
+			const CargoSpec *cs = CargoSpec::Get(c);
 			if (!cs->IsValid()) continue;
 
 			/* Only draw labels for widgets that exist. If the widget doesn't
