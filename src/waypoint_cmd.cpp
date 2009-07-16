@@ -104,7 +104,7 @@ static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile)
 	uint thres = 8;
 
 	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->deleted && wp->owner == _current_company) {
+		if (wp->delete_ctr != 0 && wp->owner == _current_company) {
 			uint cur_dist = DistanceManhattan(tile, wp->xy);
 
 			if (cur_dist < thres) {
@@ -205,7 +205,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 			wp->localidx = 0;
 		}
 
-		wp->deleted = 0;
+		wp->delete_ctr = 0;
 		wp->build_date = _date;
 
 		if (wp->town_index == INVALID_TOWN) MakeDefaultWaypointName(wp);
@@ -239,7 +239,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justre
 		Track track = GetRailWaypointTrack(tile);
 		wp = GetWaypointByTile(tile);
 
-		wp->deleted = 30; // let it live for this many days before we do the actual deletion.
+		wp->delete_ctr = 30; // let it live for this many days before we do the actual deletion.
 		wp->sign.MarkDirty();
 
 		Train *v = NULL;

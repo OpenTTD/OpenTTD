@@ -447,8 +447,8 @@ bool AfterLoadGame()
 
 		Waypoint *wp;
 		FOR_ALL_WAYPOINTS(wp) {
-			wp->name = CopyFromOldName(wp->string);
-			wp->string = STR_EMPTY;
+			wp->name = CopyFromOldName(wp->string_id);
+			wp->string_id = STR_NULL;
 		}
 	}
 
@@ -1005,7 +1005,7 @@ bool AfterLoadGame()
 		Waypoint *wp;
 
 		FOR_ALL_WAYPOINTS(wp) {
-			if (wp->deleted == 0) {
+			if (wp->delete_ctr == 0) {
 				const StationSpec *statspec = NULL;
 
 				if (HasBit(_m[wp->xy].m3, 4))

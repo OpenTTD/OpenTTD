@@ -45,9 +45,9 @@ void FixOldWaypoints()
 	FOR_ALL_WAYPOINTS(wp) {
 		wp->town_index = ClosestTownFromTile(wp->xy, UINT_MAX)->index;
 		wp->town_cn = 0;
-		if (wp->string & 0xC000) {
-			wp->town_cn = wp->string & 0x3F;
-			wp->string = STR_NULL;
+		if (wp->string_id & 0xC000) {
+			wp->town_cn = wp->string_id & 0x3F;
+			wp->string_id = STR_NULL;
 		}
 	}
 }
@@ -58,9 +58,9 @@ static const SaveLoad _waypoint_desc[] = {
 	SLE_CONDVAR(Waypoint, town_index, SLE_UINT16,                 12, SL_MAX_VERSION),
 	SLE_CONDVAR(Waypoint, town_cn,    SLE_FILE_U8 | SLE_VAR_U16,  12, 88),
 	SLE_CONDVAR(Waypoint, town_cn,    SLE_UINT16,                 89, SL_MAX_VERSION),
-	SLE_CONDVAR(Waypoint, string,     SLE_STRINGID,                0, 83),
+	SLE_CONDVAR(Waypoint, string_id,  SLE_STRINGID,                0, 83),
 	SLE_CONDSTR(Waypoint, name,       SLE_STR, 0,                 84, SL_MAX_VERSION),
-	    SLE_VAR(Waypoint, deleted,    SLE_UINT8),
+	    SLE_VAR(Waypoint, delete_ctr, SLE_UINT8),
 
 	SLE_CONDVAR(Waypoint, build_date, SLE_FILE_U16 | SLE_VAR_I32,  3, 30),
 	SLE_CONDVAR(Waypoint, build_date, SLE_INT32,                  31, SL_MAX_VERSION),

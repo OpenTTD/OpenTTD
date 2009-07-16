@@ -38,7 +38,7 @@ void WaypointsDailyLoop()
 
 	/* Check if we need to delete a waypoint */
 	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->deleted != 0 && --wp->deleted == 0) delete wp;
+		if (wp->delete_ctr != 0 && --wp->delete_ctr == 0) delete wp;
 	}
 }
 
