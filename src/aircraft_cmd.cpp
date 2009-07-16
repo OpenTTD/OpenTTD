@@ -707,7 +707,7 @@ void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 	int safe_x = Clamp(x, 0, MapMaxX() * TILE_SIZE);
 	int safe_y = Clamp(y - 1, 0, MapMaxY() * TILE_SIZE);
 	u->x_pos = x;
-	u->y_pos = y - ((v->z_pos-GetSlopeZ(safe_x, safe_y)) >> 3);;
+	u->y_pos = y - ((v->z_pos - GetSlopeZ(safe_x, safe_y)) >> 3);;
 
 	safe_y = Clamp(u->y_pos, 0, MapMaxY() * TILE_SIZE);
 	u->z_pos = GetSlopeZ(safe_x, safe_y);
@@ -800,7 +800,7 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
 
 	speed_limit = min(speed_limit, v->max_speed);
 
-	v->subspeed = (t=v->subspeed) + (byte)spd;
+	v->subspeed = (t = v->subspeed) + (byte)spd;
 
 	/* Aircraft's current speed is used twice so that very fast planes are
 	 * forced to slow down rapidly in the short distance needed. The magic
@@ -1160,7 +1160,7 @@ static bool HandleCrashedAircraft(Aircraft *v)
 
 	if (v->crashed_counter < 650) {
 		uint32 r;
-		if (Chance16R(1,32,r)) {
+		if (Chance16R(1, 32, r)) {
 			static const DirDiff delta[] = {
 				DIRDIFF_45LEFT, DIRDIFF_SAME, DIRDIFF_SAME, DIRDIFF_45RIGHT
 			};

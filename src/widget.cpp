@@ -590,7 +590,7 @@ void Window::DrawWidgets() const
 		switch (wi->type & WWT_MASK) {
 		case WWT_IMGBTN:
 		case WWT_IMGBTN_2:
-			DrawImageButtons(r, wi->type,wi->colour, clicked, wi->data);
+			DrawImageButtons(r, wi->type, wi->colour, clicked, wi->data);
 			break;
 
 		case WWT_PANEL:
@@ -2018,7 +2018,7 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_IMGBTN:
 		case WWT_PUSHIMGBTN:
 		case WWT_IMGBTN_2:
-			DrawImageButtons(r, this->type,this->colour, clicked, this->widget_data);
+			DrawImageButtons(r, this->type, this->colour, clicked, this->widget_data);
 			break;
 
 		case WWT_TEXTBTN:

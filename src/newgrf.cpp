@@ -118,7 +118,7 @@ struct GRFLocation {
 		return this->grfid < other.grfid || (this->grfid == other.grfid && this->nfoline < other.nfoline);
 	}
 
-	bool operator==(const GRFLocation &other) const
+	bool operator == (const GRFLocation &other) const
 	{
 		return this->grfid == other.grfid && this->nfoline == other.nfoline;
 	}
@@ -2272,7 +2272,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 
 						if (itt[k].ti.x == 0 && itt[k].ti.y == 0x80) {
 							/*  Not the same terminator.  The one we are using is rather
-							 x= -80, y = x .  So, adjust it. */
+							 x = -80, y = x .  So, adjust it. */
 							itt[k].ti.x = -0x80;
 							itt[k].ti.y =  0;
 							itt[k].gfx  =  0;
@@ -4437,7 +4437,7 @@ static uint32 GetPatchVariable(uint8 param)
 			byte max_edge = max(log_X, log_Y);
 
 			if (log_X == log_Y) { // we have a squared map, since both edges are identical
-				SetBit(map_bits ,0);
+				SetBit(map_bits, 0);
 			} else {
 				if (max_edge == log_Y) SetBit(map_bits, 1); // edge Y been the biggest, mark it
 			}

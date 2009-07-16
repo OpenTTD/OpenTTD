@@ -615,10 +615,10 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				this->widget[GLAND_WATER_SE].data = STR_BORDER_RANDOM;
 				this->widget[GLAND_WATER_SW].data = STR_BORDER_RANDOM;
 			} else {
-				this->widget[GLAND_WATER_NE].data = HasBit(_settings_newgame.game_creation.water_borders,BORDER_NE) ? STR_BORDER_WATER : STR_BORDER_FREEFORM;
-				this->widget[GLAND_WATER_NW].data = HasBit(_settings_newgame.game_creation.water_borders,BORDER_NW) ? STR_BORDER_WATER : STR_BORDER_FREEFORM;
-				this->widget[GLAND_WATER_SE].data = HasBit(_settings_newgame.game_creation.water_borders,BORDER_SE) ? STR_BORDER_WATER : STR_BORDER_FREEFORM;
-				this->widget[GLAND_WATER_SW].data = HasBit(_settings_newgame.game_creation.water_borders,BORDER_SW) ? STR_BORDER_WATER : STR_BORDER_FREEFORM;
+				this->widget[GLAND_WATER_NE].data = HasBit(_settings_newgame.game_creation.water_borders, BORDER_NE) ? STR_BORDER_WATER : STR_BORDER_FREEFORM;
+				this->widget[GLAND_WATER_NW].data = HasBit(_settings_newgame.game_creation.water_borders, BORDER_NW) ? STR_BORDER_WATER : STR_BORDER_FREEFORM;
+				this->widget[GLAND_WATER_SE].data = HasBit(_settings_newgame.game_creation.water_borders, BORDER_SE) ? STR_BORDER_WATER : STR_BORDER_FREEFORM;
+				this->widget[GLAND_WATER_SW].data = HasBit(_settings_newgame.game_creation.water_borders, BORDER_SW) ? STR_BORDER_WATER : STR_BORDER_FREEFORM;
 			}
 		} else {
 			this->widget[GLAND_TREE_PULLDOWN].data               = _tree_placer[_settings_newgame.game_creation.tree_placer];

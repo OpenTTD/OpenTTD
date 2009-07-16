@@ -1157,7 +1157,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
  */
 CommandCost CmdBuildSignalTrack(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	return CmdSignalTrackHelper(tile, flags, p1, p2,text);
+	return CmdSignalTrackHelper(tile, flags, p1, p2, text);
 }
 
 /** Remove signals
@@ -1858,7 +1858,7 @@ enum {
 
 static void DrawSignals(TileIndex tile, TrackBits rails)
 {
-#define MAYBE_DRAW_SIGNAL(x,y,z,t) if (IsSignalPresent(tile, x)) DrawSingleSignal(tile, t, GetSingleSignalState(tile, x), y, z)
+#define MAYBE_DRAW_SIGNAL(x, y, z, t) if (IsSignalPresent(tile, x)) DrawSingleSignal(tile, t, GetSingleSignalState(tile, x), y, z)
 
 	if (!(rails & TRACK_BIT_Y)) {
 		if (!(rails & TRACK_BIT_X)) {
@@ -2469,7 +2469,7 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int
 		((_fractcoords_enter[dir] & 0x0F) + // x
 			(length + 1) * _deltacoord_leaveoffset[dir]) +
 		(((_fractcoords_enter[dir] >> 4) +  // y
-			((length + 1) * _deltacoord_leaveoffset[dir+4])) << 4);
+			((length + 1) * _deltacoord_leaveoffset[dir + 4])) << 4);
 
 	fract_coord = (x & 0xF) + ((y & 0xF) << 4);
 
