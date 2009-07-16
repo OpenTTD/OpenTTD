@@ -610,6 +610,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kan ikke
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...der er ikke mer plass på kartet
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Øk bystørrelse
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Utvid
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Byen kommer ikke til å bygge veier. Du kan slå på bygging av veier via Avanserte innstillinger->Økonomi->Byer.
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Lag tilfeldig by
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Grunnlegg by et tilfeldig sted
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan ikke bygge {STRING} her...
@@ -649,6 +650,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Middels
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Stor
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Tilfeldig
 STR_FOUND_TOWN_CITY                                             :{BLACK}By
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Store byer vokser raskere enn vanlige byer{}Avhengig av valgte innstillinger er de større når de blir grunnlagt
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Velg bystørrelse
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Bystørrelse:
 
@@ -850,7 +852,11 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Filforma
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Velg hvilket format skjermdumpet skal lagers i
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Grafikksett
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Velg grafikksett som skal brukes
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} manglende/korrupt fil{P "" s}
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Tilleggsinformasjon om grafikksettet
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autolagring feilet
 
@@ -939,7 +945,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Vis all
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Vis jernbanesignaler på samme side som kjøreretningen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Vis regnskap ved nyttår: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nye ordre er 'uten stopp' som standard: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nye togordrer stopper som standard ved {ORANGE}{STRING}{LTBLUE} av plattformen
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :begynnelsen
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midten
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :enden
 STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Kjøretøykø (med kvantumseffekter): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Flytt på bildet hvis pilen er nær ytterkantene av skjermen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Tillat bestikkelser av bystyret: {ORANGE}{STRING}
@@ -949,9 +958,12 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Uensart
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Vektmultiplikator for frakt til å simulere tunge tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fly hastighet faktor: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillat gjennomkjøring av stoppesteder på veier som er eid av byene: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Tillat gjennomkjøringsstopp på veier som er eid av konkurrenter {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillat bygging av nærliggende stasjoner: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Sett i gang flere ny grafikk kjerne sets: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det er ikke mulig å endre denne innstillingen mens det allerede finnes kjøretøy.
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lufthavner utgår aldri: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Vis en advarsel hvis et tog har kjørt seg vill{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Inspiser kjøretøyenes ordrer: {ORANGE}{STRING}
@@ -984,6 +996,9 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Høydek
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mot klokka
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med klokka
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Høyden et flatt scenariokart får: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Aktiver terraforming av ruter ved endene av kartet: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}En eller flere ruter ved den nordlige kanten av kartet er ikke tom
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}En eller flere ruter ved en av kantene av kartet er ikke vann
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maks stasjonspedning: {ORANGE}{STRING} {RED}Advarsel: Høy instilling gir tregere spill
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Automatisk vedlikehold ved helikopterlandingsteder: {ORANGE}{STRING}
@@ -1036,6 +1051,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Sist tilgjengel
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest brukt
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vis reserverte spor: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}La byggingsverktøy være aktiv etter bruk: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Gruppér utgifter i firmafinansvinduet: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Vis byggingsverktøy når det ikke er noen tilgjengelige kjøretøy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maks antall tog per spiller: {ORANGE}{STRING}
@@ -1049,6 +1065,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Hindre 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Hindre datamaskinen i å bygge skip: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillat AIer i flerspiller: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes før AI suspenderes: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikeholdsintervaller i prosent: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard vedlikeholdsintervall for tog: {ORANGE}{STRING} dager
@@ -1117,6 +1134,7 @@ STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Visning
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Samhandling
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Lastehåndtering
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datamaskinstyrte spillere
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoforny
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Vedlikehold
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Ruting
@@ -1191,6 +1209,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Kan ikke
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Bygg jernbane ved hjelp av autobanemodusen
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...det er ingen byer i dette scenarioet
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Kartgenerering avbrutt...{}...ingen brukbare steder å plassere byene
 
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Mange tilfeldige byer
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Dekk kartet med tilfeldig plasserte byer
@@ -1680,6 +1699,7 @@ STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Bytt nav
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passasjerer forrige måned: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post forrige måned: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Godsbehov for byekspansjon:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} påkrevd
 STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} levert sist måned
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Høyhus
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Kontorblokk
@@ -1792,6 +1812,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platform
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}For nær en annen jernbanestasjon
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grenser til mer enn én eksiterende stasjon/lasteterminal
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}For mange stasjoner/lasteterminaler
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}For mange enkeltdeler på jernbanestasjonen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}For mange bussholdeplasser
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}For mange lasteterminaler
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}For nær en annen jernbanestasjon/lasteterminal
@@ -2223,6 +2244,7 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Velg kvi
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Lag et tilfeldig ansikt
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Nøkkel
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Vis oversikt over grafvalg
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}Vis detaljerte ytelsesmålinger
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Vis oversikt over firmagrafvalg
 STR_GRAPH_KEY_COMPANY_SELECTION                                 :{BLACK}Trykk her for å vise/skjule et firma
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Antall varer levert
@@ -2597,6 +2619,9 @@ STR_ORDER_GO_TO                                                 :Gå til
 STR_ORDER_GO_NON_STOP_TO                                        :Gå uten stopp til
 STR_ORDER_GO_VIA                                                :Gå via
 STR_ORDER_GO_NON_STOP_VIA                                       :Gå uten stopp via
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[begynnelsen]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midten]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[enden]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Laste fullt allslags varer
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Laste vis tilgjengelig
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Last full alle varer
@@ -2782,6 +2807,18 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nullstil
 STR_SERVICE_HINT                                                :{BLACK}Hopp over ordren med mindre vedlikehold trengs.
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koster: {CURRENCY} Vekt: {WEIGHT_S}{}Fart: {VELOCITY}  Kraft: {POWER}{}Driftkostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
 STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Kostnad: {CURRENCY} Max. Hastighet: {VELOCITY}{}Kapasitet: {CARGO}, {CARGO}{}Løpende kostnader: {CURRENCY}/yr
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Kostnad: {CURRENCY} Maksfart: {VELOCITY}{}Kapasitet: {CARGO}{}Driftskostnader: {CURRENCY}/yr
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftskostnader: {LTBLUE}{CURRENCY}/yr
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maksfart: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vekt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maksfart: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vekt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maksfart: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profitt i år: {LTBLUE}{CURRENCY} (sist år: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pålitelighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp siden siste service: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Bygget: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasitet: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapasitet: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasitet: {LTBLUE}{CARGO}, {CARGO}{STRING}
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Motorstopp
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoppet
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikke tvinge tog til å kjøre på rødt lys ved fare...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Krasjet
@@ -2791,6 +2828,8 @@ STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kan ikke
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Navngi tog
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Togkrasj!{}{COMMA} dør i kollisjonen
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan ikke snu toget...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kan ikke snu kjøreretningen til kjøretøy...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan ikke snu kjøretøy som består av flere deler
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Gi tog/vogn nytt navn
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan ikke gi tog/vogn nytt navn...
 STR_CLEAR_TIME                                                  :{BLACK}Nullstill tid
@@ -2869,7 +2908,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Borgerne jubler . . .{}Første frakttrikk ankommer {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Kollisjon!{}Sjåfør dør etter kollisjon med tog
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Kollisjon!{}{COMMA} dør etter kollisjon med tog
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan ikke snu kjøretøy som består av flere deler
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Kan ikke snu kjøretøy...
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Endre navn
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Endre navnet til kjøretøytypen
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Endre navnet til kjøretøytypen
@@ -3076,6 +3115,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uforventet spri
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukjent hendelse 0 eiendom.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøk å bruke ugyldig ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneholder en ødelagt grafikk. All ødelagt grafikk vil bli vist som røde spørsmålstegn (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneholder flere "Action 8" oppføringer
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Last den valgte fastsette på forhånd
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Lagre fastsette på forhånd
@@ -3116,6 +3156,9 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Oppførs
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endrer kjøretøyets lengde for '{1:ENGINE}' når ikke i ett depo.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' tilhører '{COMPANY}' har ugyldig lengde. Det er sannsynligvis forårsaket av problemer med ny grafikk. Spillet kan desynkronisere eller kollidere.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' utgir ukorrekt informasjon.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Gods-/ombygningsinformasjon for '{1:ENGINE}' er forskjellig fra kjøpelisten etter konstruksjonen. Dette kan resultere i at autofornying ikke fungerer på riktig måte.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsaket en uendelig loop i produksjonstilbakekallet.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spillet ble lagret i versjon uten trikk støtte. Alle trikker har blitt fjernet.
 
@@ -3128,6 +3171,16 @@ STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Bytt ti
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Bytt til euro: {ORANGE}aldri
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Forhåndsvis: {ORANGE}{6:CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Bytt vanlig valutagrense
+STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Reduser valutaen av din kurs for ett pund (£)
+STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Øk valutaen av din kurs for ett pund (£)
+STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Still inn valutaen av din kurs for ett pund (£)
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SEPARATOR                       :{BLACK}Velg desimalskilletegn for valuta
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_PREFIX                          :{BLACK}Velg prefiks for valuta
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_SUFFIX                          :{BLACK}Velg suffiks for valuta
+STR_TOOLTIP_DECREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Bytt til Euro tidligere
+STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Bytt til Euro senere
+STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Velg året det skal byttes til Euro
+STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 pund (£) i din valuta
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3234,6 +3287,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks på
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kostnad: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vekt: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Hastighet: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasitet: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Lokomotivvogner: {GOLD}+{POWER}{BLACK} Vekt: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Utstyrbart til: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle varetyper
@@ -3307,6 +3361,7 @@ STR_NORTHWEST                                                   :{BLACK}Nordvest
 STR_NORTHEAST                                                   :{BLACK}Nordøst
 STR_SOUTHEAST                                                   :{BLACK}Sørøst
 STR_SOUTHWEST                                                   :{BLACK}Sørvest
+STR_BORDER_FREEFORM                                             :{BLACK}Friform
 STR_BORDER_WATER                                                :{BLACK}Sjø
 STR_BORDER_RANDOM                                               :{BLACK}Tilfeldig
 STR_BORDER_RANDOMIZE                                            :{BLACK}Tilfeldig
@@ -3502,6 +3557,9 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI instillinger
 STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Vis AI instillinger
 STR_AI_DEBUG                                                    :{WHITE}AI feilsøking
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Navnet til AIen
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Last inn AI på nytt
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Slå av AI, last skript på nytt, og start AI på nytt
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI feilsøkingsvidu er kun tilgjengelig for serveren
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI konfigurasjon
 STR_AI_CHANGE                                                   :{BLACK}Velg AI

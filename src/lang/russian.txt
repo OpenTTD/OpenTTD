@@ -280,8 +280,8 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}ПЛ
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ГЗ
 STR_ABBREV_NONE                                                 :{TINYFONT}НЕТ
 STR_ABBREV_ALL                                                  :{TINYFONT}Все
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT} г.
+STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG} г.
 STR_SMALLMAP_CAPTION                                            :{WHITE}Карта - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Настройки игры
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Сообщение
@@ -2065,8 +2065,8 @@ STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Нево
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Невозможно удалить файл
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Невозможно загрузить игру{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Внутренняя ошибка: {STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Нарушена структура сэйва - {STRING}
-STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Сэйв сделан в более новой версии
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Файл сохранения повреждён - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Сохранение сделано в более новой версии
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Файл не читается
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Незаписываемый файл
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Нарушена целостность

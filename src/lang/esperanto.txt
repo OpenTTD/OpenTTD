@@ -1066,6 +1066,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Malebli
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Malebligu ŝipojn por la komputilo: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permesu ArtefaritajnIntelektojn en pluropaj ludoj: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes antaŭ ArtefariteIntelekto estos prokrestita: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Prizorgintervala procentaĵo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Defaŭlta prizorgintervalo por trajnoj: {ORANGE}{STRING} tagoj/%
@@ -1603,6 +1604,10 @@ STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...regio
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Reloj kun normalaj signaloj
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Reloj kun antaŭ-signaloj
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Reloj kun elir-signaloj
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Reloj kun kombin-signaloj
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Reloj kun pad-signaloj
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Reloj kun unudirektaj pad-signaloj
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Reloj kun blok- kaj antaŭ-signaloj
 
 
 
