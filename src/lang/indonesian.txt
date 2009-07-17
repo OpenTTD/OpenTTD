@@ -1171,7 +1171,7 @@ STR_TOYLAND_LANDSCAPE                                           :Lansekap 'Taman
 
 STR_CHEATS                                                      :{WHITE}Kode Curang
 STR_CHEATS_TIP                                                  :{BLACK}Daftar cek ini mengindikasikan bahwa anda telah menggunakan kode curang ini sebelumnya
-STR_CHEATS_WARNING                                              :{BLACK}Peringatan! Anda akan mencurangi pemain lainya. Kecurangan ini akan tetap tercatat selama game berjalan.
+STR_CHEATS_WARNING                                              :{BLACK}Peringatan! Anda akan mencurangi pemain lainnya. Kecurangan ini akan tetap tercatat selama game berjalan.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tambah uang sebanyak {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain sebagai pemain: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (hancurkan industri, mercu suar dsb): {ORANGE}{STRING}

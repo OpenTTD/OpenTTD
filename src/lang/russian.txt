@@ -2164,31 +2164,31 @@ STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Опор
 STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Слишком низкий мост
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Начало и конец должны быть на одной линии
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Неподходящее место для строительства туннеля
-STR_BUILD_BRIDGE_INFO                                           :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
-STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Подвесной, Стальной
-STR_BRIDGE_NAME_GIRDER_STEEL                                    :Балочный, Стальной
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Консольный, Стальной
-STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Подвесной, Бетонный
+STR_BUILD_BRIDGE_INFO                                           :{GOLD}{STRING}{}{VELOCITY}; {WHITE}{CURRENCY}
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Висячий стальной
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :Балочный стальной
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Консольный стальной
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Висячий бетонный
 STR_BRIDGE_NAME_WOODEN                                          :Деревянный
 STR_BRIDGE_NAME_CONCRETE                                        :Бетонный
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Трубчатый, Стальной
-STR_BRIDGE_TUBULAR_SILICON                                      :Трубчатый, Силиконовый
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Трубчатый стальной
+STR_BRIDGE_TUBULAR_SILICON                                      :Трубчатый силиконовый
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Здесь невозможно построить мост...
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Здесь невозможно построить туннель...
 STR_TUNNEL_DESCRIPTION_RAILROAD                                 :Железнодорожный туннель
 STR_TUNNEL_DESCRIPTION_ROAD                                     :Автомобильный туннель
-STR_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                    :Стальной подвесной ж/д мост
+STR_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                    :Стальной висячий ж/д мост
 STR_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                       :Стальной балочный ж/д мост
 STR_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                    :Стальной консольный ж/д мост
-STR_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE                 :Укреплённый подвесной железобетонный ж/д мост
+STR_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE                 :Железобетонный висячий ж/д мост
 STR_BRIDGE_DESCRIPTION_RAIL_WOODEN                              :Деревянный ж/д мост
 STR_BRIDGE_DESCRIPTION_RAIL_CONCRETE                            :Бетонный ж/д мост
-STR_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                    :Стальной подвесной мост
-STR_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                        :Стальной балочный мост
-STR_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                    :Стальной консольный мост
-STR_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE                 :Укреплённый подвесной железобетонный мост
-STR_BRIDGE_DESCRIPTION_ROAD_WOODEN                              :Деревянный мост
-STR_BRIDGE_DESCRIPTION_ROAD_CONCRETE                            :Бетонный мост
+STR_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                    :Стальной висячий автомобильный мост
+STR_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                        :Стальной балочный автомобильный мост
+STR_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                    :Стальной консольный автомобильный мост
+STR_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE                 :Железобетонный висячий автомобильный мост
+STR_BRIDGE_DESCRIPTION_ROAD_WOODEN                              :Деревянный автомобильный мост
+STR_BRIDGE_DESCRIPTION_ROAD_CONCRETE                            :Бетонный автомобильный мост
 STR_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                       :Трубчатый ж/д мост
 STR_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                       :Трубчатый автомобильный мост
 
@@ -3161,7 +3161,7 @@ STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Нево
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Самолёт в полёте
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Самолёт должен быть остановлен в ангаре
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Не могу продать авиатранспорт...
-STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Строительство аэропорта
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Строительство аэропортов
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Строительство аэропортов
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авиатранспорт - нажмите для получения справки
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авиатранспорт - нажмите для получения справки
