@@ -77,10 +77,53 @@ struct StationRect : public Rect {
 	StationRect& operator = (Rect src);
 };
 
+/** Base class for all station-ish types */
+struct BaseStation {
+	char *name;                     ///< Custom name
+	StringID string_id;             ///< Default name (town area) of station
+
+	Town *town;                     ///< The town this station is associated with
+	OwnerByte owner;                ///< The owner of this station
+	StationFacilityByte facilities; ///< The facilities that this station has
+
+	uint8 num_specs;                ///< NOSAVE: Number of specs in the speclist
+	StationSpecList *speclist;      ///< NOSAVE: List of station specs of this station
+
+	Date build_date;                ///< Date of construction
+
+	uint16 random_bits;             ///< Random bits assigned to this station
+	byte waiting_triggers;          ///< Waiting triggers (NewGRF) for this station
+	uint8 cached_anim_triggers;     ///< NOSAVE: Combined animation trigger bitmask, used to determine if trigger processing should happen.
+
+	/**
+	 * Check whether a specific tile belongs to this station.
+	 * @param tile the tile to check
+	 * @return true if the tile belongs to this station
+	 */
+	virtual bool TileBelongsToRailStation(TileIndex tile) const = 0;
+
+	/**
+	 * Helper function to get a NewGRF variable that isn't implemented by the base class.
+	 * @param object the resolver object related to this query
+	 * @param variable that is queried
+	 * @param parameter parameter for that variable
+	 * @param available will return false if ever the variable asked for does not exist
+	 * @return the value stored in the corresponding variable
+	 */
+	virtual uint32 GetNewGRFVariable(const struct ResolverObject *object, byte variable, byte parameter, bool *available) const = 0;
+
+	/**
+	 * Get the base station belonging to a specific tile.
+	 * @param tile The tile to get the base station from.
+	 * @return the station associated with that tile.
+	 */
+	static BaseStation *GetByTile(TileIndex tile);
+};
+
 typedef SmallVector<Industry *, 2> IndustryVector;
 
 /** Station data structure */
-struct Station : StationPool::PoolItem<&_station_pool> {
+struct Station : StationPool::PoolItem<&_station_pool>, BaseStation {
 public:
 	RoadStop *GetPrimaryRoadStop(RoadStopType type) const
 	{
@@ -101,12 +144,8 @@ public:
 	TileIndex train_tile;
 	TileIndex airport_tile;
 	TileIndex dock_tile;
-	Town *town;
 
-	/* Place to get a name from, in order of importance: */
-	char *name;             ///< Custom name
 	IndustryType indtype;   ///< Industry type to get the name from
-	StringID string_id;     ///< Default name (town area) of station
 
 	ViewportSign sign;
 
@@ -115,18 +154,10 @@ public:
 	byte time_since_load;
 	byte time_since_unload;
 	byte delete_ctr;
-	OwnerByte owner;
-	StationFacilityByte facilities;
 	byte airport_type;
 
 	/* trainstation width/height */
 	byte trainst_w, trainst_h;
-
-	/** List of custom stations (StationSpecs) allocated to the station */
-	uint8 num_specs;
-	StationSpecList *speclist;
-
-	Date build_date;  ///< Date of construction
 
 	uint64 airport_flags;   ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
 
@@ -135,10 +166,6 @@ public:
 	GoodsEntry goods[NUM_CARGO];  ///< Goods at this station
 
 	IndustryVector industries_near; ///< Cached list of industries near the station that can accept cargo, @see DeliverGoodsToIndustry()
-
-	uint16 random_bits;
-	byte waiting_triggers;
-	uint8 cached_anim_triggers; ///< Combined animation trigger bitmask, used to determine if trigger processing should happen.
 
 	StationRect rect; ///< Station spread out rectangle (not saved) maintained by StationRect_xxx() functions
 
@@ -163,10 +190,12 @@ public:
 
 	uint GetCatchmentRadius() const;
 
-	FORCEINLINE bool TileBelongsToRailStation(TileIndex tile) const
+	/* virtual */ FORCEINLINE bool TileBelongsToRailStation(TileIndex tile) const
 	{
 		return IsRailwayStationTile(tile) && GetStationIndex(tile) == this->index;
 	}
+
+	/* virtual */ uint32 GetNewGRFVariable(const ResolverObject *object, byte variable, byte parameter, bool *available) const;
 
 	/**
 	 * Determines whether a station is a buoy only.
@@ -183,6 +212,16 @@ public:
 	}
 
 	static void PostDestructor(size_t index);
+
+	static FORCEINLINE Station *From(BaseStation *st)
+	{
+		return (Station *)st;
+	}
+
+	static FORCEINLINE const Station *From(const BaseStation *st)
+	{
+		return (const Station *)st;
+	}
 };
 
 #define FOR_ALL_STATIONS_FROM(var, start) FOR_ALL_ITEMS_FROM(Station, station_index, var, start)

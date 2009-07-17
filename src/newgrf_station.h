@@ -131,9 +131,9 @@ uint32 GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, i
 /* Get sprite offset for a given custom station and station structure (may be
  * NULL - that means we are in a build dialog). The station structure is used
  * for variational sprite groups. */
-SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *st, TileIndex tile);
-SpriteID GetCustomStationGroundRelocation(const StationSpec *statspec, const Station *st, TileIndex tile);
-uint16 GetStationCallback(CallbackID callback, uint32 param1, uint32 param2, const StationSpec *statspec, const Station *st, TileIndex tile);
+SpriteID GetCustomStationRelocation(const StationSpec *statspec, const BaseStation *st, TileIndex tile);
+SpriteID GetCustomStationGroundRelocation(const StationSpec *statspec, const BaseStation *st, TileIndex tile);
+uint16 GetStationCallback(CallbackID callback, uint32 param1, uint32 param2, const StationSpec *statspec, const BaseStation *st, TileIndex tile);
 
 /* Allocate a StationSpec to a Station. This is called once per build operation. */
 int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec);
@@ -155,7 +155,7 @@ enum StatAnimTrigger {
 };
 
 void AnimateStationTile(TileIndex tile);
-void StationAnimationTrigger(const Station *st, TileIndex tile, StatAnimTrigger trigger, CargoID cargo_type = CT_INVALID);
-void StationUpdateAnimTriggers(Station *st);
+void StationAnimationTrigger(const BaseStation *st, TileIndex tile, StatAnimTrigger trigger, CargoID cargo_type = CT_INVALID);
+void StationUpdateAnimTriggers(BaseStation *st);
 
 #endif /* NEWGRF_STATION_H */

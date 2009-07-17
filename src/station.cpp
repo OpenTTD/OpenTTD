@@ -44,6 +44,11 @@ Station::Station(TileIndex tile) :
 	/* this->random_bits is set in Station::AddFacility() */
 }
 
+/* static */ BaseStation *BaseStation::GetByTile(TileIndex tile)
+{
+	return Station::GetByTile(tile);
+}
+
 /**
  * Clean up a station by clearing vehicle orders and invalidating windows.
  * Aircraft-Hangar orders need special treatment here, as the hangars are

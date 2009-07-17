@@ -307,7 +307,7 @@ struct ResolverObject {
 		} canal;
 		struct {
 			TileIndex tile;
-			const struct Station *st;
+			const struct BaseStation *st;
 			const struct StationSpec *statspec;
 			CargoID cargo_type;
 		} station;

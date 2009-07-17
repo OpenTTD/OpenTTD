@@ -10,6 +10,7 @@
 typedef uint16 StationID;
 typedef uint16 RoadStopID;
 
+struct BaseStation;
 struct Station;
 struct RoadStop;
 struct StationSpec;
