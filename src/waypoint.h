@@ -36,6 +36,8 @@ struct Waypoint : WaypointPool::PoolItem<&_waypoint_pool> {
 	~Waypoint();
 
 	void UpdateVirtCoord();
+
+	void AssignStationSpec(uint index);
 };
 
 #define FOR_ALL_WAYPOINTS_FROM(var, start) FOR_ALL_ITEMS_FROM(Waypoint, waypoint_index, var, start)
