@@ -28,7 +28,8 @@ struct Waypoint : WaypointPool::PoolItem<&_waypoint_pool> {
 	Date build_date;   ///< Date of construction
 	OwnerByte owner;   ///< Whom this waypoint belongs to
 
-	StationSpecList spec; ///< NewGRF specification of the station
+	uint8 num_specs;           ///< NOSAVE: Number of specs in the speclist
+	StationSpecList *speclist; ///< List of station specs of this station
 
 	byte delete_ctr;   ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the waypoint is then is deleted.
 

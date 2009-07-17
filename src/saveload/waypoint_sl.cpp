@@ -21,14 +21,12 @@ void AfterLoadWaypoints()
 	Waypoint *wp;
 
 	FOR_ALL_WAYPOINTS(wp) {
-		uint i;
+		if (wp->num_specs == 0) continue;
 
-		if (wp->spec.grfid == 0) continue;
-
-		for (i = 0; i < GetNumCustomStations(STAT_CLASS_WAYP); i++) {
+		for (uint i = 0; i < GetNumCustomStations(STAT_CLASS_WAYP); i++) {
 			const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, i);
-			if (statspec != NULL && statspec->grffile->grfid == wp->spec.grfid && statspec->localidx == wp->spec.localidx) {
-				wp->spec.spec = statspec;
+			if (statspec != NULL && statspec->grffile->grfid == wp->speclist->grfid && statspec->localidx == wp->speclist->localidx) {
+				wp->speclist->spec = statspec;
 				break;
 			}
 		}
@@ -37,6 +35,7 @@ void AfterLoadWaypoints()
 
 static uint16 _waypoint_town_index;
 static StringID _waypoint_string_id;
+static StationSpecList _waypoint_spec;
 
 static const SaveLoad _waypoint_desc[] = {
 	 SLE_CONDVAR(Waypoint, xy,            SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
@@ -51,8 +50,8 @@ static const SaveLoad _waypoint_desc[] = {
 
 	 SLE_CONDVAR(Waypoint, build_date,    SLE_FILE_U16 | SLE_VAR_I32,  3, 30),
 	 SLE_CONDVAR(Waypoint, build_date,    SLE_INT32,                  31, SL_MAX_VERSION),
-	 SLE_CONDVAR(Waypoint, spec.localidx, SLE_UINT8,                   3, SL_MAX_VERSION),
-	 SLE_CONDVAR(Waypoint, spec.grfid,    SLE_UINT32,                 17, SL_MAX_VERSION),
+	SLEG_CONDVAR(_waypoint_spec.localidx, SLE_UINT8,                   3, SL_MAX_VERSION),
+	SLEG_CONDVAR(_waypoint_spec.grfid,    SLE_UINT32,                 17, SL_MAX_VERSION),
 	 SLE_CONDVAR(Waypoint, owner,         SLE_UINT8,                 101, SL_MAX_VERSION),
 
 	SLE_END()
@@ -63,6 +62,12 @@ static void Save_WAYP()
 	Waypoint *wp;
 
 	FOR_ALL_WAYPOINTS(wp) {
+		if (wp->num_specs == 0) {
+			_waypoint_spec.grfid = 0;
+		} else {
+			_waypoint_spec = *wp->speclist;
+		}
+
 		SlSetArrayIndex(wp->index);
 		SlObject(wp, _waypoint_desc);
 	}
@@ -75,9 +80,16 @@ static void Load_WAYP()
 	while ((index = SlIterateArray()) != -1) {
 		_waypoint_string_id = 0;
 		_waypoint_town_index = 0;
+		_waypoint_spec.grfid = 0;
 
 		Waypoint *wp = new (index) Waypoint();
 		SlObject(wp, _waypoint_desc);
+
+		if (_waypoint_spec.grfid != 0) {
+			wp->num_specs = 1;
+			wp->speclist = MallocT<StationSpecList>(1);
+			*wp->speclist = _waypoint_spec;
+		}
 
 		if (CheckSavegameVersion(84)) wp->name = (char *)(size_t)_waypoint_string_id;
 		if (CheckSavegameVersion(122)) wp->town = (Town *)(size_t)_waypoint_town_index;

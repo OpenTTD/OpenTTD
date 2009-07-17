@@ -97,16 +97,19 @@ Waypoint::~Waypoint()
  */
 void Waypoint::AssignStationSpec(uint index)
 {
+	free(this->speclist);
+
 	const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, index);
 
 	if (statspec != NULL) {
-		this->spec.spec = statspec;
-		this->spec.grfid = statspec->grffile->grfid;
-		this->spec.localidx = statspec->localidx;
+		this->speclist = MallocT<StationSpecList>(1);
+		this->speclist->spec = statspec;
+		this->speclist->grfid = statspec->grffile->grfid;
+		this->speclist->localidx = statspec->localidx;
+		this->num_specs = 1;
 	} else {
-		this->spec.spec = NULL;
-		this->spec.grfid = 0;
-		this->spec.localidx = 0;
+		this->speclist = NULL;
+		this->num_specs = 0;
 	}
 }
 
