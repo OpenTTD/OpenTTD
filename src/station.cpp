@@ -52,6 +52,7 @@ Station::Station(TileIndex tile) :
 
 /* static */ BaseStation *BaseStation::GetByTile(TileIndex tile)
 {
+	if (IsRailWaypointTile(tile)) return Waypoint::GetByTile(tile);
 	return Station::GetByTile(tile);
 }
 

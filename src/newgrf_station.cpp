@@ -7,6 +7,7 @@
 #include "landscape.h"
 #include "debug.h"
 #include "station_base.h"
+#include "waypoint.h"
 #include "roadstop_base.h"
 #include "newgrf_commons.h"
 #include "newgrf_station.h"
@@ -466,7 +467,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			return res;
 		}
 
-		/* General station properties */
+		/* General station variables */
 		case 0x82: return 50;
 		case 0x84: return st->string_id;
 		case 0x86: return 0;
@@ -530,12 +531,43 @@ uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, b
 		}
 	}
 
-	DEBUG(grf, 1, "Unhandled station property 0x%X", variable);
+	DEBUG(grf, 1, "Unhandled station variable 0x%X", variable);
 
 	*available = false;
 	return UINT_MAX;
 }
 
+uint32 Waypoint::GetNewGRFVariable(const ResolverObject *object, byte variable, byte parameter, bool *available) const
+{
+	switch (variable) {
+		case 0x48: return 0; // Accepted cargo types
+		case 0x8A: return HVOT_TRAIN;
+		case 0xF1: return 0; // airport type
+		case 0xF2: return 0; // truck stop status
+		case 0xF3: return 0; // bus stop status
+		case 0xF6: return 0; // airport flags
+		case 0xF7: return 0; // airport flags cont.
+	}
+
+	/* Handle cargo variables with parameter, 0x60 to 0x65 */
+	if (variable >= 0x60 && variable <= 0x65) {
+		return 0;
+	}
+
+	/* Handle cargo variables (deprecated) */
+	if (variable >= 0x8C && variable <= 0xEC) {
+		switch (GB(variable - 0x8C, 0, 3)) {
+			case 3: return INITIAL_STATION_RATING;
+			case 4: return INVALID_STATION;
+			default: return 0;
+		}
+	}
+
+	DEBUG(grf, 1, "Unhandled station variable 0x%X", variable);
+
+	*available = false;
+	return UINT_MAX;
+}
 
 static const SpriteGroup *StationResolveReal(const ResolverObject *object, const RealSpriteGroup *group)
 {
@@ -865,14 +897,20 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 
 const StationSpec *GetStationSpec(TileIndex t)
 {
-	const BaseStation *st;
-	uint specindex;
+	if (IsRailwayStationTile(t)) {
+		if (!IsCustomStationSpecIndex(t)) return NULL;
 
-	if (!IsCustomStationSpecIndex(t)) return NULL;
+		const BaseStation *st = BaseStation::GetByTile(t);
+		uint specindex = GetCustomStationSpecIndex(t);
+		return specindex < st->num_specs ? st->speclist[specindex].spec : NULL;
+	}
 
-	st = BaseStation::GetByTile(t);
-	specindex = GetCustomStationSpecIndex(t);
-	return specindex < st->num_specs ? st->speclist[specindex].spec : NULL;
+	if (IsRailWaypointTile(t)) {
+		const BaseStation *st = BaseStation::GetByTile(t);
+		return st->num_specs != 0 ? st->speclist[0].spec : NULL;
+	}
+
+	return NULL;
 }
 
 

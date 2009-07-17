@@ -43,27 +43,6 @@ void WaypointsDailyLoop()
 }
 
 /**
- * This hacks together some dummy one-shot Station structure for a waypoint.
- * @param tile on which to work
- * @return pointer to a Station
- */
-Station *ComposeWaypointStation(TileIndex tile)
-{
-	Waypoint *wp = Waypoint::GetByTile(tile);
-
-	/* instead of 'static Station stat' use byte array to avoid Station's destructor call upon exit. As
-	 * a side effect, the station is not constructed now. */
-	static byte stat_raw[sizeof(Station)];
-	static Station &stat = *(Station*)stat_raw;
-
-	stat.train_tile = stat.xy = wp->xy;
-	stat.town = wp->town;
-	stat.build_date = wp->build_date;
-
-	return &stat;
-}
-
-/**
  * Draw a waypoint
  * @param x coordinate
  * @param y coordinate
@@ -82,8 +61,6 @@ void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
 
 Waypoint::~Waypoint()
 {
-	free(this->name);
-
 	if (CleaningPool()) return;
 	DeleteWindowById(WC_WAYPOINT_VIEW, this->index);
 	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, this->index);

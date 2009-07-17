@@ -1938,13 +1938,10 @@ static void DrawTile_Track(TileInfo *ti)
 			}
 		} else {
 			/* look for customization */
-			const Waypoint *wp = Waypoint::GetByTile(ti->tile);
+			const StationSpec *statspec = GetStationSpec(ti->tile);
 
-			if (wp->num_specs != 0) {
-				const StationSpec *statspec = wp->speclist->spec;
-
-				/* emulate station tile - open with building */
-				const Station *st = ComposeWaypointStation(ti->tile);
+			if (statspec != NULL) {
+				const BaseStation *st = BaseStation::GetByTile(ti->tile);
 				uint gfx = 2;
 
 				if (HasBit(statspec->callbackmask, CBM_STATION_SPRITE_LAYOUT)) {
