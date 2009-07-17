@@ -328,7 +328,7 @@ public:
 	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
 	 * @pre AreOrderFlagsValid(destination, order_flags).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
-	 * @exception AIOrder::ERR_ORDER_NO_MORE_SPACE
+	 * @exception AIOrder::ERR_ORDER_TOO_MANY
 	 * @exception AIOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION
 	 * @return True if and only if the order was appended.
 	 */
@@ -341,7 +341,7 @@ public:
 	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
 	 * @pre IsValidVehicleOrder(vehicle_id, jump_to).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
-	 * @exception AIOrder::ERR_ORDER_NO_MORE_SPACE
+	 * @exception AIOrder::ERR_ORDER_TOO_MANY
 	 * @return True if and only if the order was appended.
 	 */
 	static bool AppendConditionalOrder(VehicleID vehicle_id, OrderPosition jump_to);
@@ -355,7 +355,7 @@ public:
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
 	 * @pre AreOrderFlagsValid(destination, order_flags).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
-	 * @exception AIOrder::ERR_ORDER_NO_MORE_SPACE
+	 * @exception AIOrder::ERR_ORDER_TOO_MANY
 	 * @exception AIOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION
 	 * @return True if and only if the order was inserted.
 	 */
@@ -369,7 +369,7 @@ public:
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
 	 * @pre IsValidVehicleOrder(vehicle_id, jump_to).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
-	 * @exception AIOrder::ERR_ORDER_NO_MORE_SPACE
+	 * @exception AIOrder::ERR_ORDER_TOO_MANY
 	 * @return True if and only if the order was inserted.
 	 */
 	static bool InsertConditionalOrder(VehicleID vehicle_id, OrderPosition order_position, OrderPosition jump_to);
@@ -442,7 +442,7 @@ public:
 	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
 	 * @pre AIVehicle::IsValidVehicle(main_vehicle_id).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
-	 * @exception AIOrder::ERR_ORDER_NO_MORE_SPACE
+	 * @exception AIOrder::ERR_ORDER_TOO_MANY
 	 * @return True if and only if the copying succeeded.
 	 */
 	static bool CopyOrders(VehicleID vehicle_id, VehicleID main_vehicle_id);

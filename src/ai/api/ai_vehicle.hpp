@@ -58,7 +58,7 @@ public:
 		ERR_VEHICLE_IN_FLIGHT,                  // [STR_ERROR_AIRCRAFT_IS_IN_FLIGHT]
 
 		/** Vehicle is without power */
-		ERR_VEHCILE_NO_POWER,                   // [STR_TRAIN_START_NO_CATENARY]
+		ERR_VEHICLE_NO_POWER,                   // [STR_TRAIN_START_NO_CATENARY]
 
 	};
 

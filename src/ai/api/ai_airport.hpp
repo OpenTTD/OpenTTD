@@ -129,7 +129,7 @@ public:
 	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
 	 * @exception AIError::ERR_LOCAL_AUTHORITY_REFUSES
 	 * @exception AIStation::ERR_STATION_TOO_LARGE
-	 * @exception AIStation::ERR_STATION_TOO_CLOSE_TO_OTHER_STATION
+	 * @exception AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
 	 * @return Whether the airport has been/can be build or not.
 	 */
 	static bool BuildAirport(TileIndex tile, AirportType type, StationID station_id);

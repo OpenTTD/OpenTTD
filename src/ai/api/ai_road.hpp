@@ -349,7 +349,7 @@ public:
 	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
 	 * @exception AIRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION
 	 * @exception AIRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD
-	 * @exception AIError:ERR_VEHICLE_IN_THE_WAY
+	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
 	 * @exception AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
 	 * @exception AIStation::ERR_STATION_TOO_MANY_STATIONS
 	 * @exception AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
@@ -372,7 +372,7 @@ public:
 	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
 	 * @exception AIRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION
 	 * @exception AIRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD
-	 * @exception AIError:ERR_VEHICLE_IN_THE_WAY
+	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
 	 * @exception AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
 	 * @exception AIStation::ERR_STATION_TOO_MANY_STATIONS
 	 * @exception AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
