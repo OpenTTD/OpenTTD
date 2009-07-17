@@ -49,7 +49,7 @@ void WaypointsDailyLoop()
  */
 Station *ComposeWaypointStation(TileIndex tile)
 {
-	Waypoint *wp = GetWaypointByTile(tile);
+	Waypoint *wp = Waypoint::GetByTile(tile);
 
 	/* instead of 'static Station stat' use byte array to avoid Station's destructor call upon exit. As
 	 * a side effect, the station is not constructed now. */

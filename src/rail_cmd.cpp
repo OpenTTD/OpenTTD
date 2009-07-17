@@ -1938,7 +1938,7 @@ static void DrawTile_Track(TileInfo *ti)
 			}
 		} else {
 			/* look for customization */
-			const Waypoint *wp = GetWaypointByTile(ti->tile);
+			const Waypoint *wp = Waypoint::GetByTile(ti->tile);
 
 			if (wp->num_specs != 0) {
 				const StationSpec *statspec = wp->speclist->spec;
@@ -2315,8 +2315,8 @@ static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, 
 static bool ClickTile_Track(TileIndex tile)
 {
 	switch (GetRailTileType(tile)) {
-		case RAIL_TILE_DEPOT:    ShowDepotWindow(tile, VEH_TRAIN);            return true;
-		case RAIL_TILE_WAYPOINT: ShowWaypointWindow(GetWaypointByTile(tile)); return true;
+		case RAIL_TILE_DEPOT:    ShowDepotWindow(tile, VEH_TRAIN);              return true;
+		case RAIL_TILE_WAYPOINT: ShowWaypointWindow(Waypoint::GetByTile(tile)); return true;
 		default: return false;
 	}
 }

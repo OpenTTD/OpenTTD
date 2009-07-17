@@ -39,22 +39,20 @@ struct Waypoint : WaypointPool::PoolItem<&_waypoint_pool> {
 	void UpdateVirtCoord();
 
 	void AssignStationSpec(uint index);
+
+	/**
+	 * Fetch a waypoint by tile
+	 * @param tile Tile of waypoint
+	 * @return Waypoint
+	 */
+	static FORCEINLINE Waypoint *GetByTile(TileIndex tile)
+	{
+		return Waypoint::Get(GetWaypointIndex(tile));
+	}
 };
 
 #define FOR_ALL_WAYPOINTS_FROM(var, start) FOR_ALL_ITEMS_FROM(Waypoint, waypoint_index, var, start)
 #define FOR_ALL_WAYPOINTS(var) FOR_ALL_WAYPOINTS_FROM(var, 0)
-
-
-/**
- * Fetch a waypoint by tile
- * @param tile Tile of waypoint
- * @return Waypoint
- */
-static inline Waypoint *GetWaypointByTile(TileIndex tile)
-{
-	assert(IsRailWaypointTile(tile));
-	return Waypoint::Get(GetWaypointIndex(tile));
-}
 
 CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justremove);
 Station *ComposeWaypointStation(TileIndex tile);

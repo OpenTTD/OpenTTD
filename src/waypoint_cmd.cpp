@@ -224,7 +224,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justre
 
 	if (flags & DC_EXEC) {
 		Track track = GetRailWaypointTrack(tile);
-		wp = GetWaypointByTile(tile);
+		wp = Waypoint::GetByTile(tile);
 
 		wp->delete_ctr = 30; // let it live for this many days before we do the actual deletion.
 		wp->sign.MarkDirty();

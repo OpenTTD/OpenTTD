@@ -352,7 +352,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	if (IsRailWaypointTile(tile) &&
 			v->type == VEH_TRAIN &&
 			IsTileOwner(tile, _local_company)) {
-		order.MakeGoToWaypoint(GetWaypointByTile(tile)->index);
+		order.MakeGoToWaypoint(Waypoint::GetByTile(tile)->index);
 		if (_settings_client.gui.new_nonstop != _ctrl_pressed) order.SetNonStopType(ONSF_NO_STOP_AT_ANY_STATION);
 		return order;
 	}
