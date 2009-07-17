@@ -29,7 +29,7 @@ enum GrfMiscBit {
 	GMB_DESERT_TREES_FIELDS    = 0, // Unsupported.
 	GMB_DESERT_PAVED_ROADS     = 1,
 	GMB_FIELD_BOUNDING_BOX     = 2, // Unsupported.
-	GMB_TRAIN_WIDTH_32_PIXELS  = 3,
+	GMB_TRAIN_WIDTH_32_PIXELS  = 3, ///< Use 32 pixels per train vehicle in depot gui and vehicle details. Never set in the global variable; @see GRFFile::traininfo_vehicle_width
 	GMB_AMBIENT_SOUND_CALLBACK = 4, // Unsupported.
 	GMB_CATENARY_ON_3RD_TRACK  = 5, // Unsupported.
 };
@@ -60,6 +60,7 @@ struct GRFLabel {
 	struct GRFLabel *next;
 };
 
+/** Dynamic data of a loaded NewGRF */
 struct GRFFile {
 	char *filename;
 	bool is_ottdfile;
@@ -105,6 +106,9 @@ struct GRFFile {
 
 	uint8 railtype_max;
 	RailTypeLabel *railtype_list;
+
+	int traininfo_vehicle_pitch;  ///< Vertical offset for draing train images in depot GUI and vehicle details
+	int traininfo_vehicle_width;  ///< Width (in pixels) of a 8/8 train vehicle in depot GUI and vehicle details
 };
 
 extern GRFFile *_first_grffile;

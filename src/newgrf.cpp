@@ -3725,7 +3725,7 @@ bool GetGlobalVariable(byte param, uint32 *value)
 			return true;
 
 		case 0x0E: // Y-offset for train sprites
-			*value = _traininfo_vehicle_pitch;
+			*value = _cur_grffile->traininfo_vehicle_pitch;
 			return true;
 
 		case 0x0F: // Rail track type cost factors
@@ -3769,6 +3769,10 @@ bool GetGlobalVariable(byte param, uint32 *value)
 
 		case 0x1E: // Miscellaneous GRF features
 			*value = _misc_grf_features;
+
+			/* Add the local flags */
+			assert(!HasBit(*value, GMB_TRAIN_WIDTH_32_PIXELS));
+			if (_cur_grffile->traininfo_vehicle_width == VEHICLEINFO_FULL_VEHICLE_WIDTH) SetBit(*value, GMB_TRAIN_WIDTH_32_PIXELS);
 			return true;
 
 		/* case 0x1F: // locale dependent settings not implemented */
@@ -4750,7 +4754,7 @@ static void ParamSet(byte *buf, size_t len)
 
 	switch (target) {
 		case 0x8E: // Y-Offset for train sprites
-			_traininfo_vehicle_pitch = res;
+			_cur_grffile->traininfo_vehicle_pitch = res;
 			break;
 
 		case 0x8F: { // Rail track type cost factors
@@ -4779,8 +4783,12 @@ static void ParamSet(byte *buf, size_t len)
 
 		case 0x9E: // Miscellaneous GRF features
 			_misc_grf_features = res;
+
 			/* Set train list engine width */
-			_traininfo_vehicle_width = HasGrfMiscBit(GMB_TRAIN_WIDTH_32_PIXELS) ? 32 : 29;
+			_cur_grffile->traininfo_vehicle_width = HasGrfMiscBit(GMB_TRAIN_WIDTH_32_PIXELS) ? VEHICLEINFO_FULL_VEHICLE_WIDTH : TRAININFO_DEFAULT_VEHICLE_WIDTH;
+
+			/* Remove the local flags from the global flags */
+			ClrBit(_misc_grf_features, GMB_TRAIN_WIDTH_32_PIXELS);
 			break;
 
 		case 0x9F: // locale-dependent settings
@@ -5565,8 +5573,6 @@ static void ResetNewGRFData()
 
 	/* Reset misc GRF features and train list display variables */
 	_misc_grf_features = 0;
-	_traininfo_vehicle_pitch = 0;
-	_traininfo_vehicle_width = 29;
 
 	_loaded_newgrf_features.has_2CC           = false;
 	_loaded_newgrf_features.has_newhouses     = false;
@@ -5619,6 +5625,10 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 
 	newfile->filename = strdup(config->filename);
 	newfile->sprite_offset = sprite_offset;
+
+	/* Initialise local settings to defaults */
+	newfile->traininfo_vehicle_pitch = 0;
+	newfile->traininfo_vehicle_width = TRAININFO_DEFAULT_VEHICLE_WIDTH;
 
 	/* Copy the initial parameter list */
 	assert(lengthof(newfile->param) == lengthof(config->param) && lengthof(config->param) == 0x80);

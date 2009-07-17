@@ -8,9 +8,11 @@
 #include "direction_type.h"
 #include "newgrf_callbacks.h"
 
-extern int _traininfo_vehicle_pitch;
-extern int _traininfo_vehicle_width;
-
+enum {
+	TRAININFO_DEFAULT_VEHICLE_WIDTH = 29,
+	ROADVEHINFO_DEFAULT_VEHICLE_WIDTH = 28,
+	VEHICLEINFO_FULL_VEHICLE_WIDTH = 32,
+};
 
 void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const struct SpriteGroup *group, EngineID *train_id, uint trains);
 const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, EngineID overriding_engine);

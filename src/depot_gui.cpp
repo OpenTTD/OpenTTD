@@ -126,7 +126,6 @@ static const WindowDesc _aircraft_depot_desc(
 	_depot_widgets
 );
 
-extern int WagonLengthToPixels(int len);
 extern void DepotSortList(VehicleList *list);
 
 /**
@@ -276,7 +275,7 @@ struct DepotWindow : Window {
 				DrawString(this->widget[DEPOT_WIDGET_MATRIX].left, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, TC_FROMSTRING, SA_RIGHT); // Draw the counter
 				break;
 
-			case VEH_ROAD:     DrawRoadVehImage( v, x + 24, sprite_y, this->sel, 28); break;
+			case VEH_ROAD:     DrawRoadVehImage( v, x + 24, sprite_y, this->sel, ROADVEHINFO_DEFAULT_VEHICLE_WIDTH); break;
 			case VEH_SHIP:     DrawShipImage(    v, x + 19, sprite_y - 1, this->sel); break;
 			case VEH_AIRCRAFT: {
 				const Sprite *spr = GetSprite(v->GetImage(DIR_W), ST_NORMAL);
@@ -305,7 +304,6 @@ struct DepotWindow : Window {
 	{
 		TileIndex tile = this->window_number;
 		int x, y, i, maxval;
-		uint16 hnum;
 
 		/* Set the row and number of boxes in each row based on the number of boxes drawn in the matrix */
 		uint16 rows_in_display   = GB(this->widget[DEPOT_WIDGET_MATRIX].data, MAT_ROW_START, MAT_ROW_BITS);
@@ -325,14 +323,17 @@ struct DepotWindow : Window {
 
 		/* determine amount of items for scroller */
 		if (this->type == VEH_TRAIN) {
-			hnum = 8;
+			uint max_width = VEHICLEINFO_FULL_VEHICLE_WIDTH;
 			for (uint num = 0; num < this->vehicle_list.Length(); num++) {
-				const Vehicle *v = this->vehicle_list[num];
-				hnum = max(hnum, Train::From(v)->tcache.cached_total_length);
+				uint width = 0;
+				for (const Train *v = Train::From(this->vehicle_list[num]); v != NULL; v = v->Next()) {
+					width += v->GetDisplayImageWidth();
+				}
+				max_width = max(max_width, width);
 			}
 			/* Always have 1 empty row, so people can change the setting of the train */
 			SetVScrollCount(w, this->vehicle_list.Length() + this->wagon_list.Length() + 1);
-			SetHScrollCount(w, WagonLengthToPixels(hnum));
+			SetHScrollCount(w, max_width);
 		} else {
 			SetVScrollCount(w, (this->vehicle_list.Length() + this->hscroll.cap - 1) / this->hscroll.cap);
 		}
@@ -432,7 +433,7 @@ struct DepotWindow : Window {
 			pos -= this->vehicle_list.Length();
 			*veh = this->wagon_list[pos];
 			/* free wagons don't have an initial loco. */
-			x -= _traininfo_vehicle_width;
+			x -= VEHICLEINFO_FULL_VEHICLE_WIDTH;
 		}
 
 		switch (this->type) {
@@ -447,7 +448,10 @@ struct DepotWindow : Window {
 				x += skip;
 
 				/* find the vehicle in this row that was clicked */
-				while (v != NULL && (x -= WagonLengthToPixels(v->tcache.cached_veh_length)) >= 0) v = v->Next();
+				for (; v != NULL; v = v->Next()) {
+					x -= v->GetDisplayImageWidth();
+					if (x < 0) break;
+				}
 
 				/* if an articulated part was selected, find its parent */
 				while (v != NULL && v->IsArticulatedPart()) v = v->Previous();

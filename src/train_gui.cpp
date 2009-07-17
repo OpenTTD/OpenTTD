@@ -55,16 +55,6 @@ void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2)
 }
 
 /**
- * Get the number of pixels for the given wagon length.
- * @param len Length measured in 1/8ths of a standard wagon.
- * @return Number of pixels across.
- */
-int WagonLengthToPixels(int len)
-{
-	return (len * _traininfo_vehicle_width) / 8;
-}
-
-/**
  * Draws an image of a whole train
  * @param v Front vehicle
  + @param x x Position to start at
@@ -88,11 +78,12 @@ void DrawTrainImage(const Train *v, int x, int y, VehicleID selection, int max_w
 	int px = -skip;
 	bool sel_articulated = false;
 	for (; v != NULL && px < max_width; v = v->Next()) {
-		int width = WagonLengthToPixels(Train::From(v)->tcache.cached_veh_length);
+		Point offset;
+		int width = Train::From(v)->GetDisplayImageWidth(&offset);
 
 		if (px + width > 0) {
 			SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-			DrawSprite(v->GetImage(DIR_W), pal, px + 16, 7 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
+			DrawSprite(v->GetImage(DIR_W), pal, px + offset.x, 7 + offset.y);
 		}
 
 		if (!v->IsArticulatedPart()) sel_articulated = false;
@@ -236,17 +227,19 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 		int x = 1;
 		for (;;) {
 			if (--vscroll_pos < 0 && vscroll_pos >= -vscroll_cap) {
-				int dx = 0;
+				int px = x;
 
 				u = v;
 				do {
+					Point offset;
+					int width = u->GetDisplayImageWidth(&offset);
 					SpriteID pal = (u->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(u);
-					DrawSprite(u->GetImage(DIR_W), pal, x + WagonLengthToPixels(4 + dx), y + 6 + (is_custom_sprite(RailVehInfo(u->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
-					dx += Train::From(u)->tcache.cached_veh_length;
+					DrawSprite(u->GetImage(DIR_W), pal, x + offset.x, y + 6 + offset.y);
+					px += width;
 					u = u->Next();
 				} while (u != NULL && u->IsArticulatedPart() && u->cargo_cap == 0);
 
-				int px = x + WagonLengthToPixels(dx) + 2;
+				px += 2;
 				int py = y + 2;
 				switch (det_tab) {
 					default: NOT_REACHED();

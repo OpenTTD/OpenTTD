@@ -126,6 +126,7 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	int GetDisplaySpeed() const { return this->tcache.last_speed; }
 	int GetDisplayMaxSpeed() const { return this->tcache.cached_max_speed; }
 	Money GetRunningCost() const;
+	int GetDisplayImageWidth(Point *offset = NULL) const;
 	bool IsInDepot() const { return CheckTrainInDepot(this, false) != -1; }
 	bool IsStoppedInDepot() const { return CheckTrainStoppedInDepot(this) >= 0; }
 	bool Tick();

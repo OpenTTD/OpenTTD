@@ -6,6 +6,7 @@
 #include "roadveh.h"
 #include "window_gui.h"
 #include "gfx_func.h"
+#include "newgrf_engine.h"
 #include "vehicle_gui.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
@@ -117,7 +118,7 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 
 static inline int RoadVehLengthToPixels(int length)
 {
-	return (length * 28) / 8;
+	return (length * ROADVEHINFO_DEFAULT_VEHICLE_WIDTH) / 8;
 }
 
 /**
@@ -130,7 +131,7 @@ static inline int RoadVehLengthToPixels(int length)
  */
 void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection, int max_width)
 {
-	int max_length = max_width / 28;
+	int max_length = max_width / ROADVEHINFO_DEFAULT_VEHICLE_WIDTH;
 
 	/* Width of highlight box */
 	int highlight_w = 0;

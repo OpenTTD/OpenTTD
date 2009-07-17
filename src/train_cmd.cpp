@@ -586,6 +586,29 @@ void UpdateTrainAcceleration(Train *v)
 	v->acceleration = Clamp(power / weight * 4, 1, 255);
 }
 
+/**
+ * Get the width of a train vehicle image in the GUI.
+ * @param offset Additional offset for positioning the sprite; set to NULL if not needed
+ * @return Width in pixels
+ */
+int Train::GetDisplayImageWidth(Point *offset) const
+{
+	int reference_width = TRAININFO_DEFAULT_VEHICLE_WIDTH;
+	int vehicle_pitch = 0;
+
+	const Engine *e = Engine::Get(this->engine_type);
+	if (e->grffile != NULL && is_custom_sprite(e->u.rail.image_index)) {
+		reference_width = e->grffile->traininfo_vehicle_width;
+		vehicle_pitch = e->grffile->traininfo_vehicle_pitch;
+	}
+
+	if (offset != NULL) {
+		offset->x = reference_width / 2;
+		offset->y = vehicle_pitch;
+	}
+	return this->tcache.cached_veh_length * reference_width / 8;
+}
+
 static SpriteID GetDefaultTrainSprite(uint8 spritenum, Direction direction)
 {
 	return ((direction + _engine_sprite_add[spritenum]) & _engine_sprite_and[spritenum]) + _engine_sprite_base[spritenum];
@@ -614,13 +637,16 @@ SpriteID Train::GetImage(Direction direction) const
 
 static SpriteID GetRailIcon(EngineID engine, bool rear_head, int &y)
 {
+	const Engine *e = Engine::Get(engine);
 	Direction dir = rear_head ? DIR_E : DIR_W;
-	uint8 spritenum = RailVehInfo(engine)->image_index;
+	uint8 spritenum = e->u.rail.image_index;
 
 	if (is_custom_sprite(spritenum)) {
 		SpriteID sprite = GetCustomVehicleIcon(engine, dir);
 		if (sprite != 0) {
-			y += _traininfo_vehicle_pitch; // TODO Make this per-GRF
+			if (e->grffile != NULL) {
+				y += e->grffile->traininfo_vehicle_pitch;
+			}
 			return sprite;
 		}
 
