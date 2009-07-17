@@ -79,6 +79,10 @@ struct StationRect : public Rect {
 
 /** Base class for all station-ish types */
 struct BaseStation {
+	TileIndex xy;                   ///< Base tile of the station
+	ViewportSign sign;              ///< NOSAVE: Dimensions of sign
+	byte delete_ctr;                ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the waypoint is then is deleted.
+
 	char *name;                     ///< Custom name
 	StringID string_id;             ///< Default name (town area) of station
 
@@ -94,6 +98,9 @@ struct BaseStation {
 	uint16 random_bits;             ///< Random bits assigned to this station
 	byte waiting_triggers;          ///< Waiting triggers (NewGRF) for this station
 	uint8 cached_anim_triggers;     ///< NOSAVE: Combined animation trigger bitmask, used to determine if trigger processing should happen.
+
+	BaseStation(TileIndex tile = INVALID_TILE) : xy(tile) { }
+	virtual ~BaseStation();
 
 	/**
 	 * Check whether a specific tile belongs to this station.
@@ -138,7 +145,6 @@ public:
 		return GetAirport(airport_type);
 	}
 
-	TileIndex xy;
 	RoadStop *bus_stops;
 	RoadStop *truck_stops;
 	TileIndex train_tile;
@@ -147,13 +153,10 @@ public:
 
 	IndustryType indtype;   ///< Industry type to get the name from
 
-	ViewportSign sign;
-
 	StationHadVehicleOfTypeByte had_vehicle_of_type;
 
 	byte time_since_load;
 	byte time_since_unload;
-	byte delete_ctr;
 	byte airport_type;
 
 	/* trainstation width/height */

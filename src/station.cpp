@@ -31,8 +31,14 @@
 StationPool _station_pool("Station");
 INSTANTIATE_POOL_METHODS(Station)
 
+BaseStation::~BaseStation()
+{
+	free(this->name);
+	free(this->speclist);
+}
+
 Station::Station(TileIndex tile) :
-	xy(tile),
+	BaseStation(tile),
 	train_tile(INVALID_TILE),
 	airport_tile(INVALID_TILE),
 	dock_tile(INVALID_TILE),
@@ -57,9 +63,6 @@ Station::Station(TileIndex tile) :
  */
 Station::~Station()
 {
-	free(this->name);
-	free(this->speclist);
-
 	if (CleaningPool()) return;
 
 	while (!this->loading_vehicles.empty()) {
