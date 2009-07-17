@@ -134,6 +134,7 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
 
+	void ReserveTrackUnderConsist() const;
 
 	/**
 	 * enum to handle train subtypes
