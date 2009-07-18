@@ -17,7 +17,7 @@
 {
 	if (!IsValidSubsidy(subsidy_id)) return false;
 
-	return Subsidy::Get(subsidy_id)->age >= 12;
+	return Subsidy::Get(subsidy_id)->IsAwarded();
 }
 
 /* static */ AICompany::CompanyID AISubsidy::GetAwardedTo(SubsidyID subsidy_id)

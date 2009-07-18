@@ -329,7 +329,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	if (new_owner == INVALID_OWNER) {
 		Subsidy *s;
 		FOR_ALL_SUBSIDIES(s) {
-			if (s->age >= 12 && Station::Get(s->to)->owner == old_owner) {
+			if (s->IsAwarded() && Station::Get(s->to)->owner == old_owner) {
 				s->cargo_type = CT_INVALID;
 			}
 		}

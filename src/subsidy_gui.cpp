@@ -47,7 +47,7 @@ struct SubsidyListWindow : Window {
 
 		const Subsidy *s;
 		FOR_ALL_SUBSIDIES(s) {
-			if (s->age < 12) {
+			if (!s->IsAwarded()) {
 				y -= FONT_HEIGHT_NORMAL;
 				if (y < 0) {
 					this->HandleClick(s);
@@ -66,7 +66,7 @@ struct SubsidyListWindow : Window {
 		if (y < 0) return;
 
 		FOR_ALL_SUBSIDIES(s) {
-			if (s->age >= 12) {
+			if (s->IsAwarded()) {
 				y -= FONT_HEIGHT_NORMAL;
 				if (y < 0) {
 					this->HandleClick(s);
@@ -83,7 +83,7 @@ struct SubsidyListWindow : Window {
 
 		/* determine from coordinate for subsidy and try to scroll to it */
 		uint offs = s->from;
-		if (s->age >= 12) {
+		if (s->IsAwarded()) {
 			xy = Station::Get(offs)->xy;
 		} else if (te == TE_PASSENGERS || te == TE_MAIL) {
 			xy = Town::Get(offs)->xy;
@@ -96,7 +96,7 @@ struct SubsidyListWindow : Window {
 
 			/* otherwise determine to coordinate for subsidy and scroll to it */
 			offs = s->to;
-			if (s->age >= 12) {
+			if (s->IsAwarded()) {
 				xy = Station::Get(offs)->xy;
 			} else if (te == TE_PASSENGERS || te == TE_MAIL || te == TE_GOODS || te == TE_FOOD) {
 				xy = Town::Get(offs)->xy;
@@ -131,7 +131,7 @@ struct SubsidyListWindow : Window {
 		uint num = 0;
 
 		FOR_ALL_SUBSIDIES(s) {
-			if (s->age < 12) {
+			if (!s->IsAwarded()) {
 				/* Displays the two offered towns */
 				SetupSubsidyDecodeParam(s, 1);
 				SetDParam(7, _date - ymd.day + 384 - s->age * 32);
@@ -153,7 +153,7 @@ struct SubsidyListWindow : Window {
 		num = 0;
 
 		FOR_ALL_SUBSIDIES(s) {
-			if (s->age >= 12) {
+			if (s->IsAwarded()) {
 				SetupSubsidyDecodeParam(s, 1);
 				SetDParam(3, Station::Get(s->to)->owner);
 				SetDParam(4, _date - ymd.day + 768 - s->age * 32);

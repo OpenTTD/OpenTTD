@@ -1887,7 +1887,7 @@ bool AfterLoadGame()
 		/* Delete invalid subsidies possibly present in old versions (but converted to new savegame) */
 		Subsidy *s;
 		FOR_ALL_SUBSIDIES(s) {
-			if (s->age >= 12) {
+			if (s->IsAwarded()) {
 				/* Station -> Station */
 				const Station *from = Station::GetIfValid(s->from);
 				const Station *to = Station::GetIfValid(s->to);

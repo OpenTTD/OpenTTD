@@ -60,7 +60,7 @@ Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode)
 	const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
 	SetDParam(0, mode ? cs->name : cs->name_single);
 
-	if (s->age < 12) {
+	if (!s->IsAwarded()) {
 		if (cs->town_effect != TE_PASSENGERS && cs->town_effect != TE_MAIL) {
 			SetDParam(1, STR_INDUSTRY);
 			SetDParam(2, s->from);
@@ -102,7 +102,7 @@ void DeleteSubsidyWithTown(TownID index)
 {
 	Subsidy *s;
 	FOR_ALL_SUBSIDIES(s) {
-		if (s->age < 12) {
+		if (!s->IsAwarded()) {
 			const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
 			if (((cs->town_effect == TE_PASSENGERS || cs->town_effect == TE_MAIL) && (index == s->from || index == s->to)) ||
 				((cs->town_effect == TE_GOODS || cs->town_effect == TE_FOOD) && index == s->to)) {
@@ -116,7 +116,7 @@ void DeleteSubsidyWithIndustry(IndustryID index)
 {
 	Subsidy *s;
 	FOR_ALL_SUBSIDIES(s) {
-		if (s->age < 12) {
+		if (!s->IsAwarded()) {
 			const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
 			if (cs->town_effect != TE_PASSENGERS && cs->town_effect != TE_MAIL &&
 				(index == s->from || (cs->town_effect != TE_GOODS && cs->town_effect != TE_FOOD && index == s->to))) {
@@ -132,7 +132,7 @@ void DeleteSubsidyWithStation(StationID index)
 
 	Subsidy *s;
 	FOR_ALL_SUBSIDIES(s) {
-		if (s->age >= 12 && (s->from == index || s->to == index)) {
+		if (s->IsAwarded() && (s->from == index || s->to == index)) {
 			s->cargo_type = CT_INVALID;
 			dirty = true;
 		}
@@ -315,7 +315,7 @@ bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type,
 	/* check if there is an already existing subsidy that applies to us */
 	FOR_ALL_SUBSIDIES(s) {
 		if (s->cargo_type == cargo_type &&
-				s->age >= 12 &&
+				s->IsAwarded() &&
 				s->from == from->index &&
 				s->to == to->index) {
 			return true;
@@ -324,7 +324,7 @@ bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type,
 
 	/* check if there's a new subsidy that applies.. */
 	FOR_ALL_SUBSIDIES(s) {
-		if (s->cargo_type == cargo_type && s->age < 12) {
+		if (s->cargo_type == cargo_type && !s->IsAwarded()) {
 			/* Check distance from source */
 			const CargoSpec *cs = CargoSpec::Get(cargo_type);
 			if (cs->town_effect == TE_PASSENGERS || cs->town_effect == TE_MAIL) {

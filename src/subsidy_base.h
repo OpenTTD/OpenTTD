@@ -18,6 +18,15 @@ struct Subsidy {
 	uint16 to;          ///< Index of destination. Either TownID, IndustryID or StationID, when awarded
 
 	/**
+	 * Tests whether this subsidy has been awarded to someone
+	 * @return is this subsidy awarded?
+	 */
+	FORCEINLINE bool IsAwarded() const
+	{
+		return this->age >= 12;
+	}
+
+	/**
 	 * Determines index of this subsidy
 	 * @return index (in the Subsidy::array array)
 	 */
