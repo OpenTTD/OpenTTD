@@ -33,6 +33,7 @@
 #include "elrail_func.h"
 #include "station_base.h"
 #include "roadstop_base.h"
+#include "waypoint.h"
 
 #include "table/strings.h"
 
@@ -384,9 +385,13 @@ void Station::UpdateVirtCoord()
 /** Update the virtual coords needed to draw the station sign for all stations. */
 void UpdateAllStationVirtCoords()
 {
-	Station *st;
+	BaseStation *st;
 
 	FOR_ALL_STATIONS(st) {
+		st->UpdateVirtCoord();
+	}
+
+	FOR_ALL_WAYPOINTS(st) {
 		st->UpdateVirtCoord();
 	}
 }

@@ -120,6 +120,11 @@ struct BaseStation {
 	virtual uint32 GetNewGRFVariable(const struct ResolverObject *object, byte variable, byte parameter, bool *available) const = 0;
 
 	/**
+	 * Update the coordinated of the sign (as shown in the viewport).
+	 */
+	virtual void UpdateVirtCoord() = 0;
+
+	/**
 	 * Get the base station belonging to a specific tile.
 	 * @param tile The tile to get the base station from.
 	 * @return the station associated with that tile.

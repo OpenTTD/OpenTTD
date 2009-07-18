@@ -322,7 +322,6 @@ struct GameOptionsWindow : Window {
 				ReadLanguagePack(index);
 				CheckForMissingGlyphsInLoadedLanguagePack();
 				UpdateAllStationVirtCoords();
-				UpdateAllWaypointVirtCoords();
 				ReInitAllWindows();
 				MarkWholeScreenDirty();
 				break;

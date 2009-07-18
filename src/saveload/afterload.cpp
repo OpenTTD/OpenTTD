@@ -216,7 +216,6 @@ static bool InitializeWindowsAndCaches()
 	UpdateAllStationVirtCoords();
 	UpdateAllSignVirtCoords();
 	UpdateAllTownVirtCoords();
-	UpdateAllWaypointVirtCoords();
 
 	Company *c;
 	FOR_ALL_COMPANIES(c) {

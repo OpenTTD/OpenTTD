@@ -18,18 +18,6 @@ WaypointPool _waypoint_pool("Waypoint");
 INSTANTIATE_POOL_METHODS(Waypoint)
 
 /**
- * Update all signs
- */
-void UpdateAllWaypointVirtCoords()
-{
-	Waypoint *wp;
-
-	FOR_ALL_WAYPOINTS(wp) {
-		wp->UpdateVirtCoord();
-	}
-}
-
-/**
  * Daily loop for waypoints
  */
 void WaypointsDailyLoop()

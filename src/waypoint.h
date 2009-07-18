@@ -51,6 +51,5 @@ struct Waypoint : WaypointPool::PoolItem<&_waypoint_pool>, BaseStation {
 CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justremove);
 void ShowWaypointWindow(const Waypoint *wp);
 void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype);
-void UpdateAllWaypointVirtCoords();
 
 #endif /* WAYPOINT_H */
