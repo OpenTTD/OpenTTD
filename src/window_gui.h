@@ -521,18 +521,17 @@ public:
 	virtual void DrawWidget(const Rect &r, int widget) const {}
 
 	/**
-	 * Compute size of the contents of a widget.
-	 * If no useful size can be computed, return null-size (both width and height \c 0).
-	 * @param widget Number of the widget to get the size of.
-	 * @return Size of the contents of the widget.
-	 * @note If the contents ever becomes larger than what is returned here, the window should be re-initialized (with #Window::ReInit),
-	 *       and this function should return a larger size.
+	 * Update size and resize step of a widget in the window.
+	 * After retrieval of the minimal size and the resize-steps of a widget, this function is called to allow further refinement,
+	 * typically by computing the real maximal size of the content. Afterwards, \a size is taken to be the minimal size of the widget
+	 * and \a resize is taken to contain the resize steps. For the convenience of the callee, \a padding contains the amount of
+	 * padding between the content and the edge of the widget. This should be added to the returned size.
+	 * @param widget  Widget number.
+	 * @param size    Size of the widget.
+	 * @param padding Recommended amount of space between the widget content and the widget edge.
+	 * @param resize  Resize step of the widget.
 	 */
-	virtual Dimension GetWidgetContentSize(int widget)
-	{
-		Dimension d = {0, 0};
-		return d;
-	}
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize) {}
 
 	/**
 	 * Called when window gains focus

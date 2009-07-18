@@ -643,18 +643,19 @@ public:
 		}
 	}
 
-	virtual Dimension GetWidgetContentSize(int widget)
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
 	{
-		Dimension d = {0, 0};
 		switch (widget) {
 			case TDW_SORTNAME:
 			case TDW_SORTPOPULATION: {
-				d = GetStringBoundingBox(this->nested_array[widget]->widget_data);
-				d.width += WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the word is centered, also looks nice.
+				Dimension d = GetStringBoundingBox(this->nested_array[widget]->widget_data);
+				d.width += padding.width + WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the word is centered, also looks nice.
+				d.height += padding.height;
+				*size = maxdim(*size, d);
 				break;
 			}
-
-			case TDW_CENTERTOWN:
+			case TDW_CENTERTOWN: {
+				Dimension d = {0, 0};
 				for (uint i = 0; i < this->towns.Length(); i++) {
 					const Town *t = this->towns[i];
 
@@ -664,15 +665,21 @@ public:
 					SetDParam(1, 10000000); // 10^7
 					d = maxdim(d, GetStringBoundingBox(STR_TOWN_DIRECTORY_TOWN));
 				}
-				d.width += 2 + 2; // Text is rendered with 2 pixel offset at both sides.
+				d.width += padding.width + 2 + 2; // Text is rendered with 2 pixel offset at both sides.
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				resize->height = d.height;
 				break;
-
-			case TDW_EMPTYBOTTOM:
+			}
+			case TDW_EMPTYBOTTOM: {
 				SetDParam(0, 1000000000); // 10^9
-				d = GetStringBoundingBox(STR_TOWN_POPULATION);
+				Dimension d = GetStringBoundingBox(STR_TOWN_POPULATION);
+				d.width += padding.width;
+				d.height += padding.height;
+				*size = maxdim(*size, d);
 				break;
+			}
 		}
-		return d;
 	}
 
 	virtual void OnClick(Point pt, int widget)

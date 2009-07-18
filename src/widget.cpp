@@ -892,7 +892,7 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
  *
  * The smallest size of a widget is the smallest size that a widget needs to
  * display itself properly. In addition, filling and resizing of the widget are computed.
- * If \a w is not \c NULL, the function calls #Window::GetWidgetContentSize for each leaf widget and
+ * If \a w is not \c NULL, the function calls #Window::UpdateWidgetSize for each leaf widget and
  * background widget without child with a non-negative index.
  *
  * @param w Optional window owning the widget.
@@ -1692,12 +1692,18 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 		this->resize_y = this->child->resize_y;
 	} else {
 		Dimension d = {this->min_x, this->min_y};
+		Dimension resize  = {this->resize_x, this->resize_y};
 		if (w != NULL) { // A non-NULL window pointer acts as switch to turn dynamic widget size on.
-			if (this->index >= 0) d = maxdim(d, w->GetWidgetContentSize(this->index));
 			if (this->type == WWT_FRAME || this->type == WWT_INSET) d = maxdim(d, GetStringBoundingBox(this->widget_data));
+			if (this->index >= 0) {
+				static const Dimension padding = {0, 0};
+				w->UpdateWidgetSize(this->index, &d, padding, &resize);
+			}
 		}
 		this->smallest_x = d.width;
 		this->smallest_y = d.height;
+		this->resize_x = resize.width;
+		this->resize_y = resize.height;
 	}
 }
 
@@ -1887,109 +1893,138 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 
 void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 {
-	Dimension d = {this->min_x, this->min_y}; // At least minimal size is needed.
-
-	if (w != NULL) { // A non-NULL window pointer acts as switch to turn dynamic widget sizing on.
-		Dimension d2 = {0, 0};
-		if (this->index >= 0) {
-			if (init_array) {
-				assert(w->nested_array_size > (uint)this->index);
-				w->nested_array[this->index] = this;
-			}
-			d2 = maxdim(d2, w->GetWidgetContentSize(this->index)); // If appropriate, ask window for smallest size.
-		}
-
-		/* Check size requirements of the widget itself too.
-		 * Also, add the offset used for rendering.
-		 */
-		switch (this->type) {
-			case WWT_EMPTY:
-			case WWT_MATRIX:
-			case WWT_SCROLLBAR:
-			case WWT_SCROLL2BAR:
-			case WWT_HSCROLLBAR:
-				break;
-
-			case WWT_STICKYBOX:
-				if (NWidgetLeaf::stickybox_dimension.width == 0) {
-					NWidgetLeaf::stickybox_dimension = maxdim(GetSpriteSize(SPR_PIN_UP), GetSpriteSize(SPR_PIN_DOWN));
-					NWidgetLeaf::stickybox_dimension.width += WD_STICKYBOX_LEFT + WD_STICKYBOX_RIGHT;
-					NWidgetLeaf::stickybox_dimension.height += WD_STICKYBOX_TOP + WD_STICKYBOX_BOTTOM;
-				}
-				d2 = maxdim(d2, NWidgetLeaf::stickybox_dimension);
-				break;
-
-			case WWT_RESIZEBOX:
-				if (NWidgetLeaf::resizebox_dimension.width == 0) {
-					NWidgetLeaf::resizebox_dimension = maxdim(GetSpriteSize(SPR_WINDOW_RESIZE_LEFT), GetSpriteSize(SPR_WINDOW_RESIZE_RIGHT));
-					NWidgetLeaf::resizebox_dimension.width += WD_RESIZEBOX_LEFT + WD_RESIZEBOX_RIGHT;
-					NWidgetLeaf::resizebox_dimension.height += WD_RESIZEBOX_TOP + WD_RESIZEBOX_BOTTOM;
-				}
-				d2 = maxdim(d2, NWidgetLeaf::resizebox_dimension);
-				break;
-
-			case WWT_PUSHBTN:
-			case WWT_EDITBOX:
-				d2.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-				d2.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
-				break;
-
-			case WWT_IMGBTN:
-			case WWT_PUSHIMGBTN:
-				d2 = maxdim(d2, GetSpriteSize(this->widget_data));
-				d2.height += WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM;
-				d2.width += WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT;
-				break;
-
-			case WWT_IMGBTN_2:
-				d2 = maxdim(d2, GetSpriteSize(this->widget_data));
-				d2 = maxdim(d2, GetSpriteSize(this->widget_data + 1));
-				d2.height += WD_IMGBTN2_TOP + WD_IMGBTN2_BOTTOM;
-				d2.width += WD_IMGBTN2_LEFT + WD_IMGBTN2_RIGHT;
-				break;
-
-			case WWT_CLOSEBOX:
-				if (NWidgetLeaf::closebox_dimension.width == 0) {
-					NWidgetLeaf::closebox_dimension = maxdim(GetStringBoundingBox(STR_BLACK_CROSS), GetStringBoundingBox(STR_SILVER_CROSS));
-					NWidgetLeaf::closebox_dimension.width += WD_CLOSEBOX_LEFT + WD_CLOSEBOX_RIGHT;
-					NWidgetLeaf::closebox_dimension.height += WD_CLOSEBOX_TOP + WD_CLOSEBOX_BOTTOM;
-				}
-				d2 = maxdim(d2, NWidgetLeaf::closebox_dimension);
-				break;
-
-			case WWT_TEXTBTN:
-			case WWT_PUSHTXTBTN:
-			case WWT_TEXTBTN_2:
-				d2 = maxdim(d2, GetStringBoundingBox(this->widget_data));
-				d2.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-				d2.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
-				break;
-
-			case WWT_LABEL:
-			case WWT_TEXT:
-				d2 = maxdim(d2, GetStringBoundingBox(this->widget_data));
-				break;
-
-			case WWT_CAPTION:
-				d2 = maxdim(d2, GetStringBoundingBox(this->widget_data));
-				d2.width += WD_CAPTIONTEXT_LEFT + WD_CAPTIONTEXT_RIGHT;
-				d2.height += WD_CAPTIONTEXT_TOP + WD_CAPTIONTEXT_BOTTOM;
-				break;
-
-			case WWT_DROPDOWN:
-				d2 = maxdim(d2, GetStringBoundingBox(this->widget_data));
-				d2.width += WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT;
-				d2.height += WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM;
-				break;
-
-			default:
-				NOT_REACHED();
-		}
-		d = maxdim(d, d2);
+	if (w == NULL) { // Conversion to widget array.
+		this->smallest_x = this->min_x;
+		this->smallest_y = this->min_y;
+		/* All other data is already at the right place. */
+		return;
 	}
-	this->smallest_x = d.width;
-	this->smallest_y = d.height;
-	/* All other data is already at the right place. */
+
+	if (this->index >= 0 && init_array) { // Fill w->nested_array[]
+		assert(w->nested_array_size > (uint)this->index);
+		w->nested_array[this->index] = this;
+	}
+
+	/* A non-NULL window pointer acts as switch to turn dynamic widget sizing on. */
+	Dimension size = {this->min_x, this->min_y};
+	Dimension resize = {this->resize_x, this->resize_y};
+	/* Get padding, and update size with the real content size if appropriate. */
+	const Dimension *padding = NULL;
+	switch (this->type) {
+		case WWT_EMPTY:
+		case WWT_MATRIX:
+		case WWT_SCROLLBAR:
+		case WWT_SCROLL2BAR:
+		case WWT_HSCROLLBAR: {
+			static const Dimension extra = {0, 0};
+			padding = &extra;
+			break;
+		}
+		case WWT_STICKYBOX: {
+			static const Dimension extra = {WD_STICKYBOX_LEFT + WD_STICKYBOX_RIGHT, WD_STICKYBOX_TOP + WD_STICKYBOX_BOTTOM};
+			padding = &extra;
+			if (NWidgetLeaf::stickybox_dimension.width == 0) {
+				NWidgetLeaf::stickybox_dimension = maxdim(GetSpriteSize(SPR_PIN_UP), GetSpriteSize(SPR_PIN_DOWN));
+				NWidgetLeaf::stickybox_dimension.width += extra.width;
+				NWidgetLeaf::stickybox_dimension.height += extra.height;
+			}
+			size = maxdim(size, NWidgetLeaf::stickybox_dimension);
+			break;
+		}
+		case WWT_RESIZEBOX: {
+			static const Dimension extra = {WD_RESIZEBOX_LEFT + WD_RESIZEBOX_RIGHT, WD_RESIZEBOX_TOP + WD_RESIZEBOX_BOTTOM};
+			padding = &extra;
+			if (NWidgetLeaf::resizebox_dimension.width == 0) {
+				NWidgetLeaf::resizebox_dimension = maxdim(GetSpriteSize(SPR_WINDOW_RESIZE_LEFT), GetSpriteSize(SPR_WINDOW_RESIZE_RIGHT));
+				NWidgetLeaf::resizebox_dimension.width += extra.width;
+				NWidgetLeaf::resizebox_dimension.height += extra.height;
+			}
+			size = maxdim(size, NWidgetLeaf::resizebox_dimension);
+			break;
+		}
+		case WWT_PUSHBTN:
+		case WWT_EDITBOX: {
+			static const Dimension extra = {WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM};
+			padding = &extra;
+			break;
+		}
+		case WWT_IMGBTN:
+		case WWT_PUSHIMGBTN: {
+			static const Dimension extra = {WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT,  WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM};
+			padding = &extra;
+			Dimension d2 = GetSpriteSize(this->widget_data);
+			d2.width += extra.width;
+			d2.height += extra.height;
+			size = maxdim(size, d2);
+			break;
+		}
+		case WWT_IMGBTN_2: {
+			static const Dimension extra = {WD_IMGBTN2_LEFT + WD_IMGBTN2_RIGHT,  WD_IMGBTN2_TOP + WD_IMGBTN2_BOTTOM};
+			padding = &extra;
+			Dimension d2 = maxdim(GetSpriteSize(this->widget_data), GetSpriteSize(this->widget_data + 1));
+			d2.width += extra.width;
+			d2.height += extra.height;
+			size = maxdim(size, d2);
+			break;
+		}
+		case WWT_CLOSEBOX: {
+			static const Dimension extra = {WD_CLOSEBOX_LEFT + WD_CLOSEBOX_RIGHT, WD_CLOSEBOX_TOP + WD_CLOSEBOX_BOTTOM};
+			padding = &extra;
+			if (NWidgetLeaf::closebox_dimension.width == 0) {
+				NWidgetLeaf::closebox_dimension = maxdim(GetStringBoundingBox(STR_BLACK_CROSS), GetStringBoundingBox(STR_SILVER_CROSS));
+				NWidgetLeaf::closebox_dimension.width += extra.width;
+				NWidgetLeaf::closebox_dimension.height += extra.height;
+			}
+			size = maxdim(size, NWidgetLeaf::closebox_dimension);
+			break;
+		}
+		case WWT_TEXTBTN:
+		case WWT_PUSHTXTBTN:
+		case WWT_TEXTBTN_2: {
+			static const Dimension extra = {WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT,  WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM};
+			padding = &extra;
+			Dimension d2 = GetStringBoundingBox(this->widget_data);
+			d2.width += extra.width;
+			d2.height += extra.height;
+			size = maxdim(size, d2);
+			break;
+		}
+		case WWT_LABEL:
+		case WWT_TEXT: {
+			static const Dimension extra = {0, 0};
+			padding = &extra;
+			size = maxdim(size, GetStringBoundingBox(this->widget_data));
+			break;
+		}
+		case WWT_CAPTION: {
+			static const Dimension extra = {WD_CAPTIONTEXT_LEFT + WD_CAPTIONTEXT_RIGHT, WD_CAPTIONTEXT_TOP + WD_CAPTIONTEXT_BOTTOM};
+			padding = &extra;
+			Dimension d2 = GetStringBoundingBox(this->widget_data);
+			d2.width += extra.width;
+			d2.height += extra.height;
+			size = maxdim(size, d2);
+			break;
+		}
+		case WWT_DROPDOWN: {
+			static const Dimension extra = {WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM};
+			padding = &extra;
+			Dimension d2 = GetStringBoundingBox(this->widget_data);
+			d2.width += extra.width;
+			d2.height += extra.height;
+			size = maxdim(size, d2);
+			break;
+		}
+		default:
+			NOT_REACHED();
+	}
+
+	if (this->index >= 0) w->UpdateWidgetSize(this->index, &size, *padding, &resize);
+
+	this->smallest_x = size.width;
+	this->smallest_y = size.height;
+	this->resize_x = resize.width;
+	this->resize_y = resize.height;
+	/* this->fill_x and this->fill_y are already correct. */
 }
 
 void NWidgetLeaf::Draw(const Window *w)
