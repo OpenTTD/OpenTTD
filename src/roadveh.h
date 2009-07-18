@@ -117,6 +117,7 @@ struct RoadVehicle : public SpecializedVehicle<RoadVehicle, VEH_ROAD> {
 	int GetDisplaySpeed() const { return this->cur_speed / 2; }
 	int GetDisplayMaxSpeed() const { return this->max_speed / 2; }
 	Money GetRunningCost() const { return RoadVehInfo(this->engine_type)->running_cost * GetPriceByIndex(RoadVehInfo(this->engine_type)->running_cost_class); }
+	int GetDisplayImageWidth(Point *offset = NULL) const;
 	bool IsInDepot() const { return this->state == RVSB_IN_DEPOT; }
 	bool IsStoppedInDepot() const;
 	bool Tick();

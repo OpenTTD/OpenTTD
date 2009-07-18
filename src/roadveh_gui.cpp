@@ -6,7 +6,6 @@
 #include "roadveh.h"
 #include "window_gui.h"
 #include "gfx_func.h"
-#include "newgrf_engine.h"
 #include "vehicle_gui.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
@@ -115,12 +114,6 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 	DrawString(left, right, y + 33 + y_offset, STR_FEEDER_CARGO_VALUE);
 }
 
-
-static inline int RoadVehLengthToPixels(int length)
-{
-	return (length * ROADVEHINFO_DEFAULT_VEHICLE_WIDTH) / 8;
-}
-
 /**
  * Draws an image of a road vehicle chain
  * @param v Front vehicle
@@ -131,31 +124,19 @@ static inline int RoadVehLengthToPixels(int length)
  */
 void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection, int max_width)
 {
-	int max_length = max_width / ROADVEHINFO_DEFAULT_VEHICLE_WIDTH;
+	const RoadVehicle *u = RoadVehicle::From(v);
+	int x_pos = 0;
+	for (; u != NULL && x_pos < max_width; u = u->Next()) {
+		Point offset;
+		int width = u->GetDisplayImageWidth(&offset);
 
-	/* Width of highlight box */
-	int highlight_w = 0;
-
-	for (int dx = 0; v != NULL && dx < max_length ; v = v->Next()) {
-		int width = RoadVehicle::From(v)->rcache.cached_veh_length;
-
-		if (dx + width > 0 && dx <= max_length) {
-			SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-			DrawSprite(v->GetImage(DIR_W), pal, x + 14 + RoadVehLengthToPixels(dx), y + 6);
-
-			if (v->index == selection) {
-				/* Set the highlight position */
-				highlight_w = RoadVehLengthToPixels(width);
-			} else if (_cursor.vehchain && highlight_w != 0) {
-				highlight_w += RoadVehLengthToPixels(width);
-			}
-		}
-
-		dx += width;
+		SpriteID pal = (u->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(u);
+		DrawSprite(u->GetImage(DIR_W), pal, x + x_pos + offset.x, y + 6 + offset.y);
+		x_pos += width;
 	}
 
-	if (highlight_w != 0) {
-		DrawFrameRect(x - 1, y - 1, x - 1 + highlight_w, y + 12, COLOUR_WHITE, FR_BORDERONLY);
+	if (v->index == selection) {
+		DrawFrameRect(x - 1, y - 1, x - 1 + x_pos, y + 12, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
 

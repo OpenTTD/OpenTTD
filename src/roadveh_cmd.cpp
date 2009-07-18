@@ -85,6 +85,22 @@ static const Trackdir _roadveh_depot_exit_trackdir[DIAGDIR_END] = {
 	TRACKDIR_X_NE, TRACKDIR_Y_SE, TRACKDIR_X_SW, TRACKDIR_Y_NW
 };
 
+/**
+ * Get the width of a road vehicle image in the GUI.
+ * @param offset Additional offset for positioning the sprite; set to NULL if not needed
+ * @return Width in pixels
+ */
+int RoadVehicle::GetDisplayImageWidth(Point *offset) const
+{
+	int reference_width = ROADVEHINFO_DEFAULT_VEHICLE_WIDTH;
+
+	if (offset != NULL) {
+		offset->x = reference_width / 2;
+		offset->y = 0;
+	}
+	return this->rcache.cached_veh_length * reference_width / 8;
+}
+
 static SpriteID GetRoadVehIcon(EngineID engine)
 {
 	uint8 spritenum = RoadVehInfo(engine)->image_index;
