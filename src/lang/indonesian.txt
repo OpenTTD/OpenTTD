@@ -157,7 +157,7 @@ STR_ABBREV_ALL                                                  :{TINYFONT}SMA
 STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
 STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Peta - {STRING}
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pilihan permainan
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pengaturan permainan
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Pesan
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Pesan dari {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Peringatan!
@@ -270,7 +270,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor S
 
 STR_MAPSIZE                                                     :{BLACK}Ukuran Peta:
 STR_BY                                                          :{BLACK}*
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pilihan Permainan
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pengaturan Permainan
 
 STR_COMPANY_SOMEONE                                             :seseorang{SKIP}{SKIP}
 
@@ -672,7 +672,7 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pilihan Permainan
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pengaturan permainan
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Pengaturan tingkat kesulitan
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Pengaturan lanjutan
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Pengaturan NewGRF
@@ -698,7 +698,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tentang 'OpenTT
 ############ range ends here
 
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Non-aktifkan
-STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Hidup
+STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Aktif
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Tampilkan subsidi
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidi
 
@@ -2164,7 +2164,7 @@ STR_ECONOMY_FLUCTUATING                                         :Fluktuatif
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Pada ujung rel, dan pada stasiun
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Hanya pada ujung rel
 STR_DISASTERS_OFF                                               :Non-aktifkan
-STR_DISASTERS_ON                                                :Hidup
+STR_DISASTERS_ON                                                :Aktif
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Tampilkan tabel skor tertinggi
 STR_CITY_APPROVAL_PERMISSIVE                                    :Selalu boleh
 STR_CITY_APPROVAL_TOLERANT                                      :Toleran

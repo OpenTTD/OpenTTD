@@ -1728,7 +1728,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Магн
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Выберите железнодорожный мост
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Здесь невозможно построить депо...
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Здесь невозможно построить станцию...
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Здесь невозможно построить светофор...
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Здесь невозможно поставить светофор...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Здесь невозможно проложить рельсы...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Невозможно удалить рельсы...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Невозможно удалить светофор...
@@ -2882,7 +2882,7 @@ STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Новы
 STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Новый магниторельс
 STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Поезда
 
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Построить
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Купить
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Копировать
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Создаёт копию автомобиля. Control+щелчок копирует задания
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Создаёт копию автомобиля. Щёлкнуть на кнопке и затем на машине внутри или снаружи гаража. Control+щелчок копирует и задания
@@ -2905,7 +2905,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Пере
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Задания)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Конец заданий - -
 STR_SERVICE                                                     :{BLACK}Обслуж.
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Невозможно построить ж/д транспорт...
+STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Невозможно купить ж/д транспорт...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}  Построен в {LTBLUE}{NUM} г.{BLACK} Стоимость: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Стоимость: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2934,11 +2934,11 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Осмо
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Интервал обслуж.: {LTBLUE}{COMMA}%{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Поезда - нажмите для получения справки
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Поезда - кликните для получения информации, используйте перетаскивание для изменения состава
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Построить новый поезд
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Купить новый поезд
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Перетащите сюда транспорт, чтобы продать его
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Показать депо в основном окне
 STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Выбор вагонов - кликните для справки
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Построить выделенный вагон
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Купить выбранный локомотив/вагон
 STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Переименовать тип вагона
 STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Текущее действие поезда; кликните для его остановки/запуска
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Показать задания
@@ -3025,8 +3025,8 @@ STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}Гараж {TOWN}
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Новая машина
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Новая машина
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Построить
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Невозможно построить машину...
+STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Купить
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Невозможно купить машину...
 STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...должен быть остановлен в гараже
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Невозможно продать автомобиль...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Невозможно остановить/запустить автомобиль...
@@ -3045,11 +3045,11 @@ STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Отпр
 STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Принудительно развернуть автомобиль
 STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Показать информацию об автомобиле
 STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Автомобили - кликните для получения справки
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Построить новый автомобиль
+STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Купить новый автомобиль
 STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Перетащите сюда автомобиль, чтобы продать его
 STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Показать гараж в главном окне
 STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Список автотранспорта - кликните для получения информации
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Построить выделенный автомобиль
+STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Купить выбранный автомобиль
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Ёмкость: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3087,12 +3087,12 @@ STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Ново
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} корабл{P ь я ей}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Покупка кораблей
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Купить
-STR_CLONE_SHIP                                                  :{BLACK}Копировать судно
+STR_CLONE_SHIP                                                  :{BLACK}Копировать
 STR_CLONE_SHIP_INFO                                             :{BLACK}Создаёт копию корабля. Control+клик копирует задания
 STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Создаёт копию корабля. Щёлкнуть на кнопке и затем на корабле внутри или снаружи дока. Control+клик копирует задания
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Корабль должен быть остановлен в доке
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Невозможно продать корабль...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Невозможно построить корабль...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Невозможно купить корабль...
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Корабль на пути
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Не могу остановить/запустить корабль...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Не могу отправить корабль в док...
@@ -3104,12 +3104,12 @@ STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Строительство пристаней
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Строительство доков (для строительства и обслуживания кораблей)
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Корабли - нажмите для получения справки
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Построить новый корабль
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Купить новый корабль
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Перетащите сюда корабль, чтобы продать его
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Показать док в основном окне
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Корабли - нажмите для получения справки
 STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Список кораблей - нажмите для получения справки
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Построить выбранный корабль
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Купить выбранный корабль
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Текущее действие корабля; кликните для его остановки/запуска
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Показать задания
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Показать корабль в главном окне
@@ -3145,10 +3145,10 @@ STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}Анга
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Новое судно
 STR_CLONE_AIRCRAFT                                              :{BLACK}Копировать
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Создаёт копию самолёта. Control+клик - копирует задания
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Построить копию возд. судна. Нажмите на кнопку, а потом на возд. судно в/вне ангара. Ctrl+click - также скопирует и задание.
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Создаёт копию самолёта. Нажмите на кнопку, а потом на возд. судно в/вне ангара. Ctrl+click - также скопирует и задание.
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Новый
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Построить
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Невозможно построить возд. транспорт...
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Купить
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Невозможно купить возд. транспорт...
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} единиц{P а ы ""} авиатранспорта
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Невозможно отправить его в ангар...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Летит в Ангар {STATION}
@@ -3165,11 +3165,11 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Строите�
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Строительство аэропортов
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авиатранспорт - нажмите для получения справки
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авиатранспорт - нажмите для получения справки
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Построить новый авиатранспорт
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Купить новый авиатранспорт
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Перетащите сюда транспорт, чтобы продать его
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Показать ангар в главном окне
 STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Авиатранспорт - нажмите для получения справки
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Построить выделенный авиатранспорт
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Купить выбранный авиатранспорт
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Текущее действие воздушного судна; кликните для его остановки/запуска
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Показать задания
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Показать транспорт в главном окне
