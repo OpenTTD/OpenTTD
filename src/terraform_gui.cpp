@@ -247,9 +247,9 @@ static OnButtonClick * const _terraform_button_proc[] = {
 };
 
 struct TerraformToolbarWindow : Window {
-	TerraformToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	TerraformToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		this->FindWindowPlacementAndResize(desc);
+		this->InitNested(desc, window_number);
 	}
 
 	~TerraformToolbarWindow()
@@ -308,23 +308,6 @@ struct TerraformToolbarWindow : Window {
 	}
 };
 
-static const Widget _terraform_widgets[] = {
-{ WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,  10,   0,  13, STR_BLACK_CROSS,         STR_TOOLTIP_CLOSE_WINDOW},                     // TTW_CLOSEBOX
-{  WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11, 145,   0,  13, STR_LANDSCAPING_TOOLBAR, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},           // TTW_CAPTION
-{WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN, 146, 157,   0,  13, STR_NULL,                STR_STICKY_BUTTON},                            // TTW_STICKY
-
-{    WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,  66,  69,  14,  35, 0x0,                     STR_NULL},                                     // TTW_SEPERATOR
-{   WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,  21,  14,  35, SPR_IMG_TERRAFORM_DOWN,  STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND}, // TTW_LOWER_LAND
-{   WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,  22,  43,  14,  35, SPR_IMG_TERRAFORM_UP,    STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND}, // TTW_RAISE_LAND
-{   WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,  44,  65,  14,  35, SPR_IMG_LEVEL_LAND,      STR_LEVEL_LAND_TOOLTIP},                       // TTW_LEVEL_LAND
-{   WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,  70,  91,  14,  35, SPR_IMG_DYNAMITE,        STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC},           // TTW_DEMOLISH
-{   WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,  92, 113,  14,  35, SPR_IMG_BUY_LAND,        STR_TERRAFORM_TOOLTIP_PURCHASE_LAND},          // TTW_BUY_LAND
-{   WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN, 114, 135,  14,  35, SPR_IMG_PLANTTREES,      STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS},  // TTW_PLANT_TREES
-{   WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN, 136, 157,  14,  35, SPR_IMG_SIGN,            STR_SCENEDIT_TOOLBAR_PLACE_SIGN},              // TTW_PLACE_SIGN
-
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_terraform_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, TTW_CLOSEBOX),
@@ -332,14 +315,23 @@ static const NWidgetPart _nested_terraform_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, TTW_STICKY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_LOWER_LAND), SetMinimalSize(22,22), SetDataTip(SPR_IMG_TERRAFORM_DOWN, STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_RAISE_LAND), SetMinimalSize(22,22), SetDataTip(SPR_IMG_TERRAFORM_UP, STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_LEVEL_LAND), SetMinimalSize(22,22), SetDataTip(SPR_IMG_LEVEL_LAND, STR_LEVEL_LAND_TOOLTIP),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_LOWER_LAND), SetMinimalSize(22,22),
+								SetFill(0, 1), SetDataTip(SPR_IMG_TERRAFORM_DOWN, STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_RAISE_LAND), SetMinimalSize(22,22),
+								SetFill(0, 1), SetDataTip(SPR_IMG_TERRAFORM_UP, STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_LEVEL_LAND), SetMinimalSize(22,22),
+								SetFill(0, 1), SetDataTip(SPR_IMG_LEVEL_LAND, STR_LEVEL_LAND_TOOLTIP),
+
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, TTW_SEPERATOR), SetMinimalSize(4, 22), EndContainer(),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_DEMOLISH), SetMinimalSize(22,22), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_BUY_LAND), SetMinimalSize(22,22), SetDataTip(SPR_IMG_BUY_LAND, STR_TERRAFORM_TOOLTIP_PURCHASE_LAND),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_PLANT_TREES), SetMinimalSize(22,22), SetDataTip(SPR_IMG_PLANTTREES, STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_PLACE_SIGN), SetMinimalSize(22,22), SetDataTip(SPR_IMG_SIGN, STR_SCENEDIT_TOOLBAR_PLACE_SIGN),
+
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_DEMOLISH), SetMinimalSize(22,22),
+								SetFill(0, 1), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_BUY_LAND), SetMinimalSize(22,22),
+								SetFill(0, 1), SetDataTip(SPR_IMG_BUY_LAND, STR_TERRAFORM_TOOLTIP_PURCHASE_LAND),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_PLANT_TREES), SetMinimalSize(22,22),
+								SetFill(0, 1), SetDataTip(SPR_IMG_PLANTTREES, STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_PLACE_SIGN), SetMinimalSize(22,22),
+								SetFill(0, 1), SetDataTip(SPR_IMG_SIGN, STR_SCENEDIT_TOOLBAR_PLACE_SIGN),
 	EndContainer(),
 };
 
@@ -347,7 +339,7 @@ static const WindowDesc _terraform_desc(
 	WDP_ALIGN_TBR, 22 + 36, 158, 36, 158, 36,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	_terraform_widgets, _nested_terraform_widgets, lengthof(_nested_terraform_widgets)
+	NULL, _nested_terraform_widgets, lengthof(_nested_terraform_widgets)
 );
 
 Window *ShowTerraformToolbar(Window *link)
@@ -482,26 +474,6 @@ static void PlaceProc_DesertArea(TileIndex tile)
 	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_DESERT);
 }
 
-
-static const Widget _scen_edit_land_gen_widgets[] = {
-{  WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,    10,     0,    13, STR_BLACK_CROSS,           STR_TOOLTIP_CLOSE_WINDOW},                             // ETTW_CLOSEBOX
-{   WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,   11,   150,     0,    13, STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION,  STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // ETTW_CAPTION
-{ WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,  151,   162,     0,    13, STR_NULL,                  STR_STICKY_BUTTON},                                    // ETTW_STICKY
-{     WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   162,    14,   102, 0x0,                       STR_NULL},                                             // ETTW_BACKGROUND
-{    WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    23,    16,    37, SPR_IMG_DYNAMITE,          STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC},                   // ETTW_DEMOLISH
-{    WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,         24,    45,    16,    37, SPR_IMG_TERRAFORM_DOWN,    STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND},         // ETTW_LOWER_LAND
-{    WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,         46,    67,    16,    37, SPR_IMG_TERRAFORM_UP,      STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND},         // ETTW_RAISE_LAND
-{    WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,         68,    89,    16,    37, SPR_IMG_LEVEL_LAND,        STR_LEVEL_LAND_TOOLTIP},                               // ETTW_LEVEL_LAND
-{    WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,         90,   111,    16,    37, SPR_IMG_ROCKS,             STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE}, // ETTW_PLACE_ROCKS
-{    WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,        112,   133,    16,    37, SPR_IMG_LIGHTHOUSE_DESERT, STR_NULL},                                             // ETTW_PLACE_DESERT_LIGHTHOUSE XXX - dynamic
-{    WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,        134,   156,    16,    37, SPR_IMG_TRANSMITTER,       STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER},              // ETTW_PLACE_TRANSMITTER
-{    WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,        150,   161,    45,    56, SPR_ARROW_UP,              STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA},     // ETTW_INCREASE_SIZE
-{    WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,        150,   161,    58,    69, SPR_ARROW_DOWN,            STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA},     // ETTW_DECREASE_SIZE
-{   WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   161,    76,    87, STR_SE_NEW_WORLD,          STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND},           // ETTW_NEW_SCENARIO
-{   WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   161,    89,   100, STR_TERRAFORM_RESET_LANDSCAPE, STR_RESET_LANDSCAPE_TOOLTIP},                      // ETTW_RESET_LANDSCAPE
-{   WIDGETS_END},
-};
-
 static const int8 _multi_terraform_coords[][2] = {
 	{  0, -2},
 	{  4,  0}, { -4,  0}, {  0,  2},
@@ -520,6 +492,7 @@ enum EditorTerraformToolbarWidgets {
 	ETTW_CAPTION,                          ///< Window caption
 	ETTW_STICKY,                           ///< Sticky window button
 	ETTW_BACKGROUND,                       ///< Background of the lower part of the window
+	ETTW_DOTS,                             ///< Invisible widget for rendering the terraform size on.
 	ETTW_BUTTONS_START,                    ///< Start of pushable buttons
 	ETTW_DEMOLISH = ETTW_BUTTONS_START,    ///< Demolish aka dynamite button
 	ETTW_LOWER_LAND,                       ///< Lower land button
@@ -542,29 +515,42 @@ static const NWidgetPart _nested_scen_edit_land_gen_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, ETTW_STICKY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, ETTW_BACKGROUND),
-		NWidget(NWID_HORIZONTAL), SetPadding(2, 0, 0, 2),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_DEMOLISH), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_LOWER_LAND), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_TERRAFORM_DOWN, STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_RAISE_LAND), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_TERRAFORM_UP, STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_LEVEL_LAND), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_LEVEL_LAND, STR_LEVEL_LAND_TOOLTIP),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_PLACE_ROCKS), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_ROCKS, STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_PLACE_DESERT_LIGHTHOUSE), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_LIGHTHOUSE_DESERT, STR_NULL),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_PLACE_TRANSMITTER), SetMinimalSize(23, 22), SetDataTip(SPR_IMG_TRANSMITTER, STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER),
+		NWidget(NWID_HORIZONTAL), SetPadding(2, 2, 7, 2),
+			NWidget(NWID_SPACER), SetFill(1, 0),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_DEMOLISH), SetMinimalSize(22, 22),
+										SetFill(0, 1), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_LOWER_LAND), SetMinimalSize(22, 22),
+										SetFill(0, 1), SetDataTip(SPR_IMG_TERRAFORM_DOWN, STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_RAISE_LAND), SetMinimalSize(22, 22),
+										SetFill(0, 1), SetDataTip(SPR_IMG_TERRAFORM_UP, STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_LEVEL_LAND), SetMinimalSize(22, 22),
+										SetFill(0, 1), SetDataTip(SPR_IMG_LEVEL_LAND, STR_LEVEL_LAND_TOOLTIP),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_PLACE_ROCKS), SetMinimalSize(22, 22),
+										SetFill(0, 1), SetDataTip(SPR_IMG_ROCKS, STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_PLACE_DESERT_LIGHTHOUSE), SetMinimalSize(22, 22),
+										SetFill(0, 1), SetDataTip(SPR_IMG_LIGHTHOUSE_DESERT, STR_NULL),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_PLACE_TRANSMITTER), SetMinimalSize(23, 22),
+										SetFill(0, 1), SetDataTip(SPR_IMG_TRANSMITTER, STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER),
 			NWidget(NWID_SPACER), SetFill(1, 0),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 7),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetFill(1, 0), // Makes room for displaying the size of the land area affected.
+			NWidget(NWID_SPACER), SetFill(1, 0),
+			NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, ETTW_DOTS), SetMinimalSize(59, 31), SetDataTip(STR_EMPTY, STR_NULL),
+			NWidget(NWID_SPACER), SetFill(1, 0),
 			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetFill(0, 1),
 				NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_INCREASE_SIZE), SetMinimalSize(12, 12), SetDataTip(SPR_ARROW_UP, STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_DECREASE_SIZE), SetMinimalSize(12, 12), SetDataTip(SPR_ARROW_DOWN, STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA),
+				NWidget(NWID_SPACER), SetFill(0, 1),
 			EndContainer(),
-			NWidget(NWID_SPACER), SetMinimalSize(1, 0),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, ETTW_NEW_SCENARIO), SetMinimalSize(160, 12), SetDataTip(STR_SE_NEW_WORLD, STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND), SetPadding(0, 1, 0, 2),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, ETTW_RESET_LANDSCAPE), SetMinimalSize(160, 12), SetDataTip(STR_TERRAFORM_RESET_LANDSCAPE, STR_RESET_LANDSCAPE_TOOLTIP), SetPadding(1, 1, 2, 2),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, ETTW_NEW_SCENARIO), SetMinimalSize(160, 12),
+								SetFill(1, 0), SetDataTip(STR_SE_NEW_WORLD, STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND), SetPadding(0, 2, 0, 2),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, ETTW_RESET_LANDSCAPE), SetMinimalSize(160, 12),
+								SetFill(1, 0), SetDataTip(STR_TERRAFORM_RESET_LANDSCAPE, STR_RESET_LANDSCAPE_TOOLTIP), SetPadding(1, 2, 2, 2),
 	EndContainer(),
 };
 
@@ -667,27 +653,35 @@ static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 }
 
 struct ScenarioEditorLandscapeGenerationWindow : Window {
-	ScenarioEditorLandscapeGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	ScenarioEditorLandscapeGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		this->widget[ETTW_PLACE_DESERT_LIGHTHOUSE].tooltips = (_settings_game.game_creation.landscape == LT_TROPIC) ? STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA : STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE;
-		this->FindWindowPlacementAndResize(desc);
+		this->InitNested(desc, window_number);
+		this->nested_array[ETTW_PLACE_DESERT_LIGHTHOUSE]->tool_tip = (_settings_game.game_creation.landscape == LT_TROPIC) ? STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA : STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE;
 	}
 
 	virtual void OnPaint() {
 		this->DrawWidgets();
+
+		if (this->IsWidgetLowered(ETTW_LOWER_LAND) || this->IsWidgetLowered(ETTW_RAISE_LAND)) { // change area-size if raise/lower corner is selected
+			SetTileSelectSize(_terraform_size, _terraform_size);
+		}
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != ETTW_DOTS) return;
+
+		int center_x = (r.left + r.right + 1) / 2;
+		int center_y = (r.top + r.bottom + 1) / 2;
 
 		int n = _terraform_size * _terraform_size;
 		const int8 *coords = &_multi_terraform_coords[0][0];
 
 		assert(n != 0);
 		do {
-			DrawSprite(SPR_WHITE_POINT, PAL_NONE, 88 + coords[0], 55 + coords[1]);
+			DrawSprite(SPR_WHITE_POINT, PAL_NONE, center_x + coords[0], center_y + coords[1]);
 			coords += 2;
 		} while (--n);
-
-		if (this->IsWidgetLowered(ETTW_LOWER_LAND) || this->IsWidgetLowered(ETTW_RAISE_LAND)) { // change area-size if raise/lower corner is selected
-			SetTileSelectSize(_terraform_size, _terraform_size);
-		}
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
@@ -736,7 +730,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 
 	virtual void OnTimeout()
 	{
-		for (uint i = ETTW_START; i < this->widget_count; i++) {
+		for (uint i = ETTW_START; i < this->nested_array_size; i++) {
 			if (i == ETTW_BUTTONS_START) i = ETTW_BUTTONS_END; // skip the buttons
 			if (this->IsWidgetLowered(i)) {
 				this->RaiseWidget(i);
@@ -783,7 +777,7 @@ static const WindowDesc _scen_edit_land_gen_desc(
 	WDP_AUTO, WDP_AUTO, 163, 103, 163, 103,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	_scen_edit_land_gen_widgets, _nested_scen_edit_land_gen_widgets, lengthof(_nested_scen_edit_land_gen_widgets)
+	NULL, _nested_scen_edit_land_gen_widgets, lengthof(_nested_scen_edit_land_gen_widgets)
 );
 
 Window *ShowEditorTerraformToolbar()
