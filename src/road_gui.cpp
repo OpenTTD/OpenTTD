@@ -947,13 +947,13 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 
 		StationType st = (this->window_class == WC_BUS_STATION) ? STATION_BUS : STATION_TRUCK;
 
-		StationPickerDrawSprite(103, 35, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 0);
-		StationPickerDrawSprite(103, 85, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 1);
-		StationPickerDrawSprite( 35, 85, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 2);
-		StationPickerDrawSprite( 35, 35, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 3);
+		StationPickerDrawSprite(this->widget[BRSW_STATION_NE].left + TILE_PIXELS, this->widget[BRSW_STATION_NE].bottom - TILE_PIXELS, st, INVALID_RAILTYPE, ROADTYPE_ROAD, DIAGDIR_NE);
+		StationPickerDrawSprite(this->widget[BRSW_STATION_SE].left + TILE_PIXELS, this->widget[BRSW_STATION_SE].bottom - TILE_PIXELS, st, INVALID_RAILTYPE, ROADTYPE_ROAD, DIAGDIR_SE);
+		StationPickerDrawSprite(this->widget[BRSW_STATION_SW].left + TILE_PIXELS, this->widget[BRSW_STATION_SW].bottom - TILE_PIXELS, st, INVALID_RAILTYPE, ROADTYPE_ROAD, DIAGDIR_SW);
+		StationPickerDrawSprite(this->widget[BRSW_STATION_NW].left + TILE_PIXELS, this->widget[BRSW_STATION_NW].bottom - TILE_PIXELS, st, INVALID_RAILTYPE, ROADTYPE_ROAD, DIAGDIR_NW);
 
-		StationPickerDrawSprite(171, 35, st, INVALID_RAILTYPE, _cur_roadtype, 4);
-		StationPickerDrawSprite(171, 85, st, INVALID_RAILTYPE, _cur_roadtype, 5);
+		StationPickerDrawSprite(this->widget[BRSW_STATION_X].left  + TILE_PIXELS, this->widget[BRSW_STATION_X].bottom  - TILE_PIXELS, st, INVALID_RAILTYPE, _cur_roadtype, DIAGDIR_END + AXIS_X);
+		StationPickerDrawSprite(this->widget[BRSW_STATION_Y].left  + TILE_PIXELS, this->widget[BRSW_STATION_Y].bottom  - TILE_PIXELS, st, INVALID_RAILTYPE, _cur_roadtype, DIAGDIR_END + AXIS_Y);
 
 		/* strings such as 'Size' and 'Coverage Area' */
 		StationCoverageType sct = (this->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY;

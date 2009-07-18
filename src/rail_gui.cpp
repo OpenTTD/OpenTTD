@@ -1814,7 +1814,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 			if (this->hscroll.pos + i < this->hscroll.count) {
 				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, this->hscroll.pos + i);
 
-				DrawWaypointSprite(2 + i * 68, 25, this->hscroll.pos + i, _cur_railtype);
+				DrawWaypointSprite(this->widget[BRWW_WAYPOINT_1 + i].left + TILE_PIXELS, this->widget[BRWW_WAYPOINT_1 + i].bottom - TILE_PIXELS, this->hscroll.pos + i, _cur_railtype);
 
 				if (statspec != NULL &&
 						HasBit(statspec->callbackmask, CBM_STATION_AVAIL) &&
