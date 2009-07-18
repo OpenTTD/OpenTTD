@@ -38,7 +38,7 @@ BaseStation::~BaseStation()
 }
 
 Station::Station(TileIndex tile) :
-	BaseStation(tile),
+	SpecializedStation<Station, false>(tile),
 	train_tile(INVALID_TILE),
 	airport_tile(INVALID_TILE),
 	dock_tile(INVALID_TILE),

@@ -17,10 +17,10 @@
 typedef Pool<Waypoint, WaypointID, 32, 64000> WaypointPool;
 extern WaypointPool _waypoint_pool;
 
-struct Waypoint : WaypointPool::PoolItem<&_waypoint_pool>, BaseStation {
+struct Waypoint : WaypointPool::PoolItem<&_waypoint_pool>, SpecializedStation<Waypoint, true> {
 	uint16 town_cn;    ///< The Nth waypoint for this town (consecutive number)
 
-	Waypoint(TileIndex tile = INVALID_TILE) : BaseStation(tile) { }
+	Waypoint(TileIndex tile = INVALID_TILE) : SpecializedStation<Waypoint, true>(tile) { }
 	~Waypoint();
 
 	void UpdateVirtCoord();

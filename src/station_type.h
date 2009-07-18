@@ -44,6 +44,7 @@ enum StationFacility {
 	FACIL_BUS_STOP   = 1 << 2, ///< Station with bus stops
 	FACIL_AIRPORT    = 1 << 3, ///< Station with an airport
 	FACIL_DOCK       = 1 << 4, ///< Station with a dock
+	FACIL_WAYPOINT   = 1 << 7, ///< Station is a waypoint
 };
 DECLARE_ENUM_AS_BIT_SET(StationFacility);
 typedef SimpleTinyEnumT<StationFacility, byte> StationFacilityByte;

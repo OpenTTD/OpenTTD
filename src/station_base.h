@@ -90,8 +90,8 @@ struct BaseStation {
 	OwnerByte owner;                ///< The owner of this station
 	StationFacilityByte facilities; ///< The facilities that this station has
 
-	uint8 num_specs;                ///< NOSAVE: Number of specs in the speclist
-	StationSpecList *speclist;      ///< NOSAVE: List of station specs of this station
+	uint8 num_specs;                ///< Number of specs in the speclist
+	StationSpecList *speclist;      ///< List of station specs of this station
 
 	Date build_date;                ///< Date of construction
 
@@ -99,7 +99,8 @@ struct BaseStation {
 	byte waiting_triggers;          ///< Waiting triggers (NewGRF) for this station
 	uint8 cached_anim_triggers;     ///< NOSAVE: Combined animation trigger bitmask, used to determine if trigger processing should happen.
 
-	BaseStation(TileIndex tile = INVALID_TILE) : xy(tile) { }
+	BaseStation(TileIndex tile) : xy(tile) { }
+
 	virtual ~BaseStation();
 
 	/**
@@ -132,10 +133,62 @@ struct BaseStation {
 	static BaseStation *GetByTile(TileIndex tile);
 };
 
+/**
+ * Class defining several overloaded accessors so we don't
+ * have to cast base stations that often
+ */
+template <class T, bool Tis_waypoint>
+struct SpecializedStation : public BaseStation {
+	static const StationFacility EXPECTED_FACIL = Tis_waypoint ? FACIL_WAYPOINT : FACIL_NONE; ///< Specialized type
+
+	/**
+	 * Set station type correctly
+	 * @param tile The base tile of the station.
+	 */
+	FORCEINLINE SpecializedStation<T, Tis_waypoint>(TileIndex tile) :
+			BaseStation(tile)
+	{
+		this->facilities = EXPECTED_FACIL;
+	}
+
+	/**
+	 * Helper for checking whether the given station is of this type.
+	 * @param st the station to check.
+	 * @return true if the station is the type we expect it to be.
+	 */
+	static FORCEINLINE bool IsExpected(const BaseStation *st)
+	{
+		return (st->facilities & FACIL_WAYPOINT) == EXPECTED_FACIL;
+	}
+
+	/**
+	 * Converts a BaseStation to SpecializedStation with type checking.
+	 * @param st BaseStation pointer
+	 * @return pointer to SpecializedStation
+	 */
+	static FORCEINLINE T *From(BaseStation *st)
+	{
+		assert(IsExpected(st));
+		return (T *)st;
+	}
+
+	/**
+	 * Converts a const BaseStation to const SpecializedStation with type checking.
+	 * @param st BaseStation pointer
+	 * @return pointer to SpecializedStation
+	 */
+	static FORCEINLINE const T *From(const BaseStation *st)
+	{
+		assert(IsExpected(st));
+		return (const T *)st;
+	}
+};
+
+
 typedef SmallVector<Industry *, 2> IndustryVector;
 
 /** Station data structure */
-struct Station : StationPool::PoolItem<&_station_pool>, BaseStation {
+struct Station : StationPool::PoolItem<&_station_pool>, SpecializedStation<Station, false> {
 public:
 	RoadStop *GetPrimaryRoadStop(RoadStopType type) const
 	{
@@ -220,16 +273,6 @@ public:
 	}
 
 	static void PostDestructor(size_t index);
-
-	static FORCEINLINE Station *From(BaseStation *st)
-	{
-		return (Station *)st;
-	}
-
-	static FORCEINLINE const Station *From(const BaseStation *st)
-	{
-		return (const Station *)st;
-	}
 };
 
 #define FOR_ALL_STATIONS_FROM(var, start) FOR_ALL_ITEMS_FROM(Station, station_index, var, start)
