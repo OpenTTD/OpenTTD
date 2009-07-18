@@ -262,18 +262,22 @@ struct DepotWindow : Window {
 	 */
 	void DrawVehicleInDepot(Window *w, const Vehicle *v, int x, int y)
 	{
-		byte diff_x = 0, diff_y = 0;
-
+		bool free_wagon = false;
 		int sprite_y = y + this->resize.step_height - GetVehicleListHeight(v->type);
 
 		switch (v->type) {
-			case VEH_TRAIN:
-				DrawTrainImage(Train::From(v), x + 21, sprite_y, this->sel, this->hscroll.cap + 4, this->hscroll.pos);
+			case VEH_TRAIN: {
+				const Train *u = Train::From(v);
+				free_wagon = u->IsFreeWagon();
+
+				uint x_space = free_wagon ? TRAININFO_DEFAULT_VEHICLE_WIDTH : 0;
+				DrawTrainImage(u, x + 21 + x_space, sprite_y, this->sel, this->hscroll.cap + 4 - x_space, this->hscroll.pos);
 
 				/* Number of wagons relative to a standard length wagon (rounded up) */
-				SetDParam(0, (Train::From(v)->tcache.cached_total_length + 7) / 8);
+				SetDParam(0, (u->tcache.cached_total_length + 7) / 8);
 				DrawString(this->widget[DEPOT_WIDGET_MATRIX].left, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, TC_FROMSTRING, SA_RIGHT); // Draw the counter
 				break;
+			}
 
 			case VEH_ROAD:     DrawRoadVehImage( v, x + 24, sprite_y, this->sel, ROADVEHINFO_DEFAULT_VEHICLE_WIDTH); break;
 			case VEH_SHIP:     DrawShipImage(    v, x + 19, sprite_y - 1, this->sel); break;
@@ -286,24 +290,30 @@ struct DepotWindow : Window {
 			default: NOT_REACHED();
 		}
 
-		if (this->resize.step_height == 14) {
-			/* VEH_TRAIN and VEH_ROAD, which are low */
-			diff_x = 15;
+		if (free_wagon) {
+			DrawString(x, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 2, STR_DEPOT_NO_ENGINE);
 		} else {
-			/* VEH_SHIP and VEH_AIRCRAFT, which are tall */
-			diff_y = 12;
+			byte diff_x = 0, diff_y = 0;
+
+			if (v->type == VEH_TRAIN || v->type == VEH_ROAD) {
+				/* Arrange unitnumber and flag horizontally */
+				diff_x = 15;
+			} else {
+				/* Arrange unitnumber and flag vertically */
+				diff_y = 12;
+			}
+
+			DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, x + diff_x, y + diff_y);
+
+			SetDParam(0, v->unitnumber);
+			DrawString(x, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 2, (uint16)(v->max_age - DAYS_IN_LEAP_YEAR) >= v->age ? STR_BLACK_COMMA : STR_RED_COMMA);
 		}
-
-		DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, x + diff_x, y + diff_y);
-
-		SetDParam(0, v->unitnumber);
-		DrawString(x, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 2, (uint16)(v->max_age - DAYS_IN_LEAP_YEAR) >= v->age ? STR_BLACK_COMMA : STR_RED_COMMA);
 	}
 
 	void DrawDepotWindow(Window *w)
 	{
 		TileIndex tile = this->window_number;
-		int x, y, i, maxval;
+		int x, y, maxval;
 
 		/* Set the row and number of boxes in each row based on the number of boxes drawn in the matrix */
 		uint16 rows_in_display   = GB(this->widget[DEPOT_WIDGET_MATRIX].data, MAT_ROW_START, MAT_ROW_BITS);
@@ -367,18 +377,8 @@ struct DepotWindow : Window {
 
 		/* draw the train wagons, that do not have an engine in front */
 		for (; num < maxval; num++, y += 14) {
-			const Train *v = Train::From(this->wagon_list[num - this->vehicle_list.Length()]);
-
-			DrawTrainImage(v, x + 50, y, this->sel, this->hscroll.cap - 29, 0);
-			DrawString(x, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 2, STR_DEPOT_NO_ENGINE);
-
-			/* Draw the train counter */
-			i = 0;
-			for (const Train *u = v; u != NULL; u = u->Next()) {
-				i++;
-			}
-			SetDParam(0, i);                      // Set the counter
-			DrawString(this->widget[DEPOT_WIDGET_MATRIX].left, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, TC_FROMSTRING, SA_RIGHT); // Draw the counter
+			const Vehicle *v = this->wagon_list[num - this->vehicle_list.Length()];
+			DrawVehicleInDepot(w, v, x, y);
 		}
 	}
 
