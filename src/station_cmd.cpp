@@ -3081,6 +3081,7 @@ static CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 {
 	if (flags & DC_AUTO) {
 		switch (GetStationType(tile)) {
+			default: break;
 			case STATION_RAIL:    return_cmd_error(STR_ERROR_MUST_DEMOLISH_RAILROAD);
 			case STATION_AIRPORT: return_cmd_error(STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST);
 			case STATION_TRUCK:   return_cmd_error(HasTileRoadType(tile, ROADTYPE_TRAM) ? STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST : STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST);

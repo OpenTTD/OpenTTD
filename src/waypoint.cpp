@@ -43,7 +43,7 @@ void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
 	y += 17;
 
 	if (!DrawStationTile(x, y, railtype, AXIS_X, STAT_CLASS_WAYP, stat_id)) {
-		DrawDefaultWaypointSprite(x, y, railtype);
+		StationPickerDrawSprite(x, y, STATION_WAYPOINT, railtype, INVALID_ROADTYPE, AXIS_X);
 	}
 }
 

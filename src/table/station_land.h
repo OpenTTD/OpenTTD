@@ -737,6 +737,18 @@ static const DrawTileSeqStruct _station_display_datas_0171[] = {
 	TILE_SEQ_END()
 };
 
+static const DrawTileSeqStruct _station_display_datas_waypoint_X[] = {
+	TILE_SEQ_LINE( 0,  0,  0, 16,  5, 23, SPR_WAYPOINT_X_1 | (1 << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_LINE( 0, 11,  0, 16,  5, 23, SPR_WAYPOINT_X_2 | (1 << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_END()
+};
+
+static const DrawTileSeqStruct _station_display_datas_waypoint_Y[] = {
+	TILE_SEQ_LINE( 0,  0,  0,  5, 16, 23, SPR_WAYPOINT_Y_1 | (1 << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_LINE(11,  0,  0,  5, 16, 23, SPR_WAYPOINT_Y_2 | (1 << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_END()
+};
+
 #undef TILE_SEQ_END
 #undef TILE_SEQ_LINE
 #undef TILE_SEQ_LINE_PAL
@@ -941,6 +953,11 @@ static const DrawTileSprites _station_display_datas_buoy[] = {
 	TILE_SPRITE_LINE(SPR_FLAT_WATER_TILE,            _station_display_datas_82)
 };
 
+static const DrawTileSprites _station_display_datas_waypoint[] = {
+	TILE_SPRITE_LINE(SPR_RAIL_TRACK_X,               _station_display_datas_waypoint_X)
+	TILE_SPRITE_LINE(SPR_RAIL_TRACK_Y,               _station_display_datas_waypoint_Y)
+};
+
 #undef TILE_SPRITE_LINE
 
 static const DrawTileSprites *_station_display_datas[] = {
@@ -951,4 +968,5 @@ static const DrawTileSprites *_station_display_datas[] = {
 	_station_display_datas_oilrig,
 	_station_display_datas_dock,
 	_station_display_datas_buoy,
+	_station_display_datas_waypoint,
 };

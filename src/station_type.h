@@ -26,7 +26,8 @@ enum StationType {
 	STATION_BUS,
 	STATION_OILRIG,
 	STATION_DOCK,
-	STATION_BUOY
+	STATION_BUOY,
+	STATION_WAYPOINT,
 };
 
 /** Types of RoadStops */

@@ -222,7 +222,6 @@ static inline Money RailConvertCost(RailType from, RailType to)
 
 Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data);
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);
-void DrawDefaultWaypointSprite(int x, int y, RailType railtype);
 Vehicle *EnsureNoTrainOnTrackProc(Vehicle *v, void *data);
 int TicksToLeaveDepot(const Train *v);
 

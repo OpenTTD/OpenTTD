@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file track_land.h Sprites to use and how to display them for train depot/waypoint tiles. */
+/** @file track_land.h Sprites to use and how to display them for train depot tiles. */
 
 #define TILE_SEQ_LINE(img, dx, dy, sx, sy) { dx, dy, 0, sx, sy, 23, {img, PAL_NONE} },
 #define TILE_SEQ_END() { (int8)0x80, 0, 0, 0, 0, 0, {0, 0} }
@@ -40,23 +40,6 @@ static const DrawTileSprites _depot_invisible_gfx_table[] = {
 	{ {SPR_RAIL_TRACK_Y, PAL_NONE}, _depot_gfx_SE },
 	{ {SPR_RAIL_TRACK_X, PAL_NONE}, _depot_gfx_SW },
 	{ {SPR_RAIL_TRACK_Y, PAL_NONE}, _depot_gfx_NW }
-};
-
-static const DrawTileSeqStruct _waypoint_gfx_X[] = {
-	TILE_SEQ_LINE((1 << PALETTE_MODIFIER_COLOUR) | SPR_WAYPOINT_X_1,  0,  0,  16,  5)
-	TILE_SEQ_LINE((1 << PALETTE_MODIFIER_COLOUR) | SPR_WAYPOINT_X_2,  0, 11,  16,  5)
-	TILE_SEQ_END()
-};
-
-static const DrawTileSeqStruct _waypoint_gfx_Y[] = {
-	TILE_SEQ_LINE((1 << PALETTE_MODIFIER_COLOUR) | SPR_WAYPOINT_Y_1,   0,  0, 5, 16)
-	TILE_SEQ_LINE((1 << PALETTE_MODIFIER_COLOUR) | SPR_WAYPOINT_Y_2,  11,  0, 5, 16)
-	TILE_SEQ_END()
-};
-
-static const DrawTileSprites _waypoint_gfx_table[] = {
-	{ {SPR_RAIL_TRACK_X, PAL_NONE}, _waypoint_gfx_X },
-	{ {SPR_RAIL_TRACK_Y, PAL_NONE}, _waypoint_gfx_Y }
 };
 
 #undef TILE_SEQ_LINE
