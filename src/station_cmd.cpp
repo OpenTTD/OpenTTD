@@ -192,8 +192,8 @@ static bool CMSAForest(TileIndex tile)
 #define M(x) ((x) - STR_SV_STNAME)
 
 enum StationNaming {
-	STATIONNAMING_RAIL = 0,
-	STATIONNAMING_ROAD = 0,
+	STATIONNAMING_RAIL,
+	STATIONNAMING_ROAD,
 	STATIONNAMING_AIRPORT,
 	STATIONNAMING_OILRIG,
 	STATIONNAMING_DOCK,
@@ -231,15 +231,16 @@ static bool FindNearIndustryName(TileIndex tile, void *user_data)
 	return !sni->indtypes[indtype];
 }
 
-static StringID GenerateStationName(Station *st, TileIndex tile, int flag)
+static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming name_class)
 {
 	static const uint32 _gen_station_name_bits[] = {
-		0,                                       // 0
-		1U << M(STR_SV_STNAME_AIRPORT),          // 1
-		1U << M(STR_SV_STNAME_OILFIELD),         // 2
-		1U << M(STR_SV_STNAME_DOCKS),            // 3
-		0x1FFU << M(STR_SV_STNAME_BUOY_1),       // 4
-		1U << M(STR_SV_STNAME_HELIPORT),         // 5
+		0,                                       // STATIONNAMING_RAIL
+		0,                                       // STATIONNAMING_ROAD
+		1U << M(STR_SV_STNAME_AIRPORT),          // STATIONNAMING_AIRPORT
+		1U << M(STR_SV_STNAME_OILFIELD),         // STATIONNAMING_OILRIG
+		1U << M(STR_SV_STNAME_DOCKS),            // STATIONNAMING_DOCK
+		0x1FFU << M(STR_SV_STNAME_BUOY_1),       // STATIONNAMING_BUOY
+		1U << M(STR_SV_STNAME_HELIPORT),         // STATIONNAMING_HELIPORT
 	};
 
 	const Town *t = st->town;
@@ -265,7 +266,7 @@ static StringID GenerateStationName(Station *st, TileIndex tile, int flag)
 		}
 	}
 
-	if (flag != STATIONNAMING_BUOY) {
+	if (name_class != STATIONNAMING_BUOY) {
 		TileIndex indtile = tile;
 		StationNameInformation sni = { free_names, indtypes };
 		if (CircularTileSearch(&indtile, 7, FindNearIndustryName, &sni)) {
@@ -284,7 +285,7 @@ static StringID GenerateStationName(Station *st, TileIndex tile, int flag)
 	}
 
 	/* check default names */
-	uint32 tmp = free_names & _gen_station_name_bits[flag];
+	uint32 tmp = free_names & _gen_station_name_bits[name_class];
 	if (tmp != 0) return STR_SV_STNAME + FindFirstBit(tmp);
 
 	/* check mine? */
