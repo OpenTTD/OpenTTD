@@ -281,7 +281,7 @@ STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ГЗ
 STR_ABBREV_NONE                                                 :{TINYFONT}НЕТ
 STR_ABBREV_ALL                                                  :{TINYFONT}Все
 STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT} г.
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG} г.
+STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Карта - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Настройки игры
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Сообщение
@@ -1174,7 +1174,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Выкл.
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Скроллинг по клику левой кнопкой мыши: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Использовать {ORANGE}{STRING}{LTBLUE} формат даты для имён сохранений
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :длинный (31-е дек 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :длинный (31-е дек 2008 г.)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :короткий (31.12.2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
@@ -2070,9 +2070,9 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Сохране�
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Файл не читается
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Незаписываемый файл
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Нарушена целостность
-STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Список дисков, папок и сохраненных игр
+STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Список дисков, папок и сохранённых игр
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Выбранное имя для сохранения игры
-STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Удалить выбранную сохраненную игру
+STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Удалить выбранную сохранённую игру
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Сохранить игру, используя выбранное имя
 STR_NETWORK_SERVER_RANDOM_GAME                                  :Сгенерировать случайную карту
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Загрузить карту
@@ -2756,13 +2756,19 @@ STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Вертолё�
 STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Вертолёт Guru X2
 STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Вертолёт Powernaut
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Сообщение от производителя транспорта
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Мы создали новый {STRING}. Заинтересованы ли вы в его годовом эксклюзивном использовании для проверки перед запуском в серийное производство?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Мы создали новую модель {STRING.gen}. Заинтересованы ли вы в его годовом эксклюзивном использовании для проверки перед запуском в серийное производство?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :ж/д локомотив
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.gen                      :ж/д локомотива
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автомобиль
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.gen                             :автомобиля
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :авиатранспорт
+STR_ENGINE_PREVIEW_AIRCRAFT.gen                                 :авиатранспорта
 STR_ENGINE_PREVIEW_SHIP                                         :корабль
+STR_ENGINE_PREVIEW_SHIP.gen                                     :корабля
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :монорельсовый локомотив
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.gen                      :монорельсового локомотива
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :магниторельсовый локомотив
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.gen                        :магниторельсового локомотива
 
 ##id 0x8800
 STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Депо {TOWN}
@@ -3550,7 +3556,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площ
 ############ Date formatting
 STR_DATE_TINY                                                   :{STRING}.{STRING}.{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
-STR_DATE_LONG                                                   :{STRING} {STRING.gen} {NUM}
+STR_DATE_LONG                                                   :{STRING} {STRING.gen} {NUM} г.
 STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}

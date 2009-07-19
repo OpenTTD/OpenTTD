@@ -1367,7 +1367,7 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Zadajte 
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klienti
-STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienti online / klienti max
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klientov online / klientov max{}Spoločností online / spoločností max
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Velkost mapy
@@ -1380,12 +1380,12 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Roky
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Pocet rokov,{}kolko hra beží
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O HRE
-STR_NETWORK_CLIENTS                                             :{SILVER}Klienti:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Jazyk:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Prostredie:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Velkost mapy:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Verzia servera:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa servera:  {WHITE}{STRING}
+STR_NETWORK_CLIENTS                                             :{SILVER}Klientov: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Jazyk: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Prostredie: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Velkost mapy: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Verzia servera: {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa servera: {WHITE}{STRING}
 STR_NETWORK_START_DATE                                          :{SILVER}Datum zaciatku:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Aktualny datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Heslo:
@@ -2895,6 +2895,7 @@ STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Vlak nem
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Pomenovat vlak
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Vlakove nestastie!{}{COMMA} mrtv{P i i ych} pri poziari po kolizii
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nemozno zmenit smer vlaku ...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nie je mozne otacat vozidla zlozené z viacerych jednotiek
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Premenovat typ vlaku
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Typ vlaku nemoze byt premenovany ...
 STR_CLEAR_TIME                                                  :{BLACK}Vymazat cas
@@ -2973,7 +2974,6 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvá nákladná elektricka dorazila do stanice {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Dopravna nehoda!{}Vodic zahynul po kolizii s vlakom
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Dopravna nehoda!{}{COMMA} mrtvych po kolizii s vlakom
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nie je mozne otacat vozidla zlozené z viacerych jednotiek
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Premenovat
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Premenovat typ automobilu
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Premenovat typ automobilu
