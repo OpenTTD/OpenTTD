@@ -1051,10 +1051,10 @@ public:
 		SetDParam(0, GetStationClassName(_railstation.station_class));
 		this->DrawWidgets();
 
-		int y_offset = newstations ? 90 : 0;
-
 		/* Set up a clipping area for the '/' station preview */
-		if (FillDrawPixelInfo(&tmp_dpi, 7, 26 + y_offset, 66, 48)) {
+		int width = this->widget[BRSW_PLATFORM_DIR_X].right - this->widget[BRSW_PLATFORM_DIR_X].left + 1;
+		int height = this->widget[BRSW_PLATFORM_DIR_X].bottom - this->widget[BRSW_PLATFORM_DIR_X].top + 1;
+		if (FillDrawPixelInfo(&tmp_dpi, this->widget[BRSW_PLATFORM_DIR_X].left, this->widget[BRSW_PLATFORM_DIR_X].top, width, height)) {
 			old_dpi = _cur_dpi;
 			_cur_dpi = &tmp_dpi;
 			if (!DrawStationTile(32, 16, _cur_railtype, AXIS_X, _railstation.station_class, _railstation.station_type)) {
@@ -1064,7 +1064,9 @@ public:
 		}
 
 		/* Set up a clipping area for the '\' station preview */
-		if (FillDrawPixelInfo(&tmp_dpi, 75, 26 + y_offset, 66, 48)) {
+		width = this->widget[BRSW_PLATFORM_DIR_Y].right - this->widget[BRSW_PLATFORM_DIR_Y].left + 1;
+		height = this->widget[BRSW_PLATFORM_DIR_Y].bottom - this->widget[BRSW_PLATFORM_DIR_Y].top + 1;
+		if (FillDrawPixelInfo(&tmp_dpi, this->widget[BRSW_PLATFORM_DIR_Y].left, this->widget[BRSW_PLATFORM_DIR_Y].top, width, height)) {
 			old_dpi = _cur_dpi;
 			_cur_dpi = &tmp_dpi;
 			if (!DrawStationTile(32, 16, _cur_railtype, AXIS_Y, _railstation.station_class, _railstation.station_type)) {
@@ -1074,7 +1076,7 @@ public:
 		}
 
 		/* strings such as 'Size' and 'Coverage Area' */
-		int top = 166 + y_offset;
+		int top = 166 + (newstations ? 90 : 0);
 		top = DrawStationCoverageAreaText(this->widget[BRSW_BACKGROUND].left + WD_FRAMERECT_LEFT, this->widget[BRSW_BACKGROUND].right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
 		top = DrawStationCoverageAreaText(this->widget[BRSW_BACKGROUND].left + WD_FRAMERECT_LEFT, this->widget[BRSW_BACKGROUND].right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
 		if (top != this->widget[BRSW_BACKGROUND].bottom) {
@@ -1084,19 +1086,21 @@ public:
 		}
 
 		if (newstations) {
-			uint y = 35;
+			uint y = this->widget[BRSW_NEWST_LIST].top + 3;
+			int left = this->widget[BRSW_NEWST_LIST].left;
+			int right = this->widget[BRSW_NEWST_LIST].right;
 
 			for (uint16 i = this->vscroll.pos; i < _railstation.station_count && i < (uint)(this->vscroll.pos + this->vscroll.cap); i++) {
 				const StationSpec *statspec = GetCustomStationSpec(_railstation.station_class, i);
 
 				if (statspec != NULL && statspec->name != 0) {
 					if (HasBit(statspec->callbackmask, CBM_STATION_AVAIL) && GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
-						GfxFillRect(8, y - 2, 127, y + 10, 0, FILLRECT_CHECKER);
+						GfxFillRect(left + 1, y - 2, right - 1, y + 10, 0, FILLRECT_CHECKER);
 					}
 
-					DrawString(9, 127, y, statspec->name, i == _railstation.station_type ? TC_WHITE : TC_BLACK);
+					DrawString(left + 2, right - 2, y, statspec->name, i == _railstation.station_type ? TC_WHITE : TC_BLACK);
 				} else {
-					DrawString(9, 127, y, STR_STAT_CLASS_DFLT, i == _railstation.station_type ? TC_WHITE : TC_BLACK);
+					DrawString(left + 2, right - 2, y, STR_STAT_CLASS_DFLT, i == _railstation.station_type ? TC_WHITE : TC_BLACK);
 				}
 
 				y += 14;
@@ -1236,7 +1240,7 @@ public:
 
 			case BRSW_NEWST_LIST: {
 				const StationSpec *statspec;
-				int y = (pt.y - 32) / 14;
+				int y = (pt.y - this->widget[BRSW_NEWST_LIST].top) / 14;
 
 				if (y >= this->vscroll.cap) return;
 				y += this->vscroll.pos;
