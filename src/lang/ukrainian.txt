@@ -1321,7 +1321,7 @@ STR_WAYPOINT                                                    :{WHITE}Точк
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Виберіть тип точки маршруту
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} поїзд{P "" и ів}
+STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} поїзд{P "" и ів}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Перейменуйте точку маршруту
@@ -2879,7 +2879,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Нови
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Поїзд дуже довгий
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Поїзд можна змінювати тільки тоді, коли зупинений в депо
-STR_VEHICLE_LIST_CAPTION_TRAINS                                 :{WHITE}{COMPANY} - {COMMA} поїзд{P "" и ів}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} поїзд{P "" и ів}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Новий залізничний транспорт
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Новий електрозалізничний транспорт

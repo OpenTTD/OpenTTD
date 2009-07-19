@@ -1569,7 +1569,7 @@ STR_WAYPOINT                                                    :{WHITE}Pkt kont
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Wybierz typ pkt kontrolnego
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Train{P "" i ow}
+STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Train{P "" i ow}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edytuj nazwę pkt. kontrolnego
@@ -3131,7 +3131,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nowe poj
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Pociąg jest zbyt długi
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Pociąg może być modyfikowany tylko gdy jest zatrzymany w zajezdni
-STR_VEHICLE_LIST_CAPTION_TRAINS                                 :{WHITE}{COMPANY} - {COMMA} Pociąg{P "" i ów}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Pociąg{P "" i ów}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nowe pociągi
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nowe elektryczne pojazdy szynowe

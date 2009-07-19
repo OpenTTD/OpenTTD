@@ -1196,7 +1196,7 @@ STR_WAYPOINT                                                    :{WHITE}Kontroll
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Välj kontrollstationstyp
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Tåg{P "" s}
+STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Tåg{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ändra namn på kontrollstation
@@ -2717,7 +2717,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nytt for
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tåg för långt
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Tåg kan bara ändras när det står still inuti en depå
-STR_VEHICLE_LIST_CAPTION_TRAINS                                 :{WHITE}{COMPANY} - {COMMA} Tåg
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Tåg
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nytt tågfordon
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nya elektriska järnvägsfordon

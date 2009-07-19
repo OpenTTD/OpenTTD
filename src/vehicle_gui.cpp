@@ -916,7 +916,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 
 			case VLW_STANDARD: // Company Name - standard widget setup
 				switch (this->vehicle_type) {
-					case VEH_TRAIN:    this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_CAPTION_TRAINS;   break;
+					case VEH_TRAIN:    this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_TRAIN_CAPTION;    break;
 					case VEH_ROAD:     this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_ROAD_CAPTION;     break;
 					case VEH_SHIP:     this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_SHIP_CAPTION;     break;
 					case VEH_AIRCRAFT: this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_AIRCRAFT_CAPTION; break;
@@ -925,7 +925,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				break;
 
 			case VLW_WAYPOINT_LIST:
-				this->widget[VLW_WIDGET_CAPTION].data = STR_WAYPOINT_VIEWPORT_LIST;
+				this->widget[VLW_WIDGET_CAPTION].data = STR_WAYPOINT_VIEWPORT_LIST_TRAIN;
 				break;
 
 			case VLW_STATION_LIST: // Station Name

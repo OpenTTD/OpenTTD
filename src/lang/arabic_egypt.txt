@@ -1196,7 +1196,7 @@ STR_WAYPOINT                                                    :{WHITE} نقط�
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK} اختر نوع نقطة العبور
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} قطار
+STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} قطار
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}عدل اسم نقطة العبور
@@ -2717,7 +2717,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}عربا
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}القطار طويل جدا
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}يمكن تعديل القطارعندما يكون متوقف في ورشة الصيانة
-STR_VEHICLE_LIST_CAPTION_TRAINS                                 :{WHITE}{COMPANY} - {COMMA}قطار
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA}قطار
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}عربات قطار جديدة
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}عربات قطار كهربائية جديدة

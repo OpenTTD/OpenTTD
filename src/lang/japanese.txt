@@ -2680,7 +2680,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}新規�
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車が長過ぎます
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}列車の変更は鉄道車庫内でのみ行えます
-STR_VEHICLE_LIST_CAPTION_TRAINS                                 :{WHITE}{COMPANY} - 列車{COMMA}本
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - 列車{COMMA}本
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}新規鉄道車両
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}新規電動鉄道車両

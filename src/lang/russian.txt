@@ -1345,7 +1345,7 @@ STR_WAYPOINT                                                    :{WHITE}Точк
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Выбор типа точки пути
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Поезд{P "" а ов}
+STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Поезд{P "" а ов}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Переименовать точку пути
@@ -2874,7 +2874,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Новы
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Поезд слишком длинный
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Структуру поезда можно менять только в депо
-STR_VEHICLE_LIST_CAPTION_TRAINS                                 :{WHITE}{COMPANY} - {COMMA} поезд{P "" а ов}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} поезд{P "" а ов}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Новый поезд
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Новый электропоезд

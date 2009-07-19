@@ -1196,7 +1196,7 @@ STR_WAYPOINT                                                    :{WHITE}Ponto de
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Seleccione um tipo de ponto de passagem
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Trem{P "" s}
+STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Trem{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nome do ponto de passagem
@@ -2717,7 +2717,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Novos Ve
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Comboio muito longo
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Os comboios só podem ser alterados quando parados num depósito
-STR_VEHICLE_LIST_CAPTION_TRAINS                                 :{WHITE}{COMPANY} - {COMMA} Comboios
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Comboios
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Novos Veículos Ferroviários
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Novos comboios para carris electrificados

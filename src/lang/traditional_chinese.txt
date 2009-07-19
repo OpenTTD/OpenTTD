@@ -1194,7 +1194,7 @@ STR_WAYPOINT                                                    :{WHITE}號誌�
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}顯示號誌站種類
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - 列車 {COMMA} 列
+STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - 列車 {COMMA} 列
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}編輯號誌站名稱
@@ -2715,7 +2715,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}購買�
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車太長
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}列車只有在停放於機廠內的時候才能變動
-STR_VEHICLE_LIST_CAPTION_TRAINS                                 :{WHITE}{COMPANY} - 列車 {COMMA} 組
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - 列車 {COMMA} 組
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}新購鐵路車輛
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}新電氣化列車

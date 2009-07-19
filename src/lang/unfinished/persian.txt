@@ -1360,7 +1360,7 @@ STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO}
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}وسیله ی جدید
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}قطار بسیار طولانی شده
-STR_VEHICLE_LIST_CAPTION_TRAINS                                 :{WHITE}{COMPANY} - {COMMA} قطار{P "" s}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} قطار{P "" s}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}قطار جدید
 STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}قطار جدید مونوریل

@@ -1230,7 +1230,7 @@ STR_WAYPOINT                                                    :{WHITE}Ellenőr
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Válassz ellenőrző-pont tipust
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Vonat
+STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Vonat
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ellenőrző pont nevének módosítása
@@ -2788,7 +2788,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Új jár
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Túl hosszú a vonat
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Csak a járműtelepen álló vonatokat lehet megváltoztatni
-STR_VEHICLE_LIST_CAPTION_TRAINS                                 :{WHITE}{COMPANY} vonatai - {COMMA}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} vonatai - {COMMA}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Új vasúti járművek
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Új vasúti járművek

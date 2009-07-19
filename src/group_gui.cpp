@@ -387,7 +387,7 @@ public:
 
 			switch (this->vehicle_type) {
 				case VEH_TRAIN:
-					this->widget[GRP_WIDGET_CAPTION].data = STR_VEHICLE_LIST_CAPTION_TRAINS;
+					this->widget[GRP_WIDGET_CAPTION].data = STR_VEHICLE_LIST_TRAIN_CAPTION;
 					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_TRAIN;
 					break;
 				case VEH_ROAD:

@@ -1182,7 +1182,7 @@ STR_WAYPOINT                                                    :{WHITE}Σημε
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Επιλογή τύπου σημείου πορείας
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Τραίν{P ο α}
+STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Τραίν{P ο α}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Διαμόρφωση ονόματος σημείου πορείας

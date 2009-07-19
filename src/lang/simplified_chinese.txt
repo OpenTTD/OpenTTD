@@ -1196,7 +1196,7 @@ STR_WAYPOINT                                                    :{WHITE}路点
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}选择路点类型
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} 列车
+STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} 列车
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}编辑路点名称
@@ -2717,7 +2717,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}购买�
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列车过长
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}只有列车停在车库中时才能更改挂车
-STR_VEHICLE_LIST_CAPTION_TRAINS                                 :{WHITE}{COMPANY} - {COMMA} 列  列车
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} 列  列车
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}购买普通列车
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}购买电气化列车
