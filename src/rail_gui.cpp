@@ -938,6 +938,8 @@ enum BuildRailStationWidgets {
 
 struct BuildRailStationWindow : public PickerWindowBase {
 private:
+	uint line_height; ///< Height of a single line in the newstation selection matrix (#BRSW_NEWST_LIST widget).
+
 	/**
 	 * Verify whether the currently selected station size is allowed after selecting a new station class/type.
 	 * If not, change the station size variables ( _settings_client.gui.station_numtracks and _settings_client.gui.station_platlength ).
@@ -983,6 +985,8 @@ private:
 public:
 	BuildRailStationWindow(const WindowDesc *desc, Window *parent, bool newstation) : PickerWindowBase(desc, parent)
 	{
+		this->line_height = FONT_HEIGHT_NORMAL + 4;
+
 		this->LowerWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
 		if (_settings_client.gui.station_dragdrop) {
 			this->LowerWidget(BRSW_PLATFORM_DRAG_N_DROP);
@@ -1095,7 +1099,7 @@ public:
 
 				if (statspec != NULL && statspec->name != 0) {
 					if (HasBit(statspec->callbackmask, CBM_STATION_AVAIL) && GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
-						GfxFillRect(left + 1, y - 2, right - 1, y + 10, 0, FILLRECT_CHECKER);
+						GfxFillRect(left + 1, y - 2, right - 1, y + FONT_HEIGHT_NORMAL, 0, FILLRECT_CHECKER);
 					}
 
 					DrawString(left + 2, right - 2, y, statspec->name, i == _railstation.station_type ? TC_WHITE : TC_BLACK);
@@ -1103,7 +1107,7 @@ public:
 					DrawString(left + 2, right - 2, y, STR_STAT_CLASS_DFLT, i == _railstation.station_type ? TC_WHITE : TC_BLACK);
 				}
 
-				y += 14;
+				y += this->line_height;
 			}
 		}
 	}
@@ -1240,7 +1244,7 @@ public:
 
 			case BRSW_NEWST_LIST: {
 				const StationSpec *statspec;
-				int y = (pt.y - this->widget[BRSW_NEWST_LIST].top) / 14;
+				int y = (pt.y - this->widget[BRSW_NEWST_LIST].top) / this->line_height;
 
 				if (y >= this->vscroll.cap) return;
 				y += this->vscroll.pos;
