@@ -274,6 +274,28 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	}
 
 	/**
+	 * Get the first part of a multi-part engine.
+	 * @return First part of the engine.
+	 */
+	FORCEINLINE Train *GetFirstEnginePart()
+	{
+		Train *v = this;
+		while (v->IsArticulatedPart()) v = v->Previous();
+		return v;
+	}
+
+	/**
+	 * Get the first part of a multi-part engine.
+	 * @return First part of the engine.
+	 */
+	FORCEINLINE const Train *GetFirstEnginePart() const
+	{
+		const Train *v = this;
+		while (v->IsArticulatedPart()) v = v->Previous();
+		return v;
+	}
+
+	/**
 	 * Get the last part of a multi-part engine.
 	 * @return Last part of the engine.
 	 */

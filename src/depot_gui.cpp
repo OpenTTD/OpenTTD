@@ -453,10 +453,7 @@ struct DepotWindow : Window {
 					if (x < 0) break;
 				}
 
-				/* if an articulated part was selected, find its parent */
-				while (v != NULL && v->IsArticulatedPart()) v = v->Previous();
-
-				d->wagon = v;
+				d->wagon = (v != NULL ? v->GetFirstEnginePart() : NULL);
 
 				return MODE_DRAG_VEHICLE;
 			}

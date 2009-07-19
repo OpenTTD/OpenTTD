@@ -1105,9 +1105,9 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	}
 
 	/* if an articulated part is being handled, deal with its parent vehicle */
-	while (src->IsArticulatedPart()) src = src->Previous();
+	src = src->GetFirstEnginePart();
 	if (dst != NULL) {
-		while (dst->IsArticulatedPart()) dst = dst->Previous();
+		dst = dst->GetFirstEnginePart();
 	}
 
 	/* don't move the same vehicle.. */
@@ -1445,7 +1445,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
 
-	while (v->IsArticulatedPart()) v = v->Previous();
+	v = v->GetFirstEnginePart();
 	Train *first = v->First();
 
 	/* make sure the vehicle is stopped in the depot */
