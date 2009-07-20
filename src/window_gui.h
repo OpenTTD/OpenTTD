@@ -704,12 +704,17 @@ public:
 };
 
 /**
- * Data structure for a window opened from a toolbar
+ * Base class for windows opened from a toolbar.
  */
 class PickerWindowBase : public Window {
 
 public:
 	PickerWindowBase(const WindowDesc *desc, Window *parent) : Window(desc)
+	{
+		this->parent = parent;
+	};
+
+	PickerWindowBase(Window *parent) : Window()
 	{
 		this->parent = parent;
 	};
