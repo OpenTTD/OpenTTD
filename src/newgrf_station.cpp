@@ -651,7 +651,7 @@ static const SpriteGroup *ResolveStation(ResolverObject *object)
 	if (object->u.station.st == NULL) {
 		/* No station, so we are in a purchase list */
 		ctype = CT_PURCHASE;
-	} else {
+	} else if (Station::IsExpected(object->u.station.st)) {
 		const Station *st = Station::From(object->u.station.st);
 		/* Pick the first cargo that we have waiting */
 		const CargoSpec *cs;
