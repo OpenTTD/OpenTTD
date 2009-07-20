@@ -388,7 +388,7 @@ public:
 			SetDParam(1, owner);
 			SetDParam(2, this->vehicles.Length());
 
-			this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_TRAIN; + this->vehicle_type;
+			this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_TRAIN + this->vehicle_type;
 		} else {
 			const Group *g = Group::Get(this->group_sel);
 
