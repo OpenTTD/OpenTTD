@@ -911,9 +911,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Создать 
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Создать новое предприятие
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...можно строить только в тропиках
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...можно строить только в пустыне
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  ПАУЗА  *  *
@@ -1346,7 +1343,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Выбо
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Переименовать точку пути
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Невозможно переименовать точку пути...
@@ -1927,11 +1923,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Хижины
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Домик-Чайник
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Хрюшка-Копилка
 
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_STATION_NAME                                                :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Ландшафт
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Высадка деревьев
@@ -1985,6 +1976,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :Очень хо
 STR_CARGO_RATING_EXCELLENT                                      :Великолепный
 STR_CARGO_RATING_OUTSTANDING                                    :Отличный
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Показать все поезда, в расписании которых есть эта станция
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Показать все автомобили, в расписании которых есть эта станция/остановка
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Показать весь авиатранспорт, в расписании которого есть этот аэропорт
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Показать все корабли, в расписании которых есть эта пристань
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} больше не принимает {STRING.acc}
@@ -2328,7 +2325,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Враждеб�
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :(Компания {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Внешность
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Цвет
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Цвет:
@@ -2339,7 +2335,7 @@ STR_QUERY_COMPANY_NAME_CAPTION                                  :Компани�
 STR_QUERY_PRESIDENT_S_NAME_CAPTION                              :Имя директора
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Невозможно изменить название компании...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Невозможно изменить имя директора...
-STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Денежные средства {BLACK}{COMPANYNUM}
+STR_FINANCES_CAPTION                                            :{WHITE}Финансы - {COMPANY} {BLACK}{COMPANYNUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Расход/доход
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Строительство
@@ -2361,7 +2357,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}ИТОГ
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}График доходов
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}График прибыли от основной деятельности
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Баланс
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Ссуда
@@ -2688,7 +2683,7 @@ STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :Грузови�
 STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Грузовик Powernaught (игрушки)
 STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Грузовик Wizzowow (игрушки)
 STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :Грузовик MightyMover (конфеты)
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Powernaught Грузовик (конфеты)
+STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Грузовик Powernaught (конфеты)
 STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Грузовик Wizzowow (конфеты)
 STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :Грузовик MightyMover (батарейки)
 STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Грузовик Powernaught (батарейки)
@@ -2879,7 +2874,6 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Новы
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Поезд слишком длинный
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Структуру поезда можно менять только в депо
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} поезд{P "" а ов}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Новый поезд
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Новый электропоезд
@@ -2937,7 +2931,6 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Нево
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Невозможно остановить/запустить поезд...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Осмотр каждые {LTBLUE}{COMMA}дней{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Интервал обслуж.: {LTBLUE}{COMMA}%{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Поезда - нажмите для получения справки
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Поезда - кликните для получения информации, используйте перетаскивание для изменения состава
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Купить новый поезд
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Перетащите сюда транспорт, чтобы продать его
@@ -3026,7 +3019,6 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Запо
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Машина на пути
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} автомобил{P ь я ей}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}Гараж {TOWN}
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Новая машина
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Новая машина
@@ -3042,7 +3034,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Обс�
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Обслуж. в гараже {TOWN}; {VELOCITY}
 STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Невозможно отправить машину в гараж...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Невозможно найти гараж
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Автомобили - кликните для получения подробной информации
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Текущее действие автомобиля; кликните для его остановки/запуска
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Показать задания
 STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Показать автомобиль в главном окне
@@ -3089,7 +3080,6 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Водн
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Здесь невозможно построить пристань...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Док {TOWN}
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Новое судно
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} корабл{P ь я ей}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Покупка кораблей
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Купить
 STR_CLONE_SHIP                                                  :{BLACK}Копировать
@@ -3112,7 +3102,6 @@ STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Кора
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Купить новый корабль
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Перетащите сюда корабль, чтобы продать его
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Показать док в основном окне
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Корабли - нажмите для получения справки
 STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Список кораблей - нажмите для получения справки
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Купить выбранный корабль
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Текущее действие корабля; кликните для его остановки/запуска
@@ -3154,7 +3143,6 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Созд
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Новый
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Купить
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Невозможно купить возд. транспорт...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} единиц{P а ы ""} авиатранспорта
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Невозможно отправить его в ангар...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Летит в Ангар {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Идёт в ангар {STATION}; {VELOCITY}
@@ -3168,7 +3156,6 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Само
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Не могу продать авиатранспорт...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Строительство аэропортов
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Строительство аэропортов
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авиатранспорт - нажмите для получения справки
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авиатранспорт - нажмите для получения справки
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Купить новый авиатранспорт
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Перетащите сюда транспорт, чтобы продать его
@@ -3350,11 +3337,16 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Поезда - нажмите для получения справки
+STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Автомобили - кликните для получения подробной информации
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Корабли - нажмите для получения справки
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авиатранспорт - нажмите для получения справки
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Показать все поезда, в расписании которых есть эта станция
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Показать все автомобили, в расписании которых есть эта станция/остановка
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Показать весь авиатранспорт, в расписании которого есть этот аэропорт
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Показать все корабли, в расписании которых есть эта пристань
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} поезд{P "" а ов}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} автомобил{P ь я ей}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} корабл{P ь я ей}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} единиц{P а ы ""} авиатранспорта
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Общие задания для {COMMA} ед. транспорта
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Показать весь транспорт с общими заданиями
@@ -3377,7 +3369,6 @@ STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Авто
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Автозамена всех авто в гараже
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Автозамена всех судов в доке
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Автозамена всего авиатранспорта в ангаре
-
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Начать замену
@@ -3544,17 +3535,6 @@ STR_MEASURE_AREA                                                :{BLACK}Площ
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Длина: {NUM}{}Разница высоты: {NUM} м
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площадь: {NUM} x {NUM}{}Разница высот: {NUM} м
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{STRING}.{STRING}.{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING.gen} {NUM} г.
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Выручка перевозки: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...эта дорога принадлежит городу
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...неверное направление дороги
@@ -3579,7 +3559,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :Группа {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Все поезда
 STR_GROUP_ALL_ROADS                                             :Весь автотранспорт
@@ -3608,12 +3587,35 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Удал
 STR_GROUP_RENAME_TIP                                            :{BLACK}Переименовать выбранную группу
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Защита транспорта в группе от глобальной автозамены
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}.{STRING}.{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM} г.
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING.gen} {NUM} г.
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :(Компания {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Группа {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Имя должно быть уникальным
 
@@ -3742,12 +3744,18 @@ STR_STATION_NOISE                                               :{BLACK}Прои
 ############ Downloading of content from the central server
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD собрана без поддержки библиотеки «zlib»...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}...загрузка контента невозможна!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Основная графика
-STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
-STR_CONTENT_TYPE_AI                                             :ИИ
-STR_CONTENT_TYPE_AI_LIBRARY                                     :Библиотека ИИ
-STR_CONTENT_TYPE_SCENARIO                                       :Сценарии
-STR_CONTENT_TYPE_HEIGHTMAP                                      :Высотные карты
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=f}Базовая графика
+STR_CONTENT_TYPE_BASE_GRAPHICS.acc                              :{G=m}набор базовой графики
+STR_CONTENT_TYPE_NEWGRF                                         :{G=m}NewGRF
+STR_CONTENT_TYPE_NEWGRF.acc                                     :{G=m}NewGRF
+STR_CONTENT_TYPE_AI                                             :{G=m}ИИ
+STR_CONTENT_TYPE_AI.acc                                         :{G=m}ИИ
+STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}Библиотека ИИ
+STR_CONTENT_TYPE_AI_LIBRARY.acc                                 :{G=f}библиотеку ИИ
+STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Сценарий
+STR_CONTENT_TYPE_SCENARIO.acc                                   :{G=m}сценарий
+STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Карта высот
+STR_CONTENT_TYPE_HEIGHTMAP.acc                                  :{G=f}карту высот
 STR_CONTENT_TITLE                                               :{WHITE}Загрузка контента
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Тип
 STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Тип контента
@@ -3772,7 +3780,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Буд�
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Этот модуль зависит от другого и будет загружен
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Уже установлен
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Этот модуль неизвестен и не может быть загружен для OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Он заменит уже имеющийся {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Он заменит уже имеющ{G ий ую ее ие}ся {STRING.acc}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Наименование: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Версия: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Описание: {WHITE}{STRING}

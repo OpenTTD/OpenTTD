@@ -920,9 +920,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansiranje iz
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finansiranje izgradnje nove industrije
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...gradnja je dozvoljena samo u područjima pod tropskim šumama
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...gradnja je dozvoljena samo u pustinjskim oblastima
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* * PAUZA * *
@@ -1328,8 +1325,8 @@ STR_SUB_TROPICAL_LANDSCAPE                                      :Suptropski klim
 STR_TOYLAND_LANDSCAPE                                           :Zemlja igračaka
 
 STR_CHEATS                                                      :{WHITE}Varanja
-STR_CHEATS_TIP                                                  :{BLACK}Štiklirano polje označava da ste i renije koristili ovu opciju
-STR_CHEATS_WARNING                                              :{BLACK}Upozorenje! Upravo ćete revariti vaše saradnike. Imajte na umu da će takav loš postupak biti trajno upamćen.
+STR_CHEATS_TIP                                                  :{BLACK}Štiklirano polje označava da ste i ranije koristili ovu opciju
+STR_CHEATS_WARNING                                              :{BLACK}Upozorenje! Upravo ćete prevariti vaše saradnike. Imajte na umu da će takav loš postupak biti trajno upamćen.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Dodati još {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Upravljanje kompanijom: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magični buldožer (uklonite industrije, nepokretnosti): {ORANGE}{STRING}
@@ -1355,7 +1352,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Odaberit
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Promena naziva čvorišta
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Neuspešana promena naziva čvorišta...
@@ -1936,11 +1932,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Vigvami
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Čajnik-kuća
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Kasica-prasica
 
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_STATION_NAME                                                :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Oblikovanje reljefa
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Posadi drvo
@@ -1994,6 +1985,8 @@ STR_CARGO_RATING_VERY_GOOD                                      :veoma dobro
 STR_CARGO_RATING_EXCELLENT                                      :odlično
 STR_CARGO_RATING_OUTSTANDING                                    :izvanredno
 ############ range for rating ends
+
+### station view strings
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} više ne prihvata {STRING}
@@ -2329,7 +2322,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Neprijateljski
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :(Kompanija {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Novo lice
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Šema boja
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Šema boja:
@@ -2362,7 +2354,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Ukupno:
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafikon prihoda
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafikon operativnog profita
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Stanje na računu
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Zajam
@@ -2729,7 +2720,6 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nova Voz
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Voz je predugačak
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vozovi se mogu izmeniti samo kada su zaustavljeni u depou
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Voz{P "" a ova}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nova Železnička Vozila
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nova Železnička Električna Vozila
@@ -2787,7 +2777,6 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nepostoj
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Ne može se pokrenuti/zaustaviti voz...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Period servisiranja: {LTBLUE}{COMMA}dana{BLACK}   Poslednji servis: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Period servisiranja: {LTBLUE}{COMMA}%{BLACK}   Poslednji servis: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vozovi - kliknite na voz za podatke
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vozovi - kliknite na voz za podatke, prevucite vozilo da bi dodali/sklonili iz kompozicije
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kupite nova šinska vozila
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Ovde prevucite šinsko vozilo kako biste ga prodali
@@ -2876,7 +2865,6 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Popunjav
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Drumsko vozilo na putu
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Drumsk{P o a ih} Vozil{P o a a}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Depo Drumskih Vozila
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nova Vozila
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nova Drumska Vozila
@@ -2892,7 +2880,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servisi
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servisiranje u {TOWN} Drumskom Depou, {VELOCITY}
 STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Vozilo ne može da ode u depo...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Neuspešan pronalazak lokalnog depoa
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Drumska vozila - kliknite na vozilo za podatke
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Trenutno stanje vozila - kliknite ovde za zaustavljanje/pokretanje vozila
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Prikazuje naredbe vozilu
 STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Prebacite se na lokaciju vozila
@@ -2939,7 +2926,6 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Plovni k
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Izgradnja pristaništa ovde nije moguća...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Depo Plovila
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novi Brodovi
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Brod{P "" a ova}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Novi Brodovi
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Kupi Brod
 STR_CLONE_SHIP                                                  :{BLACK}Kopiraj Brod
@@ -2962,7 +2948,6 @@ STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Brodovi 
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Kupovina novog broda
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Ovde prevucite brod kako biste ga prodali
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Prebacite se na lokaciju broda
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Brodovi - kliknite na brod za podatke
 STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Spisak probranih brodova - kliknite na brod za više podataka
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Kupite označeni brod
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Trenutno stanje broda - kliknite ovde za zaustavljanje/pokretanje broda
@@ -3004,7 +2989,6 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Ovim će
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nove Letilice
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Napraviti Letelicu
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Letelice se ne može napraviti
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Leteluca
 
 STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Promenite naziv vrste letilice
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Promena naziva vrste letilice
@@ -3162,11 +3146,18 @@ STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Odredite
 STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 funti (£) u vašoj moneti
 
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vozovi - kliknite na voz za podatke
+STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Drumska vozila - kliknite na vozilo za podatke
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Brodovi - kliknite na brod za podatke
 
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Voz{P "" a ova}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Drumsk{P o a ih} Vozil{P o a a}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Brod{P "" a ova}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Leteluca
 
 
 ### depot strings
-
 
 
 
@@ -3269,17 +3260,6 @@ STR_MEASURE_AREA                                                :{BLACK}Područj
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dužina: {NUM}{}Visinska razlika: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Područje: {NUM} x {NUM}{}Visinska razlika: {NUM} m
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Zarada od transfera: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...ova ulica je u vlasništvu naselja
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...ulica je okrenuta u drugom pravcu
@@ -3304,7 +3284,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :Grupa {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Svi vozovi
 STR_GROUP_ALL_ROADS                                             :Sva drumska vozila
@@ -3318,6 +3297,28 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupisane let
 
 
 
+#### String control codes and their formatting
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :(Kompanija {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Grupa {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
 
 #### Improved sign GUI
