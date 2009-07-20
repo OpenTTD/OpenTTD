@@ -1196,7 +1196,6 @@ STR_WAYPOINT                                                    :{WHITE}Yerimi
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Yerimi türü seç
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Tren
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Yerimi adını değiştir
@@ -2717,7 +2716,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Yeni Ara
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren çok uzun
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Sadece garda durdurulmuş trenler üzerinde işlem yapılabilir
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Tren
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tren
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Yeni Tren
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Yeni Elektrikli Trenler
@@ -2862,7 +2861,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Zaman ta
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Yolda araba var
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Arabalar
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Arabalar
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Araba Garaji
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Yeni Araba
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Yeni Araba
@@ -2925,7 +2924,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Suyolu
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Buraya iskele yapılamaz...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Tersanesi
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Yeni gemi
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Gemi
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Gemi
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Yeni gemi
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Gemi yap
 STR_CLONE_SHIP                                                  :{BLACK}Gemiyi kopyala
@@ -2990,7 +2989,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Uçağı
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Yeni Uçak
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Uçak Yap
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Uçak alınamaz...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Uçak
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Uçak
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Hangara gönderilemiyor...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATION} Hangarına gidiyor
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION} Hangarına gidiyor, {VELOCITY}
@@ -3186,10 +3185,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Trenler
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Arabalar
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Uçaklar
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Gemiler
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Talimat listesinde bu durak olan trenleri listele
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Talimat listesinde bu durak olan arabaları listele
@@ -3218,10 +3213,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Garajdak
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Tersanedeki tüm gemileri otomatik yenile
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Hangardaki tüm uçakları otomatik yenile
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tren
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Araba
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Gemi
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Uçak
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} Değiştir
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Araçları Değiştirmeye Başla
@@ -3437,10 +3428,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Bütün paylaşılan araçlar
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Bütün araçları çıkar
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tren
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Araba
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Gemi
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Uçak
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Grubun ismini değiştir
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Grup oluşturulamıyor...

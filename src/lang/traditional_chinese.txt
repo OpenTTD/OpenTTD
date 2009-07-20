@@ -1196,7 +1196,6 @@ STR_WAYPOINT                                                    :{WHITE}號誌�
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}顯示號誌站種類
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - 列車 {COMMA} 列
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}編輯號誌站名稱
@@ -2717,7 +2716,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}購買�
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車太長
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}列車只有在停放於機廠內的時候才能變動
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - 列車 {COMMA} 組
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - 列車 {COMMA} 組
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}新購鐵路車輛
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}新電氣化列車
@@ -2864,7 +2863,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}自動�
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}前方有汽車
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - 車輛 {COMMA} 部
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - 車輛 {COMMA} 部
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} 車庫
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}購買新車輛
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}購置新車輛
@@ -2927,7 +2926,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}水道
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}無法在此興建碼頭...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} 船塢
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}購買船舶
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - 船舶 {COMMA} 艘
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - 船舶 {COMMA} 艘
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}購買船舶
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}購買船舶
 STR_CLONE_SHIP                                                  :{BLACK}複製船舶
@@ -2992,7 +2991,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}這會�
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}購買飛機
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}購買飛機
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}無法購買飛機...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - 飛機 {COMMA} 架
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - 飛機 {COMMA} 架
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}無法將飛機送回機棚...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}正前往 {STATION} 機棚
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}正前往 {STATION} 機棚，{VELOCITY}
@@ -3186,10 +3185,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - 列車 {COMMA} 列
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - 車輛 {COMMA} 部
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - 飛機 {COMMA} 架
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - 船舶 {COMMA} 艘
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}顯示所有指令內包含這個車站的列車
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}顯示所有指令内包含這個車站的車輛
@@ -3218,10 +3213,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}自動�
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}自動替換所有船塢内船舶
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}自動替換所有機棚内飛機
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - 列車 {COMMA} 列
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - 車輛 {COMMA} 部
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - 船舶 {COMMA} 艘
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - 飛機 {COMMA} 架
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}替換 {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}開始替換交通工具
@@ -3437,10 +3428,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :加入共享指令的交通工具
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有交通工具
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} 列車
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} 車輛
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} 船舶
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} 飛機
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}為群組重新命名
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}無法建立群組...

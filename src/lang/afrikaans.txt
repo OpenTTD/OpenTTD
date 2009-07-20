@@ -1170,7 +1170,6 @@ STR_WAYPOINT                                                    :{WHITE}Wegpunt
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Kies wegpunt tipe
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Trein{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Redigeer wegpunt naam
@@ -2670,7 +2669,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nuwe Voe
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trein te lank
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Treine kan slegs verander word as hulle in die depot gestop is
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Trein{P "" e}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Trein{P "" e}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nuwe Spoor Voertuie
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nuwe Elektries Spoor Voertuie
@@ -2801,7 +2800,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul die 
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Pad voertuig in die pad
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Pad voert{P uig uie}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Pad voert{P uig uie}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Pad Voertuig Depot
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nuwe Voertuie
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nuwe Pad Voertuie
@@ -2863,7 +2862,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waterwe√
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan nie werf hier bou nie...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Skip Depot
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nuwe Skepe
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Skeep{P "" e}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Skeep{P "" e}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nuwe Skepe
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Bou Skip
 STR_CLONE_SHIP                                                  :{BLACK}Kloon Skip
@@ -2927,7 +2926,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Dit sal 
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nuwe Vliegtuig
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Bou Vliegtuig
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kan nie vliegtuig bou nie...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Vliegtuie
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Vliegtuie
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan nie vlietuig na hangar stuur nie...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Op pad na {STATION} Hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Op pad na {STATION} Hangar, {VELOCITY}
@@ -3115,10 +3114,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Trein{P "" e}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Pad Voertui{P g e}
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Vliegtuig
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Sk{P ip epe}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Toon alle treine wat hierdie stasie op hul skedule het
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Toon alle pad voertuie wat hierdie stasie op hul skedule het
@@ -3147,10 +3142,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Outoverv
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Outovervang alle skepe in die depot
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Outovervang alle vlietuie in die hangar
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Trein{P "" e}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Pad Voertui{P g e}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Sk{P ip epe}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Vliegtuig
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Begin Voertuie Vervang
@@ -3361,10 +3352,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Voeg gedeel voertuie
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Verwyder alle voertuie
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Trein{P "" e}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Pad Voer{P tuig tuie}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Sk{P ip epe}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Vliegtuie
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Hernoem groep
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Kan nie groep skep nie...

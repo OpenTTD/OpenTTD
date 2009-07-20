@@ -1196,7 +1196,6 @@ STR_WAYPOINT                                                    :{WHITE}Kontrols
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vælg udseende af kontrolsteder
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} tog{P "" e}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Omdøb kontrolsted
@@ -2717,7 +2716,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nye kør
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Toget er for langt
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Tog kan kun ændres når de er stoppet i en remise
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Tog
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tog
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nye jernbanekøretøjer
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nyt elektrisk lokomotiv
@@ -2862,7 +2861,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Udfyld a
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Køretøj i vejen
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Køretøj{P "" er}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Køretøj{P "" er}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} værksted
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nye køretøjer
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nye køretøjer
@@ -2925,7 +2924,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vandveje
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan ikke bygge en havn her...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} skibsdok
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nye skibe
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Skibe
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Skibe
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nye skibe
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Byg skib
 STR_CLONE_SHIP                                                  :{BLACK}Klon skib
@@ -2990,7 +2989,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Dette vi
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nyt fly
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Byg et fly
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kan ikke bygge fly...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Fly
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Fly
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan ikke sende flyet til en hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Flyver til {STATION} hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Flyver til {STATION} hangar, {VELOCITY}
@@ -3186,10 +3185,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Tog{P "" e}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Køretøj{P "" er}
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Fly
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Skib{P "" e}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Vis alle toge, som har denne station i deres ruteplan
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Vis alle køretøjer, som har denne station i deres ruteplan
@@ -3218,10 +3213,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Udskift 
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Udskift automatisk alle skibe i dokken
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Udskift automatisk alle fly i hangaren
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tog{P "" e}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Køretøj{P "" er}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Skib{P "" e}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Fly
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Udskift {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start udskiftning
@@ -3437,10 +3428,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Tilføj delte køretøjer
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle køretøjer
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tog{P "" e}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Vejkøretøj{P "" er}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Skib{P "" e}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Fly
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Omdøb en gruppe
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Kan ikke oprette gruppe...

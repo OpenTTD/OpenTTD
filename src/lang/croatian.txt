@@ -1252,7 +1252,6 @@ STR_WAYPOINT                                                    :{WHITE}Čvoriš
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Odaberi vrstu čvorišta
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} vlak{P "" a ova}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Promijeni ime čvorišta
@@ -2769,7 +2768,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nova voz
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Predugačak vlak
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vlakovi mogu biti izmjenjeni jedino kad su zaustavljeni u spremištu
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} vlak{P "" a ova}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} vlak{P "" a ova}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nova željeznička vozila
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nova električna pružna vozila
@@ -2901,7 +2900,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Automats
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Cestovno vozilo na putu
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} cestovn{P o a ih} vozil{P o a a}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} cestovn{P o a ih} vozil{P o a a}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}Spremište cestovnih vozila grada {TOWN}a
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nova vozila
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nova cestovna vozila
@@ -2964,7 +2963,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Plovni k
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Ovdje nije moguće izgraditi pristanište...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE} Spremište brodova grada {TOWN}a
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novi brodovi
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} brod{P "" a ova}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} brod{P "" a ova}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Novi brodovi
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Izgradi brod
 STR_CLONE_SHIP                                                  :{BLACK}Kloniraj brod
@@ -3029,7 +3028,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Ovo će 
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Novi zrakoplov
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Izgradi zrakoplov
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Nije moguće izgraditi zrakoplov...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} zrakoplova
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} zrakoplova
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nije moguće poslati zrakoplov u hangar
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Putuje prema hangaru {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Putuje prema hangaru {STATION}, {VELOCITY}
@@ -3214,10 +3213,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} vlak{P "" a ova}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} cestovn{P o a ih} vozil{P o a a}
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Zrakoplov
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} brod{P "" a ova}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Pokaži sve vlakove koji imaju ovu postaju u svom rasporedu
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Prikaži sva cestovna vozila koja imaju ovu postaju u svom rasporedu
@@ -3246,10 +3241,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Automats
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Automatski zamijeni sve brodove u spremištu
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Automatski zamijeni sve zrakoplove u spremištu
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} vlak{P "" a ova}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} cestovn{P o a ih} vozil{P o a a}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} brod{P "" a ova}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} zrakoplova
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zamijeni {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Počni zamijenjivati vozila
@@ -3464,10 +3455,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Dodaj dijeljena vozila
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ukloni sva vozila
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} vlak{P "" a ova}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA}  Cestovno vozil{P o a a}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} brod{P "" a ova}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Zrakoplov
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Preimenuj grupu
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Nije moguće kreirati grupu...

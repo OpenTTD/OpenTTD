@@ -1569,7 +1569,6 @@ STR_WAYPOINT                                                    :{WHITE}Pkt kont
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Wybierz typ pkt kontrolnego
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Train{P "" i ow}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edytuj nazwę pkt. kontrolnego
@@ -3131,7 +3130,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nowe poj
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Pociąg jest zbyt długi
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Pociąg może być modyfikowany tylko gdy jest zatrzymany w zajezdni
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Pociąg{P "" i ów}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Pociąg{P "" i ów}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nowe pociągi
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nowe elektryczne pojazdy szynowe
@@ -3278,7 +3277,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełni
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Samochód na drodze
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Samoch{P ód ody odów}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Samoch{P ód ody odów}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE} Zajezdnia samochodowa w {TOWN}
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nowe pojazdy
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nowy pojazd drogowy
@@ -3341,7 +3340,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Kanał w
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Nie można tutaj wybudować portu...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Stocznia w {TOWN}
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nowe statki
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Stat{P ek ki ów}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Stat{P ek ki ów}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nowe statki
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Budowa statku
 STR_CLONE_SHIP                                                  :{BLACK}Klonuj statek
@@ -3406,7 +3405,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Spowoduj
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nowy samolot
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Budowa samolotu
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Nie można zbudować samolotu...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Samolot
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Samolot
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nie można wysłać samolotu do hangaru...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Zmierza do hangaru w {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Zmierza do hangaru w {STATION}, {VELOCITY}
@@ -3600,10 +3599,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Pociąg{P "" i ów}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Samoch{P ód ody odów}
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Samolot{P "" y ów}
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Stat{P ek ki ków}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Pokazuje wszystkie pociągi, które mają tę stację w swoim rozkładzie
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Pokazuje wszystkie samochody, ktore mają tę stację w swoim rozkladzie
@@ -3632,10 +3627,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Zamień 
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Zamień wszystkie statki w stoczni
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Zamień wszystkie samoloty w hangarze
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Pociąg{P "" i ów}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Samoch{P ód ody odów}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Stat{P ek ki ków}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Samolot{P "" y ów}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zastąp {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Rozpocznij zastępowanie
@@ -3851,10 +3842,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Dodaj poj. współdzielące
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Usuń wszystkie pojazdy
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Pociąg{P "" i ów}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Samoch{P ód ody odów}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Stat{P ek ki ków}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Samolot{P "" y ów}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Zmień nazwę grupy
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Nie można stworzyć grupy...

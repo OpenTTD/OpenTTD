@@ -1196,7 +1196,6 @@ STR_WAYPOINT                                                    :{WHITE}Controle
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Selecteer controlepost type
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Trein{P "" en}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Naam controlepost aanpassen
@@ -2717,7 +2716,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nieuwe v
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trein te lang
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Treinen kunnen alleen aangepast worden wanneer ze gestopt zijn binnen een depot
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Treinen
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Treinen
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nieuwe spoorvoertuigen
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nieuwe elektrische spoorvoertuigen
@@ -2864,7 +2863,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul de d
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Wegvoertuig in de weg
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Wegvoertuigen
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Wegvoertuigen
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Bouw wegvoertuigdepot
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nieuwe voertuigen
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nieuwe Wegvoertuigen
@@ -2927,7 +2926,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Kanalen
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan hier geen haven bouwen...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Scheepswerf
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nieuwe schepen
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Schepen
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Schepen
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nieuwe schepen
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Bouw schip
 STR_CLONE_SHIP                                                  :{BLACK}Kloon Schip
@@ -2992,7 +2991,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Hierdoor
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nieuw Vliegtuig
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Bouw Vliegtuig
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kan vliegtuig niet bouwen...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Vliegtuigen
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Vliegtuigen
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan vliegtuig niet naar hangar sturen...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Op weg naar {STATION} Hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Op weg naar {STATION} Hangar, {VELOCITY}
@@ -3188,10 +3187,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Trein{P "" en}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Wagen{P "" s}
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Vliegtuigen
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Sch{P ip epen}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Geef alle treinen weer die dit station in hun opdrachtenlijst hebben
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Geef alle wagens weer die dit station in hun opdrachtenlijst hebben
@@ -3220,10 +3215,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Vervang 
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Vervang automatisch alle schepen in het depot
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Vervang automatisch alle vliegtuigen in de hangar
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Trein{P "" en}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Weg Voertuig{P "" en}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Sch{P ip epen}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Vliegtuig
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start het Vervangen
@@ -3439,10 +3430,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Toevoegen gedeelde voertuigen
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Verwijder alle voertuigen
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Trein{P "" en}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Weg Voertuig{P "" en}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Sch{P ip epen}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Vliegtuig
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Hernoem een groep
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Kan groep niet maken...

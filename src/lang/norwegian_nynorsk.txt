@@ -1187,7 +1187,6 @@ STR_WAYPOINT                                                    :{WHITE}Kontroll
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vel kontrollpunkttype
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Tog{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Endre namn på kontrollpunkt
@@ -2704,7 +2703,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nye tog/
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Toget er for langt
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Tog kan berre endrast når dei står stille i togstallen
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} tog
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} tog
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nye tog/vogner for jernbane
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nytt elektrisk tog
@@ -2836,7 +2835,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll tim
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Køyretøy i vegen
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} køyretøy
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} køyretøy
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Garasje
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nye køyretøy
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nye køyretøy
@@ -2899,7 +2898,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Kanalar
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan ikkje byggje hamn her...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} skipsdepot
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nye skip
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} skip
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} skip
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nye skip
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Bygg skip
 STR_CLONE_SHIP                                                  :{BLACK}Klon skip
@@ -2964,7 +2963,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Dette vi
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nytt fly
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Bygg fly
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kan ikkje byggje fly...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} fly
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} fly
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan ikkje sende fly til hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Er på veg til {STATION} hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Er på veg til {STATION} hangar, {VELOCITY}
@@ -3149,10 +3148,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} tog
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} køyretøy
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Fly
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} skip
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Vis alle tog som har denne stasjonen på timeplanen sin
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Vis alle køyretøy som har denne stasjonen på timeplanen sin
@@ -3181,10 +3176,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autoerst
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autoerstatt alle skipa i depotet
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autoerstatt alle flya i hangaren
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} tog
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} køyretøy
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} skip
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} fly
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Erstatt {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Byrje utskiftinga av køyretøy
@@ -3399,10 +3390,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Legg til delte køyretøy
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle køyretøy
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tog
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Køyretøy
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Skip
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Fly
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Gje nytt namn til ei gruppe
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Kan ikkje lage gruppe...

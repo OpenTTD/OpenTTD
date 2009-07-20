@@ -1176,7 +1176,6 @@ STR_WAYPOINT                                                    :{WHITE}Пътн
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Избор тип на пътни точки
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Влак{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Редакция името на пътна точка
@@ -2691,7 +2690,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Нови
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Влакът е прекалено дълъг
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Влаковете могат да бъдат променяни само когато са спрени в депото
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Влак{P "" ове}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Влак{P "" ове}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Нови Машини за Двурелсов път
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Нови електрически влакове
@@ -2825,7 +2824,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Запъ
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Кола на пътя
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Кол{P а и}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Кол{P а и}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} гараж за коли
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Ново превозно средство
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Нова кола
@@ -2888,7 +2887,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Воде
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Не може да построиш пристанище тук...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Корабно депо
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Нови Кораби
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Кораб{P "" и}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Кораб{P "" и}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Нови Кораби
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Купи Кораб
 STR_CLONE_SHIP                                                  :{BLACK}Клониране на кораб
@@ -2953,7 +2952,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Така
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Ново самолет
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Строене на самолет
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Не може да построи самолет...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Самолет
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Самолет
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Не може да изпрати самолета в хангар...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Отиващ към Хангара на летище {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Отиващ към Хангара на летище {STATION}, {VELOCITY}
@@ -3137,10 +3136,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Влак{P "" ове}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Автомобил{P "" и}
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Самолет{P "" и}
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Кораб{P "" и}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Показване на всички влакове които минават през гарата
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Показване на всички автомобили които минават през гарата
@@ -3169,10 +3164,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Авто
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Автоматична замяна на всички кораби в депото
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Автоматична замяна на всички самолети в хангара
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Влак{P "" ове}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Автомобил{P "" и}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Кораб{P "" и}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Самолет{P "" и}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замяна {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Започване замяната
@@ -3385,10 +3376,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Добави споделени превозни средства
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Премахни всички превозни средсва
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Влак{P "" s}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Пътно Превозно Средство{P "" s}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Кораб{P "" s}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Самолет
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Преименовай група
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Групата неможе да бъде създадена...

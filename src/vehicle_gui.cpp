@@ -885,69 +885,13 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 		this->owner = company;
 
 		/* Set up the window widgets */
-		switch (this->vehicle_type) {
-			case VEH_TRAIN:
-				this->widget[VLW_WIDGET_LIST].tooltips          = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP;
-				this->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_TRAINS;
-				break;
+		this->widget[VLW_WIDGET_LIST].tooltips           = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + this->vehicle_type;
+		this->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_TRAINS + this->vehicle_type;
 
-			case VEH_ROAD:
-				this->widget[VLW_WIDGET_LIST].tooltips          = STR_VEHICLE_LIST_ROAD_TOOLTIP;
-				this->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_ROAD_VEHICLES;
-				break;
-
-			case VEH_SHIP:
-				this->widget[VLW_WIDGET_LIST].tooltips          = STR_VEHICLE_LIST_SHIP_TOOLTIP;
-				this->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_SHIPS;
-				break;
-
-			case VEH_AIRCRAFT:
-				this->widget[VLW_WIDGET_LIST].tooltips          = STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP;
-				this->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_AIRCRAFT;
-				break;
-
-			default: NOT_REACHED();
-		}
-
-		switch (window_type) {
-			case VLW_SHARED_ORDERS:
-				this->widget[VLW_WIDGET_CAPTION].data  = STR_VEH_WITH_SHARED_ORDERS_LIST;
-				break;
-
-			case VLW_STANDARD: // Company Name - standard widget setup
-				switch (this->vehicle_type) {
-					case VEH_TRAIN:    this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_TRAIN_CAPTION;    break;
-					case VEH_ROAD:     this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_ROAD_CAPTION;     break;
-					case VEH_SHIP:     this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_SHIP_CAPTION;     break;
-					case VEH_AIRCRAFT: this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_AIRCRAFT_CAPTION; break;
-					default: NOT_REACHED();
-				}
-				break;
-
-			case VLW_WAYPOINT_LIST:
-				this->widget[VLW_WIDGET_CAPTION].data = STR_WAYPOINT_VIEWPORT_LIST_TRAIN;
-				break;
-
-			case VLW_STATION_LIST: // Station Name
-				switch (this->vehicle_type) {
-					case VEH_TRAIN:    this->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_TRAINS;        break;
-					case VEH_ROAD:     this->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_ROAD_VEHICLES; break;
-					case VEH_SHIP:     this->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_SHIPS;         break;
-					case VEH_AIRCRAFT: this->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_AIRCRAFT;      break;
-					default: NOT_REACHED();
-				}
-				break;
-
-			case VLW_DEPOT_LIST:
-				switch (this->vehicle_type) {
-					case VEH_TRAIN:    this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_TRAIN_DEPOT;    break;
-					case VEH_ROAD:     this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_ROADVEH_DEPOT;  break;
-					case VEH_SHIP:     this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_SHIP_DEPOT;     break;
-					case VEH_AIRCRAFT: this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_AIRCRAFT_DEPOT; break;
-					default: NOT_REACHED();
-				}
-				break;
-			default: NOT_REACHED();
+		if (window_type == VLW_SHARED_ORDERS) {
+			this->widget[VLW_WIDGET_CAPTION].data = STR_VEH_WITH_SHARED_ORDERS_LIST;
+		} else {
+			this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_TRAIN_CAPTION + this->vehicle_type;
 		}
 
 		switch (this->vehicle_type) {
@@ -1018,18 +962,21 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				break;
 
 			case VLW_STANDARD: // Company Name
-				SetDParam(0, owner);
-				SetDParam(1, this->vscroll.count);
+				SetDParam(0, STR_COMPANY_NAME);
+				SetDParam(1, owner);
+				SetDParam(2, this->vscroll.count);
 				break;
 
 			case VLW_WAYPOINT_LIST:
-				SetDParam(0, index);
-				SetDParam(1, this->vscroll.count);
+				SetDParam(0, STR_WAYPOINT_RAW);
+				SetDParam(1, index);
+				SetDParam(2, this->vscroll.count);
 				break;
 
 			case VLW_STATION_LIST: // Station Name
-				SetDParam(0, index);
-				SetDParam(1, this->vscroll.count);
+				SetDParam(0, STR_STATION);
+				SetDParam(1, index);
+				SetDParam(2, this->vscroll.count);
 				break;
 
 			case VLW_DEPOT_LIST:

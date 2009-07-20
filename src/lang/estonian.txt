@@ -1253,7 +1253,6 @@ STR_WAYPOINT                                                    :{WHITE}Meldepun
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vali meldepunkti liik
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} rong{P "" id}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Muuda meldepunkti nime
@@ -2774,7 +2773,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Uus rong
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Rong on liiga pikk
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Ainult depoos peatunud ronge saab muuta
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} rong{P "" i}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} rong{P "" i}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Uued rööbassõidukid
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Uus elektriraudteesõiduk
@@ -2919,7 +2918,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Täida l
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Mootorsõiduk takistab teed
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} mootorsõiduk{P "" it}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} mootorsõiduk{P "" it}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}Linna {TOWN} mootorsõidukidepoo
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Ostmine
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Uued mootorsõidukid
@@ -2982,7 +2981,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Veeteed
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Dokki ei saa siia ehitada...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Laevaremonditehas
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Uus laev
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} laev{P "" a}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} laev{P "" a}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Uued laevad
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Ehita laev
 STR_CLONE_SHIP                                                  :{BLACK}Klooni laev
@@ -3047,7 +3046,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}See palj
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Uus lennuk
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Ehita lennuk
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Ei saa ehitada lennukit...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} lennuk{P "" it}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} lennuk{P "" it}
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Ei saa lennukit angaari saata...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Suundub {STATION} Angaari
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Suundub {STATION} angaari, {VELOCITY}
@@ -3243,10 +3242,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Rong{P "" i}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} mootorsõiduk{P "" it}
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Lennuk{P "" it}
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Laev{P "" a}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Näita kõiki ronge, mille sõidugraafik sisaldab seda rongijaama
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Näita kõiki mootorsõidukeid, mille sõidugraafik sisaldab seda jaama
@@ -3275,10 +3270,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Asenda k
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Asenda kõik laevad depoos ise
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Asenda kõik lennumasinad angaaris ise
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Rong{P "" id}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Auto{P "" d}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Laev{P "" ad}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Lennumasin
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Asenda {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Alusta veovahendite asendamist
@@ -3494,10 +3485,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Kõik jagatud sõidukid
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Eemalda kõik sõidukid
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Rong{P "" id}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Mootorsõiduk{P "" id}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Laev{P "" ad}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Lennuk{P "" id}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rühma nime vahetamine
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Ei saa rühma luua...

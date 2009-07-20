@@ -2680,7 +2680,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}新規�
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車が長過ぎます
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}列車の変更は鉄道車庫内でのみ行えます
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - 列車{COMMA}本
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - 列車{COMMA}本
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}新規鉄道車両
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}新規電動鉄道車両
@@ -2823,7 +2823,7 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動�
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}道路車両があります
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - 道路車両{COMMA}両
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - 道路車両{COMMA}両
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN}車庫
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}新規車両
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}新規道路車両
@@ -2885,7 +2885,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}水路
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}ここに埠頭を建設できません...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN}造船所
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}新規船舶
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - 船舶{COMMA}隻
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - 船舶{COMMA}隻
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}新規船舶
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}船舶を購入
 STR_CLONE_SHIP                                                  :{BLACK}船舶をクローン
@@ -2950,7 +2950,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}飛行�
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}新規飛行機
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}飛行機を購入
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}飛行機を購入できません...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - 飛行機{COMMA}台
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - 飛行機{COMMA}台
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}飛行機を格納庫へ回送できません...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATION}格納庫へ行く
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION}格納庫へ行く、{VELOCITY}
@@ -3136,10 +3136,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - 列車{COMMA}本
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - 道路車両{COMMA}両
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - 飛行機{COMMA}台
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - 船舶{COMMA}隻
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}この駅が指令リストに入っているすべての列車を表示します
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}このバス停／荷役所が指令リストに入っているすべての道路車両を表示します
@@ -3168,10 +3164,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}車庫�
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}造船所内のすべての船舶を自動交換します
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}格納庫内のすべての飛行機を自動交換します
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - 列車{COMMA}本
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - 道路車両{COMMA}両
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - 船舶{COMMA}隻
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - 飛行機{COMMA}台
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING}を交換
 STR_REPLACE_VEHICLES_START                                      :{BLACK}車両の交換を開始
@@ -3385,10 +3377,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :共有車両を追加
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :すべての車両を取り除く
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - 列車{COMMA}本
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - 道路車両{COMMA}両
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - 船舶{COMMA}隻
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - 飛行機{COMMA}台
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}グループ名を変更
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}グループが作成できません...

@@ -1197,7 +1197,6 @@ STR_WAYPOINT                                                    :{WHITE}웨이�
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}웨이포인트 종류 설정
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - 열차 {COMMA}대
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}웨이포인트 이름 설정
@@ -2718,7 +2717,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}새 열�
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}열차가 너무 깁니다!
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}차량기지 내에서 정지한 경우에만 개조할 수 있습니다
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA}대의 열차
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA}대의 열차
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}새 기차
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}새 전기 기차
@@ -2865,7 +2864,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}다음 �
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}중간에 자동차가 있습니다.
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA}대의 자동차
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA}대의 자동차
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} 차고
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}새 차량
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}새 자동차
@@ -2928,7 +2927,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}항만
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}여기에 항구를 건설할 수 없습니다...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} 정박소
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}새 선박
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA}대의 선박
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA}대의 선박
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}새 선박
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}선박 만들기
 STR_CLONE_SHIP                                                  :{BLACK}선박 복제
@@ -2993,7 +2992,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}이 버�
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}새 항공기
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}항공기 만들기
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}항공기를 만들 수 없습니다...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA}대의 항공기
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA}대의 항공기
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}항공기를 격납고로 보낼 수 없습니다...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATION}공항 격납고로 가는 중
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION}공항 격납고로 가는 중 ({VELOCITY})
@@ -3189,10 +3188,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - 열차 {COMMA}대
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - 자동차 {COMMA}대
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - 항공기 {COMMA}대
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - 선박 {COMMA}대
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}이 역을 거쳐가는 모든 열차를 표시합니다
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}이 역을 거쳐가는 모든 자동차를 표시합니다
@@ -3221,10 +3216,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}이 차�
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}이 정박소에 있는 모든 선박을 자동으로 교체합니다.
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}이 격납고에 있는 모든 항공기를 자동으로 교체합니다.
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - 열차 {COMMA}대
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - 자동차 {COMMA}대
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - 선박 {COMMA}대
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - 항공기 {COMMA}대
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} 교체
 STR_REPLACE_VEHICLES_START                                      :{BLACK}차량 교체 시작
@@ -3440,10 +3431,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :공유된 차량 추가
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :모든 차량 제거
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} 기차
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} 차량
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} 선박
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} 항공기
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}그룹 이름 바꾸기
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}그룹을 만들 수 없습니다...

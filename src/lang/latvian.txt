@@ -1187,7 +1187,6 @@ STR_WAYPOINT                                                    :{WHITE}Kontrolp
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Izvēlaties kontrolpunkta veidu
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Vilcien{P s i ""}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Labot kontrolpunkta nosaukumu
@@ -2703,7 +2702,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Jauni tr
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Vilciens ir pārāk garš
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vilcienus ir iespējams pārveidot tikai tad, kad tie ir apstādināti depo
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Vilcien{P s i a}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Vilcien{P s i a}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Jauni vilcieni
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Jauni Elektriskā Dzelzceļa Satiksmes Līdzekļi
@@ -2835,7 +2834,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Aizpild�
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Ceļu transportl. ceļā
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Ceļu transportlīdzek{P lis ļi ļa}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Ceļu transportlīdzek{P lis ļi ļa}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Autotransporta depo
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Jauni transporta līdzekļi
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Jauni transportl.
@@ -2898,7 +2897,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Ūdensce
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Nevar uzbūvēt ostu šeit
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Kuģu depo
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Jauni kuģi
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Kuģ{P is i u}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Kuģ{P is i u}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Jauni kuģi
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Uzbūvēt kuģi
 STR_CLONE_SHIP                                                  :{BLACK}Klonēt kuģi
@@ -2963,7 +2962,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Šis uzb
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Jauns lidaparāts
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Būvēt lidaparātu
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Nevar būvēt lidaparātu...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Lidaparāts
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Lidaparāts
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Lidaparātu nevar aizsūtīt uz angāru...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Dodas uz {STATION} angāru
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Ietur kursu uz {STATION} Angārs, {VELOCITY}
@@ -3147,10 +3146,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Vilcien{P s i u}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Mašīn{P a as u}
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Lidaparāts
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Kuģ{P is i u}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Rādīt vilcienus, kuru rīkojumu sarakstos ir šī stacija
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Rādīt mašīnas, kuru rīkojumu sarakstos ir šī stacija
@@ -3179,10 +3174,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Automāt
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Automātiski nomainīt visus kuģus depo
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Automātiski nomainīt visus lidaparātus angārā
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} vilcien{P s i u}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} ceļa transportlīdzek{P lis ļi ļu}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Kuģ{P is i ""}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Lidaparāt{P s i ""}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Nomainīt {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Sākt transportlīdzekļu nomaiņu
@@ -3397,10 +3388,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Pievienot kopējos transportus
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Izņemt visus transportus
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} vilcien{P s i u}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} ceļa transportlīdzek{P lis ļi ļu}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} kuģ{P is i u}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Lidaparāts
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Pārsaukt grupu
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Nevar izveidot grupu...

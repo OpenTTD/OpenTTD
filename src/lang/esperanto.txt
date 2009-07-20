@@ -1197,7 +1197,6 @@ STR_WAYPOINT                                                    :{WHITE}Trairejo
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Elektu trairejan tipon
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Trajno{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ŝanĝu trairejan nomon
@@ -2557,7 +2556,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Novaj Ve
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trajno tro longas
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trajno nut povas esti adaptataj kiam halte en deponejo
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Trajno{P "" j}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Trajno{P "" j}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Novaj Relaj Veturiloj
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Novaj Elektraj Relaj Veturiloj
@@ -2657,7 +2656,7 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ŝanĝu 
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Vojveturilo okupas la lokon
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Vojveturilo{P "" j}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Vojveturilo{P "" j}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Vojveturila Deponejo
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Novaj Veturiloj
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Novaj Vojveturiloj
@@ -2714,7 +2713,7 @@ STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Elektu p
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Ne povas konstrui havenon ĉi tie...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Ŝipdeponejo
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novaj Ŝipoj
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Ŝipo{P "" j}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Ŝipo{P "" j}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Novaj Ŝipoj
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Kreu Ŝipon
 STR_CLONE_SHIP                                                  :{BLACK}Klonu Ŝipon
@@ -2776,7 +2775,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Ĉi tio 
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Novaj Aviadiloj
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Kreu Aviadilon
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Ne povas krei aviadilon...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Aviadiloj
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aviadiloj
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Ne povas sendi aviadilon al hangaro...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Irante al {STATION} Hangaro
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Irante al {STATION} Hangaro, {VELOCITY}
@@ -2932,10 +2931,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Trajno{P "" j}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Vojveturilo{P "" j}
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Aviadilo{P "" j}
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Ŝipo{P "" j}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Montru ĉiujn trajnojn kun ĉi tiu stacio en la plano
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Montru ĉiujnvojveturilojn kun ĉi tiu stacio en la plano
@@ -2963,10 +2958,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Aŭtomat
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Aŭtomate anstataŭu ĉiujn ŝipojn en la deponejo
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Aŭtomate anstataŭu ĉiujn aviadilojn en la hangaro
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Trajno{P "" j}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Vojveturilo{P "" j}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Ŝipo{P "" j}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aviadilo{P "" j}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Anstataŭu {STRING.n}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Komencu Anstataŭi
@@ -3154,8 +3145,6 @@ STR_GROUP_ALL_TRAINS                                            :Ĉiuj trajnoj
 STR_GROUP_ALL_SHIPS                                             :Ĉiuj ŝipoj
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Trajno{P "" j}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Flugmaŝino
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomu grupon
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Ne eblas krei grupon...

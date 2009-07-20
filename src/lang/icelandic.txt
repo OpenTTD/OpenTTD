@@ -1197,7 +1197,6 @@ STR_WAYPOINT                                                    :{WHITE}Leiðarv
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Velja tegund leiðarvísis
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Lest{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Breyta nafni millistöðvar
@@ -2718,7 +2717,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Kaupa le
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Lestin er of löng
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Aðeins er hægt að eiga við lestir þegar þær bíða í skýli
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Lestir
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Lestir
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Lestaúrval
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nýjir rafdrifnir lestarvagnar
@@ -2865,7 +2864,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Bæta á
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Bíll fyrir
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Bílar
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Bílar
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} bifreiðaskýli
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Kaupa bifreið
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Bifreiðaúrval
@@ -2928,7 +2927,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Skipasku
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Get ekki byggt bryggju hér...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} slippur
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Kaupa skip
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Skip
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Skip
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Skipaúrval
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Kaupa skip
 STR_CLONE_SHIP                                                  :{BLACK}Afrita skip
@@ -2993,7 +2992,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Þetta b
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Flugvélaúrval
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Kaupa flugvél
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Get ekki smíðað flugvél...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Flugvél
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Flugvél
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Get ekki sent flugvél í flugskýli...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Á leið í {STATION} flugskýli
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Á leið í {STATION} flugskýli, {VELOCITY}
@@ -3189,10 +3188,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Lestir
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Bifreiðir
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Flugvélar
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Skip
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Sýna allar lestir sem hafa þessa stöð á áætlun
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Sýna allar bifreiðir sem hafa þessa stöð á áætlun
@@ -3221,10 +3216,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Skipta �
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Skipta öllum skipum í slippnum sjálfvirkt út
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Skipta öllum flugvélum í skýlinu sjálfvirkt út
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Lest{P "" ir}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Bifreið{P "" ar}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Skip
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Flugvél{P "" ar}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Endurnýja {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Hefja skipti
@@ -3440,10 +3431,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Bæta við deildu farartæki
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjarlægja öll farartæki
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Lest{P "" ir}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Bifreið{P "" ar}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Skip
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Flugvél{P "" ar}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Endurnefna hóp
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Get ekki búið til hóp...

@@ -1263,7 +1263,6 @@ STR_WAYPOINT                                                    :{WHITE}Smerovy 
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vyber typ kontrolneho bodu
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Vlak{P "" y ov}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Upravit nazvy smerovych bodov
@@ -2784,7 +2783,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nove voz
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Vlak je prilis dlhy
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vlaky sa daju nahradit len v depe
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Vlak{P "" y ov}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Vlak{P "" y ov}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nove vlaky
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nové elektrické lokomotívy a vagóny
@@ -2930,7 +2929,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Naplň �
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Automobil v ceste
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Automobil{P "" y ov}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Automobil{P "" y ov}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Garaz
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nove vozidla
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nove automobily
@@ -2992,7 +2991,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vodné c
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Tu nemozno postavit pristav ...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Lodenica
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nove lode
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Lod{P "" e i}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Lod{P "" e i}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nove lode
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Vyrobit lod
 STR_CLONE_SHIP                                                  :{BLACK}Klonovat lod
@@ -3057,7 +3056,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Vytvori 
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nove Lietadlo
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Vyrobit lietadlo
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Nemozno vyrobit lietadlo...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Lietad{P lo la iel}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Lietad{P lo la iel}
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nemozno poslat lietadlo do hangaru ...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Smeruje do {STATION} hangaru
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Smeruje do {STATION} hangaru, {VELOCITY}
@@ -3253,10 +3252,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Vlak{P "" y ov}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Aut{P o a ""}
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Lietad{P lo la iel}
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Lod{P "" e i}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Zobrazit vsetky vlaky, ktore maju tuto stanicu v cestovnom poriadku
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Zobrazit vsetky auta, ktore maju tuto stanicu v cestovnom poriadku
@@ -3285,10 +3280,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Automati
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Automaticky nahradit všetky lode v lodenici
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Automaticky nahradit všetky lietadlá v hangári
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Vlak{P "" y ov}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Vozid{P lo lá iel}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Lod{P "" e í}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Lietad{P lo lá iel}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vymena {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Zacat vymenu vozidiel
@@ -3504,10 +3495,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Pridat zdielané vozidlá
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstránit všetky vozidlá
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Vlak{P "" y ov}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Vozid{P lo lá ied}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Lod{P "" e í}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Lietad{P lo lá iel}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Premenovat skupinu
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Nie je možné vytvorit skupinu ...

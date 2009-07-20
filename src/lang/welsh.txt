@@ -1193,7 +1193,6 @@ STR_WAYPOINT                                                    :{WHITE}Pwynt Ll
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Dewiswch math Pwynt Llwybr
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Tr{P ên enau}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Golygu enw Pwynt Llwybr
@@ -2714,7 +2713,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Cerbyd N
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Mae'r Trên yn rhy hir
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Gellir newid trenau yn unig pan fyddan nhw wedi stopio tu mewn i ddepo
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Tr{P "ên" au}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tr{P "ên" au}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Cerbydau Rheilffordd Newydd
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Cerbydau Rheilffordd Trydan Newydd
@@ -2854,7 +2853,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Llenwch 
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Cerbyd ffordd yn y ffordd
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Cerbyd{P "" au} Ffordd
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Cerbyd{P "" au} Ffordd
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}Depo Cerbydau Ffordd {TOWN}
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Cerbyd Newydd
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Cerbydau Ffordd Newydd
@@ -2917,7 +2916,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Camlesi
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Methu adeiladu doc yma...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Depo Llong {TOWN}
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Llong Newydd
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Llong{P "" au}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Llong{P "" au}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Llong  Newydd
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Adeiladu Llong
 STR_CLONE_SHIP                                                  :{BLACK}Dyblygu Llong
@@ -2982,7 +2981,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Bydd hyn
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Awyrennau Newydd
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Adeiladu Awyrennau
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Methu adeiladu awyren...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Awyrennau
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Awyrennau
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Methu gyrru awyren i awyrendy...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Mynd am Awyrendy {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Mynd am Awyrendy {STATION}, {VELOCITY}
@@ -3167,10 +3166,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Tr{P "ên" enau}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Cerbyd{P "" au} Ffordd
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Awyren(P "" au}
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Llong{P "" au}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Dangos pob trên sydd â'r orsaf hon yn eu hamserlen
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Dangos pob cerbyd ffordd sydd â'r orsaf hon yn eu hamserlen
@@ -3199,10 +3194,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Awtoddis
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Awtoddisodli pob llong yn y depo
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Awtoddisodli pob awyren yn yr awyrendy
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tr{P "ên" enau}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Cerbyd{P "" au} Ffordd
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Llong{P "" au}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Awyren
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Disodli {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Dechrau Disodli Cerbydau
@@ -3417,10 +3408,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Ychwanegu cerbyd a rennir
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Dileu pob cerbyd
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tr{P ên nau}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Cerbyd{P "" au} Ffordd
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Llong{P "" au}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Awyren{P "" au}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ailenwi grw^p
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Methu creu grw^p

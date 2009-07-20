@@ -1196,7 +1196,6 @@ STR_WAYPOINT                                                    :{WHITE}Titik Pe
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Pilih jenis titik penunjuk arah
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Kereta Api
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edit nama titik penunjuk arah
@@ -2717,7 +2716,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Buat Ken
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Kereta api terlalu panjang
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Kereta api hanya dapat diubah ketika berhenti di dalam depo
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Kereta Api
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Kereta Api
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Kereta Api Baru
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Kereta listrik baru
@@ -2864,7 +2863,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi jadw
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Bus/truk sedang berjalan
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Bus/truk
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Bus/truk
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Bengkel Bus/truk
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Kendaraan Baru
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Bus/truk Baru
@@ -2927,7 +2926,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Perairan
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Tidak dapat membuat pelabuhan disini...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Galangan Kapal
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Kapal Baru
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Kapal
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Kapal
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Kapal Baru
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Membuat Kapal
 STR_CLONE_SHIP                                                  :{BLACK}Gandakan
@@ -2992,7 +2991,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Untuk me
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Buat Pesawat
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Buat Pesawat
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Tidak dapat membuat pesawat ...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Pesawat
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Pesawat
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Tidak dapat mengirim pesawat ke hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Menuju ke hangar di {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Menuju ke hangar di {STATION}, {VELOCITY}
@@ -3188,10 +3187,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Kereta
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Bus/truk
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Pesawat
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Kapal
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Tampilkan semua kereta yang memiliki jadwal menuju stasiun ini.
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Tampilkan semua bus/truk yang memiliki jadwal menuju terminal ini.
@@ -3220,10 +3215,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Penggant
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Penggantian secara otomatis semua kapal di dalam galangan
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Penggantian secara otomatis semua Pesawat di dalam hangar
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Kereta
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Bus/truk
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Kapal
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Pesawat
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ganti {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Mulai Mengganti
@@ -3439,10 +3430,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Tambah kendaraan dgn perintah bersama
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Jual semua
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Kereta
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Bus/truk
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Kapal
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Pesawat
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ubah nama kelompok
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Tidak data membuat kelompok...

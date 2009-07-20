@@ -1196,7 +1196,6 @@ STR_WAYPOINT                                                    :{WHITE}Reittipi
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Valitse reittipisteen tyyppi
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} juna{P "" a}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Muokkaa reittipisteen nimeä
@@ -2717,7 +2716,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Uusia li
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Juna on liian pitkä.
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Junia voi muunnella vain, kun ne ovat pysähdyksissä veturitallilla.
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} junaa
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} junaa
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Uusi juna
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Uusi sähköjuna
@@ -2864,7 +2863,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Täytä 
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Ajoneuvo tiellä.
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} ajoneuvoa
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} ajoneuvoa
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} huoltoasema
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Uusia ajoneuvoja
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Uusia ajoneuvoja
@@ -2927,7 +2926,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vesireit
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Satamaa ei voi rakentaa tähän...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN}, telakka
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Uusia laivoja
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} laivaa
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} laivaa
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Uusia laivoja
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Rakenna laiva
 STR_CLONE_SHIP                                                  :{BLACK}Kloonaa laiva
@@ -2992,7 +2991,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Tämä r
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Uusi lentokone
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Rakenna lentokone
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Lentokonetta ei voi rakentaa...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} lentokonetta
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} lentokonetta
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Lentokonetta ei voi lähettää lentokonehalliin...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Suuntana lentokonehalli, {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Suuntana lentokonehalli, {STATION}, {VELOCITY}
@@ -3188,10 +3187,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} junaa
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} autoa
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} lentokonetta
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} laivaa
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Näytä kaikki junat, joilla on asema aikataulussaan.
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Näytä kaikki autot, joilla on asema aikataulussaan.
@@ -3220,10 +3215,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Korvaa k
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Korvaa kaikki telakalla olevat laivat automaattisesti
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Korvaa kaikki hallissa olevat lento-alukset automaattisesti
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} juna{P "" a}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} maa-ajoneuvo{P "" a}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} laiva{P "" a}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} ilma-alus{P "" ta}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Korvaa {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Aloita ajoneuvojen korvaaminen
@@ -3439,10 +3430,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Lisää jaettuja ajoneuvoja
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Poista kaikki ajoneuvot
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Juna{P "" t}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Auto{P "" t}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Laiva{P "" t}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} {P Lentoalus Lentoalukset}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Nimeä ryhmä
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Ei voi luoda ryhmää.

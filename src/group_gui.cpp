@@ -379,56 +379,24 @@ public:
 				WIDGET_LIST_END);
 
 
-		/* If selected_group == DEFAULT_GROUP || ALL_GROUP, draw the standard caption
-				We list all vehicles or ungrouped vehicles */
-		if (IsDefaultGroupID(this->group_sel) || IsAllGroupID(this->group_sel)) {
-			SetDParam(0, owner);
-			SetDParam(1, this->vehicles.Length());
+		this->widget[GRP_WIDGET_CAPTION].data = STR_VEHICLE_LIST_TRAIN_CAPTION + this->vehicle_type;
 
-			switch (this->vehicle_type) {
-				case VEH_TRAIN:
-					this->widget[GRP_WIDGET_CAPTION].data = STR_VEHICLE_LIST_TRAIN_CAPTION;
-					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_TRAIN;
-					break;
-				case VEH_ROAD:
-					this->widget[GRP_WIDGET_CAPTION].data = STR_VEHICLE_LIST_ROAD_CAPTION;
-					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_ROADVEH;
-					break;
-				case VEH_SHIP:
-					this->widget[GRP_WIDGET_CAPTION].data = STR_VEHICLE_LIST_SHIP_CAPTION;
-					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_SHIP;
-					break;
-				case VEH_AIRCRAFT:
-					this->widget[GRP_WIDGET_CAPTION].data =  STR_VEHICLE_LIST_AIRCRAFT_CAPTION;
-					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_AIRCRAFT;
-					break;
-				default: NOT_REACHED();
-			}
+		/* If selected_group == DEFAULT_GROUP || ALL_GROUP, draw the standard caption
+		 * We list all vehicles or ungrouped vehicles */
+		if (IsDefaultGroupID(this->group_sel) || IsAllGroupID(this->group_sel)) {
+			SetDParam(0, STR_COMPANY_NAME);
+			SetDParam(1, owner);
+			SetDParam(2, this->vehicles.Length());
+
+			this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_TRAIN; + this->vehicle_type;
 		} else {
 			const Group *g = Group::Get(this->group_sel);
 
-			SetDParam(0, g->index);
-			SetDParam(1, g->num_vehicle);
+			SetDParam(0, STR_GROUP_NAME);
+			SetDParam(1, g->index);
+			SetDParam(2, g->num_vehicle);
 
-			switch (this->vehicle_type) {
-				case VEH_TRAIN:
-					this->widget[GRP_WIDGET_CAPTION].data = STR_GROUP_TRAINS_CAPTION;
-					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = (g->replace_protection) ? SPR_GROUP_REPLACE_ON_TRAIN : SPR_GROUP_REPLACE_OFF_TRAIN;
-					break;
-				case VEH_ROAD:
-					this->widget[GRP_WIDGET_CAPTION].data = STR_GROUP_ROADVEH_CAPTION;
-					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = (g->replace_protection) ? SPR_GROUP_REPLACE_ON_ROADVEH : SPR_GROUP_REPLACE_OFF_ROADVEH;
-					break;
-				case VEH_SHIP:
-					this->widget[GRP_WIDGET_CAPTION].data = STR_GROUP_SHIPS_CAPTION;
-					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = (g->replace_protection) ? SPR_GROUP_REPLACE_ON_SHIP : SPR_GROUP_REPLACE_OFF_SHIP;
-					break;
-				case VEH_AIRCRAFT:
-					this->widget[GRP_WIDGET_CAPTION].data = STR_GROUP_AIRCRAFTS_CAPTION;
-					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = (g->replace_protection) ? SPR_GROUP_REPLACE_ON_AIRCRAFT : SPR_GROUP_REPLACE_OFF_AIRCRAFT;
-					break;
-				default: NOT_REACHED();
-			}
+			this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = ((g->replace_protection) ? SPR_GROUP_REPLACE_ON_TRAIN : SPR_GROUP_REPLACE_OFF_TRAIN) + this->vehicle_type;
 		}
 
 		/* Set text of sort by dropdown */
@@ -438,32 +406,11 @@ public:
 
 		/* Draw Matrix Group
 		 * The selected group is drawn in white */
-		StringID str_all_veh, str_no_group_veh;
-
-		switch (this->vehicle_type) {
-			case VEH_TRAIN:
-				str_all_veh = STR_GROUP_ALL_TRAINS;
-				str_no_group_veh = STR_GROUP_DEFAULT_TRAINS;
-				break;
-			case VEH_ROAD:
-				str_all_veh = STR_GROUP_ALL_ROADS;
-				str_no_group_veh = STR_GROUP_DEFAULT_ROADS;
-				break;
-			case VEH_SHIP:
-				str_all_veh = STR_GROUP_ALL_SHIPS;
-				str_no_group_veh = STR_GROUP_DEFAULT_SHIPS;
-				break;
-			case VEH_AIRCRAFT:
-				str_all_veh = STR_GROUP_ALL_AIRCRAFTS;
-				str_no_group_veh = STR_GROUP_DEFAULT_AIRCRAFTS;
-				break;
-			default: NOT_REACHED();
-		}
-		DrawString(this->widget[GRP_WIDGET_LIST_GROUP].left + 10, this->widget[GRP_WIDGET_LIST_GROUP].right, y1, str_all_veh, IsAllGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
+		DrawString(this->widget[GRP_WIDGET_LIST_GROUP].left + 10, this->widget[GRP_WIDGET_LIST_GROUP].right, y1, STR_GROUP_ALL_TRAINS + this->vehicle_type, IsAllGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
 
 		y1 += 13;
 
-		DrawString(this->widget[GRP_WIDGET_LIST_GROUP].left + 10, this->widget[GRP_WIDGET_LIST_GROUP].right, y1, str_no_group_veh, IsDefaultGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
+		DrawString(this->widget[GRP_WIDGET_LIST_GROUP].left + 10, this->widget[GRP_WIDGET_LIST_GROUP].right, y1, STR_GROUP_DEFAULT_TRAINS + this->vehicle_type, IsDefaultGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
 
 		max = min(this->vscroll2.pos + this->vscroll2.cap, this->groups.Length());
 		for (i = this->vscroll2.pos ; i < max ; ++i) {

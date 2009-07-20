@@ -1157,7 +1157,6 @@ STR_WAYPOINT                                                    :{WHITE}Punto de
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Selecciona-lo tipo de punto de ruta
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Tren{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edita-lo nome do punto de control
@@ -2647,7 +2646,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Novos Ve
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}O tren é demasiado longo
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Os trens só se poden alterar cando estean parados nun depósito
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Tren{P "" s}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tren{P "" s}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Novos Vehículos de Ferrocarril
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Novos Vehículos Eléctricos de Raíles
@@ -2793,7 +2792,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Enche-lo
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Haí un vehículo de estrada no camiño
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Vehículo{P "" s} de Estrada
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Vehículo{P "" s} de Estrada
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}Depósito de Vehículos de Estrada de {TOWN}
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Novos Vehículos
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Novos Vehículos de Estrada
@@ -2856,7 +2855,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canais
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Non se pode construí-lo peirao aí...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Depósito de Barcos de {TOWN}
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novos Barcos
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Barco{P "" s}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Barco{P "" s}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Novos Barcos
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Construír Barco
 STR_CLONE_SHIP                                                  :{BLACK}Clonar Barco
@@ -2921,7 +2920,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Esto con
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nova Aeronave
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Construír Aeronave
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Non se pode construí-lo avíon...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Aeronave
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aeronave
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Non se pode envia-lo avión ó hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Diríxese ó hangar de {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Diríxese ó hangar de {STATION}, {VELOCITY}
@@ -3115,10 +3114,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Tren{P "" s}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Camións/Buses
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Aeronaves
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Barco{P "" s}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Mostrar tódolos trens que teñen esta estación nas súas ordes
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostrar tódolos vehículos de estrada que teñen esta estación nas súas ordes
@@ -3147,10 +3142,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autosubs
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autosubstituír tódolos barcos no depósito
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autosubstituír tódolos avións no hangar
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tren{P "" s}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Vehículo{P "" s} de Estrada
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Barco{P "" s}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aeronave
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituír {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Comezar a Substituír Vehículos
@@ -3366,10 +3357,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Engadir vehículos compartidos
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Borrar tódolos vehículos
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tren{P "" s}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Vehículo{P "" s} de Estrada
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Barco{P "" s}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aeronave{P "" s}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomear un grupo
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Non se pode crear o grupo...

@@ -1230,7 +1230,6 @@ STR_WAYPOINT                                                    :{WHITE}Ellenőr
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Válassz ellenőrző-pont tipust
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Vonat
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ellenőrző pont nevének módosítása
@@ -2788,7 +2787,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Új jár
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Túl hosszú a vonat
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Csak a járműtelepen álló vonatokat lehet megváltoztatni
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} vonatai - {COMMA}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} vonatai - {COMMA}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Új vasúti járművek
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Új vasúti járművek
@@ -2935,7 +2934,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Menetren
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Közúti jármű van az útban
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} közúti járművei - {COMMA}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} közúti járművei - {COMMA}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN}i garázs
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Új járművek
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Új közúti járművek
@@ -2998,7 +2997,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vízi ut
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Nem építhetsz ide kikötőt...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN}i dokk
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Új hajók
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} hajói - {COMMA}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} hajói - {COMMA}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Új hajók
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Megvesz
 STR_CLONE_SHIP                                                  :{BLACK}Hajó másolása
@@ -3063,7 +3062,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Ide katt
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Új repülőgépek
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Megvesz
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Nem veheted meg a repülőgépet...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} repülőgépei - {COMMA}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} repülőgépei - {COMMA}
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nem küldheted a repülőgépet a hangárba...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Úton {STATION} hangárjába
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Úton {STATION} hangárjába, {VELOCITY}
@@ -3259,10 +3258,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Vonatok
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Közúti járművek
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Repülőgépek
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Hajók
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Kilistázza az összes vonatot, aminek a menetrendjében szerepel ez az állomás
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Kilistázza az összes közúti járművet, aminek a menetrendjében szerepel ez az állomás
@@ -3291,10 +3286,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}A garáz
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}A dokkban lévő összes hajó automatikus cseréje
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}A hangárban lévő összes repülő automatikus cseréje
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} vonat
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} közúti jármű
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} hajó
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} repülőgép
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Lecserél {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Járműcsere elkezdése
@@ -3510,10 +3501,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Megosztott jármű hozzáadása
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Összes jármű eltávolítása
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} vonat
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} közúti jármű
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} hajó
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} repülő
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Csoport átnevezése
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Csoport létrehozás sikertelen...

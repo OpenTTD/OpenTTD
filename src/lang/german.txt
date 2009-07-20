@@ -1197,7 +1197,6 @@ STR_WAYPOINT                                                    :{WHITE}Wegpunkt
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Wegpunkttyp auswählen
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Z{P ug üge}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namen des Wegpunkts ändern
@@ -2718,7 +2717,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Neue Fah
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Zug zu lang
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Züge können nur verändert werden, wenn sie im Depot halten
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Z{P ug üge}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Z{P ug üge}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Neues Schienenfahrzeug
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Neue E-Loks
@@ -2865,7 +2864,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Zeiten a
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Fahrzeug ist im Weg
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Fahrzeug{P "" e}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Fahrzeug{P "" e}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Fahrzeugdepot
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Neue Fahrzeuge
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Neue Fahrzeuge
@@ -2928,7 +2927,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Wasserwe
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Hafen kann hier nicht gebaut werden...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Werft
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Neue Schiffe
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Schiff{P "" e}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Schiff{P "" e}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Neue Schiffe
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Schiff kaufen
 STR_CLONE_SHIP                                                  :{BLACK}Schiff kopieren
@@ -2993,7 +2992,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Baut ein
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Neue Flugzeuge
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Flugzeug kaufen
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Flugzeug kann nicht gebaut werden...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Flugzeug{P "" e}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Flugzeug{P "" e}
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Flugzeug kann nicht in den Hangar geschickt werden...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Unterwegs zu {STATION} Hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Unterwegs zu {STATION} Hangar, {VELOCITY}
@@ -3189,10 +3188,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Z{P ug üge}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Straßenfahrzeug{P "" e}
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Flugzeug{P "" e}
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Schiff{P "" e}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Alle Züge, die diesen Bahnhof anfahren, anzeigen
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Alle Fahrzeuge, die diese Station anfahren, anzeigen
@@ -3221,10 +3216,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Alle Fah
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Alle Schiffe in der Werft automatisch ersetzen
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Alle Flugzeuge im Hangar automatisch ersetzen
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} {P Zug Züge}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Fahrzeug{P "" e}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Schiff{P "" e}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Flugzeug{P "" e}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} ersetzen
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Fahrzeugersetzung an
@@ -3440,10 +3431,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Gemeinsame F. hinzufügen
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Liste leeren
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Z{P ug üge}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Fahrzeug{P "" e}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Schiff{P "" e}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Flugzeug{P "" e}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Gruppe umbenennen
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Gruppe kann nicht erstellt werden...

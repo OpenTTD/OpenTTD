@@ -1196,7 +1196,6 @@ STR_WAYPOINT                                                    :{WHITE} نقط�
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK} اختر نوع نقطة العبور
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} قطار
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}عدل اسم نقطة العبور
@@ -2717,7 +2716,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}عربا
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}القطار طويل جدا
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}يمكن تعديل القطارعندما يكون متوقف في ورشة الصيانة
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA}قطار
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA}قطار
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}عربات قطار جديدة
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}عربات قطار كهربائية جديدة
@@ -2864,7 +2863,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}املأ
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}العربة في الطريق
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA}عربة
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA}عربة
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} ورشة صيانة العربات
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}عربات جديدة
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}عربات جديدة
@@ -2927,7 +2926,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}ممرا
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}لا يمكن بناء مرفء هنا ...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN}حوض صيانة السفن
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}سفين جديدة
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} سفينة
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} سفينة
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}سفن جديدة
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}شراء سفينة
 STR_CLONE_SHIP                                                  :{BLACK}انسخ السفينة
@@ -2992,7 +2991,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}هذا �
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}طائرة جديدة
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}شراء طائرة
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}لا يمكن شراء الطائرة
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} طائرة
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} طائرة
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}لا يمكن ارسال الطائرة لحظيرةالصيانة
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}متوجه لحظيرة {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}تتوجة الى حظيرة {STATION}, {VELOCITY}
@@ -3188,10 +3187,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} قطار
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} عربة
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} طائرة
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} سفينة
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK} عرض جميع القطارات المرتبطة بهذه المحطة
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK} عرض جميع العربات المرتبطة بهذه المحطة
@@ -3220,10 +3215,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}بدل �
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}بدل جميع السفن في حوض السفن آلياً
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}بدل جميع الطائرات في الحظيرة آلياً
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} قطار
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} عربة
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} سفينة
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} طائرة
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE} تبديل {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK} بدأ تبديل العربات
@@ -3439,10 +3430,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :اضافة عربات مشتركة
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :أزل جميع المركبات
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA}قطار
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} العربات
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} السفن
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} طائرة
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}إعادة تسمية مجموعة
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}لايمكن إنشاء مجموعة

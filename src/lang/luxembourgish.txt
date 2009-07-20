@@ -1194,7 +1194,6 @@ STR_WAYPOINT                                                    :{WHITE}Weepunkt
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Wielt den Weepunktyp
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Z{P uch ich}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Weepunktnumm
@@ -2715,7 +2714,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nei Gefi
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Zuch ze laang
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Zich kënnen nëmmen an engem Depot verännert ginn
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Z{P uch ich}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Z{P uch ich}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nei Zich
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nei Elektrozich
@@ -2860,7 +2859,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fëll de
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Stroossengefiert am Wee
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Gefier{P t er}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Gefier{P t er}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Stroossendepot
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nei Gefierer
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nei Stroossengefierer
@@ -2923,7 +2922,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waassers
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kann den Dock hei net bauen...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Schëffdepot
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nei Schëffer
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Schëff{P "" er}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Schëff{P "" er}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nei Schëffer
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Schëff bauen
 STR_CLONE_SHIP                                                  :{BLACK}Schëff klonen
@@ -2988,7 +2987,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Dëst ba
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Neien Fliger
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Fliger bauen
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kann den Fliger net bauen...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Fliger
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Fliger
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kann den Fliger net an den Hangar schécken...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Um Wee fir {STATION} Hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Um Wee fir {STATION} Hangar, {VELOCITY}
@@ -3184,10 +3183,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Z{P uch ich}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Stroossengefiert{P "" er}
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Fliger
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Schëff{P "" er}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Weis all Zich déi des Statioun an hierem Zaitplang hun
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Weis all Stroossengefierter déi des Statioun an hierem Zaitplang hun
@@ -3216,10 +3211,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}All Gefi
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}All Schëffer am Depot automatesch ersetzen
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}All Fliger am Hangar automatesch ersetzen
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Zuch{P "" s}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Stroossengefier{P t er}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Schëff{P "" s}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Fliger
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacéier{STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start Gefierterremplacement
@@ -3434,10 +3425,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Gedeelten Gefierer bäisetzen
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :All Gefierer wechhuelen
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Z{P uch ich}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Stroossengefier{P t er}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Schëff{P "" er}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Fliger{P "" en}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Eng Grupp ëmbenennen
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Kann d'Grupp net erstellen...

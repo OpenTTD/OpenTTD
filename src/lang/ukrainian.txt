@@ -1321,7 +1321,6 @@ STR_WAYPOINT                                                    :{WHITE}Точк
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Виберіть тип точки маршруту
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} поїзд{P "" и ів}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Перейменуйте точку маршруту
@@ -2879,7 +2878,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Нови
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Поїзд дуже довгий
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Поїзд можна змінювати тільки тоді, коли зупинений в депо
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} поїзд{P "" и ів}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} поїзд{P "" и ів}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Новий залізничний транспорт
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Новий електрозалізничний транспорт
@@ -3026,7 +3025,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Авто
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}На шляху авто
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} автомобіл{P ь і ів}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} автомобіл{P ь і ів}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Гараж
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Новий транспорт
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Нове авто
@@ -3089,7 +3088,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Водн
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Неможливо будувати порт тут...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Док
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Нові кораблі
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} кораб{P ель лі лів}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} кораб{P ель лі лів}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Нові кораблі
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Будувати корабель
 STR_CLONE_SHIP                                                  :{BLACK}Клонувати
@@ -3154,7 +3153,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Буду
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Нові літаки
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Будувати
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Неможливо будувати літак...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} літак{P "" и ів}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} літак{P "" и ів}
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Неможливо направити літак до ангару...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Летить до {STATION} ангару
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Летить до {STATION} ангару, {VELOCITY}
@@ -3350,10 +3349,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} поїзд{P "" и ів}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} авто
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} літак{P "" и ів}
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} кораб{P ель лі лів}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Показати всі поїзди, які заходять на цю станцію
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Показати всі авто, які заходять на цю станцію
@@ -3382,10 +3377,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Онов
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Оновити всі кораблі в депо
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Оновити всі літаки в ангарі
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} поїзд{P "" и ів}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} автомобіл{P ь і ів}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} кораб{P ель лі лів}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} літак {P "" и ів}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Оновити {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Почати оновлення
@@ -3601,10 +3592,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Добавити спільний транспорт
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Позбутися всього транспорту
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} поїзд{P "" и ів}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} автомобіл{P ь і ів}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} кораб{P ель лі лів}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} літак{P "" и ів}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Перейменувати групу
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Не можна створити групу...

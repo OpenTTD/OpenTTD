@@ -1196,7 +1196,6 @@ STR_WAYPOINT                                                    :{WHITE}Kontroll
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Välj kontrollstationstyp
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Tåg{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ändra namn på kontrollstation
@@ -2717,7 +2716,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nytt for
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tåg för långt
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Tåg kan bara ändras när det står still inuti en depå
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Tåg
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tåg
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nytt tågfordon
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nya elektriska järnvägsfordon
@@ -2863,7 +2862,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll i t
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Vägfordon i vägen
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Vägfordon
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Vägfordon
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Vägfordon Depå
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nytt Fordon
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nytt Vägfordon
@@ -2926,7 +2925,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Farled
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan inte bygga hamn här...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} skeppsdepå
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nytt skepp
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} skepp
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} skepp
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nytt skepp
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Bygg skepp
 STR_CLONE_SHIP                                                  :{BLACK}Klona skepp
@@ -2991,7 +2990,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Det här
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nytt flygplan
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Bygg flygplan
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kan inte bygga flygplan...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} flygplan
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} flygplan
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan inte skicka flygplan till hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}På väg mot {STATION}s hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}På väg mot {STATION}s hangar, {VELOCITY}
@@ -3187,10 +3186,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Tåg
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Vägfordon
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Flygplan
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Skepp
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Visa alla tåg där denna station finns med i rutten
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Visa alla vägfordon där denna station finns med i rutten
@@ -3219,10 +3214,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Byt ut a
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Byt ut alla skepp i depån
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Byt ut alla flygplan i hangaren
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tåg
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Vägfordon
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Skepp
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Flygplan
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Byt ut {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Börja byta ut fordon
@@ -3438,10 +3429,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Lägg till delade fordon
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ta bort alla fordon
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tåg{P "" s}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Vägfordon{P "" s}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Skepp{P "" s}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Flygplan
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Döp om en grupp
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Kan inte skapa grupp...

@@ -1208,7 +1208,6 @@ STR_WAYPOINT                                                    :{WHITE}Kontrol�
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Pasirinkite punkto tipą
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Traukin{P ys iai ių}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Redaguoti punkto vardą
@@ -2706,7 +2705,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Naujos t
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Traukinys per ilgas
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Sukeisti traukinius galima tiktai sustabdytus depe
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} traukiniai
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} traukiniai
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nauji Traukiniai
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nauji Elektriniai Traukiniai
@@ -2833,7 +2832,7 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto už
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Automobilis kelyje
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Automobiliai
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Automobiliai
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Automobiliu garazas
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Naujos tr. priemones
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nauji automobiliai
@@ -2895,7 +2894,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Kanalai
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Neimanoma pastatyti uosto cia...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Laivu depas
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Naujas laivas
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Laivai
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Laivai
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nauji laivai
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Nupirkti Laiva
 STR_CLONE_SHIP                                                  :{BLACK}Kopijuoti laivą
@@ -2960,7 +2959,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Tai paga
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Naujas lektuvas
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Isigyti lektuva
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Negalima isigyti lektuvo...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Lektuvai
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Lektuvai
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Negalima lektuvo nusiusti i angara...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Kursas: {STATION} angaras
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Kursas: {STATION} angarasangar, {VELOCITY}
@@ -3140,10 +3139,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Traukiniai
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Automobiliai
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Lektuvai
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Laivai
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Rodyti visus traukinius, kuriu uzduotuse yra itraukta si stotele
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Rodyti visus automobilius, kuriu uzduotyse yra pamineta si stotele
@@ -3172,10 +3167,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Pakeisti
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Pakeisti visus laivus depe
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Pakeisti visus lėktuvus angare
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} traukin{P ys iai ių}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} automobil{P is iai ių}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} laiv{P as ai ų}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} lėktuv{P as ai ų}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Keisti tr. priemones {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Pradeti tr. priemonių keitimą
@@ -3378,7 +3369,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Įkelti bendras transporto priemones
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Iškelti visas transporto priemones
 
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Lėktuvas
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Pervadinti grupę
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Neįmanoma sukurti grupę...

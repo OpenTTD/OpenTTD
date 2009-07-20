@@ -1354,7 +1354,6 @@ STR_WAYPOINT                                                    :{WHITE}Čvoriš
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Odaberite izgled čvorišta
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Voz{P "" a ova}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Promena naziva čvorišta
@@ -2730,7 +2729,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nova Voz
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Voz je predugačak
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vozovi se mogu izmeniti samo kada su zaustavljeni u depou
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Voz{P "" a ova}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Voz{P "" a ova}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nova Železnička Vozila
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nova Železnička Električna Vozila
@@ -2877,7 +2876,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Popunjav
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Drumsko vozilo na putu
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Drumsk{P o a ih} Vozil{P o a a}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Drumsk{P o a ih} Vozil{P o a a}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Depo Drumskih Vozila
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nova Vozila
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nova Drumska Vozila
@@ -2940,7 +2939,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Plovni k
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Izgradnja pristaništa ovde nije moguća...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Depo Plovila
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novi Brodovi
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Brod{P "" a ova}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Brod{P "" a ova}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Novi Brodovi
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Kupi Brod
 STR_CLONE_SHIP                                                  :{BLACK}Kopiraj Brod
@@ -3005,7 +3004,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Ovim će
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nove Letilice
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Napraviti Letelicu
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Letelice se ne može napraviti
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Leteluca
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Leteluca
 
 STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Promenite naziv vrste letilice
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Promena naziva vrste letilice

@@ -1196,7 +1196,6 @@ STR_WAYPOINT                                                    :{WHITE}Waypoint
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Select waypoint type
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Train{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edit waypoint name
@@ -1837,6 +1836,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :Very Good
 STR_CARGO_RATING_EXCELLENT                                      :Excellent
 STR_CARGO_RATING_OUTSTANDING                                    :Outstanding
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Show all trains which have this station on their schedule
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Show all road vehicles which have this station on their schedule
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Show all aircraft which have this station on their schedule
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Show all ships which have this station on their schedule
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} no longer accepts {STRING}
@@ -2717,7 +2722,6 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}New Vehi
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Train too long
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trains can only be altered when stopped inside a depot
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Train{P "" s}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}New Rail Vehicles
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}New Electric Rail Vehicles
@@ -2775,7 +2779,6 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Unable t
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Can't stop/start train...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Servicing interval: {LTBLUE}{COMMA}days{BLACK}   Last service: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servicing interval: {LTBLUE}{COMMA}%{BLACK}   Last service: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trains - click on train for information
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trains - click on train for info., drag vehicle to add/remove from train
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Build new train vehicle
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Drag train vehicle to here to sell it
@@ -2864,7 +2867,6 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fill the
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Road vehicle in the way
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Road Vehicle{P "" s}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Road Vehicle Depot
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}New Vehicles
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}New Road Vehicles
@@ -2880,7 +2882,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Service
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Service at {TOWN} Road Depot, {VELOCITY}
 STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Can't send vehicle to depot...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Unable to find local depot
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Road vehicles - click on vehicle for information
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Current vehicle action - click here to stop/start vehicle
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Show vehicle's orders
 STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Centre main view on vehicle's location
@@ -2927,7 +2928,6 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waterway
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Can't build dock here...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Ship Depot
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}New Ships
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Ship{P "" s}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}New Ships
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Build Ship
 STR_CLONE_SHIP                                                  :{BLACK}Clone Ship
@@ -2950,7 +2950,6 @@ STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Ships - 
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Build new ship
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Drag ship to here to sell it
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centre main view on ship depot location
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Ships - click on ship for information
 STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Ship selection list - click on ship for information
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Build the highlighted ship
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Current ship action - click here to stop/start ship
@@ -2992,7 +2991,6 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}This wil
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}New Aircraft
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Build Aircraft
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Can't build aircraft...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Aircraft
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Can't send aircraft to hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Heading for {STATION} Hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Heading for {STATION} Hangar, {VELOCITY}
@@ -3006,7 +3004,6 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Aircraft
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Can't sell aircraft...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Airport construction
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Build airport
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aircraft - click on aircraft for information
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aircraft - click on aircraft for information
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Build new aircraft
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Drag aircraft to here to sell it
@@ -3188,15 +3185,16 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Train{P "" s}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Road Vehicle{P "" s}
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Aircraft
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Ship{P "" s}
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trains - click on train for information
+STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Road vehicles - click on vehicle for information
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Ships - click on ship for information
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aircraft - click on aircraft for information
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Show all trains which have this station on their schedule
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Show all road vehicles which have this station on their schedule
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Show all aircraft which have this station on their schedule
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Show all ships which have this station on their schedule
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING1} - {COMMA} Train{P "" s}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING1} - {COMMA} Road Vehicle{P "" s}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING1} - {COMMA} Ship{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING1} - {COMMA} Aircraft
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Shared orders of {COMMA} Vehicle{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Show all vehicles that share this schedule
@@ -3219,11 +3217,6 @@ STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autorepl
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autoreplace all road vehicles in the depot
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autoreplace all ships in the depot
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autoreplace all aircraft in the hangar
-
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING1} - {COMMA} Train{P "" s}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING1} - {COMMA} Road Vehicle{P "" s}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING1} - {COMMA} Ship{P "" s}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING1} - {COMMA} Aircraft
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start Replacing Vehicles
@@ -3439,10 +3432,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Add shared vehicles
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remove all vehicles
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Train{P "" s}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Road Vehicle{P "" s}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Ship{P "" s}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aircraft
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rename a group
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Can't create group...

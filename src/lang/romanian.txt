@@ -1196,7 +1196,6 @@ STR_WAYPOINT                                                    :{WHITE}Punct de
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Alege tipul de punct de tranzit
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST_TRAIN                                :{WHITE}{WAYPOINT} - {COMMA} Tren{P "" uri}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editează numele haltei
@@ -2717,7 +2716,7 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Vehicule
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren prea lung
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trenurile pot fi modificate doar când staţionează într-un depou
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{COMPANY} - {COMMA} Tren{P "" uri}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tren{P "" uri}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Noi vehicule feroviare
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Noi Vehicule Electrice pe Sine
@@ -2864,7 +2863,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Complete
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Autovehicul in cale
-STR_VEHICLE_LIST_ROAD_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Autovehicule{P "" s}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Autovehicule{P "" s}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}Autobaza {TOWN}
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Autovehicule noi
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Autovehicule noi
@@ -2927,7 +2926,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Rute acv
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Nu pot construi port aici...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Şantierul Naval {TOWN}
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nave noi
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{COMPANY} - {COMMA} Nav{P ă e}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Nav{P ă e}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nave noi
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Construieşte navă
 STR_CLONE_SHIP                                                  :{BLACK}Clonare navă
@@ -2992,7 +2991,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Acest bu
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Aeronavă nouă
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Cumpără aeronavă
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Nu se poate cumpăra aeronava...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{COMPANY} - {COMMA} Aeronave
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aeronave
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nu se poate trimite aeronava la hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Merge la Hangarul {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Merge la Hangarul {STATION}, {VELOCITY}
@@ -3188,10 +3187,6 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Trenuri
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Autovehicule
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Aeronave
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Nave
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Afiseaza toate trenurile care opresc in aceasta statie
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Afiseaza toate autovehiculele care opresc in aceasta statie
@@ -3220,10 +3215,6 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}înlocui
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}înlocuieşte automat toate vasele din depou
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}înlocuieşte automat toate aeronavele din hangar
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tren{P "" s}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Autovehicul{P "" s}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Vas{P "" s}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aeronava
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Înlocuieste {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Incepere inlocuire vehicule
@@ -3439,10 +3430,6 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Adauga vehiculele partajate
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Elimina toate vehiculele
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tren{P "" uri}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Autovehicul{P "" e}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Nav{P a e}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aeronav{P a e}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Redenumeste un grup
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Nu pot crea grup...
