@@ -453,21 +453,21 @@ private:
 	}
 
 public:
-	BuildDocksDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
+	BuildDocksDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
 	{
+		this->InitNested(desc);
 		this->LowerWidget(_ship_depot_direction + BDDW_X);
 		UpdateDocksDirection();
-		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
 
-		DrawShipDepotSprite(67, 35, 0);
-		DrawShipDepotSprite(35, 51, 1);
-		DrawShipDepotSprite(135, 35, 2);
-		DrawShipDepotSprite(167, 51, 3);
+		DrawShipDepotSprite(this->nested_array[BDDW_X]->pos_x + 64, this->nested_array[BDDW_X]->pos_y + 18, 0);
+		DrawShipDepotSprite(this->nested_array[BDDW_X]->pos_x + 32, this->nested_array[BDDW_X]->pos_y + 34, 1);
+		DrawShipDepotSprite(this->nested_array[BDDW_Y]->pos_x + 32, this->nested_array[BDDW_Y]->pos_y + 18, 2);
+		DrawShipDepotSprite(this->nested_array[BDDW_Y]->pos_x + 64, this->nested_array[BDDW_Y]->pos_y + 34, 3);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -484,15 +484,6 @@ public:
 				break;
 		}
 	}
-};
-
-static const Widget _build_docks_depot_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_BLACK_CROSS,              STR_TOOLTIP_CLOSE_WINDOW},                 // BDDW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   203,     0,    13, STR_DEPOT_BUILD_SHIP_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},       // BDDW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,   203,    14,    85, 0x0,                          STR_NULL},                                 // BDDW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,           3,   100,    17,    82, 0x0,                          STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP}, // BDDW_X
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         103,   200,    17,    82, 0x0,                          STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP}, // BDDW_Y
-{   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_build_docks_depot_widgets[] = {
@@ -519,7 +510,7 @@ static const WindowDesc _build_docks_depot_desc(
 	WDP_AUTO, WDP_AUTO, 204, 86, 204, 86,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_build_docks_depot_widgets, _nested_build_docks_depot_widgets, lengthof(_nested_build_docks_depot_widgets)
+	NULL, _nested_build_docks_depot_widgets, lengthof(_nested_build_docks_depot_widgets)
 );
 
 
