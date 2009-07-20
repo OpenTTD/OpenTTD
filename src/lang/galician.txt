@@ -1158,7 +1158,7 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Seleccio
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_RAW                                                :{WAYPOINT}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edita-lo nome do punto de control
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Non se pode cambia-lo nome do punto de control...
@@ -1717,10 +1717,10 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tipis
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Casa Tetera
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Banco Porquiño
 
-STR_INDUSTRY                                                    :{INDUSTRY}
-STR_TOWN                                                        :{TOWN}
-STR_INDUSTRY_FORMAT                                             :{TOWN}: {STRING}
-STR_STATION                                                     :{STATION}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
+STR_TOWN_NAME                                                   :{TOWN}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}: {STRING}
+STR_STATION_NAME                                                :{STATION}
 
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Modifica-lo terreo
@@ -2106,7 +2106,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_NUM                                                 :(Compañía {COMMA})
+STR_FORMAT_COMPANY_NUM                                          :(Compañía {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nova Cara
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Esquema de Cor
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Esquema de Cor:
@@ -3309,10 +3309,10 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lonxitud
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Área: {NUM} x {NUM}{}Diferencia de altura: {NUM} m
 
 ############ Date formatting
-STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
-STR_DATE_SHORT                                                  :{STRING} {NUM}
-STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
-STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
@@ -3343,7 +3343,7 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_GROUP_NAME_FORMAT                                           :Grupo {COMMA}
+STR_FORMAT_GROUP_NAME                                           :Grupo {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Tódolos trens
 STR_GROUP_ALL_ROADS                                             :Tódolos vehículos de estrada

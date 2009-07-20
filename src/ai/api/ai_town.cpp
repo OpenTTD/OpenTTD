@@ -31,7 +31,7 @@
 	char *town_name = MallocT<char>(len);
 
 	::SetDParam(0, town_id);
-	::GetString(town_name, STR_TOWN, &town_name[len - 1]);
+	::GetString(town_name, STR_TOWN_NAME, &town_name[len - 1]);
 
 	return town_name;
 }

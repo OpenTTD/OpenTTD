@@ -185,7 +185,7 @@ public:
 		/* Local authority */
 		SetDParam(0, STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE);
 		if (t != NULL) {
-			SetDParam(0, STR_TOWN);
+			SetDParam(0, STR_TOWN_NAME);
 			SetDParam(1, t->index);
 		}
 		GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY, lastof(this->landinfo_data[line_nr]));

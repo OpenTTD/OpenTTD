@@ -28,7 +28,7 @@
 	char *industry_name = MallocT<char>(len);
 
 	::SetDParam(0, industry_id);
-	::GetString(industry_name, STR_INDUSTRY, &industry_name[len - 1]);
+	::GetString(industry_name, STR_INDUSTRY_NAME, &industry_name[len - 1]);
 
 	return industry_name;
 }

@@ -1265,7 +1265,7 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vyber ty
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_RAW                                                :{WAYPOINT}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Přejmenovat stavědlo
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nemohu přejmenovat stavědlo...
@@ -1846,10 +1846,10 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Teepee
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Dům konvička
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Banka prasátko
 
-STR_INDUSTRY                                                    :{INDUSTRY}
-STR_TOWN                                                        :{TOWN}
-STR_INDUSTRY_FORMAT                                             :{1:STRING} {0:TOWN}
-STR_STATION                                                     :{STATION}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
+STR_TOWN_NAME                                                   :{TOWN}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
+STR_STATION_NAME                                                :{STATION}
 
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Úpravy krajiny
@@ -2239,7 +2239,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :zaujatý
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_NUM                                                 :(společnost {COMMA})
+STR_FORMAT_COMPANY_NUM                                          :(společnost {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nový obličej
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Barva
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Barevné schéma:
@@ -3454,10 +3454,10 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Délka: 
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Oblast: {NUM} x {NUM}{}Výškový rozdíl: {NUM} m
 
 ############ Date formatting
-STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
-STR_DATE_SHORT                                                  :{STRING} {NUM}
-STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
-STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
@@ -3488,7 +3488,7 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_GROUP_NAME_FORMAT                                           :Skupina {COMMA}
+STR_FORMAT_GROUP_NAME                                           :Skupina {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Všechny vlaky
 STR_GROUP_ALL_ROADS                                             :Všechna silniční vozidla

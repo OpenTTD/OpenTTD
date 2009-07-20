@@ -174,12 +174,12 @@ protected:
 		char buf[64];
 
 		SetDParam(0, (*a)->index);
-		GetString(buf, STR_STATION, lastof(buf));
+		GetString(buf, STR_STATION_NAME, lastof(buf));
 
 		if (*b != last_station) {
 			last_station = *b;
 			SetDParam(0, (*b)->index);
-			GetString(buf_cache, STR_STATION, lastof(buf_cache));
+			GetString(buf_cache, STR_STATION_NAME, lastof(buf_cache));
 		}
 
 		return strcmp(buf, buf_cache);
@@ -1002,7 +1002,7 @@ struct StationViewWindow : public Window {
 
 			case SVW_RENAME:
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_STATION, STR_QUERY_RENAME_STATION_CAPTION, MAX_LENGTH_STATION_NAME_BYTES, MAX_LENGTH_STATION_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
+				ShowQueryString(STR_STATION_NAME, STR_QUERY_RENAME_STATION_CAPTION, MAX_LENGTH_STATION_NAME_BYTES, MAX_LENGTH_STATION_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
 			case SVW_TRAINS: { // Show a list of scheduled trains to this station

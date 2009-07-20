@@ -852,12 +852,12 @@ protected:
 		static char buf[96];
 
 		SetDParam(0, (*a)->town->index);
-		GetString(buf, STR_TOWN, lastof(buf));
+		GetString(buf, STR_TOWN_NAME, lastof(buf));
 
 		if (*b != last_industry) {
 			last_industry = *b;
 			SetDParam(0, (*b)->town->index);
-			GetString(buf_cache, STR_TOWN, lastof(buf_cache));
+			GetString(buf_cache, STR_TOWN_NAME, lastof(buf_cache));
 		}
 
 		return strcmp(buf, buf_cache);

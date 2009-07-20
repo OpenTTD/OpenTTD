@@ -33,7 +33,7 @@
 	char *waypoint_name = MallocT<char>(len);
 
 	::SetDParam(0, waypoint_id);
-	::GetString(waypoint_name, STR_WAYPOINT_RAW, &waypoint_name[len - 1]);
+	::GetString(waypoint_name, STR_WAYPOINT_NAME, &waypoint_name[len - 1]);
 	return waypoint_name;
 }
 

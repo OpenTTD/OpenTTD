@@ -1197,7 +1197,7 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Pilih je
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_RAW                                                :{WAYPOINT}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edit nama titik penunjuk arah
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Tidak dapat mengganti nama sinyal jalur...
@@ -1778,10 +1778,10 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tepees (rumah p
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Kedai teh
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Bank-Piggy
 
-STR_INDUSTRY                                                    :{INDUSTRY}
-STR_TOWN                                                        :{TOWN}
-STR_INDUSTRY_FORMAT                                             :{1:STRING} {0:TOWN}
-STR_STATION                                                     :{STATION}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
+STR_TOWN_NAME                                                   :{TOWN}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
+STR_STATION_NAME                                                :{STATION}
 
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Proses Landsekap
@@ -2171,7 +2171,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Bermusuhan
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_NUM                                                 :(Perusahaan {COMMA})
+STR_FORMAT_COMPANY_NUM                                          :(Perusahaan {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Ganti Wajah
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Warna tema
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Warna tema:
@@ -3382,10 +3382,10 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Panjang:
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}beda tinggi: {NUM} m
 
 ############ Date formatting
-STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
-STR_DATE_SHORT                                                  :{STRING} {NUM}
-STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
-STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
@@ -3416,7 +3416,7 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_GROUP_NAME_FORMAT                                           :Kelompok {COMMA}
+STR_FORMAT_GROUP_NAME                                           :Kelompok {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Semua Kereta
 STR_GROUP_ALL_ROADS                                             :Semua Bus/truk

@@ -968,13 +968,13 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				break;
 
 			case VLW_WAYPOINT_LIST:
-				SetDParam(0, STR_WAYPOINT_RAW);
+				SetDParam(0, STR_WAYPOINT_NAME);
 				SetDParam(1, index);
 				SetDParam(2, this->vscroll.count);
 				break;
 
 			case VLW_STATION_LIST: // Station Name
-				SetDParam(0, STR_STATION);
+				SetDParam(0, STR_STATION_NAME);
 				SetDParam(1, index);
 				SetDParam(2, this->vscroll.count);
 				break;

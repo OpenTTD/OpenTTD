@@ -1198,7 +1198,7 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}웨이�
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_RAW                                                :{WAYPOINT}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}웨이포인트 이름 설정
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}웨이포인트 이름을 변경할 수 없습니다...
@@ -1779,10 +1779,10 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :천막
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :찻잔 집
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :돼지 저금통
 
-STR_INDUSTRY                                                    :{INDUSTRY}
-STR_TOWN                                                        :{TOWN}
-STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
-STR_STATION                                                     :{STATION}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
+STR_TOWN_NAME                                                   :{TOWN}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_STATION_NAME                                                :{STATION}
 
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :지형 편집
@@ -2172,7 +2172,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :싫어함
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_NUM                                                 :(회사 {COMMA})
+STR_FORMAT_COMPANY_NUM                                          :(회사 {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}새 얼굴
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}색상
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}색상:
@@ -3383,10 +3383,10 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}길이: 
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}넓이: {NUM} x {NUM}{}고도차: {NUM} m
 
 ############ Date formatting
-STR_DATE_TINY                                                   :{2:NUM}.{1:STRING}.{0:STRING}
-STR_DATE_SHORT                                                  :{1:NUM}년 {0:STRING}
-STR_DATE_LONG                                                   :{2:NUM}년 {1:STRING}월 {0:STRING}일
-STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
+STR_FORMAT_DATE_TINY                                            :{2:NUM}.{1:STRING}.{0:STRING}
+STR_FORMAT_DATE_SHORT                                           :{1:NUM}년 {0:STRING}
+STR_FORMAT_DATE_LONG                                            :{2:NUM}년 {1:STRING}월 {0:STRING}일
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
@@ -3417,7 +3417,7 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_GROUP_NAME_FORMAT                                           :그룹 {COMMA}
+STR_FORMAT_GROUP_NAME                                           :그룹 {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :모든 기차
 STR_GROUP_ALL_ROADS                                             :모든 차량

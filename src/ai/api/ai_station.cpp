@@ -36,7 +36,7 @@
 	char *station_name = MallocT<char>(len);
 
 	::SetDParam(0, Station::Get(station_id)->index);
-	::GetString(station_name, STR_STATION, &station_name[len - 1]);
+	::GetString(station_name, STR_STATION_NAME, &station_name[len - 1]);
 	return station_name;
 }
 

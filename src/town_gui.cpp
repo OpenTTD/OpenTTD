@@ -392,7 +392,7 @@ public:
 
 			case TVW_CHANGENAME: // rename
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_TOWN, STR_TOWN_VIEW_RENAME_TOWN_BUTTON, MAX_LENGTH_TOWN_NAME_BYTES, MAX_LENGTH_TOWN_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
+				ShowQueryString(STR_TOWN_NAME, STR_TOWN_VIEW_RENAME_TOWN_BUTTON, MAX_LENGTH_TOWN_NAME_BYTES, MAX_LENGTH_TOWN_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
 			case TVW_EXPAND: // expand town - only available on Scenario editor
@@ -565,7 +565,7 @@ private:
 		char buf[64];
 
 		SetDParam(0, ta->index);
-		GetString(buf, STR_TOWN, lastof(buf));
+		GetString(buf, STR_TOWN_NAME, lastof(buf));
 
 		/* If 'b' is the same town as in the last round, use the cached value
 		 * We do this to speed stuff up ('b' is called with the same value a lot of
@@ -573,7 +573,7 @@ private:
 		if (tb != last_town) {
 			last_town = tb;
 			SetDParam(0, tb->index);
-			GetString(buf_cache, STR_TOWN, lastof(buf_cache));
+			GetString(buf_cache, STR_TOWN_NAME, lastof(buf_cache));
 		}
 
 		return strcmp(buf, buf_cache);

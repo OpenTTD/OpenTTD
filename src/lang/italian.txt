@@ -1199,7 +1199,7 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Selezion
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_RAW                                                :{WAYPOINT}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Rinomina il waypoint
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Impossibile rinominare il waypoint...
@@ -1780,10 +1780,10 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tepee
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Casa-teiera
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Banca-porcellino
 
-STR_INDUSTRY                                                    :{INDUSTRY}
-STR_TOWN                                                        :{TOWN}
-STR_INDUSTRY_FORMAT                                             :{1:STRING} di {0:TOWN}
-STR_STATION                                                     :{STATION}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
+STR_TOWN_NAME                                                   :{TOWN}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} di {0:TOWN}
+STR_STATION_NAME                                                :{STATION}
 
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Modellazione terreno
@@ -2173,7 +2173,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Ostile
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_NUM                                                 :(Compagnia {COMMA})
+STR_FORMAT_COMPANY_NUM                                          :(Compagnia {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nuova faccia
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Colori compagnia
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Schema colori:
@@ -3384,10 +3384,10 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lunghezz
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Differenza in altezza: {NUM} m
 
 ############ Date formatting
-STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
-STR_DATE_SHORT                                                  :{STRING} {NUM}
-STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
-STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
@@ -3418,7 +3418,7 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_GROUP_NAME_FORMAT                                           :Gruppo {COMMA}
+STR_FORMAT_GROUP_NAME                                           :Gruppo {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Tutti i treni
 STR_GROUP_ALL_ROADS                                             :Tutti gli automezzi

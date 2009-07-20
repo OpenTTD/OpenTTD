@@ -1183,7 +1183,7 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Επιλ
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_RAW                                                :{WAYPOINT}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Διαμόρφωση ονόματος σημείου πορείας
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Αδύνατο να αλλαχτεί το όνομα του σημείου πορείας...
@@ -1934,7 +1934,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Εχθρικό
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_NUM                                                 :(Εταιρία {COMMA})
+STR_FORMAT_COMPANY_NUM                                          :(Εταιρία {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Νέο Πρόσωπο
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Χρωματισμός
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Χρωματισμός:

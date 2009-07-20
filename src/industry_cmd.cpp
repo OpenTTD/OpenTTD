@@ -1724,7 +1724,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if ((flags & DC_EXEC) && _game_mode != GM_EDITOR && ind != NULL) {
 		SetDParam(0, indspec->name);
 		if (indspec->new_industry_text > STR_LAST_STRINGID) {
-			SetDParam(1, STR_TOWN);
+			SetDParam(1, STR_TOWN_NAME);
 			SetDParam(2, ind->town->index);
 		} else {
 			SetDParam(1, ind->town->index);
@@ -1929,7 +1929,7 @@ static void MaybeNewIndustry()
 
 	SetDParam(0, ind_spc->name);
 	if (ind_spc->new_industry_text > STR_LAST_STRINGID) {
-		SetDParam(1, STR_TOWN);
+		SetDParam(1, STR_TOWN_NAME);
 		SetDParam(2, ind->town->index);
 	} else {
 		SetDParam(1, ind->town->index);
@@ -2273,11 +2273,11 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		}
 		/* Set parameters of news string */
 		if (str > STR_LAST_STRINGID) {
-			SetDParam(0, STR_TOWN);
+			SetDParam(0, STR_TOWN_NAME);
 			SetDParam(1, i->town->index);
 			SetDParam(2, indspec->name);
 		} else if (closeit) {
-			SetDParam(0, STR_INDUSTRY_FORMAT);
+			SetDParam(0, STR_FORMAT_INDUSTRY_NAME);
 			SetDParam(1, i->town->index);
 			SetDParam(2, indspec->name);
 		} else {

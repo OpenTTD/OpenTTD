@@ -762,9 +762,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fund new indust
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Fund new industry
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{RAW_STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...can only be built in rainforest areas
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...can only be built in desert areas
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  PAUSED  *  *
@@ -1197,7 +1194,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Select w
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edit waypoint name
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Can't change waypoint name...
@@ -1778,11 +1774,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tepees
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Teapot-House
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Piggy-Bank
 
-STR_INDUSTRY                                                    :{INDUSTRY}
-STR_TOWN                                                        :{TOWN}
-STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
-STR_STATION                                                     :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landscaping
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plant trees
@@ -2177,7 +2168,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Hostile
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_NUM                                                 :(Company {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}New Face
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Colour Scheme
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Colour Scheme:
@@ -2210,7 +2200,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total:
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Income Graph
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Operating Profit Graph
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bank Balance
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Loan
@@ -3383,17 +3372,6 @@ STR_MEASURE_AREA                                                :{BLACK}Area: {N
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Length: {NUM}{}Height difference: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Height difference: {NUM} m
 
-############ Date formatting
-STR_DATE_TINY                                                   :{RAW_STRING}-{RAW_STRING}-{NUM}
-STR_DATE_SHORT                                                  :{STRING} {NUM}
-STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
-STR_DATE_ISO                                                    :{2:NUM}-{1:RAW_STRING}-{0:RAW_STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer Credits: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...this is a town owned road
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...road facing in the wrong direction
@@ -3418,7 +3396,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_GROUP_NAME_FORMAT                                           :Group {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :All trains
 STR_GROUP_ALL_ROADS                                             :All road vehicles
@@ -3447,12 +3424,35 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Delete t
 STR_GROUP_RENAME_TIP                                            :{BLACK}Rename the selected group
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Click to protect this group from global autoreplace
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{RAW_STRING}
+
+STR_FORMAT_DATE_TINY                                            :{RAW_STRING}-{RAW_STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:RAW_STRING}-{0:RAW_STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :(Company {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Group {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Name must be unique
 

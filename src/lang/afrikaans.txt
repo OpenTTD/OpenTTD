@@ -1171,7 +1171,7 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Kies weg
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_RAW                                                :{WAYPOINT}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Redigeer wegpunt naam
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Kan nie wegpunt naam verander nie...
@@ -1736,10 +1736,10 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tepees
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Teepot-Huis
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Varkie-Bank
 
-STR_INDUSTRY                                                    :{INDUSTRY}
-STR_TOWN                                                        :{TOWN}
-STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
-STR_STATION                                                     :{STATION}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
+STR_TOWN_NAME                                                   :{TOWN}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_STATION_NAME                                                :{STATION}
 
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landargitekteur
@@ -2128,7 +2128,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :Vyandelik
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_NUM                                                 :(Company {COMMA})
+STR_FORMAT_COMPANY_NUM                                          :(Company {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nuwe Gesig
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Kleur Skema
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Kleur Skema
@@ -3306,9 +3306,9 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lengte: 
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Hoogte verskil: {NUM} m
 
 ############ Date formatting
-STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
-STR_DATE_SHORT                                                  :{STRING} {NUM}
-STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
@@ -3338,7 +3338,7 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_GROUP_NAME_FORMAT                                           :Groep {COMMA}
+STR_FORMAT_GROUP_NAME                                           :Groep {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Alle triene
 STR_GROUP_ALL_ROADS                                             :Alle pad voertuie

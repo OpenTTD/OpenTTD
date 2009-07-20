@@ -1173,7 +1173,7 @@ STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Lit hi-s
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_NUM                                                 :(Bedriuw {COMMA})
+STR_FORMAT_COMPANY_NUM                                          :(Bedriuw {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nei Gesicht
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Kleurenskema
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Kleurenskema:

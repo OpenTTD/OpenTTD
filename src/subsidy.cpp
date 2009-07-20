@@ -62,25 +62,25 @@ Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode)
 
 	if (!s->IsAwarded()) {
 		if (cs->town_effect != TE_PASSENGERS && cs->town_effect != TE_MAIL) {
-			SetDParam(1, STR_INDUSTRY);
+			SetDParam(1, STR_INDUSTRY_NAME);
 			SetDParam(2, s->from);
 			reftype1 = NR_INDUSTRY;
 
 			if (cs->town_effect != TE_GOODS && cs->town_effect != TE_FOOD) {
-				SetDParam(4, STR_INDUSTRY);
+				SetDParam(4, STR_INDUSTRY_NAME);
 				SetDParam(5, s->to);
 				reftype2 = NR_INDUSTRY;
 			} else {
-				SetDParam(4, STR_TOWN);
+				SetDParam(4, STR_TOWN_NAME);
 				SetDParam(5, s->to);
 				reftype2 = NR_TOWN;
 			}
 		} else {
-			SetDParam(1, STR_TOWN);
+			SetDParam(1, STR_TOWN_NAME);
 			SetDParam(2, s->from);
 			reftype1 = NR_TOWN;
 
-			SetDParam(4, STR_TOWN);
+			SetDParam(4, STR_TOWN_NAME);
 			SetDParam(5, s->to);
 			reftype2 = NR_TOWN;
 		}

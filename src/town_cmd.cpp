@@ -1406,7 +1406,7 @@ static bool VerifyTownName(uint32 r, const TownNameParams *par)
 		/* We can't just compare the numbers since
 		 * several numbers may map to a single name. */
 		SetDParam(0, t->index);
-		GetString(buf2, STR_TOWN, lastof(buf2));
+		GetString(buf2, STR_TOWN_NAME, lastof(buf2));
 		if (strcmp(buf1, buf2) == 0) return false;
 	}
 

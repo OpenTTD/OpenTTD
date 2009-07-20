@@ -319,7 +319,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 			FOR_ALL_TOWNS_FROM(t, *item - MAX_CLIENT_SLOTS) {
 				/* Get the town-name via the string-system */
 				SetDParam(0, t->index);
-				GetString(chat_tab_temp_buffer, STR_TOWN, lastof(chat_tab_temp_buffer));
+				GetString(chat_tab_temp_buffer, STR_TOWN_NAME, lastof(chat_tab_temp_buffer));
 				return &chat_tab_temp_buffer[0];
 			}
 		}

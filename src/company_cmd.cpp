@@ -205,7 +205,7 @@ void GetNameOfOwner(Owner owner, TileIndex tile)
 	} else {
 		const Town *t = ClosestTownFromTile(tile, UINT_MAX);
 
-		SetDParam(0, STR_TOWN);
+		SetDParam(0, STR_TOWN_NAME);
 		SetDParam(1, t->index);
 	}
 }

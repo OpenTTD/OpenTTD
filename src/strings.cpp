@@ -275,7 +275,7 @@ static char *FormatYmdString(char *buff, Date date, const char *last)
 	ConvertDateToYMD(date, &ymd);
 
 	int64 args[3] = { ymd.day + STR_ORDINAL_NUMBER_1ST - 1, STR_MONTH_ABBREV_JAN + ymd.month, ymd.year };
-	return FormatString(buff, GetStringPtr(STR_DATE_LONG), args, 0, last);
+	return FormatString(buff, GetStringPtr(STR_FORMAT_DATE_LONG), args, 0, last);
 }
 
 static char *FormatMonthAndYear(char *buff, Date date, const char *last)
@@ -284,7 +284,7 @@ static char *FormatMonthAndYear(char *buff, Date date, const char *last)
 	ConvertDateToYMD(date, &ymd);
 
 	int64 args[2] = { STR_MONTH_JAN + ymd.month, ymd.year };
-	return FormatString(buff, GetStringPtr(STR_DATE_SHORT), args, 0, last);
+	return FormatString(buff, GetStringPtr(STR_FORMAT_DATE_SHORT), args, 0, last);
 }
 
 static char *FormatTinyOrISODate(char *buff, Date date, StringID str, const char *last)
@@ -700,7 +700,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 				/* First print the town name and the industry type name. */
 				args[0] = i->town->index;
 				args[1] = GetIndustrySpec(i->type)->name;
-				buff = FormatString(buff, GetStringPtr(STR_INDUSTRY_FORMAT), args, modifier >> 24, last);
+				buff = FormatString(buff, GetStringPtr(STR_FORMAT_INDUSTRY_NAME), args, modifier >> 24, last);
 				modifier = 0;
 				break;
 			}
@@ -736,12 +736,12 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 			}
 
 			case SCC_DATE_TINY: { // {DATE_TINY}
-				buff = FormatTinyOrISODate(buff, GetInt32(&argv), STR_DATE_TINY, last);
+				buff = FormatTinyOrISODate(buff, GetInt32(&argv), STR_FORMAT_DATE_TINY, last);
 				break;
 			}
 
 			case SCC_DATE_ISO: { // {DATE_ISO}
-				buff = FormatTinyOrISODate(buff, GetInt32(&argv), STR_DATE_ISO, last);
+				buff = FormatTinyOrISODate(buff, GetInt32(&argv), STR_FORMAT_DATE_ISO, last);
 				break;
 			}
 
@@ -899,7 +899,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 					}
 
 					int64 temp[3];
-					temp[0] = STR_TOWN;
+					temp[0] = STR_TOWN_NAME;
 					temp[1] = st->town->index;
 					temp[2] = st->index;
 					buff = GetStringWithArgs(buff, str, temp, last);
@@ -945,7 +945,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 					int64 args[1];
 
 					args[0] = g->index;
-					buff = GetStringWithArgs(buff, STR_GROUP_NAME_FORMAT, args, last);
+					buff = GetStringWithArgs(buff, STR_FORMAT_GROUP_NAME, args, last);
 				}
 				break;
 			}
@@ -1019,7 +1019,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 				if (Company::IsValidHumanID(company)) {
 					int64 args[1];
 					args[0] = company + 1;
-					buff = GetStringWithArgs(buff, STR_COMPANY_NUM, args, last);
+					buff = GetStringWithArgs(buff, STR_FORMAT_COMPANY_NUM, args, last);
 				}
 				break;
 			}
