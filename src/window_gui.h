@@ -274,7 +274,7 @@ public:
 		}
 		if (this->nested_array != NULL) {
 			assert(widget_index < this->nested_array_size);
-			this->nested_array[widget_index]->SetDisabled(disab_stat);
+			if (this->nested_array[widget_index] != NULL) this->nested_array[widget_index]->SetDisabled(disab_stat);
 		}
 	}
 

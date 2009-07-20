@@ -208,7 +208,7 @@ void Window::RaiseButtons()
 	}
 	if (this->nested_array != NULL) {
 		for (uint i = 0; i < this->nested_array_size; i++) {
-			if (this->IsWidgetLowered(i)) {
+			if (this->nested_array[i] != NULL && this->IsWidgetLowered(i)) {
 				this->RaiseWidget(i);
 				this->InvalidateWidget(i);
 			}
