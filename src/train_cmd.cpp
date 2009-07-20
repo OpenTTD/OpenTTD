@@ -704,7 +704,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 			if (w->tile == tile && w->IsFreeWagon() &&
 					w->engine_type == engine &&
 					!(w->vehstatus & VS_CRASHED)) {
-				u = GetLastVehicleInChain(w);
+				u = w->Last();
 				break;
 			}
 		}
@@ -1829,7 +1829,7 @@ static void AdvanceWagonsBeforeSwap(Train *v)
 {
 	Train *base = v;
 	Train *first = base; // first vehicle to move
-	Train *last = Train::From(GetLastVehicleInChain(v)); // last vehicle to move
+	Train *last = v->Last(); // last vehicle to move
 	uint length = CountVehiclesInChain(v);
 
 	while (length > 2) {
@@ -1878,7 +1878,7 @@ static void AdvanceWagonsAfterSwap(Train *v)
 
 	Train *base = v;
 	Train *first = base; // first vehicle to move
-	Train *last = Train::From(GetLastVehicleInChain(v)); // last vehicle to move
+	Train *last = v->Last(); // last vehicle to move
 	uint length = CountVehiclesInChain(v);
 
 	/* we have to make sure all wagons that leave a depot because of train reversing are moved coorectly
@@ -2219,7 +2219,7 @@ static TrainFindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 		} break;
 
 		case VPF_NPF: { // NPF
-			const Vehicle *last = GetLastVehicleInChain(v);
+			const Vehicle *last = v->Last();
 			Trackdir trackdir = v->GetVehicleTrackdir();
 			Trackdir trackdir_rev = ReverseTrackdir(last->GetVehicleTrackdir());
 
@@ -3225,7 +3225,7 @@ static bool CheckReverseTrain(Train *v)
 		case VPF_NPF: { // NPF
 			NPFFindStationOrTileData fstd;
 			NPFFoundTargetData ftd;
-			Vehicle *last = GetLastVehicleInChain(v);
+			Vehicle *last = v->Last();
 
 			NPFFillWithOrderData(&fstd, v);
 

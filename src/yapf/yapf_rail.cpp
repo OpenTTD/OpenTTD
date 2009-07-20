@@ -537,8 +537,7 @@ Trackdir YapfChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection ent
 bool YapfCheckReverseTrain(const Vehicle *vt)
 {
 	const Train *v = Train::From(vt);
-	/* last wagon */
-	const Train *last_veh = Train::From(GetLastVehicleInChain(v));
+	const Train *last_veh = v->Last();
 
 	/* get trackdirs of both ends */
 	Trackdir td = v->GetVehicleTrackdir();
@@ -600,7 +599,7 @@ bool YapfFindNearestRailDepotTwoWay(const Vehicle *v, int max_distance, int reve
 	*depot_tile = INVALID_TILE;
 	*reversed = false;
 
-	const Vehicle *last_veh = GetLastVehicleInChain(v);
+	const Vehicle *last_veh = v->Last();
 
 	PBSTileInfo origin = FollowTrainReservation(Train::From(v));
 	TileIndex last_tile = last_veh->tile;

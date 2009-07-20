@@ -453,18 +453,6 @@ void InitializeVehicles()
 	ResetVehiclePosHash();
 }
 
-Vehicle *GetLastVehicleInChain(Vehicle *v)
-{
-	while (v->Next() != NULL) v = v->Next();
-	return v;
-}
-
-const Vehicle *GetLastVehicleInChain(const Vehicle *v)
-{
-	while (v->Next() != NULL) v = v->Next();
-	return v;
-}
-
 uint CountVehiclesInChain(const Vehicle *v)
 {
 	uint count = 0;

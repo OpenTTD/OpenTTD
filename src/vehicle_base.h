@@ -366,6 +366,27 @@ public:
 	 */
 	inline Vehicle *First() const { return this->first; }
 
+	/**
+	 * Get the last vehicle of this vehicle chain.
+	 * @return the last vehicle of the chain.
+	 */
+	inline Vehicle *Last()
+	{
+		Vehicle *v = this;
+		while (v->Next() != NULL) v = v->Next();
+		return v;
+	}
+
+	/**
+	 * Get the last vehicle of this vehicle chain.
+	 * @return the last vehicle of the chain.
+	 */
+	inline const Vehicle *Last() const
+	{
+		const Vehicle *v = this;
+		while (v->Next() != NULL) v = v->Next();
+		return v;
+	}
 
 	/**
 	 * Get the first order of the vehicles order list.
@@ -536,6 +557,18 @@ struct SpecializedVehicle : public Vehicle {
 	 * @return first vehicle in the chain
 	 */
 	FORCEINLINE T *First() const { return (T *)this->Vehicle::First(); }
+
+	/**
+	 * Get the last vehicle in the chain
+	 * @return last vehicle in the chain
+	 */
+	FORCEINLINE T *Last() { return (T *)this->Vehicle::Last(); }
+
+	/**
+	 * Get the last vehicle in the chain
+	 * @return last vehicle in the chain
+	 */
+	FORCEINLINE const T *Last() const { return (const T *)this->Vehicle::Last(); }
 
 	/**
 	 * Get next vehicle in the chain
