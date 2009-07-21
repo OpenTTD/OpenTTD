@@ -2342,13 +2342,13 @@ STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Стро�
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Новая техника
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Обслуживание ж/д
 STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Обслуживание авто
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Обслуживание авиа
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Обслуживание кораблей
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Обслуж. авиатранспорта
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Обслуж. кораблей
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Обслуж. собственности
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Доход от ж/д
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Доход от автотранспорта
+STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Доход от авто
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Доход от авиации
-STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Доход от водного транспорта
+STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Доход от кораблей
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Проценты по займу
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Прочие расходы
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
@@ -2670,9 +2670,9 @@ STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :Грузови�
 STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :Грузовик MightyMover (сахар)
 STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Грузовик Powernaught (сахар)
 STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Грузовик Wizzowow (сахар)
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :Грузовик MightyMover (кола)
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Грузовик Powernaught (кола)
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Грузовик Wizzowow (кола)
+STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :Цистерна MightyMover (кола)
+STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Цистерна Powernaught (кола)
+STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Цистерна Wizzowow (кола)
 STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :Грузовик MightyMover (сах. вата)
 STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :Грузовик Powernaught (сах. вата)
 STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Грузовик Wizzowow (сах. вата)
@@ -3524,8 +3524,8 @@ STR_HELIDEPOT                                                   :{BLACK}Верт
 STR_HELISTATION                                                 :{BLACK}Вертолётная станция
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Малые аэропорты
-STR_LARGE_AIRPORTS                                              :{BLACK}Большие аэропорты
-STR_HUB_AIRPORTS                                                :{BLACK}Базовые аэропорты
+STR_LARGE_AIRPORTS                                              :{BLACK}Средние аэропорты
+STR_HUB_AIRPORTS                                                :{BLACK}Большие аэропорты
 STR_HELIPORTS                                                   :{BLACK}Вертолётные площадки
 
 ############ Tooltip measurment

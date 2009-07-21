@@ -51,7 +51,7 @@ STR_CARGO_PLURAL_GOODS                                          :roba
 STR_CARGO_PLURAL_GOODS.aku                                      :robu
 STR_CARGO_PLURAL_GRAIN                                          :žito
 STR_CARGO_PLURAL_GRAIN.aku                                      :žito
-STR_CARGO_PLURAL_WOOD                                           :drvna građa
+STR_CARGO_PLURAL_WOOD                                           :drvena građa
 STR_CARGO_PLURAL_WOOD.aku                                       :drvnu građu
 STR_CARGO_PLURAL_IRON_ORE                                       :ruda gvožđa
 STR_CARGO_PLURAL_IRON_ORE.aku                                   :rudu gvožđa
@@ -137,7 +137,7 @@ STR_CARGO_PLURAL_PLASTIC                                        :plastika
 STR_CARGO_PLURAL_PLASTIC.big                                    :Plastika
 STR_CARGO_PLURAL_PLASTIC.gen                                    :plastike
 STR_CARGO_PLURAL_PLASTIC.aku                                    :plastiku
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gazirana PiÄa
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gazirana Pića
 STR_CARGO_PLURAL_FIZZY_DRINKS.aku                               :gazirana pića
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :putnik
@@ -168,7 +168,7 @@ STR_CARGO_SINGULAR_GRAIN                                        :žito
 STR_CARGO_SINGULAR_GRAIN.big                                    :Žito
 STR_CARGO_SINGULAR_GRAIN.gen                                    :žita
 STR_CARGO_SINGULAR_GRAIN.aku                                    :žito
-STR_CARGO_SINGULAR_WOOD                                         :drvna građa
+STR_CARGO_SINGULAR_WOOD                                         :drvena građa
 STR_CARGO_SINGULAR_WOOD.big                                     :Drvna građa
 STR_CARGO_SINGULAR_WOOD.gen                                     :drvne građe
 STR_CARGO_SINGULAR_WOOD.aku                                     :drvnu građu
@@ -193,6 +193,7 @@ STR_CARGO_SINGULAR_MAIZE.big                                    :Kukuruz
 STR_CARGO_SINGULAR_MAIZE.gen                                    :kukuruza
 STR_CARGO_SINGULAR_MAIZE.aku                                    :kukuruz
 STR_CARGO_SINGULAR_FRUIT                                        :VoÄe
+STR_CARGO_SINGULAR_FRUIT.big                                    :Voće
 STR_CARGO_SINGULAR_FRUIT.aku                                    :voće
 STR_CARGO_SINGULAR_DIAMOND                                      :dijamant
 STR_CARGO_SINGULAR_DIAMOND.big                                  :Dijamant
@@ -264,13 +265,13 @@ STR_CARGO_SINGULAR_FIZZY_DRINK.gen                              :gaziranog pića
 STR_CARGO_SINGULAR_FIZZY_DRINK.aku                              :gazirano piće
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} putnik{P "" a a}
-STR_QUANTITY_COAL                                               :{WEIGHT} nad ugalj
+STR_QUANTITY_COAL                                               :{WEIGHT} uglja
 STR_QUANTITY_MAIL                                               :{COMMA} džak{P "" a ova} pošte
-STR_QUANTITY_OIL                                                :{VOLUME} nad ulje
+STR_QUANTITY_OIL                                                :{VOLUME} ulja
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} grl{P o a a} stoke
 STR_QUANTITY_GOODS                                              :{COMMA} sanduk{P "" a a} robe
-STR_QUANTITY_GRAIN                                              :{WEIGHT} nad zrno
-STR_QUANTITY_WOOD                                               :{WEIGHT} of drvo
+STR_QUANTITY_GRAIN                                              :{WEIGHT} žitarica
+STR_QUANTITY_WOOD                                               :{WEIGHT} drva
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} železne rude
 STR_QUANTITY_STEEL                                              :{WEIGHT} čelika
 STR_QUANTITY_VALUABLES                                          :{COMMA} džak{P "" a ova} dragocenosti
@@ -279,22 +280,55 @@ STR_QUANTITY_MAIZE                                              :{WEIGHT} kukuru
 STR_QUANTITY_FRUIT                                              :{WEIGHT} voća
 STR_QUANTITY_DIAMONDS                                           :{COMMA} džak{P "" a ova} dijamanata
 STR_QUANTITY_FOOD                                               :{WEIGHT} hrane
-STR_QUANTITY_PAPER                                              :{WEIGHT} nad papir
+STR_QUANTITY_PAPER                                              :{WEIGHT} papira
 STR_QUANTITY_GOLD                                               :{COMMA} džak{P "" a ova} zlata
-STR_QUANTITY_WATER                                              :{VOLUME} nad voda
-STR_QUANTITY_WHEAT                                              :{WEIGHT} nad pšenica
-STR_QUANTITY_RUBBER                                             :{VOLUME} nad guma
-STR_QUANTITY_SUGAR                                              :{WEIGHT} nad zasladiti
+STR_QUANTITY_WATER                                              :{VOLUME} vode
+STR_QUANTITY_WHEAT                                              :{WEIGHT} pšenice
+STR_QUANTITY_RUBBER                                             :{VOLUME} gume
+STR_QUANTITY_SUGAR                                              :{WEIGHT} šećera
 STR_QUANTITY_TOYS                                               :{COMMA} igrač{P ka ke aka}
 STR_QUANTITY_SWEETS                                             :{COMMA} džak{P "" a ova} slatkiša
-STR_QUANTITY_COLA                                               :{VOLUME} nad kola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} nad candyfloss
-STR_QUANTITY_BUBBLES                                            :{COMMA} mehur{P "" a ova}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} nad karamela
+STR_QUANTITY_COLA                                               :{VOLUME} kole
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} šećerne vune
+STR_QUANTITY_BUBBLES                                            :{COMMA} balon{P "" a a}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} karamele
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterij{P a e a}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} nad plastika
+STR_QUANTITY_PLASTIC                                            :{VOLUME} plastike
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} gaziran{P o a a} pić{P 0 e a a}
 STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
+STR_ABBREV_COAL                                                 :{TINYFONT}CL
+STR_ABBREV_MAIL                                                 :{TINYFONT}ML
+STR_ABBREV_OIL                                                  :{TINYFONT}OL
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
+STR_ABBREV_GOODS                                                :{TINYFONT}GD
+STR_ABBREV_GRAIN                                                :{TINYFONT}GR
+STR_ABBREV_WOOD                                                 :{TINYFONT}WD
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}OR
+STR_ABBREV_STEEL                                                :{TINYFONT}ST
+STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CO
+STR_ABBREV_MAIZE                                                :{TINYFONT}MZ
+STR_ABBREV_FRUIT                                                :{TINYFONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
+STR_ABBREV_FOOD                                                 :{TINYFONT}FD
+STR_ABBREV_PAPER                                                :{TINYFONT}PR
+STR_ABBREV_GOLD                                                 :{TINYFONT}GD
+STR_ABBREV_WATER                                                :{TINYFONT}WR
+STR_ABBREV_WHEAT                                                :{TINYFONT}WH
+STR_ABBREV_RUBBER                                               :{TINYFONT}RB
+STR_ABBREV_SUGAR                                                :{TINYFONT}SG
+STR_ABBREV_TOYS                                                 :{TINYFONT}TY
+STR_ABBREV_SWEETS                                               :{TINYFONT}SW
+STR_ABBREV_COLA                                                 :{TINYFONT}CL
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CF
+STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
+STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
+STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
+STR_ABBREV_NONE                                                 :{TINYFONT}NO
+STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
 STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
@@ -304,13 +338,13 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}{STRING
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Oprez!
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Neizvodljivo...
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Područje ne može biti očišćeno...
-STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Originalni kopirajt {COPYRIGHT} 1995 Chris Sawyer, Sva prava zadržana
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD verzija {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD tim
 
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_QUIT_CAPTION                                                :{WHITE}Napusti
+STR_QUIT_CAPTION                                                :{WHITE}Izađi
 STR_YES                                                         :{BLACK}Da
 STR_NO                                                          :{BLACK}Ne
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Da li ste sigurni da želite da napustite OpenTTD i vratite se u {STRING}?
@@ -331,7 +365,7 @@ STR_COLOUR_DARK_GREEN                                           :Tamno zelena
 STR_COLOUR_BLUE                                                 :Plava
 STR_COLOUR_CREAM                                                :Krem
 STR_COLOUR_MAUVE                                                :Lavanda
-STR_COLOUR_PURPLE                                               :Purpurna
+STR_COLOUR_PURPLE                                               :Ljubičasta
 STR_COLOUR_ORANGE                                               :Narandžasta
 STR_COLOUR_BROWN                                                :Braon
 STR_COLOUR_GREY                                                 :Siva
@@ -381,7 +415,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFON
 STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}Sneg
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Poruka
 STR_QUERY_CAPTION                                               :{WHITE}{STRING}
-STR_DEFAULT                                                     :{BLACK}Propust
+STR_DEFAULT                                                     :{BLACK}Prvobitno
 STR_QUERY_CANCEL                                                :{BLACK}Otkaži
 STR_QUERY_OK                                                    :{BLACK}OK
 STR_QUERY_RENAME                                                :{BLACK}Preimenuj
@@ -400,16 +434,16 @@ STR_ERROR_OWNED_BY                                              :{WHITE}...je u 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Tovar
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informacija
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapaciteti
-STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Zbir Tovar
-STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Zbir tovar kapacitet nad ova trenirati:
+STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Ukupni tovar
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Ukupan kapacitet ovog voza:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_INTRO_NEW_GAME                                              :{BLACK}Nova igra
 STR_INTRO_LOAD_GAME                                             :{BLACK}Učitaj igru
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Mreža igra
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenarij Urednik
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Mrežna igra
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor scenarija
 
-STR_MAPSIZE                                                     :{BLACK}Karta veličina:
+STR_MAPSIZE                                                     :{BLACK}Veličina mapa:
 STR_BY                                                          :{BLACK}*
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcije
 
@@ -420,7 +454,7 @@ STR_UNITS_METRIC                                                :Metrički
 STR_UNITS_SI                                                    :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} milja na sat
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} kilometar na sat
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}ks
@@ -436,7 +470,7 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lit{P ra re ara}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lit{P ar ra ara}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
@@ -449,7 +483,7 @@ STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Grafikon istori
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Grafikon vrednosti kompanije
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Stope naplate tovara
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabela lige kompanija
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaljan pergled poslovanja
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaljan pregled poslovanja
 ############ range for menu ends
 
 STR_ABOUT_OPENTTD                                               :{WHITE}O OpenTTD-u
@@ -465,25 +499,25 @@ STR_FILTER_CRITERIA_TIP                                         :{BLACK}Izaberit
 STR_SORT_BY                                                     :{BLACK}Sortiraj po
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Naseljenost
-STR_SORT_BY_PRODUCTION                                          :Proizvodnja
-STR_SORT_BY_TYPE                                                :Vrsta
+STR_SORT_BY_PRODUCTION                                          :Proizvodnji
+STR_SORT_BY_TYPE                                                :Vrsti
 STR_SORT_BY_TRANSPORTED                                         :Transportovano
 STR_SORT_BY_NAME                                                :{BLACK}Ime
-STR_SORT_BY_DROPDOWN_NAME                                       :Ime
-STR_SORT_BY_DATE                                                :{BLACK}Datum
-STR_SORT_BY_NUMBER                                              :Broj
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zarada prošle godine
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zarada ove godine
-STR_SORT_BY_AGE                                                 :Starost
-STR_SORT_BY_RELIABILITY                                         :Pouzdanost
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Ukupna nosivost po vrsti tovara
+STR_SORT_BY_DROPDOWN_NAME                                       :Imenu
+STR_SORT_BY_DATE                                                :{BLACK}Datumu
+STR_SORT_BY_NUMBER                                              :Broju
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zaradi prošle godine
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zaradi ove godine
+STR_SORT_BY_AGE                                                 :Starosti
+STR_SORT_BY_RELIABILITY                                         :Pouzdanosti
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Ukupnoj nosivosti po vrsti tovara
 STR_SORT_BY_MAX_SPEED                                           :Nejvećoj brzini
-STR_SORT_BY_MODEL                                               :Model
-STR_SORT_BY_VALUE                                               :Vrednost
-STR_SORT_BY_LENGTH                                              :Dužina
-STR_SORT_BY_LIFE_TIME                                           :Preostao životni vek
-STR_SORT_BY_FACILITY                                            :Vrsta stanice
-STR_SORT_BY_WAITING                                             :Vrednost tovara na čekanju
+STR_SORT_BY_MODEL                                               :Modelu
+STR_SORT_BY_VALUE                                               :Vrednosti
+STR_SORT_BY_LENGTH                                              :Dužini
+STR_SORT_BY_LIFE_TIME                                           :Preostalom životnom veku
+STR_SORT_BY_FACILITY                                            :Vrsti stanice
+STR_SORT_BY_WAITING                                             :Vrednosti tovara na čekanju
 STR_SORT_BY_RATING_MAX                                          :Najvišoj oceni tereta
 STR_SORT_BY_RATING_MIN                                          :Najnižoj oceni tereta
 STR_ENGINE_SORT_ENGINE_ID                                       :ID mašine (standardno)
@@ -798,7 +832,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Sačuvaj
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Igraj scenario
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Igra Visina
 STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Start jedan nov igra , pomoću jedan visina ace krajolik
-STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Biti te siguran te oskudica za slobodan današji scenarij?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Da li ste sigurni da želite da izađete iz ovog scenarija?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...dozvoljeno izgraditi samo u naseljima sa populacijom od najmanje 1200
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pomeranje datuma početka za jednu godinu unazad
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Pomeranje datuma početka za jednu godinu unapred
@@ -1915,14 +1949,14 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Izgradnja statu
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansiranje novih zgrada
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kupovina ekskluzivnih prava na transport
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podmićivanje lokalne vlasti
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Ulaganje u manju reklamnu kampanju će doneti kompaniji više putnika i robe iz ovog naselja.{}  Trošak: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Ulaganje u reklamnu kampanju srednjeg budžeta će doneti kompaniji više putnika i robe iz ovog naselja.{}  Trošak: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Ulaganje u veliku reklamnu kampanju će doneti kompaniji više putnika i robe iz ovog naselja.{}  Trošak: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Finansiranje rekonstrukcije lokalne mreže puteva. Može prouzrokovati kolaps u drumskom saobraćaju u trajanju do 6 meseci.{}  Trošak: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Ulaganje u malu reklamnu kampanju će doneti kompaniji više putnika i robe iz ovog naselja.{} Trošak: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Ulaganje u reklamnu kampanju srednje veličine će doneti kompaniji više putnika i robe iz ovog naselja.{} Trošak: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Ulaganje u veliku reklamnu kampanju će doneti kompaniji više putnika i robe iz ovog naselja.{} Trošak: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Finansiranje rekonstrukcije lokalne mreže puteva. Može prouzrokovati kolaps u drumskom saobraćaju u trajanju do 6 meseci.{} Trošak: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} Otkrivanje spomenika kompanije.{} Trošak: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} Finansiranje izgradnje novih komercijalnih objekata u naselju.{} Trošak: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} Kupovina ekskluzivnih transportnih prava od lokalne vlasti, osigurava da će lokalni korisnici transporta koristiti isključivo usluge kompanije. Prava ističu nakon godinu dana.{} Trošak: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} Krumpiranje lokalne vlasti kako bi porastao rejting vaše kompanije, uz rizik velike štete ukoliko se otkrije.{}  Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} Kupovina ekskluzivnih transportnih prava od lokalne vlasti na godinu dana, osigurava da će lokalni korisnici transporta koristiti isključivo usluge vaše kompanije.{} Trošak: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} Davanje mita lokalnoj vlasti kako bi porastao rejting vaše kompanije, uz rizik velike štete ukoliko se otkrije.{} Cena: {CURRENCY}
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}{TOWN} - haos na ulicama!{}{}Program rekonstrukcije puteva sponzorisan od strane kompanije {STRING} donosi vozačima 6 meseci agonije!
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -2574,6 +2608,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Vagon za Igrač
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Vagon za Baterije
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Vagon za Bezalkoholna Pića
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Vagon za Plastiku
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Electric)
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Putnička Kola
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Poštanski Vagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Vagon za Ugalj
@@ -3175,10 +3210,10 @@ STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING}
 ############ End of list of rail types
 
 
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Brzina: {GOLD}{VELOCITY}{BLACK}   Snaga: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Brzina: {GOLD}{VELOCITY}{BLACK} Snaga: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Brzina: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena odrzavanja: {GOLD}{CURRENCY}/yr
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Tezina: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Težina: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 
 ########### For showing numbers in widgets
 
@@ -3306,6 +3341,7 @@ STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}

@@ -764,9 +764,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finanzia nuova 
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finanzia nuova industria
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...può essere costruita solo nella foresta pluviale
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...può essere costruita solo in aree desertiche
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  IN PAUSA  *  *
@@ -1199,7 +1196,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Selezion
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Rinomina il waypoint
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Impossibile rinominare il waypoint...
@@ -1780,11 +1776,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tepee
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Casa-teiera
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Banca-porcellino
 
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} di {0:TOWN}
-STR_STATION_NAME                                                :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Modellazione terreno
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Pianta alberi
@@ -1838,6 +1829,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :Molto buono
 STR_CARGO_RATING_EXCELLENT                                      :Eccellente
 STR_CARGO_RATING_OUTSTANDING                                    :Eccezionale
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Mostra tutti i treni che hanno questa stazione pianificata
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostra tutti gli automezzi che hanno questa stazione pianificata
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostra tutti gli aeromobili che hanno questa stazione pianificata
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra tutte le navi che hanno questa stazione pianificata
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} non accetta più {STRING}
@@ -2173,7 +2170,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Ostile
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :(Compagnia {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nuova faccia
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Colori compagnia
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Schema colori:
@@ -2206,7 +2202,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Totale:
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafico incassi
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafico profitto operativo
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo bancario
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Prestito
@@ -2718,7 +2713,6 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nuovi ve
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Treno troppo lungo
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Un treno può essere modificato solo quando è fermo in un deposito
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} tren{P 2 o i}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nuovi veicoli ferroviari
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nuovi veicoli ferroviari elettrici
@@ -2776,7 +2770,6 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Impossib
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Impossibile fermare/avviare il treno...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Manutenzione ogni: {LTBLUE}{COMMA} giorni{BLACK}   Ultima volta: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervallo manutenzione: {LTBLUE}{COMMA}%{BLACK}   Ultima il: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Treni - fare clic su un treno per informazioni
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treni - fare clic su un treno per informazioni, trascinare i veicoli per aggiungerli/rimuoverli dal treno
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Costruisce un nuovo veicolo ferroviario
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Trascianre qui un veicolo ferroviario per venderlo
@@ -2865,7 +2858,6 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Riempie 
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Automezzo di mezzo
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} automezz{P 2 o i}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}Deposito automezzi di {TOWN}
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nuovi veicoli
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nuovi automezzi
@@ -2881,7 +2873,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Manuten
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Manutenzione al Deposito di {TOWN}, {VELOCITY}
 STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Impossibile mandare l'automezzo al deposito...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Impossibile trovare il deposito più vicino
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Automezzi - fare clic su un veicolo per informazioni
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Azione corrente del veicolo - fare clic qui per fermarlo/avviarlo
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Mostra gli ordini del veicolo
 STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Centra la visuale principale sulla posizione dell'automezzo
@@ -2928,7 +2919,6 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Trasport
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Impossibile costruire il molo qui...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Deposito navale di {TOWN}
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nuove navi
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} nav{P 2 e i}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nuove navi
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Costruisci nave
 STR_CLONE_SHIP                                                  :{BLACK}Clona nave
@@ -2951,7 +2941,6 @@ STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Navi - f
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Costruisce una nuova nave
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Trascinare qui una nave per venderla
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centra la visuale principale sulla posizione del deposito navale
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Navi - fare clic su una nave per informazioni
 STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Elenco selezione navi - fare clic su una nave per informazioni
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Costruisce la nave selezionata
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Azione corrente della nave - fare clic qui per fermarla/avviarla
@@ -2993,7 +2982,6 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Costruis
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nuovo aeromobile
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Costruisci aeromobile
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Impossibile costruire l'aeromobile...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} aeromobil{P 2 e i}
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Impossibile mandare l'aeromobile all'hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Diretto all'Hangar di {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Diretto all'Hangar di {STATION}, {VELOCITY}
@@ -3007,7 +2995,6 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}L'aeromo
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Impossibile vendere l'aeromobile...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Costruzione aeroporto
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Costruisce un aeroporto
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeromobili - fare clic su un aeromobile per informazioni
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aereomobili - fare clic su un aeromobile per informazioni
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Costruisce un nuovo aeromobile
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Trascianre qui un aeromobile per venderlo
@@ -3189,11 +3176,16 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Treni - fare clic su un treno per informazioni
+STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Automezzi - fare clic su un veicolo per informazioni
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Navi - fare clic su una nave per informazioni
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeromobili - fare clic su un aeromobile per informazioni
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Mostra tutti i treni che hanno questa stazione pianificata
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostra tutti gli automezzi che hanno questa stazione pianificata
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostra tutti gli aeromobili che hanno questa stazione pianificata
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra tutte le navi che hanno questa stazione pianificata
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} tren{P 2 o i}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} automezz{P 2 o i}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} nav{P 2 e i}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} aeromobil{P 2 e i}
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordini condivisi da {COMMA} veicol{P o i}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra tutti i veicoli che condividono questa lista ordini
@@ -3216,7 +3208,6 @@ STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Rimpiazz
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Rimpiazza automaticamente gli automezzi nel deposito
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Rimpiazza automaticamente tutte le navi nel deposito
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Rimpiazza automaticamente tutti gli aeromobili nell'hangar
-
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Inizia rimpiazzamento
@@ -3383,17 +3374,6 @@ STR_MEASURE_AREA                                                :{BLACK}Area: {N
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lunghezza: {NUM}{}Differenza in altezza: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Differenza in altezza: {NUM} m
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Crediti di trasferimento: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...questa è una strada di proprietà della città
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...strada rivolta nella direzione sbagliata
@@ -3418,7 +3398,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :Gruppo {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Tutti i treni
 STR_GROUP_ALL_ROADS                                             :Tutti gli automezzi
@@ -3447,12 +3426,35 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Elimina 
 STR_GROUP_RENAME_TIP                                            :{BLACK}Rinomina il gruppo selezionato
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Fare clic per proteggere questo gruppo dal rimpiazzo automatico
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :(Compagnia {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Gruppo {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} di {0:TOWN}
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Il nome deve essere univoco
 

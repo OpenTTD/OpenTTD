@@ -891,7 +891,7 @@ STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikke
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slut på delt ordreliste - -
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} kan ikke finde en rute at fortsætte ad.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} er gået tabt.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} er faret vild.
 STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}s indtjening sidste år var {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europæisk fællesvaluta!{}{}Euroen er introduceret som eneste betalingsmiddel i dit land!
 
@@ -1595,10 +1595,10 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Vælg or
 STR_RAILROAD_TRACK                                              :Jernbaneskinner
 STR_RAILROAD_TRAIN_DEPOT                                        :Remise
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...området ejes af et andet selskab
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Jernbane med almindelige signaler
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Jernbane med blok signaler
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Jernbane med præ-signaler
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Jernbane med exit-signaler
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbaneskinne med kombi-signaler
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbane med kombi-signaler
 STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Jernbane med avancerede signaler
 STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Jernbane med ensrettede avancerede signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Jernbanespor med normale og præ-signaler
@@ -2730,7 +2730,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Spring o
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Slet
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Gå til
 STR_REFIT                                                       :{BLACK}Ombyg
-STR_REFIT_TIP                                                   :{BLACK}Vælg hvilken lasttype der skal ombygges til i denne ordre. CTRL-klik for at fjerne ombygningsinstruktion
+STR_REFIT_TIP                                                   :{BLACK}Vælg hvilken lasttype, der skal ombygges til i denne ordre. CTRL-klik for at fjerne ombygningsinstruktion
 STR_REFIT_ORDER                                                 :(Ombyg til {STRING})
 STR_REFIT_STOP_ORDER                                            :(Ombyg til {STRING} og stop)
 STR_STOP_ORDER                                                  :(Stop)
@@ -3439,6 +3439,7 @@ STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}

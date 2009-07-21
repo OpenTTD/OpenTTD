@@ -796,9 +796,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Új gazdasági 
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Új gazdasági épület
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...csak esőerdőben építhető
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...csak sivatagban építhető
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  SZÜNET  *  *
@@ -1231,7 +1228,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Válassz
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ellenőrző pont nevének módosítása
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nem lehet megváltoztatni az ellenőrző pont nevét...
@@ -1812,11 +1808,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Indiánsátor
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Teáskanna-ház
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Malacpersely
 
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}i {STRING}
-STR_STATION_NAME                                                :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Tájrendezés
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Faültetés
@@ -1870,6 +1861,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :nagyon jó
 STR_CARGO_RATING_EXCELLENT                                      :kiváló
 STR_CARGO_RATING_OUTSTANDING                                    :kimagasló
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Kilistázza az összes vonatot, aminek a menetrendjében szerepel ez az állomás
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Kilistázza az összes közúti járművet, aminek a menetrendjében szerepel ez az állomás
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Kilistázza az összes repülőt, aminek a menetrendjében szerepel ez az állomás
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Kilistázza az összes hajót, aminek a menetrendjében szerepel ez az állomás
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} többé nem fogad el {STRING}
@@ -2242,7 +2239,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Ellenséges
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :({COMMA}. vállalat)
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Új arc
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Színséma
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Színséma:
@@ -2275,7 +2271,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Összese
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Jövedelem grafikon
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Működési nyereség grafikon
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banki egyenleg
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Kölcsön
@@ -2787,7 +2782,6 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Új jár
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Túl hosszú a vonat
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Csak a járműtelepen álló vonatokat lehet megváltoztatni
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} vonatai - {COMMA}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Új vasúti járművek
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Új vasúti járművek
@@ -2845,7 +2839,6 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nem tal�
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Nem indíthatod el/ állíthatod meg a vonatot...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Javítási időköz: {LTBLUE}{COMMA} nap{BLACK}   Utolsó javítás: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Szervíz-intervallum: {LTBLUE}{COMMA}%{BLACK}   Utolsó szervíz: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vonatok - kattints egy vonatra az adataihoz
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vonatok - kattints egy vonatra az adataihoz, húzással áthelyezheted a járműveket
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Új vasúti jármű vásárlása
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Dobj ide egy járművet az eladásához
@@ -2934,7 +2927,6 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Menetren
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Közúti jármű van az útban
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} közúti járművei - {COMMA}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN}i garázs
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Új járművek
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Új közúti járművek
@@ -2950,7 +2942,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Javít�
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Javítás {TOWN} garázsában, {VELOCITY}
 STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Nem küldheted a járművet a garázsba...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nem találom a helyi garázst
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Közúti járművek - kattints egy járműre az adataihoz
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Aktuális járműesemény - kattints ide a jármű elindításához/ megállításához
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}A jármű menetrendjének megmutatása
 STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}A fő nézetet a járműre állítja
@@ -2997,7 +2988,6 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vízi ut
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Nem építhetsz ide kikötőt...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN}i dokk
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Új hajók
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} hajói - {COMMA}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Új hajók
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Megvesz
 STR_CLONE_SHIP                                                  :{BLACK}Hajó másolása
@@ -3020,7 +3010,6 @@ STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Hajók -
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Új hajó vásárlása
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Dobj ide egy hajót az eladásához
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}A fő nézetet a dokkra állítja
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Hajók - kattints egy hajóra az adataihoz
 STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Hajó kiválasztása - kattints egy hajóra az adataihoz
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}A kijelölt hajó megvétele
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Aktuális hajóesemény - kattints ide a hajó elindításhoz/megállításhoz
@@ -3062,7 +3051,6 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Ide katt
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Új repülőgépek
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Megvesz
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Nem veheted meg a repülőgépet...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} repülőgépei - {COMMA}
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nem küldheted a repülőgépet a hangárba...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Úton {STATION} hangárjába
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Úton {STATION} hangárjába, {VELOCITY}
@@ -3076,7 +3064,6 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}A hangá
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Nem adhatod el a repülőgépet...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Repülőtér építése
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Repülőtér építése
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Repülőgépek - kattints egy repülőgépre az adataihoz
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Repülőgépek - kattints egy repülőgépre az adataihoz
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Új repülőgépek vásárlása
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Dobj ide egy repülőgépet az eladásához
@@ -3258,11 +3245,16 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vonatok - kattints egy vonatra az adataihoz
+STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Közúti járművek - kattints egy járműre az adataihoz
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Hajók - kattints egy hajóra az adataihoz
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Repülőgépek - kattints egy repülőgépre az adataihoz
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Kilistázza az összes vonatot, aminek a menetrendjében szerepel ez az állomás
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Kilistázza az összes közúti járművet, aminek a menetrendjében szerepel ez az állomás
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Kilistázza az összes repülőt, aminek a menetrendjében szerepel ez az állomás
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Kilistázza az összes hajót, aminek a menetrendjében szerepel ez az állomás
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} vonatai - {COMMA}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} közúti járművei - {COMMA}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} hajói - {COMMA}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} repülőgépei - {COMMA}
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} jármű megosztott menetrendje
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Megmutatja az összes járművet, amik megosztják ezt a menetrendet
@@ -3285,7 +3277,6 @@ STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}A járm�
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}A garázsban lévő összes jármű automatikus cseréje
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}A dokkban lévő összes hajó automatikus cseréje
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}A hangárban lévő összes repülő automatikus cseréje
-
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Lecserél {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Járműcsere elkezdése
@@ -3452,17 +3443,6 @@ STR_MEASURE_AREA                                                :{BLACK}Terület
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Távolság: {NUM}{}Magasságkülönbség: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Terület: {NUM} x {NUM}{}Magasságkülönbség: {NUM} m
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Szállítási díj: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...ez egy városi tulajdonú út
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...az út másik irányba vezet
@@ -3487,7 +3467,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :{COMMA} csoport
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Összes vonat
 STR_GROUP_ALL_ROADS                                             :Összes közúti jármű
@@ -3516,12 +3495,35 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Kijelöl
 STR_GROUP_RENAME_TIP                                            :{BLACK}Kijelölt csoport átnevezése
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Csoport automata csere alóli mentességének beállításához katt.ide
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :({COMMA}. vállalat)
+STR_FORMAT_GROUP_NAME                                           :{COMMA} csoport
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}i {STRING}
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}A névnek egyedinek kell lennie
 
