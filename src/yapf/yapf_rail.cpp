@@ -69,7 +69,7 @@ private:
 		TileIndexDiff diff = TileOffsByDiagDir(dir);
 
 		do {
-			if (GetRailwayStationReservation(tile)) return false;
+			if (HasStationReservation(tile)) return false;
 			SetRailwayStationReservation(tile, true);
 			MarkTileDirtyByTile(tile);
 			tile = TILE_ADD(tile, diff);

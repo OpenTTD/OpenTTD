@@ -514,7 +514,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 					}
 				} else {
 					SetTrackBits(tile, present);
-					SetTrackReservation(tile, GetTrackReservation(tile) & present);
+					SetTrackReservation(tile, GetRailReservationTrackBits(tile) & present);
 				}
 			}
 			break;
@@ -949,7 +949,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 		if (IsPbsSignal(sigtype)) {
 			/* PBS signals should show red unless they are on a reservation. */
 			uint mask = GetPresentSignals(tile) & SignalOnTrack(track);
-			SetSignalStates(tile, (GetSignalStates(tile) & ~mask) | ((HasBit(GetTrackReservation(tile), track) ? UINT_MAX : 0) & mask));
+			SetSignalStates(tile, (GetSignalStates(tile) & ~mask) | ((HasBit(GetRailReservationTrackBits(tile), track) ? UINT_MAX : 0) & mask));
 		}
 		MarkTileDirtyByTile(tile);
 		AddTrackToSignalBuffer(tile, track, _current_company);
@@ -1376,7 +1376,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 					if (flags & DC_EXEC) {
 						Track track = DiagDirToDiagTrack(GetTunnelBridgeDirection(tile));
-						if (GetTunnelBridgeReservation(tile)) {
+						if (HasTunnelBridgeReservation(tile)) {
 							Train *v = GetTrainForReservation(tile, track);
 							if (v != NULL && !HasPowerOnRail(v->railtype, totype)) {
 								/* No power on new rail type, reroute. */
@@ -1439,7 +1439,7 @@ static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlag flags)
 		Owner owner = GetTileOwner(tile);
 		Train *v = NULL;
 
-		if (GetDepotWaypointReservation(tile)) {
+		if (HasDepotWaypointReservation(tile)) {
 			v = GetTrainForReservation(tile, DiagDirToDiagTrack(dir));
 			if (v != NULL) FreeTrainTrackReservation(v);
 		}
@@ -1797,7 +1797,7 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 	/* PBS debugging, draw reserved tracks darker */
 	if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation) {
 		/* Get reservation, but mask track on halftile slope */
-		TrackBits pbs = GetTrackReservation(ti->tile) & track;
+		TrackBits pbs = GetRailReservationTrackBits(ti->tile) & track;
 		if (pbs & TRACK_BIT_X) {
 			if (ti->tileh == SLOPE_FLAT || ti->tileh == SLOPE_ELEVATED) {
 				DrawGroundSprite(rti->base_sprites.single_y, PALETTE_CRASH);
@@ -1983,7 +1983,7 @@ default_waypoint:
 		DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, _drawtile_track_palette));
 
 		/* PBS debugging, draw reserved tracks darker */
-		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && GetDepotWaypointReservation(ti->tile) &&
+		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasDepotWaypointReservation(ti->tile) &&
 				(!IsRailDepot(ti->tile) || GetRailDepotDirection(ti->tile) == DIAGDIR_SW || GetRailDepotDirection(ti->tile) == DIAGDIR_SE)) {
 			DrawGroundSprite(GetWaypointAxis(ti->tile) == AXIS_X ? rti->base_sprites.single_y : rti->base_sprites.single_x, PALETTE_CRASH);
 		}

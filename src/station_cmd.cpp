@@ -1019,7 +1019,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 			int w = plat_len;
 			do {
 				byte layout = *layout_ptr++;
-				if (IsRailwayStationTile(tile) && GetRailwayStationReservation(tile)) {
+				if (IsRailwayStationTile(tile) && HasStationReservation(tile)) {
 					/* Check for trains having a reservation for this tile. */
 					Train *v = GetTrainForReservation(tile, AxisToTrack(GetRailStationAxis(tile)));
 					if (v != NULL) {
@@ -1201,7 +1201,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 			Owner owner = GetTileOwner(tile2);
 			Train *v = NULL;
 
-			if (GetRailwayStationReservation(tile2)) {
+			if (HasStationReservation(tile2)) {
 				v = GetTrainForReservation(tile2, track);
 				if (v != NULL) {
 					/* Free train reservation. */
@@ -1301,7 +1301,7 @@ static CommandCost RemoveRailroadStation(TileIndex tile, DoCommandFlag flags)
 					Track track = GetRailStationTrack(tile);
 					Owner owner = GetTileOwner(tile); // _current_company can be OWNER_WATER
 					Train *v = NULL;
-					if (GetRailwayStationReservation(tile)) {
+					if (HasStationReservation(tile)) {
 						v = GetTrainForReservation(tile, track);
 						if (v != NULL) FreeTrainTrackReservation(v);
 					}
@@ -2304,7 +2304,7 @@ static void DrawTile_Station(TileInfo *ti)
 		DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, palette));
 
 		/* PBS debugging, draw reserved tracks darker */
-		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && IsRailwayStation(ti->tile) && GetRailwayStationReservation(ti->tile)) {
+		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && IsRailwayStation(ti->tile) && HasStationReservation(ti->tile)) {
 			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 			DrawGroundSprite(GetRailStationAxis(ti->tile) == AXIS_X ? rti->base_sprites.single_y : rti->base_sprites.single_x, PALETTE_CRASH);
 		}

@@ -153,7 +153,7 @@ public:
 	{
 		TileIndexDiff diff = TileOffsByDiagDir(TrackdirToExitdir(ReverseTrackdir(trackdir)));
 		for (; skipped >= 0; skipped--, tile += diff) {
-			if (GetRailwayStationReservation(tile)) return true;
+			if (HasStationReservation(tile)) return true;
 		}
 		return false;
 	}

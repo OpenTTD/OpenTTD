@@ -253,7 +253,7 @@ static inline WaypointID GetWaypointIndex(TileIndex t)
  * @param t the tile to query
  * @return the track bits
  */
-static inline TrackBits GetTrackReservation(TileIndex t)
+static inline TrackBits GetRailReservationTrackBits(TileIndex t)
 {
 	assert(IsPlainRailTile(t));
 	byte track_b = GB(_m[t].m2, 8, 3);
@@ -289,7 +289,7 @@ static inline bool TryReserveTrack(TileIndex tile, Track t)
 {
 	assert(HasTrack(tile, t));
 	TrackBits bits = TrackToTrackBits(t);
-	TrackBits res = GetTrackReservation(tile);
+	TrackBits res = GetRailReservationTrackBits(tile);
 	if ((res & bits) != TRACK_BIT_NONE) return false;  // already reserved
 	res |= bits;
 	if (TracksOverlap(res)) return false;  // crossing reservation present
@@ -306,7 +306,7 @@ static inline bool TryReserveTrack(TileIndex tile, Track t)
 static inline void UnreserveTrack(TileIndex tile, Track t)
 {
 	assert(HasTrack(tile, t));
-	TrackBits res = GetTrackReservation(tile);
+	TrackBits res = GetRailReservationTrackBits(tile);
 	res &= ~TrackToTrackBits(t);
 	SetTrackReservation(tile, res);
 }
@@ -318,7 +318,7 @@ static inline void UnreserveTrack(TileIndex tile, Track t)
  * @param t the waypoint/depot tile
  * @return reservation state
  */
-static inline bool GetDepotWaypointReservation(TileIndex t)
+static inline bool HasDepotWaypointReservation(TileIndex t)
 {
 	assert(IsRailWaypoint(t) || IsRailDepot(t));
 	return HasBit(_m[t].m5, 4);
@@ -343,9 +343,9 @@ static inline void SetDepotWaypointReservation(TileIndex t, bool b)
  * @param t the tile
  * @return reserved track bits
  */
-static inline TrackBits GetRailWaypointReservation(TileIndex t)
+static inline TrackBits GetWaypointReservationTrackBits(TileIndex t)
 {
-	return GetDepotWaypointReservation(t) ? GetRailWaypointBits(t) : TRACK_BIT_NONE;
+	return HasDepotWaypointReservation(t) ? GetRailWaypointBits(t) : TRACK_BIT_NONE;
 }
 
 /**
@@ -354,9 +354,9 @@ static inline TrackBits GetRailWaypointReservation(TileIndex t)
  * @param t the tile
  * @return reserved track bits
  */
-static inline TrackBits GetRailDepotReservation(TileIndex t)
+static inline TrackBits GetDepotReservationTrackBits(TileIndex t)
 {
-	return GetDepotWaypointReservation(t) ? TrackToTrackBits(GetRailDepotTrack(t)) : TRACK_BIT_NONE;
+	return HasDepotWaypointReservation(t) ? TrackToTrackBits(GetRailDepotTrack(t)) : TRACK_BIT_NONE;
 }
 
 

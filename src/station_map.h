@@ -218,7 +218,7 @@ static inline bool IsCompatibleTrainStationTile(TileIndex t1, TileIndex t2)
  * @param t the station tile
  * @return reservation state
  */
-static inline bool GetRailwayStationReservation(TileIndex t)
+static inline bool HasStationReservation(TileIndex t)
 {
 	assert(IsRailwayStationTile(t));
 	return HasBit(_m[t].m6, 2);
@@ -242,9 +242,9 @@ static inline void SetRailwayStationReservation(TileIndex t, bool b)
  * @param t the tile
  * @return reserved track bits
  */
-static inline TrackBits GetRailStationReservation(TileIndex t)
+static inline TrackBits GetStationReservationTrackBits(TileIndex t)
 {
-	return GetRailwayStationReservation(t) ? GetRailStationTrackBits(t) : TRACK_BIT_NONE;
+	return HasStationReservation(t) ? GetRailStationTrackBits(t) : TRACK_BIT_NONE;
 }
 
 

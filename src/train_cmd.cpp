@@ -1797,7 +1797,7 @@ void UpdateLevelCrossing(TileIndex tile, bool sound)
 	assert(IsLevelCrossingTile(tile));
 
 	/* train on crossing || train approaching crossing || reserved */
-	bool new_state = HasVehicleOnPos(tile, NULL, &TrainOnTileEnum) || TrainApproachingCrossing(tile) || GetCrossingReservation(tile);
+	bool new_state = HasVehicleOnPos(tile, NULL, &TrainOnTileEnum) || TrainApproachingCrossing(tile) || HasCrossingReservation(tile);
 
 	if (new_state != IsCrossingBarred(tile)) {
 		if (new_state && sound) {
@@ -2459,7 +2459,7 @@ static bool CheckTrainStayInDepot(Train *v)
 		v->load_unload_time_rem = 0;
 
 		seg_state = _settings_game.pf.reserve_paths ? SIGSEG_PBS : UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
-		if (seg_state == SIGSEG_FULL || GetDepotWaypointReservation(v->tile)) {
+		if (seg_state == SIGSEG_FULL || HasDepotWaypointReservation(v->tile)) {
 			/* Full and no PBS signal in block or depot reserved, can't exit. */
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 			return true;
@@ -2471,7 +2471,7 @@ static bool CheckTrainStayInDepot(Train *v)
 	/* We are leaving a depot, but have to go to the exact same one; re-enter */
 	if (v->current_order.IsType(OT_GOTO_DEPOT) && v->tile == v->dest_tile) {
 		/* We need to have a reservation for this to work. */
-		if (GetDepotWaypointReservation(v->tile)) return true;
+		if (HasDepotWaypointReservation(v->tile)) return true;
 		SetDepotWaypointReservation(v->tile, true);
 		VehicleEnterDepot(v);
 		return true;
@@ -3137,7 +3137,7 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 	 * at the depot tile itself but starts from the next tile. If we are still
 	 * inside the depot, a depot reservation can never be ours. */
 	if (v->track == TRACK_BIT_DEPOT) {
-		if (GetDepotWaypointReservation(v->tile)) {
+		if (HasDepotWaypointReservation(v->tile)) {
 			if (mark_as_stuck) MarkTrainAsStuck(v);
 			return false;
 		} else {
@@ -3892,7 +3892,7 @@ static void TrainController(Train *v, Vehicle *nomove)
 
 					/* If we are approching a crossing that is reserved, play the sound now. */
 					TileIndex crossing = TrainApproachingCrossingTile(v);
-					if (crossing != INVALID_TILE && GetCrossingReservation(crossing)) SndPlayTileFx(SND_0E_LEVEL_CROSSING, crossing);
+					if (crossing != INVALID_TILE && HasCrossingReservation(crossing)) SndPlayTileFx(SND_0E_LEVEL_CROSSING, crossing);
 
 					/* Always try to extend the reservation when entering a tile. */
 					CheckNextTrainTile(v);

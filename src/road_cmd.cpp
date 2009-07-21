@@ -324,7 +324,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 				RoadTypes rts = GetRoadTypes(tile) & ComplementRoadTypes(RoadTypeToRoadTypes(rt));
 				if (rts == ROADTYPES_NONE) {
 					TrackBits tracks = GetCrossingRailBits(tile);
-					bool reserved = GetCrossingReservation(tile);
+					bool reserved = HasCrossingReservation(tile);
 					MakeRailNormal(tile, GetTileOwner(tile), tracks, GetRailType(tile));
 					if (reserved) SetTrackReservation(tile, tracks);
 				} else {
@@ -552,7 +552,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				Track railtrack = AxisToTrack(OtherAxis(roaddir));
 				YapfNotifyTrackLayoutChange(tile, railtrack);
 				/* Always add road to the roadtypes (can't draw without it) */
-				bool reserved = HasBit(GetTrackReservation(tile), railtrack);
+				bool reserved = HasBit(GetRailReservationTrackBits(tile), railtrack);
 				MakeRoadCrossing(tile, _current_company, _current_company, GetTileOwner(tile), roaddir, GetRailType(tile), RoadTypeToRoadTypes(rt) | ROADTYPES_ROAD, p2);
 				SetCrossingReservation(tile, reserved);
 				UpdateLevelCrossing(tile, false);
@@ -1170,7 +1170,7 @@ static void DrawTile_Road(TileInfo *ti)
 			DrawGroundSprite(image, pal);
 
 			/* PBS debugging, draw reserved tracks darker */
-			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && GetCrossingReservation(ti->tile)) {
+			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasCrossingReservation(ti->tile)) {
 				DrawGroundSprite(GetCrossingRoadAxis(ti->tile) == AXIS_Y ? GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.single_y : GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.single_x, PALETTE_CRASH);
 			}
 

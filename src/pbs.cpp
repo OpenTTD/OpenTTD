@@ -17,20 +17,20 @@ TrackBits GetReservedTrackbits(TileIndex t)
 {
 	switch (GetTileType(t)) {
 		case MP_RAILWAY:
-			if (IsRailWaypoint(t) || IsRailDepot(t)) return GetRailWaypointReservation(t);
-			if (IsPlainRail(t)) return GetTrackReservation(t);
+			if (IsRailWaypoint(t) || IsRailDepot(t)) return GetWaypointReservationTrackBits(t);
+			if (IsPlainRail(t)) return GetRailReservationTrackBits(t);
 			break;
 
 		case MP_ROAD:
-			if (IsLevelCrossing(t)) return GetRailCrossingReservation(t);
+			if (IsLevelCrossing(t)) return GetCrossingReservationTrackBits(t);
 			break;
 
 		case MP_STATION:
-			if (IsRailwayStation(t)) return GetRailStationReservation(t);
+			if (IsRailwayStation(t)) return GetStationReservationTrackBits(t);
 			break;
 
 		case MP_TUNNELBRIDGE:
-			if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) return GetRailTunnelBridgeReservation(t);
+			if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) return GetTunnelBridgeReservationTrackBits(t);
 			break;
 
 		default:
@@ -81,7 +81,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 		case MP_RAILWAY:
 			if (IsPlainRail(tile)) return TryReserveTrack(tile, t);
 			if (IsRailWaypoint(tile) || IsRailDepot(tile)) {
-				if (!GetDepotWaypointReservation(tile)) {
+				if (!HasDepotWaypointReservation(tile)) {
 					SetDepotWaypointReservation(tile, true);
 					MarkTileDirtyByTile(tile); // some GRFs change their appearance when tile is reserved
 					return true;
@@ -90,7 +90,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 			break;
 
 		case MP_ROAD:
-			if (IsLevelCrossing(tile) && !GetCrossingReservation(tile)) {
+			if (IsLevelCrossing(tile) && !HasCrossingReservation(tile)) {
 				SetCrossingReservation(tile, true);
 				BarCrossing(tile);
 				MarkTileDirtyByTile(tile); // crossing barred, make tile dirty
@@ -99,7 +99,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 			break;
 
 		case MP_STATION:
-			if (IsRailwayStation(tile) && !GetRailwayStationReservation(tile)) {
+			if (IsRailwayStation(tile) && !HasStationReservation(tile)) {
 				SetRailwayStationReservation(tile, true);
 				MarkTileDirtyByTile(tile); // some GRFs need redraw after reserving track
 				return true;
@@ -107,7 +107,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 			break;
 
 		case MP_TUNNELBRIDGE:
-			if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL && !GetRailTunnelBridgeReservation(tile)) {
+			if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL && !GetTunnelBridgeReservationTrackBits(tile)) {
 				SetTunnelBridgeReservation(tile, true);
 				return true;
 			}
@@ -261,7 +261,7 @@ PBSTileInfo FollowTrainReservation(const Train *v, bool *train_on_res)
 	TileIndex tile = v->tile;
 	Trackdir  trackdir = v->GetVehicleTrackdir();
 
-	if (IsRailDepotTile(tile) && !GetRailDepotReservation(tile)) return PBSTileInfo(tile, trackdir, false);
+	if (IsRailDepotTile(tile) && !GetDepotReservationTrackBits(tile)) return PBSTileInfo(tile, trackdir, false);
 
 	FindTrainOnTrackInfo ftoti;
 	ftoti.res = FollowReservation(v->owner, GetRailTypeInfo(v->railtype)->compatible_railtypes, tile, trackdir);

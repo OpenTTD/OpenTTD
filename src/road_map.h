@@ -219,7 +219,7 @@ static inline TrackBits GetCrossingRailBits(TileIndex tile)
  * @param t the crossing tile
  * @return reservation state
  */
-static inline bool GetCrossingReservation(TileIndex t)
+static inline bool HasCrossingReservation(TileIndex t)
 {
 	assert(IsLevelCrossingTile(t));
 	return HasBit(_m[t].m5, 4);
@@ -244,9 +244,9 @@ static inline void SetCrossingReservation(TileIndex t, bool b)
  * @param t the tile
  * @return reserved track bits
  */
-static inline TrackBits GetRailCrossingReservation(TileIndex t)
+static inline TrackBits GetCrossingReservationTrackBits(TileIndex t)
 {
-	return GetCrossingReservation(t) ? GetCrossingRailBits(t) : TRACK_BIT_NONE;
+	return HasCrossingReservation(t) ? GetCrossingRailBits(t) : TRACK_BIT_NONE;
 }
 
 static inline bool IsCrossingBarred(TileIndex t)

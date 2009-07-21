@@ -88,7 +88,7 @@ static inline TileIndex GetOtherTunnelBridgeEnd(TileIndex t)
  * @param t the tile
  * @return reservation state
  */
-static inline bool GetTunnelBridgeReservation(TileIndex t)
+static inline bool HasTunnelBridgeReservation(TileIndex t)
 {
 	assert(IsTileType(t, MP_TUNNELBRIDGE));
 	assert(GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL);
@@ -114,9 +114,9 @@ static inline void SetTunnelBridgeReservation(TileIndex t, bool b)
  * @param t the tile
  * @return reserved track bits
  */
-static inline TrackBits GetRailTunnelBridgeReservation(TileIndex t)
+static inline TrackBits GetTunnelBridgeReservationTrackBits(TileIndex t)
 {
-	return GetTunnelBridgeReservation(t) ? DiagDirToDiagTrackBits(GetTunnelBridgeDirection(t)) : TRACK_BIT_NONE;
+	return HasTunnelBridgeReservation(t) ? DiagDirToDiagTrackBits(GetTunnelBridgeDirection(t)) : TRACK_BIT_NONE;
 }
 
 #endif /* TUNNELBRIDGE_MAP_H */
