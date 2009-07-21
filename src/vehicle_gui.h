@@ -72,7 +72,7 @@ uint ShowRefitOptionsList(int left, int right, int y, EngineID engine);
 StringID GetCargoSubtypeText(const Vehicle *v);
 
 void ShowVehicleListWindow(const Vehicle *v);
-void ShowVehicleListWindow(const Waypoint *wp);
+void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, const Waypoint *wp);
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type);
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, StationID station);
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileIndex depot_tile);

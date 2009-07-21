@@ -85,6 +85,8 @@ static void Load_WAYP()
 		Waypoint *wp = new (index) Waypoint();
 		SlObject(wp, _waypoint_desc);
 
+		wp->facilities |= FACIL_TRAIN;
+
 		if (_waypoint_spec.grfid != 0) {
 			wp->num_specs = 2;
 			wp->speclist = CallocT<StationSpecList>(2);

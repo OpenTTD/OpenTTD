@@ -1181,10 +1181,10 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type)
 	}
 }
 
-void ShowVehicleListWindow(const Waypoint *wp)
+void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, const Waypoint *wp)
 {
 	if (wp == NULL) return;
-	ShowVehicleListWindowLocal(wp->owner, VLW_WAYPOINT_LIST, VEH_TRAIN, wp->index);
+	ShowVehicleListWindowLocal(company, VLW_WAYPOINT_LIST, vehicle_type, wp->index);
 }
 
 void ShowVehicleListWindow(const Vehicle *v)

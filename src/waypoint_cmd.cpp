@@ -193,6 +193,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 		AllocateSpecToStation(GetCustomStationSpec(STAT_CLASS_WAYP, p1), wp, true);
 
 		wp->delete_ctr = 0;
+		wp->facilities |= FACIL_TRAIN;
 		wp->build_date = _date;
 
 		if (wp->town == NULL) MakeDefaultWaypointName(wp);
@@ -228,6 +229,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justre
 
 		wp->delete_ctr = 30; // let it live for this many days before we do the actual deletion.
 		wp->sign.MarkDirty();
+		wp->facilities &= ~FACIL_TRAIN;
 
 		Train *v = NULL;
 		if (justremove) {
