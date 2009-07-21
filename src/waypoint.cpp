@@ -68,28 +68,6 @@ Waypoint::~Waypoint()
 	this->sign.MarkDirty();
 }
 
-/**
- * Assign a station spec to this waypoint.
- * @param index the index of the spec from the waypoint specs
- */
-void Waypoint::AssignStationSpec(uint index)
-{
-	free(this->speclist);
-
-	const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, index);
-
-	if (statspec != NULL) {
-		this->speclist = MallocT<StationSpecList>(1);
-		this->speclist->spec = statspec;
-		this->speclist->grfid = statspec->grffile->grfid;
-		this->speclist->localidx = statspec->localidx;
-		this->num_specs = 1;
-	} else {
-		this->speclist = NULL;
-		this->num_specs = 0;
-	}
-}
-
 void InitializeWaypoints()
 {
 	_waypoint_pool.CleanPool();

@@ -34,8 +34,6 @@ struct Waypoint : WaypointPool::PoolItem<&_waypoint_pool>, SpecializedStation<Wa
 
 	/* virtual */ void GetTileArea(TileArea *ta, StationType type) const;
 
-	void AssignStationSpec(uint index);
-
 	/**
 	 * Fetch a waypoint by tile
 	 * @param tile Tile of waypoint

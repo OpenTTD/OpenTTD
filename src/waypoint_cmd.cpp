@@ -190,7 +190,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 		SetDepotWaypointReservation(tile, reserved);
 		MarkTileDirtyByTile(tile);
 
-		wp->AssignStationSpec(p1);
+		AllocateSpecToStation(GetCustomStationSpec(STAT_CLASS_WAYP, p1), wp, true);
 
 		wp->delete_ctr = 0;
 		wp->build_date = _date;
@@ -246,6 +246,8 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justre
 		}
 		YapfNotifyTrackLayoutChange(tile, track);
 		if (v != NULL) TryPathReserve(v, true);
+
+		DeallocateSpecFromStation(wp, wp->num_specs > 0 ? 1 : 0);
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_train_depot);

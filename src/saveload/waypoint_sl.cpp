@@ -25,8 +25,8 @@ void AfterLoadWaypoints()
 
 		for (uint i = 0; i < GetNumCustomStations(STAT_CLASS_WAYP); i++) {
 			const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, i);
-			if (statspec != NULL && statspec->grffile->grfid == wp->speclist->grfid && statspec->localidx == wp->speclist->localidx) {
-				wp->speclist->spec = statspec;
+			if (statspec != NULL && statspec->grffile->grfid == wp->speclist[1].grfid && statspec->localidx == wp->speclist[1].localidx) {
+				wp->speclist[1].spec = statspec;
 				break;
 			}
 		}
@@ -65,7 +65,7 @@ static void Save_WAYP()
 		if (wp->num_specs == 0) {
 			_waypoint_spec.grfid = 0;
 		} else {
-			_waypoint_spec = *wp->speclist;
+			_waypoint_spec = wp->speclist[1];
 		}
 
 		SlSetArrayIndex(wp->index);
@@ -86,9 +86,9 @@ static void Load_WAYP()
 		SlObject(wp, _waypoint_desc);
 
 		if (_waypoint_spec.grfid != 0) {
-			wp->num_specs = 1;
-			wp->speclist = MallocT<StationSpecList>(1);
-			*wp->speclist = _waypoint_spec;
+			wp->num_specs = 2;
+			wp->speclist = CallocT<StationSpecList>(2);
+			wp->speclist[1] = _waypoint_spec;
 		}
 
 		if (CheckSavegameVersion(84)) wp->name = (char *)(size_t)_waypoint_string_id;

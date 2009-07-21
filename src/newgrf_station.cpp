@@ -954,7 +954,7 @@ const StationSpec *GetStationSpec(TileIndex t)
 
 	if (IsRailWaypointTile(t)) {
 		const BaseStation *st = BaseStation::GetByTile(t);
-		return st->num_specs != 0 ? st->speclist[0].spec : NULL;
+		return st->num_specs != 0 ? st->speclist[1].spec : NULL;
 	}
 
 	return NULL;

@@ -997,7 +997,7 @@ bool AfterLoadGame()
 		FOR_ALL_WAYPOINTS(wp) {
 			if (wp->delete_ctr == 0) {
 				if (HasBit(_m[wp->xy].m3, 4)) {
-					wp->AssignStationSpec(_m[wp->xy].m4 + 1);
+					AllocateSpecToStation(GetCustomStationSpec(STAT_CLASS_WAYP, _m[wp->xy].m4 + 1), wp, true);
 				}
 
 				/* Move ground type bits from m2 to m4. */
