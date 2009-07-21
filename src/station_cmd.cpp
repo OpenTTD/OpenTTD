@@ -382,6 +382,7 @@ void Station::GetTileArea(TileArea *ta, StationType type) const
 			ta->tile = this->airport_tile;
 			ta->w    = this->Airport()->size_x;
 			ta->h    = this->Airport()->size_y;
+			return;
 
 		case STATION_TRUCK:
 			ta->tile = this->truck_stops != NULL ? this->truck_stops->xy : INVALID_TILE;
