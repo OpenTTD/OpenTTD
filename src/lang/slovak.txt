@@ -1355,7 +1355,7 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Zadajte 
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klienti
-STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienti online / klienti max
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klientov online / klientov max{}Spoločností online / spoločností max
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Velkost mapy
@@ -1368,11 +1368,11 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Roky
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Pocet rokov,{}kolko hra beží
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O HRE
-STR_NETWORK_CLIENTS                                             :{SILVER}Klienti:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Jazyk:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Prostredie:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Velkost mapy:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Verzia servera:  {WHITE}{STRING}
+STR_NETWORK_CLIENTS                                             :{SILVER}Klientov: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Jazyk: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Prostredie: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Velkost mapy: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Verzia servera: {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa servera:  {WHITE}{STRING} : {NUM}
 STR_NETWORK_START_DATE                                          :{SILVER}Datum zaciatku:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Aktualny datum:  {WHITE}{DATE_SHORT}

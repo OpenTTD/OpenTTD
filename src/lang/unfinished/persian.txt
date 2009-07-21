@@ -1689,8 +1689,6 @@ STR_AI_VERSION                                                  :version:
 
 
 
-STR_AI_AUTHOR                                                   :نویسنده:
-STR_AI_VERSION                                                  :version:
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}بررسی وجود مجموعه ها و به روز رسانی های جدید در اینترنت
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}یافتن مجموعه ای که کم است در اینترنت
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK} بررسی اینکه آیا مجموعه ای که کم است در اینترنت یافت می شود یا نه

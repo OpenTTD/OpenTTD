@@ -621,7 +621,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Placér 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Placér fyrtårn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Placér sender
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde.{}Hold CTRL nede for at fjerne det
-STR_CREATE_LAKE                                                 :{BLACK}Definer vandområde.{}Lav en kanal, med mindre CTRL-tasten holdes ved havniveau, hvorved omgivelserne oversvømmes i stedet
+STR_CREATE_LAKE                                                 :{BLACK}Definer vandområde.{}Lav en kanal, med mindre CTRL-tasten bruges ved havniveau, da omgivelserne i stedet vil blive oversvømmet
 STR_CREATE_RIVER                                                :{BLACK}Placér floder.
 STR_0290_DELETE                                                 :{BLACK}Slet
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slet denne by fuldstændigt
@@ -800,7 +800,7 @@ STR_TOWNNAME_CATALAN                                            :Catalanske
 ############ end of townname region
 
 STR_CURR_GBP                                                    :Pund (£)
-STR_CURR_USD                                                    :Dollar ($)
+STR_CURR_USD                                                    :Dollars ($)
 STR_CURR_EUR                                                    :Euro (€)
 STR_CURR_YEN                                                    :Yen (¥)
 STR_CURR_ATS                                                    :Østrisk Shilling (ATS)
@@ -886,7 +886,7 @@ STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikke
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slut på delt ordreliste - -
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} kan ikke finde en rute at fortsætte ad.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} er gået tabt.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} er faret vild.
 STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}s indtjening sidste år var {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europæisk fællesvaluta!{}{}Euroen er introduceret som eneste betalingsmiddel i dit land!
 
@@ -1301,14 +1301,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}År
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Antallet af år{}spillet varer
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPIL INFO
-STR_NETWORK_CLIENTS                                             :{SILVER}Klienter:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Sprog:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Klima:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Størrelse:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Server version:  {WHITE}{STRING}
+STR_NETWORK_CLIENTS                                             :{SILVER}Klienter: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Sprog: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Klima: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Størrelse: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Server version: {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serveradresse:  {WHITE}{STRING} : {NUM}
-STR_NETWORK_START_DATE                                          :{SILVER}Start dato:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Nuværende dato:  {WHITE}{DATE_SHORT}
+STR_NETWORK_START_DATE                                          :{SILVER}Start dato: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Nuværende dato: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Beskyttet af kodeord!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVEREN ER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVEREN ER FULD
@@ -1390,7 +1390,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Lettisk
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Netværksspils lobby
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Forbereder tilslutning:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Forbereder tilslutning: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}En liste over alle selskaber i spillet lige nu. Du kan enten tilslutte dig et eller starte et nyt, hvis der er plads til flere selskaber
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nyt selskab
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Opret et nyt selskab
@@ -1403,16 +1403,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Genopfri
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}SELSKABSINFO
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Selskabsnavn:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Grundlagt:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Virksomhedens værdi:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Nuværende beholdning:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Sidste års indtægt:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Præstation:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Selskabsnavn: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Grundlagt: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Virksomhedens værdi: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Nuværende beholdning: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Sidste års indtægt: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Præstation: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Køretøjer:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Stationer:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Spillere:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Køretøjer: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Stationer: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Spillere: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Tilslutter...
 
@@ -1440,22 +1440,22 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Tilslut 
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nyt firma
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Ingen netværksheder fundet eller kompilet uden ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Kunne ikke finde nogen netværksspil
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Serveren besvarede ikke denne forspørgsel
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Kunne ikke tilslutte grundet NewGRF ulighed
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Netværks synkroniseringsfejl
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Netværksforbindelse mistet
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Kunne ikke hente gemt spil
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Kunne ikke starte serveren
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Kunne ikke forbinde
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Forbindelsen #{NUM} svarer ikke
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Der opstod en protokol-fejl og forbindelse blev lukket
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Revisionen af denne klient passer ikke sammen med serverens revision
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Forkert kodeord
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Serveren er fuld
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Du har forbud mod at bruge denne server
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Du blev smidt ud af spillet
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Snyderi er ikke tilladt på denne server
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Kunne ikke finde nogen netværksspil
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Serveren besvarede ikke denne forspørgsel
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Kunne ikke tilslutte grundet NewGRF ulighed
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Netværks synkroniseringsfejl
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Netværksforbindelse mistet
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Kunne ikke hente gemt spil
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Kunne ikke starte serveren
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Kunne ikke forbinde
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Forbindelsen #{NUM} svarer ikke
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Der opstod en protokol-fejl og forbindelse blev lukket
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Revisionen af denne klient passer ikke sammen med serverens revision
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Forkert kodeord
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Serveren er fuld
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Du har forbud mod at bruge denne server
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Du blev smidt ud af spillet
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Snyderi er ikke tilladt på denne server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :generel fejl
@@ -1468,7 +1468,7 @@ STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :ikke autorisere
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :modtog en underlig pakke
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :forkert revision
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :navnet er allerede i brug
-STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :forkert spil password
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :forkert spil kodeord
 STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :forkert firma-id i DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :smidt ud af serveren
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :prøvede at snyde
@@ -1521,7 +1521,7 @@ STR_NETWORK_SEND                                                :{BLACK}Send
 
 ##### PNG-MAP-Loader
 
-STR_PNGMAP_ERROR                                                :{WHITE}Kan ikke hente billedet fra PNG...
+STR_PNGMAP_ERROR                                                :{WHITE}Kan ikke hente landskab fra PNG...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...filen blev ikke fundet.
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kan ikke konvertere billedtype. Der skal bruges 8 eller 24-bit PNG.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...noget gik galt. Undskyld (Måske en ødelagt fil)
@@ -1588,10 +1588,10 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Vælg or
 STR_1021_RAILROAD_TRACK                                         :Jernbaneskinner
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Remise
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...området ejes af et andet selskab
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Jernbane med almindelige signaler
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Jernbane med blok signaler
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Jernbane med præ-signaler
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Jernbane med exit-signaler
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbaneskinne med kombi-signaler
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbane med kombi-signaler
 STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Jernbane med avancerede signaler
 STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Jernbane med ensrettede avancerede signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Jernbanespor med normale og præ-signaler
@@ -2731,7 +2731,7 @@ STR_8823_SKIP                                                   :{BLACK}Spring o
 STR_8824_DELETE                                                 :{BLACK}Slet
 STR_8826_GO_TO                                                  :{BLACK}Gå til
 STR_REFIT                                                       :{BLACK}Ombyg
-STR_REFIT_TIP                                                   :{BLACK}Vælg hvilken lasttype der skal ombygges til i denne ordre. CTRL-klik for at fjerne ombygningsinstruktion
+STR_REFIT_TIP                                                   :{BLACK}Vælg hvilken lasttype, der skal ombygges til i denne ordre. CTRL-klik for at fjerne ombygningsinstruktion
 STR_REFIT_ORDER                                                 :(Ombyg til {STRING})
 STR_REFIT_STOP_ORDER                                            :(Ombyg til {STRING} og stop)
 STR_STOP_ORDER                                                  :(Stop)
@@ -2815,6 +2815,8 @@ STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Kan ikke
 STR_8867_NAME_TRAIN                                             :{BLACK}Giv toget et navn
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Tog forulykket!{}{COMMA} døde i flammerne efter kollision
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan ikke vende retningen af toget...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kan ikke vende køretøjet om...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan ikke vende et køretøj, der består af flere enheder
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Omdøb tog-/togvognstypen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan ikke omdøbe tog-/togvognstypen...
 STR_CLEAR_TIME                                                  :{BLACK}Nulstil tid
@@ -2902,7 +2904,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første fragt-sporvogn ankommer til {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Lastbil forulykket!{}Chauffør dør i flammerne efter sammenstød med tog
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Bus forulykket!{}{COMMA} dør i flammerne efter kollision med et tog
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan ikke vende et køretøj, der består af flere enheder
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Tillader ikke køretøjer at vende om...
 STR_9034_RENAME                                                 :{BLACK}Omdøb
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Omdøb køretøjstypen
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Omdøb køretøjstypen

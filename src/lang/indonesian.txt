@@ -154,7 +154,7 @@ STR_ABBREV_ALL                                                  :{TINYFONT}SMA
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Peta - {STRING}
-STR_00B1_GAME_OPTIONS                                           :{WHITE}Pilihan permainan
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Pengaturan permainan
 STR_00B2_MESSAGE                                                :{YELLOW}Pesan
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Pesan dari {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Peringatan!
@@ -269,7 +269,7 @@ STR_SCENARIO_EDITOR                                             :{BLACK}Editor S
 
 STR_MAPSIZE                                                     :{BLACK}Ukuran Peta:
 STR_BY                                                          :{BLACK}*
-STR_0148_GAME_OPTIONS                                           :{BLACK}Pilihan Permainan
+STR_0148_GAME_OPTIONS                                           :{BLACK}Pengaturan Permainan
 
 STR_0150_SOMEONE                                                :seseorang{SKIP}{SKIP}
 
@@ -669,7 +669,7 @@ STR_02BD                                                        :{BLACK}{STRING}
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C4_GAME_OPTIONS                                           :Pilihan Permainan
+STR_02C4_GAME_OPTIONS                                           :Pengaturan permainan
 STR_02C6_DIFFICULTY_SETTINGS                                    :Pengaturan tingkat kesulitan
 STR_MENU_CONFIG_SETTINGS                                        :Pengaturan lanjutan
 STR_NEWGRF_SETTINGS                                             :Pengaturan NewGRF
@@ -695,7 +695,7 @@ STR_02D9_ABOUT_OPENTTD                                          :Tentang 'OpenTT
 ############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Non-aktifkan
-STR_02DA_ON                                                     :{BLACK}Hidup
+STR_02DA_ON                                                     :{BLACK}Aktif
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Tampilkan subsidi
 STR_02DD_SUBSIDIES                                              :Subsidi
 STR_02DE_MAP_OF_WORLD                                           :Peta Dunia
@@ -1159,7 +1159,7 @@ STR_TOYLAND_LANDSCAPE                                           :Lansekap 'Taman
 
 STR_CHEATS                                                      :{WHITE}Kode Curang
 STR_CHEATS_TIP                                                  :{BLACK}Daftar cek ini mengindikasikan bahwa anda telah menggunakan kode curang ini sebelumnya
-STR_CHEATS_WARNING                                              :{BLACK}Peringatan! Anda akan mencurangi pemain lainya. Kecurangan ini akan tetap tercatat selama game berjalan.
+STR_CHEATS_WARNING                                              :{BLACK}Peringatan! Anda akan mencurangi pemain lainnya. Kecurangan ini akan tetap tercatat selama game berjalan.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tambah uang sebanyak {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain sebagai pemain: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (hancurkan industri, mercu suar dsb): {ORANGE}{STRING}
@@ -2161,7 +2161,7 @@ STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 bulan setelah
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Pada ujung rel, dan pada stasiun
 STR_6835_AT_END_OF_LINE_ONLY                                    :Hanya pada ujung rel
 STR_6836_OFF                                                    :Non-aktifkan
-STR_6837_ON                                                     :Hidup
+STR_6837_ON                                                     :Aktif
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Tampilkan tabel skor tertinggi
 STR_PERMISSIVE                                                  :Selalu boleh
 STR_TOLERANT                                                    :Toleran

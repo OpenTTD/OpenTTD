@@ -10,7 +10,7 @@
 #-------------------------------------------------------------------------------
 
 Name:          openttd
-Version:       0.7.2-RC1
+Version:       0.7.2-RC2
 Release:       1%{?dist}
 
 Group:         Amusements/Games

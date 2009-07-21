@@ -2815,6 +2815,8 @@ STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Methu en
 STR_8867_NAME_TRAIN                                             :{BLACK}Enwi trên
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Trên wedi crashio!{}Bu {COMMA} farw yn y ddamwain
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Methu gwrthdroi cyfeiriad  trên...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}ddim yn medru reversio'r cerbyd...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Methu troi cerbydau sy'n meddu ar sawl uned
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Ailenwi math y cerbyd trên
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Methu ailenwi math y cerbyd trên...
 STR_CLEAR_TIME                                                  :{BLACK}Clirio Amser
@@ -2902,7 +2904,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{} Mae'r tram nwyddau cyntaf wedi cyrraedd {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Damwain Cerbyd Ffordd!{}Bu gyrrwr farw mewn damwain â thrên
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Damwain Cerbyd Ffordd!{}Bu farw {COMMA} mewn damwain â thrên
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Methu troi cerbydau sy'n meddu ar sawl uned
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}ddim yn methu troi'r cerbyd...
 STR_9034_RENAME                                                 :{BLACK}Ailenwi
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Ailenwi'r math cerbyd ffordd
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Ailenwi'r math cerbyd ffordd
@@ -3172,6 +3174,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Mae gan 
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Mae NewGRF '{0:STRING}' yn darparu gwybodaeth anghywir.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Mae'r wybodaeth cargo/ailffitio ar gyfer '{1:ENGINE}' yn wahanol i'r rhestr brynu wedi'r adeiladu. Gall hyn beri i awtoadnewyddy/-ddisodli fethu ag ailfitio'n gywir.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' creu lwp anorffen yn y production callback.
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Cafodd y gêm ei gadw mewn fersiwn heb dram. Cafodd y tramiau eu dileu.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Arian cyfaddas

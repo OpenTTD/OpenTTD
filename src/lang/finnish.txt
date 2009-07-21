@@ -310,7 +310,7 @@ STR_015A_COMPANY_LEAGUE_TABLE                                   :Yhtiökilpataul
 STR_PERFORMANCE_DETAIL_MENU                                     :Suoritearviointi
 ############ range for menu ends
 
-STR_015B_OPENTTD                                                :{WHITE}Tietoa OpenTTD:stä
+STR_015B_OPENTTD                                                :{WHITE}Tietoja OpenTTD:stä
 STR_015C_SAVE_GAME                                              :Tallenna peli
 STR_015D_LOAD_GAME                                              :Lataa peli
 STR_015E_QUIT_GAME                                              :Lopeta peli
@@ -352,19 +352,19 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Rahtikapasiteet
 STR_NO_WAITING_CARGO                                            :{BLACK}Minkäänlaista lastia ei ole odottamassa
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Valitse kaikki laitteet
 STR_SELECT_ALL_TYPES                                            :{BLACK}Valitse kaikki lastityypit (myös odottava lasti)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Käytettävissä olevat junat
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Käytettävissä olevat ajoneuvot
-STR_AVAILABLE_SHIPS                                             :{BLACK}Käytettävissä olevat laivat
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Käytettävissä olevat ilma-alukset
+STR_AVAILABLE_TRAINS                                            :{BLACK}Käytett. Junat
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Käytett. Ajoneuvot
+STR_AVAILABLE_SHIPS                                             :{BLACK}Käytett. Laivat
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Käytett. Ilma-alukset
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Näytä lista saatavilla olevista moottorityypeistä tälle ajoneuvotyypille.
 STR_MANAGE_LIST                                                 :{BLACK}Muokkaa listaa
 STR_MANAGE_LIST_TIP                                             :{BLACK}Ohjaa kaikkia listan ajoneuvoja
-STR_REPLACE_VEHICLES                                            :Korvaa liikennevälineitä
+STR_REPLACE_VEHICLES                                            :Korvaa liikenneväl.
 STR_SEND_TRAIN_TO_DEPOT                                         :Lähetä varikolle
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Lähetä varikolle
 STR_SEND_SHIP_TO_DEPOT                                          :Lähetä varikolle
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Lähetä varikolle
-STR_SEND_FOR_SERVICING                                          :Lähetä huollettavaksi
+STR_SEND_FOR_SERVICING                                          :Lähetä huoltoon
 
 ############ range for months starts
 STR_0162_JAN                                                    :01.
@@ -892,10 +892,10 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :Kulkuneuvon {WHITE}{VEHICLE} aikataulussa on liian vähän käskyjä
-STR_VEHICLE_HAS_VOID_ORDER                                      :Kulkuneuvon {WHITE}{VEHICLE} aikataulussa on epäkelpo käsky
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}Kulkuneuvon {VEHICLE} aikataulussa on liian vähän käskyjä
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}Kulkuneuvon {VEHICLE} aikataulussa on epäkelpo käsky
 STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}Ajoneuvolla {VEHICLE} on toistuvia määräyksiä
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :Kulkuneuvon {WHITE}{VEHICLE} aikataulussa on virheellinen asema
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}Kulkuneuvon {VEHICLE} aikataulussa on virheellinen asema
 # end of order system
 
 STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Automaattinen korvaus epäonnistui ajoneuvolle {VEHICLE}{}{STRING}
@@ -2224,7 +2224,7 @@ STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Ota lis�
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Lyhennä lainaa.
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(pääjohtaja)
 STR_7038_INAUGURATED                                            :{GOLD}Avattu: {WHITE}{NUM}
-STR_7039_VEHICLES                                               :{GOLD}Liikennevälineet:
+STR_7039_VEHICLES                                               :{GOLD}Liikenneväl.:
 STR_TRAINS                                                      :{WHITE}{COMMA} juna{P "" a}
 STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} ajoneuvo{P "" a}
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} lentokone{P "" tta}
@@ -3078,9 +3078,9 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Liikennevälineitä:
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Liikenneväl.:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Asemia:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Vähimmäistuotto:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Väh. tuotto:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Vähimmäistulo:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Enimmäistulo:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Kuljetettu:
@@ -3232,8 +3232,8 @@ STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} ilma-alus{P "" ta}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Korvaa {STRING}
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Aloita ajoneuvojen korvaaminen
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lopeta ajoneuvojen korvaaminen
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Aloita ajoneuvojen korv.
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lopeta ajoneuvojen korv.
 STR_NOT_REPLACING                                               :{BLACK}Ei korvata
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Ei liikennevälinettä valittuna
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Valitse korvattava veturityyppi.

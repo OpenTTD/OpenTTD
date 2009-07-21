@@ -685,6 +685,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Sinais
 STR_02D5_LAND_BLOCK_INFO                                        :Información de área de terreo
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Des/Activar Consola
+STR_AI_DEBUG_MENU                                               :Depuración IA
 STR_02D7_SCREENSHOT_CTRL_S                                      :Captura de Pantalla (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Capt.Pant. Xigante (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Acerca de 'OpenTTD'
@@ -842,7 +843,9 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formato 
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecciona o formato a utilizar nas capturas de pantalla
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Conxunto básico de gráficos
 STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selecciona o conxunto de gráficos básico a usar
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autograbado fallido
 
 STR_MONTH_JAN                                                   :Xaneiro
@@ -891,6 +894,7 @@ STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE
 STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} ten unha estación inválida nas súas ordes
 # end of order system
 
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} é demasiado longo despois do reemprazo
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Non se aplicaron as regras de autosubstitución/renovación
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(límite de diñeiro)
 
@@ -939,6 +943,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permiti
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permiti-la construción de estacións contiguas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Activar motor para múltiples NewGRF: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Non é posible cambiar esta opción cando hai vehículos.
 STR_CONFIG_SETTING_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Avisar se un tren se perde: {ORANGE}{STRING}
@@ -972,6 +977,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotaci�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Esquerda
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Dereita
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Nivel de altitude dun escenario chairo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Activa-la terraformación nos bordes do mapa: {ORANGE}{STRING}
 
 # Start of map water border strings.
 # DON'T ADD OR REMOVE LINES HERE
@@ -999,7 +1005,11 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Tecla Command
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Tecla Control
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Apagado
 
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Desprazamento con click esquerdo: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :longo (31 Dec 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :corto (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausar automáticamente ó comezo dunha nova partida: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usa-la lista avanzada de vehículos: {ORANGE}{STRING}
@@ -1033,6 +1043,7 @@ STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Deshabi
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Deshabilita-los avións para o ordenador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Deshabilita-los barcos para o ordenador: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permitir IA en multixogador: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervalos de servizo en porcentaxes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de servizo para os trens: {ORANGE}{STRING} días/%
@@ -1063,6 +1074,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Só normais
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Só avanzadas
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todas
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Distribución das estradas en novas cidades: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :defecto
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :mellores estradas
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Reixa 2x2
@@ -1093,8 +1105,11 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehícu
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Estacións
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Economía
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competidores
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Mostrar opcións
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interacción
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinais
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Xogadores do ordenador
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autorenovar
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trens
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Cidades
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrias
@@ -1404,10 +1419,11 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introduc
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}O servidor está protexido. Introduce clave
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A compañía está protexida. Introduce clave
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista de Clientes
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Observar
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova Compañía
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Non se atoparon dispositivos de rede ou compilouse sen ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Non se atoparon xogos en rede
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Non se atoparon xogos en rede
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} O servidor non respondeu á solicitude
 STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Non se pode conectar debido a un problema cos NewGRF
 STR_NETWORK_ERR_DESYNC                                          :{WHITE}Sincronización da partida en rede fallida
@@ -1443,7 +1459,21 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor cheo
 ############ End of leave-in-this-order
 STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Partida en pausa (non hai suficientes xogadores)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Partida funcionando (hai suficientes xogadores)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Partida en pausa (cliente conectando)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Partida funcionando (cliente conectado)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Partida funcionando (o cliente non pudio conectar)
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :saíndo
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} uniuse á partida
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} uniuse a compañía #{2:NUM}
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} uniuse ós espectadores
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} comezou unha nova compañía (#{2:NUM})
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} saiu da partida ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} cambiou o seu nome a {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} deu a túa companía {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Diches a {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Equipo] :
 STR_NETWORK_CHAT_COMPANY                                        :[Equipo] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipo] A {STRING}: {WHITE}{STRING}
@@ -1566,6 +1596,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Vía de tren co
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Vía de tren con sinais combo e de ruta dun sentido
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Vía de tren con sinais de ruta e de ruta dun sentido
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}debes quita-la estación de tren primeiro
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Construír unha estación separada
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Unir estación
 
 
 
@@ -1851,6 +1883,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Cargar P
 STR_4002_SAVE                                                   :{BLACK}Grabar
 STR_4003_DELETE                                                 :{BLACK}Borrar
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Espectador, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} libre{P "" s}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}No se pode lee-la unidade
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Grabación da partida fallida{}{STRING}
@@ -1861,6 +1894,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Partida grabada
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :A partida grabouse cunha versión máis nova do xogo
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Ficheiro ilexible
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Non se pode escribir no ficheiro
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Fallou a comprobación de integridade dos datos
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lista de unidades, directorios e arquivos de partida
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nome seleccionado actualmente para o arquivo
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Borra-lo arquivo que está seleccionado

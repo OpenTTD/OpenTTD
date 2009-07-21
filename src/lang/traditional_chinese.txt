@@ -444,6 +444,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}土地資訊
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}整地花費：{LTBLUE}不適用
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}整地花費：{RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}清除時確認收入： {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :不適用
 STR_01A7_OWNER                                                  :{BLACK}所有人：{LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}道路所有者：{LTBLUE}{STRING}
@@ -2814,6 +2815,8 @@ STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}無法�
 STR_8867_NAME_TRAIN                                             :{BLACK}為列車命名
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}列車事故！{}衝撞後 {COMMA} 人死在火球下
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}無法倒轉列車方向...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}無法調轉車輛方向...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}無法迴轉由多節車廂組成的車輛
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}重新命名列車類型
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}無法修改列車類型名稱...
 STR_CLEAR_TIME                                                  :{BLACK}清除時刻表
@@ -2901,7 +2904,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛載貨電車抵達 {STATION}！
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}車禍！{}駕駛在與列車對撞後罹難
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}車禍！{}車輛在與列車對撞後，造成 {COMMA} 人罹難
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}無法迴轉由多節車廂組成的車輛
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}無法讓車輛轉向...
 STR_9034_RENAME                                                 :{BLACK}更名
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}為車輛類型更名
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}為車輛類型更名

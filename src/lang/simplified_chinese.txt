@@ -11,7 +11,7 @@
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}超过地图边界
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}距离地图边界过近
-STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}没有足够的资金 - 需要 {CURRENCY}
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}资金不足 - 需要 {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}需要平坦的地面
@@ -32,7 +32,7 @@ STR_0015_GRAIN                                                  :谷物
 STR_0016_WOOD                                                   :木材
 STR_0017_IRON_ORE                                               :铁矿石
 STR_0018_STEEL                                                  :钢材
-STR_0019_VALUABLES                                              :金块
+STR_0019_VALUABLES                                              :贵重品
 STR_001A_COPPER_ORE                                             :铜矿石
 STR_001B_MAIZE                                                  :玉米
 STR_001C_FRUIT                                                  :水果
@@ -87,35 +87,35 @@ STR_004C_PLASTIC                                                :塑料
 STR_004D_FIZZY_DRINK                                            :跳跳水
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} 位旅客
-STR_QUANTITY_COAL                                               :{WEIGHT}煤炭
+STR_QUANTITY_COAL                                               :{WEIGHT} 煤炭
 STR_QUANTITY_MAIL                                               :{COMMA} 包邮件
-STR_QUANTITY_OIL                                                :{VOLUME}原油
+STR_QUANTITY_OIL                                                :{VOLUME} 原油
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} 头牲畜
 STR_QUANTITY_GOODS                                              :{COMMA} 件货物
-STR_QUANTITY_GRAIN                                              :{WEIGHT}谷物
-STR_QUANTITY_WOOD                                               :{WEIGHT}木材
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT}铁矿石
-STR_QUANTITY_STEEL                                              :{WEIGHT}钢材
-STR_QUANTITY_VALUABLES                                          :{COMMA} 包金块
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT}铜矿石
-STR_QUANTITY_MAIZE                                              :{WEIGHT}玉米
-STR_QUANTITY_FRUIT                                              :{WEIGHT}水果
+STR_QUANTITY_GRAIN                                              :{WEIGHT} 谷物
+STR_QUANTITY_WOOD                                               :{WEIGHT} 木材
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} 铁矿石
+STR_QUANTITY_STEEL                                              :{WEIGHT} 钢材
+STR_QUANTITY_VALUABLES                                          :{COMMA} 包贵重品
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} 铜矿石
+STR_QUANTITY_MAIZE                                              :{WEIGHT} 玉米
+STR_QUANTITY_FRUIT                                              :{WEIGHT} 水果
 STR_QUANTITY_DIAMONDS                                           :{COMMA} 包钻石
-STR_QUANTITY_FOOD                                               :{WEIGHT}食品
-STR_QUANTITY_PAPER                                              :{WEIGHT}纸张
+STR_QUANTITY_FOOD                                               :{WEIGHT} 食品
+STR_QUANTITY_PAPER                                              :{WEIGHT} 纸张
 STR_QUANTITY_GOLD                                               :{COMMA} 包黄金
-STR_QUANTITY_WATER                                              :{VOLUME}饮用水
-STR_QUANTITY_WHEAT                                              :{WEIGHT}小麦
-STR_QUANTITY_RUBBER                                             :{VOLUME}橡胶
-STR_QUANTITY_SUGAR                                              :{WEIGHT}蔗糖
+STR_QUANTITY_WATER                                              :{VOLUME} 饮用水
+STR_QUANTITY_WHEAT                                              :{WEIGHT} 小麦
+STR_QUANTITY_RUBBER                                             :{VOLUME} 橡胶
+STR_QUANTITY_SUGAR                                              :{WEIGHT} 蔗糖
 STR_QUANTITY_TOYS                                               :{COMMA} 件玩具
 STR_QUANTITY_SWEETS                                             :{COMMA} 包糖果
-STR_QUANTITY_COLA                                               :{VOLUME}可乐
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT}棉花糖
+STR_QUANTITY_COLA                                               :{VOLUME} 可乐
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} 棉花糖
 STR_QUANTITY_BUBBLES                                            :{COMMA} 个泡泡
-STR_QUANTITY_TOFFEE                                             :{WEIGHT}太妃糖
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} 太妃糖
 STR_QUANTITY_BATTERIES                                          :{COMMA} 箱电池
-STR_QUANTITY_PLASTIC                                            :{VOLUME}塑料
+STR_QUANTITY_PLASTIC                                            :{VOLUME} 塑料
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} 瓶跳跳水
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}客
@@ -128,7 +128,7 @@ STR_ABBREV_GRAIN                                                :{TINYFONT}谷
 STR_ABBREV_WOOD                                                 :{TINYFONT}木
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}铁
 STR_ABBREV_STEEL                                                :{TINYFONT}钢
-STR_ABBREV_VALUABLES                                            :{TINYFONT}金
+STR_ABBREV_VALUABLES                                            :{TINYFONT}贵
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}铜
 STR_ABBREV_MAIZE                                                :{TINYFONT}黍
 STR_ABBREV_FRUIT                                                :{TINYFONT}果
@@ -177,22 +177,22 @@ STR_00CE_4                                                      :{BLACK}4
 STR_00CF_5                                                      :{BLACK}5
 STR_00D0_NOTHING                                                :无
 STR_00D1_DARK_BLUE                                              :深蓝色
-STR_00D2_PALE_GREEN                                             :粉绿色
+STR_00D2_PALE_GREEN                                             :浅绿色
 STR_00D3_PINK                                                   :粉红色
 STR_00D4_YELLOW                                                 :明黄色
-STR_00D5_RED                                                    :红  色
+STR_00D5_RED                                                    :红　色
 STR_00D6_LIGHT_BLUE                                             :淡蓝色
-STR_00D7_GREEN                                                  :绿  色
+STR_00D7_GREEN                                                  :绿　色
 STR_00D8_DARK_GREEN                                             :深绿色
-STR_00D9_BLUE                                                   :蓝  色
+STR_00D9_BLUE                                                   :蓝　色
 STR_00DA_CREAM                                                  :奶油色
 STR_00DB_MAUVE                                                  :深紫色
-STR_00DC_PURPLE                                                 :紫  色
+STR_00DC_PURPLE                                                 :紫　色
 STR_00DD_ORANGE                                                 :橘黄色
-STR_00DE_BROWN                                                  :棕  色
+STR_00DE_BROWN                                                  :棕　色
 STR_00DF_GREY                                                   :浅灰色
-STR_00E0_WHITE                                                  :白  色
-STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}游戏中的车辆太多了
+STR_00E0_WHITE                                                  :白　色
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}游戏中的车辆过多
 STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}定位
@@ -201,7 +201,7 @@ STR_00E6_VEHICLES                                               :车辆
 STR_00E7_INDUSTRIES                                             :工业
 STR_00E8_ROUTES                                                 :路线
 STR_00E9_VEGETATION                                             :植被
-STR_00EA_OWNERS                                                 :公司所属
+STR_00EA_OWNERS                                                 :所有者
 STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}公路
 STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}铁路
 STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}车站/机场/码头
@@ -259,7 +259,7 @@ STR_013E_CAPACITIES                                             :{BLACK}运载�
 STR_TOTAL_CARGO                                                 :{BLACK}全部货物
 STR_013F_CAPACITY                                               :{BLACK}装载能力：{LTBLUE}{CARGO}{STRING}
 STR_CAPACITY_MULT                                               :{BLACK}装载能力：{LTBLUE}{CARGO}{STRING} (x{NUM})
-STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}全车的运载量为：
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}全车的装载能力为：
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}新游戏
@@ -297,7 +297,7 @@ STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} 立方�
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} 升
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} 立方米
 
-STR_UNITS_FORCE_SI                                              :{COMMA} 千牛顿
+STR_UNITS_FORCE_SI                                              :{COMMA} 千牛
 
 ############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :利润图表
@@ -317,7 +317,7 @@ STR_015E_QUIT_GAME                                              :放弃游戏
 STR_015F_QUIT                                                   :退出
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}你确定要放弃当前的游戏吗？
 STR_0161_QUIT_GAME                                              :{WHITE}放弃游戏
-STR_SORT_ORDER_TIP                                              :{BLACK}选择排序方法 (降序/升序)
+STR_SORT_ORDER_TIP                                              :{BLACK}选择排序方法 （降序/升序）
 STR_SORT_CRITERIA_TIP                                           :{BLACK}选择排序标准
 STR_SORT_BY                                                     :{BLACK}排序
 
@@ -342,7 +342,7 @@ STR_SORT_BY_LIFE_TIME                                           :剩余寿命年
 STR_SORT_BY_FACILITY                                            :车站类型
 STR_SORT_BY_WAITING                                             :等待的货物数量
 STR_SORT_BY_RATING_MAX                                          :货物评价
-STR_ENGINE_SORT_ENGINE_ID                                       :引擎ID (默认方式)
+STR_ENGINE_SORT_ENGINE_ID                                       :引擎ID （默认方式）
 STR_ENGINE_SORT_COST                                            :售价
 STR_ENGINE_SORT_POWER                                           :功率
 STR_ENGINE_SORT_INTRO_DATE                                      :设计日期
@@ -385,15 +385,15 @@ STR_016E                                                        :{TINYFONT}{STRI
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}暂停游戏
-STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}保存游戏、放弃游戏等
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}保存游戏、放弃游戏、退出
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}显示公司所有的车站列表
-STR_0174_DISPLAY_MAP                                            :{BLACK}显示地图
-STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}显示地图和城镇列表等
+STR_0174_DISPLAY_MAP                                            :{BLACK}显示地图、附加视点或标志列表
+STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}显示地图和城镇列表
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}显示城镇列表
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}显示公司财务状况
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}显示公司综合信息
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}显示图表
-STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}显示公司评价表
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}显示公司名次表
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}显示公司的火车列表
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}显示公司的汽车列表
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}显示公司的船只列表
@@ -412,20 +412,20 @@ STR_0189                                                        :{BLACK}{SMALLDO
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}不能改变保养周期……
 STR_018B_CLOSE_WINDOW                                           :{BLACK}关闭窗口
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}窗口标题 - 拖动这里可以移动该窗口
-STR_STICKY_BUTTON                                               :{BLACK} 锁定窗口  当使用‘关闭所有窗口’{}快捷键(Del)时会保留锁定的窗口
-STR_RESIZE_BUTTON                                               :{BLACK}点击并拖动这里可以放缩窗口
+STR_STICKY_BUTTON                                               :{BLACK}锁定窗口 使用“关闭所有窗口”快捷键时保留此窗口
+STR_RESIZE_BUTTON                                               :{BLACK}点击并拖动这里可以缩放窗口
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}点击这里返回默认的游戏存档目录
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}拆除地块上的建筑物等设施
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}降低地块的一角
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}升高地块的一角
-STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}滚动条 - 可让列表上下滚动
-STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}滚动条 - 可让列表左右滚动
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}显示地形海拔高度
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}滚动条 - 上下滚动列表
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}滚动条 - 左右滚动列表
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}在地图上显示等高线
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}在地图上显示车辆
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}在地图上显示工业
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}在地图上显示运输路线
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}在地图上显示植被分布
-STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}显示各公司所属
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}在地图上显示各公司所属
 STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}切换是否显示城镇名称
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}今年利润：{CURRENCY} (去年利润：{CURRENCY})
 
@@ -836,7 +836,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}选择�
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}全屏幕
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}选择此项可以在全屏幕模式下进行 OpenTTD 游戏
-STR_FULLSCREEN_FAILED                                           :{WHITE}无法切换到全屏模式
+STR_FULLSCREEN_FAILED                                           :{WHITE}无法切换到全屏模式{}尝试使用不同的分辨率
 
 STR_OPTIONS_RES                                                 :{BLACK}屏幕分辨率
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -998,7 +998,7 @@ STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}显示�
 STR_CONFIG_SETTING_LIVERIES_NONE                                :不显示
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :本公司
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :所有公司
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}按下<ENTER> 时默认与团队交谈：{ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}使用<ENTER>与团队交谈：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}鼠标滚轮的作用：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :缩放地图
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :滚动地图

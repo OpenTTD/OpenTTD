@@ -1,3 +1,11 @@
+0.7.2-RC2 (2009-07-21)
+------------------------------------------------------------------------
+- Fix: When marking trains stuck do not reset the unload/stuck counter when the vehicle is unloading. It will be automatically reset once the vehicle wants to leave the station [FS#3038] (r16901)
+- Fix: [NoAI]: Small errors in the API documentation [FS#3037] (r16865)
+- Fix: Savegames from before 0.4 would get their waypoint 'index' messed up (r16854)
+- Fix: Cargo payments were not destroyed when a vehicle was destructed. This only happened when you crashed a vehicle while it was unloading [FS#3032, FS#3046] (r16801)
+
+
 0.7.2-RC1 (2009-07-15)
 ------------------------------------------------------------------------
 - Add: Plural 'rule' for Korean (r16811)

@@ -153,7 +153,7 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}ПЛ
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ГЗ
 STR_ABBREV_NONE                                                 :{TINYFONT}НЕТ
 STR_ABBREV_ALL                                                  :{TINYFONT}Все
-STR_00AE                                                        :{WHITE}{DATE_SHORT}
+STR_00AE                                                        :{WHITE}{DATE_SHORT} г.
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Карта - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Настройки игры
@@ -1015,7 +1015,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Выкл.
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Скроллинг по клику левой кнопкой мыши: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Использовать {ORANGE}{STRING}{LTBLUE} формат даты для имён сохранений
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :длинный (31-е дек 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :длинный (31-е дек 2008 г.)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :короткий (31.12.2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
@@ -1569,7 +1569,7 @@ STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Магн
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Выберите железнодорожный мост
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Здесь невозможно построить депо...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Здесь невозможно построить станцию...
-STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Здесь невозможно построить светофор...
+STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Здесь невозможно поставить светофор...
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Здесь невозможно проложить рельсы...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Невозможно удалить рельсы...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Невозможно удалить светофор...
@@ -1911,14 +1911,14 @@ STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Нево
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Невозможно удалить файл
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Невозможно загрузить игру{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Внутренняя ошибка: {STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Нарушена структура сэйва - {STRING}
-STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Сэйв сделан в более новой версии
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Файл сохранения повреждён - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Сохранение сделано в более новой версии
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Файл не читается
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Незаписываемый файл
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Нарушена целостность
-STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Список дисков, папок и сохраненных игр
+STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Список дисков, папок и сохранённых игр
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Выбранное имя для сохранения игры
-STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Удалить выбранную сохраненную игру
+STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Удалить выбранную сохранённую игру
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Сохранить игру, используя выбранное имя
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Сгенерировать случайную карту
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Загрузить карту
@@ -2010,31 +2010,31 @@ STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Опор
 STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Слишком низкий мост
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Начало и конец должны быть на одной линии
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Неподходящее место для строительства туннеля
-STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
-STR_500E_SUSPENSION_STEEL                                       :Подвесной, Стальной
-STR_500F_GIRDER_STEEL                                           :Балочный, Стальной
-STR_5010_CANTILEVER_STEEL                                       :Консольный, Стальной
-STR_5011_SUSPENSION_CONCRETE                                    :Подвесной, Бетонный
+STR_500D                                                        :{GOLD}{STRING}{}{VELOCITY}; {WHITE}{CURRENCY}
+STR_500E_SUSPENSION_STEEL                                       :Висячий стальной
+STR_500F_GIRDER_STEEL                                           :Балочный стальной
+STR_5010_CANTILEVER_STEEL                                       :Консольный стальной
+STR_5011_SUSPENSION_CONCRETE                                    :Висячий бетонный
 STR_5012_WOODEN                                                 :Деревянный
 STR_5013_CONCRETE                                               :Бетонный
-STR_5014_TUBULAR_STEEL                                          :Трубчатый, Стальной
-STR_BRIDGE_TUBULAR_SILICON                                      :Трубчатый, Силиконовый
+STR_5014_TUBULAR_STEEL                                          :Трубчатый стальной
+STR_BRIDGE_TUBULAR_SILICON                                      :Трубчатый силиконовый
 STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Здесь невозможно построить мост...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Здесь невозможно построить туннель...
 STR_5017_RAILROAD_TUNNEL                                        :Железнодорожный туннель
 STR_5018_ROAD_TUNNEL                                            :Автомобильный туннель
-STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Стальной подвесной ж/д мост
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Стальной висячий ж/д мост
 STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Стальной балочный ж/д мост
 STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Стальной консольный ж/д мост
-STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Укреплённый подвесной железобетонный ж/д мост
+STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Железобетонный висячий ж/д мост
 STR_501F_WOODEN_RAIL_BRIDGE                                     :Деревянный ж/д мост
 STR_5020_CONCRETE_RAIL_BRIDGE                                   :Бетонный ж/д мост
-STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Стальной подвесной мост
-STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Стальной балочный мост
-STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Стальной консольный мост
-STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Укреплённый подвесной железобетонный мост
-STR_5025_WOODEN_ROAD_BRIDGE                                     :Деревянный мост
-STR_5026_CONCRETE_ROAD_BRIDGE                                   :Бетонный мост
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Стальной висячий автомобильный мост
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Стальной балочный автомобильный мост
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Стальной консольный автомобильный мост
+STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Железобетонный висячий автомобильный мост
+STR_5025_WOODEN_ROAD_BRIDGE                                     :Деревянный автомобильный мост
+STR_5026_CONCRETE_ROAD_BRIDGE                                   :Бетонный автомобильный мост
 STR_5027_TUBULAR_RAIL_BRIDGE                                    :Трубчатый ж/д мост
 STR_5028_TUBULAR_ROAD_BRIDGE                                    :Трубчатый автомобильный мост
 
@@ -2182,20 +2182,20 @@ STR_700A_COMPANY_NAME                                           :Компани�
 STR_700B_PRESIDENT_S_NAME                                       :Имя директора
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Невозможно изменить название компании...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Невозможно изменить имя директора...
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} Денежные средства {BLACK}{COMPANYNUM}
+STR_700E_FINANCES                                               :{WHITE}Финансы - {COMPANY} {BLACK}{COMPANYNUM}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Расход/доход
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Строительство
 STR_7012_NEW_VEHICLES                                           :{GOLD}Новая техника
 STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Обслуживание ж/д
 STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Обслуживание авто
-STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Обслуживание авиа
-STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Обслуживание кораблей
+STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Обслуж. авиатранспорта
+STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Обслуж. кораблей
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Обслуж. собственности
 STR_7018_TRAIN_INCOME                                           :{GOLD}Доход от ж/д
-STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Доход от автотранспорта
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Доход от авто
 STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Доход от авиации
-STR_701B_SHIP_INCOME                                            :{GOLD}Доход от водного транспорта
+STR_701B_SHIP_INCOME                                            :{GOLD}Доход от кораблей
 STR_701C_LOAN_INTEREST                                          :{GOLD}Проценты по займу
 STR_701D_OTHER                                                  :{GOLD}Прочие расходы
 STR_701E                                                        :{BLACK}-{CURRENCY}
@@ -2518,9 +2518,9 @@ STR_80AD_RMT_RUBBER_TRUCK                                       :Грузови�
 STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :Грузовик MightyMover (сахар)
 STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Грузовик Powernaught (сахар)
 STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Грузовик Wizzowow (сахар)
-STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :Грузовик MightyMover (кола)
-STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Грузовик Powernaught (кола)
-STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Грузовик Wizzowow (кола)
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :Цистерна MightyMover (кола)
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Цистерна Powernaught (кола)
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Цистерна Wizzowow (кола)
 STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :Грузовик MightyMover (сах. вата)
 STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Грузовик Powernaught (сах. вата)
 STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Грузовик Wizzowow (сах. вата)
@@ -2531,7 +2531,7 @@ STR_80BA_MIGHTYMOVER_TOY_VAN                                    :Грузови�
 STR_80BB_POWERNAUGHT_TOY_VAN                                    :Грузовик Powernaught (игрушки)
 STR_80BC_WIZZOWOW_TOY_VAN                                       :Грузовик Wizzowow (игрушки)
 STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :Грузовик MightyMover (конфеты)
-STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught Грузовик (конфеты)
+STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Грузовик Powernaught (конфеты)
 STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Грузовик Wizzowow (конфеты)
 STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :Грузовик MightyMover (батарейки)
 STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Грузовик Powernaught (батарейки)
@@ -2598,7 +2598,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Вертолё�
 STR_80FE_GURU_X2_HELICOPTER                                     :Вертолёт Guru X2
 STR_80FF_POWERNAUT_HELICOPTER                                   :Вертолёт Powernaut
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Сообщение от производителя транспорта
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Мы создали новый {STRING}. Заинтересованы ли вы в его годовом эксклюзивном использовании для проверки перед запуском в серийное производство?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Мы создали новую модель {STRING}. Заинтересованы ли вы в его годовом эксклюзивном использовании для проверки перед запуском в серийное производство?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :ж/д локомотив
 STR_8103_ROAD_VEHICLE                                           :автомобиль
 STR_8104_AIRCRAFT                                               :авиатранспорт
@@ -2721,7 +2721,7 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Новы
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Новый магниторельс
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Поезда
 
-STR_881F_BUILD_VEHICLE                                          :{BLACK}Построить
+STR_881F_BUILD_VEHICLE                                          :{BLACK}Купить
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Копировать
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Создаёт копию автомобиля. Control+щелчок копирует задания
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Создаёт копию автомобиля. Щёлкнуть на кнопке и затем на машине внутри или снаружи гаража. Control+щелчок копирует и задания
@@ -2744,7 +2744,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Пере
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Задания)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Конец заданий - -
 STR_SERVICE                                                     :{BLACK}Обслуж.
-STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Невозможно построить ж/д транспорт...
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Невозможно купить ж/д транспорт...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}  Построен в {LTBLUE}{NUM} г.{BLACK} Стоимость: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Стоимость: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
@@ -2773,11 +2773,11 @@ STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Осмо
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Интервал обслуж.: {LTBLUE}{COMMA}%{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Поезда - нажмите для получения справки
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Поезда - кликните для получения информации, используйте перетаскивание для изменения состава
-STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Построить новый поезд
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Купить новый поезд
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Перетащите сюда транспорт, чтобы продать его
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Показать депо в основном окне
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Выбор вагонов - кликните для справки
-STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Построить выделенный вагон
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Купить выбранный локомотив/вагон
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Переименовать тип вагона
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Текущее действие поезда; кликните для его остановки/запуска
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Показать задания
@@ -2858,8 +2858,8 @@ STR_9002                                                        :{WHITE}{VEHICLE
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}Гараж {TOWN}
 STR_9004_NEW_VEHICLES                                           :{BLACK}Новая машина
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Новая машина
-STR_9007_BUILD_VEHICLE                                          :{BLACK}Построить
-STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Невозможно построить машину...
+STR_9007_BUILD_VEHICLE                                          :{BLACK}Купить
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Невозможно купить машину...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Детали)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Возраст: {LTBLUE}{STRING}{BLACK} Цена обслуживания: {LTBLUE}{CURRENCY}/год
 STR_900E_MAX_SPEED                                              :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY}
@@ -2885,11 +2885,11 @@ STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Отпр
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Принудительно развернуть автомобиль
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Показать информацию об автомобиле
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Автомобили - кликните для получения справки
-STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Построить новый автомобиль
+STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Купить новый автомобиль
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Перетащите сюда автомобиль, чтобы продать его
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Показать гараж в главном окне
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Список автотранспорта - кликните для получения информации
-STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Построить выделенный автомобиль
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Купить выбранный автомобиль
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Цена: {CURRENCY}{}Скорость: {VELOCITY}{}Стоимость обслуживания: {CURRENCY}/год{}Емкость: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Ёмкость: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
@@ -2928,12 +2928,12 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Ново
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} корабл{P ь я ей}
 STR_9808_NEW_SHIPS                                              :{WHITE}Покупка кораблей
 STR_9809_BUILD_SHIP                                             :{BLACK}Купить
-STR_CLONE_SHIP                                                  :{BLACK}Копировать судно
+STR_CLONE_SHIP                                                  :{BLACK}Копировать
 STR_CLONE_SHIP_INFO                                             :{BLACK}Создаёт копию корабля. Control+клик копирует задания
 STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Создаёт копию корабля. Щёлкнуть на кнопке и затем на корабле внутри или снаружи дока. Control+клик копирует задания
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Корабль должен быть остановлен в доке
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Невозможно продать корабль...
-STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Невозможно построить корабль...
+STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Невозможно купить корабль...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Корабль на пути
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Детали)
@@ -2954,12 +2954,12 @@ STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Строительство пристаней
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Строительство доков (для строительства и обслуживания кораблей)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Корабли - нажмите для получения справки
-STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Построить новый корабль
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Купить новый корабль
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Перетащите сюда корабль, чтобы продать его
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Показать док в основном окне
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Корабли - нажмите для получения справки
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Список кораблей - нажмите для получения справки
-STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Построить выбранный корабль
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Купить выбранный корабль
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Текущее действие корабля; кликните для его остановки/запуска
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Показать задания
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Показать корабль в главном окне
@@ -2996,10 +2996,10 @@ STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}Анга
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Новое судно
 STR_CLONE_AIRCRAFT                                              :{BLACK}Копировать
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Создаёт копию самолёта. Control+клик - копирует задания
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Построить копию возд. судна. Нажмите на кнопку, а потом на возд. судно в/вне ангара. Ctrl+click - также скопирует и задание.
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Создаёт копию самолёта. Нажмите на кнопку, а потом на возд. судно в/вне ангара. Ctrl+click - также скопирует и задание.
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Новый
-STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Построить
-STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Невозможно построить возд. транспорт...
+STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Купить
+STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Невозможно купить возд. транспорт...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} единиц{P а ы ""} авиатранспорта
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Детали)
@@ -3021,15 +3021,14 @@ STR_A019_CAPACITY                                               :{BLACK}Емко
 STR_A01A_CAPACITY                                               :{BLACK}Емкость: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Самолёт должен быть остановлен в ангаре
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Не могу продать авиатранспорт...
-STR_A01D_AIRPORT_CONSTRUCTION                                   :Строительство аэропорта
+STR_A01D_AIRPORT_CONSTRUCTION                                   :Строительство аэропортов
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Строительство аэропортов
-STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Авиатранспорт - нажмите для получения справки
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Авиатранспорт - нажмите для получения справки
-STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Построить новый авиатранспорт
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Купить новый авиатранспорт
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Перетащите сюда транспорт, чтобы продать его
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Показать ангар в главном окне
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Авиатранспорт - нажмите для получения справки
-STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Построить выделенный авиатранспорт
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Купить выбранный авиатранспорт
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Текущее действие воздушного судна; кликните для его остановки/запуска
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Показать задания
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Показать транспорт в главном окне
@@ -3387,8 +3386,8 @@ STR_HELIDEPOT                                                   :{BLACK}Верт
 STR_HELISTATION                                                 :{BLACK}Вертолётная станция
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Малые аэропорты
-STR_LARGE_AIRPORTS                                              :{BLACK}Большие аэропорты
-STR_HUB_AIRPORTS                                                :{BLACK}Базовые аэропорты
+STR_LARGE_AIRPORTS                                              :{BLACK}Средние аэропорты
+STR_HUB_AIRPORTS                                                :{BLACK}Большие аэропорты
 STR_HELIPORTS                                                   :{BLACK}Вертолётные площадки
 
 ############ Tooltip measurment
@@ -3599,12 +3598,12 @@ STR_STATION_NOISE                                               :{BLACK}Прои
 ############ Downloading of content from the central server
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD собрана без поддержки библиотеки «zlib»...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}...загрузка контента невозможна!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Основная графика
-STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
-STR_CONTENT_TYPE_AI                                             :ИИ
-STR_CONTENT_TYPE_AI_LIBRARY                                     :Библиотека ИИ
-STR_CONTENT_TYPE_SCENARIO                                       :Сценарии
-STR_CONTENT_TYPE_HEIGHTMAP                                      :Высотные карты
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=f}Базовая графика
+STR_CONTENT_TYPE_NEWGRF                                         :{G=m}NewGRF
+STR_CONTENT_TYPE_AI                                             :{G=m}ИИ
+STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}Библиотека ИИ
+STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Сценарий
+STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Карта высот
 STR_CONTENT_TITLE                                               :{WHITE}Загрузка контента
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Тип
 STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Тип контента
@@ -3629,7 +3628,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Буд�
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Этот модуль зависит от другого и будет загружен
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Уже установлен
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Этот модуль неизвестен и не может быть загружен для OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Он заменит уже имеющийся {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Он заменит уже имеющ{G ий ую ее ие}ся {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Наименование: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Версия: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Описание: {WHITE}{STRING}
