@@ -339,10 +339,10 @@ enum BuildDockStationWidgets {
 
 struct BuildDocksStationWindow : public PickerWindowBase {
 public:
-	BuildDocksStationWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
+	BuildDocksStationWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
 	{
+		this->InitNested(desc);
 		this->LowerWidget(_settings_client.gui.station_show_coverage + BDSW_LT_OFF);
-		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual ~BuildDocksStationWindow()
@@ -363,13 +363,15 @@ public:
 		}
 
 		/* strings such as 'Size' and 'Coverage Area' */
-		int top = this->widget[BDSW_LT_OFF].bottom + WD_PAR_VSEP_NORMAL;
-		top = DrawStationCoverageAreaText(this->widget[BDSW_BACKGROUND].left + WD_FRAMERECT_LEFT, this->widget[BDSW_BACKGROUND].right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
-		top = DrawStationCoverageAreaText(this->widget[BDSW_BACKGROUND].left + WD_FRAMERECT_LEFT, this->widget[BDSW_BACKGROUND].right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
-		if (top != this->widget[BDSW_BACKGROUND].bottom) {
-			this->SetDirty();
-			ResizeWindowForWidget(this, BDSW_BACKGROUND, 0, top - this->widget[BDSW_BACKGROUND].bottom);
-			this->SetDirty();
+		int top = this->nested_array[BDSW_LT_OFF]->pos_y + this->nested_array[BDSW_LT_OFF]->current_y + WD_PAR_VSEP_NORMAL;
+		NWidgetCore *back_nwi = this->nested_array[BDSW_BACKGROUND];
+		int right  = back_nwi->pos_x + back_nwi->current_x;
+		int bottom = back_nwi->pos_y + back_nwi->current_y;
+		top = DrawStationCoverageAreaText(back_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
+		top = DrawStationCoverageAreaText(back_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
+		/* Resize background if the text is not equally long as the window. */
+		if (top > bottom || (top < bottom && back_nwi->current_y > back_nwi->smallest_y)) {
+			ResizeWindow(this, 0, top - bottom);
 		}
 	}
 
@@ -393,16 +395,6 @@ public:
 	}
 };
 
-static const Widget _build_dock_station_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_BLACK_CROSS,                       STR_TOOLTIP_CLOSE_WINDOW},                    // BDSW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   147,     0,    13, STR_STATION_BUILD_DOCK_CAPTION,        STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},          // BDSW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,   147,    14,    74, 0x0,                                   STR_NULL},                                    // BDSW_BACKGROUND
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          14,    73,    31,    42, STR_STATION_BUILD_COVERAGE_OFF,        STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP}, // BDSW_LT_OFF
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          74,   133,    31,    42, STR_STATION_BUILD_COVERAGE_ON,         STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP},  // BDSW_LT_ON
-{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,   147,    17,    30, STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL},                                    // BDSW_INFO
-{   WIDGETS_END},
-};
-
 /** Nested widget parts of a build dock station window. */
 static const NWidgetPart _nested_build_dock_station_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -411,12 +403,12 @@ static const NWidgetPart _nested_build_dock_station_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BDSW_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BDSW_INFO), SetMinimalSize(148, 14), SetDataTip( STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BDSW_INFO), SetMinimalSize(148, 14), SetDataTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL),
 		NWidget(NWID_HORIZONTAL), SetPIP(14, 0, 14),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BDSW_LT_OFF), SetMinimalSize(40, 12), SetFill(1, 0), SetDataTip(STR_STATION_BUILD_COVERAGE_OFF, STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, BDSW_LT_ON), SetMinimalSize(40, 12), SetFill(1, 0), SetDataTip(STR_STATION_BUILD_COVERAGE_ON, STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 32),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 20), SetResize(0, 1),
 	EndContainer(),
 };
 
@@ -424,7 +416,7 @@ static const WindowDesc _build_dock_station_desc(
 	WDP_AUTO, WDP_AUTO, 148, 75, 148, 75,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_build_dock_station_widgets, _nested_build_dock_station_widgets, lengthof(_nested_build_dock_station_widgets)
+	NULL, _nested_build_dock_station_widgets, lengthof(_nested_build_dock_station_widgets)
 );
 
 static void ShowBuildDockStationPicker(Window *parent)
