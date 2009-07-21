@@ -766,11 +766,11 @@ struct BuildRailToolbarWindow : Window {
 		this->DisableWidget(RTW_REMOVE);
 		this->InvalidateWidget(RTW_REMOVE);
 
-		DeleteWindowById(WC_BUILD_SIGNAL, 0);
-		DeleteWindowById(WC_BUILD_STATION, 0);
-		DeleteWindowById(WC_BUILD_DEPOT, 0);
+		DeleteWindowById(WC_BUILD_SIGNAL, TRANSPORT_RAIL);
+		DeleteWindowById(WC_BUILD_STATION, TRANSPORT_RAIL);
+		DeleteWindowById(WC_BUILD_DEPOT, TRANSPORT_RAIL);
 		DeleteWindowById(WC_SELECT_STATION, 0);
-		DeleteWindowById(WC_BUILD_BRIDGE, 0);
+		DeleteWindowByClass(WC_BUILD_BRIDGE);
 	}
 
 	virtual void OnPlacePresize(Point pt, TileIndex tile)
@@ -986,7 +986,7 @@ public:
 	BuildRailStationWindow(const WindowDesc *desc, Window *parent, bool newstation) : PickerWindowBase(parent)
 	{
 		this->line_height = FONT_HEIGHT_NORMAL + 4;
-		this->InitNested(desc);
+		this->InitNested(desc, TRANSPORT_RAIL);
 
 		this->LowerWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
 		if (_settings_client.gui.station_dragdrop) {
@@ -1470,7 +1470,7 @@ private:
 	}
 
 public:
-	BuildSignalWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
+	BuildSignalWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent, TRANSPORT_RAIL)
 	{
 		this->FindWindowPlacementAndResize(desc);
 	};
@@ -1639,7 +1639,7 @@ enum BuildRailDepotWidgets {
 };
 
 struct BuildRailDepotWindow : public PickerWindowBase {
-	BuildRailDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
+	BuildRailDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent, TRANSPORT_RAIL)
 	{
 		this->LowerWidget(_build_depot_direction + BRDW_DEPOT_NE);
 		this->FindWindowPlacementAndResize(desc);
@@ -1740,7 +1740,7 @@ enum BuildRailWaypointWidgets {
 };
 
 struct BuildRailWaypointWindow : PickerWindowBase {
-	BuildRailWaypointWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
+	BuildRailWaypointWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent, TRANSPORT_RAIL)
 	{
 		this->hscroll.cap = 5;
 		this->hscroll.count = _waypoint_count;

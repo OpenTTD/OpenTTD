@@ -1198,7 +1198,7 @@ restart:
  *
  * By default position a child window at an offset of 10/10 of its parent.
  * With the exception of WC_BUILD_TOOLBAR (build railway/roads/ship docks/airports)
- * and WC_SCEN_LAND_GEN (landscaping). Whose child window has an offset of 0/36 of
+ * and WC_SCEN_LAND_GEN (landscaping). Whose child window has an offset of 0/toolbar-height of
  * its parent. So it's exactly under the parent toolbar and no buttons will be covered.
  * However if it falls too extremely outside window positions, reposition
  * it to an automatic place.
@@ -1226,7 +1226,7 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int16 sm_width, int
 		if (pt.x > _screen.width + 10 - default_width) {
 			pt.x = (_screen.width + 10 - default_width) - 20;
 		}
-		pt.y = w->top + ((desc->parent_cls == WC_BUILD_TOOLBAR || desc->parent_cls == WC_SCEN_LAND_GEN) ? 36 : 10);
+		pt.y = w->top + ((desc->parent_cls == WC_BUILD_TOOLBAR || desc->parent_cls == WC_SCEN_LAND_GEN) ? w->height : 10);
 	} else {
 		switch (desc->left) {
 			case WDP_ALIGN_TBR: // Align the right side with the top toolbar

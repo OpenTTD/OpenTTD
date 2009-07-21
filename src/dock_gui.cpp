@@ -241,10 +241,10 @@ struct BuildDocksToolbarWindow : Window {
 	{
 		this->RaiseButtons();
 
-		DeleteWindowById(WC_BUILD_STATION, 0);
-		DeleteWindowById(WC_BUILD_DEPOT, 0);
+		DeleteWindowById(WC_BUILD_STATION, TRANSPORT_WATER);
+		DeleteWindowById(WC_BUILD_DEPOT, TRANSPORT_WATER);
 		DeleteWindowById(WC_SELECT_STATION, 0);
-		DeleteWindowById(WC_BUILD_BRIDGE, 0);
+		DeleteWindowByClass(WC_BUILD_BRIDGE);
 	}
 
 	virtual void OnPlacePresize(Point pt, TileIndex tile_from)
@@ -341,7 +341,7 @@ struct BuildDocksStationWindow : public PickerWindowBase {
 public:
 	BuildDocksStationWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
 	{
-		this->InitNested(desc);
+		this->InitNested(desc, TRANSPORT_WATER);
 		this->LowerWidget(_settings_client.gui.station_show_coverage + BDSW_LT_OFF);
 	}
 
@@ -447,7 +447,7 @@ private:
 public:
 	BuildDocksDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
 	{
-		this->InitNested(desc);
+		this->InitNested(desc, TRANSPORT_WATER);
 		this->LowerWidget(_ship_depot_direction + BDDW_X);
 		UpdateDocksDirection();
 	}

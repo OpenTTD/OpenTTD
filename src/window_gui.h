@@ -709,7 +709,7 @@ public:
 class PickerWindowBase : public Window {
 
 public:
-	PickerWindowBase(const WindowDesc *desc, Window *parent) : Window(desc)
+	PickerWindowBase(const WindowDesc *desc, Window *parent, WindowNumber number = 0) : Window(desc, number)
 	{
 		this->parent = parent;
 	};

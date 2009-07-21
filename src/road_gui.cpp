@@ -528,11 +528,11 @@ struct BuildRoadToolbarWindow : Window {
 		this->InvalidateWidget(RTW_REMOVE);
 		this->InvalidateWidget(RTW_ONE_WAY);
 
-		DeleteWindowById(WC_BUS_STATION, 0);
-		DeleteWindowById(WC_TRUCK_STATION, 0);
-		DeleteWindowById(WC_BUILD_DEPOT, 0);
+		DeleteWindowById(WC_BUS_STATION, TRANSPORT_ROAD);
+		DeleteWindowById(WC_TRUCK_STATION, TRANSPORT_ROAD);
+		DeleteWindowById(WC_BUILD_DEPOT, TRANSPORT_ROAD);
 		DeleteWindowById(WC_SELECT_STATION, 0);
-		DeleteWindowById(WC_BUILD_BRIDGE, 0);
+		DeleteWindowByClass(WC_BUILD_BRIDGE);
 	}
 
 	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
@@ -796,7 +796,7 @@ enum BuildRoadDepotWidgets {
 };
 
 struct BuildRoadDepotWindow : public PickerWindowBase {
-	BuildRoadDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
+	BuildRoadDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent, TRANSPORT_ROAD)
 	{
 		this->LowerWidget(_road_depot_orientation + BRDW_DEPOT_NE);
 		if ( _cur_roadtype == ROADTYPE_TRAM) {
@@ -907,7 +907,7 @@ enum BuildRoadStationWidgets {
 };
 
 struct BuildRoadStationWindow : public PickerWindowBase {
-	BuildRoadStationWindow(const WindowDesc *desc, Window *parent, RoadStopType rs) : PickerWindowBase(desc, parent)
+	BuildRoadStationWindow(const WindowDesc *desc, Window *parent, RoadStopType rs) : PickerWindowBase(desc, parent, TRANSPORT_ROAD)
 	{
 		/* Trams don't have non-drivethrough stations */
 		if (_cur_roadtype == ROADTYPE_TRAM && _road_station_picker_orientation < DIAGDIR_END) {

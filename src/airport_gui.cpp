@@ -126,7 +126,7 @@ struct BuildAirToolbarWindow : Window {
 	{
 		this->RaiseButtons();
 
-		DeleteWindowById(WC_BUILD_STATION, 0);
+		DeleteWindowById(WC_BUILD_STATION, TRANSPORT_AIR);
 		DeleteWindowById(WC_SELECT_STATION, 0);
 	}
 };
@@ -202,7 +202,7 @@ enum AirportPickerWidgets {
 
 class AirportPickerWindow : public PickerWindowBase {
 public:
-	AirportPickerWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
+	AirportPickerWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent, TRANSPORT_AIR)
 	{
 		this->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
 		this->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);

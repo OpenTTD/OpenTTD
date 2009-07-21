@@ -118,7 +118,7 @@ private:
 	}
 
 public:
-	BuildBridgeWindow(const WindowDesc *desc, TileIndex start, TileIndex end, uint32 br_type, GUIBridgeList *bl) : Window(desc),
+	BuildBridgeWindow(const WindowDesc *desc, TileIndex start, TileIndex end, uint32 br_type, GUIBridgeList *bl) : Window(desc, GB(br_type, 15, 2)),
 		start_tile(start),
 		end_tile(end),
 		type(br_type),
@@ -308,7 +308,7 @@ static const WindowDesc _build_bridge_desc(
  */
 void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, byte road_rail_type)
 {
-	DeleteWindowById(WC_BUILD_BRIDGE, 0);
+	DeleteWindowByClass(WC_BUILD_BRIDGE);
 
 	/* Data type for the bridge.
 	 * Bit 16,15 = transport type,
