@@ -44,6 +44,21 @@ void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
 	}
 }
 
+void Waypoint::GetTileArea(TileArea *ta, StationType type) const
+{
+	switch (type) {
+		case STATION_BUOY:
+		case STATION_WAYPOINT:
+			break;
+
+		default: NOT_REACHED();
+	}
+
+	ta->tile = this->xy;
+	ta->w    = 1;
+	ta->h    = 1;
+}
+
 Waypoint::~Waypoint()
 {
 	if (CleaningPool()) return;

@@ -32,6 +32,8 @@ struct Waypoint : WaypointPool::PoolItem<&_waypoint_pool>, SpecializedStation<Wa
 
 	/* virtual */ uint32 GetNewGRFVariable(const struct ResolverObject *object, byte variable, byte parameter, bool *available) const;
 
+	/* virtual */ void GetTileArea(TileArea *ta, StationType type) const;
+
 	void AssignStationSpec(uint index);
 
 	/**

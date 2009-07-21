@@ -77,6 +77,13 @@ struct StationRect : public Rect {
 	StationRect& operator = (Rect src);
 };
 
+/** Represents the covered area */
+struct TileArea {
+	TileIndex tile; ///< The base tile of the area
+	uint8 w;        ///< The width of the area
+	uint8 h;        ///< The height of the area
+};
+
 /** Base class for all station-ish types */
 struct BaseStation {
 	TileIndex xy;                   ///< Base tile of the station
@@ -124,6 +131,13 @@ struct BaseStation {
 	 * Update the coordinated of the sign (as shown in the viewport).
 	 */
 	virtual void UpdateVirtCoord() = 0;
+
+	/**
+	 * Get the tile area for a given station type.
+	 * @param ta tile area to fill.
+	 * @param type the type of the area
+	 */
+	virtual void GetTileArea(TileArea *ta, StationType type) const = 0;
 
 	/**
 	 * Get the base station belonging to a specific tile.
@@ -257,6 +271,8 @@ public:
 	}
 
 	/* virtual */ uint32 GetNewGRFVariable(const ResolverObject *object, byte variable, byte parameter, bool *available) const;
+
+	/* virtual */ void GetTileArea(TileArea *ta, StationType type) const;
 
 	/**
 	 * Determines whether a station is a buoy only.

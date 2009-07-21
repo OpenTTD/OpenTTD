@@ -31,6 +31,48 @@ enum {
 	MAX_SPECLIST = 255,
 };
 
+enum TriggerArea {
+	TA_TILE,
+	TA_PLATFORM,
+	TA_WHOLE,
+};
+
+struct ETileArea : TileArea {
+	ETileArea(const BaseStation *st, TileIndex tile, TriggerArea ta)
+	{
+		switch (ta) {
+			default: NOT_REACHED();
+
+			case TA_TILE:
+				this->tile = tile;
+				this->w    = 1;
+				this->h    = 1;
+				break;
+
+			case TA_PLATFORM: {
+				TileIndex start, end;
+				Axis axis = GetRailStationAxis(tile);
+				TileIndexDiff delta = TileOffsByDiagDir(AxisToDiagDir(axis));
+
+				for (end = tile; IsRailwayStationTile(end + delta) && IsCompatibleTrainStationTile(tile, end + delta); end += delta) { /* Nothing */ }
+				for (start = tile; IsRailwayStationTile(start - delta) && IsCompatibleTrainStationTile(tile, start - delta); start -= delta) { /* Nothing */ }
+
+				this->tile = start;
+				this->w = TileX(end) - TileX(start) + 1;
+				this->h = TileY(end) - TileY(start) + 1;
+				break;
+			}
+
+			case TA_WHOLE:
+				st->GetTileArea(this, Station::IsExpected(st) ? STATION_RAIL : STATION_WAYPOINT);
+				this->w++;
+				this->h++;
+				break;
+		}
+	}
+};
+
+
 /**
  * Reset station classes to their default state.
  * This includes initialising the Default and Waypoint classes with an empty
@@ -734,7 +776,7 @@ uint16 GetStationCallback(CallbackID callback, uint32 param1, uint32 param2, con
  * @param exec Whether to actually allocate the spec.
  * @return Index within the Station's spec list, or -1 if the allocation failed.
  */
-int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec)
+int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exec)
 {
 	uint i;
 
@@ -784,17 +826,22 @@ int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec)
  * @param specindex Index of the custom station within the Station's spec list.
  * @return Indicates whether the StationSpec was deallocated.
  */
-void DeallocateSpecFromStation(Station *st, byte specindex)
+void DeallocateSpecFromStation(BaseStation *st, byte specindex)
 {
 	/* specindex of 0 (default) is never freeable */
 	if (specindex == 0) return;
 
+	ETileArea area = ETileArea(st, INVALID_TILE, TA_WHOLE);
 	/* Check all tiles over the station to check if the specindex is still in use */
-	BEGIN_TILE_LOOP(tile, st->trainst_w, st->trainst_h, st->train_tile) {
-		if (IsRailwayStationTile(tile) && GetStationIndex(tile) == st->index && GetCustomStationSpecIndex(tile) == specindex) {
-			return;
+	for (uint y = 0; y < area.h; y++) {
+		for (uint x = 0; x < area.w; x++) {
+			if (st->TileBelongsToRailStation(area.tile) && GetCustomStationSpecIndex(area.tile) == specindex) {
+				return;
+			}
+			area.tile += TileDiffXY(1, 0);
 		}
-	} END_TILE_LOOP(tile, st->trainst_w, st->trainst_h, st->train_tile)
+		area.tile += TileDiffXY(-area.w, 1);
+	}
 
 	/* This specindex is no longer in use, so deallocate it */
 	st->speclist[specindex].spec     = NULL;
@@ -1020,51 +1067,6 @@ static void ChangeStationAnimationFrame(const StationSpec *ss, const BaseStation
 	if (GB(callback, 8, 7) != 0) PlayTileSound(ss->grffile, GB(callback, 8, 7), tile);
 }
 
-enum TriggerArea {
-	TA_TILE,
-	TA_PLATFORM,
-	TA_WHOLE,
-};
-
-struct TileArea {
-	TileIndex tile;
-	uint8 w;
-	uint8 h;
-
-	TileArea(const Station *st, TileIndex tile, TriggerArea ta)
-	{
-		switch (ta) {
-			default: NOT_REACHED();
-
-			case TA_TILE:
-				this->tile = tile;
-				this->w    = 1;
-				this->h    = 1;
-				break;
-
-			case TA_PLATFORM: {
-				TileIndex start, end;
-				Axis axis = GetRailStationAxis(tile);
-				TileIndexDiff delta = TileOffsByDiagDir(AxisToDiagDir(axis));
-
-				for (end = tile; IsRailwayStationTile(end + delta) && IsCompatibleTrainStationTile(tile, end + delta); end += delta) { /* Nothing */ }
-				for (start = tile; IsRailwayStationTile(start - delta) && IsCompatibleTrainStationTile(tile, start - delta); start -= delta) { /* Nothing */ }
-
-				this->tile = start;
-				this->w = TileX(end) - TileX(start) + 1;
-				this->h = TileY(end) - TileY(start) + 1;
-				break;
-			}
-
-			case TA_WHOLE:
-				this->tile = st->train_tile;
-				this->w    = st->trainst_w + 1;
-				this->h    = st->trainst_h + 1;
-				break;
-		}
-	}
-};
-
 void StationAnimationTrigger(const BaseStation *st, TileIndex tile, StatAnimTrigger trigger, CargoID cargo_type)
 {
 	/* List of coverage areas for each animation trigger */
@@ -1080,8 +1082,9 @@ void StationAnimationTrigger(const BaseStation *st, TileIndex tile, StatAnimTrig
 	if (!HasBit(st->cached_anim_triggers, trigger)) return;
 
 	uint16 random_bits = Random();
-	TileArea area = TileArea(Station::From(st), tile, tas[trigger]);
+	ETileArea area = ETileArea(st, tile, tas[trigger]);
 
+	/* Check all tiles over the station to check if the specindex is still in use */
 	for (uint y = 0; y < area.h; y++) {
 		for (uint x = 0; x < area.w; x++) {
 			if (st->TileBelongsToRailStation(area.tile)) {

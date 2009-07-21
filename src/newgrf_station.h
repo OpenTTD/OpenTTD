@@ -136,10 +136,10 @@ SpriteID GetCustomStationGroundRelocation(const StationSpec *statspec, const Bas
 uint16 GetStationCallback(CallbackID callback, uint32 param1, uint32 param2, const StationSpec *statspec, const BaseStation *st, TileIndex tile);
 
 /* Allocate a StationSpec to a Station. This is called once per build operation. */
-int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec);
+int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exec);
 
 /* Deallocate a StationSpec from a Station. Called when removing a single station tile. */
-void DeallocateSpecFromStation(Station *st, byte specindex);
+void DeallocateSpecFromStation(BaseStation *st, byte specindex);
 
 /* Draw representation of a station tile for GUI purposes. */
 bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station);

@@ -368,6 +368,42 @@ static Station *GetClosestDeletedStation(TileIndex tile)
 	return best_station;
 }
 
+
+void Station::GetTileArea(TileArea *ta, StationType type) const
+{
+	switch (type) {
+		case STATION_RAIL:
+			ta->tile = this->train_tile;
+			ta->w    = this->trainst_w;
+			ta->h    = this->trainst_h;
+			return;
+
+		case STATION_AIRPORT:
+			ta->tile = this->airport_tile;
+			ta->w    = this->Airport()->size_x;
+			ta->h    = this->Airport()->size_y;
+
+		case STATION_TRUCK:
+			ta->tile = this->truck_stops != NULL ? this->truck_stops->xy : INVALID_TILE;
+			break;
+
+		case STATION_BUS:
+			ta->tile = this->bus_stops != NULL ? this->bus_stops->xy : INVALID_TILE;
+			break;
+
+		case STATION_DOCK:
+		case STATION_OILRIG:
+		case STATION_BUOY:
+			ta->tile = this->dock_tile;
+			break;
+
+		default: NOT_REACHED();
+	}
+
+	ta->w = 1;
+	ta->h = 1;
+}
+
 /**
  * Update the virtual coords needed to draw the station sign.
  */
