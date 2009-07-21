@@ -1557,6 +1557,10 @@ static void MarkTrainAsStuck(Vehicle *v)
 	if (!HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) {
 		/* It is the first time the problem occured, set the "train stuck" flag. */
 		SetBit(v->u.rail.flags, VRF_TRAIN_STUCK);
+
+		/* When loading the vehicle is already stopped. No need to change that. */
+		if (v->current_order.IsType(OT_LOADING)) return;
+
 		v->load_unload_time_rem = 0;
 
 		/* Stop train */

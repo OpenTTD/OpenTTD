@@ -407,7 +407,7 @@ struct RefitWindow : public Window {
 static const Widget _vehicle_refit_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                            STR_018B_CLOSE_WINDOW},
 	{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   239,     0,    13, STR_983B_REFIT,                      STR_018C_WINDOW_TITLE_DRAG_THIS},
-	{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   239,    14,    27, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, NULL},
+	{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   239,    14,    27, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, STR_NULL},
 
 	{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   227,    28,   139, 0x801,                               STR_EMPTY},
 	{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_GREY,   228,   239,    28,   139, 0x0,                                 STR_0190_SCROLL_BAR_SCROLLS_LIST},
@@ -1882,7 +1882,7 @@ struct VehicleViewWindow : Window {
 			} else { // no train
 				str = STR_8861_STOPPED;
 			}
-		} else if (v->type == VEH_TRAIN && HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) {
+		} else if (v->type == VEH_TRAIN && HasBit(v->u.rail.flags, VRF_TRAIN_STUCK) && !v->current_order.IsType(OT_LOADING)) {
 			str = STR_TRAIN_STUCK;
 		} else { // vehicle is in a "normal" state, show current order
 			switch (v->current_order.GetType()) {

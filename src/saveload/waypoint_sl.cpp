@@ -45,8 +45,8 @@ void FixOldWaypoints()
 	FOR_ALL_WAYPOINTS(wp) {
 		wp->town_index = ClosestTownFromTile(wp->xy, UINT_MAX)->index;
 		wp->town_cn = 0;
-		if (wp->string & 0xC000) {
-			wp->town_cn = wp->string & 0x3F;
+		if ((wp->string & 0xC000) == 0xC000) {
+			wp->town_cn = (wp->string >> 8) & 0x3F;
 			wp->string = STR_NULL;
 		}
 	}
