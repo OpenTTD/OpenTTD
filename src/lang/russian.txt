@@ -2226,15 +2226,6 @@ STR_SV_STNAME_AIRPORT                                           :Аэропор�
 STR_SV_STNAME_OILFIELD                                          :Нефтяная вышка {STRING}
 STR_SV_STNAME_MINES                                             :Шахты {STRING}
 STR_SV_STNAME_DOCKS                                             :Пристань {STRING}
-STR_SV_STNAME_BUOY_1                                            :{STRING} Буй 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Буй 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Буй 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Буй 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Буй 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Буй 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Буй 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Буй 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Буй 9
 STR_SV_STNAME_ANNEXE                                            :{STRING}-дополнительная
 STR_SV_STNAME_SIDINGS                                           :{STRING}-запасная
 STR_SV_STNAME_BRANCH                                            :{STRING}-ветка

@@ -2079,15 +2079,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Airpor
 STR_SV_STNAME_OILFIELD                                          :{STRING} Oilfield
 STR_SV_STNAME_MINES                                             :{STRING} Mines
 STR_SV_STNAME_DOCKS                                             :{STRING} Docks
-STR_SV_STNAME_BUOY_1                                            :{STRING} Buoy 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Buoy 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Buoy 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Buoy 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Buoy 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Buoy 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Buoy 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Buoy 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Buoy 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Annexe
 STR_SV_STNAME_SIDINGS                                           :{STRING} Sidings
 STR_SV_STNAME_BRANCH                                            :{STRING} Branch

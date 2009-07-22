@@ -2077,15 +2077,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING}, lento
 STR_SV_STNAME_OILFIELD                                          :{STRING}, öljykenttä
 STR_SV_STNAME_MINES                                             :{STRING}, kaivokset
 STR_SV_STNAME_DOCKS                                             :{STRING}, satama
-STR_SV_STNAME_BUOY_1                                            :{STRING}, poiju 1
-STR_SV_STNAME_BUOY_2                                            :{STRING}, poiju 2
-STR_SV_STNAME_BUOY_3                                            :{STRING}, poiju 3
-STR_SV_STNAME_BUOY_4                                            :{STRING}, poiju 4
-STR_SV_STNAME_BUOY_5                                            :{STRING}, poiju 5
-STR_SV_STNAME_BUOY_6                                            :{STRING}, poiju 6
-STR_SV_STNAME_BUOY_7                                            :{STRING}, poiju 7
-STR_SV_STNAME_BUOY_8                                            :{STRING}, poiju 8
-STR_SV_STNAME_BUOY_9                                            :{STRING}, poiju 9
 STR_SV_STNAME_ANNEXE                                            :{STRING}, sivuasema
 STR_SV_STNAME_SIDINGS                                           :{STRING}, sivuraide
 STR_SV_STNAME_BRANCH                                            :{STRING}, haarautuma

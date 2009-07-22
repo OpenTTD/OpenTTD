@@ -2081,15 +2081,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Flugv�
 STR_SV_STNAME_OILFIELD                                          :{STRING} Olíulendi
 STR_SV_STNAME_MINES                                             :{STRING} Náma
 STR_SV_STNAME_DOCKS                                             :{STRING} Höfn
-STR_SV_STNAME_BUOY_1                                            :{STRING} Bauja 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Bauja 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Bauja 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Bauja 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Bauja 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Bauja 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Bauja 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Bauja 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Bauja 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Annáll
 STR_SV_STNAME_SIDINGS                                           :{STRING} Hliðrun
 STR_SV_STNAME_BRANCH                                            :{STRING} Grein

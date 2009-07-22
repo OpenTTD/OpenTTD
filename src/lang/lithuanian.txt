@@ -2086,15 +2086,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} oro uo
 STR_SV_STNAME_OILFIELD                                          :{STRING} Naftos Platforma
 STR_SV_STNAME_MINES                                             :{STRING} Kasyklos
 STR_SV_STNAME_DOCKS                                             :{STRING} Dokai
-STR_SV_STNAME_BUOY_1                                            :{STRING} Pluduras 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Pluduras 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Pluduras 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Pluduras 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Pluduras 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Pluduras 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Pluduras 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Pluduras 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Pluduras 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Kreivoji
 STR_SV_STNAME_SIDINGS                                           :{STRING} Apylanka
 STR_SV_STNAME_BRANCH                                            :{STRING} Atsaka

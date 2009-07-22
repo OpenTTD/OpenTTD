@@ -2137,15 +2137,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} lennuv
 STR_SV_STNAME_OILFIELD                                          :{STRING} naftaväli
 STR_SV_STNAME_MINES                                             :{STRING} kaevandused
 STR_SV_STNAME_DOCKS                                             :{STRING} dokid
-STR_SV_STNAME_BUOY_1                                            :{STRING} 1. poi
-STR_SV_STNAME_BUOY_2                                            :{STRING} 2. poi
-STR_SV_STNAME_BUOY_3                                            :{STRING} 3. poi
-STR_SV_STNAME_BUOY_4                                            :{STRING} 4. poi
-STR_SV_STNAME_BUOY_5                                            :{STRING} 5. poi
-STR_SV_STNAME_BUOY_6                                            :{STRING} 6. poi
-STR_SV_STNAME_BUOY_7                                            :{STRING} 7. poi
-STR_SV_STNAME_BUOY_8                                            :{STRING} 8. poi
-STR_SV_STNAME_BUOY_9                                            :{STRING} 9. poi
 STR_SV_STNAME_ANNEXE                                            :{STRING} juurdeehitis
 STR_SV_STNAME_SIDINGS                                           :{STRING} hargnemine
 STR_SV_STNAME_BRANCH                                            :{STRING} filiaal

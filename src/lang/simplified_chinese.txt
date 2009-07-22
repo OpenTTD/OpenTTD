@@ -2077,15 +2077,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} 机场
 STR_SV_STNAME_OILFIELD                                          :{STRING} 油田
 STR_SV_STNAME_MINES                                             :{STRING} 矿
 STR_SV_STNAME_DOCKS                                             :{STRING} 码头
-STR_SV_STNAME_BUOY_1                                            :{STRING} 浮标 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} 浮标 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} 浮标 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} 浮标 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} 浮标 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} 浮标 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} 浮标 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} 浮标 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} 浮标 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} 村
 STR_SV_STNAME_SIDINGS                                           :{STRING} 坝
 STR_SV_STNAME_BRANCH                                            :{STRING} 岔口

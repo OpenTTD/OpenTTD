@@ -2265,15 +2265,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Aerodr
 STR_SV_STNAME_OILFIELD                                          :{STRING} Naftna polja
 STR_SV_STNAME_MINES                                             :{STRING} Rudnici
 STR_SV_STNAME_DOCKS                                             :{STRING} Pristaništa
-STR_SV_STNAME_BUOY_1                                            :{STRING} Plovak 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Plovak 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Plovak 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Plovak 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Plovak 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Plovak 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Plovak 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Plovak 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Plovak 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Dodatna
 STR_SV_STNAME_SIDINGS                                           :{STRING} Skretnica
 STR_SV_STNAME_BRANCH                                            :{STRING} Grana

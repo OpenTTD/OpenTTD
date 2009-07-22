@@ -2136,15 +2136,6 @@ STR_SV_STNAME_AIRPORT                                           :Zračna luka {S
 STR_SV_STNAME_OILFIELD                                          :Naftno polje {STRING}
 STR_SV_STNAME_MINES                                             :Rudnici {STRING}
 STR_SV_STNAME_DOCKS                                             :Pristaništa {STRING}
-STR_SV_STNAME_BUOY_1                                            :{STRING} Plutača 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Plutača 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Plutača 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Plutača 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Plutača 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Plutača 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Plutača 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Plutača 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Plutača 9
 STR_SV_STNAME_ANNEXE                                            :Aneks {STRING}
 STR_SV_STNAME_SIDINGS                                           :{STRING} Krak
 STR_SV_STNAME_BRANCH                                            :Ogranak {STRING}

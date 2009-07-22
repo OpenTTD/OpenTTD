@@ -2056,15 +2056,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} נמל
 STR_SV_STNAME_OILFIELD                                          :{STRING} שדה הנפט
 STR_SV_STNAME_MINES                                             :{STRING} מכרות
 STR_SV_STNAME_DOCKS                                             :{STRING} רציפי
-STR_SV_STNAME_BUOY_1                                            :{STRING} מצוף 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} מצוף 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} מצוף 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} מצוף 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} מצוף 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} מצוף 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} מצוף 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} מצוף 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} מצוף 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} תחנת מפגש
 STR_SV_STNAME_SIDINGS                                           :{STRING} תחנת מסיעי
 STR_SV_STNAME_BRANCH                                            :{STRING} תחנת מובילי

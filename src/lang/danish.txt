@@ -2077,15 +2077,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Luftha
 STR_SV_STNAME_OILFIELD                                          :{STRING} Oliefelt
 STR_SV_STNAME_MINES                                             :{STRING} Miner
 STR_SV_STNAME_DOCKS                                             :{STRING} Havn
-STR_SV_STNAME_BUOY_1                                            :{STRING} Bøje 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Bøje 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Bøje 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Bøje 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Bøje 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Bøje 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Bøje 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Bøje 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Bøje 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Forstad
 STR_SV_STNAME_SIDINGS                                           :{STRING} Sidespor
 STR_SV_STNAME_BRANCH                                            :{STRING} Torv

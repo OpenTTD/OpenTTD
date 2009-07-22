@@ -2080,15 +2080,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} 機場
 STR_SV_STNAME_OILFIELD                                          :{STRING} 油田
 STR_SV_STNAME_MINES                                             :{STRING} 礦場
 STR_SV_STNAME_DOCKS                                             :{STRING} 碼頭
-STR_SV_STNAME_BUOY_1                                            :{STRING} 一號浮標
-STR_SV_STNAME_BUOY_2                                            :{STRING} 二號浮標
-STR_SV_STNAME_BUOY_3                                            :{STRING} 三號浮標
-STR_SV_STNAME_BUOY_4                                            :{STRING} 四號浮標
-STR_SV_STNAME_BUOY_5                                            :{STRING} 五號浮標
-STR_SV_STNAME_BUOY_6                                            :{STRING} 六號浮標
-STR_SV_STNAME_BUOY_7                                            :{STRING} 七號浮標
-STR_SV_STNAME_BUOY_8                                            :{STRING} 八號浮標
-STR_SV_STNAME_BUOY_9                                            :{STRING} 九號浮標
 STR_SV_STNAME_ANNEXE                                            :{STRING} 輔助站
 STR_SV_STNAME_SIDINGS                                           :{STRING} 側站
 STR_SV_STNAME_BRANCH                                            :{STRING} 分站

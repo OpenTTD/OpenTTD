@@ -2071,15 +2071,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} flypla
 STR_SV_STNAME_OILFIELD                                          :{STRING} oljefelt
 STR_SV_STNAME_MINES                                             :{STRING} gruvestasjon
 STR_SV_STNAME_DOCKS                                             :{STRING} hamn
-STR_SV_STNAME_BUOY_1                                            :{STRING} bøye 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} bøye 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} bøye 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} bøye 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} bøye 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} bøye 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} bøye 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} bøye 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} bøye 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} anneks
 STR_SV_STNAME_SIDINGS                                           :{STRING}vegen
 STR_SV_STNAME_BRANCH                                            :{STRING} grein

@@ -2048,15 +2048,6 @@ STR_SV_STNAME_AIRPORT                                           :Aeroporto de {S
 STR_SV_STNAME_OILFIELD                                          :{STRING} Campo de petróleo
 STR_SV_STNAME_MINES                                             :{STRING} Minas
 STR_SV_STNAME_DOCKS                                             :Peirao de {STRING}
-STR_SV_STNAME_BUOY_1                                            :{STRING} Boia 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Boia 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Boia 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Boia 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Boia 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Boia 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Boia 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Boia 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Boia 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Anexo
 STR_SV_STNAME_SIDINGS                                           :{STRING} Apartadeiro
 STR_SV_STNAME_BRANCH                                            :{STRING} Rama

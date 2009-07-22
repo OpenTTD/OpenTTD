@@ -2014,15 +2014,6 @@ STR_SV_STNAME_AIRPORT                                           :Flughaveno de {
 STR_SV_STNAME_OILFIELD                                          :Olefonto de {STRING}
 STR_SV_STNAME_MINES                                             :Minejo de {STRING}
 STR_SV_STNAME_DOCKS                                             :Haveno de {STRING}
-STR_SV_STNAME_BUOY_1                                            :{STRING} Buo 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Buo 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Buo 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Buo 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Buo 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Buo 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Buo 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Buo 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Buo 9
 STR_SV_STNAME_ANNEXE                                            :Ekstera {STRING}
 STR_SV_STNAME_SIDINGS                                           :Flanka {STRING}
 STR_SV_STNAME_BRANCH                                            :Branĉa {STRING}

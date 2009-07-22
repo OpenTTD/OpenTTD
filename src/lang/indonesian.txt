@@ -2080,15 +2080,6 @@ STR_SV_STNAME_AIRPORT                                           :Bandara {STRING
 STR_SV_STNAME_OILFIELD                                          :{STRING} Kota minyak
 STR_SV_STNAME_MINES                                             :Tambang {STRING}
 STR_SV_STNAME_DOCKS                                             :Pelabuhan {STRING}
-STR_SV_STNAME_BUOY_1                                            :Rambu Pelampung {STRING} 1
-STR_SV_STNAME_BUOY_2                                            :Rambu Pelampung {STRING} 2
-STR_SV_STNAME_BUOY_3                                            :Rambu Pelampung {STRING} 3
-STR_SV_STNAME_BUOY_4                                            :Rambu Pelampung {STRING} 4
-STR_SV_STNAME_BUOY_5                                            :Rambu Pelampung {STRING} 5
-STR_SV_STNAME_BUOY_6                                            :Rambu Pelampung {STRING} 6
-STR_SV_STNAME_BUOY_7                                            :Rambu Pelampung {STRING} 7
-STR_SV_STNAME_BUOY_8                                            :Rambu Pelampung {STRING} 8
-STR_SV_STNAME_BUOY_9                                            :Rambu Pelampung {STRING} 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Tenggara
 STR_SV_STNAME_SIDINGS                                           :Simpang {STRING}
 STR_SV_STNAME_BRANCH                                            :{STRING} Baru

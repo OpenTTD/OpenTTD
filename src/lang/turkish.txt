@@ -2080,15 +2080,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Havali
 STR_SV_STNAME_OILFIELD                                          :{STRING} Kuyusu
 STR_SV_STNAME_MINES                                             :{STRING} Madeni
 STR_SV_STNAME_DOCKS                                             :{STRING} İskelesi
-STR_SV_STNAME_BUOY_1                                            :{STRING} Şamandıra 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Şamandıra 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Şamandıra 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Şamandıra 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Şamandıra 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Şamandıra 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Şamandıra 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Şamandıra 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Şamandıra 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Eklemesi
 STR_SV_STNAME_SIDINGS                                           :{STRING} Kenarı
 STR_SV_STNAME_BRANCH                                            :{STRING} Kolu

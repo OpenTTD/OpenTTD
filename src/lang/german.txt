@@ -2078,15 +2078,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Flugha
 STR_SV_STNAME_OILFIELD                                          :{STRING} Ölfeld
 STR_SV_STNAME_MINES                                             :{STRING} Mine
 STR_SV_STNAME_DOCKS                                             :{STRING} Hafen
-STR_SV_STNAME_BUOY_1                                            :{STRING} Boje 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Boje 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Boje 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Boje 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Boje 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Boje 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Boje 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Boje 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Boje 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Anbau
 STR_SV_STNAME_SIDINGS                                           :{STRING} Nebengleis
 STR_SV_STNAME_BRANCH                                            :{STRING} Zweig

@@ -2078,15 +2078,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING}er Flug
 STR_SV_STNAME_OILFIELD                                          :{STRING}er Uelegfeld
 STR_SV_STNAME_MINES                                             :{STRING}er Minnen
 STR_SV_STNAME_DOCKS                                             :{STRING} Hafen
-STR_SV_STNAME_BUOY_1                                            :{STRING} Boje 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Boje 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Boje 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Boje 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Boje 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Boje 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Boje 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Boje 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Boje 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Annexe
 STR_SV_STNAME_SIDINGS                                           :{STRING}er Oofstellplaatz
 STR_SV_STNAME_BRANCH                                            :{STRING}er Oofzweigung

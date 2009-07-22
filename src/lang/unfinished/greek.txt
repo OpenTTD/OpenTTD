@@ -1856,7 +1856,6 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...εί�
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 
-STR_SV_STNAME_BUOY_9                                            :{STRING} Σημαδούρα 9
 STR_SV_STNAME_UPPER                                             :Άνω {STRING}
 STR_SV_STNAME_LOWER                                             :Κάτω {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Ελικοδρόμιο

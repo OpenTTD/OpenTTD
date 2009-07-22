@@ -2080,15 +2080,6 @@ STR_SV_STNAME_AIRPORT                                           :مطار {STRIN
 STR_SV_STNAME_OILFIELD                                          :{STRING} النفطية
 STR_SV_STNAME_MINES                                             :مناجم {STRING}
 STR_SV_STNAME_DOCKS                                             :مرفئ {STRING}
-STR_SV_STNAME_BUOY_1                                            :عوامة 1  {STRING}
-STR_SV_STNAME_BUOY_2                                            :عوامة 2 {STRING}
-STR_SV_STNAME_BUOY_3                                            :{STRING} العوامة 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} العوامة 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} العوامة 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} العوامة 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} العوامة 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} العوامة 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} العوامة 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} ملحق
 STR_SV_STNAME_SIDINGS                                           :{STRING} تحويلات
 STR_SV_STNAME_BRANCH                                            :{STRING} متفرع

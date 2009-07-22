@@ -2148,15 +2148,6 @@ STR_SV_STNAME_AIRPORT                                           :Letiště {STRI
 STR_SV_STNAME_OILFIELD                                          :Ropná plošina {STRING}
 STR_SV_STNAME_MINES                                             :{STRING} doly
 STR_SV_STNAME_DOCKS                                             :Přístav {STRING}
-STR_SV_STNAME_BUOY_1                                            :{STRING} bójka 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} bójka 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} bójka 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} bójka 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} bójka 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} bójka 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} bójka 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} bójka 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} bójka 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} přípojné
 STR_SV_STNAME_SIDINGS                                           :{STRING} odstavné
 STR_SV_STNAME_BRANCH                                            :{STRING} odbočka

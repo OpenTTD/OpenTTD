@@ -2080,15 +2080,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Aeropo
 STR_SV_STNAME_OILFIELD                                          :{STRING} Camp de Petroli
 STR_SV_STNAME_MINES                                             :{STRING} Mines
 STR_SV_STNAME_DOCKS                                             :{STRING} Port
-STR_SV_STNAME_BUOY_1                                            :{STRING} Boia 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Boia 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Boia 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Boia 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Boia 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Boia 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Boia 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Boia 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Boia 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Annex
 STR_SV_STNAME_SIDINGS                                           :{STRING} Via Morta
 STR_SV_STNAME_BRANCH                                            :{STRING} Bifurcació

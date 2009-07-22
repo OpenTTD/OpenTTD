@@ -2077,15 +2077,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Vliegv
 STR_SV_STNAME_OILFIELD                                          :{STRING} Olieveld
 STR_SV_STNAME_MINES                                             :{STRING} Mijnen
 STR_SV_STNAME_DOCKS                                             :{STRING} Haven
-STR_SV_STNAME_BUOY_1                                            :{STRING} Boei 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Boei 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Boei 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Boei 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Boei 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Boei 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Boei 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Boei 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Boei 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Bijbouw
 STR_SV_STNAME_SIDINGS                                           :{STRING} Zijspoor
 STR_SV_STNAME_BRANCH                                            :{STRING} Aftakking

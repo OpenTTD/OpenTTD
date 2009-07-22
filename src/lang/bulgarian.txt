@@ -2055,15 +2055,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Лет
 STR_SV_STNAME_OILFIELD                                          :{STRING} Нефтено поле
 STR_SV_STNAME_MINES                                             :{STRING} Мини
 STR_SV_STNAME_DOCKS                                             :{STRING} Докове
-STR_SV_STNAME_BUOY_1                                            :{STRING} Шамандура 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Шамандура 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Шамандура 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Шамандура 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Шамандура 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Шамандура 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Шамандура 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Шамандура 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Шамандура 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Пристройка
 STR_SV_STNAME_SIDINGS                                           :{STRING} Обшивки
 STR_SV_STNAME_BRANCH                                            :{STRING} Клон

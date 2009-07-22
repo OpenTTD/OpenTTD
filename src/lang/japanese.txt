@@ -2057,15 +2057,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING}空港
 STR_SV_STNAME_OILFIELD                                          :{STRING}油田
 STR_SV_STNAME_MINES                                             :{STRING}山
 STR_SV_STNAME_DOCKS                                             :{STRING}埠頭
-STR_SV_STNAME_BUOY_1                                            :{STRING}ブイ1号
-STR_SV_STNAME_BUOY_2                                            :{STRING}ブイ2号
-STR_SV_STNAME_BUOY_3                                            :{STRING}ブイ3号
-STR_SV_STNAME_BUOY_4                                            :{STRING}ブイ4号
-STR_SV_STNAME_BUOY_5                                            :{STRING}ブイ5号
-STR_SV_STNAME_BUOY_6                                            :{STRING}ブイ6号
-STR_SV_STNAME_BUOY_7                                            :{STRING}ブイ7号
-STR_SV_STNAME_BUOY_8                                            :{STRING}ブイ8号
-STR_SV_STNAME_BUOY_9                                            :{STRING}ブイ9号
 STR_SV_STNAME_ANNEXE                                            :新{STRING}
 STR_SV_STNAME_SIDINGS                                           :{STRING}里
 STR_SV_STNAME_BRANCH                                            :{STRING}寺

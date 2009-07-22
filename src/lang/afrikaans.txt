@@ -2038,15 +2038,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Lughaw
 STR_SV_STNAME_OILFIELD                                          :{STRING} Olieveld
 STR_SV_STNAME_MINES                                             :{STRING} Myne
 STR_SV_STNAME_DOCKS                                             :{STRING} Werfe
-STR_SV_STNAME_BUOY_1                                            :{STRING} Baken 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Baken 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Baken 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Baken 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Baken 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Baken 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Baken 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Baken 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Baken 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Anneks
 STR_SV_STNAME_SIDINGS                                           :{STRING} Wisselspoore
 STR_SV_STNAME_BRANCH                                            :{STRING} Tak

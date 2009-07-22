@@ -2081,15 +2081,6 @@ STR_SV_STNAME_AIRPORT                                           :Aeroporto de {S
 STR_SV_STNAME_OILFIELD                                          :Petrolífera de {STRING}
 STR_SV_STNAME_MINES                                             :Minas de {STRING}
 STR_SV_STNAME_DOCKS                                             :Docas de {STRING}
-STR_SV_STNAME_BUOY_1                                            :Bóia 1 de {STRING}
-STR_SV_STNAME_BUOY_2                                            :Bóia 2 de {STRING}
-STR_SV_STNAME_BUOY_3                                            :Bóia 3 de {STRING}
-STR_SV_STNAME_BUOY_4                                            :Bóia 4 de {STRING}
-STR_SV_STNAME_BUOY_5                                            :Bóia 5 de {STRING}
-STR_SV_STNAME_BUOY_6                                            :Bóia 6 de {STRING}
-STR_SV_STNAME_BUOY_7                                            :Bóia 7 de {STRING}
-STR_SV_STNAME_BUOY_8                                            :Bóia 8 de {STRING}
-STR_SV_STNAME_BUOY_9                                            :Bóia 9 de {STRING}
 STR_SV_STNAME_ANNEXE                                            :Anexo de {STRING}
 STR_SV_STNAME_SIDINGS                                           :Desvio de {STRING}
 STR_SV_STNAME_BRANCH                                            :Ramal de {STRING}

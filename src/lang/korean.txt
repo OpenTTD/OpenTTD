@@ -2078,15 +2078,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING}
 STR_SV_STNAME_OILFIELD                                          :{STRING} 유전
 STR_SV_STNAME_MINES                                             :{STRING} 광산
 STR_SV_STNAME_DOCKS                                             :{STRING}항
-STR_SV_STNAME_BUOY_1                                            :{STRING} 부이 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} 부이 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} 부이 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} 부이 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} 부이 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} 부이 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} 부이 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} 부이 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} 부이 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} 별관
 STR_SV_STNAME_SIDINGS                                           :{STRING} 측선
 STR_SV_STNAME_BRANCH                                            :{STRING} 지선

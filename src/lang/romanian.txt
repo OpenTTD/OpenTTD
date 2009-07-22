@@ -2080,15 +2080,6 @@ STR_SV_STNAME_AIRPORT                                           :Aeroportul {STR
 STR_SV_STNAME_OILFIELD                                          :Platforma {STRING}
 STR_SV_STNAME_MINES                                             :Minele {STRING}
 STR_SV_STNAME_DOCKS                                             :Portul {STRING}
-STR_SV_STNAME_BUOY_1                                            :{STRING} Balizã 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Balizã 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Balizã 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Balizã 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Balizã 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Balizã 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Balizã 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Balizã 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Balizã 9
 STR_SV_STNAME_ANNEXE                                            :Anexa {STRING}
 STR_SV_STNAME_SIDINGS                                           :{STRING} Belvedere
 STR_SV_STNAME_BRANCH                                            :Ramura {STRING}

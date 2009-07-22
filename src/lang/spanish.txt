@@ -2081,15 +2081,6 @@ STR_SV_STNAME_AIRPORT                                           :Aeropuerto de {
 STR_SV_STNAME_OILFIELD                                          :Campo petrolífero de {STRING}
 STR_SV_STNAME_MINES                                             :Minas de {STRING}
 STR_SV_STNAME_DOCKS                                             :Muelles de {STRING}
-STR_SV_STNAME_BUOY_1                                            :{STRING} Boya 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Boya 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Boya 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Boya 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Boya 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Boya 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Boya 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Boya 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Boya 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Anexo
 STR_SV_STNAME_SIDINGS                                           :Proximidades de {STRING}
 STR_SV_STNAME_BRANCH                                            :Ramal de {STRING}

@@ -2148,15 +2148,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING}i rept�
 STR_SV_STNAME_OILFIELD                                          :{STRING}i olajmező
 STR_SV_STNAME_MINES                                             :{STRING}i bánya
 STR_SV_STNAME_DOCKS                                             :{STRING}i kikötő
-STR_SV_STNAME_BUOY_1                                            :{STRING}i bója 1
-STR_SV_STNAME_BUOY_2                                            :{STRING}i bója 2
-STR_SV_STNAME_BUOY_3                                            :{STRING}i bója 3
-STR_SV_STNAME_BUOY_4                                            :{STRING}i bója 4
-STR_SV_STNAME_BUOY_5                                            :{STRING}i bója 5
-STR_SV_STNAME_BUOY_6                                            :{STRING}i bója 6
-STR_SV_STNAME_BUOY_7                                            :{STRING}i bója 7
-STR_SV_STNAME_BUOY_8                                            :{STRING}i bója 8
-STR_SV_STNAME_BUOY_9                                            :{STRING}i bója 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} mellék
 STR_SV_STNAME_SIDINGS                                           :{STRING}i rakodó
 STR_SV_STNAME_BRANCH                                            :{STRING} mellékág

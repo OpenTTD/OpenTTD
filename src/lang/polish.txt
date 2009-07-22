@@ -2489,15 +2489,6 @@ STR_SV_STNAME_AIRPORT                                           :Lotnisko {STRIN
 STR_SV_STNAME_OILFIELD                                          :{STRING} Platforma Wiertnicza
 STR_SV_STNAME_MINES                                             :{STRING} Kopalnia
 STR_SV_STNAME_DOCKS                                             :{STRING} Port
-STR_SV_STNAME_BUOY_1                                            :{STRING} Boja 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Boja 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Boja 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Boja 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Boja 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Boja 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Boja 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Boja 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Boja 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Pawilon
 STR_SV_STNAME_SIDINGS                                           :{STRING} Bocznica
 STR_SV_STNAME_BRANCH                                            :{STRING} Rozjazd

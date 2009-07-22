@@ -2079,15 +2079,6 @@ STR_SV_STNAME_AIRPORT                                           :Aeroporto di {S
 STR_SV_STNAME_OILFIELD                                          :Pozzi di {STRING}
 STR_SV_STNAME_MINES                                             :{STRING} Miniere
 STR_SV_STNAME_DOCKS                                             :Porto di {STRING}
-STR_SV_STNAME_BUOY_1                                            :Boa 1 di {STRING}
-STR_SV_STNAME_BUOY_2                                            :Boa 2 di {STRING}
-STR_SV_STNAME_BUOY_3                                            :Boa 3 di {STRING}
-STR_SV_STNAME_BUOY_4                                            :Boa 4 di {STRING}
-STR_SV_STNAME_BUOY_5                                            :Boa 5 di {STRING}
-STR_SV_STNAME_BUOY_6                                            :Boa 6 di {STRING}
-STR_SV_STNAME_BUOY_7                                            :Boa 7 di {STRING}
-STR_SV_STNAME_BUOY_8                                            :Boa 8 di {STRING}
-STR_SV_STNAME_BUOY_9                                            :Boa 9 di {STRING}
 STR_SV_STNAME_ANNEXE                                            :{STRING} Distaccata
 STR_SV_STNAME_SIDINGS                                           :{STRING} Raccordo
 STR_SV_STNAME_BRANCH                                            :{STRING} Ramificata

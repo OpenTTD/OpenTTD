@@ -2080,15 +2080,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} flygpl
 STR_SV_STNAME_OILFIELD                                          :{STRING} oljefält
 STR_SV_STNAME_MINES                                             :{STRING} gruva
 STR_SV_STNAME_DOCKS                                             :{STRING} Kaj
-STR_SV_STNAME_BUOY_1                                            :{STRING} boj 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} boj 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} boj 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} boj 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} boj 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} boj 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} boj 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} boj 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} boj 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} annex
 STR_SV_STNAME_SIDINGS                                           :{STRING} förort
 STR_SV_STNAME_BRANCH                                            :{STRING} förgrening

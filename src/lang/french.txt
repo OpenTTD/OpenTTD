@@ -2078,15 +2078,6 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Aérop
 STR_SV_STNAME_OILFIELD                                          :{STRING} Gisement pétrolifère
 STR_SV_STNAME_MINES                                             :{STRING} Mines
 STR_SV_STNAME_DOCKS                                             :{STRING} Docks
-STR_SV_STNAME_BUOY_1                                            :{STRING} Bouée 1
-STR_SV_STNAME_BUOY_2                                            :{STRING} Bouée 2
-STR_SV_STNAME_BUOY_3                                            :{STRING} Bouée 3
-STR_SV_STNAME_BUOY_4                                            :{STRING} Bouée 4
-STR_SV_STNAME_BUOY_5                                            :{STRING} Bouée 5
-STR_SV_STNAME_BUOY_6                                            :{STRING} Bouée 6
-STR_SV_STNAME_BUOY_7                                            :{STRING} Bouée 7
-STR_SV_STNAME_BUOY_8                                            :{STRING} Bouée 8
-STR_SV_STNAME_BUOY_9                                            :{STRING} Bouée 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Annexe
 STR_SV_STNAME_SIDINGS                                           :{STRING} Voies de garage
 STR_SV_STNAME_BRANCH                                            :{STRING} Embranchement
