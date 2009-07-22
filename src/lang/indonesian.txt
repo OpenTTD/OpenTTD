@@ -345,13 +345,13 @@ STR_SORT_BY_FACILITY                                            :Tipe Stasiun
 STR_SORT_BY_WAITING                                             :Nilai tunggu kargo
 STR_SORT_BY_RATING_MAX                                          :Rating kargo tertinggi
 STR_SORT_BY_RATING_MIN                                          :Rating kargo terendah
-STR_ENGINE_SORT_ENGINE_ID                                       :IDMesin (klasik)
-STR_ENGINE_SORT_COST                                            :Biaya
-STR_ENGINE_SORT_POWER                                           :Daya
-STR_ENGINE_SORT_INTRO_DATE                                      :Tanggal Peluncuran
-STR_ENGINE_SORT_RUNNING_COST                                    :Biaya Operasional
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Daya/Biaya Ops.
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapasitas kargo
+STR_SORT_BY_ENGINE_ID                                           :IDMesin (klasik)
+STR_SORT_BY_COST                                                :Biaya
+STR_SORT_BY_POWER                                               :Daya
+STR_SORT_BY_INTRO_DATE                                          :Tanggal Peluncuran
+STR_SORT_BY_RUNNING_COST                                        :Biaya Operasional
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Daya/Biaya Ops.
+STR_SORT_BY_CARGO_CAPACITY                                      :Kapasitas kargo
 STR_NO_WAITING_CARGO                                            :{BLACK}Tidak ada barang yang sedang menunggu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Pilih semua fasilitas
 STR_SELECT_ALL_TYPES                                            :{BLACK}Pilih semua jenis kargo (termasuk kargo tanpa jeda)
@@ -949,7 +949,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Order k
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :hampir selesai
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :tengah
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :jauh di belakang
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Bus/truk bisa mengantri (dengan efek kuantum): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Bus/truk bisa mengantri (dengan efek kuantum): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Geser tampilan saat mouse ada di tepi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Ijinkan kolusi pada penguasa setempat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Ijinkan pembelian hak ekslusif pengelolaan transportasi: {ORANGE}{STRING}
@@ -1055,12 +1055,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Kelompo
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Tampilkan toolbar meski kendaraan belum tersedia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maks. kereta tiap pemain: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Maks. bus/truk tiap pemain: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maks. bus/truk tiap pemain: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maks. pesawat tiap pemain: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maks. kapal tiap pemain: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Non-aktifkan kereta bagi pemain komputer: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Non-aktifkan bus/truk bagi pemain komputer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Non-aktifkan bus/truk bagi pemain komputer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Non-aktifkan pesawat bagi pemain komputer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Non-aktifkan kapal bagi pemain komputer: {ORANGE}{STRING}
 
@@ -1070,8 +1070,8 @@ STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcode
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Jangka waktu servis dalam persen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard jangka servis berkala kereta: {ORANGE}{STRING} hari/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard jangka servis berkala untuk kereta: {ORANGE}Non-aktif
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Standard jangka servis berkala bus/truk: {ORANGE}{STRING} hari/%
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Standard jangka servis berkala bus/truk: {ORANGE}Non-aktif
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Standard jangka servis berkala bus/truk: {ORANGE}{STRING} hari/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Standard jangka servis berkala bus/truk: {ORANGE}Non-aktif
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Standard jangka servis berkala pesawat: {ORANGE}{STRING} hari/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standard jangka servis berkala pesawat: {ORANGE}Non-aktif
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Standard jangka servis berkala kapal: {ORANGE}{STRING} hari/%
@@ -1146,10 +1146,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pencari
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :{RED}(Tidak direkomendasikan)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recommended)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Pencari jejak untuk bus/truk: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Orisinil {RED}(Tdk dianjurkan)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Dianjurkan)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Pencari jejak untuk bus/truk: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :Orisinil {RED}(Tdk dianjurkan)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Dianjurkan)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pencari jejak untuk kapal : {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orisinil {BLUE}(Dianjurkan)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2059,7 +2059,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...anda 
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Tanpa nama
 STR_SV_TRAIN_NAME                                               :Kereta Api {COMMA}
-STR_SV_ROADVEH_NAME                                             :Bus/truk {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Bus/truk {COMMA}
 STR_SV_SHIP_NAME                                                :Kapal {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Pesawat {COMMA}
 
@@ -2179,12 +2179,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruksi
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Beli Kendaraan Baru
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Biaya Ops. Kereta Api
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Biaya Ops. Bus/truk
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Biaya Ops. Bus/truk
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Biaya Ops. Pesawat
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Biaya Ops. Kapal Laut
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Perawatan Properti
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Pendapatan Kereta Api
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Pendapatan Bus/truk
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Pendapatan Bus/truk
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Pendapatan Pesawat
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Pendapatan Kapal
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Bunga Pinjaman
@@ -2324,7 +2324,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Trem Barang
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Tampilkan skema warna umum
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Tampilkan skema warna kereta api
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Tampilkan skema warna bus/truk
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}Tampilkan skema warna bus/truk
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Tampilkan skema warna kapal
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Tampilkan skema warna pesawat
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Pilih warna utama untuk skema terpilih
@@ -2448,94 +2448,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Gerbong Mainan
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Gerbong Baterai
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Gerbong Minuman berdesis
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Gerbong Plastik
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :Bus MPS Regal
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Bus Hereford Leopard
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Bus Foster
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Superbus Foster MkII
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Bus Ploddyphut MkI
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :Bus Ploddyphut MkII
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Bus Ploddyphut MkIII
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Truk Batubara Balogh
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Truk Batubara Uhl
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :Truk Batubara DW
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :Truk Dokumen MPS
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Truk Dokumen Reynard
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Truk Dokumen Perry
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :Truk Dokumen MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :Truk Dokumen Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :Truk Dokumen Wizzowow
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Truk Tangki minyak Witcombe
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Truk Tangki minyak Foster
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Truk Tangki minyak Perry
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Truk Ternak Talbott
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Truk Ternak Uhl
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Truk Ternak Foster
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Truk Barang Balogh
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Truk Barang Craighead
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Truk Barang Goss
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Truk Gandum Hereford
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Truk Gandum Thomas
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Truk Gandum Goss
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Truk Kayu Witcombe
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Truk Kayu Foster
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Truk Kayu Moreland
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :Truk Bijih Besi MPS
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Truk Bijih Besi Uhl
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Truk Bijih Besi Chippy
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Truk Baja Balogh
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Truk Baja Uhl
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Truk Baja Kelling
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Truk Berlapis baja Balogh
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Truk Berlapis baja Uhl
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Truk Berlapis baja Foster
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Truk Makanan Foster
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Truk Makanan Perry
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Truk Makanan Chippy
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Truk Kertas Uhl
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Truk Kertas Balogh
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :Truk Kertas MPS
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :Truk Bijih Tembaga MPS
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Truk Bijih Tembaga Uhl
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Truk Bijih Tembaga Goss
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Truk Tangki Air Uhl
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Tangki Air Balogh
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :Truk Tangki Air MPS
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Truk Buah Balogh
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Truk Buah Uhl
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Truk Buah Keling
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Truk Karet Balogh
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Truk Karet Uhl
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :Truk Karet RMT
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :Truk Gula MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Truk Gula Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Truk Gula Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :Truk Cola MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Truk Cola Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Truk Cola Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :Truk Harum Manis MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :Truk Harum Manis Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Truk Harum Manis Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :Truk Toffee MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :Truk Toffee Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :Truk Toffee Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :Truk Mainan MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Truk Mainan Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Truk Mainan Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :Truk Manisan MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Truk Manisan Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Truk Manisan Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :Truk Baterai MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Truk Baterai Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :Truk Baterai Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :Truk Minuman berdesis MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :Truk Minuman berdesis Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :Truk Minuman berdesis Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :Truk Plastik MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :Truk Plastik Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :Truk Plastik Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :Truk Gelembung MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :Truk Gelembung Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :Truk Gelembung Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :Bus MPS Regal
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Bus Hereford Leopard
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Bus Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Superbus Foster MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Bus Ploddyphut MkI
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Bus Ploddyphut MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Bus Ploddyphut MkIII
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Truk Batubara Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Truk Batubara Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :Truk Batubara DW
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :Truk Dokumen MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Truk Dokumen Reynard
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Truk Dokumen Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :Truk Dokumen MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Truk Dokumen Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Truk Dokumen Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Truk Tangki minyak Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Truk Tangki minyak Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Truk Tangki minyak Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Truk Ternak Talbott
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Truk Ternak Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Truk Ternak Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Truk Barang Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Truk Barang Craighead
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Truk Barang Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Truk Gandum Hereford
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Truk Gandum Thomas
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Truk Gandum Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Truk Kayu Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Truk Kayu Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Truk Kayu Moreland
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :Truk Bijih Besi MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Truk Bijih Besi Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Truk Bijih Besi Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Truk Baja Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Truk Baja Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Truk Baja Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Truk Berlapis baja Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Truk Berlapis baja Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Truk Berlapis baja Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Truk Makanan Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Truk Makanan Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Truk Makanan Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Truk Kertas Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Truk Kertas Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :Truk Kertas MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :Truk Bijih Tembaga MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Truk Bijih Tembaga Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Truk Bijih Tembaga Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Truk Tangki Air Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Tangki Air Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :Truk Tangki Air MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Truk Buah Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Truk Buah Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Truk Buah Keling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Truk Karet Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Truk Karet Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :Truk Karet RMT
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :Truk Gula MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Truk Gula Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Truk Gula Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :Truk Cola MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Truk Cola Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Truk Cola Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Truk Harum Manis MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Truk Harum Manis Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Truk Harum Manis Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Truk Toffee MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Truk Toffee Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Truk Toffee Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Truk Mainan MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Truk Mainan Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Truk Mainan Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Truk Manisan MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Truk Manisan Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Truk Manisan Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Truk Baterai MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Truk Baterai Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Truk Baterai Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Truk Minuman berdesis MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Truk Minuman berdesis Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Truk Minuman berdesis Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Truk Plastik MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Truk Plastik Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Truk Plastik Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :Truk Gelembung MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Truk Gelembung Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Truk Gelembung Wizzowow
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Kapal Tanker Minyak MPS
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Kapal Tanker Minyak CS-Inc
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Ferry Penumpang MPS
@@ -2649,7 +2649,7 @@ STR_ORDER_NEAREST_HANGAR                                        :Hangar terdekat
 STR_ORDER_SERVICE_AT                                            :Perbaikkan di
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Perbaikkan non-stop di
 STR_ORDER_TRAIN_DEPOT                                           :Depo Kereta
-STR_ORDER_ROAD_DEPOT                                            :Bengkel Bus/truk
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Bengkel Bus/truk
 STR_ORDER_SHIP_DEPOT                                            :Galangan Kapal
 STR_GO_TO_DEPOT                                                 :{0:STRING} {2:STRING} {1:TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{0:STRING} {2:STRING} {1:STRING}
@@ -2760,7 +2760,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}kendaraa
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Tidak dapat memindahkan kendaraan...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Bagian belakang mesin akan selalu mengikuti bagian depannya
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}Tidak dapat menjual kendaraan...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Tidak dapat menjual kendaraan...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Tidak menemukan rute menuju depo terdekat
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Tidak dapat menghentikan/menjalankan kereta...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Jangka waktu servis: {LTBLUE}{COMMA} hari{BLACK}   Servis terakhir: {LTBLUE}{DATE_LONG}
@@ -2854,35 +2854,35 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi jadw
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Bus/truk sedang berjalan
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Bus/truk
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Bengkel Bus/truk
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Kendaraan Baru
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Bus/truk Baru
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Membuat Kendaraan
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Bus/truk
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Bengkel Bus/truk
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Kendaraan Baru
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Bus/truk Baru
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Membuat Kendaraan
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Tidak dapat membuat bus/truk...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...harus dihentikan didalam bengkel bus/truk
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...harus dihentikan didalam bengkel bus/truk
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Tidak dapat menjual kendaraan...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Tidak dapat menghentikan/menjalankan kendaraan...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} sedang menunggu di bengkel
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Menuju ke bengkel {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Menuju ke Bengkel {TOWN}, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servis di Bengkel {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servis di Bengkel {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Menuju ke bengkel {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Menuju ke Bengkel {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Servis di Bengkel {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Servis di Bengkel {TOWN}, {VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Tidak dapat mengirim kendaraan ke garasi...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Tidak dapat menemukan garasi terdekat
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Bus/truk - klik pada kendaraan untuk menampilkan informasi
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Kegiatan kendaraan saat ini - klik disini untuk menghentikan / menjalankan kendaraan
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Tampilkan perintah kendaraan
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Arahkan pandangan pada lokasi kendaraan
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Kirim kendaraan ke garasi. CTRL + klik hanya akan memerintahkan servis
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Paksa kendaraan untuk berbalik arah
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Tampilkan detail bus/truk
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Kendaraan - klik pada kendaraan untuk informasi
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Membuat bus/truk baru
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Drag kendaraan ke sini untuk menjualnya
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Arahkan pandangan pada lokasi garasi bus/truk
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Daftar pilihan bus/truk - klik pada kendaraan untuk menampilkan informasi
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Membuat bus/truk yang dipilih
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Bus/truk - klik pada kendaraan untuk menampilkan informasi
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Kegiatan kendaraan saat ini - klik disini untuk menghentikan / menjalankan kendaraan
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Tampilkan perintah kendaraan
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Arahkan pandangan pada lokasi kendaraan
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Kirim kendaraan ke garasi. CTRL + klik hanya akan memerintahkan servis
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Paksa kendaraan untuk berbalik arah
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Tampilkan detail bus/truk
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kendaraan - klik pada kendaraan untuk informasi
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Membuat bus/truk baru
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Drag kendaraan ke sini untuk menjualnya
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Arahkan pandangan pada lokasi garasi bus/truk
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Daftar pilihan bus/truk - klik pada kendaraan untuk menampilkan informasi
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Membuat bus/truk yang dipilih
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasitas: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2892,12 +2892,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nama kendaraan
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Tidak dapat menamai kendaraan...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nama kendaraan
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Bus pertama tiba di {STATION}!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Truk pertama tiba di {STATION}!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Trem Penumpang pertama tiba di {STATION}!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Trem Barang pertama tiba di {STATION}!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Terjadi tabrakan!{}Seorang sopir meninggal dalam ledakan setelah ditabrak kereta
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Terjadi tabrakan!{}{COMMA} orang meninggal dalam ledakan setelah ditabrak kereta
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Bus pertama tiba di {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Truk pertama tiba di {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Trem Penumpang pertama tiba di {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Trem Barang pertama tiba di {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Terjadi tabrakan!{}Seorang sopir meninggal dalam ledakan setelah ditabrak kereta
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Terjadi tabrakan!{}{COMMA} orang meninggal dalam ledakan setelah ditabrak kereta
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Tidak dapat memutar kendaraan...
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Ganti Nama
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Ganti nama jenis bus/truk
@@ -3192,17 +3192,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Anda ak
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Jenis depo salah
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Jual kereta di depo
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Jual bus/truk di bengkel
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}Jual bus/truk di bengkel
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Jual kapal di galangan
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Jual pesawat di hangar
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Mendaftar semua kereta dengan depo ini beserta perintahnya.
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Mendaftar semua bus/truk dari bengkel ini beserta perintahnya.
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}Mendaftar semua bus/truk dari bengkel ini beserta perintahnya.
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Mendaftar semua kapal dari galangan ini beserta perintah.
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Mendaftar semua Pesawat dari hangar ini beserta perintah.
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Penggantian secara otomatis semua kereta di dalam depo
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Penggantian secara otomatis semua bus/truk di dalam bengkel
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Penggantian secara otomatis semua bus/truk di dalam bengkel
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Penggantian secara otomatis semua kapal di dalam galangan
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Penggantian secara otomatis semua Pesawat di dalam hangar
 
@@ -3231,12 +3231,12 @@ STR_ENGINES                                                     :Lokomotif
 STR_WAGONS                                                      :Gerbong
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Klik untuk menghentikan semua kereta di dalam depo
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Klik untuk menghentikan semua bus/truk di dalam bengkel
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}Klik untuk menghentikan semua bus/truk di dalam bengkel
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Klik untuk menghentikan semua kapal di dalam galangan
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Klik untuk menghentikan semua Pesawat di dalam hangar
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Klik untuk menjalankan semua kereta di dalam depo
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Klik untuk menjalankan semua bus/truk di dalam bengkel
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}Klik untuk menjalankan semua bus/truk di dalam bengkel
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Klik untuk menjalankan semua kapal di dalam galangan
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Klik untuk menjalankan semua Pesawat di dalam hangar
 
@@ -3410,11 +3410,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 STR_FORMAT_GROUP_NAME                                           :Kelompok {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Semua Kereta
-STR_GROUP_ALL_ROADS                                             :Semua Bus/truk
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Semua Bus/truk
 STR_GROUP_ALL_SHIPS                                             :Semua Kapal
 STR_GROUP_ALL_AIRCRAFTS                                         :Semua Pesawat
 STR_GROUP_DEFAULT_TRAINS                                        :Kereta tanpa kelompok
-STR_GROUP_DEFAULT_ROADS                                         :Bus/truk tanpa kelompok
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Bus/truk tanpa kelompok
 STR_GROUP_DEFAULT_SHIPS                                         :Kapal tanpa kelompok
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Pesawat tanpa kelompok
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

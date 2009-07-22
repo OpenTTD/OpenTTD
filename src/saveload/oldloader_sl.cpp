@@ -1347,12 +1347,12 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 
 			switch (_old_string_id) {
 				case 0x0000: break; // empty (invalid vehicles)
-				case 0x0006: _old_string_id  = STR_SV_EMPTY;         break; // empty (special vehicles)
-				case 0x8495: _old_string_id  = STR_SV_TRAIN_NAME;    break; // "Train X"
-				case 0x8842: _old_string_id  = STR_SV_ROADVEH_NAME;  break; // "Road Vehicle X"
-				case 0x8C3B: _old_string_id  = STR_SV_SHIP_NAME;     break; // "Ship X"
-				case 0x9047: _old_string_id  = STR_SV_AIRCRAFT_NAME; break; // "Aircraft X"
-				default:     _old_string_id += 0x2A00;               break; // custom name
+				case 0x0006: _old_string_id  = STR_SV_EMPTY;              break; // empty (special vehicles)
+				case 0x8495: _old_string_id  = STR_SV_TRAIN_NAME;         break; // "Train X"
+				case 0x8842: _old_string_id  = STR_SV_ROAD_VEHICLE_NAME;  break; // "Road Vehicle X"
+				case 0x8C3B: _old_string_id  = STR_SV_SHIP_NAME;          break; // "Ship X"
+				case 0x9047: _old_string_id  = STR_SV_AIRCRAFT_NAME;      break; // "Aircraft X"
+				default:     _old_string_id += 0x2A00;                    break; // custom name
 			}
 
 			_old_vehicle_names[_current_vehicle_id] = _old_string_id;

@@ -344,13 +344,13 @@ STR_SORT_BY_LENGTH                                              :Lonxitude
 STR_SORT_BY_LIFE_TIME                                           :Tempo de vida restante
 STR_SORT_BY_FACILITY                                            :Tipo de estación
 STR_SORT_BY_WAITING                                             :Valor da carga en espera
-STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (ordeación clásica)
-STR_ENGINE_SORT_COST                                            :Custo
-STR_ENGINE_SORT_POWER                                           :Potencia
-STR_ENGINE_SORT_INTRO_DATE                                      :Data de Presentación
-STR_ENGINE_SORT_RUNNING_COST                                    :Custo Mantemento
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potencia/Custo Mantemento
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidade De Carga
+STR_SORT_BY_ENGINE_ID                                           :EngineID (ordeación clásica)
+STR_SORT_BY_COST                                                :Custo
+STR_SORT_BY_POWER                                               :Potencia
+STR_SORT_BY_INTRO_DATE                                          :Data de Presentación
+STR_SORT_BY_RUNNING_COST                                        :Custo Mantemento
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potencia/Custo Mantemento
+STR_SORT_BY_CARGO_CAPACITY                                      :Capacidade De Carga
 STR_NO_WAITING_CARGO                                            :{BLACK}Non queda ningún tipo de carga en espera
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar tódolos edificios
 STR_SELECT_ALL_TYPES                                            :{BLACK}Seleccionar tódolos tipos de carga (incluso os que non están a esperar)
@@ -938,7 +938,7 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Mostra-
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}As novas ordes son 'sen parada' por defecto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :final cercano
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :medio
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Cola para vehículos de estrada (con efectos cuánticos): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Cola para vehículos de estrada (con efectos cuánticos): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Desplaza-la fiestra cando o ratón esté no borde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permiti-la chantaxe as autoridades locales: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permiti-la compra de dereitos de transporte exclusivos: {ORANGE}{STRING}
@@ -1037,12 +1037,12 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Mostra-
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Mostra-las ferramentas de construción cando non haxa vehículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Nº máximo de trens por xogador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Nº máximo de vehículos de estrada por xogador: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Nº máximo de vehículos de estrada por xogador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Nº máximo de avións por xogador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Nº máximo de barcos por xogador: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Deshabilita-los trens para o ordenador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Deshabilita-los vehículos de estrada para o ordenador: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Deshabilita-los vehículos de estrada para o ordenador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Deshabilita-los avións para o ordenador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Deshabilita-los barcos para o ordenador: {ORANGE}{STRING}
 
@@ -1051,8 +1051,8 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permiti
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervalos de servizo en porcentaxes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de servizo para os trens: {ORANGE}{STRING} días/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de servizo para os trens: {ORANGE}deshabilitado
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Intervalo de servizo para os vehículos de estrada: {ORANGE}{STRING} días/%
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Intervalo de servizo para os vehículos de estrada: {ORANGE}deshabilitado
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalo de servizo para os vehículos de estrada: {ORANGE}{STRING} días/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Intervalo de servizo para os vehículos de estrada: {ORANGE}deshabilitado
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalo de servizo para os avións: {ORANGE}{STRING} días/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalo de servizo para os avións: {ORANGE}deshabilitado
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalo de servizo para os barcos: {ORANGE}{STRING} días/%
@@ -1121,10 +1121,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Buscado
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Non recomendado)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recomendado)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Buscador de ruta para vehículos de estrada: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Orixinal {RED}(Non recomendado)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Recomendado)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Buscador de ruta para vehículos de estrada: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :Orixinal {RED}(Non recomendado)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Recomendado)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Buscador de ruta para barcos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orixinal {BLUE}(Recomendado)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2027,7 +2027,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...¡xa 
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sen Nome
 STR_SV_TRAIN_NAME                                               :Tren {COMMA}
-STR_SV_ROADVEH_NAME                                             :Vehículo de estrada {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Vehículo de estrada {COMMA}
 STR_SV_SHIP_NAME                                                :Barco {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Aeronave {COMMA}
 
@@ -2146,12 +2146,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construción
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Novos Vehículos
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Mantemento dos Trens
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Mantemento dos Vehículos
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Mantemento dos Vehículos
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Mantemendo das Aeronaves
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Mantemento dos Barcos
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Mantemento das Propiedades
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Ingresos dos Trens
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Ingresos dos Vehículos
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Ingresos dos Vehículos
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Ingresos das Aeronaves
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Ingresos dos Barcos
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Interese do Préstamo
@@ -2289,7 +2289,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tranvía de Car
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Mostra-los esquemas de cor xerais
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Mostra-los esquemas de cor dos trens
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Mostra-los esquemas de cor dos vehículos de estrada
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}Mostra-los esquemas de cor dos vehículos de estrada
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Mostra-los esquemas de cor dos barcos
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Mostra-los esquemas de cor dos avións
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Elixe a cor primaria para o esquema seleccionado
@@ -2413,94 +2413,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Furgón de Xogu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Vagón de Pilas
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Vagón de Bebidas Gaseosas
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Vagón de Plástico
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :Autobús Regal MPS
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Autobús Leopard Hereford
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Autobús Foster
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Superautobús Foster MkII
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Autobús Ploddyphut MkI
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :Autobús Ploddyphut MkII
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Autobús Ploddyphut MkIII
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Camión de Carbón Balogh
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Camión de Carbón Uhl
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :Camión de Carbón DW
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :Camión de Correo MPS
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Camión de Correo Reynard
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Camión de Correo Perry
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :Camión de Correo MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :Camión de Correo Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :Camión de Correo Wizzowow
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Tanque de Petróleo Witcombe
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Tanque de Petróleo Foster
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Tanque de Petróleo Perry
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Furgón de Gando Talbott
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Furgón de Gando Uhl
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Furgón de Gando Foster
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Camión de Mercadorías Balogh
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Camión de Mercadorías Craighead
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Camión de Mercadorías Goss
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Camión de Gran Hereford
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Camión de Gran Thomas
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Camión de Gran Goss
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Camión de Madeira Witcombe
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Camión de Madeira Foster
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Camión de Madeira Moreland
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :Camión de Hematita MPS
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Camión de Hematita Uhl
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Camión de Hematita Chippy
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Camión de Aceiro Balogh
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Camión de Aceiro Uhl
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Camión de Aceiro Kelling
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Camión Blindado Balogh
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Camión Blindado Uhl
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Camión Blindado Foster
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Furgón de Comida Foster
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Furgón de Comida Perry
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Furgón de Comida Chippy
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Camión de Papel Uhl
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Camión de Papel Balogh
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :Camión de Papel MPS
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :Camión de Mineral de Cobre MPS
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Camión de Mineral de Cobre Uhl
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Camión de Mineral de Cobre Goss
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Tanque de Auga Uhl
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Tanque de Auga Balogh
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :Tanque de Auga MPS
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Camión de Froita Balogh
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Camión de Froita Uhl
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Camión de Froita Kelling
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Camión de Caucho Balogh
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Camión de Caucho Uhl
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :Camión de Caucho RMT
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :Camión de Azucre MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Camión de Azucre Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Camión de Azucre Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :Camión de Cola MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Camión de Cola Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Camión de Cola Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :Camión Algodón de Azucre MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :Cam. de Algodón de Azucre Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Camión de Algodón de Azucre Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :Camión de Tofee MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :Camión de Tofee Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :Camión de Tofee Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :Furgón de Xoguetes MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Furgón de Xoguetes Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Furgón de Xoguetes Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :Cam. de Caramelos MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Camión de Caramelos Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Camión de Caramelos Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :Camión de Pilas MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Camión de Pilas Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :Camión de Pilas Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :Cam. de Bebidas Gaseosas MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :Cam. de Bebidas Gaseosas Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :Cam. de Bebidas Gaseosas Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :Camión de Plástico MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :Camión de Plástico Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :Camión de Plástico Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :Camión de Burbullas MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :Camión de Burbullas Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :Camión de Burbullas Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :Autobús Regal MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Autobús Leopard Hereford
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Autobús Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Superautobús Foster MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Autobús Ploddyphut MkI
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Autobús Ploddyphut MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Autobús Ploddyphut MkIII
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Camión de Carbón Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Camión de Carbón Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :Camión de Carbón DW
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :Camión de Correo MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Camión de Correo Reynard
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Camión de Correo Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :Camión de Correo MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Camión de Correo Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Camión de Correo Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Tanque de Petróleo Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Tanque de Petróleo Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Tanque de Petróleo Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Furgón de Gando Talbott
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Furgón de Gando Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Furgón de Gando Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Camión de Mercadorías Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Camión de Mercadorías Craighead
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Camión de Mercadorías Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Camión de Gran Hereford
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Camión de Gran Thomas
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Camión de Gran Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Camión de Madeira Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Camión de Madeira Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Camión de Madeira Moreland
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :Camión de Hematita MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Camión de Hematita Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Camión de Hematita Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Camión de Aceiro Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Camión de Aceiro Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Camión de Aceiro Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Camión Blindado Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Camión Blindado Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Camión Blindado Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Furgón de Comida Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Furgón de Comida Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Furgón de Comida Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Camión de Papel Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Camión de Papel Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :Camión de Papel MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :Camión de Mineral de Cobre MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Camión de Mineral de Cobre Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Camión de Mineral de Cobre Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Tanque de Auga Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Tanque de Auga Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :Tanque de Auga MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Camión de Froita Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Camión de Froita Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Camión de Froita Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Camión de Caucho Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Camión de Caucho Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :Camión de Caucho RMT
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :Camión de Azucre MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Camión de Azucre Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Camión de Azucre Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :Camión de Cola MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Camión de Cola Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Camión de Cola Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Camión Algodón de Azucre MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Cam. de Algodón de Azucre Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Camión de Algodón de Azucre Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Camión de Tofee MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Camión de Tofee Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Camión de Tofee Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Furgón de Xoguetes MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Furgón de Xoguetes Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Furgón de Xoguetes Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Cam. de Caramelos MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Camión de Caramelos Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Camión de Caramelos Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Camión de Pilas MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Camión de Pilas Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Camión de Pilas Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Cam. de Bebidas Gaseosas MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Cam. de Bebidas Gaseosas Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Cam. de Bebidas Gaseosas Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Camión de Plástico MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Camión de Plástico Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Camión de Plástico Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :Camión de Burbullas MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Camión de Burbullas Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Camión de Burbullas Wizzowow
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Petroleiro MPS
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Petroleíro CS-Inc.
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Barca de Pasaxeiros MPS
@@ -2611,7 +2611,7 @@ STR_ORDER_NEAREST_HANGAR                                        :o Hangar máis 
 STR_ORDER_SERVICE_AT                                            :Servizo en
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Servizo sen parada en
 STR_ORDER_TRAIN_DEPOT                                           :Depósito de Trens
-STR_ORDER_ROAD_DEPOT                                            :Depósito de Vehículos de Estrada
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depósito de Vehículos de Estrada
 STR_ORDER_SHIP_DEPOT                                            :Depósito de Barcos
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2719,7 +2719,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}un vehí
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}No se pode move-lo vehículo...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}A máquina traseira sempre seguirá a dianteira
 STR_CARGO_N_A                                                   :N/D{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}Non se pode vende-lo vehículo de ferrocarril...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Non se pode vende-lo vehículo de ferrocarril...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}No se pode atopar unha ruta a un depósito local
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}No se pode parar/iniciar o tren...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de Servizo: {LTBLUE}{COMMA}days{BLACK}   Último Servizo: {LTBLUE}{DATE_LONG}
@@ -2812,33 +2812,33 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Enche-lo
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Haí un vehículo de estrada no camiño
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}Depósito de Vehículos de Estrada de {TOWN}
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Novos Vehículos
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Novos Vehículos de Estrada
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Construír Vehículo
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}Depósito de Vehículos de Estrada de {TOWN}
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Novos Vehículos
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Novos Vehículos de Estrada
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Construír Vehículo
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}No se pode construí-lo vehículo de estrada...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...debe estar parado dentro dun depósito de vehículos de estrada
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...debe estar parado dentro dun depósito de vehículos de estrada
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Non se pode vende-lo vehículo de estrada...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}No se pode parar/arrancar o vehículo de estrada...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} está a esperar no depósito
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Diríxese o depósito de {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Diríxese o depósito de {TOWN}, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servizo no Depósito de {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servizo no Depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Diríxese o depósito de {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Diríxese o depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Servizo no Depósito de {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Servizo no Depósito de {TOWN}, {VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Non se pode envia-lo vehículo ó depósito de estrada...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}No se pode atopar unha ruta ó depósito local
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Tarefa actual do vehículo - pincha aquí para parar/arrancar o vehículo
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Mostra-las ordes do vehículo
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Centra-la vista principal na situación do vehículo
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Envia-lo vehículo ó depósito
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Forza-lo vehículo a da-la volta
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostra-los detalles do vehículo de estrada
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Vehículos - pincha nun vehículo para máis información
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Construír vehículo de estrada
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Arrastra un vehículo de estrada aquí para vendelo
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Centra-la vista principal na situación do depósito de vehículos de estrada
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Lista de selección de vehículos de estrada - pincha nun vehículo para máis información
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Construí-lo vehículo de estrada seleccionado
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Tarefa actual do vehículo - pincha aquí para parar/arrancar o vehículo
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Mostra-las ordes do vehículo
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centra-la vista principal na situación do vehículo
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envia-lo vehículo ó depósito
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forza-lo vehículo a da-la volta
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostra-los detalles do vehículo de estrada
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehículos - pincha nun vehículo para máis información
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Construír vehículo de estrada
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arrastra un vehículo de estrada aquí para vendelo
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra-la vista principal na situación do depósito de vehículos de estrada
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Lista de selección de vehículos de estrada - pincha nun vehículo para máis información
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Construí-lo vehículo de estrada seleccionado
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacidade: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2848,12 +2848,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Renomear vehículo de estrada
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Non se pode renomea-lo vehículo de estrada...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Renomear vehículo de estrada
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Celebración cidadá . . .{}¡Chega o primeiro autobús a {STATION}!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Celebración cidadá . . .{}¡Chega o primeiro camión a {STATION}!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Celebración cidadá . . .{}¡Chega o primeiro tranvía de pasaxeiros a {STATION}!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Celebración cidadá . . .{}¡Chega o primeiro tranvía de carga a {STATION}!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}¡Accidente de Tráfico!{}O conductor morre na explosión producida tra-la colisión cun tren
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}¡Accidente de Tráfico!{}{COMMA} mortos na explosión producida tra-la colisión cun tren
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Celebración cidadá . . .{}¡Chega o primeiro autobús a {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Celebración cidadá . . .{}¡Chega o primeiro camión a {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Celebración cidadá . . .{}¡Chega o primeiro tranvía de pasaxeiros a {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Celebración cidadá . . .{}¡Chega o primeiro tranvía de carga a {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}¡Accidente de Tráfico!{}O conductor morre na explosión producida tra-la colisión cun tren
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}¡Accidente de Tráfico!{}{COMMA} mortos na explosión producida tra-la colisión cun tren
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Non se pode xira-lo vehículo...
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Renomear
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Renomea-lo tipo de vehículo de estrada
@@ -3130,12 +3130,12 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 ############ Vehicle lists
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trens - pincha nun tren para información
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Vehículos de estrada - pincha nun vehículo para máis información
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Vehículos de estrada - pincha nun vehículo para máis información
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Barcos - pincha no barco para máis información
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Avións - pincha no avión para máis información
 
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tren{P "" s}
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Vehículo{P "" s} de Estrada
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Vehículo{P "" s} de Estrada
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Barco{P "" s}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aeronave
 
@@ -3147,17 +3147,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vas ven
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Tipo de depósito erróneo
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender tódolos trens do depósito
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vender tódolos vehículos que hai no depósito
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}Vender tódolos vehículos que hai no depósito
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vender tódolos barcos no depósito
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vender tódolos avións do hangar
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Obter a lista de tódolos trens co depósito actual nas súas ordes
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Obter a lista de tódolos vehículos de estrada co depósito actual nas súas ordes
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}Obter a lista de tódolos vehículos de estrada co depósito actual nas súas ordes
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Obter a lista de tódolos barcos co depósito actual nas súas ordes
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Obter una lista de tódolos avións con algún hangar deste aeroporto nas súas ordes
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autosubstituír tódolos trens no depósito
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autosubstituír tódolos vehículos no depósito
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Autosubstituír tódolos vehículos no depósito
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autosubstituír tódolos barcos no depósito
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autosubstituír tódolos avións no hangar
 
@@ -3185,12 +3185,12 @@ STR_ENGINES                                                     :Máquinas
 STR_WAGONS                                                      :Vagóns
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Pincha para parar tódolos trens que hai no depósito
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Pincha para parar tódolos vehículos que hai no depósito
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}Pincha para parar tódolos vehículos que hai no depósito
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Pincha para parar tódolos barcos que hai no depósito
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Pincha para parar tódolos avións que hai no hangar
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Pincha para iniciar tódolos trens que hai no depósito
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Pincha para iniciar tódolos vehículos que hai no depósito
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}Pincha para iniciar tódolos vehículos que hai no depósito
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Pincha para iniciar tódolos barcos que hai no depósito
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Pincha para iniciar tódolos avións que hai no hangar
 
@@ -3352,11 +3352,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 ##### Mass Order
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Tódolos trens
-STR_GROUP_ALL_ROADS                                             :Tódolos vehículos de estrada
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Tódolos vehículos de estrada
 STR_GROUP_ALL_SHIPS                                             :Tódolos barcos
 STR_GROUP_ALL_AIRCRAFTS                                         :Tódolos avións
 STR_GROUP_DEFAULT_TRAINS                                        :Trens sen agrupar
-STR_GROUP_DEFAULT_ROADS                                         :Vehículos de estrada sen agrupar
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Vehículos de estrada sen agrupar
 STR_GROUP_DEFAULT_SHIPS                                         :Barcos sen agrupar
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Avións sen agrupar
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

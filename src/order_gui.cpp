@@ -229,12 +229,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 					SetDParam(3, Depot::Get(order->GetDestination())->town_index);
 				}
 
-				switch (v->type) {
-					case VEH_TRAIN: SetDParam(4, STR_ORDER_TRAIN_DEPOT); break;
-					case VEH_ROAD:  SetDParam(4, STR_ORDER_ROAD_DEPOT); break;
-					case VEH_SHIP:  SetDParam(4, STR_ORDER_SHIP_DEPOT); break;
-					default: NOT_REACHED();
-				}
+				SetDParam(4, STR_ORDER_TRAIN_DEPOT + v->type);
 			}
 
 			if (order->GetDepotOrderType() & ODTFB_SERVICE) {

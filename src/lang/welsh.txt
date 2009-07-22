@@ -345,13 +345,13 @@ STR_SORT_BY_FACILITY                                            :Math Gorsaf
 STR_SORT_BY_WAITING                                             :Gwerth y cargo sy'n Disgwyl
 STR_SORT_BY_RATING_MAX                                          :Uchaf amcangrif cargo
 STR_SORT_BY_RATING_MIN                                          :Isaf amcangrif cargo
-STR_ENGINE_SORT_ENGINE_ID                                       :ID Injan (math clasurol)
-STR_ENGINE_SORT_COST                                            :Côst
-STR_ENGINE_SORT_POWER                                           :Pŵer
-STR_ENGINE_SORT_INTRO_DATE                                      :Dyddiad Cyflwyno
-STR_ENGINE_SORT_RUNNING_COST                                    :Côst Rhedeg
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Côst Pŵer/Rhedeg
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Gallu cludo Llwyth
+STR_SORT_BY_ENGINE_ID                                           :ID Injan (math clasurol)
+STR_SORT_BY_COST                                                :Côst
+STR_SORT_BY_POWER                                               :Pŵer
+STR_SORT_BY_INTRO_DATE                                          :Dyddiad Cyflwyno
+STR_SORT_BY_RUNNING_COST                                        :Côst Rhedeg
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Côst Pŵer/Rhedeg
+STR_SORT_BY_CARGO_CAPACITY                                      :Gallu cludo Llwyth
 STR_NO_WAITING_CARGO                                            :{BLACK}Nid oes llwyth o unrhyw fath yn disgwyl
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Dewis pob cyfleuster
 STR_SELECT_ALL_TYPES                                            :{BLACK}Dewis pob math llwyth (gan gynnwys llwythi dim aros)
@@ -946,7 +946,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Cyweiro
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :ochr agos
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :canol
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ochr hir
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Ciwio cerbydau ffordd (gyda effeithiau cwantwm): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Ciwio cerbydau ffordd (gyda effeithiau cwantwm): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Tremio'r ffenestr pan fydd y llygoden ar ymyl y sgrin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Caniatáu llwgrwobrwyo'r awdurdod lleol: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Caniatáu prynu hawliau cludo unigryw: {ORANGE}{STRING}
@@ -1052,12 +1052,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grwpio 
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Dangos offer adeiladu pan na fydd cerbydau addas ar gael: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Uchafswm trenau y chwaraewr: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Uchafswm cerbyd ffordd y chwaraewr: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Uchafswm cerbyd ffordd y chwaraewr: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Uchafswm awyren y chwaraewr: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Uchafswm llongau y chwaraewr: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Analluogi trenau ar gyfer y cyfrifiadur: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Analluogi cerbyd ffordd ar gyfer y cyfrifiadur: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Analluogi cerbyd ffordd ar gyfer y cyfrifiadur: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Analluogi awyren ar gyfer y cyfrifiadur: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Analluogi llongau ar gyfer y cyfrifiadur: {ORANGE}{STRING}
 
@@ -1067,8 +1067,8 @@ STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcode
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Dangos y cyfnod rhwng gwasanaethau mewn canrannau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer trenau: {ORANGE}{STRING} days/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer trenau: {ORANGE}disabled
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer cerbyd ffordd: {ORANGE}{STRING} days/%
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer cerbyd ffordd: {ORANGE}disabled
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer cerbyd ffordd: {ORANGE}{STRING} days/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer cerbyd ffordd: {ORANGE}disabled
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer awyren: {ORANGE}{STRING} days/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer awyren: {ORANGE}disabled
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer llongau: {ORANGE}{STRING} days/%
@@ -1143,10 +1143,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Llwybrw
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ni argymhellir)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Argymellir)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Llwybrwr ar gyfer cerbydau ffordd: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Gwreiddiol{RED}(Ni argymellir)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Argymhelliad)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Llwybrwr ar gyfer cerbydau ffordd: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :Gwreiddiol{RED}(Ni argymellir)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Argymhelliad)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Llwybrwr ar gyfer llongau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Gwreiddiol{BLUE}(Argymhelliad)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2056,7 +2056,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...rydyc
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Dienw
 STR_SV_TRAIN_NAME                                               :Trên {COMMA}
-STR_SV_ROADVEH_NAME                                             :Cerbyd Ffordd {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Cerbyd Ffordd {COMMA}
 STR_SV_SHIP_NAME                                                :Llong {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Awyren {COMMA}
 
@@ -2175,12 +2175,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Adeiladu
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Cerbydau Newydd
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Côst Rhedeg Trenau
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Côst Rhedeg Cerbydau Ffordd
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Côst Rhedeg Cerbydau Ffordd
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Côst Rhedeg Awyrennau
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Côst Rhedeg Llongau
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Cynnal Eiddo
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Incwm Trenau
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Incwm Cerbydau Ffordd
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Incwm Cerbydau Ffordd
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Incwm Awyrennau
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Incwm Llongau
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Llog y Benthyciad
@@ -2319,7 +2319,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tram Nwyddau
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Dangos cynllun lliw cyffredinol
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Dangos cynllun lliw trenau
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Dangos cynllun lliw cerbydau ffordd
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}Dangos cynllun lliw cerbydau ffordd
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Dangos cynllun lliw llongau
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Dangos cynllun lliw awyrennau
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Dewiswch brif lliw y cynllun sydd wedi'i ddewis
@@ -2443,94 +2443,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Cerbyd Teganau
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Cerbyd Batrïau
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Cerbyd Diodydd Pefriog
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Cerbyd Plastig
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :MPS Regal Bws
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Bws Hereford Leopard
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Bws Foster
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Hyperfws Foster MkII
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Bws Ploddyphut MkI
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :BwsPloddyphut MkII
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Bws Ploddyphut MkIII
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Cerbyd Glo Balogh
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Cerbyd Glo Uhl
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :Cerbyd Glo DW
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :Cerbyd Post MPS
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Cerbyd Post Reynard
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Cerbyd Post Perry
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :Cerbyd Post MightySymudr
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :Cerbyd Post Pwernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :Cerbyd PostWizzowow
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Tancer Olew Witcombe
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Tancer Olew Foster
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Tancer Olew Perry
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Cerbyd Da Byw Talbott
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Cerbyd Da Byw Uhl
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Cerbyd Da Byw Foster
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Cerbyd Nwyddau Balogh
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Cerbyd Nwyddau Craighead
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Cerbyd Nwyddau Goss
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Cerbyd Grawn Hereford
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Cerbyd Grawn Thomas
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Cerbyd Grawn Goss
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Cerbyd Coed Witcombe
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Cerbyd Coed Foster
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Cerbyd Coed Moreland
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :Cerbyd Mwyn Haearn MPS
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Cerbyd Mwyn Haearn Uhl
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Cerbyd Mwyn Haearn Chippy
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Cerbyd Dur Balogh
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Cerbyd Dur Uhl
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Cerbyd Dur Kelling
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Cerbyd Diogel Balogh
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Cerbyd Diogel Uhl
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Cerbyd Diogel Foster
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Cerbyd Bwyd Foster
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Cerbyd Bwyd Perry
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Cerbyd Bwyd Chippy
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Cerbyd Papur Uhl
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Cerbyd Papur Balogh
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :Cerbyd Papur MPS
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :Cerbyd Mwyn Copr MPS
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Cerbyd Mwyn Copr Uhl
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Cerbyd Mwyn Copr Goss
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Cerbyd Dŵr Uhl
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Cerbyd Dŵr Balogh
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :Cerbyd Dŵr MPS
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Cerbyd Ffrwythau Balogh
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Cerbyd Ffrwythau Uhl
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Cerbyd Ffrwythau Kelling
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Cerbyd Rwber Balogh
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Cerbyd Rwber Uhl
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :Cerbyd Rwber RMT
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :Cerbyd Siwgr MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Cerbyd Siwgr Pwernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Cerbyd Siwgr Wizzowow Cerbyd
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :MightySymudr Cerbyd Cola
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Pwernaught Cerbyd Cola
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Wizzowow Cerbyd Cola
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :Cerbyd Candifflos MightySymudr
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :Cerbyd Candifflos Pwernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Cerbyd Candifflos Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :Cerbyd Toffi MightySymudr
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :Cerbyd Toffi Pwernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :Cerbyd Toffi Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :Cerbyd Teganau MightySymudr
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Cerbyd Teganau Pwernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Cerbyd Teganau Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :Cerbyd Melysion MightySymudr
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Cerbyd Melysion Pwernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Cerbyd Melysion Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :Cerbyd Batrïau MightySymudr
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Cerbyd Batrïau Pwernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :Cerbyd Batrïau Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :Cerbyd Diodydd Pefriog MightySymudr
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :Cerbyd Diodydd Pefriog Pwernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :Cerbyd Diodydd Pefriog Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :Cerbyd Plastig MightySymudr
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :Cerbyd Plastig Pwernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :Cerbyd Plastig Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :Cerbyd Swigod MightySymudr
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :Cerbyd Swigod Pwernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :Cerbyd Swigod Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal Bws
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Bws Hereford Leopard
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Bws Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Hyperfws Foster MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Bws Ploddyphut MkI
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :BwsPloddyphut MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Bws Ploddyphut MkIII
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Cerbyd Glo Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Cerbyd Glo Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :Cerbyd Glo DW
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :Cerbyd Post MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Cerbyd Post Reynard
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Cerbyd Post Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :Cerbyd Post MightySymudr
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Cerbyd Post Pwernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Cerbyd PostWizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Tancer Olew Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Tancer Olew Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Tancer Olew Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Cerbyd Da Byw Talbott
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Cerbyd Da Byw Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Cerbyd Da Byw Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Cerbyd Nwyddau Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Cerbyd Nwyddau Craighead
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Cerbyd Nwyddau Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Cerbyd Grawn Hereford
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Cerbyd Grawn Thomas
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Cerbyd Grawn Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Cerbyd Coed Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Cerbyd Coed Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Cerbyd Coed Moreland
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :Cerbyd Mwyn Haearn MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Cerbyd Mwyn Haearn Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Cerbyd Mwyn Haearn Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Cerbyd Dur Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Cerbyd Dur Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Cerbyd Dur Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Cerbyd Diogel Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Cerbyd Diogel Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Cerbyd Diogel Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Cerbyd Bwyd Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Cerbyd Bwyd Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Cerbyd Bwyd Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Cerbyd Papur Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Cerbyd Papur Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :Cerbyd Papur MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :Cerbyd Mwyn Copr MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Cerbyd Mwyn Copr Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Cerbyd Mwyn Copr Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Cerbyd Dŵr Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Cerbyd Dŵr Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :Cerbyd Dŵr MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Cerbyd Ffrwythau Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Cerbyd Ffrwythau Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Cerbyd Ffrwythau Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Cerbyd Rwber Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Cerbyd Rwber Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :Cerbyd Rwber RMT
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :Cerbyd Siwgr MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Cerbyd Siwgr Pwernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Cerbyd Siwgr Wizzowow Cerbyd
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightySymudr Cerbyd Cola
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Pwernaught Cerbyd Cola
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow Cerbyd Cola
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Cerbyd Candifflos MightySymudr
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Cerbyd Candifflos Pwernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Cerbyd Candifflos Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Cerbyd Toffi MightySymudr
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Cerbyd Toffi Pwernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Cerbyd Toffi Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Cerbyd Teganau MightySymudr
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Cerbyd Teganau Pwernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Cerbyd Teganau Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Cerbyd Melysion MightySymudr
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Cerbyd Melysion Pwernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Cerbyd Melysion Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Cerbyd Batrïau MightySymudr
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Cerbyd Batrïau Pwernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Cerbyd Batrïau Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Cerbyd Diodydd Pefriog MightySymudr
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Cerbyd Diodydd Pefriog Pwernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Cerbyd Diodydd Pefriog Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Cerbyd Plastig MightySymudr
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Cerbyd Plastig Pwernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Cerbyd Plastig Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :Cerbyd Swigod MightySymudr
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Cerbyd Swigod Pwernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Cerbyd Swigod Wizzowow
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Tancer Olew MPS
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         : Tancer Olew CS-Inc.
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Fferi Teithwyr MPS
@@ -2644,7 +2644,7 @@ STR_ORDER_NEAREST_HANGAR                                        :yr Awyrendy ago
 STR_ORDER_SERVICE_AT                                            :Gwasanaethu yn
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Gwasanaethu heb stopio yn
 STR_ORDER_TRAIN_DEPOT                                           :Depo Trên
-STR_ORDER_ROAD_DEPOT                                            :Depo Cerbydau Ffordd
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depo Cerbydau Ffordd
 STR_ORDER_SHIP_DEPOT                                            :Depo Llongau
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2754,7 +2754,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}ni all c
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Methu symud y cerbyd...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Bydd yr injan ôl wastad yn dilyn ei gymar blaen
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}Methu gwerthu cerbyd rheilffordd...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Methu gwerthu cerbyd rheilffordd...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Methu dod o hyd i ffordd i'r depo lleol
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Methu cychwyn/stopio trên...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Bwlch rhwng gwasanaeth: {LTBLUE}{COMMA}days{BLACK}   Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
@@ -2847,33 +2847,33 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Llenwch 
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Cerbyd ffordd yn y ffordd
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}Depo Cerbydau Ffordd {TOWN}
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Cerbyd Newydd
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Cerbydau Ffordd Newydd
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Adeiladu Cerbyd
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}Depo Cerbydau Ffordd {TOWN}
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Cerbyd Newydd
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Cerbydau Ffordd Newydd
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Adeiladu Cerbyd
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Methu adeiladu cerbyd...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...rhaid iddo fod wedi'i stopio mewn depo cerbyd ffordd
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...rhaid iddo fod wedi'i stopio mewn depo cerbyd ffordd
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Methu gwerthu cerbyd ffordd...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Methu stop/start cerbyd ffordd...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Mae {VEHICLE} yn aros yn y depo
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Mynd am Ddepo Ffordd {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Mynd am Ddepo Ffordd {TOWN}, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Mynd am wasanaeth Ddepo Ffordd {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Mynd am wasanaeth i Ddepo Ffordd {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Mynd am Ddepo Ffordd {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Mynd am Ddepo Ffordd {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Mynd am wasanaeth Ddepo Ffordd {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Mynd am wasanaeth i Ddepo Ffordd {TOWN}, {VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Methu gyrru cerbyd i'r depo...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Methu dod o hyd i'r depo lleol
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Gweithred gyfredol y cerbyd - cliciwch yma i gychwyn/stopio'r cerbyd
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Dangos gorchmynion cerbyd
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Canoli'r brif olygfa ar leoliad y cerbyd
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Anfon cerbyd i'r depo. Bydd CTRL+clic yn rhoi gwasanaeth iddo'n unig
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Gorfodi cerbyd i droi rownd
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Dangos manylion cerbyd ffordd
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Cerbydau - cliciwch ar gerbyd am wybodaeth
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Adeiladu cerbyd ffordd newydd
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Llusgwch gerbyd ffordd to yma i'w werthu
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Canoli'r brif olygfa ar leoliad y depo cerbyd ffordd
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Rhestr dewis cerbydau ffordd  - cliciwch ar gerbyd am wybodaeth
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Adeiladu'r cerbyd ffordd sydd wedi'i amlygu
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gweithred gyfredol y cerbyd - cliciwch yma i gychwyn/stopio'r cerbyd
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Dangos gorchmynion cerbyd
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Canoli'r brif olygfa ar leoliad y cerbyd
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Anfon cerbyd i'r depo. Bydd CTRL+clic yn rhoi gwasanaeth iddo'n unig
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Gorfodi cerbyd i droi rownd
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Dangos manylion cerbyd ffordd
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Cerbydau - cliciwch ar gerbyd am wybodaeth
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Adeiladu cerbyd ffordd newydd
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Llusgwch gerbyd ffordd to yma i'w werthu
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Canoli'r brif olygfa ar leoliad y depo cerbyd ffordd
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Rhestr dewis cerbydau ffordd  - cliciwch ar gerbyd am wybodaeth
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Adeiladu'r cerbyd ffordd sydd wedi'i amlygu
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Cynhwysedd: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2883,12 +2883,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Enwi cerbyd ffordd
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Methu enwi cerbyd ffordd...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Enwi cerbyd ffordd
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{}Mae'r bws cyntaf wedi cyrraedd {STATION}!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{}Mae'r lori gyntaf wedi cyrraedd {STATION}!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{} Mae'r tram teithwyr cyntaf wedi cyrraedd {STATION}!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{} Mae'r tram nwyddau cyntaf wedi cyrraedd {STATION}!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Damwain Cerbyd Ffordd!{}Bu gyrrwr farw mewn damwain â thrên
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Damwain Cerbyd Ffordd!{}Bu farw {COMMA} mewn damwain â thrên
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{}Mae'r bws cyntaf wedi cyrraedd {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{}Mae'r lori gyntaf wedi cyrraedd {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{} Mae'r tram teithwyr cyntaf wedi cyrraedd {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{} Mae'r tram nwyddau cyntaf wedi cyrraedd {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Damwain Cerbyd Ffordd!{}Bu gyrrwr farw mewn damwain â thrên
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Damwain Cerbyd Ffordd!{}Bu farw {COMMA} mewn damwain â thrên
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}ddim yn methu troi'r cerbyd...
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Ailenwi
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Ailenwi'r math cerbyd ffordd
@@ -3167,12 +3167,12 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 ############ Vehicle lists
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trenau - cliciwch ar trên i gael gwybodaeth
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Cerbydau Ffordd - cliciwch ar cerbyd am wybodaeth
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Cerbydau Ffordd - cliciwch ar cerbyd am wybodaeth
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Llongau - cliciwch ar long am wybodaeth
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Awyrennau - cliciwch ar awyren am wybodaeth
 
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tr{P "ên" au}
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Cerbyd{P "" au} Ffordd
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Cerbyd{P "" au} Ffordd
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Llong{P "" au}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Awyrennau
 
@@ -3184,17 +3184,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Rydych 
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :math depo anghywir
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Gwerthu pob trên yn y depo
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Gwerthu pob cerbyd ffordd yn y depo
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}Gwerthu pob cerbyd ffordd yn y depo
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Gwerthu pob llong yn y depo
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Gwerthu pob awyren yn yr awyrendy
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Dangos rhestr o bob trên gyda'r depo presennol yn eu gorchmynion
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Dangos rhestr o bob cerbyd ffordd gyda'r depo presennol yn eu gorchmynion
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}Dangos rhestr o bob cerbyd ffordd gyda'r depo presennol yn eu gorchmynion
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Dangos rhestr o bob llong gyda'r depo presennol yn eu gorchmynion
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Dangos rhestr o bob awyren gyda unrhyw awyrendy yn y maes awyr hwn yn eu gorchmynion
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Awtoddisodli pob trên yn y depo
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Awtoddisodli pob cerbyd ffordd yn y depo
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Awtoddisodli pob cerbyd ffordd yn y depo
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Awtoddisodli pob llong yn y depo
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Awtoddisodli pob awyren yn yr awyrendy
 
@@ -3222,12 +3222,12 @@ STR_ENGINES                                                     :Injanau
 STR_WAGONS                                                      :Wagenni
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Clicio i stopio pob trên sydd tu mewn i'r depo
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Clicio i stopio pob cerbyd ffordd sydd tu mewn i'r depo
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}Clicio i stopio pob cerbyd ffordd sydd tu mewn i'r depo
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Clicio i stopio pob llong sydd tu mewn i'r depo
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Clicio i stopio pob awyren sydd tu mewn i'r awyrendy
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Clicio i gychwyn pob trên sydd tu mewn i'r depo
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Clicio i gychwyn pob cerbyd ffordd sydd tu mewn i'r depo
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}Clicio i gychwyn pob cerbyd ffordd sydd tu mewn i'r depo
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Clicio i gychwyn pob llong sydd tu mewn i'r depo
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Clicio i gychwyn pob awyren sydd tu mewn i'r awyrendy
 
@@ -3389,11 +3389,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 ##### Mass Order
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Pob trên
-STR_GROUP_ALL_ROADS                                             :Pob cerbyd ffordd
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Pob cerbyd ffordd
 STR_GROUP_ALL_SHIPS                                             :Pob llong
 STR_GROUP_ALL_AIRCRAFTS                                         :Pob awyren
 STR_GROUP_DEFAULT_TRAINS                                        :Trenau heb eu grwpio
-STR_GROUP_DEFAULT_ROADS                                         :Cerbydau ffordd heb eu grwpio
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Cerbydau ffordd heb eu grwpio
 STR_GROUP_DEFAULT_SHIPS                                         :Llongau heb eu grwpio
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Awyrenau heb eu grwpio
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

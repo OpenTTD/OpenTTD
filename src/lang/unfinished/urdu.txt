@@ -181,7 +181,7 @@ STR_SORT_BY_DROPDOWN_NAME                                       :نام
 STR_SORT_BY_DATE                                                :{BLACK}تاریخ
 STR_SORT_BY_NUMBER                                              :تعداد
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :پچھلے سال کا منافع
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :سامان کی گنجایش
+STR_SORT_BY_CARGO_CAPACITY                                      :سامان کی گنجایش
 STR_NO_WAITING_CARGO                                            :{BLACK}کسی قسم کا کویی سامان انتظار نہیں کر رہا ہے
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}تمام سہولتوں کا انتخاب کرو
 STR_SELECT_ALL_TYPES                                            :{BLACK}تمام قسم کا سامان کا انتخاب کرو  (بشمول غیر منتظر سامان کے)

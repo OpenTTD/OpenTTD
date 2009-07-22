@@ -345,13 +345,13 @@ STR_SORT_BY_FACILITY                                            :İstasyon tür�
 STR_SORT_BY_WAITING                                             :Bekleyen kargo değeri
 STR_SORT_BY_RATING_MAX                                          :En yüksek kargo puanı
 STR_SORT_BY_RATING_MIN                                          :En düşük kargo puanı
-STR_ENGINE_SORT_ENGINE_ID                                       :Lokoismi (klasik sira)
-STR_ENGINE_SORT_COST                                            :Fiyat
-STR_ENGINE_SORT_POWER                                           :Güç
-STR_ENGINE_SORT_INTRO_DATE                                      :Piyasaya Girişi
-STR_ENGINE_SORT_RUNNING_COST                                    :Bakım Gideri
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Güç/Bakım Gideri
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapasite
+STR_SORT_BY_ENGINE_ID                                           :Lokoismi (klasik sira)
+STR_SORT_BY_COST                                                :Fiyat
+STR_SORT_BY_POWER                                               :Güç
+STR_SORT_BY_INTRO_DATE                                          :Piyasaya Girişi
+STR_SORT_BY_RUNNING_COST                                        :Bakım Gideri
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Güç/Bakım Gideri
+STR_SORT_BY_CARGO_CAPACITY                                      :Kapasite
 STR_NO_WAITING_CARGO                                            :{BLACK}Hiç kargo yok
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tüm türleri seç
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tüm kargo türlerini seç (hiç beklemeyenler dahil)
@@ -949,7 +949,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Yeni tr
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :yakın uç
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :orta
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :uzak uç
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Karayolu taşıtları kuyruğa girsin (içiçe geçerek): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Karayolu taşıtları kuyruğa girsin (içiçe geçerek): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Fare kenardayken pencere etkin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Belediye rüşveti izinli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Şehrin ulaşım haklarını satın alma izinli: {ORANGE}{STRING}
@@ -1055,12 +1055,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Şirket
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Hiç uygun araç olmasa da inşa araçlarını göster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Her oyuncu için en fazla tren: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Her oyuncu için en fazla araba: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Her oyuncu için en fazla araba: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Her oyuncu için en fazla uçak: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Her oyuncu için en fazla gemi: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Bilgisayar tren kullanmasın: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Bilgisayar araba kullanmasın: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Bilgisayar araba kullanmasın: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Bilgisayar uçak kullanmasın: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Bilgisayar gemi kullanmasın: {ORANGE}{STRING}
 
@@ -1070,8 +1070,8 @@ STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}YZ dura
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Servis gecikmeleri yüzde ile: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Trenler için varsayılan servis gecikmesi: {ORANGE}{STRING} gün/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Trenler için varsayılan servis gecikmesi: {ORANGE}kapalı
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Arabalar için varsayılan servis gecikmesi:: {ORANGE}{STRING} gün/%
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Arabalar için varsayılan servis gecikmesi:: {ORANGE}kapalı
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Arabalar için varsayılan servis gecikmesi:: {ORANGE}{STRING} gün/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Arabalar için varsayılan servis gecikmesi:: {ORANGE}kapalı
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Uçaklar için varsayılan servis gecikmesi: {ORANGE}{STRING} gün/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Uçaklar için varsayılan servis gecikmesi: {ORANGE}kapalı
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Gemiler için varsayılan servis gecikmesi: {ORANGE}{STRING} gün/%
@@ -1146,10 +1146,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Trenler
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Önerilmez)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Önerilen)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Arabalar için yol bulucu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Öntanımlı {RED}(Önerilmez)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Önerilen)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Arabalar için yol bulucu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :Öntanımlı {RED}(Önerilmez)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Önerilen)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Gemiler için yol bulucu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Öntanımlı {BLUE}(Önerilen)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2059,7 +2059,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...zaten
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :İsimsiz
 STR_SV_TRAIN_NAME                                               :Tren {COMMA}
-STR_SV_ROADVEH_NAME                                             :Araba {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Araba {COMMA}
 STR_SV_SHIP_NAME                                                :Gemi {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Uçak {COMMA}
 
@@ -2179,12 +2179,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}İnşaat
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Yeni araçlar
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Tren Bakımları
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Araba Bakımları
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Araba Bakımları
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Uçak Bakımları
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Gemi Bakımları
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}İnşaat bakımları
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Tren Geliri
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Araba Geliri
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Araba Geliri
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Uçak Geliri
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Gemi Geliri
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Kredi Faizi
@@ -2324,7 +2324,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Yük Tramvayı
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Genel renk şemalarını göster
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Tren renk düzenlerini göster
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Araba renk düzenlerini göster
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}Araba renk düzenlerini göster
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Gemi renk düzenlerini göster
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Uçakların renk şemalarını göster
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Seçili düzen için birincil rengi seç
@@ -2448,94 +2448,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Oyuncak Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Pil Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :İçecek Tankeri
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plastik Vagonu
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :MPS Regal Otobüs
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Hereford Leopard Otobüs
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Foster Otobüs
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Foster MkII Süperbüs
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Ploddyphut MkI Otobüs
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :Ploddyphut MkII Otobüs
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Ploddyphut MkIII Otobüs
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Balogh Kömür Kamyonu
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Uhl Kömür Kamyonu
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :DW Kömür Kamyonu
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :MPS Posta Arabası
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Reynard Posta Arabası
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Perry Posta Arabası
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :MightyMover Posta Arabası
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :Powernaught Posta Arabası
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :Wizzowow Posta Arabası
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Witcombe Petrol Tankeri
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Foster Petrol Tankeri
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Perry Petrol Tankeri
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Talbott Hayvan Kamyonu
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Uhl Hayvan Kamyonu
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Foster Hayvan Kamyonu
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Balogh Eşya Kamyonu
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Craighead Eşya Kamyonu
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Goss Eşya Kamyonu
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Hereford Tahıl Kamyonu
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Thomas Tahıl Kamyonu
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Goss Tahıl Kamyonu
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Witcombe Odun Kamyonu
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Foster Odun Kamyonu
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Moreland Odun Kamyonu
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :MPS Demir Kamyonu
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Uhl Demir Kamyonu
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Chippy Demir Kamyonu
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Balogh Çelik Kamyonu
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Uhl Çelik Kamyonu
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Kelling Çelik Kamyonu
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Balogh Zirhli Araç
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Uhl Zirhli Araç
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Foster Zirhli Araç
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Foster Yiyecek Arabası
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Perry Yiyecek Arabası
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Chippy Yiyecek Arabası
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Uhl Kağıt Kamyonu
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Balogh Kağıt Kamyonu
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :MPS Kağıt Kamyonu
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :MPS Bakır Kamyonu
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Uhl Bakır Kamyonu
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Goss Bakır Kamyonu
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Uhl Su Tankeri
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Balogh Su Tankeri
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :MPS Su Tankeri
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Balogh Meyve Kamyonu
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Uhl Meyve Kamyonu
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Kelling Meyve Kamyonu
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Balogh Kauçuk Kamyonu
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Uhl Kauçuk Kamyonu
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :RMT Kauçuk Kamyonu
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :MightyMover Şeker Kamyonu
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Powernaught Şeker Kamyonu
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Wizzowow Şeker Kamyonu
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :MightyMover Kola Kamyonu
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Powernaught Kola Kamyonu
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Wizzowow Kola Kamyonu
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :MightyMover Pamukhelva Kamyonu
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :Powernaught Pamukhelva Kamyonu
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Wizzowow Pamukhelva Kamyonu
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :MightyMover Bonbon Kamyonu
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :Powernaught Bonbon Kamyonu
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :Wizzowow Bonbon Kamyonu
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :MightyMover Oyuncak Kamyonu
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Powernaught Oyuncak Kamyonu
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Wizzowow Oyuncak Kamyonu
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :MightyMover Tatlı Kamyonu
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Powernaught Tatlı Kamyonu
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Wizzowow Tatlı Kamyonu
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :MightyMover Pil Kamyonu
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Powernaught Pil Kamyonu
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :Wizzowow Pil Kamyonu
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :MightyMover içecek Tankeri
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :Powernaught içecek Tankeri
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :Wizzowow içecek Tankeri
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :MightyMover Plastik Kamyonu
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :Powernaught Plastik Kamyonu
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :Wizzowow Plastik Kamyonu
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :MightyMover Balon Kamyonu
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :Powernaught Balon Kamyonu
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :Wizzowow Balon Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal Otobüs
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard Otobüs
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster Otobüs
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII Süperbüs
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Ploddyphut MkI Otobüs
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Ploddyphut MkII Otobüs
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkIII Otobüs
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh Kömür Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl Kömür Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW Kömür Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS Posta Arabası
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard Posta Arabası
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry Posta Arabası
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover Posta Arabası
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught Posta Arabası
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow Posta Arabası
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe Petrol Tankeri
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster Petrol Tankeri
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry Petrol Tankeri
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott Hayvan Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl Hayvan Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster Hayvan Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh Eşya Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead Eşya Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss Eşya Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford Tahıl Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas Tahıl Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss Tahıl Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe Odun Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster Odun Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland Odun Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS Demir Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl Demir Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy Demir Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh Çelik Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl Çelik Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling Çelik Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh Zirhli Araç
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl Zirhli Araç
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster Zirhli Araç
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster Yiyecek Arabası
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry Yiyecek Arabası
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy Yiyecek Arabası
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl Kağıt Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh Kağıt Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS Kağıt Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS Bakır Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl Bakır Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss Bakır Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl Su Tankeri
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh Su Tankeri
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS Su Tankeri
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh Meyve Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl Meyve Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling Meyve Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh Kauçuk Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl Kauçuk Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT Kauçuk Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover Şeker Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught Şeker Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow Şeker Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover Kola Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught Kola Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow Kola Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover Pamukhelva Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught Pamukhelva Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow Pamukhelva Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover Bonbon Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught Bonbon Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow Bonbon Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover Oyuncak Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught Oyuncak Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow Oyuncak Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover Tatlı Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught Tatlı Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow Tatlı Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover Pil Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught Pil Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow Pil Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover içecek Tankeri
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught içecek Tankeri
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow içecek Tankeri
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover Plastik Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught Plastik Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow Plastik Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover Balon Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught Balon Kamyonu
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow Balon Kamyonu
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS Petrol Tankeri
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. Petrol Tankeri
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS Yolcu Vapuru
@@ -2649,7 +2649,7 @@ STR_ORDER_NEAREST_HANGAR                                        :en yakın Hanga
 STR_ORDER_SERVICE_AT                                            :Burada bakıma gir
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Durmaksızın bakıma gir
 STR_ORDER_TRAIN_DEPOT                                           :Tren Garı
-STR_ORDER_ROAD_DEPOT                                            :Araba Garajı
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Araba Garajı
 STR_ORDER_SHIP_DEPOT                                            :Tershane
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2760,7 +2760,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}bu emri 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Araç hareket edemiyor...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Arkadaki lokomotif daima önündekini takip edecek
 STR_CARGO_N_A                                                   :yok{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}Tren satılamaz...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Tren satılamaz...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Yakındaki bir gara gidecek yol yok
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Tren durdurulamaz/başlatılamaz...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Bakım zamanı: {LTBLUE}{COMMA}günde bir{BLACK}   Son bakım: {LTBLUE}{DATE_LONG}
@@ -2852,35 +2852,35 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Zaman ta
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Yolda araba var
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Arabalar
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Araba Garaji
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Yeni Araba
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Yeni Araba
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Araba Al
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Arabalar
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Araba Garaji
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Yeni Araba
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Yeni Araba
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Araba Al
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Araba alınamıyor...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...bir araba garajında duruyor olmalı
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...bir araba garajında duruyor olmalı
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Araba satılamıyor...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Araba başlayamıyor/duramıyor...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} garajda bekliyor
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}{TOWN} Garajina gidiyor
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}{TOWN} Garajina gidiyor, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}{TOWN} Garajinda Bakıma Gir
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} Garajinda Bakım, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}{TOWN} Garajina gidiyor
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}{TOWN} Garajina gidiyor, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}{TOWN} Garajinda Bakıma Gir
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}{TOWN} Garajinda Bakım, {VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Araç garaja gidemiyor...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Yerel garaj bulunamadı
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Arabalar - bilgi için arabaya tıklayın
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Aracın durumu - durdurmak/başlatmak için tıklayın
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Aracın talimatlarını görmek için tıklayın
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Arabayı göster
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Aracı garaja gönder
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Aracı etrafta dolaşmaya zorla
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Araba ayrıntılarını göster
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Arabalar - ayrıntılı bilgi için araca tıklayın
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Yeni araba al
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Satmak için arabayı buraya sürükle
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Araba garajını göster
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Araba listesi - bilgi için arabayı tıklayın
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Seçili arabayı al
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Arabalar - bilgi için arabaya tıklayın
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aracın durumu - durdurmak/başlatmak için tıklayın
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Aracın talimatlarını görmek için tıklayın
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Arabayı göster
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Aracı garaja gönder
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Aracı etrafta dolaşmaya zorla
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Araba ayrıntılarını göster
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Arabalar - ayrıntılı bilgi için araca tıklayın
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Yeni araba al
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Satmak için arabayı buraya sürükle
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Araba garajını göster
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Araba listesi - bilgi için arabayı tıklayın
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Seçili arabayı al
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasite: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2890,12 +2890,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Arabayı adlandır
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Araba adlandırılamıyor...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Arabayı adlandır
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}Şuraya ilk kez otobüs geldi: {STATION}!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}Şuraya ilk kez kamyon geldi: {STATION}!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yolcu tramvayı geldi!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yük tramvayı geldi!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Trafik kazasi!{}Trenle çarpisan aracın soförü feci şekilde can verdi
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Trafik kazasi!{}{COMMA} kişi patlamadan kurtulamadı
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}Şuraya ilk kez otobüs geldi: {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}Şuraya ilk kez kamyon geldi: {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yolcu tramvayı geldi!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yük tramvayı geldi!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Trafik kazasi!{}Trenle çarpisan aracın soförü feci şekilde can verdi
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Trafik kazasi!{}{COMMA} kişi patlamadan kurtulamadı
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Birden fazla birimden oluşan araçlar çevrilemez
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}İsim
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Araç türünü yeniden adlandır
@@ -3190,17 +3190,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Garajda
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Yanlış gar türü
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Gardaki tüm trenleri sat
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Garajdaki tüm arabaları sat
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}Garajdaki tüm arabaları sat
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Tersanedeki tüm gemileri sat
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Hangardaki tüm hava araçlarıni sat
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Bu garı talimat listesinde içeren trenleri listele
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Bu garajı talimat listesinde içeren arabaları listele
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}Bu garajı talimat listesinde içeren arabaları listele
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Bu tersaneyi talimat listesinde içeren gemileri listele
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Bu havalimanındaki hangarlardan birini talimat listesinde içeren uçakları listele
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Gardaki tüm trenleri otomatik yenile
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Garajdaki tüm arabaları otomatik yenile
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Garajdaki tüm arabaları otomatik yenile
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Tersanedeki tüm gemileri otomatik yenile
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Hangardaki tüm uçakları otomatik yenile
 
@@ -3229,12 +3229,12 @@ STR_ENGINES                                                     :Lokomotifler
 STR_WAGONS                                                      :Vagon
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Gardaki tüm trenleri durdurmak için tıkla
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Garajdaki tüm arabaları durdurmak için tıkla
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}Garajdaki tüm arabaları durdurmak için tıkla
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Tersanedeki tüm gemileri durdurmak için tıkla
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Hangardaki tüm uçakları durdurmak için tıkla
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Gardaki tüm trenleri başlatmak için tıkla
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Garajdaki tüm arabaları başlatmak için tıkla
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}Garajdaki tüm arabaları başlatmak için tıkla
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Tersanedeki tüm gemileri başlatmak için tıkla
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Hangardaki tüm uçakları başlatmak için tıkla
 
@@ -3408,11 +3408,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}%{NUM}{U
 STR_FORMAT_GROUP_NAME                                           :Grup {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Bütün trenler
-STR_GROUP_ALL_ROADS                                             :Bütün arabalar
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Bütün arabalar
 STR_GROUP_ALL_SHIPS                                             :Bütün Gemiler
 STR_GROUP_ALL_AIRCRAFTS                                         :Bütün uçaklar
 STR_GROUP_DEFAULT_TRAINS                                        :Gruplanmamış trenler
-STR_GROUP_DEFAULT_ROADS                                         :Gruplanmamış arabalar
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Gruplanmamış arabalar
 STR_GROUP_DEFAULT_SHIPS                                         :Gruplanmamış gemiler
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Gruplanmamış uçaklar
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

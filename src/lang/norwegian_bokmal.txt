@@ -345,13 +345,13 @@ STR_SORT_BY_FACILITY                                            :Stasjonstype
 STR_SORT_BY_WAITING                                             :Verdi av ventende last
 STR_SORT_BY_RATING_MAX                                          :Høyeste godskvalitet
 STR_SORT_BY_RATING_MIN                                          :Laveste godskvalitet
-STR_ENGINE_SORT_ENGINE_ID                                       :MaskinID (klassisk type)
-STR_ENGINE_SORT_COST                                            :Kostnad
-STR_ENGINE_SORT_POWER                                           :Kraft
-STR_ENGINE_SORT_INTRO_DATE                                      :Introduksjonsdato
-STR_ENGINE_SORT_RUNNING_COST                                    :Driftskostnad
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Kraft/Driftskostnad
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lastkapasitet
+STR_SORT_BY_ENGINE_ID                                           :MaskinID (klassisk type)
+STR_SORT_BY_COST                                                :Kostnad
+STR_SORT_BY_POWER                                               :Kraft
+STR_SORT_BY_INTRO_DATE                                          :Introduksjonsdato
+STR_SORT_BY_RUNNING_COST                                        :Driftskostnad
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Kraft/Driftskostnad
+STR_SORT_BY_CARGO_CAPACITY                                      :Lastkapasitet
 STR_NO_WAITING_CARGO                                            :{BLACK}Ingen last venter
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Velg alle anlegg
 STR_SELECT_ALL_TYPES                                            :{BLACK}Velg alle lasttyper (inkludert last som ikke venter)
@@ -946,7 +946,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nye tog
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :begynnelsen
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midten
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :enden
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Kjøretøykø (med kvantumseffekter): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Kjøretøykø (med kvantumseffekter): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Flytt på bildet hvis pilen er nær ytterkantene av skjermen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Tillat bestikkelser av bystyret: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Tillat kjøp av eksklusive transportrettigheter: {ORANGE}{STRING}
@@ -1052,12 +1052,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Gruppé
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Vis byggingsverktøy når det ikke er noen tilgjengelige kjøretøy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maks antall tog per spiller: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Maks antall kjøretøy per spiller: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maks antall kjøretøy per spiller: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maks antall fly per spiller: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maks antall skip per spiller: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Hindre datamaskinen i å bygge tog: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Hindre datamaskinen i å bygge kjøretøy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Hindre datamaskinen i å bygge kjøretøy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Hindre datamaskinen i å bygge fly: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Hindre datamaskinen i å bygge skip: {ORANGE}{STRING}
 
@@ -1067,8 +1067,8 @@ STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcode
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikeholdsintervaller i prosent: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard vedlikeholdsintervall for tog: {ORANGE}{STRING} dager
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard vedlikeholdsintervall for tog: {ORANGE}deaktivert
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Standard vedlikeholdsintervall for kjøretøy: {ORANGE}{STRING} dager
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Standard vedlikeholdsintervall for kjøretøy: {ORANGE}deaktivert
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Standard vedlikeholdsintervall for kjøretøy: {ORANGE}{STRING} dager
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Standard vedlikeholdsintervall for kjøretøy: {ORANGE}deaktivert
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Standard vedlikeholdintervall for fly: {ORANGE}{STRING} dager
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standard vedlikeholdintervall for kjøretøy: {ORANGE}deaktivert
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Standard vedlikeholdsintervall for båter: {ORANGE}{STRING} dager
@@ -1143,10 +1143,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Linjefi
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ikke anbefalt)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Anbefalt)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Linjefinner for kjøretøy: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Orginal {RED}(Ikke anbefalt)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Anbefalt)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Linjefinner for kjøretøy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :Orginal {RED}(Ikke anbefalt)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Anbefalt)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Linjefinner for skip: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orginal {BLUE}(Anbefalt)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2058,7 +2058,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...du ei
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Uten navn
 STR_SV_TRAIN_NAME                                               :Tog {COMMA}
-STR_SV_ROADVEH_NAME                                             :Kjøretøy {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Kjøretøy {COMMA}
 STR_SV_SHIP_NAME                                                :Skip {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Fly {COMMA}
 
@@ -2180,12 +2180,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruksjon
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nye kjøretøy
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Driftkostnader på tog
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Driftkostnader på kjøretøy
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Driftkostnader på kjøretøy
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Driftkostnader på fly
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Driftkostnader på skip
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Vedlikehold av eiendom
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Inntekter fra tog
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Inntekter fra kjøretøy
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Inntekter fra kjøretøy
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Inntekter fra fly
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Inntekter fra skip
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Renter
@@ -2324,7 +2324,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Frakttrikk
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Vis generelle fargetemaer
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Vis togfargetemaer
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Vis bilfargetemaer
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}Vis bilfargetemaer
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Vis skipsfargetemaer
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Vis flyfarger
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Velg en primærfarge for valgte tema
@@ -2448,94 +2448,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Leketøyvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Batterivogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Mineralvannvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plastikkvogn
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :MPS Regal-buss
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Hereford Leopard-buss
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Foster-buss
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Foster MkII-superbuss
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Ploddyphut MkI-buss
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :Ploddyphut MkII-buss
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Ploddyphut MkIII-buss
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Balogh-kullbil
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Uhl-kullbil
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :DW-kullbil
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :MPS-postbil
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Reynard-postbil
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Perry-postbil
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :MightyMover-postbil
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :Powernaught-postbil
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :Wizzowow-postbil
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Witcombe-tankbil for olje
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Foster-tankbil for olje
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Perry-tankbil for olje
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Talbott-lastebil for buskap
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Uhl-lastebil for buskap
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Foster-lastebil for buskap
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Balogh-lastebil for gods
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Craighead-lastebil for gods
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Goss-lastebil for gods
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Hereford--lastebil for korn
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Thomas-lastebil for korn
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Goss-lastebil for korn
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Witcombe-tømmerbil
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Foster-tømmerbil
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Moreland-tømmerbil
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :MPS-lastebil for jernmalm
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Uhl-lastebil for jernmalm
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Chippy-lastebil for jernmalm
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Balogh-lastebil for stål
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Uhl-lastebil for stål
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Kelling-lastebil for stål
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Armert Balogh-bil
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Armert Uhl-bil
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Armert Foster-bil
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Foster-lastebil for mat
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Perry-lastebil for mat
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Chippy-lastebil for mat
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Uhl-lastebil for papir
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Balogh-lastebil for papir
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :MPS-lastebil for papir
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :MPS-lastebil for kobbermalm
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Uhl-lastebil for kobbermalm
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Goss-lastebil for kobbermalm
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Uhl-tankbil for vann
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Balogh-tankbil for vann
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :MPS-tankbil for vann
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Balogh-lastebil for frukt
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Uhl-lastebil for frukt
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Kelling-lastebil for frukt
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Balogh-lastebil for gummi
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Uhl-lastebil for gummi
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :RMT-lastebil for gummi
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :MightyMover-lastebil for sukker
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Powernaught-lastebil for sukker
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Wizzowow-lastebil for sukker
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :MightyMover-lastebil for cola
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Powernaught-lastebil for cola
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Wizzowow-lastebil for cola
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :MightyMover-lastebil for sukkerspinn
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :Powernaught-lastebil for sukkerspinn
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Wizzowow-lastebil for sukkerspinn
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :MightyMover-lastebil for karamell
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :Powernaught-lastebil for karamell
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :Wizzowow-lastebil for karamell
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :MightyMover-lastebil for leketøy
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Powernaught-lastebil for leketøy
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Wizzowow-lastebil for leketøy
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :MightyMover-lastebil for søtsaker
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Powernaught-lastebil for søtsaker
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Wizzowow-lastebil for søtsaker
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :MightyMover-lastebil for batteri
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Powernaught-lastebil for batteri
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :Wizzowow-lastebil for batteri
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :MightyMover-tankbil for mineralvann
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :Powernaught-tankbil for mineralvann
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :Wizzowow-tankbil for mineralvann
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :MightyMover-lastebil for plast
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :Powernaught-lastebil for plast
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :Wizzowow-lastebil for plast
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :MightyMover-lastebil for bobler
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :Powernaught-lastebil for bobler
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :Wizzowow-lastebil for bobler
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal-buss
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard-buss
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster-buss
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII-superbuss
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Ploddyphut MkI-buss
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Ploddyphut MkII-buss
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkIII-buss
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh-kullbil
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl-kullbil
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW-kullbil
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS-postbil
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard-postbil
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry-postbil
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover-postbil
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught-postbil
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow-postbil
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe-tankbil for olje
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster-tankbil for olje
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry-tankbil for olje
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott-lastebil for buskap
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl-lastebil for buskap
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster-lastebil for buskap
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh-lastebil for gods
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead-lastebil for gods
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss-lastebil for gods
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford--lastebil for korn
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas-lastebil for korn
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss-lastebil for korn
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe-tømmerbil
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster-tømmerbil
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland-tømmerbil
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS-lastebil for jernmalm
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl-lastebil for jernmalm
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy-lastebil for jernmalm
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh-lastebil for stål
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl-lastebil for stål
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling-lastebil for stål
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Armert Balogh-bil
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Armert Uhl-bil
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Armert Foster-bil
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster-lastebil for mat
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry-lastebil for mat
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy-lastebil for mat
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl-lastebil for papir
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh-lastebil for papir
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS-lastebil for papir
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS-lastebil for kobbermalm
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl-lastebil for kobbermalm
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss-lastebil for kobbermalm
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl-tankbil for vann
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh-tankbil for vann
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS-tankbil for vann
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh-lastebil for frukt
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl-lastebil for frukt
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling-lastebil for frukt
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh-lastebil for gummi
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl-lastebil for gummi
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT-lastebil for gummi
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover-lastebil for sukker
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught-lastebil for sukker
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow-lastebil for sukker
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover-lastebil for cola
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught-lastebil for cola
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow-lastebil for cola
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover-lastebil for sukkerspinn
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught-lastebil for sukkerspinn
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow-lastebil for sukkerspinn
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover-lastebil for karamell
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught-lastebil for karamell
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow-lastebil for karamell
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover-lastebil for leketøy
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught-lastebil for leketøy
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow-lastebil for leketøy
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover-lastebil for søtsaker
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught-lastebil for søtsaker
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow-lastebil for søtsaker
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover-lastebil for batteri
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught-lastebil for batteri
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow-lastebil for batteri
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover-tankbil for mineralvann
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught-tankbil for mineralvann
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow-tankbil for mineralvann
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover-lastebil for plast
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught-lastebil for plast
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow-lastebil for plast
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover-lastebil for bobler
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught-lastebil for bobler
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow-lastebil for bobler
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS-oljetanker
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc.-oljetanker
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS-passasjerferje
@@ -2649,7 +2649,7 @@ STR_ORDER_NEAREST_HANGAR                                        :den nærmeste H
 STR_ORDER_SERVICE_AT                                            :Vedlikehold ved
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Vedlikehold uten stopp ved
 STR_ORDER_TRAIN_DEPOT                                           :Togstall
-STR_ORDER_ROAD_DEPOT                                            :Garasje
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Garasje
 STR_ORDER_SHIP_DEPOT                                            :Skipdepot
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2759,7 +2759,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}et kjør
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Kan ikke flytte kjøretøy...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Bakmaskinen vil alltid følge det fremste motstykket
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}Kan ikke selge jernbanekjøretøy...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kan ikke selge jernbanekjøretøy...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kan ikke finne en togstall i nærheten
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Kan ikke stoppe/starte tog...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Vedlikeholdsintervall: {LTBLUE}{COMMA}{NBSP}dager{BLACK}   Forrige vedlikehold: {LTBLUE}{DATE_LONG}
@@ -2852,33 +2852,33 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll ut 
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Kjøretøy i veien
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Garasje
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nye kjøretøy
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nye kjøretøy
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Kjøp kjøretøy
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Garasje
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nye kjøretøy
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nye kjøretøy
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Kjøp kjøretøy
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Kan ikke kjøpe kjøretøy...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...må være stoppet i en garasje
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...må være stoppet i en garasje
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kan ikke selge kjøretøy...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kan ikke starte/stoppe kjøretøy...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} venter i garasjen
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Er på vei til {TOWN} garasje
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Er på vei til {TOWN} garasje, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Vedlikehold ved {TOWN} garasje
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Vedlikehold ved {TOWN} garasje, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Er på vei til {TOWN} garasje
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Er på vei til {TOWN} garasje, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Vedlikehold ved {TOWN} garasje
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Vedlikehold ved {TOWN} garasje, {VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan ikke sende kjøretøy til garasje...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan ikke finne en garasje i nærheten
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Gjeldende kjøretøystatus - trykk her for å stoppe/starte kjøretøy
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Vis kjøretøyets ordreliste
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Vis kjøretøyets gjeldende posisjon
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Send kjøretøyet til en garasje
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Bytt kjøreretning
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Vis detaljer om kjøretøyet
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Kjøretøyliste - trykk på kjøretøy for mer informasjon
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Bygg nytt kjøretøy
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Dra kjøretøy her for å selge det
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Vis hvor garasjen ligger
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Kjøretøyliste - trykk på kjøretøy for mer informasjon
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Bygg det valgte kjøretøyet
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gjeldende kjøretøystatus - trykk her for å stoppe/starte kjøretøy
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Vis kjøretøyets ordreliste
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Vis kjøretøyets gjeldende posisjon
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Send kjøretøyet til en garasje
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Bytt kjøreretning
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Vis detaljer om kjøretøyet
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kjøretøyliste - trykk på kjøretøy for mer informasjon
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Bygg nytt kjøretøy
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Dra kjøretøy her for å selge det
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Vis hvor garasjen ligger
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Kjøretøyliste - trykk på kjøretøy for mer informasjon
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Bygg det valgte kjøretøyet
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasitet: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2888,12 +2888,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Navngi kjøretøy
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kan ikke navngi kjøretøy...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Navngi kjøretøy
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første buss ankommer {STATION}!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første lastebil ankommer {STATION}!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Borgerne jubler . . .{}Første passasjertrikk ankommer {STATION}!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Borgerne jubler . . .{}Første frakttrikk ankommer {STATION}!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Kollisjon!{}Sjåfør dør etter kollisjon med tog
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Kollisjon!{}{COMMA} dør etter kollisjon med tog
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første buss ankommer {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første lastebil ankommer {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Borgerne jubler . . .{}Første passasjertrikk ankommer {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Borgerne jubler . . .{}Første frakttrikk ankommer {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Kollisjon!{}Sjåfør dør etter kollisjon med tog
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Kollisjon!{}{COMMA} dør etter kollisjon med tog
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Kan ikke snu kjøretøy...
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Endre navn
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Endre navnet til kjøretøytypen
@@ -3172,12 +3172,12 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 ############ Vehicle lists
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Tog - trykk på tog for mer informasjon
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Kjøretøy - trykk på kjøretøy for informasjon
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Kjøretøy - trykk på kjøretøy for informasjon
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skip - trykk på skip for mer informasjon
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Fly - trykk på fly for mer informasjon
 
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tog
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} kjøretøy
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} kjøretøy
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} skip
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} fly
 
@@ -3189,17 +3189,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du er n
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Gal stalltype
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Selg alle tog i depodet
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Selg alle kjøretøy i garasjen
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}Selg alle kjøretøy i garasjen
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Selg alle skip i depotet
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Selg alle fly i hangaren
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Få en liste over alle tog med dette depotet i sine ordre
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Få en liste over alle kjøretøy med denne garasjen i sine ordre
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}Få en liste over alle kjøretøy med denne garasjen i sine ordre
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Få en liste over alle skip med dette depotet i sine ordre
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Få en liste over alle fly med denne hangaren i sine ordre
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autoerstatt alle tog i depotet
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autoerstatt all kjøretøy i hangaren
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Autoerstatt all kjøretøy i hangaren
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autoerstatt all skip i depotet
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autoerstatt alle fly i hangaren
 
@@ -3227,12 +3227,12 @@ STR_ENGINES                                                     :Motorer
 STR_WAGONS                                                      :Vogner
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Klikk for å stoppe alle togene i depodet
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Klikk for å stoppe alle kjøretøyene i garasjen
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}Klikk for å stoppe alle kjøretøyene i garasjen
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Klikk for å stoppe alle skipene i depodet
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Klikk for å stoppe alle flyene i hangaren
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Klikk for å starte alle togene i depodet
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Klikk for å starte kjøretøyet inne i garasjen
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}Klikk for å starte kjøretøyet inne i garasjen
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Klikk for å starte alle skipene i depodet
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Klikk for å starte alle flyene i hangaren
 
@@ -3394,11 +3394,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}{NB
 ##### Mass Order
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Alle tog
-STR_GROUP_ALL_ROADS                                             :Alle kjøretøyer
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Alle kjøretøyer
 STR_GROUP_ALL_SHIPS                                             :Alle båter
 STR_GROUP_ALL_AIRCRAFTS                                         :Alle flyfartøy
 STR_GROUP_DEFAULT_TRAINS                                        :Ugrupperte tog
-STR_GROUP_DEFAULT_ROADS                                         :Ugrupperte biler
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Ugrupperte biler
 STR_GROUP_DEFAULT_SHIPS                                         :Ugrupperte skip
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ugrupperte fly
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

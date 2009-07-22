@@ -345,13 +345,13 @@ STR_SORT_BY_FACILITY                                            :Asematyyppi
 STR_SORT_BY_WAITING                                             :Odottavan lastin arvo
 STR_SORT_BY_RATING_MAX                                          :Korkein rahtiluokitus
 STR_SORT_BY_RATING_MIN                                          :Matalin rahtiluokitus
-STR_ENGINE_SORT_ENGINE_ID                                       :VeturiID (perinteinen lajittelu)
-STR_ENGINE_SORT_COST                                            :Hinta
-STR_ENGINE_SORT_POWER                                           :Teho
-STR_ENGINE_SORT_INTRO_DATE                                      :Julkaisupäivä
-STR_ENGINE_SORT_RUNNING_COST                                    :Käyttökustannukset
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Teho-hyötysuhde
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Rahtikapasiteetti
+STR_SORT_BY_ENGINE_ID                                           :VeturiID (perinteinen lajittelu)
+STR_SORT_BY_COST                                                :Hinta
+STR_SORT_BY_POWER                                               :Teho
+STR_SORT_BY_INTRO_DATE                                          :Julkaisupäivä
+STR_SORT_BY_RUNNING_COST                                        :Käyttökustannukset
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Teho-hyötysuhde
+STR_SORT_BY_CARGO_CAPACITY                                      :Rahtikapasiteetti
 STR_NO_WAITING_CARGO                                            :{BLACK}Minkäänlaista lastia ei ole odottamassa
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Valitse kaikki laitteet
 STR_SELECT_ALL_TYPES                                            :{BLACK}Valitse kaikki lastityypit (myös odottava lasti)
@@ -946,7 +946,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Uudet j
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :loppuun
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :keskelle
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :aivan loppuun
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Ajoneuvojonotus (kvanttitehostein): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Ajoneuvojonotus (kvanttitehostein): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Vieritä ikkunaa, kun hiiri osuu reunaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Salli viranomaisten lahjominen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Salli kuljetusyksinoikeuksien ostaminen: {ORANGE}{STRING}
@@ -1052,12 +1052,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Ryhmit�
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Näytä rakennustyökalut, vaikka sopivaa ajoneuvoa ei ole: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Junia/pelaaja: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Ajoneuvoja/pelaaja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Ajoneuvoja/pelaaja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Lentokoneita/pelaaja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Laivoja/pelaaja: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Tietokoneella ei ole junia: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Tietokoneella ei ole ajoneuvoja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Tietokoneella ei ole ajoneuvoja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Tietokoneella ei ole lentokoneita: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Tietokoneella ei ole laivoja: {ORANGE}{STRING}
 
@@ -1067,8 +1067,8 @@ STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcode
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Huoltovälit ovat prosentteina: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Oletushuoltoväli junille: {ORANGE}{STRING} päivää
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Oletushuoltoväli junille: {ORANGE}pois päältä
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Oletushuoltoväli ajoneuvoille: {ORANGE}{STRING} päivää
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Oletushuoltoväli ajoneuvoille: {ORANGE}pois päältä
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Oletushuoltoväli ajoneuvoille: {ORANGE}{STRING} päivää
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Oletushuoltoväli ajoneuvoille: {ORANGE}pois päältä
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Oletushuoltoväli lentokoneille: {ORANGE}{STRING} päivää
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Oletushuoltoväli lentokoneille: {ORANGE}pois päältä
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Oletushuoltoväli laivoille: {ORANGE}{STRING} päivää
@@ -1143,10 +1143,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Junien 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ei suositeltu)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Suositeltu)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Ajoneuvojen käyttämä reitinetsijä: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Alkuperäinen {RED}(Ei suositeltu)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Suositeltu)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Ajoneuvojen käyttämä reitinetsijä: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :Alkuperäinen {RED}(Ei suositeltu)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Suositeltu)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laivojen käyttämä reitinetsijä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Alkuperäinen {BLUE}(Suositeltu)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2058,7 +2058,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...omist
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Nimetön
 STR_SV_TRAIN_NAME                                               :Juna {COMMA}
-STR_SV_ROADVEH_NAME                                             :Ajoneuvo {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Ajoneuvo {COMMA}
 STR_SV_SHIP_NAME                                                :Laiva {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Lentokone {COMMA}
 
@@ -2180,12 +2180,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Rakentaminen
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Uudet ajoneuvot
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Junien käyttökust.
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Autojen käyttökust.
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Autojen käyttökust.
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Lentokoneiden käyttökust.
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Laivojen käyttökust.
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Omaisuudenhallinta
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Junien tulot
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Ajoneuvojen tulot
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Ajoneuvojen tulot
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Lentokoneiden tulot
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Laivojen tulot
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Lainan korko
@@ -2324,7 +2324,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Rahtivaunu
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Näytä yleiset väriteemat
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Näytä junan väriteemat
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Näytä tieajoneuvojen väriteemat
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}Näytä tieajoneuvojen väriteemat
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Näytä laivojen väriteemat
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Näytä lentokoneiden väriteemat
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Valitse valitulle teemalle ensisijainen väri
@@ -2448,94 +2448,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Leluvaunu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Paristovaunu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Sihijuomavaunu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Muovivaunu
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :MPS Regal -linja-auto
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Hereford Leopard -linja-auto
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Foster-linja-auto
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Foster MkII -superlinja-auto
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Ploddyphut MkI -linja-auto
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :Ploddyphut MkII -linja-auto
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Ploddyphut MkIII -linja-auto
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Balogh-hiilirekka
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Uhl-hiilirekka
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :DW-hiilirekka
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :MPS-postirekka
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Reynard-postirekka
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Perry-postirekka
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :MightyMover-postirekka
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :Powernaught-postirekka
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :Wizzowow-postirekka
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Witcombe-öljysäiliörekka
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Foster-öljysäiliörekka
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Perry-öljysäiliörekka
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Talbott-karjarekka
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Uhl-karjarekka
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Foster-karjarekka
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Balogh-tavararekka
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Craighead-tavararekka
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Goss-tavararekka
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Hereford-viljarekka
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Thomas-viljarekka
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Goss-viljarekka
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Witcombe-tukkirekka
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Foster-tukkirekka
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Moreland-tukkirekka
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :MPS-rautamalmirekka
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Uhl-rautamalmirekka
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Chippy-rautamalmirekka
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Balogh-teräsrekka
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Uhl-teräsrekka
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Kelling-teräsrekka
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Balogh-panssarirekka
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Uhl-panssarirekka
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Foster-panssarirekka
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Foster-ruokarekka
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Perry-ruokarekka
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Chippy-ruokarekka
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Uhl-paperirekka
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Balogh-paperirekka
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :MPS-paperirekka
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :MPS-kuparirekka
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Uhl-kuparirekka
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Goss-kuparirekka
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Uhl-vesisäiliörekka
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Balogh-vesisäiliörekka
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :MPS-vesisäiliörekka
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Balogh-hedelmärekka
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Uhl-hedelmärekka
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Kelling-hedelmärekka
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Balogh-kumirekka
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Uhl-kumirekka
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :RMT-kumirekka
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :MightyMover-sokerirekka
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Powernaught-sokerirekka
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Wizzowow-sokerirekka
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :MightyMover-kolarekka
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Powernaught-kolarekka
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Wizzowow-kolarekka
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :MightyMover-hattararekka
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :Powernaught-hattararekka
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Wizzowow-hattararekka
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :MightyMover-toffeerekka
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :Powernaught-toffeerekka
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :Wizzowow-toffeerekka
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :MightyMover-lelupakettirekka
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Powernaught-lelupakettirekka
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Wizzowow-lelupakettirekka
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :MightyMover-lelurekka
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Powernaught-lelurekka
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Wizzowow-lelurekka
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :MightyMover-paristorekka
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Powernaught-paristorekka
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :Wizzowow-paristorekka
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :MightyMover-sihijuomarekka
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :Powernaught-sihijuomarekka
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :Wizzowow-sihijuomarekka
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :MightyMover-muovirekka
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :Powernaught-muovirekka
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :Wizzowow-muovirekka
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :MightyMover-kuplarekka
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :Powernaught-kuplarekka
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :Wizzowow-kuplarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal -linja-auto
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard -linja-auto
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster-linja-auto
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII -superlinja-auto
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Ploddyphut MkI -linja-auto
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Ploddyphut MkII -linja-auto
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkIII -linja-auto
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh-hiilirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl-hiilirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW-hiilirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS-postirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard-postirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry-postirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover-postirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught-postirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow-postirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe-öljysäiliörekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster-öljysäiliörekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry-öljysäiliörekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott-karjarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl-karjarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster-karjarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh-tavararekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead-tavararekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss-tavararekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford-viljarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas-viljarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss-viljarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe-tukkirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster-tukkirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland-tukkirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS-rautamalmirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl-rautamalmirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy-rautamalmirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh-teräsrekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl-teräsrekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling-teräsrekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh-panssarirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl-panssarirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster-panssarirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster-ruokarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry-ruokarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy-ruokarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl-paperirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh-paperirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS-paperirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS-kuparirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl-kuparirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss-kuparirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl-vesisäiliörekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh-vesisäiliörekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS-vesisäiliörekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh-hedelmärekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl-hedelmärekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling-hedelmärekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh-kumirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl-kumirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT-kumirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover-sokerirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught-sokerirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow-sokerirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover-kolarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught-kolarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow-kolarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover-hattararekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught-hattararekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow-hattararekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover-toffeerekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught-toffeerekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow-toffeerekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover-lelupakettirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught-lelupakettirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow-lelupakettirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover-lelurekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught-lelurekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow-lelurekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover-paristorekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught-paristorekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow-paristorekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover-sihijuomarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught-sihijuomarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow-sihijuomarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover-muovirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught-muovirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow-muovirekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover-kuplarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught-kuplarekka
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow-kuplarekka
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS-öljytankkeri
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc.-öljytankkeri
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS-matkustajalautta
@@ -2649,7 +2649,7 @@ STR_ORDER_NEAREST_HANGAR                                        :lähin varikko
 STR_ORDER_SERVICE_AT                                            :Huolto
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Nonstop-huolto
 STR_ORDER_TRAIN_DEPOT                                           :Junavarikko
-STR_ORDER_ROAD_DEPOT                                            :Varikko
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Varikko
 STR_ORDER_SHIP_DEPOT                                            :Varikko
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2759,7 +2759,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}kulkuneu
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Liikennevälinettä ei voi poistaa...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Moottorivaunun takaosa seuraa aina etuosaansa
 STR_CARGO_N_A                                                   :-{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}Yksikköä ei voi myydä...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Yksikköä ei voi myydä...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Reittiä paikalliselle veturitallille ei löydy.
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Junaa ei voi pysäyttää/lähettää...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Huoltoväli: {LTBLUE}{COMMA} päivää{BLACK}   Viimeisin huolto: {LTBLUE}{DATE_LONG}
@@ -2852,33 +2852,33 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Täytä 
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Ajoneuvo tiellä.
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} huoltoasema
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Uusia ajoneuvoja
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Uusia ajoneuvoja
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Rakenna ajoneuvo
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} huoltoasema
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Uusia ajoneuvoja
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Uusia ajoneuvoja
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Rakenna ajoneuvo
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Ajoneuvoa ei voi rakentaa...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...sen pitää olla pysähtyneenä huoltoasemalle.
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...sen pitää olla pysähtyneenä huoltoasemalle.
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ajoneuvoa ei voi myydä...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Ajoneuvoa ei voi pysäyttää/laitta liikkeelle...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} odottaa varikolla
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Suuntana huoltoasema, {TOWN}.
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Suuntana huoltoasema, {TOWN}, {VELOCITY}.
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Huolto {TOWN} Varikko
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Huolto {TOWN} Varikko, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Suuntana huoltoasema, {TOWN}.
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Suuntana huoltoasema, {TOWN}, {VELOCITY}.
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Huolto {TOWN} Varikko
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Huolto {TOWN} Varikko, {VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Ajoneuvon lähettäminen huoltoasemalle ei onnistu...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Paikallista huoltoasemaa ei löydy.
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Nykyisen ajoneuvon toiminnot - napsauta tässä pysäyttääksesi/laittaaksesi liikkeelle.
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Näytä ajoneuvon aikataulu.
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Keskitä näkymä ajoneuvon sijaintiin.
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Lähetä ajoneuvo huoltoasemalle.
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Pakota ajoneuvo kääntymään ympäri.
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Näytä ajoneuvon tiedot.
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Ajoneuvot - napsauta ajoneuvoa saadaksesi tietoja.
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Rakenna uusi ajoneuvo.
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Vedä ajoneuvo tähän myydäksesi sen.
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Keskitä päänäkymä huoltoaseman sijaintiin.
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Ajoneuvon valintalista - napsauta ajoneuvoa saadaksesi tietoja.
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Rakenna valittu ajoneuvo.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Nykyisen ajoneuvon toiminnot - napsauta tässä pysäyttääksesi/laittaaksesi liikkeelle.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Näytä ajoneuvon aikataulu.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Keskitä näkymä ajoneuvon sijaintiin.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Lähetä ajoneuvo huoltoasemalle.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Pakota ajoneuvo kääntymään ympäri.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Näytä ajoneuvon tiedot.
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ajoneuvot - napsauta ajoneuvoa saadaksesi tietoja.
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Rakenna uusi ajoneuvo.
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Vedä ajoneuvo tähän myydäksesi sen.
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Keskitä päänäkymä huoltoaseman sijaintiin.
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Ajoneuvon valintalista - napsauta ajoneuvoa saadaksesi tietoja.
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Rakenna valittu ajoneuvo.
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasiteetti: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2888,12 +2888,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nimeä ajoneuvo
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ajoneuvoa ei voi nimetä...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nimeä ajoneuvo
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen linja-auto saapuu asemalle {STATION}!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen kuorma-auto saapuu asemalle {STATION}!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen raitiovaunu saapuu asemalle {STATION}!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen rahtiraitiovaunu saapuu asemalle {STATION}!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Ajoneuvokolari!{}Kuljettaja kuolee junaan törmäyksen jälkeisessä tulipallossa
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Ajoneuvokolari!{}{COMMA} kuolee junaan törmäyksen jälkeisessä tulipallossa
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen linja-auto saapuu asemalle {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen kuorma-auto saapuu asemalle {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen raitiovaunu saapuu asemalle {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen rahtiraitiovaunu saapuu asemalle {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Ajoneuvokolari!{}Kuljettaja kuolee junaan törmäyksen jälkeisessä tulipallossa
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Ajoneuvokolari!{}{COMMA} kuolee junaan törmäyksen jälkeisessä tulipallossa
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Ajoneuvoa ei voida kääntää...
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Nimeä
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Nimeä ajoneuvon tyyppi uudelleen
@@ -3172,12 +3172,12 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 ############ Vehicle lists
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Junat - napsauta junaa saadaksesi tietoja.
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Ajoneuvot - napsauta ajoneuvoja saadaksesi tietoja.
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Ajoneuvot - napsauta ajoneuvoja saadaksesi tietoja.
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Laivat - napsauta laivaa saadaksesi tietoja.
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lentokoneet - napsauta lentokonetta saadaksesi tietoja.
 
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} junaa
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} ajoneuvoa
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} ajoneuvoa
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} laivaa
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} lentokonetta
 
@@ -3189,17 +3189,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Olet my
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Väärä varikkotyyppi
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Myy kaikki varikolla olevat junat
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Myy kaikki varikolla olevat ajoneuvot
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}Myy kaikki varikolla olevat ajoneuvot
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Myy kaikki telakalla olevat laivat
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Myy kaikki hallissa olevat ilma-alukset
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Näytä tällä asemalla olevien junien käskyt
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Näytä tässä terminaalissa olevien ajoneuvojen käskyt
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}Näytä tässä terminaalissa olevien ajoneuvojen käskyt
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Näytä tässä terminaalissa olevien laivojen käskyt
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Näytä tämän lentokentän ilma-alusten käskyistä hallista riippumatta
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Korvaa kaikki varikolla olevat junat automaattisesti
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Korvaa kaikki varikolla olevat ajoneuvot automaattisesti
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Korvaa kaikki varikolla olevat ajoneuvot automaattisesti
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Korvaa kaikki telakalla olevat laivat automaattisesti
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Korvaa kaikki hallissa olevat lento-alukset automaattisesti
 
@@ -3227,12 +3227,12 @@ STR_ENGINES                                                     :Veturit
 STR_WAGONS                                                      :Vaunut
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Pysäytä kaikki varikolla olevat junat klikkaamalla
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Pysäytä kaikki varikolla olevat ajoneuvot klikkaamalla
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}Pysäytä kaikki varikolla olevat ajoneuvot klikkaamalla
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Pysäytä kaikki telakalla olevat laivat klikkaamalla
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Pysäytä kaikki hallissa olevat ilma-alukset klikkaamalla
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Käynnistä kaikki varikolla olevat junat klikkaamalla
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Käynnistä kaikki varikolla olevat ajoneuvot klikkaamalla
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}Käynnistä kaikki varikolla olevat ajoneuvot klikkaamalla
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Käynnistä kaikki telakalla olevat laivat klikkaamalla
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Käynnistä kaikki hallissa olevat ilma-alukset klikkaamalla
 
@@ -3394,11 +3394,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 ##### Mass Order
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Kaikki junat
-STR_GROUP_ALL_ROADS                                             :Kaikki autot
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Kaikki autot
 STR_GROUP_ALL_SHIPS                                             :Kaikki laivat
 STR_GROUP_ALL_AIRCRAFTS                                         :Kaikki lentoalukset
 STR_GROUP_DEFAULT_TRAINS                                        :Muut junat
-STR_GROUP_DEFAULT_ROADS                                         :Muut autot
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Muut autot
 STR_GROUP_DEFAULT_SHIPS                                         :Muut laivat
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Muut lentokoneet
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

@@ -318,11 +318,11 @@ STR_SORT_BY_VALUE                                               :Nilai
 STR_SORT_BY_LENGTH                                              :Panjang
 STR_SORT_BY_LIFE_TIME                                           :Baki masa hayat
 STR_SORT_BY_FACILITY                                            :Jenis stesen
-STR_ENGINE_SORT_ENGINE_ID                                       :ID Enjin  (aturan klasik)
-STR_ENGINE_SORT_COST                                            :Kos
-STR_ENGINE_SORT_POWER                                           :Tenaga
-STR_ENGINE_SORT_INTRO_DATE                                      :Tarikh Pengenalan
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapasiti Kargo
+STR_SORT_BY_ENGINE_ID                                           :ID Enjin  (aturan klasik)
+STR_SORT_BY_COST                                                :Kos
+STR_SORT_BY_POWER                                               :Tenaga
+STR_SORT_BY_INTRO_DATE                                          :Tarikh Pengenalan
+STR_SORT_BY_CARGO_CAPACITY                                      :Kapasiti Kargo
 STR_NO_WAITING_CARGO                                            :{BLACK}Tiada kargo menunggu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Pilih semua kemudahan
 STR_SELECT_ALL_TYPES                                            :{BLACK}Pilih semua kargo (termasuk kargo tiada menunggu)
@@ -1288,12 +1288,12 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Kapal te
 STR_ENGINES                                                     :Enjin
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Klik untuk menghentikan semua kereta api di dalam depot
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Klik untuk menghentikan semua kenderaan di dalam depot
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}Klik untuk menghentikan semua kenderaan di dalam depot
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Klik untuk menghentikan semua kapal di dalam depot
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Klik untuk menghentikan semua kapal terbang di dalam hangar
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Klik untuk memulakan semua kereta api di dalam depot
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Klik untuk memulakan semua kenderaan di dalam depot
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}Klik untuk memulakan semua kenderaan di dalam depot
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Klik untuk memulakan semua kapal di dalam depot
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Klik untuk memulakan semua kapal terbang di dalam hangar
 

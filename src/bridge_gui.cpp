@@ -248,7 +248,7 @@ GUIBridgeList::SortFunction * const BuildBridgeWindow::sorter_funcs[] = {
 /* Names of the sorting functions */
 const StringID BuildBridgeWindow::sorter_names[] = {
 	STR_SORT_BY_NUMBER,
-	STR_ENGINE_SORT_COST,
+	STR_SORT_BY_COST,
 	STR_SORT_BY_MAX_SPEED,
 	INVALID_STRING_ID
 };

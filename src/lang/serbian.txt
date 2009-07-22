@@ -520,13 +520,13 @@ STR_SORT_BY_FACILITY                                            :Vrsti stanice
 STR_SORT_BY_WAITING                                             :Vrednosti tovara na čekanju
 STR_SORT_BY_RATING_MAX                                          :Najvišoj oceni tereta
 STR_SORT_BY_RATING_MIN                                          :Najnižoj oceni tereta
-STR_ENGINE_SORT_ENGINE_ID                                       :ID mašine (standardno)
-STR_ENGINE_SORT_COST                                            :Cena
-STR_ENGINE_SORT_POWER                                           :Snaga
-STR_ENGINE_SORT_INTRO_DATE                                      :Datum proizvodnje
-STR_ENGINE_SORT_RUNNING_COST                                    :Troškovi održavanja
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Snaga/Troškovi održavanja
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapacitet tovara
+STR_SORT_BY_ENGINE_ID                                           :ID mašine (standardno)
+STR_SORT_BY_COST                                                :Cena
+STR_SORT_BY_POWER                                               :Snaga
+STR_SORT_BY_INTRO_DATE                                          :Datum proizvodnje
+STR_SORT_BY_RUNNING_COST                                        :Troškovi održavanja
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Snaga/Troškovi održavanja
+STR_SORT_BY_CARGO_CAPACITY                                      :Kapacitet tovara
 STR_NO_WAITING_CARGO                                            :{BLACK}Nijedna vrsta tovara nije na čekanju
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Odaberi sve objekte
 STR_SELECT_ALL_TYPES                                            :{BLACK}Odaberi sve vrste tovara (uključujući i one bez tovara)
@@ -1138,7 +1138,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nove na
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :kraj
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :sredinu
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :početak
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Vozila čekaju u koloni (na zauzetim stanicama): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Vozila čekaju u koloni (na zauzetim stanicama): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Pomeranje prozora kada miš priđe ivicama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Dozvoljeno podmićivanje lokalnih vlasti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Dozvoljena kupovina ekskluzivnih prava za transport: {ORANGE}{STRING}
@@ -1244,12 +1244,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grupisa
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Dozvoliti izgradnju infrastrukture iako ne postoje vozila za njih: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Najviše vozova po igraču: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Najviše drumskih vozila po igraču: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Najviše drumskih vozila po igraču: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Najviše letilica po igraču: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Najviše brodova po igraču: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Računar ne može da koristi železnički prevoz: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Računar ne može da koristi drumski prevoz: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Računar ne može da koristi drumski prevoz: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Računar ne može da koristi vazdušni prevoz: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Računar ne može da koristi vodni prevoz: {ORANGE}{STRING}
 
@@ -1259,8 +1259,8 @@ STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Najviš
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervali servisiranja u procentimaČ {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Uobičajni servisni interval vozova: {ORANGE}{STRING} dana/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Uobičajni servisni interval vozova: {ORANGE}nema
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Uobičajni servisni interval drumskih vozila: {ORANGE}{STRING} dana/%
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Uobičajni servisni interval drumskih vozila: {ORANGE}nema
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Uobičajni servisni interval drumskih vozila: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Uobičajni servisni interval drumskih vozila: {ORANGE}nema
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Uobičajni servisni interval letilica: {ORANGE}{STRING} dana/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Uobičajni servisni interval letilica: {ORANGE}nema
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Uobičajni servisni interval brodova: {ORANGE}{STRING} dana/%
@@ -1335,10 +1335,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pretra�
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Nepreporučuje se)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Preporučuje se)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Pretraživajne putanja drumskih vozila: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Originalno {RED}(Nepreporučuje se)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Preporučuje se)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Pretraživajne putanja drumskih vozila: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :Originalno {RED}(Nepreporučuje se)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Preporučuje se)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pretraživanje putanja brodova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Originalno {BLUE}(Preporučuje se)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2244,7 +2244,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...već 
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Neimenovan
 STR_SV_TRAIN_NAME                                               :Voz {COMMA}
-STR_SV_ROADVEH_NAME                                             :Drumsko Vozilo {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Drumsko Vozilo {COMMA}
 STR_SV_SHIP_NAME                                                :Brod {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Letilica {COMMA}
 
@@ -2363,12 +2363,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Izgradnja
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nova vozila
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Vozovi - Troškovi održavanja
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Drumska vozila - Troškovi održavanja
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Drumska vozila - Troškovi održavanja
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Letelice - Troškovi održavanja
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Brodovi - Troškovi održavanja
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Infrastruktura - Troškovi održavanja
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Vozovi - Prihod
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Drumska vozila - Prihod
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Drumska vozila - Prihod
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Letelice - Prihod
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Brodovi - Prihod
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Kamata na zajam
@@ -2507,7 +2507,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Teretni Tramvaj
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Prikaži generalnu mustru boja
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Prikaži mustre boja vozova
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Prikaži mustre boja drumskih vozila
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}Prikaži mustre boja drumskih vozila
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Prikaži mustre boja brodova
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Prikaži mustre boja letilica
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Izaberite osnovnu boju za označenu kategoriju
@@ -2688,7 +2688,7 @@ STR_ORDER_NEAREST_HANGAR                                        :najbliži Hanga
 STR_ORDER_SERVICE_AT                                            :Servisiranje u
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Diektno na servisiranje u
 STR_ORDER_TRAIN_DEPOT                                           :Železnički Depo
-STR_ORDER_ROAD_DEPOT                                            :Drumski Depo
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Drumski Depo
 STR_ORDER_SHIP_DEPOT                                            :Brodogradilište
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2798,7 +2798,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}vozilo k
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Ne može se ukloniti vozilo...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Zadnja lokomotiva u kompoziciji uvek prati prednju
 STR_CARGO_N_A                                                   :Nepoznato{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}Ne može se prodati šinsko vozilo...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Ne može se prodati šinsko vozilo...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nepostoji putanja do lokalnog depoa
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Ne može se pokrenuti/zaustaviti voz...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Period servisiranja: {LTBLUE}{COMMA}dana{BLACK}   Poslednji servis: {LTBLUE}{DATE_LONG}
@@ -2891,33 +2891,33 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Popunjav
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Drumsko vozilo na putu
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Depo Drumskih Vozila
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nova Vozila
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nova Drumska Vozila
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Kupi Vozilo
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Depo Drumskih Vozila
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nova Vozila
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nova Drumska Vozila
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Kupi Vozilo
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Ne može se kupiti drumsko vozilo...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...mora se zaustaviti unutar depoa za drumska vozila
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...mora se zaustaviti unutar depoa za drumska vozila
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nemoguća prodaja drumskog vozila...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Ne može se pokrenuti/zaustaviti drumsko vozilo...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čeka u depou
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Ide ka {TOWN} Drumskom Depou
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Ide ka {TOWN} Drumskom Depou, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servisiranje u {TOWN} Drumskom Depou
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servisiranje u {TOWN} Drumskom Depou, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Ide ka {TOWN} Drumskom Depou
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Ide ka {TOWN} Drumskom Depou, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Servisiranje u {TOWN} Drumskom Depou
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Servisiranje u {TOWN} Drumskom Depou, {VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Vozilo ne može da ode u depo...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Neuspešan pronalazak lokalnog depoa
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Trenutno stanje vozila - kliknite ovde za zaustavljanje/pokretanje vozila
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Prikazuje naredbe vozilu
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Prebacite se na lokaciju vozila
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Pošaljite vozilo u depo. Sa Ctrl+Klik će otići samo na servis
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Naterajte vozilo da okrene
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Prikazuje detalje drumskog vozila
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Vozila - kliknite na vozilo za podatke
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Kupi novo drumsko vozilo
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Ovde prevucite drumsko vozilo kako biste ga prodali
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Prebacite se na lokaciju drumskog depoa
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Spisak probranih drumskih vozila - kliknite na vozilo za više podataka
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Kupite označeno drumsko vozilo
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Trenutno stanje vozila - kliknite ovde za zaustavljanje/pokretanje vozila
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Prikazuje naredbe vozilu
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Prebacite se na lokaciju vozila
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Pošaljite vozilo u depo. Sa Ctrl+Klik će otići samo na servis
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Naterajte vozilo da okrene
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Prikazuje detalje drumskog vozila
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - kliknite na vozilo za podatke
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Kupi novo drumsko vozilo
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Ovde prevucite drumsko vozilo kako biste ga prodali
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Prebacite se na lokaciju drumskog depoa
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Spisak probranih drumskih vozila - kliknite na vozilo za više podataka
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Kupite označeno drumsko vozilo
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Nosivost: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2927,12 +2927,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Naziv drumskog vozila
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ne može se promeniti naziv vozila...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Naziv drumskog vozila
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi autobus stiže na stanicu {STATION}!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi kamion stiže na stanicu {STATION}!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi tramvaj stiže na stanicu {STATION}!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi teretni tamvaj stiže na stanicu {STATION}!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Saobraćajna nesreća!{}Vozač je poginuo u eksploziji nakon sudara sa vozom
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Saobraćajna nesreća!{}{COMMA} {P "" je su} poginu{P o la lo} u eksploziji nakon sudara sa vozom
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi autobus stiže na stanicu {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi kamion stiže na stanicu {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi tramvaj stiže na stanicu {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi teretni tamvaj stiže na stanicu {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Saobraćajna nesreća!{}Vozač je poginuo u eksploziji nakon sudara sa vozom
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Saobraćajna nesreća!{}{COMMA} {P "" je su} poginu{P o la lo} u eksploziji nakon sudara sa vozom
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Drumsko vozilo ne može da se okrene...
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Promena naziva
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Promenite naziv vrste drumskog vozila
@@ -3174,11 +3174,11 @@ STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 fu
 
 ############ Vehicle lists
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vozovi - kliknite na voz za podatke
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Drumska vozila - kliknite na vozilo za podatke
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Drumska vozila - kliknite na vozilo za podatke
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Brodovi - kliknite na brod za podatke
 
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Voz{P "" a ova}
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Drumsk{P o a ih} Vozil{P o a a}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Drumsk{P o a ih} Vozil{P o a a}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Brod{P "" a ova}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Leteluca
 
@@ -3312,11 +3312,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 ##### Mass Order
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Svi vozovi
-STR_GROUP_ALL_ROADS                                             :Sva drumska vozila
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Sva drumska vozila
 STR_GROUP_ALL_SHIPS                                             :Svi brodovi
 STR_GROUP_ALL_AIRCRAFTS                                         :Sve letilice
 STR_GROUP_DEFAULT_TRAINS                                        :Negrupisani vozovi
-STR_GROUP_DEFAULT_ROADS                                         :Negrupisana drumska vozila
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Negrupisana drumska vozila
 STR_GROUP_DEFAULT_SHIPS                                         :Negrupisani brodovi
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupisane letilice
 

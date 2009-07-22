@@ -345,13 +345,13 @@ STR_SORT_BY_FACILITY                                            :نوع ایست
 STR_SORT_BY_WAITING                                             :ارزش محموله ی درانتظار
 STR_SORT_BY_RATING_MAX                                          :حداکثر نرخ محموله
 STR_SORT_BY_RATING_MIN                                          :کمترین نرخ محموله
-STR_ENGINE_SORT_ENGINE_ID                                       :شناسه موتور
-STR_ENGINE_SORT_COST                                            :قیمت
-STR_ENGINE_SORT_POWER                                           :توان
-STR_ENGINE_SORT_INTRO_DATE                                      :تاریخ احداث
-STR_ENGINE_SORT_RUNNING_COST                                    :هزینه کارکرد
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :توان/هزینه کارکرد
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :ظرفیت محموله
+STR_SORT_BY_ENGINE_ID                                           :شناسه موتور
+STR_SORT_BY_COST                                                :قیمت
+STR_SORT_BY_POWER                                               :توان
+STR_SORT_BY_INTRO_DATE                                          :تاریخ احداث
+STR_SORT_BY_RUNNING_COST                                        :هزینه کارکرد
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :توان/هزینه کارکرد
+STR_SORT_BY_CARGO_CAPACITY                                      :ظرفیت محموله
 STR_NO_WAITING_CARGO                                            :{BLACK}هیچ نوع محموله در انتظار نیست
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}انتخاب تمامی تسهیلات
 STR_SELECT_ALL_TYPES                                            :{BLACK}انتخاب همه ی انواع محموله ها (شامل محموله های در انتظار)
@@ -1250,91 +1250,91 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :واگن اسب
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :کامیون حمل باتری
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :کامیون نوشابه گازدار
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :کامیون حمل پلاستیک
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :اتوبوس شاهی MPS
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :اتوبوس Hereford Leopard
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :اتوبوس Foster
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :اتوبوس ویژه Foster MkII
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :اتوبوس Ploddyphut MkI
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :اتوبوس Plodyphut MkII
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :اتوبوس Plodyphut MkII
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :کامیون حمل ذغال سنگ Balogh
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :کامیون حمل ذغال سنگ Uhl
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :کامیون حمل ذغال سنگ DW
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :کامیون حمل نامه MPS
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :کامیون حمل نامه Reynard
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :کامیون حمل نامه Perry
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :کامیون حمل نامه MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :کامیون حمل نامه Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :کامیون حمل نامه Wizzowow
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :تانکر نفت Witcombe
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :تانکر نفت Foster
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :تانکر نفت Perry
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :واگن حمل فرآورده های حیوانی Talbott
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :واگن حمل فرآورده های حیوانی Uhl
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :واگن حمل فرآورده های حیوانی Foster
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :کامیون محصولات Balogh
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :کامیون محصولات Craighead
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :کامیون محصولات Goss
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :کامیون حبوبات Hereford
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :کامیون حبوبات Thomas
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :کامیون حبوبات Goss
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :کامیون حمل چوب Witcombe
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :کامیون حمل چوب Foster
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :کامیون حمل چوب Moreland
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :کامیون  حمل سنگ آهن MPS
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :کامیون  حمل سنگ آهن Uhl
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :کامیون  حمل سنگ آهن Chippy
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :کامیون حمل فولاد Balogh
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :کامیون حمل فولاد Uhl
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :کامیون حمل فولاد Kelling
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :کامیون محافظت شده Balogh
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :کامیون محافظت شده Uhl
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :کامیون محافظت شده Foster
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :واگن مواد غذایی Foster
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :واگن مواد غذایی Perry
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :واگن مواد غذایی Chippy
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :کامیون حمل کاغذ Uhl
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :کامیون حمل کاغذ Balogh
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :کامیون حمل کاغذ MPS
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :کامیون حمل سنگ مس MPS
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :کامیون حمل سنگ مس Uhl
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :کامیون حمل سنگ مس Goss
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :تانکر آب Uhl
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :تانکر آب Balogh
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :تانکر آب MPS
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :کامیون حمل میوه Balogh
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :کامیون حمل میوه Uhl
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :کامیون حمل میوه Kelling
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :کامیون کائوچو Balogh
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :کامیون کائوچو Uhl
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :کامیون کائوچو RMT
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :کامیون حمل شکر MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :کامیون حمل شکر Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :کامیون حمل شکر Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :کامیون حمل نوشابه MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :کامیون حمل نوشابه Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :کامیون حمل نوشابه Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :کامیون حمل پشمک MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :کامیون حمل پشمک Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :کامیون حمل پشمک Candyfloss
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :کامیون حمل تافی MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :کامیون حمل تافی Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :کامیون حمل تافی Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :واگن حمل اسباب بازی MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :واگن حمل اسباب بازی Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :واگن حمل اسباب بازی Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :کامیون حمل باتری MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :کامیون حمل باتری Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :کامیون حمل باتری Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :کامیون حمل نوشیدنی گازدار MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :کامیون حمل نوشیدنی گازدار Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :کامیون حمل نوشیدنی گازدار Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :کامیون حمل پلاستیک MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :کامیون حمل پلاستیک Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :کامین حمل پلاستیک Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :کامیون حمل حباب MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :کامیون حمل حباب Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :کامیون حمل حباب Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :اتوبوس شاهی MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :اتوبوس Hereford Leopard
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :اتوبوس Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :اتوبوس ویژه Foster MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :اتوبوس Ploddyphut MkI
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :اتوبوس Plodyphut MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :اتوبوس Plodyphut MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :کامیون حمل ذغال سنگ Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :کامیون حمل ذغال سنگ Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :کامیون حمل ذغال سنگ DW
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :کامیون حمل نامه MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :کامیون حمل نامه Reynard
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :کامیون حمل نامه Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :کامیون حمل نامه MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :کامیون حمل نامه Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :کامیون حمل نامه Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :تانکر نفت Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :تانکر نفت Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :تانکر نفت Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :واگن حمل فرآورده های حیوانی Talbott
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :واگن حمل فرآورده های حیوانی Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :واگن حمل فرآورده های حیوانی Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :کامیون محصولات Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :کامیون محصولات Craighead
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :کامیون محصولات Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :کامیون حبوبات Hereford
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :کامیون حبوبات Thomas
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :کامیون حبوبات Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :کامیون حمل چوب Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :کامیون حمل چوب Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :کامیون حمل چوب Moreland
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :کامیون  حمل سنگ آهن MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :کامیون  حمل سنگ آهن Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :کامیون  حمل سنگ آهن Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :کامیون حمل فولاد Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :کامیون حمل فولاد Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :کامیون حمل فولاد Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :کامیون محافظت شده Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :کامیون محافظت شده Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :کامیون محافظت شده Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :واگن مواد غذایی Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :واگن مواد غذایی Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :واگن مواد غذایی Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :کامیون حمل کاغذ Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :کامیون حمل کاغذ Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :کامیون حمل کاغذ MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :کامیون حمل سنگ مس MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :کامیون حمل سنگ مس Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :کامیون حمل سنگ مس Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :تانکر آب Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :تانکر آب Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :تانکر آب MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :کامیون حمل میوه Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :کامیون حمل میوه Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :کامیون حمل میوه Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :کامیون کائوچو Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :کامیون کائوچو Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :کامیون کائوچو RMT
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :کامیون حمل شکر MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :کامیون حمل شکر Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :کامیون حمل شکر Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :کامیون حمل نوشابه MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :کامیون حمل نوشابه Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :کامیون حمل نوشابه Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :کامیون حمل پشمک MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :کامیون حمل پشمک Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :کامیون حمل پشمک Candyfloss
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :کامیون حمل تافی MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :کامیون حمل تافی Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :کامیون حمل تافی Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :واگن حمل اسباب بازی MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :واگن حمل اسباب بازی Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :واگن حمل اسباب بازی Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :کامیون حمل باتری MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :کامیون حمل باتری Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :کامیون حمل باتری Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :کامیون حمل نوشیدنی گازدار MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :کامیون حمل نوشیدنی گازدار Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :کامیون حمل نوشیدنی گازدار Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :کامیون حمل پلاستیک MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :کامیون حمل پلاستیک Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :کامین حمل پلاستیک Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :کامیون حمل حباب MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :کامیون حمل حباب Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :کامیون حمل حباب Wizzowow
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :تانکر نفت MPS
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :تانکر نفت CS-Inc.
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :اتوبوس MPS
@@ -1438,7 +1438,7 @@ STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}نمی �
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}این دستور تغییر نمی کند...
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE} ...این وسیله را نمی توان حرکت داد
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}نمی شود قطار را فروخت...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}نمی شود قطار را فروخت...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}مسیری به ایستگاه راه آهن پیدا نمیشود
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}قطار را نمی شود حرکت داد / متوقف کرد...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}فاصله ی زمانی بین تعمیرات دوره ای: {LTBLUE}{COMMA}روز {BLACK}   آخیرین تعمسرات: {LTBLUE}{DATE_LONG}
@@ -1486,17 +1486,17 @@ STR_CLEAR_TIME                                                  :{BLACK}پاک �
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}ماشین در جاده است
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}وسایل نقلیه ی جدید
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}ماشین های جدید
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}ساخت وسیله نقلیه
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}وسایل نقلیه ی جدید
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}ماشین های جدید
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}ساخت وسیله نقلیه
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}نمی شود ماشین ساخت...
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}نمیشود ماشین را فروخت...
 
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}نام گذاری ماشین
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}شهروندان ورود اولین اتوبوس را به . . .{}{STATION} تبریک گفتند!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}شهروندان ورود اولین کامیون را به . . .{}{STATION} تبریک گفتند!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}تصادف ماشین!{}راننده پس از تصادف با قطار در آتش سوخت
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}تصادف ماشین!{}راننده پس از تصادف با قطار{COMMA} در آتش سوخت
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}شهروندان ورود اولین اتوبوس را به . . .{}{STATION} تبریک گفتند!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}شهروندان ورود اولین کامیون را به . . .{}{STATION} تبریک گفتند!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}تصادف ماشین!{}راننده پس از تصادف با قطار در آتش سوخت
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}تصادف ماشین!{}راننده پس از تصادف با قطار{COMMA} در آتش سوخت
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}تغییر نام
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}تغییر نام انواع ماشین ها
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}تغییر نام انواع ماشین ها
@@ -1612,7 +1612,7 @@ STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}کشتی
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}هواپیما - برای اطلاعات بیشتر روی هواپیما کلیک کنید
 
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} قطار{P "" s}
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} ماشین{P "" s}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} ماشین{P "" s}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} هواپیما
 
 

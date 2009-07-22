@@ -346,13 +346,13 @@ STR_SORT_BY_FACILITY                                            :역 종류
 STR_SORT_BY_WAITING                                             :대기 화물량
 STR_SORT_BY_RATING_MAX                                          :높은 화물 등급순
 STR_SORT_BY_RATING_MIN                                          :낮은 화물 등급순
-STR_ENGINE_SORT_ENGINE_ID                                       :기관차ID
-STR_ENGINE_SORT_COST                                            :가격
-STR_ENGINE_SORT_POWER                                           :힘
-STR_ENGINE_SORT_INTRO_DATE                                      :도입 날짜
-STR_ENGINE_SORT_RUNNING_COST                                    :운행비용
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :힘/운행비용
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :화물 수송량
+STR_SORT_BY_ENGINE_ID                                           :기관차ID
+STR_SORT_BY_COST                                                :가격
+STR_SORT_BY_POWER                                               :힘
+STR_SORT_BY_INTRO_DATE                                          :도입 날짜
+STR_SORT_BY_RUNNING_COST                                        :운행비용
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :힘/운행비용
+STR_SORT_BY_CARGO_CAPACITY                                      :화물 수송량
 STR_NO_WAITING_CARGO                                            :{BLACK}대기 중인 화물이 없습니다.
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}모든 시설 선택
 STR_SELECT_ALL_TYPES                                            :{BLACK}모든 종류의 화물을 선택 (대기하지 않는 화물 포함)
@@ -947,7 +947,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}새로�
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :가까운쪽
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :중간
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :먼쪽
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}(획기적 방법으로) 자동차를 대기하게 하기 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}(획기적 방법으로) 자동차를 대기하게 하기 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}가장자리에 마우스를 가져가면 화면 움직이기 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}지역 당국에 뇌물을 주는 행위 허용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}독점 운송권 구입 허용: {ORANGE}{STRING}
@@ -1053,12 +1053,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}재정 
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}차량 생산이 불가능할 때 건설 도구 표시: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}최대 열차 수: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}최대 자동차 수: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}최대 자동차 수: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}최대 항공기 수: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}최대 선박 수: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}컴퓨터의 철도 사용을 허가하지 않음 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}컴퓨터의 자동차 사용을 허가하지 않음 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}컴퓨터의 자동차 사용을 허가하지 않음 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}컴퓨터의 항공기 사용을 허가하지 않음 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}컴퓨터의 선박 사용을 허가하지 않음 : {ORANGE}{STRING}
 
@@ -1068,8 +1068,8 @@ STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}AI가 �
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}백분율에 의한 점검 주기: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}열차 기본 점검 간격: {ORANGE}{STRING} 일/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}열차 기본 점검 간격: {ORANGE}사용불가
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}자동차 기본 점검 간격: {ORANGE}{STRING} 일/%
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}자동차 기본 점검 간격: {ORANGE}사용불가
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}자동차 기본 점검 간격: {ORANGE}{STRING} 일/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}자동차 기본 점검 간격: {ORANGE}사용불가
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}항공기 기본 점검 간격: {ORANGE}{STRING} 일/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}항공기 기본 점검 간격: {ORANGE}사용불가
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}선박 기본 점검 간격: {ORANGE}{STRING} 일/%
@@ -1144,10 +1144,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}열차�
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(비추천)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(추천)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}차량을 위한 경로탐색: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :오리지널 {RED}(비추천)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(추천)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}차량을 위한 경로탐색: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :오리지널 {RED}(비추천)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(추천)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}선박을 위한 경로탐색: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :오리지널 {BLUE}(추천)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2057,7 +2057,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...이�
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :이름 없음
 STR_SV_TRAIN_NAME                                               :열차 {COMMA}
-STR_SV_ROADVEH_NAME                                             :자동차 {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :자동차 {COMMA}
 STR_SV_SHIP_NAME                                                :선박 {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :항공기 {COMMA}
 
@@ -2176,12 +2176,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}건설
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}신규 차량 구입
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}열차 운행비용
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}자동차 운행비용
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}자동차 운행비용
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}항공기 운행비용
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}선박 운행비용
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}유지보수비
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}열차 수익
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}자동차 수익
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}자동차 수익
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}항공기 수익
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}선박 수익
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}이자
@@ -2320,7 +2320,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :화물 전차
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}일반 색상 선택
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}열차 색상 선택
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}자동차 색상 선택
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}자동차 색상 선택
 STR_LIVERY_SHIP_TIP                                             :{BLACK}선박 색상 선택
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}항공기 색상 선택
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}선택한 색상을 1차 색상으로 선택
@@ -2444,94 +2444,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :장난감 수�
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :배터리 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :탄산음료 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :플라스틱 수송차량
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :MPS Regal 버스
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Hereford Leopard 버스
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Foster 버스
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Foster MkII 수퍼버스
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Ploddyphut MkI 버스
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :Ploddyphut MkII 버스
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Ploddyphut MkIII 버스
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Balogh 석탄 수송차
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Uhl 석탄 수송차
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :DW 석탄 수송차
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :MPS 우편 수송차
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Reynard 우편 수송차
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Perry 우편 수송차
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :MightyMover 우편 수송차
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :Powernaught 우편 수송차
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :Wizzowow 우편 수송차
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Witcombe 석유 탱크차
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Foster 석유 탱크차
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Perry 석유 탱크차
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Talbott 가축 수송차
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Uhl 가축 수송차
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Foster 가축 수송차
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Balogh 상품 수송차
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Craighead 상품 수송차
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Goss 상품 수송차
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Hereford 곡물 수송차
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Thomas 곡물 수송차
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Goss 곡물 수송차
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Witcombe 목재 수송차
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Foster 목재 수송차
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Moreland 목재 수송차
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :MPS 철광석 수송차
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Uhl 철광석 수송차
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Chippy 철광석 수송차
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Balogh 철 수송차량
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Uhl 철 수송차량
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Kelling 철 수송차량
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Balogh 귀금속 수송차
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Uhl 귀금속 수송차
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Foster 귀금속 수송차
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Foster 식품 수송차
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Perry 식품 수송차
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Chippy 식품 수송차
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Uhl 종이 수송차
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Balogh 종이 수송차
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :MPS 종이 수송차
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :MPS 구리 광석 수송차
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Uhl 구리 광석 수송차
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Goss 구리 광석 수송차
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Uhl 물 탱크
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Balogh 물 탱크
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :MPS 물 탱크
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Balogh 과일 수송차
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Uhl 과일 수송차
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Kelling 과일 수송차
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Balogh 고무 수송차
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Uhl 고무 수송차
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :RMT 고무 수송차
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :MightyMover 설탕 수송차
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Powernaught 설탕 수송차
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Wizzowow 설탕 수송차
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :MightyMover 콜라 트럭
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Powernaught 콜라 트럭
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Wizzowow 콜라 트럭
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :MightyMover 솜사탕 트럭
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :Powernaught 솜사탕 트럭
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Wizzowow 솜사탕 트럭
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :MightyMover 태피 트럭
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :Powernaught 태피 트럭
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :Wizzowow 태피 트럭
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :MightyMover 장난감 수송차
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Powernaught 장난감 수송차
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Wizzowow 장난감 수송차
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :MightyMover 사탕 트럭
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Powernaught 사탕 트럭
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Wizzowow 사탕 트럭
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :MightyMover 배터리 수송차
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Powernaught 배터리 수송차
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :Wizzowow 배터리 수송차
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :MightyMover 탄산음료 수송차
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :Powernaught 탄산음료 수송차
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :Wizzowow 탄산음료 수송차
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :MightyMover 플라스틱 수송차
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :Powernaught 플라스틱 수송차
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :Wizzowow 플라스틱 수송차
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :MightyMover 거품 트럭
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :Powernaught 거품 트럭
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :Wizzowow 거품 트럭
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal 버스
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard 버스
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster 버스
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII 수퍼버스
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Ploddyphut MkI 버스
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Ploddyphut MkII 버스
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkIII 버스
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh 석탄 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl 석탄 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW 석탄 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS 우편 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard 우편 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry 우편 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover 우편 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught 우편 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow 우편 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe 석유 탱크차
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster 석유 탱크차
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry 석유 탱크차
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott 가축 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl 가축 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster 가축 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh 상품 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead 상품 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss 상품 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford 곡물 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas 곡물 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss 곡물 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe 목재 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster 목재 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland 목재 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS 철광석 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl 철광석 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy 철광석 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh 철 수송차량
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl 철 수송차량
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling 철 수송차량
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh 귀금속 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl 귀금속 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster 귀금속 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster 식품 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry 식품 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy 식품 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl 종이 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh 종이 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS 종이 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS 구리 광석 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl 구리 광석 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss 구리 광석 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl 물 탱크
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh 물 탱크
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS 물 탱크
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh 과일 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl 과일 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling 과일 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh 고무 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl 고무 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT 고무 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover 설탕 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught 설탕 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow 설탕 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover 콜라 트럭
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught 콜라 트럭
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow 콜라 트럭
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover 솜사탕 트럭
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught 솜사탕 트럭
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow 솜사탕 트럭
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover 태피 트럭
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught 태피 트럭
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow 태피 트럭
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover 장난감 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught 장난감 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow 장난감 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover 사탕 트럭
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught 사탕 트럭
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow 사탕 트럭
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover 배터리 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught 배터리 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow 배터리 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover 탄산음료 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught 탄산음료 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow 탄산음료 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover 플라스틱 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught 플라스틱 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow 플라스틱 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover 거품 트럭
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught 거품 트럭
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow 거품 트럭
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS 석유 탱크
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. 석유 탱크
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS 여객선
@@ -2645,7 +2645,7 @@ STR_ORDER_NEAREST_HANGAR                                        :가까운 격�
 STR_ORDER_SERVICE_AT                                            :완행 점검
 STR_ORDER_SERVICE_NON_STOP_AT                                   :직행 점검
 STR_ORDER_TRAIN_DEPOT                                           :차량기지
-STR_ORDER_ROAD_DEPOT                                            :차고
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :차고
 STR_ORDER_SHIP_DEPOT                                            :정박소
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2755,7 +2755,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}경로�
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}차량을 옮길 수 없습니다...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}뒷쪽 기관차는 앞쪽것을 항상 따라다닐 것입니다.
 STR_CARGO_N_A                                                   :없음{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}기차를 팔 수 없습니다...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}기차를 팔 수 없습니다...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}근처에 있는 차량기지로 가는 길을 찾을 수 없습니다
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}기차를 운행/정지시킬 수 없습니다...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}점검 간격: {LTBLUE}{COMMA}일마다{BLACK}   최근 점검: {LTBLUE}{DATE_LONG}
@@ -2848,33 +2848,33 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}다음 �
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}중간에 자동차가 있습니다.
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} 차고
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}새 차량
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}새 자동차
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}차량 만들기
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} 차고
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}새 차량
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}새 자동차
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}차량 만들기
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}자동차를 만들 수 없습니다...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...차고 안에서 정지해있어야 합니다!
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...차고 안에서 정지해있어야 합니다!
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}자동차를 팔 수 없습니다...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}자동차를 운행/정지시킬 수 없습니다...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE}{P "이" "가"} 차고에서 대기 중입니다
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}{TOWN} 차고로 가는 중
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}{TOWN} 차고로 가는 중 ({VELOCITY})
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}{TOWN} 차고로 점검하러 가는중
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} 차고로 점검하러 가는중 ({VELOCITY})
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}{TOWN} 차고로 가는 중
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}{TOWN} 차고로 가는 중 ({VELOCITY})
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}{TOWN} 차고로 점검하러 가는중
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}{TOWN} 차고로 점검하러 가는중 ({VELOCITY})
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}차량을 차고로 보낼 수 없습니다...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}인접한 차고를 찾을 수 없습니다
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}현재 차량 행동 - 운행/정지시키려면 클릭하세요
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}차량 경로 보이기
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}이 차량이 있는 곳으로 이동
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}차량을 차고로 보냅니다. CTRL+클릭하면 점검만 합니다.
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}차량을 U턴시킵니다.
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}자동차 상세정보 보이기
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}차량 - 차량 정보를 보려면 클릭
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}새 자동차 만들기
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}자동차를 팔려면 여기로 드래그하세요
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}이 차고가 있는 곳으로 이동
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}자동차 선택 목록 - 차량 정보를 보려면 클릭
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}선택한 자동차 만들기
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}현재 차량 행동 - 운행/정지시키려면 클릭하세요
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}차량 경로 보이기
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}이 차량이 있는 곳으로 이동
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}차량을 차고로 보냅니다. CTRL+클릭하면 점검만 합니다.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}차량을 U턴시킵니다.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}자동차 상세정보 보이기
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}차량 - 차량 정보를 보려면 클릭
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}새 자동차 만들기
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}자동차를 팔려면 여기로 드래그하세요
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}이 차고가 있는 곳으로 이동
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}자동차 선택 목록 - 차량 정보를 보려면 클릭
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}선택한 자동차 만들기
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}수송량: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2884,12 +2884,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}자동차 이름 지정
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}자동차의 이름을 지정할 수 없습니다...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}자동차 이름 지정
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}첫 버스가 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}첫 트럭이 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}{STATION}에 처음으로 승객 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}{STATION}에 처음으로 화물 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 운전사가 사망했습니다!
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 {COMMA}명이 사망했습니다!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}첫 버스가 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}첫 트럭이 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}{STATION}에 처음으로 승객 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}{STATION}에 처음으로 화물 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 운전사가 사망했습니다!
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 {COMMA}명이 사망했습니다!
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}자동차를 U턴시킬 수 없습니다...
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}이름 지정
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}자동차 타입의 이름 지정
@@ -3168,12 +3168,12 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 ############ Vehicle lists
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}열차 - 열차 정보를 보려면 클릭
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}자동차 - 자세히 보려면 클릭
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}자동차 - 자세히 보려면 클릭
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}항공기 - 항공기 정보를 보려면 클릭하세요
 
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA}대의 열차
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA}대의 자동차
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA}대의 자동차
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA}대의 선박
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA}대의 항공기
 
@@ -3185,17 +3185,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}이 안
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :잘못된 차량기지 종류
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}이 차량기지에 있는 모든 열차를 팝니다.
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}이 차량기지에 있는 모든 자동차를 팝니다.
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}이 차량기지에 있는 모든 자동차를 팝니다.
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}이 차량기지에 있는 모든 선박을 팝니다.
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}이 차량기지에 있는 모든 항공기를 팝니다.
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}이 차량기지를 거쳐가는 모든 열차의 목록을 보여줍니다.
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}이 차고지를 거쳐가는 모든 자동차의 목록을 보여줍니다.
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}이 차고지를 거쳐가는 모든 자동차의 목록을 보여줍니다.
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}이 정박소를 거쳐가는 모든 선박의 목록을 보여줍니다.
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}이 격납고를 거쳐가는 모든 항공기의 목록을 보여줍니다.
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}이 차량기지에 있는 모든 열차를 자동으로 교체합니다.
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}이 차고지에 있는 모든 자동차를 자동으로 교체합니다.
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}이 차고지에 있는 모든 자동차를 자동으로 교체합니다.
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}이 정박소에 있는 모든 선박을 자동으로 교체합니다.
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}이 격납고에 있는 모든 항공기를 자동으로 교체합니다.
 
@@ -3223,12 +3223,12 @@ STR_ENGINES                                                     :기관차
 STR_WAGONS                                                      :화물차
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}이 차량기지 안에 있는 모든 열차의 운행을 중지시킵니다.
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}이 차고 내의 모든 자동차의 운행을 중지시킵니다.
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}이 차고 내의 모든 자동차의 운행을 중지시킵니다.
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}이 정박소 안에 있는 모든 선박의 운행을 중지시킵니다.
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}이 격납고 안에 있는 모든 항공기의 운행을 중지시킵니다.
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}이 차량기지 안에 있는 모든 열차의 운행을 시작합니다.
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}이 차고 내의 모든 자동차의 운행을 시작합니다.
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}이 차고 내의 모든 자동차의 운행을 시작합니다.
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}이 정박소 안에 있는 모든 선박의 운행을 시작합니다.
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}이 격납고 안에 있는 모든 항공기의 운행을 시작합니다.
 
@@ -3390,11 +3390,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 ##### Mass Order
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :모든 기차
-STR_GROUP_ALL_ROADS                                             :모든 차량
+STR_GROUP_ALL_ROAD_VEHICLES                                     :모든 차량
 STR_GROUP_ALL_SHIPS                                             :모든 선박
 STR_GROUP_ALL_AIRCRAFTS                                         :모든 항공기
 STR_GROUP_DEFAULT_TRAINS                                        :그룹에 속하지 않은 기차
-STR_GROUP_DEFAULT_ROADS                                         :그룹에 속하지 않은 차량
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :그룹에 속하지 않은 차량
 STR_GROUP_DEFAULT_SHIPS                                         :그룹에 속하지 않은 선박
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :그룹에 속하지 않은 항공기
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

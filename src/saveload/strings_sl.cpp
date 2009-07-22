@@ -23,7 +23,7 @@ StringID RemapOldStringID(StringID s)
 		case 0x70E4: return SPECSTR_PLAYERNAME_ENGLISH;
 		case 0x70E9: return SPECSTR_PLAYERNAME_ENGLISH;
 		case 0x8864: return STR_SV_TRAIN_NAME;
-		case 0x902B: return STR_SV_ROADVEH_NAME;
+		case 0x902B: return STR_SV_ROAD_VEHICLE_NAME;
 		case 0x9830: return STR_SV_SHIP_NAME;
 		case 0xA02F: return STR_SV_AIRCRAFT_NAME;
 

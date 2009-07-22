@@ -345,13 +345,13 @@ STR_SORT_BY_FACILITY                                            :Tipus de estaci
 STR_SORT_BY_WAITING                                             :Valor de espera de càrrega
 STR_SORT_BY_RATING_MAX                                          :Rati de càrrega més alt
 STR_SORT_BY_RATING_MIN                                          :Rati de càrrega més baix
-STR_ENGINE_SORT_ENGINE_ID                                       :IDMotor (ordre clàssic)
-STR_ENGINE_SORT_COST                                            :Cost
-STR_ENGINE_SORT_POWER                                           :Potència
-STR_ENGINE_SORT_INTRO_DATE                                      :Data de llançament
-STR_ENGINE_SORT_RUNNING_COST                                    :Cost d'utilització
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potència/Cost d'utilització
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacitat de càrrega
+STR_SORT_BY_ENGINE_ID                                           :IDMotor (ordre clàssic)
+STR_SORT_BY_COST                                                :Cost
+STR_SORT_BY_POWER                                               :Potència
+STR_SORT_BY_INTRO_DATE                                          :Data de llançament
+STR_SORT_BY_RUNNING_COST                                        :Cost d'utilització
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potència/Cost d'utilització
+STR_SORT_BY_CARGO_CAPACITY                                      :Capacitat de càrrega
 STR_NO_WAITING_CARGO                                            :{BLACK}No hi ha càrrega d'aquest tipus esperant
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar totes les instal·lacions
 STR_SELECT_ALL_TYPES                                            :{BLACK}Selecciona tots els tipus de càrrega (incloent carga sense espera)
@@ -946,7 +946,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Noves o
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :a prop del final
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :a la meitat
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :lluny del final
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Cues d'automòbils (amb efectes quàntics): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Cues d'automòbils (amb efectes quàntics): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Finestra d'avis quan el ratolí és al marc del programa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permet subornar a les autoritats locals: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permet comprar els drets del transport en exclusiva: {ORANGE}{STRING}
@@ -1052,12 +1052,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Agrupa 
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Mostra les eines de construcció quan no hi hagi disponibles vehicles adequats: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Max trens per jugador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Max automòbils per jugador: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Max automòbils per jugador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Max avions per jugador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Max vaixells per jugador: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Desactiva trens per l'ordinador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Desactiva automòbils per a l'ordinador: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Desactiva automòbils per a l'ordinador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desactiva els avions per l'ordinador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Desactiva vaixells per l'ordinador: {ORANGE}{STRING}
 
@@ -1067,8 +1067,8 @@ STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcode
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Els intervals de manteniment estan en percentatges: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Interval de manteniment per defecte dels trens: {ORANGE}{STRING} dies/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Interval de manteniment per defecte dels trens: {ORANGE}desactivat
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Interval de manteniment per defecte dels automòbils: {ORANGE}{STRING} dies/%
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Interval de manteniment per defecte dels automòbils: {ORANGE}desactivat
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Interval de manteniment per defecte dels automòbils: {ORANGE}{STRING} dies/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Interval de manteniment per defecte dels automòbils: {ORANGE}desactivat
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Interval de manteniment per defecte dels avions: {ORANGE}{STRING} dies/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interval de manteniment per defecte dels avions: {ORANGE}desactivat
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Interval de manteniment per defecte dels vaixells: {ORANGE}{STRING} dies/%
@@ -1143,10 +1143,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Cerca d
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(No recomanat)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recomanat)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Cerca de rutes per vehicles: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(No recomanat)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Recomanat)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Cerca de rutes per vehicles: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :Original {RED}(No recomanat)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Recomanat)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Cerca de rutes per vaixells: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomanat)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2056,7 +2056,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...ja é
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sense Nom
 STR_SV_TRAIN_NAME                                               :Tren {COMMA}
-STR_SV_ROADVEH_NAME                                             :Vehicle {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Vehicle {COMMA}
 STR_SV_SHIP_NAME                                                :Vaixell {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Avió {COMMA}
 
@@ -2176,12 +2176,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construcció
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nous Vehicles
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Desp. de Circ. de Trens
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Desp. de Circ. de Vehicles
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Desp. de Circ. de Vehicles
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Desp. de Circ. d'Avions
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Desp. de Circ. de Vaixells
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Manteniment de Propietats
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Ingressos de Tren
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Ingressos de Vehicles
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Ingressos de Vehicles
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Ingressos d'Avions
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Ingressos de Vaixells
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Interessos del Préstec
@@ -2320,7 +2320,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tramvia de càr
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Mostra esquemes de colors generals
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Mostra els esquemes de colors dels trens
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Mostra els esquemes de colors dels automòbils
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}Mostra els esquemes de colors dels automòbils
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Mostra els esquemes de colors dels vaixells
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Mostra esquemes de colors dels avions
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Escolleix el color primari per l'esquema triat
@@ -2444,94 +2444,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Vagó per Jogui
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Vagó per Piles
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Vagó per Begudes Gasoses
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Vagó per Plàstic
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :Autobús MPS Regal
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Autobús Hereford Leopard
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Autobús Foster
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Autobús Foster MkII
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Autobús Ploddyphut MkI
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :Autobús Ploddyphut MkII
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Autobús Ploddyphut MkIII
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Camió per Carbó Balogh
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Camió per Carbó Uhl
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :Camió per Carbó DW
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :Camió per Correu MPS
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Camió per Correu Reynard
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Camió per Correu Perry
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :Camió per Correu MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :Camió per Correu Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :Camió per Correu Wizzowow
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Cuba de Petroli Witcombe
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Cuba de Petroli Foster
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Cuba de Petroli Perry
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Camió de Bestiar Talbott
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Vagó de Bestiar Uhl
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Camió de Bestiar Foster
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Camió de Mercaderies
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Camió de Mercaderies
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Camió de Mercaderies Goss
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Camió per Gra Hereford
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Camió per Gra Thomas
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Camió per Gra Goss
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Camió per Fusta Witcombe
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Camió per Fusta Foster
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Camió per Fusta Moreland
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :Camió per Mineral de Ferro MPS
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Camió per Mineral de Ferro Uhl
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Camió per Mineral de Ferro Chippy
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Camió per Acer Balogh
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Camió per Acer Uhl
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Camió per Acer Kelling
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Furgó Blindat Balogh
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Furgó Blindat Uhl
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Furgó Blindat Foster
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Camió per Queviures Foster
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Camió per Queviures Perry
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Camió per Queviures Chippy
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Camió per Paper Uhl
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Camió per Paper Balogh
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :Camió per Paper MPS
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :Camió per Mineral de Coure MPS
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Camió per Mineral de Coure Uhl
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Camió per Mineral de Coure Goss
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Cuba d'Aigua Uhl
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Cuba d'Aigua Balogh
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :Cuba d'Aigua MPS
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Camió per Fruita Balogh
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Camió per Fruita Uhl
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Camió per Fruita Kelling
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Camió per Cautxú Balogh
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Camió per Cautxú Uhl
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :Camió per Cautxú RMT
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :Camió per Sucre MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Camió per Sucre Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Camió per Sucre Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :Camió per Refresc MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Camió per Refresc Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Camió per Refresc Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :Camió per Cotó de Sucre MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :Camió per Cotó de Sucre Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Camió per Cotó de Sucre Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :Camió per Caramels MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :Camió per Caramels Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :Camió per Caramels Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :Camió per Joguines MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Camió per Joguines Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Camió per Joguines Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :Camió per Dolços MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Camió per Dolços Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Camió per Dolços Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :Camió per Piles MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Camió per Piles Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :Camió per Piles Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :Camió per Begudes Gasoses MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :Camió per Begudes Gasoses Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :Camió per Begudes Gasoses Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :Camió per Plàstic MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :Camió per Plàstic Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :Camió per Plàstic Wizzowow
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :Camió per Bombolles MightyMover
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :Camió per Bombolles Powernaught
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :Camió per Bombolles Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :Autobús MPS Regal
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Autobús Hereford Leopard
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Autobús Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Autobús Foster MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Autobús Ploddyphut MkI
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Autobús Ploddyphut MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Autobús Ploddyphut MkIII
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Camió per Carbó Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Camió per Carbó Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :Camió per Carbó DW
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :Camió per Correu MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Camió per Correu Reynard
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Camió per Correu Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :Camió per Correu MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Camió per Correu Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Camió per Correu Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Cuba de Petroli Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Cuba de Petroli Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Cuba de Petroli Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Camió de Bestiar Talbott
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Vagó de Bestiar Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Camió de Bestiar Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Camió de Mercaderies
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Camió de Mercaderies
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Camió de Mercaderies Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Camió per Gra Hereford
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Camió per Gra Thomas
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Camió per Gra Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Camió per Fusta Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Camió per Fusta Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Camió per Fusta Moreland
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :Camió per Mineral de Ferro MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Camió per Mineral de Ferro Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Camió per Mineral de Ferro Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Camió per Acer Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Camió per Acer Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Camió per Acer Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Furgó Blindat Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Furgó Blindat Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Furgó Blindat Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Camió per Queviures Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Camió per Queviures Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Camió per Queviures Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Camió per Paper Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Camió per Paper Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :Camió per Paper MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :Camió per Mineral de Coure MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Camió per Mineral de Coure Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Camió per Mineral de Coure Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Cuba d'Aigua Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Cuba d'Aigua Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :Cuba d'Aigua MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Camió per Fruita Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Camió per Fruita Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Camió per Fruita Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Camió per Cautxú Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Camió per Cautxú Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :Camió per Cautxú RMT
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :Camió per Sucre MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Camió per Sucre Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Camió per Sucre Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :Camió per Refresc MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Camió per Refresc Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Camió per Refresc Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Camió per Cotó de Sucre MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Camió per Cotó de Sucre Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Camió per Cotó de Sucre Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Camió per Caramels MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Camió per Caramels Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Camió per Caramels Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Camió per Joguines MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Camió per Joguines Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Camió per Joguines Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Camió per Dolços MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Camió per Dolços Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Camió per Dolços Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Camió per Piles MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Camió per Piles Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Camió per Piles Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Camió per Begudes Gasoses MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Camió per Begudes Gasoses Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Camió per Begudes Gasoses Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Camió per Plàstic MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Camió per Plàstic Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Camió per Plàstic Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :Camió per Bombolles MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Camió per Bombolles Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Camió per Bombolles Wizzowow
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Petroler MPS
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Petroler CS-Inc.
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Ferry de Passatgers MPS
@@ -2645,7 +2645,7 @@ STR_ORDER_NEAREST_HANGAR                                        :l'hangar més p
 STR_ORDER_SERVICE_AT                                            :Revisió a
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Revisió sense parar a
 STR_ORDER_TRAIN_DEPOT                                           :Cotxeres de tren
-STR_ORDER_ROAD_DEPOT                                            :Cotxera de Vehicles
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Cotxera de Vehicles
 STR_ORDER_SHIP_DEPOT                                            :Drassanes
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2755,7 +2755,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}un vehic
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}No es pot moure el vehicle...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}La màquina posterior sempre ha de seguir la seva parella davantera
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}No es pot vendre el vehicle...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}No es pot vendre el vehicle...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Incapaç de trobar el camí a la cotxera local
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}No es pot parar/arrencar el tren...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Interval de manteniment: {LTBLUE}{COMMA}dies{BLACK}   Darrer manteniment: {LTBLUE}{DATE_LONG}
@@ -2848,33 +2848,33 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Omple au
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Automòbil en camí
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Cotxera de Vehicles
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nous Vehicles
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nous Vehicles
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Construeix Vehicle
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Cotxera de Vehicles
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nous Vehicles
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nous Vehicles
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Construeix Vehicle
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}No es pot construir l'automòbil...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...s'ha de parar dins d'una cotxera
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...s'ha de parar dins d'una cotxera
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}No pots vendre l'automòbil...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}No es pot parar/arrencar l'automòbil...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} està esperant a la cotxera
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Cap a la cotxera de {TOWN}.
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Cap a la cotxera de {TOWN}, a {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Revisió a la cotxera de {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisió a la cotxera de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Cap a la cotxera de {TOWN}.
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Cap a la cotxera de {TOWN}, a {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Revisió a la cotxera de {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Revisió a la cotxera de {TOWN}, {VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}No es pot enviar el vehicle a cotxera...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Impossible trobar la cotxera local
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Acció sobre el vehicle actual - clica aquí per parar/arrencar el vehicle
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Mostra les ordres dels vehicles
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Centra la pantalla principal a la situació del vehicle
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Envia el vehicle a cotxera
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Obliga al vehicle a tornar
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostra els detalls del vehicle
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Vehicles - clica en un vehicle per més informació
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Construeix un nou automòbil
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Arrossega el vehicle fins aquí per vendre'l
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Centra la pantalla principal en la situació de la cotxera
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Llista de selecció de Vehicles - clica en un vehicle per més informació
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Construeix l'automòbil seleccionat
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Acció sobre el vehicle actual - clica aquí per parar/arrencar el vehicle
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Mostra les ordres dels vehicles
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centra la pantalla principal a la situació del vehicle
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envia el vehicle a cotxera
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Obliga al vehicle a tornar
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostra els detalls del vehicle
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehicles - clica en un vehicle per més informació
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Construeix un nou automòbil
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arrossega el vehicle fins aquí per vendre'l
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra la pantalla principal en la situació de la cotxera
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Llista de selecció de Vehicles - clica en un vehicle per més informació
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Construeix l'automòbil seleccionat
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacitat: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2884,12 +2884,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Anomena automòbil
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}No es pot anomenar l'automòbil...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Anomena automòbil
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Celebració popular . . .{}Primer autobús arriba a {STATION}!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Celebració popular . . .{}Primer camió arriba a {STATION}!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Els ciutadans celebren . . .{}El primer tramvia de passatgers arriba a {STATION}!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Els ciutadans celebren . . .{}El primer tramvia de mercaderies arriba a {STATION}!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Accident d'automòbil!{}El conductor mor en una bola de foc després de la col·lisió amb un tren
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Accident d'automòbil!{}{COMMA} moren en una bola de foc després d'una col·lisió amb un tren
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Celebració popular . . .{}Primer autobús arriba a {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Celebració popular . . .{}Primer camió arriba a {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Els ciutadans celebren . . .{}El primer tramvia de passatgers arriba a {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Els ciutadans celebren . . .{}El primer tramvia de mercaderies arriba a {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Accident d'automòbil!{}El conductor mor en una bola de foc després de la col·lisió amb un tren
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Accident d'automòbil!{}{COMMA} moren en una bola de foc després d'una col·lisió amb un tren
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}No s'ha pogut fer girar el vehicle...
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Reanomena
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Reanomena tipus d'automòbil
@@ -3168,12 +3168,12 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 ############ Vehicle lists
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trens - clica al tren per més informació
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Automòbils - clica en un vehicle per més informació
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Automòbils - clica en un vehicle per més informació
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Vaixells - clica en un vaixell per més informació
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Avió - clica sobre l'avió per més informació
 
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Trens
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Vehicles
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Vehicles
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Vaixells
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Avions
 
@@ -3185,17 +3185,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Estàs 
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Tipus de cotxera incorrecta
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vendre tots els trens de la cotxera
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vendre tots els vehicles de la cotxera
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}Vendre tots els vehicles de la cotxera
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vendre tots els vaixells de la drassana
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vendre tots els avions de l'hangar
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Treure una llista de tots els trens amb aquesta cotxera en les seves ordres
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Treure una llista de tots els vehicles amb aquesta cotxera en les seves ordres
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}Treure una llista de tots els vehicles amb aquesta cotxera en les seves ordres
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Treure una llista de tots els vaixells amb aquesta drassana en les seves ordres
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Treu una llista de tots els avions amb algun hangar d'aquest aeroport en les seves ordres
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autosubstitueix tots els trens de la cotxera
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autosubstitueix tots els vehicles de la cotxera
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Autosubstitueix tots els vehicles de la cotxera
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autosubstitueix tots els vaixells de la drassana
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autosubstitueix tots els avions de l'hangar
 
@@ -3223,12 +3223,12 @@ STR_ENGINES                                                     :Motors
 STR_WAGONS                                                      :Vagons
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Clica per parar tots els trens de dins de la cotxera
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Clica per parar tots els vehicles de dins de la cotxera
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}Clica per parar tots els vehicles de dins de la cotxera
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Clica per parar tots els vaixells de dins de la drassana
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Clica per parar tots els avions de dins de l'hangar
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Clica per arrencar tots els trens de dins de la cotxera
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Clica per arrencar tots els vehicles de dins de la cotxera
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}Clica per arrencar tots els vehicles de dins de la cotxera
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Clica per arrencar tots els vaixells de dins de la drassana
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Clica per arrencar tots els avions de dins de l'hangar
 
@@ -3390,11 +3390,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 ##### Mass Order
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Tots els trens
-STR_GROUP_ALL_ROADS                                             :Tots els vehicles
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Tots els vehicles
 STR_GROUP_ALL_SHIPS                                             :Tots els vaixells
 STR_GROUP_ALL_AIRCRAFTS                                         :Tots els avions
 STR_GROUP_DEFAULT_TRAINS                                        :Trens desagrupats
-STR_GROUP_DEFAULT_ROADS                                         :Vehicles desagrupats
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Vehicles desagrupats
 STR_GROUP_DEFAULT_SHIPS                                         :Vaixells desagrupats
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Avions desagrupats
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

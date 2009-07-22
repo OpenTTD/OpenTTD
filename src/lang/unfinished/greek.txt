@@ -346,13 +346,13 @@ STR_SORT_BY_FACILITY                                            :Τύπος στ
 STR_SORT_BY_WAITING                                             :Αξία φορτίου σε αναμονή
 STR_SORT_BY_RATING_MAX                                          :Υψηλότερη βαθμολογία φορτίου
 STR_SORT_BY_RATING_MIN                                          :Χαμηλότερη βαθμολογία φορτίου
-STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (κλασσική ταξινόμηση)
-STR_ENGINE_SORT_COST                                            :Κόστος
-STR_ENGINE_SORT_POWER                                           :Δύναμη
-STR_ENGINE_SORT_INTRO_DATE                                      :Ημέρα Κυκλοφορίας
-STR_ENGINE_SORT_RUNNING_COST                                    :Κόστος Συντήρησης
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Δύναμη/Κόστος Συντήρησης
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Χωρητικότητα Φορτίου
+STR_SORT_BY_ENGINE_ID                                           :EngineID (κλασσική ταξινόμηση)
+STR_SORT_BY_COST                                                :Κόστος
+STR_SORT_BY_POWER                                               :Δύναμη
+STR_SORT_BY_INTRO_DATE                                          :Ημέρα Κυκλοφορίας
+STR_SORT_BY_RUNNING_COST                                        :Κόστος Συντήρησης
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Δύναμη/Κόστος Συντήρησης
+STR_SORT_BY_CARGO_CAPACITY                                      :Χωρητικότητα Φορτίου
 STR_NO_WAITING_CARGO                                            :{BLACK}Κανένα εμπόρευμα κανενός τύπου δεν περιμένει
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Επιλογή όλων των εγκαταστάσεων
 STR_SELECT_ALL_TYPES                                            :{BLACK}Επιλογή όλων των τύπων φορτίου (συμπεριλαμβανομένου φορτίου μη-αναμονής)
@@ -946,7 +946,7 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Εμφ�
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Εμφάνιση σήμανσης στην πλευρά οδήγησης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Εμφάνιση παράθυρου οικονομικών στο τέλος του έτους: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Οι νέες οδηγίες είναι 'non-stop' από προεπιλογή: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Ουρά οχημάτων (με κβαντικά εφφέ): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Ουρά οχημάτων (με κβαντικά εφφέ): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Μετακίνηση παραθύρου όταν είναι το ποντίκι στην άκρη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Επιτρέπεται η δωροδοκία της τοπικής αρχής: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Επιτρέπεται η αγορά αποκλειστικών δικαιωμάτων μεταφοράς: {ORANGE}{STRING}
@@ -1051,12 +1051,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Ομα�
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Εμφάνιση οικοδομικών εργαλίων όταν δεν υπάρχουν κατάλληλα οχήματα: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Μέγιστα τρένα ανα παίκτη: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Μέγιστα οχήματα ανα παίκτη: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Μέγιστα οχήματα ανα παίκτη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Μέγιστα αεροσκάφη ανα παίκτη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Μέγιστα πλοία ανά παίκτη: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Απενεργοποίηση τρένων υπολογιστή: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Απενεργοποίηση οχημάτων υπολογιστή: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Απενεργοποίηση οχημάτων υπολογιστή: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Απενεργοποίηση αεροσκαφών υπολογιστή: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Απενεργοποίηση πλοίων υπολογιστή: {ORANGE}{STRING}
 
@@ -1065,8 +1065,8 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Επι�
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Τα διαστήματα μεταξύ συντήρησης είναι σε ποσοστά: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τρένα: {ORANGE}{STRING} μέρες/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τρένα: {ORANGE}απενεργοποιημένο
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για οχήματα: {ORANGE}{STRING} μέρες/%
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για οχήματα:: {ORANGE}απενεργοποιημένο
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για οχήματα: {ORANGE}{STRING} μέρες/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για οχήματα:: {ORANGE}απενεργοποιημένο
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για αεροσκάφη: {ORANGE}{STRING} μέρες/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για αεροσκάφη: {ORANGE}απενεργοποιημένο
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για πλοία: {ORANGE}{STRING} μέρες/%
@@ -1132,10 +1132,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Μέθ�
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Δεν συνίσταται)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Συνίσταται)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Μέθοδος δρομολόγησης για οχήματα δρόμου: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Δεν συνίσταται)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Συνίσταται)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Μέθοδος δρομολόγησης για οχήματα δρόμου: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :Original {RED}(Δεν συνίσταται)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Συνίσταται)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Μέθοδος δρομολόγησης για πλοία: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Συνίσταται)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -1950,12 +1950,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Κατασκευή
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Νέα Οχήματα
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Τρεχούμενα Έξοδα Τρέν.
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Τρεχούμενα Έξοδα Οχημ.
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Τρεχούμενα Έξοδα Οχημ.
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Τρεχούμενα Έξοδα Αεροπ.
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Τρεχούμενα Έξοδα Πλοίων
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Συντήρηση Ιδιοκτησίας
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Έσοδα Τρένων
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Έσοδα Οχημάτων
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Έσοδα Οχημάτων
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Έσοδα Αεροπλάνων
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Έσοδα Πλοίων
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Τόκος Δανείου
@@ -2094,7 +2094,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Εμπορικ�
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Εμφάνιση γενικών χρωματικών μοτίβων
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Εμφάνιση χρωματικών μοτίβων τραίνων
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Εμφάνιση χρωματικών μοτίβων οχημάτων δρόμου
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}Εμφάνιση χρωματικών μοτίβων οχημάτων δρόμου
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Εμφάνιση χρωματικών μοτίβων πλοίων
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Εμφάνιση χρωματικών μοτίβων αεροσκαφών
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Επιλογή του βασικού χρώματος για το επιλεγμένο μοτίβο

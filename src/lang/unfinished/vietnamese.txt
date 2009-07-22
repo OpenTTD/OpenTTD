@@ -313,12 +313,12 @@ STR_SORT_BY_VALUE                                               :Giá trị
 STR_SORT_BY_LENGTH                                              :Chiều dài
 STR_SORT_BY_LIFE_TIME                                           :Thời gian sử dụng còn lại
 STR_SORT_BY_FACILITY                                            :Kiểu nhà ga
-STR_ENGINE_SORT_COST                                            :Chi phí
-STR_ENGINE_SORT_POWER                                           :Lực
-STR_ENGINE_SORT_INTRO_DATE                                      :Ngày giới thiệu
-STR_ENGINE_SORT_RUNNING_COST                                    :Chi phí chạy
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Năng lượng/Chi phí chạy
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Dung lượng toa xe
+STR_SORT_BY_COST                                                :Chi phí
+STR_SORT_BY_POWER                                               :Lực
+STR_SORT_BY_INTRO_DATE                                          :Ngày giới thiệu
+STR_SORT_BY_RUNNING_COST                                        :Chi phí chạy
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Năng lượng/Chi phí chạy
+STR_SORT_BY_CARGO_CAPACITY                                      :Dung lượng toa xe
 STR_NO_WAITING_CARGO                                            :{BLACK}Không có bất kỳ loại toa xe nào đang chờ
 STR_SELECT_ALL_TYPES                                            :{BLACK}Chọn tất cả loại toa xe (including no waiting cargo)
 STR_AVAILABLE_TRAINS                                            :{BLACK}Tàu sẵn có

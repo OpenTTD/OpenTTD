@@ -340,13 +340,13 @@ STR_SORT_BY_LENGTH                                              :Должина
 STR_SORT_BY_LIFE_TIME                                           :Преостанат животен век
 STR_SORT_BY_FACILITY                                            :Вид на станица
 STR_SORT_BY_WAITING                                             :Вредност на товарот кој чека
-STR_ENGINE_SORT_ENGINE_ID                                       :Идентификација на моторот (класично сортирање)
-STR_ENGINE_SORT_COST                                            :Цена
-STR_ENGINE_SORT_POWER                                           :Моќност
-STR_ENGINE_SORT_INTRO_DATE                                      :Датум на претставување
-STR_ENGINE_SORT_RUNNING_COST                                    :Потрошувачка
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Моќност/Потрошувачка
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Капацитет за товар
+STR_SORT_BY_ENGINE_ID                                           :Идентификација на моторот (класично сортирање)
+STR_SORT_BY_COST                                                :Цена
+STR_SORT_BY_POWER                                               :Моќност
+STR_SORT_BY_INTRO_DATE                                          :Датум на претставување
+STR_SORT_BY_RUNNING_COST                                        :Потрошувачка
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Моќност/Потрошувачка
+STR_SORT_BY_CARGO_CAPACITY                                      :Капацитет за товар
 STR_NO_WAITING_CARGO                                            :{BLACK}Не чека никаков товар
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Избери ги сите објекти
 STR_SELECT_ALL_TYPES                                            :{BLACK}Избери ги сите видови товар (including no waiting cargo)

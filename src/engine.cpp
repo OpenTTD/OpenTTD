@@ -96,7 +96,7 @@ Engine::Engine(VehicleType type, EngineID base)
 		case VEH_ROAD:
 			this->u.road = _orig_road_vehicle_info[base];
 			this->original_image_index = this->u.road.image_index;
-			this->info.string_id = STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS + base;
+			this->info.string_id = STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS + base;
 			break;
 
 		case VEH_SHIP:

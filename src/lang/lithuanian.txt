@@ -376,13 +376,13 @@ STR_SORT_BY_LENGTH                                              :Ilgį
 STR_SORT_BY_LIFE_TIME                                           :Likusį gyvavimo laiką
 STR_SORT_BY_FACILITY                                            :Stoties tipą
 STR_SORT_BY_WAITING                                             :Laukiančio krovinio vertę
-STR_ENGINE_SORT_ENGINE_ID                                       :VariklioID (numatytasis)
-STR_ENGINE_SORT_COST                                            :Kainą
-STR_ENGINE_SORT_POWER                                           :Galią
-STR_ENGINE_SORT_INTRO_DATE                                      :Atsiradimo datą
-STR_ENGINE_SORT_RUNNING_COST                                    :Eksplotacijos išlaidas
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Galią/Eksplotacijos išlaidas
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Vagono talpą
+STR_SORT_BY_ENGINE_ID                                           :VariklioID (numatytasis)
+STR_SORT_BY_COST                                                :Kainą
+STR_SORT_BY_POWER                                               :Galią
+STR_SORT_BY_INTRO_DATE                                          :Atsiradimo datą
+STR_SORT_BY_RUNNING_COST                                        :Eksplotacijos išlaidas
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Galią/Eksplotacijos išlaidas
+STR_SORT_BY_CARGO_CAPACITY                                      :Vagono talpą
 STR_NO_WAITING_CARGO                                            :{BLACK}Jokių krovinių nėra pakrovimui
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Pažymėti visus pastatus
 STR_SELECT_ALL_TYPES                                            :{BLACK}Pažymėti visus krovinio tipus (įskaitant nelaukiančius krovinių)
@@ -973,7 +973,7 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Rodyti 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Šviesoforus rodyti vairuotojo pusėje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Rodyti finansinę ataskaitą metų pabaigoje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nauji nurodymai yra 'non-stop' pagal nutylėjimą: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Automobilių vilkstinė (su kvantavimo efektu): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Automobilių vilkstinė (su kvantavimo efektu): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Slinkti vaizdą pelei esant prie krašto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Leisti papirkinėti miesto valdžią: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Leisti pirkti išskirtines transporto teises: {ORANGE}{STRING}
@@ -1072,12 +1072,12 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Parodyt
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Rodyti statybos įrankius kai nėra atitinkamo transporto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maks. traukinių vienam žaidėjui: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Maks. automobilių vienam žaidėjui: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maks. automobilių vienam žaidėjui: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maks. lėktuvų vienam žaidėjui: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maks. laivų vienam žaidėjui: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Uždrausti kompiuteriui traukinius: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Uždrausti kompiuteriui automobilius: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Uždrausti kompiuteriui automobilius: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Uždrausti kompiuteriui lėktuvus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Uždrausti kompiuteriui laivus: {ORANGE}{STRING}
 
@@ -1086,8 +1086,8 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Leisti 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Remonto intervalas procentais: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Traukinių remonto intervalas: {ORANGE}{STRING} (d. ar %)
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Traukinių remonto intervalas: {ORANGE}išjungta
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Automobilių remonto intervalas: {ORANGE}{STRING} (d. ar %)
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Automobilių remonto intervalas: {ORANGE}išjungta
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Automobilių remonto intervalas: {ORANGE}{STRING} (d. ar %)
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Automobilių remonto intervalas: {ORANGE}išjungta
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Lėktuvų remonto intervalas: {ORANGE}{STRING} (d. ar %)
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Lėktuvų remonto intervalas: {ORANGE} išjungta
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Laivų remonto intervalas: {ORANGE}{STRING} (d. ar %)
@@ -1158,10 +1158,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Traukin
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Nerekomenduojama)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Rekomenduojama)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Automobilių maršruto radėjas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Originalus {RED}(Nerekomenduojama)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Rekomenduojama)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Automobilių maršruto radėjas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :Originalus {RED}(Nerekomenduojama)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Rekomenduojama)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laivų maršruto radėjas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Originalus {BLUE}(Rekomenduojama)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2065,7 +2065,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...jis i
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Bevardis
 STR_SV_TRAIN_NAME                                               :Traukinys {COMMA}
-STR_SV_ROADVEH_NAME                                             :Automobilis  {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Automobilis  {COMMA}
 STR_SV_SHIP_NAME                                                :Laivas {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Lėktuvas {COMMA}
 
@@ -2185,12 +2185,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstrukcijos
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nauja technika
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Traukinių sąnaudos
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Automobilių sanaudos
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Automobilių sanaudos
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Lėktuvų sąnaudos
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Laivų sąnaudos
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Nekilnojamo turto sąnaudos
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Traukinių pajamos
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Mašinų pajamos
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Mašinų pajamos
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Lėktuvų pajamos
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Laivų pajamos
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Paskolos palūkanos
@@ -2329,7 +2329,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Krovininis tram
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Rodyti pagrinidines spalvų parinktis
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Rodyti traukiniš spalvas
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Rodyti mašinų spalvas
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}Rodyti mašinų spalvas
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Rodyti laivų spalvas
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Rodyti lėktuvų parinktas spalvas
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Pasirinkite pirminę spalva
@@ -2453,94 +2453,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Žaislų vagona
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Baterijų vagonas
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Putojančių gėrimų vagonas
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plastmasės vagonas
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :MPS karališkasis autobusas
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Hereford Leopard autobusas
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Foster autobusas
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Foster MkII superautobusas
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Ploddyphut MkI autobusas
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :Ploddyphut MkII autobusas
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Ploddyphut MkIII autobusas
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Balogh anglies sunkvežimis
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Uhl anglies sunkvežimis
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :DW anglies sunkvežimis
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :MPS pašto sunkvežimis
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Reynard pašto sunkvežimis
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Perry pašto sunkvežimis
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :MightyMover pašto sunkvežimis
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :Powernaught pašto sunkvežimis
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :Wizzowow pašto sunkvežimis
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Witcombe naftos sunkvežimis
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Foster naftos sunkvežimis
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Perry naftos sunkvežimis
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Talbott galvijų sunkvežimis
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Uhl galvijų sunkvežimis
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Foster galvijų sunkvežimis
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Balogh prekinis sunkvežimis
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Craighead prekinis sunkvežimis
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Goss prekinis sunkvežimis
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Hereford grūdų sunkvežimis
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Thomas grūdų sunkvežimis
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Goss grūdų sunkvežimis
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Witcombe medienos sunkvežimis
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Foster medienos sunkvežimis
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Moreland medienos sunkvežimis
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :MPS geležies rūdos sunkvežimis
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Uhl geležies rūdos sunkvežimis
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Chippy geležies rūdos sunkvežimis
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Balogh plieno sunkvežimis
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Uhl plieno sunkvežimis
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Kelling plieno sunkvežimis
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Balogh šarvuotas sunkvežimis
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Uhl šarvuotas sunkvežimis
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Foster šarvuotas sunkvežimis
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Foster maisto sunkvežimis
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Perry maisto sunkvežimis
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Chippy maisto sunkvežimis
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Uhl popieriaus sunkvežimis
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Balogh popieriaus sunkvežimis
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :MPS popieriaus sunkvežimis
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :MPS vario rūdos sunkvežimis
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Uhl vario rūdos sunkvežimis
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Goss vario rūdos sunkvežimis
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Uhl vandens cisterna
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Balogh vandens cisterna
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :MPS vandens cisterna
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Balogh vaisių sunkvežimis
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Uhl vaisių sunkvežimis
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Kelling vaisių sunkvežimis
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Balogh kaučiuko sunkvežimis
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Uhl kaučiuko sunkvežimis
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :RMT kaučiuko sunkvežimis
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :MightyMover cukraus sunkvežimis
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Powernaught cukraus sunkvežimis
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Wizzowow cukraus sunkvežimis
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :MightyMover kolos sunkvežimis
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Powernaught kolos sunkvežimis
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Wizzowow kolos sunkvežimis
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :MightyMover Candyfloss Truck
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :Powernaught Candyfloss Truck
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Wizzowow Candyfloss Truck
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :MightyMover Toffee Truck
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :Powernaught Toffee Truck
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :Wizzowow Toffee Truck
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :MightyMover Toy Van
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Powernaught Toy Van
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Wizzowow Toy Van
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :MightyMover Sweet Truck
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Powernaught Sweet Truck
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Wizzowow Sweet Truck
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :MightyMover Battery Truck
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Powernaught Battery Truck
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :Wizzowow Battery Truck
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :MightyMover Fizzy Drink Truck
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :Powernaught Fizzy Drink Truck
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :Wizzowow Fizzy Drink Truck
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :MightyMover Plastic Truck
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :Powernaught Plastic Truck
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :Wizzowow Plastic Truck
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :MightyMover Bubble Truck
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :Powernaught Bubble Truck
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :Wizzowow Bubble Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS karališkasis autobusas
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard autobusas
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster autobusas
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII superautobusas
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Ploddyphut MkI autobusas
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Ploddyphut MkII autobusas
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkIII autobusas
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh anglies sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl anglies sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW anglies sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS pašto sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard pašto sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry pašto sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover pašto sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught pašto sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow pašto sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe naftos sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster naftos sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry naftos sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott galvijų sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl galvijų sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster galvijų sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh prekinis sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead prekinis sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss prekinis sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford grūdų sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas grūdų sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss grūdų sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe medienos sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster medienos sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland medienos sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS geležies rūdos sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl geležies rūdos sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy geležies rūdos sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh plieno sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl plieno sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling plieno sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh šarvuotas sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl šarvuotas sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster šarvuotas sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster maisto sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry maisto sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy maisto sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl popieriaus sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh popieriaus sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS popieriaus sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS vario rūdos sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl vario rūdos sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss vario rūdos sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl vandens cisterna
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh vandens cisterna
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS vandens cisterna
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh vaisių sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl vaisių sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling vaisių sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh kaučiuko sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl kaučiuko sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT kaučiuko sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover cukraus sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught cukraus sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow cukraus sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover kolos sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught kolos sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow kolos sunkvežimis
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover Candyfloss Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught Candyfloss Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow Candyfloss Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover Toffee Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught Toffee Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow Toffee Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover Toy Van
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught Toy Van
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow Toy Van
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover Sweet Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught Sweet Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow Sweet Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover Battery Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught Battery Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow Battery Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover Fizzy Drink Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught Fizzy Drink Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow Fizzy Drink Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover Plastic Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught Plastic Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow Plastic Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover Bubble Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught Bubble Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow Bubble Truck
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS naftos tankeris
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. naftos tankeris
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS zmoniu keltas
@@ -2647,7 +2647,7 @@ STR_ORDER_NEAREST_DEPOT                                         :artimiausias
 STR_ORDER_NEAREST_HANGAR                                        :artimiausias Angaras
 STR_ORDER_SERVICE_AT                                            :Aptarnavimas
 STR_ORDER_TRAIN_DEPOT                                           :Lokomotyvų depas
-STR_ORDER_ROAD_DEPOT                                            :Automobilių garažas
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Automobilių garažas
 STR_ORDER_SHIP_DEPOT                                            :Laivų statykla
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2748,7 +2748,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}automobi
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Transporto priemones perkelti negalima...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Galinis variklis visada seks is paskos priekio
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}Priemones negalima parduoti...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Priemones negalima parduoti...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Neranda kelio iki artimiausio garazo
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Traukinio sustabdyti/paleisti negalima...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Remonto intervalas: {LTBLUE}{COMMA}dienos{BLACK}   Paskutinis remontas: {LTBLUE}{DATE_LONG}
@@ -2823,35 +2823,35 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto už
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Automobilis kelyje
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Automobiliai
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Automobiliu garazas
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Naujos tr. priemones
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nauji automobiliai
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Isigyti priemone
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Automobiliai
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Automobiliu garazas
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Naujos tr. priemones
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nauji automobiliai
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Isigyti priemone
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Automobilio isigyti negalima...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...automobilis turi buti sustabdytas garaze
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...automobilis turi buti sustabdytas garaze
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Automobilio parduoti negalima...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Automobilio sustabdyti/paleisti negalima...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} laukia depe
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Uzduotis: {TOWN} garazas
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Uzduotis: {TOWN} garazas, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servisas{TOWN} Masinu Depe
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servisas {TOWN} Masinu Depe, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Uzduotis: {TOWN} garazas
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Uzduotis: {TOWN} garazas, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Servisas{TOWN} Masinu Depe
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Servisas {TOWN} Masinu Depe, {VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Negalima rasti automobilio garazo...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Negalima rasti garazo
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Automobiliai - paspausk ant automobilio, jei nori detalesnes informacijos
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Automobilio uzduotis - spustelk cia, jei nori sustabdyti/paleisti automobili
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Rodyti automobilio uzduotis
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Rodyti automobili ekrano centre
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Siusti automobili i artimiausia garaza
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Apgrezti automobili
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Rodyti detalia automobilio informacija
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Automobiliai - paspausk ant automobilio, jei nori detalesnes informacijos
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Isigyti nauja automobili
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Nutempk automobili cia, jei nori ji parduoti
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Rodyti automobiliu garaza ekrano centre
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Automobiliu pasirinkimo sarasas - paspausk ant automobilio jei nori detalesnes informacijos
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Isigyti pazymeta automobili
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Automobiliai - paspausk ant automobilio, jei nori detalesnes informacijos
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Automobilio uzduotis - spustelk cia, jei nori sustabdyti/paleisti automobili
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Rodyti automobilio uzduotis
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Rodyti automobili ekrano centre
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Siusti automobili i artimiausia garaza
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Apgrezti automobili
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Rodyti detalia automobilio informacija
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Automobiliai - paspausk ant automobilio, jei nori detalesnes informacijos
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Isigyti nauja automobili
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Nutempk automobili cia, jei nori ji parduoti
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Rodyti automobiliu garaza ekrano centre
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Automobiliu pasirinkimo sarasas - paspausk ant automobilio jei nori detalesnes informacijos
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Isigyti pazymeta automobili
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Talpa: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2860,12 +2860,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Pavadinti automobili
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Automobilio pavadinti nepavyko...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Pavadinti automobili
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Gyventojai džiūgauja. . .{}Pirmas autobusas atvyko į {STATION}!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Gyventojai džiūgauja. . .{}Pirmas sunkvežimis atvyko į {STATION}!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Miestelėnai švenčia . . .{}Pirmas Tramvajus atvyko į {STATION}!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Miestelėnai švenčia . . .{}Pirmas krovininis tramvajus atvyko į {STATION}!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Automobilio avarija!{}Automobilio vairuotojas zuvo po susidurimo su traukiniu
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Automobilio avarija!{}Žuvo {COMMA} keleiv(P is iai ių) automobiliui susidūrus su traukiniu
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Gyventojai džiūgauja. . .{}Pirmas autobusas atvyko į {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Gyventojai džiūgauja. . .{}Pirmas sunkvežimis atvyko į {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Miestelėnai švenčia . . .{}Pirmas Tramvajus atvyko į {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Miestelėnai švenčia . . .{}Pirmas krovininis tramvajus atvyko į {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Automobilio avarija!{}Automobilio vairuotojas zuvo po susidurimo su traukiniu
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Automobilio avarija!{}Žuvo {COMMA} keleiv(P is iai ių) automobiliui susidūrus su traukiniu
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}negalima pajudinti automobiliu sudarytu is keliu vienetu
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Pervardinti
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Pervardinti automobiliu tipa
@@ -3144,17 +3144,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Ar tikr
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Netinkamas depo tipas
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Parduoti visus traukinius šiame depe
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Parduoti visus automobilius šiame depe
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}Parduoti visus automobilius šiame depe
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Parduoti visus laivus šiame depe
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Parduoti visus lėktuvus šiame angare
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Gauti sąrašą visų traukinių turiunčių nurodymuose šį depą
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Gauti sąrašą visų automobilių turiunčių nurodymuose šį depą
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}Gauti sąrašą visų automobilių turiunčių nurodymuose šį depą
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Gauti sąrašą visų laivų turiunčių nurodymuose šį depą
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Gauti sąrašą visų lėktuvų turiunčių nurodymuose šį angarą
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Pakeisti visus traukinius depe
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Pakeisti automobilius traukinius depe
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Pakeisti automobilius traukinius depe
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Pakeisti visus laivus depe
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Pakeisti visus lėktuvus angare
 
@@ -3183,12 +3183,12 @@ STR_ENGINES                                                     :Varikliai
 STR_WAGONS                                                      :Vagonai
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Spragtelėkite norėdami sustabdyti visus traukinius esančius depe
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Spragtelėkite norėdami sustabdyti visus automobilius esančius depe
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}Spragtelėkite norėdami sustabdyti visus automobilius esančius depe
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Spragtelėkite norėdami sustabdyti visus laivus esančius depe
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Spragtelėkite norėdami sustabdyti visus lėktuvus esančius angare
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Spragtelėkite norėdami paleisti visus traukinius esančius depe
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Spragtelėkite norėdami paleisti visus automobilius esančius depe
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}Spragtelėkite norėdami paleisti visus automobilius esančius depe
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Spragtelėkite norėdami paleisti visus laivus esančius depe
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Spragtelėkite norėdami paleisti visus lėktuvus esančius angare
 
@@ -3349,11 +3349,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 STR_FORMAT_GROUP_NAME                                           :Grupė {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Visi traukiniai
-STR_GROUP_ALL_ROADS                                             :Visi automobiliai
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Visi automobiliai
 STR_GROUP_ALL_SHIPS                                             :Visi laivai
 STR_GROUP_ALL_AIRCRAFTS                                         :Visi lėktuvai
 STR_GROUP_DEFAULT_TRAINS                                        :Nesugrupuoti traukiniai
-STR_GROUP_DEFAULT_ROADS                                         :Nesugrupuoti automobiliai
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Nesugrupuoti automobiliai
 STR_GROUP_DEFAULT_SHIPS                                         :Nesugrupuoti laivai
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Nesugrupuoti lėktuvai
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

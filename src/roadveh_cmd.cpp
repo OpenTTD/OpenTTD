@@ -342,7 +342,7 @@ CommandCost CmdSellRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
 
 	if (!v->IsStoppedInDepot()) {
-		return_cmd_error(STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT);
+		return_cmd_error(STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT);
 	}
 
 	CommandCost ret(EXPENSES_NEW_VEHICLES, -v->value);
@@ -615,7 +615,7 @@ static void RoadVehCrash(RoadVehicle *v)
 	SetDParam(0, pass);
 	AddVehicleNewsItem(
 		(pass == 1) ?
-			STR_NEWS_ROAD_CRASH_DRIVER : STR_NEWS_ROAD_CRASH,
+			STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER : STR_NEWS_ROAD_VEHICLE_CRASH,
 		NS_ACCIDENT,
 		v->index
 	);
@@ -792,7 +792,7 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 			st->had_vehicle_of_type |= HVOT_BUS;
 			SetDParam(0, st->index);
 			AddVehicleNewsItem(
-				v->roadtype == ROADTYPE_ROAD ? STR_NEWS_FIRST_ROAD_BUS_ARRIVAL : STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL,
+				v->roadtype == ROADTYPE_ROAD ? STR_NEWS_FIRST_BUS_ARRIVAL : STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL,
 				(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 				v->index,
 				st->index
@@ -805,7 +805,7 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 			st->had_vehicle_of_type |= HVOT_TRUCK;
 			SetDParam(0, st->index);
 			AddVehicleNewsItem(
-				v->roadtype == ROADTYPE_ROAD ? STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL : STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL,
+				v->roadtype == ROADTYPE_ROAD ? STR_NEWS_FIRST_TRUCK_ARRIVAL : STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL,
 				(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 				v->index,
 				st->index
@@ -2018,7 +2018,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	RoadVehicle *v = RoadVehicle::GetIfValid(p1);
 
 	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
-	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT);
+	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT);
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_REFIT_DESTROYED_VEHICLE);
 
 	if (new_cid >= NUM_CARGO) return CMD_ERROR;

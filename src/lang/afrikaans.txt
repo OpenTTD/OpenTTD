@@ -346,13 +346,13 @@ STR_SORT_BY_FACILITY                                            :Stasie tipe
 STR_SORT_BY_WAITING                                             :Wagtend vrag waarde
 STR_SORT_BY_RATING_MAX                                          :Hoogste vrag gradering
 STR_SORT_BY_RATING_MIN                                          :Laagte vrag gradering
-STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (klassieke sorteer)
-STR_ENGINE_SORT_COST                                            :Koste
-STR_ENGINE_SORT_POWER                                           :Krag
-STR_ENGINE_SORT_INTRO_DATE                                      :Inleiding Datum
-STR_ENGINE_SORT_RUNNING_COST                                    :Loopkoste
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Krag/Loopkoste
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Vrag Kapasiteit
+STR_SORT_BY_ENGINE_ID                                           :EngineID (klassieke sorteer)
+STR_SORT_BY_COST                                                :Koste
+STR_SORT_BY_POWER                                               :Krag
+STR_SORT_BY_INTRO_DATE                                          :Inleiding Datum
+STR_SORT_BY_RUNNING_COST                                        :Loopkoste
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Krag/Loopkoste
+STR_SORT_BY_CARGO_CAPACITY                                      :Vrag Kapasiteit
 STR_NO_WAITING_CARGO                                            :{BLACK}Geen vrag van enige tipe is op wag
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Kies alle fakulteite
 STR_SELECT_ALL_TYPES                                            :{BLACK}Kies alle vrag tipes (geen wag vrag ingesluit)
@@ -938,7 +938,7 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nuwe be
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :naby einde
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :middel
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ver einde
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Pad voertuig toustaan (met kwantum effekte): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Pad voertuig toustaan (met kwantum effekte): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Was skerm as muis by die kant is: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Laattoe die omkooping van plaaslike raad: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Laattoe die koop van eksklusief vervoer regte: {ORANGE}{STRING}
@@ -1037,12 +1037,12 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Hou bou
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Toon gebou gereedskap wanneer geen geskik voertuie is beskikbaar : {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Max treine per speler: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Max pad voertuie per speler: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Max pad voertuie per speler: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Max vliegtuie per speler: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Max skepe per speler: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Sper treine vir rekenaar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Sper pad voertuie vir rekenaar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Sper pad voertuie vir rekenaar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Sper vliegtuie vir rekenaar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Sper skepe vir rekenaar: {ORANGE}{STRING}
 
@@ -1050,8 +1050,8 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Sper sk
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Diens pouse is in persente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Verstek diens pouse vir treine: {ORANGE}{STRING} dae/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Verstek diens pouse vir treine: {ORANGE}strem
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Verstek diens pouse vir pad voertuie: {ORANGE}{STRING} dae/%
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Verstek diens pouse vir pad voertuie: {ORANGE}strem
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Verstek diens pouse vir pad voertuie: {ORANGE}{STRING} dae/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Verstek diens pouse vir pad voertuie: {ORANGE}strem
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Gebrekte versien tussentyd vir vlietuie: {ORANGE}{STRING} dae/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Gebrekte versien tussentyd vir vlietuie: {ORANGE}gestrem
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Verstek diens pouse vir skepe: {ORANGE}{STRING} dae/%
@@ -1120,10 +1120,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Padvind
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Nie aanbevole nie)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Aanbevole)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Padvinder vir pad voertuie: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Oorspronklike {RED}(Nie aanbevole nie)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Aanbeevole)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Padvinder vir pad voertuie: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :Oorspronklike {RED}(Nie aanbevole nie)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Aanbeevole)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Padvinder vir skepe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Oorspronklike {BLUE}(Aanbevole)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2017,7 +2017,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...jy be
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Onbenaam
 STR_SV_TRAIN_NAME                                               :Trein {COMMA}
-STR_SV_ROADVEH_NAME                                             :Pad Voertuig {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Pad Voertuig {COMMA}
 STR_SV_SHIP_NAME                                                :Skip {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Vliegtuig {COMMA}
 
@@ -2136,12 +2136,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruksie
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nuwe Voertuie
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Trein Loopkoste
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Pad Voertuig Loopkoste
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Pad Voertuig Loopkoste
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Vliegtuig Loopkoste
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Skip loopkoste
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Eiendom Onderhoud
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Trein Inkome
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Pad Voertuig Inkome
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Pad Voertuig Inkome
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Vliegtuig Inkome
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Skip Inkome
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Lening Rente
@@ -2280,7 +2280,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Vrag Trem
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Toon generaal kleur skemas
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Wys trein kleur skemas
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Toon pad voertuig kleur skemas
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}Toon pad voertuig kleur skemas
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Toon skip kleur skemas
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Toon vliegtuig kleurskemas
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Kies die premere kleur vir die verkieste skema
@@ -2404,94 +2404,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Speelgoed Wa
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Battery Trok
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Koeldrank Wa
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plastiek Trok
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :MPS Regal Bus
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Hereford Leopard Bus
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Foster Bus
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Foster MkII Superbus
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Ploddyphut MkI Bus
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :Ploddyphut MkII Bus
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Ploddyphut MkIII Bus
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Balogh Kool Trok
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Uhl Kool Trok
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :DW Kool Trok
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :MPS Pos Trok
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Reynard Pos Trok
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Perry Pos Trok
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :MightyMover Pos Trok
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :Powernaught Pos Trok
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :Wizzowow Pos Trok
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Witcombe Olie Tenkwa
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Foster Olie Tenkwa
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Perry Olie Tenkwa
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Talbott Lewende Hawe Wa
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Uhl Lewende Hawe Wa
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Foster Lewende Hawe Wa
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Balogh Goedere Trok
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Craighead Goedere Trok
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Goss Goedere Trok
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Hereford Graan Trok
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Thomas Graan Trok
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Goss Graan Trok
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Witcombe Hout Trok
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Foster Hout Trok
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Moreland Hout Trok
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :MPS Yster Erts Trok
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Uhl Iron Yster Erts Trok
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Chippy Yster Erts Trok
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Balogh Staal Trok
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Uhl Staal Trok
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Kelling Staal Trok
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Balogh Gepantserde Trok
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Uhl Gepantserde Trok
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Foster Gepantserde Trok
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Foster Kos Wa
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Perry Kos Wa
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Chippy Kos Wa
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Uhl Papier Trok
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Balogh Papier Trok
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :MPS Papier Trok
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :MPS Koper Erts Trok
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Uhl Koper Erts Trok
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Goss Koper Erts Trok
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Uhl Water Tenkwa
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Balogh Water Tenkwa
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :MPS Water Tenkwa
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Balogh Vrugte Trok
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Uhl Vrugte Trok
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Kelling Vrugte Trok
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Balogh Gomlastiek Trok
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Uhl Gomlastiek Trok
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :RMT Gomlastiek Trok
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :MightyMover Suiker Trok
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Powernaught Suiker Trok
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Wizzowow Suiker Trok
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :MightyMover Cola Trok
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Powernaught Cola Trok
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Wizzowow Cola Trok
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :MightyMover Spookasem Trok
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :Powernaught Spookasem Trok
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Wizzowow Spookasem Trok
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :MightyMover Tameletjie Trok
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :Powernaught Tameletjie Trok
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :Wizzowow Tameletjie Trok
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :MightyMover Speelgoed Wa
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Powernaught Speelgoed Wa
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Wizzowow Speelgoed Wa
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :MightyMover Lekker Trok
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Powernaught Lekker Trok
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Wizzowow Lekker Trok
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :MightyMover Battery Trok
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Powernaught Battery Trok
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :Wizzowow Battery Trok
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :MightyMover Koeldrank Trok
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :Powernaught Koeldrank Trok
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :Wizzowow Fizzy Koeldrank Trok
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :MightyMover Plastiek Trok
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :Powernaught Plastiek Trok
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :Wizzowow Plastiek Trok
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :MightyMover Borrel Trok
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :Powernaught Borrel Trok
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :Wizzowow Borrel Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII Superbus
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Ploddyphut MkI Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Ploddyphut MkII Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkIII Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh Kool Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl Kool Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW Kool Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS Pos Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard Pos Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry Pos Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover Pos Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught Pos Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow Pos Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe Olie Tenkwa
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster Olie Tenkwa
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry Olie Tenkwa
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott Lewende Hawe Wa
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl Lewende Hawe Wa
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster Lewende Hawe Wa
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh Goedere Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead Goedere Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss Goedere Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford Graan Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas Graan Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss Graan Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe Hout Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster Hout Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland Hout Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS Yster Erts Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl Iron Yster Erts Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy Yster Erts Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh Staal Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl Staal Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling Staal Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh Gepantserde Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl Gepantserde Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster Gepantserde Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster Kos Wa
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry Kos Wa
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy Kos Wa
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl Papier Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh Papier Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS Papier Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS Koper Erts Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl Koper Erts Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss Koper Erts Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl Water Tenkwa
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh Water Tenkwa
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS Water Tenkwa
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh Vrugte Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl Vrugte Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling Vrugte Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh Gomlastiek Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl Gomlastiek Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT Gomlastiek Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover Suiker Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught Suiker Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow Suiker Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover Cola Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught Cola Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow Cola Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover Spookasem Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught Spookasem Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow Spookasem Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover Tameletjie Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught Tameletjie Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow Tameletjie Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover Speelgoed Wa
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught Speelgoed Wa
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow Speelgoed Wa
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover Lekker Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught Lekker Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow Lekker Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover Battery Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught Battery Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow Battery Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover Koeldrank Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught Koeldrank Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow Fizzy Koeldrank Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover Plastiek Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught Plastiek Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow Plastiek Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover Borrel Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught Borrel Trok
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow Borrel Trok
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS Olie Tenkskip
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. Olie Tenkskip
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS Passasier Veerboot
@@ -2604,7 +2604,7 @@ STR_ORDER_NEAREST_HANGAR                                        :die naaste Vlie
 STR_ORDER_SERVICE_AT                                            :Diens by
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Diens geen-stop by
 STR_ORDER_TRAIN_DEPOT                                           :Trein Diensstasie
-STR_ORDER_ROAD_DEPOT                                            :Pad Voertuig Diensstasie
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Pad Voertuig Diensstasie
 STR_ORDER_SHIP_DEPOT                                            :Sleep Diensstasie
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2712,7 +2712,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}'n voert
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Kan nie voertuig beweeg nie...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Die agterste motor sal altyd die voorste motor volg
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}Kan nie spoorweg voertuig verkoop nie...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kan nie spoorweg voertuig verkoop nie...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kan nie roete na plaaslike depot vind nie
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Trein kan nie stop/aanvang word nie...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Diens tussentyd: {LTBLUE}{COMMA}dae{BLACK}   Laaste diens: {LTBLUE}{DATE_LONG}
@@ -2791,34 +2791,34 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul die 
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Pad voertuig in die pad
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Pad voert{P uig uie}
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Pad Voertuig Depot
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nuwe Voertuie
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nuwe Pad Voertuie
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Bou Voertuig
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Pad voert{P uig uie}
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Pad Voertuig Depot
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nuwe Voertuie
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nuwe Pad Voertuie
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Bou Voertuig
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Kan nie pad voertuig bou nie...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...moet gestop binne 'n pad voertuig depot wees
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...moet gestop binne 'n pad voertuig depot wees
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kan nie pad voertuig verkoop nie
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kani nie pad voertuig stop/aanskakel nie...
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Op pad na {TOWN} Pad Depot
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Op pad na {TOWN} Pad Depot, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Diens by {TOWN} Pad Depot
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Diens by {TOWN} Pad Depot, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Op pad na {TOWN} Pad Depot
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Op pad na {TOWN} Pad Depot, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Diens by {TOWN} Pad Depot
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Diens by {TOWN} Pad Depot, {VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan nie voertuig na depot stuur nie...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan nie plaaslike depot vind nie
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Pad voertuie - kliek op voertuig vir inligting
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Huidige voertuig aksie - kliek hier om voertuig to stop/aanskakel
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Toon voertuig se opdrae
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Senter skerm op voertuig
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Stuur voertuig na depot. CTRL+kliek sal net diens
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Forseer voertuig om te draai om
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Wys pad voertuig aanwyse
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Voertuie - kliek op voertuig vir inligting
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Bou nuwe pad voertuig
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Sleep pad voertuig hier om dit te verkoop
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Senter skerm op pad voertuig depot
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Pad voertuig keuse lys - kliek op voertuig vir inligting
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Bou die verlig pad voertuig
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Pad voertuie - kliek op voertuig vir inligting
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Huidige voertuig aksie - kliek hier om voertuig to stop/aanskakel
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Toon voertuig se opdrae
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Senter skerm op voertuig
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Stuur voertuig na depot. CTRL+kliek sal net diens
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forseer voertuig om te draai om
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Wys pad voertuig aanwyse
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Voertuie - kliek op voertuig vir inligting
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Bou nuwe pad voertuig
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Sleep pad voertuig hier om dit te verkoop
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Senter skerm op pad voertuig depot
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Pad voertuig keuse lys - kliek op voertuig vir inligting
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Bou die verlig pad voertuig
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasiteit: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2828,12 +2828,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Benaam pad voertuig
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Pad voertuig kan nie benaam word nie...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Benaam pad voertuig
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste bus arriveer by {STATION}!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste trok arriveer by {STATION}!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste passasier trein arriveer by {STATION}!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste vrag trein arriveer by {STATION}!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Pad Voertuig Botsing!{}Bestuurder sterf in vuurbol na botsing met trein
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Pad voertuig Botsing!{}{COMMA} sterf in vuurbol na botsing met trein
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste bus arriveer by {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste trok arriveer by {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste passasier trein arriveer by {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste vrag trein arriveer by {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Pad Voertuig Botsing!{}Bestuurder sterf in vuurbol na botsing met trein
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Pad voertuig Botsing!{}{COMMA} sterf in vuurbol na botsing met trein
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan nie voertuie van veel deele draai nie
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Hernoem
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Hernoem pad voertuig tipe
@@ -3119,17 +3119,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}U staan
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Verkeerde depot tipe
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Verkoop allep treine in die depot
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Verkoop alle pad voertuie in die depot
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}Verkoop alle pad voertuie in die depot
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Verkoop alle skepe in die depot
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Verkoop alle vliegtuie in die hangar
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Kry 'n lys van alle treine met die huidige depot in sy opdrae
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Kry 'n lys van alle pad voertuie met die huidige depot in sy opdrae
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}Kry 'n lys van alle pad voertuie met die huidige depot in sy opdrae
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Kry 'n lys van alle skepe met die huidige depot in sy opdrae
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Kry 'n lys van alle vliegtuie wat enige hangar by die lughawe in sy opdrae het
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Outovervang alle treine in die depot
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Outovervang alle pad voertuie in die depot
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Outovervang alle pad voertuie in die depot
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Outovervang alle skepe in die depot
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Outovervang alle vlietuie in die hangar
 
@@ -3158,12 +3158,12 @@ STR_ENGINES                                                     :Enjine
 STR_WAGONS                                                      :Waens
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Kliek om alle treine in die depot te stop
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Kliek om alle pad voertuie in die depot te stop
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}Kliek om alle pad voertuie in die depot te stop
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Kliek om alle skepe in die depot te stop
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Kliek om alle vlietuie in die hangar te stop
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Kliek om alle treine in die depot te aanskakel
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Kliek om alle pad voertuie in die depot te aanskakel
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}Kliek om alle pad voertuie in die depot te aanskakel
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Kliek om alle skepe in die depot te aanskakel
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Kliek om alle vliegtuie in die hangar te aanskakel
 
@@ -3332,11 +3332,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 STR_FORMAT_GROUP_NAME                                           :Groep {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Alle triene
-STR_GROUP_ALL_ROADS                                             :Alle pad voertuie
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Alle pad voertuie
 STR_GROUP_ALL_SHIPS                                             :Alle skepe
 STR_GROUP_ALL_AIRCRAFTS                                         :Alle vliegtuie
 STR_GROUP_DEFAULT_TRAINS                                        :Ongegroepeerde treine
-STR_GROUP_DEFAULT_ROADS                                         :Ongegroepeerde pad voertuie
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Ongegroepeerde pad voertuie
 STR_GROUP_DEFAULT_SHIPS                                         :Ongegroepeerde skepe
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ongegroepeerde vliegtuig
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

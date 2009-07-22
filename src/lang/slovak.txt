@@ -412,13 +412,13 @@ STR_SORT_BY_FACILITY                                            :Typ stanice
 STR_SORT_BY_WAITING                                             :Mnozstvo cakajuceho nakladu
 STR_SORT_BY_RATING_MAX                                          :Hodnotenie najlepšej prepravy
 STR_SORT_BY_RATING_MIN                                          :Hodnotenie najhoršej prepravy
-STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (netriedené)
-STR_ENGINE_SORT_COST                                            :Cena
-STR_ENGINE_SORT_POWER                                           :Výkon
-STR_ENGINE_SORT_INTRO_DATE                                      :Uvedenie na trh
-STR_ENGINE_SORT_RUNNING_COST                                    :Náklady na prevádzku
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Výkon/Náklady na prevádzku
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapacita nákladu
+STR_SORT_BY_ENGINE_ID                                           :EngineID (netriedené)
+STR_SORT_BY_COST                                                :Cena
+STR_SORT_BY_POWER                                               :Výkon
+STR_SORT_BY_INTRO_DATE                                          :Uvedenie na trh
+STR_SORT_BY_RUNNING_COST                                        :Náklady na prevádzku
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Výkon/Náklady na prevádzku
+STR_SORT_BY_CARGO_CAPACITY                                      :Kapacita nákladu
 STR_NO_WAITING_CARGO                                            :{BLACK}Necaka ziadny typ nakladu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Oznacit vsetky moznosti
 STR_SELECT_ALL_TYPES                                            :{BLACK}Oznacit vsetky druhy nakladu (vratane druhu, kt. necaka na prepravu)
@@ -1016,7 +1016,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nové p
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :blízky cieľ
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :stred
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ďaleký cieľ
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Radenie cestných vozidiel (podla množstva nákladu): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Radenie cestných vozidiel (podla množstva nákladu): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Posúvat pohlad ked je kurzor myši na okraji okna: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Umoznit podplacanie miestnej spravy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Povolit zakúpenie exkluzívnych dopravných práv: {ORANGE}{STRING}
@@ -1122,12 +1122,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Zoskupi
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Zobrazit nástroje výstavby ak nie sú dostupné vhodné vozidlá: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maximalny pocet vlakov hraca: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Maximalny pocet automobilov hraca: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maximalny pocet automobilov hraca: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maximálny pocet lietadiel hráca: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maximalny pocet lodi hraca: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Zakazat vlaky pre pocitac: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Zakazat automobily pre pocitac: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Zakazat automobily pre pocitac: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Zakazat lietadla pre pocitac: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Zakazat lode pre pocitac: {ORANGE}{STRING}
 
@@ -1137,8 +1137,8 @@ STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcode
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Servisne intervaly v percentach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Implicitný servisný interval pre vlaky: {ORANGE}{STRING} dní/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Implicitny servisny interval pre vlaky: {ORANGE}vypnuty
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Implicitny servisny interval pre automobily: {ORANGE}{STRING} dni/%
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Implicitny servisny interval pre automobily: {ORANGE}vypnuty
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Implicitny servisny interval pre automobily: {ORANGE}{STRING} dni/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Implicitny servisny interval pre automobily: {ORANGE}vypnuty
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Implicitny servisny interval pre lietadla: {ORANGE}{STRING} dni/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Implicitny servisny interval pre lietadla: {ORANGE}vypnuty
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Implicitny servisny interval pre lode: {ORANGE}{STRING} dni/%
@@ -1213,10 +1213,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Algorit
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(neodporúca sa)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(odporúca sa)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Algoritmus hladania cesty pre automobily: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :pôvodný {RED}(neodporúca sa)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(odporúca sa)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Algoritmus hladania cesty pre automobily: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :pôvodný {RED}(neodporúca sa)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(odporúca sa)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Algoritmus hladania cesty pre lode: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :pôvodný {BLUE}(odporúca sa)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2126,7 +2126,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... uz t
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Bez mena
 STR_SV_TRAIN_NAME                                               :Vlak {COMMA}
-STR_SV_ROADVEH_NAME                                             :Automobil {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Automobil {COMMA}
 STR_SV_SHIP_NAME                                                :Lod {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Lietadlo {COMMA}
 
@@ -2246,12 +2246,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Výstavba
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nove vozidla
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Prevadzka vlakov
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Prevadzka automobilov
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Prevadzka automobilov
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Prevadzka lietadiel
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Prevadzka lodi
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Udrzba majetku
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Trzby vlakov
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Trzby automobilov
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Trzby automobilov
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Trzby lietadiel
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Trzby lodi
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Uroky
@@ -2391,7 +2391,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Nákladná elek
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Zobrazit všeobecné farebné schémy
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Zobrazit farebné schémy pre vlaky
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Zobrazit farebné schémy pre cestné vozidlá
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}Zobrazit farebné schémy pre cestné vozidlá
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Zobrazit farebné schémy pre lode
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Zobrazit farebné schémy pre lietadlá
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Vyberte primárnu farbu pre vybranú farebnú schému
@@ -2515,94 +2515,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Vagon na hracky
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Vagon na baterie
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Vagon na sumienku
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Vagon na zuvacky
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :MPS Regal Autobus
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Hereford Leopard Autobus
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Foster Autobus
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Foster MkII Autobus
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Ploddyphut MkI Autobus
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :Ploddyphut MkII Autobus
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Ploddyphut MkIII Autobus
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Balogh - Uhlie
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Uhl - Uhlie
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :DW - Uhlie
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :MPS - Posta
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Reynard - Posta
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Perry - Posta
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :MightyMover - Posta
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :Powernaught - Posta
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :Wizzowow - Posta
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Witcombe - Ropa
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Foster - Ropa
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Perry - Ropa
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Talbott - Dobytok
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Uhl - Dobytok
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Foster - Dobytok
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Balogh - Tovar
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Craighead - Tovar
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Goss - Tovar
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Hereford - Obilie
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Thomas - Obilie
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Goss - Obilie
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Witcombe - Drevo
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Foster - Drevo
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Moreland - Drevo
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :MPS - Zelezna ruda
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Uhl - Zelezna ruda
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Chippy - Zelezna ruda
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Balogh - Ocel
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Uhl - Ocel
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Kelling - Ocel
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Balogh - Obrnene vozidlo
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Uhl - Obrnene vozidlo
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Foster - Obrnene vozidlo
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Foster - Jedlo
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Perry - Jedlo
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Chippy - Jedlo
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Uhl - Papier
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Balogh - Papier
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :MPS - Papier
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :MPS - Medenna ruda
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Uhl - Medenna ruda
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Goss - Medenna ruda
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Uhl - Voda
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Balogh - Voda
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :MPS - Voda
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Balogh - Ovocie
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Uhl - Ovocie
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Kelling - Ovocie
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Balogh - Kaucuk
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Uhl - Kaucuk
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :RMT - Kaucuk
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :MightyMover - Cukor
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Powernaught - Cukor
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Wizzowow - Cukor
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :MightyMover - Kofola
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Powernaught - Kofola
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Wizzowow - Kofola
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :MightyMover - Cukrova vata
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :Powernaught - Cukrova vata
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Wizzowow - Cukrova vata
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :MightyMover - Karamel
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :Powernaught - Karamel
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :Wizzowow - Karamel
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :MightyMover - Hracky
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Powernaught - Hracky
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Wizzowow - Hracky
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :MightyMover - Cukriky
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Powernaught - Cukriky
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Wizzowow - Cukriky
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :MightyMover - Baterie
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Powernaught - Baterie
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :Wizzowow - Baterie
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :MightyMover - Sumienka
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :Powernaught - Sumienka
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :Wizzowow - Sumienka
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :MightyMover - Zuvacky
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :Powernaught - Zuvacky
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :Wizzowow - Zuvacky
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :MightyMover - Bubliny
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :Powernaught - Bubliny
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :Wizzowow - Bubliny
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal Autobus
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard Autobus
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster Autobus
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII Autobus
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Ploddyphut MkI Autobus
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Ploddyphut MkII Autobus
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkIII Autobus
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh - Uhlie
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl - Uhlie
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW - Uhlie
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS - Posta
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard - Posta
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry - Posta
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover - Posta
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught - Posta
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow - Posta
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe - Ropa
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster - Ropa
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry - Ropa
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott - Dobytok
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl - Dobytok
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster - Dobytok
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh - Tovar
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead - Tovar
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss - Tovar
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford - Obilie
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas - Obilie
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss - Obilie
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe - Drevo
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster - Drevo
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland - Drevo
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS - Zelezna ruda
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl - Zelezna ruda
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy - Zelezna ruda
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh - Ocel
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl - Ocel
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling - Ocel
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh - Obrnene vozidlo
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl - Obrnene vozidlo
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster - Obrnene vozidlo
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster - Jedlo
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry - Jedlo
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy - Jedlo
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl - Papier
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh - Papier
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS - Papier
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS - Medenna ruda
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl - Medenna ruda
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss - Medenna ruda
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl - Voda
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh - Voda
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS - Voda
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh - Ovocie
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl - Ovocie
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling - Ovocie
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh - Kaucuk
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl - Kaucuk
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT - Kaucuk
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover - Cukor
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught - Cukor
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow - Cukor
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover - Kofola
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught - Kofola
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow - Kofola
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover - Cukrova vata
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught - Cukrova vata
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow - Cukrova vata
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover - Karamel
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught - Karamel
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow - Karamel
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover - Hracky
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught - Hracky
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow - Hracky
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover - Cukriky
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught - Cukriky
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow - Cukriky
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover - Baterie
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught - Baterie
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow - Baterie
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover - Sumienka
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught - Sumienka
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow - Sumienka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover - Zuvacky
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught - Zuvacky
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow - Zuvacky
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover - Bubliny
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught - Bubliny
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow - Bubliny
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS - Ropa
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. - Ropa
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS Trajekt
@@ -2716,7 +2716,7 @@ STR_ORDER_NEAREST_HANGAR                                        :najbližší ha
 STR_ORDER_SERVICE_AT                                            :Servis v
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Servis non-stop v
 STR_ORDER_TRAIN_DEPOT                                           :Depo
-STR_ORDER_ROAD_DEPOT                                            :Garáž
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Garáž
 STR_ORDER_SHIP_DEPOT                                            :Lodenica
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2827,7 +2827,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}vozidlo 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nemozno posuvat vozdlo ...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Zadný stroj vždy doprevádza svoj druhý stroj vpredu
 STR_CARGO_N_A                                                   :Nie je{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}Nemozno predat automobil ...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Nemozno predat automobil ...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nemoze najst cestu do depa
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Nemozno zastavit/spustit vlak ...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Servisny interval: {LTBLUE}{COMMA}dni{BLACK}   Posledny servis: {LTBLUE}{DATE_LONG}
@@ -2920,35 +2920,35 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Naplň �
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Automobil v ceste
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Automobil{P "" y ov}
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Garaz
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nove vozidla
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nove automobily
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Zakupit vozidlo
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Automobil{P "" y ov}
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Garaz
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nove vozidla
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nove automobily
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Zakupit vozidlo
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Nie je mozne zakupit automobil ...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... musi byt zastaveny v garazi
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... musi byt zastaveny v garazi
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nemozno predat automobil ...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Nemozno zastavit/spustit automobil ...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čaká v depe
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Smeruje do {TOWN} garaze
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}smeruje do {TOWN} garaze, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servis v garazi {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servis v garazi {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Smeruje do {TOWN} garaze
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}smeruje do {TOWN} garaze, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Servis v garazi {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Servis v garazi {TOWN}, {VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nemozno poslat automobil do garaze ...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nemozno najst miestnu garaz
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Automobily - kliknut pre detaily
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Aktualna cinnost vozidla - kliknut pre zastavenie/spustenie
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Zobrazit cestovne prikazy
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Vycentrovat pohlad na vozidlo
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Poslat vozidlo do depa
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Otocit vozidlo
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Zobrazit detaily o automobile
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Vozidla - kliknut pre detaily
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Zakupit novy automobil
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Potiahni sem pre predaj automobilu
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Centrovat pohlad na poziciu garaze
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Vyber vozidiel - kliknut pre detaily
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Zakupit vybrany automobil
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Automobily - kliknut pre detaily
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aktualna cinnost vozidla - kliknut pre zastavenie/spustenie
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Zobrazit cestovne prikazy
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Vycentrovat pohlad na vozidlo
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Poslat vozidlo do depa
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Otocit vozidlo
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Zobrazit detaily o automobile
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozidla - kliknut pre detaily
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Zakupit novy automobil
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Potiahni sem pre predaj automobilu
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrovat pohlad na poziciu garaze
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Vyber vozidiel - kliknut pre detaily
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Zakupit vybrany automobil
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacita: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2958,12 +2958,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Pomenovat automobil
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Nemozno pomenovat automobil ...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Pomenovat automobil
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvy autobus dorazil do {STATION}!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvy automobil dorazil do {STATION}!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvá elektricka dorazila do stanice {STATION}!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvá nákladná elektricka dorazila do stanice {STATION}!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Dopravna nehoda!{}Vodic zahynul po kolizii s vlakom
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Dopravna nehoda!{}{COMMA} mrtvych po kolizii s vlakom
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvy autobus dorazil do {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvy automobil dorazil do {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvá elektricka dorazila do stanice {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvá nákladná elektricka dorazila do stanice {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Dopravna nehoda!{}Vodic zahynul po kolizii s vlakom
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Dopravna nehoda!{}{COMMA} mrtvych po kolizii s vlakom
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Premenovat
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Premenovat typ automobilu
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Premenovat typ automobilu
@@ -3257,17 +3257,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Chystá
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Nesprávny typ depa
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Predat všetky vlaky v depe
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Predat všetky vozidlá v garáži
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}Predat všetky vozidlá v garáži
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Predat všetky lode v lodenici
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Predat všetky lietadlá v hangári
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Zobrazit zoznam všetkých vlakov, ktoré majú toto depo v zozname príkazov
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Zobrazit zoznam všetkých vozidiel, ktoré majú túto garáž v zozname príkazov
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}Zobrazit zoznam všetkých vozidiel, ktoré majú túto garáž v zozname príkazov
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Zobrazit zoznam všetkých lodí, ktoré majú túto lodenicu v zozname príkazov
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Zobrazit zoznam všetkých lietadiel, ktoré majú toto letisko v zozname príkazov
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Automaticky nahradit všetky vlaky v depe
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Automaticky nahradit všetky vozidlá v garáži
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Automaticky nahradit všetky vozidlá v garáži
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Automaticky nahradit všetky lode v lodenici
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Automaticky nahradit všetky lietadlá v hangári
 
@@ -3296,12 +3296,12 @@ STR_ENGINES                                                     :Lokomotívy
 STR_WAGONS                                                      :Vagonov
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Kliknite pre zastavenie všetkých vlakov v depe
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Kliknite pre zastavenie všetkých vozidiel v garáži
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}Kliknite pre zastavenie všetkých vozidiel v garáži
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Kliknite pre zastavenie všetkých lodí v lodenici
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Kliknite pre zastavenie všetkých lietadiel v hangári
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Kliknite pre spustenie všetkých vlakov v depe
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Kliknite pre spustenie všetkých vozidiel v garáži
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}Kliknite pre spustenie všetkých vozidiel v garáži
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Kliknite pre spustenie všetkých lodí v lodenici
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Kliknite pre spustenie všetkých lietadiel v hangári
 
@@ -3475,11 +3475,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 STR_FORMAT_GROUP_NAME                                           :Skupina {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Všetky vlaky
-STR_GROUP_ALL_ROADS                                             :Všetky cestné vozidlá
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Všetky cestné vozidlá
 STR_GROUP_ALL_SHIPS                                             :Všetky lode
 STR_GROUP_ALL_AIRCRAFTS                                         :Všetky lietadlá
 STR_GROUP_DEFAULT_TRAINS                                        :Nezaradené vlaky
-STR_GROUP_DEFAULT_ROADS                                         :Nezaradené vozidlá
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Nezaradené vozidlá
 STR_GROUP_DEFAULT_SHIPS                                         :Nezaradené lode
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Nezaradené lietadlá
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

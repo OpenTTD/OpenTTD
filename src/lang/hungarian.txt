@@ -379,13 +379,13 @@ STR_SORT_BY_FACILITY                                            :Állomás típu
 STR_SORT_BY_WAITING                                             :Várakozó rakomány értéke
 STR_SORT_BY_RATING_MAX                                          :Legtöbb áru szerint
 STR_SORT_BY_RATING_MIN                                          :Legkevesebb áru szerint
-STR_ENGINE_SORT_ENGINE_ID                                       :JárműID
-STR_ENGINE_SORT_COST                                            :Ár
-STR_ENGINE_SORT_POWER                                           :Telj.
-STR_ENGINE_SORT_INTRO_DATE                                      :Bevezetési dátum
-STR_ENGINE_SORT_RUNNING_COST                                    :Üzemeltetési k.
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Telj./Üzemeltetési k.
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Teherkapacitás
+STR_SORT_BY_ENGINE_ID                                           :JárműID
+STR_SORT_BY_COST                                                :Ár
+STR_SORT_BY_POWER                                               :Telj.
+STR_SORT_BY_INTRO_DATE                                          :Bevezetési dátum
+STR_SORT_BY_RUNNING_COST                                        :Üzemeltetési k.
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Telj./Üzemeltetési k.
+STR_SORT_BY_CARGO_CAPACITY                                      :Teherkapacitás
 STR_NO_WAITING_CARGO                                            :{BLACK}Semmilyen áru nem várakozik
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Minden szállítóegység kiválasztása
 STR_SELECT_ALL_TYPES                                            :{BLACK}Minden rakománytípus mutatása (beleértve ha nincs várakozó rakomány)
@@ -980,7 +980,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}A vonat
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :elején
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :közepén
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :végén
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Közúti járművek sorbanállása: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Közúti járművek sorbanállása: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Ablakmozgatás, ha az egér a képernyő szélén van: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Önkormányzatok lefizethetősége: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Lehessen kizárólagos szállítási jogot venni: {ORANGE}{STRING}
@@ -1086,12 +1086,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Kiadás
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Eszköztár mutatása, még ha nem is építhető semmi róla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Maximum közúti jármű játékosonként: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maximum közúti jármű játékosonként: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maximum repülőgép játékosonként: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maximum hajó játékosonként: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Vonatok tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Közúti járművek tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Közúti járművek tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Repülőgépek tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Hajók tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
 
@@ -1101,8 +1101,8 @@ STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}MI felf
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Szervízintervallumok százalékban: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Alapértelmezett szervízelés vonatoknak: {ORANGE}{STRING} naponta
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Alapértelmezett szervízelés vonatoknak: {ORANGE}kikapcsolva
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Alapértelmezett szervízelés közúti járműveknek: {ORANGE}{STRING} naponta
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Alapértelmezett szervízelés közúti járműveknek: {ORANGE}kikapcsolva
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Alapértelmezett szervízelés közúti járműveknek: {ORANGE}{STRING} naponta
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Alapértelmezett szervízelés közúti járműveknek: {ORANGE}kikapcsolva
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Alapértelmezett szervízelés repülőgépeknek: {ORANGE}{STRING} naponta
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Alapértelmezett szervízelés repülőgépeknek: {ORANGE}kikapcsolva
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Alapértelmezett szervízelés hajóknak: {ORANGE}{STRING} naponta
@@ -1177,10 +1177,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Útvona
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ellenjavallt)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Ajánlott)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Útvonalkereső közúti járművekhez: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Eredeti {RED}(Ellenjavallt)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Ajánlott)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Útvonalkereső közúti járművekhez: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :Eredeti {RED}(Ellenjavallt)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Ajánlott)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Útvonalkereső hajókhoz: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Eredeti {BLUE}(Ajánlott)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2127,7 +2127,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...már 
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Névtelen
 STR_SV_TRAIN_NAME                                               :Vonat {COMMA}
-STR_SV_ROADVEH_NAME                                             :Közúti jármű {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Közúti jármű {COMMA}
 STR_SV_SHIP_NAME                                                :Hajó {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Repülő {COMMA}
 
@@ -2246,12 +2246,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Építkezés
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Új járművek
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Vonat működtetési költség
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Közúti jármű műk. költség
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Közúti jármű műk. költség
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Repülőgép műk. költség
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Hajó működtetési költség
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Tulajdon fenntartása
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Vonatok bevétele
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Közúti járművek bevétele
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Közúti járművek bevétele
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Repülőgépek bevétele
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Hajók bevétele
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Kölcsön kamata
@@ -2390,7 +2390,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Teherszállít�
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Általános színsémák mutatása
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Vonat színsémák mutatása
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Mutasd a közúti járművek színsémáit
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}Mutasd a közúti járművek színsémáit
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Hajó színsémák mutatása
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Repülőgép színsémák mutatása
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Válassz egy elsődleges színt a kiválasztott sémához
@@ -2514,94 +2514,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Játékszállí
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Elemszállító vagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Szénsavasital-szállító vagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Műanyagszállító vagon
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :MPS királyi busz
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Hereford leopárd busz
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Foster busz
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Foster MkII szuperbusz
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Cammogó MkI busz
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :Cammogó MkII busz
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Cammogó MkIII busz
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Balogh szénszállító autó
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Uhl szénszállító
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :DW szénszállító
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :MPS levélszállító
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Reynard  levélszállító
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Perry  levélszállító
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :ErőGép levélszállító
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :SemmiErő levélszállító
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :ZummDeGyors levélszállító
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Witcombe olajszállító
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Foster olajszállító
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Perry olajszállító
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Talbott állatszállító
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Uhl állatszállító
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Foster állatszállító
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Balogh áruszállító
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Craighead áruszállító
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Goss áruszállító
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Hereford gabonaszállító
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Thomas gabonaszállító
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Goss gabonaszállító
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Witcombe faszállító
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Foster faszállító
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Moreland faszállító
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :MPS vasércszállító
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Uhl vasércszállító
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Chippy vasércszállító
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Balogh acélszállító
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Uhl acélszállító
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Kelling acélszállító
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Balogh páncélkocsi
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Uhl páncélkocsi
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Foster páncélkocsi
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Foster ételszállító
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Perry ételszállító
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Chippy ételszállító
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Uhl papírszállító
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Balogh papírszállító
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :MPS papírszállító
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :MPS rézércszállító
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Uhl rézércszállító
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Goss rézércszállító
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Uhl vízszállító
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Balogh vízszállító
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :MPS vízszállító
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Balogh gyümölcsszállító
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Uhl gyümölcsszállító
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Kelling gyümölcsszállító
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Balogh gumiszállító
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Uhl gumiszállító
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :RMT gumiszállító
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :SemmiErő cukorszállító
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :ErőGép cukorszállító
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :ZummDeGyors cukorszállító
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :SemmiErő kólaszállító
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :ErőGép kólaszállító
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :ZummDeGyors kólaszállító
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :SemmiErő vattacukor-sz.
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :ErőGép vattacukor-sz.
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :ZummDeGyors vattacukor-sz.
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :SemmiErő tejkaramella-sz.
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :ErőGép tejkaramella-sz.
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :ZummDeGyors tejkaramella-sz.
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :SemmiErő játékszállító
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :ErőGép játékszállító
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :ZummDeGyors játékszállító
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :SemmiErő cukorkaszállító
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :ErőGép cukorkaszállító
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :ZummDeGyors cukorkaszállító
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :SemmiErő elemszállító
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :ErőGép elemszállító
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :ZummDeGyors elemszállító
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :SemmiErő szénsavasital-sz.
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :ErőGép szénsavasital-sz.
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :ZummDeGyors szénsavasital-sz.
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :SemmiErő műanyagszállító
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :ErőGép műanyagszállító
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :ZummDeGyors műanyagszállító
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :SemmiErő buborékszállító
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :ErőGép buborékszállító
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :ZummDeGyors buborékszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS királyi busz
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford leopárd busz
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster busz
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII szuperbusz
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Cammogó MkI busz
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Cammogó MkII busz
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Cammogó MkIII busz
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh szénszállító autó
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl szénszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW szénszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS levélszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard  levélszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry  levélszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :ErőGép levélszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :SemmiErő levélszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :ZummDeGyors levélszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe olajszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster olajszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry olajszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott állatszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl állatszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster állatszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh áruszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead áruszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss áruszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford gabonaszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas gabonaszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss gabonaszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe faszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster faszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland faszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS vasércszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl vasércszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy vasércszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh acélszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl acélszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling acélszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh páncélkocsi
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl páncélkocsi
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster páncélkocsi
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster ételszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry ételszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy ételszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl papírszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh papírszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS papírszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS rézércszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl rézércszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss rézércszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl vízszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh vízszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS vízszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh gyümölcsszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl gyümölcsszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling gyümölcsszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh gumiszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl gumiszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT gumiszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :SemmiErő cukorszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :ErőGép cukorszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :ZummDeGyors cukorszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :SemmiErő kólaszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :ErőGép kólaszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :ZummDeGyors kólaszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :SemmiErő vattacukor-sz.
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :ErőGép vattacukor-sz.
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :ZummDeGyors vattacukor-sz.
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :SemmiErő tejkaramella-sz.
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :ErőGép tejkaramella-sz.
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :ZummDeGyors tejkaramella-sz.
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :SemmiErő játékszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :ErőGép játékszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :ZummDeGyors játékszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :SemmiErő cukorkaszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :ErőGép cukorkaszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :ZummDeGyors cukorkaszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :SemmiErő elemszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :ErőGép elemszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :ZummDeGyors elemszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :SemmiErő szénsavasital-sz.
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :ErőGép szénsavasital-sz.
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :ZummDeGyors szénsavasital-sz.
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :SemmiErő műanyagszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :ErőGép műanyagszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :ZummDeGyors műanyagszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :SemmiErő buborékszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :ErőGép buborékszállító
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :ZummDeGyors buborékszállító
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS olajszállító hajó
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. olajszállító hajó
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS komp
@@ -2715,7 +2715,7 @@ STR_ORDER_NEAREST_HANGAR                                        :a legközelebbi
 STR_ORDER_SERVICE_AT                                            :Ha javítás szükséges, menj
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Ha javítás szükséges megállás nélkül menj
 STR_ORDER_TRAIN_DEPOT                                           :járműtelepre
-STR_ORDER_ROAD_DEPOT                                            :garázs
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :garázs
 STR_ORDER_SHIP_DEPOT                                            :dokk
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2825,7 +2825,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}egy jár
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nem mozgathatod a járművet...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}A mozdony első felének mindig elöl kell lennie
 STR_CARGO_N_A                                                   :Nincs{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}Nem adhatod el a vasúti járművet...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Nem adhatod el a vasúti járművet...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nem találok utat a helyi járműtelepre
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Nem indíthatod el/ állíthatod meg a vonatot...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Javítási időköz: {LTBLUE}{COMMA} nap{BLACK}   Utolsó javítás: {LTBLUE}{DATE_LONG}
@@ -2918,33 +2918,33 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Menetren
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Közúti jármű van az útban
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN}i garázs
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Új járművek
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Új közúti járművek
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Megvesz
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN}i garázs
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Új járművek
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Új közúti járművek
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Megvesz
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Nem veheted meg a közúti járművet...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...garázsban kellene állnia ehhez
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...garázsban kellene állnia ehhez
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nem adhatod el a közúti járművet...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Nem indíthatod el/ állíthatod meg a közúti járművet...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} a garázsban vár
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Úton {TOWN} garázsába
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Úton {TOWN} garázsába, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Javítás {TOWN} garázsában
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Javítás {TOWN} garázsában, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Úton {TOWN} garázsába
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Úton {TOWN} garázsába, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Javítás {TOWN} garázsában
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Javítás {TOWN} garázsában, {VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nem küldheted a járművet a garázsba...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nem találom a helyi garázst
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Aktuális járműesemény - kattints ide a jármű elindításához/ megállításához
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}A jármű menetrendjének megmutatása
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}A fő nézetet a járműre állítja
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Garázsba küldi a járművet
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Visszafordítja a járművet
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}A közúti jármű adatai
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Járművek - kattints egy járműre az adataihoz
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Új közúti jármű vásárlása
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Dobj ide egy járművet az eladásához
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}A fő nézetet a garázsra állítja
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Közúti jármű kiválasztása - kattints egy járműre az adataihoz
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}A kijelölt közúti jármű megvétele
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aktuális járműesemény - kattints ide a jármű elindításához/ megállításához
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}A jármű menetrendjének megmutatása
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}A fő nézetet a járműre állítja
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Garázsba küldi a járművet
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Visszafordítja a járművet
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}A közúti jármű adatai
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Járművek - kattints egy járműre az adataihoz
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Új közúti jármű vásárlása
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Dobj ide egy járművet az eladásához
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}A fő nézetet a garázsra állítja
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Közúti jármű kiválasztása - kattints egy járműre az adataihoz
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}A kijelölt közúti jármű megvétele
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacitás: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2954,12 +2954,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Közúti jármű átnevezése
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Nem nevezheted át a közúti járművet...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Közúti jármű átnevezése
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az első busz {STATION} állomásra!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az első teherautó {STATION} állomásra!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}A lakosság ünnepel . . .{}Első utasszállító villamos megérkezett {STATION} állomásra!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}A lakosság ünnepel . . .{}Első teherszállító-villamos megérkezett {STATION} állomásra!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Közúti baleset!{}A vezető meghalt a vonattal való ütközéskor
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Közúti baleset!{}{COMMA} ember meghalt a vonattal való ütközéskor
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az első busz {STATION} állomásra!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az első teherautó {STATION} állomásra!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}A lakosság ünnepel . . .{}Első utasszállító villamos megérkezett {STATION} állomásra!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}A lakosság ünnepel . . .{}Első teherszállító-villamos megérkezett {STATION} állomásra!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Közúti baleset!{}A vezető meghalt a vonattal való ütközéskor
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Közúti baleset!{}{COMMA} ember meghalt a vonattal való ütközéskor
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}A közúti jármű nem tud megfordulni...
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Átnevez
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}A közúti jármű márkanevének megváltoztatása
@@ -3238,12 +3238,12 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 ############ Vehicle lists
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vonatok - kattints egy vonatra az adataihoz
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Közúti járművek - kattints egy járműre az adataihoz
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Közúti járművek - kattints egy járműre az adataihoz
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Hajók - kattints egy hajóra az adataihoz
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Repülőgépek - kattints egy repülőgépre az adataihoz
 
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} vonatai - {COMMA}
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} közúti járművei - {COMMA}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} közúti járművei - {COMMA}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} hajói - {COMMA}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} repülőgépei - {COMMA}
 
@@ -3255,17 +3255,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Biztosa
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Rossz depó típus
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Összes vonat eladása a járműtelepen
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Összes garázsbeli jármű eladása
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}Összes garázsbeli jármű eladása
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Összes dokkbeli hajó eladása
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Összes hangárbéli repülő eladása
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Az összes, ezen járműtelepet menetrendszerüen látogató vonat listájának összeállítása
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Az összes, ezen hangárt menetrendszerüen látogató jármű listájának összeállítása
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}Az összes, ezen hangárt menetrendszerüen látogató jármű listájának összeállítása
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Az összes, ezen dokkot menetrendszerüen látogató hajó listájának összeállítása
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Az összes, itteni hangárt menetrendszerüen látogató repülőgép listájának összeállítása
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}A járműtelepen lévő összes vonat automatikus cseréje
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}A garázsban lévő összes jármű automatikus cseréje
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}A garázsban lévő összes jármű automatikus cseréje
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}A dokkban lévő összes hajó automatikus cseréje
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}A hangárban lévő összes repülő automatikus cseréje
 
@@ -3293,12 +3293,12 @@ STR_ENGINES                                                     :Mozdonyok
 STR_WAGONS                                                      :Vagonok
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Kattints ide az összes vonat megállításában a járműtelepen
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Kattints ide az összes közúti jármű megállításához a garázsban
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}Kattints ide az összes közúti jármű megállításához a garázsban
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Kattints ide az összes dokkbeli hajó leállításához
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Kattints ide az összes hangárbeli repülő leállításához
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Kattints ide az összes vonat elindításához a járműtelepről
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Kattints ide az összes közúti jármű elindításához a garázsból
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}Kattints ide az összes közúti jármű elindításához a garázsból
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Kattints ide az összes dokkbeli hajó elindításához
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Kattints ide az összes hangárbeli repülő elindításához
 
@@ -3460,11 +3460,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 ##### Mass Order
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Összes vonat
-STR_GROUP_ALL_ROADS                                             :Összes közúti jármű
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Összes közúti jármű
 STR_GROUP_ALL_SHIPS                                             :Összes hajó
 STR_GROUP_ALL_AIRCRAFTS                                         :Összes repülő
 STR_GROUP_DEFAULT_TRAINS                                        :Csoportosítatlan vonatok
-STR_GROUP_DEFAULT_ROADS                                         :Csoportosítatlan közúti járművek
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Csoportosítatlan közúti járművek
 STR_GROUP_DEFAULT_SHIPS                                         :Csoportosítatlan hajók
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Csoportosítatlan repülők
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

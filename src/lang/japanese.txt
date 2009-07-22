@@ -342,13 +342,13 @@ STR_SORT_BY_LENGTH                                              :長さ
 STR_SORT_BY_LIFE_TIME                                           :残りライフタイム
 STR_SORT_BY_FACILITY                                            :駅の種類
 STR_SORT_BY_WAITING                                             :到着待ち貨物の価値
-STR_ENGINE_SORT_ENGINE_ID                                       :EngineID（旧式）
-STR_ENGINE_SORT_COST                                            :値段
-STR_ENGINE_SORT_POWER                                           :出力
-STR_ENGINE_SORT_INTRO_DATE                                      :登場日付
-STR_ENGINE_SORT_RUNNING_COST                                    :運転費
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :出力／運転費
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :貨物容量
+STR_SORT_BY_ENGINE_ID                                           :EngineID（旧式）
+STR_SORT_BY_COST                                                :値段
+STR_SORT_BY_POWER                                               :出力
+STR_SORT_BY_INTRO_DATE                                          :登場日付
+STR_SORT_BY_RUNNING_COST                                        :運転費
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :出力／運転費
+STR_SORT_BY_CARGO_CAPACITY                                      :貨物容量
 STR_NO_WAITING_CARGO                                            :{BLACK}到着待ちの貨物がありません
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}すべての駅を選択
 STR_SELECT_ALL_TYPES                                            :{BLACK}すべての貨物種類を選択（到着待たぬ貨物も含む）
@@ -938,7 +938,7 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}常に�
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}信号を運転側に表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}年末に財政ウインドウを表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}新規指令にデフォルトで 'non-stop'をつける: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}車両の待ち行列を使用：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}車両の待ち行列を使用：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}マウスが端にあるとき画面を移動：{ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}町議会の買収を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}独占的運送権の購入を許容：{ORANGE}{STRING}
@@ -1039,12 +1039,12 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}ビル�
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}適当な車両がまだ購入不可能であっても、基礎の建設を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}一人のプレヤーの列車数上限：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}一人のプレヤーの道路車両数上限：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}一人のプレヤーの道路車両数上限：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}一人のプレヤーの飛行機数上限：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}一人のプレヤーの船舶数上限：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}コンピュータは鉄道車両を使用しない：{ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}コンピュータは道路車両を使用しない：{ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}コンピュータは道路車両を使用しない：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}コンピュータは飛行機を使用しない：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}コンピュータは船舶を使用しない：{ORANGE}{STRING}
 
@@ -1053,8 +1053,8 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}マル�
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}修理間隔をパーセントで表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}列車のデフォルトの修理間隔：{ORANGE}{STRING}日間／％
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}列車のデフォルトの修理間隔：{ORANGE}切
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}道路車両のデフォルトの修理間隔：{ORANGE}{STRING}日間／％
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}道路車両のデフォルトの修理間隔：{ORANGE}切
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}道路車両のデフォルトの修理間隔：{ORANGE}{STRING}日間／％
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}道路車両のデフォルトの修理間隔：{ORANGE}切
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}飛行機のデフォルトの修理間隔：{ORANGE}{STRING}日間／％
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}飛行機のデフォルトの修理間隔：{ORANGE}切
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}船舶のデフォルトの修理間隔：{ORANGE}{STRING}日間／％
@@ -1124,10 +1124,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}電車�
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP{RED}（すすめない）
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF{BLUE}（おすすめ）
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}道路車両の経路処理アルゴリズム：{ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :本来{RED}（すすめない）
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF{BLUE}（おすすめ）
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}道路車両の経路処理アルゴリズム：{ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :本来{RED}（すすめない）
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF{BLUE}（おすすめ）
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}船舶の経路処理アルゴリズム：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :本来{BLUE}（おすすめ）
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2036,7 +2036,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...す�
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :名前無し
 STR_SV_TRAIN_NAME                                               :列車{COMMA}
-STR_SV_ROADVEH_NAME                                             :道路車両{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :道路車両{COMMA}
 STR_SV_SHIP_NAME                                                :船舶{COMMA}
 STR_SV_AIRCRAFT_NAME                                            :飛行機{COMMA}
 
@@ -2156,12 +2156,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}建設
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}新規車両
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}列車運転費
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}道路車両運転費
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}道路車両運転費
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}飛行機運転費
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}船舶運転費
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}ビルの補修
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}列車の損益
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}道路車両の損益
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}道路車両の損益
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}飛行機の損益
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}船舶の損益
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}借入金の金利
@@ -2300,7 +2300,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :貨物用路面
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}一般のカラースキームを表示します
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}列車のカラースキームを表示します
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}道路車両のカラースキームを表示します
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}道路車両のカラースキームを表示します
 STR_LIVERY_SHIP_TIP                                             :{BLACK}船舶のカラースキームを表示します
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}飛行機のカラースキームを表示します
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}選択したカラースキームの主の色を選択します
@@ -2424,94 +2424,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :玩具トラッ
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :電池トラック
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :炭酸飲料トラック
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :プラスチックトラック
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :MPS社「Regal」バス
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Hereford Leopard社バス
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Foster社バス
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Foster社 マークⅡスーパーバス
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :ブーブー社マークⅠバス
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :ブーブー社マークⅡバス
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :ブーブー社マークⅢバス
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Balogh社石炭トラック
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Uhl社石炭トラック
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :DW社石炭トラック
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :MPS社郵便車
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Reynard社郵便車
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Perry社郵便車
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :マイティムーヴァー社郵便車
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :パワーノート社郵便車
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :ヒューピュー社郵便車
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Witcombe社石油タンク車
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Foster社石油タンク車
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Perry社石油タンク車
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Talbott社家畜トラック
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Uhl社家畜トラック
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Foster社家畜トラック
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Balogh社商品トラック
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Craighead社商品トラック
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Goss社商品トラック
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Hereford社穀物トラック
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Thomas社穀物トラック
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Goss社穀物トラック
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Witcombe社木材トラック
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Foster社木材トラック
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Moreland社木材トラック
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :MPS社鉄鉱トラック
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Uhl社鉄鉱トラック
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Chippy社鉄鉱トラック
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Balogh社鋼鉄トラック
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Uhl社鋼鉄トラック
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Kelling社鋼鉄トラック
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Balogh社装甲車
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Uhl社装甲車
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Foster社装甲車
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Foster社食品トラック
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Perry社食品トラック
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Chippy社食品トラック
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Uhl社紙トラック
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Balogh社紙トラック
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :MPS社紙トラック
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :MPS社銅鉱トラック
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Uhl社銅鉱トラック
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Goss社銅鉱トラック
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Uhl社給水車
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Balogh社給水車
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :MPS社給水車
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Balogh社果物トラック
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Uhl社果物トラック
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Kelling社果物トラック
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Balogh社ゴムトラック
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Uhl社ゴムトラック
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :RMT社ゴムトラック
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :マイティムーヴァー社砂糖トラック
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :パワーノート社砂糖トラック
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :ヒューピュー社砂糖トラック
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :マイティムーヴァー社コーラタンク車
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :パワーノート社コーラタンク車
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :ヒューピュー社コーラタンク車
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :マイティムーヴァー社綿菓子トラック
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :パワーノート社綿菓子トラック
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :ヒューピュー社綿菓子トラック
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :マイティムーヴァー社タフィートラック
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :パワーノート社タフィートラック
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :ヒューピュー社タフィートラック
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :マイティムーヴァー社玩具トラック
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :パワーノート社玩具トラック
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :ヒューピュー社玩具トラック
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :巨大ムーブ社菓子トラック
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :パワーノート社菓子トラック
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :ヒューピュー社菓子トラック
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :マイティムーヴァー社電池トラック
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :パワーノート社電池トラック
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :ヒューピュー社電池トラック
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :マイティムーヴァー社炭酸飲料トラック
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :パワーノート社炭酸飲料トラック
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :ヒューピュー社炭酸飲料トラック
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :マイティムーヴァー社プラスチックトラック
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :パワーノート社プラスチックトラック
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :ヒューピュー社プラスチックトラック
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :マイティムーヴァー社泡トラック
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :パワーノート社泡トラック
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :ヒューピュー社泡トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS社「Regal」バス
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard社バス
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster社バス
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster社 マークⅡスーパーバス
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :ブーブー社マークⅠバス
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :ブーブー社マークⅡバス
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :ブーブー社マークⅢバス
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh社石炭トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl社石炭トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW社石炭トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS社郵便車
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard社郵便車
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry社郵便車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :マイティムーヴァー社郵便車
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :パワーノート社郵便車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :ヒューピュー社郵便車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe社石油タンク車
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster社石油タンク車
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry社石油タンク車
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott社家畜トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl社家畜トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster社家畜トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh社商品トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead社商品トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss社商品トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford社穀物トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas社穀物トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss社穀物トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe社木材トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster社木材トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland社木材トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS社鉄鉱トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl社鉄鉱トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy社鉄鉱トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh社鋼鉄トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl社鋼鉄トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling社鋼鉄トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh社装甲車
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl社装甲車
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster社装甲車
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster社食品トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry社食品トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy社食品トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl社紙トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh社紙トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS社紙トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS社銅鉱トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl社銅鉱トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss社銅鉱トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl社給水車
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh社給水車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS社給水車
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh社果物トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl社果物トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling社果物トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh社ゴムトラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl社ゴムトラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT社ゴムトラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :マイティムーヴァー社砂糖トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :パワーノート社砂糖トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :ヒューピュー社砂糖トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :マイティムーヴァー社コーラタンク車
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :パワーノート社コーラタンク車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :ヒューピュー社コーラタンク車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :マイティムーヴァー社綿菓子トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :パワーノート社綿菓子トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :ヒューピュー社綿菓子トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :マイティムーヴァー社タフィートラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :パワーノート社タフィートラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :ヒューピュー社タフィートラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :マイティムーヴァー社玩具トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :パワーノート社玩具トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :ヒューピュー社玩具トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :巨大ムーブ社菓子トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :パワーノート社菓子トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :ヒューピュー社菓子トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :マイティムーヴァー社電池トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :パワーノート社電池トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :ヒューピュー社電池トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :マイティムーヴァー社炭酸飲料トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :パワーノート社炭酸飲料トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :ヒューピュー社炭酸飲料トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :マイティムーヴァー社プラスチックトラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :パワーノート社プラスチックトラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :ヒューピュー社プラスチックトラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :マイティムーヴァー社泡トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :パワーノート社泡トラック
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :ヒューピュー社泡トラック
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS社油槽船
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS社油槽船
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS社客船
@@ -2617,7 +2617,7 @@ STR_ORDER_NEAREST_HANGAR                                        :最も近い格
 STR_ORDER_SERVICE_AT                                            :修理：
 STR_ORDER_SERVICE_NON_STOP_AT                                   :回送して修理：
 STR_ORDER_TRAIN_DEPOT                                           :電車庫
-STR_ORDER_ROAD_DEPOT                                            :車庫
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :車庫
 STR_ORDER_SHIP_DEPOT                                            :造船所
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2723,7 +2723,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}命令�
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}この車輌を移動できません...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}ダブルヘッドの場合、後部の機関車は常に前部の機関車について行きます
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}鉄道車両を販売できません...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}鉄道車両を販売できません...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}電車庫への経路が見つかりません
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}列車が開始／停止できません...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}補修間隔：{LTBLUE}{COMMA}日間{BLACK}  最新の補修：{LTBLUE}{DATE_LONG}
@@ -2814,35 +2814,35 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動�
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}道路車両があります
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - 道路車両{COMMA}両
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN}車庫
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}新規車両
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}新規道路車両
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}車両を購入
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - 道路車両{COMMA}両
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN}車庫
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}新規車両
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}新規道路車両
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}車両を購入
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}道路車両が購入できません...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...車庫内に停止しなければなりません
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...車庫内に停止しなければなりません
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}道路車両を売却できません...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}道路車両を始動／停止できません...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} は車庫で待機しています
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}{TOWN}車庫へ回送
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}{TOWN}車庫へ回送、{VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}{TOWN}車庫で修理
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN}車庫で修理、{VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}{TOWN}車庫へ回送
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}{TOWN}車庫へ回送、{VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}{TOWN}車庫で修理
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}{TOWN}車庫で修理、{VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}車両を車庫へ回送できません...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}付近に車庫が見つかりません
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}道路車両 - クリックして情報を表示します
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}車両の現在の動作 - 開始／停止するにはクリックします
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}車両の指令を表示します
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}主の画面を車両の場所に移動します
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}車両を車庫へ改装します。Control+クリックすると修理しか行いません。
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}車両を逆転します
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}車両の情報を表示します
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}車両 - クリックして情報を表示します
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}新規道路車両を購入
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}販売するには道路車両をここへドラッグします
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}主の画面を車庫の場所に移動します
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}道路車両のリスト - 情報を見るには車両をクリックします
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}選択した道路車両を購入します
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}道路車両 - クリックして情報を表示します
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}車両の現在の動作 - 開始／停止するにはクリックします
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}車両の指令を表示します
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}主の画面を車両の場所に移動します
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}車両を車庫へ改装します。Control+クリックすると修理しか行いません。
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}車両を逆転します
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}車両の情報を表示します
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}車両 - クリックして情報を表示します
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}新規道路車両を購入
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}販売するには道路車両をここへドラッグします
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}主の画面を車庫の場所に移動します
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}道路車両のリスト - 情報を見るには車両をクリックします
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}選択した道路車両を購入します
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}容量：{LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2851,12 +2851,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}道路車両を名付ける
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}道路車両が名付けません...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}道路車両を名付ける
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}町民の祝賀！{}初バスが{STATION}バス停に到着！
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}町民の祝賀！{}初トラックが{STATION}荷役所に到着！
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}町民の祝賀{}初乗客用路面電車が{STATION}駅に到着！
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}町民の祝賀{}初貨物用路面電車が{STATION}駅に到着！
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}交通事故！{}列車に衝突、運転者が死亡
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}交通事故！{}列車に衝突、{COMMA}人が死亡
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}町民の祝賀！{}初バスが{STATION}バス停に到着！
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}町民の祝賀！{}初トラックが{STATION}荷役所に到着！
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}町民の祝賀{}初乗客用路面電車が{STATION}駅に到着！
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}町民の祝賀{}初貨物用路面電車が{STATION}駅に到着！
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}交通事故！{}列車に衝突、運転者が死亡
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}交通事故！{}列車に衝突、{COMMA}人が死亡
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}多数の部分を含む車両が逆転できません
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}名称変更
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}道路車両の名称を変更
@@ -3141,17 +3141,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}車庫�
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :鉄道車庫の種類が一致していません
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}電車庫内のすべての列車を売却します
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}車庫内のすべての道路車両を売却します
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}車庫内のすべての道路車両を売却します
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}造船所内のすべての船舶を売却します
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}格納庫内のすべての飛行機を売却します
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}選択中の電車庫が指令リストに入っているすべての列車のリストを表示します
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}選択中の車庫が指令リストに入っているすべての道路車両のリストを表示します
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}選択中の車庫が指令リストに入っているすべての道路車両のリストを表示します
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}選択中の造船所が指令リストに入っているすべての船舶のリストを表示します
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}選択中の格納庫が指令リストに入っているすべての飛行機のリストを表示します
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}電車庫内のすべての列車を自動交換します
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}車庫内のすべての道路車両を自動交換します
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}車庫内のすべての道路車両を自動交換します
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}造船所内のすべての船舶を自動交換します
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}格納庫内のすべての飛行機を自動交換します
 
@@ -3180,12 +3180,12 @@ STR_ENGINES                                                     :機関車
 STR_WAGONS                                                      :貨車
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}電車庫内のすべての列車を停車するにはクリックします
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}車庫内のすべての道路車両を停車するにはクリックします
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}車庫内のすべての道路車両を停車するにはクリックします
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}造船所内のすべての船舶を停止するにはクリックします
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}格納庫内のすべての飛行機を停止するにはクリックします
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}電車庫内のすべての列車を開始するにはクリックします
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}車庫内のすべての道路車両を開始するにはクリックします
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}車庫内のすべての道路車両を開始するにはクリックします
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}造船所内のすべての船舶を開始するにはクリックします
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}格納庫内のすべての飛行機を開始するにはクリックします
 
@@ -3357,11 +3357,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 STR_FORMAT_GROUP_NAME                                           :グループ {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :すべての列車
-STR_GROUP_ALL_ROADS                                             :すべての道路車両
+STR_GROUP_ALL_ROAD_VEHICLES                                     :すべての道路車両
 STR_GROUP_ALL_SHIPS                                             :すべての船舶
 STR_GROUP_ALL_AIRCRAFTS                                         :すべての飛行機
 STR_GROUP_DEFAULT_TRAINS                                        :無所属の列車
-STR_GROUP_DEFAULT_ROADS                                         :無所属の道路車両
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :無所属の道路車両
 STR_GROUP_DEFAULT_SHIPS                                         :無所属の船舶
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :グループにされない飛行機
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

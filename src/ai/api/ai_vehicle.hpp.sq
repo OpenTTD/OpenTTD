@@ -81,7 +81,7 @@ void SQAIVehicle_Register(Squirrel *engine) {
 	AIError::RegisterErrorMap(STR_CAN_T_REFIT_DESTROYED_VEHICLE,                             AIVehicle::ERR_VEHICLE_IS_DESTROYED);
 	AIError::RegisterErrorMap(STR_CAN_T_SELL_DESTROYED_VEHICLE,                              AIVehicle::ERR_VEHICLE_IS_DESTROYED);
 	AIError::RegisterErrorMap(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED,                            AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
-	AIError::RegisterErrorMap(STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT,                   AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
+	AIError::RegisterErrorMap(STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT,           AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
 	AIError::RegisterErrorMap(STR_TRAIN_MUST_BE_STOPPED,                                     AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
 	AIError::RegisterErrorMap(STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT,                       AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
 	AIError::RegisterErrorMap(STR_ERROR_AIRCRAFT_IS_IN_FLIGHT,                               AIVehicle::ERR_VEHICLE_IN_FLIGHT);

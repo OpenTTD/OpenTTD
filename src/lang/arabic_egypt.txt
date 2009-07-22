@@ -345,13 +345,13 @@ STR_SORT_BY_FACILITY                                            :نوع المح
 STR_SORT_BY_WAITING                                             :قيمة الشحنة المنتظرة
 STR_SORT_BY_RATING_MAX                                          :اعلى نسبة شحن
 STR_SORT_BY_RATING_MIN                                          :اقل نسبة شحن
-STR_ENGINE_SORT_ENGINE_ID                                       :نوع المحرك (قياسي(
-STR_ENGINE_SORT_COST                                            :التكلفة
-STR_ENGINE_SORT_POWER                                           :الطاقة
-STR_ENGINE_SORT_INTRO_DATE                                      :بداية التشغيل
-STR_ENGINE_SORT_RUNNING_COST                                    :تكلفة التشغيل
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :القوة/تكلفة التشغيل
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :سعة الشحن
+STR_SORT_BY_ENGINE_ID                                           :نوع المحرك (قياسي(
+STR_SORT_BY_COST                                                :التكلفة
+STR_SORT_BY_POWER                                               :الطاقة
+STR_SORT_BY_INTRO_DATE                                          :بداية التشغيل
+STR_SORT_BY_RUNNING_COST                                        :تكلفة التشغيل
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :القوة/تكلفة التشغيل
+STR_SORT_BY_CARGO_CAPACITY                                      :سعة الشحن
 STR_NO_WAITING_CARGO                                            :{BLACK}لا يوجد اي شحنة منتظرة
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}اختر جميع المرافق
 STR_SELECT_ALL_TYPES                                            :{BLACK}اختر كل انواع الشحن (حتى غير المنتظرة(
@@ -949,7 +949,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}اوا�
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :قرب النهاية
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :وسط
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :النهاية القصوى
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}تسلسل عربات الطريق - بالتأثير الكمي : {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}تسلسل عربات الطريق - بالتأثير الكمي : {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}حرك الشاشة عندما تكون المؤشر على الحافة: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}السماح برشوة السلطات االمحليه: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}السماح بشراء حقوق النقل الحصري: {ORANGE}{STRING}
@@ -1055,12 +1055,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE} الن
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}عرض ادوات البناء عندما لا توجد مركبات متاحة بعد: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}الحد الأعلى لعدد القطارات لكل لاعب: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}الحد الأعلى لعدد العربات لكل لاعب: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}الحد الأعلى لعدد العربات لكل لاعب: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}الحد الأعلى لعدد الطائرات لكل لاعب: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}الحد الأعلى لعدد السفن لكل لاعب: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}حظر القطارات على الكمبيوتر: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}حظر العربات على الكمبيوتر: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}حظر العربات على الكمبيوتر: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}حظر الطائرات على الكمبيوتر: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}حظر السفن على الكمبيوتر: {ORANGE}{STRING}
 
@@ -1070,8 +1070,8 @@ STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE} #opcod
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}فترات الصيانة بالنسبة المئوية : {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}فترات الصيانة القياسية للقطارات: {ORANGE}{STRING} يوم / %
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}فترة الصيانة القياسية للقطارات{ORANGE}غير مفعل
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}فترات الصيانة القياسية للطائرات : {ORANGE}{STRING}يوم / %
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}فترة الصيانة القياسية للعربات{ORANGE} غير مفعلة
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}فترات الصيانة القياسية للطائرات : {ORANGE}{STRING}يوم / %
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}فترة الصيانة القياسية للعربات{ORANGE} غير مفعلة
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}فترات الصيانة القياسية للطائرات : {ORANGE}{STRING}يوم / %
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE} فترات الصيانة القياسية للطائرات {ORANGE}غير مفعل
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}فترات الصيانة القياسية للسفن: {ORANGE}{STRING} يوم / %
@@ -1146,10 +1146,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}موج�
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(غير مفضل)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(مفضل)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}موجد الطريق (قصاص الأثر) للعربات: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :الأصلي{RED}ليس مستحسن
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(مفضل)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}موجد الطريق (قصاص الأثر) للعربات: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :الأصلي{RED}ليس مستحسن
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(مفضل)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE} موجد طريق العبور للسفن: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :أصلي{BLUE}(مستحسن)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2059,7 +2059,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}هذه �
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :غير مسمى
 STR_SV_TRAIN_NAME                                               :قطار {COMMA}
-STR_SV_ROADVEH_NAME                                             :عربة {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :عربة {COMMA}
 STR_SV_SHIP_NAME                                                :سفينة {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :طائرة {COMMA}
 
@@ -2179,12 +2179,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}البناء
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}العربات الجديدة
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}تكلفة تشغيل القطار
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}تكلفة تشغيل العربات
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}تكلفة تشغيل العربات
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}تكلفة تشغيل الطائرات
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}تكلفة تشغيل السفن
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}صيانة الممتلكات
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}دخل القطار
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}دخل العربات
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}دخل العربات
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}دخل الطائرات
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}دخل السفن
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}فوائد القرض
@@ -2324,7 +2324,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :عربة ترا
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}اظهر اللون العام
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}اظهر لون القطائرات
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}اظهر لون العربات النمطي
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}اظهر لون العربات النمطي
 STR_LIVERY_SHIP_TIP                                             :{BLACK}اظهر لون السفن
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}اظهر ألوان الطائرات
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}اختر اللون الأساسي
@@ -2448,94 +2448,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :عربة الع
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :حاوية بطاريات
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :عربة مشروب مخفوق
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :عربة بلاستيك
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :ام بي اس باص
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :باص نمراوي
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :باص فوستر
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :باص سوبر فوستر
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :باص بلودفيت1
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :باص بلودفيت 1
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :باص بلودفيت 2
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :عربة بالو للفحم
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :عربة ية اتش ال للفحم
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :عربة دي دبليو للفحم
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :عربة ام بس اس للبريد
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :عربة رينارد للبريد
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :عربة بيري للبريد
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :عربة مايتي للبريد
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :عربة بور للبريد
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :عربة ويزو للبريد
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :وايت ويتكوم للنفط
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :وايت فوستر للنفط
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :وايت بيري للنفط
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :عربة تالبوت للماشية
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :عربة يو اتش ال للمواشي
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :عربة فوستر للمواشي
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :عربة بالو للبضائع
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :عربة رأس كرق للبضائع
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :عربة قوز للبضائع
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :عربة هيري للحبوب
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :عربة توماس للحبوب
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :عربة قوز للحبوب
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :عربة ويتكوم للخشب
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :عربة فوستر للخشب
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :عربة موريلان للخشب
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :عربة ام بي اس لخام الحديد
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :عربة يو اتش ال لخام الحديد
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :عربة شبي لخام الحديد
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :عربة بالو للحديد
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :عربة ية اتش ال للحديد
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :عربة كيلي للحديد
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :مدرعة بالو
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :مدرعة يواتش ال
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :مدرعة فوستر
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :عربة فوستر للطعام
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :عربة بيري للطعام
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :عربة شبي للطعام
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :عربة يو اتش ال للاوراق
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :عربة بالو للاوراق
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :عربة ام بي اس للاوراق
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :عربة ام بي اس لخام النحاس
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :عربة يو اتش ال لرادة النحاس
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :عربة قوس لخام النحاس
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :وايت يو اتش ال للمياة
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :عربة بالو للمياة
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :عربة ام بي اس للمياة
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :عربة بالو للفواكة
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :عربة يو اتش ال للفواكة
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :عربة كيلي للفواكة
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :عربة بالو للمطاط
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :عربة يو اتش ال للمطاط
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :عربة ار ام تي للمطاط
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :حاوية مايتي للسكر
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :حاوية بور للسكر
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :عربة ويزي للسكر
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :وايت مايتي للكولا
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :وايت بور للكولا
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :عربة ويزي للكولا
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :عربة مايتي لحلوى القطن
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :عربة بور لحلوى القطن
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :عربة ويزي لحلوى القطن
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :عربة مايتي لتوفي
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :عربة بور للتوفي
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :عربة ويزو لتوفي
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :عربة مايتي للالعاب
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :عربة بور للالعاب
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :عربة ويزو للالعاب
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :عربة مايتي للحلويات
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :عربة بور للحلويات
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :عربة ويزو للحلويات
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :عربة مايتي للبطاريات
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :عربة بور للبطاريات
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :عربة ويزو للبطاريات
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :عربة مايتي للمشروب المخفوق
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :عربة بور للمشروب المخفوق
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :عربة ويزو للمشروب المخفوق
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :عربة مايتي للبلاستيك
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :عربة بور للبلاستيك
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :عربة ويزو للبلاستيك
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :عربة مايتي للفقاعات
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :عربة بور للفقاعات
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :عربة ويزو للفقاعات
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :ام بي اس باص
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :باص نمراوي
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :باص فوستر
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :باص سوبر فوستر
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :باص بلودفيت1
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :باص بلودفيت 1
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :باص بلودفيت 2
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :عربة بالو للفحم
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :عربة ية اتش ال للفحم
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :عربة دي دبليو للفحم
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :عربة ام بس اس للبريد
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :عربة رينارد للبريد
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :عربة بيري للبريد
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :عربة مايتي للبريد
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :عربة بور للبريد
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :عربة ويزو للبريد
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :وايت ويتكوم للنفط
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :وايت فوستر للنفط
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :وايت بيري للنفط
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :عربة تالبوت للماشية
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :عربة يو اتش ال للمواشي
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :عربة فوستر للمواشي
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :عربة بالو للبضائع
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :عربة رأس كرق للبضائع
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :عربة قوز للبضائع
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :عربة هيري للحبوب
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :عربة توماس للحبوب
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :عربة قوز للحبوب
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :عربة ويتكوم للخشب
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :عربة فوستر للخشب
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :عربة موريلان للخشب
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :عربة ام بي اس لخام الحديد
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :عربة يو اتش ال لخام الحديد
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :عربة شبي لخام الحديد
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :عربة بالو للحديد
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :عربة ية اتش ال للحديد
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :عربة كيلي للحديد
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :مدرعة بالو
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :مدرعة يواتش ال
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :مدرعة فوستر
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :عربة فوستر للطعام
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :عربة بيري للطعام
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :عربة شبي للطعام
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :عربة يو اتش ال للاوراق
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :عربة بالو للاوراق
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :عربة ام بي اس للاوراق
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :عربة ام بي اس لخام النحاس
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :عربة يو اتش ال لرادة النحاس
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :عربة قوس لخام النحاس
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :وايت يو اتش ال للمياة
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :عربة بالو للمياة
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :عربة ام بي اس للمياة
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :عربة بالو للفواكة
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :عربة يو اتش ال للفواكة
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :عربة كيلي للفواكة
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :عربة بالو للمطاط
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :عربة يو اتش ال للمطاط
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :عربة ار ام تي للمطاط
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :حاوية مايتي للسكر
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :حاوية بور للسكر
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :عربة ويزي للسكر
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :وايت مايتي للكولا
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :وايت بور للكولا
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :عربة ويزي للكولا
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :عربة مايتي لحلوى القطن
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :عربة بور لحلوى القطن
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :عربة ويزي لحلوى القطن
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :عربة مايتي لتوفي
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :عربة بور للتوفي
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :عربة ويزو لتوفي
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :عربة مايتي للالعاب
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :عربة بور للالعاب
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :عربة ويزو للالعاب
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :عربة مايتي للحلويات
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :عربة بور للحلويات
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :عربة ويزو للحلويات
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :عربة مايتي للبطاريات
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :عربة بور للبطاريات
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :عربة ويزو للبطاريات
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :عربة مايتي للمشروب المخفوق
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :عربة بور للمشروب المخفوق
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :عربة ويزو للمشروب المخفوق
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :عربة مايتي للبلاستيك
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :عربة بور للبلاستيك
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :عربة ويزو للبلاستيك
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :عربة مايتي للفقاعات
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :عربة بور للفقاعات
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :عربة ويزو للفقاعات
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :وايت ام بي اس للنفط
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :وايت سي اس للنفط
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :باص ام بي اس للركاب
@@ -2649,7 +2649,7 @@ STR_ORDER_NEAREST_HANGAR                                        :الحظيرة 
 STR_ORDER_SERVICE_AT                                            :الصيانة في
 STR_ORDER_SERVICE_NON_STOP_AT                                   :الصيانة بدون توقف في
 STR_ORDER_TRAIN_DEPOT                                           :مستودع قطار
-STR_ORDER_ROAD_DEPOT                                            :مستودع العربات
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :مستودع العربات
 STR_ORDER_SHIP_DEPOT                                            :حوض صيانة السفن
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2760,7 +2760,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE} الع�
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}لا يمكن تحريك العربة ...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}المحرك الخلفي دائما سيتبع الامامي
 STR_CARGO_N_A                                                   :غير متاح {SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}لا يمكن بيع العربات
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}لا يمكن بيع العربات
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}لا يمكن ايجاد طريق للورشة
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}لا يمكن ايقاف / تشغيل القطار
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}فترات الصيانة: {LTBLUE}{COMMA} يوم {BLACK} اخر صيانة: {LTBLUE}{DATE_LONG}
@@ -2854,35 +2854,35 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}املأ
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}العربة في الطريق
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA}عربة
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} ورشة صيانة العربات
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}عربات جديدة
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}عربات جديدة
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}شراء عربة
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA}عربة
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} ورشة صيانة العربات
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}عربات جديدة
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}عربات جديدة
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}شراء عربة
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}لا يمكن شراء عربة ...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE} ... يجب ان يوقف داخل ورشة الصيانة.
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE} ... يجب ان يوقف داخل ورشة الصيانة.
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}لا يمكن بيع العربة...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}لا يمكن ايقاف / تشغيل العربة
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} تنتظر في المستودع
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}متوجه لورشة {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}متوجة الى ورشة {TOWN}, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}صيانة في ورشة {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE} صيانة في ورشة {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}متوجه لورشة {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}متوجة الى ورشة {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}صيانة في ورشة {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE} صيانة في ورشة {TOWN}, {VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}لا يمكن ارسال العربة الى ورشة الصيانة
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}لم يتم العثور على ورشة قريبة من العربة
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}العربات - اضغط على العربة لعرض المعلومات
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}حركة العربة الحالية - اضغط هنا لايقاف / تشغيل العربة
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}عرض اوامر العربة
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}وضع العربة في مركز شاشة العرض
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}ارسل العربة الى الورشة. مفتاح التحكم (كنترول) + الضغط ترسل للصيانة فقط
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}اجبر العربة لدوان للخلف
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}عرض معلومات العربة
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}العربات - اضغط على المركبة لعرض معلوماتها
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}شراء عربات جديدة
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}اسحب العربة هنا لبيعها
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}ضع ورشة الصيانة في وسط الشاشة
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}قائمة اختيار العربات - اضغط على العربة لاظهار معلوماتها
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}شراء العربة
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}العربات - اضغط على العربة لعرض المعلومات
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}حركة العربة الحالية - اضغط هنا لايقاف / تشغيل العربة
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}عرض اوامر العربة
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}وضع العربة في مركز شاشة العرض
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}ارسل العربة الى الورشة. مفتاح التحكم (كنترول) + الضغط ترسل للصيانة فقط
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}اجبر العربة لدوان للخلف
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}عرض معلومات العربة
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}العربات - اضغط على المركبة لعرض معلوماتها
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}شراء عربات جديدة
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}اسحب العربة هنا لبيعها
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}ضع ورشة الصيانة في وسط الشاشة
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}قائمة اختيار العربات - اضغط على العربة لاظهار معلوماتها
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}شراء العربة
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}السعة: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2892,12 +2892,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}تسمية العربة
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}لا يمكن تسمية العربة
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}تسمية العربة
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}يحتفل الأهالي ..............{}بوصول اول باص للمحطة ...{STATION}!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}الأهالي يحتفلون ......... {}بوصول اول عربة الى .. {STATION}!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}المواطنون يحتفلون . . .{}بوصول اول عربة ركاب ترام الى {STATION}!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}المواطنون يحتفلون . . . {}بوصول اول عربة ترام لمحطة  {STATION}!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}العربة تحطمت !{}السائق توفي في شعلة الحريق بعد الاصطدام بقطار
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}العربة تحطمت !{}{COMMA} توفي في شعلة الحريق بعد الاصطدام بقطار
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}يحتفل الأهالي ..............{}بوصول اول باص للمحطة ...{STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}الأهالي يحتفلون ......... {}بوصول اول عربة الى .. {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}المواطنون يحتفلون . . .{}بوصول اول عربة ركاب ترام الى {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}المواطنون يحتفلون . . . {}بوصول اول عربة ترام لمحطة  {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}العربة تحطمت !{}السائق توفي في شعلة الحريق بعد الاصطدام بقطار
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}العربة تحطمت !{}{COMMA} توفي في شعلة الحريق بعد الاصطدام بقطار
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE} لا يمكن تغيير اتجاة المركبة الان
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}أعد التسمية
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK} اعادة تسمية العربة
@@ -3192,17 +3192,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}أنت 
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :ورشةمن نوع خاطئ
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}بع جميع القطارات الموجودة في الورشة
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}بع جميع المركبات الموجودة في الورشة
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}بع جميع المركبات الموجودة في الورشة
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}بع جميع السفن الموجودة في حوض السفن
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}بع جميع الطائرات في الحظيرة
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}عرض قائمة بالقطارات في الورشة
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}عرض قائمة العربات التابعة لهذة الورشة بالترتيب
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}عرض قائمة العربات التابعة لهذة الورشة بالترتيب
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}عرض قائمة بالسفن في حوض الصيانة
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}عرض قائمة بالطائرات التابعة لهذا المطار في اي هنجر
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}بدل جميع القطارات في الورشة آليا
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}بدل جميع المركبات في الورشة آلياً
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}بدل جميع المركبات في الورشة آلياً
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}بدل جميع السفن في حوض السفن آلياً
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}بدل جميع الطائرات في الحظيرة آلياً
 
@@ -3231,12 +3231,12 @@ STR_ENGINES                                                     :محركات
 STR_WAGONS                                                      :عربات
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}اضغط لايقاف جميع القطارات داخل مستودع الصيانة
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}اضغط لايقاف جميع العربات داخل مستودع الصيانة
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}اضغط لايقاف جميع العربات داخل مستودع الصيانة
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK} اضغط لايقاف جميع السفن داخل حوض الصيانة
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK} اضغط لايقاف جميع الطائرات داخل حظيرة الصيانة
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}اضغط هنا لتشغيل كل القطارات المتوقفة داخل الورشة
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}اضغط هنا لتشغيل كل العربات المتوقفة داخل الورشة
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}اضغط هنا لتشغيل كل العربات المتوقفة داخل الورشة
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}اضغط هنا لتشغيل كل السفن المتوقفة داخل حوض السفن
 STR_MASS_START_HANGAR_TIP                                       :{BLACK} اضغط لتشغيل جميع الطائرات داخل حظيرة الصيانة
 
@@ -3410,11 +3410,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 STR_FORMAT_GROUP_NAME                                           :مجموعة{COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :جميع القطارات
-STR_GROUP_ALL_ROADS                                             :جميع المركبات
+STR_GROUP_ALL_ROAD_VEHICLES                                     :جميع المركبات
 STR_GROUP_ALL_SHIPS                                             :جميع السفن
 STR_GROUP_ALL_AIRCRAFTS                                         :جميع الطائرات
 STR_GROUP_DEFAULT_TRAINS                                        :قطار لاتنتمي لأي مجموعة
-STR_GROUP_DEFAULT_ROADS                                         :لاتنتمي لأي مجموعة
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :لاتنتمي لأي مجموعة
 STR_GROUP_DEFAULT_SHIPS                                         :مركبة لاتنتمي لأي مجموعة
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :طائرة لاتنتمي لأي مجموعة
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

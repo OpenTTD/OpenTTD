@@ -345,13 +345,13 @@ STR_SORT_BY_FACILITY                                            :Statiounstyp
 STR_SORT_BY_WAITING                                             :Luedungswert
 STR_SORT_BY_RATING_MAX                                          :Héchsten Luedungsbewertung
 STR_SORT_BY_RATING_MIN                                          :Nidregsten Luedungsbewertung
-STR_ENGINE_SORT_ENGINE_ID                                       :ID (klassësch Sortéierung)
-STR_ENGINE_SORT_COST                                            :Käschten
-STR_ENGINE_SORT_POWER                                           :Kraaft
-STR_ENGINE_SORT_INTRO_DATE                                      :Aféirungsdatum
-STR_ENGINE_SORT_RUNNING_COST                                    :Betriebskäschten
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Kraaft/Betriebskäschten
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Luedungskapazitéit
+STR_SORT_BY_ENGINE_ID                                           :ID (klassësch Sortéierung)
+STR_SORT_BY_COST                                                :Käschten
+STR_SORT_BY_POWER                                               :Kraaft
+STR_SORT_BY_INTRO_DATE                                          :Aféirungsdatum
+STR_SORT_BY_RUNNING_COST                                        :Betriebskäschten
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Kraaft/Betriebskäschten
+STR_SORT_BY_CARGO_CAPACITY                                      :Luedungskapazitéit
 STR_NO_WAITING_CARGO                                            :{BLACK}Kéng Luedung
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Selectéier all d'Fabriken
 STR_SELECT_ALL_TYPES                                            :{BLACK}Wielt all Luedungstyp (ouni Luedung déi waart)
@@ -949,7 +949,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nei Zic
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :no um Enn
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :an der Mëtt
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :um Enn
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Stroossengefiererschlaang (mat Quanteneffekter): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Stroossengefiererschlaang (mat Quanteneffekter): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}D'Fënster schwenken wann d'Maus um Rand ass: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Erlaabt Bestiechung vun den Gemengen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Erlaabt exklusiv Transportrechter ze kaafen: {ORANGE}{STRING}
@@ -1054,12 +1054,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Ausgabe
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Weis Gebei-Tools wann keng passend Gefierer verfügbar sinn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Max Zich pro Spiller: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Max Stroossengefierer pro Spiller: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Max Stroossengefierer pro Spiller: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Max Fligeren pro Spiller: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Max Schëffer pro Spiller: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Zich fir den Computer ausschalten: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Stroossengefierer fir den Computer ausschalten: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Stroossengefierer fir den Computer ausschalten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Fligeren fir den Computer ausschalten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Schëffer fir den Computer ausschalten: {ORANGE}{STRING}
 
@@ -1069,8 +1069,8 @@ STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcode
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Revisiounsintervalen an Prozenter: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standard Revisiounsinterval fir Zich: {ORANGE}{STRING} deeg/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard Revisiounsinterval fir Zich: {ORANGE}ausgeschalt
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Standard Revisiounsinterval fir Stroosengefierer: {ORANGE}{STRING} deeg/%
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Standard Revisiounsinterval fir Stroossengefierer: {ORANGE}ausgeschalt
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Standard Revisiounsinterval fir Stroosengefierer: {ORANGE}{STRING} deeg/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Standard Revisiounsinterval fir Stroossengefierer: {ORANGE}ausgeschalt
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Standard Revisiounsinterval fir Fligeren: {ORANGE}{STRING} deeg/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standard Revisiounsinterval fir Fligeren: {ORANGE}ausgeschalt
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Standard Revisiounsinterval fir Schëffer: {ORANGE}{STRING} deeg/%
@@ -1144,10 +1144,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pfadfin
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Nët recommandéiert)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(recommandéiert)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Pfadfinder fir Stroossengefierer: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Nët recommandéiert)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(recommandéiert)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Pfadfinder fir Stroossengefierer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :Original {RED}(Nët recommandéiert)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(recommandéiert)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pfadfinder fir Schëffer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(recommandéiert)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2057,7 +2057,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...schon
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Onbenannt
 STR_SV_TRAIN_NAME                                               :Zuch {COMMA}
-STR_SV_ROADVEH_NAME                                             :Stroossengefiert {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Stroossengefiert {COMMA}
 STR_SV_SHIP_NAME                                                :Schëff {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Fliger {COMMA}
 
@@ -2177,12 +2177,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruktioun
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nei Gefieher
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Zuch Betriebskäschten
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Stroossengefierer Betriebskäschten
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Stroossengefierer Betriebskäschten
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Fliger Betriebskäschten
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Schëff Betriebskäschten
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Besëtzt Ennerhalt
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Zuch Ankommen
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Stroossengefierer Ankommen
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Stroossengefierer Ankommen
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Fliger Ankommen
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Schëff Ankommen
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Zënssaz
@@ -2322,7 +2322,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Wuerentram
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Weist generell Faarwschemen
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Weist Zuch Faarwschemen
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Weist Stroossengefierer Faarwschemen
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}Weist Stroossengefierer Faarwschemen
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Weist d'Schëff Faarwschemen
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Weist Fliger Faarwschemen
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Wielt d'Primärfaarw fir den ausgewieltenen Schema
@@ -2446,94 +2446,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Spillsaachenwag
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Batteriewagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Spruddelgedrénks Wagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plastikwagon
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :MPS Regal Bus
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Hereford Leopard Bus
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Foster Bus
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Foster MkII Superbus
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Ploddyphut MkI Bus
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :Ploddyphut MkII Bus
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Ploddyphut MkIII Bus
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Balogh Kuelencamion
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Uhl Kuelencamion
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :DW Kuelencamion
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :MPS Postcamion
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Reynard Postcamion
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Perry Postcamion
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :MightyMover Postcamion
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :Powernaught Postcamion
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :Wizzowow Postcamion
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Witcombe Uelegcamion
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Foster Uelegcamion
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Perry Uelegcamion
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Talbott Béischtencamion
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Uhl Béischtencamion
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Foster Béischtencamion
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Balogh Gütercamion
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Craighead Gütercamion
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Goss Gütercamion
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Hereford Kaarcamion
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Thomas Kaarcamion
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Goss Kaarcamion
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Witcombe Holzcamion
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Foster Holzcamion
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Moreland Holzcamion
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :MPS Eisenerzcamion
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Uhl Eisenerzcamion
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Chippy Eisenerzcamion
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Balogh Stolcamion
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Uhl Stolcamion
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Kelling Stolcamion
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Balogh gepanzerten Camion
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Uhl gepanzerten Camion
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Foster gepanzerten Camion
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Foster Iessenscamion
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Perry Iessenscamion
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Chippy Iesenscamion
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Uhl Pabeiercamion
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Balogh Pabeiercamion
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :MPS Pabeiercamion
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :MPS Koffererzcamion
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Uhl Koffererzcamion
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Goss Koffererzcamion
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Uhl Waassercamion
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Balogh Waassercamion
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :MPS Waassercamion
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Balogh Friichtencamion
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Uhl Friichtencamion
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Kelling Friichtencamion
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Balogh Kautschuckcamion
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Uhl Kautschuckcamion
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :RMT Kautschuckcamion
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :MightyMover Zockercamion
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Powernaught Zockercamion
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Wizzowow Zockercamion
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :MightyMover Colacamion
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Powernaught Colacamion
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Wizzowow Colacamion
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :MightyMover Zockerwattcamion
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :Powernaught Zockerwattcamion
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Wizzowow Zockerwattcamion
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :MightyMover Karmelcamion
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :Powernaught Karmelcamion
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :Wizzowow Karmelcamion
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :MightyMover Spillsaachencamion
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Powernaught Spillsaachencamion
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Wizzowow Spillsaachencamion
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :MightyMover Séissegkeetencamion
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Powernaught Séissegkeetencamion
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Wizzowow Séissegkeetencamion
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :MightyMover Batteriencamion
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Powernaught Batteriencamion
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :Wizzowow Batteriencamion
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :MightyMover Spruddelgedrénks Camion
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :Powernaught Spruddelgedrénks Camion
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :Wizzowow Spruddelgedrénks Camion
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :MightyMover Plastikcamion
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :Powernaught Plastikcamion
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :Wizzowow Plastikcamion
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :MightyMover Blosencamion
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :Powernaught Blosencamion
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :Wizzowow Blosencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII Superbus
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Ploddyphut MkI Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Ploddyphut MkII Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkIII Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh Kuelencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl Kuelencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW Kuelencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS Postcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard Postcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry Postcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover Postcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught Postcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow Postcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe Uelegcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster Uelegcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry Uelegcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott Béischtencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl Béischtencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster Béischtencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh Gütercamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead Gütercamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss Gütercamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford Kaarcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas Kaarcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss Kaarcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe Holzcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster Holzcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland Holzcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS Eisenerzcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl Eisenerzcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy Eisenerzcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh Stolcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl Stolcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling Stolcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh gepanzerten Camion
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl gepanzerten Camion
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster gepanzerten Camion
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster Iessenscamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry Iessenscamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy Iesenscamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl Pabeiercamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh Pabeiercamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS Pabeiercamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS Koffererzcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl Koffererzcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss Koffererzcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl Waassercamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh Waassercamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS Waassercamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh Friichtencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl Friichtencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling Friichtencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh Kautschuckcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl Kautschuckcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT Kautschuckcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover Zockercamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught Zockercamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow Zockercamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover Colacamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught Colacamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow Colacamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover Zockerwattcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught Zockerwattcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow Zockerwattcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover Karmelcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught Karmelcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow Karmelcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover Spillsaachencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught Spillsaachencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow Spillsaachencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover Séissegkeetencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught Séissegkeetencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow Séissegkeetencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover Batteriencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught Batteriencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow Batteriencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover Spruddelgedrénks Camion
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught Spruddelgedrénks Camion
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow Spruddelgedrénks Camion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover Plastikcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught Plastikcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow Plastikcamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover Blosencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught Blosencamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow Blosencamion
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS Uelegcamion
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. Uelegcamion
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS Passagéierfähr
@@ -2647,7 +2647,7 @@ STR_ORDER_NEAREST_HANGAR                                        :den noosten Han
 STR_ORDER_SERVICE_AT                                            :Revisioun bei
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Revisioun non-stop bei
 STR_ORDER_TRAIN_DEPOT                                           :Zuchdepot
-STR_ORDER_ROAD_DEPOT                                            :Stroossengefierter-Depot
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Stroossengefierter-Depot
 STR_ORDER_SHIP_DEPOT                                            :Schëffdepot
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2758,7 +2758,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}en Gefie
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Kann d'Gefiert net réckelen...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}D'hënnescht Maschinn geet ëmmer der viischter no.
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}Kann den Zuch net verkafen...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kann den Zuch net verkafen...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kann den Wee an den Depot net fannen
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Kann den Zuch net starten/stopen...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Revisiounsintervall: {LTBLUE}{COMMA}Deeg{BLACK}   Lescht Revisioun: {LTBLUE}{DATE_LONG}
@@ -2850,35 +2850,35 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fëll de
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Stroossengefiert am Wee
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Gefier{P t er}
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Stroossendepot
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nei Gefierer
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nei Stroossengefierer
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Gefiert bauen
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Gefier{P t er}
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Stroossendepot
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nei Gefierer
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nei Stroossengefierer
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Gefiert bauen
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Kann d'Stroossengefiert hei net bauen...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...muss an engem Depot stoen
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...muss an engem Depot stoen
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kann d'Stroossengefiert net verkafen...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kann d'Stroossengefiert net stoppen/starten...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} waart am Depot
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Um Wee fir {TOWN} Stroossendepot
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Um Wee fir {TOWN} Stroossendepot, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Revisioun am {TOWN} Stroossendepot
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisioun am {TOWN} Stroossendepot, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Um Wee fir {TOWN} Stroossendepot
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Um Wee fir {TOWN} Stroossendepot, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Revisioun am {TOWN} Stroossendepot
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Revisioun am {TOWN} Stroossendepot, {VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kann d'Gefiert net an den Depot schécken...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kann den Depot net fannen
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Stroossengefierer - klickt op en Gefiert fir Informatiounen
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Momentan Aktioun - klickt hei fir d'Gefiert ze stoppen/starten
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Weist d'Opträg vum Gefiehrt
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Zentréiert d'Unsiicht op d'Gefiehrt
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Schéckt d'Gefiert an den Depot. CTRL+Klick fir nëmmen Revisoun
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Forcéiert d'Gefiert fir ze dréien
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Weist Stroosengefiert Detailer
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Gefierer - klickt op en Gefier fir Informatiounen
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Neit Stroossengefier bauen
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Zitt d'Stroossengefier heihin fir et ze verkafen
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Zentréiert d'Usiicht op den Depot
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Stroossengefiert Lëscht - klickt op en Gefiert fir Informatiounen
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Baut dat ungewieltent Stroossengefiert
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Stroossengefierer - klickt op en Gefiert fir Informatiounen
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Momentan Aktioun - klickt hei fir d'Gefiert ze stoppen/starten
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Weist d'Opträg vum Gefiehrt
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Zentréiert d'Unsiicht op d'Gefiehrt
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Schéckt d'Gefiert an den Depot. CTRL+Klick fir nëmmen Revisoun
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forcéiert d'Gefiert fir ze dréien
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Weist Stroosengefiert Detailer
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Gefierer - klickt op en Gefier fir Informatiounen
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Neit Stroossengefier bauen
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Zitt d'Stroossengefier heihin fir et ze verkafen
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Zentréiert d'Usiicht op den Depot
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Stroossengefiert Lëscht - klickt op en Gefiert fir Informatiounen
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Baut dat ungewieltent Stroossengefiert
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapazitéit: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2888,12 +2888,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Stroossengefiert benennen
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kann d'Stroossengefiert net benennen...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Stroossengefiert benennen
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Biirger feieren . . .{}Éischten Bus kënnt bei {STATION} un!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Biirger feieren . . .{}Eischten Camion kënnt bei {STATION} un!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Biirger feieren . . .{}Eischten Tram kënnt bei  {STATION} un!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Biirger feieren . . .{}Eischten Wueren-Tram kënnt bei  {STATION} un!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Stroossengefiert onfall!{}Fuerer stieft an der Explosioun no Onfall mam Zuch
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Stroossengefiertaccident!{}{COMMA} stiewen an der Explosioun no Onfall mam Zuch
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Biirger feieren . . .{}Éischten Bus kënnt bei {STATION} un!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Biirger feieren . . .{}Eischten Camion kënnt bei {STATION} un!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Biirger feieren . . .{}Eischten Tram kënnt bei  {STATION} un!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Biirger feieren . . .{}Eischten Wueren-Tram kënnt bei  {STATION} un!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Stroossengefiert onfall!{}Fuerer stieft an der Explosioun no Onfall mam Zuch
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Stroossengefiertaccident!{}{COMMA} stiewen an der Explosioun no Onfall mam Zuch
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kann keng Gefierer aus e puer Unitéiten emdréinen
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Ëmbenennen
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Gefierttyp ëmbenennen
@@ -3188,17 +3188,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Dier ve
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Falschen Depot-Typ
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}All Zich am Depot verkafen
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}All Gefiert am Depot verkafen
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}All Gefiert am Depot verkafen
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}All Schëff am Depot verkafen
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}All Fliger am Hangar verkafen
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Lëscht mat all Zich an dësem Depot
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Lëscht mat all Gefierer an dësem Depot
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}Lëscht mat all Gefierer an dësem Depot
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Lëscht mat all Schëffer an dësem Depot
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Lëscht mat all Fliger am Hangar op dësem Fluchhafen
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}All Zich am Depot automatesch ersetzen
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}All Gefierer am Depot automatesch ersetzen
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}All Gefierer am Depot automatesch ersetzen
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}All Schëffer am Depot automatesch ersetzen
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}All Fliger am Hangar automatesch ersetzen
 
@@ -3227,12 +3227,12 @@ STR_ENGINES                                                     :Motoren
 STR_WAGONS                                                      :Wagonen
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Klickt fir all Zicham Depot ze stoppen
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Klickt fir all Gefierer am Depot ze stoppen
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}Klickt fir all Gefierer am Depot ze stoppen
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Klickt fir all Schëffer am Depot ze stoppen
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Klickt fir all Fliger am Hangar ze stoppen
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Klickt fir all Zich am Depot ze starten
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Klick fir all Gefierer am Depot ze starten
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}Klick fir all Gefierer am Depot ze starten
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Klickt fir all Schëff am Depot ze starten
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Klickt fir all Fliger am Hangar ze starten
 
@@ -3405,11 +3405,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 STR_FORMAT_GROUP_NAME                                           :Grupp {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :All Zich
-STR_GROUP_ALL_ROADS                                             :All Stroossengefierer
+STR_GROUP_ALL_ROAD_VEHICLES                                     :All Stroossengefierer
 STR_GROUP_ALL_SHIPS                                             :All Schëffer
 STR_GROUP_ALL_AIRCRAFTS                                         :All Fligeren
 STR_GROUP_DEFAULT_TRAINS                                        :Ongruppéiert Zich
-STR_GROUP_DEFAULT_ROADS                                         :Ongruppéiert Stroossengefierer
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Ongruppéiert Stroossengefierer
 STR_GROUP_DEFAULT_SHIPS                                         :Ongruppéiert Schëffer
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ongruppéiert Fligeren
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

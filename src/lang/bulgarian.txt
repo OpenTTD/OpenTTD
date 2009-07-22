@@ -346,13 +346,13 @@ STR_SORT_BY_FACILITY                                            :Вид на г�
 STR_SORT_BY_WAITING                                             :Цена на чакащият товар
 STR_SORT_BY_RATING_MAX                                          :Най-голяма оценка на товари
 STR_SORT_BY_RATING_MIN                                          :Най-ниска оценка на товари
-STR_ENGINE_SORT_ENGINE_ID                                       :Двигател № (класическо сортиране)
-STR_ENGINE_SORT_COST                                            :Цена
-STR_ENGINE_SORT_POWER                                           :Мощност
-STR_ENGINE_SORT_INTRO_DATE                                      :Дата на оповестяване
-STR_ENGINE_SORT_RUNNING_COST                                    :Цена за движение
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Мощност/Цена за движение
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Товарен капацитет
+STR_SORT_BY_ENGINE_ID                                           :Двигател № (класическо сортиране)
+STR_SORT_BY_COST                                                :Цена
+STR_SORT_BY_POWER                                               :Мощност
+STR_SORT_BY_INTRO_DATE                                          :Дата на оповестяване
+STR_SORT_BY_RUNNING_COST                                        :Цена за движение
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Мощност/Цена за движение
+STR_SORT_BY_CARGO_CAPACITY                                      :Товарен капацитет
 STR_NO_WAITING_CARGO                                            :{BLACK}Няма чакащ товар
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Избор на всички съоръжения
 STR_SELECT_ALL_TYPES                                            :{BLACK}Избор на всички товари (включително нечакащите)
@@ -943,7 +943,7 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Фин�
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}По подразбиране новите зповеди са 'без спиране': {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :близо до края
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :среда
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Опашка на автомобилите (със сумарен ефект): {ORANGE}{STRING.f}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Опашка на автомобилите (със сумарен ефект): {ORANGE}{STRING.f}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Местене на екрана когато мишката е в края: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Подкупване на местната власт: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Позволи купуване на изклучителни транспортни права: {ORANGE}{STRING}
@@ -1041,12 +1041,12 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Зап�
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Строене при липса на подходящи ПС: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Макс. брой влакове на играч: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Макс. брой коли на играч: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Макс. брой коли на играч: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Макс. брой самолети на играч: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Макс. брой кораби на играч: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Премахване на влаковете за компютърния играч: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Премахване на пътните превозни средства за компютърния играч: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Премахване на пътните превозни средства за компютърния играч: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Премахване на летателните апарати за компютърния играч: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Премахване на корабите за компютърния играч: {ORANGE}{STRING}
 
@@ -1054,8 +1054,8 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Пре�
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Интервал на сервиз е в проценти: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Интервал на сервиз за влакове: {ORANGE}{STRING} дни/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Интервал на сервиз за влакове: {ORANGE}без сервиз
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Интервал на сервиз за автомобили: {ORANGE}{STRING} дни/%
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Интервал на сервиз за автомобили: {ORANGE}без сервиз
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Интервал на сервиз за автомобили: {ORANGE}{STRING} дни/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Интервал на сервиз за автомобили: {ORANGE}без сервиз
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Интервал на сервиз за самолети: {ORANGE}{STRING} дни/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Интервал на сервиз за самолети: {ORANGE}без сервиз
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Интервал на сервиз за кораби: {ORANGE}{STRING} дни/%
@@ -1126,10 +1126,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Път�
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(не се препоръчва)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(препоръчва се)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Пътенамирач за автомобили: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :оригинален {RED}(не се препоръчва)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(препоръчава се)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Пътенамирач за автомобили: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :оригинален {RED}(не се препоръчва)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(препоръчава се)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Пътенамирач за кораби: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :оригинален {BLUE}(препоръчва се)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2034,7 +2034,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...ви�
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Неименован
 STR_SV_TRAIN_NAME                                               :Влак {COMMA}
-STR_SV_ROADVEH_NAME                                             :Автомобил {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Автомобил {COMMA}
 STR_SV_SHIP_NAME                                                :Кораб {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Самолет {COMMA}
 
@@ -2154,12 +2154,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Строеж
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Нови МПС-та
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Оперативни разходи на влака
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Оперативни разходи на МПС-то
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Оперативни разходи на МПС-то
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Оперативни разходи на самолета
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Оперативни разходи на кораба
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Разходи по поддръжка
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Приходи от влакове
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Приходи от МПС-та
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Приходи от МПС-та
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Приходи от самолети
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Приходи от кораби
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Лихва по заема
@@ -2298,7 +2298,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Товарен 
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Показване на общи цветови схеми
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Показване цветовите схеми на влаковете
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Показване на цветови схеми за автомобилите
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}Показване на цветови схеми за автомобилите
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Показване цветови схеми на корабите
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Показване цветовата схема на самолетите
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Изберете основния цвят за избранта схема
@@ -2422,94 +2422,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Вагон за
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Вагон за батерии
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Вагон за газирани напитки
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Вагон за пластмаса
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :Автобус МПС Цасрски
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Автобус Херефорд Леопард
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Автобус Грижовния
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Автобус Грижовния МК II
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Автобус Упорития МК I
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :Автобус Упорития МК II
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Автобус Упорития МК III
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Камион за въглища "Балоф"
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Камион за въглища "Ухл"
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :Камион за въглища "ДВ"
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :Камион за поща "МПС"
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Камион за поща "Рейнард"
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Камион за поща "Пери"
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :Камион за поща "Мощнодвигателен"
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :Камион за поща "Силният"
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :Камион за поща "Уизоуоу"
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Камион-цистерна "Уиткомб"
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Камион-цистерна "Уиткомб"
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Камион-цистерна "Пери"
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Камион за добитък "Талбот"
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Камион за добитък "Ухл"
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Камион за добитък "Грижовният"
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Камион за стоки "Балоф"
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Камион за стоки "Твърдоглавият"
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Камион за стоки "Шумният"
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Камион за зърно "Херефорд"
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Камион за зърно "Томас"
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Камион за зърно "Шумният"
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Камион за дърва "Уиткомб"
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Камион за дърва "Грижовният"
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Камион за дърва "Многоземният"
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :Камион за желязна руда "МПС"
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Камион за желязна руда "Ухл"
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Камион за желязна руда "Скучният"
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Камион за стомана "Балоф"
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Камион за стомана "Ухл"
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Камион за стомана "Келинг"
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Камион за скъпоценности "Балоф"
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Камион за скъпоценности "Ухл"
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Камион за скъпоценности "Грижовният"
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :камион за храна Фостер
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :камион за храна Пери
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :камион за храна Чипи
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :камион за хартия Ул
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :камион за хартия Бейлоф
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :камион за хартия MPS
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :камион за медна руда MPS
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :камион за медна руда Ул
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :камион за медна руда Гос
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :камион за вода Ул
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :камион за вода Бейлоф
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :камион за вода MPS
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :камион за плодове Бейлоф
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :камион за плодове Ул
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :камион за плодове Келинг
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :камион за каучук Бейлоф
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :камион за каучук Ул
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :камион за каучук RMT
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :камион за захар Майтимувер
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :камион за захар Пауернат
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :камион за захар Уизоуоу
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :камион за кола Майтимувер
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :камион за кола Пауернат
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :камион за кола Уизоуоу
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :камион за захарен памук Майтимувер
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :камион за захарен памук Пауернат
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Уизоуоу камион за захарен памук
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :Майтимувер камион за карамел
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :Пауернаут камион за карамел
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :Уизоуоу камион за карамел
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :Майтимувер камион за играчки
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Пауернаут камион за играчки
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Уизоуоу камион за играчки
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :Майтимувер камион за сладки
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Пауернаут камион за сладки
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Уизоуоу камион за сладки
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :Майтимувер камион за батерии
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Пауернаут камион за батерии
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :Уизоуоу камион за батерии
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :Майтимувер камион за газирани напитки
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :Пауернаут камион за газирани напитки
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :Уизоуоу камион за газирани напитки
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :Майтимувер камион за пластмаса
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :Пауернаут камион за пластмаса
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :Уизоуоу камион за пластмаса
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :Майтимувер камион за балончета
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :Пауернаут камион за балончета
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :Уизоуоу камион за балончета
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :Автобус МПС Цасрски
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Автобус Херефорд Леопард
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Автобус Грижовния
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Автобус Грижовния МК II
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Автобус Упорития МК I
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Автобус Упорития МК II
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Автобус Упорития МК III
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Камион за въглища "Балоф"
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Камион за въглища "Ухл"
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :Камион за въглища "ДВ"
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :Камион за поща "МПС"
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Камион за поща "Рейнард"
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Камион за поща "Пери"
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :Камион за поща "Мощнодвигателен"
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Камион за поща "Силният"
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Камион за поща "Уизоуоу"
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Камион-цистерна "Уиткомб"
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Камион-цистерна "Уиткомб"
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Камион-цистерна "Пери"
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Камион за добитък "Талбот"
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Камион за добитък "Ухл"
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Камион за добитък "Грижовният"
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Камион за стоки "Балоф"
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Камион за стоки "Твърдоглавият"
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Камион за стоки "Шумният"
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Камион за зърно "Херефорд"
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Камион за зърно "Томас"
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Камион за зърно "Шумният"
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Камион за дърва "Уиткомб"
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Камион за дърва "Грижовният"
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Камион за дърва "Многоземният"
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :Камион за желязна руда "МПС"
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Камион за желязна руда "Ухл"
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Камион за желязна руда "Скучният"
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Камион за стомана "Балоф"
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Камион за стомана "Ухл"
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Камион за стомана "Келинг"
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Камион за скъпоценности "Балоф"
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Камион за скъпоценности "Ухл"
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Камион за скъпоценности "Грижовният"
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :камион за храна Фостер
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :камион за храна Пери
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :камион за храна Чипи
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :камион за хартия Ул
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :камион за хартия Бейлоф
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :камион за хартия MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :камион за медна руда MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :камион за медна руда Ул
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :камион за медна руда Гос
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :камион за вода Ул
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :камион за вода Бейлоф
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :камион за вода MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :камион за плодове Бейлоф
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :камион за плодове Ул
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :камион за плодове Келинг
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :камион за каучук Бейлоф
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :камион за каучук Ул
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :камион за каучук RMT
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :камион за захар Майтимувер
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :камион за захар Пауернат
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :камион за захар Уизоуоу
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :камион за кола Майтимувер
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :камион за кола Пауернат
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :камион за кола Уизоуоу
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :камион за захарен памук Майтимувер
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :камион за захарен памук Пауернат
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Уизоуоу камион за захарен памук
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Майтимувер камион за карамел
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Пауернаут камион за карамел
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Уизоуоу камион за карамел
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Майтимувер камион за играчки
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Пауернаут камион за играчки
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Уизоуоу камион за играчки
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Майтимувер камион за сладки
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Пауернаут камион за сладки
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Уизоуоу камион за сладки
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Майтимувер камион за батерии
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Пауернаут камион за батерии
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Уизоуоу камион за батерии
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Майтимувер камион за газирани напитки
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Пауернаут камион за газирани напитки
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Уизоуоу камион за газирани напитки
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Майтимувер камион за пластмаса
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Пауернаут камион за пластмаса
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Уизоуоу камион за пластмаса
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :Майтимувер камион за балончета
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Пауернаут камион за балончета
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Уизоуоу камион за балончета
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS танкер
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. танкер
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS ферибот
@@ -2623,7 +2623,7 @@ STR_ORDER_NEAREST_HANGAR                                        :най-близ
 STR_ORDER_SERVICE_AT                                            :Сервиз в
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Сервиз без спиране в
 STR_ORDER_TRAIN_DEPOT                                           :Депо за влакове
-STR_ORDER_ROAD_DEPOT                                            :Депо за пътни превозни средства
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Депо за пътни превозни средства
 STR_ORDER_SHIP_DEPOT                                            :Депо за кораби
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2733,7 +2733,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}прев
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Не може да преместиш машината...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Задния локомотив ще следва винаги предния си събрат
 STR_CARGO_N_A                                                   :Не се предлага{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}Не може да продадеш ЖП машината...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Не може да продадеш ЖП машината...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Не може да намери маршрута до местното депо
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Не може да спреш/пуснеш влака...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Дни на обслужване: {LTBLUE}{COMMA}дни{BLACK}   Последно облужване: {LTBLUE}{DATE_LONG}
@@ -2815,35 +2815,35 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Запъ
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Кола на пътя
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Кол{P а и}
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} гараж за коли
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Ново превозно средство
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Нова кола
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Покупка на превозно средство
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Кол{P а и}
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} гараж за коли
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Ново превозно средство
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Нова кола
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Покупка на превозно средство
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Не може да купи кола...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...трябва да бъде спряно в сервиз за коли
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...трябва да бъде спряно в сервиз за коли
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Не може да продаде колата...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Не може да пусне/спре колата...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} чака в депото
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Отиващ към Автодепото на {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Отиващ към Автодепото на {TOWN}, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}На ремонт в Автодепото на {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}На ремонт в Автодепото на {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Отиващ към Автодепото на {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Отиващ към Автодепото на {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}На ремонт в Автодепото на {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}На ремонт в Автодепото на {TOWN}, {VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Не може да изпрати колата в сервиз...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Не може да намери локалния сервиз
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Коли - натиснете върху кола за информация
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Текущо действие - натиснете за спиране/пускане на превозното средство
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Пътен лист
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Центриране на главния прозорец върху превозното средство
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Изпращане на ПС в депо. CTRL+натискане ще изпрати само за преглед
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Насилствено обръщане на ПС
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Показва информация за автомобила
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}ПС - натиснете върху ПС за информация
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Покупка на нов автомобил
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Преместен автомобил тук ще го продаде
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Фокусирай общия план върху местонахождението на МПС-депото
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Списък с избор на МПС-та - натисни върху МПС за информация
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Купи посоченото МПС
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Коли - натиснете върху кола за информация
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Текущо действие - натиснете за спиране/пускане на превозното средство
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Пътен лист
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Центриране на главния прозорец върху превозното средство
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Изпращане на ПС в депо. CTRL+натискане ще изпрати само за преглед
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Насилствено обръщане на ПС
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Показва информация за автомобила
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}ПС - натиснете върху ПС за информация
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Покупка на нов автомобил
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Преместен автомобил тук ще го продаде
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Фокусирай общия план върху местонахождението на МПС-депото
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Списък с избор на МПС-та - натисни върху МПС за информация
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Купи посоченото МПС
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Капацитет: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2853,12 +2853,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Преименувай МПС-то
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Не може да преименуваш МПС-то...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Преименувай МПС-то
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първият автобус пристигнал в {STATION}!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Хората празнуват . . .{}Първи камион пристигна на {STATION}!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първият пътнически трамвай пристигна на {STATION}!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първият товарен трамвай пристигна на {STATION}!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Пътно-транспортно Произшествие!{}Шофьор загина на място при екплозия на МПС след сблъсък с влак
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Пътно-транспортно Произшествие!{}{COMMA} загинаха на място при екплозия на МПС след сблъсък с влак
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първият автобус пристигнал в {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Хората празнуват . . .{}Първи камион пристигна на {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първият пътнически трамвай пристигна на {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първият товарен трамвай пристигна на {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Пътно-транспортно Произшествие!{}Шофьор загина на място при екплозия на МПС след сблъсък с влак
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Пътно-транспортно Произшествие!{}{COMMA} загинаха на място при екплозия на МПС след сблъсък с влак
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Не може да обърне превозно средство състоящо се от няколко елемента
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Преименувай
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Преименувай МПС-то
@@ -3141,17 +3141,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Иск�
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Погрешен депо теп
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Продажба всички влакове в депото
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Продажба всички автомобили в гаража
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}Продажба всички автомобили в гаража
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Продажба всички кораби в депото
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Продажба всички самолети в хангара
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Списък на всички влакове с това депо в техния пътен лист
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Списък на всички автомобили с този гараж в техния пътен лист
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}Списък на всички автомобили с този гараж в техния пътен лист
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Списък на всички кораби с това депо в техния пътен лист
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Списък на всички самолети с хангар на това летище в техния пътен лист
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Автоматична замяна на всички влакове в депото
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Автоматична замяна на всички автомобили в депото
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Автоматична замяна на всички автомобили в депото
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Автоматична замяна на всички кораби в депото
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Автоматична замяна на всички самолети в хангара
 
@@ -3180,12 +3180,12 @@ STR_ENGINES                                                     :Двигате�
 STR_WAGONS                                                      :Вагони
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Спиране на всички влакове в депото
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Спиране на всички автомобили в гаража
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}Спиране на всички автомобили в гаража
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Спиране на всички кораби в депото
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Спиране на всички самолети в хангара
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Стартиране на всички влакове в депото
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Стартиране на всички автомобили в депото
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}Стартиране на всички автомобили в депото
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Стартиране на всички кораби в депото
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Стартиране на всички самолети в хангара
 
@@ -3356,11 +3356,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 STR_FORMAT_GROUP_NAME                                           :Група {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Всички влакове
-STR_GROUP_ALL_ROADS                                             :Всички пътни превозни средства
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Всички пътни превозни средства
 STR_GROUP_ALL_SHIPS                                             :Всички кораби
 STR_GROUP_ALL_AIRCRAFTS                                         :Всички самолети
 STR_GROUP_DEFAULT_TRAINS                                        :Безгрупни влакове
-STR_GROUP_DEFAULT_ROADS                                         :Безгрупни пътни превозни средства
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Безгрупни пътни превозни средства
 STR_GROUP_DEFAULT_SHIPS                                         :Безгрупни кораби
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Безгрупни самолети
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

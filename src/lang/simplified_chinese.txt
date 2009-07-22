@@ -345,13 +345,13 @@ STR_SORT_BY_FACILITY                                            :车站类型
 STR_SORT_BY_WAITING                                             :等待的货物数量
 STR_SORT_BY_RATING_MAX                                          :车站中最高的货物评价
 STR_SORT_BY_RATING_MIN                                          :车站中最低的货物评价
-STR_ENGINE_SORT_ENGINE_ID                                       :引擎ID （默认方式）
-STR_ENGINE_SORT_COST                                            :售价
-STR_ENGINE_SORT_POWER                                           :功率
-STR_ENGINE_SORT_INTRO_DATE                                      :设计日期
-STR_ENGINE_SORT_RUNNING_COST                                    :运行费用
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :功率/运行费用 比值
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :运载能力
+STR_SORT_BY_ENGINE_ID                                           :引擎ID （默认方式）
+STR_SORT_BY_COST                                                :售价
+STR_SORT_BY_POWER                                               :功率
+STR_SORT_BY_INTRO_DATE                                          :设计日期
+STR_SORT_BY_RUNNING_COST                                        :运行费用
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :功率/运行费用 比值
+STR_SORT_BY_CARGO_CAPACITY                                      :运载能力
 STR_NO_WAITING_CARGO                                            :{BLACK}选择无等待货物车站
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}选择全部运输工具种类
 STR_SELECT_ALL_TYPES                                            :{BLACK}选择所有货物类型{}（包括不在等待列表中的）
@@ -946,7 +946,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}新列�
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :近端
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :中间
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :远端
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}汽车自动排队 (有量子效应)： {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}汽车自动排队 (有量子效应)： {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}当鼠标移动到屏幕边缘时移动屏幕：{ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}允许贿赂地方政府：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}允许买断经营权： {ORANGE}{STRING}
@@ -1052,12 +1052,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}企业�
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}当没有合适的运输工具时显示建设工具： {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}每位玩家最大火车数量：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}每位玩家最大汽车数量：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}每位玩家最大汽车数量：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}每位玩家最大飞机数量：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}每位玩家最大船只数量：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}禁止电脑使用火车：{ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}禁止电脑使用汽车：{ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}禁止电脑使用汽车：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}禁止电脑使用飞机：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}禁止电脑使用船只：{ORANGE}{STRING}
 
@@ -1067,8 +1067,8 @@ STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}AI挂�
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}保养周期(百分数)： {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}火车的默认保养周期：{ORANGE}{STRING} 天/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}火车的默认保养周期：{ORANGE}禁用
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}汽车的默认保养周期：{ORANGE}{STRING} 天/%
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}汽车的默认保养周期：{ORANGE}禁用
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}汽车的默认保养周期：{ORANGE}{STRING} 天/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}汽车的默认保养周期：{ORANGE}禁用
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}飞机的默认保养周期：{ORANGE}{STRING} 天/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}飞机的默认保养周期：{ORANGE}禁用
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}船只的默认保养周期：{ORANGE}{STRING} 天/%
@@ -1143,10 +1143,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}火车�
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(不推荐)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(推荐)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}汽车寻路： {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :原始的 {RED}(不推荐)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(推荐)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}汽车寻路： {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :原始的 {RED}(不推荐)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(推荐)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}船只寻路： {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :原始 {BLUE}(推荐)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2056,7 +2056,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}它已�
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :未命名
 STR_SV_TRAIN_NAME                                               :列车 {COMMA}
-STR_SV_ROADVEH_NAME                                             :汽车 {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :汽车 {COMMA}
 STR_SV_SHIP_NAME                                                :船只 {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :飞机 {COMMA}
 
@@ -2175,12 +2175,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}建设费用
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}购置交通工具
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}铁路运行费用
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}公路运行费用
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}公路运行费用
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}航空运行费用
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}船舶运行费用
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}固定资产维护
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}铁路运输收入
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}公路运输收入
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}公路运输收入
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}航空运输收入
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}水上运输收入
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}贷款利息
@@ -2319,7 +2319,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :货运电车
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}显示总体配色方案
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}显示列车配色方案
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}显示汽车配色方案
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}显示汽车配色方案
 STR_LIVERY_SHIP_TIP                                             :{BLACK}显示船只配色方案
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}显示飞机配色方案
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}为选定的配色方案指定主色调
@@ -2443,94 +2443,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :玩具篷车
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :电池挂车
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :跳跳汁挂车
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :塑料挂车
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :MPS Regal 巴士
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Hereford Leopard 巴士
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Foster 巴士
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Foster MkII 超级巴士
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Ploddyphut MkI 巴士
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :Ploddyphut MkII 巴士
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Ploddyphut MkIII 巴士
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Balogh 煤炭卡车
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Uhl 煤炭卡车
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :DW 煤炭卡车
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :MPS 邮政卡车
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Reynard 邮政卡车
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Perry 邮政卡车
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :MightyMover 邮政卡车
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :Powernaught 邮政卡车
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :Wizzowow 邮政卡车
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Witcombe 油罐车
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Foster 油罐车
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Perry 油罐车
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Talbott 牲畜蓬车
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Uhl 牲畜蓬车
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Foster 牲畜蓬车
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Balogh 货物卡车
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Craighead 货物卡车
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Goss 货物卡车
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Hereford 谷物卡车
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Thomas 谷物卡车
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Goss 谷物卡车
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Witcombe 木材卡车
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Foster 木材卡车
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Moreland 木材卡车
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :MPS 铁矿石卡车
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Uhl 铁矿石卡车
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Chippy 铁矿石卡车
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Balogh 钢材卡车
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Uhl 钢材卡车
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Kelling 钢材卡车
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Balogh 运钞车
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Uhl 运钞车
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Foster 运钞车
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Foster 食品篷车
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Perry 食品篷车
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Chippy 食品篷车
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Uhl 纸张卡车
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Balogh 纸张卡车
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :MPS 纸张卡车
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :MPS 铜矿石卡车
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Uhl 铜矿石卡车
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Goss 铜矿石卡车
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Uhl 水罐车
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Balogh 水罐车
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :MPS 水罐车
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Balogh 水果卡车
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Uhl 水果卡车
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Kelling 水果卡车
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Balogh 橡胶卡车
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Uhl 橡胶卡车
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :RMT 橡胶卡车
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :MightyMover 蔗糖卡车
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Powernaught 蔗糖卡车
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Wizzowow 蔗糖卡车
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :MightyMover 可乐罐车
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Powernaught 可乐罐车
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Wizzowow 可乐罐车
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :MightyMover 棉花糖卡车
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :Powernaught 棉花糖卡车
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Wizzowow 棉花糖卡车
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :MightyMover 太妃糖卡车
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :Powernaught 太妃糖卡车
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :Wizzowow 太妃糖卡车
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :MightyMover 玩具篷车
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Powernaught 玩具篷车
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Wizzowow 玩具篷车
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :MightyMover 糖果卡车
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Powernaught 糖果卡车
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Wizzowow 糖果卡车
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :MightyMover 电池卡车
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Powernaught 电池卡车
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :Wizzowow 电池卡车
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :MightyMover 跳跳汁罐车
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :Powernaught 跳跳汁罐车
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :Wizzowow 跳跳汁罐车
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :MightyMover 塑料卡车
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :Powernaught 塑料卡车
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :Wizzowow 塑料卡车
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :MightyMover 泡泡罐车
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :Powernaught 泡泡罐车
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :Wizzowow 泡泡罐车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal 巴士
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard 巴士
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster 巴士
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII 超级巴士
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Ploddyphut MkI 巴士
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Ploddyphut MkII 巴士
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkIII 巴士
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh 煤炭卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl 煤炭卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW 煤炭卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS 邮政卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard 邮政卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry 邮政卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover 邮政卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught 邮政卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow 邮政卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe 油罐车
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster 油罐车
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry 油罐车
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott 牲畜蓬车
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl 牲畜蓬车
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster 牲畜蓬车
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh 货物卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead 货物卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss 货物卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford 谷物卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas 谷物卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss 谷物卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe 木材卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster 木材卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland 木材卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS 铁矿石卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl 铁矿石卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy 铁矿石卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh 钢材卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl 钢材卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling 钢材卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh 运钞车
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl 运钞车
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster 运钞车
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster 食品篷车
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry 食品篷车
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy 食品篷车
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl 纸张卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh 纸张卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS 纸张卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS 铜矿石卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl 铜矿石卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss 铜矿石卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl 水罐车
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh 水罐车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS 水罐车
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh 水果卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl 水果卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling 水果卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh 橡胶卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl 橡胶卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT 橡胶卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover 蔗糖卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught 蔗糖卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow 蔗糖卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover 可乐罐车
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught 可乐罐车
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow 可乐罐车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover 棉花糖卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught 棉花糖卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow 棉花糖卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover 太妃糖卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught 太妃糖卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow 太妃糖卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover 玩具篷车
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught 玩具篷车
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow 玩具篷车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover 糖果卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught 糖果卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow 糖果卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover 电池卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught 电池卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow 电池卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover 跳跳汁罐车
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught 跳跳汁罐车
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow 跳跳汁罐车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover 塑料卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught 塑料卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow 塑料卡车
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover 泡泡罐车
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught 泡泡罐车
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow 泡泡罐车
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS 油轮
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc 油轮
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS Passenger 渡船
@@ -2644,7 +2644,7 @@ STR_ORDER_NEAREST_HANGAR                                        :最近的机库
 STR_ORDER_SERVICE_AT                                            :维修在
 STR_ORDER_SERVICE_NON_STOP_AT                                   :维修,不停靠于
 STR_ORDER_TRAIN_DEPOT                                           :火车车库
-STR_ORDER_ROAD_DEPOT                                            :汽车车库
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :汽车车库
 STR_ORDER_SHIP_DEPOT                                            :船坞
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2754,7 +2754,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}一个�
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}不能移动这项调度计划……
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}尾部的列车机车必须和头部的一起协作……
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}不能出售列车……
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}不能出售列车……
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}找不到附近的车库……
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}不能 启动/停止 列车！
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}保养周期：{LTBLUE}{COMMA}天{BLACK}   上次保养：{LTBLUE}{DATE_LONG}
@@ -2847,33 +2847,33 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}根据�
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}指定的位置有汽车
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} 车库
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}购买汽车
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}购买汽车
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}购买汽车
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} 车库
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}购买汽车
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}购买汽车
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}购买汽车
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}不能购买汽车...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...必须完全停在一个车库中
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...必须完全停在一个车库中
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}不能出售汽车...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}不能 停止/启动 汽车...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} 正在车库待命
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}正在前往 {TOWN} 车库
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}正在前往 {TOWN} 车库，{VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}正在 {TOWN} 车库保养
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}正在 {TOWN} 车库保养，{VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}正在前往 {TOWN} 车库
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}正在前往 {TOWN} 车库，{VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}正在 {TOWN} 车库保养
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}正在 {TOWN} 车库保养，{VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}不能命令该汽车前往车库...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}在附近找不到车库
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}当前车辆的状态{}单击这里可以 停止/启动 车辆
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}显示车辆的调度指令
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}将屏幕中心移动到汽车所在的位置
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}命令汽车前往车库{}Ctrl+单击 时汽车只进行保养
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}强制汽车掉头
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}显示汽车的详细信息
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}汽车 - 点击可以查看详细信息
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}购买
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}将汽车拖到这里以出售
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}将屏幕中心移动到车库所在的位置
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}汽车列表 - 点击可以查看详细信息
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}购买选定的汽车
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}当前车辆的状态{}单击这里可以 停止/启动 车辆
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}显示车辆的调度指令
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}将屏幕中心移动到汽车所在的位置
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}命令汽车前往车库{}Ctrl+单击 时汽车只进行保养
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}强制汽车掉头
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}显示汽车的详细信息
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}汽车 - 点击可以查看详细信息
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}购买
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}将汽车拖到这里以出售
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}将屏幕中心移动到车库所在的位置
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}汽车列表 - 点击可以查看详细信息
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}购买选定的汽车
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}运力： {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2883,12 +2883,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}命名汽车
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}不能命名汽车……
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}命名汽车
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一辆巴士抵达 {STATION}！
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一辆货车抵达 {STATION}！
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}市民欢庆~. . .{}首辆客运电车抵达 {STATION}!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}市民欢庆~. . .{}首辆货运电车抵达 {STATION}!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，司机在事故中丧生！
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，{COMMA} 人在事故中丧生！
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一辆巴士抵达 {STATION}！
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一辆货车抵达 {STATION}！
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}市民欢庆~. . .{}首辆客运电车抵达 {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}市民欢庆~. . .{}首辆货运电车抵达 {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，司机在事故中丧生！
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，{COMMA} 人在事故中丧生！
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}车辆无法调头...
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}重命名
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}重命名汽车型号
@@ -3167,12 +3167,12 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 ############ Vehicle lists
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}列车 - 点击可以查看详细信息
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}汽车 - 单击车辆可以查看详细信息
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}汽车 - 单击车辆可以查看详细信息
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}船只列表 - 点击可以查看详细信息
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}飞机 - 点击可以查看详细信息
 
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} 列 火车
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} 辆 汽车
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} 辆 汽车
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} 艘 船只
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} 架 飞机
 
@@ -3184,17 +3184,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}你将�
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :车库类型错误
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}出售车库中的所有列车
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}出售车库中的所有汽车
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}出售车库中的所有汽车
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}出售船坞中的所有船只
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}出售机库中的所有飞机
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}显示所有调度计划中含有此车库的列车
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}显示所有调度计划中含有此车库的汽车
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}显示所有调度计划中含有此车库的汽车
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}显示所有调度计划中含有此船坞的船只
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}显示所有调度计划中含有此机库的飞机
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}自动更新车库中的所有列车
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}自动更新车库中的所有汽车
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}自动更新车库中的所有汽车
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}自动更新船坞中的所有船只
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}自动更新机库中的所有飞机
 
@@ -3222,12 +3222,12 @@ STR_ENGINES                                                     :机车
 STR_WAGONS                                                      :挂车
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}点击这里可以停止车库的所有列车
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}点击这里可以停止车库的所有汽车
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}点击这里可以停止车库的所有汽车
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}点击这里可以停止船坞的所有船只
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}点击这里可以停止机库的所有飞机
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}点击这里可以启动车库的所有列车
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}点击这里可以启动车库的所有汽车
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}点击这里可以启动车库的所有汽车
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}点击这里可以启动船坞的所有船只
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}点击这里可以启动机库的所有飞机
 
@@ -3389,11 +3389,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 ##### Mass Order
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :全部火车
-STR_GROUP_ALL_ROADS                                             :全部汽车
+STR_GROUP_ALL_ROAD_VEHICLES                                     :全部汽车
 STR_GROUP_ALL_SHIPS                                             :全部船只
 STR_GROUP_ALL_AIRCRAFTS                                         :全部飞机
 STR_GROUP_DEFAULT_TRAINS                                        :未分组火车
-STR_GROUP_DEFAULT_ROADS                                         :未分组汽车
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :未分组汽车
 STR_GROUP_DEFAULT_SHIPS                                         :未分组船只
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :未分组飞机
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

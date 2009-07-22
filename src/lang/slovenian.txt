@@ -387,13 +387,13 @@ STR_SORT_BY_FACILITY                                            :Tip postaje
 STR_SORT_BY_WAITING                                             :Čakanje vrednosti tovora
 STR_SORT_BY_RATING_MAX                                          :Najvišja ocena tovora
 STR_SORT_BY_RATING_MIN                                          :Najnižja ocena tovora
-STR_ENGINE_SORT_ENGINE_ID                                       :ID motorja (klasično urejanje)
-STR_ENGINE_SORT_COST                                            :Cena
-STR_ENGINE_SORT_POWER                                           :Moč
-STR_ENGINE_SORT_INTRO_DATE                                      :Datum uvedbe
-STR_ENGINE_SORT_RUNNING_COST                                    :Cena delovanja
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Moč/Cena delovanja
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Zmogljivost tovora
+STR_SORT_BY_ENGINE_ID                                           :ID motorja (klasično urejanje)
+STR_SORT_BY_COST                                                :Cena
+STR_SORT_BY_POWER                                               :Moč
+STR_SORT_BY_INTRO_DATE                                          :Datum uvedbe
+STR_SORT_BY_RUNNING_COST                                        :Cena delovanja
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Moč/Cena delovanja
+STR_SORT_BY_CARGO_CAPACITY                                      :Zmogljivost tovora
 STR_NO_WAITING_CARGO                                            :{BLACK}Noben tovor ne čaka
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Izberi vse pripomočke
 STR_SELECT_ALL_TYPES                                            :{BLACK}Izberi vse vrste tovora (vključno s tovorom, ki ne čaka)
@@ -991,7 +991,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Novi uk
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :začetni strani
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :sredini
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :koncu
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}Cestna vozila v vrsti (s quantum efekti): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Cestna vozila v vrsti (s quantum efekti): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Premakni okno, ko je miška na robu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Dovoli podkupovanje mestnih oblasti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Dovoli nakup ekskluzivnih prevoznih dovoljenj: {ORANGE}{STRING}
@@ -1097,12 +1097,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Prikaž
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Prikaz gradbenih orodij, ko ni primernih vozil na izbiro: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Največ vlakov na igralca: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}Največ cestnih vozil na igralca: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Največ cestnih vozil na igralca: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Največ letal na igralca: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Največ ladij na igralca: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Onemogoči vlake za računalnik: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}Onemogoči cestna vozila za računalnik: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Onemogoči cestna vozila za računalnik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Onemogoči letala za računalnik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Onemogoči ladje za računalnik: {ORANGE}{STRING}
 
@@ -1112,8 +1112,8 @@ STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#op-kod
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Obdobja servisiranja so v procentih: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Privzeto obdobje servisiranja za vlake: {ORANGE}{STRING} dni/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Privzeto obdobje servisiranja za vlake: {ORANGE}onemogočeno
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}Privzeto obdobje servisiranja za cestna vozila: {ORANGE}{STRING} dni/%
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Privzeto obdobje servisiranja za cestna vozila: {ORANGE}onemogočeno
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Privzeto obdobje servisiranja za cestna vozila: {ORANGE}{STRING} dni/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Privzeto obdobje servisiranja za cestna vozila: {ORANGE}onemogočeno
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Privzeto obdobje servisiranja za letala: {ORANGE}{STRING} dni/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Privzeto obdobje servisiranja za letala: {ORANGE}onemogočeno
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Privzeto obdobje servisiranja za ladje: {ORANGE}{STRING} dni/%
@@ -1188,10 +1188,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Iskalni
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ni priporočeno)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Priporočeno)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Iskalnik poti za vozila: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Ni priporočeno)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Priporočeno)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Iskalnik poti za vozila: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :Original {RED}(Ni priporočeno)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Priporočeno)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Logaritem poti za ladje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Priporočen)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2139,7 +2139,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE} ... ima
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Neimenovano
 STR_SV_TRAIN_NAME                                               :Vlak {COMMA}
-STR_SV_ROADVEH_NAME                                             :Cestno vozilo {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Cestno vozilo {COMMA}
 STR_SV_SHIP_NAME                                                :Ladja {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Letalo {COMMA}
 
@@ -2259,12 +2259,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Gradnja
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nova vozila
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Cene delovanja vlakov
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Cene delovanja cestnih vozil
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Cene delovanja cestnih vozil
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Cene delovanja letal
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Cene delovanja ladij
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Vzdrževanje lastnine
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Prihodek vlakov
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Prihodek cestnih vozil
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Prihodek cestnih vozil
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Prihodek letal
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Prihodek ladij
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Obresti posojila
@@ -2404,7 +2404,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Tovorni tramvaj
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Prikaz glavnih barvnih shem
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Prikaz barvnih shem vlakov
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Prikaz barvnih shem cestnih vozil
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}Prikaz barvnih shem cestnih vozil
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Prikaz barvnih shem ladij
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Prikaz barvnih shem letal
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Izberi glavno barvo za izbrano shemo
@@ -2528,94 +2528,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Vagon za igrač
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Vagon za baterije
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Vagon za gaz. pijače
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Vagon za plastiko
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :MPS regionalni avtobus
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Hereford Leopard avtobus
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Foster avtobus
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Foster MkII Superbus
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Ploddyphut MkI avtobus
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :Ploddyphut MkII avtobus
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Ploddyphut MkIII avtobus
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Balogh tovornjak za premog
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Uhl tovornjak za premog
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :DW tovornjak za premog
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :MPS tovornjak za pošto
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Reynard tovornjak za pošto
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Perry tovornjak za pošto
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :MightyMover tovornjak za pošto
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :Powernaught tovornjak za pošto
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :Wizzowow tovornjak za pošto
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Witcombe cisterna za nafto
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Foster cisterna za nafto
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Perry cisterna za nafto
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Talbott tovornjak za živino
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Uhl tovornjak za živino
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Foster tovornjak za živino
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Balogh tovornjak za izdelke
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Craighead tovornjak za izdelke
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Goss tovornjak za izdelke
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Hereford tovornjak za žito
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Thomas tovornjak za žito
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Goss tovornjak za žito
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Witcombe tovornjak za les
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Fooster tovornjak za les
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Moreland tovornjak za les
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :MPS tovornjak za žel. rudo
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Uhl tovornjak za žel. rudo
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Chippy tovornjak za žel. rudo
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Balogh tovornjak za jeklo
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Uhl tovornjak za jeklo
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Kelling tovornjak za jeklo
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Balogh oklepni tovornjak
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Uhl oklepni tovornjak
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Foster oklepni tovornjak
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Foster tovornjak za hrano
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Perry tovornjak za hrano
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Chippy tovornjak za hrano
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Uhl tovornjak za papir
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Balogh tovornjak za papir
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :MPS tovornjak za papir
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :MPS tovornjak za bakr. rudo
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Uhl tovornjak za bakr. rudo
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Goss tovornjak za bakr. rudo
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Uhl cisterna za vodo
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Balogh cisterna za vodo
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :MPS cisterna za vodo
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Balogh tovornjak za sadje
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Uhl tovornjak za sadje
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Kelling tovornjak za sadje
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Balogh tovornjak za kavčuk
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Uhl tovornjak za kavčuk
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :RMT tovornjak za kavčuk
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :MightyMover tovornjak za sladkor
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Powernaught tovornjak za sladkor
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Wizzowow tovornjak za sladkor
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :MightyMover cisterna za Cockto
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Powernaught cisterna za Cockto
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Wizzowow cisterna za Cockto
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :MightyMover tovornjak za sladk. peno
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :Powernaught tovornjak za sladk. peno
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Wizzowow tovornjak za sladk. peno
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :MightyMover tovornjak za karamel
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :Powernaught tovornjak za karamel
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :Wizzowow tovornjak za karamel
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :MightyMover tovornjak za igrače
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Powernaught tovornjak za igrače
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Wizzowow tovornjak za igrače
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :MightyMover tovornjak za sladkarije
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Powernaught tovornjak za sladkarije
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Wizzowow tovornjak za sladkarije
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :MightyMover tovornjak za baterije
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Powernaught tovornjak za baterije
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :Wizzowow tovornjak za baterije
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :MightyMover tovornjak za gaz. pijače
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :Powernaught tovornjak za gaz. pijače
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :Wizzowow tovornjak za gaz. pijače
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :MightyMover tovornjak za plastiko
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :Powernaught tovornjak za plastiko
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :Wizzowow tovornjak za plastiko
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :MightyMover tovornjak za mehurčke
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :Powernaught tovornjak za mehurčke
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :Wizzowow tovornjak za mehurčke
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS regionalni avtobus
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard avtobus
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster avtobus
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII Superbus
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Ploddyphut MkI avtobus
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Ploddyphut MkII avtobus
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkIII avtobus
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh tovornjak za premog
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl tovornjak za premog
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW tovornjak za premog
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS tovornjak za pošto
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard tovornjak za pošto
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry tovornjak za pošto
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover tovornjak za pošto
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught tovornjak za pošto
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow tovornjak za pošto
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe cisterna za nafto
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster cisterna za nafto
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry cisterna za nafto
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott tovornjak za živino
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl tovornjak za živino
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster tovornjak za živino
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh tovornjak za izdelke
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead tovornjak za izdelke
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss tovornjak za izdelke
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford tovornjak za žito
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas tovornjak za žito
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss tovornjak za žito
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe tovornjak za les
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Fooster tovornjak za les
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland tovornjak za les
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS tovornjak za žel. rudo
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl tovornjak za žel. rudo
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy tovornjak za žel. rudo
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh tovornjak za jeklo
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl tovornjak za jeklo
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling tovornjak za jeklo
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh oklepni tovornjak
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl oklepni tovornjak
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster oklepni tovornjak
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster tovornjak za hrano
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry tovornjak za hrano
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy tovornjak za hrano
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl tovornjak za papir
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh tovornjak za papir
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS tovornjak za papir
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS tovornjak za bakr. rudo
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl tovornjak za bakr. rudo
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss tovornjak za bakr. rudo
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl cisterna za vodo
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh cisterna za vodo
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS cisterna za vodo
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh tovornjak za sadje
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl tovornjak za sadje
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling tovornjak za sadje
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh tovornjak za kavčuk
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl tovornjak za kavčuk
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT tovornjak za kavčuk
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover tovornjak za sladkor
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught tovornjak za sladkor
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow tovornjak za sladkor
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover cisterna za Cockto
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught cisterna za Cockto
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow cisterna za Cockto
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover tovornjak za sladk. peno
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught tovornjak za sladk. peno
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow tovornjak za sladk. peno
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover tovornjak za karamel
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught tovornjak za karamel
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow tovornjak za karamel
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover tovornjak za igrače
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught tovornjak za igrače
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow tovornjak za igrače
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover tovornjak za sladkarije
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught tovornjak za sladkarije
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow tovornjak za sladkarije
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover tovornjak za baterije
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught tovornjak za baterije
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow tovornjak za baterije
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover tovornjak za gaz. pijače
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught tovornjak za gaz. pijače
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow tovornjak za gaz. pijače
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover tovornjak za plastiko
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught tovornjak za plastiko
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow tovornjak za plastiko
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover tovornjak za mehurčke
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught tovornjak za mehurčke
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow tovornjak za mehurčke
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS naftni tanker
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. naftni tanker
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS potniški trajekt
@@ -2729,7 +2729,7 @@ STR_ORDER_NEAREST_HANGAR                                        :najbližji hang
 STR_ORDER_SERVICE_AT                                            :Na servis v
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Na servis non-stop v
 STR_ORDER_TRAIN_DEPOT                                           :Železniška garaža
-STR_ORDER_ROAD_DEPOT                                            :Cestna garaža
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Cestna garaža
 STR_ORDER_SHIP_DEPOT                                            :Ladijska garaža
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2840,7 +2840,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}vozilo, 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Ni mogoče premakniti vozila ...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Zadnja lokomotiva vedno sledi prvi
 STR_CARGO_N_A                                                   :Ni na voljo{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}Vlaka ni mogoče prodati ...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Vlaka ni mogoče prodati ...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Ni mogoče najti poti do najbližje garaže
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Ni mogoče ustaviti/zagnati vlaka ...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}IObdobje servisiranja: {LTBLUE}{COMMA}dni{BLACK}   Zadnji servis: {LTBLUE}{DATE_LONG}
@@ -2932,35 +2932,35 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Avtomats
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Cestno vozilo na poti
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Cestn{P o i a ih} vozil{P o i a ""}
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Garaža za cestna vozila
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nova vozila
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nova cestna vozila
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}Zgradi vozilo
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Cestn{P o i a ih} vozil{P o i a ""}
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Garaža za cestna vozila
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nova vozila
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nova cestna vozila
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Zgradi vozilo
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Ni mogoče zgraditi cestnega vozila ...
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE} ... mora biti ustavljen v garaži
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE} ... mora biti ustavljen v garaži
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ni mogoče prodati cestnega vozila...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Ni mogoče ustaviti/zagnati cestnega vozila ...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čaka v garaži
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Pelje v {TOWN} cestno garažo
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Pelje v {TOWN} cestno garažo, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Na servisiranje v {TOWN} cestno garažo
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Na servisiranje v {TOWN} cestno garažo, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Pelje v {TOWN} cestno garažo
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Pelje v {TOWN} cestno garažo, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Na servisiranje v {TOWN} cestno garažo
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Na servisiranje v {TOWN} cestno garažo, {VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Ni mogoče poslati vozila v garažo...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Ni mogoče najti najbližje garaže
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Cestna vozila - kliknite na vozilo za informacije
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Dejanja trenutnega vozila - kliknite za ustavitev/zagon vozila
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Pokaži navodila vozila
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Pogled na vozilo
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Pošlji vozilo v garažo. CTRL+klik samo na servis
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}Prisilno obrni vozilo
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}Prikaži podrobnosti cestnega vozila
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}Vozila - kliknite na vozilo za informacije
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}Zgradi novo cestno vozilo
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}Povleci cestno vozilo sem, če ga želiš prodati
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}Pogled na garažo
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}Seznam cestnih vozil - klikni na vozilo za informacije
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Zgradi izbrano cestno vozilo
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Cestna vozila - kliknite na vozilo za informacije
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Dejanja trenutnega vozila - kliknite za ustavitev/zagon vozila
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Pokaži navodila vozila
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Pogled na vozilo
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Pošlji vozilo v garažo. CTRL+klik samo na servis
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Prisilno obrni vozilo
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Prikaži podrobnosti cestnega vozila
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - kliknite na vozilo za informacije
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Zgradi novo cestno vozilo
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Povleci cestno vozilo sem, če ga želiš prodati
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Pogled na garažo
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Seznam cestnih vozil - klikni na vozilo za informacije
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Zgradi izbrano cestno vozilo
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Zmogljivost: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2970,12 +2970,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Poimenuj cestno vozilo
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ni mogoče poimenovati cestnega vozila ...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Poimenuj cestno vozilo
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prihod prvega avtobusa na postajo {STATION}!
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prihod prvega tovornjaka na postajo {STATION}!
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Meščani proslavljajo . . .{}Prvi potniški tramvaj je prispel na postajo {STATION}!
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Proslava meščanov . . .{}Prvi tovorni tramvaj je pripeljal na postajo {STATION}!
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Prometna nesreča!{}Voznik umrl v plamenih po trku z vlakom.
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Prometna nesreča!{}{COMMA} mrt{P ev va vi vih} v plamenih ob trku z vlakom.
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prihod prvega avtobusa na postajo {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prihod prvega tovornjaka na postajo {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Meščani proslavljajo . . .{}Prvi potniški tramvaj je prispel na postajo {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Proslava meščanov . . .{}Prvi tovorni tramvaj je pripeljal na postajo {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Prometna nesreča!{}Voznik umrl v plamenih po trku z vlakom.
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Prometna nesreča!{}{COMMA} mrt{P ev va vi vih} v plamenih ob trku z vlakom.
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Ni moč obrniti vozil, sestavljenih iz večih enot
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Preimenuj
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Preimenuj cestno vozilo
@@ -3270,17 +3270,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Priprav
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Napačna vrsta garaže
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Prodaj vse vlake v garaži
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Prodaj vsa vestna vozila v garaži
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}Prodaj vsa vestna vozila v garaži
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Prodaj vse ladje v garaži
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Prodaj vsa letala v hangarju
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Prikaz seznama vlakov s to garažo na urniku
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Prikaz seznama vseh cestnih vozil s to garažo na urniku
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}Prikaz seznama vseh cestnih vozil s to garažo na urniku
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Prikaz seznama vseh ladij s to garažo na urniku
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Prikaz seznama vseh letal s to garažo na urniku
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Avtomatsko zamenjaj vse vlake v garaži
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Avtomatsko zamenjaj vsa cestna vozila v garaži
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Avtomatsko zamenjaj vsa cestna vozila v garaži
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Avtomatsko zamenjaj vse ladje v garaži
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Samozamenjaj vsa letala v hangarju
 
@@ -3309,12 +3309,12 @@ STR_ENGINES                                                     :Lokomotive
 STR_WAGONS                                                      :Vagoni
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Klikni za ustaviti vse vlake v garaži
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Klikni za ustaviti vsa cestna vozila v garaži
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}Klikni za ustaviti vsa cestna vozila v garaži
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Klikni za ustaviti vse ladje v garaži
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Klikni za ustaviti vsa letala v hangarju
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Klikni za zagon vseh vlakov v garaži
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Klikni za zagon vseh cestnih vozil v garaži
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}Klikni za zagon vseh cestnih vozil v garaži
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Klikni za zagon vseh ladij v garaži
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Klikni za zagon vseh letal v hangarju
 
@@ -3488,11 +3488,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 STR_FORMAT_GROUP_NAME                                           :Skupina {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Vsi vlaki
-STR_GROUP_ALL_ROADS                                             :Vsa cestna vozila
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Vsa cestna vozila
 STR_GROUP_ALL_SHIPS                                             :Vse ladje
 STR_GROUP_ALL_AIRCRAFTS                                         :Vsa letala
 STR_GROUP_DEFAULT_TRAINS                                        :Vlaki brez skupine
-STR_GROUP_DEFAULT_ROADS                                         :Cestna vozila brez skupine
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Cestna vozila brez skupine
 STR_GROUP_DEFAULT_SHIPS                                         :Ladje brez skupine
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Letala brez skupine
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

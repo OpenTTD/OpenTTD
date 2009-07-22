@@ -345,13 +345,13 @@ STR_SORT_BY_FACILITY                                            :車站種類
 STR_SORT_BY_WAITING                                             :等候客貨總值
 STR_SORT_BY_RATING_MAX                                          :最高運輸評價
 STR_SORT_BY_RATING_MIN                                          :最低運輸評價
-STR_ENGINE_SORT_ENGINE_ID                                       :引擎編號
-STR_ENGINE_SORT_COST                                            :價值
-STR_ENGINE_SORT_POWER                                           :功率
-STR_ENGINE_SORT_INTRO_DATE                                      :登場日期
-STR_ENGINE_SORT_RUNNING_COST                                    :營運成本
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :功率／營運成本
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :載貨量
+STR_SORT_BY_ENGINE_ID                                           :引擎編號
+STR_SORT_BY_COST                                                :價值
+STR_SORT_BY_POWER                                               :功率
+STR_SORT_BY_INTRO_DATE                                          :登場日期
+STR_SORT_BY_RUNNING_COST                                        :營運成本
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :功率／營運成本
+STR_SORT_BY_CARGO_CAPACITY                                      :載貨量
 STR_NO_WAITING_CARGO                                            :{BLACK}無任何貨物等候運送
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}選擇所有設施
 STR_SELECT_ALL_TYPES                                            :{BLACK}選擇所有貨物種類 (包含沒在等待的貨物)
@@ -949,7 +949,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}新列�
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :近端
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :中間
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :遠端
-STR_CONFIG_SETTING_ROADVEH_QUEUE                                :{LTBLUE}車輛排隊 (量子效應)：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}車輛排隊 (量子效應)：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}滑鼠在視窗邊緣時移動視窗：{ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}可向地方政府行賄：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}允許購買市鎮的專屬運輸權：{ORANGE}{STRING}
@@ -1055,12 +1055,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}將公�
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}即使沒有適合的交通工具可用也顯示建造工具：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}每位玩家可擁有列車數目：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROADVEH                                  :{LTBLUE}每位玩家可擁有車輛數目：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}每位玩家可擁有車輛數目：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}每位玩家可擁有飛機數目：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}每位玩家可擁有船舶數目：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}不允許電腦使用鐵路：{ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROADVEH                            :{LTBLUE}不允許電腦使用汽車：{ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}不允許電腦使用汽車：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}不允許電腦使用飛機：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}不允許電腦使用船舶：{ORANGE}{STRING}
 
@@ -1070,8 +1070,8 @@ STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}在 AI 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}維護間隔以百分比計算：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}列車預設維護間隔：{ORANGE}{STRING} 天/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}列車預設維護間隔：{ORANGE}關閉
-STR_CONFIG_SETTING_SERVINT_ROADVEH                              :{LTBLUE}汽車預設維護間隔：{ORANGE}{STRING} 天/%
-STR_CONFIG_SETTING_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}汽車預設維護間隔：{ORANGE}關閉
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}汽車預設維護間隔：{ORANGE}{STRING} 天/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}汽車預設維護間隔：{ORANGE}關閉
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}飛機預設維護間隔：{ORANGE}{STRING} 天/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}飛機預設維護間隔：{ORANGE}關閉
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}船舶預設維護間隔：{ORANGE}{STRING} 天/%
@@ -1146,10 +1146,10 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}列車�
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(不建議)
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(建議)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}車輛的路徑搜尋方式：{ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_OPF                   :原版 {RED}(不建議)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(建議)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}車輛的路徑搜尋方式：{ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_OPF             :原版 {RED}(不建議)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(建議)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}船隻的路徑搜尋方式：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :原版 {BLUE}(建議)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
@@ -2059,7 +2059,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...您�
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :未命名
 STR_SV_TRAIN_NAME                                               :列車 {COMMA}
-STR_SV_ROADVEH_NAME                                             :車輛 {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :車輛 {COMMA}
 STR_SV_SHIP_NAME                                                :船舶 {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :飛機 {COMMA}
 
@@ -2179,12 +2179,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}建造
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}新交通工具
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}鐵路列車營運成本
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}公路車輛營運成本
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}公路車輛營運成本
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}飛機營運成本
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}船舶營運成本
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}產權管理
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}鐵路收入
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}公路收入
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}公路收入
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}航空收入
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}船運收入
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}貸款利息
@@ -2324,7 +2324,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :載貨電車
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}顯示通用配色
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}顯示列車配色
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}顯示車輛配色
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}顯示車輛配色
 STR_LIVERY_SHIP_TIP                                             :{BLACK}顯示船舶配色
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}顯示飛機配色
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}選擇所選配色的主色調
@@ -2448,94 +2448,94 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :玩具車
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :電池車
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :汽水車
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :塑膠車
-STR_VEHICLE_NAME_ROAD_MPS_REGAL_BUS                             :MPS Regal 公車
-STR_VEHICLE_NAME_ROAD_HEREFORD_LEOPARD_BUS                      :Hereford Leopard 公車
-STR_VEHICLE_NAME_ROAD_FOSTER_BUS                                :Foster 公車
-STR_VEHICLE_NAME_ROAD_FOSTER_MKII_SUPERBUS                      :Foster MkII 超級公車
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKI_BUS                        :Ploddyphut MkI 公車
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKII_BUS                       :Ploddyphut MkII 公車
-STR_VEHICLE_NAME_ROAD_PLODDYPHUT_MKIII_BUS                      :Ploddyphut MkIII 公車
-STR_VEHICLE_NAME_ROAD_BALOGH_COAL_TRUCK                         :Bedford 煤卡車
-STR_VEHICLE_NAME_ROAD_UHL_COAL_TRUCK                            :Uhl 煤卡車
-STR_VEHICLE_NAME_ROAD_DW_COAL_TRUCK                             :DW 煤卡車
-STR_VEHICLE_NAME_ROAD_MPS_MAIL_TRUCK                            :MPS 郵務車
-STR_VEHICLE_NAME_ROAD_REYNARD_MAIL_TRUCK                        :Reynard 郵務車
-STR_VEHICLE_NAME_ROAD_PERRY_MAIL_TRUCK                          :Perry 郵務車
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_MAIL_TRUCK                    :MightyMover 郵務車
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_MAIL_TRUCK                    :Powernaught 郵務車
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_MAIL_TRUCK                       :Wizzowow 郵務車
-STR_VEHICLE_NAME_ROAD_WITCOMBE_OIL_TANKER                       :Witcombe 油罐車
-STR_VEHICLE_NAME_ROAD_FOSTER_OIL_TANKER                         :Foster 油罐車
-STR_VEHICLE_NAME_ROAD_PERRY_OIL_TANKER                          :Perry 油罐車
-STR_VEHICLE_NAME_ROAD_TALBOTT_LIVESTOCK_VAN                     :Talbott 家畜廂型車
-STR_VEHICLE_NAME_ROAD_UHL_LIVESTOCK_VAN                         :Uhl 家畜廂型車
-STR_VEHICLE_NAME_ROAD_FOSTER_LIVESTOCK_VAN                      :Foster 家畜廂型車
-STR_VEHICLE_NAME_ROAD_BALOGH_GOODS_TRUCK                        :Balogh 商品卡車
-STR_VEHICLE_NAME_ROAD_CRAIGHEAD_GOODS_TRUCK                     :Craighead 商品卡車
-STR_VEHICLE_NAME_ROAD_GOSS_GOODS_TRUCK                          :Goss 商品卡車
-STR_VEHICLE_NAME_ROAD_HEREFORD_GRAIN_TRUCK                      :Hereford 穀物卡車
-STR_VEHICLE_NAME_ROAD_THOMAS_GRAIN_TRUCK                        :Thomas 穀物卡車
-STR_VEHICLE_NAME_ROAD_GOSS_GRAIN_TRUCK                          :Goss 穀物卡車
-STR_VEHICLE_NAME_ROAD_WITCOMBE_WOOD_TRUCK                       :Witcombe 木材卡車
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :Foster 木材卡車
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :Moreland 木材卡車
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :MPS 鐵礦卡車
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :Uhl 鐵礦卡車
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :Chippy 鐵礦卡車
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :Balogh 運鋼卡車
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :Uhl 運鋼卡車
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :Kelling 運鋼卡車
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :Balogh 運鈔車
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :Uhl 運鈔車
-STR_VEHICLE_NAME_ROAD_FOSTER_ARMORED_TRUCK                      :Foster 運鈔車
-STR_VEHICLE_NAME_ROAD_FOSTER_FOOD_VAN                           :Foster 食物廂型車
-STR_VEHICLE_NAME_ROAD_PERRY_FOOD_VAN                            :Perry 食物廂型車
-STR_VEHICLE_NAME_ROAD_CHIPPY_FOOD_VAN                           :Chippy 食物廂型車
-STR_VEHICLE_NAME_ROAD_UHL_PAPER_TRUCK                           :Uhl 運紙卡車
-STR_VEHICLE_NAME_ROAD_BALOGH_PAPER_TRUCK                        :Balogh 運紙卡車
-STR_VEHICLE_NAME_ROAD_MPS_PAPER_TRUCK                           :MPS 運紙卡車
-STR_VEHICLE_NAME_ROAD_MPS_COPPER_ORE_TRUCK                      :MPS 銅礦卡車
-STR_VEHICLE_NAME_ROAD_UHL_COPPER_ORE_TRUCK                      :Uhl 銅礦卡車
-STR_VEHICLE_NAME_ROAD_GOSS_COPPER_ORE_TRUCK                     :Goss 銅礦卡車
-STR_VEHICLE_NAME_ROAD_UHL_WATER_TANKER                          :Uhl 水罐車
-STR_VEHICLE_NAME_ROAD_BALOGH_WATER_TANKER                       :Balogh 水罐車
-STR_VEHICLE_NAME_ROAD_MPS_WATER_TANKER                          :MPS 水罐車
-STR_VEHICLE_NAME_ROAD_BALOGH_FRUIT_TRUCK                        :Balogh 蔬果卡車
-STR_VEHICLE_NAME_ROAD_UHL_FRUIT_TRUCK                           :Uhl 蔬果卡車
-STR_VEHICLE_NAME_ROAD_KELLING_FRUIT_TRUCK                       :Kelling 蔬果卡車
-STR_VEHICLE_NAME_ROAD_BALOGH_RUBBER_TRUCK                       :Balogh 橡膠卡車
-STR_VEHICLE_NAME_ROAD_UHL_RUBBER_TRUCK                          :Uhl 橡膠卡車
-STR_VEHICLE_NAME_ROAD_RMT_RUBBER_TRUCK                          :RMT 橡膠卡車
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_SUGAR_TRUCK                   :MightyMover 砂糖卡車
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_SUGAR_TRUCK                   :Powernaught 砂糖卡車
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_SUGAR_TRUCK                      :Wizzowow 砂糖卡車
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COLA_TRUCK                    :MightyMover 可樂卡車
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COLA_TRUCK                    :Powernaught 可樂卡車
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COLA_TRUCK                       :Wizzowow 可樂卡車
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_COTTON_CANDY                  :MightyMover 棉花糖卡車
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_COTTON_CANDY                  :Powernaught 棉花糖卡車
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_COTTON_CANDY_TRUCK               :Wizzowow 棉花糖卡車
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOFFEE_TRUCK                  :MightyMover 太妃糖卡車
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOFFEE_TRUCK                  :Powernaught 太妃糖卡車
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOFFEE_TRUCK                     :Wizzowow 太妃糖卡車
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_TOY_VAN                       :MightyMover 玩具廂型車
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_TOY_VAN                       :Powernaught 玩具廂型車
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_TOY_VAN                          :Wizzowow 玩具廂型車
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_CANDY_TRUCK                   :MightyMover 甜點卡車
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_CANDY_TRUCK                   :Powernaught 甜點卡車
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_CANDY_TRUCK                      :Wizzowow 甜點卡車
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BATTERY_TRUCK                 :MightyMover 電池卡車
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BATTERY_TRUCK                 :Powernaught 電池卡車
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BATTERY_TRUCK                    :Wizzowow 電池卡車
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_FIZZY_DRINK                   :MightyMover 汽水卡車
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_FIZZY_DRINK                   :Powernaught 汽水卡車
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_FIZZY_DRINK_TRUCK                :Wizzowow 汽水卡車
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_PLASTIC_TRUCK                 :MightyMover 塑膠卡車
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_PLASTIC_TRUCK                 :Powernaught 塑膠卡車
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_PLASTIC_TRUCK                    :Wizzowow 塑膠卡車
-STR_VEHICLE_NAME_ROAD_MIGHTYMOVER_BUBBLE_TRUCK                  :MightyMover 氣泡卡車
-STR_VEHICLE_NAME_ROAD_POWERNAUGHT_BUBBLE_TRUCK                  :Powernaught 氣泡卡車
-STR_VEHICLE_NAME_ROAD_WIZZOWOW_BUBBLE_TRUCK                     :Wizzowow 氣泡卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal 公車
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard 公車
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster 公車
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII 超級公車
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Ploddyphut MkI 公車
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Ploddyphut MkII 公車
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkIII 公車
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Bedford 煤卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl 煤卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW 煤卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS 郵務車
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard 郵務車
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry 郵務車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover 郵務車
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught 郵務車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow 郵務車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe 油罐車
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster 油罐車
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry 油罐車
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott 家畜廂型車
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl 家畜廂型車
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster 家畜廂型車
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh 商品卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead 商品卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss 商品卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford 穀物卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas 穀物卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss 穀物卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe 木材卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster 木材卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland 木材卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS 鐵礦卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl 鐵礦卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy 鐵礦卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh 運鋼卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl 運鋼卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling 運鋼卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh 運鈔車
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl 運鈔車
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster 運鈔車
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster 食物廂型車
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry 食物廂型車
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy 食物廂型車
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl 運紙卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh 運紙卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS 運紙卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS 銅礦卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl 銅礦卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss 銅礦卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl 水罐車
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh 水罐車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS 水罐車
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh 蔬果卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl 蔬果卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling 蔬果卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh 橡膠卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl 橡膠卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT 橡膠卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover 砂糖卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught 砂糖卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow 砂糖卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover 可樂卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught 可樂卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow 可樂卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover 棉花糖卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught 棉花糖卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow 棉花糖卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover 太妃糖卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught 太妃糖卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow 太妃糖卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover 玩具廂型車
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught 玩具廂型車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow 玩具廂型車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover 甜點卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught 甜點卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow 甜點卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover 電池卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught 電池卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow 電池卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover 汽水卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught 汽水卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow 汽水卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover 塑膠卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught 塑膠卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow 塑膠卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover 氣泡卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught 氣泡卡車
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow 氣泡卡車
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS 油輪
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. 油輪
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS 載客渡輪
@@ -2649,7 +2649,7 @@ STR_ORDER_NEAREST_HANGAR                                        :最近的機棚
 STR_ORDER_SERVICE_AT                                            :前往維護
 STR_ORDER_SERVICE_NON_STOP_AT                                   :直接前往維護
 STR_ORDER_TRAIN_DEPOT                                           :機廠
-STR_ORDER_ROAD_DEPOT                                            :車庫
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :車庫
 STR_ORDER_SHIP_DEPOT                                            :船塢
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
@@ -2760,7 +2760,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}一個�
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}無法移動車輛...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}後端車頭一定要跟著前端車頭
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}無法出售鐵道車輛...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}無法出售鐵道車輛...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}找不到前往附近機廠的路徑
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}無法停止／起動列車...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}維護間隔：{LTBLUE}{COMMA} 天{BLACK}   上次維護：{LTBLUE}{DATE_LONG}
@@ -2854,35 +2854,35 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}自動�
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}前方有汽車
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - 車輛 {COMMA} 部
-STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} 車庫
-STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}購買新車輛
-STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}購置新車輛
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}購買車輛
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - 車輛 {COMMA} 部
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} 車庫
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}購買新車輛
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}購置新車輛
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}購買車輛
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}無法購置車輛
-STR_ERROR_ROAD_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}...必須停在車庫内
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...必須停在車庫内
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}無法出售車輛...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}無法停止／起動車輛...
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} 正在車庫待命
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}正前往 {TOWN} 車庫
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}正前往 {TOWN} 車庫，{VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}在 {TOWN} 車庫維護中
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}在 {TOWN} 車庫維護中，{VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}正前往 {TOWN} 車庫
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}正前往 {TOWN} 車庫，{VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}在 {TOWN} 車庫維護中
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}在 {TOWN} 車庫維護中，{VELOCITY}
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}無法將車輛送至車庫...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}找不到附近的車庫
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}車輛 - 點選車輛檢視詳細資料
-STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}目前車輛動作 - 點選這裡可停止／起動車輛
-STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}顯示車輛指令
-STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}將車輛置於畫面中央
-STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}將車輛送到車庫，按住 CTRL 點選則只做維護
-STR_VEHICLE_VIEW_ROAD_REVERSE_TOOLTIP                           :{BLACK}強制車輛掉頭
-STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP                      :{BLACK}顯示車輛詳細資訊
-STR_DEPOT_ROAD_LIST_TOOLTIP                                     :{BLACK}車輛 - 點選車輛顯示詳細資料
-STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP                             :{BLACK}購置新車輛
-STR_DEPOT_ROAD_SELL_TOOLTIP                                     :{BLACK}將車輛拖到這裡即可出售
-STR_DEPOT_ROAD_LOCATION_TOOLTIP                                 :{BLACK}將車庫置於畫面中央
-STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP                             :{BLACK}車輛清單 - 點選車輛可看到詳細資料
-STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP                    :{BLACK}購置選定的車輛
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}車輛 - 點選車輛檢視詳細資料
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}目前車輛動作 - 點選這裡可停止／起動車輛
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}顯示車輛指令
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}將車輛置於畫面中央
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}將車輛送到車庫，按住 CTRL 點選則只做維護
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}強制車輛掉頭
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}顯示車輛詳細資訊
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}車輛 - 點選車輛顯示詳細資料
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}購置新車輛
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}將車輛拖到這裡即可出售
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}將車庫置於畫面中央
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}車輛清單 - 點選車輛可看到詳細資料
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}購置選定的車輛
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}容量：{LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2892,12 +2892,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}為車輛命名
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}無法為車輛命名...
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}為車輛命名
-STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛公車抵達 {STATION}！
-STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛貨車抵達 {STATION}！
-STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛載客電車抵達 {STATION}！
-STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛載貨電車抵達 {STATION}！
-STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}車禍！{}駕駛在與列車對撞後罹難
-STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}車禍！{}車輛在與列車對撞後，造成 {COMMA} 人罹難
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛公車抵達 {STATION}！
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛貨車抵達 {STATION}！
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛載客電車抵達 {STATION}！
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛載貨電車抵達 {STATION}！
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}車禍！{}駕駛在與列車對撞後罹難
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}車禍！{}車輛在與列車對撞後，造成 {COMMA} 人罹難
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}無法讓車輛轉向...
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}更名
 STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}為車輛類型更名
@@ -3190,17 +3190,17 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}您正�
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :錯誤的機廠類型
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}出售機廠内所有列車
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}出售車庫内所有車輛
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TIP                      :{BLACK}出售車庫内所有車輛
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}出售船塢内所有船舶
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}出售機棚内所有飛機
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}取得所有命令内有這個機廠的列車
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}取得所有命令内有這個車庫的車輛
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TIP                   :{BLACK}取得所有命令内有這個車庫的車輛
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}取得所有命令内有這個船塢的船舶
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}取得所有命令内有這個機場機棚的 飛機
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}自動替換所有機廠内列車
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}自動替換所有車庫内車輛
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}自動替換所有車庫内車輛
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}自動替換所有船塢内船舶
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}自動替換所有機棚内飛機
 
@@ -3229,12 +3229,12 @@ STR_ENGINES                                                     :車頭
 STR_WAGONS                                                      :車廂
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}點選可停止機廠内所有列車
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}點選可停止車庫内所有汽車
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}點選可停止車庫内所有汽車
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}點選可停止船塢内所有船舶
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}點選可停止機棚内所有飛機
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}點選可起動機廠内所有列車
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}點選可起動車庫内所有車輛
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}點選可起動車庫内所有車輛
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}點選可起動船塢内所有船舶
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}點選可起動機棚内所有飛機
 
@@ -3408,11 +3408,11 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 STR_FORMAT_GROUP_NAME                                           :群組 {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :所有列車
-STR_GROUP_ALL_ROADS                                             :所有車輛
+STR_GROUP_ALL_ROAD_VEHICLES                                     :所有車輛
 STR_GROUP_ALL_SHIPS                                             :所有船舶
 STR_GROUP_ALL_AIRCRAFTS                                         :所有飛機
 STR_GROUP_DEFAULT_TRAINS                                        :未分組的列車
-STR_GROUP_DEFAULT_ROADS                                         :未分組的車輛
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :未分組的車輛
 STR_GROUP_DEFAULT_SHIPS                                         :未分組的船舶
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :未分組的飛機
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}

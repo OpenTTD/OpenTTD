@@ -1190,12 +1190,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruksje
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nije faartúchen
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Trein Ûnderhâldskosten
-STR_FINANCES_SECTION_ROAD_VEH_RUNNING_COSTS                     :{GOLD}Auto's Ûnderhâldskosten
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Auto's Ûnderhâldskosten
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Fleantúch Ûnderhâldskosten
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Skip Ûnderhâldskosten
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Ûnderhâld fan besittingen
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Ynkomsten Treinen
-STR_FINANCES_SECTION_ROAD_VEHICLES_INCOME                       :{GOLD}Ynkomsten Auto's
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Ynkomsten Auto's
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Ynkomsten Fleantúgen
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Ynkomsten Skepen
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Rinte fan Liening

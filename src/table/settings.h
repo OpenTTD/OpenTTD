@@ -362,7 +362,7 @@ const SettingDesc _settings[] = {
 	    SDT_BOOL(GameSettings, pf.forbid_90_deg,                                                    0, 0, false,                    STR_CONFIG_SETTING_FORBID_90_DEG,          NULL),
 	    SDT_BOOL(GameSettings, vehicle.mammoth_trains,                                              0,NN,  true,                    STR_CONFIG_SETTING_MAMMOTHTRAINS,          NULL),
 	    SDT_BOOL(GameSettings, order.gotodepot,                                                     0, 0,  true,                    STR_CONFIG_SETTING_GOTODEPOT,              NULL),
-	    SDT_BOOL(GameSettings, pf.roadveh_queue,                                                    0, 0,  true,                    STR_CONFIG_SETTING_ROADVEH_QUEUE,          NULL),
+	    SDT_BOOL(GameSettings, pf.roadveh_queue,                                                    0, 0,  true,                    STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING,  NULL),
 
 	SDT_CONDBOOL(GameSettings, pf.new_pathfinding_all,                           0,             86, 0, 0, false,                    STR_NULL,                                  NULL),
 	SDT_CONDBOOL(GameSettings, pf.yapf.ship_use_yapf,                           28,             86, 0, 0, false,                    STR_NULL,                                  NULL),
@@ -370,12 +370,12 @@ const SettingDesc _settings[] = {
 	SDT_CONDBOOL(GameSettings, pf.yapf.rail_use_yapf,                           28,             86, 0, 0,  true,                    STR_NULL,                                  NULL),
 
 	 SDT_CONDVAR(GameSettings, pf.pathfinder_for_trains,             SLE_UINT8, 87, SL_MAX_VERSION, 0, MS,    2,     0,       2, 1, STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS,  NULL),
-	 SDT_CONDVAR(GameSettings, pf.pathfinder_for_roadvehs,           SLE_UINT8, 87, SL_MAX_VERSION, 0, MS,    2,     0,       2, 1, STR_CONFIG_SETTING_PATHFINDER_FOR_ROADVEH, NULL),
+	 SDT_CONDVAR(GameSettings, pf.pathfinder_for_roadvehs,           SLE_UINT8, 87, SL_MAX_VERSION, 0, MS,    2,     0,       2, 1, STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES, NULL),
 	 SDT_CONDVAR(GameSettings, pf.pathfinder_for_ships,              SLE_UINT8, 87, SL_MAX_VERSION, 0, MS,    0,     0,       2, 1, STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS,   NULL),
 
 	    SDT_BOOL(GameSettings, vehicle.never_expire_vehicles,                                       0,NN, false,                    STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES,  NULL),
 	     SDT_VAR(GameSettings, vehicle.max_trains,                  SLE_UINT16,                     0, 0,   500,     0,    5000, 0, STR_CONFIG_SETTING_MAX_TRAINS,             RedrawScreen),
-	     SDT_VAR(GameSettings, vehicle.max_roadveh,                 SLE_UINT16,                     0, 0,   500,     0,    5000, 0, STR_CONFIG_SETTING_MAX_ROADVEH,            RedrawScreen),
+	     SDT_VAR(GameSettings, vehicle.max_roadveh,                 SLE_UINT16,                     0, 0,   500,     0,    5000, 0, STR_CONFIG_SETTING_MAX_ROAD_VEHICLES,      RedrawScreen),
 	     SDT_VAR(GameSettings, vehicle.max_aircraft,                SLE_UINT16,                     0, 0,   200,     0,    5000, 0, STR_CONFIG_SETTING_MAX_AIRCRAFT,           RedrawScreen),
 	     SDT_VAR(GameSettings, vehicle.max_ships,                   SLE_UINT16,                     0, 0,   300,     0,    5000, 0, STR_CONFIG_SETTING_MAX_SHIPS,              RedrawScreen),
 	SDTG_CONDBOOL(NULL,             0, NN, _old_vds.servint_ispercent, false,            STR_NULL, NULL, 0, 119),
@@ -428,7 +428,7 @@ const SettingDesc _settings[] = {
 	SDT_CONDNULL(1, 0, 106), // previously ai-new setting.
 	    SDT_BOOL(GameSettings, ai.ai_in_multiplayer,                                                0, 0, true,                     STR_CONFIG_SETTING_AI_IN_MULTIPLAYER,      NULL),
 	    SDT_BOOL(GameSettings, ai.ai_disable_veh_train,                                             0, 0, false,                    STR_CONFIG_SETTING_AI_BUILDS_TRAINS,       NULL),
-	    SDT_BOOL(GameSettings, ai.ai_disable_veh_roadveh,                                           0, 0, false,                    STR_CONFIG_SETTING_AI_BUILDS_ROADVEH,      NULL),
+	    SDT_BOOL(GameSettings, ai.ai_disable_veh_roadveh,                                           0, 0, false,                    STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES,NULL),
 	    SDT_BOOL(GameSettings, ai.ai_disable_veh_aircraft,                                          0, 0, false,                    STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT,     NULL),
 	    SDT_BOOL(GameSettings, ai.ai_disable_veh_ship,                                              0, 0, false,                    STR_CONFIG_SETTING_AI_BUILDS_SHIPS,        NULL),
 	 SDT_CONDVAR(GameSettings, ai.ai_max_opcode_till_suspend,       SLE_UINT32,107, SL_MAX_VERSION, 0, NG, 10000, 5000,250000,2500, STR_CONFIG_SETTING_AI_MAX_OPCODES,         NULL),
@@ -616,15 +616,15 @@ const SettingDesc _settings[] = {
 };
 
 static const SettingDesc _company_settings[] = {
-	SDT_BOOL(CompanySettings, engine_renew,                          0, PC,     false,                  STR_CONFIG_SETTING_AUTORENEW_VEHICLE, NULL),
-	 SDT_VAR(CompanySettings, engine_renew_months,        SLE_INT16, 0, PC,         6, -12,      12, 0, STR_CONFIG_SETTING_AUTORENEW_MONTHS,  NULL),
-	 SDT_VAR(CompanySettings, engine_renew_money,          SLE_UINT, 0, PC|CR, 100000,   0, 2000000, 0, STR_CONFIG_SETTING_AUTORENEW_MONEY,   NULL),
-	SDT_BOOL(CompanySettings, renew_keep_length,                     0, PC,     false,                  STR_NULL,                             NULL),
-	SDT_BOOL(CompanySettings, vehicle.servint_ispercent,             0, PC,     false,                  STR_CONFIG_SETTING_SERVINT_ISPERCENT, CheckInterval),
-	 SDT_VAR(CompanySettings, vehicle.servint_trains,    SLE_UINT16, 0, PC|D0,    150,   5,     800, 0, STR_CONFIG_SETTING_SERVINT_TRAINS,    InvalidateDetailsWindow),
-	 SDT_VAR(CompanySettings, vehicle.servint_roadveh,   SLE_UINT16, 0, PC|D0,    150,   5,     800, 0, STR_CONFIG_SETTING_SERVINT_ROADVEH,   InvalidateDetailsWindow),
-	 SDT_VAR(CompanySettings, vehicle.servint_ships,     SLE_UINT16, 0, PC|D0,    360,   5,     800, 0, STR_CONFIG_SETTING_SERVINT_SHIPS,     InvalidateDetailsWindow),
-	 SDT_VAR(CompanySettings, vehicle.servint_aircraft,  SLE_UINT16, 0, PC|D0,    100,   5,     800, 0, STR_CONFIG_SETTING_SERVINT_AIRCRAFT,  InvalidateDetailsWindow),
+	SDT_BOOL(CompanySettings, engine_renew,                          0, PC,     false,                  STR_CONFIG_SETTING_AUTORENEW_VEHICLE,     NULL),
+	 SDT_VAR(CompanySettings, engine_renew_months,        SLE_INT16, 0, PC,         6, -12,      12, 0, STR_CONFIG_SETTING_AUTORENEW_MONTHS,      NULL),
+	 SDT_VAR(CompanySettings, engine_renew_money,          SLE_UINT, 0, PC|CR, 100000,   0, 2000000, 0, STR_CONFIG_SETTING_AUTORENEW_MONEY,       NULL),
+	SDT_BOOL(CompanySettings, renew_keep_length,                     0, PC,     false,                  STR_NULL,                                 NULL),
+	SDT_BOOL(CompanySettings, vehicle.servint_ispercent,             0, PC,     false,                  STR_CONFIG_SETTING_SERVINT_ISPERCENT,     CheckInterval),
+	 SDT_VAR(CompanySettings, vehicle.servint_trains,    SLE_UINT16, 0, PC|D0,    150,   5,     800, 0, STR_CONFIG_SETTING_SERVINT_TRAINS,        InvalidateDetailsWindow),
+	 SDT_VAR(CompanySettings, vehicle.servint_roadveh,   SLE_UINT16, 0, PC|D0,    150,   5,     800, 0, STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES, InvalidateDetailsWindow),
+	 SDT_VAR(CompanySettings, vehicle.servint_ships,     SLE_UINT16, 0, PC|D0,    360,   5,     800, 0, STR_CONFIG_SETTING_SERVINT_SHIPS,         InvalidateDetailsWindow),
+	 SDT_VAR(CompanySettings, vehicle.servint_aircraft,  SLE_UINT16, 0, PC|D0,    100,   5,     800, 0, STR_CONFIG_SETTING_SERVINT_AIRCRAFT,      InvalidateDetailsWindow),
 	SDT_END()
 };
 

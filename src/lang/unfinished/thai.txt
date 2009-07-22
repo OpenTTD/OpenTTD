@@ -332,8 +332,8 @@ STR_SORT_BY_VALUE                                               :มูลค่
 STR_SORT_BY_LENGTH                                              :ความยาว
 STR_SORT_BY_LIFE_TIME                                           :อายุการใช้งานคงเหลือ
 STR_SORT_BY_FACILITY                                            :ประเภทสถานี
-STR_ENGINE_SORT_COST                                            :ราคา
-STR_ENGINE_SORT_INTRO_DATE                                      :วันเปิดตัวจำหน่าย
+STR_SORT_BY_COST                                                :ราคา
+STR_SORT_BY_INTRO_DATE                                          :วันเปิดตัวจำหน่าย
 STR_SEND_TRAIN_TO_DEPOT                                         :ส่งเข้าอู่ซ่อมบำรุง
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :ส่งเข้าอู่ซ่อมรถ
 STR_SEND_SHIP_TO_DEPOT                                          :ส่งเข้าอู่ต่อเรือ
@@ -856,16 +856,16 @@ STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}กา�
 
 
 ##id 0x8000
-STR_VEHICLE_NAME_ROAD_FOSTER_WOOD_TRUCK                         :รถบรรทุกไม้รุ่นฟอสเตอร์
-STR_VEHICLE_NAME_ROAD_MORELAND_WOOD_TRUCK                       :รถบรรทุกไม้รุ่นมัวร์แลนด์
-STR_VEHICLE_NAME_ROAD_MPS_IRON_ORE_TRUCK                        :รถบรรทุกแร่เหล็กรุ่นเอ็มพีเอส
-STR_VEHICLE_NAME_ROAD_UHL_IRON_ORE_TRUCK                        :รถบรรทุกแร่เหล็กรุ่นยูเอชแอล
-STR_VEHICLE_NAME_ROAD_CHIPPY_IRON_ORE_TRUCK                     :รถบรรทุกแร่เหล็กรุ่นชิปปี้
-STR_VEHICLE_NAME_ROAD_BALOGH_STEEL_TRUCK                        :รถบรรทุกเหล็กกล้ารุ่นบัลล๊อก
-STR_VEHICLE_NAME_ROAD_UHL_STEEL_TRUCK                           :รถบรรทุกเหล็กกล้ารุ่นยูเอชแอล
-STR_VEHICLE_NAME_ROAD_KELLING_STEEL_TRUCK                       :รถบรรทุกเหล็กกล้ารุ่นเคลลิ่ง
-STR_VEHICLE_NAME_ROAD_BALOGH_ARMORED_TRUCK                      :รถหุ้มเกราะรุ่นบัลล๊อก
-STR_VEHICLE_NAME_ROAD_UHL_ARMORED_TRUCK                         :รถหุ้มเกราะรุ่นยูเอชแอล
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :รถบรรทุกไม้รุ่นฟอสเตอร์
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :รถบรรทุกไม้รุ่นมัวร์แลนด์
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :รถบรรทุกแร่เหล็กรุ่นเอ็มพีเอส
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :รถบรรทุกแร่เหล็กรุ่นยูเอชแอล
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :รถบรรทุกแร่เหล็กรุ่นชิปปี้
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :รถบรรทุกเหล็กกล้ารุ่นบัลล๊อก
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :รถบรรทุกเหล็กกล้ารุ่นยูเอชแอล
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :รถบรรทุกเหล็กกล้ารุ่นเคลลิ่ง
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :รถหุ้มเกราะรุ่นบัลล๊อก
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :รถหุ้มเกราะรุ่นยูเอชแอล
 
 ##id 0x8800
 
