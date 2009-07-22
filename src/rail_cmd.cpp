@@ -1439,7 +1439,7 @@ static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlag flags)
 		Owner owner = GetTileOwner(tile);
 		Train *v = NULL;
 
-		if (HasDepotWaypointReservation(tile)) {
+		if (HasDepotReservation(tile)) {
 			v = GetTrainForReservation(tile, DiagDirToDiagTrack(dir));
 			if (v != NULL) FreeTrainTrackReservation(v);
 		}
@@ -1983,7 +1983,7 @@ default_waypoint:
 		DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, _drawtile_track_palette));
 
 		/* PBS debugging, draw reserved tracks darker */
-		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasDepotWaypointReservation(ti->tile) &&
+		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasDepotReservation(ti->tile) &&
 				(!IsRailDepot(ti->tile) || GetRailDepotDirection(ti->tile) == DIAGDIR_SW || GetRailDepotDirection(ti->tile) == DIAGDIR_SE)) {
 			DrawGroundSprite(GetWaypointAxis(ti->tile) == AXIS_X ? rti->base_sprites.single_y : rti->base_sprites.single_x, PALETTE_CRASH);
 		}

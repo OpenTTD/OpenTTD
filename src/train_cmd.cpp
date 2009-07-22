@@ -2459,7 +2459,7 @@ static bool CheckTrainStayInDepot(Train *v)
 		v->load_unload_time_rem = 0;
 
 		seg_state = _settings_game.pf.reserve_paths ? SIGSEG_PBS : UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
-		if (seg_state == SIGSEG_FULL || HasDepotWaypointReservation(v->tile)) {
+		if (seg_state == SIGSEG_FULL || HasDepotReservation(v->tile)) {
 			/* Full and no PBS signal in block or depot reserved, can't exit. */
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 			return true;
@@ -2471,8 +2471,8 @@ static bool CheckTrainStayInDepot(Train *v)
 	/* We are leaving a depot, but have to go to the exact same one; re-enter */
 	if (v->current_order.IsType(OT_GOTO_DEPOT) && v->tile == v->dest_tile) {
 		/* We need to have a reservation for this to work. */
-		if (HasDepotWaypointReservation(v->tile)) return true;
-		SetDepotWaypointReservation(v->tile, true);
+		if (HasDepotReservation(v->tile)) return true;
+		SetDepotReservation(v->tile, true);
 		VehicleEnterDepot(v);
 		return true;
 	}
@@ -2485,7 +2485,7 @@ static bool CheckTrainStayInDepot(Train *v)
 		return true;
 	}
 
-	SetDepotWaypointReservation(v->tile, true);
+	SetDepotReservation(v->tile, true);
 	if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(v->tile);
 
 	VehicleServiceInDepot(v);
@@ -3137,7 +3137,7 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 	 * at the depot tile itself but starts from the next tile. If we are still
 	 * inside the depot, a depot reservation can never be ours. */
 	if (v->track == TRACK_BIT_DEPOT) {
-		if (HasDepotWaypointReservation(v->tile)) {
+		if (HasDepotReservation(v->tile)) {
 			if (mark_as_stuck) MarkTrainAsStuck(v);
 			return false;
 		} else {
@@ -3181,7 +3181,7 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 
 	/* If we are in a depot, tentativly reserve the depot. */
 	if (v->track == TRACK_BIT_DEPOT) {
-		SetDepotWaypointReservation(v->tile, true);
+		SetDepotReservation(v->tile, true);
 		if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(v->tile);
 	}
 
@@ -3196,7 +3196,7 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 
 	if (!res_made) {
 		/* Free the depot reservation as well. */
-		if (v->track == TRACK_BIT_DEPOT) SetDepotWaypointReservation(v->tile, false);
+		if (v->track == TRACK_BIT_DEPOT) SetDepotReservation(v->tile, false);
 		return false;
 	}
 

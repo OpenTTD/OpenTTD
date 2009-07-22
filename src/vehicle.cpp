@@ -952,7 +952,7 @@ void VehicleEnterDepot(Vehicle *v)
 			Train *t = Train::From(v);
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 			/* Clear path reservation */
-			SetDepotWaypointReservation(t->tile, false);
+			SetDepotReservation(t->tile, false);
 			if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(t->tile);
 
 			if (!t->IsFrontEngine()) t = t->First();

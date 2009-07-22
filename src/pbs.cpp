@@ -17,7 +17,7 @@ TrackBits GetReservedTrackbits(TileIndex t)
 {
 	switch (GetTileType(t)) {
 		case MP_RAILWAY:
-			if (IsRailWaypoint(t) || IsRailDepot(t)) return GetWaypointReservationTrackBits(t);
+			if (IsRailDepot(t)) return GetDepotReservationTrackBits(t);
 			if (IsPlainRail(t)) return GetRailReservationTrackBits(t);
 			break;
 
@@ -80,9 +80,9 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
 			if (IsPlainRail(tile)) return TryReserveTrack(tile, t);
-			if (IsRailWaypoint(tile) || IsRailDepot(tile)) {
-				if (!HasDepotWaypointReservation(tile)) {
-					SetDepotWaypointReservation(tile, true);
+			if (IsRailDepot(tile)) {
+				if (!HasDepotReservation(tile)) {
+					SetDepotReservation(tile, true);
 					MarkTileDirtyByTile(tile); // some GRFs change their appearance when tile is reserved
 					return true;
 				}
@@ -134,8 +134,8 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if (IsRailWaypoint(tile) || IsRailDepot(tile)) {
-				SetDepotWaypointReservation(tile, false);
+			if (IsRailDepot(tile)) {
+				SetDepotReservation(tile, false);
 				MarkTileDirtyByTile(tile);
 				break;
 			}

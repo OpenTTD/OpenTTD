@@ -187,7 +187,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 
 		bool reserved = HasBit(GetRailReservationTrackBits(tile), AxisToTrack(axis));
 		MakeRailWaypoint(tile, owner, axis, GetRailType(tile), wp->index);
-		SetDepotWaypointReservation(tile, reserved);
+		SetDepotReservation(tile, reserved);
 		MarkTileDirtyByTile(tile);
 
 		AllocateSpecToStation(GetCustomStationSpec(STAT_CLASS_WAYP, p1), wp, true);
@@ -234,12 +234,12 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justre
 		Train *v = NULL;
 		if (justremove) {
 			TrackBits tracks = GetRailWaypointBits(tile);
-			bool reserved = HasDepotWaypointReservation(tile);
+			bool reserved = HasDepotReservation(tile);
 			MakeRailNormal(tile, wp->owner, tracks, GetRailType(tile));
 			if (reserved) SetTrackReservation(tile, tracks);
 			MarkTileDirtyByTile(tile);
 		} else {
-			if (HasDepotWaypointReservation(tile)) {
+			if (HasDepotReservation(tile)) {
 				v = GetTrainForReservation(tile, track);
 				if (v != NULL) FreeTrainTrackReservation(v);
 			}

@@ -1668,8 +1668,8 @@ bool AfterLoadGame()
 					}
 
 					/* Clear PBS reservation on track */
-					if (IsRailDepot(t) ||IsRailWaypoint(t)) {
-						SetDepotWaypointReservation(t, false);
+					if (IsRailDepot(t)) {
+						SetDepotReservation(t, false);
 					} else {
 						SetTrackReservation(t, TRACK_BIT_NONE);
 					}

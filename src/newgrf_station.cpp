@@ -452,7 +452,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		case 0x43: return st->owner; // Station owner
 		case 0x44:
 			if (IsRailWaypointTile(tile)) {
-				return HasDepotWaypointReservation(tile) ? 7 : 4;
+				return HasDepotReservation(tile) ? 7 : 4;
 			} else {
 				return HasStationReservation(tile) ? 7 : 4; // PBS status
 			}

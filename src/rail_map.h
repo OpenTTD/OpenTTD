@@ -312,28 +312,26 @@ static inline void UnreserveTrack(TileIndex tile, Track t)
 }
 
 /**
- * Get the reservation state of the waypoint or depot
- * @note Works for both waypoints and rail depots
- * @pre IsRailWaypoint(t) || IsRailDepot(t)
- * @param t the waypoint/depot tile
+ * Get the reservation state of the depot
+ * @pre IsRailDepot(t)
+ * @param t the depot tile
  * @return reservation state
  */
-static inline bool HasDepotWaypointReservation(TileIndex t)
+static inline bool HasDepotReservation(TileIndex t)
 {
-	assert(IsRailWaypoint(t) || IsRailDepot(t));
+	assert(IsRailDepot(t));
 	return HasBit(_m[t].m5, 4);
 }
 
 /**
- * Set the reservation state of the waypoint or depot
- * @note Works for both waypoints and rail depots
- * @pre IsRailWaypoint(t) || IsRailDepot(t)
- * @param t the waypoint/depot tile
+ * Set the reservation state of the depot
+ * @pre IsRailDepot(t)
+ * @param t the depot tile
  * @param b the reservation state
  */
-static inline void SetDepotWaypointReservation(TileIndex t, bool b)
+static inline void SetDepotReservation(TileIndex t, bool b)
 {
-	assert(IsRailWaypoint(t) || IsRailDepot(t));
+	assert(IsRailDepot(t));
 	SB(_m[t].m5, 4, 1, (byte)b);
 }
 
@@ -345,7 +343,7 @@ static inline void SetDepotWaypointReservation(TileIndex t, bool b)
  */
 static inline TrackBits GetWaypointReservationTrackBits(TileIndex t)
 {
-	return HasDepotWaypointReservation(t) ? GetRailWaypointBits(t) : TRACK_BIT_NONE;
+	return HasDepotReservation(t) ? GetRailWaypointBits(t) : TRACK_BIT_NONE;
 }
 
 /**
@@ -356,7 +354,7 @@ static inline TrackBits GetWaypointReservationTrackBits(TileIndex t)
  */
 static inline TrackBits GetDepotReservationTrackBits(TileIndex t)
 {
-	return HasDepotWaypointReservation(t) ? TrackToTrackBits(GetRailDepotTrack(t)) : TRACK_BIT_NONE;
+	return HasDepotReservation(t) ? TrackToTrackBits(GetRailDepotTrack(t)) : TRACK_BIT_NONE;
 }
 
 
