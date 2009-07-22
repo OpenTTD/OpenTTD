@@ -542,18 +542,19 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		}
 
 		case OT_GOTO_WAYPOINT: {
+			const Waypoint *wp = Waypoint::GetIfValid(new_order.GetDestination());
+			if (wp == NULL) return CMD_ERROR;
+
 			switch (v->type) {
 				default: return CMD_ERROR;
 
-				case VEH_TRAIN: {
-					const Waypoint *wp = Waypoint::GetIfValid(new_order.GetDestination());
-					if (wp == NULL || !CheckOwnership(wp->owner)) return CMD_ERROR;
-				} break;
+				case VEH_TRAIN:
+					if (!CheckOwnership(wp->owner)) return CMD_ERROR;
+					break;
 
-				case VEH_SHIP: {
-					const Station *st = Station::GetIfValid(new_order.GetDestination());
-					if (st == NULL || (!CheckOwnership(st->owner) && st->owner != OWNER_NONE)) return CMD_ERROR;
-				} break;
+				case VEH_SHIP:
+					if (!CheckOwnership(wp->owner) && wp->owner != OWNER_NONE) return CMD_ERROR;
+					break;
 			}
 
 			/* Order flags can be any of the following for waypoints:

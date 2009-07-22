@@ -57,9 +57,8 @@ enum StationHadVehicleOfType {
 	HVOT_TRUCK    = 1 << 3, ///< Station has seen a truck
 	HVOT_AIRCRAFT = 1 << 4, ///< Station has seen an aircraft
 	HVOT_SHIP     = 1 << 5, ///< Station has seen a ship
-	/* This bit is used to mark stations. No, it does not belong here, but what
-	 * can we do? ;-) */
-	HVOT_BUOY     = 1 << 6
+
+	HVOT_WAYPOINT = 1 << 6, ///< Station is a waypoint (NewGRF only!)
 };
 DECLARE_ENUM_AS_BIT_SET(StationHadVehicleOfType);
 typedef SimpleTinyEnumT<StationHadVehicleOfType, byte> StationHadVehicleOfTypeByte;

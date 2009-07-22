@@ -182,6 +182,7 @@ enum SaveLoadTypes {
 	/* non-normal save-load types */
 	SL_WRITEBYTE   =  8,
 	SL_VEH_INCLUDE =  9,
+	SL_ST_INCLUDE  = 10,
 	SL_END         = 15
 };
 
@@ -235,6 +236,7 @@ typedef SaveLoad SaveLoadGlobVarList;
 
 #define SLE_WRITEBYTEX(offset, something) SLE_GENERALX(SL_WRITEBYTE, offset, 0, 0, something, 0)
 #define SLE_VEH_INCLUDEX() SLE_GENERALX(SL_VEH_INCLUDE, 0, 0, 0, 0, SL_MAX_VERSION)
+#define SLE_ST_INCLUDEX() SLE_GENERALX(SL_ST_INCLUDE, 0, 0, 0, 0, SL_MAX_VERSION)
 
 /* End marker */
 #define SLE_END() {false, SL_END, 0, 0, 0, 0, NULL}

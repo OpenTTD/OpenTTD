@@ -788,8 +788,6 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y)
 		sel--;
 
 		if (order->IsType(OT_GOTO_STATION)) {
-			if (v->type == VEH_SHIP && Station::Get(order->GetDestination())->IsBuoy()) continue;
-
 			SetDParam(0, order->GetDestination());
 			DrawString(left, right, y, STR_ORDER_STATION_SMALL);
 
@@ -1950,7 +1948,7 @@ struct VehicleViewWindow : Window {
 				case OT_GOTO_WAYPOINT: {
 					assert(v->type == VEH_TRAIN || v->type == VEH_SHIP);
 					SetDParam(0, v->current_order.GetDestination());
-					str = (v->type == VEH_TRAIN ? STR_HEADING_FOR_WAYPOINT : STR_HEADING_FOR_STATION) + _settings_client.gui.vehicle_speed;
+					str = STR_HEADING_FOR_WAYPOINT + _settings_client.gui.vehicle_speed;
 					SetDParam(1, v->GetDisplaySpeed());
 					break;
 				}

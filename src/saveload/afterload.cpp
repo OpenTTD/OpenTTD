@@ -606,9 +606,7 @@ bool AfterLoadGame()
 		switch (GetTileType(t)) {
 			case MP_STATION: {
 				Station *st = Station::GetByTile(t);
-
-				/* Set up station spread; buoys do not have one */
-				if (!IsBuoy(t)) st->rect.BeforeAddTile(t, StationRect::ADD_FORCE);
+				if (st == NULL) break;
 
 				switch (GetStationType(t)) {
 					case STATION_TRUCK:
@@ -987,29 +985,11 @@ bool AfterLoadGame()
 		FOR_ALL_COMPANIES(c) c->settings.renew_keep_length = false;
 	}
 
-	/* In version 17, ground type is moved from m2 to m4 for depots and
-	 * waypoints to make way for storing the index in m2. The custom graphics
-	 * id which was stored in m4 is now saved as a grf/id reference in the
-	 * waypoint struct. */
-	if (CheckSavegameVersion(17)) {
-		Waypoint *wp;
-
-		FOR_ALL_WAYPOINTS(wp) {
-			if (wp->delete_ctr == 0) {
-				if (HasBit(_m[wp->xy].m3, 4)) {
-					AllocateSpecToStation(GetCustomStationSpec(STAT_CLASS_WAYP, _m[wp->xy].m4 + 1), wp, true);
-				}
-
-				/* Move ground type bits from m2 to m4. */
-				_m[wp->xy].m4 = GB(_m[wp->xy].m2, 0, 4);
-				/* Store waypoint index in the tile. */
-				_m[wp->xy].m2 = wp->index;
-			}
-		}
-	} else {
-		/* As of version 17, we recalculate the custom graphic ID of waypoints
-		 * from the GRF ID / station index. */
-		AfterLoadWaypoints();
+	if (CheckSavegameVersion(123)) {
+		/* Waypoints became subclasses of stations ... */
+		MoveWaypointsToBaseStations();
+		/* ... and buoys were moved to waypoints. */
+		MoveBuoysToWaypoints();
 	}
 
 	/* From version 15, we moved a semaphore bit from bit 2 to bit 3 in m4, making
@@ -1275,9 +1255,9 @@ bool AfterLoadGame()
 	/* Buoys do now store the owner of the previous water tile, which can never
 	 * be OWNER_NONE. So replace OWNER_NONE with OWNER_WATER. */
 	if (CheckSavegameVersion(46)) {
-		Station *st;
-		FOR_ALL_STATIONS(st) {
-			if (st->IsBuoy() && IsTileOwner(st->xy, OWNER_NONE) && TileHeight(st->xy) == 0) SetTileOwner(st->xy, OWNER_WATER);
+		Waypoint *wp;
+		FOR_ALL_WAYPOINTS(wp) {
+			if ((wp->facilities & FACIL_DOCK) != 0 && IsTileOwner(wp->xy, OWNER_NONE) && TileHeight(wp->xy) == 0) SetTileOwner(wp->xy, OWNER_WATER);
 		}
 	}
 
@@ -1487,15 +1467,6 @@ bool AfterLoadGame()
 	}
 
 	if (CheckSavegameVersion(84)) {
-		/* Update go to buoy orders because they are just waypoints */
-		Order *order;
-		FOR_ALL_ORDERS(order) {
-			if (order->IsType(OT_GOTO_STATION) && Station::Get(order->GetDestination())->IsBuoy()) {
-				order->SetLoadType(OLF_LOAD_IF_POSSIBLE);
-				order->SetUnloadType(OUF_UNLOAD_IF_POSSIBLE);
-			}
-		}
-
 		/* Set all share owners to INVALID_COMPANY for
 		 * 1) all inactive companies
 		 *     (when inactive companies were stored in the savegame - TTD, TTDP and some
@@ -1561,7 +1532,7 @@ bool AfterLoadGame()
 				if (IsBuoyTile(t)) {
 					/* reset buoy owner to OWNER_NONE in the station struct
 					 * (even if it is owned by active company) */
-					Station::GetByTile(t)->owner = OWNER_NONE;
+					Waypoint::GetByTile(t)->owner = OWNER_NONE;
 				}
 			} else if (IsTileType(t, MP_ROAD)) {
 				/* works for all RoadTileType */
@@ -1805,16 +1776,6 @@ bool AfterLoadGame()
 		FOR_ALL_STATIONS(st) {
 			if (!Company::IsValidID(st->owner)) st->owner = OWNER_NONE;
 		}
-
-		/* Give owners to waypoints, based on rail tracks it is sitting on.
-		 * If none is available, specify OWNER_NONE.
-		 * This code was in CheckSavegameVersion(101) in the past, but in some cases,
-		 * the owner of waypoints could be incorrect. */
-		Waypoint *wp;
-		FOR_ALL_WAYPOINTS(wp) {
-			Owner owner = IsTileType(wp->xy, MP_RAILWAY) ? GetTileOwner(wp->xy) : OWNER_NONE;
-			wp->owner = Company::IsValidID(owner) ? owner : OWNER_NONE;
-		}
 	}
 
 	/* Trains could now stop in a specific location. */
@@ -1913,14 +1874,6 @@ bool AfterLoadGame()
 			}
 			s->cargo_type = CT_INVALID;
 		}
-
-		Order *o;
-		FOR_ALL_ORDERS(o) {
-			/* Buoys are now go to waypoint orders */
-			if (!o->IsType(OT_GOTO_STATION) || !Station::Get(o->GetDestination())->IsBuoy()) continue;
-
-			o->MakeGoToWaypoint(o->GetDestination());
-		}
 	}
 
 	AfterLoadLabelMaps();
@@ -1950,8 +1903,7 @@ void ReloadNewGRFData()
 	AfterLoadVehicles(false);
 	StartupEngines();
 	SetCachedEngineCounts();
-	/* update station and waypoint graphics */
-	AfterLoadWaypoints();
+	/* update station graphics */
 	AfterLoadStations();
 	/* Check and update house and town values */
 	UpdateHousesAndTowns();

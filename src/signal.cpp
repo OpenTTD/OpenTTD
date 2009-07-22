@@ -288,14 +288,6 @@ static SigFlags ExploreSegment(Owner owner)
 					}
 				}
 
-				if (GetRailTileType(tile) == RAIL_TILE_WAYPOINT) {
-					if (GetWaypointAxis(tile) != DiagDirToAxis(enterdir)) continue;
-					if (!(flags & SF_TRAIN) && HasVehicleOnPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
-					tile += TileOffsByDiagDir(exitdir);
-					/* enterdir and exitdir stay the same */
-					break;
-				}
-
 				TrackBits tracks = GetTrackBits(tile); // trackbits of tile
 				TrackBits tracks_masked = (TrackBits)(tracks & _enterdir_to_trackbits[enterdir]); // only incidating trackbits
 

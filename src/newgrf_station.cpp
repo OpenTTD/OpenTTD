@@ -272,30 +272,20 @@ uint32 GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, i
  */
 static TileIndex FindRailStationEnd(TileIndex tile, TileIndexDiff delta, bool check_type, bool check_axis)
 {
-	bool waypoint;
 	byte orig_type = 0;
 	Axis orig_axis = AXIS_X;
+	StationID sid = GetStationIndex(tile);
 
-	waypoint = IsTileType(tile, MP_RAILWAY);
-
-	if (waypoint) {
-		if (check_axis) orig_axis = GetWaypointAxis(tile);
-	} else {
-		if (check_type) orig_type = GetCustomStationSpecIndex(tile);
-		if (check_axis) orig_axis = GetRailStationAxis(tile);
-	}
+	if (check_type) orig_type = GetCustomStationSpecIndex(tile);
+	if (check_axis) orig_axis = GetRailStationAxis(tile);
 
 	while (true) {
 		TileIndex new_tile = TILE_ADD(tile, delta);
 
-		if (waypoint) {
-			if (!IsRailWaypointTile(new_tile)) break;
-			if (check_axis && GetWaypointAxis(new_tile) != orig_axis) break;
-		} else {
-			if (!IsRailwayStationTile(new_tile)) break;
-			if (check_type && GetCustomStationSpecIndex(new_tile) != orig_type) break;
-			if (check_axis && GetRailStationAxis(new_tile) != orig_axis) break;
-		}
+		if (!IsTileType(new_tile, MP_STATION) || GetStationIndex(new_tile) != sid) break;
+		if (!IsRailwayStation(new_tile) && !IsRailWaypoint(new_tile)) break;
+		if (check_type && GetCustomStationSpecIndex(new_tile) != orig_type) break;
+		if (check_axis && GetRailStationAxis(new_tile) != orig_axis) break;
 
 		tile = new_tile;
 	}
@@ -311,12 +301,11 @@ static uint32 GetPlatformInfoHelper(TileIndex tile, bool check_type, bool check_
 	int sy = TileY(FindRailStationEnd(tile, TileDiffXY( 0, -1), check_type, check_axis));
 	int ex = TileX(FindRailStationEnd(tile, TileDiffXY( 1,  0), check_type, check_axis)) + 1;
 	int ey = TileY(FindRailStationEnd(tile, TileDiffXY( 0,  1), check_type, check_axis)) + 1;
-	Axis axis = IsTileType(tile, MP_RAILWAY) ? GetWaypointAxis(tile) : GetRailStationAxis(tile);
 
 	tx -= sx; ex -= sx;
 	ty -= sy; ey -= sy;
 
-	return GetPlatformInfo(axis, IsTileType(tile, MP_RAILWAY) ? 2 : GetStationGfx(tile), ex, ey, tx, ty, centred);
+	return GetPlatformInfo(GetRailStationAxis(tile), GetStationGfx(tile), ex, ey, tx, ty, centred);
 }
 
 
@@ -330,7 +319,7 @@ static uint32 GetRailContinuationInfo(TileIndex tile)
 	static const Direction y_dir[8] = { DIR_SE, DIR_NW, DIR_SW, DIR_NE, DIR_S, DIR_W, DIR_E, DIR_N };
 	static const DiagDirection y_exits[8] = { DIAGDIR_SE, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NW, DIAGDIR_SE, DIAGDIR_NW };
 
-	Axis axis = IsTileType(tile, MP_RAILWAY) ? GetWaypointAxis(tile) : GetRailStationAxis(tile);
+	Axis axis = GetRailStationAxis(tile);
 
 	/* Choose appropriate lookup table to use */
 	const Direction *dir = axis == AXIS_X ? x_dir : y_dir;
@@ -450,12 +439,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 
 		case 0x42: return GetTerrainType(tile) | (GetRailType(tile) << 8);
 		case 0x43: return st->owner; // Station owner
-		case 0x44:
-			if (IsRailWaypointTile(tile)) {
-				return HasDepotReservation(tile) ? 7 : 4;
-			} else {
-				return HasStationReservation(tile) ? 7 : 4; // PBS status
-			}
+		case 0x44: return HasStationReservation(tile) ? 7 : 4; // PBS status
 		case 0x45:
 			if (!HasBit(_svc.valid, 2)) { _svc.v45 = GetRailContinuationInfo(tile); SetBit(_svc.valid, 2); }
 			return _svc.v45;
@@ -583,7 +567,7 @@ uint32 Waypoint::GetNewGRFVariable(const ResolverObject *object, byte variable, 
 {
 	switch (variable) {
 		case 0x48: return 0; // Accepted cargo types
-		case 0x8A: return HVOT_TRAIN;
+		case 0x8A: return HVOT_WAYPOINT;
 		case 0xF1: return 0; // airport type
 		case 0xF2: return 0; // truck stop status
 		case 0xF3: return 0; // bus stop status
@@ -944,20 +928,11 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 
 const StationSpec *GetStationSpec(TileIndex t)
 {
-	if (IsRailwayStationTile(t)) {
-		if (!IsCustomStationSpecIndex(t)) return NULL;
+	if (!IsCustomStationSpecIndex(t)) return NULL;
 
-		const BaseStation *st = BaseStation::GetByTile(t);
-		uint specindex = GetCustomStationSpecIndex(t);
-		return specindex < st->num_specs ? st->speclist[specindex].spec : NULL;
-	}
-
-	if (IsRailWaypointTile(t)) {
-		const BaseStation *st = BaseStation::GetByTile(t);
-		return st->num_specs != 0 ? st->speclist[1].spec : NULL;
-	}
-
-	return NULL;
+	const BaseStation *st = BaseStation::GetByTile(t);
+	uint specindex = GetCustomStationSpecIndex(t);
+	return specindex < st->num_specs ? st->speclist[specindex].spec : NULL;
 }
 
 

@@ -25,18 +25,14 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 	switch (::GetTileType(t)) {
 		default: break;
 		case MP_STATION:
+			if (IsBuoy(t) || IsRailWaypoint(t)) return OT_GOTO_WAYPOINT;
 			if (IsHangar(t)) return OT_GOTO_DEPOT;
-			if (IsBuoy(t)) return OT_GOTO_WAYPOINT;
 			return OT_GOTO_STATION;
 			break;
 		case MP_WATER:   if (::IsShipDepot(t)) return OT_GOTO_DEPOT; break;
 		case MP_ROAD:    if (::GetRoadTileType(t) == ROAD_TILE_DEPOT) return OT_GOTO_DEPOT; break;
 		case MP_RAILWAY:
-			switch (::GetRailTileType(t)) {
-				case RAIL_TILE_DEPOT:    return OT_GOTO_DEPOT;
-				case RAIL_TILE_WAYPOINT: return OT_GOTO_WAYPOINT;
-				default: break;
-			}
+			if (IsRailDepot(t)) return OT_GOTO_DEPOT;
 			break;
 	}
 
@@ -359,7 +355,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			order.MakeGoToWaypoint(::Vehicle::Get(vehicle_id)->type == VEH_TRAIN ? ::GetWaypointIndex(destination) : ::GetStationIndex(destination));
+			order.MakeGoToWaypoint(::GetStationIndex(destination));
 			break;
 
 		default:

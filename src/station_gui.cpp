@@ -143,7 +143,7 @@ protected:
 
 		const Station *st;
 		FOR_ALL_STATIONS(st) {
-			if (st->owner == owner || (st->owner == OWNER_NONE && !st->IsBuoy() && HasStationInUse(st->index, owner))) {
+			if (st->owner == owner || (st->owner == OWNER_NONE && HasStationInUse(st->index, owner))) {
 				if (this->facilities & st->facilities) { // only stations with selected facilities
 					int num_waiting_cargo = 0;
 					for (CargoID j = 0; j < NUM_CARGO; j++) {
@@ -378,7 +378,7 @@ public:
 
 			/* Do not do the complex check HasStationInUse here, it may be even false
 			 * when the order had been removed and the station list hasn't been removed yet */
-			assert(st->owner == owner || (st->owner == OWNER_NONE && !st->IsBuoy()));
+			assert(st->owner == owner || st->owner == OWNER_NONE);
 
 			SetDParam(0, st->index);
 			SetDParam(1, st->facilities);
@@ -409,7 +409,7 @@ public:
 
 				const Station *st = this->stations[id_v];
 				/* do not check HasStationInUse - it is slow and may be invalid */
-				assert(st->owner == (Owner)this->window_number || (st->owner == OWNER_NONE && !st->IsBuoy()));
+				assert(st->owner == (Owner)this->window_number || st->owner == OWNER_NONE);
 
 				if (_ctrl_pressed) {
 					ShowExtraViewPortWindow(st->xy);

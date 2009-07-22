@@ -1281,7 +1281,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				case MP_RAILWAY:
 					break;
 				case MP_STATION:
-					if (!IsRailwayStation(tile)) continue;
+					if (!IsRailwayStation(tile) && !IsRailWaypoint(tile)) continue;
 					break;
 				case MP_ROAD:
 					if (!IsLevelCrossing(tile)) continue;
@@ -1329,14 +1329,6 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			switch (tt) {
 				case MP_RAILWAY:
 					switch (GetRailTileType(tile)) {
-						case RAIL_TILE_WAYPOINT:
-							if (flags & DC_EXEC) {
-								/* notify YAPF about the track layout change */
-								YapfNotifyTrackLayoutChange(tile, GetRailWaypointTrack(tile));
-							}
-							cost.AddCost(RailConvertCost(type, totype));
-							break;
-
 						case RAIL_TILE_DEPOT:
 							if (flags & DC_EXEC) {
 								/* notify YAPF about the track layout change */
@@ -1500,9 +1492,6 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlag flags)
 
 		case RAIL_TILE_DEPOT:
 			return RemoveTrainDepot(tile, flags);
-
-		case RAIL_TILE_WAYPOINT:
-			return RemoveTrainWaypoint(tile, flags, false);
 
 		default:
 			return CMD_ERROR;
@@ -1906,7 +1895,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (HasSignals(ti->tile)) DrawSignals(ti->tile, rails);
 	} else {
-		/* draw depot/waypoint */
+		/* draw depot */
 		const DrawTileSprites *dts;
 		const DrawTileSeqStruct *dtss;
 		uint32 relocation;
@@ -1914,78 +1903,37 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
-		if (IsRailDepot(ti->tile)) {
-			if (IsInvisibilitySet(TO_BUILDINGS)) {
-				/* Draw rail instead of depot */
-				dts = &_depot_invisible_gfx_table[GetRailDepotDirection(ti->tile)];
-			} else {
-				dts = &_depot_gfx_table[GetRailDepotDirection(ti->tile)];
-			}
-
-			relocation = rti->total_offset;
-
-			image = dts->ground.sprite;
-			if (image != SPR_FLAT_GRASS_TILE) image += rti->total_offset;
-
-			/* adjust ground tile for desert
-			 * don't adjust for snow, because snow in depots looks weird */
-			if (IsSnowRailGround(ti->tile) && _settings_game.game_creation.landscape == LT_TROPIC) {
-				if (image != SPR_FLAT_GRASS_TILE) {
-					image += rti->snow_offset; // tile with tracks
-				} else {
-					image = SPR_FLAT_SNOWY_TILE; // flat ground
-				}
-			}
+		if (IsInvisibilitySet(TO_BUILDINGS)) {
+			/* Draw rail instead of depot */
+			dts = &_depot_invisible_gfx_table[GetRailDepotDirection(ti->tile)];
 		} else {
-			/* look for customization */
-			const StationSpec *statspec = GetStationSpec(ti->tile);
+			dts = &_depot_gfx_table[GetRailDepotDirection(ti->tile)];
+		}
 
-			if (statspec != NULL) {
-				const BaseStation *st = BaseStation::GetByTile(ti->tile);
-				uint gfx = 2;
+		relocation = rti->total_offset;
 
-				if (HasBit(statspec->callbackmask, CBM_STATION_SPRITE_LAYOUT)) {
-					uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0, 0, statspec, st, ti->tile);
-					if (callback != CALLBACK_FAILED) gfx = callback;
-				}
+		image = dts->ground.sprite;
+		if (image != SPR_FLAT_GRASS_TILE) image += rti->total_offset;
 
-				if (statspec->renderdata == NULL) {
-					dts = GetStationTileLayout(STATION_RAIL, gfx);
-				} else {
-					dts = &statspec->renderdata[(gfx < statspec->tiles ? gfx : 0) + GetWaypointAxis(ti->tile)];
-				}
-
-				if (dts != NULL && dts->seq != NULL) {
-					relocation = GetCustomStationRelocation(statspec, st, ti->tile);
-
-					image = dts->ground.sprite;
-					if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
-						image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
-						image += rti->custom_ground_offset;
-					} else {
-						image += rti->total_offset;
-					}
-
-					pal = dts->ground.pal;
-				} else {
-					goto default_waypoint;
-				}
+		/* adjust ground tile for desert
+			* don't adjust for snow, because snow in depots looks weird */
+		if (IsSnowRailGround(ti->tile) && _settings_game.game_creation.landscape == LT_TROPIC) {
+			if (image != SPR_FLAT_GRASS_TILE) {
+				image += rti->snow_offset; // tile with tracks
 			} else {
-default_waypoint:
-				/* There is no custom layout, fall back to the default graphics */
-				dts = GetStationTileLayout(STATION_WAYPOINT, GetWaypointAxis(ti->tile));
-				relocation = 0;
-				image = dts->ground.sprite + rti->total_offset;
-				if (IsSnowRailGround(ti->tile)) image += rti->snow_offset;
+				image = SPR_FLAT_SNOWY_TILE; // flat ground
 			}
 		}
 
 		DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, _drawtile_track_palette));
 
 		/* PBS debugging, draw reserved tracks darker */
-		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasDepotReservation(ti->tile) &&
-				(!IsRailDepot(ti->tile) || GetRailDepotDirection(ti->tile) == DIAGDIR_SW || GetRailDepotDirection(ti->tile) == DIAGDIR_SE)) {
-			DrawGroundSprite(GetWaypointAxis(ti->tile) == AXIS_X ? rti->base_sprites.single_y : rti->base_sprites.single_x, PALETTE_CRASH);
+		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasDepotReservation(ti->tile)) {
+			switch (GetRailDepotDirection(ti->tile)) {
+				case DIAGDIR_SW: DrawGroundSprite(rti->base_sprites.single_y, PALETTE_CRASH); break;
+				case DIAGDIR_SE: DrawGroundSprite(rti->base_sprites.single_x, PALETTE_CRASH); break;
+				default: break;
+			}
 		}
 
 		if (HasCatenaryDrawn(GetRailType(ti->tile))) DrawCatenary(ti);
@@ -2292,10 +2240,6 @@ static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, 
 			trackbits = DiagDirToDiagTrackBits(dir);
 			break;
 		}
-
-		case RAIL_TILE_WAYPOINT:
-			trackbits = GetRailWaypointBits(tile);
-			break;
 	}
 
 	return CombineTrackStatus(TrackBitsToTrackdirBits(trackbits), red_signals);
@@ -2303,11 +2247,10 @@ static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, 
 
 static bool ClickTile_Track(TileIndex tile)
 {
-	switch (GetRailTileType(tile)) {
-		case RAIL_TILE_DEPOT:    ShowDepotWindow(tile, VEH_TRAIN);              return true;
-		case RAIL_TILE_WAYPOINT: ShowWaypointWindow(Waypoint::GetByTile(tile)); return true;
-		default: return false;
-	}
+	if (!IsRailDepot(tile)) return false;
+
+	ShowDepotWindow(tile, VEH_TRAIN);
+	return true;
 }
 
 static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
@@ -2387,10 +2330,8 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 			td->str = STR_RAILROAD_TRAIN_DEPOT;
 			break;
 
-		case RAIL_TILE_WAYPOINT:
 		default:
-			td->str = STR_LANDINFO_WAYPOINT;
-			break;
+			NOT_REACHED();
 	}
 }
 
@@ -2579,22 +2520,9 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlag flags, uint
 
 		/* allow terraforming */
 		return CommandCost(EXPENSES_CONSTRUCTION, was_water ? _price.clear_water : (Money)0);
-	} else {
-		if (_settings_game.construction.build_on_slopes && AutoslopeEnabled()) {
-			switch (GetRailTileType(tile)) {
-				case RAIL_TILE_WAYPOINT: {
-					CommandCost cost = TestAutoslopeOnRailTile(tile, flags, z_old, tileh_old, z_new, tileh_new, GetRailWaypointBits(tile));
-					if (!CmdFailed(cost)) return cost; // allow autoslope
-					break;
-				}
-
-				case RAIL_TILE_DEPOT:
-					if (AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRailDepotDirection(tile))) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
-					break;
-
-				default: NOT_REACHED();
-			}
-		}
+	} else if (_settings_game.construction.build_on_slopes && AutoslopeEnabled() &&
+			AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRailDepotDirection(tile))) {
+		return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 	}
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }

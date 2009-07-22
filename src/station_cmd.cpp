@@ -197,7 +197,6 @@ enum StationNaming {
 	STATIONNAMING_AIRPORT,
 	STATIONNAMING_OILRIG,
 	STATIONNAMING_DOCK,
-	STATIONNAMING_BUOY,
 	STATIONNAMING_HELIPORT,
 };
 
@@ -239,7 +238,6 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 		1U << M(STR_SV_STNAME_AIRPORT),          // STATIONNAMING_AIRPORT
 		1U << M(STR_SV_STNAME_OILFIELD),         // STATIONNAMING_OILRIG
 		1U << M(STR_SV_STNAME_DOCKS),            // STATIONNAMING_DOCK
-		0x1FFU << M(STR_SV_STNAME_BUOY_1),       // STATIONNAMING_BUOY
 		1U << M(STR_SV_STNAME_HELIPORT),         // STATIONNAMING_HELIPORT
 	};
 
@@ -266,23 +264,21 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 		}
 	}
 
-	if (name_class != STATIONNAMING_BUOY) {
-		TileIndex indtile = tile;
-		StationNameInformation sni = { free_names, indtypes };
-		if (CircularTileSearch(&indtile, 7, FindNearIndustryName, &sni)) {
-			/* An industry has been found nearby */
-			IndustryType indtype = GetIndustryType(indtile);
-			const IndustrySpec *indsp = GetIndustrySpec(indtype);
-			/* STR_NULL means it only disables oil rig/mines */
-			if (indsp->station_name != STR_NULL) {
-				st->indtype = indtype;
-				return STR_SV_STNAME_FALLBACK;
-			}
+	TileIndex indtile = tile;
+	StationNameInformation sni = { free_names, indtypes };
+	if (CircularTileSearch(&indtile, 7, FindNearIndustryName, &sni)) {
+		/* An industry has been found nearby */
+		IndustryType indtype = GetIndustryType(indtile);
+		const IndustrySpec *indsp = GetIndustrySpec(indtype);
+		/* STR_NULL means it only disables oil rig/mines */
+		if (indsp->station_name != STR_NULL) {
+			st->indtype = indtype;
+			return STR_SV_STNAME_FALLBACK;
 		}
-
-		/* Oil rigs/mines name could be marked not free by looking for a near by industry. */
-		free_names = sni.free_names;
 	}
+
+	/* Oil rigs/mines name could be marked not free by looking for a near by industry. */
+	free_names = sni.free_names;
 
 	/* check default names */
 	uint32 tmp = free_names & _gen_station_name_bits[name_class];
@@ -540,9 +536,6 @@ CargoArray GetAcceptanceAroundTiles(TileIndex tile, int w, int h, int rad)
  */
 static void UpdateStationAcceptance(Station *st, bool show_msg)
 {
-	/* Don't update acceptance for a buoy */
-	if (st->IsBuoy()) return;
-
 	/* old accepted goods types */
 	uint old_acc = GetAcceptanceMask(st);
 
@@ -1963,31 +1956,23 @@ CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 
 	/* allocate and initialize new station */
-	if (!Station::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
+	if (!Waypoint::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 
 	if (flags & DC_EXEC) {
-		Station *st = new Station(tile);
+		Waypoint *st = new Waypoint(tile);
 
-		st->town = ClosestTownFromTile(tile, UINT_MAX);
-		st->string_id = GenerateStationName(st, tile, STATIONNAMING_BUOY);
+		st->string_id = STR_SV_STNAME_BUOY;
 
-		if (Company::IsValidID(_current_company)) {
-			SetBit(st->town->have_ratings, _current_company);
-		}
-		st->dock_tile = tile;
 		st->facilities |= FACIL_DOCK;
-		/* Buoys are marked in the Station struct by this flag. Yes, it is this
-		 * braindead.. */
-		st->had_vehicle_of_type |= HVOT_BUOY;
 		st->owner = OWNER_NONE;
 
 		st->build_date = _date;
 
+		if (st->town == NULL) MakeDefaultWaypointName(st);
+
 		MakeBuoy(tile, st->index, GetWaterClass(tile));
 
 		st->UpdateVirtCoord();
-		UpdateStationAcceptance(st, false);
-		st->RecomputeIndustriesNear();
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_SHIPS);
 	}
@@ -2008,7 +1993,7 @@ bool HasStationInUse(StationID station, CompanyID company)
 		if (company == INVALID_COMPANY || v->owner == company) {
 			const Order *order;
 			FOR_VEHICLE_ORDERS(v, order) {
-				if (order->IsType(OT_GOTO_STATION) && order->GetDestination() == station) {
+				if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station) {
 					return true;
 				}
 			}
@@ -2028,18 +2013,14 @@ static CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
 	/* XXX: strange stuff, allow clearing as invalid company when clearing landscape */
 	if (!Company::IsValidID(_current_company) && !(flags & DC_BANKRUPT)) return_cmd_error(INVALID_STRING_ID);
 
-	Station *st = Station::GetByTile(tile);
+	Waypoint *st = Waypoint::GetByTile(tile);
 
 	if (HasStationInUse(st->index, INVALID_COMPANY)) return_cmd_error(STR_BUOY_IS_IN_USE);
 	/* remove the buoy if there is a ship on tile when company goes bankrupt... */
 	if (!(flags & DC_BANKRUPT) && !EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		st->dock_tile = INVALID_TILE;
-		/* Buoys are marked in the Station struct by this flag. Yes, it is this
-		 * braindead.. */
 		st->facilities &= ~FACIL_DOCK;
-		st->had_vehicle_of_type &= ~HVOT_BUOY;
 
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_SHIPS);
 
@@ -2050,8 +2031,7 @@ static CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
 		MarkTileDirtyByTile(tile);
 
 		st->UpdateVirtCoord();
-		st->RecomputeIndustriesNear();
-		DeleteStationIfEmpty(st);
+		st->delete_ctr = 0;
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_truck_station);
@@ -2227,7 +2207,7 @@ static void DrawTile_Station(TileInfo *ti)
 	int32 total_offset;
 	int32 custom_ground_offset;
 
-	if (IsRailwayStation(ti->tile)) {
+	if (IsRailwayStation(ti->tile) || IsRailWaypoint(ti->tile)) {
 		const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 		roadtypes = ROADTYPES_NONE;
 		total_offset = rti->total_offset;
@@ -2238,7 +2218,7 @@ static void DrawTile_Station(TileInfo *ti)
 		custom_ground_offset = 0;
 	}
 	uint32 relocation = 0;
-	const Station *st = NULL;
+	const BaseStation *st = NULL;
 	const StationSpec *statspec = NULL;
 	Owner owner = GetTileOwner(ti->tile);
 
@@ -2256,7 +2236,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 	if (IsCustomStationSpecIndex(ti->tile)) {
 		/* look for customization */
-		st = Station::GetByTile(ti->tile);
+		st = BaseStation::GetByTile(ti->tile);
 		statspec = st->speclist[GetCustomStationSpecIndex(ti->tile)].spec;
 
 		if (statspec != NULL) {
@@ -2304,18 +2284,23 @@ static void DrawTile_Station(TileInfo *ti)
 		DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, palette));
 
 		/* PBS debugging, draw reserved tracks darker */
-		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && IsRailwayStation(ti->tile) && HasStationReservation(ti->tile)) {
+		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && (IsRailwayStation(ti->tile) || IsRailWaypoint(ti->tile)) && HasStationReservation(ti->tile)) {
 			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 			DrawGroundSprite(GetRailStationAxis(ti->tile) == AXIS_X ? rti->base_sprites.single_y : rti->base_sprites.single_x, PALETTE_CRASH);
 		}
 	}
 
-	if (IsRailwayStation(ti->tile) && HasCatenaryDrawn(GetRailType(ti->tile)) && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);
+	if ((IsRailwayStation(ti->tile) || IsRailWaypoint(ti->tile)) && HasCatenaryDrawn(GetRailType(ti->tile)) && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);
 
 	if (HasBit(roadtypes, ROADTYPE_TRAM)) {
 		Axis axis = GetRoadStopDir(ti->tile) == DIAGDIR_NE ? AXIS_X : AXIS_Y;
 		DrawGroundSprite((HasBit(roadtypes, ROADTYPE_ROAD) ? SPR_TRAMWAY_OVERLAY : SPR_TRAMWAY_TRAM) + (axis ^ 1), PAL_NONE);
 		DrawTramCatenary(ti, axis == AXIS_X ? ROAD_X : ROAD_Y);
+	}
+
+	if (IsRailWaypoint(ti->tile)) {
+		/* Don't offset the waypoint graphics; they're always the same. */
+		total_offset = 0;
 	}
 
 	const DrawTileSeqStruct *dtss;
@@ -2408,7 +2393,7 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 			}
 		}
 	}
-	td->build_date = Station::GetByTile(tile)->build_date;
+	td->build_date = BaseStation::GetByTile(tile)->build_date;
 
 	const StationSpec *spec = GetStationSpec(tile);
 
@@ -2425,15 +2410,16 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 	StringID str;
 	switch (GetStationType(tile)) {
 		default: NOT_REACHED();
-		case STATION_RAIL:    str = STR_STATION_DESCRIPTION_RAILROAD_STATION; break;
+		case STATION_RAIL:     str = STR_STATION_DESCRIPTION_RAILROAD_STATION; break;
 		case STATION_AIRPORT:
 			str = (IsHangar(tile) ? STR_STATION_DESCRIPTION_AIRCRAFT_HANGAR : STR_STATION_DESCRIPTION_AIRPORT);
 			break;
-		case STATION_TRUCK:   str = STR_STATION_DESCRIPTION_TRUCK_LOADING_AREA; break;
-		case STATION_BUS:     str = STR_STATION_DESCRIPTION_BUS_STATION; break;
-		case STATION_OILRIG:  str = STR_INDUSTRY_NAME_OIL_RIG; break;
-		case STATION_DOCK:    str = STR_STATION_DESCRIPTION_SHIP_DOCK; break;
-		case STATION_BUOY:    str = STR_STATION_DESCRIPTION_BUOY; break;
+		case STATION_TRUCK:    str = STR_STATION_DESCRIPTION_TRUCK_LOADING_AREA; break;
+		case STATION_BUS:      str = STR_STATION_DESCRIPTION_BUS_STATION; break;
+		case STATION_OILRIG:   str = STR_INDUSTRY_NAME_OIL_RIG; break;
+		case STATION_DOCK:     str = STR_STATION_DESCRIPTION_SHIP_DOCK; break;
+		case STATION_BUOY:     str = STR_STATION_DESCRIPTION_BUOY; break;
+		case STATION_WAYPOINT: str = STR_LANDINFO_WAYPOINT; break;
 	}
 	td->str = str;
 }
@@ -2445,7 +2431,7 @@ static TrackStatus GetTileTrackStatus_Station(TileIndex tile, TransportType mode
 
 	switch (mode) {
 		case TRANSPORT_RAIL:
-			if (IsRailwayStation(tile) && !IsStationTileBlocked(tile)) {
+			if ((IsRailwayStation(tile) || IsRailWaypoint(tile)) && !IsStationTileBlocked(tile)) {
 				trackbits = TrackToTrackBits(GetRailStationTrack(tile));
 			}
 			break;
@@ -2551,10 +2537,14 @@ static void AnimateTile_Station(TileIndex tile)
 
 static bool ClickTile_Station(TileIndex tile)
 {
-	if (IsHangar(tile)) {
+	const BaseStation *st = BaseStation::GetByTile(tile);
+
+	if (st->facilities & FACIL_WAYPOINT) {
+		ShowWaypointWindow(Waypoint::From(st));
+	} else if (IsHangar(tile)) {
 		ShowDepotWindow(tile, VEH_AIRCRAFT);
 	} else {
-		ShowStationViewWindow(GetStationIndex(tile));
+		ShowStationViewWindow(st->index);
 	}
 	return true;
 }
@@ -2650,14 +2640,14 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
  * @param st the station receiving the tick.
  * @return true if the station is still valid (wasn't deleted)
  */
-static bool StationHandleBigTick(Station *st)
+static bool StationHandleBigTick(BaseStation *st)
 {
-	UpdateStationAcceptance(st, true);
-
-	if (st->facilities == 0 && ++st->delete_ctr >= 8) {
+	if ((st->facilities & ~FACIL_WAYPOINT) == 0 && ++st->delete_ctr >= 8) {
 		delete st;
 		return false;
 	}
+
+	if ((st->facilities & FACIL_WAYPOINT) == 0) UpdateStationAcceptance(Station::From(st), true);
 
 	return true;
 }
@@ -2778,23 +2768,23 @@ static void UpdateStationRating(Station *st)
 }
 
 /* called for every station each tick */
-static void StationHandleSmallTick(Station *st)
+static void StationHandleSmallTick(BaseStation *st)
 {
-	if (st->facilities == 0) return;
+	if ((st->facilities & FACIL_WAYPOINT) != 0 || st->facilities == 0) return;
 
 	byte b = st->delete_ctr + 1;
 	if (b >= 185) b = 0;
 	st->delete_ctr = b;
 
-	if (b == 0) UpdateStationRating(st);
+	if (b == 0) UpdateStationRating(Station::From(st));
 }
 
 void OnTick_Station()
 {
 	if (_game_mode == GM_EDITOR) return;
 
-	Station *st;
-	FOR_ALL_STATIONS(st) {
+	BaseStation *st;
+	FOR_ALL_BASE_STATIONS(st) {
 		StationHandleSmallTick(st);
 
 		/* Run 250 tick interval trigger for station animation.
@@ -2884,7 +2874,7 @@ CommandCost CmdRenameStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 }
 
 /**
- * Find all (non-buoy) stations around a rectangular producer (industry, house, headquarter, ...)
+ * Find all stations around a rectangular producer (industry, house, headquarter, ...)
  *
  * @param tile North tile of producer
  * @param w_prod X extent of producer
@@ -2903,8 +2893,7 @@ void FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod, StationList
 			if (cur_tile == INVALID_TILE || !IsTileType(cur_tile, MP_STATION)) continue;
 
 			Station *st = Station::GetByTile(cur_tile);
-
-			if (st->IsBuoy()) continue; // bouys don't accept cargo
+			if (st == NULL) continue;
 
 			if (_settings_game.station.modified_catchment) {
 				int rad = st->GetCatchmentRadius();
@@ -3120,12 +3109,13 @@ static CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 	if (flags & DC_AUTO) {
 		switch (GetStationType(tile)) {
 			default: break;
-			case STATION_RAIL:    return_cmd_error(STR_ERROR_MUST_DEMOLISH_RAILROAD);
-			case STATION_AIRPORT: return_cmd_error(STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST);
-			case STATION_TRUCK:   return_cmd_error(HasTileRoadType(tile, ROADTYPE_TRAM) ? STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST : STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST);
-			case STATION_BUS:     return_cmd_error(HasTileRoadType(tile, ROADTYPE_TRAM) ? STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST : STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST);
-			case STATION_BUOY:    return_cmd_error(STR_ERROR_BUOY_IN_THE_WAY);
-			case STATION_DOCK:    return_cmd_error(STR_ERROR_MUST_DEMOLISH_DOCK_FIRST);
+			case STATION_RAIL:     return_cmd_error(STR_ERROR_MUST_DEMOLISH_RAILROAD);
+			case STATION_WAYPOINT: return_cmd_error(STR_ERROR_BUILDING_MUST_BE_DEMOLISHED);
+			case STATION_AIRPORT:  return_cmd_error(STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST);
+			case STATION_TRUCK:    return_cmd_error(HasTileRoadType(tile, ROADTYPE_TRAM) ? STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST : STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST);
+			case STATION_BUS:      return_cmd_error(HasTileRoadType(tile, ROADTYPE_TRAM) ? STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST : STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST);
+			case STATION_BUOY:     return_cmd_error(STR_ERROR_BUOY_IN_THE_WAY);
+			case STATION_DOCK:     return_cmd_error(STR_ERROR_MUST_DEMOLISH_DOCK_FIRST);
 			case STATION_OILRIG:
 				SetDParam(0, STR_INDUSTRY_NAME_OIL_RIG);
 				return_cmd_error(STR_OBJECT_IN_THE_WAY);
@@ -3133,8 +3123,9 @@ static CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 	}
 
 	switch (GetStationType(tile)) {
-		case STATION_RAIL:    return RemoveRailroadStation(tile, flags);
-		case STATION_AIRPORT: return RemoveAirport(tile, flags);
+		case STATION_RAIL:     return RemoveRailroadStation(tile, flags);
+		case STATION_WAYPOINT: return RemoveTrainWaypoint(tile, flags, false);
+		case STATION_AIRPORT:  return RemoveAirport(tile, flags);
 		case STATION_TRUCK:
 			if (IsDriveThroughStopTile(tile) && !CanRemoveRoadWithStop(tile, flags))
 				return_cmd_error(STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST);
@@ -3143,8 +3134,8 @@ static CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 			if (IsDriveThroughStopTile(tile) && !CanRemoveRoadWithStop(tile, flags))
 				return_cmd_error(STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST);
 			return RemoveRoadStop(tile, flags);
-		case STATION_BUOY:    return RemoveBuoy(tile, flags);
-		case STATION_DOCK:    return RemoveDock(tile, flags);
+		case STATION_BUOY:     return RemoveBuoy(tile, flags);
+		case STATION_DOCK:     return RemoveDock(tile, flags);
 		default: break;
 	}
 
@@ -3159,6 +3150,7 @@ static CommandCost TerraformTile_Station(TileIndex tile, DoCommandFlag flags, ui
 		 */
 		if (!IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new))) {
 			switch (GetStationType(tile)) {
+				case STATION_WAYPOINT:
 				case STATION_RAIL: {
 					DiagDirection direction = AxisToDiagDir(GetRailStationAxis(tile));
 					if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, direction)) break;

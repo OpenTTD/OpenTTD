@@ -1185,8 +1185,10 @@ STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Heading
 STR_GO_TO_WAYPOINT                                              :Go via {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Go non-stop via {WAYPOINT}
 
-STR_WAYPOINTNAME_CITY                                           :Waypoint {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :Waypoint {TOWN} #{COMMA}
+STR_WAYPOINTNAME_CITY                                           :{TOWN} Waypoint
+STR_WAYPOINTNAME_CITY_SERIAL                                    :{TOWN} Waypoint #{COMMA}
+STR_BUOYNAME_CITY                                               :{TOWN} Buoy
+STR_BUOYNAME_CITY_SERIAL                                        :{TOWN} Buoy #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Waypoint
 
 STR_WAYPOINT                                                    :{WHITE}Waypoint
@@ -2077,15 +2079,9 @@ STR_SV_STNAME_AIRPORT                                           :{STRING1} Airpo
 STR_SV_STNAME_OILFIELD                                          :{STRING1} Oilfield
 STR_SV_STNAME_MINES                                             :{STRING1} Mines
 STR_SV_STNAME_DOCKS                                             :{STRING1} Docks
-STR_SV_STNAME_BUOY_1                                            :{STRING1} Buoy 1
-STR_SV_STNAME_BUOY_2                                            :{STRING1} Buoy 2
-STR_SV_STNAME_BUOY_3                                            :{STRING1} Buoy 3
-STR_SV_STNAME_BUOY_4                                            :{STRING1} Buoy 4
-STR_SV_STNAME_BUOY_5                                            :{STRING1} Buoy 5
-STR_SV_STNAME_BUOY_6                                            :{STRING1} Buoy 6
-STR_SV_STNAME_BUOY_7                                            :{STRING1} Buoy 7
-STR_SV_STNAME_BUOY_8                                            :{STRING1} Buoy 8
-STR_SV_STNAME_BUOY_9                                            :{STRING1} Buoy 9
+STR_SV_STNAME_BUOY                                              :{STRING2}
+STR_SV_STNAME_WAYPOINT                                          :{STRING2}
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING1} Annexe
 STR_SV_STNAME_SIDINGS                                           :{STRING1} Sidings
 STR_SV_STNAME_BRANCH                                            :{STRING1} Branch

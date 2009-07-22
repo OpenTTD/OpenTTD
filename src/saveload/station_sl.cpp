@@ -4,27 +4,98 @@
 
 #include "../stdafx.h"
 #include "../station_base.h"
+#include "../waypoint.h"
 #include "../roadstop_base.h"
+#include "../order_base.h"
+#include "../vehicle_base.h"
 #include "../core/bitmath_func.hpp"
 #include "../core/alloc_func.hpp"
 #include "../variables.h"
 #include "../newgrf_station.h"
 
 #include "saveload.h"
+#include "table/strings.h"
 
+/**
+ * Update the buoy orders to be waypoint orders.
+ * @param o the order 'list' to check.
+ */
+static void UpdateWaypointOrder(Order *o)
+{
+	if (!o->IsType(OT_GOTO_STATION)) return;
+
+	const Station *st = Station::Get(o->GetDestination());
+	if ((st->had_vehicle_of_type & HVOT_WAYPOINT) == 0) return;
+
+	o->MakeGoToWaypoint(o->GetDestination());
+}
+
+/**
+ * Perform all steps to upgrade from the old station buoys to the new version
+ * that uses waypoints. This includes some old saveload mechanics.
+ */
+void MoveBuoysToWaypoints()
+{
+	/* Buoy orders become waypoint orders */
+	OrderList *ol;
+	FOR_ALL_ORDER_LISTS(ol) {
+		if (ol->GetFirstSharedVehicle()->type != VEH_SHIP) continue;
+
+		for (Order *o = ol->GetFirstOrder(); o != NULL; o = o->next) UpdateWaypointOrder(o);
+	}
+
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->type != VEH_SHIP) continue;
+
+		UpdateWaypointOrder(&v->current_order);
+	}
+
+	/* Now make the stations waypoints */
+	Station *st;
+	FOR_ALL_STATIONS(st) {
+		if ((st->had_vehicle_of_type & HVOT_WAYPOINT) == 0) continue;
+
+		StationID index    = st->index;
+		TileIndex xy       = st->xy;
+		Town *town         = st->town;
+		StringID string_id = st->string_id;
+		char *name         = st->name;
+		Date build_date    = st->build_date;
+
+		/* Delete the station, so we can make it a real waypoint. */
+		delete st;
+
+		Waypoint *wp = new (index) Waypoint(xy);
+		wp->town       = town;
+		wp->string_id  = STR_SV_STNAME_BUOY;
+		wp->name       = name;
+		wp->delete_ctr = 0; // Just reset delete counter for once.
+		wp->build_date = build_date;
+		wp->owner      = OWNER_NONE;
+
+		if (IsInsideBS(string_id, STR_SV_STNAME_BUOY, 9)) wp->town_cn = string_id - STR_SV_STNAME_BUOY;
+
+		if (IsBuoyTile(xy) && GetStationIndex(xy) == index) {
+			wp->facilities |= FACIL_DOCK;
+		}
+	}
+}
 
 void AfterLoadStations()
 {
 	/* Update the speclists of all stations to point to the currently loaded custom stations. */
-	Station *st;
-	FOR_ALL_STATIONS(st) {
+	BaseStation *st;
+	FOR_ALL_BASE_STATIONS(st) {
 		for (uint i = 0; i < st->num_specs; i++) {
 			if (st->speclist[i].grfid == 0) continue;
 
 			st->speclist[i].spec = GetCustomStationSpecByGrf(st->speclist[i].grfid, st->speclist[i].localidx, NULL);
 		}
 
-		for (CargoID c = 0; c < NUM_CARGO; c++) st->goods[c].cargo.InvalidateCache();
+		if (Station::IsExpected(st)) {
+			for (CargoID c = 0; c < NUM_CARGO; c++) Station::From(st)->goods[c].cargo.InvalidateCache();
+		}
 
 		StationUpdateAnimTriggers(st);
 	}
@@ -48,7 +119,7 @@ static const SaveLoad _roadstop_desc[] = {
 	SLE_END()
 };
 
-static const SaveLoad _station_desc[] = {
+static const SaveLoad _old_station_desc[] = {
 	SLE_CONDVAR(Station, xy,                         SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
 	SLE_CONDVAR(Station, xy,                         SLE_UINT32,                  6, SL_MAX_VERSION),
 	SLE_CONDNULL(4, 0, 5),  ///< bus/lorry tile
@@ -145,66 +216,54 @@ const SaveLoad *GetGoodsDesc()
 }
 
 
-static void SaveLoad_STNS(Station *st)
-{
-	SlObject(st, _station_desc);
-
-	_waiting_acceptance = 0;
-
-	uint num_cargo = CheckSavegameVersion(55) ? 12 : NUM_CARGO;
-	for (CargoID i = 0; i < num_cargo; i++) {
-		GoodsEntry *ge = &st->goods[i];
-		SlObject(ge, GetGoodsDesc());
-		if (CheckSavegameVersion(68)) {
-			SB(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE, 1, HasBit(_waiting_acceptance, 15));
-			if (GB(_waiting_acceptance, 0, 12) != 0) {
-				/* Don't construct the packet with station here, because that'll fail with old savegames */
-				CargoPacket *cp = new CargoPacket();
-				/* In old versions, enroute_from used 0xFF as INVALID_STATION */
-				cp->source          = (CheckSavegameVersion(7) && _cargo_source == 0xFF) ? INVALID_STATION : _cargo_source;
-				cp->count           = GB(_waiting_acceptance, 0, 12);
-				cp->days_in_transit = _cargo_days;
-				cp->feeder_share    = _cargo_feeder_share;
-				cp->source_xy       = _cargo_source_xy;
-				cp->days_in_transit = _cargo_days;
-				cp->feeder_share    = _cargo_feeder_share;
-				SB(ge->acceptance_pickup, GoodsEntry::PICKUP, 1, 1);
-				ge->cargo.Append(cp);
-			}
-		}
-	}
-
-	if (st->num_specs != 0) {
-		/* Allocate speclist memory when loading a game */
-		if (st->speclist == NULL) st->speclist = CallocT<StationSpecList>(st->num_specs);
-		for (uint i = 0; i < st->num_specs; i++) {
-			SlObject(&st->speclist[i], _station_speclist_desc);
-		}
-	}
-}
-
-static void Save_STNS()
-{
-	Station *st;
-	/* Write the stations */
-	FOR_ALL_STATIONS(st) {
-		SlSetArrayIndex(st->index);
-		SlAutolength((AutolengthProc*)SaveLoad_STNS, st);
-	}
-}
-
 static void Load_STNS()
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		Station *st = new (index) Station();
 
-		SaveLoad_STNS(st);
+		SlObject(st, _old_station_desc);
+
+		_waiting_acceptance = 0;
+
+		uint num_cargo = CheckSavegameVersion(55) ? 12 : NUM_CARGO;
+		for (CargoID i = 0; i < num_cargo; i++) {
+			GoodsEntry *ge = &st->goods[i];
+			SlObject(ge, GetGoodsDesc());
+			if (CheckSavegameVersion(68)) {
+				SB(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE, 1, HasBit(_waiting_acceptance, 15));
+				if (GB(_waiting_acceptance, 0, 12) != 0) {
+					/* Don't construct the packet with station here, because that'll fail with old savegames */
+					CargoPacket *cp = new CargoPacket();
+					/* In old versions, enroute_from used 0xFF as INVALID_STATION */
+					cp->source          = (CheckSavegameVersion(7) && _cargo_source == 0xFF) ? INVALID_STATION : _cargo_source;
+					cp->count           = GB(_waiting_acceptance, 0, 12);
+					cp->days_in_transit = _cargo_days;
+					cp->feeder_share    = _cargo_feeder_share;
+					cp->source_xy       = _cargo_source_xy;
+					cp->days_in_transit = _cargo_days;
+					cp->feeder_share    = _cargo_feeder_share;
+					SB(ge->acceptance_pickup, GoodsEntry::PICKUP, 1, 1);
+					ge->cargo.Append(cp);
+				}
+			}
+		}
+
+		if (st->num_specs != 0) {
+			/* Allocate speclist memory when loading a game */
+			st->speclist = CallocT<StationSpecList>(st->num_specs);
+			for (uint i = 0; i < st->num_specs; i++) {
+				SlObject(&st->speclist[i], _station_speclist_desc);
+			}
+		}
 	}
 }
 
 void Ptrs_STNS()
 {
+	/* Don't run when savegame version is higher than or equal to 123. */
+	if (!CheckSavegameVersion(123)) return;
+
 	Station *st;
 	FOR_ALL_STATIONS(st) {
 		if (!CheckSavegameVersion(68)) {
@@ -213,10 +272,146 @@ void Ptrs_STNS()
 				SlObject(ge, GetGoodsDesc());
 			}
 		}
-		SlObject(st, _station_desc);
+		SlObject(st, _old_station_desc);
 	}
 }
 
+
+static const SaveLoad _base_station_desc[] = {
+	      SLE_VAR(BaseStation, xy,                     SLE_UINT32),
+	      SLE_REF(BaseStation, town,                   REF_TOWN),
+	      SLE_VAR(BaseStation, string_id,              SLE_STRINGID),
+	      SLE_STR(BaseStation, name,                   SLE_STR, 0),
+	      SLE_VAR(BaseStation, delete_ctr,             SLE_UINT8),
+	      SLE_VAR(BaseStation, owner,                  SLE_UINT8),
+	      SLE_VAR(BaseStation, facilities,             SLE_UINT8),
+	      SLE_VAR(BaseStation, build_date,             SLE_INT32),
+
+	/* Used by newstations for graphic variations */
+	      SLE_VAR(BaseStation, random_bits,            SLE_UINT16),
+	      SLE_VAR(BaseStation, waiting_triggers,       SLE_UINT8),
+	      SLE_VAR(BaseStation, num_specs,              SLE_UINT8),
+
+	      SLE_END()
+};
+
+static const SaveLoad _station_desc[] = {
+	SLE_WRITEBYTE(Station, facilities,                 FACIL_NONE),
+	SLE_ST_INCLUDEX(),
+
+	      SLE_VAR(Station, train_tile,                 SLE_UINT32),
+	      SLE_VAR(Station, trainst_w,                  SLE_UINT8),
+	      SLE_VAR(Station, trainst_h,                  SLE_UINT8),
+
+	      SLE_REF(Station, bus_stops,                  REF_ROADSTOPS),
+	      SLE_REF(Station, truck_stops,                REF_ROADSTOPS),
+	      SLE_VAR(Station, dock_tile,                  SLE_UINT32),
+	      SLE_VAR(Station, airport_tile,               SLE_UINT32),
+	      SLE_VAR(Station, airport_type,               SLE_UINT8),
+	      SLE_VAR(Station, airport_flags,              SLE_UINT64),
+
+	      SLE_VAR(Station, indtype,                    SLE_UINT8),
+
+	      SLE_VAR(Station, time_since_load,            SLE_UINT8),
+	      SLE_VAR(Station, time_since_unload,          SLE_UINT8),
+	      SLE_VAR(Station, last_vehicle_type,          SLE_UINT8),
+	      SLE_VAR(Station, had_vehicle_of_type,        SLE_UINT8),
+	      SLE_LST(Station, loading_vehicles,           REF_VEHICLE),
+
+	      SLE_END()
+};
+
+static const SaveLoad _waypoint_desc[] = {
+	SLE_WRITEBYTE(Waypoint, facilities,                FACIL_WAYPOINT),
+	SLE_ST_INCLUDEX(),
+
+	      SLE_VAR(Waypoint, town_cn,                   SLE_UINT16),
+
+	      SLE_END()
+};
+
+/**
+ * Get the base station description to be used for SL_ST_INCLUDE
+ * @return the base station description.
+ */
+const SaveLoad *GetBaseStationDescription()
+{
+	return _base_station_desc;
+}
+
+static void RealSave_STNN(BaseStation *bst)
+{
+	bool waypoint = (bst->facilities & FACIL_WAYPOINT) != 0;
+	SlObject(bst, waypoint ? _waypoint_desc : _station_desc);
+
+	if (!waypoint) {
+		Station *st = Station::From(bst);
+		for (CargoID i = 0; i < NUM_CARGO; i++) {
+			SlObject(&st->goods[i], GetGoodsDesc());
+		}
+	}
+
+	for (uint i = 0; i < bst->num_specs; i++) {
+		SlObject(&bst->speclist[i], _station_speclist_desc);
+	}
+}
+
+static void Save_STNN()
+{
+	BaseStation *st;
+	/* Write the stations */
+	FOR_ALL_BASE_STATIONS(st) {
+		SlSetArrayIndex(st->index);
+		SlAutolength((AutolengthProc*)RealSave_STNN, st);
+	}
+}
+
+static void Load_STNN()
+{
+	int index;
+
+	while ((index = SlIterateArray()) != -1) {
+		bool waypoint = (SlReadByte() & FACIL_WAYPOINT) != 0;
+
+		BaseStation *bst = waypoint ? (BaseStation *)new (index) Waypoint() : new (index) Station();
+		SlObject(bst, waypoint ? _waypoint_desc : _station_desc);
+
+		if (!waypoint) {
+			Station *st = Station::From(bst);
+			for (CargoID i = 0; i < NUM_CARGO; i++) {
+				SlObject(&st->goods[i], GetGoodsDesc());
+			}
+		}
+
+		if (bst->num_specs != 0) {
+			/* Allocate speclist memory when loading a game */
+			bst->speclist = CallocT<StationSpecList>(bst->num_specs);
+			for (uint i = 0; i < bst->num_specs; i++) {
+				SlObject(&bst->speclist[i], _station_speclist_desc);
+			}
+		}
+	}
+}
+
+static void Ptrs_STNN()
+{
+	/* Don't run when savegame version lower than 123. */
+	if (CheckSavegameVersion(123)) return;
+
+	Station *st;
+	FOR_ALL_STATIONS(st) {
+		for (CargoID i = 0; i < NUM_CARGO; i++) {
+			GoodsEntry *ge = &st->goods[i];
+			SlObject(ge, GetGoodsDesc());
+		}
+		SlObject(st, _station_desc);
+	}
+
+	Waypoint *wp;
+	FOR_ALL_WAYPOINTS(wp) {
+		SlObject(wp, _waypoint_desc);
+	}
+}
 
 static void Save_ROADSTOP()
 {
@@ -248,6 +443,7 @@ static void Ptrs_ROADSTOP()
 }
 
 extern const ChunkHandler _station_chunk_handlers[] = {
-	{ 'STNS', Save_STNS,     Load_STNS,     Ptrs_STNS,     CH_ARRAY },
+	{ 'STNS', NULL,          Load_STNS,     Ptrs_STNS,     CH_ARRAY },
+	{ 'STNN', Save_STNN,     Load_STNN,     Ptrs_STNN,     CH_ARRAY },
 	{ 'ROAD', Save_ROADSTOP, Load_ROADSTOP, Ptrs_ROADSTOP, CH_ARRAY | CH_LAST},
 };

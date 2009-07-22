@@ -253,15 +253,8 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			if (v->type == VEH_TRAIN) {
-				SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
-				SetDParam(2, order->GetDestination());
-			} else {
-				SetDParam(1, STR_GO_TO_STATION);
-				SetDParam(2, STR_ORDER_GO_VIA);
-				SetDParam(3, order->GetDestination());
-				SetDParam(4, STR_EMPTY);
-			}
+			SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
+			SetDParam(2, order->GetDestination());
 			break;
 
 		case OT_CONDITIONAL:
@@ -357,7 +350,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 		return order;
 	}
 
-	if (IsBuoyTile(tile) && v->type == VEH_SHIP) {
+	if ((IsBuoyTile(tile) && v->type == VEH_SHIP) || (IsRailWaypointTile(tile) && v->type == VEH_TRAIN)) {
 		order.MakeGoToWaypoint(GetStationIndex(tile));
 		return order;
 	}
@@ -775,12 +768,9 @@ public:
 			this->SetWidgetLoweredState(ORDER_WIDGET_NON_STOP, order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 			switch (order->GetType()) {
 				case OT_GOTO_STATION:
-					if (!Station::Get(order->GetDestination())->IsBuoy()) {
-						this->SetWidgetLoweredState(ORDER_WIDGET_FULL_LOAD, order->GetLoadType() == OLF_FULL_LOAD_ANY);
-						this->SetWidgetLoweredState(ORDER_WIDGET_UNLOAD, order->GetUnloadType() == OUFB_UNLOAD);
-						break;
-					}
-					/* Fall-through */
+					this->SetWidgetLoweredState(ORDER_WIDGET_FULL_LOAD, order->GetLoadType() == OLF_FULL_LOAD_ANY);
+					this->SetWidgetLoweredState(ORDER_WIDGET_UNLOAD, order->GetUnloadType() == OUFB_UNLOAD);
+					break;
 
 				case OT_GOTO_WAYPOINT:
 					this->DisableWidget(ORDER_WIDGET_FULL_LOAD_DROPDOWN);

@@ -22,7 +22,7 @@
 {
 	if (!AIRail::IsRailWaypointTile(tile)) return WAYPOINT_INVALID;
 
-	return ::GetWaypointIndex(tile);
+	return ::GetStationIndex(tile);
 }
 
 /* static */ char *AIWaypoint::GetName(WaypointID waypoint_id)

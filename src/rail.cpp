@@ -155,7 +155,7 @@ RailType GetTileRailType(TileIndex tile)
 			break;
 
 		case MP_STATION:
-			if (IsRailwayStationTile(tile)) return GetRailType(tile);
+			if (IsRailwayStation(tile) || IsRailWaypoint(tile)) return GetRailType(tile);
 			break;
 
 		case MP_TUNNELBRIDGE:

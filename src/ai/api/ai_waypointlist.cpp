@@ -13,7 +13,7 @@ AIWaypointList::AIWaypointList()
 {
 	const Waypoint *wp;
 	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->owner == _current_company) this->AddItem(wp->index);
+		if (wp->facilities & FACIL_TRAIN && wp->owner == _current_company) this->AddItem(wp->index);
 	}
 }
 

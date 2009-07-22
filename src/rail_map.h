@@ -18,7 +18,6 @@
 enum RailTileType {
 	RAIL_TILE_NORMAL   = 0, ///< Normal rail tile without signals
 	RAIL_TILE_SIGNALS  = 1, ///< Normal rail tile with signals
-	RAIL_TILE_WAYPOINT = 2, ///< Waypoint (X or Y direction)
 	RAIL_TILE_DEPOT    = 3, ///< Depot (one entrance)
 };
 
@@ -80,27 +79,6 @@ static inline void SetHasSignals(TileIndex tile, bool signals)
 {
 	assert(IsPlainRailTile(tile));
 	SB(_m[tile].m5, 6, 1, signals);
-}
-
-/**
- * Is this rail tile a rail waypoint?
- * @param t the tile to get the information from
- * @pre IsTileType(t, MP_RAILWAY)
- * @return true if and only if the tile is a rail waypoint
- */
-static inline bool IsRailWaypoint(TileIndex t)
-{
-	return GetRailTileType(t) == RAIL_TILE_WAYPOINT;
-}
-
-/**
- * Is this tile rail tile and a rail waypoint?
- * @param t the tile to get the information from
- * @return true if and only if the tile is a rail waypoint
- */
-static inline bool IsRailWaypointTile(TileIndex t)
-{
-	return IsTileType(t, MP_RAILWAY) && IsRailWaypoint(t);
 }
 
 /**
@@ -203,51 +181,6 @@ static inline Track GetRailDepotTrack(TileIndex t)
 
 
 /**
- * Returns the axis of the waypoint
- * @param t the tile to get the waypoint axis from
- * @pre IsRailWaypointTile(t)
- * @return the axis of the waypoint
- */
-static inline Axis GetWaypointAxis(TileIndex t)
-{
-	return (Axis)GB(_m[t].m5, 0, 1);
-}
-
-/**
- * Returns the track of the waypoint
- * @param t the tile to get the waypoint track from
- * @pre IsRailWaypointTile(t)
- * @return the track of the waypoint
- */
-static inline Track GetRailWaypointTrack(TileIndex t)
-{
-	return AxisToTrack(GetWaypointAxis(t));
-}
-
-/**
- * Returns the track bits of the waypoint
- * @param t the tile to get the waypoint track bits from
- * @pre IsRailWaypointTile(t)
- * @return the track bits of the waypoint
- */
-static inline TrackBits GetRailWaypointBits(TileIndex t)
-{
-	return TrackToTrackBits(GetRailWaypointTrack(t));
-}
-
-/**
- * Returns waypoint index (for the waypoint pool)
- * @param t the tile to get the waypoint index from
- * @pre IsRailWaypointTile(t)
- * @return the waypoint index
- */
-static inline WaypointID GetWaypointIndex(TileIndex t)
-{
-	return (WaypointID)_m[t].m2;
-}
-
-
-/**
  * Returns the reserved track bits of the tile
  * @pre IsPlainRailTile(t)
  * @param t the tile to query
@@ -333,17 +266,6 @@ static inline void SetDepotReservation(TileIndex t, bool b)
 {
 	assert(IsRailDepot(t));
 	SB(_m[t].m5, 4, 1, (byte)b);
-}
-
-/**
- * Get the reserved track bits for a waypoint
- * @pre IsRailWaypoint(t)
- * @param t the tile
- * @return reserved track bits
- */
-static inline TrackBits GetWaypointReservationTrackBits(TileIndex t)
-{
-	return HasDepotReservation(t) ? GetRailWaypointBits(t) : TRACK_BIT_NONE;
 }
 
 /**
@@ -631,19 +553,6 @@ static inline void MakeRailDepot(TileIndex t, Owner o, DiagDirection d, RailType
 	_m[t].m3 = r;
 	_m[t].m4 = 0;
 	_m[t].m5 = RAIL_TILE_DEPOT << 6 | d;
-	SB(_m[t].m6, 2, 4, 0);
-	_me[t].m7 = 0;
-}
-
-
-static inline void MakeRailWaypoint(TileIndex t, Owner o, Axis a, RailType r, uint index)
-{
-	SetTileType(t, MP_RAILWAY);
-	SetTileOwner(t, o);
-	_m[t].m2 = index;
-	_m[t].m3 = r;
-	_m[t].m4 = 0;
-	_m[t].m5 = RAIL_TILE_WAYPOINT << 6 | a;
 	SB(_m[t].m6, 2, 4, 0);
 	_me[t].m7 = 0;
 }

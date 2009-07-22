@@ -482,7 +482,7 @@ static int GetTrainAcceleration(Train *v, bool mode)
 	assert(max_speed == GetTrainCurveSpeedLimit(v)); // safety check, will be removed later
 	int speed = v->cur_speed * 10 / 16; // km-ish/h -> mp/h
 
-	if (IsTileType(v->tile, MP_STATION) && v->IsFrontEngine()) {
+	if (IsRailwayStationTile(v->tile) && v->IsFrontEngine()) {
 		StationID sid = GetStationIndex(v->tile);
 		if (v->current_order.ShouldStopAtStation(v, sid)) {
 			int station_ahead;
@@ -4443,12 +4443,10 @@ static bool TrainLocoHandler(Train *v, bool mode)
 
 			OrderType order_type = v->current_order.GetType();
 			/* Do not skip waypoints (incl. 'via' stations) when passing through at full speed. */
-			if ((order_type == OT_GOTO_WAYPOINT &&
-						v->dest_tile == v->tile) ||
-					(order_type == OT_GOTO_STATION &&
+			if ((order_type == OT_GOTO_WAYPOINT || order_type == OT_GOTO_STATION) &&
 						(v->current_order.GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) &&
 						IsTileType(v->tile, MP_STATION) &&
-						v->current_order.GetDestination() == GetStationIndex(v->tile))) {
+						v->current_order.GetDestination() == GetStationIndex(v->tile)) {
 				ProcessOrders(v);
 			}
 		}

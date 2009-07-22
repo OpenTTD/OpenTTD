@@ -37,7 +37,7 @@ public:
 	WaypointWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->wp = Waypoint::Get(this->window_number);
-		this->vt = (wp->facilities & FACIL_TRAIN) ? VEH_TRAIN : VEH_SHIP;
+		this->vt = (wp->string_id == STR_SV_STNAME_WAYPOINT) ? VEH_TRAIN : VEH_SHIP;
 
 		if (this->wp->owner != OWNER_NONE) this->owner = this->wp->owner;
 

@@ -154,7 +154,6 @@ Date ConvertYMDToDate(Year year, Month month, Day day)
 
 /** Functions used by the IncreaseDate function */
 
-extern void WaypointsDailyLoop();
 extern void EnginesDailyLoop();
 extern void DisasterDailyLoop();
 extern void IndustryDailyLoop();
@@ -222,7 +221,6 @@ void IncreaseDate()
 #endif /* ENABLE_NETWORK */
 
 	DisasterDailyLoop();
-	WaypointsDailyLoop();
 	IndustryDailyLoop();
 
 	if (_game_mode != GM_MENU) {

@@ -41,7 +41,7 @@
 
 #include "saveload_internal.h"
 
-extern const uint16 SAVEGAME_VERSION = 122;
+extern const uint16 SAVEGAME_VERSION = 123;
 
 SavegameType _savegame_type; ///< type of savegame we are loading
 
@@ -873,6 +873,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld)
 			break;
 		case SL_WRITEBYTE: return 1; // a byte is logically of size 1
 		case SL_VEH_INCLUDE: return SlCalcObjLength(object, GetVehicleDescription(VEH_END));
+		case SL_ST_INCLUDE: return SlCalcObjLength(object, GetBaseStationDescription());
 		default: NOT_REACHED();
 	}
 	return 0;
@@ -932,6 +933,10 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 		/* SL_VEH_INCLUDE loads common code for vehicles */
 		case SL_VEH_INCLUDE:
 			SlObject(ptr, GetVehicleDescription(VEH_END));
+			break;
+
+		case SL_ST_INCLUDE:
+			SlObject(ptr, GetBaseStationDescription());
 			break;
 
 		default: NOT_REACHED();

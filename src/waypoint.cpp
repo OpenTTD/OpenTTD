@@ -12,23 +12,6 @@
 #include "window_func.h"
 #include "newgrf_station.h"
 #include "order_func.h"
-#include "core/pool_func.hpp"
-
-WaypointPool _waypoint_pool("Waypoint");
-INSTANTIATE_POOL_METHODS(Waypoint)
-
-/**
- * Daily loop for waypoints
- */
-void WaypointsDailyLoop()
-{
-	Waypoint *wp;
-
-	/* Check if we need to delete a waypoint */
-	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->delete_ctr != 0 && --wp->delete_ctr == 0) delete wp;
-	}
-}
 
 /**
  * Draw a waypoint
@@ -66,9 +49,4 @@ Waypoint::~Waypoint()
 	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, this->index);
 
 	this->sign.MarkDirty();
-}
-
-void InitializeWaypoints()
-{
-	_waypoint_pool.CleanPool();
 }

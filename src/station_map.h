@@ -88,6 +88,28 @@ static inline bool IsRailwayStationTile(TileIndex t)
 	return IsTileType(t, MP_STATION) && IsRailwayStation(t);
 }
 
+/**
+ * Is this station tile a rail waypoint?
+ * @param t the tile to get the information from
+ * @pre IsTileType(t, MP_STATION)
+ * @return true if and only if the tile is a rail waypoint
+ */
+static inline bool IsRailWaypoint(TileIndex t)
+{
+	return GetStationType(t) == STATION_WAYPOINT;
+}
+
+/**
+ * Is this tile a station tile and a rail waypoint?
+ * @param t the tile to get the information from
+ * @return true if and only if the tile is a rail waypoint
+ */
+static inline bool IsRailWaypointTile(TileIndex t)
+{
+	return IsTileType(t, MP_STATION) && IsRailWaypoint(t);
+}
+
+
 static inline bool IsAirport(TileIndex t)
 {
 	return GetStationType(t) == STATION_AIRPORT;
@@ -186,7 +208,7 @@ static inline bool IsHangarTile(TileIndex t)
 
 static inline Axis GetRailStationAxis(TileIndex t)
 {
-	assert(IsRailwayStation(t));
+	assert(IsRailwayStation(t) || IsRailWaypoint(t));
 	return HasBit(GetStationGfx(t), 0) ? AXIS_Y : AXIS_X;
 }
 
@@ -214,31 +236,31 @@ static inline bool IsCompatibleTrainStationTile(TileIndex t1, TileIndex t2)
 
 /**
  * Get the reservation state of the rail station
- * @pre IsRailwayStationTile(t)
+ * @pre IsRailwayStation(t) || IsRailWaypoint(t)
  * @param t the station tile
  * @return reservation state
  */
 static inline bool HasStationReservation(TileIndex t)
 {
-	assert(IsRailwayStationTile(t));
+	assert(IsRailwayStation(t) || IsRailWaypoint(t));
 	return HasBit(_m[t].m6, 2);
 }
 
 /**
  * Set the reservation state of the rail station
- * @pre IsRailwayStationTile(t)
+ * @pre IsRailwayStation(t) || IsRailWaypoint(t)
  * @param t the station tile
  * @param b the reservation state
  */
 static inline void SetRailwayStationReservation(TileIndex t, bool b)
 {
-	assert(IsRailwayStationTile(t));
+	assert(IsRailwayStation(t) || IsRailWaypoint(t));
 	SB(_m[t].m6, 2, 1, b ? 1 : 0);
 }
 
 /**
  * Get the reserved track bits for a waypoint
- * @pre IsRailwayStationTile(t)
+ * @pre IsRailwayStation(t) || IsRailWaypoint(t)
  * @param t the tile
  * @return reserved track bits
  */
@@ -321,6 +343,13 @@ static inline void MakeStation(TileIndex t, Owner o, StationID sid, StationType 
 static inline void MakeRailStation(TileIndex t, Owner o, StationID sid, Axis a, byte section, RailType rt)
 {
 	MakeStation(t, o, sid, STATION_RAIL, section + a);
+	SetRailType(t, rt);
+	SetRailwayStationReservation(t, false);
+}
+
+static inline void MakeRailWaypoint(TileIndex t, Owner o, StationID sid, Axis a, byte section, RailType rt)
+{
+	MakeStation(t, o, sid, STATION_WAYPOINT, section + a);
 	SetRailType(t, rt);
 	SetRailwayStationReservation(t, false);
 }

@@ -39,7 +39,7 @@ void Waypoint::UpdateVirtCoord()
  * Set the default name for a waypoint
  * @param wp Waypoint to work on
  */
-static void MakeDefaultWaypointName(Waypoint *wp)
+void MakeDefaultWaypointName(Waypoint *wp)
 {
 	uint32 used = 0; // bitmap of used waypoint numbers, sliding window with 'next' as base
 	uint32 next = 0; // first waypoint number in the bitmap
@@ -64,7 +64,7 @@ static void MakeDefaultWaypointName(Waypoint *wp)
 		/* check only valid waypoints... */
 		if (lwp != NULL && wp != lwp) {
 			/* only waypoints with 'generic' name within the same city */
-			if (lwp->name == NULL && lwp->town == wp->town) {
+			if (lwp->name == NULL && lwp->town == wp->town && lwp->string_id == wp->string_id) {
 				/* if lwp->town_cn < next, uint will overflow to '+inf' */
 				uint i = (uint)lwp->town_cn - next;
 
@@ -104,7 +104,7 @@ static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile)
 	uint thres = 8;
 
 	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->delete_ctr != 0 && wp->owner == _current_company) {
+		if ((wp->facilities & ~FACIL_WAYPOINT) == 0 && wp->owner == _current_company) {
 			uint cur_dist = DistanceManhattan(tile, wp->xy);
 
 			if (cur_dist < thres) {
@@ -163,10 +163,6 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 	if (flags & DC_EXEC) {
 		if (wp == NULL) {
 			wp = new Waypoint(tile);
-
-			wp->town = NULL;
-			wp->name = NULL;
-			wp->town_cn = 0;
 		} else {
 			/* Move existing (recently deleted) waypoint to the new location */
 
@@ -186,15 +182,16 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 		wp->owner = owner;
 
 		bool reserved = HasBit(GetRailReservationTrackBits(tile), AxisToTrack(axis));
-		MakeRailWaypoint(tile, owner, axis, GetRailType(tile), wp->index);
-		SetDepotReservation(tile, reserved);
+		MakeRailWaypoint(tile, owner, wp->index, axis, 0, GetRailType(tile));
+		SetRailwayStationReservation(tile, reserved);
 		MarkTileDirtyByTile(tile);
 
-		AllocateSpecToStation(GetCustomStationSpec(STAT_CLASS_WAYP, p1), wp, true);
+		SetCustomStationSpecIndex(tile, AllocateSpecToStation(GetCustomStationSpec(STAT_CLASS_WAYP, p1), wp, true));
 
 		wp->delete_ctr = 0;
 		wp->facilities |= FACIL_TRAIN;
 		wp->build_date = _date;
+		wp->string_id = STR_SV_STNAME_WAYPOINT;
 
 		if (wp->town == NULL) MakeDefaultWaypointName(wp);
 
@@ -224,22 +221,22 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justre
 	}
 
 	if (flags & DC_EXEC) {
-		Track track = GetRailWaypointTrack(tile);
+		Track track = GetRailStationTrack(tile);
 		wp = Waypoint::GetByTile(tile);
 
-		wp->delete_ctr = 30; // let it live for this many days before we do the actual deletion.
 		wp->sign.MarkDirty();
 		wp->facilities &= ~FACIL_TRAIN;
 
 		Train *v = NULL;
+		uint specindex = GetCustomStationSpecIndex(tile);
 		if (justremove) {
-			TrackBits tracks = GetRailWaypointBits(tile);
-			bool reserved = HasDepotReservation(tile);
+			TrackBits tracks = GetRailStationTrackBits(tile);
+			bool reserved = HasStationReservation(tile);
 			MakeRailNormal(tile, wp->owner, tracks, GetRailType(tile));
 			if (reserved) SetTrackReservation(tile, tracks);
 			MarkTileDirtyByTile(tile);
 		} else {
-			if (HasDepotReservation(tile)) {
+			if (HasStationReservation(tile)) {
 				v = GetTrainForReservation(tile, track);
 				if (v != NULL) FreeTrainTrackReservation(v);
 			}
@@ -249,7 +246,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justre
 		YapfNotifyTrackLayoutChange(tile, track);
 		if (v != NULL) TryPathReserve(v, true);
 
-		DeallocateSpecFromStation(wp, wp->num_specs > 0 ? 1 : 0);
+		DeallocateSpecFromStation(wp, specindex);
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_train_depot);
@@ -290,7 +287,7 @@ static bool IsUniqueWaypointName(const char *name)
 CommandCost CmdRenameWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Waypoint *wp = Waypoint::GetIfValid(p1);
-	if (wp == NULL || !CheckOwnership(wp->owner)) return CMD_ERROR;
+	if (wp == NULL || !(CheckOwnership(wp->owner) || wp->owner == OWNER_NONE)) return CMD_ERROR;
 
 	bool reset = StrEmpty(text);
 

@@ -21,7 +21,7 @@
 #include "station_map.h"
 #include <list>
 
-typedef Pool<Station, StationID, 32, 64000> StationPool;
+typedef Pool<BaseStation, StationID, 32, 64000> StationPool;
 extern StationPool _station_pool;
 
 static const byte INITIAL_STATION_RATING = 175;
@@ -85,7 +85,7 @@ struct TileArea {
 };
 
 /** Base class for all station-ish types */
-struct BaseStation {
+struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	TileIndex xy;                   ///< Base tile of the station
 	ViewportSign sign;              ///< NOSAVE: Dimensions of sign
 	byte delete_ctr;                ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the waypoint is then is deleted.
@@ -144,8 +144,13 @@ struct BaseStation {
 	 * @param tile The tile to get the base station from.
 	 * @return the station associated with that tile.
 	 */
-	static BaseStation *GetByTile(TileIndex tile);
+	static FORCEINLINE BaseStation *GetByTile(TileIndex tile)
+	{
+		return BaseStation::Get(GetStationIndex(tile));
+	}
 };
+
+#define FOR_ALL_BASE_STATIONS(var) FOR_ALL_ITEMS_FROM(BaseStation, station_index, var, 0)
 
 /**
  * Class defining several overloaded accessors so we don't
@@ -176,6 +181,44 @@ struct SpecializedStation : public BaseStation {
 	}
 
 	/**
+	 * Tests whether given index is a valid index for station of this type
+	 * @param index tested index
+	 * @return is this index valid index of T?
+	 */
+	static FORCEINLINE bool IsValidID(size_t index)
+	{
+		return BaseStation::IsValidID(index) && IsExpected(BaseStation::Get(index));
+	}
+
+	/**
+	 * Gets station with given index
+	 * @return pointer to station with given index casted to T *
+	 */
+	static FORCEINLINE T *Get(size_t index)
+	{
+		return (T *)BaseStation::Get(index);
+	}
+
+	/**
+	 * Returns station if the index is a valid index for this station type
+	 * @return pointer to station with given index if it's a station of this type
+	 */
+	static FORCEINLINE T *GetIfValid(size_t index)
+	{
+		return IsValidID(index) ? Get(index) : NULL ;
+	}
+
+	/**
+	 * Get the station belonging to a specific tile.
+	 * @param tile The tile to get the station from.
+	 * @return the station associated with that tile.
+	 */
+	static FORCEINLINE T *GetByTile(TileIndex tile)
+	{
+		return GetIfValid(GetStationIndex(tile));
+	}
+
+	/**
 	 * Converts a BaseStation to SpecializedStation with type checking.
 	 * @param st BaseStation pointer
 	 * @return pointer to SpecializedStation
@@ -198,11 +241,13 @@ struct SpecializedStation : public BaseStation {
 	}
 };
 
+#define FOR_ALL_BASE_STATIONS_OF_TYPE(name, var) FOR_ALL_ITEMS_FROM(name, station_index, var, 0) if (name::IsExpected(var))
+
 
 typedef SmallVector<Industry *, 2> IndustryVector;
 
 /** Station data structure */
-struct Station : StationPool::PoolItem<&_station_pool>, SpecializedStation<Station, false> {
+struct Station : SpecializedStation<Station, false> {
 public:
 	RoadStop *GetPrimaryRoadStop(RoadStopType type) const
 	{
@@ -274,24 +319,9 @@ public:
 
 	/* virtual */ void GetTileArea(TileArea *ta, StationType type) const;
 
-	/**
-	 * Determines whether a station is a buoy only.
-	 * @todo Ditch this encoding of buoys
-	 */
-	FORCEINLINE bool IsBuoy() const
-	{
-		return (this->had_vehicle_of_type & HVOT_BUOY) != 0;
-	}
-
-	static FORCEINLINE Station *GetByTile(TileIndex tile)
-	{
-		return Station::Get(GetStationIndex(tile));
-	}
-
 	static void PostDestructor(size_t index);
 };
 
-#define FOR_ALL_STATIONS_FROM(var, start) FOR_ALL_ITEMS_FROM(Station, station_index, var, start)
-#define FOR_ALL_STATIONS(var) FOR_ALL_STATIONS_FROM(var, 0)
+#define FOR_ALL_STATIONS(var) FOR_ALL_BASE_STATIONS_OF_TYPE(Station, var)
 
 #endif /* STATION_BASE_H */
