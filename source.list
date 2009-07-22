@@ -135,6 +135,7 @@ autoreplace_gui.h
 autoreplace_type.h
 autoslope.h
 aystar.h
+base_station_base.h
 bmp.h
 bridge.h
 callback_table.h

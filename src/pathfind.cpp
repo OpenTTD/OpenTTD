@@ -3,7 +3,6 @@
 /** @file pathfind.cpp Implementation of the oldest supported pathfinder. */
 
 #include "stdafx.h"
-#include "station_base.h"
 #include "settings_type.h"
 #include "pathfind.h"
 #include "debug.h"

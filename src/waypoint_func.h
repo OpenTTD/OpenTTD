@@ -7,7 +7,7 @@
 
 #include "rail_type.h"
 #include "command_type.h"
-#include "station_base.h"
+#include "waypoint_type.h"
 
 CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justremove);
 void ShowWaypointWindow(const Waypoint *wp);

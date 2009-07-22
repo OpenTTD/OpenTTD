@@ -6,6 +6,7 @@
 #define PATHFIND_H
 
 #include "direction_type.h"
+#include "station_base.h"
 
 enum {
 	STR_FACTOR  = 2,

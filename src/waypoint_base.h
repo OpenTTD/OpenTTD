@@ -6,7 +6,7 @@
 #define WAYPOINT_H
 
 #include "waypoint_type.h"
-#include "station_base.h"
+#include "base_station_base.h"
 
 struct Waypoint : SpecializedStation<Waypoint, true> {
 	uint16 town_cn;    ///< The Nth waypoint for this town (consecutive number)

@@ -825,6 +825,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\base_station_base.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\bmp.h"
 				>
 			</File>

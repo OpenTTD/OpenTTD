@@ -12,7 +12,6 @@
 #include "tunnelbridge_map.h"
 #include "functions.h"
 #include "vehicle_base.h"
-#include "station_base.h"
 #include "tunnelbridge.h"
 #include "pbs.h"
 #include "settings_type.h"
