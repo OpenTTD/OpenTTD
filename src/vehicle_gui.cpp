@@ -366,7 +366,7 @@ struct RefitWindow : public Window {
 					const Vehicle *v = Vehicle::Get(this->window_number);
 
 					if (this->order == INVALID_VEH_ORDER_ID) {
-						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8, GetCmdRefitVeh(v) | CMD_MSG(STR_ERROR_CAN_T_REFIT_TRAIN + v->type))) delete this;
+						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8, GetCmdRefitVeh(v))) delete this;
 					} else {
 						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8 | this->order << 16, CMD_ORDER_REFIT)) delete this;
 					}
@@ -1608,7 +1608,6 @@ static const int VV_INITIAL_VIEWPORT_HEIGHT_TRAIN = 102;
 /** Command indices for the _vehicle_command_translation_table. */
 enum VehicleCommandTranslation {
 	VCT_CMD_START_STOP = 0,
-	VCT_CMD_GOTO_DEPOT,
 	VCT_CMD_CLONE_VEH,
 	VCT_CMD_TURN_AROUND,
 };
@@ -1620,13 +1619,6 @@ static const uint32 _vehicle_command_translation_table[][4] = {
 		CMD_START_STOP_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE),
 		CMD_START_STOP_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_STOP_START_SHIP),
 		CMD_START_STOP_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_STOP_START_AIRCRAFT)
-	},
-	{ // VCT_CMD_GOTO_DEPOT
-		/* TrainGotoDepot has a nice randomizer in the pathfinder, which causes desyncs... */
-		CMD_SEND_TRAIN_TO_DEPOT     | CMD_MSG(STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT) | CMD_NO_TEST_IF_IN_NETWORK ,
-		CMD_SEND_ROADVEH_TO_DEPOT   | CMD_MSG(STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT),
-		CMD_SEND_SHIP_TO_DEPOT      | CMD_MSG(STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT),
-		CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_MSG(STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR)
 	},
 	{ // VCT_CMD_CLONE_VEH
 		CMD_CLONE_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN),
@@ -1873,8 +1865,7 @@ struct VehicleViewWindow : Window {
 			} break;
 
 			case VVW_WIDGET_GOTO_DEPOT: // goto hangar
-				DoCommandP(v->tile, v->index, _ctrl_pressed ? DEPOT_SERVICE : 0,
-					_vehicle_command_translation_table[VCT_CMD_GOTO_DEPOT][v->type]);
+				DoCommandP(v->tile, v->index, _ctrl_pressed ? DEPOT_SERVICE : 0, GetCmdSendToDepot(v));
 				break;
 			case VVW_WIDGET_REFIT_VEH: // refit
 				ShowVehicleRefitWindow(v, INVALID_VEH_ORDER_ID, this);

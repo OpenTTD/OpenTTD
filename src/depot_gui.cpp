@@ -914,7 +914,7 @@ struct DepotWindow : Window {
 						BackupVehicleOrders(v);
 					}
 
-					if (!DoCommandP(v->tile, v->index, sell_cmd, GetCmdSellVeh(v->type) | CMD_MSG(STR_ERROR_CAN_T_SELL_TRAIN + v->type)) && is_engine) _backup_orders_tile = 0;
+					if (!DoCommandP(v->tile, v->index, sell_cmd, GetCmdSellVeh(v->type)) && is_engine) _backup_orders_tile = 0;
 				}
 				break;
 			default:

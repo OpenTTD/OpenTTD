@@ -1074,23 +1074,15 @@ struct BuildVehicleWindow : Window {
 			case BUILD_VEHICLE_WIDGET_BUILD: {
 				EngineID sel_eng = this->sel_engine;
 				if (sel_eng != INVALID_ENGINE) {
+					CommandCallback *callback;
 					switch (this->vehicle_type) {
 						default: NOT_REACHED();
-						case VEH_TRAIN:
-							DoCommandP(this->window_number, sel_eng, 0,
-									CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN),
-									(RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) ? CcBuildWagon : CcBuildLoco);
-							break;
-						case VEH_ROAD:
-							DoCommandP(this->window_number, sel_eng, 0, CMD_BUILD_ROAD_VEH | CMD_MSG(STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE), CcBuildRoadVeh);
-							break;
-						case VEH_SHIP:
-							DoCommandP(this->window_number, sel_eng, 0, CMD_BUILD_SHIP | CMD_MSG(STR_ERROR_CAN_T_BUILD_SHIP), CcBuildShip);
-							break;
-						case VEH_AIRCRAFT:
-							DoCommandP(this->window_number, sel_eng, 0, CMD_BUILD_AIRCRAFT | CMD_MSG(STR_ERROR_CAN_T_BUILD_AIRCRAFT), CcBuildAircraft);
-							break;
+						case VEH_TRAIN:    callback = (RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) ? CcBuildWagon : CcBuildLoco; break;
+						case VEH_ROAD:     callback = CcBuildRoadVeh; break;
+						case VEH_SHIP:     callback = CcBuildShip; break;
+						case VEH_AIRCRAFT: callback = CcBuildAircraft; break;
 					}
+					DoCommandP(this->window_number, sel_eng, 0, GetCmdBuildVeh(this->vehicle_type), callback);
 				}
 				break;
 			}

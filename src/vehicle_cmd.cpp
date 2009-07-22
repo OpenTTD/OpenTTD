@@ -25,30 +25,32 @@
 
 /* Tables used in vehicle.h to find the right command for a certain vehicle type */
 const uint32 _veh_build_proc_table[] = {
-	CMD_BUILD_RAIL_VEHICLE,
-	CMD_BUILD_ROAD_VEH,
-	CMD_BUILD_SHIP,
-	CMD_BUILD_AIRCRAFT,
+	CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN),
+	CMD_BUILD_ROAD_VEH     | CMD_MSG(STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE),
+	CMD_BUILD_SHIP         | CMD_MSG(STR_ERROR_CAN_T_BUILD_SHIP),
+	CMD_BUILD_AIRCRAFT     | CMD_MSG(STR_ERROR_CAN_T_BUILD_AIRCRAFT),
 };
+
 const uint32 _veh_sell_proc_table[] = {
-	CMD_SELL_RAIL_WAGON,
-	CMD_SELL_ROAD_VEH,
-	CMD_SELL_SHIP,
-	CMD_SELL_AIRCRAFT,
+	CMD_SELL_RAIL_WAGON | CMD_MSG(STR_ERROR_CAN_T_SELL_TRAIN),
+	CMD_SELL_ROAD_VEH   | CMD_MSG(STR_ERROR_CAN_T_SELL_ROAD_VEHICLE),
+	CMD_SELL_SHIP       | CMD_MSG(STR_ERROR_CAN_T_SELL_SHIP),
+	CMD_SELL_AIRCRAFT   | CMD_MSG(STR_ERROR_CAN_T_SELL_AIRCRAFT),
 };
 
 const uint32 _veh_refit_proc_table[] = {
-	CMD_REFIT_RAIL_VEHICLE,
-	CMD_REFIT_ROAD_VEH,
-	CMD_REFIT_SHIP,
-	CMD_REFIT_AIRCRAFT,
+	CMD_REFIT_RAIL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_REFIT_TRAIN),
+	CMD_REFIT_ROAD_VEH     | CMD_MSG(STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE),
+	CMD_REFIT_SHIP         | CMD_MSG(STR_ERROR_CAN_T_REFIT_SHIP),
+	CMD_REFIT_AIRCRAFT     | CMD_MSG(STR_ERROR_CAN_T_REFIT_AIRCRAFT),
 };
 
 const uint32 _send_to_depot_proc_table[] = {
-	CMD_SEND_TRAIN_TO_DEPOT,
-	CMD_SEND_ROADVEH_TO_DEPOT,
-	CMD_SEND_SHIP_TO_DEPOT,
-	CMD_SEND_AIRCRAFT_TO_HANGAR,
+	/* TrainGotoDepot has a nice randomizer in the pathfinder, which causes desyncs... */
+	CMD_SEND_TRAIN_TO_DEPOT     | CMD_MSG(STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT) | CMD_NO_TEST_IF_IN_NETWORK,
+	CMD_SEND_ROADVEH_TO_DEPOT   | CMD_MSG(STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT),
+	CMD_SEND_SHIP_TO_DEPOT      | CMD_MSG(STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT),
+	CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_MSG(STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR),
 };
 
 /** Start/Stop a vehicle
@@ -169,16 +171,8 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, DoCommandFlag flags, uint32 
 	VehicleList list;
 
 	CommandCost cost(EXPENSES_NEW_VEHICLES);
-	uint sell_command;
 	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
-
-	switch (vehicle_type) {
-		case VEH_TRAIN:    sell_command = CMD_SELL_RAIL_WAGON; break;
-		case VEH_ROAD:     sell_command = CMD_SELL_ROAD_VEH;   break;
-		case VEH_SHIP:     sell_command = CMD_SELL_SHIP;       break;
-		case VEH_AIRCRAFT: sell_command = CMD_SELL_AIRCRAFT;   break;
-		default: return CMD_ERROR;
-	}
+	uint sell_command = GetCmdSendToDepot(vehicle_type);;
 
 	/* Get the list of vehicles in the depot */
 	BuildDepotVehicleList(vehicle_type, tile, &list, &list);

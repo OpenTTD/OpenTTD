@@ -402,7 +402,8 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, DoCommandFlag flags,
 	/* Do not even think about executing out-of-bounds tile-commands */
 	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (flags & DC_ALL_TILES) == 0))) return CMD_ERROR;
 
-	CommandProc *proc = _command_proc_table[cmd].proc;
+	/* Chop of any CMD_MSG or other flags; we don't need those here */
+	CommandProc *proc = _command_proc_table[cmd & CMD_ID_MASK].proc;
 
 	if (_docommand_recursive == 0) _error_message = INVALID_STRING_ID;
 
