@@ -276,6 +276,7 @@ STR_COMPANY_SOMEONE                                             :یک نفر{SKI
 
 STR_UNITS_IMPERIAL                                              :شاهنشاهی
 STR_UNITS_METRIC                                                :متری
+STR_UNITS_SI                                                    :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} مایل در ساعت
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} کیلومتر/ساعت
@@ -319,7 +320,54 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}آیا 
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}رها کردن بازی
 STR_SORT_ORDER_TIP                                              :{BLACK}انتخاب طرز مرتب کردن (نزولی/صعودی)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}انتخاب معیار مرتب کردن
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}انتخاب معیار پایش
+STR_SORT_BY                                                     :{BLACK}مرتب کردن بر اساس
 
+STR_SORT_BY_POPULATION                                          :{BLACK}جمعیت
+STR_SORT_BY_PRODUCTION                                          :تولید
+STR_SORT_BY_TYPE                                                :نوع
+STR_SORT_BY_TRANSPORTED                                         :منتقل شده
+STR_SORT_BY_NAME                                                :{BLACK}نام
+STR_SORT_BY_DROPDOWN_NAME                                       :نام
+STR_SORT_BY_DATE                                                :{BLACK}تاریخ
+STR_SORT_BY_NUMBER                                              :تعداد
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :سود در سال گذشته
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :سود در سال جاری
+STR_SORT_BY_AGE                                                 :سن
+STR_SORT_BY_RELIABILITY                                         :قابلیت اعتماد
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :بر حسب ظرفیت کل هر محموله
+STR_SORT_BY_MAX_SPEED                                           :سرعت حداکثر
+STR_SORT_BY_MODEL                                               :مدل
+STR_SORT_BY_VALUE                                               :قیمت
+STR_SORT_BY_LENGTH                                              :طول
+STR_SORT_BY_LIFE_TIME                                           :عمر مفید باقی مانده
+STR_SORT_BY_FACILITY                                            :نوع ایستگاه
+STR_SORT_BY_WAITING                                             :ارزش محموله ی درانتظار
+STR_SORT_BY_RATING_MAX                                          :حداکثر نرخ محموله
+STR_SORT_BY_RATING_MIN                                          :کمترین نرخ محموله
+STR_ENGINE_SORT_ENGINE_ID                                       :شناسه موتور
+STR_ENGINE_SORT_COST                                            :قیمت
+STR_ENGINE_SORT_POWER                                           :توان
+STR_ENGINE_SORT_INTRO_DATE                                      :تاریخ احداث
+STR_ENGINE_SORT_RUNNING_COST                                    :هزینه کارکرد
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :توان/هزینه کارکرد
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :ظرفیت محموله
+STR_NO_WAITING_CARGO                                            :{BLACK}هیچ نوع محموله در انتظار نیست
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}انتخاب تمامی تسهیلات
+STR_SELECT_ALL_TYPES                                            :{BLACK}انتخاب همه ی انواع محموله ها (شامل محموله های در انتظار)
+STR_AVAILABLE_TRAINS                                            :{BLACK}قطارهای موجود
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}خودروهای موجود
+STR_AVAILABLE_SHIPS                                             :{BLACK}کشتی های موجود
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}هواپیماهای موجود
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}مشاهده ی تمامی موتورهای موجود برای این نوع وسیله ی نقلیه
+STR_MANAGE_LIST                                                 :{BLACK}اداره ی لیست
+STR_MANAGE_LIST_TIP                                             :{BLACK}فرستادن دستورالعمل ها برای تمامی وسایل نقیله موجود در این لیست
+STR_REPLACE_VEHICLES                                            :جایگزین کردن وسایل نقلیه
+STR_SEND_TRAIN_TO_DEPOT                                         :فرستادن به ایستگاه نگه داری فنی
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :فرستادن به ایستگاه نگه داری فنی
+STR_SEND_SHIP_TO_DEPOT                                          :فرستادن به مقر فنی
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :فرستادن به آشیانه
+STR_SEND_FOR_SERVICING                                          :فرستادن برای سرویس
 
 ############ range for months starts
 STR_MONTH_ABBREV_JAN                                            :بهمن
@@ -336,9 +384,12 @@ STR_MONTH_ABBREV_NOV                                            :آذر
 STR_MONTH_ABBREV_DEC                                            :دی
 ############ range for months ends
 
+STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}-
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}متوقف کردن بازی
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}ذخیره بازی، ترک بازی، خروج از بازی
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}لیست ایستگاه های شرکت ها را نشان می دهد
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}نمایش لیست ایستگاه های شرکت
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}نقشه، پنجره اضافی یا لیست علامت ها را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}نقشه، لیست شهر ها را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}لیست شهرها را نشان می دهد
@@ -346,12 +397,12 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}اطلا
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}توضیحات کلی راجع به شرکت را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}نمودار ها را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}جدول رده بندی شرکت ها را نشان می دهد
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}لیست قطار های شرکت ها را نشان می دهد
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}لیست ماشین های شرکت را نشان می دهد
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}لیست کشتی های شرکت را نشان می دهد
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}لیست هواپیماهای شرکت را نشان می دهد
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}تصویر را بزرگ می کند
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}تصویر را کوچک می کند
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}نمایش لیست قطار های شرکت
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}نمایش لیست ماشین های شرکت
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}نمایش لیست کشتی های شرکت
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}نمایش لیست هواپیماهای شرکت
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}نمایش نواحی کوچکتر
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}نمایش نواحی بزرگتر
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}ساخت راه آهن
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}ساخت جاده
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}ساخت اسکله
@@ -835,7 +886,6 @@ STR_TOWN_DESCRIPTION_UNDER_CONSTRUCTION                         :{STRING} (در 
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :ایگلو
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :خانه-قوری
 
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_PLANT_TREES                                :کاشتن درخت
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :قرار دادن علامت
@@ -883,6 +933,8 @@ STR_CARGO_RATING_VERY_GOOD                                      :بسیار خو
 STR_CARGO_RATING_EXCELLENT                                      :عالی
 STR_CARGO_RATING_OUTSTANDING                                    :بسیار عالی
 ############ range for rating ends
+
+### station view strings
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} دیگر {STRING} قبول نمی کند
@@ -1028,6 +1080,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE} قبل�
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 
+##id 0x6020
 
 ############ end of savegame specific region!
 
@@ -1360,7 +1413,6 @@ STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO}
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}وسیله ی جدید
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}قطار بسیار طولانی شده
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} قطار{P "" s}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}قطار جدید
 STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}قطار جدید مونوریل
@@ -1390,7 +1442,6 @@ STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE                           :{WHITE}نمی �
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}مسیری به ایستگاه راه آهن پیدا نمیشود
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}قطار را نمی شود حرکت داد / متوقف کرد...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}فاصله ی زمانی بین تعمیرات دوره ای: {LTBLUE}{COMMA}روز {BLACK}   آخیرین تعمسرات: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}قطارها-برای اطلاعات بیشتر روی قطار کلیک کنید
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}قطارها-برای اطلاعات بیشتر روی قطار کلیک کنید. وسیله را بکشید تا آن را از قطار خارج/وارد کنید
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}ساخت قطار جدید
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}قطار را برای فروش به اینجا بکشید
@@ -1426,7 +1477,8 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}جهت �
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}نمیتوان جهت حرکت وسیله را معکوس کرد...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}نمیتوان جهت وسایلی که از چند قطعه تشکیل شده اند را معکوس کرد
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}تغییر نام انواع قطار ها
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}نمی شود انواع قطار ها را تغییر نام داد...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}نمی شود نوع قطار ها را تغییر نام داد...
+STR_CLEAR_TIME                                                  :{BLACK}پاک کردن زمان
 
 
 
@@ -1434,7 +1486,6 @@ STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}نمی �
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}ماشین در جاده است
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} ماشین{P "" s}
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}وسایل نقلیه ی جدید
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}ماشین های جدید
 STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}ساخت وسیله نقلیه
@@ -1462,7 +1513,6 @@ STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}کشی �
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}ساخت کشتی جدید
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}کشتی را به اینجا بکشید تا فروخته شود
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}نمای اصلی از جایگاه لنگرگاه کشتی
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}کشتی ها - برای اطلاعات بیشتر روی کشتی کلیک کنید
 STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}لیست انتخاب کشتی - برای اطلاعات بیشتر روی کشتی کلیک کنید
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}کشتی مشخص شده را بساز
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}عمل فعلی کشتی - برای شروع/توقف کشتی اینجا کلیک کنید
@@ -1499,7 +1549,6 @@ STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK} هوا�
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}هواپیمای جدید
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}ساخت هواپیما
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}نمی توان هواپیما را ساخت
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} هواپیما
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}نمیتوان هواپیما را به آشیانه فرستاد. . .
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE}در آشیانه در حال انتظار است
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}هواپیما در راه است
@@ -1509,7 +1558,6 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}هواپ
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}نمیتوان هواپیما را فروخت
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :ساختمان فرودگاه
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}ساخت فرودگاه
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}هواپیما - برای اطلاعات بیشتر روی هواپیما کلیک کنید
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}هواپیما - برای اطلاعاتبیشتر روی هواپیماکلیک کنید
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}ساخت هواپیمای جدید
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}برای فروش هواپیما آن را به اینجا بکش
@@ -1558,11 +1606,17 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}قطارها-برای اطلاعات بیشتر روی قطار کلیک کنید
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}کشتی ها - برای اطلاعات بیشتر روی کشتی کلیک کنید
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}هواپیما - برای اطلاعات بیشتر روی هواپیما کلیک کنید
 
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} قطار{P "" s}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} ماشین{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} هواپیما
 
 
 ### depot strings
-
 
 
 
@@ -1597,10 +1651,6 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}هواپ
 ############ Tooltip measurment
 
 
-############ Date formatting
-
-########
-
 
 
 
@@ -1609,6 +1659,22 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}هواپ
 
 
 
+#### String control codes and their formatting
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :(شرکت {COMMA})
+STR_FORMAT_GROUP_NAME                                           :گروه {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
 
 #### Improved sign GUI
@@ -1650,15 +1716,70 @@ STR_AI_RESET                                                    :{BLACK}بازن
 STR_AI_HUMAN_PLAYER                                             :بازیکن آدمیزاد
 STR_AI_RANDOM_AI                                                :انتخاب هوش مصنوعی به صورت اتفاقی
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}پارامترهای هوش مصنوعی
+STR_AI_VERSION                                                  :{BLACK}نسخه: {NUM}
+STR_AI_URL                                                      :{BLACK}آدرس اینترنتی: {STRING}
 ########
 
 ############ town controlled noise level
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}نرم افزار OpenTTD بدون استفاده از پشتیبانی "zlib" ساخته شده است
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... امکان دانلود این محتوی وجود ندارد!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :گرافیک پایه
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :هوش مصنوعی
+STR_CONTENT_TYPE_AI_LIBRARY                                     :مجموعه ماخذ AI
+STR_CONTENT_TYPE_SCENARIO                                       :سناریو
+STR_CONTENT_TYPE_HEIGHTMAP                                      :نقشه
+STR_CONTENT_TITLE                                               :{WHITE} در حال دانلود
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}نوع
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}نوع محتوی
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}نام
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}نام محتوی
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}برای مشاهده ی جزئیات روی خط کلیک کنید {}برای اتنخاب برای دانلود روی چک باکس کلیک کنید
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}انتخاب تمامی موارد
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}علامت گذاری تمامی موارد را برای دانلود
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}انتخاب موارد ارتقاع
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK} علامت گذاری برای دانلود ِ تمام مواردی که برای ارتقاع محتوی موجود لازم می باشد
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}پاک کردن تمام انتخاب ها
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}علامت گذاری تمامی موارد را برای عدم دانلود
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}وارد کردن رشته پایش
+STR_CONTENT_FILTER_TIP                                          :{BLACK}وارد کردن واژه کلیدی برای پایش لیست
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}برچسب/پایش بر اساس نام
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}دانلود
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}شروع به دانلود موارد انتخاب شده
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}حجم کل دانلود: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}اطلاعات محتوی
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER} شما این گزینه را برای دانلود انتخاب نکرده اید
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}شما این گزینه را برای دانلود انتخاب کرده اید
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}این پیوست برای دانلود انتخاب شده است
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}شما این را از قبل داشته اید
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}این محتوی ناشناخته است و قابلیت دانلود در OpenTTD را ندارد
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}این مورد جایگزینی برای گزینه ی موجود است {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}نام:{WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}نسخه: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}شرح: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}آدرس اینترنتی: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}نوع: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}جحم دانلود: {BYTES}{WHITE}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}دلیل انتخاب: {STRING}{WHITE}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}وابستگی ها: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}برچسب ها: {WHITE}{STRING}
 
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}در حال دانلود...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}در حال درخواست فایل...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}دانلود شده {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}اتمام دانلود
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} از {BYTES} دانلود شده ({NUM} %)
 
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}امکان برقراری ارتباط با سرور ممکن نیست...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}دانلود ناموفق بود...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ارتباط از بین رفت
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... فایل قابلیت درج ندارد
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}بازگشایی فایل دانلود شده ممکن نیست
 
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}چک کردن محتوی آنلاین
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}بررسی وجود مجموعه ها و به روز رسانی های جدید در اینترنت
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}یافتن مجموعه ای که کم است در اینترنت
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK} بررسی اینکه آیا مجموعه ای که کم است در اینترنت یافت می شود یا نه

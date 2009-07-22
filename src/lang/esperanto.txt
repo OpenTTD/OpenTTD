@@ -763,9 +763,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fondu novan ind
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Fondu novan industrion
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...nur konstruebla en praarbaraj regionoj
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...nur konstruebla en dezertaj regionoj
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  PAŬZO  *  *
@@ -1198,7 +1195,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Elektu t
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ŝanĝu trairejan nomon
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Ne povas ŝanĝi trairejan nomon...
@@ -1600,7 +1596,7 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Elektu d
 STR_RAILROAD_TRACK                                              :Reloj
 STR_RAILROAD_TRAIN_DEPOT                                        :Trajndeponejo
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...regiono estas posedata de alia kompanio
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Reloj kun normalaj signaloj
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Reloj kun bloko-signaloj
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Reloj kun antaŭ-signaloj
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Reloj kun elir-signaloj
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Reloj kun kombin-signaloj
@@ -1717,8 +1713,8 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Konstruu statuo
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Fondu novajn konstruaĵojn
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Aĉetu ekskluzivan transportrajton
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subaĉetu la lokajn estrojn
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Komencu malgrandan lokan reklamadon, por altiri pli da pasaĝeroj kaj ŝarĝoj al viaj transportservoj.{}  Kosto: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Komencu mezgrandan lokan reklamadon, por altiri pli da pasaĝeroj kaj ŝarĝoj al viaj transportservoj.{}  Kosto: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Komencu malgrandan lokan reklamadon, por altiri pli da pasaĝeroj kaj ŝarĝoj al viaj transportservoj.{}Kosto: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Komencu mezgrandan lokan reklamadon, por altiri pli da pasaĝeroj kaj ŝarĝoj al viaj transportservoj.{}Kosto: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Komencu grandan lokan reklamadon, por altiri pli da pasaĝeroj kaj ŝarĝoj al viaj transportservoj.{}  Kosto: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Fondu rekonstruadon de la urba voja reto. Kaŭzos konsiderindan ĝenon al la trafiko por ĝis 6 monatoj.{}  Kosto: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} Konstruu statuon honore al via kompanio.{} Kosto: {CURRENCY}
@@ -1733,11 +1729,6 @@ STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Igluo
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tipioj
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Tekruĉa Domo
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Porko-Banko
-
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_STATION_NAME                                                :{STATION}
 
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landaspektigi
@@ -1790,6 +1781,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :Tre bone
 STR_CARGO_RATING_EXCELLENT                                      :Bonege
 STR_CARGO_RATING_OUTSTANDING                                    :Elstare bonege
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Montru ĉiujn trajnojn kun ĉi tiu stacio en la plano
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Montru ĉiujnvojveturilojn kun ĉi tiu stacio en la plano
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Montru ĉiujn aviadilojn kun ĉi tiu stacio en la plano
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Montru ĉiujn ŝipojn kun ĉi tiu stacio en la plano
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} ne plu akceptas {STRING.n}
@@ -2014,6 +2011,7 @@ STR_SV_STNAME_AIRPORT                                           :Flughaveno de {
 STR_SV_STNAME_OILFIELD                                          :Olefonto de {STRING}
 STR_SV_STNAME_MINES                                             :Minejo de {STRING}
 STR_SV_STNAME_DOCKS                                             :Haveno de {STRING}
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :Ekstera {STRING}
 STR_SV_STNAME_SIDINGS                                           :Flanka {STRING}
 STR_SV_STNAME_BRANCH                                            :Branĉa {STRING}
@@ -2128,7 +2126,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Entute:
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Enspeza Grafiko
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gajna Grafiko
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banka Balanco
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Prunto
@@ -2547,7 +2544,6 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Novaj Ve
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trajno tro longas
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trajno nut povas esti adaptataj kiam halte en deponejo
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Trajno{P "" j}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Novaj Relaj Veturiloj
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Novaj Elektraj Relaj Veturiloj
@@ -2592,7 +2588,6 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Ne eblas
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Ne povas haltigi/starti trajnon...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Prizorga intervalo: {LTBLUE}{COMMA}tagoj{BLACK}   Lasta prizorgo: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Prizorga intervalo: {LTBLUE}{COMMA}%{BLACK}   Lasta prizorgo: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trajnoj - alklaku trajnon por pliaj informoj
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trajnoj - alklaku trajnon por scii pli, tiru veturilon por aldoni aŭ forigi de trajno
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kreu novan trajnan veturilon
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Tiru trajnan veturilon ĉi tien por vendi
@@ -2647,7 +2642,6 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ŝanĝu 
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Vojveturilo okupas la lokon
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Vojveturilo{P "" j}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Vojveturila Deponejo
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Novaj Veturiloj
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Novaj Vojveturiloj
@@ -2662,7 +2656,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Prizorg
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Prizorgo ĉe {TOWN} Voja Deponejo, {VELOCITY}
 STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Ne povas sendi veturilon al deponejo...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Ne eblas trovi lokan deponejon
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Vojveturiloj - alklaku veturilon por informoj
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Nuna veturila ago - klaku ĉi tie por haltigi/starti veturilon
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Montru veturilajn ordenojn
 STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Centre vidu la veturilon en la ĉefvido
@@ -2704,7 +2697,6 @@ STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Elektu p
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Ne povas konstrui havenon ĉi tie...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Ŝipdeponejo
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novaj Ŝipoj
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Ŝipo{P "" j}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Novaj Ŝipoj
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Kreu Ŝipon
 STR_CLONE_SHIP                                                  :{BLACK}Klonu Ŝipon
@@ -2726,7 +2718,6 @@ STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Ŝipoj -
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Kreu novan ŝipon
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Tiru ŝipon ĉi tien por vendi
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centre vidu ŝipdeponejon en ĉefvido
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Ŝipoj - alklaku ŝipon por informoj
 STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Ŝipelekta listo - alklaku ŝipon por informoj
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Kreu elektitan ŝipon
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Nuna ŝipa ago - klaku ĉi tie por haltigi/starti ŝipon
@@ -2766,7 +2757,6 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Ĉi tio 
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Novaj Aviadiloj
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Kreu Aviadilon
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Ne povas krei aviadilon...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aviadiloj
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Ne povas sendi aviadilon al hangaro...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Irante al {STATION} Hangaro
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Irante al {STATION} Hangaro, {VELOCITY}
@@ -2779,7 +2769,6 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Aviadilo
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Ne povas vendi aviadilon...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Flughavena konstruado
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Kreu flughavenon
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aviadiloj - alklaku aviadilon por informoj
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aviadiloj - alklaku aviadilon por informoj
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Kreu novan aviadilon
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}DTiru aviadilon ĉi tien por vendi
@@ -2922,11 +2911,16 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trajnoj - alklaku trajnon por pliaj informoj
+STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Vojveturiloj - alklaku veturilon por informoj
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Ŝipoj - alklaku ŝipon por informoj
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aviadiloj - alklaku aviadilon por informoj
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Montru ĉiujn trajnojn kun ĉi tiu stacio en la plano
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Montru ĉiujnvojveturilojn kun ĉi tiu stacio en la plano
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Montru ĉiujn aviadilojn kun ĉi tiu stacio en la plano
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Montru ĉiujn ŝipojn kun ĉi tiu stacio en la plano
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Trajno{P "" j}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Vojveturilo{P "" j}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Ŝipo{P "" j}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aviadiloj
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Kunhavaj ordonoj de {COMMA} Veturilo{P "" j}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Montru ĉiujn veturilojn kiuj dividas ĉi tiun planon
@@ -2948,7 +2942,6 @@ STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Aŭtomat
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Aŭtomate anstataŭu ĉiujn vojveturilojn en la deponejo
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Aŭtomate anstataŭu ĉiujn ŝipojn en la deponejo
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Aŭtomate anstataŭu ĉiujn aviadilojn en la hangaro
-
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Anstataŭu {STRING.n}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Komencu Anstataŭi
@@ -3102,13 +3095,6 @@ STR_MEASURE_AREA                                                :{BLACK}Regiono:
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Longo: {NUM}{}Altecdiferenco: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Regiono: {NUM} x {NUM}{}Altecdiferenco: {NUM} m
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transigaj Kreditoj: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...ĉi tiun vojon posedas la urbo
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...vojo direktiĝas malĝuste
@@ -3130,7 +3116,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :Group {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Ĉiuj trajnoj
 STR_GROUP_ALL_SHIPS                                             :Ĉiuj ŝipoj
@@ -3145,12 +3130,29 @@ STR_GROUP_CREATE_TIP                                            :{BLACK}Klaku po
 STR_GROUP_DELETE_TIP                                            :{BLACK}Viŝu la selektitan grupon
 STR_GROUP_RENAME_TIP                                            :{BLACK}Renomu la sektitan grupon
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+
+STR_FORMAT_GROUP_NAME                                           :Group {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Nomo devas esti ununura
 

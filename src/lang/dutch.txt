@@ -1039,7 +1039,7 @@ STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Activee
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Toon dienstregeling in tikken ipv in dagen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Snel voertuig orders maken: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standaard spoorsoort (bij nieuw of opgeslagen spel): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normaal  spoor
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normaal spoor
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrisch spoor
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
@@ -1185,8 +1185,10 @@ STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Op weg 
 STR_GO_TO_WAYPOINT                                              :Ga via {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Ga non-stop via {WAYPOINT}
 
-STR_WAYPOINTNAME_CITY                                           :Controlepost {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :Controlepost {TOWN} #{COMMA}
+STR_WAYPOINTNAME_CITY                                           :{TOWN} Controlepost
+STR_WAYPOINTNAME_CITY_SERIAL                                    :{TOWN} Controlepost #{COMMA}
+STR_BUOYNAME_CITY                                               :{TOWN} Boei
+STR_BUOYNAME_CITY_SERIAL                                        :{TOWN} Boei #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Controlepost
 
 STR_WAYPOINT                                                    :{WHITE}Controlepost
@@ -2077,6 +2079,9 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Vliegv
 STR_SV_STNAME_OILFIELD                                          :{STRING} Olieveld
 STR_SV_STNAME_MINES                                             :{STRING} Mijnen
 STR_SV_STNAME_DOCKS                                             :{STRING} Haven
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Bijbouw
 STR_SV_STNAME_SIDINGS                                           :{STRING} Zijspoor
 STR_SV_STNAME_BRANCH                                            :{STRING} Aftakking
@@ -2796,7 +2801,7 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. sne
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S} {BLACK}Kracht: {LTBLUE}{POWER}{BLACK} Max. snelheid: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S} {BLACK}Kracht: {LTBLUE}{POWER}{BLACK} Max. snelheid: {LTBLUE}{VELOCITY} {BLACK}Max. T.K.: {LTBLUE}{FORCE}
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Winst dit jaar: {LTBLUE}{CURRENCY} (vorig jaar: {CURRENCY})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA}%  {BLACK}Aantal keren motorpech  sinds vorig jaar: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA}%  {BLACK}Aantal keren motorpech sinds vorig jaar: {LTBLUE}{COMMA}
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebouwd: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capaciteit: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capaciteit: {LTBLUE}{CARGO}{SKIP}{SKIP}{STRING} (x{NUM})

@@ -887,9 +887,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Нова про
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Нова промисловість
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...можна будувати лише у джунглях
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...можна будувати лише у пустелі
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  ПАУЗА  *  *
@@ -1322,7 +1319,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Вибе
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Перейменуйте точку маршруту
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Не можна перейменувати точку маршруту...
@@ -1903,11 +1899,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Вігвам
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Чайник-Дім
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Копилка
 
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_STATION_NAME                                                :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Ландшафт
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Посадити дерево
@@ -1961,6 +1952,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :дуже доб
 STR_CARGO_RATING_EXCELLENT                                      :відмінно
 STR_CARGO_RATING_OUTSTANDING                                    :найкраще
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Показати всі поїзди, які заходять на цю станцію
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Показати всі авто, які заходять на цю станцію
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Показати всі літаки, які залітають на цю станцію
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Показати всі кораблі, які запливають на цю станцію
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} більше не приймає {STRING}
@@ -2242,6 +2239,7 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Аер
 STR_SV_STNAME_OILFIELD                                          :{STRING} Нафтовина
 STR_SV_STNAME_MINES                                             :{STRING} Шахти
 STR_SV_STNAME_DOCKS                                             :{STRING} Доки
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Флігель
 STR_SV_STNAME_SIDINGS                                           :{STRING} Хутори
 STR_SV_STNAME_BRANCH                                            :{STRING} Відділення
@@ -2324,7 +2322,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :вороже
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :(Компанія {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Нове обличчя
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Схема кольорів
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Схема кольорів:
@@ -2357,7 +2354,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Підс
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Графік доходів
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Графік операційного прибутку
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Рахунок
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Позика
@@ -2869,7 +2865,6 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Нови
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Поїзд дуже довгий
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Поїзд можна змінювати тільки тоді, коли зупинений в депо
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} поїзд{P "" и ів}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Новий залізничний транспорт
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Новий електрозалізничний транспорт
@@ -2927,7 +2922,6 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Немо
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Не можна зупинити/стартувати поїзд...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA} днів{BLACK}   Останній техогляд: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}%{BLACK}   Останній техогляд: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Поїзди - клікніть на поїзді для детальної інформації
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Поїзди - клікніть на поїзді для інформації, перетягніть для додавання/вилучення
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Будувати новий поїзд
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Перетягніть поїзд сюди, щоб продати його
@@ -3016,7 +3010,6 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Авто
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}На шляху авто
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} автомобіл{P ь і ів}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Гараж
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Новий транспорт
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Нове авто
@@ -3032,7 +3025,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Тех�
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Техогляд в  {TOWN} дорожному депо, {VELOCITY}
 STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Неможливо направити авто в депо...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Неможливо знайти місцеве депо
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Авто - натисніть на авто для інформації
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Показує, яку дію виконує авто - натисніть для руху/зупинки авто
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Показати накази авто
 STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Показати авто в центрі екрану
@@ -3079,7 +3071,6 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Водн
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Неможливо будувати порт тут...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Док
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Нові кораблі
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} кораб{P ель лі лів}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Нові кораблі
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Будувати корабель
 STR_CLONE_SHIP                                                  :{BLACK}Клонувати
@@ -3102,7 +3093,6 @@ STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Кора
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Будувати корабель
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Перетягніть корабель сюди, щоб продати
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Показати депо в центрі екрану
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Кораблі - натисніть для інформації
 STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Список вибору кораблів - натисніть на корабель для інформації
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Будувати вибраний корабель
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Показує, яку дію виконує корабель - натисніть для руху/зупинки корабля
@@ -3144,7 +3134,6 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Буду
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Нові літаки
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Будувати
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Неможливо будувати літак...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} літак{P "" и ів}
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Неможливо направити літак до ангару...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Летить до {STATION} ангару
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Летить до {STATION} ангару, {VELOCITY}
@@ -3158,7 +3147,6 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Літа
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Неможливо продати літак...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Будувати аеропорт
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Будувати аеропорт
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Літаки - натисніть на літак для інформації
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Літаки - натисніть на літак для інформації
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Будувати літак
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Перетягніть літак сюди, щоб продати
@@ -3340,11 +3328,16 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Поїзди - клікніть на поїзді для детальної інформації
+STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Авто - натисніть на авто для інформації
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Кораблі - натисніть для інформації
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Літаки - натисніть на літак для інформації
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Показати всі поїзди, які заходять на цю станцію
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Показати всі авто, які заходять на цю станцію
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Показати всі літаки, які залітають на цю станцію
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Показати всі кораблі, які запливають на цю станцію
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} поїзд{P "" и ів}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} автомобіл{P ь і ів}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} кораб{P ель лі лів}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} літак{P "" и ів}
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Спільні маршрути {COMMA} трансп.засоб{P у iв ів}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Показати транспорт з таким самим маршрутом
@@ -3367,7 +3360,6 @@ STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Онов
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Оновити всі автомобілі в депо
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Оновити всі кораблі в депо
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Оновити всі літаки в ангарі
-
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Оновити {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Почати оновлення
@@ -3534,17 +3526,6 @@ STR_MEASURE_AREA                                                :{BLACK}Діля
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Довжина: {NUM}{}Різниця висот: {NUM} м
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Ділянка: {NUM} x {NUM}{}Різниця висот: {NUM} м
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Плата за трансфер: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...ця дорога у власності міста
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...дорога не в тому напрямку
@@ -3569,7 +3550,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :Група {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Усі поїзди
 STR_GROUP_ALL_ROADS                                             :Усі автомобілі
@@ -3598,12 +3578,35 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Стер
 STR_GROUP_RENAME_TIP                                            :{BLACK}Перейменувати вибрану групу
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Клікніть, щоб захистити групу від глобальної автозаміни
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :(Компанія {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Група {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Назва має бути унікальною
 

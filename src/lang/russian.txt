@@ -280,7 +280,7 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}ПЛ
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ГЗ
 STR_ABBREV_NONE                                                 :{TINYFONT}НЕТ
 STR_ABBREV_ALL                                                  :{TINYFONT}Все
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT} г.
+STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
 STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Карта - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Настройки игры
@@ -308,7 +308,7 @@ STR_JUST_NOTHING                                                :Ничего
 STR_COLOUR_DARK_BLUE                                            :Тёмно-синий
 STR_COLOUR_PALE_GREEN                                           :Светло-зелёный
 STR_COLOUR_PINK                                                 :Розовый
-STR_COLOUR_YELLOW                                               :Желтый
+STR_COLOUR_YELLOW                                               :Жёлтый
 STR_COLOUR_RED                                                  :Красный
 STR_COLOUR_LIGHT_BLUE                                           :Светло-синий
 STR_COLOUR_GREEN                                                :Зелёный
@@ -1336,6 +1336,8 @@ STR_GO_NON_STOP_TO_WAYPOINT                                     :Ехать че
 
 STR_WAYPOINTNAME_CITY                                           :Точка пути {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :Точка пути {TOWN} #{COMMA}
+STR_BUOYNAME_CITY                                               :Буй {TOWN}
+STR_BUOYNAME_CITY_SERIAL                                        :Буй {TOWN} #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Точка пути
 
 STR_WAYPOINT                                                    :{WHITE}Точка пути
@@ -1880,7 +1882,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Компания «{STRING}» получает субсидию!{}{}Перевозка {STRING.gen} по маршруту {STATION} - {STATION} будет оплачиваться в двойном размере в течение года!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Компания «{STRING}» получает субсидию!{}{}Перевозка {STRING.gen} по маршруту {STATION} - {STATION} будет оплачиваться в тройном размере в течение года!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Компания «{STRING}» получает субсидию!{}{}Перевозка {STRING.gen} по маршруту {STATION} - {STATION} будет оплачиваться в четырёхкратном размере в течение года!
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} местная власть запрещает постройку другого аэропорта в городе
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Администрация г.{NBSP}{TOWN} запрещает постройку ещё одного аэропорта в городе
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}Администрация г.{NBSP}{TOWN} не разрешает строительство аэропорта из-за высокого уровня шума.
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Коттеджи
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Дома
@@ -2226,6 +2228,9 @@ STR_SV_STNAME_AIRPORT                                           :Аэропор�
 STR_SV_STNAME_OILFIELD                                          :Нефтяная вышка {STRING}
 STR_SV_STNAME_MINES                                             :Шахты {STRING}
 STR_SV_STNAME_DOCKS                                             :Пристань {STRING}
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING}-дополнительная
 STR_SV_STNAME_SIDINGS                                           :{STRING}-запасная
 STR_SV_STNAME_BRANCH                                            :{STRING}-ветка
@@ -3181,7 +3186,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 ##id 0xB000
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}Крушение дирижабля в {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}Автомобиль уничтожен при столкновении с НЛО!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BLACK}{BIGFONT}Взрыв нефтеперегонного завода вблизи {TOWN}!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BLACK}{BIGFONT}Взрыв нефтеперегонного завода вблизи г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BLACK}{BIGFONT}Взрыв завода при подозрительных обстоятельствах вблизи {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BLACK}{BIGFONT}НЛО приземлилось возле г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BLACK}{BIGFONT}Обвал на угольной шахте вызывает оползень около {TOWN}!
@@ -3249,7 +3254,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} должен быть загружен после {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} требует OpenTTD версии {STRING} или выше.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :файл GRF, который им переводится.
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Слишком много загружено новой графики
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Загружено слишком много новой графики
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Загрузка {STRING} в качестве статического NewGRF с {STRING} Может вызвать ошибку синхронизации.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Неверный спрайт.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Неизвестное свойство для Action 0.

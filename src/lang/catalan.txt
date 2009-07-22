@@ -762,9 +762,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financia una no
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financia una nova indústria
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...només es pot construir en àrees de selva tropical
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...només es pot construir en àrees de desert
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  EN PAUSA  *  *
@@ -1197,7 +1194,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Seleccio
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edita nom de punt de control
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}No es pot canviar el nom del punt de control...
@@ -1778,11 +1774,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tipis
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Casa-Tetera
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Banc-Guardiola Porquet
 
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_STATION_NAME                                                :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Paisatges
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Planta arbres
@@ -1836,6 +1827,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :Molt Bo
 STR_CARGO_RATING_EXCELLENT                                      :Excel·lent
 STR_CARGO_RATING_OUTSTANDING                                    :Excepcional
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Mostra tots els trens que tinguin aquesta estació en el seu itinerari
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostra tots els vehicles que tinguin aquesta estació en el seu itinerari
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostra tots els avions que tinguin aquest aeroport en el seu itinerari
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra tots els vaixells que tinguin aquest port en el seu itinerari
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} ja no accepta més {STRING}
@@ -2080,6 +2077,7 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Aeropo
 STR_SV_STNAME_OILFIELD                                          :{STRING} Camp de Petroli
 STR_SV_STNAME_MINES                                             :{STRING} Mines
 STR_SV_STNAME_DOCKS                                             :{STRING} Port
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Annex
 STR_SV_STNAME_SIDINGS                                           :{STRING} Via Morta
 STR_SV_STNAME_BRANCH                                            :{STRING} Bifurcació
@@ -2162,7 +2160,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :(Companyia {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nova Cara
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Esquema de color
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Esquema de color:
@@ -2195,7 +2192,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total:
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gràfic d'Ingressos
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gràfic de Rendiment d'Operacions
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balanç del Banc
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Préstec
@@ -2707,7 +2703,6 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nous Veh
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren massa llarg
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Els trens només es poden modificar quan estan parats dins d'una cotxera
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Trens
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nous Trens
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nous Trens de Via Electrificada
@@ -2765,7 +2760,6 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Incapaç
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}No es pot parar/arrencar el tren...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Interval de manteniment: {LTBLUE}{COMMA}dies{BLACK}   Darrer manteniment: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval de manteniment: {LTBLUE}{COMMA}%{BLACK}   Darrer manteniment: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trens - clica al tren per més informació
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trens - clica al tren per info., arrossega el vehicle per afegir/treure del tren
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Construeix un nou element de tren
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arrossega l'element de tren fins aquí per vendre'l
@@ -2854,7 +2848,6 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Omple au
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Automòbil en camí
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Vehicles
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Cotxera de Vehicles
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}Nous Vehicles
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}Nous Vehicles
@@ -2870,7 +2863,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Revisi�
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisió a la cotxera de {TOWN}, {VELOCITY}
 STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}No es pot enviar el vehicle a cotxera...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Impossible trobar la cotxera local
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Automòbils - clica en un vehicle per més informació
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Acció sobre el vehicle actual - clica aquí per parar/arrencar el vehicle
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Mostra les ordres dels vehicles
 STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Centra la pantalla principal a la situació del vehicle
@@ -2917,7 +2909,6 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vies d'a
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Aquí no es pot construir un port...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Drassana
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nous Vaixells
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Vaixells
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nous Vaixells
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Construeix Vaixell
 STR_CLONE_SHIP                                                  :{BLACK}Clona Vaixell
@@ -2940,7 +2931,6 @@ STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Vaixells
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Construeix un nou vaixell
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Arrossega el vaixell fins aquí per vendre'l
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centra la pantalla principal en la situació de la drassana
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Vaixells - clica en un vaixell per més informació
 STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Llista de selecció de Vaixells - clica en un vaixell per més informació
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Construeix el vaixell seleccionat
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Accions sobre el vaixell actual - clica aquí per parar/arrencar el vaixell
@@ -2982,7 +2972,6 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Fa una c
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nou Avió
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Construeix Avió
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}No es pot construir l'avió...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Avions
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}No es pot enviar l'avió a l'hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Cap a l'hangar de {STATION}.
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Cap a l'hangar de {STATION}, a {VELOCITY}
@@ -2996,7 +2985,6 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}L'avió 
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}No es pot vendre l'avió...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construcció d'Aeroport
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construeix un aeroport
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Avió - clica sobre l'avió per més informació
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Avió - clica sobre l'avió per més informació
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Construeix nous avions
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Arrossega l'avió fins aquí per vendre'l
@@ -3178,11 +3166,16 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trens - clica al tren per més informació
+STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Automòbils - clica en un vehicle per més informació
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Vaixells - clica en un vaixell per més informació
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Avió - clica sobre l'avió per més informació
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Mostra tots els trens que tinguin aquesta estació en el seu itinerari
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostra tots els vehicles que tinguin aquesta estació en el seu itinerari
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostra tots els avions que tinguin aquest aeroport en el seu itinerari
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra tots els vaixells que tinguin aquest port en el seu itinerari
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Trens
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Vehicles
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Vaixells
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Avions
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordres compartides de {COMMA} Vehicle{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra tots els vehicles que tenen les mateixes ordres
@@ -3205,7 +3198,6 @@ STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autosubs
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autosubstitueix tots els vehicles de la cotxera
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autosubstitueix tots els vaixells de la drassana
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autosubstitueix tots els avions de l'hangar
-
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substitueix {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Comença a substituir
@@ -3372,17 +3364,6 @@ STR_MEASURE_AREA                                                :{BLACK}Àrea: {
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Llargada: {NUM}{}Diferència d'alçada: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Àrea: {NUM} x {NUM}{}Diferència d'alçada: {NUM} m
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transferir Crèdits: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...aquesta carretera es propietat del poble
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...sentit de la carretera en la direcció incorrecta
@@ -3407,7 +3388,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :Grup {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Tots els trens
 STR_GROUP_ALL_ROADS                                             :Tots els vehicles
@@ -3436,12 +3416,35 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Elimina 
 STR_GROUP_RENAME_TIP                                            :{BLACK}Canvia el nom del grup seleccionat
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Clica per protegir aquest grup de l'autosubstitueix global
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :(Companyia {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Grup {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}El nom ha de ser únic
 

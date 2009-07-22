@@ -1187,6 +1187,8 @@ STR_GO_NON_STOP_TO_WAYPOINT                                     :Mene pysäht. p
 
 STR_WAYPOINTNAME_CITY                                           :Reittipiste: {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :Reittipiste: {TOWN} #{COMMA}
+STR_BUOYNAME_CITY                                               :{TOWN} Poiju
+STR_BUOYNAME_CITY_SERIAL                                        :{TOWN} Poiju #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Reittipiste
 
 STR_WAYPOINT                                                    :{WHITE}Reittipiste
@@ -2077,6 +2079,9 @@ STR_SV_STNAME_AIRPORT                                           :{STRING}, lento
 STR_SV_STNAME_OILFIELD                                          :{STRING}, öljykenttä
 STR_SV_STNAME_MINES                                             :{STRING}, kaivokset
 STR_SV_STNAME_DOCKS                                             :{STRING}, satama
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING}, sivuasema
 STR_SV_STNAME_SIDINGS                                           :{STRING}, sivuraide
 STR_SV_STNAME_BRANCH                                            :{STRING}, haarautuma

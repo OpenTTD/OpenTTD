@@ -762,9 +762,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fund new indust
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Fund new industry
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...can only be built in rainforest areas
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...can only be built in desert areas
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  PAUSED  *  *
@@ -963,6 +960,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Allow b
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Enable multiple NewGRF engine sets: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Changing this setting is not possible when there are vehicles.
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Airports never expire: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Warn if train is lost: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Review vehicles' orders: {ORANGE}{STRING}
@@ -1196,7 +1194,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Select w
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edit waypoint name
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Can't change waypoint name...
@@ -1343,7 +1340,7 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (advertize)
 STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} client{P "" s}
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maximum allowed clients:
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max clients:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Choose a maximum number of clients. Not all slots need to be filled.
 STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} compan{P y ies}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max companies:
@@ -1777,11 +1774,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tepees
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Teapot-House
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Piggy-Bank
 
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_STATION_NAME                                                :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landscaping
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plant trees
@@ -1835,6 +1827,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :Very Good
 STR_CARGO_RATING_EXCELLENT                                      :Excellent
 STR_CARGO_RATING_OUTSTANDING                                    :Outstanding
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Show all trains which have this station on their schedule
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Show all road vehicles which have this station on their schedule
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Show all aircraft which have this station on their schedule
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Show all ships which have this station on their schedule
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} no longer accepts {STRING}
@@ -2079,6 +2077,7 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Airpor
 STR_SV_STNAME_OILFIELD                                          :{STRING} Oilfield
 STR_SV_STNAME_MINES                                             :{STRING} Mines
 STR_SV_STNAME_DOCKS                                             :{STRING} Docks
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Annexe
 STR_SV_STNAME_SIDINGS                                           :{STRING} Sidings
 STR_SV_STNAME_BRANCH                                            :{STRING} Branch
@@ -2161,7 +2160,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Hostile
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :(Company {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}New Face
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Color Scheme
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Color Scheme:
@@ -2194,7 +2192,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total:
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Income Graph
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Operating Profit Graph
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bank Balance
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Loan
@@ -2706,7 +2703,6 @@ STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}New Vehi
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Train too long
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trains can only be altered when stopped inside a depot
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Train{P "" s}
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}New Rail Vehicles
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}New Electric Rail Vehicles
@@ -2764,7 +2760,6 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Unable t
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Can't stop/start train...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Servicing interval: {LTBLUE}{COMMA}days{BLACK}   Last service: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servicing interval: {LTBLUE}{COMMA}%{BLACK}   Last service: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trains - click on train for information
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trains - click on train for info., drag vehicle to add/remove from train
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Build new train vehicle
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Drag train vehicle to here to sell it
@@ -2817,6 +2812,8 @@ STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Can't na
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Name train
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Train Crash!{}{COMMA} die in fireball after collision
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Can't reverse direction of train...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Can't reverse direction of vehicle...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Can't turn vehicles consisting of multiple units
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Rename train vehicle type
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Can't rename train vehicle type...
 STR_CLEAR_TIME                                                  :{BLACK}Clear Time
@@ -2851,7 +2848,6 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fill the
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Road vehicle in the way
-STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Road Vehicle{P "" s}
 STR_DEPOT_ROAD_CAPTION                                          :{WHITE}{TOWN} Road Vehicle Depot
 STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON                              :{BLACK}New Vehicles
 STR_BUILD_VEHICLE_ROAD_CAPTION                                  :{WHITE}New Road Vehicles
@@ -2867,7 +2863,6 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Service
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Service at {TOWN} Road Depot, {VELOCITY}
 STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Can't send vehicle to depot...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Unable to find local depot
-STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Road vehicles - click on vehicle for information
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Current vehicle action - click here to stop/start vehicle
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Show vehicle's orders
 STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP                          :{BLACK}Center main view on vehicle's location
@@ -2895,7 +2890,7 @@ STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT
 STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT}Citizens celebrate . . .{}First freight streetcar arrives at {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Road Vehicle Crash!{}Driver dies in fireball after collision with train
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Road Vehicle Crash!{}{COMMA} die in fireball after collision with train
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Can't turn vehicles consisting of multiple units
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Can't make road vehicle turn around...
 STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Rename
 STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Rename road vehicle type
 STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Rename road vehicle type
@@ -2914,7 +2909,6 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waterway
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Can't build dock here...
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Ship Depot
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}New Ships
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Ship{P "" s}
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}New Ships
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Build Ship
 STR_CLONE_SHIP                                                  :{BLACK}Clone Ship
@@ -2937,7 +2931,6 @@ STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Ships - 
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Build new ship
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Drag ship to here to sell it
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Center main view on ship depot location
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Ships - click on ship for information
 STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Ship selection list - click on ship for information
 STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Build the highlighted ship
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Current ship action - click here to stop/start ship
@@ -2979,7 +2972,6 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}This wil
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}New Aircraft
 STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Build Aircraft
 STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Can't build aircraft...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aircraft
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Can't send aircraft to hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Heading for {STATION} Hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Heading for {STATION} Hangar, {VELOCITY}
@@ -2993,7 +2985,6 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Aircraft
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Can't sell aircraft...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Airport construction
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Build airport
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aircraft - click on aircraft for information
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aircraft - click on aircraft for information
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Build new aircraft
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Drag aircraft to here to sell it
@@ -3175,11 +3166,16 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trains - click on train for information
+STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Road vehicles - click on vehicle for information
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Ships - click on ship for information
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aircraft - click on aircraft for information
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Show all trains which have this station on their schedule
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Show all road vehicles which have this station on their schedule
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Show all aircraft which have this station on their schedule
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Show all ships which have this station on their schedule
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Train{P "" s}
+STR_VEHICLE_LIST_ROADVEH_CAPTION                                :{WHITE}{STRING} - {COMMA} Road Vehicle{P "" s}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Ship{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aircraft
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Shared orders of {COMMA} Vehicle{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Show all vehicles which have the same schedule
@@ -3202,7 +3198,6 @@ STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autorepl
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autoreplace all road vehicles in the depot
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autoreplace all ships in the depot
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autoreplace all aircraft in the hangar
-
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start Replacing Vehicles
@@ -3369,17 +3364,6 @@ STR_MEASURE_AREA                                                :{BLACK}Area: {N
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Length: {NUM}{}Height difference: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Height difference: {NUM} m
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer Credits: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...this is a town owned road
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...road facing in the wrong direction
@@ -3404,7 +3388,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :Group {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :All trains
 STR_GROUP_ALL_ROADS                                             :All road vehicles
@@ -3433,12 +3416,35 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Delete t
 STR_GROUP_RENAME_TIP                                            :{BLACK}Rename the selected group
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Click to protect this group from global autoreplace
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :(Company {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Group {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Name must be unique
 

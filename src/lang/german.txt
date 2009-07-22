@@ -1188,6 +1188,8 @@ STR_GO_NON_STOP_TO_WAYPOINT                                     :Fahre ohne Halt
 
 STR_WAYPOINTNAME_CITY                                           :Wegpunkt {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :Wegpunkt {TOWN} #{COMMA}
+STR_BUOYNAME_CITY                                               :{TOWN} Boje
+STR_BUOYNAME_CITY_SERIAL                                        :{TOWN} Boje #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Wegpunkt
 
 STR_WAYPOINT                                                    :{WHITE}Wegpunkt
@@ -2078,6 +2080,9 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Flugha
 STR_SV_STNAME_OILFIELD                                          :{STRING} Ölfeld
 STR_SV_STNAME_MINES                                             :{STRING} Mine
 STR_SV_STNAME_DOCKS                                             :{STRING} Hafen
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Anbau
 STR_SV_STNAME_SIDINGS                                           :{STRING} Nebengleis
 STR_SV_STNAME_BRANCH                                            :{STRING} Zweig
