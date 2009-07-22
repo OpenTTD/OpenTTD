@@ -93,27 +93,13 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	}
 
 	if (flags & DC_EXEC) {
-		static const StringID vehicle_waiting_in_depot[] = {
-			STR_NEWS_TRAIN_IS_WAITING,
-			STR_NEWS_ROAD_VEHICLE_IS_WAITING,
-			STR_NEWS_SHIP_IS_WAITING,
-			STR_NEWS_AIRCRAFT_IS_WAITING,
-		};
-
-		static const WindowClass vehicle_list[] = {
-			WC_TRAINS_LIST,
-			WC_ROADVEH_LIST,
-			WC_SHIPS_LIST,
-			WC_AIRCRAFT_LIST,
-		};
-
-		if (v->IsStoppedInDepot() && (flags & DC_AUTOREPLACE) == 0) DeleteVehicleNews(p1, vehicle_waiting_in_depot[v->type]);
+		if (v->IsStoppedInDepot() && (flags & DC_AUTOREPLACE) == 0) DeleteVehicleNews(p1, STR_NEWS_TRAIN_IS_WAITING + v->type);
 
 		v->vehstatus ^= VS_STOPPED;
 		if (v->type != VEH_TRAIN) v->cur_speed = 0; // trains can stop 'slowly'
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-		InvalidateWindowClasses(vehicle_list[v->type]);
+		InvalidateWindowClasses(GetWindowClassForVehicleType(v->type));
 	}
 	return CommandCost();
 }

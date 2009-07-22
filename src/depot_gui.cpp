@@ -553,9 +553,7 @@ struct DepotWindow : Window {
 	 */
 	void HandleCloneVehClick(const Vehicle *v)
 	{
-		StringID error_str;
-
-		if (v == NULL) return;
+		if (v == NULL || !IsCompanyBuildableVehicleType(v)) return;
 
 		if (!v->IsPrimaryVehicle()) {
 			v = v->First();
@@ -563,15 +561,7 @@ struct DepotWindow : Window {
 			if (v->type == VEH_TRAIN && !Train::From(v)->IsFrontEngine()) return;
 		}
 
-		switch (v->type) {
-			case VEH_TRAIN:    error_str = STR_ERROR_CAN_T_BUILD_TRAIN;        break;
-			case VEH_ROAD:     error_str = STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE; break;
-			case VEH_SHIP:     error_str = STR_ERROR_CAN_T_BUILD_SHIP;         break;
-			case VEH_AIRCRAFT: error_str = STR_ERROR_CAN_T_BUILD_AIRCRAFT;     break;
-			default: return;
-		}
-
-		DoCommandP(this->window_number, v->index, _ctrl_pressed ? 1 : 0, CMD_CLONE_VEHICLE | CMD_MSG(error_str), CcCloneVehicle);
+		DoCommandP(this->window_number, v->index, _ctrl_pressed ? 1 : 0, CMD_CLONE_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN + v->type), CcCloneVehicle);
 
 		ResetObjectToPlace();
 	}
@@ -583,7 +573,7 @@ struct DepotWindow : Window {
 		if (this->type == VEH_TRAIN) {
 			/* Divide the size of DEPOT_WIDGET_SELL into two equally big buttons so DEPOT_WIDGET_SELL and DEPOT_WIDGET_SELL_CHAIN will get the same size.
 			 * This way it will stay the same even if DEPOT_WIDGET_SELL_CHAIN is resized for some reason                                                  */
-			this->widget[DEPOT_WIDGET_SELL_CHAIN].top    = ((this->widget[DEPOT_WIDGET_SELL_CHAIN].bottom - this->widget[DEPOT_WIDGET_SELL].top) / 2) + this->widget[DEPOT_WIDGET_SELL].top;
+			this->widget[DEPOT_WIDGET_SELL_CHAIN].top  = ((this->widget[DEPOT_WIDGET_SELL_CHAIN].bottom - this->widget[DEPOT_WIDGET_SELL].top) / 2) + this->widget[DEPOT_WIDGET_SELL].top;
 			this->widget[DEPOT_WIDGET_SELL].bottom     = this->widget[DEPOT_WIDGET_SELL_CHAIN].top - 1;
 		}
 	}
@@ -594,25 +584,26 @@ struct DepotWindow : Window {
 	 */
 	void SetupStringsForDepotWindow(VehicleType type)
 	{
+		this->widget[DEPOT_WIDGET_CAPTION].data          = STR_DEPOT_TRAIN_CAPTION + type;
+		this->widget[DEPOT_WIDGET_STOP_ALL].tooltips     = STR_MASS_STOP_DEPOT_TRAIN_TIP + type;
+		this->widget[DEPOT_WIDGET_START_ALL].tooltips    = STR_MASS_START_DEPOT_TRAIN_TIP + type;
+		this->widget[DEPOT_WIDGET_SELL].tooltips         = STR_DEPOT_TRAIN_SELL_TOOLTIP + type;
+		this->widget[DEPOT_WIDGET_SELL_ALL].tooltips     = STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP + type;
+
+		this->widget[DEPOT_WIDGET_BUILD].data            = STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON + type;
+		this->widget[DEPOT_WIDGET_BUILD].tooltips        = STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP + type;
+		this->widget[DEPOT_WIDGET_CLONE].data            = STR_CLONE_TRAIN + type;
+		this->widget[DEPOT_WIDGET_CLONE].tooltips        = STR_CLONE_TRAIN_DEPOT_INFO + type;
+
+		this->widget[DEPOT_WIDGET_LOCATION].tooltips     = STR_DEPOT_TRAIN_LOCATION_TOOLTIP + type;
+		this->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP + type;
+		this->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips  = STR_DEPOT_AUTOREPLACE_TRAIN_TIP + type;
+
 		switch (type) {
 			default: NOT_REACHED();
 
 			case VEH_TRAIN:
-				this->widget[DEPOT_WIDGET_CAPTION].data      = STR_DEPOT_TRAIN_CAPTION;
-				this->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_TRAIN_TIP;
-				this->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_DEPOT_TRAIN_TIP;
-				this->widget[DEPOT_WIDGET_SELL].tooltips     = STR_DEPOT_TRAIN_SELL_TOOLTIP;
-				this->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP;
-
-				this->widget[DEPOT_WIDGET_BUILD].data        = STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON;
-				this->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP;
-				this->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_TRAIN;
-				this->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_TRAIN_DEPOT_INFO;
-
-				this->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_DEPOT_TRAIN_LOCATION_TOOLTIP;
 				this->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_TRAIN;
-				this->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP;
-				this->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_TRAIN_TIP;
 
 				/* Sprites */
 				this->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_TRAIN;
@@ -621,21 +612,7 @@ struct DepotWindow : Window {
 				break;
 
 			case VEH_ROAD:
-				this->widget[DEPOT_WIDGET_CAPTION].data      = STR_DEPOT_ROAD_CAPTION;
-				this->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_ROADVEH_TIP;
-				this->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_DEPOT_ROADVEH_TIP;
-				this->widget[DEPOT_WIDGET_SELL].tooltips     = STR_DEPOT_ROAD_SELL_TOOLTIP;
-				this->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP;
-
-				this->widget[DEPOT_WIDGET_BUILD].data        = STR_DEPOT_ROAD_NEW_VEHICLES_BUTTON;
-				this->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_DEPOT_ROAD_NEW_VEHICLES_TOOLTIP;
-				this->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_ROAD_VEHICLE;
-				this->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_ROAD_VEHICLE_DEPOT_INFO;
-
-				this->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_DEPOT_ROAD_LOCATION_TOOLTIP;
 				this->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_LORRY;
-				this->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP;
-				this->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_ROADVEH_TIP;
 
 				/* Sprites */
 				this->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_ROADVEH;
@@ -644,21 +621,7 @@ struct DepotWindow : Window {
 				break;
 
 			case VEH_SHIP:
-				this->widget[DEPOT_WIDGET_CAPTION].data      = STR_DEPOT_SHIP_CAPTION;
-				this->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_SHIP_TIP;
-				this->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_DEPOT_SHIP_TIP;
-				this->widget[DEPOT_WIDGET_SELL].tooltips     = STR_DEPOT_SHIP_SELL_TOOLTIP;
-				this->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP;
-
-				this->widget[DEPOT_WIDGET_BUILD].data        = STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON;
-				this->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP;
-				this->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_SHIP;
-				this->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_SHIP_DEPOT_INFO;
-
-				this->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_DEPOT_SHIP_LOCATION_TOOLTIP;
 				this->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_SHIP;
-				this->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP;
-				this->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_SHIP_TIP;
 
 				/* Sprites */
 				this->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_SHIP;
@@ -667,21 +630,7 @@ struct DepotWindow : Window {
 				break;
 
 			case VEH_AIRCRAFT:
-				this->widget[DEPOT_WIDGET_CAPTION].data      = STR_DEPOT_AIRCRAFT_CAPTION;
-				this->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_HANGAR_TIP;
-				this->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_HANGAR_TIP;
-				this->widget[DEPOT_WIDGET_SELL].tooltips     = STR_DEPOT_AIRCRAFT_SELL_TOOLTIP;
-				this->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP;
-
-				this->widget[DEPOT_WIDGET_BUILD].data        = STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON;
-				this->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP;
-				this->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_AIRCRAFT;
-				this->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW;
-
-				this->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP;
 				this->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_PLANE;
-				this->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP;
-				this->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP;
 
 				/* Sprites */
 				this->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_AIRCRAFT;
@@ -802,18 +751,12 @@ struct DepotWindow : Window {
 			case DEPOT_WIDGET_SELL_ALL:
 				/* Only open the confimation window if there are anything to sell */
 				if (this->vehicle_list.Length() != 0 || this->wagon_list.Length() != 0) {
-					static const StringID confirm_captions[] = {
-						STR_DEPOT_TRAIN_CAPTION,
-						STR_DEPOT_ROAD_CAPTION,
-						STR_DEPOT_SHIP_CAPTION,
-						STR_DEPOT_AIRCRAFT_CAPTION
-					};
 					TileIndex tile = this->window_number;
 					byte vehtype = this->type;
 
 					SetDParam(0, (vehtype == VEH_AIRCRAFT) ? GetStationIndex(tile) : Depot::GetByTile(tile)->town_index);
 					ShowQuery(
-						confirm_captions[vehtype],
+						STR_DEPOT_TRAIN_CAPTION + vehtype,
 						STR_DEPOT_SELL_CONFIRMATION_TEXT,
 						this,
 						DepotSellAllConfirmationCallback
@@ -884,15 +827,7 @@ struct DepotWindow : Window {
 			GuiShowTooltips(whole_chain ? STR_DEPOT_VEHICLE_TOOLTIP_CHAIN : STR_DEPOT_VEHICLE_TOOLTIP, 2, args);
 		} else {
 			/* Show tooltip help */
-			StringID tooltip = INVALID_STRING_ID;
-			switch (this->type) {
-				case VEH_TRAIN:    tooltip = STR_DEPOT_TRAIN_LIST_TOOLTIP; break;
-				case VEH_ROAD:     tooltip = STR_DEPOT_ROAD_LIST_TOOLTIP; break;
-				case VEH_SHIP:     tooltip = STR_DEPOT_SHIP_LIST_TOOLTIP;   break;
-				case VEH_AIRCRAFT: tooltip = STR_DEPOT_AIRCRAFT_LIST_TOOLTIP;break;
-				default: NOT_REACHED();
-			}
-			GuiShowTooltips(tooltip);
+			GuiShowTooltips(STR_DEPOT_TRAIN_LIST_TOOLTIP + this->type);
 		}
 	}
 
@@ -960,7 +895,6 @@ struct DepotWindow : Window {
 			case DEPOT_WIDGET_SELL: case DEPOT_WIDGET_SELL_CHAIN:
 				if (!this->IsWidgetDisabled(DEPOT_WIDGET_SELL) &&
 					this->sel != INVALID_VEHICLE) {
-					uint command;
 
 					if (this->IsWidgetDisabled(widget)) return;
 					if (this->sel == INVALID_VEHICLE) return;
@@ -980,15 +914,7 @@ struct DepotWindow : Window {
 						BackupVehicleOrders(v);
 					}
 
-					switch (v->type) {
-						case VEH_TRAIN:    command = CMD_SELL_RAIL_WAGON | CMD_MSG(STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE); break;
-						case VEH_ROAD:     command = CMD_SELL_ROAD_VEH | CMD_MSG(STR_ERROR_CAN_T_SELL_ROAD_VEHICLE);       break;
-						case VEH_SHIP:     command = CMD_SELL_SHIP | CMD_MSG(STR_ERROR_CAN_T_SELL_SHIP);                   break;
-						case VEH_AIRCRAFT: command = CMD_SELL_AIRCRAFT | CMD_MSG(STR_ERROR_CAN_T_SELL_AIRCRAFT);           break;
-						default: NOT_REACHED();
-					}
-
-					if (!DoCommandP(v->tile, v->index, sell_cmd, command) && is_engine) _backup_orders_tile = 0;
+					if (!DoCommandP(v->tile, v->index, sell_cmd, GetCmdSellVeh(v->type) | CMD_MSG(STR_ERROR_CAN_T_SELL_RAILROAD_VEHICLE + v->type)) && is_engine) _backup_orders_tile = 0;
 				}
 				break;
 			default:

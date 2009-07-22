@@ -297,37 +297,10 @@ struct RefitWindow : public Window {
 		if (v->type == VEH_TRAIN) this->length = CountVehiclesInChain(v);
 		SetVScrollCount(this, this->list->num_lines);
 
-		switch (v->type) {
-			case VEH_TRAIN:
-				this->widget[VRW_SELECTHEADER].tooltips = STR_REFIT_TRAIN_LIST_TOOLTIP;
-				this->widget[VRW_MATRIX].tooltips       = STR_REFIT_TRAIN_LIST_TOOLTIP;
-				this->widget[VRW_REFITBUTTON].data      = STR_REFIT_TRAIN_REFIT_BUTTON;
-				this->widget[VRW_REFITBUTTON].tooltips  = STR_REFIT_TRAIN_REFIT_TOOLTIP;
-				break;
-
-			case VEH_ROAD:
-				this->widget[VRW_SELECTHEADER].tooltips = STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP;
-				this->widget[VRW_MATRIX].tooltips       = STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP;
-				this->widget[VRW_REFITBUTTON].data      = STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON;
-				this->widget[VRW_REFITBUTTON].tooltips  = STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP;
-				break;
-
-			case VEH_SHIP:
-				this->widget[VRW_SELECTHEADER].tooltips = STR_REFIT_SHIP_LIST_TOOLTIP;
-				this->widget[VRW_MATRIX].tooltips       = STR_REFIT_SHIP_LIST_TOOLTIP;
-				this->widget[VRW_REFITBUTTON].data      = STR_REFIT_SHIP_REFIT_BUTTON;
-				this->widget[VRW_REFITBUTTON].tooltips  = STR_REFIT_SHIP_REFIT_TOOLTIP;
-				break;
-
-			case VEH_AIRCRAFT:
-				this->widget[VRW_SELECTHEADER].tooltips = STR_REFIT_AIRCRAFT_LIST_TOOLTIP;
-				this->widget[VRW_MATRIX].tooltips       = STR_REFIT_AIRCRAFT_LIST_TOOLTIP;
-				this->widget[VRW_REFITBUTTON].data      = STR_REFIT_AIRCRAFT_REFIT_BUTTON;
-				this->widget[VRW_REFITBUTTON].tooltips  = STR_REFIT_AIRCRAFT_REFIT_TOOLTIP;
-				break;
-
-			default: NOT_REACHED();
-		}
+		this->widget[VRW_SELECTHEADER].tooltips = STR_REFIT_TRAIN_LIST_TOOLTIP + v->type;
+		this->widget[VRW_MATRIX].tooltips       = STR_REFIT_TRAIN_LIST_TOOLTIP + v->type;
+		this->widget[VRW_REFITBUTTON].data      = STR_REFIT_TRAIN_REFIT_BUTTON + v->type;
+		this->widget[VRW_REFITBUTTON].tooltips  = STR_REFIT_TRAIN_REFIT_TOOLTIP + v->type;
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -393,16 +366,7 @@ struct RefitWindow : public Window {
 					const Vehicle *v = Vehicle::Get(this->window_number);
 
 					if (this->order == INVALID_VEH_ORDER_ID) {
-						int command = 0;
-
-						switch (v->type) {
-							default: NOT_REACHED();
-							case VEH_TRAIN:    command = CMD_REFIT_RAIL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_REFIT_TRAIN);        break;
-							case VEH_ROAD:     command = CMD_REFIT_ROAD_VEH     | CMD_MSG(STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE); break;
-							case VEH_SHIP:     command = CMD_REFIT_SHIP         | CMD_MSG(STR_ERROR_CAN_T_REFIT_SHIP);         break;
-							case VEH_AIRCRAFT: command = CMD_REFIT_AIRCRAFT     | CMD_MSG(STR_ERROR_CAN_T_REFIT_AIRCRAFT);     break;
-						}
-						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8, command)) delete this;
+						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8, GetCmdRefitVeh(v) | CMD_MSG(STR_ERROR_CAN_T_REFIT_TRAIN + v->type))) delete this;
 					} else {
 						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8 | this->order << 16, CMD_ORDER_REFIT)) delete this;
 					}
@@ -978,13 +942,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 				break;
 
 			case VLW_DEPOT_LIST:
-				switch (this->vehicle_type) {
-					case VEH_TRAIN:    SetDParam(0, STR_DEPOT_TRAIN_CAPTION);    break;
-					case VEH_ROAD:     SetDParam(0, STR_DEPOT_ROAD_CAPTION);     break;
-					case VEH_SHIP:     SetDParam(0, STR_DEPOT_SHIP_CAPTION);     break;
-					case VEH_AIRCRAFT: SetDParam(0, STR_DEPOT_AIRCRAFT_CAPTION); break;
-					default: NOT_REACHED();
-				}
+				SetDParam(0, STR_DEPOT_TRAIN_CAPTION + this->vehicle_type);
 				if (this->vehicle_type == VEH_AIRCRAFT) {
 					SetDParam(1, index); // Airport name
 				} else {
@@ -1298,6 +1256,7 @@ struct VehicleDetailsWindow : Window {
 	VehicleDetailsWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		const Vehicle *v = Vehicle::Get(this->window_number);
+		this->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_VEHICLE_DETAILS_TRAIN_RENAME + v->type;
 
 		switch (v->type) {
 			case VEH_TRAIN:
@@ -1307,13 +1266,9 @@ struct VehicleDetailsWindow : Window {
 				this->height += 12;
 				this->resize.step_height = 14;
 				this->resize.height = this->height - 14 * 2; // Minimum of 4 wagons in the display
-
-				this->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_VEHICLE_DETAILS_TRAIN_RENAME;
 				break;
 
 			case VEH_ROAD: {
-				this->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME;
-
 				if (!RoadVehicle::From(v)->HasArticulatedPart()) break;
 
 				/* Draw the text under the vehicle instead of next to it, minus the
@@ -1329,12 +1284,10 @@ struct VehicleDetailsWindow : Window {
 			} break;
 
 			case VEH_SHIP:
-				this->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_VEHICLE_DETAILS_SHIP_RENAME;
 				break;
 
 			case VEH_AIRCRAFT:
 				ResizeWindow(this, 0, 11);
-				this->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_VEHICLE_DETAILS_AIRCRAFT_RENAME;
 				break;
 			default: NOT_REACHED();
 		}
@@ -1482,19 +1435,11 @@ struct VehicleDetailsWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		/** Message strings for renaming vehicles indexed by vehicle type. */
-		static const StringID _name_vehicle_title[] = {
-			STR_QUERY_RENAME_TRAIN_CAPTION,
-			STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION,
-			STR_QUERY_RENAME_SHIP_CAPTION,
-			STR_QUERY_RENAME_AIRCRAFT_CAPTION
-		};
-
 		switch (widget) {
 			case VLD_WIDGET_RENAME_VEHICLE: {// rename
 				const Vehicle *v = Vehicle::Get(this->window_number);
 				SetDParam(0, v->index);
-				ShowQueryString(STR_VEHICLE_NAME, _name_vehicle_title[v->type], MAX_LENGTH_VEHICLE_NAME_BYTES, MAX_LENGTH_VEHICLE_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
+				ShowQueryString(STR_VEHICLE_NAME, STR_QUERY_RENAME_TRAIN_CAPTION + v->type, MAX_LENGTH_VEHICLE_NAME_BYTES, MAX_LENGTH_VEHICLE_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 			} break;
 
 			case VLD_WIDGET_INCREASE_SERVICING_INTERVAL:   // increase int
@@ -1529,17 +1474,9 @@ struct VehicleDetailsWindow : Window {
 
 	virtual void OnQueryTextFinished(char *str)
 	{
-		/** Message strings for error while renaming indexed by vehicle type. */
-		static const StringID _name_vehicle_error[] = {
-			STR_ERROR_CAN_T_RENAME_TRAIN,
-			STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE,
-			STR_ERROR_CAN_T_RENAME_SHIP,
-			STR_ERROR_CAN_T_RENAME_AIRCRAFT
-		};
-
 		if (str == NULL) return;
 
-		DoCommandP(0, this->window_number, 0, CMD_RENAME_VEHICLE | CMD_MSG(_name_vehicle_error[Vehicle::Get(this->window_number)->type]), NULL, str);
+		DoCommandP(0, this->window_number, 0, CMD_RENAME_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_RENAME_TRAIN + Vehicle::Get(this->window_number)->type), NULL, str);
 	}
 
 	virtual void OnResize(Point delta)
@@ -1727,30 +1664,24 @@ struct VehicleViewWindow : Window {
 												 (v->type == VEH_TRAIN) ? VV_INITIAL_VIEWPORT_HEIGHT_TRAIN : VV_INITIAL_VIEWPORT_HEIGHT,
 												 this->window_number | (1 << 31), _vehicle_view_zoom_levels[v->type]);
 
+		this->widget[VVW_WIDGET_START_STOP_VEH].tooltips   = STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP + v->type;
+		this->widget[VVW_WIDGET_CENTER_MAIN_VIEH].tooltips = STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP + v->type;
+		this->widget[VVW_WIDGET_REFIT_VEH].tooltips        = STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP + v->type;
+		this->widget[VVW_WIDGET_GOTO_DEPOT].tooltips       = STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP + v->type;
+		this->widget[VVW_WIDGET_SHOW_ORDERS].tooltips      = STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP + v->type;
+		this->widget[VVW_WIDGET_SHOW_DETAILS].tooltips     = STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP + v->type;
+		this->widget[VVW_WIDGET_CLONE_VEH].tooltips        = STR_CLONE_TRAIN_INFO + v->type;
+
 		/*
 		 * fill in data and tooltip codes for the widgets and
 		 * move some of the buttons for trains
 		 */
 		switch (v->type) {
 			case VEH_TRAIN:
-				this->widget[VVW_WIDGET_START_STOP_VEH].tooltips = STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP;
-
-				this->widget[VVW_WIDGET_CENTER_MAIN_VIEH].tooltips = STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP;
-
 				this->widget[VVW_WIDGET_GOTO_DEPOT].data = SPR_SEND_TRAIN_TODEPOT;
-				this->widget[VVW_WIDGET_GOTO_DEPOT].tooltips = STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP;
-
-				this->widget[VVW_WIDGET_REFIT_VEH].tooltips = STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP;
-
-				this->widget[VVW_WIDGET_SHOW_ORDERS].tooltips = STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP;
-
-				this->widget[VVW_WIDGET_SHOW_DETAILS].tooltips = STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP;
-
 				this->widget[VVW_WIDGET_CLONE_VEH].data = SPR_CLONE_TRAIN;
-				this->widget[VVW_WIDGET_CLONE_VEH].tooltips = STR_CLONE_TRAIN_INFO;
 
 				this->widget[VVW_WIDGET_TURN_AROUND].tooltips = STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP;
-
 
 				/* due to more buttons we must modify the layout a bit for trains */
 				this->widget[VVW_WIDGET_PANEL].bottom = 121;
@@ -1779,41 +1710,15 @@ struct VehicleViewWindow : Window {
 				break;
 
 			case VEH_ROAD:
-				this->widget[VVW_WIDGET_START_STOP_VEH].tooltips = STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP;
-
-				this->widget[VVW_WIDGET_CENTER_MAIN_VIEH].tooltips = STR_VEHICLE_VIEW_ROAD_LOCATION_TOOLTIP;
-
 				this->widget[VVW_WIDGET_GOTO_DEPOT].data = SPR_SEND_ROADVEH_TODEPOT;
-				this->widget[VVW_WIDGET_GOTO_DEPOT].tooltips = STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP;
-
-				this->widget[VVW_WIDGET_REFIT_VEH].tooltips = STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP;
-
-				this->widget[VVW_WIDGET_SHOW_ORDERS].tooltips = STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP;
-
-				this->widget[VVW_WIDGET_SHOW_DETAILS].tooltips = STR_VEHICLE_VIEW_ROAD_SHOW_DETAILS_TOOLTIP;
-
 				this->widget[VVW_WIDGET_CLONE_VEH].data = SPR_CLONE_ROADVEH;
-				this->widget[VVW_WIDGET_CLONE_VEH].tooltips = STR_CLONE_ROAD_VEHICLE_INFO;
 
 				this->SetWidgetHiddenState(VVW_WIDGET_FORCE_PROCEED, true);
 				break;
 
 			case VEH_SHIP:
-				this->widget[VVW_WIDGET_START_STOP_VEH].tooltips = STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP;
-
-				this->widget[VVW_WIDGET_CENTER_MAIN_VIEH].tooltips = STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP;
-
 				this->widget[VVW_WIDGET_GOTO_DEPOT].data = SPR_SEND_SHIP_TODEPOT;
-				this->widget[VVW_WIDGET_GOTO_DEPOT].tooltips = STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP;
-
-				this->widget[VVW_WIDGET_REFIT_VEH].tooltips = STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP;
-
-				this->widget[VVW_WIDGET_SHOW_ORDERS].tooltips = STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP;
-
-				this->widget[VVW_WIDGET_SHOW_DETAILS].tooltips = STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP;
-
 				this->widget[VVW_WIDGET_CLONE_VEH].data = SPR_CLONE_SHIP;
-				this->widget[VVW_WIDGET_CLONE_VEH].tooltips = STR_CLONE_SHIP_INFO;
 
 				this->SetWidgetsHiddenState(true,
 																		VVW_WIDGET_TURN_AROUND,
@@ -1822,21 +1727,8 @@ struct VehicleViewWindow : Window {
 				break;
 
 			case VEH_AIRCRAFT:
-				this->widget[VVW_WIDGET_START_STOP_VEH].tooltips = STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP;
-
-				this->widget[VVW_WIDGET_CENTER_MAIN_VIEH].tooltips = STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP;
-
 				this->widget[VVW_WIDGET_GOTO_DEPOT].data = SPR_SEND_AIRCRAFT_TODEPOT;
-				this->widget[VVW_WIDGET_GOTO_DEPOT].tooltips = STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP;
-
-				this->widget[VVW_WIDGET_REFIT_VEH].tooltips = STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP;
-
-				this->widget[VVW_WIDGET_SHOW_ORDERS].tooltips = STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP;
-
-				this->widget[VVW_WIDGET_SHOW_DETAILS].tooltips = STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP;
-
 				this->widget[VVW_WIDGET_CLONE_VEH].data = SPR_CLONE_AIRCRAFT;
-				this->widget[VVW_WIDGET_CLONE_VEH].tooltips = STR_CLONE_AIRCRAFT_INFO;
 
 				this->SetWidgetsHiddenState(true,
 																		VVW_WIDGET_TURN_AROUND,
@@ -1844,7 +1736,7 @@ struct VehicleViewWindow : Window {
 																		WIDGET_LIST_END);
 				break;
 
-				default: NOT_REACHED();
+			default: NOT_REACHED();
 		}
 
 		this->FindWindowPlacementAndResize(desc);
@@ -1860,22 +1752,6 @@ struct VehicleViewWindow : Window {
 
 	virtual void OnPaint()
 	{
-		/** Message strings for heading to depot indexed by vehicle type. */
-		static const StringID _heading_for_depot_strings[] = {
-			STR_HEADING_FOR_TRAIN_DEPOT,
-			STR_HEADING_FOR_ROAD_DEPOT,
-			STR_HEADING_FOR_SHIP_DEPOT,
-			STR_HEADING_FOR_HANGAR,
-		};
-
-		/** Message strings for heading to depot and servicing indexed by vehicle type. */
-		static const StringID _heading_for_depot_service_strings[] = {
-			STR_HEADING_FOR_TRAIN_DEPOT_SERVICE,
-			STR_HEADING_FOR_ROAD_DEPOT_SERVICE,
-			STR_HEADING_FOR_SHIP_DEPOT_SERVICE,
-			STR_HEADING_FOR_HANGAR_SERVICE,
-		};
-
 		const Vehicle *v = Vehicle::Get(this->window_number);
 		StringID str;
 		bool is_localcompany = v->owner == _local_company;
@@ -1935,9 +1811,9 @@ struct VehicleViewWindow : Window {
 						SetDParam(1, v->GetDisplaySpeed());
 					}
 					if (v->current_order.GetDepotActionType() & ODATFB_HALT) {
-						str = _heading_for_depot_strings[v->type] + _settings_client.gui.vehicle_speed;
+						str = STR_HEADING_FOR_TRAIN_DEPOT + 2 * v->type + _settings_client.gui.vehicle_speed;
 					} else {
-						str = _heading_for_depot_service_strings[v->type] + _settings_client.gui.vehicle_speed;
+						str = STR_HEADING_FOR_TRAIN_DEPOT_SERVICE + 2 * v->type + _settings_client.gui.vehicle_speed;
 					}
 				} break;
 

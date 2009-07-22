@@ -262,38 +262,29 @@ public:
 		this->group_sel = ALL_GROUP;
 		this->vehicle_sel = INVALID_VEHICLE;
 
+		this->widget[GRP_WIDGET_LIST_VEHICLE].tooltips   = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + this->vehicle_type;
+		this->widget[GRP_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_TRAINS + this->vehicle_type;
+
 		switch (this->vehicle_type) {
 			case VEH_TRAIN:
-				this->widget[GRP_WIDGET_LIST_VEHICLE].tooltips = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP;
-				this->widget[GRP_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_TRAINS;
-
 				this->widget[GRP_WIDGET_CREATE_GROUP].data = SPR_GROUP_CREATE_TRAIN;
 				this->widget[GRP_WIDGET_RENAME_GROUP].data = SPR_GROUP_RENAME_TRAIN;
 				this->widget[GRP_WIDGET_DELETE_GROUP].data = SPR_GROUP_DELETE_TRAIN;
 				break;
 
 			case VEH_ROAD:
-				this->widget[GRP_WIDGET_LIST_VEHICLE].tooltips = STR_VEHICLE_LIST_ROAD_TOOLTIP;
-				this->widget[GRP_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_ROAD_VEHICLES;
-
 				this->widget[GRP_WIDGET_CREATE_GROUP].data = SPR_GROUP_CREATE_ROADVEH;
 				this->widget[GRP_WIDGET_RENAME_GROUP].data = SPR_GROUP_RENAME_ROADVEH;
 				this->widget[GRP_WIDGET_DELETE_GROUP].data = SPR_GROUP_DELETE_ROADVEH;
 				break;
 
 			case VEH_SHIP:
-				this->widget[GRP_WIDGET_LIST_VEHICLE].tooltips = STR_VEHICLE_LIST_SHIP_TOOLTIP;
-				this->widget[GRP_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_SHIPS;
-
 				this->widget[GRP_WIDGET_CREATE_GROUP].data = SPR_GROUP_CREATE_SHIP;
 				this->widget[GRP_WIDGET_RENAME_GROUP].data = SPR_GROUP_RENAME_SHIP;
 				this->widget[GRP_WIDGET_DELETE_GROUP].data = SPR_GROUP_DELETE_SHIP;
 				break;
 
 			case VEH_AIRCRAFT:
-				this->widget[GRP_WIDGET_LIST_VEHICLE].tooltips = STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP;
-				this->widget[GRP_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_AIRCRAFT;
-
 				this->widget[GRP_WIDGET_CREATE_GROUP].data = SPR_GROUP_CREATE_AIRCRAFT;
 				this->widget[GRP_WIDGET_RENAME_GROUP].data = SPR_GROUP_RENAME_AIRCRAFT;
 				this->widget[GRP_WIDGET_DELETE_GROUP].data = SPR_GROUP_DELETE_AIRCRAFT;

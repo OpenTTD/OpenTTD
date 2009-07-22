@@ -43,7 +43,6 @@ CommandCost GetRefitCost(EngineID engine_type);
 void ViewportAddVehicles(DrawPixelInfo *dpi);
 
 void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRFBugs bug_type, bool critical);
-StringID VehicleInTheWayErrMsg(const Vehicle *v);
 bool HasVehicleOnTunnelBridge(TileIndex tile, TileIndex endtile, const Vehicle *ignore = NULL);
 
 void DecreaseVehicleValue(Vehicle *v);

@@ -139,16 +139,6 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 	DEBUG(grf, 0, "%s", buffer + 3);
 }
 
-StringID VehicleInTheWayErrMsg(const Vehicle *v)
-{
-	switch (v->type) {
-		case VEH_TRAIN:    return STR_ERROR_TRAIN_IN_THE_WAY;
-		case VEH_ROAD:     return STR_ERROR_ROAD_VEHICLE_IN_THE_WAY;
-		case VEH_AIRCRAFT: return STR_ERROR_AIRCRAFT_IN_THE_WAY;
-		default:           return STR_ERROR_SHIP_IN_THE_WAY;
-	}
-}
-
 static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 {
 	byte z = *(byte*)data;
@@ -156,7 +146,7 @@ static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 	if (v->type == VEH_DISASTER || (v->type == VEH_AIRCRAFT && v->subtype == AIR_SHADOW)) return NULL;
 	if (v->z_pos > z) return NULL;
 
-	_error_message = VehicleInTheWayErrMsg(v);
+	_error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
 	return v;
 }
 
@@ -172,7 +162,7 @@ static Vehicle *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
 	if (v->type != VEH_TRAIN && v->type != VEH_ROAD && v->type != VEH_SHIP) return NULL;
 	if (v == (const Vehicle *)data) return NULL;
 
-	_error_message = VehicleInTheWayErrMsg(v);
+	_error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
 	return v;
 }
 
@@ -1036,18 +1026,8 @@ void VehicleEnterDepot(Vehicle *v)
 			/* Vehicles are always stopped on entering depots. Do not restart this one. */
 			_vehicles_to_autoreplace[v] = false;
 			if (v->owner == _local_company) {
-				StringID string;
-
-				switch (v->type) {
-					case VEH_TRAIN:    string = STR_NEWS_TRAIN_IS_WAITING;        break;
-					case VEH_ROAD:     string = STR_NEWS_ROAD_VEHICLE_IS_WAITING; break;
-					case VEH_SHIP:     string = STR_NEWS_SHIP_IS_WAITING;         break;
-					case VEH_AIRCRAFT: string = STR_NEWS_AIRCRAFT_IS_WAITING;     break;
-					default: NOT_REACHED();
-				}
-
 				SetDParam(0, v->index);
-				AddVehicleNewsItem(string, NS_ADVICE, v->index);
+				AddVehicleNewsItem(STR_NEWS_TRAIN_IS_WAITING + v->type, NS_ADVICE, v->index);
 			}
 			AI::NewEvent(v->owner, new AIEventVehicleWaitingInDepot(v->index));
 		}

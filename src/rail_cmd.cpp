@@ -95,7 +95,7 @@ Vehicle *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
 	Train *t = Train::From(v);
 	if ((t->track != rail_bits) && !TracksOverlap(t->track | rail_bits)) return NULL;
 
-	_error_message = VehicleInTheWayErrMsg(v);
+	_error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
 	return v;
 }
 

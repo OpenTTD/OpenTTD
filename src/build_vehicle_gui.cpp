@@ -872,45 +872,14 @@ struct BuildVehicleWindow : Window {
 	/* Setup widget strings to fit the different types of vehicles */
 	void SetupWindowStrings(VehicleType type)
 	{
-		switch (type) {
-			default: NOT_REACHED();
+		this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = (this->listview_mode ? STR_AVAILABLE_TRAINS : STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION) + type;
+		this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP + type;
+		this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON + type;
+		this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP + type;
+		this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON + type;
+		this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP + type;
 
-			case VEH_TRAIN:
-				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = this->listview_mode ? STR_AVAILABLE_TRAINS : STR_JUST_STRING;
-				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP;
-				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON;
-				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP;
-				break;
-
-			case VEH_ROAD:
-				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = this->listview_mode ? STR_AVAILABLE_ROAD_VEHICLES : STR_BUILD_VEHICLE_ROAD_CAPTION;
-				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP;
-				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON;
-				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP;
-				break;
-
-			case VEH_SHIP:
-				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = this->listview_mode ? STR_AVAILABLE_SHIPS : STR_BUILD_VEHICLE_SHIP_CAPTION;
-				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP;
-				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON;
-				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP;
-				break;
-
-			case VEH_AIRCRAFT:
-				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = this->listview_mode ? STR_AVAILABLE_AIRCRAFT : STR_BUILD_VEHICLE_AIRCRAFT_CAPTION;
-				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP;
-				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON;
-				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP;
-				break;
-		}
+		if (type == VEH_TRAIN && this->listview_mode) this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data = STR_JUST_STRING;
 	}
 
 	/** Filter the engine list against the currently selected cargo filter */
@@ -1129,18 +1098,9 @@ struct BuildVehicleWindow : Window {
 			case BUILD_VEHICLE_WIDGET_RENAME: {
 				EngineID sel_eng = this->sel_engine;
 				if (sel_eng != INVALID_ENGINE) {
-					StringID str = STR_NULL;
-
 					this->rename_engine = sel_eng;
-					switch (this->vehicle_type) {
-						default: NOT_REACHED();
-						case VEH_TRAIN:    str = STR_QUERY_RENAME_TRAIN_TYPE_CAPTION;        break;
-						case VEH_ROAD:     str = STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION; break;
-						case VEH_SHIP:     str = STR_QUERY_RENAME_SHIP_TYPE_CAPTION;         break;
-						case VEH_AIRCRAFT: str = STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION;     break;
-					}
 					SetDParam(0, sel_eng);
-					ShowQueryString(STR_ENGINE_NAME, str, MAX_LENGTH_ENGINE_NAME_BYTES, MAX_LENGTH_ENGINE_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
+					ShowQueryString(STR_ENGINE_NAME, STR_QUERY_RENAME_TRAIN_TYPE_CAPTION + this->vehicle_type, MAX_LENGTH_ENGINE_NAME_BYTES, MAX_LENGTH_ENGINE_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				}
 				break;
 			}
@@ -1204,15 +1164,7 @@ struct BuildVehicleWindow : Window {
 	{
 		if (str == NULL) return;
 
-		StringID err_str = STR_NULL;
-		switch (this->vehicle_type) {
-			default: NOT_REACHED();
-			case VEH_TRAIN:    err_str = STR_ERROR_CAN_T_RENAME_TRAIN_TYPE;        break;
-			case VEH_ROAD:     err_str = STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE; break;
-			case VEH_SHIP:     err_str = STR_ERROR_CAN_T_RENAME_SHIP_TYPE;         break;
-			case VEH_AIRCRAFT: err_str = STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE;     break;
-		}
-		DoCommandP(0, this->rename_engine, 0, CMD_RENAME_ENGINE | CMD_MSG(err_str), NULL, str);
+		DoCommandP(0, this->rename_engine, 0, CMD_RENAME_ENGINE | CMD_MSG(STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + this->vehicle_type), NULL, str);
 	}
 
 	virtual void OnDropdownSelect(int widget, int index)
