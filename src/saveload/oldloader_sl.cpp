@@ -204,18 +204,20 @@ static bool FixTTOMapArray()
 {
 	for (TileIndex t = 0; t < OLD_MAP_SIZE; t++) {
 		TileType tt = GetTileType(t);
+		if (tt == 11) {
+			/* TTO has a different way of storing monorail.
+			 * Instead of using bits in m3 it uses a different tile type. */
+			_m[t].m3 = 1; // rail type = monorail (in TTD)
+			SetTileType(t, MP_RAILWAY);
+			_m[t].m2 = 1; // set monorail ground to RAIL_GROUND_GRASS
+			tt = MP_RAILWAY;
+		}
 
 		switch (tt) {
 			case MP_CLEAR:
 				break;
 
 			case MP_RAILWAY:
-			case 11: // monorail
-				if (tt == 11) {
-					_m[t].m3 = 1; // rail type = monorail
-					_m[t].type_height &= 0x1F; // -> MP_RAILWAY
-					_m[t].m2 = 1; // set monorail ground to RAIL_GROUND_GRASS
-				}
 				switch (GB(_m[t].m5, 6, 2)) {
 					case 0: // RAIL_TILE_NORMAL
 						break;

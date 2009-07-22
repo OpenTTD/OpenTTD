@@ -266,14 +266,14 @@ static int32 LookupWithBuildOnSlopes(::Slope slope, Array *existing, int32 start
 		case SLOPE_W:
 			/* A slope similar to a SLOPE_W. */
 			switch (new_roadbits) {
-				case  6: // ROAD_SE | ROAD_SW:
-				case  9: // ROAD_NE | ROAD_NW:
-				case 12: // ROAD_NE | ROAD_SE:
+				case ROAD_N:
+				case ROAD_E:
+				case ROAD_S:
 					/* Cannot build anything with a turn from the low side. */
 					return 0;
 
-				case  5: // ROAD_SE | ROAD_NW:
-				case 10: // ROAD_NE | ROAD_SW:
+				case ROAD_X:
+				case ROAD_Y:
 					/* A 'sloped' tile is going to be build. */
 					if ((existing_roadbits | new_roadbits) != new_roadbits) {
 						/* There is already a foundation on the tile, or at least
@@ -282,25 +282,25 @@ static int32 LookupWithBuildOnSlopes(::Slope slope, Array *existing, int32 start
 					}
 					/* If the start is in the low part, it is automatically
 					 * building the second part too. */
-					return ((start_roadbits & (ROAD_NE | ROAD_SE)) && !(existing_roadbits & (ROAD_SW | ROAD_NW))) ? 2 : 1;
+					return ((start_roadbits & ROAD_E) && !(existing_roadbits & ROAD_W)) ? 2 : 1;
 
 				default:
 					/* Roadbits causing a foundation are going to be build.
 					 * When the existing roadbits are slopes (the lower bits
 					 * are used), this cannot be done. */
 					if ((existing_roadbits | new_roadbits) == new_roadbits) return 1;
-					return (existing_roadbits & (ROAD_NE | ROAD_SE)) ? 0 : 1;
+					return (existing_roadbits & ROAD_E) ? 0 : 1;
 			}
 
 		case SLOPE_SW:
 			/* A slope similar to a SLOPE_SW. */
 			switch (new_roadbits) {
-				case  9: // ROAD_NE | ROAD_NW:
-				case 12: // ROAD_NE | ROAD_SE:
+				case ROAD_N:
+				case ROAD_E:
 					/* Cannot build anything with a turn from the low side. */
 					return 0;
 
-				case 10: // ROAD_NE | ROAD_SW:
+				case ROAD_X:
 					/* A 'sloped' tile is going to be build. */
 					if ((existing_roadbits | new_roadbits) != new_roadbits) {
 						/* There is already a foundation on the tile, or at least

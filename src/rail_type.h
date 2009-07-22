@@ -21,7 +21,11 @@ enum RailType {
 	RAILTYPE_MONO     = 2,          ///< Monorail
 	RAILTYPE_MAGLEV   = 3,          ///< Maglev
 	RAILTYPE_END,                   ///< Used for iterations
-	INVALID_RAILTYPE  = 0xFF        ///< Flag for invalid railtype
+	INVALID_RAILTYPE  = 0xFF,       ///< Flag for invalid railtype
+
+	DEF_RAILTYPE_FIRST = RAILTYPE_END, ///< Default railtype: first available
+	DEF_RAILTYPE_LAST,                 ///< Default railtype: last available
+	DEF_RAILTYPE_MOST_USED,            ///< Default railtype: most used
 };
 
 /** Allow incrementing of Track variables */

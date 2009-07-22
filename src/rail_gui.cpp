@@ -1824,7 +1824,7 @@ static void SetDefaultRailGui()
 	extern RailType _last_built_railtype;
 	RailType rt = (RailType)_settings_client.gui.default_rail_type;
 	if (rt >= RAILTYPE_END) {
-		if (rt == RAILTYPE_END + 2) {
+		if (rt == DEF_RAILTYPE_MOST_USED) {
 			/* Find the most used rail type */
 			RailType count[RAILTYPE_END];
 			memset(count, 0, sizeof(count));
@@ -1841,15 +1841,15 @@ static void SetDefaultRailGui()
 			}
 
 			/* No rail, just get the first available one */
-			if (count[rt] == 0) rt = RAILTYPE_END;
+			if (count[rt] == 0) rt = DEF_RAILTYPE_FIRST;
 		}
 		switch (rt) {
-			case RAILTYPE_END + 0:
+			case DEF_RAILTYPE_FIRST:
 				rt = RAILTYPE_RAIL;
 				while (rt < RAILTYPE_END && !HasRailtypeAvail(_local_company, rt)) rt++;
 				break;
 
-			case RAILTYPE_END + 1:
+			case DEF_RAILTYPE_LAST:
 				rt = GetBestRailtype(_local_company);
 				break;
 

@@ -51,6 +51,12 @@ enum RoadBits {
 	ROAD_NE   = 8U,                  ///< North-east part
 	ROAD_X    = ROAD_SW | ROAD_NE,   ///< Full road along the x-axis (south-west + north-east)
 	ROAD_Y    = ROAD_NW | ROAD_SE,   ///< Full road along the y-axis (north-west + south-east)
+
+	ROAD_N    = ROAD_NE | ROAD_NW,   ///< Road at the two northern edges
+	ROAD_E    = ROAD_NE | ROAD_SE,   ///< Road at the two eastern edges
+	ROAD_S    = ROAD_SE | ROAD_SW,   ///< Road at the two southern edges
+	ROAD_W    = ROAD_NW | ROAD_SW,   ///< Road at the two western edges
+
 	ROAD_ALL  = ROAD_X  | ROAD_Y     ///< Full 4-way crossing
 };
 DECLARE_ENUM_AS_BIT_SET(RoadBits);
