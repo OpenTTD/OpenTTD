@@ -1261,11 +1261,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Noms des
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...trop proche d'une autre industrie
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Réaménager le train pour transporter une cargaison différente
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Réaménager le train
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choisir le type de cargaison à transporter
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Réaménager le train pour transporter la cargaison sélectionnée
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Impossible de réaménager le train...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Réaménager le train pour transporter une cargaison différente
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Réaménager le train
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Choisir le type de cargaison à transporter
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Réaménager le train pour transporter la cargaison sélectionnée
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Impossible de réaménager le train...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Changer la production
 
 ############ network gui strings
@@ -2698,7 +2698,7 @@ STR_UNKNOWN_STATION                                             :station inconnu
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Vide
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} de {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} de {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} est en attente au dépôt
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} est en attente au dépôt
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nouveaux véhicules
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Train trop long
@@ -2733,7 +2733,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Basculer
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordres)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Fin des ordres - -
 STR_SERVICE                                                     :{BLACK}Entretien
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Impossible de construire le véhicule ferroviaire...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Impossible de construire le véhicule ferroviaire...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Construit en: {LTBLUE}{NUM}{BLACK} Valeur: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valeur: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2861,7 +2861,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}En rout
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}En route pour le dépôt de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Entretien au dépôt de {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Entretien au dépôt de {TOWN}, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Impossible d'envoyer le véhicule au dépôt...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Impossible d'envoyer le véhicule au dépôt...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Impossible de trouver le dépôt
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Comportement courant du véhicule - cliquer pour le démarrer/l'arrêter
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Afficher les ordres du véhicule routier
@@ -2881,9 +2881,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} véhicule{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Renommer le véhicule
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Impossible de renommer le véhicule...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Renommer le véhicule
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Renommer le véhicule
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Impossible de renommer le véhicule...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Renommer le véhicule
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Le premier bus arrive à {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Le premier camion arrive à {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Le premier tramway arrive à {STATION}!
@@ -2891,16 +2891,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Accident routier!{}Un automobiliste meurt brûlé vif lors d'une collision avec un train
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Accident routier!{}{COMMA} mort{P "" s} lors d'une collision avec un train
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Impossible de faire rebrousser chemin au véhicule routier...
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Renommer
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Renommer type de véhicule routier
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Renommer type de véhicule routier
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Impossible de renommer type de véhicule routier...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Renommer
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Renommer type de véhicule routier
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renommer type de véhicule routier
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Impossible de renommer type de véhicule routier...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Réaménager le véhicule routier pour transporter une cargaison différente
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Réaménager le véhicule routier
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Réaménager le véhicule routier pour transporter la cargaison sélectionnée
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Impossible de réaménager le véhicule routier...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choisir le type de cargaison à transporter
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Réaménager le véhicule routier pour transporter une cargaison différente
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Réaménager le véhicule routier
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Réaménager le véhicule routier pour transporter la cargaison sélectionnée
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Impossible de réaménager le véhicule routier...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Choisir le type de cargaison à transporter
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construction de voies navigables

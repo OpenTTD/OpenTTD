@@ -1426,7 +1426,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}پاک �
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}برو به
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (دستورات)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - پایان دستورات - -
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}نمیشود قطار  ساخت ...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}نمیشود قطار  ساخت ...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   مدل: {LTBLUE}{NUM}{BLACK} قیمت: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}  قیمت: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -1492,15 +1492,15 @@ STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON                     :{BLACK}ساخت
 STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}نمی شود ماشین ساخت...
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}نمیشود ماشین را فروخت...
 
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}نام گذاری ماشین
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}نام گذاری ماشین
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}شهروندان ورود اولین اتوبوس را به . . .{}{STATION} تبریک گفتند!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}شهروندان ورود اولین کامیون را به . . .{}{STATION} تبریک گفتند!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}تصادف ماشین!{}راننده پس از تصادف با قطار در آتش سوخت
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}تصادف ماشین!{}راننده پس از تصادف با قطار{COMMA} در آتش سوخت
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}تغییر نام
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}تغییر نام انواع ماشین ها
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}تغییر نام انواع ماشین ها
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}نمی شود انواع ماشین ها را تغییر نام داد...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}تغییر نام
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}تغییر نام انواع ماشین ها
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}تغییر نام انواع ماشین ها
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}نمی شود انواع ماشین ها را تغییر نام داد...
 
 
 ##id 0x9800

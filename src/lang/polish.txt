@@ -1637,11 +1637,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nazwy za
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...zbyt blisko innego przedsiębiorstwa
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Przebudowa pociągu do przewozu innego typu ładunku
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Przebudowa pociągu
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz jaki ładunek ma przewozić pociąg
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Przebuduj pociąg do przewozu zaznaczonego typu ładunku
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nie można przebudować pociągu...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Przebudowa pociągu do przewozu innego typu ładunku
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Przebudowa pociągu
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Wybierz jaki ładunek ma przewozić pociąg
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Przebuduj pociąg do przewozu zaznaczonego typu ładunku
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Nie można przebudować pociągu...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmiana produkcji
 
 ############ network gui strings
@@ -3116,7 +3116,7 @@ STR_UNKNOWN_STATION                                             :Nieznana stacja
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Pusty
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} z {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} z {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} czeka w zajezdni
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} czeka w zajezdni
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nowe pojazdy
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Pociąg jest zbyt długi
@@ -3152,7 +3152,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Przełą
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Polecenia)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Koniec poleceń - -
 STR_SERVICE                                                     :{BLACK}Serwis
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Nie można wybudować lokomotywy...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Nie można wybudować lokomotywy...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Budowa: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Wartość: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3282,7 +3282,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Zmierza
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Zmierza do zajezdni sam. w {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Serwisuj w Zajezdni w {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Serwisuj w Zajezdni w {TOWN}, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Nie można wysłać samochodu do zajezdni...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nie można wysłać samochodu do zajezdni...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nie można znaleźć zajezdni
 STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Samochody - klik na pojeździe po więcej informacji
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Obecny stan pojazdu - klik tutaj aby zatrzymać/ruszyć pojazd
@@ -3303,9 +3303,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} pojazd{P "" y ów}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Nazwij samochód
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Nie można nazwać samochodu...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Nazwij samochód
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nazwij samochód
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Nie można nazwać samochodu...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nazwij samochód
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwszy autobus przybył do {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwsza ciężarówka przybyła do {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwszy tramwaj pasażerski przybył do {STATION}!
@@ -3313,16 +3313,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Wypadek samochodowy!{}Kierowca zginął w zderzeniu z pociągiem
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Wypadek samochodowy!{}{COMMA} ofiar{P a y ""} zderzenia z pociągiem
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Nie można zawrócić pojazdu...
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Zmień nazwę
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Zmień nazwę typu samochodu
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Zmień nazwę typu samochodu
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Nie można zmienić nazwy typu samochodu...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Zmień nazwę
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Zmień nazwę typu samochodu
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Zmień nazwę typu samochodu
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nie można zmienić nazwy typu samochodu...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Przebudowa samochodu do przewozu innego typu ładunku
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Przebudowa samochodu
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Przebuduj samochód do przewozu zaznaczonego typu ładunku
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nie można przebudować samochodu...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz ładunek jaki ma przewozić ten samochód
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Przebudowa samochodu do przewozu innego typu ładunku
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Przebudowa samochodu
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Przebuduj samochód do przewozu zaznaczonego typu ładunku
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Nie można przebudować samochodu...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Wybierz ładunek jaki ma przewozić ten samochód
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Konstrukcja kanału wodnego

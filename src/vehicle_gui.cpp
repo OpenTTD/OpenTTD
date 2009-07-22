@@ -299,17 +299,17 @@ struct RefitWindow : public Window {
 
 		switch (v->type) {
 			case VEH_TRAIN:
-				this->widget[VRW_SELECTHEADER].tooltips = STR_RAIL_SELECT_TYPE_OF_CARGO_FOR;
-				this->widget[VRW_MATRIX].tooltips       = STR_RAIL_SELECT_TYPE_OF_CARGO_FOR;
-				this->widget[VRW_REFITBUTTON].data      = STR_RAIL_REFIT_VEHICLE;
-				this->widget[VRW_REFITBUTTON].tooltips  = STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED;
+				this->widget[VRW_SELECTHEADER].tooltips = STR_REFIT_TRAIN_LIST_TOOLTIP;
+				this->widget[VRW_MATRIX].tooltips       = STR_REFIT_TRAIN_LIST_TOOLTIP;
+				this->widget[VRW_REFITBUTTON].data      = STR_REFIT_TRAIN_REFIT_BUTTON;
+				this->widget[VRW_REFITBUTTON].tooltips  = STR_REFIT_TRAIN_REFIT_TOOLTIP;
 				break;
 
 			case VEH_ROAD:
-				this->widget[VRW_SELECTHEADER].tooltips = STR_ROAD_SELECT_TYPE_OF_CARGO_FOR;
-				this->widget[VRW_MATRIX].tooltips       = STR_ROAD_SELECT_TYPE_OF_CARGO_FOR;
-				this->widget[VRW_REFITBUTTON].data      = STR_REFIT_ROAD_VEHICLE;
-				this->widget[VRW_REFITBUTTON].tooltips  = STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED;
+				this->widget[VRW_SELECTHEADER].tooltips = STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP;
+				this->widget[VRW_MATRIX].tooltips       = STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP;
+				this->widget[VRW_REFITBUTTON].data      = STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON;
+				this->widget[VRW_REFITBUTTON].tooltips  = STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP;
 				break;
 
 			case VEH_SHIP:
@@ -397,10 +397,10 @@ struct RefitWindow : public Window {
 
 						switch (v->type) {
 							default: NOT_REACHED();
-							case VEH_TRAIN:    command = CMD_REFIT_RAIL_VEHICLE | CMD_MSG(STR_RAIL_CAN_T_REFIT_VEHICLE);  break;
-							case VEH_ROAD:     command = CMD_REFIT_ROAD_VEH     | CMD_MSG(STR_REFIT_ROAD_VEHICLE_CAN_T);  break;
-							case VEH_SHIP:     command = CMD_REFIT_SHIP         | CMD_MSG(STR_ERROR_CAN_T_REFIT_SHIP);     break;
-							case VEH_AIRCRAFT: command = CMD_REFIT_AIRCRAFT     | CMD_MSG(STR_ERROR_CAN_T_REFIT_AIRCRAFT); break;
+							case VEH_TRAIN:    command = CMD_REFIT_RAIL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_REFIT_TRAIN);        break;
+							case VEH_ROAD:     command = CMD_REFIT_ROAD_VEH     | CMD_MSG(STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE); break;
+							case VEH_SHIP:     command = CMD_REFIT_SHIP         | CMD_MSG(STR_ERROR_CAN_T_REFIT_SHIP);         break;
+							case VEH_AIRCRAFT: command = CMD_REFIT_AIRCRAFT     | CMD_MSG(STR_ERROR_CAN_T_REFIT_AIRCRAFT);     break;
 						}
 						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8, command)) delete this;
 					} else {
@@ -1312,7 +1312,7 @@ struct VehicleDetailsWindow : Window {
 				break;
 
 			case VEH_ROAD: {
-				this->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_QUERY_RENAME_ROAD_CAPTION;
+				this->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME;
 
 				if (!RoadVehicle::From(v)->HasArticulatedPart()) break;
 
@@ -1485,7 +1485,7 @@ struct VehicleDetailsWindow : Window {
 		/** Message strings for renaming vehicles indexed by vehicle type. */
 		static const StringID _name_vehicle_title[] = {
 			STR_QUERY_RENAME_TRAIN_CAPTION,
-			STR_QUERY_ROAD_RENAME,
+			STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION,
 			STR_QUERY_RENAME_SHIP_CAPTION,
 			STR_QUERY_RENAME_AIRCRAFT_CAPTION
 		};
@@ -1532,7 +1532,7 @@ struct VehicleDetailsWindow : Window {
 		/** Message strings for error while renaming indexed by vehicle type. */
 		static const StringID _name_vehicle_error[] = {
 			STR_ERROR_CAN_T_RENAME_TRAIN,
-			STR_ERROR_CAN_T_RENAME_ROAD,
+			STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE,
 			STR_ERROR_CAN_T_RENAME_SHIP,
 			STR_ERROR_CAN_T_RENAME_AIRCRAFT
 		};
@@ -1686,20 +1686,20 @@ static const uint32 _vehicle_command_translation_table[][4] = {
 	},
 	{ // VCT_CMD_GOTO_DEPOT
 		/* TrainGotoDepot has a nice randomizer in the pathfinder, which causes desyncs... */
-		CMD_SEND_TRAIN_TO_DEPOT | CMD_NO_TEST_IF_IN_NETWORK | CMD_MSG(STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT),
-		CMD_SEND_ROADVEH_TO_DEPOT | CMD_MSG(STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT),
-		CMD_SEND_SHIP_TO_DEPOT | CMD_MSG(STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT),
+		CMD_SEND_TRAIN_TO_DEPOT     | CMD_MSG(STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT) | CMD_NO_TEST_IF_IN_NETWORK ,
+		CMD_SEND_ROADVEH_TO_DEPOT   | CMD_MSG(STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT),
+		CMD_SEND_SHIP_TO_DEPOT      | CMD_MSG(STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT),
 		CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_MSG(STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR)
 	},
 	{ // VCT_CMD_CLONE_VEH
-		CMD_CLONE_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE),
+		CMD_CLONE_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN),
 		CMD_CLONE_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE),
 		CMD_CLONE_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_SHIP),
 		CMD_CLONE_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_AIRCRAFT)
 	},
 	{ // VCT_CMD_TURN_AROUND
 		CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN),
-		CMD_TURN_ROADVEH | CMD_MSG(STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN),
+		CMD_TURN_ROADVEH            | CMD_MSG(STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN),
 		0xffffffff, // invalid for ships
 		0xffffffff  // invalid for aircrafts
 	},
@@ -1740,7 +1740,7 @@ struct VehicleViewWindow : Window {
 				this->widget[VVW_WIDGET_GOTO_DEPOT].data = SPR_SEND_TRAIN_TODEPOT;
 				this->widget[VVW_WIDGET_GOTO_DEPOT].tooltips = STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP;
 
-				this->widget[VVW_WIDGET_REFIT_VEH].tooltips = STR_RAIL_REFIT_VEHICLE_TO_CARRY;
+				this->widget[VVW_WIDGET_REFIT_VEH].tooltips = STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP;
 
 				this->widget[VVW_WIDGET_SHOW_ORDERS].tooltips = STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP;
 
@@ -1786,7 +1786,7 @@ struct VehicleViewWindow : Window {
 				this->widget[VVW_WIDGET_GOTO_DEPOT].data = SPR_SEND_ROADVEH_TODEPOT;
 				this->widget[VVW_WIDGET_GOTO_DEPOT].tooltips = STR_VEHICLE_VIEW_ROAD_SEND_TO_DEPOT_TOOLTIP;
 
-				this->widget[VVW_WIDGET_REFIT_VEH].tooltips = STR_REFIT_ROAD_VEHICLE_TO_CARRY;
+				this->widget[VVW_WIDGET_REFIT_VEH].tooltips = STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP;
 
 				this->widget[VVW_WIDGET_SHOW_ORDERS].tooltips = STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP;
 

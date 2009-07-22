@@ -1294,11 +1294,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Gazdasá
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...túl közel egy másik gazdasági épülethez
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}A vonat átalakítása másfajta áru szállítására
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Vonat átalakítása
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Válaszd ki, milyen árut szállítson a vonat
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}A vonat átalakítása a kijelölt áru szállítására
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nem alakíthatod át a vonatot...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}A vonat átalakítása másfajta áru szállítására
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Vonat átalakítása
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Válaszd ki, milyen árut szállítson a vonat
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}A vonat átalakítása a kijelölt áru szállítására
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Nem alakíthatod át a vonatot...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Termelés megváltoztatása
 
 ############ network gui strings
@@ -2768,7 +2768,7 @@ STR_UNKNOWN_STATION                                             :ismeretlen áll
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Üres
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} {STATION} állomásról
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} {STATION} állomásról (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} a járműtelepen vár
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} a járműtelepen vár
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Új járművek
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Túl hosszú a vonat
@@ -2803,7 +2803,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Átkapcs
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} menetrendje
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Menetrend vége - -
 STR_SERVICE                                                     :{BLACK}Javítás
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Nem veheted meg a vasúti járművet...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Nem veheted meg a vasúti járművet...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} Vásárlás éve: {LTBLUE}{NUM}{BLACK} Érték: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Érték: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2931,7 +2931,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Úton {
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Úton {TOWN} garázsába, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Javítás {TOWN} garázsában
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Javítás {TOWN} garázsában, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Nem küldheted a járművet a garázsba...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nem küldheted a járművet a garázsba...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nem találom a helyi garázst
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Aktuális járműesemény - kattints ide a jármű elindításához/ megállításához
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}A jármű menetrendjének megmutatása
@@ -2951,9 +2951,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} jármű{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Közúti jármű átnevezése
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Nem nevezheted át a közúti járművet...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Közúti jármű átnevezése
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Közúti jármű átnevezése
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Nem nevezheted át a közúti járművet...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Közúti jármű átnevezése
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az első busz {STATION} állomásra!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az első teherautó {STATION} állomásra!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}A lakosság ünnepel . . .{}Első utasszállító villamos megérkezett {STATION} állomásra!
@@ -2961,16 +2961,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Közúti baleset!{}A vezető meghalt a vonattal való ütközéskor
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Közúti baleset!{}{COMMA} ember meghalt a vonattal való ütközéskor
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}A közúti jármű nem tud megfordulni...
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Átnevez
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}A közúti jármű márkanevének megváltoztatása
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Márkanév megváltoztatása
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Nem változtathatod meg a márkanevet...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Átnevez
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}A közúti jármű márkanevének megváltoztatása
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Márkanév megváltoztatása
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nem változtathatod meg a márkanevet...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Teherautó átalakítása hogy mást is tudjon szállítani
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Teherautó átalakítása
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Teherautó átalakítása a kijelölt áru szállíthatóságáért
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nem lehet átalakítani a teherautót...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Válaszd ki a közúti jármű által szállítandó rakományt
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Teherautó átalakítása hogy mást is tudjon szállítani
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Teherautó átalakítása
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Teherautó átalakítása a kijelölt áru szállíthatóságáért
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Nem lehet átalakítani a teherautót...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Válaszd ki a közúti jármű által szállítandó rakományt
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Vízi utak építése

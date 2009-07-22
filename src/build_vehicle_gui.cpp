@@ -889,8 +889,8 @@ struct BuildVehicleWindow : Window {
 				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_BUILD_VEHICLE_ROAD_LIST_TOOLTIP;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_BUTTON;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_BUILD_VEHICLE_ROAD_BUILD_VEHICLE_TOOLTIP;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON;
-				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP;
 				break;
 
 			case VEH_SHIP:
@@ -1109,7 +1109,7 @@ struct BuildVehicleWindow : Window {
 						default: NOT_REACHED();
 						case VEH_TRAIN:
 							DoCommandP(this->window_number, sel_eng, 0,
-									CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE),
+									CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN),
 									(RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) ? CcBuildWagon : CcBuildLoco);
 							break;
 						case VEH_ROAD:
@@ -1134,10 +1134,10 @@ struct BuildVehicleWindow : Window {
 					this->rename_engine = sel_eng;
 					switch (this->vehicle_type) {
 						default: NOT_REACHED();
-						case VEH_TRAIN:    str = STR_QUERY_RENAME_TRAIN_TYPE_CAPTION; break;
-						case VEH_ROAD:     str = STR_QUERY_RENAME_ROAD_TYPE_CAPTION;  break;
-						case VEH_SHIP:     str = STR_QUERY_RENAME_SHIP_TYPE_CAPTION;          break;
-						case VEH_AIRCRAFT: str = STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION;      break;
+						case VEH_TRAIN:    str = STR_QUERY_RENAME_TRAIN_TYPE_CAPTION;        break;
+						case VEH_ROAD:     str = STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION; break;
+						case VEH_SHIP:     str = STR_QUERY_RENAME_SHIP_TYPE_CAPTION;         break;
+						case VEH_AIRCRAFT: str = STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION;     break;
 					}
 					SetDParam(0, sel_eng);
 					ShowQueryString(STR_ENGINE_NAME, str, MAX_LENGTH_ENGINE_NAME_BYTES, MAX_LENGTH_ENGINE_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
@@ -1207,10 +1207,10 @@ struct BuildVehicleWindow : Window {
 		StringID err_str = STR_NULL;
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
-			case VEH_TRAIN:    err_str = STR_ERROR_CAN_T_RENAME_TRAIN_TYPE; break;
-			case VEH_ROAD:     err_str = STR_ERROR_CAN_T_RENAME_ROAD_TYPE;  break;
-			case VEH_SHIP:     err_str = STR_ERROR_CAN_T_RENAME_SHIP_TYPE;     break;
-			case VEH_AIRCRAFT: err_str = STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE; break;
+			case VEH_TRAIN:    err_str = STR_ERROR_CAN_T_RENAME_TRAIN_TYPE;        break;
+			case VEH_ROAD:     err_str = STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE; break;
+			case VEH_SHIP:     err_str = STR_ERROR_CAN_T_RENAME_SHIP_TYPE;         break;
+			case VEH_AIRCRAFT: err_str = STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE;     break;
 		}
 		DoCommandP(0, this->rename_engine, 0, CMD_RENAME_ENGINE | CMD_MSG(err_str), NULL, str);
 	}

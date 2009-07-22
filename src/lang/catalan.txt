@@ -1260,11 +1260,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nom de l
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...massa a prop d'altres indústries
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Remodela un tren per transportar un altre tipus de càrrega
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Remodela tren
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona tipus de càrrega a transportar
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Remodela un tren per transportar el tipus de càrrega seleccionada
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}No es pot remodelar el tren...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Remodela un tren per transportar un altre tipus de càrrega
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Remodela tren
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selecciona tipus de càrrega a transportar
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Remodela un tren per transportar el tipus de càrrega seleccionada
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}No es pot remodelar el tren...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Canvi de producció
 
 ############ network gui strings
@@ -2698,7 +2698,7 @@ STR_UNKNOWN_STATION                                             :estació descon
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Buit
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} procedent{P "" s} de {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} des de {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} està esperant a la cotxera
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} està esperant a la cotxera
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nous Vehicles
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren massa llarg
@@ -2733,7 +2733,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Commuta 
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordres)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Fi d'Ordres - -
 STR_SERVICE                                                     :{BLACK}Servei
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}No es pot construir el vehicle...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}No es pot construir el vehicle...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Construït: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2861,7 +2861,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Cap a l
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Cap a la cotxera de {TOWN}, a {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Revisió a la cotxera de {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisió a la cotxera de {TOWN}, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}No es pot enviar el vehicle a cotxera...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}No es pot enviar el vehicle a cotxera...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Impossible trobar la cotxera local
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Acció sobre el vehicle actual - clica aquí per parar/arrencar el vehicle
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Mostra les ordres dels vehicles
@@ -2881,9 +2881,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehicle{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Anomena automòbil
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}No es pot anomenar l'automòbil...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Anomena automòbil
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Anomena automòbil
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}No es pot anomenar l'automòbil...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Anomena automòbil
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Celebració popular . . .{}Primer autobús arriba a {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Celebració popular . . .{}Primer camió arriba a {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Els ciutadans celebren . . .{}El primer tramvia de passatgers arriba a {STATION}!
@@ -2891,16 +2891,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Accident d'automòbil!{}El conductor mor en una bola de foc després de la col·lisió amb un tren
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Accident d'automòbil!{}{COMMA} moren en una bola de foc després d'una col·lisió amb un tren
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}No s'ha pogut fer girar el vehicle...
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Reanomena
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Reanomena tipus d'automòbil
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Reanomena tipus d'automòbil
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}No es pot reanomenar tipus d'automòbil
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Reanomena
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Reanomena tipus d'automòbil
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Reanomena tipus d'automòbil
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}No es pot reanomenar tipus d'automòbil
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Remodela vehicle de carretera per dur un tipus diferent de càrrega
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Remodela vehicle de carretera
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Remodela vehicle de carretera per a dur el tipus de carrega senyalat
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}No es pot remodelar el vehicle de carretera...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona el tipus de càrrega a transportar pel vehicle
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Remodela vehicle de carretera per dur un tipus diferent de càrrega
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Remodela vehicle de carretera
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Remodela vehicle de carretera per a dur el tipus de carrega senyalat
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}No es pot remodelar el vehicle de carretera...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecciona el tipus de càrrega a transportar pel vehicle
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construcció de vies d'aigua

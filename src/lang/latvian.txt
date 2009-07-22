@@ -1255,11 +1255,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}IRūpnī
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...pārāk tuvu citai rūpnīcai
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Pielāgot vilcienu citas kravas pārvadāšanai
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Pārbūvēt vilcienu
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Izvēlaties kravas veidu, ko pārvadāt ar vilcienu
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Pārbūvēt vilcienu izceltā kravas veida pārvadāšanai
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nevar pārbūvēt vilcienu...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Pielāgot vilcienu citas kravas pārvadāšanai
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Pārbūvēt vilcienu
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Izvēlaties kravas veidu, ko pārvadāt ar vilcienu
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Pārbūvēt vilcienu izceltā kravas veida pārvadāšanai
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Nevar pārbūvēt vilcienu...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Mainīt produkciju
 
 ############ network gui strings
@@ -2688,7 +2688,7 @@ STR_UNKNOWN_STATION                                             :nezināma staci
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Tukšs
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} no {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} no {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} gaida depo
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} gaida depo
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Jauni transportlīdzekļi
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Vilciens ir pārāk garš
@@ -2724,7 +2724,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Pārslē
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Rīkojumi)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Rīkojumu beigas - -
 STR_SERVICE                                                     :{BLACK}Serviss
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Vilcienu nevar uzbūvēt...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Vilcienu nevar uzbūvēt...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}  Uzbūvēts: {LTBLUE}{NUM}{BLACK} Vērtība: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Vērtība: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2839,7 +2839,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Dodas u
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Dodas uz {TOWN} depo, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Apkope {TOWN} depo
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Apkope {TOWN} depo, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Nevar aizsūtīt uz depo
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nevar aizsūtīt uz depo
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nevar atrast vietējo depo
 STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Transportlīdzekļi - klik uz tā priekš informācijas
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Transportl. pašreizējā darbība - klik šeit, lai apstādinātu/palaistu to
@@ -2860,9 +2860,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} transportlīdzek{P lis ļi ļu}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Nosaukt transportl.
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Nevar nosaukt transportl. ...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Nosaukt transportl.
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nosaukt transportl.
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Nevar nosaukt transportl. ...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nosaukt transportl.
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Pilsētnieki svin . . .{}Pirmais autobuss ierodas {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Pilsētnieki svin . . .{}Pirmā kravas automašīna ierodas {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Pilsoņi līksmo . . .{}Pirmais pasažieru tramvajs ierodas {STATION}!
@@ -2870,16 +2870,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Autotransporta avārija!{}Vadītājs mirst uzreiz pēc sadursmes ar vilcienu.
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Autotransporta avārija!{}{COMMA} mirst pēc sadursmes ar vilcienu
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nevar pagriezt transportlīdzekļus, kas sastāv no vairākām daļām
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Pārsaukt
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Pārsaukt transportl. tipu
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Pārsaukt transportl. tipu
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Nevar pārsaukt transportl. tipu...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Pārsaukt
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Pārsaukt transportl. tipu
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Pārsaukt transportl. tipu
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nevar pārsaukt transportl. tipu...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Nomainīt ceļu transportlīdzekļa kravas veidu
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Pārbūvēt ceļu transportlīdzekli
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Nomainīt ceļu transportlīdzekļa kravas veidu uz izvēlēto
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nav iespējams pārbūvēt ceļu transportlīdzekli
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Izvēlies kravas tipu mašīnai
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Nomainīt ceļu transportlīdzekļa kravas veidu
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Pārbūvēt ceļu transportlīdzekli
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Nomainīt ceļu transportlīdzekļa kravas veidu uz izvēlēto
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Nav iespējams pārbūvēt ceļu transportlīdzekli
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Izvēlies kravas tipu mašīnai
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Ūdensceļu celtniecība

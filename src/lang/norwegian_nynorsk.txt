@@ -1255,11 +1255,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industri
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...for nær ein annan industri
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Bygg om eit lokomotiv til å ta ein annan type last
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Bygg om lokomotivet
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vel kva type last lokomotivet skal ta
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Bygg om lokomotivet til å frakte den valde varetypen
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ikkje byggje om lokomotiv...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Bygg om eit lokomotiv til å ta ein annan type last
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Bygg om lokomotivet
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vel kva type last lokomotivet skal ta
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Bygg om lokomotivet til å frakte den valde varetypen
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Kan ikkje byggje om lokomotiv...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Endre produksjon
 
 ############ network gui strings
@@ -2689,7 +2689,7 @@ STR_UNKNOWN_STATION                                             :ukjend stasjon
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Tom
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} frå {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} frå {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} ventar i depoet
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} ventar i depoet
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nye tog/vogner
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Toget er for langt
@@ -2725,7 +2725,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Bytt til
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordre)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Slutt på ordre - -
 STR_SERVICE                                                     :{BLACK}Vedlikehald
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Kan ikkje byggje jernbanekøyretøy...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Kan ikkje byggje jernbanekøyretøy...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Bygd: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Verdi: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2840,7 +2840,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Er på 
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Er på veg til {TOWN} garasje, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Vedlikehald ved {TOWN} garasje
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Vedlikehald ved {TOWN} garasje, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Kan ikkje sende køyretøy til garasje...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan ikkje sende køyretøy til garasje...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan ikkje finne ein garasje i nærleiken
 STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Køyretøy - trykk på køyretøy for informasjon
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Gjeldande køyretøystatus - trykk her for å stoppa/starta køyretøy
@@ -2861,9 +2861,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kjøretøy{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Namngje køyretøy
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Kan ikkje namngje køyretøy...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Namngje køyretøy
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Namngje køyretøy
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kan ikkje namngje køyretøy...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Namngje køyretøy
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Innbyggjarane jublar . . .{}Første buss kjem til {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Innbyggjarane jublar . . .{}Første lastebil kjem til {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Innbygjarane feirer . . .{}Første passasjertrikk kjem til{STATION}!
@@ -2871,16 +2871,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Kollisjon!{}Sjåfør døyr etter kollisjon med tog
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Kollisjon!{}{COMMA} døyr etter kollisjon med tog
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan ikkje snu køyretøy som er samansette av fleire delar
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Endre namn
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Endre namnet til køyretøytypen
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Endre namnet til køyretøytypen
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Kan ikkje endre namnet til køyretøytypen...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Endre namn
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Endre namnet til køyretøytypen
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Endre namnet til køyretøytypen
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kan ikkje endre namnet til køyretøytypen...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Bygg om køyretøyet til å ta ein annan type last
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Bygg om bil
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Bygg om køyretøyet til å ta den valde lasta
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan ikkje byggje om bil...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vel ein type varer som køyretøyet skal lastast med
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Bygg om køyretøyet til å ta ein annan type last
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Bygg om bil
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Bygg om køyretøyet til å ta den valde lasta
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kan ikkje byggje om bil...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vel ein type varer som køyretøyet skal lastast med
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Konstruksjon av kanalar

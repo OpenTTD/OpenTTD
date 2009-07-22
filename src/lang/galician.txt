@@ -1237,11 +1237,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nomes da
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...demasiado cerca doutra industria
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Reaxusta-lo tren para un tipo de carga diferente
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Reaxustar tren
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona o tipo de carga que levará o tren
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Reaxusta-lo tren para o tipo de carga seleccionado
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}No se pode reaxusta-lo tren...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Reaxusta-lo tren para un tipo de carga diferente
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Reaxustar tren
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selecciona o tipo de carga que levará o tren
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Reaxusta-lo tren para o tipo de carga seleccionado
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}No se pode reaxusta-lo tren...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambiar producción
 
 ############ network gui strings
@@ -2698,7 +2698,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Cambiar 
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordes)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Fin das Ordes - -
 STR_SERVICE                                                     :{BLACK}Servizo
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}No se pode construí-lo vehículo de ferrocarril...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}No se pode construí-lo vehículo de ferrocarril...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2825,7 +2825,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Diríxe
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Diríxese o depósito de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servizo no Depósito de {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servizo no Depósito de {TOWN}, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Non se pode envia-lo vehículo ó depósito de estrada...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Non se pode envia-lo vehículo ó depósito de estrada...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}No se pode atopar unha ruta ó depósito local
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Tarefa actual do vehículo - pincha aquí para parar/arrancar o vehículo
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Mostra-las ordes do vehículo
@@ -2845,9 +2845,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehículo{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Renomear vehículo de estrada
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Non se pode renomea-lo vehículo de estrada...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Renomear vehículo de estrada
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Renomear vehículo de estrada
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Non se pode renomea-lo vehículo de estrada...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Renomear vehículo de estrada
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Celebración cidadá . . .{}¡Chega o primeiro autobús a {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Celebración cidadá . . .{}¡Chega o primeiro camión a {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Celebración cidadá . . .{}¡Chega o primeiro tranvía de pasaxeiros a {STATION}!
@@ -2855,16 +2855,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}¡Accidente de Tráfico!{}O conductor morre na explosión producida tra-la colisión cun tren
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}¡Accidente de Tráfico!{}{COMMA} mortos na explosión producida tra-la colisión cun tren
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Non se pode xira-lo vehículo...
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Renomear
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Renomea-lo tipo de vehículo de estrada
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Renomea-lo tipo de vehículo de estrada
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Non se pode renomea-lo tipo de vehículo de estrada...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Renomear
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Renomea-lo tipo de vehículo de estrada
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renomea-lo tipo de vehículo de estrada
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Non se pode renomea-lo tipo de vehículo de estrada...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reaxustar vehículo para levar un tipo diferente de carga
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reaxustar vehículo
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Reaxustar vehículo para levar o tipo de carga seleccionado
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Non se pode reaxusta-lo vehículo
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona o tipo de carga que levará este vehículo de estrada
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Reaxustar vehículo para levar un tipo diferente de carga
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Reaxustar vehículo
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Reaxustar vehículo para levar o tipo de carga seleccionado
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Non se pode reaxusta-lo vehículo
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecciona o tipo de carga que levará este vehículo de estrada
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construción de canais

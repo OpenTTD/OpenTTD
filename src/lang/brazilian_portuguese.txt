@@ -1265,11 +1265,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nomes da
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...muito perto de outra indústria
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Adaptar trem para um tipo de carga diferente
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Adaptar trem
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecionar tipo de carga para o trem
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Adaptar trem para transportar a carga selecionada
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Impossível adaptar o trem...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Adaptar trem para um tipo de carga diferente
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Adaptar trem
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selecionar tipo de carga para o trem
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Adaptar trem para transportar a carga selecionada
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Impossível adaptar o trem...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Modificar produção
 
 ############ network gui strings
@@ -2703,7 +2703,7 @@ STR_UNKNOWN_STATION                                             :estação desco
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Vazio
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} de {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} de {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} está aguardando no depósito
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} está aguardando no depósito
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Novos Veículos
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trem muito longo
@@ -2739,7 +2739,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Alternar
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordens)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Fim de Ordens - -
 STR_SERVICE                                                     :{BLACK}Manutenção
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Impossível construir veículo ferroviário...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Impossível construir veículo ferroviário...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2869,7 +2869,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Indo pa
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Indo para a garagem de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Manutenção na garagem de {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Manutenção na garagem de {TOWN}, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Impossível enviar o veículo para a garagem...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Impossível enviar o veículo para a garagem...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Incapaz de encontrar a garagem local
 STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Automóveis - clique num veículo para informações
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Tarefa atual do veículo - clique aqui para iniciar/parar veículo
@@ -2890,9 +2890,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} veículo{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Renomear automóvel
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Impossível renomear automóvel...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Renomear automóvel
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Renomear automóvel
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Impossível renomear automóvel...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Renomear automóvel
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro ônibus chega a {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro caminhão chega a {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro bonde de passageiros chega a {STATION}!
@@ -2900,16 +2900,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Acidente Rodoviário!{} Condutor morre numa explosão após a colisão com um trem
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Acidente Rodoviário!{} {COMMA} mortos numa explosão após a colisão com um trem
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Impossível virar o veículo...
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Renomear
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Renomear tipo do automóvel
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Renomear tipo do automóvel
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Impossível renomear tipo do automóvel...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Renomear
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Renomear tipo do automóvel
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renomear tipo do automóvel
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Impossível renomear tipo do automóvel...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Adaptar automóvel para carregar tipo de carga diferente
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Adaptar automóvel
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Adaptar automóvel para carregar o tipo de carga selecionado
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Impossível adaptar automóvel...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecionar tipo de carga para o automóvel
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Adaptar automóvel para carregar tipo de carga diferente
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Adaptar automóvel
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Adaptar automóvel para carregar o tipo de carga selecionado
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Impossível adaptar automóvel...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecionar tipo de carga para o automóvel
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construção de hidrovias

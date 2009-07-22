@@ -1039,10 +1039,10 @@ void VehicleEnterDepot(Vehicle *v)
 				StringID string;
 
 				switch (v->type) {
-					case VEH_TRAIN:    string = STR_VEHICLE_STATUS_WAITING_IN_DEPOT; break;
-					case VEH_ROAD:     string = STR_NEWS_ROAD_VEHICLE_IS_WAITING;   break;
-					case VEH_SHIP:     string = STR_NEWS_SHIP_IS_WAITING;  break;
-					case VEH_AIRCRAFT: string = STR_NEWS_AIRCRAFT_IS_WAITING;    break;
+					case VEH_TRAIN:    string = STR_NEWS_TRAIN_IS_WAITING;        break;
+					case VEH_ROAD:     string = STR_NEWS_ROAD_VEHICLE_IS_WAITING; break;
+					case VEH_SHIP:     string = STR_NEWS_SHIP_IS_WAITING;         break;
+					case VEH_AIRCRAFT: string = STR_NEWS_AIRCRAFT_IS_WAITING;     break;
 					default: NOT_REACHED();
 				}
 

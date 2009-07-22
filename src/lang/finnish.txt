@@ -1262,11 +1262,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Teollisu
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...liian lähellä toista teollisuutta.
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Sovita juna kuljettamaan erityyppistä rahtia.
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Sovita juna
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Valitse junan rahtityyppi
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Sovita juna kuljettamaan valittua rahtityyppiä.
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Junaa ei voi sovittaa...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Sovita juna kuljettamaan erityyppistä rahtia.
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Sovita juna
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Valitse junan rahtityyppi
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Sovita juna kuljettamaan valittua rahtityyppiä.
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Junaa ei voi sovittaa...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Aloita tuotanto
 
 ############ network gui strings
@@ -2702,7 +2702,7 @@ STR_UNKNOWN_STATION                                             :tuntematon asem
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Tyhjä
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} asemalta {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} asemalta {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} odottaa varikolla
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} odottaa varikolla
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Uusia liikennevälineitä
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Juna on liian pitkä.
@@ -2737,7 +2737,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Vaihda m
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (aikataulu)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - aikataulun loppu - -
 STR_SERVICE                                                     :{BLACK}Huolto
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Yksikköä ei voi rakentaa...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Yksikköä ei voi rakentaa...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Rakennettu: {LTBLUE}{NUM}{BLACK} Arvo: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Arvo: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2865,7 +2865,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Suuntan
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Suuntana huoltoasema, {TOWN}, {VELOCITY}.
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Huolto {TOWN} Varikko
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Huolto {TOWN} Varikko, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Ajoneuvon lähettäminen huoltoasemalle ei onnistu...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Ajoneuvon lähettäminen huoltoasemalle ei onnistu...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Paikallista huoltoasemaa ei löydy.
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Nykyisen ajoneuvon toiminnot - napsauta tässä pysäyttääksesi/laittaaksesi liikkeelle.
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Näytä ajoneuvon aikataulu.
@@ -2885,9 +2885,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kulkuneuvo{P "" a}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Nimeä ajoneuvo
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Ajoneuvoa ei voi nimetä...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Nimeä ajoneuvo
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nimeä ajoneuvo
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ajoneuvoa ei voi nimetä...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nimeä ajoneuvo
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen linja-auto saapuu asemalle {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen kuorma-auto saapuu asemalle {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen raitiovaunu saapuu asemalle {STATION}!
@@ -2895,16 +2895,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Ajoneuvokolari!{}Kuljettaja kuolee junaan törmäyksen jälkeisessä tulipallossa
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Ajoneuvokolari!{}{COMMA} kuolee junaan törmäyksen jälkeisessä tulipallossa
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Ajoneuvoa ei voida kääntää...
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Nimeä
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Nimeä ajoneuvon tyyppi uudelleen
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Nimeä ajoneuvon tyyppi uudelleen
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Ajoneuvotyyppiä ei voi uudelleennimetä...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Nimeä
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Nimeä ajoneuvon tyyppi uudelleen
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Nimeä ajoneuvon tyyppi uudelleen
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Ajoneuvotyyppiä ei voi uudelleennimetä...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Muuta ajoneuvo rahtaamaan muuta rahtityyppiä.
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Korjaa ajoneuvo.
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Muuta ajoneuvo rahtaamaan korostettua rahtityyppiä.
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Ajoneuvoa ei voida korjata.
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Valitse ajoneuvolla ajettava rahti
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Muuta ajoneuvo rahtaamaan muuta rahtityyppiä.
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Korjaa ajoneuvo.
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Muuta ajoneuvo rahtaamaan korostettua rahtityyppiä.
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Ajoneuvoa ei voida korjata.
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Valitse ajoneuvolla ajettava rahti
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Vesireittien rakentaminen

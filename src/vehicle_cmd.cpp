@@ -94,7 +94,7 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 	if (flags & DC_EXEC) {
 		static const StringID vehicle_waiting_in_depot[] = {
-			STR_VEHICLE_STATUS_WAITING_IN_DEPOT,
+			STR_NEWS_TRAIN_IS_WAITING,
 			STR_NEWS_ROAD_VEHICLE_IS_WAITING,
 			STR_NEWS_SHIP_IS_WAITING,
 			STR_NEWS_AIRCRAFT_IS_WAITING,

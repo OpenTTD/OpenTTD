@@ -1264,11 +1264,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}工業�
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...太接近另一個工業
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}改造列車以運輸不同的貨物種類
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}改造列車
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}選擇要運輸的貨物種類
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}改造列車以運輸選定的貨物種類
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}無法改造列車...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}改造列車以運輸不同的貨物種類
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}改造列車
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}選擇要運輸的貨物種類
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}改造列車以運輸選定的貨物種類
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}無法改造列車...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}修改產量
 
 ############ network gui strings
@@ -2702,7 +2702,7 @@ STR_UNKNOWN_STATION                                             :未知車站
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}空
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} 來自 {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} 來自 {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} 在車庫等待中
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} 在車庫等待中
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}購買新交通工具
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車太長
@@ -2738,7 +2738,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}切到�
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (指令)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - 指令結束 - -
 STR_SERVICE                                                     :{BLACK}維護
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}無法購買鐵道車輛...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}無法購買鐵道車輛...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   購於：{LTBLUE}{NUM}{BLACK} 價值：{LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   價值：{LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2868,7 +2868,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}正前�
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}正前往 {TOWN} 車庫，{VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}在 {TOWN} 車庫維護中
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}在 {TOWN} 車庫維護中，{VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}無法將車輛送至車庫...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}無法將車輛送至車庫...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}找不到附近的車庫
 STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}車輛 - 點選車輛檢視詳細資料
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}目前車輛動作 - 點選這裡可停止／起動車輛
@@ -2889,9 +2889,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}車輛 {NUM} 部 {STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}為車輛命名
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}無法為車輛命名...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}為車輛命名
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}為車輛命名
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}無法為車輛命名...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}為車輛命名
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛公車抵達 {STATION}！
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛貨車抵達 {STATION}！
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛載客電車抵達 {STATION}！
@@ -2899,16 +2899,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}車禍！{}駕駛在與列車對撞後罹難
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}車禍！{}車輛在與列車對撞後，造成 {COMMA} 人罹難
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}無法讓車輛轉向...
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}更名
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}為車輛類型更名
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}為車輛類型更名
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}無法為車輛類型更名...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}更名
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}為車輛類型更名
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}為車輛類型更名
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}無法為車輛類型更名...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}改裝車輛以運送不同的貨物種類
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}改裝車輛
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}改裝車輛以運送指定的貨物種類
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}無法改裝車輛...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}選擇車輛要運送的貨物種類
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}改裝車輛以運送不同的貨物種類
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}改裝車輛
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}改裝車輛以運送指定的貨物種類
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}無法改裝車輛...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}選擇車輛要運送的貨物種類
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :興建水道

@@ -1241,11 +1241,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}産業�
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...他の産業に近すぎます。
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}他の貨物種類を運送するに列車を再装備
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}列車を再装備
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}列車が運送する貨物を選択
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}選択した貨物種類に再装備
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}列車が再装備できません...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}他の貨物種類を運送するに列車を再装備
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}列車を再装備
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車が運送する貨物を選択
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}選択した貨物種類に再装備
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}列車が再装備できません...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}生産量を変更
 
 ############ network gui strings
@@ -2666,7 +2666,7 @@ STR_UNKNOWN_STATION                                             :不明な駅
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}空
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO}（原点：{STATION}）
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO}（原点：{STATION}）（x{NUM}）
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} は電車庫内に停車しています
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} は電車庫内に停車しています
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}新規車両
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車が長過ぎます
@@ -2701,7 +2701,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}指令�
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE}（指令）
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - 指令終了 - -
 STR_SERVICE                                                     :{BLACK}修理
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}鉄道車両が購入できません...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}鉄道車両が購入できません...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}　購入日付：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}　価値：{LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2828,7 +2828,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}{TOWN}�
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}{TOWN}車庫へ回送、{VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}{TOWN}車庫で修理
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN}車庫で修理、{VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}車両を車庫へ回送できません...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}車両を車庫へ回送できません...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}付近に車庫が見つかりません
 STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}道路車両 - クリックして情報を表示します
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}車両の現在の動作 - 開始／停止するにはクリックします
@@ -2848,9 +2848,9 @@ STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}道路車両を名付ける
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}道路車両が名付けません...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}道路車両を名付ける
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}道路車両を名付ける
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}道路車両が名付けません...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}道路車両を名付ける
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}町民の祝賀！{}初バスが{STATION}バス停に到着！
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}町民の祝賀！{}初トラックが{STATION}荷役所に到着！
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}町民の祝賀{}初乗客用路面電車が{STATION}駅に到着！
@@ -2858,16 +2858,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}交通事故！{}列車に衝突、運転者が死亡
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}交通事故！{}列車に衝突、{COMMA}人が死亡
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}多数の部分を含む車両が逆転できません
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}名称変更
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}道路車両の名称を変更
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}道路車両の名称を変更
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}道路車両の名称を変更できません...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}名称変更
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}道路車両の名称を変更
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}道路車両の名称を変更
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}道路車両の名称を変更できません...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}他の貨物の種類を運送するに道路車両を再装備します
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}道路車両を再装備
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}選択した貨物種類を運送するに道路車両を再装備します
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}道路車両が再装備できません...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}運送する貨物種類を選択します
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}他の貨物の種類を運送するに道路車両を再装備します
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}道路車両を再装備
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}選択した貨物種類を運送するに道路車両を再装備します
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}道路車両が再装備できません...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}運送する貨物種類を選択します
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :水路を建設

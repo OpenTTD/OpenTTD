@@ -1262,11 +1262,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industri
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...te dicht bij een andere industrie
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Bouw trein om voor een ander ladingtype
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Bouw trein om
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Kies type lading om te transporteren
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Bouw trein om voor geselecteerde ladingtype
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan trein niet ombouwen...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Bouw trein om voor een ander ladingtype
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Bouw trein om
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kies type lading om te transporteren
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Bouw trein om voor geselecteerde ladingtype
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Kan trein niet ombouwen...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Verander productie
 
 ############ network gui strings
@@ -2702,7 +2702,7 @@ STR_UNKNOWN_STATION                                             :onbekend statio
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Leeg
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} van {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} van {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} wacht in depot
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} wacht in depot
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nieuwe voertuigen
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trein te lang
@@ -2737,7 +2737,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Ga naar 
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Orders)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Einde van orders - -
 STR_SERVICE                                                     :{BLACK}Reparatie
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Kan spoorvoertuig niet bouwen...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Kan spoorvoertuig niet bouwen...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Gebouwd: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Waarde: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2865,7 +2865,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Op weg 
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Op weg naar {TOWN} Weg Depot, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Onderhoud bij {TOWN} Weg Depot
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Onderhoud bij {TOWN} Weg Depot, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Kan voertuig niet naar depot sturen...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan voertuig niet naar depot sturen...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan geen lokaal depot vinden
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Huidige actie van voertuig - klik hier om voertuig te starten of te stoppen
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Laat orders van voertuig zien
@@ -2885,9 +2885,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} voertuig{P "" en}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Hernoem wegvoertuig
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Kan wegvoertuig niet hernoemen...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Benoem wegvoertuig
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Hernoem wegvoertuig
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kan wegvoertuig niet hernoemen...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Benoem wegvoertuig
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Inwoners feesten...{}Eerste bus arriveert in {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Inwoners feesten...{}Eerste vrachtwagen arriveert in {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Inwoners feesten . . .{}Eerste passagiers tram arriveert in {STATION}!
@@ -2895,16 +2895,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Wegvoertuig gebotst!{}Bestuurder verongelukt door treinbotsing
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Wegvoertuig gebotst!{}{COMMA} verongelukt door treinbotsing
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Kan het voertuig hier niet laten omkeren...
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Hernoem
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Hernoem wegvoertuigtype
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Hernoem wegvoertuigtype
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Kan wegvoertuigtype niet hernoemen...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Hernoem
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Hernoem wegvoertuigtype
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Hernoem wegvoertuigtype
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kan wegvoertuigtype niet hernoemen...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Verbouw het wegvoertuig om een andere lading te vervoeren
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Verbouw wegvoertuig
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Verbouw wegvoertuig om geselecteerd vrachttype te vervoeren
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan wegvoertuig niet verbouwen
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecteer welk type vracht het wagen moet vervoeren
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Verbouw het wegvoertuig om een andere lading te vervoeren
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Verbouw wegvoertuig
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Verbouw wegvoertuig om geselecteerd vrachttype te vervoeren
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kan wegvoertuig niet verbouwen
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecteer welk type vracht het wagen moet vervoeren
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Kanaal constructie

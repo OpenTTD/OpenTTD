@@ -1264,11 +1264,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nama ind
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...terlalu dekat dengan industri lain
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Renovasi gerbong untuk membawa tipe kargo lain
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Renovasi gerbong
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Pilih jenis kargo yang akan dibawa kereta
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Ubah kargo lokomotif untuk membawa kargo terpilih
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Tidak dapat mengubah kargo lokomotif...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Renovasi gerbong untuk membawa tipe kargo lain
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Renovasi gerbong
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pilih jenis kargo yang akan dibawa kereta
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Ubah kargo lokomotif untuk membawa kargo terpilih
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Tidak dapat mengubah kargo lokomotif...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Perubahan produksi
 
 ############ network gui strings
@@ -2702,7 +2702,7 @@ STR_UNKNOWN_STATION                                             :stasiun tidak d
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Kosong
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} dari {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} dari {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} sedang menunggu di depo
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} sedang menunggu di depo
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Buat Kendaraan
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Kereta api terlalu panjang
@@ -2738,7 +2738,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Tampilka
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Perintah)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Akhir Perintah - -
 STR_SERVICE                                                     :{BLACK}Perbaikan
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Tidak dapat membuat kendaraan...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Tidak dapat membuat kendaraan...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} Buatan: {LTBLUE}{NUM}{BLACK} Nilai: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK} Nilai: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2868,7 +2868,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Menuju 
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Menuju ke Bengkel {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servis di Bengkel {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servis di Bengkel {TOWN}, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Tidak dapat mengirim kendaraan ke garasi...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Tidak dapat mengirim kendaraan ke garasi...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Tidak dapat menemukan garasi terdekat
 STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Bus/truk - klik pada kendaraan untuk menampilkan informasi
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Kegiatan kendaraan saat ini - klik disini untuk menghentikan / menjalankan kendaraan
@@ -2889,9 +2889,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kendaraan{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Nama kendaraan
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Tidak dapat menamai kendaraan...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Nama kendaraan
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nama kendaraan
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Tidak dapat menamai kendaraan...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nama kendaraan
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Bus pertama tiba di {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Truk pertama tiba di {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Trem Penumpang pertama tiba di {STATION}!
@@ -2899,16 +2899,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Terjadi tabrakan!{}Seorang sopir meninggal dalam ledakan setelah ditabrak kereta
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Terjadi tabrakan!{}{COMMA} orang meninggal dalam ledakan setelah ditabrak kereta
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Tidak dapat memutar kendaraan...
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Ganti Nama
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Ganti nama jenis bus/truk
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Ganti nama jenis bus/truk
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Tidak bisa mengganti nama jenis bus/truk
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Ganti Nama
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Ganti nama jenis bus/truk
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Ganti nama jenis bus/truk
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Tidak bisa mengganti nama jenis bus/truk
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Ubah karoseri truk untuk jenis kargo yang lain
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Karoseri truk
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Ubah karoseri truk untuk mengangkut jenis kargo yang terpilih
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Tidak dapat meng-karoseri ulang truk.
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Pilih jenis kargo truk yang akan dibawa
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Ubah karoseri truk untuk jenis kargo yang lain
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Karoseri truk
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Ubah karoseri truk untuk mengangkut jenis kargo yang terpilih
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Tidak dapat meng-karoseri ulang truk.
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pilih jenis kargo truk yang akan dibawa
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Konstruksi Perairan.

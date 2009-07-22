@@ -1275,11 +1275,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Pramonė
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...per arti kitos gamyklos
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Įsteigti traukinį, kuris rūpinsis prioritetiniais kroviniais
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Įsteigti traukinį
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Pasirink prioritetinį krovinio tipą, kuriuo rūpinsis traukinys
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Įsteigti traukinį prioritetinių krovinių pervežimui
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Negalima įsteigti traukinio...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Įsteigti traukinį, kuris rūpinsis prioritetiniais kroviniais
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Įsteigti traukinį
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pasirink prioritetinį krovinio tipą, kuriuo rūpinsis traukinys
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Įsteigti traukinį prioritetinių krovinių pervežimui
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Negalima įsteigti traukinio...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Keisti produkciją
 
 ############ network gui strings
@@ -2691,7 +2691,7 @@ STR_UNKNOWN_STATION                                             :Nežinoma stoti
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Tuscias
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} is {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} iš {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} laukia depe
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} laukia depe
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Naujos tr. priemones
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Traukinys per ilgas
@@ -2726,7 +2726,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Pereiti 
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Uzduotys)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Uzduociu pabaiga- -
 STR_SERVICE                                                     :{BLACK}Remontas
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Gelezinkelio transporto priemones nupirkti negalima...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Gelezinkelio transporto priemones nupirkti negalima...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Pastatyta: {LTBLUE}{NUM}{BLACK} Verte: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Verte: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2837,7 +2837,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Uzduoti
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Uzduotis: {TOWN} garazas, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servisas{TOWN} Masinu Depe
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servisas {TOWN} Masinu Depe, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Negalima rasti automobilio garazo...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Negalima rasti automobilio garazo...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Negalima rasti garazo
 STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Automobiliai - paspausk ant automobilio, jei nori detalesnes informacijos
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Automobilio uzduotis - spustelk cia, jei nori sustabdyti/paleisti automobili
@@ -2857,9 +2857,9 @@ STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Pavadinti automobili
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Automobilio pavadinti nepavyko...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Pavadinti automobili
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Pavadinti automobili
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Automobilio pavadinti nepavyko...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Pavadinti automobili
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Gyventojai džiūgauja. . .{}Pirmas autobusas atvyko į {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Gyventojai džiūgauja. . .{}Pirmas sunkvežimis atvyko į {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Miestelėnai švenčia . . .{}Pirmas Tramvajus atvyko į {STATION}!
@@ -2867,16 +2867,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Automobilio avarija!{}Automobilio vairuotojas zuvo po susidurimo su traukiniu
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Automobilio avarija!{}Žuvo {COMMA} keleiv(P is iai ių) automobiliui susidūrus su traukiniu
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}negalima pajudinti automobiliu sudarytu is keliu vienetu
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Pervardinti
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Pervardinti automobiliu tipa
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Pervardinti automobiliu tipa
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Negali pervardinti automobliu tipo...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Pervardinti
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Pervardinti automobiliu tipa
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Pervardinti automobiliu tipa
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Negali pervardinti automobliu tipo...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Perkomplektuoti transporto priemone kad galetu vezti kitoki krovinio tipa
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Perkomplektuoti
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Perkomplektuoti transporto priemone kad galetu vezti pazymeta krovinio tipa
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Neimanoma perkomplektuoti...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Nurodykite šios transporto priemonės pervežamą krovinių tipą
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Perkomplektuoti transporto priemone kad galetu vezti kitoki krovinio tipa
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Perkomplektuoti
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Perkomplektuoti transporto priemone kad galetu vezti pazymeta krovinio tipa
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Neimanoma perkomplektuoti...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Nurodykite šios transporto priemonės pervežamą krovinių tipą
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Kanalų konstrukcija

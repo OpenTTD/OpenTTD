@@ -1264,11 +1264,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}اسما
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}قريب جدا من مصنع آخر
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}اعادة تهيئة القطار لحمل نوع اخر من البضائع
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}تهيئة القطار
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}أختر نوع البضاعة لينقلها القطار
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}اعادة تهيئة القطار لحمل البضائع المختارة
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}لايمكن اعادة تهيئة القطار
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}اعادة تهيئة القطار لحمل نوع اخر من البضائع
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}تهيئة القطار
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}أختر نوع البضاعة لينقلها القطار
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}اعادة تهيئة القطار لحمل البضائع المختارة
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}لايمكن اعادة تهيئة القطار
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}تغيير الانتاج
 
 ############ network gui strings
@@ -2702,7 +2702,7 @@ STR_UNKNOWN_STATION                                             :محطة غير
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}فارغ
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} الى {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} من{STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} ينتظر في المستودع
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} ينتظر في المستودع
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}عربات جديدة
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}القطار طويل جدا
@@ -2738,7 +2738,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}حول �
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (اوامر)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - نهاية الاوامر - -
 STR_SERVICE                                                     :{BLACK} صيانة
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}لايمكن بناء عربات سكة حديد ...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}لايمكن بناء عربات سكة حديد ...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}بني: {LTBLUE}{NUM}{BLACK} تكلفة: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK} تكلفة: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2868,7 +2868,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}متو�
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}متوجة الى ورشة {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}صيانة في ورشة {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE} صيانة في ورشة {TOWN}, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}لا يمكن ارسال العربة الى ورشة الصيانة
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}لا يمكن ارسال العربة الى ورشة الصيانة
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}لم يتم العثور على ورشة قريبة من العربة
 STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}العربات - اضغط على العربة لعرض المعلومات
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}حركة العربة الحالية - اضغط هنا لايقاف / تشغيل العربة
@@ -2889,9 +2889,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM}العربات {STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}تسمية العربة
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}لا يمكن تسمية العربة
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}تسمية العربة
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}تسمية العربة
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}لا يمكن تسمية العربة
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}تسمية العربة
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}يحتفل الأهالي ..............{}بوصول اول باص للمحطة ...{STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}الأهالي يحتفلون ......... {}بوصول اول عربة الى .. {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}المواطنون يحتفلون . . .{}بوصول اول عربة ركاب ترام الى {STATION}!
@@ -2899,16 +2899,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}العربة تحطمت !{}السائق توفي في شعلة الحريق بعد الاصطدام بقطار
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}العربة تحطمت !{}{COMMA} توفي في شعلة الحريق بعد الاصطدام بقطار
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE} لا يمكن تغيير اتجاة المركبة الان
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}أعد التسمية
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK} اعادة تسمية العربة
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE} اعادة تسمية العربة
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE} لايمكن اعادة تسمية العربات
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}أعد التسمية
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK} اعادة تسمية العربة
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE} اعادة تسمية العربة
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE} لايمكن اعادة تسمية العربات
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK} هيئ العربة لحمولة أخرى
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}تهيئة نوع حمولة العربة
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK} هيئ العربة لنوع الحمولة المختار
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE} لا يمكن اعادة تهيئة العربة ...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK} اختر نوع حمولة العربة
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK} هيئ العربة لحمولة أخرى
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}تهيئة نوع حمولة العربة
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK} هيئ العربة لنوع الحمولة المختار
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE} لا يمكن اعادة تهيئة العربة ...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK} اختر نوع حمولة العربة
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :بناء ممرات مائيه

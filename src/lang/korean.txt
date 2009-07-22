@@ -1261,11 +1261,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}산업�
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...다른 산업시설과 너무 가깝습니다.
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}다른 종류의 화물을 실을 수 있도록 열차를 개조
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}열차 개조
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}열차가 수송할 화물의 종류를 선택하세요
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}선택된 화물을 수송하도록 열차를 개조
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}열차를 개조할 수 없습니다...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}다른 종류의 화물을 실을 수 있도록 열차를 개조
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}열차 개조
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차가 수송할 화물의 종류를 선택하세요
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}선택된 화물을 수송하도록 열차를 개조
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}열차를 개조할 수 없습니다...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}생산량 변경
 
 ############ network gui strings
@@ -2698,7 +2698,7 @@ STR_UNKNOWN_STATION                                             :알수없는 �
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}비어있음
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} (출발지: {STATION})
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} (출발지: {STATION}) (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE}{P "이" "가"} 차량기지 안에서 대기 중입니다
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE}{P "이" "가"} 차량기지 안에서 대기 중입니다
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}새 열차
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}열차가 너무 깁니다!
@@ -2733,7 +2733,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}순서 �
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (경로)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - 경로의 끝 - -
 STR_SERVICE                                                     :{BLACK}점검
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}기차를 만들 수 없습니다...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}기차를 만들 수 없습니다...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   가격: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2861,7 +2861,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}{TOWN} 
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}{TOWN} 차고로 가는 중 ({VELOCITY})
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}{TOWN} 차고로 점검하러 가는중
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} 차고로 점검하러 가는중 ({VELOCITY})
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}차량을 차고로 보낼 수 없습니다...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}차량을 차고로 보낼 수 없습니다...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}인접한 차고를 찾을 수 없습니다
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}현재 차량 행동 - 운행/정지시키려면 클릭하세요
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}차량 경로 보이기
@@ -2881,9 +2881,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} 차량{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}자동차 이름 지정
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}자동차의 이름을 지정할 수 없습니다...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}자동차 이름 지정
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}자동차 이름 지정
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}자동차의 이름을 지정할 수 없습니다...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}자동차 이름 지정
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}첫 버스가 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}첫 트럭이 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}{STATION}에 처음으로 승객 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
@@ -2891,16 +2891,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 운전사가 사망했습니다!
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 {COMMA}명이 사망했습니다!
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}자동차를 U턴시킬 수 없습니다...
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}이름 지정
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}자동차 타입의 이름 지정
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}자동차 타입의 이름 지정
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}자동차 타입의 이름을 지정할 수 없습니다...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}이름 지정
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}자동차 타입의 이름 지정
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}자동차 타입의 이름 지정
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}자동차 타입의 이름을 지정할 수 없습니다...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}자동차가 다른 종류의 화물을 싣도록 개조
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}자동차 개조
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}선택한 화물을 싣도록 자동차를 개조
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}자동차를 개조할 수 없습니다...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}자동차가 수송할 화물의 종류를 선택하십시오.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}자동차가 다른 종류의 화물을 싣도록 개조
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}자동차 개조
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}선택한 화물을 싣도록 자동차를 개조
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}자동차를 개조할 수 없습니다...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}자동차가 수송할 화물의 종류를 선택하십시오.
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :항만 건설

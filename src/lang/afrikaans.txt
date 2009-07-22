@@ -1237,11 +1237,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nywerhei
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...te naby aan 'n ander nywerheid
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Herstel trein om 'n ander vrag tipe te ontvoer
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Herstel trein
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Kies vrag tipe vir trein te ontvoer
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Herstel trein om verlig vrag tipe te ontvoer
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}kan nie trein herstel nie...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Herstel trein om 'n ander vrag tipe te ontvoer
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Herstel trein
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kies vrag tipe vir trein te ontvoer
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Herstel trein om verlig vrag tipe te ontvoer
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}kan nie trein herstel nie...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Verander produksie
 
 ############ network gui strings
@@ -2690,7 +2690,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Verander
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Opdrae)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Einde van Opdrae - -
 STR_SERVICE                                                     :{BLACK}Diens
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Kan nie spoorweg voertuig bou nie...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Kan nie spoorweg voertuig bou nie...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Waarde: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2804,7 +2804,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Op pad 
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Op pad na {TOWN} Pad Depot, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Diens by {TOWN} Pad Depot
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Diens by {TOWN} Pad Depot, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Kan nie voertuig na depot stuur nie...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan nie voertuig na depot stuur nie...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan nie plaaslike depot vind nie
 STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Pad voertuie - kliek op voertuig vir inligting
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Huidige voertuig aksie - kliek hier om voertuig to stop/aanskakel
@@ -2825,9 +2825,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} voertuig{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Benaam pad voertuig
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Pad voertuig kan nie benaam word nie...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Benaam pad voertuig
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Benaam pad voertuig
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Pad voertuig kan nie benaam word nie...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Benaam pad voertuig
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste bus arriveer by {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste trok arriveer by {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste passasier trein arriveer by {STATION}!
@@ -2835,16 +2835,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Pad Voertuig Botsing!{}Bestuurder sterf in vuurbol na botsing met trein
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Pad voertuig Botsing!{}{COMMA} sterf in vuurbol na botsing met trein
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan nie voertuie van veel deele draai nie
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Hernoem
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Hernoem pad voertuig tipe
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Hernoem pad voertuig tipe
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Pad voertuig tipe kan nie hernoem word nie...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Hernoem
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Hernoem pad voertuig tipe
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Hernoem pad voertuig tipe
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Pad voertuig tipe kan nie hernoem word nie...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Herpas pad voertuig om 'n ander vrag tipe te ontvoer
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Herpas pad voertuig
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Herpas pad voertuig om beklemtoonde vrat tipe te ontvoer
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan nie pad voertuig herpas nie...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Kies vrag tipe vir pad voertuig om te vervoer
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Herpas pad voertuig om 'n ander vrag tipe te ontvoer
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Herpas pad voertuig
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Herpas pad voertuig om beklemtoonde vrat tipe te ontvoer
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kan nie pad voertuig herpas nie...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kies vrag tipe vir pad voertuig om te vervoer
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Waterweg konstruksie

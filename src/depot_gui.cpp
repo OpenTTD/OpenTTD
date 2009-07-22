@@ -564,10 +564,10 @@ struct DepotWindow : Window {
 		}
 
 		switch (v->type) {
-			case VEH_TRAIN:    error_str = STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE; break;
-			case VEH_ROAD:     error_str = STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE;     break;
-			case VEH_SHIP:     error_str = STR_ERROR_CAN_T_BUILD_SHIP;             break;
-			case VEH_AIRCRAFT: error_str = STR_ERROR_CAN_T_BUILD_AIRCRAFT;         break;
+			case VEH_TRAIN:    error_str = STR_ERROR_CAN_T_BUILD_TRAIN;        break;
+			case VEH_ROAD:     error_str = STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE; break;
+			case VEH_SHIP:     error_str = STR_ERROR_CAN_T_BUILD_SHIP;         break;
+			case VEH_AIRCRAFT: error_str = STR_ERROR_CAN_T_BUILD_AIRCRAFT;     break;
 			default: return;
 		}
 

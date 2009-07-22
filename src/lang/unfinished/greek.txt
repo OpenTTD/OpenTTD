@@ -1245,11 +1245,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Ονόμ
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...πολύ κοντά σε άλλη βιομηχανία
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Αναπροσαρμογή τρένου για μεταφορά διαφορετικού φορτίου
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Αναπροσαρμογή τρένου
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Επιλογή τύπου φορτίου για να μεταφέρει το τρένο
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Διασκευή του τρένου ώστε να μεταφέρει το επιλεγμένο φορτίο
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Δεν γίνεται να αναπροσαρμοστεί το τρένο...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Αναπροσαρμογή τρένου για μεταφορά διαφορετικού φορτίου
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Αναπροσαρμογή τρένου
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Επιλογή τύπου φορτίου για να μεταφέρει το τρένο
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Διασκευή του τρένου ώστε να μεταφέρει το επιλεγμένο φορτίο
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Δεν γίνεται να αναπροσαρμοστεί το τρένο...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Αλλαγή παραγωγής
 
 ############ network gui strings

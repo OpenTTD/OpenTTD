@@ -1452,11 +1452,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Imena fa
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...previše blizu druge fabrike
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Prepravlja voz kako bi prevozio drugu vrstu tereta
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Prepavi voz
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Označite vrstu tovara za prepravljanje voza
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Prepravlja voz za prevoz označene vrste tovara
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Voz se ne može prepraviti...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Prepravlja voz kako bi prevozio drugu vrstu tereta
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Prepavi voz
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Označite vrstu tovara za prepravljanje voza
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Prepravlja voz za prevoz označene vrste tovara
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Voz se ne može prepraviti...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Promena proizvodnje
 
 ############ network gui strings
@@ -2741,7 +2741,7 @@ STR_UNKNOWN_STATION                                             :nepoznata stani
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Prazno
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} sa {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} sa {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} čeka u depou
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} čeka u depou
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nova Vozila
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Voz je predugačak
@@ -2776,7 +2776,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Prelazi 
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Naredbe)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Kraj Naredbi - -
 STR_SERVICE                                                     :{BLACK}Servis
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Nemoguća kupovina šinskog vozila...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Nemoguća kupovina šinskog vozila...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Kupljen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Vrednost: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2904,7 +2904,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Ide ka 
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Ide ka {TOWN} Drumskom Depou, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servisiranje u {TOWN} Drumskom Depou
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servisiranje u {TOWN} Drumskom Depou, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Vozilo ne može da ode u depo...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Vozilo ne može da ode u depo...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Neuspešan pronalazak lokalnog depoa
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Trenutno stanje vozila - kliknite ovde za zaustavljanje/pokretanje vozila
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Prikazuje naredbe vozilu
@@ -2924,9 +2924,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozil{P o a a}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Naziv drumskog vozila
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Ne može se promeniti naziv vozila...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Naziv drumskog vozila
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Naziv drumskog vozila
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ne može se promeniti naziv vozila...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Naziv drumskog vozila
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi autobus stiže na stanicu {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi kamion stiže na stanicu {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi tramvaj stiže na stanicu {STATION}!
@@ -2934,16 +2934,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Saobraćajna nesreća!{}Vozač je poginuo u eksploziji nakon sudara sa vozom
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Saobraćajna nesreća!{}{COMMA} {P "" je su} poginu{P o la lo} u eksploziji nakon sudara sa vozom
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Drumsko vozilo ne može da se okrene...
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Promena naziva
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Promenite naziv vrste drumskog vozila
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Naziv vrste drumskog vozila
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Nemoguća promena naziva vrste drumskog vozila...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Promena naziva
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Promenite naziv vrste drumskog vozila
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Naziv vrste drumskog vozila
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nemoguća promena naziva vrste drumskog vozila...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Prepravite drumsko vozilo kako bi prevozio drugu vrstu tovara
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Prepravi drumsko vozilo
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Prepravlja drumsko vozilo za prevoz označene vrste tovara
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nemoguće prepravljanje drumskog vozila...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Označite vrstu tovara za prepravljanje drumskog vozila
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Prepravite drumsko vozilo kako bi prevozio drugu vrstu tovara
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Prepravi drumsko vozilo
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Prepravlja drumsko vozilo za prevoz označene vrste tovara
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Nemoguće prepravljanje drumskog vozila...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Označite vrstu tovara za prepravljanje drumskog vozila
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Izgradnja plovnih kanala

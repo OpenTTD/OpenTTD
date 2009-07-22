@@ -1265,11 +1265,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Iðnaða
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...of nálægt öðrum iðnaði
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Breyta lest svo hún flytji annan farm
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Breyta lest
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Veldu hvernig farm lestin á að flytja
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Breyta lest svo hún flytji valinn farm
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Get ekki breytt lest...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Breyta lest svo hún flytji annan farm
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Breyta lest
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Veldu hvernig farm lestin á að flytja
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Breyta lest svo hún flytji valinn farm
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Get ekki breytt lest...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Breyta framleiðslu
 
 ############ network gui strings
@@ -2703,7 +2703,7 @@ STR_UNKNOWN_STATION                                             :óþekkt stöð
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Tómt
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} frá {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} frá {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} bíður í þjónustumiðstöð
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} bíður í þjónustumiðstöð
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Kaupa lest
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Lestin er of löng
@@ -2739,7 +2739,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Skipta y
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Skipanir)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Endi skipana - -
 STR_SERVICE                                                     :{BLACK}Skoðun
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Get ekki byggt lest...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Get ekki byggt lest...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Framleitt: {LTBLUE}{NUM}{BLACK} Virði: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Virði: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2869,7 +2869,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Á lei�
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Á leið í {TOWN} bifreiðaskýli, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Viðhald í {TOWN} bifreiðaskýli
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Viðhald í {TOWN} bifreiðaskýli, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Get ekki sent bifreið í skýli...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Get ekki sent bifreið í skýli...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Finnur ekkert nálægt skýli
 STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Bifreið - smelltu á bifreið fyrir nánari upplýsingar
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Núverandi aðgerð bifreiðar - smelltu hér til að stöðva/ræsa bifreið
@@ -2890,9 +2890,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} farartæki{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Nefna bifreið
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Get ekki nefnt bifreið...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Nefna bifreið
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nefna bifreið
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Get ekki nefnt bifreið...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nefna bifreið
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsti strætisvagn kemur við á {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsti vörubíll kemur við á {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsti farþegasporvagn kemur við á {STATION}!
@@ -2900,16 +2900,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Bílslys!{}Bílstjóri deyr í sprengingu eftir árekstur við lest
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Bílslys!{}{COMMA} deyja í sprengingu eftir árekstur við lest
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Get ekki snúið bifreiðinni við...
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Endurnefna
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Endurnefna tegund bifreiðar
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Endurnefna tegund bifreiðar
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE} Get ekki endurnefnat tegund bifreiðar...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Endurnefna
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Endurnefna tegund bifreiðar
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Endurnefna tegund bifreiðar
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE} Get ekki endurnefnat tegund bifreiðar...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Breyta bifreið svo hún flytji annan farm
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Breyta bifreið
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Breyta bifreið svo hún flytji valinn farm
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Get ekki breytt bifreið...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Veldu tegund farms sem bifreið mun flytja
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Breyta bifreið svo hún flytji annan farm
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Breyta bifreið
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Breyta bifreið svo hún flytji valinn farm
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Get ekki breytt bifreið...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veldu tegund farms sem bifreið mun flytja
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Vatnaframkvæmdir

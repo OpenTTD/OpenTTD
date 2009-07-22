@@ -1385,11 +1385,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Назв
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...дуже близько до іншої промисловості
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Переобладнати поїзд для перевезення іншого виду вантажу
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Переобладнати
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Виберіть вид вантажу для перевезення
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Переобладнати поїзд для перевезення вибраного виду вантажу
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Неможливо переобладнати поїзд...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Переобладнати поїзд для перевезення іншого виду вантажу
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Переобладнати
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Виберіть вид вантажу для перевезення
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Переобладнати поїзд для перевезення вибраного виду вантажу
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Неможливо переобладнати поїзд...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Змінити виробництво
 
 ############ network gui strings
@@ -2860,7 +2860,7 @@ STR_UNKNOWN_STATION                                             :невідом�
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}порожній
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} з {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} з {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} чакає в депо
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} чакає в депо
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Новий транспорт
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Поїзд дуже довгий
@@ -2895,7 +2895,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Пере
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Накази)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Кінець наказів - -
 STR_SERVICE                                                     :{BLACK}Техогляд
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Неможливо збудувати поїзд...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Неможливо збудувати поїзд...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Ціна: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3023,7 +3023,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Пря�
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Прямує до {TOWN} дорожного депо, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Техогляд в  {TOWN} дорожному депо
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Техогляд в  {TOWN} дорожному депо, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Неможливо направити авто в депо...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Неможливо направити авто в депо...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Неможливо знайти місцеве депо
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Показує, яку дію виконує авто - натисніть для руху/зупинки авто
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Показати накази авто
@@ -3043,9 +3043,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} транспорт{P "" и ів}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Назвати авто
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Неможливо назвати авто...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Назвати авто
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Назвати авто
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Неможливо назвати авто...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Назвати авто
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Жителі святкують . . .{}Перший автобус з'явився на {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Жителі святкують . . .{}Перша вантажівка з'явилася на {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Жителі святкують . . .{}Перший пасажирський трамвай прибув на {STATION}!
@@ -3053,16 +3053,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Аварія!{}Водій загинув при зіткненні авто з поїздом
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Аварія!{}{COMMA} загинуло при зіткненні авто з поїздом
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Неможливо розвернути машину...
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Зміна назви
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Перейменувати тип авто
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Перейменувати тип авто
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Неможливо перейменувати тип авто...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Зміна назви
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Перейменувати тип авто
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Перейменувати тип авто
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Неможливо перейменувати тип авто...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Переобладнати авто для перевезення інших вантажів
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Переобладнати авто
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Переобладнати авто для перевезення вибраного вантажу
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Неможливо переобладнати авто
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Оберіть тип вантажу для перевезення
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Переобладнати авто для перевезення інших вантажів
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Переобладнати авто
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Переобладнати авто для перевезення вибраного вантажу
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Неможливо переобладнати авто
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Оберіть тип вантажу для перевезення
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Будівництво водних шляхів

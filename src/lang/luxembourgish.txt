@@ -1262,11 +1262,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Fabriken
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...ze Noo bei enger aanerer Fabrik
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Den Zuch upassen fir aaner Luedungen ze transportéieren
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Zuch upassen
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selectéiert d'Luedung déi transportéiert soll ginn
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Passt den Zuch un fir den ugewielten Luedungstyp
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kann den Zuch net unpassen...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Den Zuch upassen fir aaner Luedungen ze transportéieren
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Zuch upassen
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selectéiert d'Luedung déi transportéiert soll ginn
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Passt den Zuch un fir den ugewielten Luedungstyp
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Kann den Zuch net unpassen...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}D'Produktioun änneren
 
 ############ network gui strings
@@ -2700,7 +2700,7 @@ STR_UNKNOWN_STATION                                             :onbekannt Stati
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Eidel
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} vun {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} vun {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} waart am Depot
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} waart am Depot
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nei Gefierer
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Zuch ze laang
@@ -2736,7 +2736,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Wiesselt
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Opträg)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Enn vun den Opträg - -
 STR_SERVICE                                                     :{BLACK}Revisioun
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Kann den Zuch net bauen...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Kann den Zuch net bauen...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Wert: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2864,7 +2864,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Um Wee 
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Um Wee fir {TOWN} Stroossendepot, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Revisioun am {TOWN} Stroossendepot
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisioun am {TOWN} Stroossendepot, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Kann d'Gefiert net an den Depot schécken...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kann d'Gefiert net an den Depot schécken...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kann den Depot net fannen
 STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Stroossengefierer - klickt op en Gefiert fir Informatiounen
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Momentan Aktioun - klickt hei fir d'Gefiert ze stoppen/starten
@@ -2885,9 +2885,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} Gefier{P t er}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Stroossengefiert benennen
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Kann d'Stroossengefiert net benennen...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Stroossengefiert benennen
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Stroossengefiert benennen
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kann d'Stroossengefiert net benennen...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Stroossengefiert benennen
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Biirger feieren . . .{}Éischten Bus kënnt bei {STATION} un!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Biirger feieren . . .{}Eischten Camion kënnt bei {STATION} un!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Biirger feieren . . .{}Eischten Tram kënnt bei  {STATION} un!
@@ -2895,16 +2895,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Stroossengefiert onfall!{}Fuerer stieft an der Explosioun no Onfall mam Zuch
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Stroossengefiertaccident!{}{COMMA} stiewen an der Explosioun no Onfall mam Zuch
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kann keng Gefierer aus e puer Unitéiten emdréinen
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Ëmbenennen
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Gefierttyp ëmbenennen
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Gefiertentyp ëmbenennen
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Kann den Gefierttyp net ëmbenennen...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Ëmbenennen
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Gefierttyp ëmbenennen
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Gefiertentyp ëmbenennen
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kann den Gefierttyp net ëmbenennen...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Stroossengefiert ëmbauen fir eng aner Wuer ze transportéiren
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Stroossengefiert ëmbauen
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Stroosengefiert embauen fir gewielten Wuer ze transportéiren
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kann Stroossengefiert net ëmbauen...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wielt den Typ vun Wueren fir Stroossengefiert
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Stroossengefiert ëmbauen fir eng aner Wuer ze transportéiren
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Stroossengefiert ëmbauen
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Stroosengefiert embauen fir gewielten Wuer ze transportéiren
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kann Stroossengefiert net ëmbauen...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Wielt den Typ vun Wueren fir Stroossengefiert
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Waasserstroossen bauen

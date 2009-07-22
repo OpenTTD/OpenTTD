@@ -1306,11 +1306,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Imena in
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...preblizu drugi industriji
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Predelaj vlak za tovor druge vrste
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Predelaj vlak
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Izberi predelavo za tip tovora
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Predelaj vlak za označen tip tovora
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nemogoča predelava vlaka...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Predelaj vlak za tovor druge vrste
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Predelaj vlak
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Izberi predelavo za tip tovora
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Predelaj vlak za označen tip tovora
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Nemogoča predelava vlaka...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Spremeni proizvodnjo
 
 ############ network gui strings
@@ -2782,7 +2782,7 @@ STR_UNKNOWN_STATION                                             :neznana postaja
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Prazen
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :Tovor {LTBLUE}{CARGO} iz postaje {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} iz {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} čaka v garaži
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} čaka v garaži
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nova vozila
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Vlak je predolg
@@ -2818,7 +2818,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Preklop 
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ukazi)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Konec ukazov - -
 STR_SERVICE                                                     :{BLACK}Servis
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Ni mogoče kupiti vozila ...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Ni mogoče kupiti vozila ...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Zgrajeno: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Vrednost: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2946,7 +2946,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Pelje v
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Pelje v {TOWN} cestno garažo, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Na servisiranje v {TOWN} cestno garažo
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Na servisiranje v {TOWN} cestno garažo, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Ni mogoče poslati vozila v garažo...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Ni mogoče poslati vozila v garažo...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Ni mogoče najti najbližje garaže
 STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}Cestna vozila - kliknite na vozilo za informacije
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Dejanja trenutnega vozila - kliknite za ustavitev/zagon vozila
@@ -2967,9 +2967,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozil{P o i a ""}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Poimenuj cestno vozilo
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Ni mogoče poimenovati cestnega vozila ...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Poimenuj cestno vozilo
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Poimenuj cestno vozilo
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ni mogoče poimenovati cestnega vozila ...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Poimenuj cestno vozilo
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prihod prvega avtobusa na postajo {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prihod prvega tovornjaka na postajo {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Meščani proslavljajo . . .{}Prvi potniški tramvaj je prispel na postajo {STATION}!
@@ -2977,16 +2977,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Prometna nesreča!{}Voznik umrl v plamenih po trku z vlakom.
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Prometna nesreča!{}{COMMA} mrt{P ev va vi vih} v plamenih ob trku z vlakom.
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Ni moč obrniti vozil, sestavljenih iz večih enot
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Preimenuj
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Preimenuj cestno vozilo
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Preimenuj cestno vozilo
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Ni mogoče preimenovati cestnega vozila ...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Preimenuj
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Preimenuj cestno vozilo
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Preimenuj cestno vozilo
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Ni mogoče preimenovati cestnega vozila ...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Predelaj vozilo za prevoz druge vrste tovora
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Predelaj cestno vozilo
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Predelaj cestno vozilo za prevoz označenega tipa tovora
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Ni možna predelava cestnega vozila
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Izberi tip tovora, ki ga bo vozilo prevažalo
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Predelaj vozilo za prevoz druge vrste tovora
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Predelaj cestno vozilo
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Predelaj cestno vozilo za prevoz označenega tipa tovora
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Ni možna predelava cestnega vozila
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Izberi tip tovora, ki ga bo vozilo prevažalo
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Gradnja vodnih poti

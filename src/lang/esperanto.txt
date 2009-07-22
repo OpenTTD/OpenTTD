@@ -1261,11 +1261,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industri
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...tro proksime al alia industrio
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Transformu trajnon por ke ĝi portu alian ŝarĝon
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Transformu trajnon
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Elektu ŝarĝospecon portotan de la trajno
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Transformu trajnon por porti la elektitan ŝarĝotipon
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Ne povas transformi la trajnon...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Transformu trajnon por ke ĝi portu alian ŝarĝon
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Transformu trajnon
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Elektu ŝarĝospecon portotan de la trajno
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Transformu trajnon por porti la elektitan ŝarĝotipon
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Ne povas transformi la trajnon...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ŝanĝu produktadon
 
 ############ network gui strings
@@ -2568,7 +2568,7 @@ STR_REFIT_ORDER                                                 :(Transformu al 
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordenoj)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Fino de Ordenoj - -
 STR_SERVICE                                                     :{BLACK}Prizorgo
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Ne povas krei relan veturilon...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Ne povas krei relan veturilon...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valoro: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2654,7 +2654,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Irante 
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Irante al {TOWN} Voja Deponejo, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Prizorgo ĉe {TOWN} Voja Deponejo
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Prizorgo ĉe {TOWN} Voja Deponejo, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Ne povas sendi veturilon al deponejo...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Ne povas sendi veturilon al deponejo...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Ne eblas trovi lokan deponejon
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Nuna veturila ago - klaku ĉi tie por haltigi/starti veturilon
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Montru veturilajn ordenojn
@@ -2674,24 +2674,24 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} veturilo{P "" j}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Nomu vojveturilon
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Ne povas nomi vojveturilon...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Nomu vojveturilon
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nomu vojveturilon
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ne povas nomi vojveturilon...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nomu vojveturilon
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Enloĝantoj festas . . .{}Unua buso alvenas en {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Enloĝantoj festas . . .{}Unua ŝarĝaŭto alvenas en {STATION}!
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Vojveturila kraŝo!{}Veturanto mortas pro fajro post kolizio kun trajno
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Vojveturila Kraŝo!{}{COMMA} mortas pro fajro post kolizio kun trajno
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Ne povas turnigi vojveturilon...
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Renomu
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Renomu vojveturilan tipon
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Renomu vojveturilan tipon
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Ne povas renomi vojveturilan tipon...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Renomu
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Renomu vojveturilan tipon
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renomu vojveturilan tipon
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Ne povas renomi vojveturilan tipon...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Transformu vojveturilon por porti alian ŝarĝon
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Transformu vojveturilon
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Transformu vojveturilon por porti elektitan ŝarĝon
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Ne povas transformi vojveturilon...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Elektu portotan ŝarĝon de la vojveturilo
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Transformu vojveturilon por porti alian ŝarĝon
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Transformu vojveturilon
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Transformu vojveturilon por porti elektitan ŝarĝon
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Ne povas transformi vojveturilon...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Elektu portotan ŝarĝon de la vojveturilo
 
 ##id 0x9800
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Ne povas konstrui havenon ĉi tie...

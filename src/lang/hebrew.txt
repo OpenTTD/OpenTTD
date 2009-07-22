@@ -1244,11 +1244,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}רשימ
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}קרוב מידי לתעשיה אחרת
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}התאם את הרכבת לנשיאת משא שונה
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}התאם רכבת
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}בחר את סוג המשא עבור הרכבת
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}התאם את הרכבת לנשיאת המשא שנבחר
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}...לא ניתן להתאים את הרכבת
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}התאם את הרכבת לנשיאת משא שונה
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}התאם רכבת
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}בחר את סוג המשא עבור הרכבת
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}התאם את הרכבת לנשיאת המשא שנבחר
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}...לא ניתן להתאים את הרכבת
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}שנה תפוקה
 
 ############ network gui strings
@@ -2674,7 +2674,7 @@ STR_UNKNOWN_STATION                                             :תחנה לא �
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}ריקה
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{1:STATION} מ {NBSP}{0:CARGO}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}(x{2:NUM}){1:STATION} מ {NBSP}{0:CARGO}
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}ממתין/ממתינה במוסך {VEHICLE}
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}ממתין/ממתינה במוסך {VEHICLE}
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}כלים חדשים
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}רכבת ארוכה מידי
@@ -2710,7 +2710,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}עבור
 STR_ORDERS_CAPTION                                              :{WHITE} (יעדים) {VEHICLE}
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - סוף רשימת היעדים - -
 STR_SERVICE                                                     :{BLACK}טיפול
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}...לא ניתן לבנות רכבת
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}...לא ניתן לבנות רכבת
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{2:CURRENCY}{BLACK}  :ערך {LTBLUE}{1:NUM}{BLACK}  :נבנה {LTBLUE}{0:ENGINE}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{1:CURRENCY}{BLACK} :שווי {LTBLUE}{0:ENGINE}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2825,7 +2825,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}{TOWN} 
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE} {1:VELOCITY}  במהירות , {NBSP}{0:TOWN} בדרך אל מוסך הרכבים ב
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE} {TOWN} טיפול במוסך ב
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE} {1:VELOCITY}  במהירות ,{NBSP} {0:TOWN} טיפול במוסך הרכבים ב
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}...לא ניתן לשלוח את כלי הרכב למוסך
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}...לא ניתן לשלוח את כלי הרכב למוסך
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}לא ניתן לאתר מוסך כלי רכב מקומי
 STR_VEHICLE_LIST_ROAD_TOOLTIP                                   :{BLACK}כלי רכב - לחץ על כלי רכב למידע
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}מצב כלי הרכב- לחץ כאן לעצירה/המשך נסיעה
@@ -2846,9 +2846,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{0:ENGIN
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK} {1:STRING} כלים  {NBSP}{0:NUM}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}תן שם לכלי הרכב
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}...לא ניתן לשנות את שם כלי הרכב
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}תן שם לכלי הרכב
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}תן שם לכלי הרכב
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}...לא ניתן לשנות את שם כלי הרכב
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}תן שם לכלי הרכב
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 ::{BLACK}{BIGFONT}!{STATION} התושבים חוגגים... {}אוטובוס ראשון הגיעה ל
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               ::{BLACK}{BIGFONT}!{STATION} התושבים חוגגים... {}משאית ראשונה הגיעה ל
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}!{STATION} התושבים חוגגים... {}חשמלית נוסעים ראשונה הגיעה ל
@@ -2856,16 +2856,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}תאונת כלי רכב!{}נהג נהרג לאחר התנגשות ברכבת
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}תאונת כלי רכב!{}{NBSP}נהרגו לאחר התנגשות עם רכבת {COMMA}
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}.לא ניתן לסובב כלי רכב מורכבים
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}שנה שם
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}שנה את שם סוג כלי הרכב
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}שנה את שם סוג כלי הרכב
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}לא ניתן לשנות את שם סוג כלי הרכב
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}שנה שם
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}שנה את שם סוג כלי הרכב
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}שנה את שם סוג כלי הרכב
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}לא ניתן לשנות את שם סוג כלי הרכב
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}התאם כלי רכב לנשיאת מטען חדש
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}התאם כלי רכב
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}התאם את כלי הרכב לנשיאת המטען שנבחר
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}... לא ניתן להתאים את כלי הרכב
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}בחר את סוג המטען לנשיאה
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}התאם כלי רכב לנשיאת מטען חדש
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}התאם כלי רכב
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}התאם את כלי הרכב לנשיאת המטען שנבחר
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}... לא ניתן להתאים את כלי הרכב
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}בחר את סוג המטען לנשיאה
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :בניית נתיבי מים

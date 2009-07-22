@@ -1263,11 +1263,11 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industri
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...zu nah an einer anderen Industrie
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Zug auf eine andere Fracht umrüsten
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Zug umrüsten
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Die Fracht auswählen, die der Zug befördern soll
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Zug auf die ausgewählte Fracht umrüsten
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Zug kann nicht umgerüstet werden...
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Zug auf eine andere Fracht umrüsten
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Zug umrüsten
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Die Fracht auswählen, die der Zug befördern soll
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Zug auf die ausgewählte Fracht umrüsten
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Zug kann nicht umgerüstet werden...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Produktion ändern
 
 ############ network gui strings
@@ -2703,7 +2703,7 @@ STR_UNKNOWN_STATION                                             :unbekannte Stat
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Leer
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} von {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} von {STATION} (x{NUM})
-STR_VEHICLE_STATUS_WAITING_IN_DEPOT                             :{WHITE}{VEHICLE} wartet im Depot
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} wartet im Depot
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Neue Fahrzeuge
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Zug zu lang
@@ -2738,7 +2738,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Zur Auft
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Aufträge)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Ende der Aufträge - -
 STR_SERVICE                                                     :{BLACK}Wartung
-STR_ERROR_CAN_T_BUILD_RAILROAD_VEHICLE                          :{WHITE}Schienenfahrzeug kann nicht gekauft werden...
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Schienenfahrzeug kann nicht gekauft werden...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK}  Wert: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK} Wert: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2866,7 +2866,7 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Unterwe
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Unterwegs zum Fahrzeugdepot {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Wartung im Fahrzeugdepot {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Wartung im Fahrzeugdepot {TOWN}, {VELOCITY}
-STR_ERROR_CAN_T_SEND_VEHICLE_TO_DEPOT                           :{WHITE}Fahrzeug kann nicht ins Depot geschickt werden...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Fahrzeug kann nicht ins Depot geschickt werden...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Fahrzeugdepot unauffindbar
 STR_VEHICLE_VIEW_ROAD_STATE_START_STOP_TOOLTIP                  :{BLACK}Laufende Fahrzeugbewegung - Klick zum Anhalten bzw. Losschicken
 STR_VEHICLE_VIEW_ROAD_ORDERS_TOOLTIP                            :{BLACK}Aufträge für das Fahrzeug anzeigen
@@ -2886,9 +2886,9 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} Fahrzeug{P "" e}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_ROAD_RENAME                                           :{WHITE}Name des Fahrzeuges
-STR_ERROR_CAN_T_RENAME_ROAD                                     :{WHITE}Fahrzeug kann nicht benannt werden...
-STR_QUERY_RENAME_ROAD_CAPTION                                   :{BLACK}Name des Fahrzeuges
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Name des Fahrzeuges
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Fahrzeug kann nicht benannt werden...
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Name des Fahrzeuges
 STR_NEWS_FIRST_ROAD_BUS_ARRIVAL                                 :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Der erste Bus erreicht {STATION}!
 STR_NEWS_FIRST_ROAD_TRUCK_ARRIVAL                               :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Der erste Lkw erreicht {STATION}!
 STR_NEWS_FIRST_ROAD_PASSENGER_TRAM_ARRIVAL                      :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Die erste Straßenbahn erreicht {STATION}!
@@ -2896,16 +2896,16 @@ STR_NEWS_FIRST_ROAD_CARGO_TRAM_ARRIVAL                          :{BLACK}{BIGFONT
 STR_NEWS_ROAD_CRASH_DRIVER                                      :{BLACK}{BIGFONT}Fahrzeug verunglückt!{}Fahrer stirbt in Inferno nach Zusammenstoß mit Zug
 STR_NEWS_ROAD_CRASH                                             :{BLACK}{BIGFONT}Fahrzeug verunglückt!{}{COMMA} {P stirbt sterben} in Inferno nach Zusammenstoß mit Zug
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Das Fahrzeug kann nicht wenden...
-STR_BUILD_VEHICLE_ROAD_RENAME_BUTTON                            :{BLACK}Umbenennen
-STR_BUILD_VEHICLE_ROAD_RENAME_TOOLTIP                           :{BLACK}Fahrzeug umbenennen
-STR_QUERY_RENAME_ROAD_TYPE_CAPTION                              :{WHITE}Fahrzeug umbenennen
-STR_ERROR_CAN_T_RENAME_ROAD_TYPE                                :{WHITE}Fahrzeug kann nicht umbenannt werden...
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Umbenennen
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Fahrzeug umbenennen
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Fahrzeug umbenennen
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Fahrzeug kann nicht umbenannt werden...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Straßenfahrzeug auf eine andere Fracht umrüsten
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Straßenfahrzeug umrüsten
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Straßenfahrzeug auf die ausgewählte Fracht umrüsten
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Straßenfahrzeug kann nicht umgerüstet werden...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Die Fracht auswählen, die das Straßenfahrzeug befördern soll
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Straßenfahrzeug auf eine andere Fracht umrüsten
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Straßenfahrzeug umrüsten
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Straßenfahrzeug auf die ausgewählte Fracht umrüsten
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Straßenfahrzeug kann nicht umgerüstet werden...
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Die Fracht auswählen, die das Straßenfahrzeug befördern soll
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Wasserwegebau
