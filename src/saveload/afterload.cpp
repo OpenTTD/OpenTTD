@@ -608,6 +608,9 @@ bool AfterLoadGame()
 				Station *st = Station::GetByTile(t);
 				if (st == NULL) break;
 
+				/* Set up station spread; waypoints do not have one */
+				st->rect.BeforeAddTile(t, StationRect::ADD_FORCE);
+
 				switch (GetStationType(t)) {
 					case STATION_TRUCK:
 					case STATION_BUS:
