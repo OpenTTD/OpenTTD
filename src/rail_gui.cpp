@@ -1464,15 +1464,16 @@ private:
 	 */
 	void DrawSignalSprite(byte widget_index, SpriteID image, int8 xrel, uint8 xsize)
 	{
+		int bottom = this->nested_array[widget_index]->pos_y + this->nested_array[widget_index]->current_y - 1;
 		DrawSprite(image + this->IsWidgetLowered(widget_index), PAL_NONE,
-				this->widget[widget_index].left + (this->widget[widget_index].right - this->widget[widget_index].left) / 2 - xrel - xsize / 2 +
-				this->IsWidgetLowered(widget_index), this->widget[widget_index].bottom - 3 + this->IsWidgetLowered(widget_index));
+				this->nested_array[widget_index]->pos_x + this->nested_array[widget_index]->current_x / 2 - xrel - xsize / 2 + this->IsWidgetLowered(widget_index),
+				bottom - 3 + this->IsWidgetLowered(widget_index));
 	}
 
 public:
-	BuildSignalWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent, TRANSPORT_RAIL)
+	BuildSignalWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
 	{
-		this->FindWindowPlacementAndResize(desc);
+		this->InitNested(desc, TRANSPORT_RAIL);
 	};
 
 	virtual void OnPaint()
@@ -1502,8 +1503,9 @@ public:
 
 		/* Draw dragging signal density value in the BSW_DRAG_SIGNALS_DENSITY widget */
 		SetDParam(0, _settings_client.gui.drag_signals_density);
-		DrawString(this->widget[BSW_DRAG_SIGNALS_DENSITY].left, this->widget[BSW_DRAG_SIGNALS_DENSITY].right,
-				this->widget[BSW_DRAG_SIGNALS_DENSITY].top + 2, STR_JUST_INT, TC_ORANGE, SA_CENTER);
+		int right = this->nested_array[BSW_DRAG_SIGNALS_DENSITY]->pos_x + this->nested_array[BSW_DRAG_SIGNALS_DENSITY]->current_x - 1;
+		DrawString(this->nested_array[BSW_DRAG_SIGNALS_DENSITY]->pos_x, right,
+				this->nested_array[BSW_DRAG_SIGNALS_DENSITY]->pos_y + 2, STR_JUST_INT, TC_ORANGE, SA_CENTER);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1552,33 +1554,7 @@ public:
 	}
 };
 
-/** Widget definition of the build signal window */
-static const Widget _signal_builder_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,  10,   0,  13, STR_BLACK_CROSS,        STR_TOOLTIP_CLOSE_WINDOW},              // BSW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11, 153,   0,  13, STR_SIGNAL_SELECTION,   STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},    // BSW_CAPTION
-
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,  21,  14,  40, STR_NULL,               STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP},   // BSW_SEMAPHORE_NORM
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,  22,  43,  14,  40, STR_NULL,               STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP},  // BSW_SEMAPHORE_ENTRY
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,  44,  65,  14,  40, STR_NULL,               STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP},   // BSW_SEMAPHORE_EXIT
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,  66,  87,  14,  40, STR_NULL,               STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP},  // BSW_SEMAPHORE_COMBO
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,  88, 109,  14,  40, STR_NULL,               STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP},    // BSW_SEMAPHORE_PBS
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN, 110, 131,  14,  40, STR_NULL,               STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP},// BSW_SEMAPHORE_PBS_OWAY
-
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,  21,  41,  67, STR_NULL,               STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP},    // BSW_ELECTRIC_NORM
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,  22,  43,  41,  67, STR_NULL,               STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP},   // BSW_ELECTRIC_ENTRY
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,  44,  65,  41,  67, STR_NULL,               STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP},    // BSW_ELECTRIC_EXIT
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,  66,  87,  41,  67, STR_NULL,               STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP},   // BSW_ELECTRIC_COMBO
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,  88, 109,  41,  67, STR_NULL,               STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP},     // BSW_ELECTRIC_PBS
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN, 110, 131,  41,  67, STR_NULL,               STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP},// BSW_ELECTRIC_PBS_OWAY
-
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN, 132, 153,  14,  40, SPR_IMG_SIGNAL_CONVERT, STR_SIGNAL_CONVERT_TIP},                // BSW_CONVERT
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN, 132, 153,  41,  67, STR_NULL,               STR_DRAG_SIGNALS_DENSITY_TIP},          // BSW_DRAG_SIGNALS_DENSITY
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,       134, 142,  54,  65, SPR_ARROW_LEFT,         STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP}, // BSW_DRAG_SIGNALS_DENSITY_DECREASE
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,       143, 151,  54,  65, SPR_ARROW_RIGHT,        STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP}, // BSW_DRAG_SIGNALS_DENSITY_INCREASE
-
-{   WIDGETS_END},
-};
-
+/** Nested widget definition of the build signal window */
 static const NWidgetPart _nested_signal_builder_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BSW_CLOSEBOX),
@@ -1616,7 +1592,7 @@ static const WindowDesc _signal_builder_desc(
 	WDP_AUTO, WDP_AUTO, 154, 68, 154, 68,
 	WC_BUILD_SIGNAL, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
-	_signal_builder_widgets, _nested_signal_builder_widgets, lengthof(_nested_signal_builder_widgets)
+	NULL, _nested_signal_builder_widgets, lengthof(_nested_signal_builder_widgets)
 );
 
 /**
@@ -1639,20 +1615,20 @@ enum BuildRailDepotWidgets {
 };
 
 struct BuildRailDepotWindow : public PickerWindowBase {
-	BuildRailDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent, TRANSPORT_RAIL)
+	BuildRailDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
 	{
+		this->InitNested(desc, TRANSPORT_RAIL);
 		this->LowerWidget(_build_depot_direction + BRDW_DEPOT_NE);
-		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
 
-		DrawTrainDepotSprite(this->widget[BRDW_DEPOT_NE].left - 1, this->widget[BRDW_DEPOT_NE].top, DIAGDIR_NE, _cur_railtype);
-		DrawTrainDepotSprite(this->widget[BRDW_DEPOT_SE].left - 1, this->widget[BRDW_DEPOT_SE].top, DIAGDIR_SE, _cur_railtype);
-		DrawTrainDepotSprite(this->widget[BRDW_DEPOT_SW].left - 1, this->widget[BRDW_DEPOT_SW].top, DIAGDIR_SW, _cur_railtype);
-		DrawTrainDepotSprite(this->widget[BRDW_DEPOT_NW].left - 1, this->widget[BRDW_DEPOT_NW].top, DIAGDIR_NW, _cur_railtype);
+		DrawTrainDepotSprite(this->nested_array[BRDW_DEPOT_NE]->pos_x - 1, this->nested_array[BRDW_DEPOT_NE]->pos_y, DIAGDIR_NE, _cur_railtype);
+		DrawTrainDepotSprite(this->nested_array[BRDW_DEPOT_SE]->pos_x - 1, this->nested_array[BRDW_DEPOT_SE]->pos_y, DIAGDIR_SE, _cur_railtype);
+		DrawTrainDepotSprite(this->nested_array[BRDW_DEPOT_SW]->pos_x - 1, this->nested_array[BRDW_DEPOT_SW]->pos_y, DIAGDIR_SW, _cur_railtype);
+		DrawTrainDepotSprite(this->nested_array[BRDW_DEPOT_NW]->pos_x - 1, this->nested_array[BRDW_DEPOT_NW]->pos_y, DIAGDIR_NW, _cur_railtype);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1672,18 +1648,7 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 	}
 };
 
-/** Widget definition of the build rail depot window */
-static const Widget _build_depot_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,    10,     0,    13, STR_BLACK_CROSS,                  STR_TOOLTIP_CLOSE_WINDOW},          // BRDW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11,   139,     0,    13, STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // BRDW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,   139,    14,   121, 0x0,                              STR_NULL},                          // BRDW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        71,   136,    17,    66, 0x0,                              STR_BUILD_DEPOT_TRAIN_ORIENTATION}, // BRDW_DEPOT_NE
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        71,   136,    69,   118, 0x0,                              STR_BUILD_DEPOT_TRAIN_ORIENTATION}, // BRDW_DEPOT_SE
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         3,    68,    69,   118, 0x0,                              STR_BUILD_DEPOT_TRAIN_ORIENTATION}, // BRDW_DEPOT_SW
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         3,    68,    17,    66, 0x0,                              STR_BUILD_DEPOT_TRAIN_ORIENTATION}, // BRDW_DEPOT_NW
-{   WIDGETS_END},
-};
-
+/** Nested widget definition of the build rail depot window */
 static const NWidgetPart _nested_build_depot_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BRDW_CLOSEBOX),
@@ -1718,7 +1683,7 @@ static const WindowDesc _build_depot_desc(
 	WDP_AUTO, WDP_AUTO, 140, 122, 140, 122,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_build_depot_widgets, _nested_build_depot_widgets, lengthof(_nested_build_depot_widgets)
+	NULL, _nested_build_depot_widgets, lengthof(_nested_build_depot_widgets)
 );
 
 static void ShowBuildTrainDepotPicker(Window *parent)
@@ -1740,28 +1705,27 @@ enum BuildRailWaypointWidgets {
 };
 
 struct BuildRailWaypointWindow : PickerWindowBase {
-	BuildRailWaypointWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent, TRANSPORT_RAIL)
+	BuildRailWaypointWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
 	{
+		this->InitNested(desc, TRANSPORT_RAIL);
 		this->hscroll.cap = 5;
 		this->hscroll.count = _waypoint_count;
-		this->FindWindowPlacementAndResize(desc);
 	};
 
 	virtual void OnPaint()
 	{
-		uint i;
-
-		for (i = 0; i < this->hscroll.cap; i++) {
+		for (uint i = 0; i < this->hscroll.cap; i++) {
 			this->SetWidgetLoweredState(i + BRWW_WAYPOINT_1, (this->hscroll.pos + i) == _cur_waypoint_type);
 		}
 
 		this->DrawWidgets();
 
-		for (i = 0; i < this->hscroll.cap; i++) {
+		for (uint i = 0; i < this->hscroll.cap; i++) {
 			if (this->hscroll.pos + i < this->hscroll.count) {
 				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, this->hscroll.pos + i);
 
-				DrawWaypointSprite(this->widget[BRWW_WAYPOINT_1 + i].left + TILE_PIXELS, this->widget[BRWW_WAYPOINT_1 + i].bottom - TILE_PIXELS, this->hscroll.pos + i, _cur_railtype);
+				int bottom = this->nested_array[BRWW_WAYPOINT_1 + i]->pos_y + this->nested_array[BRWW_WAYPOINT_1 + i]->current_y;
+				DrawWaypointSprite(this->nested_array[BRWW_WAYPOINT_1 + i]->pos_x + TILE_PIXELS, bottom - TILE_PIXELS, this->hscroll.pos + i, _cur_railtype);
 
 				if (statspec != NULL &&
 						HasBit(statspec->callbackmask, CBM_STATION_AVAIL) &&
@@ -1797,22 +1761,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 	}
 };
 
-/** Widget definition for the build NewGRF rail waypoint window */
-static const Widget _build_waypoint_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW},           // BRWW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   343,     0,    13, STR_WAYPOINT,    STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // BRWW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,   343,    14,    91, 0x0,             STR_NULL},                           // BRWW_BACKGROUND
-
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,     3,    68,    17,    76, 0x0,             STR_WAYPOINT_GRAPHICS_TIP},          // BRWW_WAYPOINT_1
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    71,   136,    17,    76, 0x0,             STR_WAYPOINT_GRAPHICS_TIP},          // BRWW_WAYPOINT_2
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   139,   204,    17,    76, 0x0,             STR_WAYPOINT_GRAPHICS_TIP},          // BRWW_WAYPOINT_3
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   207,   272,    17,    76, 0x0,             STR_WAYPOINT_GRAPHICS_TIP},          // BRWW_WAYPOINT_4
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   275,   340,    17,    76, 0x0,             STR_WAYPOINT_GRAPHICS_TIP},          // BRWW_WAYPOINT_5
-
-{ WWT_HSCROLLBAR,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,   343,     80,    91, 0x0,            STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST}, // BRWW_SCROLL
-{    WIDGETS_END},
-};
-
+/** Nested widget definition for the build NewGRF rail waypoint window */
 static const NWidgetPart _nested_build_waypoint_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BRWW_CLOSEBOX),
@@ -1836,7 +1785,7 @@ static const WindowDesc _build_waypoint_desc(
 	WDP_AUTO, WDP_AUTO, 344, 92, 344, 92,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_build_waypoint_widgets, _nested_build_waypoint_widgets, lengthof(_nested_build_waypoint_widgets)
+	NULL, _nested_build_waypoint_widgets, lengthof(_nested_build_waypoint_widgets)
 );
 
 static void ShowBuildWaypointPicker(Window *parent)
