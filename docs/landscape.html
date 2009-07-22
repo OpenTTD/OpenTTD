@@ -183,7 +183,7 @@
    <td>
     <ul>
      <li>m1: <a href="#OwnershipInfo">owner</a> of the tile</li>
-     <li>m2: see waypoint and signals</li>
+     <li>m2: see signals</li>
      <li>m3 bits 7..4: see signals</li>
      <li>m3 bits 3..0 = <a name="TrackType">track type</a>:
       <table>
@@ -450,25 +450,6 @@
          </table>
        </li>
        <li>m2 bit 11: opposite track is reserved, too</li>
-      </ul>
-     </li>
-     <li>m5 bit 7 set, bit 6 clear: checkpoint
-      <ul>
-       <li>m2: index into the array of waypoints.</li>
-       <li>m5 bit 0:
-        <table>
-         <tr>
-          <td><tt>0</tt>&nbsp; </td>
-          <td>in X direction</td>
-         </tr>
-
-         <tr>
-          <td><tt>1</tt>&nbsp; </td>
-          <td>in Y direction</td>
-         </tr>
-        </table>
-       </li>
-       <li>m5 bit 4: pbs reservation state</li>
       </ul>
      </li>
      <li>m5 bit 7 set, bit 6 set: railway depot
@@ -835,9 +816,9 @@
     <ul>
      <li>m1: <a href="#OwnershipInfo">owner</a> of the station</li>
      <li>m2: index into the array of stations</li>
-     <li>m3 bits 7..4: persistent random data for newstations (train station)</li>
+     <li>m3 bits 7..4: persistent random data for newstations (railway stations/waypoints)</li>
      <li>m3 bits 7..4: <a href="#OwnershipInfo">owner</a> of tram tracks (road stop)</li>
-     <li>m3 bits 3..0: <a href="#TrackType">track type</a> for railway stations</li>
+     <li>m3 bits 3..0: <a href="#TrackType">track type</a> for railway stations/waypoints</li>
      <li>m3 bits 1..0: water class for buoys and water part of docks</li>
      <li>m4: custom station id; 0 means standard graphics</li>
      <li>m5: graphics index (range from 0..255 for each station type):
@@ -866,13 +847,29 @@
        </tr>
 
        <tr>
+        <td nowrap valign=top><tt>00</tt>..<tt>01</tt></td>
+        <td align=left>waypoints
+         <table>
+          <tr>
+           <td><tt>00</tt>&nbsp; </td>
+           <td align=left>in X direction</td>
+          </tr>
+          <tr>
+           <td><tt>01</tt>&nbsp; </td>
+           <td align=left>in Y direction</td>
+          </tr>
+         </table>
+        </td>
+       </tr>
+
+       <tr>
         <td nowrap valign=top><tt>00</tt>..<tt>8F</tt></td>
         <td align=left>all airports</td>
        </tr>
 
        <tr>
         <td nowrap valign=top><tt>00</tt>..<tt>05</tt>&nbsp; </td>
-        <td align=left>road stops:
+        <td align=left>road stops
          <table>
           <tr>
            <td><tt>00</tt>&nbsp; </td>
@@ -935,13 +932,13 @@
        </tr>
       </table>
      </li>
-     <li>m6 bits 5..3: the station type (rail, airport, truck, bus, oilrig, dock, buoy)</li>
-     <li>m6 bit 2: pbs reservation state for railway stations</li>
+     <li>m6 bits 5..3: the station type (rail, airport, truck, bus, oilrig, dock, buoy, waypoint)</li>
+     <li>m6 bit 2: pbs reservation state for railway stations/waypoints</li>
 
      <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
      <li>m7 bits 4..0: <a href="#OwnershipInfo">owner</a> of road (road stops)</li>
      <li>m7 bits 7..6: present road types (road stops)</li>
-     <li>m7: animation frame (train station)</li>
+     <li>m7: animation frame (railway stations/waypoints)</li>
     </ul>
    </td>
   </tr>
