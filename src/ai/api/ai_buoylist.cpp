@@ -3,7 +3,7 @@
 /** @file ai_buoylist.cpp Implementation of AIBuoyList and friends. */
 
 #include "ai_buoylist.hpp"
-#include "../../waypoint.h"
+#include "../../waypoint_base.h"
 
 AIBuoyList::AIBuoyList()
 {

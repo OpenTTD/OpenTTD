@@ -331,7 +331,8 @@ vehiclelist.h
 viewport_func.h
 viewport_type.h
 water.h
-waypoint.h
+waypoint_base.h
+waypoint_func.h
 waypoint_type.h
 widget_type.h
 win32.h

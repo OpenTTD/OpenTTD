@@ -11,7 +11,6 @@
 #include "command_func.h"
 #include "engine_base.h"
 #include "depot_base.h"
-#include "waypoint.h"
 #include "yapf/yapf.h"
 #include "newgrf_engine.h"
 #include "newgrf_station.h"

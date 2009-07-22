@@ -36,6 +36,7 @@
 #include "subsidy_base.h"
 #include "subsidy_func.h"
 #include "station_base.h"
+#include "waypoint_base.h"
 #include "economy_base.h"
 #include "core/pool_func.hpp"
 

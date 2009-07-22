@@ -18,7 +18,7 @@
 #include "../landscape.h"
 #include "yapf.h"
 #include "../pathfind.h"
-#include "../waypoint.h"
+#include "../waypoint_base.h"
 #include "../debug.h"
 #include "../settings_type.h"
 #include "../tunnelbridge.h"

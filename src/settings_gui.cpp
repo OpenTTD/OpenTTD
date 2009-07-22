@@ -20,7 +20,6 @@
 #include "window_func.h"
 #include "string_func.h"
 #include "gfx_func.h"
-#include "waypoint.h"
 #include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
 #include "station_func.h"

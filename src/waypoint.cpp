@@ -5,13 +5,10 @@
 #include "stdafx.h"
 
 #include "strings_type.h"
-#include "rail.h"
-#include "station_base.h"
-#include "town.h"
-#include "waypoint.h"
+#include "order_func.h"
 #include "window_func.h"
 #include "newgrf_station.h"
-#include "order_func.h"
+#include "waypoint_base.h"
 
 /**
  * Draw a waypoint

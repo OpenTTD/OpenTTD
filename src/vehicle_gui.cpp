@@ -17,6 +17,7 @@
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
 #include "station_base.h"
+#include "waypoint_base.h"
 #include "roadveh.h"
 #include "train.h"
 #include "aircraft.h"

@@ -10,7 +10,7 @@
 #include "station_base.h"
 #include "town.h"
 #include "screenshot.h"
-#include "waypoint.h"
+#include "waypoint_base.h"
 #include "industry.h"
 #include "newgrf_text.h"
 #include "music.h"

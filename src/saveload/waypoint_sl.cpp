@@ -3,7 +3,7 @@
 /** @file waypoint_sl.cpp Code handling saving and loading of waypoints */
 
 #include "../stdafx.h"
-#include "../waypoint.h"
+#include "../waypoint_base.h"
 #include "../newgrf_station.h"
 #include "../vehicle_base.h"
 #include "../town.h"

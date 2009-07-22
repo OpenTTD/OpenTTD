@@ -9,7 +9,7 @@
 #include "economy_func.h"
 #include "bridge_map.h"
 #include "town.h"
-#include "waypoint.h"
+#include "waypoint_base.h"
 #include "yapf/yapf.h"
 #include "strings_func.h"
 #include "gfx_func.h"

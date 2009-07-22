@@ -33,7 +33,8 @@
 #include "elrail_func.h"
 #include "station_base.h"
 #include "roadstop_base.h"
-#include "waypoint.h"
+#include "waypoint_base.h"
+#include "waypoint_func.h"
 
 #include "table/strings.h"
 

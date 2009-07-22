@@ -11,7 +11,7 @@
 #include "../../roadstop_base.h"
 #include "../../depot_base.h"
 #include "../../station_base.h"
-#include "../../waypoint.h"
+#include "../../waypoint_base.h"
 
 /**
  * Gets the order type given a tile

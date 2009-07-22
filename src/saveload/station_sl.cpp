@@ -4,7 +4,7 @@
 
 #include "../stdafx.h"
 #include "../station_base.h"
-#include "../waypoint.h"
+#include "../waypoint_base.h"
 #include "../roadstop_base.h"
 #include "../order_base.h"
 #include "../vehicle_base.h"

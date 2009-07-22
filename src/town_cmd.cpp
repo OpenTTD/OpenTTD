@@ -27,7 +27,6 @@
 #include "newgrf_townname.h"
 #include "newgrf_text.h"
 #include "autoslope.h"
-#include "waypoint.h"
 #include "transparency.h"
 #include "tunnelbridge_map.h"
 #include "strings_func.h"

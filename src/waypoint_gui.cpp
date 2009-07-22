@@ -13,6 +13,7 @@
 #include "command_func.h"
 #include "company_func.h"
 #include "window_func.h"
+#include "waypoint_base.h"
 
 #include "table/strings.h"
 

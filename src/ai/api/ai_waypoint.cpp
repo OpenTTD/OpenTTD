@@ -8,7 +8,7 @@
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../company_func.h"
-#include "../../waypoint.h"
+#include "../../waypoint_base.h"
 #include "../../core/alloc_func.hpp"
 #include "table/strings.h"
 
