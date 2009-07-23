@@ -492,11 +492,11 @@ void StartupOneEngine(Engine *e, Date aging_date)
 	e->flags = 0;
 	e->company_avail = 0;
 
-	/* The magic value of 729 days below comes from the NewGRF spec. If the
-	 * base intro date is before 1922 then the random number of days is not
-	 * added. */
+	/* Don't randomise the start-date in the first two years after gamestart to ensure availability
+	 * of engines in early starting games.
+	 * Note: TTDP uses fixed 1922 */
 	r = Random();
-	e->intro_date = ei->base_intro <= ConvertYMDToDate(1922, 0, 1) ? ei->base_intro : (Date)GB(r, 0, 9) + ei->base_intro;
+	e->intro_date = ei->base_intro <= ConvertYMDToDate(_settings_game.game_creation.starting_year + 2, 0, 1) ? ei->base_intro : (Date)GB(r, 0, 9) + ei->base_intro;
 	if (e->intro_date <= _date) {
 		e->age = (aging_date - e->intro_date) >> 5;
 		e->company_avail = (CompanyMask)-1;
