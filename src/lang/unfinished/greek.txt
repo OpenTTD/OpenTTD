@@ -155,8 +155,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
 STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Χάρτης - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Επιλογές Παιχνιδιού
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Μήνυμα
@@ -168,17 +166,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Αρχι
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD έκδοση {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Η ομάδα του OpenTTD
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Έξοδος
 STR_YES                                                         :{BLACK}Ναι
 STR_NO                                                          :{BLACK}Όχι
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Είστε σίγουρος/η ότι θέλετε να παρατήσετε το παιχνίδι και να επιστρέψετε στο {STRING};
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Τίποτα
 STR_COLOUR_DARK_BLUE                                            :Σκούρο Μπλε
 STR_COLOUR_PALE_GREEN                                           :Ανοικτό Πράσινο
@@ -197,8 +189,6 @@ STR_COLOUR_BROWN                                                :Καφέ
 STR_COLOUR_GREY                                                 :Γκρι
 STR_COLOUR_WHITE                                                :Λευκό
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Πάρα πολλά οχήματα στο παιχνίδι
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Τοποθεσία
 STR_SMALLMAP_TYPE_CONTOURS                                      :Περιγράμματα
 STR_SMALLMAP_TYPE_VEHICLES                                      :Οχήματα
@@ -324,12 +314,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Επιλ
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}Επιλέξτε κριτήρια φιλτραρίσματος
 STR_SORT_BY                                                     :{BLACK}Ταξινόμηση κατά
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Πληθυσμός
+STR_SORT_BY_NAME                                                :{BLACK}Όνομα
+STR_SORT_BY_DATE                                                :{BLACK}Μέρα
 STR_SORT_BY_PRODUCTION                                          :Παραγωγή
 STR_SORT_BY_TYPE                                                :Τύπος
 STR_SORT_BY_TRANSPORTED                                         :Μεταφέρθηκαν
-STR_SORT_BY_NAME                                                :{BLACK}Όνομα
-STR_SORT_BY_DATE                                                :{BLACK}Μέρα
 STR_SORT_BY_NUMBER                                              :Αριθμός
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Κέρδος προηγούμενου χρόνου
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Κέρδος αυτού του χρόνου
@@ -352,37 +343,25 @@ STR_SORT_BY_INTRO_DATE                                          :Ημέρα Κυ
 STR_SORT_BY_RUNNING_COST                                        :Κόστος Συντήρησης
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Δύναμη/Κόστος Συντήρησης
 STR_SORT_BY_CARGO_CAPACITY                                      :Χωρητικότητα Φορτίου
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Κανένα εμπόρευμα κανενός τύπου δεν περιμένει
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Επιλογή όλων των εγκαταστάσεων
 STR_SELECT_ALL_TYPES                                            :{BLACK}Επιλογή όλων των τύπων φορτίου (συμπεριλαμβανομένου φορτίου μη-αναμονής)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Διαθέσιμα Τρένα
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Διαθέσιμα Οχήματα
-STR_AVAILABLE_SHIPS                                             :{BLACK}Διαθέσιμα Πλοία
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Διαθέσιμα Αεροσκάφη
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Προβολή λίστας διαθέσιμων σχεδίων μηχανών για τον τύπο οχήματος.
 STR_MANAGE_LIST                                                 :{BLACK}Διαχείριση λίστας
 STR_MANAGE_LIST_TIP                                             :{BLACK}Στείλε οδηγίες σε όλα τα οχήματα σε αυτή λίστα
 STR_REPLACE_VEHICLES                                            :Αντικατέστησε τα οχήματα
+STR_SEND_FOR_SERVICING                                          :Στείλε για επισκευή
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}Διαθέσιμα Τρένα
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Διαθέσιμα Οχήματα
+STR_AVAILABLE_SHIPS                                             :{BLACK}Διαθέσιμα Πλοία
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Διαθέσιμα Αεροσκάφη
+
 STR_SEND_TRAIN_TO_DEPOT                                         :Στείλε στο υπόστεγο
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Στείλε στο υπόστεγο
 STR_SEND_SHIP_TO_DEPOT                                          :Στείλε στο υπόστεγο
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Στείλε στο υπόστεγο
-STR_SEND_FOR_SERVICING                                          :Στείλε για επισκευή
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Ιαν
-STR_MONTH_ABBREV_FEB                                            :Φεβ
-STR_MONTH_ABBREV_MAR                                            :Μαρ
-STR_MONTH_ABBREV_APR                                            :Απρ
-STR_MONTH_ABBREV_MAY                                            :Μαϊ
-STR_MONTH_ABBREV_JUN                                            :Ιουν
-STR_MONTH_ABBREV_JUL                                            :Ιουλ
-STR_MONTH_ABBREV_AUG                                            :Αυγ
-STR_MONTH_ABBREV_SEP                                            :Σεπ
-STR_MONTH_ABBREV_OCT                                            :Οκτ
-STR_MONTH_ABBREV_NOV                                            :Νοε
-STR_MONTH_ABBREV_DEC                                            :Δεκ
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -410,8 +389,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Κατα
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Τοποθέτηση δεντρων, πινακίδων κλπ.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Πληροφορίες περιοχής
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Επιλογές
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Δεν μπορεί να αλλάξει το διάστημα της συντήρησης...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Κλείσιμο παραθύρου
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Τίτλος παραθύρου - σύρετε για να το μετακινήσετε
@@ -458,7 +435,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Κανένα
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Όνομα
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1{G ος η ο}
 STR_ORDINAL_NUMBER_2ND                                          :2{G ος η ο}
 STR_ORDINAL_NUMBER_3RD                                          :3{G ος η ο}
@@ -491,6 +468,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29{G ος η ο
 STR_ORDINAL_NUMBER_30TH                                         :30{G ος η ο}
 STR_ORDINAL_NUMBER_31ST                                         :31{G ος η ο}
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Ιαν
+STR_MONTH_ABBREV_FEB                                            :Φεβ
+STR_MONTH_ABBREV_MAR                                            :Μαρ
+STR_MONTH_ABBREV_APR                                            :Απρ
+STR_MONTH_ABBREV_MAY                                            :Μαϊ
+STR_MONTH_ABBREV_JUN                                            :Ιουν
+STR_MONTH_ABBREV_JUL                                            :Ιουλ
+STR_MONTH_ABBREV_AUG                                            :Αυγ
+STR_MONTH_ABBREV_SEP                                            :Σεπ
+STR_MONTH_ABBREV_OCT                                            :Οκτ
+STR_MONTH_ABBREV_NOV                                            :Νοε
+STR_MONTH_ABBREV_DEC                                            :Δεκ
+
+STR_MONTH_JAN                                                   :Ιανουάριος
+STR_MONTH_FEB                                                   :Φεβρουάριος
+STR_MONTH_MAR                                                   :Μάρτιος
+STR_MONTH_APR                                                   :Απρίλιος
+STR_MONTH_MAY                                                   :Μάιος
+STR_MONTH_JUN                                                   :Ιούνιος
+STR_MONTH_JUL                                                   :Ιούλιος
+STR_MONTH_AUG                                                   :Άυγουστος
+STR_MONTH_SEP                                                   :Σεπτέμβριος
+STR_MONTH_OCT                                                   :Οκτόβριος
+STR_MONTH_NOV                                                   :Νοέμβριος
+STR_MONTH_DEC                                                   :Δεκέμβριος
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -581,12 +586,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} έφτασε  στο επίπεδο '{STRING}'
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} της εταιρείας {COMPANY} έφτασε στο επίπεδο '{STRING}'!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Πρόγραμμα Επεξεργασίας Σεναρίου
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Δημιουργία Γης
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Αύξηση περιοχής για χαμήλωμα/ανύψωση γης
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Μείωση περιοχής για χαμήλωμα/ανύψωση γης
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Δημιουργία τυχαίου εδάφους
@@ -668,9 +670,7 @@ STR_OFF                                                         :Κλειστό
 STR_SUMMARY                                                     :Περιγραφή
 STR_FULL                                                        :Ολόκληρο
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Επιλογές παιχνιδιού
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Ρυθμίσεις δυσκολίας
@@ -762,9 +762,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Χρηματο�
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Χρηματοδότηση νέας βιομηχανίας
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...μπορεί να χτιστεί μόνο σε δασώδεις περιοχές
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...μπορεί να χτιστεί μόνο σε ερημικές περιοχές
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  ΠΑΥΣΗ  *  *
@@ -777,9 +774,6 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}ΑΥΤΟΜ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ΑΠΟΘΗΚΕΥΣΗ ΠΑΙΧΝΙΔΙΟΥ  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Η αποθήκευση είναι σε εξέλιξη,{}παρακαλώ περιμένετε να τελειώσει!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Επιλογή προγράμματος 'Ezy Street στυλ μουσικής'
-
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Αγγλικά (Αυθεντικά)
@@ -860,19 +854,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Επιπ
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Το αυτόματο σώσιμο απέτυχε
 
-STR_MONTH_JAN                                                   :Ιανουάριος
-STR_MONTH_FEB                                                   :Φεβρουάριος
-STR_MONTH_MAR                                                   :Μάρτιος
-STR_MONTH_APR                                                   :Απρίλιος
-STR_MONTH_MAY                                                   :Μάιος
-STR_MONTH_JUN                                                   :Ιούνιος
-STR_MONTH_JUL                                                   :Ιούλιος
-STR_MONTH_AUG                                                   :Άυγουστος
-STR_MONTH_SEP                                                   :Σεπτέμβριος
-STR_MONTH_OCT                                                   :Οκτόβριος
-STR_MONTH_NOV                                                   :Νοέμβριος
-STR_MONTH_DEC                                                   :Δεκέμβριος
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Πάει προς {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Πάει προς {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Δεν έχει οδηγίες
@@ -886,8 +867,6 @@ STR_ITEMS                                                       :αντικεί�
 STR_CRATES                                                      :Κουτιά
 STR_RES_OTHER                                                   :άλλα
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Αδύνατο να μοιραστεί η λίστα εντολών...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Αδύνατο να αντιγραφεί η λίστα εντολών...
@@ -1145,7 +1124,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-μέ�
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :απενεργοποιημένο
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Αλλαγή τιμής ρύθμισης
 
 STR_TEMPERATE_LANDSCAPE                                         :Συγκρατημένο τοπίο
@@ -1181,7 +1159,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Επιλ
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Διαμόρφωση ονόματος σημείου πορείας
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Αδύνατο να αλλαχτεί το όνομα του σημείου πορείας...
@@ -1243,11 +1220,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Ονόμ
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...πολύ κοντά σε άλλη βιομηχανία
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Αναπροσαρμογή τρένου για μεταφορά διαφορετικού φορτίου
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Αναπροσαρμογή τρένου
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Επιλογή τύπου φορτίου για να μεταφέρει το τρένο
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Διασκευή του τρένου ώστε να μεταφέρει το επιλεγμένο φορτίο
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Δεν γίνεται να αναπροσαρμοστεί το τρένο...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Αλλαγή παραγωγής
 
 ############ network gui strings
@@ -1610,7 +1582,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Σκηνές ι
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Σπίτι-Καφετιέρα
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Τράπεζα-κουμπαράς
 
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Φύτευση δέντρων
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Τοποθέτηση σηματοδότη
@@ -1662,6 +1633,8 @@ STR_CARGO_RATING_VERY_GOOD                                      :Πολύ Καλ
 STR_CARGO_RATING_EXCELLENT                                      :Εξαιρετική
 STR_CARGO_RATING_OUTSTANDING                                    :Καταπληκτική
 ############ range for rating ends
+
+### station view strings
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}Ο σταθμός {STATION} δεν δέχεται πια {STRING}
@@ -1854,6 +1827,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...εί�
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 
+##id 0x6020
 STR_SV_STNAME_UPPER                                             :Άνω {STRING}
 STR_SV_STNAME_LOWER                                             :Κάτω {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Ελικοδρόμιο
@@ -1897,8 +1871,6 @@ STR_NUM_LOW                                                     :Χαμηλό
 STR_NUM_NORMAL                                                  :Κανονικό
 STR_NUM_HIGH                                                    :Υψηλό
 STR_NUM_CUSTOM                                                  :Προσαρμοσμέν{G ος η ο}
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Πολύ αργό
 STR_AI_SPEED_SLOW                                               :Αργό
 STR_AI_SPEED_MEDIUM                                             :Μέτριο
@@ -1931,7 +1903,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Εχθρικό
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :(Εταιρία {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Νέο Πρόσωπο
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Χρωματισμός
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Χρωματισμός:
@@ -1964,7 +1935,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Σύνο
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Γράφημα Εισοδήματος
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Γράφημα Ενεργών Εσόδων
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Ισολογισμός Τραπέζης
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Δάνειο
@@ -2166,8 +2136,6 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 
 
 
-
-
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}το όχημα δε μπορεί να πάει σε όλους τους σταθμούς
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}Το όχημα δεν μπορεί να πάει σε αυτό τον σταθμό
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}όχημα που μοιράζεται αυτή την εντολή δεν μπορεί να πάει σε αυτό τον σταθμό
@@ -2236,6 +2204,53 @@ STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Θέστ
 STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Λίρες (£) στο νόμισμά σας
 
 
+############ Vehicle lists
+
+
+
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Αναπροσαρμογή τρένου
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Διασκευή του τρένου ώστε να μεταφέρει το επιλεγμένο φορτίο
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Επιλογή τύπου φορτίου για να μεταφέρει το τρένο
+
+
+
+
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Δεν γίνεται να αναπροσαρμοστεί το τρένο...
+
+
+
+
+
+
+
+
+
+
+
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Αναπροσαρμογή τρένου για μεταφορά διαφορετικού φορτίου
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2275,10 +2290,6 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Αερο
 ############ Tooltip measurment
 
 
-############ Date formatting
-
-########
-
 
 
 
@@ -2287,6 +2298,43 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Αερο
 
 
 
+#### String control codes and their formatting
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+
+STR_FORMAT_COMPANY_NUM                                          :(Εταιρία {COMMA})
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 
 #### Improved sign GUI

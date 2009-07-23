@@ -156,8 +156,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}BF
 STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}TUT
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mappa - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opzioni di gioco
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Messaggio
@@ -169,17 +167,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyrigh
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versione {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Il team OpenTTD
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Esci
 STR_YES                                                         :{BLACK}Sì
 STR_NO                                                          :{BLACK}No
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Si è sicuri di voler uscire da OpenTTD e tornare a {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Nulla
 STR_COLOUR_DARK_BLUE                                            :Blu scuro
 STR_COLOUR_PALE_GREEN                                           :Verde chiaro
@@ -198,8 +190,6 @@ STR_COLOUR_BROWN                                                :Marrone
 STR_COLOUR_GREY                                                 :Grigio
 STR_COLOUR_WHITE                                                :Bianco
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Troppi veicoli nel gioco
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Posizione
 STR_SMALLMAP_TYPE_CONTOURS                                      :Territorio
 STR_SMALLMAP_TYPE_VEHICLES                                      :Veicoli
@@ -325,12 +315,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Selezion
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}Seleziona il criterio di filtraggio
 STR_SORT_BY                                                     :{BLACK}Ordina per
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Popolazione
+STR_SORT_BY_NAME                                                :{BLACK}Nome
+STR_SORT_BY_DATE                                                :{BLACK}Data
 STR_SORT_BY_PRODUCTION                                          :Produzione
 STR_SORT_BY_TYPE                                                :Tipo
 STR_SORT_BY_TRANSPORTED                                         :Trasportato
-STR_SORT_BY_NAME                                                :{BLACK}Nome
-STR_SORT_BY_DATE                                                :{BLACK}Data
 STR_SORT_BY_NUMBER                                              :Numero
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profitto dell'anno scorso
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profitto di quest'anno
@@ -353,6 +344,7 @@ STR_SORT_BY_INTRO_DATE                                          :Data introduzio
 STR_SORT_BY_RUNNING_COST                                        :Costo d'esercizio
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potenza / Costo d'esercizio
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacità di carico
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Non c'è nessun tipo di merce in attesa
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleziona tuti i fabbricati
 STR_SELECT_ALL_TYPES                                            :{BLACK}Seleziona tutti i tipi di merce (comprese le merci non in attesa)
@@ -371,21 +363,6 @@ STR_SEND_TRAIN_TO_DEPOT                                         :Manda al deposi
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Manda al deposito
 STR_SEND_SHIP_TO_DEPOT                                          :Manda al deposito
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Manda all'hangar
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Gen
-STR_MONTH_ABBREV_FEB                                            :Feb
-STR_MONTH_ABBREV_MAR                                            :Mar
-STR_MONTH_ABBREV_APR                                            :Apr
-STR_MONTH_ABBREV_MAY                                            :Mag
-STR_MONTH_ABBREV_JUN                                            :Giu
-STR_MONTH_ABBREV_JUL                                            :Lug
-STR_MONTH_ABBREV_AUG                                            :Ago
-STR_MONTH_ABBREV_SEP                                            :Set
-STR_MONTH_ABBREV_OCT                                            :Ott
-STR_MONTH_ABBREV_NOV                                            :Nov
-STR_MONTH_ABBREV_DEC                                            :Dic
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -413,8 +390,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Costruis
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Pianta alberi, posiziona cartelli etc.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informazioni area terreno
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opzioni
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Impossibile cambiare l'intervallo di manutenzione...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Chiude la finestra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titolo della finestra - trascinarlo per muovere la finestra
@@ -461,7 +436,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nessuno
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nome
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
 STR_ORDINAL_NUMBER_2ND                                          :2
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -494,6 +469,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29
 STR_ORDINAL_NUMBER_30TH                                         :30
 STR_ORDINAL_NUMBER_31ST                                         :31
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Gen
+STR_MONTH_ABBREV_FEB                                            :Feb
+STR_MONTH_ABBREV_MAR                                            :Mar
+STR_MONTH_ABBREV_APR                                            :Apr
+STR_MONTH_ABBREV_MAY                                            :Mag
+STR_MONTH_ABBREV_JUN                                            :Giu
+STR_MONTH_ABBREV_JUL                                            :Lug
+STR_MONTH_ABBREV_AUG                                            :Ago
+STR_MONTH_ABBREV_SEP                                            :Set
+STR_MONTH_ABBREV_OCT                                            :Ott
+STR_MONTH_ABBREV_NOV                                            :Nov
+STR_MONTH_ABBREV_DEC                                            :Dic
+
+STR_MONTH_JAN                                                   :Gennaio
+STR_MONTH_FEB                                                   :Febbraio
+STR_MONTH_MAR                                                   :Marzo
+STR_MONTH_APR                                                   :Aprile
+STR_MONTH_MAY                                                   :Maggio
+STR_MONTH_JUN                                                   :Giugno
+STR_MONTH_JUL                                                   :Luglio
+STR_MONTH_AUG                                                   :Agosto
+STR_MONTH_SEP                                                   :Settembre
+STR_MONTH_OCT                                                   :Ottobre
+STR_MONTH_NOV                                                   :Novembre
+STR_MONTH_DEC                                                   :Dicembre
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -584,12 +587,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} raggiunge lo status di '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} della {COMPANY} raggiunge lo status di '{STRING}'!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor di scenari
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generazione terreno
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Aumenta l'ampiezza del terreno da abbassare/alzare
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Riduce l'ampiezza del terreno da abbassare/alzare
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Genera terreno casuale
@@ -671,9 +671,7 @@ STR_OFF                                                         :No
 STR_SUMMARY                                                     :Sommario
 STR_FULL                                                        :Completo
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opzioni gioco
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Impostazioni difficoltà
@@ -778,9 +776,6 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SALV
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Salvataggio in corso,{}prego attenderne la fine!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Seleziona il programma 'Musica ezy street'
 
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
-
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Inglesi (originali)
 STR_TOWNNAME_FRENCH                                             :Francesi
@@ -860,19 +855,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Informaz
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Salvataggio automatico fallito
 
-STR_MONTH_JAN                                                   :Gennaio
-STR_MONTH_FEB                                                   :Febbraio
-STR_MONTH_MAR                                                   :Marzo
-STR_MONTH_APR                                                   :Aprile
-STR_MONTH_MAY                                                   :Maggio
-STR_MONTH_JUN                                                   :Giugno
-STR_MONTH_JUL                                                   :Luglio
-STR_MONTH_AUG                                                   :Agosto
-STR_MONTH_SEP                                                   :Settembre
-STR_MONTH_OCT                                                   :Ottobre
-STR_MONTH_NOV                                                   :Novembre
-STR_MONTH_DEC                                                   :Dicembre
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Diretto a {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Diretto a {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Nessun ordine
@@ -886,8 +868,6 @@ STR_ITEMS                                                       :oggetti
 STR_CRATES                                                      :casse
 STR_RES_OTHER                                                   :Altra
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Impossibile condividere la lista degli ordini...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Impossibile copiare la lista degli ordini...
@@ -1160,7 +1140,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Dimensi
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :disabilitato
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Cambia impostazione
 
 STR_TEMPERATE_LANDSCAPE                                         :Paesaggio 'temperato'
@@ -2126,8 +2105,6 @@ STR_NUM_LOW                                                     :Basso
 STR_NUM_NORMAL                                                  :Normale
 STR_NUM_HIGH                                                    :Alto
 STR_NUM_CUSTOM                                                  :Personalizzati
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Molto lenta
 STR_AI_SPEED_SLOW                                               :Lenta
 STR_AI_SPEED_MEDIUM                                             :Media
@@ -2808,7 +2785,6 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...deve 
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Impossibile trovare il deposito più vicino
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Fa fare un'inversione al veicolo
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacità: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} component{P e i}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
@@ -3474,7 +3450,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -3491,6 +3470,31 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_COMPANY_NUM                                          :(Compagnia {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Gruppo {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} di {0:TOWN}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Il nome deve essere univoco
 

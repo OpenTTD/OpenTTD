@@ -154,8 +154,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}LÄ
 STR_ABBREV_NONE                                                 :{TINYFONT}NEJ
 STR_ABBREV_ALL                                                  :{TINYFONT}ALLA
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Karta - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spelinställningar
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Meddelande
@@ -167,17 +165,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Ursprung
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD-teamet
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Avsluta
 STR_YES                                                         :{BLACK}Ja
 STR_NO                                                          :{BLACK}Nej
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Vill du verkligen avsluta spelet och återvända till {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Inget
 STR_COLOUR_DARK_BLUE                                            :Mörkblå
 STR_COLOUR_PALE_GREEN                                           :Mattgrön
@@ -196,8 +188,6 @@ STR_COLOUR_BROWN                                                :Brun
 STR_COLOUR_GREY                                                 :Grå
 STR_COLOUR_WHITE                                                :Vit
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}För många fordon i spelet
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Plats
 STR_SMALLMAP_TYPE_CONTOURS                                      :Konturer
 STR_SMALLMAP_TYPE_VEHICLES                                      :Fordon
@@ -323,12 +313,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Välj so
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}Angre kriterier för filtrering
 STR_SORT_BY                                                     :{BLACK}Sortera efter
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Befolkning
+STR_SORT_BY_NAME                                                :{BLACK}Namn
+STR_SORT_BY_DATE                                                :{BLACK}Datum
 STR_SORT_BY_PRODUCTION                                          :Produktion
 STR_SORT_BY_TYPE                                                :Typ
 STR_SORT_BY_TRANSPORTED                                         :Transporterat
-STR_SORT_BY_NAME                                                :{BLACK}Namn
-STR_SORT_BY_DATE                                                :{BLACK}Datum
 STR_SORT_BY_NUMBER                                              :Nummer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Vinst förra året
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Vinst i år
@@ -351,6 +342,7 @@ STR_SORT_BY_INTRO_DATE                                          :Introduktionsda
 STR_SORT_BY_RUNNING_COST                                        :Driftkostnad
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Kraft/Driftkostnad
 STR_SORT_BY_CARGO_CAPACITY                                      :Lastkapacitet
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Ingen sorts last väntar
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Markera alla inrättningar
 STR_SELECT_ALL_TYPES                                            :{BLACK}Välj alla last-typer (inklusive icke väntande last)
@@ -369,21 +361,6 @@ STR_SEND_TRAIN_TO_DEPOT                                         :Skicka till Dep
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Skicka till Depå
 STR_SEND_SHIP_TO_DEPOT                                          :Skicka till Depå
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Skicka till Hangar
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :jan
-STR_MONTH_ABBREV_FEB                                            :feb
-STR_MONTH_ABBREV_MAR                                            :mar
-STR_MONTH_ABBREV_APR                                            :apr
-STR_MONTH_ABBREV_MAY                                            :maj
-STR_MONTH_ABBREV_JUN                                            :jun
-STR_MONTH_ABBREV_JUL                                            :jul
-STR_MONTH_ABBREV_AUG                                            :aug
-STR_MONTH_ABBREV_SEP                                            :sep
-STR_MONTH_ABBREV_OCT                                            :okt
-STR_MONTH_ABBREV_NOV                                            :nov
-STR_MONTH_ABBREV_DEC                                            :dec
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -411,8 +388,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bygg fly
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Plantera träd, placera skyltar etc.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Markinformation
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Inställningar
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan inte ändra service-intervall...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Stäng fönster
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Fönstertitel - dra för att flytta fönstret
@@ -459,7 +434,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ingen
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Namn
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
 STR_ORDINAL_NUMBER_2ND                                          :2
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -492,6 +467,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29
 STR_ORDINAL_NUMBER_30TH                                         :30
 STR_ORDINAL_NUMBER_31ST                                         :31
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :jan
+STR_MONTH_ABBREV_FEB                                            :feb
+STR_MONTH_ABBREV_MAR                                            :mar
+STR_MONTH_ABBREV_APR                                            :apr
+STR_MONTH_ABBREV_MAY                                            :maj
+STR_MONTH_ABBREV_JUN                                            :jun
+STR_MONTH_ABBREV_JUL                                            :jul
+STR_MONTH_ABBREV_AUG                                            :aug
+STR_MONTH_ABBREV_SEP                                            :sep
+STR_MONTH_ABBREV_OCT                                            :okt
+STR_MONTH_ABBREV_NOV                                            :nov
+STR_MONTH_ABBREV_DEC                                            :dec
+
+STR_MONTH_JAN                                                   :januari
+STR_MONTH_FEB                                                   :februari
+STR_MONTH_MAR                                                   :mars
+STR_MONTH_APR                                                   :april
+STR_MONTH_MAY                                                   :maj
+STR_MONTH_JUN                                                   :juni
+STR_MONTH_JUL                                                   :juli
+STR_MONTH_AUG                                                   :augusti
+STR_MONTH_SEP                                                   :september
+STR_MONTH_OCT                                                   :oktober
+STR_MONTH_NOV                                                   :november
+STR_MONTH_DEC                                                   :december
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -582,12 +585,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} uppnår '{STRING}' status!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} från {COMPANY} uppnår '{STRING}' status!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenario-editor
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Skapa mark
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Öka storlek av yta att höja/sänka
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Minska storlek av yta att höja/sänka
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generera slumpmässig mark
@@ -669,9 +669,7 @@ STR_OFF                                                         :Av
 STR_SUMMARY                                                     :Summering
 STR_FULL                                                        :Full
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinställningar
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Svårighetsgrad
@@ -776,9 +774,6 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPAR
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Sparar fortfarande,{}vänta tills det är slutfört!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Välj 'Ezy Street style music'-program
 
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
-
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engelska
 STR_TOWNNAME_FRENCH                                             :Franska
@@ -858,19 +853,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Ytterlig
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosparning misslyckades
 
-STR_MONTH_JAN                                                   :januari
-STR_MONTH_FEB                                                   :februari
-STR_MONTH_MAR                                                   :mars
-STR_MONTH_APR                                                   :april
-STR_MONTH_MAY                                                   :maj
-STR_MONTH_JUN                                                   :juni
-STR_MONTH_JUL                                                   :juli
-STR_MONTH_AUG                                                   :augusti
-STR_MONTH_SEP                                                   :september
-STR_MONTH_OCT                                                   :oktober
-STR_MONTH_NOV                                                   :november
-STR_MONTH_DEC                                                   :december
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}På väg mot {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}På väg mot {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Inga order
@@ -884,8 +866,6 @@ STR_ITEMS                                                       :föremål
 STR_CRATES                                                      :lådor
 STR_RES_OTHER                                                   :annan
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan inte dela orderlistan...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan inte kopiera orderlistan...
@@ -1158,7 +1138,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-storl
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :Avaktiverat
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Ändra inställningsvärde
 
 STR_TEMPERATE_LANDSCAPE                                         :Tempererat landskap
@@ -2122,8 +2101,6 @@ STR_NUM_LOW                                                     :Låg
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Hög
 STR_NUM_CUSTOM                                                  :Egna
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Väldigt långsam
 STR_AI_SPEED_SLOW                                               :Långsam
 STR_AI_SPEED_MEDIUM                                             :Mellan
@@ -2804,7 +2781,6 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...måst
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan inte hitta till lokal depå
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Tvinga fordonet att vända om
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacitet: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} fordon{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
@@ -3470,7 +3446,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
@@ -3486,6 +3465,31 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_COMPANY_NUM                                          :(Företag {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupp {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Namnet måste vara unikt
 

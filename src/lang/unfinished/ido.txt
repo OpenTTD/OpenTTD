@@ -81,8 +81,6 @@ STR_CARGO_SINGULAR_TOFFEE                                       :Karamelo
 STR_CARGO_SINGULAR_BATTERY                                      :Baterio
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastiko
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gasoza Drinkajo
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapo - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludo Selekti
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Sendajo
@@ -92,17 +90,11 @@ STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Ne povas
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versiono {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 La kruo OpenTTD
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Livas
 STR_YES                                                         :{BLACK}Yes
 STR_NO                                                          :{BLACK}Ne
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Kad tu esas certa ke tu volas livar OpenTTD ed rivenar a {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Nulo
 STR_COLOUR_DARK_BLUE                                            :Obskur-blua
 STR_COLOUR_PALE_GREEN                                           :Pal-verda
@@ -121,8 +113,6 @@ STR_COLOUR_BROWN                                                :Bruna
 STR_COLOUR_GREY                                                 :Griza
 STR_COLOUR_WHITE                                                :Blanka
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tro multa vehili en la ludo
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Loko
 STR_SMALLMAP_TYPE_CONTOURS                                      :Konturi
 STR_SMALLMAP_TYPE_VEHICLES                                      :Vehili
@@ -194,9 +184,10 @@ STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Livrita kargajo
 ############ range for menu ends
 
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 
-############ range for months starts
-############ range for months ends
+
+
 
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Montrar transport-voyi ad la mapo
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Montrar vejetado ad la mapo
@@ -212,8 +203,12 @@ STR_VEHICLE_ROAD_VEHICLE                                        :Voy-vehili
 STR_VEHICLE_SHIP                                                :Bateli
 STR_VEHICLE_AIRCRAFT                                            :Aeroplani
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 ############ range for days ends
+
+############ range for months starts
+
+############ range for months ends
 
 
 
@@ -239,11 +234,8 @@ STR_VEHICLE_AIRCRAFT                                            :Aeroplani
 
 
 
-
 ############ start of townname region
 ############ end of townname region
-
-
 
 
 
@@ -367,7 +359,6 @@ STR_VEHICLE_AIRCRAFT                                            :Aeroplani
 
 ##id 0x2000
 
-
 ##id 0x2800
 
 ##id 0x3000
@@ -375,6 +366,8 @@ STR_VEHICLE_AIRCRAFT                                            :Aeroplani
 
 ############ range for rating starts
 ############ range for rating ends
+
+### station view strings
 
 
 
@@ -401,6 +394,7 @@ STR_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                            :Faro
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 
+##id 0x6020
 
 ############ end of savegame specific region!
 
@@ -446,8 +440,6 @@ STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehili:
 
 
 
-
-
 ##id 0x9000
 
 
@@ -466,6 +458,48 @@ STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehili:
 STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
+
+
+
+
+
+
+
+
+
+
+
+############ Vehicle lists
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -516,10 +550,6 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Tooltip measurment
 
 
-############ Date formatting
-
-########
-
 
 
 
@@ -528,6 +558,24 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
+#### String control codes and their formatting
+
+
+
+
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
 
 
 #### Improved sign GUI

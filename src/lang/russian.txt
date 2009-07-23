@@ -280,8 +280,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}ПЛ
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ГЗ
 STR_ABBREV_NONE                                                 :{TINYFONT}НЕТ
 STR_ABBREV_ALL                                                  :{TINYFONT}Все
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Карта - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Настройки игры
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Сообщение
@@ -293,17 +291,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Ориг
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD v{REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Команда разработчиков OpenTTD
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Выход
 STR_YES                                                         :{BLACK}Да
 STR_NO                                                          :{BLACK}Нет
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Вы уверены, что хотите прервать игру и вернуться в {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Ничего
 STR_COLOUR_DARK_BLUE                                            :Тёмно-синий
 STR_COLOUR_PALE_GREEN                                           :Светло-зелёный
@@ -322,8 +314,6 @@ STR_COLOUR_BROWN                                                :Коричне�
 STR_COLOUR_GREY                                                 :Серый
 STR_COLOUR_WHITE                                                :Белый
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Слишком много транспорта в игре
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Обзор
 STR_SMALLMAP_TYPE_CONTOURS                                      :Рельеф
 STR_SMALLMAP_TYPE_VEHICLES                                      :Транспорт
@@ -449,12 +439,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Смен
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}Выберите фильтр
 STR_SORT_BY                                                     :{BLACK}Сортировка
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Население
+STR_SORT_BY_NAME                                                :{BLACK}Имя
+STR_SORT_BY_DATE                                                :{BLACK}Дата
 STR_SORT_BY_PRODUCTION                                          :Продукция
 STR_SORT_BY_TYPE                                                :Тип
 STR_SORT_BY_TRANSPORTED                                         :Вывоз
-STR_SORT_BY_NAME                                                :{BLACK}Имя
-STR_SORT_BY_DATE                                                :{BLACK}Дата
 STR_SORT_BY_NUMBER                                              :Номер
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Прибыль в прошлом году
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Прибыль в этом году
@@ -477,6 +468,7 @@ STR_SORT_BY_INTRO_DATE                                          :Время на
 STR_SORT_BY_RUNNING_COST                                        :Стоимость обслуживания
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Мощность/стоимость обслуж.
 STR_SORT_BY_CARGO_CAPACITY                                      :Вместимость
+
 STR_NO_WAITING_CARGO                                            :{BLACK}На станции нет грузов, ожидающих погрузки
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Показать все станции
 STR_SELECT_ALL_TYPES                                            :{BLACK}Выбрать все типы грузов
@@ -495,33 +487,6 @@ STR_SEND_TRAIN_TO_DEPOT                                         :Послать 
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Послать в гараж
 STR_SEND_SHIP_TO_DEPOT                                          :Послать в док
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Послать в ангар
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Янв
-STR_MONTH_ABBREV_JAN.gen                                        :янв
-STR_MONTH_ABBREV_FEB                                            :Фев
-STR_MONTH_ABBREV_FEB.gen                                        :фев
-STR_MONTH_ABBREV_MAR                                            :Мар
-STR_MONTH_ABBREV_MAR.gen                                        :мар
-STR_MONTH_ABBREV_APR                                            :Апр
-STR_MONTH_ABBREV_APR.gen                                        :апр
-STR_MONTH_ABBREV_MAY                                            :Май
-STR_MONTH_ABBREV_MAY.gen                                        :мая
-STR_MONTH_ABBREV_JUN                                            :Июн
-STR_MONTH_ABBREV_JUN.gen                                        :июн
-STR_MONTH_ABBREV_JUL                                            :Июл
-STR_MONTH_ABBREV_JUL.gen                                        :июл
-STR_MONTH_ABBREV_AUG                                            :Авг
-STR_MONTH_ABBREV_AUG.gen                                        :авг
-STR_MONTH_ABBREV_SEP                                            :Сен
-STR_MONTH_ABBREV_SEP.gen                                        :сен
-STR_MONTH_ABBREV_OCT                                            :Окт
-STR_MONTH_ABBREV_OCT.gen                                        :окт
-STR_MONTH_ABBREV_NOV                                            :Ноя
-STR_MONTH_ABBREV_NOV.gen                                        :ноя
-STR_MONTH_ABBREV_DEC                                            :Дек
-STR_MONTH_ABBREV_DEC.gen                                        :дек
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -549,8 +514,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Стро
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Высадка деревьев
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация о земле
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Настройки
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Невозможно изменить сервисный интервал...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрыть окно
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заголовок окна - для перемещения окна тащить за него
@@ -601,7 +564,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Нет
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Имя
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1-е
 STR_ORDINAL_NUMBER_2ND                                          :2-е
 STR_ORDINAL_NUMBER_3RD                                          :3-е
@@ -634,6 +597,46 @@ STR_ORDINAL_NUMBER_29TH                                         :29-е
 STR_ORDINAL_NUMBER_30TH                                         :30-е
 STR_ORDINAL_NUMBER_31ST                                         :31-е
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Янв
+STR_MONTH_ABBREV_JAN.gen                                        :янв
+STR_MONTH_ABBREV_FEB                                            :Фев
+STR_MONTH_ABBREV_FEB.gen                                        :фев
+STR_MONTH_ABBREV_MAR                                            :Мар
+STR_MONTH_ABBREV_MAR.gen                                        :мар
+STR_MONTH_ABBREV_APR                                            :Апр
+STR_MONTH_ABBREV_APR.gen                                        :апр
+STR_MONTH_ABBREV_MAY                                            :Май
+STR_MONTH_ABBREV_MAY.gen                                        :мая
+STR_MONTH_ABBREV_JUN                                            :Июн
+STR_MONTH_ABBREV_JUN.gen                                        :июн
+STR_MONTH_ABBREV_JUL                                            :Июл
+STR_MONTH_ABBREV_JUL.gen                                        :июл
+STR_MONTH_ABBREV_AUG                                            :Авг
+STR_MONTH_ABBREV_AUG.gen                                        :авг
+STR_MONTH_ABBREV_SEP                                            :Сен
+STR_MONTH_ABBREV_SEP.gen                                        :сен
+STR_MONTH_ABBREV_OCT                                            :Окт
+STR_MONTH_ABBREV_OCT.gen                                        :окт
+STR_MONTH_ABBREV_NOV                                            :Ноя
+STR_MONTH_ABBREV_NOV.gen                                        :ноя
+STR_MONTH_ABBREV_DEC                                            :Дек
+STR_MONTH_ABBREV_DEC.gen                                        :дек
+
+STR_MONTH_JAN                                                   :Январь
+STR_MONTH_FEB                                                   :Февраль
+STR_MONTH_MAR                                                   :Март
+STR_MONTH_APR                                                   :Апрель
+STR_MONTH_MAY                                                   :Май
+STR_MONTH_JUN                                                   :Июнь
+STR_MONTH_JUL                                                   :Июль
+STR_MONTH_AUG                                                   :Август
+STR_MONTH_SEP                                                   :Сентябрь
+STR_MONTH_OCT                                                   :Октябрь
+STR_MONTH_NOV                                                   :Ноябрь
+STR_MONTH_DEC                                                   :Декабрь
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -731,12 +734,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}«{STRING}»   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}Директора компании «{COMPANY}» называют {STRING.abl}!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME}, президент компании «{COMPANY}», заслужил титул «{STRING}»!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Редактор сценариев
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Генератор карты
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Увеличить площадь изменения рельефа
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Уменьшить площадь изменения рельефа
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Создать случайную карту
@@ -818,9 +818,7 @@ STR_OFF                                                         :Выкл
 STR_SUMMARY                                                     :Кратко
 STR_FULL                                                        :Полно
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Настройки игры
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Настройки сложности
@@ -925,9 +923,6 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  СО
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Идёт сохранение,{}пожалуйста, дождитесь завершения!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Выбрать музыкальную программу
 
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
-
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Английские
 STR_TOWNNAME_FRENCH                                             :Французские
@@ -1007,19 +1002,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Допо
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Ошибка автосохранения
 
-STR_MONTH_JAN                                                   :Январь
-STR_MONTH_FEB                                                   :Февраль
-STR_MONTH_MAR                                                   :Март
-STR_MONTH_APR                                                   :Апрель
-STR_MONTH_MAY                                                   :Май
-STR_MONTH_JUN                                                   :Июнь
-STR_MONTH_JUL                                                   :Июль
-STR_MONTH_AUG                                                   :Август
-STR_MONTH_SEP                                                   :Сентябрь
-STR_MONTH_OCT                                                   :Октябрь
-STR_MONTH_NOV                                                   :Ноябрь
-STR_MONTH_DEC                                                   :Декабрь
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Идёт к {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Идёт к {STATION}; {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Нет заданий
@@ -1033,8 +1015,6 @@ STR_ITEMS                                                       :штук
 STR_CRATES                                                      :мешков
 STR_RES_OTHER                                                   :Другое
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Невозможно использовать общий список заданий
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Невозможно скопировать список заданий
@@ -1307,7 +1287,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Вер�
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :отключено
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Изменить значение
 
 STR_TEMPERATE_LANDSCAPE                                         :Умеренный ландшафт
@@ -2277,8 +2256,6 @@ STR_NUM_LOW                                                     :Малое
 STR_NUM_NORMAL                                                  :Среднее
 STR_NUM_HIGH                                                    :Большое
 STR_NUM_CUSTOM                                                  :Указанное
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Очень медленная
 STR_AI_SPEED_SLOW                                               :Медленная
 STR_AI_SPEED_MEDIUM                                             :Средняя
@@ -2969,7 +2946,6 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...до�
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Невозможно найти гараж
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Принудительно развернуть автомобиль
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Ёмкость: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} единиц{P а "" ""}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
@@ -3635,7 +3611,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -3652,6 +3631,31 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_COMPANY_NUM                                          :(Компания {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Группа {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Имя должно быть уникальным
 

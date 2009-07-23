@@ -222,8 +222,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}LI
 STR_ABBREV_NONE                                                 :{TINYFONT}NIC
 STR_ABBREV_ALL                                                  :{TINYFONT}VŠE
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Možnosti hry
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Zpráva
@@ -235,17 +233,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Původn�
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD verze {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Tým OpenTTD
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Konec
 STR_YES                                                         :{BLACK}Ano
 STR_NO                                                          :{BLACK}Ne
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Opravdu chceš opustit tuto hru a odejít do {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :nic
 STR_COLOUR_DARK_BLUE                                            :Tmavomodrá
 STR_COLOUR_PALE_GREEN                                           :Světlezelená
@@ -264,8 +256,6 @@ STR_COLOUR_BROWN                                                :Hnědá
 STR_COLOUR_GREY                                                 :Šedá
 STR_COLOUR_WHITE                                                :Bílá
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Příliš mnoho vozidel ve hře
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Umístění
 STR_SMALLMAP_TYPE_CONTOURS                                      :Profil
 STR_SMALLMAP_TYPE_VEHICLES                                      :Dopravní prostředky
@@ -391,12 +381,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Vyber, p
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}Vyber třídící podmínku
 STR_SORT_BY                                                     :{BLACK}Řadit podle
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Populace
+STR_SORT_BY_NAME                                                :{BLACK}Podle jména
+STR_SORT_BY_DATE                                                :{BLACK}Podle data
 STR_SORT_BY_PRODUCTION                                          :Prudukce
 STR_SORT_BY_TYPE                                                :Typu
 STR_SORT_BY_TRANSPORTED                                         :Přepraveno
-STR_SORT_BY_NAME                                                :{BLACK}Podle jména
-STR_SORT_BY_DATE                                                :{BLACK}Podle data
 STR_SORT_BY_NUMBER                                              :čísla
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :hrubého zisku vloni
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :hrubého zisku letos
@@ -419,6 +410,7 @@ STR_SORT_BY_INTRO_DATE                                          :data uvedení n
 STR_SORT_BY_RUNNING_COST                                        :provozních nákladů
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :výkonu/provozních nákladů
 STR_SORT_BY_CARGO_CAPACITY                                      :přepravní kapacity
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Nečeká žádná komodita jakéhokoli druhu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Označit všechny druhy stanic
 STR_SELECT_ALL_TYPES                                            :{BLACK}Označit všechny druhy komodit (včetne žádného čekajícího nákladu)
@@ -437,21 +429,6 @@ STR_SEND_TRAIN_TO_DEPOT                                         :Poslat do depa
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Poslat do depa
 STR_SEND_SHIP_TO_DEPOT                                          :Poslat do depa
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Poslat do hangáru
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :led
-STR_MONTH_ABBREV_FEB                                            :úno
-STR_MONTH_ABBREV_MAR                                            :bře
-STR_MONTH_ABBREV_APR                                            :dub
-STR_MONTH_ABBREV_MAY                                            :kvě
-STR_MONTH_ABBREV_JUN                                            :čer
-STR_MONTH_ABBREV_JUL                                            :čnc
-STR_MONTH_ABBREV_AUG                                            :srp
-STR_MONTH_ABBREV_SEP                                            :zář
-STR_MONTH_ABBREV_OCT                                            :říj
-STR_MONTH_ABBREV_NOV                                            :lis
-STR_MONTH_ABBREV_DEC                                            :pro
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -479,8 +456,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Stavět 
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Vysadit stromy
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informace o zemi
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Možnosti
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nelze změnit interval oprav...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zavřít okno
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titulek okna - tahej pro posun okna
@@ -527,7 +502,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nic
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Jméno
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1.
 STR_ORDINAL_NUMBER_2ND                                          :2.
 STR_ORDINAL_NUMBER_3RD                                          :3.
@@ -560,6 +535,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29.
 STR_ORDINAL_NUMBER_30TH                                         :30.
 STR_ORDINAL_NUMBER_31ST                                         :31.
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :led
+STR_MONTH_ABBREV_FEB                                            :úno
+STR_MONTH_ABBREV_MAR                                            :bře
+STR_MONTH_ABBREV_APR                                            :dub
+STR_MONTH_ABBREV_MAY                                            :kvě
+STR_MONTH_ABBREV_JUN                                            :čer
+STR_MONTH_ABBREV_JUL                                            :čnc
+STR_MONTH_ABBREV_AUG                                            :srp
+STR_MONTH_ABBREV_SEP                                            :zář
+STR_MONTH_ABBREV_OCT                                            :říj
+STR_MONTH_ABBREV_NOV                                            :lis
+STR_MONTH_ABBREV_DEC                                            :pro
+
+STR_MONTH_JAN                                                   :Leden
+STR_MONTH_FEB                                                   :Únor
+STR_MONTH_MAR                                                   :Březen
+STR_MONTH_APR                                                   :Duben
+STR_MONTH_MAY                                                   :Květen
+STR_MONTH_JUN                                                   :Červen
+STR_MONTH_JUL                                                   :Červenec
+STR_MONTH_AUG                                                   :Srpen
+STR_MONTH_SEP                                                   :Září
+STR_MONTH_OCT                                                   :Říjen
+STR_MONTH_NOV                                                   :Listopad
+STR_MONTH_DEC                                                   :Prosinec
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -650,12 +653,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} získal titul '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} z {COMPANY} získal titul '{STRING}'!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor mapy
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generovat zemi
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Zvětšit oblast země pro snížení/zvýšení
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Zmenšit oblast země pro snížení/zvýšení
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generovat náhodnou zemi
@@ -737,9 +737,7 @@ STR_OFF                                                         :Vypnuto
 STR_SUMMARY                                                     :Shrnutí
 STR_FULL                                                        :Plná
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti hry
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavení obtížnosti
@@ -844,9 +842,6 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  UKL�
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Ukládání ještě běží,{}počkej prosím, než doběhne!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Zvolit 'Ezy Street style music' program
 
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
-
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Anglická (původní)
 STR_TOWNNAME_FRENCH                                             :Francouzská
@@ -926,19 +921,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Další 
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatické uložení selhalo
 
-STR_MONTH_JAN                                                   :Leden
-STR_MONTH_FEB                                                   :Únor
-STR_MONTH_MAR                                                   :Březen
-STR_MONTH_APR                                                   :Duben
-STR_MONTH_MAY                                                   :Květen
-STR_MONTH_JUN                                                   :Červen
-STR_MONTH_JUL                                                   :Červenec
-STR_MONTH_AUG                                                   :Srpen
-STR_MONTH_SEP                                                   :Září
-STR_MONTH_OCT                                                   :Říjen
-STR_MONTH_NOV                                                   :Listopad
-STR_MONTH_DEC                                                   :Prosinec
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Míří do {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Míří do {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Bez příkazů
@@ -952,8 +934,6 @@ STR_ITEMS                                                       :kusů
 STR_CRATES                                                      :krabic
 STR_RES_OTHER                                                   :Jiné
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nemůžu sdílet seznam příkazů...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemůžu kopírovat seznam příkazů...
@@ -1226,7 +1206,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Výška
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :vypnuto
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Změnit hodnotu nastavení
 
 STR_TEMPERATE_LANDSCAPE                                         :krajina mírného pásma
@@ -2192,8 +2171,6 @@ STR_NUM_LOW                                                     :nízké
 STR_NUM_NORMAL                                                  :střední
 STR_NUM_HIGH                                                    :vysoké
 STR_NUM_CUSTOM                                                  :vlastní
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :velmi nízká
 STR_AI_SPEED_SLOW                                               :nízká
 STR_AI_SPEED_MEDIUM                                             :střední
@@ -2879,7 +2856,6 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mus�
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nemohu najít místní garáž
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Otoč vozidlo
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacita: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozid{P lo la el}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
@@ -3544,7 +3520,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -3561,6 +3540,31 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_COMPANY_NUM                                          :(společnost {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Skupina {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Jméno musí být unikátní
 

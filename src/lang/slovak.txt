@@ -218,8 +218,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}ZU
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}SU
 STR_ABBREV_NONE                                                 :{TINYFONT}NIC
 STR_ABBREV_ALL                                                  :{TINYFONT}VS.
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Nastavenia hry
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Správa
@@ -231,17 +229,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Povodný
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD verzia {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 team OpenTTD
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Koniec
 STR_YES                                                         :{BLACK}Áno
 STR_NO                                                          :{BLACK}Nie
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Si si istý že chces ukoncit hru a vrátit sa do {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Nic
 STR_COLOUR_DARK_BLUE                                            :Tmavomodrá
 STR_COLOUR_PALE_GREEN                                           :Svetlozelená
@@ -260,8 +252,6 @@ STR_COLOUR_BROWN                                                :Hnedá
 STR_COLOUR_GREY                                                 :Sedá
 STR_COLOUR_WHITE                                                :Biela
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}V hre je prílis vela dopravných prostriedkov
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Poloha
 STR_SMALLMAP_TYPE_CONTOURS                                      :Vrstevnice
 STR_SMALLMAP_TYPE_CONTOURS.g                                    :vrstevnic
@@ -390,12 +380,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Vyber kr
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}Vybrať kritériá filtrovania
 STR_SORT_BY                                                     :{BLACK}Usporiadat
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Populacia
+STR_SORT_BY_NAME                                                :{BLACK}Nazov
+STR_SORT_BY_DATE                                                :{BLACK}Datum
 STR_SORT_BY_PRODUCTION                                          :Produkcia
 STR_SORT_BY_TYPE                                                :Typ
 STR_SORT_BY_TRANSPORTED                                         :Prepravene
-STR_SORT_BY_NAME                                                :{BLACK}Nazov
-STR_SORT_BY_DATE                                                :{BLACK}Datum
 STR_SORT_BY_NUMBER                                              :Cislo
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zisk v poslednom roku
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zisk v tomto roku
@@ -418,37 +409,25 @@ STR_SORT_BY_INTRO_DATE                                          :Uvedenie na trh
 STR_SORT_BY_RUNNING_COST                                        :Náklady na prevádzku
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Výkon/Náklady na prevádzku
 STR_SORT_BY_CARGO_CAPACITY                                      :Kapacita nákladu
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Necaka ziadny typ nakladu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Oznacit vsetky moznosti
 STR_SELECT_ALL_TYPES                                            :{BLACK}Oznacit vsetky druhy nakladu (vratane druhu, kt. necaka na prepravu)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Dostupné vlaky
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Dostupné vozidlá
-STR_AVAILABLE_SHIPS                                             :{BLACK}Dostupné lode
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Dostupné lietadlá
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Zobrazit zoznam dostupných dizajnov rušňov pre tento typ.
 STR_MANAGE_LIST                                                 :{BLACK}Možnosti
 STR_MANAGE_LIST_TIP                                             :{BLACK}Zadat príkazy všetkým vozidlám v zozname
 STR_REPLACE_VEHICLES                                            :Vymena vozidiel
+STR_SEND_FOR_SERVICING                                          :Vykonat servis
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}Dostupné vlaky
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Dostupné vozidlá
+STR_AVAILABLE_SHIPS                                             :{BLACK}Dostupné lode
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Dostupné lietadlá
+
 STR_SEND_TRAIN_TO_DEPOT                                         :Poslat do depa
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Poslat do garáže
 STR_SEND_SHIP_TO_DEPOT                                          :Poslat do lodenice
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Poslat do hangáru
-STR_SEND_FOR_SERVICING                                          :Vykonat servis
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Jan
-STR_MONTH_ABBREV_FEB                                            :Feb
-STR_MONTH_ABBREV_MAR                                            :Mar
-STR_MONTH_ABBREV_APR                                            :Apr
-STR_MONTH_ABBREV_MAY                                            :Máj
-STR_MONTH_ABBREV_JUN                                            :Jún
-STR_MONTH_ABBREV_JUL                                            :Júl
-STR_MONTH_ABBREV_AUG                                            :Aug
-STR_MONTH_ABBREV_SEP                                            :Sep
-STR_MONTH_ABBREV_OCT                                            :Okt
-STR_MONTH_ABBREV_NOV                                            :Nov
-STR_MONTH_ABBREV_DEC                                            :Dec
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -476,8 +455,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Výstavb
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Výsadba stromov, kúpa pozemku, ...
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informácie o pozemku
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Nastavenia
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nie je možné zmenit servisný interval ...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zavriet okno
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Nadpis okna - potiahni pre posun okna
@@ -524,7 +501,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Neznáme
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Meno
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1.
 STR_ORDINAL_NUMBER_2ND                                          :2.
 STR_ORDINAL_NUMBER_3RD                                          :3.
@@ -557,6 +534,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29.
 STR_ORDINAL_NUMBER_30TH                                         :30.
 STR_ORDINAL_NUMBER_31ST                                         :31.
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Jan
+STR_MONTH_ABBREV_FEB                                            :Feb
+STR_MONTH_ABBREV_MAR                                            :Mar
+STR_MONTH_ABBREV_APR                                            :Apr
+STR_MONTH_ABBREV_MAY                                            :Máj
+STR_MONTH_ABBREV_JUN                                            :Jún
+STR_MONTH_ABBREV_JUL                                            :Júl
+STR_MONTH_ABBREV_AUG                                            :Aug
+STR_MONTH_ABBREV_SEP                                            :Sep
+STR_MONTH_ABBREV_OCT                                            :Okt
+STR_MONTH_ABBREV_NOV                                            :Nov
+STR_MONTH_ABBREV_DEC                                            :Dec
+
+STR_MONTH_JAN                                                   :Januar
+STR_MONTH_FEB                                                   :Februar
+STR_MONTH_MAR                                                   :Marec
+STR_MONTH_APR                                                   :April
+STR_MONTH_MAY                                                   :Máj
+STR_MONTH_JUN                                                   :Jún
+STR_MONTH_JUL                                                   :Júl
+STR_MONTH_AUG                                                   :August
+STR_MONTH_SEP                                                   :September
+STR_MONTH_OCT                                                   :Oktober
+STR_MONTH_NOV                                                   :November
+STR_MONTH_DEC                                                   :December
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -647,12 +652,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} ziskal oznacenie '{STRING}' !
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} z {COMPANY} ziskal oznacenie '{STRING}' !
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor scenárov
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generovanie uzemia
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Pre zvysenie/znizenie oblasti je potrebne zvacsit uzemie
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Pre zvysenie/znizenie oblasti je potrebne zmensit uzemie
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Vygenerovat nahodne uzemie
@@ -734,9 +736,7 @@ STR_OFF                                                         :Vypnute
 STR_SUMMARY                                                     :Obsah
 STR_FULL                                                        :Plne
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Nastavenia hry
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavenia obtiaznosti
@@ -828,9 +828,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financovat novy
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financovat novy priemysel
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... moze byt postavene len v dazdovom pralese
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... moze byt postavene len v pusti
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  ZASTAVENE  *  *
@@ -843,9 +840,6 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOULOZEN
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  HRA SA UKLADA  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Ukladanie hry este bezi,{}pockajte prosim na dokoncenie!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Vyber 'Ezy Street style music' program
-
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Anglicke
@@ -926,19 +920,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Dodatoč
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autoulozenie zlyhalo
 
-STR_MONTH_JAN                                                   :Januar
-STR_MONTH_FEB                                                   :Februar
-STR_MONTH_MAR                                                   :Marec
-STR_MONTH_APR                                                   :April
-STR_MONTH_MAY                                                   :Máj
-STR_MONTH_JUN                                                   :Jún
-STR_MONTH_JUL                                                   :Júl
-STR_MONTH_AUG                                                   :August
-STR_MONTH_SEP                                                   :September
-STR_MONTH_OCT                                                   :Oktober
-STR_MONTH_NOV                                                   :November
-STR_MONTH_DEC                                                   :December
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Smeruje do {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Smeruje do {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Bez urcenia
@@ -952,8 +933,6 @@ STR_ITEMS                                                       :kusov
 STR_CRATES                                                      :debien
 STR_RES_OTHER                                                   :iné
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nemozno zdielat zoznam smerov ...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemozno kopirovat zoznam prikazov ...
@@ -1226,7 +1205,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-rozme
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :zakazane
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Zmenit hodnotu nastavenia
 
 STR_TEMPERATE_LANDSCAPE                                         :krajina mierneho pasma
@@ -1262,7 +1240,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vyber ty
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Upravit nazvy smerovych bodov
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nazov smeroveho bodu sa neda zmenit ...
@@ -1329,11 +1306,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Názvy p
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}... prilis blizko ineho priemyslu
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Prestavat vlak na prepravu ineho nakladu
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Prestavat vlak
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vybrat typ prepravovaneho nakladu
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Prestavat vlak na prepravu vybraneho nakladu
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Nemozno prestavat vlak ...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmenit produkciu
 
 ############ network gui strings
@@ -1843,11 +1815,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Vigvam
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Kaviaren
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Mala Banka
 
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
-STR_STATION_NAME                                                :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Uprava terenu
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Vysadba stromov
@@ -1901,6 +1868,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :Velmi dobre
 STR_CARGO_RATING_EXCELLENT                                      :Vyborne
 STR_CARGO_RATING_OUTSTANDING                                    :Perfektne
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Zobrazit vsetky vlaky, ktore maju tuto stanicu v cestovnom poriadku
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Zobrazit vsetky auta, ktore maju tuto stanicu v cestovnom poriadku
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Zobrazit vsetky lietadla, ktore maju tuto stanicu v cestovnom poriadku
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Zobrazit vsetky lode, ktore maju tuto stanicu v cestovnom poriadku
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} uz neprijima {STRING}
@@ -2145,6 +2118,7 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Letisk
 STR_SV_STNAME_OILFIELD                                          :{STRING} Vrtna plosina
 STR_SV_STNAME_MINES                                             :{STRING} Bane
 STR_SV_STNAME_DOCKS                                             :{STRING} Pristav
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Zastavka
 STR_SV_STNAME_SIDINGS                                           :{STRING} Vidiek
 STR_SV_STNAME_BRANCH                                            :{STRING} Konecna
@@ -2192,8 +2166,6 @@ STR_NUM_LOW                                                     :Nízky
 STR_NUM_NORMAL                                                  :Normálny
 STR_NUM_HIGH                                                    :Vysoký
 STR_NUM_CUSTOM                                                  :Vlastne
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Velmi Pomale
 STR_AI_SPEED_SLOW                                               :Pomale
 STR_AI_SPEED_MEDIUM                                             :Stredne
@@ -2227,7 +2199,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Odmietavy
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :(Spoločnosť {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nová tvár
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Farebna schema
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Farebna schema:
@@ -2260,7 +2231,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Spolu:
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Graf príjmov
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graf prevadzkoveho zisku
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Zostatok v banke
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Uver
@@ -2663,10 +2633,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :jednokolajova l
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magneticka lokomotiva
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Depo
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvy vlak dorazil do stanice {STATION}!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaily)
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Vlak v ceste
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
@@ -2756,38 +2724,16 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :a cestuj {STRIN
 STR_TIMETABLE_DAYS                                              :{COMMA} d{P en ni ní}
 STR_TIMETABLE_TICKS                                             :{COMMA} tik{P "" y ov}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Smeruje do {TOWN} depa
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Smeruje do {TOWN} depa, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servis v depe {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servis v depe {TOWN}, {VELOCITY}
-
 STR_INVALID_ORDER                                               :{RED} (Neplatny prikaz)
 
 STR_UNKNOWN_STATION                                             :neznáma stanica
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Prazdny
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} z {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} z {STATION} (x{NUM})
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} čaká v depe
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nove vozidla
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Vlak je prilis dlhy
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vlaky sa daju nahradit len v depe
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Vlak{P "" y ov}
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nove vlaky
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nové elektrické lokomotívy a vagóny
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nove jednokolajove vlaky
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nove magneticke vlaky
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Železnicne vozidlá
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Zakupit vozidlo
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klonovat vozidlo
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Vytvori kopiu cestneho vozidla. Stlacenim Control budu prikazy zdielane
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Vytvori kopiu cestneho vozidla. Klikni na toto tlacidlo a potom na vozidlo v garazi alebo mimo nej. Stlacenim Control budu prikazy zdielane
-STR_CLONE_TRAIN                                                 :{BLACK}Klonovat vlak
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Vytvori kopiu vlaku vratane voznov. Stlacenim Control budu prikazy zdielane
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Vytvori kopiu vlaku vratane voznov. Klikni na toto tlacidlo a potom na vlak v depe alebo mimo neho. Stlacenim Control budu prikazy zdielane
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Premenovat
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Preskocit
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Vynechat
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Choď do
@@ -2803,14 +2749,12 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Prepnút
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Prikazy)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Koniec prikazov - -
 STR_SERVICE                                                     :{BLACK}Oprava
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Nemozno kupit vlak...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Vyrobene: {LTBLUE}{NUM}{BLACK} Hodnota: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Hodnota: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Naklada/Vyklada
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Opúšta
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak musi byt zastaveny v depe
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Vlak sa neda poslat do depa...
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Nemozno zadat dalsie prikazy
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Prilis vela prikazov
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Nemozno vlozit novy prikaz...
@@ -2825,26 +2769,11 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}vozidlo 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nemozno posuvat vozdlo ...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Zadný stroj vždy doprevádza svoj druhý stroj vpredu
 STR_CARGO_N_A                                                   :Nie je{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Nemozno predat automobil ...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nemoze najst cestu do depa
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Nemozno zastavit/spustit vlak ...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Servisny interval: {LTBLUE}{COMMA}dni{BLACK}   Posledny servis: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servisny interval: {LTBLUE}{COMMA}%{BLACK}   Posledny servis: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vlaky - kliknut na vlak pre informacie
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlaky - kliknut na vlak pre informacie, potiahni pre zmenu pozicie
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kupit novy vlak
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Pre predaj vlaku ho potiahni sem
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Vycentrovat pohlad na poziciu depa
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Vyber vlakov - kliknut na vlak pre informacie
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Kupit vybrany vlak
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Premenovat vlak
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Aktualna cinnost vlaku - kliknut pre zastavenie/spustenie
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Zobrazit cestovne prikazy vlakov
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Vycentrovat pohlad na poziciu vlaku
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Poslat vlak do depa
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Poslat vlak na cervenu
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Obratit vlak
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Zobrazit detaily o vlaku
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Predlzit servisny interval
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Skratit servisny interval
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Zobrazit detaily o prevezenom naklade
@@ -2878,14 +2807,9 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zastavene
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemozno pustit vlak na cervenu ked hrozi nebezpecenstvo...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Znicene!
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Pomenovat vlak
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Vlak nemozno pomenovat ...
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Pomenovat vlak
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Vlakove nestastie!{}{COMMA} mrtv{P i i ych} pri poziari po kolizii
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nemozno zmenit smer vlaku ...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nie je mozne otacat vozidla zlozené z viacerych jednotiek
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Premenovat typ vlaku
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Typ vlaku nemoze byt premenovany ...
 STR_CLEAR_TIME                                                  :{BLACK}Vymazat cas
 STR_RESET_LATENESS                                              :{BLACK}Reset meskania
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Zmeniť meno smerového bodu
@@ -2917,177 +2841,53 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Vyplnit
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Naplň časový plán automaticky s hodnotami z nasledujúcej trasy (CTRL-klik - pokúsiť sa udržať čakacie doby)
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Automobil v ceste
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Automobil{P "" y ov}
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Garaz
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nove vozidla
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nove automobily
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Zakupit vozidlo
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Nie je mozne zakupit automobil ...
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... musi byt zastaveny v garazi
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nemozno predat automobil ...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Nemozno zastavit/spustit automobil ...
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čaká v depe
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Smeruje do {TOWN} garaze
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}smeruje do {TOWN} garaze, {VELOCITY}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Servis v garazi {TOWN}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Servis v garazi {TOWN}, {VELOCITY}
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nemozno poslat automobil do garaze ...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nemozno najst miestnu garaz
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Automobily - kliknut pre detaily
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aktualna cinnost vozidla - kliknut pre zastavenie/spustenie
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Zobrazit cestovne prikazy
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Vycentrovat pohlad na vozidlo
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Poslat vozidlo do depa
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Otocit vozidlo
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Zobrazit detaily o automobile
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozidla - kliknut pre detaily
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Zakupit novy automobil
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Potiahni sem pre predaj automobilu
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrovat pohlad na poziciu garaze
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Vyber vozidiel - kliknut pre detaily
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Zakupit vybrany automobil
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacita: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozid{P lo lá iel}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Pomenovat automobil
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Nemozno pomenovat automobil ...
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Pomenovat automobil
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvy autobus dorazil do {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvy automobil dorazil do {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvá elektricka dorazila do stanice {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvá nákladná elektricka dorazila do stanice {STATION}!
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Dopravna nehoda!{}Vodic zahynul po kolizii s vlakom
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Dopravna nehoda!{}{COMMA} mrtvych po kolizii s vlakom
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Premenovat
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Premenovat typ automobilu
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Premenovat typ automobilu
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nemozno premenovat typ automobilu ...
 
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Prestavat vozidlo na prepravu ineho druhu nakladu
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Prestavat vozidlo
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Prestavat vozidlo na prepravu vyznaceneho druhu nakladu
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Prestavba vozidla nie je mozna ...
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vyberte požadovaný typ nákladu pre cestné vozidlo
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Waterways construction
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Výstavba vodných ciest
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vodné cesty
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Tu nemozno postavit pristav ...
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Lodenica
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nove lode
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Lod{P "" e i}
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nove lode
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Vyrobit lod
-STR_CLONE_SHIP                                                  :{BLACK}Klonovat lod
-STR_CLONE_SHIP_INFO                                             :{BLACK}Vytvori kopiu lode. Stlacenim Control budu prikazy zdielane
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Vytvori kopiu lode. Klikni na toto tlacidlo a potom na lod v depe alebo mimo neho. Stlacenim Control budu prikazy zdielane
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Lod musi byt zastavena v lodenici
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Nemozno predat lod ...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Nemozno vyrobit lod...
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Lod v ceste
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Nemozno zastavit/spustit lod ...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nemozno poslat lod do lodenice ...
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Smeruje do {TOWN} lodenice
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Smeruje do {TOWN} lodenice, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servis v lodenici {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servis v lodenici {TOWN}, {VELOCITY}
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} čaká v depe
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Postavit lodenicu
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Postavit lodenicu (pre vyrobu a opravy lodi)
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Lode - kliknut pre informacie
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Vyrobit novu lod
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Potiahnut lod sem, na predaj
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Vycentrovat pohlad na lodenicu
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Lode - kliknut pre informacie
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Vyber lodi - kliknut pre informacie
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Vyrobit vybranu lod
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Atualna cinnost lode - klini pre zastavenie/spustenie
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Zobrazit cestovne prikazy lodi
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Vycentrovat pohlad na lod
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Poslat lod do lodenice
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Zobrazit detaily o lodi
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Pomenovat lod
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Pomenovat lod
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Nemozno pomenovat lod ...
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prva lod dorazila do {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Postavit boju pouzitelnu pre vyznacenie trasy
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Tu nemozno postavit boju ...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Postavit akvadukt
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Tu nie je možné postavit akvadukt ...
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Premenovat
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Premenovat typ lode
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Premenovat typ lode
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Nemozno premenovat typ lode ...
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Prestavat lod na iny typ nakladu
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Prestavat)
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Prestavat lod
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Vybrat typ nakladu pre lod
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Prestavat lod na vybrany typ nakladu
 STR_REFIT_TITLE                                                 :{GOLD}Vyber typ nakladu:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nová kapacita: {GOLD}{CARGO}{}{BLACK}Cena prestavby: {GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Nemozno prestavat lod...
 STR_REFITTABLE                                                  :(mozna prestavba)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Letiska
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Tu sa letisko neda postavit ...
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nove Lietadlo
-STR_CLONE_AIRCRAFT                                              :{BLACK}Klonovat lietadlo
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Vytvori kopiu lietadla. Stlacenim Control budu prikazy zdielane
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Vytvori kopiu lietadla. Klikni na toto tlacidlo a potom na lietadlo v hangari alebo mimo neho. Stlacenim Control budu prikazy zdielane
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nove Lietadlo
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Vyrobit lietadlo
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Nemozno vyrobit lietadlo...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Lietad{P lo la iel}
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nemozno poslat lietadlo do hangaru ...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}Smeruje do {STATION} hangaru
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Smeruje do {STATION} hangaru, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Servis v hangari {STATION}
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Servis v hangari {STATION}, {VELOCITY}
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} čaká v leteckom hangári
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Lietadlo v ceste
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Nemozno zastavit/spustit lietadlo ...
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Lietadlo je vo vzduchu
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Lietadlo musi byt zastavene v hangari
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Nie je mozne predat lietadlo ...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Výstavba letiska
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Postavit letisko
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lietadlo - kliknut pre informacie
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lietadlo - kliknut pre informacie
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Vyrobit nove lietadlo
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Potiahni lietadlo sem pre predaj
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Vycentrovat pohlad na hangar
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Vyber lietadiel - kliknut pre vyber
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Vyrobit vybrane lietadlo
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Aktualna cinnost lietadla - klini pre zastavenie/spustenie
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Zobrazit cestovne prikazy lietadla
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Vycentrovat pohlad na lietadlo
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Poslat lietadlo do hangaru
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Zobrazit detaily o lietadle
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Pomenovat lietadlo
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Nie je mozne pomenovat lietadlo ...
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Pomenovat lietadlo
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prve lietadlo pristalo na {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Letecke nestastie!{}{COMMA} mrtv{P y i ych} po poziari na {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Letecke nestastie!{}Lietadlu doslo palivo, {COMMA} mrtvych pri poziari!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Premenovat
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Premenovat typ lietadla
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Premenovat typ lietadla
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Nie je mozne premenovat typ lietadla ...
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Prestavat lietadlo na iny typ nakladu
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Prestavat lietadlo
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vyber novy typ nakladu
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Prestavat lietadlo na novy typ nakladu
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Nie je mozne prestavat na novy typ nakladu ...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Cestovný poriadok)
 
@@ -3241,14 +3041,224 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vlaky - kliknut na vlak pre informacie
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Automobily - kliknut pre detaily
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Lode - kliknut pre informacie
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lietadlo - kliknut pre informacie
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Zobrazit vsetky vlaky, ktore maju tuto stanicu v cestovnom poriadku
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Zobrazit vsetky auta, ktore maju tuto stanicu v cestovnom poriadku
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Zobrazit vsetky lietadla, ktore maju tuto stanicu v cestovnom poriadku
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Zobrazit vsetky lode, ktore maju tuto stanicu v cestovnom poriadku
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Vlak{P "" y ov}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Automobil{P "" y ov}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Lod{P "" e i}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Lietad{P lo la iel}
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Zdielane prikazy  {COMMA} vozid{P la iel iel}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zobrazit vsetky vozidla s rovnakym zoznamom prikazov
+
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} čaká v depe
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čaká v depe
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} čaká v depe
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} čaká v leteckom hangári
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Prestavat vlak
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Prestavat vozidlo
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Prestavat lod
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Prestavat lietadlo
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Prestavat vlak na prepravu vybraneho nakladu
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Prestavat vozidlo na prepravu vyznaceneho druhu nakladu
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Prestavat lod na vybrany typ nakladu
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Prestavat lietadlo na novy typ nakladu
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vybrat typ prepravovaneho nakladu
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vyberte požadovaný typ nákladu pre cestné vozidlo
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Vybrat typ nakladu pre lod
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vyber novy typ nakladu
+
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Depo
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Garaz
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Lodenica
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Pomenovat vlak
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Pomenovat automobil
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Pomenovat lod
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Pomenovat lietadlo
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Pomenovat vlak
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Pomenovat automobil
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Pomenovat lod
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Pomenovat lietadlo
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Vlak v ceste
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Automobil v ceste
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Lod v ceste
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Lietadlo v ceste
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Nemozno prestavat vlak ...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Prestavba vozidla nie je mozna ...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Nemozno prestavat lod...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Nie je mozne prestavat na novy typ nakladu ...
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Vlak nemozno pomenovat ...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Nemozno pomenovat automobil ...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Nemozno pomenovat lod ...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Nie je mozne pomenovat lietadlo ...
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Nemozno zastavit/spustit vlak ...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Nemozno zastavit/spustit automobil ...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Nemozno zastavit/spustit lod ...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Nemozno zastavit/spustit lietadlo ...
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Vlak sa neda poslat do depa...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nemozno poslat automobil do garaze ...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nemozno poslat lod do lodenice ...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nemozno poslat lietadlo do hangaru ...
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Nemozno kupit vlak...
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Nie je mozne zakupit automobil ...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Nemozno vyrobit lod...
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Nemozno vyrobit lietadlo...
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Typ vlaku nemoze byt premenovany ...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nemozno premenovat typ automobilu ...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Nemozno premenovat typ lode ...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Nie je mozne premenovat typ lietadla ...
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Nemozno predat automobil ...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nemozno predat automobil ...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Nemozno predat lod ...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Nie je mozne predat lietadlo ...
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Aktualna cinnost vlaku - kliknut pre zastavenie/spustenie
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aktualna cinnost vozidla - kliknut pre zastavenie/spustenie
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Atualna cinnost lode - klini pre zastavenie/spustenie
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Aktualna cinnost lietadla - klini pre zastavenie/spustenie
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Zobrazit cestovne prikazy vlakov
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Zobrazit cestovne prikazy
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Zobrazit cestovne prikazy lodi
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Zobrazit cestovne prikazy lietadla
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Vycentrovat pohlad na poziciu vlaku
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Vycentrovat pohlad na vozidlo
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Vycentrovat pohlad na lod
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Vycentrovat pohlad na lietadlo
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Poslat vlak do depa
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Poslat vozidlo do depa
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Poslat lod do lodenice
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Poslat lietadlo do hangaru
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Zobrazit detaily o vlaku
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Zobrazit detaily o automobile
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Zobrazit detaily o lodi
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Zobrazit detaily o lietadle
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Prestavat vlak na prepravu ineho nakladu
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Prestavat vozidlo na prepravu ineho druhu nakladu
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Prestavat lod na iny typ nakladu
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Prestavat lietadlo na iny typ nakladu
+
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Smeruje do {TOWN} depa
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Smeruje do {TOWN} depa, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Smeruje do {TOWN} garaze
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}smeruje do {TOWN} garaze, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Smeruje do {TOWN} lodenice
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Smeruje do {TOWN} lodenice, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Smeruje do {STATION} hangaru
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Smeruje do {STATION} hangaru, {VELOCITY}
+
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servis v depe {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servis v depe {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Servis v garazi {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Servis v garazi {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servis v lodenici {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servis v lodenici {TOWN}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Servis v hangari {STATION}
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Servis v hangari {STATION}, {VELOCITY}
+
+
+STR_CLONE_TRAIN                                                 :{BLACK}Klonovat vlak
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klonovat vozidlo
+STR_CLONE_SHIP                                                  :{BLACK}Klonovat lod
+STR_CLONE_AIRCRAFT                                              :{BLACK}Klonovat lietadlo
+
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Vytvori kopiu vlaku vratane voznov. Stlacenim Control budu prikazy zdielane
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Vytvori kopiu cestneho vozidla. Stlacenim Control budu prikazy zdielane
+STR_CLONE_SHIP_INFO                                             :{BLACK}Vytvori kopiu lode. Stlacenim Control budu prikazy zdielane
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Vytvori kopiu lietadla. Stlacenim Control budu prikazy zdielane
+
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Vytvori kopiu vlaku vratane voznov. Klikni na toto tlacidlo a potom na vlak v depe alebo mimo neho. Stlacenim Control budu prikazy zdielane
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Vytvori kopiu cestneho vozidla. Klikni na toto tlacidlo a potom na vozidlo v garazi alebo mimo nej. Stlacenim Control budu prikazy zdielane
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Vytvori kopiu lode. Klikni na toto tlacidlo a potom na lod v depe alebo mimo neho. Stlacenim Control budu prikazy zdielane
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Vytvori kopiu lietadla. Klikni na toto tlacidlo a potom na lietadlo v hangari alebo mimo neho. Stlacenim Control budu prikazy zdielane
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nove vlaky
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nové elektrické lokomotívy a vagóny
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nove jednokolajove vlaky
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nove magneticke vlaky
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Železnicne vozidlá
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nove automobily
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nove lode
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nove Lietadlo
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Zakupit vozidlo
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Zakupit vozidlo
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Vyrobit lod
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Vyrobit lietadlo
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Vyber vlakov - kliknut na vlak pre informacie
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Vyber vozidiel - kliknut pre detaily
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Vyber lodi - kliknut pre informacie
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Vyber lietadiel - kliknut pre vyber
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Kupit vybrany vlak
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Zakupit vybrany automobil
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Vyrobit vybranu lod
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Vyrobit vybrane lietadlo
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Premenovat
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Premenovat
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Premenovat
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Premenovat
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Premenovat vlak
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Premenovat typ automobilu
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Premenovat typ lode
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Premenovat typ lietadla
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Premenovat typ vlaku
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Premenovat typ automobilu
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Premenovat typ lode
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Premenovat typ lietadla
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nove vozidla
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nove vozidla
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nove lode
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nove Lietadlo
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlaky - kliknut na vlak pre informacie, potiahni pre zmenu pozicie
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozidla - kliknut pre detaily
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Lode - kliknut pre informacie
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lietadlo - kliknut pre informacie
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kupit novy vlak
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Zakupit novy automobil
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Vyrobit novu lod
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Vyrobit nove lietadlo
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Pre predaj vlaku ho potiahni sem
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Potiahni sem pre predaj automobilu
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Potiahnut lod sem, na predaj
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Potiahni lietadlo sem pre predaj
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Vycentrovat pohlad na poziciu depa
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrovat pohlad na poziciu garaze
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Vycentrovat pohlad na lodenicu
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Vycentrovat pohlad na hangar
+
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Chystáte sa predat všetky vozidlá v depe. Ste si isý?
@@ -3269,7 +3279,6 @@ STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Automati
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Automaticky nahradit všetky lode v lodenici
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Automaticky nahradit všetky lietadlá v hangári
 
-
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vymena {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Zacat vymenu vozidiel
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zastavit vymenu vozidiel
@@ -3285,6 +3294,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstrane
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkcia automatickeho vylepsovania vlakov moze udrzovat rovnaku dlzku vlakov odstranovanim vagonov (od zaciatku vlakov), pokial by zmena rusna vlak predlzila.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymena: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Prepne medzi oknami na vymenu lokomotiv a vagonov
+
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vozidlo nie je dostupné
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vozidlo nie je dostupné
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Lod nie je dostupná
@@ -3435,17 +3445,6 @@ STR_MEASURE_AREA                                                :{BLACK}Plocha: 
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dlžka: {NUM}{}Výškový rozdiel: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Plocha: {NUM} x {NUM}{}Výškový rozdiel: {NUM} m
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer kredity: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}... cesta vlastnená mestom
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}... nesprávna orientácia cesty
@@ -3470,7 +3469,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :Skupina {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Všetky vlaky
 STR_GROUP_ALL_ROAD_VEHICLES                                     :Všetky cestné vozidlá
@@ -3499,12 +3497,62 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Zrušit 
 STR_GROUP_RENAME_TIP                                            :{BLACK}Premenovat vybranú skupinu
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Kliknite pre znemoznenie automatického nahradzovania v skupine
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :(Spoločnosť {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Skupina {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Meno musí byt jedinecné
 

@@ -154,8 +154,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
 STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}همه
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}نقشه - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}تنظیمات بازی
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}پیام
@@ -167,17 +165,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 The OpenTTD team
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}خروج
 STR_YES                                                         :{BLACK}بله
 STR_NO                                                          :{BLACK}خیر
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}آیا می‌خواهید از بازی خارج شوید و برگردید به{STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :هیچی
 STR_COLOUR_DARK_BLUE                                            :آبی تیره
 STR_COLOUR_PALE_GREEN                                           :سبز روشن
@@ -196,8 +188,6 @@ STR_COLOUR_BROWN                                                :قهوه‌ای
 STR_COLOUR_GREY                                                 :خاکستری
 STR_COLOUR_WHITE                                                :سفید
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}ماشین‌های زیادی در بازی هستند
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}مختصات
 STR_SMALLMAP_TYPE_CONTOURS                                      :حد فاصل ها
 STR_SMALLMAP_TYPE_VEHICLES                                      :وسایل نقلیه
@@ -323,12 +313,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}انتخ
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}انتخاب معیار پایش
 STR_SORT_BY                                                     :{BLACK}مرتب کردن بر اساس
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}جمعیت
+STR_SORT_BY_NAME                                                :{BLACK}نام
+STR_SORT_BY_DATE                                                :{BLACK}تاریخ
 STR_SORT_BY_PRODUCTION                                          :تولید
 STR_SORT_BY_TYPE                                                :نوع
 STR_SORT_BY_TRANSPORTED                                         :منتقل شده
-STR_SORT_BY_NAME                                                :{BLACK}نام
-STR_SORT_BY_DATE                                                :{BLACK}تاریخ
 STR_SORT_BY_NUMBER                                              :تعداد
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :سود در سال گذشته
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :سود در سال جاری
@@ -351,6 +342,7 @@ STR_SORT_BY_INTRO_DATE                                          :تاریخ اح
 STR_SORT_BY_RUNNING_COST                                        :هزینه کارکرد
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :توان/هزینه کارکرد
 STR_SORT_BY_CARGO_CAPACITY                                      :ظرفیت محموله
+
 STR_NO_WAITING_CARGO                                            :{BLACK}هیچ نوع محموله در انتظار نیست
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}انتخاب تمامی تسهیلات
 STR_SELECT_ALL_TYPES                                            :{BLACK}انتخاب همه ی انواع محموله ها (شامل محموله های در انتظار)
@@ -369,21 +361,6 @@ STR_SEND_TRAIN_TO_DEPOT                                         :فرستادن 
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :فرستادن به ایستگاه نگه داری فنی
 STR_SEND_SHIP_TO_DEPOT                                          :فرستادن به مقر فنی
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :فرستادن به آشیانه
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :بهمن
-STR_MONTH_ABBREV_FEB                                            :اسفند
-STR_MONTH_ABBREV_MAR                                            :فروردین
-STR_MONTH_ABBREV_APR                                            :اردیبهشت
-STR_MONTH_ABBREV_MAY                                            :خرداد
-STR_MONTH_ABBREV_JUN                                            :تیر
-STR_MONTH_ABBREV_JUL                                            :مرداد
-STR_MONTH_ABBREV_AUG                                            :شهریور
-STR_MONTH_ABBREV_SEP                                            :مهر
-STR_MONTH_ABBREV_OCT                                            :آبان
-STR_MONTH_ABBREV_NOV                                            :آذر
-STR_MONTH_ABBREV_DEC                                            :دی
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -411,8 +388,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ساخت
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}کاشتن درختان، قرار دادن علامت و غیره
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}توضیحات درباره ی زمین
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}تنضیمات
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}امکان تغییر فواصل زمانی سرویس وجود ندارد...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}بستن پنجره
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}تخریب ساختمان و ... در بخشی از زمین
@@ -442,7 +417,7 @@ STR_LAND_AREA_INFORMATION_OWNER_N_A                             :0
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}نام
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
 STR_ORDINAL_NUMBER_2ND                                          :2
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -475,6 +450,22 @@ STR_ORDINAL_NUMBER_29TH                                         :29
 STR_ORDINAL_NUMBER_30TH                                         :30
 STR_ORDINAL_NUMBER_31ST                                         :31
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :بهمن
+STR_MONTH_ABBREV_FEB                                            :اسفند
+STR_MONTH_ABBREV_MAR                                            :فروردین
+STR_MONTH_ABBREV_APR                                            :اردیبهشت
+STR_MONTH_ABBREV_MAY                                            :خرداد
+STR_MONTH_ABBREV_JUN                                            :تیر
+STR_MONTH_ABBREV_JUL                                            :مرداد
+STR_MONTH_ABBREV_AUG                                            :شهریور
+STR_MONTH_ABBREV_SEP                                            :مهر
+STR_MONTH_ABBREV_OCT                                            :آبان
+STR_MONTH_ABBREV_NOV                                            :آذر
+STR_MONTH_ABBREV_DEC                                            :دی
+
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -525,11 +516,8 @@ STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}توض�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}از هدف قبلی بسیار دور است......
 STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :تاجر
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}طراحی اتوماتیک سرزمین
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}نقشه ی تصادفی بساز
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}تمام تغییرات را بر گردان
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}تمام تغییرات را بر گردان
@@ -576,7 +564,6 @@ STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}اند�
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK} اخرین پیغام یا گزارش را نشان بده
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :تنظیمات بازی
@@ -650,8 +637,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}تصئی
 STR_TERRAFORM_TOOLTIP_PURCHASE_LAND                             :{BLACK}خرید زمین برای استفاده های بعدی
 STR_STATUSBAR_AUTOSAVE                                          :{RED}ذخیره اتوماتیک
 
-STR_BLACK_6                                                     :{BLACK}6
-
 ############ start of townname region
 ############ end of townname region
 
@@ -662,8 +647,6 @@ STR_BLACK_6                                                     :{BLACK}6
 
 
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK} اطلاعات اضافه در مورد بسته ی گرافیکی پایه
-
-
 
 
 
@@ -1717,6 +1700,27 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_COMPANY_NUM                                          :(شرکت {COMMA})
 STR_FORMAT_GROUP_NAME                                           :گروه {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
 
 
 #### Improved sign GUI

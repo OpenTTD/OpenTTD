@@ -135,8 +135,6 @@ STR_ABBREV_WATER                                                :{TINYFONT}AR
 STR_ABBREV_RUBBER                                               :{TINYFONT}GT
 STR_ABBREV_SUGAR                                                :{TINYFONT}GU
 STR_ABBREV_TOYS                                                 :{TINYFONT}MA
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}MAP-{STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pilihan Permainan
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Pesanan
@@ -148,17 +146,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Hakcipta
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versi {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2008 The OpenTTD team
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Keluar
 STR_YES                                                         :{BLACK}Ya
 STR_NO                                                          :{BLACK}Tidak
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Anda pasti mahu keluar dari OpenTTD dan kembali ke {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Tiada
 STR_COLOUR_DARK_BLUE                                            :Biru Gelap
 STR_COLOUR_PALE_GREEN                                           :Hijau Pucat
@@ -177,8 +169,6 @@ STR_COLOUR_BROWN                                                :Perang
 STR_COLOUR_GREY                                                 :Kelabu
 STR_COLOUR_WHITE                                                :Putih
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Terlalu banyak kenderaan dalam permainan
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Lokasi
 STR_SMALLMAP_TYPE_CONTOURS                                      :Bentuk
 STR_SMALLMAP_TYPE_VEHICLES                                      :Kenderaan
@@ -300,12 +290,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Pilih kr
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}Pilih kriteria tapisan
 STR_SORT_BY                                                     :{BLACK}Menyusun mengikuti
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Bilangan Penduduk
+STR_SORT_BY_NAME                                                :{BLACK}Nama
+STR_SORT_BY_DATE                                                :{BLACK}Tarikh
 STR_SORT_BY_PRODUCTION                                          :Pengeluaran
 STR_SORT_BY_TYPE                                                :Jenis
 STR_SORT_BY_TRANSPORTED                                         :Telah dihantarkan
-STR_SORT_BY_NAME                                                :{BLACK}Nama
-STR_SORT_BY_DATE                                                :{BLACK}Tarikh
 STR_SORT_BY_NUMBER                                              :Nombor
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Keuntungan tahun lepas
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Keuntungan tahunan
@@ -322,36 +313,24 @@ STR_SORT_BY_COST                                                :Kos
 STR_SORT_BY_POWER                                               :Tenaga
 STR_SORT_BY_INTRO_DATE                                          :Tarikh Pengenalan
 STR_SORT_BY_CARGO_CAPACITY                                      :Kapasiti Kargo
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Tiada kargo menunggu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Pilih semua kemudahan
 STR_SELECT_ALL_TYPES                                            :{BLACK}Pilih semua kargo (termasuk kargo tiada menunggu)
+STR_MANAGE_LIST                                                 :{BLACK}Kendali senarai
+STR_MANAGE_LIST_TIP                                             :{BLACK}Hantar arahan pada semua kenderaan didalam senarai
+STR_REPLACE_VEHICLES                                            :Tukar kenderaan
+STR_SEND_FOR_SERVICING                                          :Hantar untuk servis
+
 STR_AVAILABLE_TRAINS                                            :{BLACK}Keretapi sedia ada
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Kenderaan sedia ada
 STR_AVAILABLE_SHIPS                                             :{BLACK}Kapal sedia ada
 STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Kapal terbang sedia ada
-STR_MANAGE_LIST                                                 :{BLACK}Kendali senarai
-STR_MANAGE_LIST_TIP                                             :{BLACK}Hantar arahan pada semua kenderaan didalam senarai
-STR_REPLACE_VEHICLES                                            :Tukar kenderaan
+
 STR_SEND_TRAIN_TO_DEPOT                                         :Hantar ke pangkalan
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Hantar ke pangkalan
 STR_SEND_SHIP_TO_DEPOT                                          :Hantar ke pangkalan
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Hantar ke bangsal Kapal Terbang
-STR_SEND_FOR_SERVICING                                          :Hantar untuk servis
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Jan
-STR_MONTH_ABBREV_FEB                                            :Feb
-STR_MONTH_ABBREV_MAR                                            :Mac
-STR_MONTH_ABBREV_APR                                            :Apr
-STR_MONTH_ABBREV_MAY                                            :Mei
-STR_MONTH_ABBREV_JUN                                            :Jun
-STR_MONTH_ABBREV_JUL                                            :Jul
-STR_MONTH_ABBREV_AUG                                            :Ogos
-STR_MONTH_ABBREV_SEP                                            :Sep
-STR_MONTH_ABBREV_OCT                                            :Okt
-STR_MONTH_ABBREV_NOV                                            :Nov
-STR_MONTH_ABBREV_DEC                                            :Dis
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -379,8 +358,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bina lap
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Tumbuh pokok, letak papan tanda dll.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Maklumat kawasan tanah
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Pilihan
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak boleh tukar jarak waktu perkhidmatan...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tutup window
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tajuk tetingkap -  seret ini untuk pindahkan tetingkap
@@ -423,7 +400,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Tiada
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nama
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :Pertama
 STR_ORDINAL_NUMBER_2ND                                          :Kedua
 STR_ORDINAL_NUMBER_3RD                                          :Ketiga
@@ -456,6 +433,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29
 STR_ORDINAL_NUMBER_30TH                                         :30
 STR_ORDINAL_NUMBER_31ST                                         :31
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Jan
+STR_MONTH_ABBREV_FEB                                            :Feb
+STR_MONTH_ABBREV_MAR                                            :Mac
+STR_MONTH_ABBREV_APR                                            :Apr
+STR_MONTH_ABBREV_MAY                                            :Mei
+STR_MONTH_ABBREV_JUN                                            :Jun
+STR_MONTH_ABBREV_JUL                                            :Jul
+STR_MONTH_ABBREV_AUG                                            :Ogos
+STR_MONTH_ABBREV_SEP                                            :Sep
+STR_MONTH_ABBREV_OCT                                            :Okt
+STR_MONTH_ABBREV_NOV                                            :Nov
+STR_MONTH_ABBREV_DEC                                            :Dis
+
+STR_MONTH_JAN                                                   :Januari
+STR_MONTH_FEB                                                   :Februari
+STR_MONTH_MAR                                                   :Mac
+STR_MONTH_APR                                                   :April
+STR_MONTH_MAY                                                   :May
+STR_MONTH_JUN                                                   :Jun
+STR_MONTH_JUL                                                   :Julai
+STR_MONTH_AUG                                                   :Ogos
+STR_MONTH_SEP                                                   :September
+STR_MONTH_OCT                                                   :Oktober
+STR_MONTH_NOV                                                   :November
+STR_MONTH_DEC                                                   :Desember
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -539,12 +544,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} mencapai status '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} dari {COMPANY} mencapai status '{STRING}'!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Penyunting Senario
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Pembentukan Tanah
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Meningkatan penyebaran kawasan tanah untuk dinaikkan/diturunkan
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Menurunkan penyebaran kawasan tanah untuk dinaikkan/diturunkan
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Hasilkan secara rawak
@@ -615,9 +617,7 @@ STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Tunjukka
 STR_OFF                                                         :Padam
 STR_FULL                                                        :Penuh
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pilihan permainan
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Tetapan kesukaran
@@ -694,9 +694,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Biaya industri 
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Biaya industri baru
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...hanya boleh dibina di kawasan hutan
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...hanya boleh dibina di kawasan gurun
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  DIHENTIKAN  *  *
@@ -705,9 +702,6 @@ STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  DI
 STR_TERRAFORM_TOOLTIP_PURCHASE_LAND                             :{BLACK}Beli tanah untuk kegunaan masa hadapan
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SIMPAN PERMAINAN  *  *
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Pilih program 'Muzik gaya Ezy Street'
-
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Inggeris (Original)
@@ -758,19 +752,6 @@ STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} f
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Maklumat tambahan tentang set grafik asas ini
 
 
-STR_MONTH_JAN                                                   :Januari
-STR_MONTH_FEB                                                   :Februari
-STR_MONTH_MAR                                                   :Mac
-STR_MONTH_APR                                                   :April
-STR_MONTH_MAY                                                   :May
-STR_MONTH_JUN                                                   :Jun
-STR_MONTH_JUL                                                   :Julai
-STR_MONTH_AUG                                                   :Ogos
-STR_MONTH_SEP                                                   :September
-STR_MONTH_OCT                                                   :Oktober
-STR_MONTH_NOV                                                   :November
-STR_MONTH_DEC                                                   :Desember
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Menuju ke {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Menuju ke {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Tiada perintah
@@ -784,8 +765,6 @@ STR_ITEMS                                                       :barangan
 STR_CRATES                                                      :peti
 STR_RES_OTHER                                                   :lain
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} tidak boleh mencari arah jalan untuk teruskan jalan
@@ -1092,7 +1071,6 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DESCRIPTION_UNDER_CONSTRUCTION                         :{STRING} (sedang dibina)
 
-
 ##id 0x2800
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Pokok
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Tidak boleh menanam pokok di sini...
@@ -1116,6 +1094,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Terima
 
 ############ range for rating starts
 ############ range for rating ends
+
+### station view strings
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} tidak lagi menerima {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} tidak lagi menerima {STRING} or {STRING}
@@ -1172,6 +1152,7 @@ STR_SV_AIRCRAFT_NAME                                            :Pesawat Udara {
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Utara
+##id 0x6020
 
 ############ end of savegame specific region!
 
@@ -1218,8 +1199,6 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diese
 
 
 
-
-
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Kenderaan ini sedang berjalan mengikuti jadual
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Kenderaan ini sedang berjalan {STRING} lewat
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Kenderaan ini sedang berjalan {STRING} awal
@@ -1236,8 +1215,6 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Jadual w
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bina Lapangan Terbang
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nama kapal terbang
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nama kapal terbang
 
 
 ##id 0xB000
@@ -1269,6 +1246,50 @@ STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Tetapkan
 STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}Mata wang anda berbanding 10000 Pound (£)
 
 
+############ Vehicle lists
+
+
+
+
+
+
+
+
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nama kapal terbang
+
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nama kapal terbang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1277,8 +1298,8 @@ STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}Mata wan
 
 
 
-
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Menggantikan: {ORANGE}{SKIP}{SKIP}{STRING}
+
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Kenderaan tidak boleh didapati sekarang
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Kenderaan tidak boleh didapati sekarang
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Kapal tidak boleh didapati sekarang
@@ -1325,10 +1346,6 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Muatan: 
 ############ Tooltip measurment
 
 
-############ Date formatting
-
-########
-
 
 
 
@@ -1338,6 +1355,37 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Muatan: 
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Kumpulan - klik sebuah kumpulan untuk menaraikan semua kenderaan di dalam kumpulan
 
+#### String control codes and their formatting
+
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 
 #### Improved sign GUI

@@ -154,8 +154,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}KG
 STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Kaart - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spill Optiounen
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Meldung
@@ -167,17 +165,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD Versioun {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 D'OpenTTD team
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Eraus
 STR_YES                                                         :{BLACK}Jo
 STR_NO                                                          :{BLACK}Nee
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Sidd der slcher dass dir aus dem OpenTTD eraus wëllt , an op {STRING} zeréck?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Näischt
 STR_COLOUR_DARK_BLUE                                            :Donkelblo
 STR_COLOUR_PALE_GREEN                                           :Bleechgréng
@@ -196,8 +188,6 @@ STR_COLOUR_BROWN                                                :Brong
 STR_COLOUR_GREY                                                 :Gro
 STR_COLOUR_WHITE                                                :Wäiss
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Ze vill Gefierer am Spill
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Plaz
 STR_SMALLMAP_TYPE_CONTOURS                                      :Konturen
 STR_SMALLMAP_TYPE_VEHICLES                                      :Gefierer
@@ -323,12 +313,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Argument
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}Filterkritère wielen
 STR_SORT_BY                                                     :{BLACK}Sortéier no
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Bevölkerung
+STR_SORT_BY_NAME                                                :{BLACK}Numm
+STR_SORT_BY_DATE                                                :{BLACK}Datum
 STR_SORT_BY_PRODUCTION                                          :Produktioun
 STR_SORT_BY_TYPE                                                :Typ
 STR_SORT_BY_TRANSPORTED                                         :Transportéiert
-STR_SORT_BY_NAME                                                :{BLACK}Numm
-STR_SORT_BY_DATE                                                :{BLACK}Datum
 STR_SORT_BY_NUMBER                                              :Nummer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit am leschten Joer
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit dëst Joer
@@ -351,37 +342,25 @@ STR_SORT_BY_INTRO_DATE                                          :Aféirungsdatum
 STR_SORT_BY_RUNNING_COST                                        :Betriebskäschten
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Kraaft/Betriebskäschten
 STR_SORT_BY_CARGO_CAPACITY                                      :Luedungskapazitéit
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Kéng Luedung
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Selectéier all d'Fabriken
 STR_SELECT_ALL_TYPES                                            :{BLACK}Wielt all Luedungstyp (ouni Luedung déi waart)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Verfügbar Zich
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Verfügbar Gefierer
-STR_AVAILABLE_SHIPS                                             :{BLACK}Verfügbar Schëffer
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Verfügbar Fligern
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Lëscht vun allen Maschinen fir dësen Typ weisen.
 STR_MANAGE_LIST                                                 :{BLACK}Verwaltungslëscht
 STR_MANAGE_LIST_TIP                                             :{BLACK}Scheckt d'Instructiounen un all Gefierer an der Lëscht
 STR_REPLACE_VEHICLES                                            :Gefierer ersetzen
+STR_SEND_FOR_SERVICING                                          :An d'Revisioun schécken
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}Verfügbar Zich
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Verfügbar Gefierer
+STR_AVAILABLE_SHIPS                                             :{BLACK}Verfügbar Schëffer
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Verfügbar Fligern
+
 STR_SEND_TRAIN_TO_DEPOT                                         :An den Depot schécken
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :An den Depot schécken
 STR_SEND_SHIP_TO_DEPOT                                          :An den Depot schécken
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :An den Hangar schécken
-STR_SEND_FOR_SERVICING                                          :An d'Revisioun schécken
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Jan
-STR_MONTH_ABBREV_FEB                                            :Feb
-STR_MONTH_ABBREV_MAR                                            :Mär
-STR_MONTH_ABBREV_APR                                            :Abr
-STR_MONTH_ABBREV_MAY                                            :Mee
-STR_MONTH_ABBREV_JUN                                            :Jun
-STR_MONTH_ABBREV_JUL                                            :Jul
-STR_MONTH_ABBREV_AUG                                            :Aug
-STR_MONTH_ABBREV_SEP                                            :Sep
-STR_MONTH_ABBREV_OCT                                            :Oct
-STR_MONTH_ABBREV_NOV                                            :Nov
-STR_MONTH_ABBREV_DEC                                            :Dez
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -409,8 +388,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Flughafe
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Beem planzen, Schëlder opsetzen etc.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informatiounen zum Land
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Optiounen
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Den Service-Intervall kann net geännert ginn...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fënster zoumaachen
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Fënstertitel - hei zéien fir d'Fënster ze bewegen
@@ -457,7 +434,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Keng
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Numm
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1ten
 STR_ORDINAL_NUMBER_2ND                                          :2ten
 STR_ORDINAL_NUMBER_3RD                                          :3ten
@@ -490,6 +467,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29ten
 STR_ORDINAL_NUMBER_30TH                                         :30ten
 STR_ORDINAL_NUMBER_31ST                                         :31ten
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Jan
+STR_MONTH_ABBREV_FEB                                            :Feb
+STR_MONTH_ABBREV_MAR                                            :Mär
+STR_MONTH_ABBREV_APR                                            :Abr
+STR_MONTH_ABBREV_MAY                                            :Mee
+STR_MONTH_ABBREV_JUN                                            :Jun
+STR_MONTH_ABBREV_JUL                                            :Jul
+STR_MONTH_ABBREV_AUG                                            :Aug
+STR_MONTH_ABBREV_SEP                                            :Sep
+STR_MONTH_ABBREV_OCT                                            :Oct
+STR_MONTH_ABBREV_NOV                                            :Nov
+STR_MONTH_ABBREV_DEC                                            :Dez
+
+STR_MONTH_JAN                                                   :Januar
+STR_MONTH_FEB                                                   :Febuar
+STR_MONTH_MAR                                                   :März
+STR_MONTH_APR                                                   :Abrëll
+STR_MONTH_MAY                                                   :Mee
+STR_MONTH_JUN                                                   :Juni
+STR_MONTH_JUL                                                   :Juli
+STR_MONTH_AUG                                                   :August
+STR_MONTH_SEP                                                   :September
+STR_MONTH_OCT                                                   :Oktober
+STR_MONTH_NOV                                                   :November
+STR_MONTH_DEC                                                   :Dezember
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -580,12 +585,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} ereescht den Status '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} vun {COMPANY} ereescht den Status '{STRING}'!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Szenarien Editor
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landerstellung
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Vergréisser d'Zone fir d'Land unzehiewen/eroofzesetzen
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Verklenger d'Zone fir d'Land unzehiewen/eroofzesetzen
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generéier en Zoufallsland
@@ -667,9 +669,7 @@ STR_OFF                                                         :Aus
 STR_SUMMARY                                                     :Resumé
 STR_FULL                                                        :Ganz
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spilloptiounen
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Schwieregkeetsastellungen
@@ -761,9 +761,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finanzéiert en
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Nei Industrie finanzéiert
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...kann nëmmen am Regenwaldgebit gebaut ginn
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...kann nëmmen an der Wüst gebaut ginn
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  PAUSÉIERT  *  *
@@ -776,9 +773,6 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSPÄIC
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPÄICHERT D'SPILL  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Nach umgaangen ze späicheren. {} Weg. waarden bis daat faerdeg ass!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Wielt 'Ezy Street Musék' Programm
-
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Englësch (Original)
@@ -859,19 +853,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Méi Inf
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fehler beim Autospäicheren
 
-STR_MONTH_JAN                                                   :Januar
-STR_MONTH_FEB                                                   :Febuar
-STR_MONTH_MAR                                                   :März
-STR_MONTH_APR                                                   :Abrëll
-STR_MONTH_MAY                                                   :Mee
-STR_MONTH_JUN                                                   :Juni
-STR_MONTH_JUL                                                   :Juli
-STR_MONTH_AUG                                                   :August
-STR_MONTH_SEP                                                   :September
-STR_MONTH_OCT                                                   :Oktober
-STR_MONTH_NOV                                                   :November
-STR_MONTH_DEC                                                   :Dezember
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Um Wee fir {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Um wee fir {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Keng Opträg
@@ -885,8 +866,6 @@ STR_ITEMS                                                       :Objeten
 STR_CRATES                                                      :Këschten
 STR_RES_OTHER                                                   :Aaneres
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kann d'Optragslëscht net deelen...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kann d'Optragslëscht net kopéieren...
@@ -1157,7 +1136,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-Gréi
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :ausgeschalt
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Astellung änneren
 
 STR_TEMPERATE_LANDSCAPE                                         :Temperéiert Landschaft
@@ -1193,7 +1171,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Wielt de
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Weepunktnumm
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Kann den Weepunktnumm net änneren...
@@ -1260,11 +1237,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Fabriken
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...ze Noo bei enger aanerer Fabrik
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Den Zuch upassen fir aaner Luedungen ze transportéieren
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Zuch upassen
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selectéiert d'Luedung déi transportéiert soll ginn
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Passt den Zuch un fir den ugewielten Luedungstyp
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Kann den Zuch net unpassen...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}D'Produktioun änneren
 
 ############ network gui strings
@@ -1774,11 +1746,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tipien
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Téikaan-Haus
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Spuerschwäin-Bank
 
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_STATION_NAME                                                :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landschaftsbau
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Beem planzen
@@ -1832,6 +1799,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :Ganz gutt
 STR_CARGO_RATING_EXCELLENT                                      :Exzellent
 STR_CARGO_RATING_OUTSTANDING                                    :Perfekt
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Weis all Zich déi des Statioun an hierem Zaitplang hun
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Weis all Stroossengefierter déi des Statioun an hierem Zaitplang hun
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Weis all Fliger den des Statioun an sengem Zaitplang huet
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Weis all Schëffer déi des Statioun an hierem Zaitplang hun
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} acceptéiert {STRING} net méi
@@ -2076,6 +2049,7 @@ STR_SV_STNAME_AIRPORT                                           :{STRING}er Flug
 STR_SV_STNAME_OILFIELD                                          :{STRING}er Uelegfeld
 STR_SV_STNAME_MINES                                             :{STRING}er Minnen
 STR_SV_STNAME_DOCKS                                             :{STRING} Hafen
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Annexe
 STR_SV_STNAME_SIDINGS                                           :{STRING}er Oofstellplaatz
 STR_SV_STNAME_BRANCH                                            :{STRING}er Oofzweigung
@@ -2123,8 +2097,6 @@ STR_NUM_LOW                                                     :Wéineg
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Vill
 STR_NUM_CUSTOM                                                  :Benotzerdéfineiert
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Ganz lues
 STR_AI_SPEED_SLOW                                               :Lues
 STR_AI_SPEED_MEDIUM                                             :Mëttel
@@ -2158,7 +2130,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Ofleenend
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :(Company {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Neit Gesiicht
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Faarw Schema
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Faarw Schema:
@@ -2191,7 +2162,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total:
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafik: Ankommen
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafik: Betriibsgewënn
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Kontostand
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Kredit
@@ -2594,10 +2564,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :Monorail Lokomo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Magnéitbunnlokomotiv
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Zuchdepot
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Biirger feieren . . .{}Éischten Zuch kënnt bei {STATION} un!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Details)
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Zuch am Wee
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
@@ -2687,38 +2655,16 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :an ënnerwee op
 STR_TIMETABLE_DAYS                                              :{COMMA} D{P ag eeg}
 STR_TIMETABLE_TICKS                                             :{COMMA} Intervall{P "" en}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Ënnerwee fir {TOWN} Zuchdepot
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Ënnerwee fir {TOWN} Zuchdepot, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Revisioun am {TOWN} Zuchdepot
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Revisioun am {TOWN} Zuchdepot, {VELOCITY}
-
 STR_INVALID_ORDER                                               :{RED} (ongültegen Optrag)
 
 STR_UNKNOWN_STATION                                             :onbekannt Statioun
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Eidel
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} vun {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} vun {STATION} (x{NUM})
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} waart am Depot
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nei Gefierer
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Zuch ze laang
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Zich kënnen nëmmen an engem Depot verännert ginn
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Z{P uch ich}
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nei Zich
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nei Elektrozich
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nei Monorailgefierer
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nei Magnéitbunngefierer
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Zich
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Gefiert bauen
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Gefiert klonen
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Baut eng Kopie vum Stroossengefiert. CTRL+Klick kopéiert och d'Opträg
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Baut eng Kopie vum Stroossengefiert. CTRL+Klick kopéiert och d'Opträg
-STR_CLONE_TRAIN                                                 :{BLACK}Zuch klonen
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Wagonen. CTRL+Klick kopéiert och d'Opträg
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Wagonen.  Klickt op dësen Knäppchen an dann op en Zuch am Depot oder baussen.
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Ëmbenennen
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Iwersprangen
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Leschen
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Géi op
@@ -2734,14 +2680,12 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Wiesselt
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Opträg)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Enn vun den Opträg - -
 STR_SERVICE                                                     :{BLACK}Revisioun
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Kann den Zuch net bauen...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Wert: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Lueden / Entlueden
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Verloossen
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Zuch muss am Depot sinn
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kann den Zuch net an den Depot schécken...
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Keng Plaz méi fir Opträg
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Ze vill Opträg
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Kann keen neien Optrag bäisetzen...
@@ -2756,26 +2700,11 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}en Gefie
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Kann d'Gefiert net réckelen...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}D'hënnescht Maschinn geet ëmmer der viischter no.
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kann den Zuch net verkafen...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kann den Wee an den Depot net fannen
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Kann den Zuch net starten/stopen...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Revisiounsintervall: {LTBLUE}{COMMA}Deeg{BLACK}   Lescht Revisioun: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Revisiounsintervall: {LTBLUE}{COMMA}%{BLACK}  Lescht Revisioun: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Zich - klickt op den Zuch fir Informatiounen
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Zich - klickt op den Zuch fir info., zitt d'Gefiert fir en unzehänken/wechzehuelen
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Baut neen Zuch
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Zitt den Zuch heihin fir en ze verkafen
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Zentréiert d'Usiicht op den Depot
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Zuchlëscht - klickt op en Zuch fir Informatiounen
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Baut den ungewielten Zuch
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Gefierttyp ëmbenennen
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Momentan Aktioun - klickt hei fir den Zuch ze stopen/starten
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Weist d'Opträg vum Zuch
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Zentréiert d'Usiicht op den Zuch
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Schéckt den Zuch an den Depot. CTRL+Klick fir nëmmen Revisoun
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forcéiert den Zuch durch d'Signal ze fueren
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Richtung vum Zuch wiesselen
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Weist d'Detailer vum Zuch
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Revisiounsintervall erhéichen
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Revisiounsintervall erofsetzen
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Weist d'Detailer vun der Luedung
@@ -2809,13 +2738,9 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Gestoppt
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kann den Zuch net bei Gefohr lanscht d'Signal schecken...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accident!
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Zuch benennen
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kann den Zuch net benennen...
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Zuch benennen
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Zuch Accident!{}{COMMA} stiewen an der Explosioun nom Accident
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kann d'Richtung vum Zuch net änneren...
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Zuchgefierttyp ëmbenennen
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kann den Zuchgefierttyp net ëmbenennen...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kann keng Gefierer aus e puer Unitéiten emdréinen
 STR_CLEAR_TIME                                                  :{BLACK}Zäit läschen
 STR_RESET_LATENESS                                              :{BLACK}Verspeidungszieler zerécksetzen
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Weepunkt Numm änneren
@@ -2847,178 +2772,53 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofël
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fëll den Zaitplang automatesch mat den Werter vum nächsten Trajet (Ctrl+Klick fir Warrdzaiten probéiren bäizehalen)
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Stroossengefiert am Wee
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Gefier{P t er}
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Stroossendepot
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nei Gefierer
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nei Stroossengefierer
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Gefiert bauen
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Kann d'Stroossengefiert hei net bauen...
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...muss an engem Depot stoen
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kann d'Stroossengefiert net verkafen...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kann d'Stroossengefiert net stoppen/starten...
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} waart am Depot
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Um Wee fir {TOWN} Stroossendepot
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Um Wee fir {TOWN} Stroossendepot, {VELOCITY}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Revisioun am {TOWN} Stroossendepot
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Revisioun am {TOWN} Stroossendepot, {VELOCITY}
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kann d'Gefiert net an den Depot schécken...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kann den Depot net fannen
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Stroossengefierer - klickt op en Gefiert fir Informatiounen
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Momentan Aktioun - klickt hei fir d'Gefiert ze stoppen/starten
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Weist d'Opträg vum Gefiehrt
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Zentréiert d'Unsiicht op d'Gefiehrt
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Schéckt d'Gefiert an den Depot. CTRL+Klick fir nëmmen Revisoun
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forcéiert d'Gefiert fir ze dréien
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Weist Stroosengefiert Detailer
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Gefierer - klickt op en Gefier fir Informatiounen
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Neit Stroossengefier bauen
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Zitt d'Stroossengefier heihin fir et ze verkafen
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Zentréiert d'Usiicht op den Depot
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Stroossengefiert Lëscht - klickt op en Gefiert fir Informatiounen
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Baut dat ungewieltent Stroossengefiert
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapazitéit: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} Gefier{P t er}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Stroossengefiert benennen
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kann d'Stroossengefiert net benennen...
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Stroossengefiert benennen
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Biirger feieren . . .{}Éischten Bus kënnt bei {STATION} un!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Biirger feieren . . .{}Eischten Camion kënnt bei {STATION} un!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Biirger feieren . . .{}Eischten Tram kënnt bei  {STATION} un!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Biirger feieren . . .{}Eischten Wueren-Tram kënnt bei  {STATION} un!
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Stroossengefiert onfall!{}Fuerer stieft an der Explosioun no Onfall mam Zuch
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Stroossengefiertaccident!{}{COMMA} stiewen an der Explosioun no Onfall mam Zuch
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kann keng Gefierer aus e puer Unitéiten emdréinen
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Ëmbenennen
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Gefierttyp ëmbenennen
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Gefiertentyp ëmbenennen
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kann den Gefierttyp net ëmbenennen...
 
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Stroossengefiert ëmbauen fir eng aner Wuer ze transportéiren
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Stroossengefiert ëmbauen
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Stroosengefiert embauen fir gewielten Wuer ze transportéiren
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kann Stroossengefiert net ëmbauen...
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Wielt den Typ vun Wueren fir Stroossengefiert
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Waasserstroossen bauen
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Waasserstroosen bauen
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waasserstroosen
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kann den Dock hei net bauen...
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Schëffdepot
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nei Schëffer
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Schëff{P "" er}
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nei Schëffer
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Schëff bauen
-STR_CLONE_SHIP                                                  :{BLACK}Schëff klonen
-STR_CLONE_SHIP_INFO                                             :{BLACK}Dëst baut eng Kopie vum Schëff. CTRL+Klick kopéiert och d'Opträg
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Dsst baut eng Kopie vum Schëff. Klickt op dësen Knäppchen an dann op en Schëff am Depot oder baussen.
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Schëff muss am Depot stoen
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kann Schëff net verkafen...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Kann Schëff net bauen...
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Schëff am Wee
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Kann d'Schëff net stoppen/starten...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kann d'Schëff net an den Depot schécken...
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Um Wee fir {TOWN} Schëffdepot
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Um Wee fir {TOWN} Schëffdepot, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Revisioun am {TOWN} Schëffdepot
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisioun am {TOWN} Schëffdepot, {VELOCITY}
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} waart am Depot
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Schëffdock bauen
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Schëffdepot bauen (fir Schëffer ze bauen an ze warten)
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schëffer - klickt op d'Schëff fir Informatiounen
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Neit Schëff bauen
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Zitt Schëff heihin fir et ze verkafen
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Zentréiert d'Usiicht op den Depot
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Schëffer - Klickt op d'Schëff fir Informatiounen
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Schëffslëscht - Klickt op d'Schëff fir Informatiounen
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Baut dat ungewielten Schëff
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Momentan Aktioun - Klickt hei fir d'Schëff ze stoppen/starten
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Weist d'Opträg vum Schëff
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Zentréiert d'Usiicht op d'Schëff
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Schéck d'Schëff an den Depot. CTRL+Klick fir nëmmen Revisoun
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Weist Schëffdetailer
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Schëff benennen
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Schëff benennen
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Kann d'Schëff net benennen...
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Biirger feieren . . .{}Éischt Schëff kënnt bei {STATION} un!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plazéiert eng Boje, déi als Weepunkt kann benotzt ginn
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kann Boje net hei plazéieren...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Aquadukt bauen
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Kann den Aquadukt héi net bauen...
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Ëmbenennen
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Schëffstyp ëmbenennen
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Schëffstyp ëmbenennen
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Kann den Schëffstyp net ëmbenennen...
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Schëffslager ëmbauen fir aaner Luedungen ze transportéieren
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Refit)
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Schëff ëmbauen
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Selèctéiert den Luedungstyp fir d'Schëff
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Schëff op dei ugewielten Luedung ëmbauen
 STR_REFIT_TITLE                                                 :{GOLD}Wielt den Luedungstyp:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nei Kapazitéit: {GOLD}{CARGO}{}{BLACK}Käschten fir ëmzebauen: {GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Kann d'Schëff net ëmbauen...
 STR_REFITTABLE                                                  :(ëmbaubar)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Fluchhäfen
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kann den Fluchhafen hei net bauen...
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Fligerhangar
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Neien Fliger
-STR_CLONE_AIRCRAFT                                              :{BLACK}Fliger klonen
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Dëst baut eng Kopie vum Fliger. CTRL+Klick kopéiert och d'Opträg
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Dëst baut eng Kopie vun engem Fliger. Klickt op dësen Knäppchen, an dann op en Fliger am Hangar oder baussen.
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Neien Fliger
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Fliger bauen
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kann den Fliger net bauen...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Fliger
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kann den Fliger net an den Hangar schécken...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}Um Wee fir {STATION} Hangar
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Um Wee fir {STATION} Hangar, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Revisioun am {STATION} Hangar
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Revisioun am {STATION} Hangar, {VELOCITY}
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} waart am Hangar
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Fliger am Wee
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Kann den Fliger net stoppen/starten...
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Fliger ass um Fluch
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Fliger muss am Hangar sinn
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kann dën Fliger net verkafen...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Fluchhafenbau
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Fluchhafen bauen
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Fliger - Klickt op den Fliger fir Informatiounen
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Fliger - Klickt op den Fliger fir Informatiounen
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Neien Fliger bauen
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Zitt den Fliger heihin fir en ze verkafen
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Zentréiert d'Usiicht op den Hangar
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Fligerlëscht - Klickt op den Fliger fir Informatiounen
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Baut den ungewielten Fliger
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Momentan Aktioun - Klickt hei fir den Fliger ze stoppen/starten
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Weist d'Opträg vum Fliger
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Zentréiert d'Usiicht op den Fliger
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Schéckt den Fliger an den Hangar. CTRL+Click fir nëmmen Wartung
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Weist d'Fligerdetailer
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Fliger benennen
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Kann den Fliger net benennen...
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Fliger benennen
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Biirger feieren . . .{}Éischten Fliger kënnt bei {STATION} un!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Fligeraccident!{}{COMMA} stiewen an der Explosioun bei {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Fligeraccident!{}Fliger haat keen Bensin méi, {COMMA} stiewen an Explosioun!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Ëmbenennen
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Fligertyp ëmbenennen
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Fligertyp ëmbenennen
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Kann den Fligertyp net ëmbenennen...
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Fliger ëmbauen fir aaner Wueren ze transportéieren
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Fliger ëmbauen
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Wielt den Luedungstyp aus
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Baut den Fliger fir den ugewieltenen Luedungstyp ëm
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Kann den Fliger net ëmbauen...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Zäitplang)
 
@@ -3172,14 +2972,224 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Zich - klickt op den Zuch fir Informatiounen
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Stroossengefierer - klickt op en Gefiert fir Informatiounen
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Schëffer - Klickt op d'Schëff fir Informatiounen
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Fliger - Klickt op den Fliger fir Informatiounen
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Weis all Zich déi des Statioun an hierem Zaitplang hun
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Weis all Stroossengefierter déi des Statioun an hierem Zaitplang hun
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Weis all Fliger den des Statioun an sengem Zaitplang huet
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Weis all Schëffer déi des Statioun an hierem Zaitplang hun
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Z{P uch ich}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Gefier{P t er}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Schëff{P "" er}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Fliger
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Gedeelten Ueder vun {COMMA} Gefier{P t er}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Weis all Gefierer déi dësen Plang deelen
+
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} waart am Depot
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} waart am Depot
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} waart am Depot
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} waart am Hangar
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Zuch upassen
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Stroossengefiert ëmbauen
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Schëff ëmbauen
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Fliger ëmbauen
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Passt den Zuch un fir den ugewielten Luedungstyp
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Stroosengefiert embauen fir gewielten Wuer ze transportéiren
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Schëff op dei ugewielten Luedung ëmbauen
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Baut den Fliger fir den ugewieltenen Luedungstyp ëm
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selectéiert d'Luedung déi transportéiert soll ginn
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Wielt den Typ vun Wueren fir Stroossengefiert
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Selèctéiert den Luedungstyp fir d'Schëff
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Wielt den Luedungstyp aus
+
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Zuchdepot
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Stroossendepot
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Schëffdepot
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Fligerhangar
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Zuch benennen
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Stroossengefiert benennen
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Schëff benennen
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Fliger benennen
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Zuch benennen
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Stroossengefiert benennen
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Schëff benennen
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Fliger benennen
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Zuch am Wee
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Stroossengefiert am Wee
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Schëff am Wee
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Fliger am Wee
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Kann den Zuch net unpassen...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kann Stroossengefiert net ëmbauen...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Kann d'Schëff net ëmbauen...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Kann den Fliger net ëmbauen...
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kann den Zuch net benennen...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kann d'Stroossengefiert net benennen...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Kann d'Schëff net benennen...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Kann den Fliger net benennen...
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Kann den Zuch net starten/stopen...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kann d'Stroossengefiert net stoppen/starten...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Kann d'Schëff net stoppen/starten...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Kann den Fliger net stoppen/starten...
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kann den Zuch net an den Depot schécken...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kann d'Gefiert net an den Depot schécken...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kann d'Schëff net an den Depot schécken...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kann den Fliger net an den Hangar schécken...
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Kann den Zuch net bauen...
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Kann d'Stroossengefiert hei net bauen...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Kann Schëff net bauen...
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kann den Fliger net bauen...
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kann den Zuchgefierttyp net ëmbenennen...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kann den Gefierttyp net ëmbenennen...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Kann den Schëffstyp net ëmbenennen...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Kann den Fligertyp net ëmbenennen...
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kann den Zuch net verkafen...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kann d'Stroossengefiert net verkafen...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kann Schëff net verkafen...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kann dën Fliger net verkafen...
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Momentan Aktioun - klickt hei fir den Zuch ze stopen/starten
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Momentan Aktioun - klickt hei fir d'Gefiert ze stoppen/starten
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Momentan Aktioun - Klickt hei fir d'Schëff ze stoppen/starten
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Momentan Aktioun - Klickt hei fir den Fliger ze stoppen/starten
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Weist d'Opträg vum Zuch
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Weist d'Opträg vum Gefiehrt
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Weist d'Opträg vum Schëff
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Weist d'Opträg vum Fliger
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Zentréiert d'Usiicht op den Zuch
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Zentréiert d'Unsiicht op d'Gefiehrt
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Zentréiert d'Usiicht op d'Schëff
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Zentréiert d'Usiicht op den Fliger
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Schéckt den Zuch an den Depot. CTRL+Klick fir nëmmen Revisoun
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Schéckt d'Gefiert an den Depot. CTRL+Klick fir nëmmen Revisoun
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Schéck d'Schëff an den Depot. CTRL+Klick fir nëmmen Revisoun
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Schéckt den Fliger an den Hangar. CTRL+Click fir nëmmen Wartung
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Weist d'Detailer vum Zuch
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Weist Stroosengefiert Detailer
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Weist Schëffdetailer
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Weist d'Fligerdetailer
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Den Zuch upassen fir aaner Luedungen ze transportéieren
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Stroossengefiert ëmbauen fir eng aner Wuer ze transportéiren
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Schëffslager ëmbauen fir aaner Luedungen ze transportéieren
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Fliger ëmbauen fir aaner Wueren ze transportéieren
+
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Ënnerwee fir {TOWN} Zuchdepot
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Ënnerwee fir {TOWN} Zuchdepot, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Um Wee fir {TOWN} Stroossendepot
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Um Wee fir {TOWN} Stroossendepot, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Um Wee fir {TOWN} Schëffdepot
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Um Wee fir {TOWN} Schëffdepot, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Um Wee fir {STATION} Hangar
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Um Wee fir {STATION} Hangar, {VELOCITY}
+
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Revisioun am {TOWN} Zuchdepot
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Revisioun am {TOWN} Zuchdepot, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Revisioun am {TOWN} Stroossendepot
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Revisioun am {TOWN} Stroossendepot, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Revisioun am {TOWN} Schëffdepot
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisioun am {TOWN} Schëffdepot, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Revisioun am {STATION} Hangar
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Revisioun am {STATION} Hangar, {VELOCITY}
+
+
+STR_CLONE_TRAIN                                                 :{BLACK}Zuch klonen
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Gefiert klonen
+STR_CLONE_SHIP                                                  :{BLACK}Schëff klonen
+STR_CLONE_AIRCRAFT                                              :{BLACK}Fliger klonen
+
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Wagonen. CTRL+Klick kopéiert och d'Opträg
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Baut eng Kopie vum Stroossengefiert. CTRL+Klick kopéiert och d'Opträg
+STR_CLONE_SHIP_INFO                                             :{BLACK}Dëst baut eng Kopie vum Schëff. CTRL+Klick kopéiert och d'Opträg
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Dëst baut eng Kopie vum Fliger. CTRL+Klick kopéiert och d'Opträg
+
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Wagonen.  Klickt op dësen Knäppchen an dann op en Zuch am Depot oder baussen.
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Baut eng Kopie vum Stroossengefiert. CTRL+Klick kopéiert och d'Opträg
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Dsst baut eng Kopie vum Schëff. Klickt op dësen Knäppchen an dann op en Schëff am Depot oder baussen.
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Dëst baut eng Kopie vun engem Fliger. Klickt op dësen Knäppchen, an dann op en Fliger am Hangar oder baussen.
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nei Zich
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nei Elektrozich
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nei Monorailgefierer
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nei Magnéitbunngefierer
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Zich
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nei Stroossengefierer
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nei Schëffer
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Neien Fliger
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Gefiert bauen
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Gefiert bauen
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Schëff bauen
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Fliger bauen
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Zuchlëscht - klickt op en Zuch fir Informatiounen
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Stroossengefiert Lëscht - klickt op en Gefiert fir Informatiounen
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Schëffslëscht - Klickt op d'Schëff fir Informatiounen
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Fligerlëscht - Klickt op den Fliger fir Informatiounen
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Baut den ungewielten Zuch
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Baut dat ungewieltent Stroossengefiert
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Baut dat ungewielten Schëff
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Baut den ungewielten Fliger
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Ëmbenennen
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Ëmbenennen
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Ëmbenennen
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Ëmbenennen
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Gefierttyp ëmbenennen
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Gefierttyp ëmbenennen
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Schëffstyp ëmbenennen
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Fligertyp ëmbenennen
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Zuchgefierttyp ëmbenennen
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Gefiertentyp ëmbenennen
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Schëffstyp ëmbenennen
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Fligertyp ëmbenennen
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nei Gefierer
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nei Gefierer
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nei Schëffer
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Neien Fliger
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Zich - klickt op den Zuch fir info., zitt d'Gefiert fir en unzehänken/wechzehuelen
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Gefierer - klickt op en Gefier fir Informatiounen
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schëffer - klickt op d'Schëff fir Informatiounen
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Fliger - Klickt op den Fliger fir Informatiounen
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Baut neen Zuch
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Neit Stroossengefier bauen
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Neit Schëff bauen
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Neien Fliger bauen
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Zitt den Zuch heihin fir en ze verkafen
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Zitt d'Stroossengefier heihin fir et ze verkafen
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Zitt Schëff heihin fir et ze verkafen
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Zitt den Fliger heihin fir en ze verkafen
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Zentréiert d'Usiicht op den Depot
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Zentréiert d'Usiicht op den Depot
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Zentréiert d'Usiicht op den Depot
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Zentréiert d'Usiicht op den Hangar
+
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Dier verkaft grad all Gefierer am Depot. Sidder sécher ?
@@ -3200,7 +3210,6 @@ STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}All Gefi
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}All Schëffer am Depot automatesch ersetzen
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}All Fliger am Hangar automatesch ersetzen
 
-
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacéier{STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start Gefierterremplacement
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop Gefierterremplacement
@@ -3216,6 +3225,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon ra
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Mecht dass den Autoremplacement d'Lengt vum Zuch behält, andems en Wagonen (vun lénks un) wechhëllt, wann d'Lok den Zuch ze laang mecht.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Remplacéiren: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wiessel tëscht Maschin- an Wagonremplac. Fënster
+
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Gefiert net verfügbar
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Stroossengefiert net verfügbar
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Schëff net verfügbar
@@ -3365,17 +3375,6 @@ STR_MEASURE_AREA                                                :{BLACK}Areal: {
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Längt: {NUM}{}Héichtenënnerscheed: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Areal: {NUM} x {NUM}{}Héichtenënnerscheed: {NUM} m
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer Suen: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...d'Strooss ass am Besëtz vun der Stad
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...Strooss geet an dei falsch Richtung
@@ -3400,7 +3399,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :Grupp {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :All Zich
 STR_GROUP_ALL_ROAD_VEHICLES                                     :All Stroossengefierer
@@ -3429,12 +3427,62 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Déi ung
 STR_GROUP_RENAME_TIP                                            :{BLACK}Déi ungewielten Grupp ëmbenennen
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klickt fir déi Grupp vum globalen "Autoersetzen" auszeschléissen
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :(Company {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Grupp {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Numm muss eenzegartëg sinn
 

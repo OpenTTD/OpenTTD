@@ -154,8 +154,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}プ
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ソ
 STR_ABBREV_NONE                                                 :{TINYFONT}無
 STR_ABBREV_ALL                                                  :{TINYFONT}全
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}地図 - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}ゲームの設定
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}メッセージ
@@ -167,17 +165,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}オリ�
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD バージョン {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 The OpenTTD team
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}終了
 STR_YES                                                         :{BLACK}はい
 STR_NO                                                          :{BLACK}いいえ
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}このゲームを終了して、{}{STRING}に戻してもよろしいですか？
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :なし
 STR_COLOUR_DARK_BLUE                                            :紺青色
 STR_COLOUR_PALE_GREEN                                           :薄緑色
@@ -196,8 +188,6 @@ STR_COLOUR_BROWN                                                :茶色
 STR_COLOUR_GREY                                                 :灰色
 STR_COLOUR_WHITE                                                :白色
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}ゲームの車両数の制限を超えています
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}見つける
 STR_SMALLMAP_TYPE_CONTOURS                                      :地形
 STR_SMALLMAP_TYPE_VEHICLES                                      :車両
@@ -322,12 +312,13 @@ STR_SORT_ORDER_TIP                                              :{BLACK}並べ�
 STR_SORT_CRITERIA_TIP                                           :{BLACK}並べ替えの基準を選択
 STR_SORT_BY                                                     :{BLACK}並べ替え
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}人口
+STR_SORT_BY_NAME                                                :{BLACK}名前
+STR_SORT_BY_DATE                                                :{BLACK}日付
 STR_SORT_BY_PRODUCTION                                          :生産量
 STR_SORT_BY_TYPE                                                :種類
 STR_SORT_BY_TRANSPORTED                                         :運送済み
-STR_SORT_BY_NAME                                                :{BLACK}名前
-STR_SORT_BY_DATE                                                :{BLACK}日付
 STR_SORT_BY_NUMBER                                              :番号
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :昨年の損益
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :今年の損益
@@ -348,37 +339,25 @@ STR_SORT_BY_INTRO_DATE                                          :登場日付
 STR_SORT_BY_RUNNING_COST                                        :運転費
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :出力／運転費
 STR_SORT_BY_CARGO_CAPACITY                                      :貨物容量
+
 STR_NO_WAITING_CARGO                                            :{BLACK}到着待ちの貨物がありません
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}すべての駅を選択
 STR_SELECT_ALL_TYPES                                            :{BLACK}すべての貨物種類を選択（到着待たぬ貨物も含む）
-STR_AVAILABLE_TRAINS                                            :{BLACK}購入可能な列車
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}購入可能な道路車両
-STR_AVAILABLE_SHIPS                                             :{BLACK}購入可能な船舶
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}購入可能な飛行機
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}この車両種類のデザインのリストを表示します
 STR_MANAGE_LIST                                                 :{BLACK}リストを管理
 STR_MANAGE_LIST_TIP                                             :{BLACK}リスト内のすべての車両へこの指令を送信
 STR_REPLACE_VEHICLES                                            :車両を交換
+STR_SEND_FOR_SERVICING                                          :修理へ回送
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}購入可能な列車
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}購入可能な道路車両
+STR_AVAILABLE_SHIPS                                             :{BLACK}購入可能な船舶
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}購入可能な飛行機
+
 STR_SEND_TRAIN_TO_DEPOT                                         :電車庫へ回送
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :車庫へ回送
 STR_SEND_SHIP_TO_DEPOT                                          :造船所へ回送
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :格納庫へ回送
-STR_SEND_FOR_SERVICING                                          :修理へ回送
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :1月
-STR_MONTH_ABBREV_FEB                                            :2月
-STR_MONTH_ABBREV_MAR                                            :3月
-STR_MONTH_ABBREV_APR                                            :4月
-STR_MONTH_ABBREV_MAY                                            :5月
-STR_MONTH_ABBREV_JUN                                            :6月
-STR_MONTH_ABBREV_JUL                                            :7月
-STR_MONTH_ABBREV_AUG                                            :8月
-STR_MONTH_ABBREV_SEP                                            :9月
-STR_MONTH_ABBREV_OCT                                            :10月
-STR_MONTH_ABBREV_NOV                                            :11月
-STR_MONTH_ABBREV_DEC                                            :12月
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -406,8 +385,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}空港�
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}植林、標示設置等を行います
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地域情報
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}設定
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}整備間隔を変更できません
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}ウィンドウを閉じます
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}ウィンドウのタイトル - ウィンドウを動かすには、クリックしてドラッグします
@@ -453,7 +430,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :なし
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}名称
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1日
 STR_ORDINAL_NUMBER_2ND                                          :2日
 STR_ORDINAL_NUMBER_3RD                                          :3日
@@ -486,6 +463,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29日
 STR_ORDINAL_NUMBER_30TH                                         :30日
 STR_ORDINAL_NUMBER_31ST                                         :31日
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :1月
+STR_MONTH_ABBREV_FEB                                            :2月
+STR_MONTH_ABBREV_MAR                                            :3月
+STR_MONTH_ABBREV_APR                                            :4月
+STR_MONTH_ABBREV_MAY                                            :5月
+STR_MONTH_ABBREV_JUN                                            :6月
+STR_MONTH_ABBREV_JUL                                            :7月
+STR_MONTH_ABBREV_AUG                                            :8月
+STR_MONTH_ABBREV_SEP                                            :9月
+STR_MONTH_ABBREV_OCT                                            :10月
+STR_MONTH_ABBREV_NOV                                            :11月
+STR_MONTH_ABBREV_DEC                                            :12月
+
+STR_MONTH_JAN                                                   :1月
+STR_MONTH_FEB                                                   :2月
+STR_MONTH_MAR                                                   :3月
+STR_MONTH_APR                                                   :4月
+STR_MONTH_MAY                                                   :5月
+STR_MONTH_JUN                                                   :6月
+STR_MONTH_JUL                                                   :７月
+STR_MONTH_AUG                                                   :8月
+STR_MONTH_SEP                                                   :9月
+STR_MONTH_OCT                                                   :10月
+STR_MONTH_NOV                                                   :11月
+STR_MONTH_DEC                                                   :12月
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -576,12 +581,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'（{COMMA}）
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} は「{STRING}」に達した！
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME}（{COMPANY}）は「{STRING}」に達した！
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}シナリオエディタ
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}地形の作成
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}上げる／下げる地域のサイズを拡大します
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}上げる／下げる地域のサイズを縮小します
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}ランダムな地形を作成します
@@ -663,9 +665,7 @@ STR_OFF                                                         :切
 STR_SUMMARY                                                     :概要
 STR_FULL                                                        :完全
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームの基本設定
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :難易度の設定
@@ -757,9 +757,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :新規産業の
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}新規産業の建設を出資
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...雨林地域のみに建設できます
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...砂漠地域のみに建設できます
 STR_STATUSBAR_PAUSED                                            :{YELLOW}＊＊ポーズ＊＊
@@ -772,9 +769,6 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}自動保�
 STR_STATUSBAR_SAVING_GAME                                       :{RED}＊＊ゲームを保存中＊＊
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}ゲームを保存しています{}完了してからしばらくお待ちください！
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Street 式の音楽'のプレイリストを選択します
-
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :イギリス
@@ -854,19 +848,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}ベー�
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}自動保存に失敗しました
 
-STR_MONTH_JAN                                                   :1月
-STR_MONTH_FEB                                                   :2月
-STR_MONTH_MAR                                                   :3月
-STR_MONTH_APR                                                   :4月
-STR_MONTH_MAY                                                   :5月
-STR_MONTH_JUN                                                   :6月
-STR_MONTH_JUL                                                   :７月
-STR_MONTH_AUG                                                   :8月
-STR_MONTH_SEP                                                   :9月
-STR_MONTH_OCT                                                   :10月
-STR_MONTH_NOV                                                   :11月
-STR_MONTH_DEC                                                   :12月
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}{STATION}へ行く
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}{STATION}へ行く、{VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}指令なし
@@ -880,8 +861,6 @@ STR_ITEMS                                                       :件
 STR_CRATES                                                      :箱
 STR_RES_OTHER                                                   :その他
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}指令リストを共有できません...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}指令リストをコピーできません...
@@ -1137,7 +1116,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}地図�
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :切
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}設定を変更します
 
 STR_TEMPERATE_LANDSCAPE                                         :温帯国
@@ -1173,7 +1151,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}通過�
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}通過点名を変更
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}通過点名を変更できません...
@@ -1239,11 +1216,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}産業�
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...他の産業に近すぎます。
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}他の貨物種類を運送するに列車を再装備
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}列車を再装備
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車が運送する貨物を選択
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}選択した貨物種類に再装備
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}列車が再装備できません...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}生産量を変更
 
 ############ network gui strings
@@ -1753,11 +1725,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :テント
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :茶瓶小屋
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :ブタ型貯金箱
 
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}{STRING}
-STR_STATION_NAME                                                :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :地形
 STR_LANDSCAPING_MENU_PLANT_TREES                                :木を植林
@@ -1811,6 +1778,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :とても良い
 STR_CARGO_RATING_EXCELLENT                                      :すばらしい
 STR_CARGO_RATING_OUTSTANDING                                    :最高
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}この駅が指令リストに入っているすべての列車を表示します
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}このバス停／荷役所が指令リストに入っているすべての道路車両を表示します
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}この空港が指令リストに入っているすべての飛行機を表示します
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}この埠頭が指令リストに入っているすべての船舶を表示します
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}：{YELLOW}{STRING}（{COMMA}％）
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION}は今後{STRING}を受入れません
@@ -2055,6 +2028,7 @@ STR_SV_STNAME_AIRPORT                                           :{STRING}空港
 STR_SV_STNAME_OILFIELD                                          :{STRING}油田
 STR_SV_STNAME_MINES                                             :{STRING}山
 STR_SV_STNAME_DOCKS                                             :{STRING}埠頭
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :新{STRING}
 STR_SV_STNAME_SIDINGS                                           :{STRING}里
 STR_SV_STNAME_BRANCH                                            :{STRING}寺
@@ -2102,8 +2076,6 @@ STR_NUM_LOW                                                     :低い
 STR_NUM_NORMAL                                                  :通常
 STR_NUM_HIGH                                                    :高い
 STR_NUM_CUSTOM                                                  :カスタム
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :特に遅い
 STR_AI_SPEED_SLOW                                               :遅い
 STR_AI_SPEED_MEDIUM                                             :中位
@@ -2137,7 +2109,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :対立
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :（会社 {COMMA}）
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}新規顔
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}カラースキーム
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}カラースキーム：
@@ -2170,7 +2141,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}合計�
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}損益グラフ
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}営業利益グラフ
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}残額
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}借入金
@@ -2572,10 +2542,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :モノレール
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :磁気浮上式鉄道車両
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN}電車庫
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}町民の祝賀{}初列車が{STATION}駅に到着！
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE}（詳細）
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}列車があります
 STR_ORDER                                                       :{SETX 10}{COMMA}：{SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}：{SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}直行便
@@ -2653,38 +2621,16 @@ STR_TIMETABLE_STAY_FOR                                          :{STRING}停車
 STR_TIMETABLE_DAYS                                              :{COMMA}日間
 STR_TIMETABLE_TICKS                                             :{COMMA}ティック
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}{TOWN}電車庫へ行く
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}{TOWN}電車庫へ行く、{VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{TOWN}電車庫で修理
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{TOWN}電車庫で修理、{VELOCITY}
-
 STR_INVALID_ORDER                                               :{RED}（不正な指令）
 
 STR_UNKNOWN_STATION                                             :不明な駅
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}空
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO}（原点：{STATION}）
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO}（原点：{STATION}）（x{NUM}）
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} は電車庫内に停車しています
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}新規車両
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車が長過ぎます
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}列車の変更は鉄道車庫内でのみ行えます
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - 列車{COMMA}本
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}新規鉄道車両
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}新規電動鉄道車両
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}新規モノレール車両
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}新規磁気浮上式鉄道車両
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}鉄道車両
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}車両を購入
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}道路車両をクローン
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}道路車両を複製します。Control+クリックすると、指令を共有します。
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}道路車両を複製します。このボタンをクリックして、他の車両をクリックします。車庫内でも車庫外でもかまいません。Control+クリックすると、指令を共有します。
-STR_CLONE_TRAIN                                                 :{BLACK}列車をクローン
-STR_CLONE_TRAIN_INFO                                            :{BLACK}すべての車両を含めて、この列車を複製します。Control+クリックすると、指令を共有します。
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}すべての車両を含めて、この列車を複製します。このボタンをクリックして、他の列車をクリックします。も電車庫内でも電車庫外でもかまいません。Control+クリックすると、指令を共有します。
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}名称を変更
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}スキップ
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}削除
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}駅を選択
@@ -2699,14 +2645,12 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}指令�
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE}（指令）
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - 指令終了 - -
 STR_SERVICE                                                     :{BLACK}修理
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}鉄道車両が購入できません...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}　購入日付：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}　価値：{LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}積み降ろし中
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}出発中
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}列車は車庫に止めなければなりません
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}列車を電車庫へ回送できません...
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}これ以上の指令を追加できません
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}指令が多すぎます
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}新規指令を挿入できません...
@@ -2721,26 +2665,11 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}命令�
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}この車輌を移動できません...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}ダブルヘッドの場合、後部の機関車は常に前部の機関車について行きます
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}鉄道車両を販売できません...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}電車庫への経路が見つかりません
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}列車が開始／停止できません...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}補修間隔：{LTBLUE}{COMMA}日間{BLACK}  最新の補修：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}修理の間隔：{LTBLUE}{COMMA}％{BLACK}　最終の修理：{LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}列車 - 情報を見るには列車をクリックします
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車 - 情報を見るには列車をクリックします。車両を追加／取り除くにはドラッグします。
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}新規鉄道車両を購入
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}車両を売却するには、ここへドラッグします
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}メイン画面を鉄道車庫の場所に移動します
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}列車のリスト - 情報を見るには列車をクリックします
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}選択した車両を購入
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}鉄道車両の名称を変更
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}列車の現在の動作 - 始動／停止するにはここにクリックします
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}列車の指令を表示します
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}メイン画面を列車の場所に移動します
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}列車を電車庫へ回送します。Control+クリックすすると、補修のみします。
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}列車の続行を強制します(信号を無視します)
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}列車を逆転させます
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}列車の情報を表示します
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}補修間隔を増やす
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}補修間隔を減らす
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}運送している貨物の情報を表示します
@@ -2774,13 +2703,9 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}停止中
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}信号を無視して列車を進行させることができません...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}事故！
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}列車に名前を付ける
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}列車に名前を付けられません...
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}列車に名前を付ける
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}列車事故！{}{COMMA}人が死亡
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}列車を逆転できません...
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}鉄道車両の名称を変更
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}鉄道車両の名称を変更できません...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}多数の部分を含む車両が逆転できません
 STR_CLEAR_TIME                                                  :{BLACK}時間を消去
 STR_RESET_LATENESS                                              :{BLACK}遅刻回数をリセット
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}通過点の名前を変更する
@@ -2811,177 +2736,52 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}この�
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動時刻
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}道路車両があります
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - 道路車両{COMMA}両
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN}車庫
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}新規車両
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}新規道路車両
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}車両を購入
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}道路車両が購入できません...
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...車庫内に停止しなければなりません
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}道路車両を売却できません...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}道路車両を始動／停止できません...
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} は車庫で待機しています
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}{TOWN}車庫へ回送
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}{TOWN}車庫へ回送、{VELOCITY}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}{TOWN}車庫で修理
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}{TOWN}車庫で修理、{VELOCITY}
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}車両を車庫へ回送できません...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}付近に車庫が見つかりません
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}道路車両 - クリックして情報を表示します
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}車両の現在の動作 - 開始／停止するにはクリックします
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}車両の指令を表示します
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}主の画面を車両の場所に移動します
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}車両を車庫へ改装します。Control+クリックすると修理しか行いません。
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}車両を逆転します
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}車両の情報を表示します
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}車両 - クリックして情報を表示します
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}新規道路車両を購入
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}販売するには道路車両をここへドラッグします
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}主の画面を車庫の場所に移動します
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}道路車両のリスト - 情報を見るには車両をクリックします
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}選択した道路車両を購入します
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}容量：{LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}道路車両を名付ける
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}道路車両が名付けません...
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}道路車両を名付ける
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}町民の祝賀！{}初バスが{STATION}バス停に到着！
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}町民の祝賀！{}初トラックが{STATION}荷役所に到着！
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}町民の祝賀{}初乗客用路面電車が{STATION}駅に到着！
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}町民の祝賀{}初貨物用路面電車が{STATION}駅に到着！
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}交通事故！{}列車に衝突、運転者が死亡
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}交通事故！{}列車に衝突、{COMMA}人が死亡
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}多数の部分を含む車両が逆転できません
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}名称変更
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}道路車両の名称を変更
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}道路車両の名称を変更
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}道路車両の名称を変更できません...
 
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}他の貨物の種類を運送するに道路車両を再装備します
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}道路車両を再装備
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}選択した貨物種類を運送するに道路車両を再装備します
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}道路車両が再装備できません...
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}運送する貨物種類を選択します
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :水路を建設
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}水路を建設
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}水路
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}ここに埠頭を建設できません...
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN}造船所
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}新規船舶
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - 船舶{COMMA}隻
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}新規船舶
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}船舶を購入
-STR_CLONE_SHIP                                                  :{BLACK}船舶をクローン
-STR_CLONE_SHIP_INFO                                             :{BLACK}船舶を複製します。Control+クリックすると、指令を共有します
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}船舶を複製します。このボタンをクリックして、造船所内および造船所外の船舶をクリックします。Control+クリックすると、指令を共有します
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}船舶は造船所内で停止しなければなりません
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}船舶が販売できません...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}船舶が購入できません...
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}船舶があります
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}船舶を始動／停止できません...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}船舶を造船所へ回送できません...
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}{TOWN}造船所へ回送
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}{TOWN}造船所へ回送、{VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN}造船所で修理
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN}造船所で修理、{VELOCITY}
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} は造船所で待機しています。
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}埠頭を建設します
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}造船所を建設します（船舶の購入、修理などのため）
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船舶のリスト - 情報を見るには船舶をクリックします
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}新規船舶を購入
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}販売するには船舶をここへドラッグします
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}メイン画面を造船所の場所に移動します
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}船舶のリスト - 情報を見るには船舶をクリックします
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}船舶のリスト - 情報を見るには船舶をクリックします
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}選択した船舶を購入
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}船舶の現在の動作 - 始動／停止するにはここへクリックします
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}船舶の指令を表示
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}主の画面を船舶の場所に移動します
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}船舶を造船所へ回送します。Contorl+クリックすると修理のみをします
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}船舶の情報を表示
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}船舶を名付ける
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}船舶を名付ける
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}船舶が名付けられません...
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}町民の祝賀！{}初船舶が{STATION}に到着！
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}通過点として使えるブイを設置します
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}ここにブイを設置できません
 STR_BUILD_AQUEDUCT                                              :{BLACK}水路橋を建設
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}ここに水路橋を建設できません...
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}名称を変更
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}船舶名を変更
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}船舶の名称を変更
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}船舶の名称が変更できません...
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}他の種類の貨物を運送する為に貨物船を改装します
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE}(改装)
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}船舶を改装
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}運送する貨物種類を選択します
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}選択した種類の貨物を運送する為に船舶を改装します
 STR_REFIT_TITLE                                                 :{GOLD}運送する貨物の種類を選択：
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}改装後の積載量：{GOLD}{CARGO}{}{BLACK}改装費用：{GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}船舶を改装できません...
 STR_REFITTABLE                                                  :(改装可能)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}空港
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}ここに空港を建設できません...
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION}格納庫
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}新規飛行機
-STR_CLONE_AIRCRAFT                                              :{BLACK}飛行機をクローン
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}飛行機を複製します。Control+クリックすると、指令リストを共有します。
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}飛行機を複製します。このボタンをクリックして、格納庫内および格納庫外の飛行機をクリックします。Control+クリックすると、指令リストを共有します。
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}新規飛行機
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}飛行機を購入
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}飛行機を購入できません...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - 飛行機{COMMA}台
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}飛行機を格納庫へ回送できません...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATION}格納庫へ行く
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION}格納庫へ行く、{VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}{STATION}格納庫で修理
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}{STATION}格納庫で修理、{VELOCITY}
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} は格納庫の中に待機しています。
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}飛行機があります
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}飛行機が始動／停止できません...
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}飛行中です
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}飛行機を格納庫内で停止しなければなりません
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}飛行機を売却できません...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :空港の建設
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}空港を建設
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}飛行機 - 情報を見るには飛行機をクリックします
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飛行機 - 情報を見るには飛行機をクリックします
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}新規飛行機を購入
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}売却するには飛行機をここへドラッグします
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}メイン画面を格納庫の場所に移動します
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}飛行機のリスト - 情報を見るには飛行機をクリックします
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}選択した飛行機を購入
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}飛行機の現在の動作 - 始動／停止するにはここへクリックします
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}飛行機の指令を表示
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}メイン画面を飛行機の場所に移動します
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}飛行機を格納庫へ回送します。Control+クリックすると修理のみします
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}飛行機の情報を表示
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}飛行機を名付ける
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}飛行機を名付けられません...
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}飛行機を名付ける
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}町民の祝賀！{}初飛行機が{STATION}に到着！
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}墜落事故！{}{COMMA}人が{STATION}で死亡
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}墜落事故！{}燃料切れ、{COMMA}人が死亡
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}名称を変更
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}飛行機の名称を変更
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}飛行機の名称を変更
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}飛行機の名称を変更できません...
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}他の種類の貨物を運送する為に飛行機を改装
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}飛行機を改装
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}運送する貨物の種類を選択します
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}選択した種類の貨物を運送するために飛行機を改装
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}飛行機を改装できません...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE}（時刻表）
 
@@ -3125,14 +2925,224 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}列車 - 情報を見るには列車をクリックします
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}道路車両 - クリックして情報を表示します
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}船舶のリスト - 情報を見るには船舶をクリックします
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}飛行機 - 情報を見るには飛行機をクリックします
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}この駅が指令リストに入っているすべての列車を表示します
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}このバス停／荷役所が指令リストに入っているすべての道路車両を表示します
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}この空港が指令リストに入っているすべての飛行機を表示します
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}この埠頭が指令リストに入っているすべての船舶を表示します
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - 列車{COMMA}本
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - 道路車両{COMMA}両
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - 船舶{COMMA}隻
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - 飛行機{COMMA}台
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA}台の車両の共有指令
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}この指令リストを共有しているすべての車両を表示します
+
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} は電車庫内に停車しています
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} は車庫で待機しています
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} は造船所で待機しています。
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} は格納庫の中に待機しています。
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}列車を再装備
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}道路車両を再装備
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}船舶を改装
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}飛行機を改装
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}選択した貨物種類に再装備
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}選択した貨物種類を運送するに道路車両を再装備します
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}選択した種類の貨物を運送する為に船舶を改装します
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}選択した種類の貨物を運送するために飛行機を改装
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車が運送する貨物を選択
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}運送する貨物種類を選択します
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}運送する貨物種類を選択します
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}運送する貨物の種類を選択します
+
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN}電車庫
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN}車庫
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN}造船所
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION}格納庫
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}列車に名前を付ける
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}道路車両を名付ける
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}船舶を名付ける
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}飛行機を名付ける
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}列車に名前を付ける
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}道路車両を名付ける
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}船舶を名付ける
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}飛行機を名付ける
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}列車があります
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}道路車両があります
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}船舶があります
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}飛行機があります
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}列車が再装備できません...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}道路車両が再装備できません...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}船舶を改装できません...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}飛行機を改装できません...
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}列車に名前を付けられません...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}道路車両が名付けません...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}船舶が名付けられません...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}飛行機を名付けられません...
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}列車が開始／停止できません...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}道路車両を始動／停止できません...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}船舶を始動／停止できません...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}飛行機が始動／停止できません...
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}列車を電車庫へ回送できません...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}車両を車庫へ回送できません...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}船舶を造船所へ回送できません...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}飛行機を格納庫へ回送できません...
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}鉄道車両が購入できません...
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}道路車両が購入できません...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}船舶が購入できません...
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}飛行機を購入できません...
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}鉄道車両の名称を変更できません...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}道路車両の名称を変更できません...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}船舶の名称が変更できません...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}飛行機の名称を変更できません...
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}鉄道車両を販売できません...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}道路車両を売却できません...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}船舶が販売できません...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}飛行機を売却できません...
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}列車の現在の動作 - 始動／停止するにはここにクリックします
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}車両の現在の動作 - 開始／停止するにはクリックします
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}船舶の現在の動作 - 始動／停止するにはここへクリックします
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}飛行機の現在の動作 - 始動／停止するにはここへクリックします
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}列車の指令を表示します
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}車両の指令を表示します
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}船舶の指令を表示
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}飛行機の指令を表示
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}メイン画面を列車の場所に移動します
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}主の画面を車両の場所に移動します
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}主の画面を船舶の場所に移動します
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}メイン画面を飛行機の場所に移動します
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}列車を電車庫へ回送します。Control+クリックすすると、補修のみします。
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}車両を車庫へ改装します。Control+クリックすると修理しか行いません。
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}船舶を造船所へ回送します。Contorl+クリックすると修理のみをします
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}飛行機を格納庫へ回送します。Control+クリックすると修理のみします
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}列車の情報を表示します
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}車両の情報を表示します
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}船舶の情報を表示
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}飛行機の情報を表示
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}他の貨物種類を運送するに列車を再装備
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}他の貨物の種類を運送するに道路車両を再装備します
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}他の種類の貨物を運送する為に貨物船を改装します
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}他の種類の貨物を運送する為に飛行機を改装
+
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}{TOWN}電車庫へ行く
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}{TOWN}電車庫へ行く、{VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}{TOWN}車庫へ回送
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}{TOWN}車庫へ回送、{VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}{TOWN}造船所へ回送
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}{TOWN}造船所へ回送、{VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATION}格納庫へ行く
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION}格納庫へ行く、{VELOCITY}
+
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{TOWN}電車庫で修理
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{TOWN}電車庫で修理、{VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}{TOWN}車庫で修理
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}{TOWN}車庫で修理、{VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN}造船所で修理
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN}造船所で修理、{VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}{STATION}格納庫で修理
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}{STATION}格納庫で修理、{VELOCITY}
+
+
+STR_CLONE_TRAIN                                                 :{BLACK}列車をクローン
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}道路車両をクローン
+STR_CLONE_SHIP                                                  :{BLACK}船舶をクローン
+STR_CLONE_AIRCRAFT                                              :{BLACK}飛行機をクローン
+
+STR_CLONE_TRAIN_INFO                                            :{BLACK}すべての車両を含めて、この列車を複製します。Control+クリックすると、指令を共有します。
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}道路車両を複製します。Control+クリックすると、指令を共有します。
+STR_CLONE_SHIP_INFO                                             :{BLACK}船舶を複製します。Control+クリックすると、指令を共有します
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}飛行機を複製します。Control+クリックすると、指令リストを共有します。
+
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}すべての車両を含めて、この列車を複製します。このボタンをクリックして、他の列車をクリックします。も電車庫内でも電車庫外でもかまいません。Control+クリックすると、指令を共有します。
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}道路車両を複製します。このボタンをクリックして、他の車両をクリックします。車庫内でも車庫外でもかまいません。Control+クリックすると、指令を共有します。
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}船舶を複製します。このボタンをクリックして、造船所内および造船所外の船舶をクリックします。Control+クリックすると、指令を共有します
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}飛行機を複製します。このボタンをクリックして、格納庫内および格納庫外の飛行機をクリックします。Control+クリックすると、指令リストを共有します。
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}新規鉄道車両
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}新規電動鉄道車両
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}新規モノレール車両
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}新規磁気浮上式鉄道車両
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}鉄道車両
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}新規道路車両
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}新規船舶
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}新規飛行機
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}車両を購入
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}車両を購入
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}船舶を購入
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}飛行機を購入
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}列車のリスト - 情報を見るには列車をクリックします
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}道路車両のリスト - 情報を見るには車両をクリックします
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}船舶のリスト - 情報を見るには船舶をクリックします
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}飛行機のリスト - 情報を見るには飛行機をクリックします
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}選択した車両を購入
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}選択した道路車両を購入します
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}選択した船舶を購入
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}選択した飛行機を購入
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}名称を変更
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}名称変更
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}名称を変更
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}名称を変更
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}鉄道車両の名称を変更
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}道路車両の名称を変更
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}船舶名を変更
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}飛行機の名称を変更
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}鉄道車両の名称を変更
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}道路車両の名称を変更
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}船舶の名称を変更
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}飛行機の名称を変更
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}新規車両
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}新規車両
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}新規船舶
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}新規飛行機
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車 - 情報を見るには列車をクリックします。車両を追加／取り除くにはドラッグします。
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}車両 - クリックして情報を表示します
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船舶のリスト - 情報を見るには船舶をクリックします
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飛行機 - 情報を見るには飛行機をクリックします
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}新規鉄道車両を購入
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}新規道路車両を購入
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}新規船舶を購入
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}新規飛行機を購入
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}車両を売却するには、ここへドラッグします
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}販売するには道路車両をここへドラッグします
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}販売するには船舶をここへドラッグします
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}売却するには飛行機をここへドラッグします
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}メイン画面を鉄道車庫の場所に移動します
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}主の画面を車庫の場所に移動します
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}メイン画面を造船所の場所に移動します
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}メイン画面を格納庫の場所に移動します
+
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}車庫／格納庫／造船所内のすべての車両を売却します。続けてもよろしいですか？
@@ -3153,7 +3163,6 @@ STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}車庫�
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}造船所内のすべての船舶を自動交換します
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}格納庫内のすべての飛行機を自動交換します
 
-
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING}を交換
 STR_REPLACE_VEHICLES_START                                      :{BLACK}車両の交換を開始
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}車両の交換を停止
@@ -3169,6 +3178,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}列車�
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}自動交換によって列車の長さが長くなる場合は、列車の長さを保守するには客車／貨車を取り除くことができます。列車の先頭から開始します。
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}交換：{ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}機関車／貨車のウィンドウに切り替えます。
+
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}車を買えません
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}車を買えません
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}船を買えません
@@ -3317,17 +3327,6 @@ STR_MEASURE_AREA                                                :{BLACK}地域�
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}長さ：{NUM}{}高さの違い：{NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}地域：{NUM} x {NUM}{}高さの違い：{NUM} m
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{2:NUM}-{1:STRING}-{0:STRING}
-STR_FORMAT_DATE_SHORT                                           :{1:NUM}年{0:STRING}
-STR_FORMAT_DATE_LONG                                            :{2:NUM}年{1:STRING}{0:STRING}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}振り替えクレジット: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...これは町の道です。
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...道の方向が違います。
@@ -3352,7 +3351,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :グループ {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :すべての列車
 STR_GROUP_ALL_ROAD_VEHICLES                                     :すべての道路車両
@@ -3381,12 +3379,62 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}選択�
 STR_GROUP_RENAME_TIP                                            :{BLACK}選択したグループの名称を変更します
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}このグループ内の車両を自動交換しません
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{2:NUM}-{1:STRING}-{0:STRING}
+STR_FORMAT_DATE_SHORT                                           :{1:NUM}年{0:STRING}
+STR_FORMAT_DATE_LONG                                            :{2:NUM}年{1:STRING}{0:STRING}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :（会社 {COMMA}）
+STR_FORMAT_GROUP_NAME                                           :グループ {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}{STRING}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}名前は唯一でなければなりません
 

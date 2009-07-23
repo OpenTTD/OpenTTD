@@ -141,8 +141,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}Cd
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}Ug
 STR_ABBREV_NONE                                                 :{TINYFONT}K0
 STR_ABBREV_ALL                                                  :{TINYFONT}Tất
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Bản đồ - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Tùy chọn Trò chơi
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Thông điệp
@@ -152,17 +150,11 @@ STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Không t
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Không thể dọn dẹp khu vực này....
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD phiên bản {REV}
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Thoát
 STR_YES                                                         :{BLACK}Đồng ý
 STR_NO                                                          :{BLACK}Không đồng ý
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Bạn có chắc chắn muốn thoát khỏi OpenTTD và trở lại {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Không màu
 STR_COLOUR_DARK_BLUE                                            :Xanh da trời đậm
 STR_COLOUR_PALE_GREEN                                           :Xanh lá cây nhạt
@@ -181,8 +173,6 @@ STR_COLOUR_BROWN                                                :Nâu
 STR_COLOUR_GREY                                                 :Xám
 STR_COLOUR_WHITE                                                :Trắng
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Quá nhiều phương tiện trong trò chơi
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Vị trí
 STR_SMALLMAP_TYPE_CONTOURS                                      :Địa hình
 STR_SMALLMAP_TYPE_VEHICLES                                      :Phương tiện
@@ -294,12 +284,13 @@ STR_SORT_ORDER_TIP                                              :{BLACK}Chọn t
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Chọn tiêu chí sắp xếp
 STR_SORT_BY                                                     :{BLACK}Sắp xếp bởi
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Dân số
+STR_SORT_BY_NAME                                                :{BLACK}Tên
+STR_SORT_BY_DATE                                                :{BLACK}Ngày tháng
 STR_SORT_BY_PRODUCTION                                          :Sản lượng
 STR_SORT_BY_TYPE                                                :Loại
 STR_SORT_BY_TRANSPORTED                                         :Dung lượng đã vận chuyển
-STR_SORT_BY_NAME                                                :{BLACK}Tên
-STR_SORT_BY_DATE                                                :{BLACK}Ngày tháng
 STR_SORT_BY_NUMBER                                              :Số
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Lợi nhuận năm trước
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Lợi nhuận năm nay
@@ -318,35 +309,23 @@ STR_SORT_BY_INTRO_DATE                                          :Ngày giới th
 STR_SORT_BY_RUNNING_COST                                        :Chi phí chạy
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Năng lượng/Chi phí chạy
 STR_SORT_BY_CARGO_CAPACITY                                      :Dung lượng toa xe
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Không có bất kỳ loại toa xe nào đang chờ
 STR_SELECT_ALL_TYPES                                            :{BLACK}Chọn tất cả loại toa xe (including no waiting cargo)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Tàu sẵn có
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Xe sẵn có
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Máy bay sẵn có
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Xam danh sách các động cơ thiết kế cho loại toa xe này.
 STR_MANAGE_LIST                                                 :{BLACK}Quản lý danh sách
 STR_MANAGE_LIST_TIP                                             :{BLACK}Gửi chỉ dẫn tới toàn bộ phương tiện trong danh sách
 STR_REPLACE_VEHICLES                                            :Thay phương tiện
+STR_SEND_FOR_SERVICING                                          :Gửi tới dịch vụ sửa chữa
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}Tàu sẵn có
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Xe sẵn có
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Máy bay sẵn có
+
 STR_SEND_TRAIN_TO_DEPOT                                         :Gửi về xưởng
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Gửi về xưởng
 STR_SEND_SHIP_TO_DEPOT                                          :Gửi về xưởng
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Gửi về Hangar
-STR_SEND_FOR_SERVICING                                          :Gửi tới dịch vụ sửa chữa
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :T1
-STR_MONTH_ABBREV_FEB                                            :T2
-STR_MONTH_ABBREV_MAR                                            :T3
-STR_MONTH_ABBREV_APR                                            :T4
-STR_MONTH_ABBREV_MAY                                            :T5
-STR_MONTH_ABBREV_JUN                                            :T6
-STR_MONTH_ABBREV_JUL                                            :T7
-STR_MONTH_ABBREV_AUG                                            :T8
-STR_MONTH_ABBREV_SEP                                            :T9
-STR_MONTH_ABBREV_OCT                                            :T10
-STR_MONTH_ABBREV_NOV                                            :T11
-STR_MONTH_ABBREV_DEC                                            :T12
-############ range for months ends
 
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tạm dừng trò chơi
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lưu, thoat trò chơi, thoát
@@ -369,8 +348,36 @@ STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE
 STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} đang xuống cấp trầm trọng và cần được thay thế ngay lập tức
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Tên
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :T1
+STR_MONTH_ABBREV_FEB                                            :T2
+STR_MONTH_ABBREV_MAR                                            :T3
+STR_MONTH_ABBREV_APR                                            :T4
+STR_MONTH_ABBREV_MAY                                            :T5
+STR_MONTH_ABBREV_JUN                                            :T6
+STR_MONTH_ABBREV_JUL                                            :T7
+STR_MONTH_ABBREV_AUG                                            :T8
+STR_MONTH_ABBREV_SEP                                            :T9
+STR_MONTH_ABBREV_OCT                                            :T10
+STR_MONTH_ABBREV_NOV                                            :T11
+STR_MONTH_ABBREV_DEC                                            :T12
+
+STR_MONTH_JAN                                                   :Tháng Một
+STR_MONTH_FEB                                                   :Tháng Hai
+STR_MONTH_MAR                                                   :Tháng Ba
+STR_MONTH_APR                                                   :Tháng Tư
+STR_MONTH_MAY                                                   :Tháng Năm
+STR_MONTH_JUN                                                   :Tháng Sáu
+STR_MONTH_JUL                                                   :Tháng Bảy
+STR_MONTH_AUG                                                   :Tháng Tám
+STR_MONTH_SEP                                                   :Tháng Chín
+STR_MONTH_OCT                                                   :Tháng Mười
+STR_MONTH_NOV                                                   :Tháng Mười Một
+STR_MONTH_DEC                                                   :Tháng Mười Hai
+############ range for months ends
 
 
 
@@ -427,8 +434,6 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...chỉ
 ############ range for menu starts
 ############ range ends here
 
-STR_JUST_RAW_STRING                                             :{STRING}
-
 
 
 
@@ -453,19 +458,6 @@ STR_OPTIONS_FULLSCREEN                                          :{BLACK}Toàn m�
 
 
 
-STR_MONTH_JAN                                                   :Tháng Một
-STR_MONTH_FEB                                                   :Tháng Hai
-STR_MONTH_MAR                                                   :Tháng Ba
-STR_MONTH_APR                                                   :Tháng Tư
-STR_MONTH_MAY                                                   :Tháng Năm
-STR_MONTH_JUN                                                   :Tháng Sáu
-STR_MONTH_JUL                                                   :Tháng Bảy
-STR_MONTH_AUG                                                   :Tháng Tám
-STR_MONTH_SEP                                                   :Tháng Chín
-STR_MONTH_OCT                                                   :Tháng Mười
-STR_MONTH_NOV                                                   :Tháng Mười Một
-STR_MONTH_DEC                                                   :Tháng Mười Hai
-
 
 STR_PASSENGERS                                                  :hành khách
 STR_BAGS                                                        :túi
@@ -474,7 +466,6 @@ STR_LITERS                                                      :lít
 STR_ITEMS                                                       :mặt hàng
 STR_CRATES                                                      :thùng
 STR_RES_OTHER                                                   :khác
-
 
 
 
@@ -588,7 +579,6 @@ STR_RES_OTHER                                                   :khác
 
 ##id 0x2000
 
-
 ##id 0x2800
 
 ##id 0x3000
@@ -596,6 +586,8 @@ STR_RES_OTHER                                                   :khác
 
 ############ range for rating starts
 ############ range for rating ends
+
+### station view strings
 
 
 
@@ -660,6 +652,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 
+##id 0x6020
 
 ############ end of savegame specific region!
 
@@ -692,8 +685,6 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT
 
 
 
-
-
 ##id 0x9000
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Không thể làm xe quay lại được...
@@ -712,6 +703,48 @@ STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Không t
 
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
+
+
+
+
+
+
+
+
+
+
+
+############ Vehicle lists
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -762,10 +795,6 @@ STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Không t
 ############ Tooltip measurment
 
 
-############ Date formatting
-
-########
-
 
 
 
@@ -774,6 +803,25 @@ STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Không t
 
 
 
+#### String control codes and their formatting
+
+STR_JUST_RAW_STRING                                             :{STRING}
+
+
+
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
 
 
 #### Improved sign GUI

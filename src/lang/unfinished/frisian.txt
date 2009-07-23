@@ -101,8 +101,6 @@ STR_QUANTITY_FOOD                                               :{WEIGHT} ton it
 STR_QUANTITY_PAPER                                              :{WEIGHT} ton papier
 STR_QUANTITY_GOLD                                               :{COMMA} sekken goud
 STR_QUANTITY_WATER                                              :{VOLUME} wetter
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Kaart - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spul Opsjes
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Berjocht
@@ -113,17 +111,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Orizjine
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD fersje {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 It OpenTTD team
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Ofslúte
 STR_YES                                                         :{BLACK}Ja
 STR_NO                                                          :{BLACK}Nee
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Witte jo seker dat jo dit spul ôfslúte wolle en werom gean wolle nei {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Neat
 STR_COLOUR_DARK_BLUE                                            :Tsjuster Blauw
 STR_COLOUR_PALE_GREEN                                           :Fel Grien
@@ -142,8 +134,6 @@ STR_COLOUR_BROWN                                                :Brún
 STR_COLOUR_GREY                                                 :Griis
 STR_COLOUR_WHITE                                                :Wyt
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Te folle fartugen yn it spul
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Lokaasje
 STR_SMALLMAP_TYPE_CONTOURS                                      :Kontoeren
 STR_SMALLMAP_TYPE_VEHICLES                                      :Reauen
@@ -233,26 +223,15 @@ STR_FILE_MENU_QUIT_GAME                                         :Spul ferlitte
 STR_FILE_MENU_EXIT                                              :Ofslúte
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Ferlit Spul
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+
+STR_SEND_FOR_SERVICING                                          :Stjoer foar ûnderhâldsbeurt
+
+
 STR_SEND_TRAIN_TO_DEPOT                                         :Stjoer nei depot
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Stjoer nei depot
 STR_SEND_SHIP_TO_DEPOT                                          :Stjoer nei depot
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Stjoer nei hangaar
-STR_SEND_FOR_SERVICING                                          :Stjoer foar ûnderhâldsbeurt
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Jan
-STR_MONTH_ABBREV_FEB                                            :Feb
-STR_MONTH_ABBREV_MAR                                            :Mrt
-STR_MONTH_ABBREV_APR                                            :Apr
-STR_MONTH_ABBREV_MAY                                            :Mai
-STR_MONTH_ABBREV_JUN                                            :Jun
-STR_MONTH_ABBREV_JUL                                            :Jul
-STR_MONTH_ABBREV_AUG                                            :Aug
-STR_MONTH_ABBREV_SEP                                            :Sep
-STR_MONTH_ABBREV_OCT                                            :Okt
-STR_MONTH_ABBREV_NOV                                            :Nov
-STR_MONTH_ABBREV_DEC                                            :Des
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -280,8 +259,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bou flea
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Plantsje beamen, set buordsjes del, ensfh.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Lân ynformaasje
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opsjes
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kin tiid tusken ûnderhâldsbeurten net feroarje...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Slút finster
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Finstertitel - hjirmei kinst it finster ferslepe
@@ -328,7 +305,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Neat
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Namme
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
 STR_ORDINAL_NUMBER_2ND                                          :2
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -361,6 +338,22 @@ STR_ORDINAL_NUMBER_29TH                                         :29
 STR_ORDINAL_NUMBER_30TH                                         :30
 STR_ORDINAL_NUMBER_31ST                                         :31
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Jan
+STR_MONTH_ABBREV_FEB                                            :Feb
+STR_MONTH_ABBREV_MAR                                            :Mrt
+STR_MONTH_ABBREV_APR                                            :Apr
+STR_MONTH_ABBREV_MAY                                            :Mai
+STR_MONTH_ABBREV_JUN                                            :Jun
+STR_MONTH_ABBREV_JUL                                            :Jul
+STR_MONTH_ABBREV_AUG                                            :Aug
+STR_MONTH_ABBREV_SEP                                            :Sep
+STR_MONTH_ABBREV_OCT                                            :Okt
+STR_MONTH_ABBREV_NOV                                            :Nov
+STR_MONTH_ABBREV_DEC                                            :Des
+
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -451,12 +444,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} behellet '{STRING}' status!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} fan {COMPANY} behellet '{STRING}' status!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Lânskip Ferbouer
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Lân Generaasje
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Fergrutsje gebiet om te ferheegjen/ferleegjen
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Ferlyts gebiet om te ferheegjen/ferleegjen
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Meitsje samar wat lân
@@ -534,7 +524,6 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Samar
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Lit lêste (neis)berjocht sjen
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spul Opsjes
@@ -618,13 +607,8 @@ STR_TERRAFORM_TOOLTIP_PURCHASE_LAND                             :{BLACK}Keapje l
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSAVE
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selektear 'Ezy Street' musyk programma
 
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
-
 ############ start of townname region
 ############ end of townname region
-
-
 
 
 
@@ -902,7 +886,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tipi's
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Teepothûs
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Sparbaarch
 
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plantsje beammen
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Set buordsje del
@@ -948,6 +931,8 @@ STR_CARGO_RATING_POOR                                           :Min
 STR_CARGO_RATING_GOOD                                           :Goed
 STR_CARGO_RATING_VERY_GOOD                                      :Hiel Goed
 ############ range for rating ends
+
+### station view strings
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} akseptearret gjin {STRING} mear
@@ -1106,6 +1091,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...it is
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 
+##id 0x6020
 
 ############ end of savegame specific region!
 
@@ -1142,8 +1128,6 @@ STR_NUM_LOW                                                     :Leech
 STR_NUM_NORMAL                                                  :Gewoan
 STR_NUM_HIGH                                                    :Heech
 STR_NUM_CUSTOM                                                  :Oars
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Traach
 STR_AI_SPEED_SLOW                                               :Stadich
 STR_AI_SPEED_MEDIUM                                             :Gewoan
@@ -1173,7 +1157,6 @@ STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Lit hi-s
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :(Bedriuw {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nei Gesicht
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Kleurenskema
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Kleurenskema:
@@ -1205,7 +1188,6 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Totaal:
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Ynkomstengrafyk
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Winstgrafyk
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Jild
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Liening
@@ -1422,8 +1404,6 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plestikwein
 
 
 
-
-
 ##id 0x9000
 
 
@@ -1442,6 +1422,48 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plestikwein
 STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
+
+
+
+
+
+
+
+
+
+
+
+############ Vehicle lists
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1492,10 +1514,6 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Tooltip measurment
 
 
-############ Date formatting
-
-########
-
 
 
 
@@ -1504,6 +1522,36 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
+#### String control codes and their formatting
+
+STR_JUST_COMMA                                                  :{COMMA}
+
+
+STR_FORMAT_COMPANY_NUM                                          :(Bedriuw {COMMA})
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 
 #### Improved sign GUI

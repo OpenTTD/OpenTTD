@@ -155,8 +155,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
 STR_ABBREV_NONE                                                 :{TINYFONT}EKKERT
 STR_ABBREV_ALL                                                  :{TINYFONT}ALLT
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Kort - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Stillingar
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Skilaboð
@@ -168,17 +166,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Upphafle
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD útgáfa {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD hópurinn
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Hætta
 STR_YES                                                         :{BLACK}Já
 STR_NO                                                          :{BLACK}Nei
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Ertu viss um að þú viljir hætta í OpenTTD og fara aftur í {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Ekkert
 STR_COLOUR_DARK_BLUE                                            :Dökkblár
 STR_COLOUR_PALE_GREEN                                           :Fölgrænn
@@ -197,8 +189,6 @@ STR_COLOUR_BROWN                                                :Brúnn
 STR_COLOUR_GREY                                                 :Grár
 STR_COLOUR_WHITE                                                :Hvítur
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Of mörg farartæki í leiknum
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Staður
 STR_SMALLMAP_TYPE_CONTOURS                                      :Útlínur
 STR_SMALLMAP_TYPE_VEHICLES                                      :Farartæki
@@ -324,12 +314,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Velja up
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}Veldu hvers kyns farartæki þú vilt kaupa
 STR_SORT_BY                                                     :{BLACK}Flokka eftir
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Fólksfjöldi
+STR_SORT_BY_NAME                                                :{BLACK}Nafn
+STR_SORT_BY_DATE                                                :{BLACK}Dagsetning
 STR_SORT_BY_PRODUCTION                                          :Framleiðsla
 STR_SORT_BY_TYPE                                                :Tegund
 STR_SORT_BY_TRANSPORTED                                         :Flutt
-STR_SORT_BY_NAME                                                :{BLACK}Nafn
-STR_SORT_BY_DATE                                                :{BLACK}Dagsetning
 STR_SORT_BY_NUMBER                                              :Númer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Hagnaður síðasta árs
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Hagnaður þessa árs
@@ -352,37 +343,25 @@ STR_SORT_BY_INTRO_DATE                                          :Árgerð
 STR_SORT_BY_RUNNING_COST                                        :Rekstrarkostnaður
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Afl/Rekstrarkostnaður
 STR_SORT_BY_CARGO_CAPACITY                                      :Burðargeta
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Enginn farmur bíður
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Velja allar gerðir
 STR_SELECT_ALL_TYPES                                            :{BLACK}Velja allar tegundir farms (einnig þær sem ekki bíða)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Lestaúrval
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Bifreiðaúrval
-STR_AVAILABLE_SHIPS                                             :{BLACK}Skipaúrval
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Flugvélaúrval
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Skoða úrval
 STR_MANAGE_LIST                                                 :{BLACK}Stýra lista
 STR_MANAGE_LIST_TIP                                             :{BLACK}Senda boð til allra farartækja á listanum
 STR_REPLACE_VEHICLES                                            :Skipta út vögnum
+STR_SEND_FOR_SERVICING                                          :Senda í skoðun
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}Lestaúrval
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Bifreiðaúrval
+STR_AVAILABLE_SHIPS                                             :{BLACK}Skipaúrval
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Flugvélaúrval
+
 STR_SEND_TRAIN_TO_DEPOT                                         :Senda í skýli
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Senda í skýli
 STR_SEND_SHIP_TO_DEPOT                                          :Senda í slipp
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Senda í skýli
-STR_SEND_FOR_SERVICING                                          :Senda í skoðun
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Jan
-STR_MONTH_ABBREV_FEB                                            :Feb
-STR_MONTH_ABBREV_MAR                                            :Mar
-STR_MONTH_ABBREV_APR                                            :Apr
-STR_MONTH_ABBREV_MAY                                            :Maí
-STR_MONTH_ABBREV_JUN                                            :Jún
-STR_MONTH_ABBREV_JUL                                            :Júl
-STR_MONTH_ABBREV_AUG                                            :Ágú
-STR_MONTH_ABBREV_SEP                                            :Sep
-STR_MONTH_ABBREV_OCT                                            :Okt
-STR_MONTH_ABBREV_NOV                                            :Nóv
-STR_MONTH_ABBREV_DEC                                            :Des
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -410,8 +389,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Byggja f
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Gróðursetja tré, setja skilti o.s.frv.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landssvæðisupplýsingar
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Stillingar
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Get ekki breytt viðgerðarmillibili...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Loka glugga
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Haus glugga - dragðu með músinni til að færa gluggann
@@ -458,7 +435,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Enginn
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nafn
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1.
 STR_ORDINAL_NUMBER_2ND                                          :2.
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -491,6 +468,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29.
 STR_ORDINAL_NUMBER_30TH                                         :30.
 STR_ORDINAL_NUMBER_31ST                                         :31.
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Jan
+STR_MONTH_ABBREV_FEB                                            :Feb
+STR_MONTH_ABBREV_MAR                                            :Mar
+STR_MONTH_ABBREV_APR                                            :Apr
+STR_MONTH_ABBREV_MAY                                            :Maí
+STR_MONTH_ABBREV_JUN                                            :Jún
+STR_MONTH_ABBREV_JUL                                            :Júl
+STR_MONTH_ABBREV_AUG                                            :Ágú
+STR_MONTH_ABBREV_SEP                                            :Sep
+STR_MONTH_ABBREV_OCT                                            :Okt
+STR_MONTH_ABBREV_NOV                                            :Nóv
+STR_MONTH_ABBREV_DEC                                            :Des
+
+STR_MONTH_JAN                                                   :Janúar
+STR_MONTH_FEB                                                   :Febrúar
+STR_MONTH_MAR                                                   :Mars
+STR_MONTH_APR                                                   :Apríl
+STR_MONTH_MAY                                                   :Maí
+STR_MONTH_JUN                                                   :Júní
+STR_MONTH_JUL                                                   :Júlí
+STR_MONTH_AUG                                                   :Ágúst
+STR_MONTH_SEP                                                   :September
+STR_MONTH_OCT                                                   :Október
+STR_MONTH_NOV                                                   :Nóvember
+STR_MONTH_DEC                                                   :Desember
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -581,12 +586,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} öðlast '{STRING}' titil!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} úr {COMPANY} öðlast '{STRING}' titil!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Kortagerð
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landslagsgerð
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Stækka svæði til að lækka/hækka
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Minnka svæði til að lækka/hækka
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Mynda til land af handahófi
@@ -668,9 +670,7 @@ STR_OFF                                                         :Af
 STR_SUMMARY                                                     :Úrtak
 STR_FULL                                                        :Allt
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Stillingar
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Erfiðleikastig
@@ -762,9 +762,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fjármagna nýj
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Fjármagna nýjan iðnað
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...aðeins hægt að byggja á regnskógasvæðum
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...aðeins hægt að byggja í eyðimörk
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  STÖÐVAÐUR  *  *
@@ -777,9 +774,6 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}SJÁLFVIRK
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  VISTA LEIK  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Vistun er enn í gangi,{}vinsamlegast bíddu á meðan hún klárst!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Velja 'Ezy gata' listann
-
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Ensk (Upphafleg)
@@ -860,19 +854,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Frekari 
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Sjálfvirk vistun mistókst
 
-STR_MONTH_JAN                                                   :Janúar
-STR_MONTH_FEB                                                   :Febrúar
-STR_MONTH_MAR                                                   :Mars
-STR_MONTH_APR                                                   :Apríl
-STR_MONTH_MAY                                                   :Maí
-STR_MONTH_JUN                                                   :Júní
-STR_MONTH_JUL                                                   :Júlí
-STR_MONTH_AUG                                                   :Ágúst
-STR_MONTH_SEP                                                   :September
-STR_MONTH_OCT                                                   :Október
-STR_MONTH_NOV                                                   :Nóvember
-STR_MONTH_DEC                                                   :Desember
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Á leið til {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Á leið til {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Engar skipanir
@@ -886,8 +867,6 @@ STR_ITEMS                                                       :hlutir
 STR_CRATES                                                      :kassar
 STR_RES_OTHER                                                   :annað
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Get ekki deilt áætlun...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Get ekki afritað áætlun...
@@ -1160,7 +1139,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Breidd 
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :óvirkt
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Breyta gildi stillingar
 
 STR_TEMPERATE_LANDSCAPE                                         :Temprað landslag
@@ -1196,7 +1174,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Velja te
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Breyta nafni millistöðvar
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Get ekki breytt nafni millistöðvar...
@@ -1263,11 +1240,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Iðnaða
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...of nálægt öðrum iðnaði
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Breyta lest svo hún flytji annan farm
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Breyta lest
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Veldu hvernig farm lestin á að flytja
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Breyta lest svo hún flytji valinn farm
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Get ekki breytt lest...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Breyta framleiðslu
 
 ############ network gui strings
@@ -1777,11 +1749,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Indíánatjald
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Teketilshús
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Svínabanki
 
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_STATION_NAME                                                :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Mótun lands
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Gróðursetja tré
@@ -1835,6 +1802,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :Mjög góður
 STR_CARGO_RATING_EXCELLENT                                      :Frábær
 STR_CARGO_RATING_OUTSTANDING                                    :Framúrskarandi
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Sýna allar lestir sem hafa þessa stöð á áætlun
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Sýna allar bifreiðir sem hafa þessa stöð á áætlun
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Sýna allar flugvélar sem hafa þessa stöð á áætlun
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Sýna öll skip sem hafa þessa stöð á áætlun
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} tekur ekki lengur við {STRING}
@@ -2079,6 +2052,7 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Flugv�
 STR_SV_STNAME_OILFIELD                                          :{STRING} Olíulendi
 STR_SV_STNAME_MINES                                             :{STRING} Náma
 STR_SV_STNAME_DOCKS                                             :{STRING} Höfn
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Annáll
 STR_SV_STNAME_SIDINGS                                           :{STRING} Hliðrun
 STR_SV_STNAME_BRANCH                                            :{STRING} Grein
@@ -2126,8 +2100,6 @@ STR_NUM_LOW                                                     :Fáir
 STR_NUM_NORMAL                                                  :Miðlungs
 STR_NUM_HIGH                                                    :Margir
 STR_NUM_CUSTOM                                                  :Sérstillt
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Mjög hægt
 STR_AI_SPEED_SLOW                                               :Hægt
 STR_AI_SPEED_MEDIUM                                             :Miðlungs
@@ -2161,7 +2133,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Fjandsamleg
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :(Fyrirtæki {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nýtt Andlit
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Litaskema
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Litaskema:
@@ -2194,7 +2165,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Summa:
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Tekjulínurit
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Resktrartekju línurit
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bankainnistæða
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lán
@@ -2597,10 +2567,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :einteinungslest
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :segul lest
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} lestaskýli
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsta lest kemur við á {STATION}!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Upplýsingar)
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Lest fyrir
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Hraðleið
@@ -2690,38 +2658,16 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :og ferðast í 
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" a}
 STR_TIMETABLE_TICKS                                             :{COMMA} sl{P ag ög}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Á leið í {TOWN} lestaskýli
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Á leið í {TOWN} lestaskýli, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Viðhald í {TOWN} lestaskýli
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Viðhald í {TOWN} lestaskýli, {VELOCITY}
-
 STR_INVALID_ORDER                                               :{RED} (Ógild Skipun)
 
 STR_UNKNOWN_STATION                                             :óþekkt stöð
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Tómt
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} frá {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} frá {STATION} (x{NUM})
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} bíður í þjónustumiðstöð
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Kaupa lest
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Lestin er of löng
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Aðeins er hægt að eiga við lestir þegar þær bíða í skýli
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Lestir
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Lestaúrval
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nýjir rafdrifnir lestarvagnar
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nýir einteingungsvagnar
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nýir segullestarvagnar
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Járnbrautarlestir
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Kaupa vagn
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Afrita bifreið
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Þetta býr til aðra eins bifreið. Control smelltu til að deila áætlun
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Þetta býr til aðra bifreið sem er eins og sú sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á bifreiðina. Control smelltu til að deila áætlun
-STR_CLONE_TRAIN                                                 :{BLACK}Afrita lest
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Þetta býr til aðra eins lest að tengivögnunum meðtöldum. Control smelltu til að deila áætlun
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Þetta býr til aðra lest að tengivögnunum meðtöldum sem er eins og sú sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á lestina. Control smelltu til að deila áætlun
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Endurnefna
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Sleppa
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Eyða
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Fara að
@@ -2737,14 +2683,12 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Skipta y
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Skipanir)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Endi skipana - -
 STR_SERVICE                                                     :{BLACK}Skoðun
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Get ekki byggt lest...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Framleitt: {LTBLUE}{NUM}{BLACK} Virði: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Virði: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Fermandi / Affermandi
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Yfirgefur
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Lest þarf að vera stöðvuð í skýli
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Get ekki sent lest í skýli...
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Ekki pláss fyrir fleiri skipanir
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Of margar skipanir
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Get ekki bætt við nýrri skipun...
@@ -2759,26 +2703,11 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}farartæ
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Get ekki fært farartæki...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Aftari dráttarvagn fylgir alltaf fremri hluta
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Get ekki selt lest...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Get ekki fundið leit til staðbundins skýlis
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Get ekki ræst/stöðva lest...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Skoðanamillibil: {LTBLUE}{COMMA}dagar{BLACK}   Seinasta skoðun: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Skoðanamillibil: {LTBLUE}{COMMA}%{BLACK}   Seinasta skoðun: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Lestir - smelltu á lest fyrir nánari upplýsingar
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Lestir - ýttu á lest fyrir uppl., dragðu farartæki til að bæta við/fjarlægja úr lest
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kaupa nýja lest
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Dragðu lestarvagn hingað til að selja hann
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Miðstilla sjónarhorn á staðsetningu lestarskýlis
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Lestarlisti - smelltu á farartæki fyrir meiri upplýsingar
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Kaupa valinn lestarvagn
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Endurnefna lestarvagnstegund
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Núverandi aðgerð lestar - smelltu hér til að stöðva/ræsa lestina
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Sýna lestarskipanir
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Miðstilla sjónarhorn á staðsetningu lestar
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Senda lest í skýli
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Neyða lest til að halda áfram án þess að bíða eftir réttu ljósi
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Breyta stefnu lestar
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Sýna nánari upplýsingar um lest
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Lengja skoðanamillibil
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Stytta skoðanamillibil
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Sýna nánari upplýsingar um núverandi farm
@@ -2812,15 +2741,10 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stöðvað
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Get ekki látið lest fara framhjá hættumerki...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Árekstur!
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Skírðu lestina
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Get ekki skírt lest...
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Skýrðu lestina
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Lestarslys!{}{COMMA} deyja í sprengingu eftir árekstur
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Get ekki snúið lest við...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Get ekki snúið lestinni við...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Get ekki snúið vögnum sem tilheyra vagnapari
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Endurskíra lestargerð
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Get ekki endurskírt lestargerð...
 STR_CLEAR_TIME                                                  :{BLACK}Hreinsa tíma
 STR_RESET_LATENESS                                              :{BLACK}Endurstilla seinkunnarteljara
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Breyta nafni á vegleiðara
@@ -2852,45 +2776,14 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Skrifa s
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Bæta áfangastöðum næstu ferðar sjálfvirkt við áætlunina (Ctrl+smelltu til að reyna að halda biðtímum)
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Bíll fyrir
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Bílar
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} bifreiðaskýli
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Kaupa bifreið
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Bifreiðaúrval
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Kaupa bifreið
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Get ekki byggt bíl...
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...verður að stöðvast í bifreiðaskýli
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Get ekki selt bifreið...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Get ekki stöðvað/ræst bifreið...
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} bíður í þjónustumiðstöð
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Á leið í {TOWN} bifreiðaskýli
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Á leið í {TOWN} bifreiðaskýli, {VELOCITY}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Viðhald í {TOWN} bifreiðaskýli
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Viðhald í {TOWN} bifreiðaskýli, {VELOCITY}
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Get ekki sent bifreið í skýli...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Finnur ekkert nálægt skýli
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Bifreið - smelltu á bifreið fyrir nánari upplýsingar
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Núverandi aðgerð bifreiðar - smelltu hér til að stöðva/ræsa bifreið
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Sýna skipanir bifreiðar
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Miðja aðalsjónarhornið á bifreið
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Senda bifreið í skýli
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Þvinga bifreið til að snúa við
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Sýna upplýsingar um bifreið
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Bifreið - smelltu á bifreið fyrir nánari upplýsingar
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Kaupa nýja bifreið
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Dragðu bifreið hingað til að selja hana
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Miðja aðalsjónarhorn á bifreiðaskýli
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Bifreiðalisti - ýttu á bifreið fyrir nánari upplýsingar
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Kaupa valda bifreið
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Rými: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} farartæki{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nefna bifreið
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Get ekki nefnt bifreið...
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nefna bifreið
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsti strætisvagn kemur við á {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsti vörubíll kemur við á {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsti farþegasporvagn kemur við á {STATION}!
@@ -2898,132 +2791,39 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Bílslys!{}Bílstjóri deyr í sprengingu eftir árekstur við lest
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Bílslys!{}{COMMA} deyja í sprengingu eftir árekstur við lest
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Get ekki snúið bifreiðinni við...
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Endurnefna
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Endurnefna tegund bifreiðar
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Endurnefna tegund bifreiðar
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE} Get ekki endurnefnat tegund bifreiðar...
 
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Breyta bifreið svo hún flytji annan farm
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Breyta bifreið
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Breyta bifreið svo hún flytji valinn farm
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Get ekki breytt bifreið...
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veldu tegund farms sem bifreið mun flytja
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Vatnaframkvæmdir
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Vatnaframkvæmdir
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Skipaskurður
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Get ekki byggt bryggju hér...
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} slippur
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Kaupa skip
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Skip
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Skipaúrval
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Kaupa skip
-STR_CLONE_SHIP                                                  :{BLACK}Afrita skip
-STR_CLONE_SHIP_INFO                                             :{BLACK}Þetta býr til annað eins skip. Control smelltu til að deila áætlun
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Þetta býr til annað skip sem er eins og það sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á skipið. Control smelltu til að deila áætlun
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Skip verður að vera stöðvað í skýli
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Get ekki selt skip...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Get ekki smíðað skip...
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Skip er fyrir
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Get ekki stöðvað/ræst skip...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Get ekki sent skip í slipp...
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Á leið í {TOWN} slipp
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Á leið í {TOWN} slipp, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Viðhald í {TOWN} slippi
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Viðhald í {TOWN} slippi, {VELOCITY}
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} bíður í þjónustumiðstöð
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Byggja bryggju
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Reisa slipp (til að smíða og viðhalda skipum)
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skip - smelltu á skip fyrir nánari upplýsingar
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Kaupa nýtt skip
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Dragðu skip hingað til að selja það
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Miðja aðalsjónarhorn á slipp
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skip - smelltu fyrir nánari upplýsingar
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Skipalisti - smelltu á skip fyrir nánari upplýsingar
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Kaupa valið skip
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Núverandi aðgerð skips - smelltu hér til að stöðva/ræsa skipið
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Sýna skipanir skips
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Miðja aðalsjónarhorn á staðsetningu skips
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Senda skipið í slipp
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Sýna nánari upplýsingar um skip
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nefna skip
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nefna skip
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Get ekki nefnt skip...
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsta skip kemur við á {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Setja niður bauju sem hægt er að nota sem leiðarvísi fyrir skip
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Get ekki sett bauju hér...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Byggja vatnsleyðslu
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Ekki hægt að byggja vatnsleyðslu hér...
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Endurnefna
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Endurnefna skipategund
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Endurnefna skipategund
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Get ekki endurnefnt skipategund...
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Breyta vöruflutningaskipum svo þau flytji annan farm
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Breyta)
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Breyta skipi
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Veldu hvernig farm skipið á að flytja
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Breyta skipi svo það flytji valinn farm
 STR_REFIT_TITLE                                                 :{GOLD}Veldu farm sem á að flytja:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ný burðargeta: {GOLD}{CARGO}{}{BLACK}Breytingarkostnaður: {GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Get ekki breytt skipi...
 STR_REFITTABLE                                                  :(breytanlegt)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Flugvellir
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Get ekki byggt flugvöll hér...
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} flugskýli
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Kaupa flugvél
-STR_CLONE_AIRCRAFT                                              :{BLACK}Afrita flugvél
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Þetta býr til aðra eins flugvél. Control smelltu til að deila áætlun
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Þetta býr til aðra flugvél sem er eins og sú sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á flugvélina. Control smelltu til að deila áætlun
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Flugvélaúrval
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Kaupa flugvél
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Get ekki smíðað flugvél...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Flugvél
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Get ekki sent flugvél í flugskýli...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}Á leið í {STATION} flugskýli
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Á leið í {STATION} flugskýli, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Viðhald í {STATION} flugskýli
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Viðhald í {STATION} flugskýli, {VELOCITY}
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} bíður í flugskýlinu
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Flugvél er fyrir
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Get ekki stöðvað/ræst flugvél...
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}flugvélin er á flugi
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Flugvélin verður að vera stöðvuð í flugskýli
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Get ekki selt flugvélina...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Flugvallarframkvæmdir
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Byggja flugvöll
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flugvélar - smelltu á flugvél fyrir nánari upplýsingar
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flugvélar - smelltu á flugvél fyrir nánari upplýsingar
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Kaupa nýja flugvél
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Dragðu flugvél hingað til að selja hana
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Miðja aðalsjónarhorn á flugskýli
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Flugvélalisti - smelltu á flugvél fyrir nánari upplýsingar
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Kaupa valda flugvél
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Núverandi aðgerð - smelltu hér til að stöðva/ræsa flugvél
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Sýna skipanir flugvélar
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Miðja aðalsjónarhorn á flugvélina
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Senda flugvélina i flugskýli
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Sýna nánari upplýsingar um skip
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nefna flugvélina
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Get ekki nefnt flugvélina...
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nefna flugvélina
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsta flugvél kemur við á {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Flugslys!{}{COMMA} deyja í sprengingu á {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Flugslys!{}Flugvél varð eldsneytislaus, {COMMA} deyja í sprengingu!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Endurnefna
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Endurnefna tegund flugvélar
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Endurnefna tegund flugvélar
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Get ekki endurnefnt tegund flugvélarinnar...
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Breyta flugvél svo hún flytji annan farm
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Breyta flugvél
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Veldu farm sem flugvél á að flytja
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Breyta flugvél svo hún flytji valinn farm
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Get ekki breytt flugvél...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Áætlun)
 
@@ -3177,14 +2977,224 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Lestir - smelltu á lest fyrir nánari upplýsingar
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Bifreið - smelltu á bifreið fyrir nánari upplýsingar
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skip - smelltu fyrir nánari upplýsingar
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flugvélar - smelltu á flugvél fyrir nánari upplýsingar
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Sýna allar lestir sem hafa þessa stöð á áætlun
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Sýna allar bifreiðir sem hafa þessa stöð á áætlun
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Sýna allar flugvélar sem hafa þessa stöð á áætlun
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Sýna öll skip sem hafa þessa stöð á áætlun
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Lestir
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Bílar
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Skip
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Flugvél
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Samnýttar skipanir {COMMA} {P farartækis farartækja}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Sýna öll farartæki sem deila þessari áætlun
+
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} bíður í þjónustumiðstöð
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} bíður í þjónustumiðstöð
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} bíður í þjónustumiðstöð
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} bíður í flugskýlinu
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Breyta lest
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Breyta bifreið
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Breyta skipi
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Breyta flugvél
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Breyta lest svo hún flytji valinn farm
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Breyta bifreið svo hún flytji valinn farm
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Breyta skipi svo það flytji valinn farm
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Breyta flugvél svo hún flytji valinn farm
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Veldu hvernig farm lestin á að flytja
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veldu tegund farms sem bifreið mun flytja
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Veldu hvernig farm skipið á að flytja
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Veldu farm sem flugvél á að flytja
+
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} lestaskýli
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} bifreiðaskýli
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} slippur
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} flugskýli
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Skýrðu lestina
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nefna bifreið
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nefna skip
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nefna flugvélina
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Skírðu lestina
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nefna bifreið
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nefna skip
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nefna flugvélina
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Lest fyrir
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Bíll fyrir
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Skip er fyrir
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Flugvél er fyrir
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Get ekki breytt lest...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Get ekki breytt bifreið...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Get ekki breytt skipi...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Get ekki breytt flugvél...
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Get ekki skírt lest...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Get ekki nefnt bifreið...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Get ekki nefnt skip...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Get ekki nefnt flugvélina...
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Get ekki ræst/stöðva lest...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Get ekki stöðvað/ræst bifreið...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Get ekki stöðvað/ræst skip...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Get ekki stöðvað/ræst flugvél...
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Get ekki sent lest í skýli...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Get ekki sent bifreið í skýli...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Get ekki sent skip í slipp...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Get ekki sent flugvél í flugskýli...
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Get ekki byggt lest...
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Get ekki byggt bíl...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Get ekki smíðað skip...
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Get ekki smíðað flugvél...
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Get ekki endurskírt lestargerð...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE} Get ekki endurnefnat tegund bifreiðar...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Get ekki endurnefnt skipategund...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Get ekki endurnefnt tegund flugvélarinnar...
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Get ekki selt lest...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Get ekki selt bifreið...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Get ekki selt skip...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Get ekki selt flugvélina...
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Núverandi aðgerð lestar - smelltu hér til að stöðva/ræsa lestina
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Núverandi aðgerð bifreiðar - smelltu hér til að stöðva/ræsa bifreið
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Núverandi aðgerð skips - smelltu hér til að stöðva/ræsa skipið
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Núverandi aðgerð - smelltu hér til að stöðva/ræsa flugvél
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Sýna lestarskipanir
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Sýna skipanir bifreiðar
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Sýna skipanir skips
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Sýna skipanir flugvélar
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Miðstilla sjónarhorn á staðsetningu lestar
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Miðja aðalsjónarhornið á bifreið
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Miðja aðalsjónarhorn á staðsetningu skips
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Miðja aðalsjónarhorn á flugvélina
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Senda lest í skýli
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Senda bifreið í skýli
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Senda skipið í slipp
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Senda flugvélina i flugskýli
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Sýna nánari upplýsingar um lest
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Sýna upplýsingar um bifreið
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Sýna nánari upplýsingar um skip
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Sýna nánari upplýsingar um skip
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Breyta lest svo hún flytji annan farm
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Breyta bifreið svo hún flytji annan farm
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Breyta vöruflutningaskipum svo þau flytji annan farm
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Breyta flugvél svo hún flytji annan farm
+
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Á leið í {TOWN} lestaskýli
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Á leið í {TOWN} lestaskýli, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Á leið í {TOWN} bifreiðaskýli
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Á leið í {TOWN} bifreiðaskýli, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Á leið í {TOWN} slipp
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Á leið í {TOWN} slipp, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Á leið í {STATION} flugskýli
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Á leið í {STATION} flugskýli, {VELOCITY}
+
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Viðhald í {TOWN} lestaskýli
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Viðhald í {TOWN} lestaskýli, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Viðhald í {TOWN} bifreiðaskýli
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Viðhald í {TOWN} bifreiðaskýli, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Viðhald í {TOWN} slippi
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Viðhald í {TOWN} slippi, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Viðhald í {STATION} flugskýli
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Viðhald í {STATION} flugskýli, {VELOCITY}
+
+
+STR_CLONE_TRAIN                                                 :{BLACK}Afrita lest
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Afrita bifreið
+STR_CLONE_SHIP                                                  :{BLACK}Afrita skip
+STR_CLONE_AIRCRAFT                                              :{BLACK}Afrita flugvél
+
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Þetta býr til aðra eins lest að tengivögnunum meðtöldum. Control smelltu til að deila áætlun
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Þetta býr til aðra eins bifreið. Control smelltu til að deila áætlun
+STR_CLONE_SHIP_INFO                                             :{BLACK}Þetta býr til annað eins skip. Control smelltu til að deila áætlun
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Þetta býr til aðra eins flugvél. Control smelltu til að deila áætlun
+
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Þetta býr til aðra lest að tengivögnunum meðtöldum sem er eins og sú sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á lestina. Control smelltu til að deila áætlun
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Þetta býr til aðra bifreið sem er eins og sú sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á bifreiðina. Control smelltu til að deila áætlun
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Þetta býr til annað skip sem er eins og það sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á skipið. Control smelltu til að deila áætlun
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Þetta býr til aðra flugvél sem er eins og sú sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á flugvélina. Control smelltu til að deila áætlun
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Lestaúrval
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nýjir rafdrifnir lestarvagnar
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nýir einteingungsvagnar
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nýir segullestarvagnar
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Járnbrautarlestir
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Bifreiðaúrval
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Skipaúrval
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Flugvélaúrval
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Kaupa vagn
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Kaupa bifreið
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Kaupa skip
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Kaupa flugvél
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Lestarlisti - smelltu á farartæki fyrir meiri upplýsingar
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Bifreiðalisti - ýttu á bifreið fyrir nánari upplýsingar
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Skipalisti - smelltu á skip fyrir nánari upplýsingar
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Flugvélalisti - smelltu á flugvél fyrir nánari upplýsingar
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Kaupa valinn lestarvagn
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Kaupa valda bifreið
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Kaupa valið skip
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Kaupa valda flugvél
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Endurnefna
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Endurnefna
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Endurnefna
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Endurnefna
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Endurnefna lestarvagnstegund
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Endurnefna tegund bifreiðar
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Endurnefna skipategund
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Endurnefna tegund flugvélar
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Endurskíra lestargerð
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Endurnefna tegund bifreiðar
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Endurnefna skipategund
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Endurnefna tegund flugvélar
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Kaupa lest
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Kaupa bifreið
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Kaupa skip
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Kaupa flugvél
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Lestir - ýttu á lest fyrir uppl., dragðu farartæki til að bæta við/fjarlægja úr lest
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Bifreið - smelltu á bifreið fyrir nánari upplýsingar
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skip - smelltu á skip fyrir nánari upplýsingar
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flugvélar - smelltu á flugvél fyrir nánari upplýsingar
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kaupa nýja lest
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Kaupa nýja bifreið
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Kaupa nýtt skip
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Kaupa nýja flugvél
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Dragðu lestarvagn hingað til að selja hann
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Dragðu bifreið hingað til að selja hana
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Dragðu skip hingað til að selja það
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Dragðu flugvél hingað til að selja hana
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Miðstilla sjónarhorn á staðsetningu lestarskýlis
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Miðja aðalsjónarhorn á bifreiðaskýli
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Miðja aðalsjónarhorn á slipp
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Miðja aðalsjónarhorn á flugskýli
+
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Þú ert í þann mund að selja öll farartækin. Viltu halda áfram?
@@ -3205,7 +3215,6 @@ STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Skipta �
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Skipta öllum skipum í slippnum sjálfvirkt út
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Skipta öllum flugvélum í skýlinu sjálfvirkt út
 
-
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Endurnýja {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Hefja skipti
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stöðva skipti
@@ -3221,6 +3230,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Selja le
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Heldur lengd lestar með því að fjarlægja vagna (framan frá) ef útskipting dráttarvagna myndi lengja hana.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Skipti út: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skipta á milli útskiptiglugga dráttar- og flutningavagna
+
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Lestarvagn er ekki fáanlegur
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Bifreið er ekki fáanleg
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Skip er ekki fáanlegt
@@ -3371,17 +3381,6 @@ STR_MEASURE_AREA                                                :{BLACK}Svæði:
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lengd: {NUM}{}Hæðarmunur {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Svæði: {NUM} x {NUM}{}Hæðarmunur: {NUM} m
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Millifæra gjaldeyri: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...vegurinn er í eigu bæjar
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...vegurinn snýr í ranga átt
@@ -3406,7 +3405,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :Hópur {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Allar lestir
 STR_GROUP_ALL_ROAD_VEHICLES                                     :Allar bifreiðir
@@ -3435,12 +3433,62 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Eyða v�
 STR_GROUP_RENAME_TIP                                            :{BLACK}Endurnefna valinn hóp
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Smelltu til að halda þessum hóp frá sjálfvirkri uppfærslu
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :(Fyrirtæki {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Hópur {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Nafnið verður að vera sérstætt
 

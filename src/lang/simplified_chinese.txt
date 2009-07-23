@@ -154,8 +154,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}塑
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}跳
 STR_ABBREV_NONE                                                 :{TINYFONT}无
 STR_ABBREV_ALL                                                  :{TINYFONT}全
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}地图 - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}游戏选项
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}消息
@@ -167,17 +165,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}原始�
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 版本 {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD 团队
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}退出
 STR_YES                                                         :{BLACK}是
 STR_NO                                                          :{BLACK}否
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}你确定要放弃当前游戏并{}退出到 {STRING} 吗？
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :无
 STR_COLOUR_DARK_BLUE                                            :深蓝色
 STR_COLOUR_PALE_GREEN                                           :浅绿色
@@ -196,8 +188,6 @@ STR_COLOUR_BROWN                                                :棕　色
 STR_COLOUR_GREY                                                 :浅灰色
 STR_COLOUR_WHITE                                                :白　色
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}游戏中的车辆过多
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}定位
 STR_SMALLMAP_TYPE_CONTOURS                                      :地形
 STR_SMALLMAP_TYPE_VEHICLES                                      :车辆
@@ -323,12 +313,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}选择�
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}选择过滤标准
 STR_SORT_BY                                                     :{BLACK}排序
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}人口
+STR_SORT_BY_NAME                                                :{BLACK}名称
+STR_SORT_BY_DATE                                                :{BLACK}日期
 STR_SORT_BY_PRODUCTION                                          :产量
 STR_SORT_BY_TYPE                                                :类型
 STR_SORT_BY_TRANSPORTED                                         :已运输
-STR_SORT_BY_NAME                                                :{BLACK}名称
-STR_SORT_BY_DATE                                                :{BLACK}日期
 STR_SORT_BY_NUMBER                                              :序号
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :去年利润
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :今年利润
@@ -351,37 +342,25 @@ STR_SORT_BY_INTRO_DATE                                          :设计日期
 STR_SORT_BY_RUNNING_COST                                        :运行费用
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :功率/运行费用 比值
 STR_SORT_BY_CARGO_CAPACITY                                      :运载能力
+
 STR_NO_WAITING_CARGO                                            :{BLACK}选择无等待货物车站
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}选择全部运输工具种类
 STR_SELECT_ALL_TYPES                                            :{BLACK}选择所有货物类型{}（包括不在等待列表中的）
-STR_AVAILABLE_TRAINS                                            :{BLACK}可用的列车
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}可用的汽车
-STR_AVAILABLE_SHIPS                                             :{BLACK}可用的船只
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}可用的飞机
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}查看此运输工具类型的{}全部可选购列表
 STR_MANAGE_LIST                                                 :{BLACK}管理列表
 STR_MANAGE_LIST_TIP                                             :{BLACK}向所有在此列表中的运输工具发出指令
 STR_REPLACE_VEHICLES                                            :替换车辆/飞机/船只
+STR_SEND_FOR_SERVICING                                          :进行保养
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}可用的列车
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}可用的汽车
+STR_AVAILABLE_SHIPS                                             :{BLACK}可用的船只
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}可用的飞机
+
 STR_SEND_TRAIN_TO_DEPOT                                         :前往列车车库
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :前往汽车车库
 STR_SEND_SHIP_TO_DEPOT                                          :前往船坞
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :前往机库
-STR_SEND_FOR_SERVICING                                          :进行保养
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :1月
-STR_MONTH_ABBREV_FEB                                            :2月
-STR_MONTH_ABBREV_MAR                                            :3月
-STR_MONTH_ABBREV_APR                                            :4月
-STR_MONTH_ABBREV_MAY                                            :5月
-STR_MONTH_ABBREV_JUN                                            :6月
-STR_MONTH_ABBREV_JUL                                            :7月
-STR_MONTH_ABBREV_AUG                                            :8月
-STR_MONTH_ABBREV_SEP                                            :9月
-STR_MONTH_ABBREV_OCT                                            :10月
-STR_MONTH_ABBREV_NOV                                            :11月
-STR_MONTH_ABBREV_DEC                                            :12月
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -409,8 +388,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}建设�
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}打开植树工具菜单
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}查询地块信息
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}选项
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能改变保养周期……
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}关闭窗口
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}窗口标题 - 拖动这里可以移动该窗口
@@ -457,7 +434,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :没有
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}名称
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1号
 STR_ORDINAL_NUMBER_2ND                                          :2号
 STR_ORDINAL_NUMBER_3RD                                          :3号
@@ -490,6 +467,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29号
 STR_ORDINAL_NUMBER_30TH                                         :30号
 STR_ORDINAL_NUMBER_31ST                                         :31号
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :1月
+STR_MONTH_ABBREV_FEB                                            :2月
+STR_MONTH_ABBREV_MAR                                            :3月
+STR_MONTH_ABBREV_APR                                            :4月
+STR_MONTH_ABBREV_MAY                                            :5月
+STR_MONTH_ABBREV_JUN                                            :6月
+STR_MONTH_ABBREV_JUL                                            :7月
+STR_MONTH_ABBREV_AUG                                            :8月
+STR_MONTH_ABBREV_SEP                                            :9月
+STR_MONTH_ABBREV_OCT                                            :10月
+STR_MONTH_ABBREV_NOV                                            :11月
+STR_MONTH_ABBREV_DEC                                            :12月
+
+STR_MONTH_JAN                                                   :1月
+STR_MONTH_FEB                                                   :2月
+STR_MONTH_MAR                                                   :3月
+STR_MONTH_APR                                                   :4月
+STR_MONTH_MAY                                                   :5月
+STR_MONTH_JUN                                                   :6月
+STR_MONTH_JUL                                                   :7月
+STR_MONTH_AUG                                                   :8月
+STR_MONTH_SEP                                                   :9月
+STR_MONTH_OCT                                                   :10月
+STR_MONTH_NOV                                                   :11月
+STR_MONTH_DEC                                                   :12月
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -580,12 +585,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} 达到 '{STRING}' 的状态！
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} 在 {COMPANY} 达到 '{STRING}' 状态！
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}场景编辑器
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}生成土地
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}增加要升高/降低的土地面积
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}减少要升高/降低的土地面积
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}随机生成土地
@@ -667,9 +669,7 @@ STR_OFF                                                         :关闭
 STR_SUMMARY                                                     :摘要
 STR_FULL                                                        :完全
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :游戏选项
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :难度设定
@@ -774,9 +774,6 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  保�
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}保存仍在继续{}请耐心等待……
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}选择'Ezy街头'风格的音乐列表
 
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
-
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :英国 (原始的)
 STR_TOWNNAME_FRENCH                                             :法国
@@ -856,19 +853,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}关于�
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}自动保存失败
 
-STR_MONTH_JAN                                                   :1月
-STR_MONTH_FEB                                                   :2月
-STR_MONTH_MAR                                                   :3月
-STR_MONTH_APR                                                   :4月
-STR_MONTH_MAY                                                   :5月
-STR_MONTH_JUN                                                   :6月
-STR_MONTH_JUL                                                   :7月
-STR_MONTH_AUG                                                   :8月
-STR_MONTH_SEP                                                   :9月
-STR_MONTH_OCT                                                   :10月
-STR_MONTH_NOV                                                   :11月
-STR_MONTH_DEC                                                   :12月
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}正在前往 {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}正在前往 {STATION}，{VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}没有目标
@@ -882,8 +866,6 @@ STR_ITEMS                                                       :件
 STR_CRATES                                                      :件
 STR_RES_OTHER                                                   :其他
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}不能共享调度计划……
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}不能复制调度计划……
@@ -1156,7 +1138,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}地图�
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :禁用
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}改变设置值
 
 STR_TEMPERATE_LANDSCAPE                                         :温带景观
@@ -1258,11 +1239,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}工业�
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}距离另一工业设施过近……
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}改装列车以装载另一类型的货物
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}改装列车
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}选择希望列车装载的货物类型
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}让列车装载高亮选定的货物
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}不能改造列车……
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}改变产量
 
 ############ network gui strings
@@ -2075,6 +2051,7 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} 机场
 STR_SV_STNAME_OILFIELD                                          :{STRING} 油田
 STR_SV_STNAME_MINES                                             :{STRING} 矿
 STR_SV_STNAME_DOCKS                                             :{STRING} 码头
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} 村
 STR_SV_STNAME_SIDINGS                                           :{STRING} 坝
 STR_SV_STNAME_BRANCH                                            :{STRING} 岔口
@@ -2122,8 +2099,6 @@ STR_NUM_LOW                                                     :低
 STR_NUM_NORMAL                                                  :一般
 STR_NUM_HIGH                                                    :高
 STR_NUM_CUSTOM                                                  :自定义
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :非常慢
 STR_AI_SPEED_SLOW                                               :慢
 STR_AI_SPEED_MEDIUM                                             :适中
@@ -2591,10 +2566,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :单轨机车
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :磁悬浮机车
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} 列车车库
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一列火车抵达 {STATION}！
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (详细信息)
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}指定位置有列车
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}不停车
@@ -2684,37 +2657,16 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :并行驶{STRIN
 STR_TIMETABLE_DAYS                                              :{COMMA} 天
 STR_TIMETABLE_TICKS                                             :{COMMA} 个时间标记
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}正在前往 {TOWN} 车库
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}正在前往 {TOWN} 车库，{VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}在 {TOWN} 车库保养
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}在 {TOWN} 车库保养，{VELOCITY}
-
 STR_INVALID_ORDER                                               :{RED} (非法的调度计划)
 
 STR_UNKNOWN_STATION                                             :未知车站（目的地）
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}空
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} (来自 {STATION})
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} (来自 {STATION} (x{NUM}))
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} 正在车库待命
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}购买列车
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列车过长
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}只有列车停在车库中时才能更改挂车
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}购买普通列车
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}购买电气化列车
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}购买单轨列车
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}购买磁悬浮列车
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}列车
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}购买
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}克隆汽车
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}复制这辆汽车{}Ctrl+单击 可以同时共享调度计划
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}复制汽车 按此按钮后{}点击一辆在车库内或外面的汽车即可{}Ctrl+单击 可以同时共享调度计划
-STR_CLONE_TRAIN                                                 :{BLACK}克隆列车
-STR_CLONE_TRAIN_INFO                                            :{BLACK}复制这列火车{}Ctrl+单击 可以同时共享调度计划
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}复制列车 按此按钮后{}点击一辆在车库内或外面的列车即可{}Ctrl+单击 可以同时共享调度计划
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}重命名
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}跳过
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}删除
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}前往
@@ -2730,14 +2682,12 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}切换�
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (调度计划)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}-- 调度计划结束 --
 STR_SERVICE                                                     :{BLACK}保养
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}不能购买列车……
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   建造年份：{LTBLUE}{NUM}{BLACK} 价值：{LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   价值：{LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}装载/卸货
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}发车
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}列车必须停在一个车库中
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}不能命令列车前往车库……
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}没有多余的调度计划的位置了……
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}调度计划过多……
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}不能插入新的调度计划……
@@ -2752,25 +2702,11 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}一个�
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}不能移动这项调度计划……
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}尾部的列车机车必须和头部的一起协作……
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}不能出售列车……
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}找不到附近的车库……
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}不能 启动/停止 列车！
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}保养周期：{LTBLUE}{COMMA}天{BLACK}   上次保养：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}保养周期：{LTBLUE}{COMMA}%{BLACK}   上次保养：{LTBLUE}{DATE_LONG}
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列车 - 点击可以查看列车详细信息{}拖动可以 增加/减少 车厢
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}购买新的列车
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}将列车拖到这里以出售
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}将屏幕中心移动到列车库所在的位置
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}列车选择列表 - 点击可以查看详细信息
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}购买选定的列车
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}重命名列车型号
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}当前列车状态{}点击可以 启动/停止 列车
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}显示列车的调度计划
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}将视点移动到列车的位置
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}命令列车返回车库
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}命令列车强行通过信号
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}命令列车调头
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}显示列车的详细信息
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}增大检修间隔
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}缩小检修间隔
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}显示运载货物的详情
@@ -2804,15 +2740,10 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}停运
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}不能让列车冒险通过信号...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}撞毁!
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}给列车命名
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}不能给列车命名...
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}给列车命名
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}列车相撞!{}{COMMA} 人在爆炸中丧生
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}不能命令列车调头...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}无法调转车辆方向...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}不能命令多节的汽车掉头
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}重命名车辆的类型
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}不能重命名车辆的类型...
 STR_CLEAR_TIME                                                  :{BLACK}清除时间
 STR_RESET_LATENESS                                              :{BLACK}清除晚点计数器
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}修改路点名
@@ -2844,43 +2775,14 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}自动�
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}根据下一次运行的时间自动填充时间表{}(CRTL+单击 可保持等候时间)
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}指定的位置有汽车
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} 车库
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}购买汽车
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}购买汽车
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}购买汽车
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}不能购买汽车...
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...必须完全停在一个车库中
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}不能出售汽车...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}不能 停止/启动 汽车...
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} 正在车库待命
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}正在前往 {TOWN} 车库
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}正在前往 {TOWN} 车库，{VELOCITY}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}正在 {TOWN} 车库保养
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}正在 {TOWN} 车库保养，{VELOCITY}
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}不能命令该汽车前往车库...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}在附近找不到车库
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}当前车辆的状态{}单击这里可以 停止/启动 车辆
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}显示车辆的调度指令
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}将屏幕中心移动到汽车所在的位置
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}命令汽车前往车库{}Ctrl+单击 时汽车只进行保养
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}强制汽车掉头
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}显示汽车的详细信息
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}汽车 - 点击可以查看详细信息
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}购买
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}将汽车拖到这里以出售
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}将屏幕中心移动到车库所在的位置
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}汽车列表 - 点击可以查看详细信息
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}购买选定的汽车
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}运力： {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} 车辆{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}命名汽车
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}不能命名汽车……
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}命名汽车
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一辆巴士抵达 {STATION}！
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一辆货车抵达 {STATION}！
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}市民欢庆~. . .{}首辆客运电车抵达 {STATION}!
@@ -2888,128 +2790,39 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，司机在事故中丧生！
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，{COMMA} 人在事故中丧生！
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}车辆无法调头...
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}重命名
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}重命名汽车型号
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}重命名汽车型号
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}不能重命名汽车型号……
 
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}改装汽车以运载其他货物
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}改装汽车
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}改装汽车以运输选择的货物类型
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}不能改装汽车……
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}选择要运输的货物类型：
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :水运建设
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}水运建设
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}水运
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}不能在这里新建码头……
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} 船坞
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}购买船只
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}购买船只
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}购买船只
-STR_CLONE_SHIP                                                  :{BLACK}克隆船只
-STR_CLONE_SHIP_INFO                                             :{BLACK}复制当前选定的船只{}Ctrl+单击 可以同时共享调度计划
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}复制船只，按此按钮后点击一个在船坞内或外面的船只即可。Ctrl+单击可以同时共享调度计划。
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}船只必须停靠在船坞内。
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}不能出售船只……
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}不能建造船只……
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}前方有另一艘船只……
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}不能 停止/启动 船只……
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}不能命令船只前往船坞……
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}正在前往 {TOWN} 船坞
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}正在前往 {TOWN} 船坞，{VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}正在 {TOWN} 船坞保养
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}正在 {TOWN} 船坞保养，{VELOCITY}
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} 正在船坞待命
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}建造码头
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}建造船坞 (可以购买或保养船只)
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船只 - 点击可以查看详细信息
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}购买新船只
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}将船只拖到这里以出售
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}将屏幕中心移动到当前船坞的位置
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}船只列表 - 点击可以查看详细信息
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}购买选定的船只
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}船只当前的状态{}点击可以 启动/停止 船只
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}显示船只的调度计划
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}将屏幕中心移动到船只所在的位置
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}命令船只前往船坞{}Ctrl+单击 时船只只进行保养
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}显示船只的详情
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}命名船只
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}命名船只
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}不能命名船只
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一艘船抵达 {STATION}！
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}放置一个浮标
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}不能将浮标放置在这里。
 STR_BUILD_AQUEDUCT                                              :{BLACK}建设水渠
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}无法在此建设水渠……
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}重命名
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}重命名船只型号
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}重命名船只型号
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}不能重命名船只型号……
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}改装船只以装载其他货物
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (改装)
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}改装船只
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}选择希望船只装载的货物类型
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}改装船只以运输选择的货物类型
 STR_REFIT_TITLE                                                 :{GOLD}选择要运输的货物类型：
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}新的装载能力：{GOLD}{CARGO}{}{BLACK}改装费用：{GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}不能改装船只……
 STR_REFITTABLE                                                  :(可改装)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}机场
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}不能在这里兴建机场……
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} 机库
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}购买飞机
-STR_CLONE_AIRCRAFT                                              :{BLACK}克隆飞机
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}复制当前选定的飞机{}Ctrl+单击 可以同时共享调度计划
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK} 复制飞机 按此按钮后 {}点击一个在机库内或外面的飞机即可{}Ctrl+单击 可以同时共享调度计划
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}购买飞机
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}购买
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}不能购买飞机……
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}不能命令飞机返回机库……
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}正在前往 {STATION} 的机库
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}正在前往 {STATION} 的机库，{VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}正在 {STATION} 的机库保养
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}正在 {STATION} 的机库保养，{VELOCITY}
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} 正在机库待命
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}指定位置有飞机
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}不能 启动/停止 飞机
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}飞机正在飞行
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}飞机必须在机库中停止
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}不能出售飞机……
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :机场建设
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}新建机场
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飞机 - 点击可以查看详细信息
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}购买飞机
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}将飞机拖到这里以出售
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}将屏幕中心移动到当前机库的位置
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}飞机列表 - 点击可以查看详细信息
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}购买选定的飞机
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}飞机当前的状态{}点击可以 启动/停止 已降落的飞机
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}显示飞机的调度计划
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}将屏幕中心移动到飞机所在的位置
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}命令飞机前往机库{}Ctrl+单击 时飞机只进行保养
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}显示飞机的详情
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}命名飞机
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}不能为飞机命名……
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}命名飞机
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一架飞机到达 {STATION} ！
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}飞机坠毁！{}{COMMA} 人在 {STATION} 的事故中罹难！
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}飞机坠毁！{}燃油不足，{COMMA} 人在事故中罹难！
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}重命名飞机
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}重命名飞机型号
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}重命名飞机型号
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}不能重命名型号类型……
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}改装飞机装载货物的类型
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}改装飞机
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}选择希望飞机装载的货物类型
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}改装飞机以运输选择的货物类型
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}不能改装飞机……
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (时间表)
 
@@ -3177,6 +2990,211 @@ STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING}
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}与 {COMMA} 车辆/船只/飞机共享调度计划
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}显示所有共享此调度计划的{}车辆/船只/飞机
 
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} 正在车库待命
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} 正在车库待命
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} 正在船坞待命
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} 正在机库待命
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}改装列车
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}改装汽车
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}改装船只
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}改装飞机
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}让列车装载高亮选定的货物
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}改装汽车以运输选择的货物类型
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}改装船只以运输选择的货物类型
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}改装飞机以运输选择的货物类型
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}选择希望列车装载的货物类型
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}选择要运输的货物类型：
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}选择希望船只装载的货物类型
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}选择希望飞机装载的货物类型
+
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} 列车车库
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} 车库
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} 船坞
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} 机库
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}给列车命名
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}命名汽车
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}命名船只
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}命名飞机
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}给列车命名
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}命名汽车
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}命名船只
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}命名飞机
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}指定位置有列车
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}指定的位置有汽车
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}前方有另一艘船只……
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}指定位置有飞机
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}不能改造列车……
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}不能改装汽车……
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}不能改装船只……
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}不能改装飞机……
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}不能给列车命名...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}不能命名汽车……
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}不能命名船只
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}不能为飞机命名……
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}不能 启动/停止 列车！
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}不能 停止/启动 汽车...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}不能 停止/启动 船只……
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}不能 启动/停止 飞机
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}不能命令列车前往车库……
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}不能命令该汽车前往车库...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}不能命令船只前往船坞……
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}不能命令飞机返回机库……
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}不能购买列车……
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}不能购买汽车...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}不能建造船只……
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}不能购买飞机……
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}不能重命名车辆的类型...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}不能重命名汽车型号……
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}不能重命名船只型号……
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}不能重命名型号类型……
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}不能出售列车……
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}不能出售汽车...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}不能出售船只……
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}不能出售飞机……
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}当前列车状态{}点击可以 启动/停止 列车
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}当前车辆的状态{}单击这里可以 停止/启动 车辆
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}船只当前的状态{}点击可以 启动/停止 船只
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}飞机当前的状态{}点击可以 启动/停止 已降落的飞机
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}显示列车的调度计划
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}显示车辆的调度指令
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}显示船只的调度计划
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}显示飞机的调度计划
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}将视点移动到列车的位置
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}将屏幕中心移动到汽车所在的位置
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}将屏幕中心移动到船只所在的位置
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}将屏幕中心移动到飞机所在的位置
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}命令列车返回车库
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}命令汽车前往车库{}Ctrl+单击 时汽车只进行保养
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}命令船只前往船坞{}Ctrl+单击 时船只只进行保养
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}命令飞机前往机库{}Ctrl+单击 时飞机只进行保养
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}显示列车的详细信息
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}显示汽车的详细信息
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}显示船只的详情
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}显示飞机的详情
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}改装列车以装载另一类型的货物
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}改装汽车以运载其他货物
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}改装船只以装载其他货物
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}改装飞机装载货物的类型
+
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}正在前往 {TOWN} 车库
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}正在前往 {TOWN} 车库，{VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}正在前往 {TOWN} 车库
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}正在前往 {TOWN} 车库，{VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}正在前往 {TOWN} 船坞
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}正在前往 {TOWN} 船坞，{VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}正在前往 {STATION} 的机库
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}正在前往 {STATION} 的机库，{VELOCITY}
+
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}在 {TOWN} 车库保养
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}在 {TOWN} 车库保养，{VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}正在 {TOWN} 车库保养
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}正在 {TOWN} 车库保养，{VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}正在 {TOWN} 船坞保养
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}正在 {TOWN} 船坞保养，{VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}正在 {STATION} 的机库保养
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}正在 {STATION} 的机库保养，{VELOCITY}
+
+
+STR_CLONE_TRAIN                                                 :{BLACK}克隆列车
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}克隆汽车
+STR_CLONE_SHIP                                                  :{BLACK}克隆船只
+STR_CLONE_AIRCRAFT                                              :{BLACK}克隆飞机
+
+STR_CLONE_TRAIN_INFO                                            :{BLACK}复制这列火车{}Ctrl+单击 可以同时共享调度计划
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}复制这辆汽车{}Ctrl+单击 可以同时共享调度计划
+STR_CLONE_SHIP_INFO                                             :{BLACK}复制当前选定的船只{}Ctrl+单击 可以同时共享调度计划
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}复制当前选定的飞机{}Ctrl+单击 可以同时共享调度计划
+
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}复制列车 按此按钮后{}点击一辆在车库内或外面的列车即可{}Ctrl+单击 可以同时共享调度计划
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}复制汽车 按此按钮后{}点击一辆在车库内或外面的汽车即可{}Ctrl+单击 可以同时共享调度计划
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}复制船只，按此按钮后点击一个在船坞内或外面的船只即可。Ctrl+单击可以同时共享调度计划。
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK} 复制飞机 按此按钮后 {}点击一个在机库内或外面的飞机即可{}Ctrl+单击 可以同时共享调度计划
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}购买普通列车
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}购买电气化列车
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}购买单轨列车
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}购买磁悬浮列车
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}列车
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}购买汽车
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}购买船只
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}购买飞机
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}购买
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}购买汽车
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}购买船只
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}购买
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}列车选择列表 - 点击可以查看详细信息
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}汽车列表 - 点击可以查看详细信息
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}船只列表 - 点击可以查看详细信息
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}飞机列表 - 点击可以查看详细信息
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}购买选定的列车
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}购买选定的汽车
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}购买选定的船只
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}购买选定的飞机
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}重命名
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}重命名
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}重命名
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}重命名飞机
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}重命名列车型号
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}重命名汽车型号
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}重命名船只型号
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}重命名飞机型号
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}重命名车辆的类型
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}重命名汽车型号
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}重命名船只型号
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}重命名飞机型号
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}购买列车
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}购买汽车
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}购买船只
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}购买飞机
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列车 - 点击可以查看列车详细信息{}拖动可以 增加/减少 车厢
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}汽车 - 点击可以查看详细信息
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船只 - 点击可以查看详细信息
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飞机 - 点击可以查看详细信息
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}购买新的列车
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}购买
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}购买新船只
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}购买飞机
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}将列车拖到这里以出售
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}将汽车拖到这里以出售
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}将船只拖到这里以出售
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}将飞机拖到这里以出售
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}将屏幕中心移动到列车库所在的位置
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}将屏幕中心移动到车库所在的位置
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}将屏幕中心移动到当前船坞的位置
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}将屏幕中心移动到当前机库的位置
+
+
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}你将要出售车库中的所有车辆，确定吗？
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :车库类型错误
@@ -3211,6 +3229,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}清理�
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}当车辆升级可能造成列车变长时{}自动去掉若干挂车以保证列车长度不变
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}替换项目： {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}可以切换 机车/挂车 替换项目
+
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}列车不可用
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}车辆不可用
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}船只不可用
@@ -3425,7 +3444,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -3442,6 +3464,31 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_COMPANY_NUM                                          :(公司 {COMMA})
 STR_FORMAT_GROUP_NAME                                           :组 {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}名称重复!请重新命名.
 

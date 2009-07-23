@@ -154,8 +154,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}ПЛ
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ПП
 STR_ABBREV_NONE                                                 :{TINYFONT}НТ
 STR_ABBREV_ALL                                                  :{TINYFONT}Се`
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Мапа - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опции на Играта
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Порака
@@ -167,17 +165,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Ориг
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD верзија {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD тимот
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Напушти
 STR_YES                                                         :{BLACK}Да
 STR_NO                                                          :{BLACK}Не
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Дали сте сигурни дека сакате да ја напуштите OpenTTD и да се вратите во {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Ништо
 STR_COLOUR_DARK_BLUE                                            :Темоно Сина
 STR_COLOUR_PALE_GREEN                                           :Матно Зелена
@@ -196,8 +188,6 @@ STR_COLOUR_BROWN                                                :Кафена
 STR_COLOUR_GREY                                                 :Сива
 STR_COLOUR_WHITE                                                :Бела
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Има премногу возила во играта
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Локација
 STR_SMALLMAP_TYPE_CONTOURS                                      :Контури
 STR_SMALLMAP_TYPE_VEHICLES                                      :Возила
@@ -320,12 +310,13 @@ STR_SORT_ORDER_TIP                                              :{BLACK}Избе
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Изберете критериум за сортирање
 STR_SORT_BY                                                     :{BLACK}Сортирање според
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Населеност
+STR_SORT_BY_NAME                                                :{BLACK}Име
+STR_SORT_BY_DATE                                                :{BLACK}Датум
 STR_SORT_BY_PRODUCTION                                          :Производство
 STR_SORT_BY_TYPE                                                :Тип
 STR_SORT_BY_TRANSPORTED                                         :Транспортирано
-STR_SORT_BY_NAME                                                :{BLACK}Име
-STR_SORT_BY_DATE                                                :{BLACK}Датум
 STR_SORT_BY_NUMBER                                              :Број
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Минатогодишен профит
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Годинашен профит
@@ -346,35 +337,23 @@ STR_SORT_BY_INTRO_DATE                                          :Датум на
 STR_SORT_BY_RUNNING_COST                                        :Потрошувачка
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Моќност/Потрошувачка
 STR_SORT_BY_CARGO_CAPACITY                                      :Капацитет за товар
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Не чека никаков товар
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Избери ги сите објекти
 STR_SELECT_ALL_TYPES                                            :{BLACK}Избери ги сите видови товар (including no waiting cargo)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Достапни Возови
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Достапни Возила
-STR_AVAILABLE_SHIPS                                             :{BLACK}Достапни Бродови
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Достапни Летала
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Преглед на листа на достапни мотори за овој вид на возило
 STR_MANAGE_LIST                                                 :{BLACK}Менаџирање на листа
 STR_MANAGE_LIST_TIP                                             :{BLACK}Испрати ги инструкциите на сите возила во листата
 STR_REPLACE_VEHICLES                                            :Замени ги возилата
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}Достапни Возови
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Достапни Возила
+STR_AVAILABLE_SHIPS                                             :{BLACK}Достапни Бродови
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Достапни Летала
+
 STR_SEND_TRAIN_TO_DEPOT                                         :Испрати во Гаража
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Испрати во Гаража
 STR_SEND_SHIP_TO_DEPOT                                          :Испрати во Гаража
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Јан
-STR_MONTH_ABBREV_FEB                                            :Фев
-STR_MONTH_ABBREV_MAR                                            :Мар
-STR_MONTH_ABBREV_APR                                            :Апр
-STR_MONTH_ABBREV_MAY                                            :Мај
-STR_MONTH_ABBREV_JUN                                            :Јун
-STR_MONTH_ABBREV_JUL                                            :Јул
-STR_MONTH_ABBREV_AUG                                            :Авг
-STR_MONTH_ABBREV_SEP                                            :Сеп
-STR_MONTH_ABBREV_OCT                                            :Окт
-STR_MONTH_ABBREV_NOV                                            :Ное
-STR_MONTH_ABBREV_DEC                                            :Дек
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -402,8 +381,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Град
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Засадување на дрва, местење знаци итн.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информација за земјишна област
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Опции
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не може да се смени интервалот за сервисирање...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Затвори го прозорецот
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Наслов на прозорец - влечи тука за да го поместиш прозорецот
@@ -439,7 +416,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ништо
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Име
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1-в
 STR_ORDINAL_NUMBER_2ND                                          :2-ор
 STR_ORDINAL_NUMBER_3RD                                          :3-ет
@@ -472,6 +449,22 @@ STR_ORDINAL_NUMBER_29TH                                         :29-ти
 STR_ORDINAL_NUMBER_30TH                                         :30-ти
 STR_ORDINAL_NUMBER_31ST                                         :31-ви
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Јан
+STR_MONTH_ABBREV_FEB                                            :Фев
+STR_MONTH_ABBREV_MAR                                            :Мар
+STR_MONTH_ABBREV_APR                                            :Апр
+STR_MONTH_ABBREV_MAY                                            :Мај
+STR_MONTH_ABBREV_JUN                                            :Јун
+STR_MONTH_ABBREV_JUL                                            :Јул
+STR_MONTH_ABBREV_AUG                                            :Авг
+STR_MONTH_ABBREV_SEP                                            :Сеп
+STR_MONTH_ABBREV_OCT                                            :Окт
+STR_MONTH_ABBREV_NOV                                            :Ное
+STR_MONTH_ABBREV_DEC                                            :Дек
+
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -550,12 +543,9 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Могул
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Тајкун на векот
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} постигна статус на '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} од {COMPANY} постигна статус на'{STRING}'!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Сценарио Едитор
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Генерирање на терен
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Зголеми површина на област за спуштање/подигање
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Намали површина на област за спуштање/подигање
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Генерирај случаен терен
@@ -601,7 +591,6 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој ме
 
 
 
-
 ############ start of townname region
 ############ end of townname region
 
@@ -615,9 +604,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој ме
 STR_AUTOSAVE_FAILED                                             :{WHITE}Автоматското снимање неуспешно
 
 
-
 STR_BAGS                                                        :вреќи
-
 
 
 
@@ -746,7 +733,6 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Изгр
 
 ##id 0x2000
 
-
 ##id 0x2800
 
 ##id 0x3000
@@ -754,6 +740,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Изгр
 
 ############ range for rating starts
 ############ range for rating ends
+
+### station view strings
 
 
 
@@ -783,6 +771,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Цилиндр�
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 
+##id 0x6020
 
 ############ end of savegame specific region!
 
@@ -811,9 +800,6 @@ STR_AIRCRAFT                                                    :{WHITE}{COMMA} 
 
 
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Шински возила
-
-
 
 
 
@@ -821,65 +807,26 @@ STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Шинс
 
 ##id 0x9000
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Капацитет: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 
 
 
 ##id 0x9800
 
 STR_BUILD_AQUEDUCT                                              :{BLACK}Изгради водовод
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Пренамени брод
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Одбери тип на товар што ќе го носи бродот
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Пренамени го бродот за да носи од одбележаниот тип на товар
 STR_REFIT_TITLE                                                 :{GOLD}Одбери тип на товар за носење:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Нов капацитет: {GOLD}{CARGO}{}{BLACK}Пренамената чини: {GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Не може да се пренамени бродот...
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Аеродроми
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Не може да се изгради аеродром на оваа локација...
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Авионска гаража
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Нов авион
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Нов авион
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Направи авион
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Не може да се направи авионот...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Авион
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Не може да се прати авионот во гаража...
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Авион на патот
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Не може да сопре/тргне авионот...
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Авионот е во лет
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Авионот мора да се сопре во хангар
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Не може да се продаде авионот...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Изградба на аеродром
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Изгради аеродром
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авион - кликни на авионот за информации
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авион - кликни на авионот за информации
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Направи нов авион
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Повлечи го авионот со глушецот овде за да го продадеш
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Позиционирај го хангарот на центар
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Листа за селекција од авиони - кликни на авионот за информации
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Направи авион од селектираниот тип
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Моментална активност на авионот - кликни овде за стоп/старт на авионот
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Прикажи ги наредбите на авионот
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Прикажи го авионот на средина
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Прати го авионот во хангар. CTRL+клик ќе го прати само на сервис
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Прикажи детали за авионот
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Име на авионот
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Не може да се именува авионот...
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Име на авионот
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Градска прослава . . .{}Првиот авион пристигна на {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Авионска несреќа!{}{COMMA} загинати во пожарот на {STATION}
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Преименувај
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Преименувај го типот на авиони
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Преименувај го типот на авиони
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Не може да се преименува типот на авиони...
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Пренамени авион за да може да пренесува друг вид на товар
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Пренамени авион
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Одбери тип на товар за авионот
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Пренамени го авионот за да носи од одбележаниот тип на товар
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Не може да се пренамени авионот...
 
 
 ##id 0xB000
@@ -913,7 +860,88 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Возо
 
 STR_BUS                                                         :{BLACK}{BUS}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авион - кликни на авионот за информации
 
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Авион
+
+
+
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Пренамени брод
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Пренамени авион
+
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Пренамени го бродот за да носи од одбележаниот тип на товар
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Пренамени го авионот за да носи од одбележаниот тип на товар
+
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Одбери тип на товар што ќе го носи бродот
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Одбери тип на товар за авионот
+
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Авионска гаража
+
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Име на авионот
+
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Име на авионот
+
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Авион на патот
+
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Не може да се пренамени бродот...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Не може да се пренамени авионот...
+
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Не може да се именува авионот...
+
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Не може да сопре/тргне авионот...
+
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Не може да се прати авионот во гаража...
+
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Не може да се направи авионот...
+
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Не може да се преименува типот на авиони...
+
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Не може да се продаде авионот...
+
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Моментална активност на авионот - кликни овде за стоп/старт на авионот
+
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Прикажи ги наредбите на авионот
+
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Прикажи го авионот на средина
+
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Прати го авионот во хангар. CTRL+клик ќе го прати само на сервис
+
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Прикажи детали за авионот
+
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Пренамени авион за да може да пренесува друг вид на товар
+
+
+
+
+
+
+
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Шински возила
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Нов авион
+
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Направи авион
+
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Листа за селекција од авиони - кликни на авионот за информации
+
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Направи авион од селектираниот тип
+
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Преименувај
+
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Преименувај го типот на авиони
+
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Преименувај го типот на авиони
+
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Нов авион
+
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авион - кликни на авионот за информации
+
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Направи нов авион
+
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Повлечи го авионот со глушецот овде за да го продадеш
+
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Позиционирај го хангарот на центар
 
 
 ### depot strings
@@ -952,10 +980,6 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Авио
 ############ Tooltip measurment
 
 
-############ Date formatting
-
-########
-
 
 
 
@@ -964,6 +988,30 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Авио
 
 
 
+#### String control codes and their formatting
+
+STR_JUST_CARGO                                                  :{CARGO}
+
+
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
 
 
 #### Improved sign GUI

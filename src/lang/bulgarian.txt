@@ -156,8 +156,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}ПМ
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ГН
 STR_ABBREV_NONE                                                 :{TINYFONT}НЩ
 STR_ABBREV_ALL                                                  :{TINYFONT}ВЧ
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Карта - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Настройки
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Съобщение
@@ -169,17 +167,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Авто
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD версия {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 The OpenTTD team
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Изход
 STR_YES                                                         :{BLACK}Да
 STR_NO                                                          :{BLACK}Не
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Желаете ли да прекъснете играта и да се върнете към {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Нищо
 STR_COLOUR_DARK_BLUE                                            :Тъмно синьо
 STR_COLOUR_PALE_GREEN                                           :Бледо зелено
@@ -198,8 +190,6 @@ STR_COLOUR_BROWN                                                :Кафяво
 STR_COLOUR_GREY                                                 :Сиво
 STR_COLOUR_WHITE                                                :Бяло
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Прекалено много превозни средства
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Позиция
 STR_SMALLMAP_TYPE_CONTOURS                                      :Контури
 STR_SMALLMAP_TYPE_VEHICLES                                      :Превозни средства
@@ -324,12 +314,13 @@ STR_SORT_ORDER_TIP                                              :{BLACK}Избе
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Избери критерий за сортиране
 STR_SORT_BY                                                     :{BLACK}Сортирай по
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Население
+STR_SORT_BY_NAME                                                :{BLACK}Име
+STR_SORT_BY_DATE                                                :{BLACK}Дата
 STR_SORT_BY_PRODUCTION                                          :Продукция
 STR_SORT_BY_TYPE                                                :Вид
 STR_SORT_BY_TRANSPORTED                                         :Транспортирано
-STR_SORT_BY_NAME                                                :{BLACK}Име
-STR_SORT_BY_DATE                                                :{BLACK}Дата
 STR_SORT_BY_NUMBER                                              :Номер
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Чиста печалба миналата година
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Чиста печалба тази година
@@ -352,37 +343,25 @@ STR_SORT_BY_INTRO_DATE                                          :Дата на �
 STR_SORT_BY_RUNNING_COST                                        :Цена за движение
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Мощност/Цена за движение
 STR_SORT_BY_CARGO_CAPACITY                                      :Товарен капацитет
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Няма чакащ товар
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Избор на всички съоръжения
 STR_SELECT_ALL_TYPES                                            :{BLACK}Избор на всички товари (включително нечакащите)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Налични влакове
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Налични коли
-STR_AVAILABLE_SHIPS                                             :{BLACK}Налични кораби
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Налични самолети
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Виж списъкът с наличните видове машини за този тип превозно средство.
 STR_MANAGE_LIST                                                 :{BLACK}Направи списък
 STR_MANAGE_LIST_TIP                                             :{BLACK}Прати инструкциите до всички машини в този лист
 STR_REPLACE_VEHICLES                                            :Замяна на превозни средства
+STR_SEND_FOR_SERVICING                                          :Прати за обслужване
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}Налични влакове
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Налични коли
+STR_AVAILABLE_SHIPS                                             :{BLACK}Налични кораби
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Налични самолети
+
 STR_SEND_TRAIN_TO_DEPOT                                         :Прати в депото
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Прати в сервиза
 STR_SEND_SHIP_TO_DEPOT                                          :Прати в дока
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Прати в хангара
-STR_SEND_FOR_SERVICING                                          :Прати за обслужване
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Ян
-STR_MONTH_ABBREV_FEB                                            :Фев
-STR_MONTH_ABBREV_MAR                                            :Март
-STR_MONTH_ABBREV_APR                                            :Апр
-STR_MONTH_ABBREV_MAY                                            :Май
-STR_MONTH_ABBREV_JUN                                            :Юни
-STR_MONTH_ABBREV_JUL                                            :Юли
-STR_MONTH_ABBREV_AUG                                            :Авг
-STR_MONTH_ABBREV_SEP                                            :Сеп
-STR_MONTH_ABBREV_OCT                                            :Окт
-STR_MONTH_ABBREV_NOV                                            :Ное
-STR_MONTH_ABBREV_DEC                                            :Дек
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -410,8 +389,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Пост
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Засади дървета, постави знаци и др.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация за земята
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Настройки
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Интервала на техн. преглед не може да се промени...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Затвори прозореца
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заглавие на прозорец - преместване на прозореца с мишката
@@ -458,7 +435,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Нищо
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Име
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1-ви
 STR_ORDINAL_NUMBER_2ND                                          :2-ри
 STR_ORDINAL_NUMBER_3RD                                          :3-ти
@@ -491,6 +468,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29-и
 STR_ORDINAL_NUMBER_30TH                                         :30-ти
 STR_ORDINAL_NUMBER_31ST                                         :31-ви
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Ян
+STR_MONTH_ABBREV_FEB                                            :Фев
+STR_MONTH_ABBREV_MAR                                            :Март
+STR_MONTH_ABBREV_APR                                            :Апр
+STR_MONTH_ABBREV_MAY                                            :Май
+STR_MONTH_ABBREV_JUN                                            :Юни
+STR_MONTH_ABBREV_JUL                                            :Юли
+STR_MONTH_ABBREV_AUG                                            :Авг
+STR_MONTH_ABBREV_SEP                                            :Сеп
+STR_MONTH_ABBREV_OCT                                            :Окт
+STR_MONTH_ABBREV_NOV                                            :Ное
+STR_MONTH_ABBREV_DEC                                            :Дек
+
+STR_MONTH_JAN                                                   :Януари
+STR_MONTH_FEB                                                   :Февруари
+STR_MONTH_MAR                                                   :Март
+STR_MONTH_APR                                                   :Април
+STR_MONTH_MAY                                                   :Май
+STR_MONTH_JUN                                                   :Юни
+STR_MONTH_JUL                                                   :Юли
+STR_MONTH_AUG                                                   :Август
+STR_MONTH_SEP                                                   :Септември
+STR_MONTH_OCT                                                   :Октомври
+STR_MONTH_NOV                                                   :Ноември
+STR_MONTH_DEC                                                   :Декември
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -581,12 +586,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} достигна статус '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} от {COMPANY} достигна статус '{STRING}'!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Редактор на сценарии
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Генератор на терен
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Увеличи площа на терена, за да го понижиш/повишиш
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Намали площа на терена, за да го понижиш/повишиш
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Генерирай случаен терен
@@ -667,9 +669,7 @@ STR_OFF                                                         :изключе�
 STR_SUMMARY                                                     :Обобщение
 STR_FULL                                                        :Пълно
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Игрови опции
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Опции за трудност
@@ -760,9 +760,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Инвести�
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Инвестирай в нова индустрия
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...може да бъде построено само около и в джунглите
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...може да бъде построено само около и в пустините
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* * ИГРАТА Е В ПАУЗА  *  *
@@ -775,9 +772,6 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}АВТОЗ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ЗАПИСВАНЕ НА ИГРА  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Записването продължава,{}моля изчакайте да сръши!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Избери програмата 'Ezy Street style music'
-
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :английски (оригинални)
@@ -856,19 +850,6 @@ STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Избе
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Автозапазването е неуспешно
 
-STR_MONTH_JAN                                                   :Януари
-STR_MONTH_FEB                                                   :Февруари
-STR_MONTH_MAR                                                   :Март
-STR_MONTH_APR                                                   :Април
-STR_MONTH_MAY                                                   :Май
-STR_MONTH_JUN                                                   :Юни
-STR_MONTH_JUL                                                   :Юли
-STR_MONTH_AUG                                                   :Август
-STR_MONTH_SEP                                                   :Септември
-STR_MONTH_OCT                                                   :Октомври
-STR_MONTH_NOV                                                   :Ноември
-STR_MONTH_DEC                                                   :Декември
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Отиващ към {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Отиващ към {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Без заповеди
@@ -882,8 +863,6 @@ STR_ITEMS                                                       :елемент�
 STR_CRATES                                                      :кратери
 STR_RES_OTHER                                                   :друго
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Не може да се споделя списъка със задачи...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Не може да се копира списъка от задачи...
@@ -1139,7 +1118,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-ра�
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :изключено
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Промяна стойноста на настройка
 
 STR_TEMPERATE_LANDSCAPE                                         :умерен климат
@@ -1175,7 +1153,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Избо
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Редакция името на пътна точка
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Не може да се променя името на пункта...
@@ -1241,11 +1218,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Имен
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...прекалено близо до друка индустрия
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Преоборудване на влак да превозва друг товар
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Проборудване
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Избор тип на товар за влак
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Преоборудва влака да превозва избрания тип товар
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Преоборудването на влака е невъзможно...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Промяна на производство
 
 ############ network gui strings
@@ -1751,11 +1723,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Индианс�
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Фабрика за чай
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Детска касичка
 
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
-STR_STATION_NAME                                                :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Тераформиране
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Засаждане на дървета
@@ -1809,6 +1776,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :Много до
 STR_CARGO_RATING_EXCELLENT                                      :Отлично
 STR_CARGO_RATING_OUTSTANDING                                    :Невероятно
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Показване на всички влакове които минават през гарата
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Показване на всички автомобили които минават през гарата
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Показване на всички самолети които кацат на летището
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Показване на всички кораби които спират на пристанището
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} вече не приема {STRING}
@@ -2053,6 +2026,7 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Лет
 STR_SV_STNAME_OILFIELD                                          :{STRING} Нефтено поле
 STR_SV_STNAME_MINES                                             :{STRING} Мини
 STR_SV_STNAME_DOCKS                                             :{STRING} Докове
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Пристройка
 STR_SV_STNAME_SIDINGS                                           :{STRING} Обшивки
 STR_SV_STNAME_BRANCH                                            :{STRING} Клон
@@ -2100,8 +2074,6 @@ STR_NUM_LOW                                                     :малко
 STR_NUM_NORMAL                                                  :нормално
 STR_NUM_HIGH                                                    :голямо
 STR_NUM_CUSTOM                                                  :Изборен
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :много бавно
 STR_AI_SPEED_SLOW                                               :бавно
 STR_AI_SPEED_MEDIUM                                             :средно
@@ -2135,7 +2107,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :враждеб�
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :(Компания {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Ново лице
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Цветове
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Цветове:
@@ -2168,7 +2139,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Всич
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Графика на приходите
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Графика на оперативните приходи
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Баланс на банковата сметка
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Заем
@@ -2570,10 +2540,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :локомот�
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :локомотив за магниторелсов път
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Влаково депо
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Хората празнуват . . .{}Първи влак пристигна на {STATION}!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Подробности)
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Влак на пътя
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Без спирка
@@ -2663,38 +2631,16 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :и отпъту
 STR_TIMETABLE_DAYS                                              :{COMMA} ден{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} щракане{P "" та}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Отиващ към Влаковото депо на {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Отиващ към Влаковото депо на {TOWN}, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}На ремонт във Влаковото депо на {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Ремонт във Влаковото депо на {TOWN}, {VELOCITY}
-
 STR_INVALID_ORDER                                               :{RED} (Невалидна заповед)
 
 STR_UNKNOWN_STATION                                             :неизвестна гара
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Празен
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} от {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} от {STATION} (x{NUM})
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} чака в депото
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Нови ПС
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Влакът е прекалено дълъг
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Влаковете могат да бъдат променяни само когато са спрени в депото
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Влак{P "" ове}
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Нови Машини за Двурелсов път
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Нови електрически влакове
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Нови Машини за Монорелсов път
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Нови Машини за Магниторелсов път
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}ЖП превозни средства
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Купи Машина
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Копиране на превозно средство
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Така ще бъде построено копие на пътното превозно средство. Натисни CTRL за да споделиш задачите
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Така ще бъде построено копие на пътното превозно средство. Натисни на този бутон и след това на пътно превозно средство вътре или вън от депото. Натисни CTRL за да споделиш задачите
-STR_CLONE_TRAIN                                                 :{BLACK}Клониране на влак
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Така ще бъде построено копие на влака заедно с всички негови вагони. Натисни CTRL за да споделиш задачите
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Така ще бъде построено копие на влака заедно с всички негови вагони. Натисни на този бутон и след това на влак вътре или вън от депото. Натисни CTRL за да споделиш задачите
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Преименувай
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Остави
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Изтрий
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Отиди на
@@ -2710,14 +2656,12 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Пром
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Заповеди)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Край на Заповедите - -
 STR_SERVICE                                                     :{BLACK}Ремонт
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Не може да купиш ЖП машина...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Купи: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Цена: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Товарене/ Разтоварване
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Напуска
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Влакът трябва да бъде спрян в депото
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Не може да пратиш влака в депото...
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Няма повече място за още заповеди
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Прекалено много заповеди
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Не може да зададеш нова заповед...
@@ -2731,26 +2675,11 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}прев
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Не може да преместиш машината...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Задния локомотив ще следва винаги предния си събрат
 STR_CARGO_N_A                                                   :Не се предлага{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Не може да продадеш ЖП машината...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Не може да намери маршрута до местното депо
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Не може да спреш/пуснеш влака...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Дни на обслужване: {LTBLUE}{COMMA}дни{BLACK}   Последно облужване: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Интервал на сервиз: {LTBLUE}{COMMA}%{BLACK}   Последен сервиз: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Влакове - кликни върху някой влак за повече информация
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Влакове - кликни върху някой влак за повече информация, домъкни машина за да я довавиш/премахнеш от влака
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Купи нова ЖП машина
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Домъкни ЖП машина тук, за да я продадеш
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Фокусирай върху мястото на влаковото депо
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Списък с влакове - натисни върху влак за информация
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Строене на избрания влак
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Преименуване на влак
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Текущо същояние на влака - натиснете за спиране/пускане
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Пътен лист
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Центриране главния прозорец върху влака
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Изпращане влака в депо
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Игнориране на семафор
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Обръщане посоката на влака
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Показва информация за влака
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Увеличава интервалa за сервиз
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Намалява интервал за сервиз
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Информация за превозвания товар
@@ -2774,13 +2703,9 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Спрян
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Влака не може да пропусне сигнала при опасност...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Катастрофа!
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Име на влак
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Не може да сложи име...
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Име на влак
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Влакова катастрофа!{}{COMMA} умрели в огнената експлозия
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Не може да обърне посоката на влак...
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Преименуване на влак
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Не може да се преименува влак...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Не може да обърне превозно средство състоящо се от няколко елемента
 STR_CLEAR_TIME                                                  :{BLACK}Изчисти времето
 STR_RESET_LATENESS                                              :{BLACK}Преправи закъснялата бройка
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Смяна на името на пътната точка
@@ -2812,178 +2737,53 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Афто
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Запълни времевата таблица със стойностите от следващото пътуване (CTRL-клик за опит за запазване на времената за изчакване)
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Кола на пътя
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Кол{P а и}
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} гараж за коли
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Ново превозно средство
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Нова кола
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Покупка на превозно средство
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Не може да купи кола...
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...трябва да бъде спряно в сервиз за коли
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Не може да продаде колата...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Не може да пусне/спре колата...
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} чака в депото
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Отиващ към Автодепото на {TOWN}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Отиващ към Автодепото на {TOWN}, {VELOCITY}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}На ремонт в Автодепото на {TOWN}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}На ремонт в Автодепото на {TOWN}, {VELOCITY}
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Не може да изпрати колата в сервиз...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Не може да намери локалния сервиз
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Коли - натиснете върху кола за информация
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Текущо действие - натиснете за спиране/пускане на превозното средство
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Пътен лист
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Центриране на главния прозорец върху превозното средство
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Изпращане на ПС в депо. CTRL+натискане ще изпрати само за преглед
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Насилствено обръщане на ПС
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Показва информация за автомобила
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}ПС - натиснете върху ПС за информация
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Покупка на нов автомобил
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Преместен автомобил тук ще го продаде
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Фокусирай общия план върху местонахождението на МПС-депото
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Списък с избор на МПС-та - натисни върху МПС за информация
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Купи посоченото МПС
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Капацитет: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} превозно средство{P о а}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Преименувай МПС-то
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Не може да преименуваш МПС-то...
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Преименувай МПС-то
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първият автобус пристигнал в {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Хората празнуват . . .{}Първи камион пристигна на {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първият пътнически трамвай пристигна на {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първият товарен трамвай пристигна на {STATION}!
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Пътно-транспортно Произшествие!{}Шофьор загина на място при екплозия на МПС след сблъсък с влак
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Пътно-транспортно Произшествие!{}{COMMA} загинаха на място при екплозия на МПС след сблъсък с влак
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Не може да обърне превозно средство състоящо се от няколко елемента
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Преименувай
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Преименувай МПС-то
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Преименувай МПС-то
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Не може да преименуваш МПС-то...
 
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Преоборудване автомобила за друг товар
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Проборудване на автомобила
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Преоборудване на автомобила за избрания товар
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Преоборудването на автомобила е невъзможно...
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Избор тип това за автомобила да превозва
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Воднопътен строеж
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Воднопътен строеж
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Воден път
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Не може да построиш пристанище тук...
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Корабно депо
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Нови Кораби
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Кораб{P "" и}
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Нови Кораби
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Купи Кораб
-STR_CLONE_SHIP                                                  :{BLACK}Клониране на кораб
-STR_CLONE_SHIP_INFO                                             :{BLACK}Така ще бъде построено копие на кораб. Натисни CTRL за да споделиш задачите
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Така ще бъде построено копие на кораб. Натисни този бутон и след това върху кораб вътре или вън от депото. Натисни CTRL за да споделиш задачите
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Корабът трябва да е спрян в депото
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Не може да продадеш кораба...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Не може да купиш кораба...
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Кораб на пътя
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Не може да спреш/задвижиш кораба...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Не може да пратиш кораба в депото...
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Отиващ към Корабното депо на {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Отиващ към Корабното депо на {TOWN}, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}На ремонт в Корабното депо на {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}На ремонт в Корабното депо на {TOWN}, {VELOCITY}
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} чака в депото
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Създай Пристанище
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Създай Корабно Депо (за закупуване и обслужване на кораби)
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Кораби - натисни върху кораб за инфорамция
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Купи нов кораб
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Премести кораба тук, за да го продадеш
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Фокусирай общия план върху местонахождението на корабното депо
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Кораби - натисни върху кораб за информация
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Списък с избор на кораби - натисни върху кораб за информация
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Купи посоченият кораб
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Настоящо корабно действие - натисни тук, за да спреш/задвижиш кораба
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Покажи заповедите на кораба
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Фокусирай общия план върху местонахождението на кораба
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Прати кораба в депото
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Покажи детайлите за кораба
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Наименувай кораба
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Наименувай кораба
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Не може да наименуваш кораба...
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първия кораб пристигнал в {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Поставете шамандура, използва се като отправна точка
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Не може да постави шамандура...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Построй акведукт
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Не може да построиш акведукт тук...
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Промяна на име
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Промяна името на кораб
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Промяна името на кораба
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Не може да смени името на кораба...
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Преустройване на товарен кораб за друг тип товар
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Преустройване)
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Преустройване на кораб
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Избор на вид товар за превоз от кораба
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Преустройване на кораба да превозва избрания вид товар
 STR_REFIT_TITLE                                                 :{GOLD}Изберете вид товар за превозване:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Нов капацитет: {GOLD}{CARGO}{}{BLACK}Цена за преустройство: {GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Не може да преустрои кораб...
 STR_REFITTABLE                                                  :(преустроим)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Летища
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Не може да построи летище...
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} хангар за самолети
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Ново летище
-STR_CLONE_AIRCRAFT                                              :{BLACK}Клониране на летателен апарат
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Така ще бъде построено копие на летателния апарат. Натисни CTRL за да споделиш задачите
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Така ще бъде построено копие на летателния апарат. Натисни на този бутон и след това на летателен апарат вътре или вън от хангара. Натисни CTRL за да споделиш задачите
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Ново самолет
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Строене на самолет
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Не може да построи самолет...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Самолет
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Не може да изпрати самолета в хангар...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}Отиващ към Хангара на летище {STATION}
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Отиващ към Хангара на летище {STATION}, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}На ремонт в Хангара на летище {STATION}
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}На ремонт в Хангара на летище {STATION}, {VELOCITY}
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} чака в хангара
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Самолет на пътя
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Не може да спре/пусне самолет...
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Самолета е във въздуха
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Самолета трябва да бъде спрян в хангар
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Не може да продаде самолета...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Строене на летище
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Строене на летище
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Самолет - натиснете върху самолет за информация
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Самолет - натиснете върху самолет за информация
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Строене на самолет
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Преместете самолет тук за да го продадете
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Центриране на главния прозорец върху хангара
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Избор на самолет - натиснете върху самолет за информация
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Строене на избрания самолет
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Състояние на самолета - натиснете за спиране/пускане
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Маршрут на самолета
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Центриране на главния прозорец върху самолета
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Изпращане на самолета в хангар
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Информация за самолета
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Име на самолет
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Не може да нарече самолета...
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Име на самолет
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първия самолет кацнал на {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Самолетна катастрофа!{}{COMMA} умират в огъня на {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Самолетна катастрофа!{}Самолета остана без гориво, {COMMA} умряха в огненото кълбо!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Смяна на името
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Смяна името на самолета
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Сняна името на самолета
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Не може да се смени името на самолета...
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Преустройване на самолета за превоз на друг товар
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Преустрой самолета
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Избор какъв тип товар да превозва самолета
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Преустрой самолета да превозва посочения тип товар
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Не може да се преустрои самолета...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Разписание)
 
@@ -3125,14 +2925,224 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Влакове - кликни върху някой влак за повече информация
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Коли - натиснете върху кола за информация
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Кораби - натисни върху кораб за информация
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Самолет - натиснете върху самолет за информация
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Показване на всички влакове които минават през гарата
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Показване на всички автомобили които минават през гарата
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Показване на всички самолети които кацат на летището
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Показване на всички кораби които спират на пристанището
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Влак{P "" ове}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Кол{P а и}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Кораб{P "" и}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Самолет
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Споделено разписание с {COMMA} превозн{P о и} средст{P о а}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Показване на всички превозни средства които споделят разписанието
+
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} чака в депото
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} чака в депото
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} чака в депото
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} чака в хангара
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Проборудване
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Проборудване на автомобила
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Преустройване на кораб
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Преустрой самолета
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Преоборудва влака да превозва избрания тип товар
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Преоборудване на автомобила за избрания товар
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Преустройване на кораба да превозва избрания вид товар
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Преустрой самолета да превозва посочения тип товар
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Избор тип на товар за влак
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Избор тип това за автомобила да превозва
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Избор на вид товар за превоз от кораба
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Избор какъв тип товар да превозва самолета
+
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Влаково депо
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} гараж за коли
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Корабно депо
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} хангар за самолети
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Име на влак
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Преименувай МПС-то
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Наименувай кораба
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Име на самолет
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Име на влак
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Преименувай МПС-то
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Наименувай кораба
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Име на самолет
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Влак на пътя
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Кола на пътя
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Кораб на пътя
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Самолет на пътя
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Преоборудването на влака е невъзможно...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Преоборудването на автомобила е невъзможно...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Не може да преустрои кораб...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Не може да се преустрои самолета...
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Не може да сложи име...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Не може да преименуваш МПС-то...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Не може да наименуваш кораба...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Не може да нарече самолета...
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Не може да спреш/пуснеш влака...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Не може да пусне/спре колата...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Не може да спреш/задвижиш кораба...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Не може да спре/пусне самолет...
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Не може да пратиш влака в депото...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Не може да изпрати колата в сервиз...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Не може да пратиш кораба в депото...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Не може да изпрати самолета в хангар...
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Не може да купиш ЖП машина...
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Не може да купи кола...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Не може да купиш кораба...
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Не може да построи самолет...
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Не може да се преименува влак...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Не може да преименуваш МПС-то...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Не може да смени името на кораба...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Не може да се смени името на самолета...
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Не може да продадеш ЖП машината...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Не може да продаде колата...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Не може да продадеш кораба...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Не може да продаде самолета...
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Текущо същояние на влака - натиснете за спиране/пускане
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Текущо действие - натиснете за спиране/пускане на превозното средство
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Настоящо корабно действие - натисни тук, за да спреш/задвижиш кораба
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Състояние на самолета - натиснете за спиране/пускане
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Пътен лист
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Пътен лист
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Покажи заповедите на кораба
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Маршрут на самолета
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Центриране главния прозорец върху влака
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Центриране на главния прозорец върху превозното средство
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Фокусирай общия план върху местонахождението на кораба
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Центриране на главния прозорец върху самолета
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Изпращане влака в депо
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Изпращане на ПС в депо. CTRL+натискане ще изпрати само за преглед
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Прати кораба в депото
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Изпращане на самолета в хангар
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Показва информация за влака
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Показва информация за автомобила
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Покажи детайлите за кораба
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Информация за самолета
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Преоборудване на влак да превозва друг товар
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Преоборудване автомобила за друг товар
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Преустройване на товарен кораб за друг тип товар
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Преустройване на самолета за превоз на друг товар
+
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Отиващ към Влаковото депо на {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Отиващ към Влаковото депо на {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Отиващ към Автодепото на {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Отиващ към Автодепото на {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Отиващ към Корабното депо на {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Отиващ към Корабното депо на {TOWN}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Отиващ към Хангара на летище {STATION}
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Отиващ към Хангара на летище {STATION}, {VELOCITY}
+
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}На ремонт във Влаковото депо на {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Ремонт във Влаковото депо на {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}На ремонт в Автодепото на {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}На ремонт в Автодепото на {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}На ремонт в Корабното депо на {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}На ремонт в Корабното депо на {TOWN}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}На ремонт в Хангара на летище {STATION}
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}На ремонт в Хангара на летище {STATION}, {VELOCITY}
+
+
+STR_CLONE_TRAIN                                                 :{BLACK}Клониране на влак
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Копиране на превозно средство
+STR_CLONE_SHIP                                                  :{BLACK}Клониране на кораб
+STR_CLONE_AIRCRAFT                                              :{BLACK}Клониране на летателен апарат
+
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Така ще бъде построено копие на влака заедно с всички негови вагони. Натисни CTRL за да споделиш задачите
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Така ще бъде построено копие на пътното превозно средство. Натисни CTRL за да споделиш задачите
+STR_CLONE_SHIP_INFO                                             :{BLACK}Така ще бъде построено копие на кораб. Натисни CTRL за да споделиш задачите
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Така ще бъде построено копие на летателния апарат. Натисни CTRL за да споделиш задачите
+
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Така ще бъде построено копие на влака заедно с всички негови вагони. Натисни на този бутон и след това на влак вътре или вън от депото. Натисни CTRL за да споделиш задачите
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Така ще бъде построено копие на пътното превозно средство. Натисни на този бутон и след това на пътно превозно средство вътре или вън от депото. Натисни CTRL за да споделиш задачите
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Така ще бъде построено копие на кораб. Натисни този бутон и след това върху кораб вътре или вън от депото. Натисни CTRL за да споделиш задачите
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Така ще бъде построено копие на летателния апарат. Натисни на този бутон и след това на летателен апарат вътре или вън от хангара. Натисни CTRL за да споделиш задачите
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Нови Машини за Двурелсов път
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Нови електрически влакове
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Нови Машини за Монорелсов път
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Нови Машини за Магниторелсов път
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}ЖП превозни средства
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Нова кола
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Нови Кораби
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Ново самолет
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Купи Машина
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Покупка на превозно средство
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Купи Кораб
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Строене на самолет
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Списък с влакове - натисни върху влак за информация
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Списък с избор на МПС-та - натисни върху МПС за информация
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Списък с избор на кораби - натисни върху кораб за информация
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Избор на самолет - натиснете върху самолет за информация
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Строене на избрания влак
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Купи посоченото МПС
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Купи посоченият кораб
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Строене на избрания самолет
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Преименувай
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Преименувай
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Промяна на име
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Смяна на името
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Преименуване на влак
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Преименувай МПС-то
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Промяна името на кораб
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Смяна името на самолета
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Преименуване на влак
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Преименувай МПС-то
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Промяна името на кораба
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Сняна името на самолета
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Нови ПС
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Ново превозно средство
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Нови Кораби
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Ново летище
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Влакове - кликни върху някой влак за повече информация, домъкни машина за да я довавиш/премахнеш от влака
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}ПС - натиснете върху ПС за информация
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Кораби - натисни върху кораб за инфорамция
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Самолет - натиснете върху самолет за информация
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Купи нова ЖП машина
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Покупка на нов автомобил
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Купи нов кораб
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Строене на самолет
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Домъкни ЖП машина тук, за да я продадеш
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Преместен автомобил тук ще го продаде
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Премести кораба тук, за да го продадеш
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Преместете самолет тук за да го продадете
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Фокусирай върху мястото на влаковото депо
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Фокусирай общия план върху местонахождението на МПС-депото
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Фокусирай общия план върху местонахождението на корабното депо
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Центриране на главния прозорец върху хангара
+
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Искате ли да продадете всички коли в депото?
@@ -3153,7 +3163,6 @@ STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Авто
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Автоматична замяна на всички кораби в депото
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Автоматична замяна на всички самолети в хангара
 
-
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замяна {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Започване замяната
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Спиране на замяната
@@ -3169,6 +3178,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Прем
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Автоматичната замяна ще запази дължината на влака като премахне вагони (започвайки от предните), ако замяната довежда до по-дълъг влак.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Замяна: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Превключване между замяна на локомотиви и вагони
+
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Превозното средство не е на разположение
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Превозното средство не е на разположение
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Корабът не е на разположение
@@ -3316,17 +3326,6 @@ STR_MEASURE_AREA                                                :{BLACK}Площ
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Дължина: {NUM}{}Разлика във височината: {NUM} м
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площ: {NUM} x {NUM}{}Разлика във височината: {NUM} м
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Сума за преместване: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...този път принадлежи на градът
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...пътят е насочен в погрешната посока
@@ -3351,7 +3350,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :Група {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Всички влакове
 STR_GROUP_ALL_ROAD_VEHICLES                                     :Всички пътни превозни средства
@@ -3380,12 +3378,62 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Изтр
 STR_GROUP_RENAME_TIP                                            :{BLACK}Преименувай избраната група
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Щракни да защитиш тази група от глобална автоматична замяна
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :(Компания {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Група {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Името трябва да е уникално
 

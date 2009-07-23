@@ -154,8 +154,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}BG
 STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}TOT
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opcions del Joc
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Missatge
@@ -167,17 +165,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyrigh
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versió {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 L'equip d'OpenTTD
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Surt
 STR_YES                                                         :{BLACK}Si
 STR_NO                                                          :{BLACK}No
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Estàs segur que vols abandonar aquest joc i tornar a {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Res
 STR_COLOUR_DARK_BLUE                                            :Blau Fosc
 STR_COLOUR_PALE_GREEN                                           :Verd Pàl·lid
@@ -196,8 +188,6 @@ STR_COLOUR_BROWN                                                :Marró
 STR_COLOUR_GREY                                                 :Gris
 STR_COLOUR_WHITE                                                :Blanc
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Massa vehicles en joc
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Situació
 STR_SMALLMAP_TYPE_CONTOURS                                      :Límits
 STR_SMALLMAP_TYPE_VEHICLES                                      :Vehicles
@@ -323,12 +313,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Seleccio
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}Selecciona el criteri de filtratge
 STR_SORT_BY                                                     :{BLACK}Ordenar per
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Població
+STR_SORT_BY_NAME                                                :{BLACK}Nom
+STR_SORT_BY_DATE                                                :{BLACK}Data
 STR_SORT_BY_PRODUCTION                                          :Producció
 STR_SORT_BY_TYPE                                                :Tipus
 STR_SORT_BY_TRANSPORTED                                         :Transportat
-STR_SORT_BY_NAME                                                :{BLACK}Nom
-STR_SORT_BY_DATE                                                :{BLACK}Data
 STR_SORT_BY_NUMBER                                              :Número
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Benef. darrer any
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Benef. aquest any
@@ -351,37 +342,25 @@ STR_SORT_BY_INTRO_DATE                                          :Data de llança
 STR_SORT_BY_RUNNING_COST                                        :Cost d'utilització
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potència/Cost d'utilització
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacitat de càrrega
+
 STR_NO_WAITING_CARGO                                            :{BLACK}No hi ha càrrega d'aquest tipus esperant
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar totes les instal·lacions
 STR_SELECT_ALL_TYPES                                            :{BLACK}Selecciona tots els tipus de càrrega (incloent carga sense espera)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Trens Disponibles
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Vehicles Disponibles
-STR_AVAILABLE_SHIPS                                             :{BLACK}Vaixells Disponibles
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Avions Disponibles
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Veure una llista dels motors disponibles per aquest tipus de vehicle
 STR_MANAGE_LIST                                                 :{BLACK}Administra llista
 STR_MANAGE_LIST_TIP                                             :{BLACK}Envia instruccions a tots els vehicles de la llista
 STR_REPLACE_VEHICLES                                            :Substitueix Vehicles
+STR_SEND_FOR_SERVICING                                          :Enviar a fer Revisió
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}Trens Disponibles
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Vehicles Disponibles
+STR_AVAILABLE_SHIPS                                             :{BLACK}Vaixells Disponibles
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Avions Disponibles
+
 STR_SEND_TRAIN_TO_DEPOT                                         :Enviar a la Cotxera
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Enviar a la Cotxera
 STR_SEND_SHIP_TO_DEPOT                                          :Enviar a la Drassana
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Enviar a l'Hangar
-STR_SEND_FOR_SERVICING                                          :Enviar a fer Revisió
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Gen
-STR_MONTH_ABBREV_FEB                                            :Feb
-STR_MONTH_ABBREV_MAR                                            :Mar
-STR_MONTH_ABBREV_APR                                            :Abr
-STR_MONTH_ABBREV_MAY                                            :Mai
-STR_MONTH_ABBREV_JUN                                            :Jun
-STR_MONTH_ABBREV_JUL                                            :Jul
-STR_MONTH_ABBREV_AUG                                            :Ago
-STR_MONTH_ABBREV_SEP                                            :Sep
-STR_MONTH_ABBREV_OCT                                            :Oct
-STR_MONTH_ABBREV_NOV                                            :Nov
-STR_MONTH_ABBREV_DEC                                            :Des
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -409,8 +388,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construe
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Planta arbres, situa senyals, etc.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informació del terreny
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcions
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}No es pot canviar l'interval del manteniment...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tanca la finestra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Títol de la finestra - arrossega això per moure la finestra
@@ -457,7 +434,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ningú
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nom
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
 STR_ORDINAL_NUMBER_2ND                                          :2
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -490,6 +467,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29
 STR_ORDINAL_NUMBER_30TH                                         :30
 STR_ORDINAL_NUMBER_31ST                                         :31
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Gen
+STR_MONTH_ABBREV_FEB                                            :Feb
+STR_MONTH_ABBREV_MAR                                            :Mar
+STR_MONTH_ABBREV_APR                                            :Abr
+STR_MONTH_ABBREV_MAY                                            :Mai
+STR_MONTH_ABBREV_JUN                                            :Jun
+STR_MONTH_ABBREV_JUL                                            :Jul
+STR_MONTH_ABBREV_AUG                                            :Ago
+STR_MONTH_ABBREV_SEP                                            :Sep
+STR_MONTH_ABBREV_OCT                                            :Oct
+STR_MONTH_ABBREV_NOV                                            :Nov
+STR_MONTH_ABBREV_DEC                                            :Des
+
+STR_MONTH_JAN                                                   :Gener
+STR_MONTH_FEB                                                   :Febrer
+STR_MONTH_MAR                                                   :Març
+STR_MONTH_APR                                                   :Abril
+STR_MONTH_MAY                                                   :Maig
+STR_MONTH_JUN                                                   :Juny
+STR_MONTH_JUL                                                   :Juliol
+STR_MONTH_AUG                                                   :Agost
+STR_MONTH_SEP                                                   :Setembre
+STR_MONTH_OCT                                                   :Octubre
+STR_MONTH_NOV                                                   :Novembre
+STR_MONTH_DEC                                                   :Desembre
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -580,12 +585,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} assoleix l'estat '{STRING}' !
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} de {COMPANY} assoleix l'estat '{STRING}' !
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor d'Escenaris
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generador de Terreny
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Augmenta la mida de l'àrea de terreny a rebaixar/elevar
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Disminueix la mida de l'àrea de terreny a rebaixar/elevar
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Genera un terreny aleatori
@@ -667,9 +669,7 @@ STR_OFF                                                         :Fora
 STR_SUMMARY                                                     :Resum
 STR_FULL                                                        :Complet
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcions del Joc
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Paràmetres de dificultat
@@ -774,9 +774,6 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  DESA
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}S'està desant el joc,{}espera a que acabi l'operació!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selecciona el programa 'Ezy Street style music'
 
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
-
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Anglès
 STR_TOWNNAME_FRENCH                                             :Francès
@@ -856,19 +853,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Informac
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Ha fallat el desat automàtic
 
-STR_MONTH_JAN                                                   :Gener
-STR_MONTH_FEB                                                   :Febrer
-STR_MONTH_MAR                                                   :Març
-STR_MONTH_APR                                                   :Abril
-STR_MONTH_MAY                                                   :Maig
-STR_MONTH_JUN                                                   :Juny
-STR_MONTH_JUL                                                   :Juliol
-STR_MONTH_AUG                                                   :Agost
-STR_MONTH_SEP                                                   :Setembre
-STR_MONTH_OCT                                                   :Octubre
-STR_MONTH_NOV                                                   :Novembre
-STR_MONTH_DEC                                                   :Desembre
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Cap a {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Cap a {STATION}, a {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Sense ordres
@@ -882,8 +866,6 @@ STR_ITEMS                                                       :caps
 STR_CRATES                                                      :palets
 STR_RES_OTHER                                                   :altres
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}No es pot compartir la llista d'ordres...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}No es pot copiar la llista d'ordres...
@@ -1156,7 +1138,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Mida-Y 
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :desactivat
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Canvia el valor de l'ajustament
 
 STR_TEMPERATE_LANDSCAPE                                         :paisatge temperat
@@ -1258,11 +1239,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nom de l
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...massa a prop d'altres indústries
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Remodela un tren per transportar un altre tipus de càrrega
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Remodela tren
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selecciona tipus de càrrega a transportar
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Remodela un tren per transportar el tipus de càrrega seleccionada
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}No es pot remodelar el tren...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Canvi de producció
 
 ############ network gui strings
@@ -2123,8 +2099,6 @@ STR_NUM_LOW                                                     :Baix
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Alt
 STR_NUM_CUSTOM                                                  :Personalitzat
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Molt lent
 STR_AI_SPEED_SLOW                                               :Lent
 STR_AI_SPEED_MEDIUM                                             :Mitjà
@@ -2592,10 +2566,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotora de m
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotora de maglev
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Cotxeres de Tren
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Celebració popular . . .{} Arribada del 1er. tren a {STATION}!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalls)
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Tren en el camí
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Sense parar
@@ -2685,37 +2657,16 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :i viatge per {S
 STR_TIMETABLE_DAYS                                              :{COMMA} di{P a es}
 STR_TIMETABLE_TICKS                                             :{COMMA} mar{P ca ques}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Cap a cotxeres de {TOWN}.
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Cap a cotxeres de {TOWN}, a {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Revisió a la cotxera de {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Revisió a la cotxera de {TOWN}, {VELOCITY}
-
 STR_INVALID_ORDER                                               :{RED} (Ordre incorrecte)
 
 STR_UNKNOWN_STATION                                             :estació desconeguda
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Buit
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} procedent{P "" s} de {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} des de {STATION} (x{NUM})
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} està esperant a la cotxera
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nous Vehicles
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren massa llarg
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Els trens només es poden modificar quan estan parats dins d'una cotxera
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nous Trens
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nous Trens de Via Electrificada
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nous Trens Monorail
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nous Trens Maglev
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Vehicles amb Vies
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Construeix Vehicle
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clona Vehicle
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Fa una còpia del vehicle. Control+Clic compartirà les ordres
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Fa una còpia del vehicle. Prem aquest botó i després en un vehicle dins o fora cotxeres. Control+Clic compartirà les ordres
-STR_CLONE_TRAIN                                                 :{BLACK}Clona Tren
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Fa una còpia del tren inclosos tots els vagons. Control+Clic compartirà les ordres
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Fa una còpia del tren inclosos tots els vagons. Prem aquest botó i després en un tren dins o fora cotxeres. Control+Clic compartirà les ordres
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Reanomena
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Salta
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Esborra
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Ves a
@@ -2731,14 +2682,12 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Commuta 
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordres)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Fi d'Ordres - -
 STR_SERVICE                                                     :{BLACK}Servei
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}No es pot construir el vehicle...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Construït: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Carregant / Descarregant
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Deixant
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}El tren s'ha de parar dins de la cotxera
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}No pots enviar el tren a cotxeres...
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}No hi ha més espai per ordres
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Massa ordres
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}No es pot afegir una nova ordre...
@@ -2753,25 +2702,11 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}un vehic
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}No es pot moure el vehicle...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}La màquina posterior sempre ha de seguir la seva parella davantera
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}No es pot vendre el vehicle...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Incapaç de trobar el camí a la cotxera local
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}No es pot parar/arrencar el tren...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Interval de manteniment: {LTBLUE}{COMMA}dies{BLACK}   Darrer manteniment: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Interval de manteniment: {LTBLUE}{COMMA}%{BLACK}   Darrer manteniment: {LTBLUE}{DATE_LONG}
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trens - clica al tren per info., arrossega el vehicle per afegir/treure del tren
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Construeix un nou element de tren
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arrossega l'element de tren fins aquí per vendre'l
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centra la vista de la pantalla principal en la situació de la cotxera
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Llista de selecció d'elements de tren - clica a l'element per més informació
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Construeix l'element de tren seleccionat
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Reanomena el tipus d'element del tren
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Acció sobre el tren actual - clica aquí per parar/arrencar el tren
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Mostra les ordres del tren
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centra la vista de la pantalla principal a la situació del tren
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Envia el tren a cotxera
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Obliga al tren a actuar sense esperar a tenir la senyal lliure
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Inverteix la direcció del tren
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Mostra els detalls del tren
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Augmenta l'interval de manteniment
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Disminueix l'interval de manteniment
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Mostra els detalls de càrrega transportada
@@ -2805,15 +2740,10 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parat
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}No pots fer que un tren passi d'una senyal amb perill...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accident!
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Anomena tren
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}No es pot anomenar el tren...
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Anomena tren
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Accident de Tren!{}{COMMA} moren en una bola de foc després de la col·lisió
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}No es pot invertir la direcció del tren...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}No s'ha pogut invertir el sentit del vehicle...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}No es poden girar vehicles que estan formats per múltiples unitats
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Reanomena el tipus d'element del tren
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}No es pot reanomenar el tipus d'element del tren...
 STR_CLEAR_TIME                                                  :{BLACK}Esborra Temps
 STR_RESET_LATENESS                                              :{BLACK}Reset. control de retard
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Canvia el nom del punt de trobada
@@ -2845,43 +2775,14 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoompl
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Omple automàticament l'horari amb valors del proper viatge (CTRL+clic per intentar mantenir els temps d'espera)
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Automòbil en camí
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Cotxera de Vehicles
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nous Vehicles
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nous Vehicles
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Construeix Vehicle
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}No es pot construir l'automòbil...
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...s'ha de parar dins d'una cotxera
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}No pots vendre l'automòbil...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}No es pot parar/arrencar l'automòbil...
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} està esperant a la cotxera
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Cap a la cotxera de {TOWN}.
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Cap a la cotxera de {TOWN}, a {VELOCITY}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Revisió a la cotxera de {TOWN}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Revisió a la cotxera de {TOWN}, {VELOCITY}
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}No es pot enviar el vehicle a cotxera...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Impossible trobar la cotxera local
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Acció sobre el vehicle actual - clica aquí per parar/arrencar el vehicle
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Mostra les ordres dels vehicles
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centra la pantalla principal a la situació del vehicle
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envia el vehicle a cotxera
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Obliga al vehicle a tornar
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostra els detalls del vehicle
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehicles - clica en un vehicle per més informació
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Construeix un nou automòbil
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arrossega el vehicle fins aquí per vendre'l
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra la pantalla principal en la situació de la cotxera
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Llista de selecció de Vehicles - clica en un vehicle per més informació
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Construeix l'automòbil seleccionat
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacitat: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehicle{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Anomena automòbil
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}No es pot anomenar l'automòbil...
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Anomena automòbil
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Celebració popular . . .{}Primer autobús arriba a {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Celebració popular . . .{}Primer camió arriba a {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Els ciutadans celebren . . .{}El primer tramvia de passatgers arriba a {STATION}!
@@ -2889,128 +2790,39 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Accident d'automòbil!{}El conductor mor en una bola de foc després de la col·lisió amb un tren
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Accident d'automòbil!{}{COMMA} moren en una bola de foc després d'una col·lisió amb un tren
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}No s'ha pogut fer girar el vehicle...
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Reanomena
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Reanomena tipus d'automòbil
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Reanomena tipus d'automòbil
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}No es pot reanomenar tipus d'automòbil
 
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Remodela vehicle de carretera per dur un tipus diferent de càrrega
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Remodela vehicle de carretera
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Remodela vehicle de carretera per a dur el tipus de carrega senyalat
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}No es pot remodelar el vehicle de carretera...
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecciona el tipus de càrrega a transportar pel vehicle
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construcció de vies d'aigua
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construcció de vies d'aigua
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vies d'aigua
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Aquí no es pot construir un port...
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Drassana
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nous Vaixells
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nous Vaixells
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Construeix Vaixell
-STR_CLONE_SHIP                                                  :{BLACK}Clona Vaixell
-STR_CLONE_SHIP_INFO                                             :{BLACK}Fa una còpia del vaixell. Control+Clic compartirà les ordres
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Fa una còpia del vaixell. Prem aquest botó i després en un vaixell dins o fora les drassanes. Control+Clic compartirà les ordres
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}El vaixell s'ha de parar a la drassana
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}No es pot vendre el vaixell...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}No es pot construir el vaixell...
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Vaixell en el camí
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}No es pot parar/arrencar el vaixell...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}No es pot enviar vaixell a la drassana...
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Cap a la drassana de {TOWN}.
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Cap a la drassana de{TOWN}, a {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Revisió a la drassana de {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisió a la drassana de {TOWN}, {VELOCITY}
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} està esperant a la drassana
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construeix un port
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construeix una drassana (per construir i revisar vaixells)
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Vaixells - clica en un vaixell per més informació
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Construeix un nou vaixell
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Arrossega el vaixell fins aquí per vendre'l
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centra la pantalla principal en la situació de la drassana
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Llista de selecció de Vaixells - clica en un vaixell per més informació
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Construeix el vaixell seleccionat
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Accions sobre el vaixell actual - clica aquí per parar/arrencar el vaixell
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Mostra les ordres del vaixell
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centra la pantalla principal en la situació del vaixell
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Envia el vaixell a la drassana. CTRL+Clic per només revisió
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostra els detalls del vaixell
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Anomena vaixell
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Anomena vaixell
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}No es pot anomenar el vaixell...
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Celebració popular . . .{}El 1er. vaixell arriba a {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Situa boia, que pot ser útil per marques de ruta addicionals
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Aquí no es pot situar una boia...
 STR_BUILD_AQUEDUCT                                              :{BLACK} Construeix aqüeducte
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Aquí no es pot construir un aqüeducte...
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Reanomena
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Reanomena tipus de vaixell
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Reanomena tipus de vaixell
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}No es pot reanomenar el tipus de vaixell...
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Remodela vaixell mercant per portar un tipus diferent de càrrega
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Remodela)
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Remodela vaixell
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Selecciona el tipus de càrrega a transportar
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Remodela vaixell per portar el tipus de càrrega seleccionat
 STR_REFIT_TITLE                                                 :{GOLD}Selecciona el tipus de càrrega a transportar:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova capacitat: {GOLD}{CARGO}{}{BLACK}Cost de la remodelació: {GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}No es pot remodelar el vaixell...
 STR_REFITTABLE                                                  :(remodelable)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aeroports
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Aquí no es pot construir un aeroport...
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar d'Avions
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nou Avió
-STR_CLONE_AIRCRAFT                                              :{BLACK}Clona Avió
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Fa una còpia de l'avió. Control+Clic compartirà les ordres
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Fa una còpia de l'avió. Prem aquest botó i després en un avió dins o fora l'hangar. Control+Clic compartirà les ordres
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nou Avió
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Construeix Avió
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}No es pot construir l'avió...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}No es pot enviar l'avió a l'hangar...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}Cap a l'hangar de {STATION}.
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Cap a l'hangar de {STATION}, a {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Revisió a l'hangar de {STATION}
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Revisió a l'hangar de {STATION}, {VELOCITY}
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} està esperant a l'hangar
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Avió al camí
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}No es pot parar/arrencar l'avió...
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}L'avió està volant
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}L'avió s'ha de parar a l'hangar
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}No es pot vendre l'avió...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construcció d'Aeroport
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construeix un aeroport
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Avió - clica sobre l'avió per més informació
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Construeix nous avions
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Arrossega l'avió fins aquí per vendre'l
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centra la pantalla principal en la situació de l'hangar
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Llista de selecció d'Avions - clica sobre l'avió per més informació
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Construeix l'avió seleccionat
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Accions sobre l'avió actual - clica aquí per parar/arrencar l'avió
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Mostra les ordres de l'avió
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centra la pantalla principal a la situació de l'avió
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Envia avió a l'hangar
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Mostra els detalls de l'avió
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Anomena avió
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}No es pot anomenar l'avió...
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Anomena avió
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Celebració popular . . .{}El primer avió arriba a {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Accident d'avió!{}{COMMA} moren en una bola de foc a {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Accident d'aviació!{}L'avió s'ha quedat sense combustible, {COMMA} morts en l'accident!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Reanomena
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Reanomena tipus d'avió
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Reanomena tipus d'avió
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}No es pot reanomenar el tipus d'avió...
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Remodela avions per poder transportar diferents tipus de càrrega
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Remodela avió
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Selecciona tipus de càrrega a transportar
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Remodela l'avió per poder transportar el tipus de càrrega seleccionat
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}No es pot remodelar l'avió...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Horari)
 
@@ -3178,6 +2990,211 @@ STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING}
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordres compartides de {COMMA} Vehicle{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra tots els vehicles que tenen les mateixes ordres
 
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} està esperant a la cotxera
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} està esperant a la cotxera
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} està esperant a la drassana
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} està esperant a l'hangar
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Remodela tren
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Remodela vehicle de carretera
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Remodela vaixell
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Remodela avió
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Remodela un tren per transportar el tipus de càrrega seleccionada
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Remodela vehicle de carretera per a dur el tipus de carrega senyalat
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Remodela vaixell per portar el tipus de càrrega seleccionat
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Remodela l'avió per poder transportar el tipus de càrrega seleccionat
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selecciona tipus de càrrega a transportar
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecciona el tipus de càrrega a transportar pel vehicle
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Selecciona el tipus de càrrega a transportar
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Selecciona tipus de càrrega a transportar
+
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Cotxeres de Tren
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Cotxera de Vehicles
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Drassana
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar d'Avions
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Anomena tren
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Anomena automòbil
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Anomena vaixell
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Anomena avió
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Anomena tren
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Anomena automòbil
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Anomena vaixell
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Anomena avió
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Tren en el camí
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Automòbil en camí
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Vaixell en el camí
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Avió al camí
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}No es pot remodelar el tren...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}No es pot remodelar el vehicle de carretera...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}No es pot remodelar el vaixell...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}No es pot remodelar l'avió...
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}No es pot anomenar el tren...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}No es pot anomenar l'automòbil...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}No es pot anomenar el vaixell...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}No es pot anomenar l'avió...
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}No es pot parar/arrencar el tren...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}No es pot parar/arrencar l'automòbil...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}No es pot parar/arrencar el vaixell...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}No es pot parar/arrencar l'avió...
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}No pots enviar el tren a cotxeres...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}No es pot enviar el vehicle a cotxera...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}No es pot enviar vaixell a la drassana...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}No es pot enviar l'avió a l'hangar...
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}No es pot construir el vehicle...
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}No es pot construir l'automòbil...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}No es pot construir el vaixell...
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}No es pot construir l'avió...
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}No es pot reanomenar el tipus d'element del tren...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}No es pot reanomenar tipus d'automòbil
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}No es pot reanomenar el tipus de vaixell...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}No es pot reanomenar el tipus d'avió...
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}No es pot vendre el vehicle...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}No pots vendre l'automòbil...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}No es pot vendre el vaixell...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}No es pot vendre l'avió...
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Acció sobre el tren actual - clica aquí per parar/arrencar el tren
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Acció sobre el vehicle actual - clica aquí per parar/arrencar el vehicle
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Accions sobre el vaixell actual - clica aquí per parar/arrencar el vaixell
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Accions sobre l'avió actual - clica aquí per parar/arrencar l'avió
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Mostra les ordres del tren
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Mostra les ordres dels vehicles
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Mostra les ordres del vaixell
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Mostra les ordres de l'avió
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centra la vista de la pantalla principal a la situació del tren
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centra la pantalla principal a la situació del vehicle
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centra la pantalla principal en la situació del vaixell
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centra la pantalla principal a la situació de l'avió
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Envia el tren a cotxera
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envia el vehicle a cotxera
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Envia el vaixell a la drassana. CTRL+Clic per només revisió
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Envia avió a l'hangar
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Mostra els detalls del tren
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostra els detalls del vehicle
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostra els detalls del vaixell
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Mostra els detalls de l'avió
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Remodela un tren per transportar un altre tipus de càrrega
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Remodela vehicle de carretera per dur un tipus diferent de càrrega
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Remodela vaixell mercant per portar un tipus diferent de càrrega
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Remodela avions per poder transportar diferents tipus de càrrega
+
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Cap a cotxeres de {TOWN}.
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Cap a cotxeres de {TOWN}, a {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Cap a la cotxera de {TOWN}.
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Cap a la cotxera de {TOWN}, a {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Cap a la drassana de {TOWN}.
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Cap a la drassana de{TOWN}, a {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Cap a l'hangar de {STATION}.
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Cap a l'hangar de {STATION}, a {VELOCITY}
+
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Revisió a la cotxera de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Revisió a la cotxera de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Revisió a la cotxera de {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Revisió a la cotxera de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Revisió a la drassana de {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisió a la drassana de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Revisió a l'hangar de {STATION}
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Revisió a l'hangar de {STATION}, {VELOCITY}
+
+
+STR_CLONE_TRAIN                                                 :{BLACK}Clona Tren
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clona Vehicle
+STR_CLONE_SHIP                                                  :{BLACK}Clona Vaixell
+STR_CLONE_AIRCRAFT                                              :{BLACK}Clona Avió
+
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Fa una còpia del tren inclosos tots els vagons. Control+Clic compartirà les ordres
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Fa una còpia del vehicle. Control+Clic compartirà les ordres
+STR_CLONE_SHIP_INFO                                             :{BLACK}Fa una còpia del vaixell. Control+Clic compartirà les ordres
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Fa una còpia de l'avió. Control+Clic compartirà les ordres
+
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Fa una còpia del tren inclosos tots els vagons. Prem aquest botó i després en un tren dins o fora cotxeres. Control+Clic compartirà les ordres
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Fa una còpia del vehicle. Prem aquest botó i després en un vehicle dins o fora cotxeres. Control+Clic compartirà les ordres
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Fa una còpia del vaixell. Prem aquest botó i després en un vaixell dins o fora les drassanes. Control+Clic compartirà les ordres
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Fa una còpia de l'avió. Prem aquest botó i després en un avió dins o fora l'hangar. Control+Clic compartirà les ordres
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nous Trens
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nous Trens de Via Electrificada
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nous Trens Monorail
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nous Trens Maglev
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Vehicles amb Vies
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nous Vehicles
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nous Vaixells
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nou Avió
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Construeix Vehicle
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Construeix Vehicle
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Construeix Vaixell
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Construeix Avió
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Llista de selecció d'elements de tren - clica a l'element per més informació
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Llista de selecció de Vehicles - clica en un vehicle per més informació
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Llista de selecció de Vaixells - clica en un vaixell per més informació
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Llista de selecció d'Avions - clica sobre l'avió per més informació
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Construeix l'element de tren seleccionat
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Construeix l'automòbil seleccionat
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Construeix el vaixell seleccionat
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Construeix l'avió seleccionat
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Reanomena
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Reanomena
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Reanomena
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Reanomena
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Reanomena el tipus d'element del tren
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Reanomena tipus d'automòbil
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Reanomena tipus de vaixell
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Reanomena tipus d'avió
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Reanomena el tipus d'element del tren
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Reanomena tipus d'automòbil
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Reanomena tipus de vaixell
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Reanomena tipus d'avió
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nous Vehicles
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nous Vehicles
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nous Vaixells
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nou Avió
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trens - clica al tren per info., arrossega el vehicle per afegir/treure del tren
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehicles - clica en un vehicle per més informació
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Vaixells - clica en un vaixell per més informació
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Avió - clica sobre l'avió per més informació
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Construeix un nou element de tren
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Construeix un nou automòbil
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Construeix un nou vaixell
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Construeix nous avions
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arrossega l'element de tren fins aquí per vendre'l
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arrossega el vehicle fins aquí per vendre'l
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Arrossega el vaixell fins aquí per vendre'l
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Arrossega l'avió fins aquí per vendre'l
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centra la vista de la pantalla principal en la situació de la cotxera
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra la pantalla principal en la situació de la cotxera
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centra la pantalla principal en la situació de la drassana
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centra la pantalla principal en la situació de l'hangar
+
+
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Estàs a punt de vendre tots els vehicles de la cotxera. N'estàs segur?
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Tipus de cotxera incorrecta
@@ -3212,6 +3229,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure v
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la substitució automàtica mantingui la llargària del tren eliminant vagons (començant pel front), si substituint la màquina el tren es fa més llarg
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituint: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Alterna entre finestres de substitució de vagons i de motors
+
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}El tren no està disponible
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}El vehicle no està disponible
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}El vaixell no està disponible
@@ -3426,7 +3444,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -3443,6 +3464,31 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_COMPANY_NUM                                          :(Companyia {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grup {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}El nom ha de ser únic
 

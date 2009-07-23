@@ -154,8 +154,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}İÇ
 STR_ABBREV_NONE                                                 :{TINYFONT}YOK
 STR_ABBREV_ALL                                                  :{TINYFONT}HEPSI
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Harita - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Seçenekler
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Mesaj
@@ -167,17 +165,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Orijinal
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD sürüm {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD takımı
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Çıkış
 STR_YES                                                         :{BLACK}Evet
 STR_NO                                                          :{BLACK}Hayır
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Oyundan çıkıp {STRING} sisteminize dönmek istediğinizden emin misiniz?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Hiçbir şey
 STR_COLOUR_DARK_BLUE                                            :Koyu Mavi
 STR_COLOUR_PALE_GREEN                                           :Soluk Yeşil
@@ -196,8 +188,6 @@ STR_COLOUR_BROWN                                                :Kahverengi
 STR_COLOUR_GREY                                                 :Gri
 STR_COLOUR_WHITE                                                :Beyaz
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Oyunda çok fazla araç var
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Göster
 STR_SMALLMAP_TYPE_CONTOURS                                      :Dış Hatlar
 STR_SMALLMAP_TYPE_VEHICLES                                      :Araçlar
@@ -323,12 +313,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Sıralam
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}Süzme kriterini seçin
 STR_SORT_BY                                                     :{BLACK}Sırala
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Nüfus
+STR_SORT_BY_NAME                                                :{BLACK}İsim
+STR_SORT_BY_DATE                                                :{BLACK}Tarih
 STR_SORT_BY_PRODUCTION                                          :Üretim
 STR_SORT_BY_TYPE                                                :Tür
 STR_SORT_BY_TRANSPORTED                                         :Taşınan
-STR_SORT_BY_NAME                                                :{BLACK}İsim
-STR_SORT_BY_DATE                                                :{BLACK}Tarih
 STR_SORT_BY_NUMBER                                              :Numara
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Geçen seneki kâr
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Bu seneki kâr
@@ -351,6 +342,7 @@ STR_SORT_BY_INTRO_DATE                                          :Piyasaya Giriş
 STR_SORT_BY_RUNNING_COST                                        :Bakım Gideri
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Güç/Bakım Gideri
 STR_SORT_BY_CARGO_CAPACITY                                      :Kapasite
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Hiç kargo yok
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tüm türleri seç
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tüm kargo türlerini seç (hiç beklemeyenler dahil)
@@ -369,21 +361,6 @@ STR_SEND_TRAIN_TO_DEPOT                                         :Gara Gönder
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Garaja Gönder
 STR_SEND_SHIP_TO_DEPOT                                          :Tersaneye Gönder
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Hangara Gönder
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Oca
-STR_MONTH_ABBREV_FEB                                            :Şub
-STR_MONTH_ABBREV_MAR                                            :Mar
-STR_MONTH_ABBREV_APR                                            :Nis
-STR_MONTH_ABBREV_MAY                                            :May
-STR_MONTH_ABBREV_JUN                                            :Haz
-STR_MONTH_ABBREV_JUL                                            :Tem
-STR_MONTH_ABBREV_AUG                                            :Ağu
-STR_MONTH_ABBREV_SEP                                            :Eyl
-STR_MONTH_ABBREV_OCT                                            :Eki
-STR_MONTH_ABBREV_NOV                                            :Kas
-STR_MONTH_ABBREV_DEC                                            :Ara
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -411,8 +388,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Havalima
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Ağaç dik, tabela koy vs.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Arazi bilgisi
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Seçenekler
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Servis aralığı değiştirilemiyor...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Pencereyi kapat
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Pencere başlığı - pencereyi hareket ettirmek için sürükle
@@ -459,7 +434,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Hiçbiri
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}İsim
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
 STR_ORDINAL_NUMBER_2ND                                          :2
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -492,6 +467,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29
 STR_ORDINAL_NUMBER_30TH                                         :30
 STR_ORDINAL_NUMBER_31ST                                         :31
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Oca
+STR_MONTH_ABBREV_FEB                                            :Şub
+STR_MONTH_ABBREV_MAR                                            :Mar
+STR_MONTH_ABBREV_APR                                            :Nis
+STR_MONTH_ABBREV_MAY                                            :May
+STR_MONTH_ABBREV_JUN                                            :Haz
+STR_MONTH_ABBREV_JUL                                            :Tem
+STR_MONTH_ABBREV_AUG                                            :Ağu
+STR_MONTH_ABBREV_SEP                                            :Eyl
+STR_MONTH_ABBREV_OCT                                            :Eki
+STR_MONTH_ABBREV_NOV                                            :Kas
+STR_MONTH_ABBREV_DEC                                            :Ara
+
+STR_MONTH_JAN                                                   :Ocak
+STR_MONTH_FEB                                                   :Subat
+STR_MONTH_MAR                                                   :Mart
+STR_MONTH_APR                                                   :Nisan
+STR_MONTH_MAY                                                   :Mayis
+STR_MONTH_JUN                                                   :Haziran
+STR_MONTH_JUL                                                   :Temmuz
+STR_MONTH_AUG                                                   :Ağustos
+STR_MONTH_SEP                                                   :Eylül
+STR_MONTH_OCT                                                   :Ekim
+STR_MONTH_NOV                                                   :Kasım
+STR_MONTH_DEC                                                   :Aralik
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -582,12 +585,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} '{STRING}' ünvanını kazandı!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} - {COMPANY} '{STRING}' ünvanını kazandı!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Senaryo Düzenleyicisi
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Arazi Yapımı
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}yükseltme/alçaltma alanını arttır
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Yükseltme/alçaltma alanını arttır
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Rastgele harita yarat
@@ -669,9 +669,7 @@ STR_OFF                                                         :Kapalı
 STR_SUMMARY                                                     :Özet
 STR_FULL                                                        :Tam
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Seçenekler
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Zorluk Ayarları
@@ -776,9 +774,6 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  KAYD
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Kayıt işlemi sürüyor,{}lütfen bitene kadar bekleyin!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Sokagi stili müzik' programını seç
 
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
-
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :İngilizce (Orjinal)
 STR_TOWNNAME_FRENCH                                             :Fransizca
@@ -858,19 +853,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Temel gr
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Otokayıt başarısız
 
-STR_MONTH_JAN                                                   :Ocak
-STR_MONTH_FEB                                                   :Subat
-STR_MONTH_MAR                                                   :Mart
-STR_MONTH_APR                                                   :Nisan
-STR_MONTH_MAY                                                   :Mayis
-STR_MONTH_JUN                                                   :Haziran
-STR_MONTH_JUL                                                   :Temmuz
-STR_MONTH_AUG                                                   :Ağustos
-STR_MONTH_SEP                                                   :Eylül
-STR_MONTH_OCT                                                   :Ekim
-STR_MONTH_NOV                                                   :Kasım
-STR_MONTH_DEC                                                   :Aralik
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Gidiyor {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Gidiyor {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Talimat yok
@@ -884,8 +866,6 @@ STR_ITEMS                                                       :tane
 STR_CRATES                                                      :kasa
 STR_RES_OTHER                                                   :diğer
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Talimat listesi paylasilamiyor...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Talimat listesi kopyalanamiyor...
@@ -1158,7 +1138,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Haritan
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :kapalı
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Ayar değerini değiştir
 
 STR_TEMPERATE_LANDSCAPE                                         :Ilıman iklim
@@ -2124,8 +2103,6 @@ STR_NUM_LOW                                                     :Düşük
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Yüksek
 STR_NUM_CUSTOM                                                  :Özel
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Çok Yavas
 STR_AI_SPEED_SLOW                                               :Yavas
 STR_AI_SPEED_MEDIUM                                             :Orta
@@ -2806,7 +2783,6 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...bir a
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Yerel garaj bulunamadı
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Aracı etrafta dolaşmaya zorla
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasite: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} araç{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
@@ -3472,7 +3448,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -3489,6 +3468,31 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_COMPANY_NUM                                          :(Company {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grup {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}İsim daha önce kullanılmamış olmalı
 

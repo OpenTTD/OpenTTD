@@ -154,8 +154,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}SV
 STR_ABBREV_NONE                                                 :{TINYFONT}INT
 STR_ABBREV_ALL                                                  :{TINYFONT}ALT
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Kort - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spilvalg
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Besked
@@ -167,17 +165,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD teamet
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Afslut
 STR_YES                                                         :{BLACK}Ja
 STR_NO                                                          :{BLACK}Nej
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Er du sikker på, at du vil forlade dette spil og returnere til {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Intet
 STR_COLOUR_DARK_BLUE                                            :Mørkeblå
 STR_COLOUR_PALE_GREEN                                           :Bleggrøn
@@ -196,8 +188,6 @@ STR_COLOUR_BROWN                                                :Brun
 STR_COLOUR_GREY                                                 :Grå
 STR_COLOUR_WHITE                                                :Hvid
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}For mange køretøjer i spillet
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Lokalitet
 STR_SMALLMAP_TYPE_CONTOURS                                      :Konturer
 STR_SMALLMAP_TYPE_VEHICLES                                      :Køretøjer
@@ -323,12 +313,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Vælg so
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}Vælg filtreringskriterier
 STR_SORT_BY                                                     :{BLACK}Sortér på
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Indbyggertal
+STR_SORT_BY_NAME                                                :{BLACK}Navn
+STR_SORT_BY_DATE                                                :{BLACK}Dato
 STR_SORT_BY_PRODUCTION                                          :Produktion
 STR_SORT_BY_TYPE                                                :Type
 STR_SORT_BY_TRANSPORTED                                         :Transporteret
-STR_SORT_BY_NAME                                                :{BLACK}Navn
-STR_SORT_BY_DATE                                                :{BLACK}Dato
 STR_SORT_BY_NUMBER                                              :Nummer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Afkast sidste år
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Afkast i år
@@ -351,37 +342,25 @@ STR_SORT_BY_INTRO_DATE                                          :Introduktionsda
 STR_SORT_BY_RUNNING_COST                                        :Driftsomkostning
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Drivmiddel/omkostninger
 STR_SORT_BY_CARGO_CAPACITY                                      :Lasteevne
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Der venter ingen fragt af nogen type
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vælg alle faciliteter
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vælg alle lasttyper (inklusiv fragttyper, der ikke venter)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Tilgængelige tog
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Tilgæn. vejkøretøjer
-STR_AVAILABLE_SHIPS                                             :{BLACK}Tilgængelige skibe
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Tilgængelige fly
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Se liste over tilgængelige designs for denne køretøjstype.
 STR_MANAGE_LIST                                                 :{BLACK}Administrer liste
 STR_MANAGE_LIST_TIP                                             :{BLACK}Send instruktioner til alle køretøjer i denne liste
 STR_REPLACE_VEHICLES                                            :Udskift køretøjer
+STR_SEND_FOR_SERVICING                                          :Send til eftersyn
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}Tilgængelige tog
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Tilgæn. vejkøretøjer
+STR_AVAILABLE_SHIPS                                             :{BLACK}Tilgængelige skibe
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Tilgængelige fly
+
 STR_SEND_TRAIN_TO_DEPOT                                         :Send til remise
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Send til værksted
 STR_SEND_SHIP_TO_DEPOT                                          :Send til skibsdok
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Send til hangar
-STR_SEND_FOR_SERVICING                                          :Send til eftersyn
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :jan
-STR_MONTH_ABBREV_FEB                                            :feb
-STR_MONTH_ABBREV_MAR                                            :mar
-STR_MONTH_ABBREV_APR                                            :apr
-STR_MONTH_ABBREV_MAY                                            :maj
-STR_MONTH_ABBREV_JUN                                            :jun
-STR_MONTH_ABBREV_JUL                                            :jul
-STR_MONTH_ABBREV_AUG                                            :aug
-STR_MONTH_ABBREV_SEP                                            :sep
-STR_MONTH_ABBREV_OCT                                            :okt
-STR_MONTH_ABBREV_NOV                                            :nov
-STR_MONTH_ABBREV_DEC                                            :dec
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -409,8 +388,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Byg luft
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Plant træer, placér skilte osv.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landområde information
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Valg
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikke ændre serviceinterval...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Luk vindue
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Vinduestitel - træk her for at flytte vinduet
@@ -457,7 +434,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ingen
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Navn
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1.
 STR_ORDINAL_NUMBER_2ND                                          :2.
 STR_ORDINAL_NUMBER_3RD                                          :3.
@@ -490,6 +467,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29.
 STR_ORDINAL_NUMBER_30TH                                         :30.
 STR_ORDINAL_NUMBER_31ST                                         :31.
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :jan
+STR_MONTH_ABBREV_FEB                                            :feb
+STR_MONTH_ABBREV_MAR                                            :mar
+STR_MONTH_ABBREV_APR                                            :apr
+STR_MONTH_ABBREV_MAY                                            :maj
+STR_MONTH_ABBREV_JUN                                            :jun
+STR_MONTH_ABBREV_JUL                                            :jul
+STR_MONTH_ABBREV_AUG                                            :aug
+STR_MONTH_ABBREV_SEP                                            :sep
+STR_MONTH_ABBREV_OCT                                            :okt
+STR_MONTH_ABBREV_NOV                                            :nov
+STR_MONTH_ABBREV_DEC                                            :dec
+
+STR_MONTH_JAN                                                   :januar
+STR_MONTH_FEB                                                   :februar
+STR_MONTH_MAR                                                   :marts
+STR_MONTH_APR                                                   :april
+STR_MONTH_MAY                                                   :maj
+STR_MONTH_JUN                                                   :juni
+STR_MONTH_JUL                                                   :juli
+STR_MONTH_AUG                                                   :august
+STR_MONTH_SEP                                                   :september
+STR_MONTH_OCT                                                   :oktober
+STR_MONTH_NOV                                                   :november
+STR_MONTH_DEC                                                   :december
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -580,12 +585,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} får '{STRING}' status!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} fra {COMPANY} får '{STRING}' status!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenarieeditor
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land-generering
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Forstør landområdet der skal sænkes/hæves
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Formindsk landområdet der skal sænkes/hæves
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generer tilfældigt land
@@ -667,9 +669,7 @@ STR_OFF                                                         :Fra
 STR_SUMMARY                                                     :Kortfattet
 STR_FULL                                                        :Fuld
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spilvalg
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Sværhedsgrad
@@ -774,9 +774,6 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  GEMM
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Gemmer stadig,{}vent venligst!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Vælg 'Ezy Street musik' program
 
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
-
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engelske
 STR_TOWNNAME_FRENCH                                             :Franske
@@ -856,19 +853,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Yderlige
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fejl under autogem
 
-STR_MONTH_JAN                                                   :januar
-STR_MONTH_FEB                                                   :februar
-STR_MONTH_MAR                                                   :marts
-STR_MONTH_APR                                                   :april
-STR_MONTH_MAY                                                   :maj
-STR_MONTH_JUN                                                   :juni
-STR_MONTH_JUL                                                   :juli
-STR_MONTH_AUG                                                   :august
-STR_MONTH_SEP                                                   :september
-STR_MONTH_OCT                                                   :oktober
-STR_MONTH_NOV                                                   :november
-STR_MONTH_DEC                                                   :december
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Retning mod {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Retning mod {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Ingen ordrer
@@ -882,8 +866,6 @@ STR_ITEMS                                                       :stykker
 STR_CRATES                                                      :kasser
 STR_RES_OTHER                                                   :andet
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan ikke dele ordreliste...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikke kopiere ordreliste...
@@ -1156,7 +1138,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-stør
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :deaktiveret
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Skift indstillingsværdi
 
 STR_TEMPERATE_LANDSCAPE                                         :Tempereret klima
@@ -1258,11 +1239,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industri
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...for tæt på en anden industribygning
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Ombyg toget til at køre med en anden lasttype
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Ombyg toget
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vælg den lasttype toget skal kører med
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Ombyg toget til at køre med den markerede lasttype
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Kan ikke ombygge toget...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Skift produktion
 
 ############ network gui strings
@@ -2075,6 +2051,7 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Luftha
 STR_SV_STNAME_OILFIELD                                          :{STRING} Oliefelt
 STR_SV_STNAME_MINES                                             :{STRING} Miner
 STR_SV_STNAME_DOCKS                                             :{STRING} Havn
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Forstad
 STR_SV_STNAME_SIDINGS                                           :{STRING} Sidespor
 STR_SV_STNAME_BRANCH                                            :{STRING} Torv
@@ -2122,8 +2099,6 @@ STR_NUM_LOW                                                     :Lav
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Høj
 STR_NUM_CUSTOM                                                  :Brugerdefineret
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Meget langsom
 STR_AI_SPEED_SLOW                                               :Langsom
 STR_AI_SPEED_MEDIUM                                             :Mellem
@@ -2591,10 +2566,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monoraillokomot
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magnetskinnelokomotiv
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} remise
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første tog ankommer til {STATION}!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaljer)
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Tog i vejen
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Uden stop
@@ -2684,37 +2657,16 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :og rejs i {STRI
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" e}
 STR_TIMETABLE_TICKS                                             :{COMMA} tik
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kører til {TOWN} remise
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Kører til {TOWN} remise, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Service i {TOWN} remise
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Service i {TOWN} remise, {VELOCITY}
-
 STR_INVALID_ORDER                                               :{RED} (Ugyldig Order)
 
 STR_UNKNOWN_STATION                                             :ukendt station
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Tom
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} fra {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} fra {STATION} (x{NUM})
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} venter i remisen
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nye køretøjer
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Toget er for langt
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Tog kan kun ændres når de er stoppet i en remise
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nye jernbanekøretøjer
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nyt elektrisk lokomotiv
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nye monorailkøretøjer
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nye magnetskinnekøretøjer
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Jernbanekøretøjer
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Byg køretøj
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klon køretøj
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Dette vil bygge en kopi af vejkøretøjet. CTRL-klik vil dele ordrer
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Dette vil bygge en kopi af køretøjet. Klik på denne knap, så på et køretøj indeni eller udenfor værkstedet. CTRL-klik vil dele ordrer
-STR_CLONE_TRAIN                                                 :{BLACK}Klon tog
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Dette vil bygge en kopi af toget inklusiv alle vogne. CTRL-klik vil dele ordrer
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Dette vil bygge en kopi af toget inklusiv alle vogne. Klik på denne knap, så på et tog indeni eller udenfor remisen. CTRL-klik vil dele ordrer
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Omdøb
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Spring over
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Slet
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Gå til
@@ -2730,14 +2682,12 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Skift ti
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordrer)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Slut på ordrer - -
 STR_SERVICE                                                     :{BLACK}Service
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Kan ikke bygge jernbanekøretøj...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Værdi: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Læsser / Aflæsser
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Forlader
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Toget skal være stoppet inde i en remise
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kan ikke sende toget til remise...
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Ikke mere plads til ordrer
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}For mange ordrer
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Kan ikke indsætte ny ordre...
@@ -2752,25 +2702,11 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}et køre
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Kan ikke flytte køretøjet...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Det bagerste lokomotiv vil altid følge dets forende
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kan ikke sælge jernbanekøretøjet...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kan ikke finde en route til et lokalt depot
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Kan ikke stoppe/starte toget...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Serviceinterval: {LTBLUE}{COMMA}dage{BLACK}   Sidste service: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Serviceinterval: {LTBLUE}{COMMA}%{BLACK}   Sidste service: {LTBLUE}{DATE_LONG}
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - klik på et tog for information., træk vogn/lokomotiv for at fjerne/tilføje det til toget
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Byg nyt tog/togvogn
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Træk tog/togvogn her hen for at sælge
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrer skærmen over remisens lokalitet
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Togvalgsliste - klik på et køretøj for mere information
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Byg det markerede lokomotiv/togvogn
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Omdøb tog-/togvognstypen
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Nuværende opførsel - klik her for at starte/stoppe toget
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Vis togets ordrer
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrer skærmen over togets lokalitet
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Send toget til remise. CTRL+klik vil kun servicere
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tving toget til at fortsætte uden at vente på at signalet skifter til grønt
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Vend retningen af toget
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Vis detaljer om toget
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Forøg serviceintervallet
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Sænk serviceintervallet
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Vis detaljer omkring den last der medbringes
@@ -2804,15 +2740,10 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoppet
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikke få toget til at passere signalet...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Forulykket!
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Giv toget et navn
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kan ikke give toget navn...
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Giv toget et navn
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Tog forulykket!{}{COMMA} døde i flammerne efter kollision
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan ikke vende retningen af toget...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kan ikke vende køretøjet om...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan ikke vende et køretøj, der består af flere enheder
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Omdøb tog-/togvognstypen
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan ikke omdøbe tog-/togvognstypen...
 STR_CLEAR_TIME                                                  :{BLACK}Nulstil tid
 STR_RESET_LATENESS                                              :{BLACK}Nulstil forsinkelse
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Omdøb kontrolsted
@@ -2844,43 +2775,14 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-udf
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Udfyld automatisk tidsplanen med tider for den næste tur (CTRL-klik for at forsøge at bevare ventetider)
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Køretøj i vejen
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} værksted
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nye køretøjer
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nye køretøjer
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Byg køretøj
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Kan ikke bygge køretøj...
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...skal være stoppet inde i et værksted først
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kan ikke sælge køretøj...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kan ikke stoppe/starte køretøj...
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} venter på værkstedet
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Kører til {TOWN} værksted
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Kører til {TOWN} værksted, {VELOCITY}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Service på {TOWN} værksted
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Service på {TOWN} værksted, {VELOCITY}
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan ikke sende køretøj til værksted...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan ikke finde lokalt værksted
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Nuværende opførsel - klik her for at stoppe/starte køretøjet
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Vis køretøjets ordrer
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrer skærmen over køretøjets lokalitet
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Send køretøjet til værksted. CTRL+klik vil kun servicere
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Tving køretøjet til at vende
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Vis køretøjets detaljer
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Køretøjer - klik på et køretøj for mere information
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Byg nyt køretøj
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Træk køretøjet herhen for at sælge
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrer skærmen over værkstedets lokalitet
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Liste over køretøjstyper - klik på køretøj for information
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Byg det markerede køretøj
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacitet: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} køretøj{P "" er}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Giv køretøjet et navn
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kan ikke give køretøjet et navn...
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Giv køretøjet et navn
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første bus ankommer til {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første lastbil ankommer til {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første passager-sporvogn ankommer til {STATION}!
@@ -2888,128 +2790,39 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Lastbil forulykket!{}Chauffør dør i flammerne efter sammenstød med tog
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Bus forulykket!{}{COMMA} dør i flammerne efter kollision med et tog
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Tillader ikke køretøjer at vende om...
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Omdøb
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Omdøb køretøjstypen
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Omdøb køretøjstypen
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kan ikke omdøbe køretøjstypen...
 
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Ombyg vejkøretøj til at laste en anden type last
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Ombyg lastbil
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Ombyg vejkøretøjet til at laste den markerede type last
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kan ikke ombygge vejkøretøj
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vælg lasttype som lastbilen skal transportere
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Bygning af vandveje
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Bygning af vandveje
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vandveje
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan ikke bygge en havn her...
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} skibsdok
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nye skibe
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nye skibe
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Byg skib
-STR_CLONE_SHIP                                                  :{BLACK}Klon skib
-STR_CLONE_SHIP_INFO                                             :{BLACK}Dette vil bygge en kopi af skibet. CTRL-klik vil dele ordrer
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Dette vil bygge en kopi af skibet. Klik på denne knap så, på et skib indeni eller udenfor dokken. CTRL-klik vil dele ordrer
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Skibet skal være stoppet i dok
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan ikke sælge skibet...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Kan ikke bygge skibet...
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Der er et skib i vejen
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Kan ikke stoppe/starte skibet...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan ikke sende skibet til dok...
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Sejler til {TOWN} skibsdok
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Sejler til {TOWN} skibsdok, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Service i {TOWN} skibsdok
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Service i {TOWN} skibsdok, {VELOCITY}
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} venter i skibsdokken
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Byg havn
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Byg skibsdok (til bygning og servicering af skibe)
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skibe - klik på et skib for information
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Byg nyt skib
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Træk det her for at sælge det
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrer skærmen over skibsdokkens lokalitet
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Skibstypeliste - klik på skibstype for information
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Byg det markerede skib
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Nuværende opførsel - klik her for at starte/stoppe skibet
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Vis skibets ordrer
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrer skærmen over skibets lokalitet
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Send skibet til dok. CTRL+klik vil kun servicere
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Vis detaljer omkring skibet
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Giv skibet et navn
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Giv skibet et navn
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Kan ikke give skibet et navn...
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første skib ankommer til {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Positionsbøje, kan bruges som yderligere navigationspunkt
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan ikke placere en bøje her...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Byg akvædukt
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Kan ikke bygge akvædukt her...
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Omdøb
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Omdøb skibstypen
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Omdøb skibstypen
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Kan ikke omdøbe skibstypen...
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Ombyg skibet til at sejle med en anden slags last
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ombyg)
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Ombyg skibet
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Vælg den slags last skibet skal sejle med
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Ombyg skibet til den markerede slags last
 STR_REFIT_TITLE                                                 :{GOLD}Vælg den lasttype der skal transporteres:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapacitet: {GOLD}{CARGO}{}{BLACK}Pris for ombyggelse: {GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Kan ikke ombygge skib...
 STR_REFITTABLE                                                  :(kan ombygges)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Lufthavne
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan ikke bygge en lufthavn her...
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} flyhangar
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nyt fly
-STR_CLONE_AIRCRAFT                                              :{BLACK}Klon fly
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Dette vil bygge en kopi af et fly. CTRL-klik vil dele ordrer
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Dette vil bygge en kopi af et fly. Klik på denne knap, så på et fly indeni eller udenfor hangaren. CTRL-klik vil dele ordrer
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nyt fly
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Byg et fly
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kan ikke bygge fly...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan ikke sende flyet til en hangar...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}Flyver til {STATION} hangar
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Flyver til {STATION} hangar, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Service i {STATION} hangar
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Service i {STATION} hangar, {VELOCITY}
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} venter i hangaren
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Fly i vejen
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Kan ikke stoppe/starte fly...
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Flyet er i luften
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Flyet skal være stoppet i en hangar
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan ikke sælge flyet...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Lufthavnskonstruktion
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Byg en lufthavn
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Fly - klik på et fly for information
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Byg nyt fly
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Træk fly her hen for at sælge
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrer skærmen over hangarens lokalitet
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Flytypeliste - klik på en flytype for mere information
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Byg det markerede fly
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Nuværende opførsel - klik her for at starte/stoppe flyet
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Vis flyets ordrer
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrer skærmen over flyets lokalitet
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Send flyet til en hangar. CTRL+klik vil kun servicere
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Vis detaljet omkring flyet
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Navngiv flyet
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Kan ikke navngive flyet...
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Navngiv flyet
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første fly ankommer til {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Flystyrt!{}{COMMA} dør i flammerne ved {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Flystyrt!{}Fly løb tør for brændstof, {COMMA} døde i ildhelvede!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Omdøb
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Ømdøb flytypen
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ømdøb flytypen
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Kan ikke omdøbe flytypen...
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Ombyg flyet til at flyve med en anden slags last
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Ombyg fly
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vælg den type last flyet skal flyve med
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Ombyg flyet til at flyve med den markerede slags last
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Kan ikke ombygge fly...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Køreplan)
 
@@ -3177,6 +2990,211 @@ STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING}
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte ordrer af {COMMA} transportmid{P del ler}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle transportmidler, der deler denne ruteplan
 
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} venter i remisen
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} venter på værkstedet
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} venter i skibsdokken
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} venter i hangaren
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Ombyg toget
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Ombyg lastbil
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Ombyg skibet
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Ombyg fly
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Ombyg toget til at køre med den markerede lasttype
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Ombyg vejkøretøjet til at laste den markerede type last
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Ombyg skibet til den markerede slags last
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Ombyg flyet til at flyve med den markerede slags last
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vælg den lasttype toget skal kører med
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vælg lasttype som lastbilen skal transportere
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Vælg den slags last skibet skal sejle med
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vælg den type last flyet skal flyve med
+
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} remise
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} værksted
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} skibsdok
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} flyhangar
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Giv toget et navn
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Giv køretøjet et navn
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Giv skibet et navn
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Navngiv flyet
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Giv toget et navn
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Giv køretøjet et navn
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Giv skibet et navn
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Navngiv flyet
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Tog i vejen
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Køretøj i vejen
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Der er et skib i vejen
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Fly i vejen
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Kan ikke ombygge toget...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kan ikke ombygge vejkøretøj
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Kan ikke ombygge skib...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Kan ikke ombygge fly...
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kan ikke give toget navn...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kan ikke give køretøjet et navn...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Kan ikke give skibet et navn...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Kan ikke navngive flyet...
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Kan ikke stoppe/starte toget...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kan ikke stoppe/starte køretøj...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Kan ikke stoppe/starte skibet...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Kan ikke stoppe/starte fly...
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kan ikke sende toget til remise...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan ikke sende køretøj til værksted...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan ikke sende skibet til dok...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan ikke sende flyet til en hangar...
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Kan ikke bygge jernbanekøretøj...
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Kan ikke bygge køretøj...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Kan ikke bygge skibet...
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kan ikke bygge fly...
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan ikke omdøbe tog-/togvognstypen...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kan ikke omdøbe køretøjstypen...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Kan ikke omdøbe skibstypen...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Kan ikke omdøbe flytypen...
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kan ikke sælge jernbanekøretøjet...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kan ikke sælge køretøj...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan ikke sælge skibet...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan ikke sælge flyet...
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Nuværende opførsel - klik her for at starte/stoppe toget
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Nuværende opførsel - klik her for at stoppe/starte køretøjet
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Nuværende opførsel - klik her for at starte/stoppe skibet
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Nuværende opførsel - klik her for at starte/stoppe flyet
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Vis togets ordrer
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Vis køretøjets ordrer
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Vis skibets ordrer
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Vis flyets ordrer
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrer skærmen over togets lokalitet
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrer skærmen over køretøjets lokalitet
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrer skærmen over skibets lokalitet
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrer skærmen over flyets lokalitet
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Send toget til remise. CTRL+klik vil kun servicere
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Send køretøjet til værksted. CTRL+klik vil kun servicere
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Send skibet til dok. CTRL+klik vil kun servicere
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Send flyet til en hangar. CTRL+klik vil kun servicere
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Vis detaljer om toget
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Vis køretøjets detaljer
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Vis detaljer omkring skibet
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Vis detaljet omkring flyet
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Ombyg toget til at køre med en anden lasttype
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Ombyg vejkøretøj til at laste en anden type last
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Ombyg skibet til at sejle med en anden slags last
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Ombyg flyet til at flyve med en anden slags last
+
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kører til {TOWN} remise
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Kører til {TOWN} remise, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Kører til {TOWN} værksted
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Kører til {TOWN} værksted, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Sejler til {TOWN} skibsdok
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Sejler til {TOWN} skibsdok, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Flyver til {STATION} hangar
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Flyver til {STATION} hangar, {VELOCITY}
+
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Service i {TOWN} remise
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Service i {TOWN} remise, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Service på {TOWN} værksted
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Service på {TOWN} værksted, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Service i {TOWN} skibsdok
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Service i {TOWN} skibsdok, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Service i {STATION} hangar
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Service i {STATION} hangar, {VELOCITY}
+
+
+STR_CLONE_TRAIN                                                 :{BLACK}Klon tog
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klon køretøj
+STR_CLONE_SHIP                                                  :{BLACK}Klon skib
+STR_CLONE_AIRCRAFT                                              :{BLACK}Klon fly
+
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Dette vil bygge en kopi af toget inklusiv alle vogne. CTRL-klik vil dele ordrer
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Dette vil bygge en kopi af vejkøretøjet. CTRL-klik vil dele ordrer
+STR_CLONE_SHIP_INFO                                             :{BLACK}Dette vil bygge en kopi af skibet. CTRL-klik vil dele ordrer
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Dette vil bygge en kopi af et fly. CTRL-klik vil dele ordrer
+
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Dette vil bygge en kopi af toget inklusiv alle vogne. Klik på denne knap, så på et tog indeni eller udenfor remisen. CTRL-klik vil dele ordrer
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Dette vil bygge en kopi af køretøjet. Klik på denne knap, så på et køretøj indeni eller udenfor værkstedet. CTRL-klik vil dele ordrer
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Dette vil bygge en kopi af skibet. Klik på denne knap så, på et skib indeni eller udenfor dokken. CTRL-klik vil dele ordrer
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Dette vil bygge en kopi af et fly. Klik på denne knap, så på et fly indeni eller udenfor hangaren. CTRL-klik vil dele ordrer
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nye jernbanekøretøjer
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nyt elektrisk lokomotiv
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nye monorailkøretøjer
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nye magnetskinnekøretøjer
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Jernbanekøretøjer
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nye køretøjer
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nye skibe
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nyt fly
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Byg køretøj
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Byg køretøj
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Byg skib
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Byg et fly
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Togvalgsliste - klik på et køretøj for mere information
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Liste over køretøjstyper - klik på køretøj for information
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Skibstypeliste - klik på skibstype for information
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Flytypeliste - klik på en flytype for mere information
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Byg det markerede lokomotiv/togvogn
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Byg det markerede køretøj
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Byg det markerede skib
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Byg det markerede fly
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Omdøb
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Omdøb
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Omdøb
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Omdøb
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Omdøb tog-/togvognstypen
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Omdøb køretøjstypen
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Omdøb skibstypen
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Ømdøb flytypen
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Omdøb tog-/togvognstypen
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Omdøb køretøjstypen
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Omdøb skibstypen
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ømdøb flytypen
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nye køretøjer
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nye køretøjer
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nye skibe
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nyt fly
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - klik på et tog for information., træk vogn/lokomotiv for at fjerne/tilføje det til toget
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Køretøjer - klik på et køretøj for mere information
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skibe - klik på et skib for information
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Fly - klik på et fly for information
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Byg nyt tog/togvogn
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Byg nyt køretøj
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Byg nyt skib
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Byg nyt fly
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Træk tog/togvogn her hen for at sælge
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Træk køretøjet herhen for at sælge
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Træk det her for at sælge det
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Træk fly her hen for at sælge
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrer skærmen over remisens lokalitet
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrer skærmen over værkstedets lokalitet
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrer skærmen over skibsdokkens lokalitet
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrer skærmen over hangarens lokalitet
+
+
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du er ved at sælge alle køretøjer i depotet. Er du sikker?
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Forkert depottype
@@ -3211,6 +3229,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Fjern vo
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Få autoudskift til at bevare længden af tog ved at fjerne vogne (startende fra fronten), hvis autoudskiftningen gør toget længere.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Udskifter: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skift imellem lokomotiv- og vogn-udskiftningsvindue
+
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Tog er ikke tilgængeligt
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vejkøretøj er ikke tilgængeligt
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Skib er ikke tilgængeligt
@@ -3425,7 +3444,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -3442,6 +3464,31 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_COMPANY_NUM                                          :(Firma {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Gruppe {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Navnet skal være unikt
 

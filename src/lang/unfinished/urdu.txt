@@ -95,16 +95,10 @@ STR_QUANTITY_COAL                                               :{WEIGHT} کوی
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}یہ نہیں کر سکتا۔۔۔
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}یہ جگہ صاف نہیں کر سکتا۔۔۔
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}باہر نکلو
 STR_YES                                                         :{BLACK}ہاں
 STR_NO                                                          :{BLACK}نہیں
-STR_BLACK_1                                                     :{BLACK}۱
-STR_BLACK_2                                                     :{BLACK}۲
-STR_BLACK_3                                                     :{BLACK}۳
-STR_BLACK_4                                                     :{BLACK}۴
-STR_BLACK_5                                                     :{BLACK}۵
+
 STR_JUST_NOTHING                                                :کچھ نہیں
 STR_COLOUR_DARK_BLUE                                            :گہرا نیلا
 STR_COLOUR_PALE_GREEN                                           :ہلکا سبز
@@ -121,8 +115,6 @@ STR_COLOUR_BROWN                                                :بھورا
 STR_COLOUR_GREY                                                 :سلیٹی
 STR_COLOUR_WHITE                                                :سفید
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}کھیل میں بہت زیادہ سواریاں
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}جگہ
 STR_SMALLMAP_TYPE_VEHICLES                                      :سواریاں
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :صنعتیں
@@ -172,27 +164,28 @@ STR_SORT_ORDER_TIP                                              :{BLACK} (ترت
 STR_SORT_CRITERIA_TIP                                           :{BLACK}ترتیب کا طریقہ منتخب کریں
 STR_SORT_BY                                                     :{BLACK}سے ترتیب دو
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}آبادی
+STR_SORT_BY_NAME                                                :{BLACK}نام
+STR_SORT_BY_DATE                                                :{BLACK}تاریخ
 STR_SORT_BY_PRODUCTION                                          :پیداوار
 STR_SORT_BY_TYPE                                                :طرز
 STR_SORT_BY_TRANSPORTED                                         :منتقل شدہ
-STR_SORT_BY_NAME                                                :{BLACK}نام
-STR_SORT_BY_DATE                                                :{BLACK}تاریخ
 STR_SORT_BY_NUMBER                                              :تعداد
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :پچھلے سال کا منافع
 STR_SORT_BY_CARGO_CAPACITY                                      :سامان کی گنجایش
+
 STR_NO_WAITING_CARGO                                            :{BLACK}کسی قسم کا کویی سامان انتظار نہیں کر رہا ہے
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}تمام سہولتوں کا انتخاب کرو
 STR_SELECT_ALL_TYPES                                            :{BLACK}تمام قسم کا سامان کا انتخاب کرو  (بشمول غیر منتظر سامان کے)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}اس قسم کی گاڑیوں کےلیے دستیاب انجنوں کی فہرست دیکھو
+STR_MANAGE_LIST                                                 :{BLACK}فہرست کا انتظام کرو
+
 STR_AVAILABLE_TRAINS                                            :{BLACK}دستیاب ریل گاڑیاں
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}دستیاب گاڑیاں
 STR_AVAILABLE_SHIPS                                             :{BLACK}دستیاب کشتیاں
 STR_AVAILABLE_AIRCRAFT                                          :{BLACK}دستیاب ہوایی جہاز
-STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}اس قسم کی گاڑیوں کےلیے دستیاب انجنوں کی فہرست دیکھو
-STR_MANAGE_LIST                                                 :{BLACK}فہرست کا انتظام کرو
 
-############ range for months starts
-############ range for months ends
 
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}کمپنی کی مالیاتی معلومات دکھاو
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}کمپنی کی عام معلومات دکھاو
@@ -208,8 +201,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}بندر
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ہوای اڈے بناو
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}درخت اگاو، اشارے لگاو، وغیرہ
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}زمینی رقبہ کی معلومات
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}کھڑکی بند کرو
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}کھڑکی کا نام - کھڑکی کو ہلانے کیلیے اسے پکڑ کر ہلاو
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}زمین کے ایک مربے پر عمارتیں وغیرہ گراو
@@ -220,8 +211,12 @@ STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}زمین
 ############ range for service numbers ends
 
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 ############ range for days ends
+
+############ range for months starts
+
+############ range for months ends
 
 
 
@@ -247,11 +242,8 @@ STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}زمین
 
 
 
-
 ############ start of townname region
 ############ end of townname region
-
-
 
 
 
@@ -375,7 +367,6 @@ STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}زمین
 
 ##id 0x2000
 
-
 ##id 0x2800
 
 ##id 0x3000
@@ -383,6 +374,8 @@ STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}زمین
 
 ############ range for rating starts
 ############ range for rating ends
+
+### station view strings
 
 
 
@@ -408,6 +401,7 @@ STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}زمین
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 
+##id 0x6020
 
 ############ end of savegame specific region!
 
@@ -440,8 +434,6 @@ STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}زمین
 
 
 
-
-
 ##id 0x9000
 
 
@@ -459,6 +451,48 @@ STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}زمین
 
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
+
+
+
+
+
+
+
+
+
+
+
+############ Vehicle lists
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -509,10 +543,6 @@ STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}زمین
 ############ Tooltip measurment
 
 
-############ Date formatting
-
-########
-
 
 
 
@@ -521,6 +551,24 @@ STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}زمین
 
 
 
+#### String control codes and their formatting
+
+
+
+
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+
+STR_BLACK_1                                                     :{BLACK}۱
+STR_BLACK_2                                                     :{BLACK}۲
+STR_BLACK_3                                                     :{BLACK}۳
+STR_BLACK_4                                                     :{BLACK}۴
+STR_BLACK_5                                                     :{BLACK}۵
 
 
 #### Improved sign GUI

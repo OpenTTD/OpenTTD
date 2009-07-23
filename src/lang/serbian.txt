@@ -329,8 +329,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
 STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opcije
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Poruka
@@ -342,17 +340,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD verzija {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD tim
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Izađi
 STR_YES                                                         :{BLACK}Da
 STR_NO                                                          :{BLACK}Ne
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Da li ste sigurni da želite da napustite OpenTTD i vratite se u {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Ništa
 STR_COLOUR_DARK_BLUE                                            :Tamno plava
 STR_COLOUR_PALE_GREEN                                           :Bledo zelena
@@ -371,8 +363,6 @@ STR_COLOUR_BROWN                                                :Braon
 STR_COLOUR_GREY                                                 :Siva
 STR_COLOUR_WHITE                                                :Bela
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Previše je vozila u igri
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Mesto
 STR_SMALLMAP_TYPE_CONTOURS                                      :Konture
 STR_SMALLMAP_TYPE_VEHICLES                                      :Vozila
@@ -498,12 +488,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Odaberit
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}Izaberite način filtriranja
 STR_SORT_BY                                                     :{BLACK}Sortiraj po
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Naseljenost
+STR_SORT_BY_NAME                                                :{BLACK}Ime
+STR_SORT_BY_DATE                                                :{BLACK}Datumu
 STR_SORT_BY_PRODUCTION                                          :Proizvodnji
 STR_SORT_BY_TYPE                                                :Vrsti
 STR_SORT_BY_TRANSPORTED                                         :Transportovano
-STR_SORT_BY_NAME                                                :{BLACK}Ime
-STR_SORT_BY_DATE                                                :{BLACK}Datumu
 STR_SORT_BY_NUMBER                                              :Broju
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zaradi prošle godine
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zaradi ove godine
@@ -526,37 +517,25 @@ STR_SORT_BY_INTRO_DATE                                          :Datum proizvodn
 STR_SORT_BY_RUNNING_COST                                        :Troškovi održavanja
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Snaga/Troškovi održavanja
 STR_SORT_BY_CARGO_CAPACITY                                      :Kapacitet tovara
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Nijedna vrsta tovara nije na čekanju
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Odaberi sve objekte
 STR_SELECT_ALL_TYPES                                            :{BLACK}Odaberi sve vrste tovara (uključujući i one bez tovara)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Dostupni Vozovi
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Dostupna Drumska Vozila
-STR_AVAILABLE_SHIPS                                             :{BLACK}Dostupni Brodovi
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Dostupne Letelice
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Pogledajte listu raspoloživih mašina za ovu vrstu vozila.
 STR_MANAGE_LIST                                                 :{BLACK}Upravljanje
 STR_MANAGE_LIST_TIP                                             :{BLACK}Pošaljite naredbu svim vozilima na ovoj listi
 STR_REPLACE_VEHICLES                                            :Obnovi vozila
+STR_SEND_FOR_SERVICING                                          :Pošalji na Servisiranje
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}Dostupni Vozovi
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Dostupna Drumska Vozila
+STR_AVAILABLE_SHIPS                                             :{BLACK}Dostupni Brodovi
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Dostupne Letelice
+
 STR_SEND_TRAIN_TO_DEPOT                                         :Pošalji u Depo
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Pošalji u Depo
 STR_SEND_SHIP_TO_DEPOT                                          :Pošalji u Depo
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Pošalji u Hangar
-STR_SEND_FOR_SERVICING                                          :Pošalji na Servisiranje
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Jan
-STR_MONTH_ABBREV_FEB                                            :Feb
-STR_MONTH_ABBREV_MAR                                            :Mar
-STR_MONTH_ABBREV_APR                                            :Apr
-STR_MONTH_ABBREV_MAY                                            :Maj
-STR_MONTH_ABBREV_JUN                                            :Jun
-STR_MONTH_ABBREV_JUL                                            :Jul
-STR_MONTH_ABBREV_AUG                                            :Avg
-STR_MONTH_ABBREV_SEP                                            :Sep
-STR_MONTH_ABBREV_OCT                                            :Okt
-STR_MONTH_ABBREV_NOV                                            :Nov
-STR_MONTH_ABBREV_DEC                                            :Dec
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -584,8 +563,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Izgradnj
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Sađenje drveća, postavljanje znakova itd.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informacije o zemljištu
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcije
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Servisni interval nije moguće promeniti...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zatvori prozor
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Naslov - povucite mišem da biste pomerili prozor
@@ -642,7 +619,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nema
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Ime
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1.
 STR_ORDINAL_NUMBER_2ND                                          :2.
 STR_ORDINAL_NUMBER_3RD                                          :3.
@@ -675,6 +652,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29.
 STR_ORDINAL_NUMBER_30TH                                         :30.
 STR_ORDINAL_NUMBER_31ST                                         :31.
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Jan
+STR_MONTH_ABBREV_FEB                                            :Feb
+STR_MONTH_ABBREV_MAR                                            :Mar
+STR_MONTH_ABBREV_APR                                            :Apr
+STR_MONTH_ABBREV_MAY                                            :Maj
+STR_MONTH_ABBREV_JUN                                            :Jun
+STR_MONTH_ABBREV_JUL                                            :Jul
+STR_MONTH_ABBREV_AUG                                            :Avg
+STR_MONTH_ABBREV_SEP                                            :Sep
+STR_MONTH_ABBREV_OCT                                            :Okt
+STR_MONTH_ABBREV_NOV                                            :Nov
+STR_MONTH_ABBREV_DEC                                            :Dec
+
+STR_MONTH_JAN                                                   :Januar
+STR_MONTH_FEB                                                   :Februar
+STR_MONTH_MAR                                                   :Mart
+STR_MONTH_APR                                                   :April
+STR_MONTH_MAY                                                   :Maj
+STR_MONTH_JUN                                                   :Jun
+STR_MONTH_JUL                                                   :Jul
+STR_MONTH_AUG                                                   :Avgust
+STR_MONTH_SEP                                                   :Septembar
+STR_MONTH_OCT                                                   :Oktobar
+STR_MONTH_NOV                                                   :Novembar
+STR_MONTH_DEC                                                   :Decembar
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -772,12 +777,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} dostiže status '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME}, vlasnik kompanije {COMPANY} je dostigao status '{STRING}'!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor scenarija
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generator terena
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Uvećaj područje koje treba sniziti/povisiti
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Smanji područje koje treba sniziti/povisiti
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generiši nov nasumičan teren
@@ -859,9 +861,7 @@ STR_OFF                                                         :Undress
 STR_SUMMARY                                                     :kratak pregled
 STR_FULL                                                        :Puni
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcije
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Podešavanje težine
@@ -966,9 +966,6 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ČUV
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Čuvanje je još u toku,{}molim sačekajte dok se ne završi!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Izbor programa 'lagane stvari'
 
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
-
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engleska (Originalna)
 STR_TOWNNAME_FRENCH                                             :Francuska
@@ -1048,19 +1045,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Dodatne 
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Neuspešno automatsko čuvanje
 
-STR_MONTH_JAN                                                   :Januar
-STR_MONTH_FEB                                                   :Februar
-STR_MONTH_MAR                                                   :Mart
-STR_MONTH_APR                                                   :April
-STR_MONTH_MAY                                                   :Maj
-STR_MONTH_JUN                                                   :Jun
-STR_MONTH_JUL                                                   :Jul
-STR_MONTH_AUG                                                   :Avgust
-STR_MONTH_SEP                                                   :Septembar
-STR_MONTH_OCT                                                   :Oktobar
-STR_MONTH_NOV                                                   :Novembar
-STR_MONTH_DEC                                                   :Decembar
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Ide ka {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Ide ka {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Nema naredbi
@@ -1074,8 +1058,6 @@ STR_ITEMS                                                       :komada
 STR_CRATES                                                      :sanduka
 STR_RES_OTHER                                                   :drugo
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Lista naredbi se ne može deliti...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Lista naredbi se ne može kopirati...
@@ -1348,7 +1330,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-veli�
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :isključeno
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Promena vrednosti
 
 STR_TEMPERATE_LANDSCAPE                                         :Umereni klimatski pojas
@@ -1450,11 +1431,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Imena fa
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...previše blizu druge fabrike
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Prepravlja voz kako bi prevozio drugu vrstu tereta
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Prepavi voz
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Označite vrstu tovara za prepravljanje voza
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Prepravlja voz za prevoz označene vrste tovara
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Voz se ne može prepraviti...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Promena proizvodnje
 
 ############ network gui strings
@@ -2263,6 +2239,7 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Aerodr
 STR_SV_STNAME_OILFIELD                                          :{STRING} Naftna polja
 STR_SV_STNAME_MINES                                             :{STRING} Rudnici
 STR_SV_STNAME_DOCKS                                             :{STRING} Pristaništa
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Dodatna
 STR_SV_STNAME_SIDINGS                                           :{STRING} Skretnica
 STR_SV_STNAME_BRANCH                                            :{STRING} Grana
@@ -2310,8 +2287,6 @@ STR_NUM_LOW                                                     :niski
 STR_NUM_NORMAL                                                  :normalni
 STR_NUM_HIGH                                                    :visoki
 STR_NUM_CUSTOM                                                  :Prilagođen
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :jako spora
 STR_AI_SPEED_SLOW                                               :spora
 STR_AI_SPEED_MEDIUM                                             :srednja
@@ -2635,10 +2610,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :jednopružno ž
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :megnetno žel. vučno vozilo
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Železnički Depo
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi voz stiže na stanicu {STATION}!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Opširnije)
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Voz se tu upravo nalazi
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Direktno
@@ -2728,37 +2701,16 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :i putuj {STRING
 STR_TIMETABLE_DAYS                                              :{COMMA} dan{P "" a a}
 STR_TIMETABLE_TICKS                                             :{COMMA} utkucaj{P "" a a}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Ide za {TOWN} Železnički Depo
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Ide za {TOWN} Železnički Depo, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servisiranje u {TOWN} Železničkom Depou
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servisiranje u {TOWN} Železničkom Depou, {VELOCITY}
-
 STR_INVALID_ORDER                                               :{RED} (Neispravna Naredba)
 
 STR_UNKNOWN_STATION                                             :nepoznata stanica
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Prazno
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} sa {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} sa {STATION} (x{NUM})
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} čeka u depou
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nova Vozila
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Voz je predugačak
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vozovi se mogu izmeniti samo kada su zaustavljeni u depou
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nova Železnička Vozila
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nova Železnička Električna Vozila
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nova Jenodšinska Vozila
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nova Maglev Vozila
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Šinska Vozila
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Kupi Vozilo
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Kopiraj Vozilo
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Ovim ćete kupiti isto drumsko vozilo. Sa Ctrl+Klik će imati zajedničke naredbe
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Ovim ćete kupiti isto drumsko vozilo. Kliknite na dugme i potom na drumsko vozilo koje je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe
-STR_CLONE_TRAIN                                                 :{BLACK}Kopiraj Voz
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Ovim ćete kupiti istu kompoziciju. Sa Ctrl+Klik će imati zajedničke naredbe
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Ovim ćete kupiti istu kompoziciju. Kliknite na dugme i potom na voz koji je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Preimenuj
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Preskoči
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Izbriši
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Idi do
@@ -2774,14 +2726,12 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Prelazi 
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Naredbe)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Kraj Naredbi - -
 STR_SERVICE                                                     :{BLACK}Servis
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Nemoguća kupovina šinskog vozila...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Kupljen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Vrednost: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Utovarivanje / Iztovarivanje
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Kreće
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Voz se mora zaustaviti u nekom depou
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Voz ne može da ode u depo...
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Nema više mesta za naredbe
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Previše naredbi
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Ne može se dodati nova naredba...
@@ -2796,25 +2746,11 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}vozilo k
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Ne može se ukloniti vozilo...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Zadnja lokomotiva u kompoziciji uvek prati prednju
 STR_CARGO_N_A                                                   :Nepoznato{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Ne može se prodati šinsko vozilo...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nepostoji putanja do lokalnog depoa
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Ne može se pokrenuti/zaustaviti voz...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Period servisiranja: {LTBLUE}{COMMA}dana{BLACK}   Poslednji servis: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Period servisiranja: {LTBLUE}{COMMA}%{BLACK}   Poslednji servis: {LTBLUE}{DATE_LONG}
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vozovi - kliknite na voz za podatke, prevucite vozilo da bi dodali/sklonili iz kompozicije
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kupite nova šinska vozila
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Ovde prevucite šinsko vozilo kako biste ga prodali
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Prebacite se na lokaciju železničkog depoa
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Spisak probranih šinskih vozila - kliknite na vozilo za više podataka
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Kupite označeno šinsko vozilo
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Preimenujte vrstu šinskog vozila
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Trenutno stanje voza - kliknite ovde za zaustavljanje/pokretanje voza
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Prikazuje naredbe vozu
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Prebacite se na lokaciju voza
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Pošaljite voz u depo. Sa Ctrl+Klik će otići samo na servis
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Voz će krenuti bez čekanja na signal za slobodan kolosek
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Promena smera kretanja voza
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Prikazuje podatke o vozu
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Povećava period servisiranja
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Smanjuje period servisiranja
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Prikazuje podatke o tovaru koji se prevozi
@@ -2848,15 +2784,10 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zaustavlje
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemoguć je prolaz voza na signal opasnosti...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Havarisan!
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Naziv voza
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Nemoguće nazvati voz...
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Naziv voza
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Sudar Vozova!{}{COMMA} {P "" su je} poginu{P o la lo} u eksploziji nakon sudara
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nije moguće obrnuti smer kretanja voza...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Voz ne može da promeni smer...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Ne može se okrenuti vozilo od više delova
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Promena naziva vrste šinskog vozila
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nemoguća promena naziva vrste šinskog vozila...
 STR_CLEAR_TIME                                                  :{BLACK}Ukloni Vreme
 STR_RESET_LATENESS                                              :{BLACK}Poništi Merač Kašnjenja
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Promena naziva čvorišta
@@ -2888,43 +2819,14 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Merenje
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Popunjava raspored sa vrednostima iz sledećeg putovanja (Ctrl+Klik za zadržavanje vremena čekanja)
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Drumsko vozilo na putu
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Depo Drumskih Vozila
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nova Vozila
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nova Drumska Vozila
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Kupi Vozilo
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Ne može se kupiti drumsko vozilo...
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...mora se zaustaviti unutar depoa za drumska vozila
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nemoguća prodaja drumskog vozila...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Ne može se pokrenuti/zaustaviti drumsko vozilo...
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čeka u depou
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Ide ka {TOWN} Drumskom Depou
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Ide ka {TOWN} Drumskom Depou, {VELOCITY}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Servisiranje u {TOWN} Drumskom Depou
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Servisiranje u {TOWN} Drumskom Depou, {VELOCITY}
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Vozilo ne može da ode u depo...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Neuspešan pronalazak lokalnog depoa
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Trenutno stanje vozila - kliknite ovde za zaustavljanje/pokretanje vozila
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Prikazuje naredbe vozilu
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Prebacite se na lokaciju vozila
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Pošaljite vozilo u depo. Sa Ctrl+Klik će otići samo na servis
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Naterajte vozilo da okrene
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Prikazuje detalje drumskog vozila
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - kliknite na vozilo za podatke
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Kupi novo drumsko vozilo
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Ovde prevucite drumsko vozilo kako biste ga prodali
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Prebacite se na lokaciju drumskog depoa
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Spisak probranih drumskih vozila - kliknite na vozilo za više podataka
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Kupite označeno drumsko vozilo
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Nosivost: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozil{P o a a}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Naziv drumskog vozila
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ne može se promeniti naziv vozila...
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Naziv drumskog vozila
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi autobus stiže na stanicu {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi kamion stiže na stanicu {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi tramvaj stiže na stanicu {STATION}!
@@ -2932,96 +2834,31 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Saobraćajna nesreća!{}Vozač je poginuo u eksploziji nakon sudara sa vozom
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Saobraćajna nesreća!{}{COMMA} {P "" je su} poginu{P o la lo} u eksploziji nakon sudara sa vozom
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Drumsko vozilo ne može da se okrene...
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Promena naziva
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Promenite naziv vrste drumskog vozila
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Naziv vrste drumskog vozila
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nemoguća promena naziva vrste drumskog vozila...
 
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Prepravite drumsko vozilo kako bi prevozio drugu vrstu tovara
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Prepravi drumsko vozilo
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Prepravlja drumsko vozilo za prevoz označene vrste tovara
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Nemoguće prepravljanje drumskog vozila...
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Označite vrstu tovara za prepravljanje drumskog vozila
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Izgradnja plovnih kanala
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Izgradnja plovnih kanala
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Plovni kanali
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Izgradnja pristaništa ovde nije moguća...
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Depo Plovila
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novi Brodovi
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Novi Brodovi
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Kupi Brod
-STR_CLONE_SHIP                                                  :{BLACK}Kopiraj Brod
-STR_CLONE_SHIP_INFO                                             :{BLACK}Ovim ćete kupiti isti brod. Sa Ctrl+Klik će imati zajedničke naredbe
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Ovim ćete kupiti isti brod. Kliknite na dugme i potom na brod koji je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Brod mora biti zaustavljen u depou
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Brod se ne može prodati...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Brod se ne može kupiti...
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Brod se tu upravo nalazi
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Ne može se pokrenuti/zaustaviti brod...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Brod ne može da ode u depo...
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Ide za {TOWN} Brodski Depo
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Ide za {TOWN} Brodski Depo, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servisiranje u {TOWN} Brodskom Depou
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servisiranje u {TOWN} Brodskom Depou, {VELOCITY}
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} čeka u depou
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Gradi pristanište
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Gradi brodski depo (za kupovinu i servisiranje brodova)
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Brodovi - kliknite na brod za podatke
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Kupovina novog broda
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Ovde prevucite brod kako biste ga prodali
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Prebacite se na lokaciju broda
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Spisak probranih brodova - kliknite na brod za više podataka
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Kupite označeni brod
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Trenutno stanje broda - kliknite ovde za zaustavljanje/pokretanje broda
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Prikazuje naredbe brodu
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Prebacite se na lokaciju broda
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Pošaljite brod u depo. Sa Ctrl+Klik će otići samo na servis
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Prikazuje podatke o brodu
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Naziv broda
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Naziv broda
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Ne može se promeniti naziv broda...
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Narod slavi . . .{}Prvi brod stiže na stanicu {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Postavite bovu kako bi služila kao putokaz
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Bova se ovde ne može postaviti...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Izgradite akvadukt
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Akvadukt se ovde ne može izgraditi...
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Preimenuj
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Promenite naziv vrste broda
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Promena naziva vrste broda
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Nemoguća promena naziva vrste broda...
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Prepravite brod kako bi prevozio drugu vrstu tereta
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Prepravljanje)
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Prepravi brod
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Označite vrstu tovara za prepravljanje broda
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Prepravlja brod za prevoz označene vrste tovara
 STR_REFIT_TITLE                                                 :{GOLD}Izaberite vrstu tereta za prevoz:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova nosivost: {GOLD}{CARGO}{}{BLACK}Cena prepravke: {GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Brod se ne može prepraviti...
 STR_REFITTABLE                                                  :(prepravljiv)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aerodromi
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Aerodrom se ovde ne može izgraditi...
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nova Letilica
-STR_CLONE_AIRCRAFT                                              :{BLACK}Kopiraj Letilicu
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Ovim ćete kupiti istu letilicu. Sa Ctrl+Klik će imati zajedničke naredbe
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Ovim ćete kupiti istu letilicu. Kliknite na dugme i potom na letilicu koje je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nove Letilice
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Napraviti Letelicu
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Letelice se ne može napraviti
 
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Promenite naziv vrste letilice
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Promena naziva vrste letilice
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Nemoguća promena naziva vrste letilice...
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Prepravite letilicu kako bi prevozila drugu vrstu tereta
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Prepravi letilicu
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Odaberite vrstu tereta koju će letilica prevoziti
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Prepravite letilicu kako bi prevozila označenu vrstu tereta
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Nemoguće je prepraviti letilicu...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Raspored)
 
@@ -3181,7 +3018,189 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Leteluca
 
 
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} čeka u depou
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čeka u depou
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} čeka u depou
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Prepavi voz
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Prepravi drumsko vozilo
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Prepravi brod
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Prepravi letilicu
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Prepravlja voz za prevoz označene vrste tovara
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Prepravlja drumsko vozilo za prevoz označene vrste tovara
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Prepravlja brod za prevoz označene vrste tovara
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Prepravite letilicu kako bi prevozila označenu vrstu tereta
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Označite vrstu tovara za prepravljanje voza
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Označite vrstu tovara za prepravljanje drumskog vozila
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Označite vrstu tovara za prepravljanje broda
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Odaberite vrstu tereta koju će letilica prevoziti
+
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Železnički Depo
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Depo Drumskih Vozila
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Depo Plovila
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Naziv voza
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Naziv drumskog vozila
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Naziv broda
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Naziv voza
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Naziv drumskog vozila
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Naziv broda
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Voz se tu upravo nalazi
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Drumsko vozilo na putu
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Brod se tu upravo nalazi
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Voz se ne može prepraviti...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Nemoguće prepravljanje drumskog vozila...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Brod se ne može prepraviti...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Nemoguće je prepraviti letilicu...
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Nemoguće nazvati voz...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ne može se promeniti naziv vozila...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Ne može se promeniti naziv broda...
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Ne može se pokrenuti/zaustaviti voz...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Ne može se pokrenuti/zaustaviti drumsko vozilo...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Ne može se pokrenuti/zaustaviti brod...
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Voz ne može da ode u depo...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Vozilo ne može da ode u depo...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Brod ne može da ode u depo...
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Nemoguća kupovina šinskog vozila...
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Ne može se kupiti drumsko vozilo...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Brod se ne može kupiti...
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Letelice se ne može napraviti
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nemoguća promena naziva vrste šinskog vozila...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nemoguća promena naziva vrste drumskog vozila...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Nemoguća promena naziva vrste broda...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Nemoguća promena naziva vrste letilice...
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Ne može se prodati šinsko vozilo...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nemoguća prodaja drumskog vozila...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Brod se ne može prodati...
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Trenutno stanje voza - kliknite ovde za zaustavljanje/pokretanje voza
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Trenutno stanje vozila - kliknite ovde za zaustavljanje/pokretanje vozila
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Trenutno stanje broda - kliknite ovde za zaustavljanje/pokretanje broda
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Prikazuje naredbe vozu
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Prikazuje naredbe vozilu
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Prikazuje naredbe brodu
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Prebacite se na lokaciju voza
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Prebacite se na lokaciju vozila
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Prebacite se na lokaciju broda
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Pošaljite voz u depo. Sa Ctrl+Klik će otići samo na servis
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Pošaljite vozilo u depo. Sa Ctrl+Klik će otići samo na servis
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Pošaljite brod u depo. Sa Ctrl+Klik će otići samo na servis
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Prikazuje podatke o vozu
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Prikazuje detalje drumskog vozila
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Prikazuje podatke o brodu
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Prepravlja voz kako bi prevozio drugu vrstu tereta
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Prepravite drumsko vozilo kako bi prevozio drugu vrstu tovara
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Prepravite brod kako bi prevozio drugu vrstu tereta
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Prepravite letilicu kako bi prevozila drugu vrstu tereta
+
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Ide za {TOWN} Železnički Depo
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Ide za {TOWN} Železnički Depo, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Ide ka {TOWN} Drumskom Depou
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Ide ka {TOWN} Drumskom Depou, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Ide za {TOWN} Brodski Depo
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Ide za {TOWN} Brodski Depo, {VELOCITY}
+
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servisiranje u {TOWN} Železničkom Depou
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servisiranje u {TOWN} Železničkom Depou, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Servisiranje u {TOWN} Drumskom Depou
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Servisiranje u {TOWN} Drumskom Depou, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servisiranje u {TOWN} Brodskom Depou
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servisiranje u {TOWN} Brodskom Depou, {VELOCITY}
+
+
+STR_CLONE_TRAIN                                                 :{BLACK}Kopiraj Voz
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Kopiraj Vozilo
+STR_CLONE_SHIP                                                  :{BLACK}Kopiraj Brod
+STR_CLONE_AIRCRAFT                                              :{BLACK}Kopiraj Letilicu
+
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Ovim ćete kupiti istu kompoziciju. Sa Ctrl+Klik će imati zajedničke naredbe
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Ovim ćete kupiti isto drumsko vozilo. Sa Ctrl+Klik će imati zajedničke naredbe
+STR_CLONE_SHIP_INFO                                             :{BLACK}Ovim ćete kupiti isti brod. Sa Ctrl+Klik će imati zajedničke naredbe
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Ovim ćete kupiti istu letilicu. Sa Ctrl+Klik će imati zajedničke naredbe
+
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Ovim ćete kupiti istu kompoziciju. Kliknite na dugme i potom na voz koji je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Ovim ćete kupiti isto drumsko vozilo. Kliknite na dugme i potom na drumsko vozilo koje je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Ovim ćete kupiti isti brod. Kliknite na dugme i potom na brod koji je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Ovim ćete kupiti istu letilicu. Kliknite na dugme i potom na letilicu koje je u ili van depoa. Sa Ctrl+Klik će imati zajedničke naredbe
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nova Železnička Vozila
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nova Železnička Električna Vozila
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nova Jenodšinska Vozila
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nova Maglev Vozila
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Šinska Vozila
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nova Drumska Vozila
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Novi Brodovi
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nove Letilice
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Kupi Vozilo
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Kupi Vozilo
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Kupi Brod
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Napraviti Letelicu
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Spisak probranih šinskih vozila - kliknite na vozilo za više podataka
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Spisak probranih drumskih vozila - kliknite na vozilo za više podataka
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Spisak probranih brodova - kliknite na brod za više podataka
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Kupite označeno šinsko vozilo
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Kupite označeno drumsko vozilo
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Kupite označeni brod
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Preimenuj
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Promena naziva
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Preimenuj
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Preimenujte vrstu šinskog vozila
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Promenite naziv vrste drumskog vozila
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Promenite naziv vrste broda
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Promenite naziv vrste letilice
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Promena naziva vrste šinskog vozila
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Naziv vrste drumskog vozila
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Promena naziva vrste broda
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Promena naziva vrste letilice
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nova Vozila
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nova Vozila
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novi Brodovi
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nova Letilica
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vozovi - kliknite na voz za podatke, prevucite vozilo da bi dodali/sklonili iz kompozicije
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - kliknite na vozilo za podatke
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Brodovi - kliknite na brod za podatke
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kupite nova šinska vozila
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Kupi novo drumsko vozilo
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Kupovina novog broda
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Ovde prevucite šinsko vozilo kako biste ga prodali
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Ovde prevucite drumsko vozilo kako biste ga prodali
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Ovde prevucite brod kako biste ga prodali
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Prebacite se na lokaciju železničkog depoa
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Prebacite se na lokaciju drumskog depoa
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Prebacite se na lokaciju broda
+
+
 ### depot strings
+
 
 
 
@@ -3327,7 +3346,10 @@ STR_STATION_NAME                                                :{STATION}
 STR_TOWN_NAME                                                   :{TOWN}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -3344,6 +3366,31 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_COMPANY_NUM                                          :(Kompanija {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupa {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 
 #### Improved sign GUI

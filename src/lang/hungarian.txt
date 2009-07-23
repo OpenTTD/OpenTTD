@@ -187,8 +187,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}MA
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}SS
 STR_ABBREV_NONE                                                 :{TINYFONT}SÁ
 STR_ABBREV_ALL                                                  :{TINYFONT}ÖS
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Térkép - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Beállítások
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Üzenet
@@ -200,17 +198,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyrigh
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Az OpenTTD csapat
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Kilépés
 STR_YES                                                         :{BLACK}Igen
 STR_NO                                                          :{BLACK}Nem
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Biztosan bezárod ezt a programot és kilépsz a {STRING}ba ?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :semmi
 STR_COLOUR_DARK_BLUE                                            :Sötétkék
 STR_COLOUR_PALE_GREEN                                           :Halványzöld
@@ -229,8 +221,6 @@ STR_COLOUR_BROWN                                                :Barna
 STR_COLOUR_GREY                                                 :Szürke
 STR_COLOUR_WHITE                                                :Fehér
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Túl sok jármű van a játékban
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Megnéz
 STR_SMALLMAP_TYPE_CONTOURS                                      :Domborzat
 STR_SMALLMAP_TYPE_VEHICLES                                      :Járművek
@@ -357,12 +347,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Sorbaren
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}Szűrési feltétel kiválasztása
 STR_SORT_BY                                                     :{BLACK}Rendezés
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Lakosság
+STR_SORT_BY_NAME                                                :{BLACK}Név
+STR_SORT_BY_DATE                                                :{BLACK}Dátum
 STR_SORT_BY_PRODUCTION                                          :Termelés
 STR_SORT_BY_TYPE                                                :Típus
 STR_SORT_BY_TRANSPORTED                                         :Elszállítás
-STR_SORT_BY_NAME                                                :{BLACK}Név
-STR_SORT_BY_DATE                                                :{BLACK}Dátum
 STR_SORT_BY_NUMBER                                              :Szám
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Tavalyi profit
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Idei profit
@@ -385,6 +376,7 @@ STR_SORT_BY_INTRO_DATE                                          :Bevezetési dá
 STR_SORT_BY_RUNNING_COST                                        :Üzemeltetési k.
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Telj./Üzemeltetési k.
 STR_SORT_BY_CARGO_CAPACITY                                      :Teherkapacitás
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Semmilyen áru nem várakozik
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Minden szállítóegység kiválasztása
 STR_SELECT_ALL_TYPES                                            :{BLACK}Minden rakománytípus mutatása (beleértve ha nincs várakozó rakomány)
@@ -403,21 +395,6 @@ STR_SEND_TRAIN_TO_DEPOT                                         :Elküldi járm�
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Elküldi garázsba
 STR_SEND_SHIP_TO_DEPOT                                          :Elküldi dokkba
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Elküldi hangárba
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :jan.
-STR_MONTH_ABBREV_FEB                                            :febr.
-STR_MONTH_ABBREV_MAR                                            :márc.
-STR_MONTH_ABBREV_APR                                            :ápr.
-STR_MONTH_ABBREV_MAY                                            :máj.
-STR_MONTH_ABBREV_JUN                                            :jún.
-STR_MONTH_ABBREV_JUL                                            :júl.
-STR_MONTH_ABBREV_AUG                                            :aug.
-STR_MONTH_ABBREV_SEP                                            :szept.
-STR_MONTH_ABBREV_OCT                                            :okt.
-STR_MONTH_ABBREV_NOV                                            :nov.
-STR_MONTH_ABBREV_DEC                                            :dec.
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -445,8 +422,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Repülő
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Faültetés, feliratok lerakása stb.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Terület-információ
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Beállítások
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nem változtathatod meg a javítási időközt...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Az ablak bezárása
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Az ablak címsora - húzd ezt a mozgatáshoz
@@ -493,7 +468,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nincs
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Név
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1.
 STR_ORDINAL_NUMBER_2ND                                          :2.
 STR_ORDINAL_NUMBER_3RD                                          :3.
@@ -526,6 +501,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29.
 STR_ORDINAL_NUMBER_30TH                                         :30.
 STR_ORDINAL_NUMBER_31ST                                         :31.
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :jan.
+STR_MONTH_ABBREV_FEB                                            :febr.
+STR_MONTH_ABBREV_MAR                                            :márc.
+STR_MONTH_ABBREV_APR                                            :ápr.
+STR_MONTH_ABBREV_MAY                                            :máj.
+STR_MONTH_ABBREV_JUN                                            :jún.
+STR_MONTH_ABBREV_JUL                                            :júl.
+STR_MONTH_ABBREV_AUG                                            :aug.
+STR_MONTH_ABBREV_SEP                                            :szept.
+STR_MONTH_ABBREV_OCT                                            :okt.
+STR_MONTH_ABBREV_NOV                                            :nov.
+STR_MONTH_ABBREV_DEC                                            :dec.
+
+STR_MONTH_JAN                                                   :január
+STR_MONTH_FEB                                                   :február
+STR_MONTH_MAR                                                   :március
+STR_MONTH_APR                                                   :április
+STR_MONTH_MAY                                                   :május
+STR_MONTH_JUN                                                   :június
+STR_MONTH_JUL                                                   :július
+STR_MONTH_AUG                                                   :augusztus
+STR_MONTH_SEP                                                   :szeptember
+STR_MONTH_OCT                                                   :október
+STR_MONTH_NOV                                                   :november
+STR_MONTH_DEC                                                   :december
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -616,12 +619,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} elérte a '{STRING}' rangot!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} - {COMPANY} elérte a '{STRING}' rangot!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}pályaszerkesztő
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Táj szerkesztése
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Az emelendő/süllyesztendő földterület növelése
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Az emelendő/süllyesztendő földterület csökkentése
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Véletlenszerű táj készítése
@@ -703,9 +703,7 @@ STR_OFF                                                         :Ki
 STR_SUMMARY                                                     :Kivonat
 STR_FULL                                                        :Teljes
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Beállítások
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nehézségi beállítások
@@ -810,9 +808,6 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  JÁT
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}A mentés még tart,{}kérlek várd meg a végét!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}A 'szép az élet' zenei műsor kiválasztása
 
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
-
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Angol (Eredeti)
 STR_TOWNNAME_FRENCH                                             :Francia
@@ -892,19 +887,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Kiegész
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatikus mentés sikertelen
 
-STR_MONTH_JAN                                                   :január
-STR_MONTH_FEB                                                   :február
-STR_MONTH_MAR                                                   :március
-STR_MONTH_APR                                                   :április
-STR_MONTH_MAY                                                   :május
-STR_MONTH_JUN                                                   :június
-STR_MONTH_JUL                                                   :július
-STR_MONTH_AUG                                                   :augusztus
-STR_MONTH_SEP                                                   :szeptember
-STR_MONTH_OCT                                                   :október
-STR_MONTH_NOV                                                   :november
-STR_MONTH_DEC                                                   :december
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}{STATION} állomás felé
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}{STATION} állomás felé, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Nincs menetrend
@@ -918,8 +900,6 @@ STR_ITEMS                                                       :darab
 STR_CRATES                                                      :láda
 STR_RES_OTHER                                                   :egyéb
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nem lehet megosztani a menetrendet...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nem lehet másolni a menetrendet...
@@ -1192,7 +1172,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}ÉNY-DK
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :kikapcsolva
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Válassz beállítási értéket
 
 STR_TEMPERATE_LANDSCAPE                                         :mérsékelt táj
@@ -2195,8 +2174,6 @@ STR_NUM_LOW                                                     :Kevés
 STR_NUM_NORMAL                                                  :Normál
 STR_NUM_HIGH                                                    :Sok
 STR_NUM_CUSTOM                                                  :Saját
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Nagyon lassú
 STR_AI_SPEED_SLOW                                               :Lassú
 STR_AI_SPEED_MEDIUM                                             :Közepes
@@ -2877,7 +2854,6 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...gará
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nem találom a helyi garázst
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Visszafordítja a járművet
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacitás: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} jármű{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
@@ -3543,7 +3519,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -3560,6 +3539,31 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_COMPANY_NUM                                          :({COMMA}. vállalat)
 STR_FORMAT_GROUP_NAME                                           :{COMMA} csoport
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}i {STRING}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}A névnek egyedinek kell lennie
 

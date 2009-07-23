@@ -154,8 +154,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
 STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Map - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Dewisiadau Gêm
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Neges
@@ -167,17 +165,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Hawlfrai
 STR_ABOUT_VERSION                                               :{BLACK}fersiwn OpenTTD {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Y tîm OpenTTD
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Gadael
 STR_YES                                                         :{BLACK}Iawn
 STR_NO                                                          :{BLACK}Na
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Ydych chi eisiau gadael y gêm a dychwelyd i {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :Dim
 STR_COLOUR_DARK_BLUE                                            :Glas Tywyll
 STR_COLOUR_PALE_GREEN                                           :Gwyrdd Golau
@@ -196,8 +188,6 @@ STR_COLOUR_BROWN                                                :Frown
 STR_COLOUR_GREY                                                 :Llwyd
 STR_COLOUR_WHITE                                                :Gwyn
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Mae gormod o gerbydau yn y gêm
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Lleoliad
 STR_SMALLMAP_TYPE_CONTOURS                                      :Cyfuchlin
 STR_SMALLMAP_TYPE_VEHICLES                                      :Cerbydau
@@ -323,12 +313,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Dewiswch
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}dewis criteria hidlyr
 STR_SORT_BY                                                     :{BLACK}Trefnu yn ôl
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Poblogaeth
+STR_SORT_BY_NAME                                                :{BLACK}Enw
+STR_SORT_BY_DATE                                                :{BLACK}Dyddiad
 STR_SORT_BY_PRODUCTION                                          :Cynyrch
 STR_SORT_BY_TYPE                                                :Math
 STR_SORT_BY_TRANSPORTED                                         :Wedi'i gludo
-STR_SORT_BY_NAME                                                :{BLACK}Enw
-STR_SORT_BY_DATE                                                :{BLACK}Dyddiad
 STR_SORT_BY_NUMBER                                              :Rhif
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Elw eleni
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Elw llynedd
@@ -351,37 +342,25 @@ STR_SORT_BY_INTRO_DATE                                          :Dyddiad Cyflwyn
 STR_SORT_BY_RUNNING_COST                                        :Côst Rhedeg
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Côst Pŵer/Rhedeg
 STR_SORT_BY_CARGO_CAPACITY                                      :Gallu cludo Llwyth
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Nid oes llwyth o unrhyw fath yn disgwyl
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Dewis pob cyfleuster
 STR_SELECT_ALL_TYPES                                            :{BLACK}Dewis pob math llwyth (gan gynnwys llwythi dim aros)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Trenau sydd ar gael
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Cerbydau sydd ar gael
-STR_AVAILABLE_SHIPS                                             :{BLACK}Llongau sydd ar gael
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Awyrennau sydd ar gael
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Gweld rhestr o'r cynlluniau modur sydd ar gael ar gyfer y math cerbyd hwn.
 STR_MANAGE_LIST                                                 :{BLACK}Golygu'r rhestr
 STR_MANAGE_LIST_TIP                                             :{BLACK}Anfon y cyfarwyddiadau at bob cerbyd yn y rhestr
 STR_REPLACE_VEHICLES                                            :Cyfnewid Cerbydau
+STR_SEND_FOR_SERVICING                                          :Gyrru i dderbyn Gwasanaeth
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}Trenau sydd ar gael
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Cerbydau sydd ar gael
+STR_AVAILABLE_SHIPS                                             :{BLACK}Llongau sydd ar gael
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Awyrennau sydd ar gael
+
 STR_SEND_TRAIN_TO_DEPOT                                         :Gyrru i Ddepo
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Gyrru i Ddepo
 STR_SEND_SHIP_TO_DEPOT                                          :Gyrru i Ddepo
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Gyrru i Awyrendy
-STR_SEND_FOR_SERVICING                                          :Gyrru i dderbyn Gwasanaeth
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Ion
-STR_MONTH_ABBREV_FEB                                            :Chwe
-STR_MONTH_ABBREV_MAR                                            :Maw
-STR_MONTH_ABBREV_APR                                            :Ebr
-STR_MONTH_ABBREV_MAY                                            :Mai
-STR_MONTH_ABBREV_JUN                                            :Meh
-STR_MONTH_ABBREV_JUL                                            :Gor
-STR_MONTH_ABBREV_AUG                                            :Awst
-STR_MONTH_ABBREV_SEP                                            :Medi
-STR_MONTH_ABBREV_OCT                                            :Hyd
-STR_MONTH_ABBREV_NOV                                            :Tach
-STR_MONTH_ABBREV_DEC                                            :Rhag
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -409,8 +388,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Adeiladu
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Plannu Coed, gosod arwyddion ayb.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Gwybodaeth am yr ardal tir
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Dewisiadau
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Methu newid hyd y cyfnod rhwng pob gwasanaeth...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Clau Ffenestr
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Teitl ffenestr - llusgwch hwn i symud ffenestr
@@ -457,7 +434,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Dim
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Enw
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1af
 STR_ORDINAL_NUMBER_2ND                                          :2il
 STR_ORDINAL_NUMBER_3RD                                          :3ydd
@@ -490,6 +467,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29fed
 STR_ORDINAL_NUMBER_30TH                                         :30fed
 STR_ORDINAL_NUMBER_31ST                                         :31fed
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Ion
+STR_MONTH_ABBREV_FEB                                            :Chwe
+STR_MONTH_ABBREV_MAR                                            :Maw
+STR_MONTH_ABBREV_APR                                            :Ebr
+STR_MONTH_ABBREV_MAY                                            :Mai
+STR_MONTH_ABBREV_JUN                                            :Meh
+STR_MONTH_ABBREV_JUL                                            :Gor
+STR_MONTH_ABBREV_AUG                                            :Awst
+STR_MONTH_ABBREV_SEP                                            :Medi
+STR_MONTH_ABBREV_OCT                                            :Hyd
+STR_MONTH_ABBREV_NOV                                            :Tach
+STR_MONTH_ABBREV_DEC                                            :Rhag
+
+STR_MONTH_JAN                                                   :Ionawr
+STR_MONTH_FEB                                                   :Chwefror
+STR_MONTH_MAR                                                   :Mawrth
+STR_MONTH_APR                                                   :Ebrill
+STR_MONTH_MAY                                                   :Mai
+STR_MONTH_JUN                                                   :Mehefin
+STR_MONTH_JUL                                                   :Gorffennaf
+STR_MONTH_AUG                                                   :Awst
+STR_MONTH_SEP                                                   :Medi
+STR_MONTH_OCT                                                   :Hydref
+STR_MONTH_NOV                                                   :Tachwedd
+STR_MONTH_DEC                                                   :Rhagfyr
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -580,12 +585,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}Mae {COMPANY} wedi cyrraedd statws '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}Mae {PRESIDENTNAME} o gwmni {COMPANY} wedi cyrraedd statws '{STRING}'!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Golygydd Senario
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Cynhyrchu Tirwedd
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Cynyddu'r arwynebedd tir i'w godi neu ostwng
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Lleihau'r arwynebedd tir i'w godi neu ostwng
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Cynhyrchu Tir ar Hap
@@ -667,9 +669,7 @@ STR_OFF                                                         :I Ffwrdd
 STR_SUMMARY                                                     :Crynodeb
 STR_FULL                                                        :Llawn
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Dewisiadau Ge^m
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Gosodiadau Anhawster
@@ -774,9 +774,6 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  CADW
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Mae'r gêm wrthi'n cael ei chadw,{}Arhoswch nes y bydd y broses wedi'i chwblhau!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Dewis y rhaglen 'Ezy Scoedent style music'
 
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
-
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Saesneg (Gwreiddiol)
 STR_TOWNNAME_FRENCH                                             :Ffrangeg
@@ -856,19 +853,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}gwybodae
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Methodd yr Awtogadw
 
-STR_MONTH_JAN                                                   :Ionawr
-STR_MONTH_FEB                                                   :Chwefror
-STR_MONTH_MAR                                                   :Mawrth
-STR_MONTH_APR                                                   :Ebrill
-STR_MONTH_MAY                                                   :Mai
-STR_MONTH_JUN                                                   :Mehefin
-STR_MONTH_JUL                                                   :Gorffennaf
-STR_MONTH_AUG                                                   :Awst
-STR_MONTH_SEP                                                   :Medi
-STR_MONTH_OCT                                                   :Hydref
-STR_MONTH_NOV                                                   :Tachwedd
-STR_MONTH_DEC                                                   :Rhagfyr
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Ar ei ffordd i {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Ar ei ffordd i {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Dim gorchmynion
@@ -882,8 +866,6 @@ STR_ITEMS                                                       :eitem
 STR_CRATES                                                      :crât
 STR_RES_OTHER                                                   :arall
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Does dim modd rhannu'r rhestr gorchmynion...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Does dim modd copïo'r rhestr gorchmynion...
@@ -1156,7 +1138,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-faint
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :analluogwyd
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Newid gwerth gosodiad
 
 STR_TEMPERATE_LANDSCAPE                                         :Tirwedd Tymherus
@@ -1258,11 +1239,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Enwau di
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...rhy agos i ddiwydiant arall
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Ailffitio trên i gario llwyth o fath gwahanol
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Ailffitio trên
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Dewiswch fath o lwyth i'r trên ei gario
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Ailffitio'r trên i gario'r math o llwyth sydd wedi'i ddewis
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Methu ailffitio trên...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Newid cynnyrch
 
 ############ network gui strings
@@ -2075,6 +2051,7 @@ STR_SV_STNAME_AIRPORT                                           :Maes Awyr {STRI
 STR_SV_STNAME_OILFIELD                                          :Maes Olew{STRING}
 STR_SV_STNAME_MINES                                             :Mwynglawdd {STRING}
 STR_SV_STNAME_DOCKS                                             :Dociau {STRING}
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Rhandre
 STR_SV_STNAME_SIDINGS                                           :{STRING} Cilffordd
 STR_SV_STNAME_BRANCH                                            :{STRING} Cangen
@@ -2122,8 +2099,6 @@ STR_NUM_LOW                                                     :Isel
 STR_NUM_NORMAL                                                  :Arferol
 STR_NUM_HIGH                                                    :Anodd
 STR_NUM_CUSTOM                                                  :Addasedig
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Araf Iawn
 STR_AI_SPEED_SLOW                                               :Araf
 STR_AI_SPEED_MEDIUM                                             :Canolig
@@ -2591,10 +2566,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :trên monoreilf
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :trên maglef
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Depo Trên {TOWN}
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{}Mae'r trên cyntaf wedi cyrraedd {STATION}!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Manylion)
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Trên yn y ffordd
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Heb stop
@@ -2684,37 +2657,16 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :a theithio am {
 STR_TIMETABLE_DAYS                                              :{COMMA} diwrnod{P "" au}
 STR_TIMETABLE_TICKS                                             :{COMMA} tic{P "" iau}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Mynd am Ddepo Trên {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Mynd am Ddepo Trên {TOWN}, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Gwasanaeth yn Nepo Trên {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Gwasanaeth yn Nepo Trên {TOWN}, {VELOCITY}
-
 STR_INVALID_ORDER                                               :{RED} (Gorchymyn Annilys)
 
 STR_UNKNOWN_STATION                                             :gorsaf anhysbys
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Gwag
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} o {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} o {STATION} (x{NUM})
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}Mae {VEHICLE} yn aros yn y depo
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Cerbyd Newydd
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Mae'r Trên yn rhy hir
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Gellir newid trenau yn unig pan fyddan nhw wedi stopio tu mewn i ddepo
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Cerbydau Rheilffordd Newydd
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Cerbydau Rheilffordd Trydan Newydd
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Cerbydau Monoreilffordd Newydd
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Cerbydau Maglef Newydd
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Cerbydau Rheilffordd
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Adeiladu Cerbyd
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Dyblygu Cerbyd
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Bydd hyn yn adeiladu copi o the cerbyd ffordd. Bydd Ctrl-clic yn rhannu'r gorchmynion
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Bydd hyn yn adeiladu copi o a cerbyd ffordd. Cliciwch ar y botwm hwn ac yna ar gerbyd ffordd sydd unai tu allan neu tu mewn y depo. Bydd Ctrl-clic yn rhannu'r gorchmynion.
-STR_CLONE_TRAIN                                                 :{BLACK}Dyblygu Trên
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Bydd hyn yn adeiladu copi o'r trên gan gynnwys pob un o'i gerbydau. Bydd Ctrl-clic yn rhannu'r gorchmynion.
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Bydd hyn yn adeiladu copi o'r trên gan gynnwys pob cerbyd. Cliciwch ar y botwm hwn ac yna ar drên sydd unai tu allan neu tu mewn y depo. Bydd Ctrl-clic yn rhannu'r gorchmynion.
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Ailenwi
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Hepgor
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Dileu
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Mynd i
@@ -2730,14 +2682,12 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Newid i'
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Gorchmynion)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Diwedd Gorchmynion - -
 STR_SERVICE                                                     :{BLACK}Gwasanaeth
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Methu adeiladu cerbyd rheilffordd...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Adeiladwyd: {LTBLUE}{NUM}{BLACK} Gwerth: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Gwerth: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Llwytho / Dadlwytho
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Gadael
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Rhaid i'r trên fod wedi'i stopio mewn depo
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Methu gyrru trên i depo...
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Dim mwy o le ar gyfer gorchmynion
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Gormod o orchmynion
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Methu ychwanegu gorchymyn newydd...
@@ -2752,25 +2702,11 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}ni all c
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Methu symud y cerbyd...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Bydd yr injan ôl wastad yn dilyn ei gymar blaen
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Methu gwerthu cerbyd rheilffordd...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Methu dod o hyd i ffordd i'r depo lleol
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Methu cychwyn/stopio trên...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Bwlch rhwng gwasanaeth: {LTBLUE}{COMMA}days{BLACK}   Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}bwlch rhwng gwasanaeth: {LTBLUE}{COMMA}%{BLACK}  Gwasanaeth diwethaf: {LTBLUE}{DATE_LONG}
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenau - cliciwch ar y trên am wybodaeth, llusgwch gerbyd i'w ychwanegu neu i'w dynnu o'r trên
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Adeiladu cerbyd trên newydd
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Llusgwch gerbyd trên yma i'w werthu
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Canoli'r prif olygfa ar leoliad y depo trên
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Rhestr dewis trenau - cliciwch ar cerbyd am wybodaeth
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Adeiladu'r cerbyd trên sydd wedi'i amlygu
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Ailenwi math y cerbyd trên
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Gweithred y trên sydd wedi'i ddewis - cliciwch yma gychwyn/stopio trên
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Dangos gorchmynion trên
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Canoli'r prif olygfa ar leoliad y trên
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Anfon trên i'r depo. Bydd CTRL+clic yn rhoi gwasanaeth iddo'n unig
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Gorfodi trên i barhau heb fod signal yn ei glirio
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}gwrthdroi cyfeiriad trên
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Dangos manylion trên
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Cynyddu'r bwlch rhwng gwasanaethu
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Gostwng y bwlch rhwng gwasanaethu
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Dangos manylion y llwyth sy'n cael ei gludo
@@ -2804,15 +2740,10 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Wedi stopi
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Does dim modd gwneud i drên basio signal pan fo perygl...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Wedi crashio!
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Enwi trên
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Methu enwi trên...
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Enwi trên
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Trên wedi crashio!{}Bu {COMMA} farw yn y ddamwain
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Methu gwrthdroi cyfeiriad  trên...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}ddim yn medru reversio'r cerbyd...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Methu troi cerbydau sy'n meddu ar sawl uned
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Ailenwi math y cerbyd trên
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Methu ailenwi math y cerbyd trên...
 STR_CLEAR_TIME                                                  :{BLACK}Clirio Amser
 STR_RESET_LATENESS                                              :{BLACK}Ailosod Mesurydd Hwyrni
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Newid enw pwynt llwybro
@@ -2844,43 +2775,14 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Awtolenw
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Llenwch yr amserlen yn awtomatig gyda gwerthoedd o'r daith nesaf (Ctrl+Clic er mwyn ceisio cadw amserau aros)
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Cerbyd ffordd yn y ffordd
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}Depo Cerbydau Ffordd {TOWN}
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Cerbyd Newydd
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Cerbydau Ffordd Newydd
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Adeiladu Cerbyd
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Methu adeiladu cerbyd...
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...rhaid iddo fod wedi'i stopio mewn depo cerbyd ffordd
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Methu gwerthu cerbyd ffordd...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Methu stop/start cerbyd ffordd...
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Mae {VEHICLE} yn aros yn y depo
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Mynd am Ddepo Ffordd {TOWN}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Mynd am Ddepo Ffordd {TOWN}, {VELOCITY}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Mynd am wasanaeth Ddepo Ffordd {TOWN}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Mynd am wasanaeth i Ddepo Ffordd {TOWN}, {VELOCITY}
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Methu gyrru cerbyd i'r depo...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Methu dod o hyd i'r depo lleol
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gweithred gyfredol y cerbyd - cliciwch yma i gychwyn/stopio'r cerbyd
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Dangos gorchmynion cerbyd
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Canoli'r brif olygfa ar leoliad y cerbyd
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Anfon cerbyd i'r depo. Bydd CTRL+clic yn rhoi gwasanaeth iddo'n unig
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Gorfodi cerbyd i droi rownd
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Dangos manylion cerbyd ffordd
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Cerbydau - cliciwch ar gerbyd am wybodaeth
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Adeiladu cerbyd ffordd newydd
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Llusgwch gerbyd ffordd to yma i'w werthu
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Canoli'r brif olygfa ar leoliad y depo cerbyd ffordd
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Rhestr dewis cerbydau ffordd  - cliciwch ar gerbyd am wybodaeth
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Adeiladu'r cerbyd ffordd sydd wedi'i amlygu
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Cynhwysedd: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} cerbyd{P "" au}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Enwi cerbyd ffordd
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Methu enwi cerbyd ffordd...
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Enwi cerbyd ffordd
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{}Mae'r bws cyntaf wedi cyrraedd {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{}Mae'r lori gyntaf wedi cyrraedd {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{} Mae'r tram teithwyr cyntaf wedi cyrraedd {STATION}!
@@ -2888,128 +2790,39 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Damwain Cerbyd Ffordd!{}Bu gyrrwr farw mewn damwain â thrên
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Damwain Cerbyd Ffordd!{}Bu farw {COMMA} mewn damwain â thrên
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}ddim yn methu troi'r cerbyd...
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Ailenwi
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Ailenwi'r math cerbyd ffordd
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Ailenwi'r math cerbyd ffordd
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Methu ailenwi cerbyd ffordd...
 
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Ailffitio cerbyd ffordd i gario llwyth o fath gwahanol
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Ailffitio cerbyd ffordd
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Ailffitio cerbyd ffordd i gario'r llwyth sydd wedi'i amlygu
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Methu ailffitio cerbyd ffordd...
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Dewiswch y math o lwyth i'r cerbyd ffordd gario
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Adeiladu camlesi
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Adeiladu camlesi
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Camlesi
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Methu adeiladu doc yma...
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Depo Llong {TOWN}
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Llong Newydd
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Llong  Newydd
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Adeiladu Llong
-STR_CLONE_SHIP                                                  :{BLACK}Dyblygu Llong
-STR_CLONE_SHIP_INFO                                             :{BLACK}Bydd hyn yn adeiladu copi o'r llong. Bydd Ctrl-clic yn rhannu'r gorchmynion
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Bydd hyn yn adeiladu copi o a llong. Cliciwch a y botwm hwn ac yna ar long tu mewn neu tu allan i'r depo. Bydd Ctrl-clic yn rhannu'r gorchmynion
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Rhaid i'r llong fod wedi'i stopio mewn depo
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Methu gwerthu llong...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Methu adeiladu llong...
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Llong yn y ffordd
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}methu cychwyn/stopio llong...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Methu gyrru llong i ddepo...
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Mynd am Ddepo Llong {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Mynd am Ddepo Llong{TOWN}, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Mynd am wasanaeth i Ddepo Llong {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Mynd am wasanaeth i Depo Llong {TOWN}, {VELOCITY}
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}Mae {VEHICLE} yn aros yn y depo
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Adeiladu doc llongau
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Adeiladu depo llongau  (ar gyfer adeiladu a rhoi gwasanaeth i longau)
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Llongau - cliciwch ar long am wybodaeth
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Adeiladu llong newydd
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Llusgwch long yma i'w gwerthu
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Canoli'r brif olygfa ar leoliad depo'r llong
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Rhestr ddewis llongau - cliciwch ar long am wybodaeth
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Adeiladu'r llong sydd wedi'i hamlygu
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gweithred y llong gyfredol - cliciwch yma i gychwyn/stopio llong
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Dangos gorchmynion llong
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Canoli'r brif olygfa ar leoliad y llong
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Gyrru'r llong i ddepo. Bydd CTRL+clic yn rhoi gwasanaeth iddo'n unig
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Dangos manylion llong
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Enwi llong
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Enwi llong
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Methu enwi llong...
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{}Mae'r llong gyntaf wedi cyrraedd {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Gosod bwi a ellir ei ddefnyddio fel pwynt llwybr
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Methu gosod bwi yma...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Adeiladu traphont
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Methu adeiladu traphont yma...
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Ailenwi
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Ailenwi'r math llong
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Ailenwi'r math llong
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Methu ailenwi math llong...
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Ailffitio cargo llong i gario llwyth o fath gwahanol
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ailffitio)
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Ailffitio llong
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Dewiswch lwyth i'r llong ei gario
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Ailffitio llong i gario'r llwyth sydd wedi'i amlygu
 STR_REFIT_TITLE                                                 :{GOLD}Dewiswch y math o lwyth i'w  gario:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}bellach yn gallu cario: {GOLD}{CARGO}{}{BLACK}Côst o ailffitio: {GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Methu ailffitio llong...
 STR_REFITTABLE                                                  :(gallu ailffitio)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Meysydd Awyr
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Methu adeiladu maes awyr yma...
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}Awyrendy {STATION}
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Awyrennau Newydd
-STR_CLONE_AIRCRAFT                                              :{BLACK}Dyblygu Awyren
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Bydd hyn yn adeiladu copi o'r awyren. Bydd Ctrl-clic yn rhannu'r gorchmynion
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Bydd hyn yn adeiladu copi o awyren. Cliciwch ar y botwm hwn ac yna ar awyren sydd unai tu mewn neu tu allan i'r awyrendy. Bydd Ctrl-clic yn rhannu'r gorchmynion
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Awyrennau Newydd
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Adeiladu Awyrennau
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Methu adeiladu awyren...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Methu gyrru awyren i awyrendy...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}Mynd am Awyrendy {STATION}
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Mynd am Awyrendy {STATION}, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Mynd am wasanaeth i Awyrendy {STATION}
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Mynd am wasanaeth i Awyrendy {STATION}, {VELOCITY}
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}Mae {VEHICLE} yn aros yn yr awrendy
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Awyren yn y ffordd
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Methu stopio/cychwyn awyren...
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}mae'r awyren yn hedfan
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Rhaid i awyrennau rhaid i awyrennau fod wedi'i stopio mewn awyrendy
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}methu gwerthu awyren...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Adeiladu Maes Awyr
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Adeiladu maes awyr
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Awyrennau - cliciwch ar awyren am wybodaeth
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Adeiladu awyren newydd
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Llusgwch awyren yma i'w gwerthu
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Canoli'r prif olygfa ar leoliad yr awyrendy
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Rhestr ddewis awyrennau - cliciwch ar awyren am wybodaeth
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Adeiladu'r awyren sydd wedi'i hamlygu
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gweithred gyfredol yr awyren - cliciwch yma i stopio/cychwyn awyren
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Dangos gorchmynion awyren
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Canoli'r prif olygfa ar leoliad yr awyren
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Anfon awyren to awyrendy. Bydd CTRL+click yn rhoi gwasanaeth iddo'n unig
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Dangos manylion awyren
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Enwi awyren
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Methu enwi awyren...
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Enwi awyren
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{}Mae'r awyren gyntaf wedi cyrraedd {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Damwain Awyren!{}Bu farw {COMMA} mewn tanchwa yn {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Awyren wedi syrthio!{}Rhedodd yr awyren allan o danwydd, bu farw {COMMA} yn y ddamwain!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Ailenwi
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Ailenwi'r math awyren
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ailenwi'r math awyren
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Methu ailenwi'r math awyren...
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Ailffitio awyren i gario llwyth o fath gwahanol
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Ailffitio awyren
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Dewiswch y math o lwyth i'r awyren ei chario
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Ailffitio awyren i gario'r math o lwyth sydd wedi'i amlygu
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Methu ailffitio awyren...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Amserlen)
 
@@ -3177,6 +2990,211 @@ STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING}
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Rhestr wedi'i rhannu {COMMA} Cerbyd{P "" au}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Dangos pob cerbydau sy'n rhannu'r amserlen hon
 
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}Mae {VEHICLE} yn aros yn y depo
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Mae {VEHICLE} yn aros yn y depo
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}Mae {VEHICLE} yn aros yn y depo
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}Mae {VEHICLE} yn aros yn yr awrendy
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Ailffitio trên
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Ailffitio cerbyd ffordd
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Ailffitio llong
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Ailffitio awyren
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Ailffitio'r trên i gario'r math o llwyth sydd wedi'i ddewis
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Ailffitio cerbyd ffordd i gario'r llwyth sydd wedi'i amlygu
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Ailffitio llong i gario'r llwyth sydd wedi'i amlygu
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Ailffitio awyren i gario'r math o lwyth sydd wedi'i amlygu
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Dewiswch fath o lwyth i'r trên ei gario
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Dewiswch y math o lwyth i'r cerbyd ffordd gario
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Dewiswch lwyth i'r llong ei gario
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Dewiswch y math o lwyth i'r awyren ei chario
+
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Depo Trên {TOWN}
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}Depo Cerbydau Ffordd {TOWN}
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Depo Llong {TOWN}
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}Awyrendy {STATION}
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Enwi trên
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Enwi cerbyd ffordd
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Enwi llong
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Enwi awyren
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Enwi trên
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Enwi cerbyd ffordd
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Enwi llong
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Enwi awyren
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Trên yn y ffordd
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Cerbyd ffordd yn y ffordd
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Llong yn y ffordd
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Awyren yn y ffordd
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Methu ailffitio trên...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Methu ailffitio cerbyd ffordd...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Methu ailffitio llong...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Methu ailffitio awyren...
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Methu enwi trên...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Methu enwi cerbyd ffordd...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Methu enwi llong...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Methu enwi awyren...
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Methu cychwyn/stopio trên...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Methu stop/start cerbyd ffordd...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}methu cychwyn/stopio llong...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Methu stopio/cychwyn awyren...
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Methu gyrru trên i depo...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Methu gyrru cerbyd i'r depo...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Methu gyrru llong i ddepo...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Methu gyrru awyren i awyrendy...
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Methu adeiladu cerbyd rheilffordd...
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Methu adeiladu cerbyd...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Methu adeiladu llong...
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Methu adeiladu awyren...
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Methu ailenwi math y cerbyd trên...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Methu ailenwi cerbyd ffordd...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Methu ailenwi math llong...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Methu ailenwi'r math awyren...
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Methu gwerthu cerbyd rheilffordd...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Methu gwerthu cerbyd ffordd...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Methu gwerthu llong...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}methu gwerthu awyren...
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Gweithred y trên sydd wedi'i ddewis - cliciwch yma gychwyn/stopio trên
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gweithred gyfredol y cerbyd - cliciwch yma i gychwyn/stopio'r cerbyd
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gweithred y llong gyfredol - cliciwch yma i gychwyn/stopio llong
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gweithred gyfredol yr awyren - cliciwch yma i stopio/cychwyn awyren
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Dangos gorchmynion trên
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Dangos gorchmynion cerbyd
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Dangos gorchmynion llong
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Dangos gorchmynion awyren
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Canoli'r prif olygfa ar leoliad y trên
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Canoli'r brif olygfa ar leoliad y cerbyd
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Canoli'r brif olygfa ar leoliad y llong
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Canoli'r prif olygfa ar leoliad yr awyren
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Anfon trên i'r depo. Bydd CTRL+clic yn rhoi gwasanaeth iddo'n unig
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Anfon cerbyd i'r depo. Bydd CTRL+clic yn rhoi gwasanaeth iddo'n unig
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Gyrru'r llong i ddepo. Bydd CTRL+clic yn rhoi gwasanaeth iddo'n unig
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Anfon awyren to awyrendy. Bydd CTRL+click yn rhoi gwasanaeth iddo'n unig
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Dangos manylion trên
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Dangos manylion cerbyd ffordd
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Dangos manylion llong
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Dangos manylion awyren
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Ailffitio trên i gario llwyth o fath gwahanol
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Ailffitio cerbyd ffordd i gario llwyth o fath gwahanol
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Ailffitio cargo llong i gario llwyth o fath gwahanol
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Ailffitio awyren i gario llwyth o fath gwahanol
+
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Mynd am Ddepo Trên {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Mynd am Ddepo Trên {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Mynd am Ddepo Ffordd {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Mynd am Ddepo Ffordd {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Mynd am Ddepo Llong {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Mynd am Ddepo Llong{TOWN}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Mynd am Awyrendy {STATION}
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Mynd am Awyrendy {STATION}, {VELOCITY}
+
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Gwasanaeth yn Nepo Trên {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Gwasanaeth yn Nepo Trên {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Mynd am wasanaeth Ddepo Ffordd {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Mynd am wasanaeth i Ddepo Ffordd {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Mynd am wasanaeth i Ddepo Llong {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Mynd am wasanaeth i Depo Llong {TOWN}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Mynd am wasanaeth i Awyrendy {STATION}
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Mynd am wasanaeth i Awyrendy {STATION}, {VELOCITY}
+
+
+STR_CLONE_TRAIN                                                 :{BLACK}Dyblygu Trên
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Dyblygu Cerbyd
+STR_CLONE_SHIP                                                  :{BLACK}Dyblygu Llong
+STR_CLONE_AIRCRAFT                                              :{BLACK}Dyblygu Awyren
+
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Bydd hyn yn adeiladu copi o'r trên gan gynnwys pob un o'i gerbydau. Bydd Ctrl-clic yn rhannu'r gorchmynion.
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Bydd hyn yn adeiladu copi o the cerbyd ffordd. Bydd Ctrl-clic yn rhannu'r gorchmynion
+STR_CLONE_SHIP_INFO                                             :{BLACK}Bydd hyn yn adeiladu copi o'r llong. Bydd Ctrl-clic yn rhannu'r gorchmynion
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Bydd hyn yn adeiladu copi o'r awyren. Bydd Ctrl-clic yn rhannu'r gorchmynion
+
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Bydd hyn yn adeiladu copi o'r trên gan gynnwys pob cerbyd. Cliciwch ar y botwm hwn ac yna ar drên sydd unai tu allan neu tu mewn y depo. Bydd Ctrl-clic yn rhannu'r gorchmynion.
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Bydd hyn yn adeiladu copi o a cerbyd ffordd. Cliciwch ar y botwm hwn ac yna ar gerbyd ffordd sydd unai tu allan neu tu mewn y depo. Bydd Ctrl-clic yn rhannu'r gorchmynion.
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Bydd hyn yn adeiladu copi o a llong. Cliciwch a y botwm hwn ac yna ar long tu mewn neu tu allan i'r depo. Bydd Ctrl-clic yn rhannu'r gorchmynion
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Bydd hyn yn adeiladu copi o awyren. Cliciwch ar y botwm hwn ac yna ar awyren sydd unai tu mewn neu tu allan i'r awyrendy. Bydd Ctrl-clic yn rhannu'r gorchmynion
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Cerbydau Rheilffordd Newydd
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Cerbydau Rheilffordd Trydan Newydd
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Cerbydau Monoreilffordd Newydd
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Cerbydau Maglef Newydd
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Cerbydau Rheilffordd
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Cerbydau Ffordd Newydd
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Llong  Newydd
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Awyrennau Newydd
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Adeiladu Cerbyd
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Adeiladu Cerbyd
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Adeiladu Llong
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Adeiladu Awyrennau
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Rhestr dewis trenau - cliciwch ar cerbyd am wybodaeth
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Rhestr dewis cerbydau ffordd  - cliciwch ar gerbyd am wybodaeth
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Rhestr ddewis llongau - cliciwch ar long am wybodaeth
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Rhestr ddewis awyrennau - cliciwch ar awyren am wybodaeth
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Adeiladu'r cerbyd trên sydd wedi'i amlygu
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Adeiladu'r cerbyd ffordd sydd wedi'i amlygu
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Adeiladu'r llong sydd wedi'i hamlygu
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Adeiladu'r awyren sydd wedi'i hamlygu
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Ailenwi
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Ailenwi
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Ailenwi
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Ailenwi
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Ailenwi math y cerbyd trên
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Ailenwi'r math cerbyd ffordd
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Ailenwi'r math llong
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Ailenwi'r math awyren
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Ailenwi math y cerbyd trên
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Ailenwi'r math cerbyd ffordd
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Ailenwi'r math llong
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ailenwi'r math awyren
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Cerbyd Newydd
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Cerbyd Newydd
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Llong Newydd
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Awyrennau Newydd
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenau - cliciwch ar y trên am wybodaeth, llusgwch gerbyd i'w ychwanegu neu i'w dynnu o'r trên
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Cerbydau - cliciwch ar gerbyd am wybodaeth
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Llongau - cliciwch ar long am wybodaeth
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Awyrennau - cliciwch ar awyren am wybodaeth
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Adeiladu cerbyd trên newydd
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Adeiladu cerbyd ffordd newydd
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Adeiladu llong newydd
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Adeiladu awyren newydd
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Llusgwch gerbyd trên yma i'w werthu
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Llusgwch gerbyd ffordd to yma i'w werthu
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Llusgwch long yma i'w gwerthu
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Llusgwch awyren yma i'w gwerthu
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Canoli'r prif olygfa ar leoliad y depo trên
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Canoli'r brif olygfa ar leoliad y depo cerbyd ffordd
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Canoli'r brif olygfa ar leoliad depo'r llong
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Canoli'r prif olygfa ar leoliad yr awyrendy
+
+
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Rydych chi ar fin gwerthu pob cerbyd yn y depo. Ydych chi'n siwr?
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :math depo anghywir
@@ -3211,6 +3229,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Tynnu wa
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gwneud i awtoddisodli gadw hyd y trên yr un peth drwy dynnu wagenni (gan ddechrau yn y blaen), os byddai disodli'r injan yn gwneud y trên yn hirach.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Disodli: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Newid rhwng y sgrin ddisodli wagenni a'r un injans.
+
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Nid yw'r cerbyd ar gael
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Nid yw'r cerbyd ar gael
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Nid yw'r llong ar gael
@@ -3425,7 +3444,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -3442,6 +3464,31 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_COMPANY_NUM                                          :(Cwmni {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grw^p {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Rhaid i'r enw fod yn unigryw
 

@@ -155,8 +155,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}פל
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ממ
 STR_ABBREV_NONE                                                 :{TINYFONT}כל
 STR_ABBREV_ALL                                                  :{TINYFONT}הכל
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}{STRING} - מפה
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}אפשרויות משחק
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}הודעה
@@ -168,17 +166,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}כל ה�
 STR_ABOUT_VERSION                                               :{BLACK}{REV} גירסה , OpenTTD
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 The OpenTTD team
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}צא
 STR_YES                                                         :{BLACK}כן
 STR_NO                                                          :{BLACK}לא
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}?{STRING} אתה בטוח שברצונך לצאת ולחזור ל
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :כלום
 STR_COLOUR_DARK_BLUE                                            :כחול כהה
 STR_COLOUR_PALE_GREEN                                           :ירוק חיוור
@@ -197,8 +189,6 @@ STR_COLOUR_BROWN                                                :חום
 STR_COLOUR_GREY                                                 :אפור
 STR_COLOUR_WHITE                                                :לבן
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}יותר מידי כלי תעבורה במשחק
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}מיקום
 STR_SMALLMAP_TYPE_CONTOURS                                      :קווי מיתאר
 STR_SMALLMAP_TYPE_VEHICLES                                      :כלי תעבורה
@@ -323,12 +313,13 @@ STR_SORT_ORDER_TIP                                              :{BLACK}(בחר(
 STR_SORT_CRITERIA_TIP                                           :{BLACK}בחר\י קרטריון מיון
 STR_SORT_BY                                                     :{BLACK}מיון לפי
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}אכלוסיה
+STR_SORT_BY_NAME                                                :{BLACK}שם
+STR_SORT_BY_DATE                                                :{BLACK}תאריך
 STR_SORT_BY_PRODUCTION                                          :ייצור
 STR_SORT_BY_TYPE                                                :סוג
 STR_SORT_BY_TRANSPORTED                                         :סחורה שנשלחה
-STR_SORT_BY_NAME                                                :{BLACK}שם
-STR_SORT_BY_DATE                                                :{BLACK}תאריך
 STR_SORT_BY_NUMBER                                              :מספר
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :רווח שנה שעברה
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :רווח השנה
@@ -349,37 +340,25 @@ STR_SORT_BY_INTRO_DATE                                          :תאריך הת
 STR_SORT_BY_RUNNING_COST                                        :עלות הפעלה
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :כח/עלות הפעלה
 STR_SORT_BY_CARGO_CAPACITY                                      :קיבולת סחורה
+
 STR_NO_WAITING_CARGO                                            :{BLACK}שום סחורה לא מחכה
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}בחר את כל המתקנים
 STR_SELECT_ALL_TYPES                                            :{BLACK}(ברח את כל סוגי הסחורה (כולל סחורה שלא מחכה
-STR_AVAILABLE_TRAINS                                            :{BLACK}רכבות זמינות
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}רכבים זמינים
-STR_AVAILABLE_SHIPS                                             :{BLACK}כלי שייט זמינות
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}כלי טייס זמינים
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK} ראה רשימה של קטרים זמינים לסוג כלי הרכב הזה
 STR_MANAGE_LIST                                                 :{BLACK}נהל רשימה
 STR_MANAGE_LIST_TIP                                             :{BLACK}שלח הוראות לכל כלי הרכב ברשימה זו
 STR_REPLACE_VEHICLES                                            :החלף כלי רכב
+STR_SEND_FOR_SERVICING                                          :שלח לטיפול
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}רכבות זמינות
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}רכבים זמינים
+STR_AVAILABLE_SHIPS                                             :{BLACK}כלי שייט זמינות
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}כלי טייס זמינים
+
 STR_SEND_TRAIN_TO_DEPOT                                         :שלח רכבת למוסך
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :שלח כלי רכב למוסך
 STR_SEND_SHIP_TO_DEPOT                                          :שלח אוניה למוסך
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :שלך כלי תעופה להנגר
-STR_SEND_FOR_SERVICING                                          :שלח לטיפול
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :ינואר
-STR_MONTH_ABBREV_FEB                                            :פברואר
-STR_MONTH_ABBREV_MAR                                            :מרץ
-STR_MONTH_ABBREV_APR                                            :אפריל
-STR_MONTH_ABBREV_MAY                                            :מאי
-STR_MONTH_ABBREV_JUN                                            :יוני
-STR_MONTH_ABBREV_JUL                                            :יולי
-STR_MONTH_ABBREV_AUG                                            :אוגוסט
-STR_MONTH_ABBREV_SEP                                            :ספטמבר
-STR_MONTH_ABBREV_OCT                                            :אוקטובר
-STR_MONTH_ABBREV_NOV                                            :נובמבר
-STR_MONTH_ABBREV_DEC                                            :דצמבר
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -407,8 +386,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}בניי
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}'נטיעת עצים, הצבת סימניות וכו
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}מידע על משבצת קרקע
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}אפשרויות
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}...לא ניתן לשנות את מרווחי הטיפול
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}סגור חלון
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}כותרת החלון - גרור להזזה
@@ -455,7 +432,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :אין
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}שם
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
 STR_ORDINAL_NUMBER_2ND                                          :2
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -488,6 +465,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29
 STR_ORDINAL_NUMBER_30TH                                         :30
 STR_ORDINAL_NUMBER_31ST                                         :31
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :ינואר
+STR_MONTH_ABBREV_FEB                                            :פברואר
+STR_MONTH_ABBREV_MAR                                            :מרץ
+STR_MONTH_ABBREV_APR                                            :אפריל
+STR_MONTH_ABBREV_MAY                                            :מאי
+STR_MONTH_ABBREV_JUN                                            :יוני
+STR_MONTH_ABBREV_JUL                                            :יולי
+STR_MONTH_ABBREV_AUG                                            :אוגוסט
+STR_MONTH_ABBREV_SEP                                            :ספטמבר
+STR_MONTH_ABBREV_OCT                                            :אוקטובר
+STR_MONTH_ABBREV_NOV                                            :נובמבר
+STR_MONTH_ABBREV_DEC                                            :דצמבר
+
+STR_MONTH_JAN                                                   :ינואר
+STR_MONTH_FEB                                                   :פברואר
+STR_MONTH_MAR                                                   :מרץ
+STR_MONTH_APR                                                   :אפריל
+STR_MONTH_MAY                                                   :מאי
+STR_MONTH_JUN                                                   :יוני
+STR_MONTH_JUL                                                   :יולי
+STR_MONTH_AUG                                                   :אוגוסט
+STR_MONTH_SEP                                                   :ספטמבר
+STR_MONTH_OCT                                                   :אוקטובר
+STR_MONTH_NOV                                                   :נובמבר
+STR_MONTH_DEC                                                   :דצמבר
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -578,12 +583,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT} !'{1:STRING}'} הגיעה למעמד{NBSP}  {0:COMPANY}
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT} '{2:STRING}' הגיע לדרגת {NBSP}{1:COMPANY} מ {NBSP}{0:PRESIDENTNAME}
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}עורך הסצנריו
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}יצירת טופוגרפיה
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}הגדל מספר משבצות לעיבוד
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}הקטן מספר משבצות לעיבוד
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}צור קרקע אקראית
@@ -659,9 +661,7 @@ STR_OFF                                                         :כבוי
 STR_SUMMARY                                                     :תמצית
 STR_FULL                                                        :מלא
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :אפשרויות המשחק
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :הגדרות קושי
@@ -753,9 +753,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :ממן תעשי
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}ממן תעשיה חדשה
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...יכול להבנות רק ליד אזורי יערות הגשם
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...יכול להבנות רק ליד אזורי מדבר
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  המשחק מושהה  *  *
@@ -768,9 +765,6 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}שמירה
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  שומר משחק  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}!שמירה מתבצעת,{} אנא המתן עד לסיום השמירה
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}בחר בתוכנית מנגינה בסגנון קליל
-
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :אנגלית
@@ -849,19 +843,6 @@ STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}בחר �
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}שמירה אוטומטית נכשלה
 
-STR_MONTH_JAN                                                   :ינואר
-STR_MONTH_FEB                                                   :פברואר
-STR_MONTH_MAR                                                   :מרץ
-STR_MONTH_APR                                                   :אפריל
-STR_MONTH_MAY                                                   :מאי
-STR_MONTH_JUN                                                   :יוני
-STR_MONTH_JUL                                                   :יולי
-STR_MONTH_AUG                                                   :אוגוסט
-STR_MONTH_SEP                                                   :ספטמבר
-STR_MONTH_OCT                                                   :אוקטובר
-STR_MONTH_NOV                                                   :נובמבר
-STR_MONTH_DEC                                                   :דצמבר
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}פונה אל {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}פונה אל {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}אין הוראות
@@ -875,8 +856,6 @@ STR_ITEMS                                                       :פריטים
 STR_CRATES                                                      :ארגזים
 STR_RES_OTHER                                                   :אחר
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}לא ניתן לצמד יעדים...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}לא ניתן להעתיק יעדים...
@@ -1140,7 +1119,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-גו�
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :מבוטל
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}שנה ערך
 
 STR_TEMPERATE_LANDSCAPE                                         :אקלים ממוזג
@@ -1176,7 +1154,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}בחר �
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}ערוך שם נקודת ציון
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}שינוי שם היעד נכשל...
@@ -1242,11 +1219,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}רשימ
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}קרוב מידי לתעשיה אחרת
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}התאם את הרכבת לנשיאת משא שונה
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}התאם רכבת
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}בחר את סוג המשא עבור הרכבת
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}התאם את הרכבת לנשיאת המשא שנבחר
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}...לא ניתן להתאים את הרכבת
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}שנה תפוקה
 
 ############ network gui strings
@@ -1752,11 +1724,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :טיפי
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :בית-ספל
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :בנק דן-חסכן
 
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_STATION_NAME                                                :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :עיצוב פני השטח
 STR_LANDSCAPING_MENU_PLANT_TREES                                :טע עצים
@@ -1810,6 +1777,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :טוב מאד
 STR_CARGO_RATING_EXCELLENT                                      :מצויין
 STR_CARGO_RATING_OUTSTANDING                                    :מדהים
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}הצג את כל הרכבות העוברות דרך תחנה זו
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}הצג את כל הרכבים העוברים דרך תחנה זו
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}הצג את כל כלי הטייס העוברים דרך תחנה זו
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}הצג את כל כלי השייט העוברים דרך תחנה זו
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{1:STRING} לא מקבלת יותר {NBSP}{0:STATION}
@@ -2054,6 +2027,7 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} נמל
 STR_SV_STNAME_OILFIELD                                          :{STRING} שדה הנפט
 STR_SV_STNAME_MINES                                             :{STRING} מכרות
 STR_SV_STNAME_DOCKS                                             :{STRING} רציפי
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} תחנת מפגש
 STR_SV_STNAME_SIDINGS                                           :{STRING} תחנת מסיעי
 STR_SV_STNAME_BRANCH                                            :{STRING} תחנת מובילי
@@ -2101,8 +2075,6 @@ STR_NUM_LOW                                                     :נמוך
 STR_NUM_NORMAL                                                  :רגיל
 STR_NUM_HIGH                                                    :גבוה
 STR_NUM_CUSTOM                                                  :אחר
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :איטי ביותר
 STR_AI_SPEED_SLOW                                               :איטי
 STR_AI_SPEED_MEDIUM                                             :בינוני
@@ -2136,7 +2108,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :עויין
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :({COMMA} חברה)
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}פנים חדשות
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}הגדרות צבע
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}:הגדרות צבע
@@ -2169,7 +2140,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}:סה”
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}גרף הכנסות
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}גרף רווח תפעולי
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}חשבון הבנק
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}הלוואה
@@ -2571,10 +2541,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :קטר חד-פ�
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :קטר פס מגנטי
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} מוסך רכבת
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}!{STATION} התושבים חוגגים... {}רכבת ראשונה הגיעה ל
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}(פרטים){VEHICLE}
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}רכבת חוסמת את המעבר
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}ללא עצירה
@@ -2661,38 +2629,16 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :{STRING} וער
 STR_TIMETABLE_DAYS                                              :ימים {COMMA}
 STR_TIMETABLE_TICKS                                             :פעימות {COMMA}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}{TOWN} בדרך אל המוסך ב
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}{1:VELOCITY}במהירות {NBSP}{0:TOWN} בדרך אל המוסך ב
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{TOWN} בדרך לטיפול במוסך
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{1:VELOCITY}במהירות {NBSP}{0:TOWN} בדרך לטיפול במוסך
-
 STR_INVALID_ORDER                                               :{RED}(יעד שגוי)
 
 STR_UNKNOWN_STATION                                             :תחנה לא ידועה
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}ריקה
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{1:STATION} מ {NBSP}{0:CARGO}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}(x{2:NUM}){1:STATION} מ {NBSP}{0:CARGO}
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}ממתין/ממתינה במוסך {VEHICLE}
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}כלים חדשים
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}רכבת ארוכה מידי
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}ניתן לשנות את הרכבת בעת עצירה במוסך בלבד
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}רכבות{NBSP} {1:COMMA} - {0:STRING}
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}רכבות חדשות
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}רכבות חשמליות חדשות
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        ::{WHITE}רכבות חד-פס חדשות
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}רכבות פס מגנטי חדשות
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}רכבות זמינות
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}בנה רכבת
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}שכפל רכב
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}.פעולה זו תיצור עותק נוסף של כלי הרכב
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK} .פעולה זו תיצור עותק נוסף של כלי הרכב
-STR_CLONE_TRAIN                                                 :{BLACK}שכפל רכבת
-STR_CLONE_TRAIN_INFO                                            :{BLACK}פעולה זו תיצור עותק נוסף של הרכבת וכל קרונותיה
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}פעולה זו תיצור עותק נוסף של הרכבת וכל קרונותיה
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}שנה שם
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}דלג
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}מחק
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}עבור אל
@@ -2708,14 +2654,12 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}עבור
 STR_ORDERS_CAPTION                                              :{WHITE} (יעדים) {VEHICLE}
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - סוף רשימת היעדים - -
 STR_SERVICE                                                     :{BLACK}טיפול
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}...לא ניתן לבנות רכבת
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{2:CURRENCY}{BLACK}  :ערך {LTBLUE}{1:NUM}{BLACK}  :נבנה {LTBLUE}{0:ENGINE}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{1:CURRENCY}{BLACK} :שווי {LTBLUE}{0:ENGINE}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}טעינה / פריקה
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE} עוזב/ת
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}הרכבת צריכה להיות בעצירה במוסך
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}לא ניתן לשלוח רכבת למוסך
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}לא נותר מקום יעדים נוספים
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}יותר מדי יעדים
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}...לא ניתן להוסיף יעד
@@ -2730,26 +2674,11 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE} הכל�
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}...לא ניתן להזיז את כלי הרכב
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}הקטר האחורי עוקב תמיד אחר הקטר הקידמי
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}לא ניתן למכור את הרכבת
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}לא מוצא נתיב למוסך מקומי
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}לא ניתן לעצור/להמשיך בנסיעה
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{LTBLUE}{1:DATE_LONG} :טיפול אחרוןֿ {BLACK}{LTBLUE}{0:COMMA}% {BLACK} :מרווח בין טיפולים
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{LTBLUE}{1:DATE_LONG} :טיפול אחרוןֿ {BLACK}{LTBLUE}{0:COMMA}% {BLACK} :מרווח בין טיפולים
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}רכבות - בחר רכבת לצפייה במידע
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}רכבות - בחר רכבת לקבלת מידע, גרור קרון להוספתו/הסרתו מהרכבת
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}בניית קרון חדש
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}גרור קרון/קטר לכאן כדי למכור אותו
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}מקד את החלון הראשי על מיקום תחנת הטיפולים
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK} בחירת קרונות - לחץ על קרון לקבלת מידע
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}בנה את קרון הרכבת שנבחר
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}שנה את שם סוג הקרון
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}פעולה נוכחית - לחץ כאן כדי לעצור/להמשיך בנסיעה
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}הצג את רשימת היעדים של הרכבת
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}מקד את התצוגה על מיקום הרכבת
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}.שלח את הרכבת למוסך
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}הכרח את הרכבת להמשיך מבלי להמתין לרמזור
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}שנה את כיוון הנסיעה של הרכבת
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}הצג את נתוני הרכבת
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}הארך את המרווח בין טיפולים
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}קצר את המרווח בין טיפולים
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}הצג פרטי המשא
@@ -2770,13 +2699,9 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}נעצרה
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}לא ניתן להכריח את הרכבת לעבור ברמזור בעת סכנה
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}!התרסק/הֿ
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}תן שם לרכבת
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}לא ניתן לתת שם לרכבת
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}תן שם לרכבת
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT} !התנגשות רכבות {}{NBSP} נספו בפיצוץ כתוצאה מהתאונה {COMMA}
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}לא ניתן לשנות את כיוון  הנסיעה של הרכבת
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}שנה את שם סוג קרון הרכבת
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}לא ניתן לשנות את שם סוג הקרון
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}.לא ניתן לסובב כלי רכב מורכבים
 STR_CLEAR_TIME                                                  :{BLACK}אפס זמן
 STR_RESET_LATENESS                                              :{BLACK}אפס מונה איחורים
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}שנה שם נקודת ציון
@@ -2808,178 +2733,53 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}מילו
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK} מלא את הטבלה אוטומטית על פי הזמנים שנדרשו להשלמת המסע הקודם
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}כלי רכב חוסם את הדרך
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}כלי רכב {NBSP}{1:COMMA} - {0:STRING}
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} מוסך כלי רכב
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}כלי רכב חדשים
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}כלי רכב חדשים
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}בנה כלי רכב
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}לא ניתן לבנות כלי רכב...
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...חייב לעצור בתוך מוסך לכלי רכב
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}...לא ניתן למכור כלי רכב
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}...לא ניתן לעצור/להמשיך בנסיעה
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} ממתין במוסך כלי הרכב
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}{TOWN} בדרך אל מוסך הרכבים ב
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE} {1:VELOCITY}  במהירות , {NBSP}{0:TOWN} בדרך אל מוסך הרכבים ב
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE} {TOWN} טיפול במוסך ב
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE} {1:VELOCITY}  במהירות ,{NBSP} {0:TOWN} טיפול במוסך הרכבים ב
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}...לא ניתן לשלוח את כלי הרכב למוסך
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}לא ניתן לאתר מוסך כלי רכב מקומי
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}כלי רכב - לחץ על כלי רכב למידע
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}מצב כלי הרכב- לחץ כאן לעצירה/המשך נסיעה
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}הצג את רשימת היעדים
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}מקד את התצוגה על מיקומו של כלי הרכב
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}.שלח את כלי הרכב למוסך
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}הכרח את כלי הרכב להסתובב
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}הצג את פרטי כלי הרכב
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}כלי רכב - לחץ על כלי רכב למידע
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}בנה כלי רכב חדש
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}גרור כלי רכב לכאן על מנת למכור אותו
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}מקד את התצוגה הראשית על מיקום מוסך כלי הרכב
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}רשימת כלי הרכב - בחר כלי רכב למידע
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}בנה כלי רכב מהסוג שנבחר
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK} :קיבולת {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{0:ENGINE}{1:STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK} {1:STRING} כלים  {NBSP}{0:NUM}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}תן שם לכלי הרכב
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}...לא ניתן לשנות את שם כלי הרכב
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}תן שם לכלי הרכב
 STR_NEWS_FIRST_BUS_ARRIVAL                                      ::{BLACK}{BIGFONT}!{STATION} התושבים חוגגים... {}אוטובוס ראשון הגיעה ל
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    ::{BLACK}{BIGFONT}!{STATION} התושבים חוגגים... {}משאית ראשונה הגיעה ל
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}!{STATION} התושבים חוגגים... {}חשמלית נוסעים ראשונה הגיעה ל
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}!{STATION} התושבים חוגגים... {}חשמלית משא ראשונה הגיעה ל
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}תאונת כלי רכב!{}נהג נהרג לאחר התנגשות ברכבת
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}תאונת כלי רכב!{}{NBSP}נהרגו לאחר התנגשות עם רכבת {COMMA}
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}.לא ניתן לסובב כלי רכב מורכבים
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}שנה שם
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}שנה את שם סוג כלי הרכב
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}שנה את שם סוג כלי הרכב
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}לא ניתן לשנות את שם סוג כלי הרכב
 
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}התאם כלי רכב לנשיאת מטען חדש
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}התאם כלי רכב
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}התאם את כלי הרכב לנשיאת המטען שנבחר
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}... לא ניתן להתאים את כלי הרכב
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}בחר את סוג המטען לנשיאה
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :בניית נתיבי מים
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}בניית נתיבי מים
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}נתיבי מים
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}...לא ניתן לבנות מזח במשבצת זו
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} מבדוק כלי שייט
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}כלי שייט חדש
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}כלי שייט {NBSP}{1:COMMA} - {0:STRING}
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}כלי שייט חדשים
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}בנה כלי שייט
-STR_CLONE_SHIP                                                  :{BLACK}שכפל כלי שייט
-STR_CLONE_SHIP_INFO                                             :{BLACK}פעולה זו תיצור עותק של כלי השייט
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}פעולה זו תיצור עותק של כלי השייט
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}כלי השייט חייב להמצא בעצירה במבדוק
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}לא ניתן למכור כלי שייט זה
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}לא ניתן לבנות כלי שייט זה
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}כלי שייט חוסם את הדרך
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}לא ניתן לעצור/להפעיל את כלי השייט
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE} לא ניתן לשלוח את כלי השייט למבדוק
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE} {TOWN} בדרך אל המבדוק ב
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}{1:VELOCITY} מהירות ,  {NBSP}{0:TOWN} בדרך אל המבדוק ב
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN} טיפול במבדוק
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{1:VELOCITY} מהירות , {NBSP}{0:TOWN} טיפול במבדוק
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}ממתינה במבדוק {VEHICLE}
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}בניית רציף לכלי שייט
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}(בניית מבדוק אוניות (לבניה וטיפול בכלי שייט
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}כלי שייט – בחר כלי לצפיה במידע
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}בנה כלי שייט חדש
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}גרור כלי שייט לכאן על מנת למכרו
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}מקד את התצוגה הראשית על מבדוק הספינות
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}כלי שייט – בחר כלי לצפיה במידע
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}כלי שייט – בחר כלי לצפיה במידע
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}בנה את כלי השייט שנבחר
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}עצור/הפעל כלי שייט
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}הצג את יעדי כלי השייט
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}מקד את התצוגה הראשית על כלי השייט
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}שלח את כלי השייט למבדוק
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}הצג פרטי כלי שייט
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}תן שם לכלי השייט
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}תן שם לכלי השייט
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}לא ניתן לתת שם לכלי שייט זה
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}!{STATION} התושבים חוגגים... {}ספינה ראשונה הגיעה ל
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}מקם מצוף שיכול לשמש כנקודת ציון לכלי שייט
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}לא ניתן למקם מצוף במשבצת זו
 STR_BUILD_AQUEDUCT                                              :{BLACK}בנה אקוודוקט
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}...לא ניתן לבנות אקוודוקט באתר זה
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}החלף שם
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}החלף שם סוג כלי השייט
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}החלף שם סוג כלי השייט
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}  לא ניתן להחליף את שם הסוג של כלי השייט
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}התאם כלי שייט לנשיאת מטען נתון
 STR_REFIT_CAPTION                                               :{WHITE}(התאם) {VEHICLE}
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}התאם כלי שייט
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}בחר את סוג המטען עבור כלי שייט זה
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}}התאם את כלי השייט לנשיאת המטען שנבחר
 STR_REFIT_TITLE                                                 :{GOLD}בחר את סוג המטען עבור כלי שייט זה
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{GOLD}{1:CURRENCY}{BLACK} :עלות ההתאמה {}{GOLD}{0:CARGO}{BLACK} :קיבולת
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}לא ניתן להתאים את כלי השייט לנשיאת מטען זה
 STR_REFITTABLE                                                  :(ניתן להתאמה)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}שדות תעופה
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}לא ניתן לבנות שדה תעופה באתר זה
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} סככת מטוסים
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}כלי טייס חדש
-STR_CLONE_AIRCRAFT                                              :{BLACK}שכפל כלי טייס
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}פעולה זו תיצור עותק של כלי הטייס
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}פעולה זו תיצור עותק של כלי הטייס
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}כלי טייס חדש
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}בנה כלי טייס
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}לא ניתן לבנות כלי טייס
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               ::{WHITE}כלי טייס {NBSP}{1:COMMA} - {0:STRING}
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}...לא ניתן לשלוח את כלי הטייס לסככת המטוסים
-STR_HEADING_FOR_HANGAR                                          :{ORANGE} {STATION} בדרך אל סככת המטוסים ב
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{1:VELOCITY} מהירות ,  {NBSP}{0:STATION} בדרך אל סככת המטוסים ב
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}{STATION} טיפול בסככת המטוסים
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}{1:VELOCITY} מהירות , {NBSP}{0:STATION} טיפול בסככת המטוסים
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE} ממתין בסככת המטוסים {VEHICLE}
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}כלי טייס חוסם את הדרך
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}לא ניתן לעצור/להפעיל את כלי הטייס
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}נמצא בטיסה
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}המטוס צריך להמצא בעצירה בסככת מטוסים
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}לא ניתן למכור את כלי הטייס
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :בניית שדה תעופה
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}בנה שדה תעופה
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}כלי טייס – לחץ על כלי לצפיה במידע
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}כלי טייס – לחץ על כלי לצפיה במידע
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}בנה כלי טייס חדש
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}גרור כלי טייס לכאן על מנת למכרו
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}מקד את התצוגה הראשית על סככת המטוסים
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}כלי טייס – בחר כלי לצפיה במידע
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}בנה את כלי הטייס שנבחר
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}עצור/הפעל כלי טייס
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}הצג את יעדי כלי הטייס
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}מקד את התצוגה הראשית על כלי הטייס
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Sשלח את כלי הטייס לסככת המטוסים
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}הצג פרטי כלי טייס
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}תן שם לכלי הטייס
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}לא ניתן לתת שם לכלי טייס זה
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}תן שם לכלי הטייס
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}!{STATION} התושבים חוגגים... {}מטוס ראשון הגיע ל
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT} !התרסקות מטוס {}{NBSP}{1:STATION} נספו בפיצוץ בשדה התעופה {NBSP}{0:COMMA}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}!התרסקות מטוס{} {NBSP}נספו בפיצוץ {COMMA} ,הדלק אזל במהלך הטיסה
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}החלף שם
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}החלף שם סוג כלי הטיס
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}החלף שם סוג כלי הטיס
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}לא ניתן להחליף את שם הסוג של כלי הטייס
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}התאם כלי טייס לנשיאת מטען נתון
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}התאם כלי טייס
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}בחר את סוג המטען עבור כלי טייס זה
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}התאם את כלי הטייס לנשיאת המטען שנבחר
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}לא ניתן להתאים את כלי הטייס לנשיאת מטען זה
 
 STR_TIMETABLE_TITLE                                             :{WHITE} (לוח זמנים){VEHICLE}
 
@@ -3117,14 +2917,224 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}רכבות - בחר רכבת לצפייה במידע
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}כלי רכב - לחץ על כלי רכב למידע
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}כלי שייט – בחר כלי לצפיה במידע
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}כלי טייס – לחץ על כלי לצפיה במידע
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}הצג את כל הרכבות העוברות דרך תחנה זו
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}הצג את כל הרכבים העוברים דרך תחנה זו
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}הצג את כל כלי הטייס העוברים דרך תחנה זו
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}הצג את כל כלי השייט העוברים דרך תחנה זו
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}רכבות{NBSP} {1:COMMA} - {0:STRING}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}כלי רכב {NBSP}{1:COMMA} - {0:STRING}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}כלי שייט {NBSP}{1:COMMA} - {0:STRING}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               ::{WHITE}כלי טייס {NBSP}{1:COMMA} - {0:STRING}
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}רכבים עם יעדים מצומדים {COMMA}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}הצג את כל הרכבים אשר עבורם יעד זה הוא מצומד
+
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}ממתין/ממתינה במוסך {VEHICLE}
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} ממתין במוסך כלי הרכב
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}ממתינה במבדוק {VEHICLE}
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE} ממתין בסככת המטוסים {VEHICLE}
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}התאם רכבת
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}התאם כלי רכב
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}התאם כלי שייט
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}התאם כלי טייס
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}התאם את הרכבת לנשיאת המשא שנבחר
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}התאם את כלי הרכב לנשיאת המטען שנבחר
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}}התאם את כלי השייט לנשיאת המטען שנבחר
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}התאם את כלי הטייס לנשיאת המטען שנבחר
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}בחר את סוג המשא עבור הרכבת
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}בחר את סוג המטען לנשיאה
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}בחר את סוג המטען עבור כלי שייט זה
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}בחר את סוג המטען עבור כלי טייס זה
+
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} מוסך רכבת
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} מוסך כלי רכב
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} מבדוק כלי שייט
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} סככת מטוסים
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}תן שם לרכבת
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}תן שם לכלי הרכב
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}תן שם לכלי השייט
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}תן שם לכלי הטייס
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}תן שם לרכבת
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}תן שם לכלי הרכב
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}תן שם לכלי השייט
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}תן שם לכלי הטייס
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}רכבת חוסמת את המעבר
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}כלי רכב חוסם את הדרך
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}כלי שייט חוסם את הדרך
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}כלי טייס חוסם את הדרך
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}...לא ניתן להתאים את הרכבת
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}... לא ניתן להתאים את כלי הרכב
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}לא ניתן להתאים את כלי השייט לנשיאת מטען זה
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}לא ניתן להתאים את כלי הטייס לנשיאת מטען זה
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}לא ניתן לתת שם לרכבת
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}...לא ניתן לשנות את שם כלי הרכב
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}לא ניתן לתת שם לכלי שייט זה
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}לא ניתן לתת שם לכלי טייס זה
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}לא ניתן לעצור/להמשיך בנסיעה
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}...לא ניתן לעצור/להמשיך בנסיעה
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}לא ניתן לעצור/להפעיל את כלי השייט
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}לא ניתן לעצור/להפעיל את כלי הטייס
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}לא ניתן לשלוח רכבת למוסך
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}...לא ניתן לשלוח את כלי הרכב למוסך
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE} לא ניתן לשלוח את כלי השייט למבדוק
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}...לא ניתן לשלוח את כלי הטייס לסככת המטוסים
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}...לא ניתן לבנות רכבת
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}לא ניתן לבנות כלי רכב...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}לא ניתן לבנות כלי שייט זה
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}לא ניתן לבנות כלי טייס
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}לא ניתן לשנות את שם סוג הקרון
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}לא ניתן לשנות את שם סוג כלי הרכב
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}  לא ניתן להחליף את שם הסוג של כלי השייט
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}לא ניתן להחליף את שם הסוג של כלי הטייס
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}לא ניתן למכור את הרכבת
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}...לא ניתן למכור כלי רכב
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}לא ניתן למכור כלי שייט זה
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}לא ניתן למכור את כלי הטייס
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}פעולה נוכחית - לחץ כאן כדי לעצור/להמשיך בנסיעה
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}מצב כלי הרכב- לחץ כאן לעצירה/המשך נסיעה
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}עצור/הפעל כלי שייט
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}עצור/הפעל כלי טייס
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}הצג את רשימת היעדים של הרכבת
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}הצג את רשימת היעדים
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}הצג את יעדי כלי השייט
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}הצג את יעדי כלי הטייס
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}מקד את התצוגה על מיקום הרכבת
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}מקד את התצוגה על מיקומו של כלי הרכב
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}מקד את התצוגה הראשית על כלי השייט
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}מקד את התצוגה הראשית על כלי הטייס
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}.שלח את הרכבת למוסך
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}.שלח את כלי הרכב למוסך
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}שלח את כלי השייט למבדוק
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Sשלח את כלי הטייס לסככת המטוסים
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}הצג את נתוני הרכבת
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}הצג את פרטי כלי הרכב
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}הצג פרטי כלי שייט
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}הצג פרטי כלי טייס
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}התאם את הרכבת לנשיאת משא שונה
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}התאם כלי רכב לנשיאת מטען חדש
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}התאם כלי שייט לנשיאת מטען נתון
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}התאם כלי טייס לנשיאת מטען נתון
+
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}{TOWN} בדרך אל המוסך ב
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}{1:VELOCITY}במהירות {NBSP}{0:TOWN} בדרך אל המוסך ב
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}{TOWN} בדרך אל מוסך הרכבים ב
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE} {1:VELOCITY}  במהירות , {NBSP}{0:TOWN} בדרך אל מוסך הרכבים ב
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE} {TOWN} בדרך אל המבדוק ב
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}{1:VELOCITY} מהירות ,  {NBSP}{0:TOWN} בדרך אל המבדוק ב
+STR_HEADING_FOR_HANGAR                                          :{ORANGE} {STATION} בדרך אל סככת המטוסים ב
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{1:VELOCITY} מהירות ,  {NBSP}{0:STATION} בדרך אל סככת המטוסים ב
+
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{TOWN} בדרך לטיפול במוסך
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{1:VELOCITY}במהירות {NBSP}{0:TOWN} בדרך לטיפול במוסך
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE} {TOWN} טיפול במוסך ב
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE} {1:VELOCITY}  במהירות ,{NBSP} {0:TOWN} טיפול במוסך הרכבים ב
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN} טיפול במבדוק
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{1:VELOCITY} מהירות , {NBSP}{0:TOWN} טיפול במבדוק
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}{STATION} טיפול בסככת המטוסים
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}{1:VELOCITY} מהירות , {NBSP}{0:STATION} טיפול בסככת המטוסים
+
+
+STR_CLONE_TRAIN                                                 :{BLACK}שכפל רכבת
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}שכפל רכב
+STR_CLONE_SHIP                                                  :{BLACK}שכפל כלי שייט
+STR_CLONE_AIRCRAFT                                              :{BLACK}שכפל כלי טייס
+
+STR_CLONE_TRAIN_INFO                                            :{BLACK}פעולה זו תיצור עותק נוסף של הרכבת וכל קרונותיה
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}.פעולה זו תיצור עותק נוסף של כלי הרכב
+STR_CLONE_SHIP_INFO                                             :{BLACK}פעולה זו תיצור עותק של כלי השייט
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}פעולה זו תיצור עותק של כלי הטייס
+
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}פעולה זו תיצור עותק נוסף של הרכבת וכל קרונותיה
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK} .פעולה זו תיצור עותק נוסף של כלי הרכב
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}פעולה זו תיצור עותק של כלי השייט
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}פעולה זו תיצור עותק של כלי הטייס
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}רכבות חדשות
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}רכבות חשמליות חדשות
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        ::{WHITE}רכבות חד-פס חדשות
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}רכבות פס מגנטי חדשות
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}רכבות זמינות
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}כלי רכב חדשים
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}כלי שייט חדשים
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}כלי טייס חדש
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}בנה רכבת
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}בנה כלי רכב
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}בנה כלי שייט
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}בנה כלי טייס
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK} בחירת קרונות - לחץ על קרון לקבלת מידע
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}רשימת כלי הרכב - בחר כלי רכב למידע
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}כלי שייט – בחר כלי לצפיה במידע
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}כלי טייס – בחר כלי לצפיה במידע
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}בנה את קרון הרכבת שנבחר
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}בנה כלי רכב מהסוג שנבחר
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}בנה את כלי השייט שנבחר
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}בנה את כלי הטייס שנבחר
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}שנה שם
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}שנה שם
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}החלף שם
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}החלף שם
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}שנה את שם סוג הקרון
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}שנה את שם סוג כלי הרכב
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}החלף שם סוג כלי השייט
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}החלף שם סוג כלי הטיס
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}שנה את שם סוג קרון הרכבת
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}שנה את שם סוג כלי הרכב
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}החלף שם סוג כלי השייט
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}החלף שם סוג כלי הטיס
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}כלים חדשים
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}כלי רכב חדשים
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}כלי שייט חדש
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}כלי טייס חדש
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}רכבות - בחר רכבת לקבלת מידע, גרור קרון להוספתו/הסרתו מהרכבת
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}כלי רכב - לחץ על כלי רכב למידע
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}כלי שייט – בחר כלי לצפיה במידע
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}כלי טייס – לחץ על כלי לצפיה במידע
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}בניית קרון חדש
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}בנה כלי רכב חדש
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}בנה כלי שייט חדש
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}בנה כלי טייס חדש
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}גרור קרון/קטר לכאן כדי למכור אותו
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}גרור כלי רכב לכאן על מנת למכור אותו
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}גרור כלי שייט לכאן על מנת למכרו
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}גרור כלי טייס לכאן על מנת למכרו
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}מקד את החלון הראשי על מיקום תחנת הטיפולים
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}מקד את התצוגה הראשית על מיקום מוסך כלי הרכב
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}מקד את התצוגה הראשית על מבדוק הספינות
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}מקד את התצוגה הראשית על סככת המטוסים
+
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}?אתה עומד למכור את כל כלי הרכב במוסך. להמשיך
@@ -3145,7 +3155,6 @@ STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}החלף
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}החלף אוטומטית את כל כלי השייט שבמבדוק
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}החלף אוטומאטית את כל כלי הטייס שבסככה
 
-
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} החלף
 STR_REPLACE_VEHICLES_START                                      :{BLACK}החל בהחלפת הכלים
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}הפסק את החלפת הכלים
@@ -3160,6 +3169,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK} מצי�
 STR_REPLACE_REMOVE_WAGON                                        :{ORANGE}{SKIP}{STRING}{BLACK} : הסרת קרונות
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}הסר קרונות מהסוף על מנת לשמור על האורך המקורי של הרכבת
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{ORANGE}{SKIP}{SKIP}{STRING}{BLACK} : מחליף
+
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}קטר לא זמין
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}רכב לא זמין
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}כלי שייט לא זמין
@@ -3309,17 +3319,6 @@ STR_MEASURE_AREA                                                :{BLACK}{NUM} x 
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}  {NUM}  :אורך {}   {NBSP}'מ {NUM} :הפרש גובה
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}  {NUM} x {NUM} :שטח {}   {NBSP}'מ {NUM} :הפרש גובה
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer Credits: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...כביש זה בבעלות עירונית
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}הכביש פונה לכיוון לא נכון...
@@ -3344,7 +3343,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :{COMMA} קבוצה
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :כל הרכבות
 STR_GROUP_ALL_ROAD_VEHICLES                                     :כל הרכבים
@@ -3373,12 +3371,62 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}מחק �
 STR_GROUP_RENAME_TIP                                            :{BLACK}שנה את שם הקבוצה
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}לחץ על מנת להגן על הכלים בקבוצה בפני החלפה אוטומטית
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :({COMMA} חברה)
+STR_FORMAT_GROUP_NAME                                           :{COMMA} קבוצה
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}השם חייב להיות ייחודי
 

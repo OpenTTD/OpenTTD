@@ -155,8 +155,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
 STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}지도 - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}게임 설정
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}알림
@@ -168,17 +166,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 버전 {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD 개발팀
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}종료
 STR_YES                                                         :{BLACK}예
 STR_NO                                                          :{BLACK}아니요
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}정말 이 게임을 끝내고 {STRING}{G 0 "으" ""}로 돌아가시겠습니까?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :없음
 STR_COLOUR_DARK_BLUE                                            :짙은 파랑
 STR_COLOUR_PALE_GREEN                                           :엷은 녹색
@@ -197,8 +189,6 @@ STR_COLOUR_BROWN                                                :갈색
 STR_COLOUR_GREY                                                 :회색
 STR_COLOUR_WHITE                                                :흰색
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}게임에 차량이 너무 많습니다!
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}위치
 STR_SMALLMAP_TYPE_CONTOURS                                      :고도
 STR_SMALLMAP_TYPE_VEHICLES                                      :차량
@@ -324,12 +314,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}정렬 �
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}필터링 기준 선택
 STR_SORT_BY                                                     :{BLACK}정렬
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}인구
+STR_SORT_BY_NAME                                                :{BLACK}이름
+STR_SORT_BY_DATE                                                :{BLACK}날짜
 STR_SORT_BY_PRODUCTION                                          :생산
 STR_SORT_BY_TYPE                                                :종류
 STR_SORT_BY_TRANSPORTED                                         :수송량
-STR_SORT_BY_NAME                                                :{BLACK}이름
-STR_SORT_BY_DATE                                                :{BLACK}날짜
 STR_SORT_BY_NUMBER                                              :번호
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :작년 수익
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :올해 수익
@@ -352,37 +343,25 @@ STR_SORT_BY_INTRO_DATE                                          :도입 날짜
 STR_SORT_BY_RUNNING_COST                                        :운행비용
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :힘/운행비용
 STR_SORT_BY_CARGO_CAPACITY                                      :화물 수송량
+
 STR_NO_WAITING_CARGO                                            :{BLACK}대기 중인 화물이 없습니다.
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}모든 시설 선택
 STR_SELECT_ALL_TYPES                                            :{BLACK}모든 종류의 화물을 선택 (대기하지 않는 화물 포함)
-STR_AVAILABLE_TRAINS                                            :{BLACK}사용 가능 열차
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}사용 가능 자동차
-STR_AVAILABLE_SHIPS                                             :{BLACK}사용 가능 선박
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}사용 가능 항공기
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}이 차량 타입에 사용할 수 있는 기관차의 목록 보기
 STR_MANAGE_LIST                                                 :{BLACK}관리
 STR_MANAGE_LIST_TIP                                             :{BLACK}이 목록에 있는 모든 열차에게 지시
 STR_REPLACE_VEHICLES                                            :차량 교체
+STR_SEND_FOR_SERVICING                                          :점검하러 보냄
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}사용 가능 열차
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}사용 가능 자동차
+STR_AVAILABLE_SHIPS                                             :{BLACK}사용 가능 선박
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}사용 가능 항공기
+
 STR_SEND_TRAIN_TO_DEPOT                                         :차량기지로 보내기
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :차고로 보내기
 STR_SEND_SHIP_TO_DEPOT                                          :정박소로 보내기
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :격납고로 보내기
-STR_SEND_FOR_SERVICING                                          :점검하러 보냄
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :1
-STR_MONTH_ABBREV_FEB                                            :2
-STR_MONTH_ABBREV_MAR                                            :3
-STR_MONTH_ABBREV_APR                                            :4
-STR_MONTH_ABBREV_MAY                                            :5
-STR_MONTH_ABBREV_JUN                                            :6
-STR_MONTH_ABBREV_JUL                                            :7
-STR_MONTH_ABBREV_AUG                                            :8
-STR_MONTH_ABBREV_SEP                                            :9
-STR_MONTH_ABBREV_OCT                                            :10
-STR_MONTH_ABBREV_NOV                                            :11
-STR_MONTH_ABBREV_DEC                                            :12
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -410,8 +389,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}공항 �
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}나무 심기
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}지역 정보
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}옵션
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}점검 기간 간격을 바꿀 수 없습니다...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}창 닫기
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}창 제목 - 창을 움직이려면 여기를 드래그하세요
@@ -458,7 +435,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :없음
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}이름
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
 STR_ORDINAL_NUMBER_2ND                                          :2
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -491,6 +468,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29
 STR_ORDINAL_NUMBER_30TH                                         :30
 STR_ORDINAL_NUMBER_31ST                                         :31
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :1
+STR_MONTH_ABBREV_FEB                                            :2
+STR_MONTH_ABBREV_MAR                                            :3
+STR_MONTH_ABBREV_APR                                            :4
+STR_MONTH_ABBREV_MAY                                            :5
+STR_MONTH_ABBREV_JUN                                            :6
+STR_MONTH_ABBREV_JUL                                            :7
+STR_MONTH_ABBREV_AUG                                            :8
+STR_MONTH_ABBREV_SEP                                            :9
+STR_MONTH_ABBREV_OCT                                            :10
+STR_MONTH_ABBREV_NOV                                            :11
+STR_MONTH_ABBREV_DEC                                            :12
+
+STR_MONTH_JAN                                                   :{G=m}1월
+STR_MONTH_FEB                                                   :{G=m}2월
+STR_MONTH_MAR                                                   :{G=m}3월
+STR_MONTH_APR                                                   :{G=m}4월
+STR_MONTH_MAY                                                   :{G=m}5월
+STR_MONTH_JUN                                                   :{G=m}6월
+STR_MONTH_JUL                                                   :{G=m}7월
+STR_MONTH_AUG                                                   :{G=m}8월
+STR_MONTH_SEP                                                   :{G=m}9월
+STR_MONTH_OCT                                                   :{G=m}10월
+STR_MONTH_NOV                                                   :{G=m}11월
+STR_MONTH_DEC                                                   :{G=m}12월
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -581,12 +586,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY}가 '{STRING}'{G 0 "을" "를"} 달성했습니다!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME}의 {COMPANY}이(가) 드디어 {STRING}을(를) 달성했습니다!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}시나리오 에디터
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}지형 만들기
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}지형 편집툴의 크기를 키움
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}지형 편집툴의 크기를 줄임
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}무작위로 지형 만들기
@@ -668,9 +670,7 @@ STR_OFF                                                         :끄기
 STR_SUMMARY                                                     :요약
 STR_FULL                                                        :전체
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 옵션
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :난이도 설정
@@ -775,9 +775,6 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  게�
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}저장중입니다,{}끝날때까지 기다려주세요
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Street 스타일 음악' 프로그램을 선택합니다
 
-STR_BLACK_6                                                     :{G=m}{BLACK}6
-STR_BLACK_7                                                     :{G=m}{BLACK}7
-
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :영국 식 (기본)
 STR_TOWNNAME_FRENCH                                             :프랑스 식
@@ -857,19 +854,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}기본 �
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}자동 저장 실패
 
-STR_MONTH_JAN                                                   :{G=m}1월
-STR_MONTH_FEB                                                   :{G=m}2월
-STR_MONTH_MAR                                                   :{G=m}3월
-STR_MONTH_APR                                                   :{G=m}4월
-STR_MONTH_MAY                                                   :{G=m}5월
-STR_MONTH_JUN                                                   :{G=m}6월
-STR_MONTH_JUL                                                   :{G=m}7월
-STR_MONTH_AUG                                                   :{G=m}8월
-STR_MONTH_SEP                                                   :{G=m}9월
-STR_MONTH_OCT                                                   :{G=m}10월
-STR_MONTH_NOV                                                   :{G=m}11월
-STR_MONTH_DEC                                                   :{G=m}12월
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}{STATION}{G 0 "으" ""}로 향하는 중
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}{STATION}{G 0 "으" ""}로 향하는 중 ({VELOCITY})
 STR_NO_ORDERS                                                   :{LTBLUE}경로 없음
@@ -883,8 +867,6 @@ STR_ITEMS                                                       :{G=m}품목
 STR_CRATES                                                      :{G=f}상자
 STR_RES_OTHER                                                   :{G=f}기타
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}경로를 공유할 수 없습니다...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}경로를 복사할 수 없습니다...
@@ -1157,7 +1139,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}맵의 
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :사용불가
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}설정값 변경
 
 STR_TEMPERATE_LANDSCAPE                                         :온대 기후
@@ -1259,11 +1240,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}산업�
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...다른 산업시설과 너무 가깝습니다.
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}다른 종류의 화물을 실을 수 있도록 열차를 개조
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}열차 개조
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차가 수송할 화물의 종류를 선택하세요
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}선택된 화물을 수송하도록 열차를 개조
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}열차를 개조할 수 없습니다...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}생산량 변경
 
 ############ network gui strings
@@ -2076,6 +2052,7 @@ STR_SV_STNAME_AIRPORT                                           :{STRING}
 STR_SV_STNAME_OILFIELD                                          :{STRING} 유전
 STR_SV_STNAME_MINES                                             :{STRING} 광산
 STR_SV_STNAME_DOCKS                                             :{STRING}항
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} 별관
 STR_SV_STNAME_SIDINGS                                           :{STRING} 측선
 STR_SV_STNAME_BRANCH                                            :{STRING} 지선
@@ -2123,8 +2100,6 @@ STR_NUM_LOW                                                     :낮음
 STR_NUM_NORMAL                                                  :보통
 STR_NUM_HIGH                                                    :높음
 STR_NUM_CUSTOM                                                  :사용자
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :매우 느림
 STR_AI_SPEED_SLOW                                               :느림
 STR_AI_SPEED_MEDIUM                                             :보통
@@ -2592,10 +2567,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :모노레일 �
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :자기부상열차
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} 차량기지
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}{STATION}에 처음으로 기차가 도착했습니다!{}사람들이 환호성을 지릅니다!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (상세정보)
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}중간에 기차가 있습니다
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}통과 설정
@@ -2685,37 +2658,16 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :그리고 {STRI
 STR_TIMETABLE_DAYS                                              :{COMMA} 일
 STR_TIMETABLE_TICKS                                             :{COMMA} 틱
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}{TOWN} 차량기지로 가는 중
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}{TOWN} 차량기지로 가는 중 ({VELOCITY})
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{TOWN} 차량기지로 점검하러 가는중
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{TOWN} 차량기지로 점검하러 가는 중 ({VELOCITY})
-
 STR_INVALID_ORDER                                               :{RED} (잘못된 경로)
 
 STR_UNKNOWN_STATION                                             :알수없는 정거장
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}비어있음
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} (출발지: {STATION})
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} (출발지: {STATION}) (x{NUM})
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE}{P "이" "가"} 차량기지 안에서 대기 중입니다
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}새 열차
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}열차가 너무 깁니다!
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}차량기지 내에서 정지한 경우에만 개조할 수 있습니다
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}새 기차
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}새 전기 기차
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}새 모노레일
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}새 자기부상열차
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}기차
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}차량 만들기
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}차량 복제
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}이 버튼은 자동차를 복제할 것입니다. CTRL+클릭하시면 경로도 같이 공유됩니다.
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}이 버튼은 자동차를 복제할 것입니다. 이 버튼을 클릭하고 차고 안/밖에 있는 차량을 클릭하십시오. CTRL+클릭하면 경로도 같이 공유됩니다.
-STR_CLONE_TRAIN                                                 :{BLACK}기차 복제
-STR_CLONE_TRAIN_INFO                                            :{BLACK}이 버튼은 객차/화물차를 포함한 열차 전체를 복제할 것입니다. CTRL+클릭하면 경로도 같이 공유됩니다.
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}이 버튼은 객차/화물차를 포함한 열차 전체를 복제할 것입니다. 이 버튼을 클릭하고 차고 안/밖에 있는 차량을 클릭하십시오. CTRL+클릭하면 경로도 같이 공유됩니다.
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}이름
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}건너뛰기
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}삭제
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}행선지
@@ -2731,14 +2683,12 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}순서 �
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (경로)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - 경로의 끝 - -
 STR_SERVICE                                                     :{BLACK}점검
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}기차를 만들 수 없습니다...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   가격: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}싣는중 / 내리는중
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}떠남
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}차량기지 안에 정지해있어야 합니다!
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}기차를 기지로 보낼 수 없습니다...
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}더이상 경로를 지정할 공간이 없습니다
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}경로가 너무 많습니다!
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}새 경로를 삽입할 수 없습니다...
@@ -2753,25 +2703,11 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}경로�
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}차량을 옮길 수 없습니다...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}뒷쪽 기관차는 앞쪽것을 항상 따라다닐 것입니다.
 STR_CARGO_N_A                                                   :없음{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}기차를 팔 수 없습니다...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}근처에 있는 차량기지로 가는 길을 찾을 수 없습니다
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}기차를 운행/정지시킬 수 없습니다...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}점검 간격: {LTBLUE}{COMMA}일마다{BLACK}   최근 점검: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}점검 간격: {LTBLUE}{COMMA}%{BLACK}   최근 점검: {LTBLUE}{DATE_LONG}
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차 - 열차 정보를 보려면 클릭, 차량을 드래그해서 추가하거나 삭제하세요
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}새 기차 만들기
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}기관차/객차/화물차 한량만 제거하려면 여기로 드래그하세요
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}차량기지가 있는 곳으로 이동
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}기차 선택 목록 - 차량 정보를 보려면 클릭
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}선택된 차량 생산
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}차량 타입의 이름을 다시 지정
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}현재 열차 행동 - 열차를 운행/정지시키려면 클릭
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}열차 경로설정창 띄우기
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}이 열차가 있는 곳으로 이동
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}기차를 차량기지로 보냅니다. (CTRL+클릭시 점검만 하러 보냄)
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}신호를 무시하고 열차를 진행시킵니다.
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}열차를 회차시킵니다.
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}열차 상세정보 보기
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 주기 증가시키기
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 주기 감소시키기
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}현재 싣고있는 화물 정보를 보여줌
@@ -2805,15 +2741,10 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}정지함
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}너무 위험해서 신호를 무시할 수 없습니다...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}충돌!!
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}열차 이름 지정
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}열차 이름을 지정할 수 없습니다...
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}열차 이름 지정
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}열차 충돌 사고!{}충돌로 인한 폭발로 {COMMA}명의 사망자가 발생하였습니다!
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}열차를 회차시킬 수 없습니다...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}차량의 방향을 뒤집을 수 없습니다...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}여러 대가 연결된 차량은 뒤집을 수 없습니다...
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}열차 차량 타입 이름 재지정
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}차량 타입의 이름을 다시 지정할 수 없습니다...
 STR_CLEAR_TIME                                                  :{BLACK}시간 초기화
 STR_RESET_LATENESS                                              :{BLACK}지연 카운터 초기화
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}웨이포인트 이름 변경
@@ -2845,43 +2776,14 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}자동�
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}다음 여행에서 얻어진 값으로 시간표를 자동으로 채웁니다 (CTRL-클릭하여 대기 시간을 유지합니다)
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}중간에 자동차가 있습니다.
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} 차고
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}새 차량
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}새 자동차
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}차량 만들기
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}자동차를 만들 수 없습니다...
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...차고 안에서 정지해있어야 합니다!
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}자동차를 팔 수 없습니다...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}자동차를 운행/정지시킬 수 없습니다...
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE}{P "이" "가"} 차고에서 대기 중입니다
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}{TOWN} 차고로 가는 중
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}{TOWN} 차고로 가는 중 ({VELOCITY})
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}{TOWN} 차고로 점검하러 가는중
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}{TOWN} 차고로 점검하러 가는중 ({VELOCITY})
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}차량을 차고로 보낼 수 없습니다...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}인접한 차고를 찾을 수 없습니다
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}현재 차량 행동 - 운행/정지시키려면 클릭하세요
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}차량 경로 보이기
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}이 차량이 있는 곳으로 이동
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}차량을 차고로 보냅니다. CTRL+클릭하면 점검만 합니다.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}차량을 U턴시킵니다.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}자동차 상세정보 보이기
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}차량 - 차량 정보를 보려면 클릭
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}새 자동차 만들기
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}자동차를 팔려면 여기로 드래그하세요
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}이 차고가 있는 곳으로 이동
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}자동차 선택 목록 - 차량 정보를 보려면 클릭
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}선택한 자동차 만들기
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}수송량: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} 차량{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}자동차 이름 지정
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}자동차의 이름을 지정할 수 없습니다...
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}자동차 이름 지정
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}첫 버스가 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}첫 트럭이 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}{STATION}에 처음으로 승객 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
@@ -2889,128 +2791,39 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 운전사가 사망했습니다!
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 {COMMA}명이 사망했습니다!
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}자동차를 U턴시킬 수 없습니다...
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}이름 지정
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}자동차 타입의 이름 지정
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}자동차 타입의 이름 지정
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}자동차 타입의 이름을 지정할 수 없습니다...
 
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}자동차가 다른 종류의 화물을 싣도록 개조
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}자동차 개조
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}선택한 화물을 싣도록 자동차를 개조
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}자동차를 개조할 수 없습니다...
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}자동차가 수송할 화물의 종류를 선택하십시오.
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :항만 건설
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}항만 건설
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}항만
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}여기에 항구를 건설할 수 없습니다...
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} 정박소
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}새 선박
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}새 선박
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}선박 만들기
-STR_CLONE_SHIP                                                  :{BLACK}선박 복제
-STR_CLONE_SHIP_INFO                                             :{BLACK}이 버튼은 선박을 복제할 것입니다. CTRL+클릭은 경로를 같이 공유합니다.
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}이 버튼을 누르고 복제를 원하는 선박을 클릭하십시오. CTRL+클릭은 경로를 같이 공유합니다.
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}정박소 내에서 정지해있어야 합니다!
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}선박을 팔 수 없습니다...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}선박을 만들 수 없습니다...
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}중간에 선박이 있습니다
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}선박을 운행/중지시킬 수 없습니다...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}선박을 정박소로 보낼 수 없습니다...
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}{TOWN} 정박소로 가는 중
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}{TOWN} 정박소로 가는 중 ({VELOCITY})
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN} 정박소로 점검하러 가는 중
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} 정박소로 점검하러 가는 중 ({VELOCITY})
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE}{P "이" "가"} 정박소 안에서 대기 중입니다
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}항구 건설
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}정박소 만들기 (선박 제작 및 점검용)
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}새 선박을 만듭니다
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}선박을 팔려면 여기로 드래그하세요
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}이 정박소가 잇는 위치로 이동합니다
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}선박 선택 목록 - 선박의 정보를 보려면 클릭하세요
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}선택한 선박 만들기
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}현재 선박 행동 - 선박을 운행/중지시키려면 클릭하세요
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}선박의 경로 보여주기
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}이 선박이 있는 곳으로 이동합니다
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}선박을 정박소로 보냅니다. CTRL+클릭하면 점검만 합니다.
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}선박 상세정보 보기
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}선박 이름 지정
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}선박 이름 지정
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}선박의 이름을 바꿀 수 없습니다...
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}첫 선박이 {STATION}에 도착했습니다!{}시민들이 환호하고 있습니다!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}웨이포인트로 사용할 부이를 설치합니다.
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}여기에 부이를 설치할 수 없습니다...
 STR_BUILD_AQUEDUCT                                              :{BLACK}수도교 짓기
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}여기에 수도교를 지을 수 없습니다...
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}이름 지정
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}선박 타입의 이름 지정
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}선박 타입의 이름 지정
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}선박 타입의 이름을 재지정할 수 없습니다...
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}이 선박이 다른 종류의 화물을 싣도록 개조
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (개조)
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}선박 개조
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}선박이 운반할 화물의 종류를 선택하십시오
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}선택한 화물을 운반하도록 선박을 개조
 STR_REFIT_TITLE                                                 :{GOLD}수송할 화물 선택:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}새 수송량: {GOLD}{CARGO}{}{BLACK}개조 가격: {GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}선박을 개조할 수 없습니다...
 STR_REFITTABLE                                                  :(개조 가능)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}공항
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}여기에 공항을 만들 수 없습니다...
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION}공항 격납고
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}새 항공기
-STR_CLONE_AIRCRAFT                                              :{BLACK}항공기 복제
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}이 버튼은 항공기를 복제할 것입니다. CTRL+클릭은 경로를 같이 공유합니다.
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}이 버튼을 누르고 복제를 원하는 항공기를 클릭하십시오. CTRL+클릭은 경로를 같이 공유합니다.
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}새 항공기
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}항공기 만들기
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}항공기를 만들 수 없습니다...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}항공기를 격납고로 보낼 수 없습니다...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATION}공항 격납고로 가는 중
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION}공항 격납고로 가는 중 ({VELOCITY})
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}{STATION}공항 격납고로 점검하러 가는 중
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}{STATION}공항 격납고로 점검하러 가는 중 ({VELOCITY})
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE}{P "이" "가"} 격납고 안에서 대기 중입니다
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}중간에 항공기가 있습니다
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}항공기를 운행/중지시킬 수 없습니다...
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}항공기가 운항중입니다
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}격납고 내에서 정지해있어야합니다
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}항공기를 팔 수 없습니다...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :공항 건설
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}공항 건설
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}항공기 - 항공기 정보를 보려면 클릭하세요
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}새 항공기
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}항공기를 팔려면 여기로 드래그하세요
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}이 격납고가 있는 공항으로 이동
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}항공기 선택 목록 - 항공기 정보를 보려면 클릭하세요
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}선택한 항공기 만들기
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}현재 항공기 행동 - 항공기를 운행/중지시키려면 여기를 클릭하세요
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}항공기 경로를 보여줍니다
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}이 항공기가 있는 곳으로 이동
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}항공기를 격납고로 보냅니다. CTRL+클릭하면 점검만 합니다
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}항공기 상세정보 보기
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}항공기 이름 지정
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}항공기의 이름을 지정할 수 없습니다...
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}항공기 이름 지정
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}첫 항공기가 {STATION}공항에 도착했습니다!{}시민들이 환호하고 있습니다!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}항공기 충돌사고 발생!{}{COMMA}명이 {STATION}공항에서 사망하였습니다!
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}항공기 추락사고 발생!{}연료 부족으로 인하여 {COMMA}명이 사망하였습니다!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}이름 지정
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}항공기 타입의 이름 지정
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}항공기 타입의 이름 지정
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}항공기 타입의 이름을 지정할 수 없습니다...
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}이 항공기가 다른 종류의 화물을 싣도록 개조
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}항공기 개조
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}이 항공기가 수송할 화물의 종류를 선택하십시오
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}선택한 화물을 싣도록 항공기를 개조합니다
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}항공기를 개조할 수 없습니다...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (시간표)
 
@@ -3178,6 +2991,211 @@ STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING}
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} 차량의 공유된 경로 목록
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}이 경로를 공유하고 있는 모든 차량을 표시합니다.
 
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE}{P "이" "가"} 차량기지 안에서 대기 중입니다
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE}{P "이" "가"} 차고에서 대기 중입니다
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE}{P "이" "가"} 정박소 안에서 대기 중입니다
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE}{P "이" "가"} 격납고 안에서 대기 중입니다
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}열차 개조
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}자동차 개조
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}선박 개조
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}항공기 개조
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}선택된 화물을 수송하도록 열차를 개조
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}선택한 화물을 싣도록 자동차를 개조
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}선택한 화물을 운반하도록 선박을 개조
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}선택한 화물을 싣도록 항공기를 개조합니다
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차가 수송할 화물의 종류를 선택하세요
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}자동차가 수송할 화물의 종류를 선택하십시오.
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}선박이 운반할 화물의 종류를 선택하십시오
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}이 항공기가 수송할 화물의 종류를 선택하십시오
+
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} 차량기지
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} 차고
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} 정박소
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION}공항 격납고
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}열차 이름 지정
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}자동차 이름 지정
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}선박 이름 지정
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}항공기 이름 지정
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}열차 이름 지정
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}자동차 이름 지정
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}선박 이름 지정
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}항공기 이름 지정
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}중간에 기차가 있습니다
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}중간에 자동차가 있습니다.
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}중간에 선박이 있습니다
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}중간에 항공기가 있습니다
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}열차를 개조할 수 없습니다...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}자동차를 개조할 수 없습니다...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}선박을 개조할 수 없습니다...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}항공기를 개조할 수 없습니다...
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}열차 이름을 지정할 수 없습니다...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}자동차의 이름을 지정할 수 없습니다...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}선박의 이름을 바꿀 수 없습니다...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}항공기의 이름을 지정할 수 없습니다...
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}기차를 운행/정지시킬 수 없습니다...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}자동차를 운행/정지시킬 수 없습니다...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}선박을 운행/중지시킬 수 없습니다...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}항공기를 운행/중지시킬 수 없습니다...
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}기차를 기지로 보낼 수 없습니다...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}차량을 차고로 보낼 수 없습니다...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}선박을 정박소로 보낼 수 없습니다...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}항공기를 격납고로 보낼 수 없습니다...
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}기차를 만들 수 없습니다...
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}자동차를 만들 수 없습니다...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}선박을 만들 수 없습니다...
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}항공기를 만들 수 없습니다...
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}차량 타입의 이름을 다시 지정할 수 없습니다...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}자동차 타입의 이름을 지정할 수 없습니다...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}선박 타입의 이름을 재지정할 수 없습니다...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}항공기 타입의 이름을 지정할 수 없습니다...
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}기차를 팔 수 없습니다...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}자동차를 팔 수 없습니다...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}선박을 팔 수 없습니다...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}항공기를 팔 수 없습니다...
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}현재 열차 행동 - 열차를 운행/정지시키려면 클릭
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}현재 차량 행동 - 운행/정지시키려면 클릭하세요
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}현재 선박 행동 - 선박을 운행/중지시키려면 클릭하세요
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}현재 항공기 행동 - 항공기를 운행/중지시키려면 여기를 클릭하세요
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}열차 경로설정창 띄우기
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}차량 경로 보이기
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}선박의 경로 보여주기
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}항공기 경로를 보여줍니다
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}이 열차가 있는 곳으로 이동
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}이 차량이 있는 곳으로 이동
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}이 선박이 있는 곳으로 이동합니다
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}이 항공기가 있는 곳으로 이동
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}기차를 차량기지로 보냅니다. (CTRL+클릭시 점검만 하러 보냄)
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}차량을 차고로 보냅니다. CTRL+클릭하면 점검만 합니다.
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}선박을 정박소로 보냅니다. CTRL+클릭하면 점검만 합니다.
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}항공기를 격납고로 보냅니다. CTRL+클릭하면 점검만 합니다
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}열차 상세정보 보기
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}자동차 상세정보 보이기
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}선박 상세정보 보기
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}항공기 상세정보 보기
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}다른 종류의 화물을 실을 수 있도록 열차를 개조
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}자동차가 다른 종류의 화물을 싣도록 개조
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}이 선박이 다른 종류의 화물을 싣도록 개조
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}이 항공기가 다른 종류의 화물을 싣도록 개조
+
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}{TOWN} 차량기지로 가는 중
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}{TOWN} 차량기지로 가는 중 ({VELOCITY})
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}{TOWN} 차고로 가는 중
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}{TOWN} 차고로 가는 중 ({VELOCITY})
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}{TOWN} 정박소로 가는 중
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}{TOWN} 정박소로 가는 중 ({VELOCITY})
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATION}공항 격납고로 가는 중
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION}공항 격납고로 가는 중 ({VELOCITY})
+
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{TOWN} 차량기지로 점검하러 가는중
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{TOWN} 차량기지로 점검하러 가는 중 ({VELOCITY})
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}{TOWN} 차고로 점검하러 가는중
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}{TOWN} 차고로 점검하러 가는중 ({VELOCITY})
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN} 정박소로 점검하러 가는 중
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} 정박소로 점검하러 가는 중 ({VELOCITY})
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}{STATION}공항 격납고로 점검하러 가는 중
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}{STATION}공항 격납고로 점검하러 가는 중 ({VELOCITY})
+
+
+STR_CLONE_TRAIN                                                 :{BLACK}기차 복제
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}차량 복제
+STR_CLONE_SHIP                                                  :{BLACK}선박 복제
+STR_CLONE_AIRCRAFT                                              :{BLACK}항공기 복제
+
+STR_CLONE_TRAIN_INFO                                            :{BLACK}이 버튼은 객차/화물차를 포함한 열차 전체를 복제할 것입니다. CTRL+클릭하면 경로도 같이 공유됩니다.
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}이 버튼은 자동차를 복제할 것입니다. CTRL+클릭하시면 경로도 같이 공유됩니다.
+STR_CLONE_SHIP_INFO                                             :{BLACK}이 버튼은 선박을 복제할 것입니다. CTRL+클릭은 경로를 같이 공유합니다.
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}이 버튼은 항공기를 복제할 것입니다. CTRL+클릭은 경로를 같이 공유합니다.
+
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}이 버튼은 객차/화물차를 포함한 열차 전체를 복제할 것입니다. 이 버튼을 클릭하고 차고 안/밖에 있는 차량을 클릭하십시오. CTRL+클릭하면 경로도 같이 공유됩니다.
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}이 버튼은 자동차를 복제할 것입니다. 이 버튼을 클릭하고 차고 안/밖에 있는 차량을 클릭하십시오. CTRL+클릭하면 경로도 같이 공유됩니다.
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}이 버튼을 누르고 복제를 원하는 선박을 클릭하십시오. CTRL+클릭은 경로를 같이 공유합니다.
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}이 버튼을 누르고 복제를 원하는 항공기를 클릭하십시오. CTRL+클릭은 경로를 같이 공유합니다.
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}새 기차
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}새 전기 기차
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}새 모노레일
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}새 자기부상열차
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}기차
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}새 자동차
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}새 선박
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}새 항공기
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}차량 만들기
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}차량 만들기
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}선박 만들기
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}항공기 만들기
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}기차 선택 목록 - 차량 정보를 보려면 클릭
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}자동차 선택 목록 - 차량 정보를 보려면 클릭
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}선박 선택 목록 - 선박의 정보를 보려면 클릭하세요
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}항공기 선택 목록 - 항공기 정보를 보려면 클릭하세요
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}선택된 차량 생산
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}선택한 자동차 만들기
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}선택한 선박 만들기
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}선택한 항공기 만들기
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}이름
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}이름 지정
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}이름 지정
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}이름 지정
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}차량 타입의 이름을 다시 지정
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}자동차 타입의 이름 지정
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}선박 타입의 이름 지정
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}항공기 타입의 이름 지정
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}열차 차량 타입 이름 재지정
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}자동차 타입의 이름 지정
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}선박 타입의 이름 지정
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}항공기 타입의 이름 지정
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}새 열차
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}새 차량
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}새 선박
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}새 항공기
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차 - 열차 정보를 보려면 클릭, 차량을 드래그해서 추가하거나 삭제하세요
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}차량 - 차량 정보를 보려면 클릭
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}항공기 - 항공기 정보를 보려면 클릭하세요
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}새 기차 만들기
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}새 자동차 만들기
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}새 선박을 만듭니다
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}새 항공기
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}기관차/객차/화물차 한량만 제거하려면 여기로 드래그하세요
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}자동차를 팔려면 여기로 드래그하세요
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}선박을 팔려면 여기로 드래그하세요
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}항공기를 팔려면 여기로 드래그하세요
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}차량기지가 있는 곳으로 이동
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}이 차고가 있는 곳으로 이동
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}이 정박소가 잇는 위치로 이동합니다
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}이 격납고가 있는 공항으로 이동
+
+
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}이 안에 있는 모든 차량을 판매하려고 합니다. 정말 판매하시겠습니까?
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :잘못된 차량기지 종류
@@ -3212,6 +3230,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}화물�
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동교체시에 열차가 기존보다 길어지면 화물차를 제거함으로써 교체시 달라지는 열차의 길이를 같게 조정합니다 (앞쪽부터 시작됨)
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}교체중: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}기관차/화물차 교체 창을 번갈아 띄웁니다
+
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}열차는 불가능합니다
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}차량은 불가능합니다
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}선박은 불가능합니다
@@ -3426,7 +3445,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -3443,6 +3465,31 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_COMPANY_NUM                                          :(회사 {COMMA})
 STR_FORMAT_GROUP_NAME                                           :그룹 {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{G=m}{BLACK}6
+STR_BLACK_7                                                     :{G=m}{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}이름은 유일해야 합니다
 

@@ -154,8 +154,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}SC
 STR_ABBREV_NONE                                                 :{TINYFONT}NU
 STR_ABBREV_ALL                                                  :{TINYFONT}TOT
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Harta - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opţiuni
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Mesaj
@@ -167,17 +165,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyrigh
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versiunea {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Echipa OpenTTD
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}Ieşire din joc
 STR_YES                                                         :{BLACK}Da
 STR_NO                                                          :{BLACK}Nu
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Eşti sigur că vrei să abandonezi jocul curent şi să revii în {STRING}?
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :nimic
 STR_COLOUR_DARK_BLUE                                            :Albastru închis
 STR_COLOUR_PALE_GREEN                                           :Verde pal
@@ -196,8 +188,6 @@ STR_COLOUR_BROWN                                                :Maro
 STR_COLOUR_GREY                                                 :Gri
 STR_COLOUR_WHITE                                                :Alb
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Prea multe vehicule în joc
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}Locatie
 STR_SMALLMAP_TYPE_CONTOURS                                      :Relief
 STR_SMALLMAP_TYPE_VEHICLES                                      :Vehicule
@@ -323,12 +313,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Alege cr
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}Selectează criteriul de filtrare
 STR_SORT_BY                                                     :{BLACK}Ordonează
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Populatia
+STR_SORT_BY_NAME                                                :{BLACK}Nume
+STR_SORT_BY_DATE                                                :{BLACK}Datã
 STR_SORT_BY_PRODUCTION                                          :Productie
 STR_SORT_BY_TYPE                                                :Tip
 STR_SORT_BY_TRANSPORTED                                         :Transportat
-STR_SORT_BY_NAME                                                :{BLACK}Nume
-STR_SORT_BY_DATE                                                :{BLACK}Datã
 STR_SORT_BY_NUMBER                                              :Numar
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit anul trecut
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit anul acesta
@@ -351,6 +342,7 @@ STR_SORT_BY_INTRO_DATE                                          :Data lansarii
 STR_SORT_BY_RUNNING_COST                                        :Cost exploatare
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Cost exploatare/putere
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacitate incarcatura
+
 STR_NO_WAITING_CARGO                                            :{BLACK}Nu este nici un fel de încărcătură în aşteptare
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Alege toate facilităţile
 STR_SELECT_ALL_TYPES                                            :{BLACK}Alege toate tipurile de încãrcãturi (inclusiv încãrcãturile care nu sunt în asteptare)
@@ -369,21 +361,6 @@ STR_SEND_TRAIN_TO_DEPOT                                         :Trimite la depo
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Trimite la depou
 STR_SEND_SHIP_TO_DEPOT                                          :Trimite la depou
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Trimite la hangar
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :Ian
-STR_MONTH_ABBREV_FEB                                            :Feb
-STR_MONTH_ABBREV_MAR                                            :Mar
-STR_MONTH_ABBREV_APR                                            :Apr
-STR_MONTH_ABBREV_MAY                                            :Mai
-STR_MONTH_ABBREV_JUN                                            :Iun
-STR_MONTH_ABBREV_JUL                                            :Iul
-STR_MONTH_ABBREV_AUG                                            :Aug
-STR_MONTH_ABBREV_SEP                                            :Sep
-STR_MONTH_ABBREV_OCT                                            :Oct
-STR_MONTH_ABBREV_NOV                                            :Nov
-STR_MONTH_ABBREV_DEC                                            :Dec
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -411,8 +388,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construi
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Plantează arbori
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informatii despre teren
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Optiuni
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nu se poate schimba intervalul de întreţinere...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Închide fereastra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titlul ferestrei - trage de aici pentru a muta fereastra
@@ -459,7 +434,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :nici una
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nume
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
 STR_ORDINAL_NUMBER_2ND                                          :2
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -492,6 +467,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29
 STR_ORDINAL_NUMBER_30TH                                         :30
 STR_ORDINAL_NUMBER_31ST                                         :31
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Ian
+STR_MONTH_ABBREV_FEB                                            :Feb
+STR_MONTH_ABBREV_MAR                                            :Mar
+STR_MONTH_ABBREV_APR                                            :Apr
+STR_MONTH_ABBREV_MAY                                            :Mai
+STR_MONTH_ABBREV_JUN                                            :Iun
+STR_MONTH_ABBREV_JUL                                            :Iul
+STR_MONTH_ABBREV_AUG                                            :Aug
+STR_MONTH_ABBREV_SEP                                            :Sep
+STR_MONTH_ABBREV_OCT                                            :Oct
+STR_MONTH_ABBREV_NOV                                            :Nov
+STR_MONTH_ABBREV_DEC                                            :Dec
+
+STR_MONTH_JAN                                                   :ianuarie
+STR_MONTH_FEB                                                   :februarie
+STR_MONTH_MAR                                                   :martie
+STR_MONTH_APR                                                   :aprilie
+STR_MONTH_MAY                                                   :mai
+STR_MONTH_JUN                                                   :iunie
+STR_MONTH_JUL                                                   :iulie
+STR_MONTH_AUG                                                   :august
+STR_MONTH_SEP                                                   :septembrie
+STR_MONTH_OCT                                                   :octombrie
+STR_MONTH_NOV                                                   :noiembrie
+STR_MONTH_DEC                                                   :decembrie
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -582,12 +585,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} a dobandit titlul de '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} al {COMPANY} dobandeste titlul de '{STRING}'!
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor de scenarii
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generator suprafaţă uscat
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Măreşte aria de editare a terenului
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Micşorează aria de editare a terenului
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generează teren aleator
@@ -669,9 +669,7 @@ STR_OFF                                                         :Oprit
 STR_SUMMARY                                                     :Pe scurt
 STR_FULL                                                        :Pe larg
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opţiunile jocului (F2)
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Setări dificultate
@@ -776,9 +774,6 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SALV
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Salvarea se efectueaza încã,{}vã rugãm asteptati pânã se încheie!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selectează programul muzical 'Ezy Street'
 
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
-
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engleza (Original)
 STR_TOWNNAME_FRENCH                                             :Franceza
@@ -858,19 +853,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Informa�
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Auto-salvarea a esuat
 
-STR_MONTH_JAN                                                   :ianuarie
-STR_MONTH_FEB                                                   :februarie
-STR_MONTH_MAR                                                   :martie
-STR_MONTH_APR                                                   :aprilie
-STR_MONTH_MAY                                                   :mai
-STR_MONTH_JUN                                                   :iunie
-STR_MONTH_JUL                                                   :iulie
-STR_MONTH_AUG                                                   :august
-STR_MONTH_SEP                                                   :septembrie
-STR_MONTH_OCT                                                   :octombrie
-STR_MONTH_NOV                                                   :noiembrie
-STR_MONTH_DEC                                                   :decembrie
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Spre {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Spre {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Fără comenzi
@@ -884,8 +866,6 @@ STR_ITEMS                                                       :bucăţi
 STR_CRATES                                                      :pachete
 STR_RES_OTHER                                                   :(alta/nespecificată)
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nu se poate trece la comenzi sincronizate...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nu pot copia lista de comenzi...
@@ -1158,7 +1138,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Marimea
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :dezactivat
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Schimbă valoarea setării
 
 STR_TEMPERATE_LANDSCAPE                                         :peisajul temperat
@@ -2124,8 +2103,6 @@ STR_NUM_LOW                                                     :scăzut
 STR_NUM_NORMAL                                                  :normal
 STR_NUM_HIGH                                                    :ridicat
 STR_NUM_CUSTOM                                                  :Propriu
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :foarte încet
 STR_AI_SPEED_SLOW                                               :încet
 STR_AI_SPEED_MEDIUM                                             :mediu
@@ -2806,7 +2783,6 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...trebu
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nu pot găsi o autobază apropiată
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forţează vehiculul să întoarcă
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacitate: {LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehicul{P "" e}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
@@ -3472,7 +3448,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -3489,6 +3468,31 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_COMPANY_NUM                                          :(Companie {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grup {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Numele trebuie să fie unic
 
@@ -3607,6 +3611,7 @@ STR_AI_AUTHOR                                                   :{BLACK}Autor: {
 STR_AI_VERSION                                                  :{BLACK}Versiune: {NUM}
 STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}O Inteligentă Artificială s-a oprit în mod eronat. Raportează această problemă autorului împreună cu o captură de ecran a ferestrei Depanare IA
+STR_AI_NO_AI_FOUND                                              :Nici o IA potrivită a fost găsită{}Această IA este nefuncţională.{}Poţi descărca IA-uri folsind opţiunea "Resurse online" din meniul principal.
 ########
 
 ############ town controlled noise level

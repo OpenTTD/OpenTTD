@@ -154,8 +154,6 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}塑
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}汽
 STR_ABBREV_NONE                                                 :{TINYFONT}無
 STR_ABBREV_ALL                                                  :{TINYFONT}全
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
-STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}地圖 - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}遊戲選項
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}訊息
@@ -167,17 +165,11 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}原著�
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 版本 {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD 開發小組
 
-STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
-STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_QUIT_CAPTION                                                :{WHITE}離開
 STR_YES                                                         :{BLACK}是
 STR_NO                                                          :{BLACK}否
 STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}您確定要放棄進行中的遊戲{}返回 {STRING}？
-STR_BLACK_1                                                     :{BLACK}1
-STR_BLACK_2                                                     :{BLACK}2
-STR_BLACK_3                                                     :{BLACK}3
-STR_BLACK_4                                                     :{BLACK}4
-STR_BLACK_5                                                     :{BLACK}5
+
 STR_JUST_NOTHING                                                :無
 STR_COLOUR_DARK_BLUE                                            :暗藍
 STR_COLOUR_PALE_GREEN                                           :淡綠
@@ -196,8 +188,6 @@ STR_COLOUR_BROWN                                                :棕
 STR_COLOUR_GREY                                                 :灰
 STR_COLOUR_WHITE                                                :白
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}遊戲中已有太多交通工具
-STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
-STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_BUTTON_LOCATION                                             :{BLACK}位置
 STR_SMALLMAP_TYPE_CONTOURS                                      :地形
 STR_SMALLMAP_TYPE_VEHICLES                                      :交通工具
@@ -323,12 +313,13 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}選擇�
 STR_FILTER_CRITERIA_TIP                                         :{BLACK}選擇過濾條件
 STR_SORT_BY                                                     :{BLACK}排序依照
 
+### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}人口
+STR_SORT_BY_NAME                                                :{BLACK}名稱
+STR_SORT_BY_DATE                                                :{BLACK}日期
 STR_SORT_BY_PRODUCTION                                          :產量
 STR_SORT_BY_TYPE                                                :種類
 STR_SORT_BY_TRANSPORTED                                         :已運送
-STR_SORT_BY_NAME                                                :{BLACK}名稱
-STR_SORT_BY_DATE                                                :{BLACK}日期
 STR_SORT_BY_NUMBER                                              :編號
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :去年盈利
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :今年盈利
@@ -351,37 +342,25 @@ STR_SORT_BY_INTRO_DATE                                          :登場日期
 STR_SORT_BY_RUNNING_COST                                        :營運成本
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :功率／營運成本
 STR_SORT_BY_CARGO_CAPACITY                                      :載貨量
+
 STR_NO_WAITING_CARGO                                            :{BLACK}無任何貨物等候運送
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}選擇所有設施
 STR_SELECT_ALL_TYPES                                            :{BLACK}選擇所有貨物種類 (包含沒在等待的貨物)
-STR_AVAILABLE_TRAINS                                            :{BLACK}可用列車
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}可用車輛
-STR_AVAILABLE_SHIPS                                             :{BLACK}可用船舶
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}可用飛機
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}顯示此交通工具的所有設計
 STR_MANAGE_LIST                                                 :{BLACK}管理名單
 STR_MANAGE_LIST_TIP                                             :{BLACK}向清單所有車輛發出指示
 STR_REPLACE_VEHICLES                                            :替換交通工具
+STR_SEND_FOR_SERVICING                                          :送去維護
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}可用列車
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}可用車輛
+STR_AVAILABLE_SHIPS                                             :{BLACK}可用船舶
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}可用飛機
+
 STR_SEND_TRAIN_TO_DEPOT                                         :送到機廠
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :送到車庫
 STR_SEND_SHIP_TO_DEPOT                                          :送到船塢
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :送到機棚
-STR_SEND_FOR_SERVICING                                          :送去維護
-
-############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :1
-STR_MONTH_ABBREV_FEB                                            :2
-STR_MONTH_ABBREV_MAR                                            :3
-STR_MONTH_ABBREV_APR                                            :4
-STR_MONTH_ABBREV_MAY                                            :5
-STR_MONTH_ABBREV_JUN                                            :6
-STR_MONTH_ABBREV_JUL                                            :7
-STR_MONTH_ABBREV_AUG                                            :8
-STR_MONTH_ABBREV_SEP                                            :9
-STR_MONTH_ABBREV_OCT                                            :10
-STR_MONTH_ABBREV_NOV                                            :11
-STR_MONTH_ABBREV_DEC                                            :12
-############ range for months ends
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -409,8 +388,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}興建�
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}植樹、設置標誌等
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}土地資訊
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}選項
-STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
-STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能更改檢修週期...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}關閉視窗
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}視窗標題 - 點此拖曳可移動視窗
@@ -457,7 +434,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :無
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}名稱
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 
-############ range for days starts
+############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
 STR_ORDINAL_NUMBER_2ND                                          :2
 STR_ORDINAL_NUMBER_3RD                                          :3
@@ -490,6 +467,34 @@ STR_ORDINAL_NUMBER_29TH                                         :29
 STR_ORDINAL_NUMBER_30TH                                         :30
 STR_ORDINAL_NUMBER_31ST                                         :31
 ############ range for days ends
+
+############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :1
+STR_MONTH_ABBREV_FEB                                            :2
+STR_MONTH_ABBREV_MAR                                            :3
+STR_MONTH_ABBREV_APR                                            :4
+STR_MONTH_ABBREV_MAY                                            :5
+STR_MONTH_ABBREV_JUN                                            :6
+STR_MONTH_ABBREV_JUL                                            :7
+STR_MONTH_ABBREV_AUG                                            :8
+STR_MONTH_ABBREV_SEP                                            :9
+STR_MONTH_ABBREV_OCT                                            :10
+STR_MONTH_ABBREV_NOV                                            :11
+STR_MONTH_ABBREV_DEC                                            :12
+
+STR_MONTH_JAN                                                   :一月
+STR_MONTH_FEB                                                   :二月
+STR_MONTH_MAR                                                   :三月
+STR_MONTH_APR                                                   :四月
+STR_MONTH_MAY                                                   :五月
+STR_MONTH_JUN                                                   :六月
+STR_MONTH_JUL                                                   :七月
+STR_MONTH_AUG                                                   :八月
+STR_MONTH_SEP                                                   :九月
+STR_MONTH_OCT                                                   :十月
+STR_MONTH_NOV                                                   :十一月
+STR_MONTH_DEC                                                   :十二月
+############ range for months ends
 
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -580,12 +585,9 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} 達成「{STRING}」的地位！
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} 的 {COMPANY} 達成「{STRING}」 的地位！
-STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}場景編輯器
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}產生地形
-STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
-STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}增加地形升降的範圍
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}減少地形升降的範圍
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}產生隨機地形
@@ -667,9 +669,7 @@ STR_OFF                                                         :關閉
 STR_SUMMARY                                                     :摘要
 STR_FULL                                                        :詳細
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :遊戲選項
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :難易設定
@@ -761,9 +761,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :投資成立工
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}投資成立工廠
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...只能建在雨林區
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...只能建在沙漠區
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  遊戲暫停  *  *
@@ -776,9 +773,6 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}自動儲�
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  遊戲儲存中 *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}遊戲還在儲存中，{}請稍候！
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}選擇「街頭音樂」播放清單
-
-STR_BLACK_6                                                     :{BLACK}6
-STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :英國 (原版)
@@ -859,19 +853,6 @@ STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}關於�
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}自動儲存失敗
 
-STR_MONTH_JAN                                                   :一月
-STR_MONTH_FEB                                                   :二月
-STR_MONTH_MAR                                                   :三月
-STR_MONTH_APR                                                   :四月
-STR_MONTH_MAY                                                   :五月
-STR_MONTH_JUN                                                   :六月
-STR_MONTH_JUL                                                   :七月
-STR_MONTH_AUG                                                   :八月
-STR_MONTH_SEP                                                   :九月
-STR_MONTH_OCT                                                   :十月
-STR_MONTH_NOV                                                   :十一月
-STR_MONTH_DEC                                                   :十二月
-
 STR_HEADING_FOR_STATION                                         :{LTBLUE}正前往：{STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}正前往：{STATION}，{VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}沒有指令
@@ -885,8 +866,6 @@ STR_ITEMS                                                       :件
 STR_CRATES                                                      :箱
 STR_RES_OTHER                                                   :其它
 STR_NOTHING                                                     :
-
-STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}無法共享指令清單...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}無法複製指令清單...
@@ -1159,7 +1138,6 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}地圖 
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :關閉
-STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}修改設定值
 
 STR_TEMPERATE_LANDSCAPE                                         :溫帶
@@ -1195,7 +1173,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}顯示�
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}編輯號誌站名稱
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}無法修改號誌站名稱...
@@ -1262,11 +1239,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}工業�
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...太接近另一個工業
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}改造列車以運輸不同的貨物種類
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}改造列車
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}選擇要運輸的貨物種類
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}改造列車以運輸選定的貨物種類
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}無法改造列車...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}修改產量
 
 ############ network gui strings
@@ -1776,11 +1748,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :帳篷小屋
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :茶壺屋
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :撲滿
 
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_STATION_NAME                                                :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :地形
 STR_LANDSCAPING_MENU_PLANT_TREES                                :植樹
@@ -1834,6 +1801,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :十分不錯
 STR_CARGO_RATING_EXCELLENT                                      :極佳
 STR_CARGO_RATING_OUTSTANDING                                    :傑出
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}顯示所有指令內包含這個車站的列車
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}顯示所有指令内包含這個車站的車輛
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}顯示所有指令内包含這座機場的飛機
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}顯示所有指令内包含這個碼頭的船舶
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}：{YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} 不再接受 {STRING}
@@ -2078,6 +2051,7 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} 機場
 STR_SV_STNAME_OILFIELD                                          :{STRING} 油田
 STR_SV_STNAME_MINES                                             :{STRING} 礦場
 STR_SV_STNAME_DOCKS                                             :{STRING} 碼頭
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} 輔助站
 STR_SV_STNAME_SIDINGS                                           :{STRING} 側站
 STR_SV_STNAME_BRANCH                                            :{STRING} 分站
@@ -2125,8 +2099,6 @@ STR_NUM_LOW                                                     :低
 STR_NUM_NORMAL                                                  :普通
 STR_NUM_HIGH                                                    :高
 STR_NUM_CUSTOM                                                  :自訂
-STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
-STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :非常慢
 STR_AI_SPEED_SLOW                                               :慢
 STR_AI_SPEED_MEDIUM                                             :普通
@@ -2160,7 +2132,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :抱敵意
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :(公司 {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}新臉孔
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}配色
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}配色：
@@ -2193,7 +2164,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}總計�
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}收入圖表
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}營運損益圖表
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}銀行餘額
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}貸款
@@ -2596,10 +2566,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :單軌機車頭
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :磁浮機車頭
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} 鐵路機廠
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛列車抵達 {STATION}！
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (詳細資料)
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}前方有列車
 STR_ORDER                                                       :{SETX 10}{COMMA}：{SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}：{SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}直達
@@ -2689,38 +2657,16 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :並運行 {STRI
 STR_TIMETABLE_DAYS                                              :{COMMA} 日
 STR_TIMETABLE_TICKS                                             :{COMMA} tick
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}正前往 {TOWN} 機廠
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}正前往 {TOWN} 機廠，{VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}正在 {TOWN} 機廠維護中
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}正在 {TOWN} 機廠維護中，{VELOCITY}
-
 STR_INVALID_ORDER                                               :{RED} (指令無效)
 
 STR_UNKNOWN_STATION                                             :未知車站
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}空
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} 來自 {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} 來自 {STATION} (x{NUM})
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} 在車庫等待中
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}購買新交通工具
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車太長
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}列車只有在停放於機廠內的時候才能變動
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - 列車 {COMMA} 組
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}新購鐵路車輛
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}新電氣化列車
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}新購單軌車輛
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}新購磁浮車輛
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}列車
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}購買交通工具
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}複製車輛
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}這會將購買一部相同的車輛，按住 CTRL 點選還可共享指令
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}這會購買一部相同的車輛，按下按鈕之後再點選於車庫内或外的車輛，按住 CTRL 點選還可共享指令
-STR_CLONE_TRAIN                                                 :{BLACK}複製列車
-STR_CLONE_TRAIN_INFO                                            :{BLACK}這會購買一列相同的列車，包含所有車廂，按住 CTRL 點選還可共享指令
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}這會購買一列相同的列車，包含所有車廂，按下按鈕之後再點選機廠内外的其他列車。按住 CTRL 點選還可共享指令
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}更名
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}跳過
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}刪除
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}前往
@@ -2736,14 +2682,12 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}切到�
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (指令)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - 指令結束 - -
 STR_SERVICE                                                     :{BLACK}維護
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}無法購買鐵道車輛...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   購於：{LTBLUE}{NUM}{BLACK} 價值：{LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   價值：{LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}正在裝卸客貨
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}正在離開
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}列車必須停在機廠内
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}無法將列車送往機廠...
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}無法新增指令
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}指令太多
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}無法插入新指令...
@@ -2758,26 +2702,11 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}一個�
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}無法移動車輛...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}後端車頭一定要跟著前端車頭
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}無法出售鐵道車輛...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}找不到前往附近機廠的路徑
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}無法停止／起動列車...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}維護間隔：{LTBLUE}{COMMA} 天{BLACK}   上次維護：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}維護間隔：{LTBLUE}{COMMA}%{BLACK}   上次維護：{LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}列車 - 點選列車檢視資訊
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車 - 點選列車檢視資訊，拖放車廂可加掛／解聯
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}購買新列車
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}將列車拖到這裡即可出售
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}將鐵路機廠置於畫面中央
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}列車選單 - 點選列車檢視資訊
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}購買選定的列車
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}修改列車的名稱
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}列車目前的動作 - 按此可停止／起動列車
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}顯示列車的指令
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}將列車置於畫面中央
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}將列車送回機廠，按住 CTRL 點選機廠則僅做維護
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}強制列車前進，不等待號誌允許
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}倒轉列車方向
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}顯示列車詳細資料
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}延長維護間隔
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}縮短維護間隔
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}顯示載貨詳細資料
@@ -2811,15 +2740,10 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}停止
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}無法讓列車通過險阻號誌...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}撞毀！
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}為列車命名
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}無法為列車命名...
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}為列車命名
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}列車事故！{}衝撞後 {COMMA} 人死在火球下
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}無法倒轉列車方向...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}無法調轉車輛方向...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}無法迴轉由多節車廂組成的車輛
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}重新命名列車類型
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}無法修改列車類型名稱...
 STR_CLEAR_TIME                                                  :{BLACK}清除時刻表
 STR_RESET_LATENESS                                              :{BLACK}歸零誤點／慢分
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}修改號誌站名稱
@@ -2851,45 +2775,14 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動�
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}自動以下次運轉的時間編寫時刻表 (按住 CTRL 可保持等待時間)
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}前方有汽車
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - 車輛 {COMMA} 部
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} 車庫
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}購買新車輛
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}購置新車輛
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}購買車輛
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}無法購置車輛
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...必須停在車庫内
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}無法出售車輛...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}無法停止／起動車輛...
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} 正在車庫待命
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}正前往 {TOWN} 車庫
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}正前往 {TOWN} 車庫，{VELOCITY}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}在 {TOWN} 車庫維護中
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}在 {TOWN} 車庫維護中，{VELOCITY}
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}無法將車輛送至車庫...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}找不到附近的車庫
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}車輛 - 點選車輛檢視詳細資料
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}目前車輛動作 - 點選這裡可停止／起動車輛
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}顯示車輛指令
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}將車輛置於畫面中央
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}將車輛送到車庫，按住 CTRL 點選則只做維護
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}強制車輛掉頭
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}顯示車輛詳細資訊
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}車輛 - 點選車輛顯示詳細資料
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}購置新車輛
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}將車輛拖到這裡即可出售
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}將車庫置於畫面中央
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}車輛清單 - 點選車輛可看到詳細資料
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}購置選定的車輛
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}容量：{LTBLUE}
-STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}車輛 {NUM} 部 {STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}為車輛命名
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}無法為車輛命名...
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}為車輛命名
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛公車抵達 {STATION}！
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛貨車抵達 {STATION}！
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛載客電車抵達 {STATION}！
@@ -2897,132 +2790,39 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}車禍！{}駕駛在與列車對撞後罹難
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}車禍！{}車輛在與列車對撞後，造成 {COMMA} 人罹難
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}無法讓車輛轉向...
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}更名
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}為車輛類型更名
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}為車輛類型更名
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}無法為車輛類型更名...
 
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}改裝車輛以運送不同的貨物種類
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}改裝車輛
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}改裝車輛以運送指定的貨物種類
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}無法改裝車輛...
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}選擇車輛要運送的貨物種類
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :興建水道
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}興建水道
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}水道
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}無法在此興建碼頭...
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} 船塢
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}購買船舶
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - 船舶 {COMMA} 艘
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}購買船舶
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}購買船舶
-STR_CLONE_SHIP                                                  :{BLACK}複製船舶
-STR_CLONE_SHIP_INFO                                             :{BLACK}這會購買一艘相同的船舶，按住 CTRL 點選還可共享指令
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}這會購買一艘相同的船舶，按下按鈕之後再點選船塢内或外的船舶，按住 CTRL 點選還可共享指令
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}船舶必須停在船塢内
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}無法出售船舶...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}無法購買船舶...
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}前方有船舶
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}無法停止／起動船舶...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}無法將船舶送到船塢...
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}正前往 {TOWN} 船塢
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}正前往 {TOWN} 船塢，{VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}正在 {TOWN} 船塢維護中
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}正在 {TOWN} 船塢維護中，{VELOCITY}
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} 正在船塢待命
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}興建碼頭
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}興建船塢 (用以購買／維護船舶)
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船舶 - 點選船舶可看到詳細資料
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}購買新船舶
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}將船舶拖到這裡即可出售
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}將船塢置於畫面中央
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}船舶 - 點選船舶顯示詳細資料
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}船舶清單 - 點選船舶顯示詳細資料
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}購買選定船舶
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}目前船舶動作 - 按此可停止／起動船舶
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}顯示船舶指令
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}將船舶置於畫面中央
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}將船舶送往船塢，按住 CTRL 點選則只做維護
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}顯示船舶詳細資料
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}命名船舶
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}命名船舶
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}無法命名船舶...
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}市民慶賀 . . .{}首艘船舶抵達 {STATION}！
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}放置浮標，可用作導航點
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}無法在此放置浮標...
 STR_BUILD_AQUEDUCT                                              :{BLACK}興建水道橋
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}無法興建水道橋...
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}更名
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}重新命名船舶類型
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}重新命名船舶類型
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}無法重新命名船舶類型
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}改裝貨船以便運送不同貨物
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (改裝)
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}改裝船舶
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}選擇要讓船舶運送的貨物種類
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}改裝船舶以運送選定的貨物種類
 STR_REFIT_TITLE                                                 :{GOLD}選擇要運送的貨物種類：
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}新容量：{GOLD}{CARGO}{}{BLACK}改裝費用：{GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}無法改裝船舶...
 STR_REFITTABLE                                                  :(可改裝)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}機場
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}無法在此興建機場...
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} 機棚
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}購買飛機
-STR_CLONE_AIRCRAFT                                              :{BLACK}複製飛機
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}這會購買一架相同的飛機，按住 CTRL 點選還可共享指令
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}這會購買一架相同的飛機，按下此鈕之後再點選機棚内或外的飛機，按住 CTRL 點選還可共享指令
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}購買飛機
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}購買飛機
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}無法購買飛機...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - 飛機 {COMMA} 架
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}無法將飛機送回機棚...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}正前往 {STATION} 機棚
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}正前往 {STATION} 機棚，{VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}在 {STATION} 機棚維護中
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}在 {STATION} 機棚維護中，{VELOCITY}
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} 正在機庫待命
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}前方有飛機
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}無法停止／起動飛機...
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}飛機正在飛行中
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}飛機必須停在機棚内
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}無法出售飛機...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :興建機場
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}興建機場
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}飛機 - 點選飛機顯示詳細資料
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飛機 - 點選飛機顯示詳細資料
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}購買新飛機
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}將飛機拖到這裡即可出售
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}將機棚置於畫面中央
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}飛機清單 - 點選飛機檢視詳細資料
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}購買選定的飛機
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}目前飛機動作 - 按此可停止／起動飛機
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}顯示飛機的指令
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}將飛機置於畫面中央
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}將飛機送到機棚，按住 CTRL 點選則只做維護
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}顯示飛機詳細資料
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}命名飛機
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}無法命名飛機
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}命名飛機
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}市民慶賀 . . .{}首架飛機抵達 {STATION}！
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}空難！{}{COMMA} 名乘客與機組員不幸罹難於 {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}空難！{}飛機燃油耗盡，{COMMA} 名乘客與機組員不幸罹難！
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}更名
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}重新命名飛機種類
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}重新命名飛機種類
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}無法重新命名飛機種類...
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}改裝飛機以運送其他貨物
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}改裝飛機
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}選擇要讓飛機運送的貨物種類
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}改裝飛機以運送選定的貨物種類
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}無法改裝飛機...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (時刻表)
 
@@ -3174,14 +2974,224 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}列車 - 點選列車檢視資訊
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}車輛 - 點選車輛檢視詳細資料
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}船舶 - 點選船舶顯示詳細資料
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}飛機 - 點選飛機顯示詳細資料
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}顯示所有指令內包含這個車站的列車
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}顯示所有指令内包含這個車站的車輛
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}顯示所有指令内包含這座機場的飛機
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}顯示所有指令内包含這個碼頭的船舶
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - 列車 {COMMA} 組
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - 車輛 {COMMA} 部
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - 船舶 {COMMA} 艘
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - 飛機 {COMMA} 架
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} 組交通工具的共用指令
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}顯示所有共用這份指令的交通工具
+
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} 在車庫等待中
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} 正在車庫待命
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} 正在船塢待命
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} 正在機庫待命
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}改造列車
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}改裝車輛
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}改裝船舶
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}改裝飛機
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}改造列車以運輸選定的貨物種類
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}改裝車輛以運送指定的貨物種類
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}改裝船舶以運送選定的貨物種類
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}改裝飛機以運送選定的貨物種類
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}選擇要運輸的貨物種類
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}選擇車輛要運送的貨物種類
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}選擇要讓船舶運送的貨物種類
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}選擇要讓飛機運送的貨物種類
+
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} 鐵路機廠
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} 車庫
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} 船塢
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} 機棚
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}為列車命名
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}為車輛命名
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}命名船舶
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}命名飛機
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}為列車命名
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}為車輛命名
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}命名船舶
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}命名飛機
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}前方有列車
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}前方有汽車
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}前方有船舶
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}前方有飛機
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}無法改造列車...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}無法改裝車輛...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}無法改裝船舶...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}無法改裝飛機...
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}無法為列車命名...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}無法為車輛命名...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}無法命名船舶...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}無法命名飛機
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}無法停止／起動列車...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}無法停止／起動車輛...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}無法停止／起動船舶...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}無法停止／起動飛機...
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}無法將列車送往機廠...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}無法將車輛送至車庫...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}無法將船舶送到船塢...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}無法將飛機送回機棚...
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}無法購買鐵道車輛...
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}無法購置車輛
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}無法購買船舶...
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}無法購買飛機...
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}無法修改列車類型名稱...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}無法為車輛類型更名...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}無法重新命名船舶類型
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}無法重新命名飛機種類...
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}無法出售鐵道車輛...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}無法出售車輛...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}無法出售船舶...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}無法出售飛機...
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}列車目前的動作 - 按此可停止／起動列車
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}目前車輛動作 - 點選這裡可停止／起動車輛
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}目前船舶動作 - 按此可停止／起動船舶
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}目前飛機動作 - 按此可停止／起動飛機
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}顯示列車的指令
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}顯示車輛指令
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}顯示船舶指令
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}顯示飛機的指令
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}將列車置於畫面中央
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}將車輛置於畫面中央
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}將船舶置於畫面中央
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}將飛機置於畫面中央
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}將列車送回機廠，按住 CTRL 點選機廠則僅做維護
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}將車輛送到車庫，按住 CTRL 點選則只做維護
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}將船舶送往船塢，按住 CTRL 點選則只做維護
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}將飛機送到機棚，按住 CTRL 點選則只做維護
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}顯示列車詳細資料
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}顯示車輛詳細資訊
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}顯示船舶詳細資料
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}顯示飛機詳細資料
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}改造列車以運輸不同的貨物種類
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}改裝車輛以運送不同的貨物種類
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}改裝貨船以便運送不同貨物
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}改裝飛機以運送其他貨物
+
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}正前往 {TOWN} 機廠
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}正前往 {TOWN} 機廠，{VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}正前往 {TOWN} 車庫
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}正前往 {TOWN} 車庫，{VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}正前往 {TOWN} 船塢
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}正前往 {TOWN} 船塢，{VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}正前往 {STATION} 機棚
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}正前往 {STATION} 機棚，{VELOCITY}
+
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}正在 {TOWN} 機廠維護中
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}正在 {TOWN} 機廠維護中，{VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}在 {TOWN} 車庫維護中
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}在 {TOWN} 車庫維護中，{VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}正在 {TOWN} 船塢維護中
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}正在 {TOWN} 船塢維護中，{VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}在 {STATION} 機棚維護中
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}在 {STATION} 機棚維護中，{VELOCITY}
+
+
+STR_CLONE_TRAIN                                                 :{BLACK}複製列車
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}複製車輛
+STR_CLONE_SHIP                                                  :{BLACK}複製船舶
+STR_CLONE_AIRCRAFT                                              :{BLACK}複製飛機
+
+STR_CLONE_TRAIN_INFO                                            :{BLACK}這會購買一列相同的列車，包含所有車廂，按住 CTRL 點選還可共享指令
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}這會將購買一部相同的車輛，按住 CTRL 點選還可共享指令
+STR_CLONE_SHIP_INFO                                             :{BLACK}這會購買一艘相同的船舶，按住 CTRL 點選還可共享指令
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}這會購買一架相同的飛機，按住 CTRL 點選還可共享指令
+
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}這會購買一列相同的列車，包含所有車廂，按下按鈕之後再點選機廠内外的其他列車。按住 CTRL 點選還可共享指令
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}這會購買一部相同的車輛，按下按鈕之後再點選於車庫内或外的車輛，按住 CTRL 點選還可共享指令
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}這會購買一艘相同的船舶，按下按鈕之後再點選船塢内或外的船舶，按住 CTRL 點選還可共享指令
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}這會購買一架相同的飛機，按下此鈕之後再點選機棚内或外的飛機，按住 CTRL 點選還可共享指令
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}新購鐵路車輛
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}新電氣化列車
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}新購單軌車輛
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}新購磁浮車輛
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}列車
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}購置新車輛
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}購買船舶
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}購買飛機
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}購買交通工具
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}購買車輛
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}購買船舶
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}購買飛機
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}列車選單 - 點選列車檢視資訊
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}車輛清單 - 點選車輛可看到詳細資料
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}船舶清單 - 點選船舶顯示詳細資料
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}飛機清單 - 點選飛機檢視詳細資料
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}購買選定的列車
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}購置選定的車輛
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}購買選定船舶
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}購買選定的飛機
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}更名
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}更名
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}更名
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}更名
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}修改列車的名稱
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}為車輛類型更名
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}重新命名船舶類型
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}重新命名飛機種類
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}重新命名列車類型
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}為車輛類型更名
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}重新命名船舶類型
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}重新命名飛機種類
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}購買新交通工具
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}購買新車輛
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}購買船舶
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}購買飛機
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車 - 點選列車檢視資訊，拖放車廂可加掛／解聯
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}車輛 - 點選車輛顯示詳細資料
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船舶 - 點選船舶可看到詳細資料
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飛機 - 點選飛機顯示詳細資料
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}購買新列車
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}購置新車輛
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}購買新船舶
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}購買新飛機
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}將列車拖到這裡即可出售
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}將車輛拖到這裡即可出售
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}將船舶拖到這裡即可出售
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}將飛機拖到這裡即可出售
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}將鐵路機廠置於畫面中央
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}將車庫置於畫面中央
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}將船塢置於畫面中央
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}將機棚置於畫面中央
+
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}您正準備出售車庫内所有車輛。確定嗎？
@@ -3202,7 +3212,6 @@ STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}自動�
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}自動替換所有船塢内船舶
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}自動替換所有機棚内飛機
 
-
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}替換 {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}開始替換交通工具
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}停止替換交通工具
@@ -3218,6 +3227,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}移除�
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}如果替換後的車廂較長的話，讓自動替換功能移除多餘的車廂 (從頭開始) 以便維持列車長度
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}替換：{ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}在車頭及車廂替換畫面間切換。
+
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}交通工具已經停產
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}車輛已經停產
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}船舶已經停產
@@ -3368,17 +3378,6 @@ STR_MEASURE_AREA                                                :{BLACK}區域�
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}長度：{NUM}{}高度差：{NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}區域：{NUM} x {NUM}{}高度差：{NUM} m
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{2:NUM} 年 {1:STRING} 月 {0:STRING} 日
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}轉運進帳：{LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...此路段為市鎮所有
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...此道路面向錯誤的方向
@@ -3403,7 +3402,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :群組 {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :所有列車
 STR_GROUP_ALL_ROAD_VEHICLES                                     :所有車輛
@@ -3432,12 +3430,62 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}移除�
 STR_GROUP_RENAME_TIP                                            :{BLACK}為群組重新命名
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}點選可保護此群組排除在全域自動替 換設定之外
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{2:NUM} 年 {1:STRING} 月 {0:STRING} 日
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :(公司 {COMMA})
+STR_FORMAT_GROUP_NAME                                           :群組 {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}名稱必須是唯一的
 
