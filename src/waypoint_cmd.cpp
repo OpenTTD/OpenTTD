@@ -60,7 +60,7 @@ void MakeDefaultWaypointName(Waypoint *wp)
 
 	WaypointID cid = 0; // current index, goes to Waypoint::GetPoolSize()-1, then wraps to 0
 	do {
-		Waypoint *lwp = Waypoint::Get(cid);
+		Waypoint *lwp = Waypoint::GetIfValid(cid);
 
 		/* check only valid waypoints... */
 		if (lwp != NULL && wp != lwp) {

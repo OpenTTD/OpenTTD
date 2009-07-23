@@ -81,7 +81,7 @@ static Station *GetStationAround(TileIndex tile, int w, int h, StationID closest
 			StationID t = GetStationIndex(tile_cur);
 
 			if (closest_station == INVALID_STATION) {
-				closest_station = t;
+				if (Station::IsValidID(closest_station)) closest_station = t;
 			} else if (closest_station != t) {
 				_error_message = STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING;
 				return CHECK_STATIONS_ERR;
@@ -898,8 +898,8 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 			} else {
 				/* Extend the current station, and don't check whether it will
 				 * be near any other stations. */
-				st = Station::Get(est);
-				check_surrounding = false;
+				st = Station::GetIfValid(est);
+				check_surrounding = (st == NULL);
 			}
 		} else {
 			/* There's no station here. Don't check the tiles surrounding this
@@ -915,7 +915,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 	}
 
 	/* Distant join */
-	if (st == NULL && distant_join) st = Station::Get(station_to_join);
+	if (st == NULL && distant_join) st = Station::GetIfValid(station_to_join);
 
 	/* See if there is a deleted station close to us. */
 	if (st == NULL && reuse) st = GetClosestDeletedStation(tile_org);
@@ -1435,7 +1435,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	}
 
 	/* Distant join */
-	if (st == NULL && distant_join) st = Station::Get(station_to_join);
+	if (st == NULL && distant_join) st = Station::GetIfValid(station_to_join);
 
 	/* Find a deleted station close to us */
 	if (st == NULL && reuse) st = GetClosestDeletedStation(tile);
@@ -1795,7 +1795,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	}
 
 	/* Distant join */
-	if (st == NULL && distant_join) st = Station::Get(station_to_join);
+	if (st == NULL && distant_join) st = Station::GetIfValid(station_to_join);
 
 	/* Find a deleted station close to us */
 	if (st == NULL && reuse) st = GetClosestDeletedStation(tile);
@@ -2031,7 +2031,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	}
 
 	/* Distant join */
-	if (st == NULL && distant_join) st = Station::Get(station_to_join);
+	if (st == NULL && distant_join) st = Station::GetIfValid(station_to_join);
 
 	/* Find a deleted station close to us */
 	if (st == NULL && reuse) st = GetClosestDeletedStation(tile);
