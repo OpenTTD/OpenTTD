@@ -22,6 +22,7 @@
 #include "newgrf_station.h"
 #include "viewport_func.h"
 #include "train.h"
+#include "water.h"
 
 #include "table/strings.h"
 
@@ -97,14 +98,16 @@ void MakeDefaultWaypointName(Waypoint *wp)
 /**
  * Find a deleted waypoint close to a tile.
  * @param tile to search from
+ * @param str  the string to get the 'type' of
+ * @return the deleted nearby waypoint
  */
-static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile)
+static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile, StringID str)
 {
 	Waypoint *wp, *best = NULL;
 	uint thres = 8;
 
 	FOR_ALL_WAYPOINTS(wp) {
-		if ((wp->facilities & ~FACIL_WAYPOINT) == 0 && wp->owner == _current_company) {
+		if ((wp->facilities & ~FACIL_WAYPOINT) == 0 && wp->string_id == str && (wp->owner == _current_company || wp->owner == OWNER_NONE)) {
 			uint cur_dist = DistanceManhattan(tile, wp->xy);
 
 			if (cur_dist < thres) {
@@ -123,14 +126,14 @@ static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile)
  * @param flags type of operation
  * @param p1 graphics for waypoint type, 0 indicates standard graphics
  * @param p2 unused
+ * @param text unused
+ * @return cost of operation or error
  *
  * @todo When checking for the tile slope,
  * distingush between "Flat land required" and "land sloped in wrong direction"
  */
 CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Waypoint *wp;
-	Slope tileh;
 	Axis axis;
 
 	/* if custom gfx are used, make sure it is within bounds */
@@ -148,7 +151,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 	if (!CheckOwnership(owner)) return CMD_ERROR;
 	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
-	tileh = GetTileSlope(tile, NULL);
+	Slope tileh = GetTileSlope(tile, NULL);
 	if (tileh != SLOPE_FLAT &&
 			(!_settings_game.construction.build_on_slopes || IsSteepSlope(tileh) || !(tileh & (0x3 << axis)) || !(tileh & ~(0x3 << axis)))) {
 		return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
@@ -157,8 +160,8 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
 	/* Check if there is an already existing, deleted, waypoint close to us that we can reuse. */
-	wp = FindDeletedWaypointCloseTo(tile);
-	if (wp == NULL && !Waypoint::CanAllocateItem()) return CMD_ERROR;
+	Waypoint *wp = FindDeletedWaypointCloseTo(tile, STR_SV_STNAME_WAYPOINT);
+	if (wp == NULL && !Waypoint::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 
 	if (flags & DC_EXEC) {
 		if (wp == NULL) {
@@ -207,12 +210,11 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
  * @param tile from which to remove waypoint
  * @param flags type of operation
  * @param justremove will indicate if it is removed from rail or if rails are removed too
+ * @pre IsRailWaypointTile(tile)
  * @return cost of operation or error
  */
 CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justremove)
 {
-	Waypoint *wp;
-
 	/* Make sure it's a waypoint */
 	if (!IsRailWaypointTile(tile) ||
 			(!CheckTileOwnership(tile) && _current_company != OWNER_WATER) ||
@@ -222,7 +224,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justre
 
 	if (flags & DC_EXEC) {
 		Track track = GetRailStationTrack(tile);
-		wp = Waypoint::GetByTile(tile);
+		Waypoint *wp = Waypoint::GetByTile(tile);
 
 		wp->sign.MarkDirty();
 		wp->facilities &= ~FACIL_TRAIN;
@@ -258,12 +260,97 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justre
  * @param flags type of operation
  * @param p1 unused
  * @param p2 unused
+ * @param text unused
  * @return cost of operation or error
  */
 CommandCost CmdRemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	return RemoveTrainWaypoint(tile, flags, true);
 }
+
+
+/** Build a buoy.
+ * @param tile tile where to place the bouy
+ * @param flags operation to perform
+ * @param p1 unused
+ * @param p2 unused
+ * @param text unused
+ * @return cost of operation or error
+ */
+CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	if (!IsWaterTile(tile) || tile == 0) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+
+	if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+
+	/* Check if there is an already existing, deleted, waypoint close to us that we can reuse. */
+	Waypoint *wp = FindDeletedWaypointCloseTo(tile, STR_SV_STNAME_BUOY);
+	if (wp == NULL && !Waypoint::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
+
+	if (flags & DC_EXEC) {
+		if (wp == NULL) {
+			wp = new Waypoint(tile);
+		} else {
+			/* Move existing (recently deleted) buoy to the new location */
+			wp->xy = tile;
+			InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
+		}
+
+		wp->string_id = STR_SV_STNAME_BUOY;
+
+		wp->facilities |= FACIL_DOCK;
+		wp->owner = OWNER_NONE;
+
+		wp->build_date = _date;
+
+		if (wp->town == NULL) MakeDefaultWaypointName(wp);
+
+		MakeBuoy(tile, wp->index, GetWaterClass(tile));
+
+		wp->UpdateVirtCoord();
+		InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
+	}
+
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.build_dock);
+}
+
+/**
+ * Remove a buoy
+ * @param tile TileIndex been queried
+ * @param flags operation to perform
+ * @pre IsBuoyTile(tile)
+ * @return cost or failure of operation
+ */
+CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
+{
+	/* XXX: strange stuff, allow clearing as invalid company when clearing landscape */
+	if (!Company::IsValidID(_current_company) && !(flags & DC_BANKRUPT)) return_cmd_error(INVALID_STRING_ID);
+
+	Waypoint *wp = Waypoint::GetByTile(tile);
+
+	if (HasStationInUse(wp->index, INVALID_COMPANY)) return_cmd_error(STR_BUOY_IS_IN_USE);
+	/* remove the buoy if there is a ship on tile when company goes bankrupt... */
+	if (!(flags & DC_BANKRUPT) && !EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		wp->facilities &= ~FACIL_DOCK;
+
+		InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
+
+		/* We have to set the water tile's state to the same state as before the
+		 * buoy was placed. Otherwise one could plant a buoy on a canal edge,
+		 * remove it and flood the land (if the canal edge is at level 0) */
+		MakeWaterKeepingClass(tile, GetTileOwner(tile));
+		MarkTileDirtyByTile(tile);
+
+		wp->UpdateVirtCoord();
+		wp->delete_ctr = 0;
+	}
+
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_truck_station);
+}
+
 
 static bool IsUniqueWaypointName(const char *name)
 {
@@ -282,6 +369,7 @@ static bool IsUniqueWaypointName(const char *name)
  * @param flags type of operation
  * @param p1 id of waypoint
  * @param p2 unused
+ * @param text the new name of the waypoint or an empty string when resetting to the default
  * @return cost of operation or error
  */
 CommandCost CmdRenameWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)

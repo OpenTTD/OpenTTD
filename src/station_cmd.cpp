@@ -1943,44 +1943,6 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 	return cost;
 }
 
-/** Build a buoy.
- * @param tile tile where to place the bouy
- * @param flags operation to perform
- * @param p1 unused
- * @param p2 unused
- */
-CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
-{
-	if (!IsWaterTile(tile) || tile == 0) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
-	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
-
-	if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
-
-	/* allocate and initialize new station */
-	if (!Waypoint::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
-
-	if (flags & DC_EXEC) {
-		Waypoint *st = new Waypoint(tile);
-
-		st->string_id = STR_SV_STNAME_BUOY;
-
-		st->facilities |= FACIL_DOCK;
-		st->owner = OWNER_NONE;
-
-		st->build_date = _date;
-
-		if (st->town == NULL) MakeDefaultWaypointName(st);
-
-		MakeBuoy(tile, st->index, GetWaterClass(tile));
-
-		st->UpdateVirtCoord();
-		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
-		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_SHIPS);
-	}
-
-	return CommandCost(EXPENSES_CONSTRUCTION, _price.build_dock);
-}
-
 /**
  * Tests whether the company's vehicles have this station in orders
  * When company == INVALID_COMPANY, then check all vehicles
@@ -2001,41 +1963,6 @@ bool HasStationInUse(StationID station, CompanyID company)
 		}
 	}
 	return false;
-}
-
-/**
- * Remove a buoy
- * @param tile TileIndex been queried
- * @param flags operation to perform
- * @return cost or failure of operation
- */
-static CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
-{
-	/* XXX: strange stuff, allow clearing as invalid company when clearing landscape */
-	if (!Company::IsValidID(_current_company) && !(flags & DC_BANKRUPT)) return_cmd_error(INVALID_STRING_ID);
-
-	Waypoint *st = Waypoint::GetByTile(tile);
-
-	if (HasStationInUse(st->index, INVALID_COMPANY)) return_cmd_error(STR_BUOY_IS_IN_USE);
-	/* remove the buoy if there is a ship on tile when company goes bankrupt... */
-	if (!(flags & DC_BANKRUPT) && !EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
-
-	if (flags & DC_EXEC) {
-		st->facilities &= ~FACIL_DOCK;
-
-		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_SHIPS);
-
-		/* We have to set the water tile's state to the same state as before the
-		 * buoy was placed. Otherwise one could plant a buoy on a canal edge,
-		 * remove it and flood the land (if the canal edge is at level 0) */
-		MakeWaterKeepingClass(tile, GetTileOwner(tile));
-		MarkTileDirtyByTile(tile);
-
-		st->UpdateVirtCoord();
-		st->delete_ctr = 0;
-	}
-
-	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_truck_station);
 }
 
 static const TileIndexDiffC _dock_tileoffs_chkaround[] = {

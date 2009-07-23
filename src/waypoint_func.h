@@ -10,6 +10,8 @@
 #include "waypoint_type.h"
 
 CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justremove);
+CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags);
+
 void ShowWaypointWindow(const Waypoint *wp);
 void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype);
 void MakeDefaultWaypointName(Waypoint *wp);
