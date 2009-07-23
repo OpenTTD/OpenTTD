@@ -172,7 +172,7 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, DoCommandFlag flags, uint32 
 
 	CommandCost cost(EXPENSES_NEW_VEHICLES);
 	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
-	uint sell_command = GetCmdSellVeh(vehicle_type);;
+	uint sell_command = GetCmdSellVeh(vehicle_type);
 
 	/* Get the list of vehicles in the depot */
 	BuildDepotVehicleList(vehicle_type, tile, &list, &list);
