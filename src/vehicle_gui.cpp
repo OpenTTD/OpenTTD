@@ -69,7 +69,7 @@ GUIVehicleList::SortFunction * const BaseVehicleListWindow::vehicle_sorter_funcs
 
 const StringID BaseVehicleListWindow::vehicle_sorter_names[] = {
 	STR_SORT_BY_NUMBER,
-	STR_SORT_BY_DROPDOWN_NAME,
+	STR_SORT_BY_NAME,
 	STR_SORT_BY_AGE,
 	STR_SORT_BY_PROFIT_THIS_YEAR,
 	STR_SORT_BY_PROFIT_LAST_YEAR,
@@ -748,7 +748,7 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y)
 	sel = v->cur_order_index;
 
 	FOR_VEHICLE_ORDERS(v, order) {
-		if (sel == 0) DrawString(left - 6, left, y, STR_SMALL_RIGHT_ARROW, TC_BLACK);
+		if (sel == 0) DrawString(left - 6, left, y, STR_TINY_RIGHT_ARROW, TC_BLACK);
 		sel--;
 
 		if (order->IsType(OT_GOTO_STATION)) {
@@ -813,7 +813,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(int x, VehicleID selected_vehic
 		if (this->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG) DrawSmallOrderList(v, x + 138, this->widget[VLW_WIDGET_LIST].right, y);
 
 		if (v->IsInDepot()) {
-			str = STR_BLUE_NUMBER;
+			str = STR_BLUE_COMMA;
 		} else {
 			str = (v->age > v->max_age - DAYS_IN_LEAP_YEAR) ? STR_RED_COMMA : STR_BLACK_COMMA;
 		}
@@ -1201,8 +1201,8 @@ static const Widget _vehicle_details_widgets[] = {
 	{ WWT_PUSHTXTBTN,     RESIZE_LR,  COLOUR_GREY, 353, 392,   0,  13, STR_VEHICLE_NAME_BUTTON,            STR_NULL /* filled in later */},                // VLD_WIDGET_RENAME_VEHICLE
 	{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY, 393, 404,   0,  13, STR_NULL,                           STR_STICKY_BUTTON},                             // VLD_WIDGET_STICKY
 	{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   0, 404,  14,  55, 0x0,                                STR_NULL},                                      // VLD_WIDGET_TOP_DETAILS
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   0,  10, 101, 106, STR_SMALL_ARROW_UP,                 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP},   // VLD_WIDGET_INCREASE_SERVICING_INTERVAL
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   0,  10, 107, 112, STR_SMALL_ARROW_DOWN,               STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP},   // VLD_WIDGET_DECREASE_SERVICING_INTERVAL
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   0,  10, 101, 106, STR_BLACK_SMALL_ARROW_UP,           STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP},   // VLD_WIDGET_INCREASE_SERVICING_INTERVAL
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   0,  10, 107, 112, STR_BLACK_SMALL_ARROW_DOWN,         STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP},   // VLD_WIDGET_DECREASE_SERVICING_INTERVAL
 	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,  11, 404, 101, 112, 0x0,                                STR_NULL},                                      // VLD_WIDGET_BOTTOM_RIGHT
 	{     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,   0, 392,  56, 100, 0x701,                              STR_NULL},                                      // VLD_WIDGET_MIDDLE_DETAILS
 	{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY, 393, 404,  56, 100, 0x0,                                STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},          // VLD_WIDGET_SCROLLBAR
@@ -1228,8 +1228,8 @@ static const NWidgetPart _nested_vehicle_details_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_INCREASE_SERVICING_INTERVAL), SetMinimalSize(11, 6), SetDataTip(STR_SMALL_ARROW_UP, STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_DECREASE_SERVICING_INTERVAL), SetMinimalSize(11, 6), SetDataTip(STR_SMALL_ARROW_DOWN, STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_INCREASE_SERVICING_INTERVAL), SetMinimalSize(11, 6), SetDataTip(STR_BLACK_SMALL_ARROW_UP, STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLD_WIDGET_DECREASE_SERVICING_INTERVAL), SetMinimalSize(11, 6), SetDataTip(STR_BLACK_SMALL_ARROW_DOWN, STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP),
 		EndContainer(),
 		NWidget(WWT_PANEL, COLOUR_GREY, VLD_WIDGET_BOTTOM_RIGHT), SetFill(1, 1), SetResize(1, 0), EndContainer(),
 	EndContainer(),

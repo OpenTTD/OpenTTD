@@ -591,7 +591,7 @@ GUIStationList::SortFunction * const CompanyStationsWindow::sorter_funcs[] = {
 
 /* Names of the sorting functions */
 const StringID CompanyStationsWindow::sorter_names[] = {
-	STR_SORT_BY_DROPDOWN_NAME,
+	STR_SORT_BY_NAME,
 	STR_SORT_BY_FACILITY,
 	STR_SORT_BY_WAITING,
 	STR_SORT_BY_RATING_MAX,

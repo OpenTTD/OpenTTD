@@ -132,7 +132,7 @@ public:
 	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 	{
 		if (checked) {
-			DrawString(left + 2, right - 2, top, STR_CHECKMARK, sel ? TC_WHITE : TC_BLACK);
+			DrawString(left + 2, right - 2, top, STR_JUST_CHECKMARK, sel ? TC_WHITE : TC_BLACK);
 		}
 		DrawString(left + 2, right - 2, top, this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
@@ -1248,7 +1248,7 @@ public:
 		this->DrawWidgets();
 
 		SetDParam(0, ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
-		DrawString(this->widget[TBSE_DATEBACKWARD].right, this->widget[TBSE_DATEFORWARD].left, 6, STR_DATE_LONG_WHITE, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->widget[TBSE_DATEBACKWARD].right, this->widget[TBSE_DATEFORWARD].left, 6, STR_WHITE_DATE_LONG, TC_FROMSTRING, SA_CENTER);
 
 		/* We hide this panel when the toolbar space gets too small */
 		const Widget *panel = &this->widget[TBSE_SPACERPANEL];

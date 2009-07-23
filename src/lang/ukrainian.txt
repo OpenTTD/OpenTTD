@@ -279,8 +279,8 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}ПЛ
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ГЗ
 STR_ABBREV_NONE                                                 :{TINYFONT}Ні
 STR_ABBREV_ALL                                                  :{TINYFONT}Все
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Карта - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опції гри
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Повідомлення
@@ -453,7 +453,6 @@ STR_SORT_BY_PRODUCTION                                          :за проду
 STR_SORT_BY_TYPE                                                :за типом
 STR_SORT_BY_TRANSPORTED                                         :за перевезенням
 STR_SORT_BY_NAME                                                :{BLACK}за назвою
-STR_SORT_BY_DROPDOWN_NAME                                       :за назвою
 STR_SORT_BY_DATE                                                :{BLACK}за датою
 STR_SORT_BY_NUMBER                                              :за номером
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :за прибутком минулого року
@@ -535,8 +534,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Буду
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Посадити дерева, позначити місце, тощо
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Інформація про земельну ділянку
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Опції
-STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUPARROW}
-STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не можна змінити інтервал обслуговування...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрити вікно
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заголовок вікна - потягніть для переміщення вікна
@@ -706,12 +705,12 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} досягла статусу '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}Гравець {PRESIDENTNAME} з {COMPANY} досяг статусу '{STRING}'
-STR_BLUE_NUMBER                                                 :{BLUE}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Редактор сценарію
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Створити ландшафт
-STR_ARROW_UP                                                    :{BLACK}{UPARROW}
-STR_ARROW_DOWN                                                  :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Збільшити область ділянки для підняття/опускання
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Зменшити область ділянки для підняття/опускання
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Створити випадкову ділянку
@@ -795,7 +794,7 @@ STR_FULL                                                        :Повніст�
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_CHECKMARK                                                   :{CHECKMARK}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Налаштування гри
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Налаштування складності
@@ -900,8 +899,8 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ЗБ
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Збереження...{}зачекайте, доки завершиться!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Вибрати програму 'Дорожні теми'
 
-STR_6                                                           :{BLACK}6
-STR_7                                                           :{BLACK}7
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Англійські (оригінальні)
@@ -1009,7 +1008,7 @@ STR_CRATES                                                      :ЯщикИ
 STR_RES_OTHER                                                   :інша
 STR_NOTHING                                                     :
 
-STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Неможливо розділити список завдань...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Неможливо скопіювати список завдань...
@@ -1282,8 +1281,7 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-ро�
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :вимкнено
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Змініть значення
 
 STR_TEMPERATE_LANDSCAPE                                         :Помірний ландшафт
@@ -2287,8 +2285,8 @@ STR_NUM_LOW                                                     :мало
 STR_NUM_NORMAL                                                  :нормально
 STR_NUM_HIGH                                                    :багато
 STR_NUM_CUSTOM                                                  :Власні
-STR_ARROW_LEFT_SMALL                                            :{BLACK}{SMALLLEFTARROW}
-STR_ARROW_RIGHT_SMALL                                           :{BLACK}{SMALLRIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Дуже повільно
 STR_AI_SPEED_SLOW                                               :Повільно
 STR_AI_SPEED_MEDIUM                                             :середньо
@@ -3038,7 +3036,7 @@ STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Пока
 STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Список авто - натисніть на авто для інформації
 STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Будувати вибране авто
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Місткість: {LTBLUE}
-STR_BARE_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} транспорт{P "" и ів}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})

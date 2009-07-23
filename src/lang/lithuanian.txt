@@ -188,8 +188,8 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PM
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}GG
 STR_ABBREV_NONE                                                 :{TINYFONT}-
 STR_ABBREV_ALL                                                  :{TINYFONT}VISI
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Žemėlapis - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Žaidimo nustatymai
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Žinutė
@@ -361,7 +361,6 @@ STR_SORT_BY_PRODUCTION                                          :Produkciją
 STR_SORT_BY_TYPE                                                :Tipą
 STR_SORT_BY_TRANSPORTED                                         :Pervežimus
 STR_SORT_BY_NAME                                                :{BLACK}Vardą
-STR_SORT_BY_DROPDOWN_NAME                                       :Vardą
 STR_SORT_BY_DATE                                                :{BLACK}Datą
 STR_SORT_BY_NUMBER                                              :Kiekį
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Pernai metų pelną
@@ -441,8 +440,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Statyti 
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Sodinti medžius, statyti ženklus ir kt.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Žemės ploto informacija
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Nustatymai
-STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUPARROW}
-STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Aptarnavimo intervalo keisti negalima...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Uždaryti langą
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Lango pavadinimas - už jo tempiant galima judinti langą
@@ -612,12 +611,12 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} pasiekė „{STRING}“ statusą!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} iš {COMPANY} pasiekė „{STRING}“ statusą!
-STR_BLUE_NUMBER                                                 :{BLUE}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenarijaus redaktorius
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Kraštovaidžio kūrimas
-STR_ARROW_UP                                                    :{BLACK}{UPARROW}
-STR_ARROW_DOWN                                                  :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Padidinkite sausumos plotą norėdami paaukštinti/pažeminti
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Sumažinkite sausumos plotą norėdami paaukštinti/pažeminti
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Kurti atsitiktinę sausumą
@@ -701,7 +700,7 @@ STR_FULL                                                        :Pilnas
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_CHECKMARK                                                   :{CHECKMARK}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Žaidimo nustatymai
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Sunkumo lygio nustatymai
@@ -809,8 +808,8 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  Išs
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Vyksta išsaugojimas,{}palaukite kol baigsis!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Pasirink „Ezy Street“ muzikos stiliaus programą
 
-STR_6                                                           :{BLACK}6
-STR_7                                                           :{BLACK}7
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Anglų (Oginalus)
@@ -915,7 +914,7 @@ STR_CRATES                                                      :dežių
 STR_RES_OTHER                                                   :Kita
 STR_NOTHING                                                     :
 
-STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Užduočių sąrašu dalintis negalima...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Užduočių sąrašo kopijuoti negalima...
@@ -1172,8 +1171,7 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Zemelap
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :išjungta
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Keisti reikšmes
 
 STR_TEMPERATE_LANDSCAPE                                         :Normalus klimatas
@@ -2133,8 +2131,8 @@ STR_NUM_LOW                                                     :Žemas
 STR_NUM_NORMAL                                                  :Vidutinis
 STR_NUM_HIGH                                                    :Aukštas
 STR_NUM_CUSTOM                                                  :Tinkintas
-STR_ARROW_LEFT_SMALL                                            :{BLACK}{SMALLLEFTARROW}
-STR_ARROW_RIGHT_SMALL                                           :{BLACK}{SMALLRIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Labai lėtas
 STR_AI_SPEED_SLOW                                               :Lėtas
 STR_AI_SPEED_MEDIUM                                             :Vidutinis
@@ -2853,7 +2851,7 @@ STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Rodyti a
 STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Automobiliu pasirinkimo sarasas - paspausk ant automobilio jei nori detalesnes informacijos
 STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Isigyti pazymeta automobili
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Talpa: {LTBLUE}
-STR_BARE_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 

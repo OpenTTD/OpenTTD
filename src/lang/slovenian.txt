@@ -196,8 +196,8 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}GP
 STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}VSE
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Zemljevid - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Možnosti Igre
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Sporočilo
@@ -370,7 +370,6 @@ STR_SORT_BY_PRODUCTION                                          :Proizvodnja
 STR_SORT_BY_TYPE                                                :Tip
 STR_SORT_BY_TRANSPORTED                                         :Prepeljano
 STR_SORT_BY_NAME                                                :{BLACK}Ime
-STR_SORT_BY_DROPDOWN_NAME                                       :Ime
 STR_SORT_BY_DATE                                                :{BLACK}Datum
 STR_SORT_BY_NUMBER                                              :Število
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Dobiček v zadnjem letu
@@ -452,8 +451,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Zgradi l
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Posadi drevesa, postavi znake, ipd.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informacije o terenu
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Možnosti
-STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUPARROW}
-STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ni mogoča sprememba obdobja servisiranja ...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zapri okno
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Naslov okna - primi in vleci za premik okna
@@ -623,12 +622,12 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} dosega naslov '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} iz podjetja {COMPANY} prejema naslov '{STRING}'!
-STR_BLUE_NUMBER                                                 :{BLUE}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Urejevalnik scenarijev
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generator terena
-STR_ARROW_UP                                                    :{BLACK}{UPARROW}
-STR_ARROW_DOWN                                                  :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Povečaj območje za nižanje/višanje terena
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Zmanjšaj območje za nižanje/višanje terena
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Ustvari naključni teren
@@ -712,7 +711,7 @@ STR_FULL                                                        :Polno
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_CHECKMARK                                                   :{CHECKMARK}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti igre
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavitve težavnosti
@@ -820,8 +819,8 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SHRA
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Shranjevanje poteka,{}Prosim počakaj, da se zaključi!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Izberi 'Poulični' glasbeni program
 
-STR_6                                                           :{BLACK}6
-STR_7                                                           :{BLACK}7
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Angleška (Originalna)
@@ -929,7 +928,7 @@ STR_CRATES                                                      :palet
 STR_RES_OTHER                                                   :drugo
 STR_NOTHING                                                     :
 
-STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Ni mogoče deliti navodil ...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Ni mogoče skopirati urnika ...
@@ -1202,8 +1201,7 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-velik
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :onemogočeno
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Spremeni vrednost
 
 STR_TEMPERATE_LANDSCAPE                                         :Zmerno podnebje
@@ -2207,8 +2205,8 @@ STR_NUM_LOW                                                     :Malo
 STR_NUM_NORMAL                                                  :Normalno
 STR_NUM_HIGH                                                    :Veliko
 STR_NUM_CUSTOM                                                  :Po meri
-STR_ARROW_LEFT_SMALL                                            :{BLACK}{SMALLLEFTARROW}
-STR_ARROW_RIGHT_SMALL                                           :{BLACK}{SMALLRIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Zelo počasi
 STR_AI_SPEED_SLOW                                               :Počasi
 STR_AI_SPEED_MEDIUM                                             :Srednje
@@ -2962,7 +2960,7 @@ STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Pogled n
 STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Seznam cestnih vozil - klikni na vozilo za informacije
 STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Zgradi izbrano cestno vozilo
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Zmogljivost: {LTBLUE}
-STR_BARE_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozil{P o i a ""}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})

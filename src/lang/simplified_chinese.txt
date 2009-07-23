@@ -154,8 +154,8 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}塑
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}跳
 STR_ABBREV_NONE                                                 :{TINYFONT}无
 STR_ABBREV_ALL                                                  :{TINYFONT}全
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}地图 - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}游戏选项
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}消息
@@ -328,7 +328,6 @@ STR_SORT_BY_PRODUCTION                                          :产量
 STR_SORT_BY_TYPE                                                :类型
 STR_SORT_BY_TRANSPORTED                                         :已运输
 STR_SORT_BY_NAME                                                :{BLACK}名称
-STR_SORT_BY_DROPDOWN_NAME                                       :名称
 STR_SORT_BY_DATE                                                :{BLACK}日期
 STR_SORT_BY_NUMBER                                              :序号
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :去年利润
@@ -410,8 +409,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}建设�
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}打开植树工具菜单
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}查询地块信息
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}选项
-STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUPARROW}
-STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能改变保养周期……
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}关闭窗口
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}窗口标题 - 拖动这里可以移动该窗口
@@ -581,12 +580,12 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} 达到 '{STRING}' 的状态！
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} 在 {COMPANY} 达到 '{STRING}' 状态！
-STR_BLUE_NUMBER                                                 :{BLUE}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}场景编辑器
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}生成土地
-STR_ARROW_UP                                                    :{BLACK}{UPARROW}
-STR_ARROW_DOWN                                                  :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}增加要升高/降低的土地面积
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}减少要升高/降低的土地面积
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}随机生成土地
@@ -670,7 +669,7 @@ STR_FULL                                                        :完全
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_CHECKMARK                                                   :{CHECKMARK}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :游戏选项
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :难度设定
@@ -775,8 +774,8 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  保�
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}保存仍在继续{}请耐心等待……
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}选择'Ezy街头'风格的音乐列表
 
-STR_6                                                           :{BLACK}6
-STR_7                                                           :{BLACK}7
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :英国 (原始的)
@@ -884,7 +883,7 @@ STR_CRATES                                                      :件
 STR_RES_OTHER                                                   :其他
 STR_NOTHING                                                     :
 
-STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}不能共享调度计划……
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}不能复制调度计划……
@@ -1157,8 +1156,7 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}地图�
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :禁用
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}改变设置值
 
 STR_TEMPERATE_LANDSCAPE                                         :温带景观
@@ -2124,8 +2122,8 @@ STR_NUM_LOW                                                     :低
 STR_NUM_NORMAL                                                  :一般
 STR_NUM_HIGH                                                    :高
 STR_NUM_CUSTOM                                                  :自定义
-STR_ARROW_LEFT_SMALL                                            :{BLACK}{SMALLLEFTARROW}
-STR_ARROW_RIGHT_SMALL                                           :{BLACK}{SMALLRIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :非常慢
 STR_AI_SPEED_SLOW                                               :慢
 STR_AI_SPEED_MEDIUM                                             :适中
@@ -2875,7 +2873,7 @@ STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}将屏�
 STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}汽车列表 - 点击可以查看详细信息
 STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}购买选定的汽车
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}运力： {LTBLUE}
-STR_BARE_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} 车辆{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})

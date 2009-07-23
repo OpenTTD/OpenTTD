@@ -154,8 +154,8 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}بل�
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}شراب مخفوق
 STR_ABBREV_NONE                                                 :{TINYFONT}لا شيء
 STR_ABBREV_ALL                                                  :{TINYFONT}الكل
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}الخريطة- {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}خيارات
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}رسالة
@@ -328,7 +328,6 @@ STR_SORT_BY_PRODUCTION                                          :إنتاج
 STR_SORT_BY_TYPE                                                :نوع
 STR_SORT_BY_TRANSPORTED                                         :الحمولة المنقولة
 STR_SORT_BY_NAME                                                :{BLACK}اسم
-STR_SORT_BY_DROPDOWN_NAME                                       :اسم
 STR_SORT_BY_DATE                                                :{BLACK}تاريخ
 STR_SORT_BY_NUMBER                                              :رقم
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :دخل السنة الماضية
@@ -410,8 +409,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ادوا
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}زراعة شجر, علامات و اشارات  ...
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}معلومات مناطق الخريطة
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}خيارات
-STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUPARROW}
-STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}لا يمكن تغيير فترات الصيانة
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}اغلاق الاطار
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}عنوان الاطار- اسحب لتحريك الاطار
@@ -581,12 +580,12 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}حققت شركة {COMPANY}  بجدارة'{STRING}'
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}حقق {PRESIDENTNAME}مدير شركة  {COMPANY}  '{STRING}' بجدارة
-STR_BLUE_NUMBER                                                 :{BLUE}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}النسخة المفتوحة
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}محرر الخريطة
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}بناء المسطحات الأرضية
-STR_ARROW_UP                                                    :{BLACK}{UPARROW}
-STR_ARROW_DOWN                                                  :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}زيادة ارتفاع و انخفاض المسطحات الأرضية
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}انقاص ارتفاع و انخفاض  المسطحات الأرضية
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}انشاء مسطحات عشوائية
@@ -670,7 +669,7 @@ STR_FULL                                                        :ممتلئ
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_CHECKMARK                                                   :{CHECKMARK}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :خيارات اللعبة
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :خيارات الصعوبة
@@ -778,8 +777,8 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  يت
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}الحفظ مازال جاريا الآن{}الرجاء الأنتظار حتر ينتهي
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}اختر'Ezy Street style music'برنامج
 
-STR_6                                                           :{BLACK}6
-STR_7                                                           :{BLACK}7
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :English (Original)
@@ -887,7 +886,7 @@ STR_CRATES                                                      :صناديق
 STR_RES_OTHER                                                   :اخرى
 STR_NOTHING                                                     :
 
-STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}لا يمكن مشاركة قائمة الأوامر
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}لا يمكن نسخ قائمة الأوامر
@@ -1160,8 +1159,7 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}طول 
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :غير مفعل
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}عدل قيمة التغيير
 
 STR_TEMPERATE_LANDSCAPE                                         :مناطق معتدلة
@@ -2127,8 +2125,8 @@ STR_NUM_LOW                                                     :قليل
 STR_NUM_NORMAL                                                  :طبيعي
 STR_NUM_HIGH                                                    :عالي
 STR_NUM_CUSTOM                                                  :اختياري
-STR_ARROW_LEFT_SMALL                                            :{BLACK}{SMALLLEFTARROW}
-STR_ARROW_RIGHT_SMALL                                           :{BLACK}{SMALLRIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :بطيء جدا
 STR_AI_SPEED_SLOW                                               :بطيء
 STR_AI_SPEED_MEDIUM                                             :متوسط
@@ -2884,7 +2882,7 @@ STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}ضع و�
 STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}قائمة اختيار العربات - اضغط على العربة لاظهار معلوماتها
 STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}شراء العربة
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}السعة: {LTBLUE}
-STR_BARE_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM}العربات {STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})

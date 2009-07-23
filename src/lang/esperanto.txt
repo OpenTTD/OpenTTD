@@ -155,8 +155,8 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}AT
 STR_ABBREV_NONE                                                 :{TINYFONT}NE
 STR_ABBREV_ALL                                                  :{TINYFONT}ĈIU
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapo - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludaj Opcioj
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Mesaĝo
@@ -329,7 +329,6 @@ STR_SORT_BY_PRODUCTION                                          :Produktado
 STR_SORT_BY_TYPE                                                :Tipo
 STR_SORT_BY_TRANSPORTED                                         :Transportiĝis
 STR_SORT_BY_NAME                                                :{BLACK}Nomo
-STR_SORT_BY_DROPDOWN_NAME                                       :Nomo
 STR_SORT_BY_DATE                                                :{BLACK}Dato
 STR_SORT_BY_NUMBER                                              :Numero
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Gajno lastjara
@@ -411,8 +410,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Konstruu
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Plantu arbojn, metu afiŝojn ktp.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landregionaj informoj
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcioj
-STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUPARROW}
-STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ne povas ŝanĝi prizorga intervalo...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fermu fenestron
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Fenestra titolo - tiru por movi la fenestron
@@ -582,12 +581,12 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} atingis staton de '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} de {COMPANY} atingis staton de '{STRING}'!
-STR_BLUE_NUMBER                                                 :{BLUE}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenarkreilon
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landa Generado
-STR_ARROW_UP                                                    :{BLACK}{UPARROW}
-STR_ARROW_DOWN                                                  :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Grandigu landparton por (mal)altigi
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Malgrandigu landparton por (mal)altigi
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Kreu landon hazarde
@@ -671,7 +670,7 @@ STR_FULL                                                        :Plene
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_CHECKMARK                                                   :{CHECKMARK}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludaj opcioj
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Malfacilec-agordoj
@@ -776,8 +775,8 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  KONS
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Ankoraŭ konservas,{}bv atendi ĝis finiĝo!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Elektu programon de 'Facilvoja muziko'
 
-STR_6                                                           :{BLACK}6
-STR_7                                                           :{BLACK}7
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Angle (Origine)
@@ -885,7 +884,7 @@ STR_CRATES                                                      :kestoj
 STR_RES_OTHER                                                   :alia
 STR_NOTHING                                                     :
 
-STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Ne povas dividi ordenliston...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Ne povas kopii ordenliston...
@@ -1158,8 +1157,7 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-grand
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :malaktiva
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Ŝanĝu agord-valoron
 
 STR_TEMPERATE_LANDSCAPE                                         :Modera landaspekto
@@ -2059,8 +2057,8 @@ STR_NUM_LOW                                                     :Malalte
 STR_NUM_NORMAL                                                  :Normale
 STR_NUM_HIGH                                                    :Alte
 STR_NUM_CUSTOM                                                  :Ŝanĝitaj
-STR_ARROW_LEFT_SMALL                                            :{BLACK}{SMALLLEFTARROW}
-STR_ARROW_RIGHT_SMALL                                           :{BLACK}{SMALLRIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Tre Malrapide
 STR_AI_SPEED_SLOW                                               :Malrapide
 STR_AI_SPEED_MEDIUM                                             :Meze
@@ -2669,7 +2667,7 @@ STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centre v
 STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Vojveturilelektan liston - alklaku veturilon por informoj
 STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Kreu la elektitan vojveturilon
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacito: {LTBLUE}
-STR_BARE_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} veturilo{P "" j}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})

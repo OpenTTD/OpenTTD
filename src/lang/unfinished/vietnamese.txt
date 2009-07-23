@@ -141,8 +141,8 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}Cd
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}Ug
 STR_ABBREV_NONE                                                 :{TINYFONT}K0
 STR_ABBREV_ALL                                                  :{TINYFONT}Tất
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Bản đồ - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Tùy chọn Trò chơi
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Thông điệp
@@ -299,7 +299,6 @@ STR_SORT_BY_PRODUCTION                                          :Sản lượng
 STR_SORT_BY_TYPE                                                :Loại
 STR_SORT_BY_TRANSPORTED                                         :Dung lượng đã vận chuyển
 STR_SORT_BY_NAME                                                :{BLACK}Tên
-STR_SORT_BY_DROPDOWN_NAME                                       :Tên
 STR_SORT_BY_DATE                                                :{BLACK}Ngày tháng
 STR_SORT_BY_NUMBER                                              :Số
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Lợi nhuận năm trước

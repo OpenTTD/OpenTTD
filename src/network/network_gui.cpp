@@ -1112,19 +1112,19 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			case NSSW_CLIENTS_TXT:    // Click on number of clients
 				this->widget_id = NSSW_CLIENTS_TXT;
 				SetDParam(0, _settings_client.network.max_clients);
-				ShowQueryString(STR_CONFIG_SETTING_INT32, STR_NETWORK_NUMBER_OF_CLIENTS,    4, 50, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_NETWORK_NUMBER_OF_CLIENTS,    4, 50, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case NSSW_COMPANIES_TXT:  // Click on number of companies
 				this->widget_id = NSSW_COMPANIES_TXT;
 				SetDParam(0, _settings_client.network.max_companies);
-				ShowQueryString(STR_CONFIG_SETTING_INT32, STR_NETWORK_NUMBER_OF_COMPANIES,  3, 50, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_NETWORK_NUMBER_OF_COMPANIES,  3, 50, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case NSSW_SPECTATORS_TXT: // Click on number of spectators
 				this->widget_id = NSSW_SPECTATORS_TXT;
 				SetDParam(0, _settings_client.network.max_spectators);
-				ShowQueryString(STR_CONFIG_SETTING_INT32, STR_NETWORK_NUMBER_OF_SPECTATORS, 4, 50, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_NETWORK_NUMBER_OF_SPECTATORS, 4, 50, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case NSSW_LANGUAGE_BTN: { // Language

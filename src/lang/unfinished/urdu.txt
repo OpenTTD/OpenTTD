@@ -177,7 +177,6 @@ STR_SORT_BY_PRODUCTION                                          :پیداوار
 STR_SORT_BY_TYPE                                                :طرز
 STR_SORT_BY_TRANSPORTED                                         :منتقل شدہ
 STR_SORT_BY_NAME                                                :{BLACK}نام
-STR_SORT_BY_DROPDOWN_NAME                                       :نام
 STR_SORT_BY_DATE                                                :{BLACK}تاریخ
 STR_SORT_BY_NUMBER                                              :تعداد
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :پچھلے سال کا منافع
@@ -209,8 +208,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}بندر
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ہوای اڈے بناو
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}درخت اگاو، اشارے لگاو، وغیرہ
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}زمینی رقبہ کی معلومات
-STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUPARROW}
-STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}کھڑکی بند کرو
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}کھڑکی کا نام - کھڑکی کو ہلانے کیلیے اسے پکڑ کر ہلاو
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}زمین کے ایک مربے پر عمارتیں وغیرہ گراو

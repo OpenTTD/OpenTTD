@@ -154,8 +154,8 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
 STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}همه
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}نقشه - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}تنظیمات بازی
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}پیام
@@ -328,7 +328,6 @@ STR_SORT_BY_PRODUCTION                                          :تولید
 STR_SORT_BY_TYPE                                                :نوع
 STR_SORT_BY_TRANSPORTED                                         :منتقل شده
 STR_SORT_BY_NAME                                                :{BLACK}نام
-STR_SORT_BY_DROPDOWN_NAME                                       :نام
 STR_SORT_BY_DATE                                                :{BLACK}تاریخ
 STR_SORT_BY_NUMBER                                              :تعداد
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :سود در سال گذشته
@@ -412,8 +411,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ساخت
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}کاشتن درختان، قرار دادن علامت و غیره
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}توضیحات درباره ی زمین
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}تنضیمات
-STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUPARROW}
-STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}امکان تغییر فواصل زمانی سرویس وجود ندارد...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}بستن پنجره
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}تخریب ساختمان و ... در بخشی از زمین
@@ -526,11 +525,11 @@ STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}توض�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}از هدف قبلی بسیار دور است......
 STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :تاجر
-STR_BLUE_NUMBER                                                 :{BLUE}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}طراحی اتوماتیک سرزمین
-STR_ARROW_UP                                                    :{BLACK}{UPARROW}
-STR_ARROW_DOWN                                                  :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}نقشه ی تصادفی بساز
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}تمام تغییرات را بر گردان
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}تمام تغییرات را بر گردان
@@ -651,7 +650,7 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}تصئی
 STR_TERRAFORM_TOOLTIP_PURCHASE_LAND                             :{BLACK}خرید زمین برای استفاده های بعدی
 STR_STATUSBAR_AUTOSAVE                                          :{RED}ذخیره اتوماتیک
 
-STR_6                                                           :{BLACK}6
+STR_BLACK_6                                                     :{BLACK}6
 
 ############ start of townname region
 ############ end of townname region

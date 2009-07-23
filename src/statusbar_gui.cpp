@@ -98,7 +98,7 @@ struct StatusBarWindow : Window {
 
 		this->DrawWidgets();
 		SetDParam(0, _date);
-		DrawString(this->widget[SBW_LEFT].left + 1, this->widget[SBW_LEFT].right - 1, 1, (_pause_mode || _settings_client.gui.status_long_date) ? STR_DATE_LONG_WHITE : STR_DATE_SHORT_WHITE, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->widget[SBW_LEFT].left + 1, this->widget[SBW_LEFT].right - 1, 1, (_pause_mode || _settings_client.gui.status_long_date) ? STR_WHITE_DATE_LONG : STR_WHITE_DATE_SHORT, TC_FROMSTRING, SA_CENTER);
 
 		if (c != NULL) {
 			/* Draw company money */

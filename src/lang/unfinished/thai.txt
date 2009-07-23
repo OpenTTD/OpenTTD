@@ -154,8 +154,8 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}พ�
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}น้ำอัดลม
 STR_ABBREV_NONE                                                 :{TINYFONT}ว่าง
 STR_ABBREV_ALL                                                  :{TINYFONT}ทั้งหมด
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}แผนที่ - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}การตั้งค่าของเกม
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}ข้อความ
@@ -321,7 +321,6 @@ STR_SORT_BY                                                     :{BLACK}เร�
 STR_SORT_BY_POPULATION                                          :{BLACK}ประชากร
 STR_SORT_BY_TYPE                                                :ประเภท
 STR_SORT_BY_NAME                                                :{BLACK}ชื่อ
-STR_SORT_BY_DROPDOWN_NAME                                       :ชื่อ
 STR_SORT_BY_DATE                                                :{BLACK}วันที่
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :กำไรปีที่แล้ว
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :กำไรปีนี้
@@ -380,8 +379,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}สร�
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}ปลูกต้นไม้ ปักป้าย ฯลฯ
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}ข้อมูลที่ดิน
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}ตั้งค่า
-STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUPARROW}
-STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}ไม่สามารถเปลี่ยนระยะเวลาการซ่อมบำรุงได้...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}ปิดหน้าต่าง
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}หัวของหน้าต่าง - คลิกค้างแล้วลากเพื่อเลื่อนหน้าต่าง
@@ -536,12 +535,12 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} ได้ก้าวไปสู่ขั้น '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} จาก {COMPANY} ได้ก้าวไปสู่ขั้น '{STRING}'!
-STR_BLUE_NUMBER                                                 :{BLUE}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}โปรแกรมสร้างฉาก
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}สร้างแผ่นดิน
-STR_ARROW_UP                                                    :{BLACK}{UPARROW}
-STR_ARROW_DOWN                                                  :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}เพิ่มพื้นที่ในการปรับระดับแผ่นดิน
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}ลดพื้นที่ในการปรับระดับแผ่นดิน
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}สร้างแผ่นดินแบบสุ่ม
@@ -608,8 +607,8 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ก�
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}ขณะนี้กำลังบันทึก,{}โปรดรอจนกว่าจะเสร็จ!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}เลือกเพลงฟังรายการเพลง Ezy Street
 
-STR_6                                                           :{BLACK}6
-STR_7                                                           :{BLACK}7
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :อังกฤษ (ดั้งเดิม)
@@ -660,7 +659,7 @@ STR_CRATES                                                      :ลัง
 STR_RES_OTHER                                                   :อื่นๆ
 STR_NOTHING                                                     :
 
-STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}ไม่สามารถใช้รายการสถานที่ร่วมกันได้
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}ไม่สามารถคัดลอกรายการสถานที่ได้

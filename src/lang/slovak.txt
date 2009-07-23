@@ -218,8 +218,8 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}ZU
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}SU
 STR_ABBREV_NONE                                                 :{TINYFONT}NIC
 STR_ABBREV_ALL                                                  :{TINYFONT}VS.
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Nastavenia hry
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Správa
@@ -395,7 +395,6 @@ STR_SORT_BY_PRODUCTION                                          :Produkcia
 STR_SORT_BY_TYPE                                                :Typ
 STR_SORT_BY_TRANSPORTED                                         :Prepravene
 STR_SORT_BY_NAME                                                :{BLACK}Nazov
-STR_SORT_BY_DROPDOWN_NAME                                       :Nazov
 STR_SORT_BY_DATE                                                :{BLACK}Datum
 STR_SORT_BY_NUMBER                                              :Cislo
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zisk v poslednom roku
@@ -477,8 +476,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Výstavb
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Výsadba stromov, kúpa pozemku, ...
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informácie o pozemku
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Nastavenia
-STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUPARROW}
-STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nie je možné zmenit servisný interval ...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zavriet okno
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Nadpis okna - potiahni pre posun okna
@@ -648,12 +647,12 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} ziskal oznacenie '{STRING}' !
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} z {COMPANY} ziskal oznacenie '{STRING}' !
-STR_BLUE_NUMBER                                                 :{BLUE}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor scenárov
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generovanie uzemia
-STR_ARROW_UP                                                    :{BLACK}{UPARROW}
-STR_ARROW_DOWN                                                  :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Pre zvysenie/znizenie oblasti je potrebne zvacsit uzemie
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Pre zvysenie/znizenie oblasti je potrebne zmensit uzemie
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Vygenerovat nahodne uzemie
@@ -737,7 +736,7 @@ STR_FULL                                                        :Plne
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_CHECKMARK                                                   :{CHECKMARK}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Nastavenia hry
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavenia obtiaznosti
@@ -845,8 +844,8 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  HRA 
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Ukladanie hry este bezi,{}pockajte prosim na dokoncenie!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Vyber 'Ezy Street style music' program
 
-STR_6                                                           :{BLACK}6
-STR_7                                                           :{BLACK}7
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Anglicke
@@ -954,7 +953,7 @@ STR_CRATES                                                      :debien
 STR_RES_OTHER                                                   :iné
 STR_NOTHING                                                     :
 
-STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nemozno zdielat zoznam smerov ...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemozno kopirovat zoznam prikazov ...
@@ -1227,8 +1226,7 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-rozme
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :zakazane
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Zmenit hodnotu nastavenia
 
 STR_TEMPERATE_LANDSCAPE                                         :krajina mierneho pasma
@@ -2194,8 +2192,8 @@ STR_NUM_LOW                                                     :Nízky
 STR_NUM_NORMAL                                                  :Normálny
 STR_NUM_HIGH                                                    :Vysoký
 STR_NUM_CUSTOM                                                  :Vlastne
-STR_ARROW_LEFT_SMALL                                            :{BLACK}{SMALLLEFTARROW}
-STR_ARROW_RIGHT_SMALL                                           :{BLACK}{SMALLRIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Velmi Pomale
 STR_AI_SPEED_SLOW                                               :Pomale
 STR_AI_SPEED_MEDIUM                                             :Stredne
@@ -2950,7 +2948,7 @@ STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrova
 STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Vyber vozidiel - kliknut pre detaily
 STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Zakupit vybrany automobil
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacita: {LTBLUE}
-STR_BARE_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozid{P lo lá iel}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})

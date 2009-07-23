@@ -156,8 +156,8 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}BU
 STR_ABBREV_NONE                                                 :{TINYFONT}NAV
 STR_ABBREV_ALL                                                  :{TINYFONT}VISI
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Karte - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spēles opcijas
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Ziņa
@@ -329,7 +329,6 @@ STR_SORT_BY_PRODUCTION                                          :Produkcijas
 STR_SORT_BY_TYPE                                                :Tipa
 STR_SORT_BY_TRANSPORTED                                         :Transportētā
 STR_SORT_BY_NAME                                                :{BLACK}Vārda
-STR_SORT_BY_DROPDOWN_NAME                                       :Vārda
 STR_SORT_BY_DATE                                                :{BLACK}Datuma
 STR_SORT_BY_NUMBER                                              :Numura
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Ienākumiem pērn
@@ -409,8 +408,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Būvēt 
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Stādīt kokus, novietot zīmes, uc.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informācija par zemes pleķi
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcijas
-STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUPARROW}
-STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nevar mainīt apkopes intervālu...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Aizvērt logu
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Loga virsraksts - velc šo, lai pārvietotu logu
@@ -580,12 +579,12 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} sasnieguši  '{STRING}' statusu!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} no {COMPANY} sasnieguši '{STRING}' statusu!
-STR_BLUE_NUMBER                                                 :{BLUE}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenāriju redaktors
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Zemes ģenerēšana
-STR_ARROW_UP                                                    :{BLACK}{UPARROW}
-STR_ARROW_DOWN                                                  :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Palielināt zemes apgabalu pazemināšanai/paaugstināšanai
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Samazināt zemes apgabalu pazemināšanai/paaugstināšanai
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Ģenerēt nejaušu zemi
@@ -668,7 +667,7 @@ STR_FULL                                                        :Pilns
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_CHECKMARK                                                   :{CHECKMARK}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spēles režīmi
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Grūtības pakāpes
@@ -776,8 +775,8 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  Spē
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Notiek saglabāšana,{}lLūdzu uzgaidiet!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Izvēlēties 'Ezy Ielas muzikas stila' programmu
 
-STR_6                                                           :{BLACK}6
-STR_7                                                           :{BLACK}7
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Angļu (oriģinālie)
@@ -883,7 +882,7 @@ STR_CRATES                                                      :kastes
 STR_RES_OTHER                                                   :cita
 STR_NOTHING                                                     :
 
-STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nevar dalīties ar rīkojumu sarakstu...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nevar kopēt rīkojumu sarakstu...
@@ -1151,8 +1150,7 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Kartes 
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :atspējots
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Mainīt iestatījuma vērtību
 
 STR_TEMPERATE_LANDSCAPE                                         :Mērenais klimats
@@ -2117,8 +2115,8 @@ STR_NUM_LOW                                                     :Zems
 STR_NUM_NORMAL                                                  :Normāls
 STR_NUM_HIGH                                                    :Augsts
 STR_NUM_CUSTOM                                                  :Speciālie
-STR_ARROW_LEFT_SMALL                                            :{BLACK}{SMALLLEFTARROW}
-STR_ARROW_RIGHT_SMALL                                           :{BLACK}{SMALLRIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Ļoti lēns
 STR_AI_SPEED_SLOW                                               :Lēns
 STR_AI_SPEED_MEDIUM                                             :Vidējs
@@ -2855,7 +2853,7 @@ STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrēt
 STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Transportl. izvēles saraksts - klik uz tā, priekš informācijas
 STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Būvēt atzīmēto transportl.
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Ietilpība: {LTBLUE}
-STR_BARE_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} transportlīdzek{P lis ļi ļu}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})

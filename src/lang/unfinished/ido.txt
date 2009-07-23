@@ -81,8 +81,8 @@ STR_CARGO_SINGULAR_TOFFEE                                       :Karamelo
 STR_CARGO_SINGULAR_BATTERY                                      :Baterio
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastiko
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gasoza Drinkajo
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapo - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludo Selekti
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Sendajo

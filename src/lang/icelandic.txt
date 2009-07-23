@@ -155,8 +155,8 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
 STR_ABBREV_NONE                                                 :{TINYFONT}EKKERT
 STR_ABBREV_ALL                                                  :{TINYFONT}ALLT
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Kort - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Stillingar
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Skilaboð
@@ -329,7 +329,6 @@ STR_SORT_BY_PRODUCTION                                          :Framleiðsla
 STR_SORT_BY_TYPE                                                :Tegund
 STR_SORT_BY_TRANSPORTED                                         :Flutt
 STR_SORT_BY_NAME                                                :{BLACK}Nafn
-STR_SORT_BY_DROPDOWN_NAME                                       :Nafn
 STR_SORT_BY_DATE                                                :{BLACK}Dagsetning
 STR_SORT_BY_NUMBER                                              :Númer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Hagnaður síðasta árs
@@ -411,8 +410,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Byggja f
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Gróðursetja tré, setja skilti o.s.frv.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landssvæðisupplýsingar
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Stillingar
-STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUPARROW}
-STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Get ekki breytt viðgerðarmillibili...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Loka glugga
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Haus glugga - dragðu með músinni til að færa gluggann
@@ -582,12 +581,12 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} öðlast '{STRING}' titil!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} úr {COMPANY} öðlast '{STRING}' titil!
-STR_BLUE_NUMBER                                                 :{BLUE}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Kortagerð
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landslagsgerð
-STR_ARROW_UP                                                    :{BLACK}{UPARROW}
-STR_ARROW_DOWN                                                  :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Stækka svæði til að lækka/hækka
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Minnka svæði til að lækka/hækka
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Mynda til land af handahófi
@@ -671,7 +670,7 @@ STR_FULL                                                        :Allt
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_CHECKMARK                                                   :{CHECKMARK}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Stillingar
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Erfiðleikastig
@@ -779,8 +778,8 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  VIST
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Vistun er enn í gangi,{}vinsamlegast bíddu á meðan hún klárst!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Velja 'Ezy gata' listann
 
-STR_6                                                           :{BLACK}6
-STR_7                                                           :{BLACK}7
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Ensk (Upphafleg)
@@ -888,7 +887,7 @@ STR_CRATES                                                      :kassar
 STR_RES_OTHER                                                   :annað
 STR_NOTHING                                                     :
 
-STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Get ekki deilt áætlun...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Get ekki afritað áætlun...
@@ -1161,8 +1160,7 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Breidd 
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :óvirkt
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}Breyta gildi stillingar
 
 STR_TEMPERATE_LANDSCAPE                                         :Temprað landslag
@@ -2128,8 +2126,8 @@ STR_NUM_LOW                                                     :Fáir
 STR_NUM_NORMAL                                                  :Miðlungs
 STR_NUM_HIGH                                                    :Margir
 STR_NUM_CUSTOM                                                  :Sérstillt
-STR_ARROW_LEFT_SMALL                                            :{BLACK}{SMALLLEFTARROW}
-STR_ARROW_RIGHT_SMALL                                           :{BLACK}{SMALLRIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :Mjög hægt
 STR_AI_SPEED_SLOW                                               :Hægt
 STR_AI_SPEED_MEDIUM                                             :Miðlungs
@@ -2885,7 +2883,7 @@ STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Miðja a
 STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Bifreiðalisti - ýttu á bifreið fyrir nánari upplýsingar
 STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Kaupa valda bifreið
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Rými: {LTBLUE}
-STR_BARE_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} farartæki{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})

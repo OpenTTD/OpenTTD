@@ -59,7 +59,7 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 
 				SetDParam(0, i);
 				SetDParam(1, max_cargo[i]);
-				GetString(buffer, STR_BARE_CARGO, lastof(buffer));
+				GetString(buffer, STR_JUST_CARGO, lastof(buffer));
 
 				if (!first) strecat(capacity, ", ", lastof(capacity));
 				strecat(capacity, buffer, lastof(capacity));

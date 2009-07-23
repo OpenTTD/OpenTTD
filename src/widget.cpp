@@ -552,12 +552,12 @@ static inline void DrawDropdown(const Rect &r, Colours colour, bool clicked, Str
 	if (_dynlang.text_dir == TD_LTR) {
 		DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, colour, FR_NONE);
 		DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, colour, clicked ? FR_LOWERED : FR_NONE);
-		DrawString(r.right - (clicked ? 10 : 11), r.right, r.top + (clicked ? 2 : 1), STR_ARROW_DOWN, TC_BLACK, SA_CENTER);
+		DrawString(r.right - (clicked ? 10 : 11), r.right, r.top + (clicked ? 2 : 1), STR_BLACK_ARROW_DOWN, TC_FROMSTRING, SA_CENTER);
 		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_LEFT, r.right - WD_DROPDOWNTEXT_RIGHT, r.top + WD_DROPDOWNTEXT_TOP, str, TC_BLACK);
 	} else {
 		DrawFrameRect(r.left + 12, r.top, r.right, r.bottom, colour, FR_NONE);
 		DrawFrameRect(r.left, r.top, r.left + 11, r.bottom, colour, clicked ? FR_LOWERED : FR_NONE);
-		DrawString(r.left + clicked, r.left + 11, r.top + (clicked ? 2 : 1), STR_ARROW_DOWN, TC_BLACK, SA_CENTER);
+		DrawString(r.left + clicked, r.left + 11, r.top + (clicked ? 2 : 1), STR_BLACK_ARROW_DOWN, TC_FROMSTRING, SA_CENTER);
 		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_RIGHT, r.right - WD_DROPDOWNTEXT_LEFT, r.top + WD_DROPDOWNTEXT_TOP, str, TC_BLACK);
 	}
 }

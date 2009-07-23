@@ -622,7 +622,7 @@ public:
 						/* clicked the text */
 						this->editbox_line = line;
 						SetDParam(0, i->production_rate[line] * 8);
-						ShowQueryString(STR_CONFIG_SETTING_INT32, STR_CONFIG_GAME_PRODUCTION, 10, 100, this, CS_ALPHANUMERAL, QSF_NONE);
+						ShowQueryString(STR_JUST_INT, STR_CONFIG_GAME_PRODUCTION, 10, 100, this, CS_ALPHANUMERAL, QSF_NONE);
 					}
 				}
 			} break;
@@ -1039,7 +1039,7 @@ GUIIndustryList::SortFunction * const IndustryDirectoryWindow::sorter_funcs[] = 
 
 /* Names of the sorting functions */
 const StringID IndustryDirectoryWindow::sorter_names[] = {
-	STR_SORT_BY_DROPDOWN_NAME,
+	STR_SORT_BY_NAME,
 	STR_SORT_BY_TYPE,
 	STR_SORT_BY_PRODUCTION,
 	STR_SORT_BY_TRANSPORTED,

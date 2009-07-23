@@ -381,11 +381,11 @@ static const Widget _heightmap_load_widgets[] = {
 
 /* Tree placer */
 {       WWT_TEXT, RESIZE_NONE, COLOUR_ORANGE,  12, 110, 197, 207, STR_TREE_PLACER,              STR_NULL},                              // GLAND_TREE_TEXT
-{   WWT_DROPDOWN, RESIZE_NONE, COLOUR_ORANGE, 114, 231, 196, 207, STR_ARROW_DOWN,               STR_NULL},                              // GLAND_TREE_PULLDOWN
+{   WWT_DROPDOWN, RESIZE_NONE, COLOUR_ORANGE, 114, 231, 196, 207, STR_BLACK_ARROW_DOWN,         STR_NULL},                              // GLAND_TREE_PULLDOWN
 
 /* Heightmap rotation */
 {       WWT_TEXT, RESIZE_NONE, COLOUR_ORANGE,  12, 110, 215, 225, STR_HEIGHTMAP_ROTATION,       STR_NULL},                              // GLAND_HEIGHTMAP_ROTATION_TEXT
-{   WWT_DROPDOWN, RESIZE_NONE, COLOUR_ORANGE, 114, 231, 214, 225, STR_ARROW_DOWN,               STR_NULL},                              // GLAND_HEIGHTMAP_ROTATION_PULLDOWN
+{   WWT_DROPDOWN, RESIZE_NONE, COLOUR_ORANGE, 114, 231, 214, 225, STR_BLACK_ARROW_DOWN,         STR_NULL},                              // GLAND_HEIGHTMAP_ROTATION_PULLDOWN
 
 {   WIDGETS_END},
 };
@@ -476,10 +476,10 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 				NWidget(NWID_HORIZONTAL),
 					NWidget(NWID_VERTICAL),
 						/* Tree placer. */
-						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, GLAND_TREE_PULLDOWN), SetMinimalSize(118, 12), SetDataTip(STR_ARROW_DOWN, STR_NULL),
+						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, GLAND_TREE_PULLDOWN), SetMinimalSize(118, 12), SetDataTip(STR_BLACK_ARROW_DOWN, STR_NULL),
 						NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 						/* Heightmap rotation. */
-						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, GLAND_HEIGHTMAP_ROTATION_PULLDOWN), SetMinimalSize(118, 12), SetDataTip(STR_ARROW_DOWN, STR_NULL),
+						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, GLAND_HEIGHTMAP_ROTATION_PULLDOWN), SetMinimalSize(118, 12), SetDataTip(STR_BLACK_ARROW_DOWN, STR_NULL),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(11, 0),
 					/* Generate button. */
@@ -719,7 +719,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_START_DATE_TEXT: // Year text
 				this->widget_id = GLAND_START_DATE_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.starting_year);
-				ShowQueryString(STR_CONFIG_SETTING_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case GLAND_SNOW_LEVEL_DOWN:
@@ -737,7 +737,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_SNOW_LEVEL_TEXT: // Snow line text
 				this->widget_id = GLAND_SNOW_LEVEL_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.snow_line_height);
-				ShowQueryString(STR_CONFIG_SETTING_INT32, STR_SNOW_LINE_QUERY_CAPT, 3, 100, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_SNOW_LINE_QUERY_CAPT, 3, 100, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case GLAND_TREE_PULLDOWN: // Tree placer
@@ -818,7 +818,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				if ((uint)index == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
 					this->widget_id = widget;
 					SetDParam(0, _settings_newgame.game_creation.custom_town_number);
-					ShowQueryString(STR_CONFIG_SETTING_INT32, STR_NUMBER_OF_TOWNS, 5, 50, this, CS_NUMERAL, QSF_NONE);
+					ShowQueryString(STR_JUST_INT, STR_NUMBER_OF_TOWNS, 5, 50, this, CS_NUMERAL, QSF_NONE);
 				};
 				IConsoleSetSetting("difficulty.number_towns", index);
 				break;
@@ -1043,7 +1043,7 @@ struct CreateScenarioWindow : public Window
 			case CSCEN_START_DATE_TEXT: // Year text
 				this->widget_id = CSCEN_START_DATE_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.starting_year);
-				ShowQueryString(STR_CONFIG_SETTING_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case CSCEN_FLAT_LAND_HEIGHT_DOWN:
@@ -1061,7 +1061,7 @@ struct CreateScenarioWindow : public Window
 			case CSCEN_FLAT_LAND_HEIGHT_TEXT: // Height level text
 				this->widget_id = CSCEN_FLAT_LAND_HEIGHT_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.se_flat_world_height);
-				ShowQueryString(STR_CONFIG_SETTING_INT32, STR_FLAT_WORLD_HEIGHT_QUERY_CAPT, 3, 100, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_FLAT_WORLD_HEIGHT_QUERY_CAPT, 3, 100, this, CS_NUMERAL, QSF_NONE);
 				break;
 		}
 	}

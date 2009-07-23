@@ -154,8 +154,8 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}プ
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ソ
 STR_ABBREV_NONE                                                 :{TINYFONT}無
 STR_ABBREV_ALL                                                  :{TINYFONT}全
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}地図 - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}ゲームの設定
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}メッセージ
@@ -327,7 +327,6 @@ STR_SORT_BY_PRODUCTION                                          :生産量
 STR_SORT_BY_TYPE                                                :種類
 STR_SORT_BY_TRANSPORTED                                         :運送済み
 STR_SORT_BY_NAME                                                :{BLACK}名前
-STR_SORT_BY_DROPDOWN_NAME                                       :名前
 STR_SORT_BY_DATE                                                :{BLACK}日付
 STR_SORT_BY_NUMBER                                              :番号
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :昨年の損益
@@ -407,8 +406,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}空港�
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}植林、標示設置等を行います
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地域情報
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}設定
-STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUPARROW}
-STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}整備間隔を変更できません
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}ウィンドウを閉じます
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}ウィンドウのタイトル - ウィンドウを動かすには、クリックしてドラッグします
@@ -577,12 +576,12 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESI
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'（{COMMA}）
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} は「{STRING}」に達した！
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME}（{COMPANY}）は「{STRING}」に達した！
-STR_BLUE_NUMBER                                                 :{BLUE}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}シナリオエディタ
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}地形の作成
-STR_ARROW_UP                                                    :{BLACK}{UPARROW}
-STR_ARROW_DOWN                                                  :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}上げる／下げる地域のサイズを拡大します
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}上げる／下げる地域のサイズを縮小します
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}ランダムな地形を作成します
@@ -666,7 +665,7 @@ STR_FULL                                                        :完全
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 
-STR_CHECKMARK                                                   :{CHECKMARK}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームの基本設定
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :難易度の設定
@@ -774,8 +773,8 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}＊＊ゲ�
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}ゲームを保存しています{}完了してからしばらくお待ちください！
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Street 式の音楽'のプレイリストを選択します
 
-STR_6                                                           :{BLACK}6
-STR_7                                                           :{BLACK}7
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :イギリス
@@ -882,7 +881,7 @@ STR_CRATES                                                      :箱
 STR_RES_OTHER                                                   :その他
 STR_NOTHING                                                     :
 
-STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}指令リストを共有できません...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}指令リストをコピーできません...
@@ -1138,8 +1137,7 @@ STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}地図�
 
 ############ generic strings for settings
 STR_CONFIG_SETTING_DISABLED                                     :切
-STR_CONFIG_SETTING_INT32                                        :{NUM}
-STR_CONFIG_SETTING_CURRENCY                                     :{CURRENCY}
+STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_CONFIG_SETTING_QUERY_CAPT                                   :{WHITE}設定を変更します
 
 STR_TEMPERATE_LANDSCAPE                                         :温帯国
@@ -2104,8 +2102,8 @@ STR_NUM_LOW                                                     :低い
 STR_NUM_NORMAL                                                  :通常
 STR_NUM_HIGH                                                    :高い
 STR_NUM_CUSTOM                                                  :カスタム
-STR_ARROW_LEFT_SMALL                                            :{BLACK}{SMALLLEFTARROW}
-STR_ARROW_RIGHT_SMALL                                           :{BLACK}{SMALLRIGHTARROW}
+STR_BLACK_SMALL_ARROW_LEFT                                      :{BLACK}{SMALLLEFTARROW}
+STR_BLACK_SMALL_ARROW_RIGHT                                     :{BLACK}{SMALLRIGHTARROW}
 STR_AI_SPEED_VERY_SLOW                                          :特に遅い
 STR_AI_SPEED_SLOW                                               :遅い
 STR_AI_SPEED_MEDIUM                                             :中位
@@ -2844,7 +2842,7 @@ STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}主の�
 STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}道路車両のリスト - 情報を見るには車両をクリックします
 STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}選択した道路車両を購入します
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}容量：{LTBLUE}
-STR_BARE_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 

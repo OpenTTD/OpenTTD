@@ -154,8 +154,8 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}ПЛ
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ПП
 STR_ABBREV_NONE                                                 :{TINYFONT}НТ
 STR_ABBREV_ALL                                                  :{TINYFONT}Се`
-STR_DATE_SHORT_WHITE                                            :{WHITE}{DATE_SHORT}
-STR_DATE_LONG_WHITE                                             :{WHITE}{DATE_LONG}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SMALLMAP_CAPTION                                            :{WHITE}Мапа - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опции на Играта
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Порака
@@ -325,7 +325,6 @@ STR_SORT_BY_PRODUCTION                                          :Произво�
 STR_SORT_BY_TYPE                                                :Тип
 STR_SORT_BY_TRANSPORTED                                         :Транспортирано
 STR_SORT_BY_NAME                                                :{BLACK}Име
-STR_SORT_BY_DROPDOWN_NAME                                       :Име
 STR_SORT_BY_DATE                                                :{BLACK}Датум
 STR_SORT_BY_NUMBER                                              :Број
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Минатогодишен профит
@@ -403,8 +402,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Град
 STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Засадување на дрва, местење знаци итн.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информација за земјишна област
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Опции
-STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUPARROW}
-STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
+STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
+STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не може да се смени интервалот за сервисирање...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Затвори го прозорецот
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Наслов на прозорец - влечи тука за да го поместиш прозорецот
@@ -551,12 +550,12 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Могул
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Тајкун на векот
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} постигна статус на '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} од {COMPANY} постигна статус на'{STRING}'!
-STR_BLUE_NUMBER                                                 :{BLUE}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Сценарио Едитор
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Генерирање на терен
-STR_ARROW_UP                                                    :{BLACK}{UPARROW}
-STR_ARROW_DOWN                                                  :{BLACK}{DOWNARROW}
+STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
+STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Зголеми површина на област за спуштање/подигање
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Намали површина на област за спуштање/подигање
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Генерирај случаен терен
@@ -822,7 +821,7 @@ STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Шинс
 
 ##id 0x9000
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Капацитет: {LTBLUE}
-STR_BARE_CARGO                                                  :{CARGO}
+STR_JUST_CARGO                                                  :{CARGO}
 
 
 
