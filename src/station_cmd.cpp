@@ -81,7 +81,7 @@ static Station *GetStationAround(TileIndex tile, int w, int h, StationID closest
 			StationID t = GetStationIndex(tile_cur);
 
 			if (closest_station == INVALID_STATION) {
-				if (Station::IsValidID(closest_station)) closest_station = t;
+				if (Station::IsValidID(t)) closest_station = t;
 			} else if (closest_station != t) {
 				_error_message = STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING;
 				return CHECK_STATIONS_ERR;
