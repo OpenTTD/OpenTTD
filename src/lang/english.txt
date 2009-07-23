@@ -3609,6 +3609,7 @@ STR_AI_AUTHOR                                                   :{BLACK}Author: 
 STR_AI_VERSION                                                  :{BLACK}Version: {NUM}
 STR_AI_URL                                                      :{BLACK}URL: {RAW_STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}One of the running AIs crashed. Please report this to the AI author with a screenshot of the AI Debug Window.
+STR_AI_NO_AI_FOUND                                              :No suitable AI found to load.{}This AI is a dummy AI and won't do anything.{}You can download several AIs via the 'Online Content' system.
 ########
 
 ############ town controlled noise level
