@@ -355,19 +355,21 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Vracht capacite
 STR_NO_WAITING_CARGO                                            :{BLACK}Er wacht geen vracht van enig type
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Kies alle faciliteiten
 STR_SELECT_ALL_TYPES                                            :{BLACK}Kies alle vrachttypen (inclusief niet wachtende vracht)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Beschikbare Treinen
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Beschikbare Voertuigen
-STR_AVAILABLE_SHIPS                                             :{BLACK}Beschikbare Schepen
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Beschikbare Vliegtuigen
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Bekijk een lijst van beschikbare ontwerpen voor dit type voertuig.
 STR_MANAGE_LIST                                                 :{BLACK}Beheer lijst
 STR_MANAGE_LIST_TIP                                             :{BLACK}Stuur instructies naar alle voertuigen in de lijst
 STR_REPLACE_VEHICLES                                            :Vervang voertuigen
+STR_SEND_FOR_SERVICING                                          :Stuur naar onderhoud
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}Beschikbare Treinen
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Beschikbare Voertuigen
+STR_AVAILABLE_SHIPS                                             :{BLACK}Beschikbare Schepen
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Beschikbare Vliegtuigen
+
 STR_SEND_TRAIN_TO_DEPOT                                         :Stuur naar depot
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Stuur naar depot
 STR_SEND_SHIP_TO_DEPOT                                          :Stuur naar depot
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Stuur naar hangar
-STR_SEND_FOR_SERVICING                                          :Stuur naar onderhoud
 
 ############ range for months starts
 STR_MONTH_ABBREV_JAN                                            :Jan
@@ -1262,11 +1264,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industri
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...te dicht bij een andere industrie
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Bouw trein om voor een ander ladingtype
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Bouw trein om
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kies type lading om te transporteren
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Bouw trein om voor geselecteerde ladingtype
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Kan trein niet ombouwen...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Verander productie
 
 ############ network gui strings
@@ -2598,10 +2595,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail locomo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev locomotief
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Treindepot
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Inwoners feesten... {}Eerste trein arriveert in {STATION}!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Details)
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Trein in de weg
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
@@ -2691,37 +2686,16 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :en rijdt naar {
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" en}
 STR_TIMETABLE_TICKS                                             :{COMMA} tik{P "" ken}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Op weg naar {TOWN} Trein Depot
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Op weg naar {TOWN} Trein Depot, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Onderhoud bij {TOWN} Trein Depot
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Onderhoud bij {TOWN} Trein Depot, {VELOCITY}
-
 STR_INVALID_ORDER                                               :{RED} (Ongeldige Order)
 
 STR_UNKNOWN_STATION                                             :onbekend station
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Leeg
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} van {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} van {STATION} (x{NUM})
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} wacht in depot
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nieuwe voertuigen
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trein te lang
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Treinen kunnen alleen aangepast worden wanneer ze gestopt zijn binnen een depot
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nieuwe spoorvoertuigen
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nieuwe elektrische spoorvoertuigen
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nieuwe monorailvoertuigen
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nieuwe maglev voertuigen
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Rails Voertuig
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Bouw voertuig
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Kloon voertuig
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Hierdoor wordt een kopie gebouw van dit voertuig. Ctrl+klik deelt de orders
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Hierdoor wordt een kopie gebouwd van een voertuig. Klik op deze knop en dan op een voertuig binnen of buiten het depot. Ctrl+klik deelt de orders
-STR_CLONE_TRAIN                                                 :{BLACK}Kloon Trein
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Hierdoor wordt een kopie gebouw van deze trein inclusief wagons. Ctrl+klik deelt de orders
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Hierdoor wordt een kopie gebouwd van een trein inclusief wagons. Klik op deze knop en dan op een trein binnen of buiten het depot. Ctrl+klik deelt de orders
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Hernoemen
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Sla over
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Verwijder
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Ga naar
@@ -2737,14 +2711,12 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Ga naar 
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Orders)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Einde van orders - -
 STR_SERVICE                                                     :{BLACK}Reparatie
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Kan spoorvoertuig niet bouwen...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Gebouwd: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Waarde: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}In- en uitladen
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Vertrekt van
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trein moet gestopt zijn in depot
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kan trein niet naar depot sturen...
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Geen ruimte meer voor orders
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Teveel orders
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Kan nieuwe order niet invoegen...
@@ -2759,25 +2731,11 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}een voer
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Kan voertuig niet verplaatsen...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}De achterste locomotief zal altijd het voorste deel volgen
 STR_CARGO_N_A                                                   :NVT.{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kan treinonderdeel niet verkopen
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kan geen route naar lokale depot vinden
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Kan trein niet starten of stoppen...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Reparatie-interval: {LTBLUE}{COMMA}dagen{BLACK}   Laatste reparatie: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Service interval: {LTBLUE}{COMMA}%{BLACK}   Laatste service: {LTBLUE}{DATE_LONG}
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treinen - klik op trein voor info., sleep voertuig om toe toevoegen/verwijderen van trein
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Bouw nieuw treinonderdeel
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Sleep treinonderdeel hier om het te verkopen
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centreer het scherm op de locatie van de trein depot
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Treinonderdeel selectie lijst - klik op een voertuig voor informatie
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Bouw de geselecteerde treinonderdeel
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Hernoem treinonderdeel
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Huidige trein actie - klik hier om de trein te starten/stoppen
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Toon trein orders
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centreer het scherm op de locatie van de trein
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Stuur trein naar depot
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forceer trein verder te rijden zonder te wachten op een groen signaal
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Keer trein om
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Toon trein details
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Vergroot reparatie-interval
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Verklein reparatie-interval
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Laat details zien van vervoerde goederen
@@ -2811,15 +2769,10 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Gestopt
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan trein niet het signaal laten passeren bij gevaar...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Gecrasht!
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Hernoem trein
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kan trein niet zo noemen...
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Trein benaming
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Trein Ongeluk!{}{COMMA} gedood in een vuurbal na de botsing
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan de richting van de trein niet omdraaien...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kan de richting van het voertuig niet omdraaien...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan voertuigen bestaande uit meerdere eenheden niet omdraaien
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Hernoem trein voertuig type
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan het trein voertuig type niet hernoemen...
 STR_CLEAR_TIME                                                  :{BLACK}Reset de tijd
 STR_RESET_LATENESS                                              :{BLACK}Reset teller
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Verander naam controlepost
@@ -2851,43 +2804,15 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto aan
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul de dienstregeling automatisch in aan de hand van de volgende reis (Ctrl+klik om wachttijden proberen te bewaren)
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Wegvoertuig in de weg
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Bouw wegvoertuigdepot
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nieuwe voertuigen
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nieuwe Wegvoertuigen
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Bouw Voertuigen
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Kan het wegvoertuig niet bouwen...
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...moet gestopt zijn binnen een wegvoertuig depot
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kan dit wegvoertuig niet verkopen...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kan wegvoertuig niet starten of stoppen...
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} wacht in depot
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Op weg naar {TOWN} Weg Depot
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Op weg naar {TOWN} Weg Depot, {VELOCITY}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Onderhoud bij {TOWN} Weg Depot
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Onderhoud bij {TOWN} Weg Depot, {VELOCITY}
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan voertuig niet naar depot sturen...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan geen lokaal depot vinden
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Huidige actie van voertuig - klik hier om voertuig te starten of te stoppen
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Laat orders van voertuig zien
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centreer hoofdscherm op de locatie van het voertuig
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Stuur voertuig naar depot
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Dwing het voertuig om om te draaien
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Laat details van wegvoertuig zien
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Voertuigen - klik op voertuig voor informatie
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Bouw nieuw wegvoertuig
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Sleep een wegvoertuig hier om het te verkopen
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centreer hoofdscherm op wegvoertuigdepot locatie
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Wegvoertuig selectie lijst - klik op voertuig voor informatie
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Bouw het geselecteerde wegvoertuig
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capaciteit: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} voertuig{P "" en}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Hernoem wegvoertuig
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kan wegvoertuig niet hernoemen...
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Benoem wegvoertuig
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Inwoners feesten...{}Eerste bus arriveert in {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Inwoners feesten...{}Eerste vrachtwagen arriveert in {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Inwoners feesten . . .{}Eerste passagiers tram arriveert in {STATION}!
@@ -2895,128 +2820,39 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Wegvoertuig gebotst!{}Bestuurder verongelukt door treinbotsing
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Wegvoertuig gebotst!{}{COMMA} verongelukt door treinbotsing
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Kan het voertuig hier niet laten omkeren...
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Hernoem
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Hernoem wegvoertuigtype
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Hernoem wegvoertuigtype
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kan wegvoertuigtype niet hernoemen...
 
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Verbouw het wegvoertuig om een andere lading te vervoeren
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Verbouw wegvoertuig
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Verbouw wegvoertuig om geselecteerd vrachttype te vervoeren
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kan wegvoertuig niet verbouwen
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecteer welk type vracht het wagen moet vervoeren
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Kanaal constructie
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Kanaal constructie
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Kanalen
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan hier geen haven bouwen...
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Scheepswerf
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nieuwe schepen
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nieuwe schepen
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Bouw schip
-STR_CLONE_SHIP                                                  :{BLACK}Kloon Schip
-STR_CLONE_SHIP_INFO                                             :{BLACK}Hierdoor wordt een kopie gebouw van dit schip. Ctrl+klik deelt de orders
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Hierdoor wordt een kopie gebouwd van een schip. Klik op deze knop en dan op een schip binnen of buiten het depot. Ctrl+klik deelt de orders
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Schip moet gestopt zijn binnen een depot
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan schip niet verkopen...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Kan schip niet kopen...
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Schip in de weg
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Kan schip niet starten of stoppen...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan schip niet naar depot sturen...
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Op weg naar {TOWN} Scheepswerf
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Op weg naar {TOWN} Scheepswerf, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Onderhoud bij {TOWN} Scheepswerf
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Onderhoud bij {TOWN} Scheepswerf, {VELOCITY}
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} wacht in depot
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bouw haven
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bouw scheepswerf (om schepen te bouwen en te repareren)
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schepen - klik op schip voor informatie
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Bouw nieuw schip
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Sleep schip hierheen om het te verkopen
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centreer hoofdbeeld op de locatie van het schipdepot
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Schepenlijst - klik op een schip voor informatie
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Bouw het geselecteerde schip
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Actie van dit schip - klik hier om het te starten of te stoppen
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Laat orders van schip zien
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centreer hoofdbeeld op de locatie van dit schip
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Stuur schip naar depot
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Laat details van schip zien
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Hernoem schip
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Hernoem schip
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Kan schip niet hernoemen...
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Inwoners feesten...{}Eerste schip arriveert in {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plaats boei, kan gebruikt worden voor extra tussenstops
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan boei hier niet plaatsen...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Bouw aquaduct
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Kan hier geen aquaduct bouwen...
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Hernoem
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Hernoem schiptype
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Hernoem schiptype
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Kan schiptype niet hernoemen...
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Bouw schip om om andere goederen te vervoeren
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ombouwen)
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Schip ombouwen
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Selecteer type goederen dat dit schip moet vervoeren
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Bouw schip om, om geselecteerde goederen te vervoeren
 STR_REFIT_TITLE                                                 :{GOLD}Selecteer goederentype om te vervoeren:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO}{}{BLACK}Ombouwkosten: {GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Kan schip niet ombouwen...
 STR_REFITTABLE                                                  :(ombouwbaar)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Vliegvelden
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan vliegveld hier niet bouwen...
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Vliegtuighangar
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nieuw vliegtuig
-STR_CLONE_AIRCRAFT                                              :{BLACK}Kloon Vliegtuig
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Hierdoor wordt een kopie gebouw van dit vliegtuig. Ctrl+klik deelt de orders
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Hierdoor wordt een kopie gebouw van een vliegtuig. Klik op deze knop en dan op een vliegtuig binnen of buiten de hangar. Ctrl+klik deelt de orders
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nieuw Vliegtuig
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Bouw Vliegtuig
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kan vliegtuig niet bouwen...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan vliegtuig niet naar hangar sturen...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}Op weg naar {STATION} Hangar
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Op weg naar {STATION} Hangar, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Onderhoud bij {STATION} Hangar
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Onderhoud bij {STATION} Hangar, {VELOCITY}
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} wacht in vliegtuighangar
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Vliegtuig in de weg
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Kan vliegtuig niet stoppen/starten...
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Vliegtuig is in de lucht
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Vliegtuig moet gestopt zijn in een hangar
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan vliegtuig niet verkopen...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Vliegveldbouw
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bouw vliegveld
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vliegtuig - klik op vliegtuig voor informatie
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Bouw nieuw vliegtuig
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Sleep vliegtuig hierheen om het te verkopen
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centreer hoofdbeeld op hangarlocatie
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Vliegtuiglijst - klik op een vliegtuig voor informatie
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Bouw het geselecteerde vliegtuig
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Actie van huidig vliegtuig - klik hier om het vliegtuig te stoppen of te starten
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Laat vliegtuigorders zien
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centreer hoofdbeeld op de vliegtuiglocatie
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Stuur vliegtuig naar hangar
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Laat vliegtuigdetails zien
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Hernoem vliegtuig
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Kan vliegtuig niet hernoemen...
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Hernoem vliegtuig
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Inwoners feesten...{}Eerste vliegtuig arriveert in {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Vliegtuig neergestort!{}{COMMA} sterven in een vuurbal bij {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Vliegtuig Neergestort!{}Vliegtuig had brandstoftekort, {COMMA} komen om in explosie!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Hernoem
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Hernoem vliegtuigtype
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Hernoem vliegtuigtype
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Kan vliegtuigtype niet hernoemen...
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Bouw vliegtuig om om andere goederen te vervoeren
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Vliegtuig ombouwen
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Selecteer goederentype om te vervoeren door het vliegtuig
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Bouw vliegtuig om, om het geselecteerde goederentype te vervoeren
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Kan vliegtuig niet ombouwen...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Dienstregeling)
 
@@ -3184,6 +3020,211 @@ STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING}
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Gedeelde orders van {COMMA} voertuig{P "" en}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Toon alle voertuigen met deze zelfde orders
 
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} wacht in depot
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} wacht in depot
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} wacht in depot
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} wacht in vliegtuighangar
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Bouw trein om
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Verbouw wegvoertuig
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Schip ombouwen
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Vliegtuig ombouwen
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Bouw trein om voor geselecteerde ladingtype
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Verbouw wegvoertuig om geselecteerd vrachttype te vervoeren
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Bouw schip om, om geselecteerde goederen te vervoeren
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Bouw vliegtuig om, om het geselecteerde goederentype te vervoeren
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kies type lading om te transporteren
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecteer welk type vracht het wagen moet vervoeren
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Selecteer type goederen dat dit schip moet vervoeren
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Selecteer goederentype om te vervoeren door het vliegtuig
+
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Treindepot
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Bouw wegvoertuigdepot
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Scheepswerf
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Vliegtuighangar
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Trein benaming
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Benoem wegvoertuig
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Hernoem schip
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Hernoem vliegtuig
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Hernoem trein
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Hernoem wegvoertuig
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Hernoem schip
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Hernoem vliegtuig
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Trein in de weg
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Wegvoertuig in de weg
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Schip in de weg
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Vliegtuig in de weg
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Kan trein niet ombouwen...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kan wegvoertuig niet verbouwen
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Kan schip niet ombouwen...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Kan vliegtuig niet ombouwen...
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kan trein niet zo noemen...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kan wegvoertuig niet hernoemen...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Kan schip niet hernoemen...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Kan vliegtuig niet hernoemen...
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Kan trein niet starten of stoppen...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kan wegvoertuig niet starten of stoppen...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Kan schip niet starten of stoppen...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Kan vliegtuig niet stoppen/starten...
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kan trein niet naar depot sturen...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan voertuig niet naar depot sturen...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan schip niet naar depot sturen...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan vliegtuig niet naar hangar sturen...
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Kan spoorvoertuig niet bouwen...
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Kan het wegvoertuig niet bouwen...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Kan schip niet kopen...
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Kan vliegtuig niet bouwen...
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan het trein voertuig type niet hernoemen...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kan wegvoertuigtype niet hernoemen...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Kan schiptype niet hernoemen...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Kan vliegtuigtype niet hernoemen...
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kan treinonderdeel niet verkopen
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kan dit wegvoertuig niet verkopen...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan schip niet verkopen...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan vliegtuig niet verkopen...
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Huidige trein actie - klik hier om de trein te starten/stoppen
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Huidige actie van voertuig - klik hier om voertuig te starten of te stoppen
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Actie van dit schip - klik hier om het te starten of te stoppen
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Actie van huidig vliegtuig - klik hier om het vliegtuig te stoppen of te starten
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Toon trein orders
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Laat orders van voertuig zien
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Laat orders van schip zien
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Laat vliegtuigorders zien
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centreer het scherm op de locatie van de trein
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centreer hoofdscherm op de locatie van het voertuig
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centreer hoofdbeeld op de locatie van dit schip
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centreer hoofdbeeld op de vliegtuiglocatie
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Stuur trein naar depot
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Stuur voertuig naar depot
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Stuur schip naar depot
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Stuur vliegtuig naar hangar
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Toon trein details
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Laat details van wegvoertuig zien
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Laat details van schip zien
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Laat vliegtuigdetails zien
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Bouw trein om voor een ander ladingtype
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Verbouw het wegvoertuig om een andere lading te vervoeren
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Bouw schip om om andere goederen te vervoeren
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Bouw vliegtuig om om andere goederen te vervoeren
+
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Op weg naar {TOWN} Trein Depot
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Op weg naar {TOWN} Trein Depot, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Op weg naar {TOWN} Weg Depot
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Op weg naar {TOWN} Weg Depot, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Op weg naar {TOWN} Scheepswerf
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Op weg naar {TOWN} Scheepswerf, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Op weg naar {STATION} Hangar
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Op weg naar {STATION} Hangar, {VELOCITY}
+
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Onderhoud bij {TOWN} Trein Depot
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Onderhoud bij {TOWN} Trein Depot, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Onderhoud bij {TOWN} Weg Depot
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Onderhoud bij {TOWN} Weg Depot, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Onderhoud bij {TOWN} Scheepswerf
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Onderhoud bij {TOWN} Scheepswerf, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Onderhoud bij {STATION} Hangar
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Onderhoud bij {STATION} Hangar, {VELOCITY}
+
+
+STR_CLONE_TRAIN                                                 :{BLACK}Kloon Trein
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Kloon voertuig
+STR_CLONE_SHIP                                                  :{BLACK}Kloon Schip
+STR_CLONE_AIRCRAFT                                              :{BLACK}Kloon Vliegtuig
+
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Hierdoor wordt een kopie gebouw van deze trein inclusief wagons. Ctrl+klik deelt de orders
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Hierdoor wordt een kopie gebouw van dit voertuig. Ctrl+klik deelt de orders
+STR_CLONE_SHIP_INFO                                             :{BLACK}Hierdoor wordt een kopie gebouw van dit schip. Ctrl+klik deelt de orders
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Hierdoor wordt een kopie gebouw van dit vliegtuig. Ctrl+klik deelt de orders
+
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Hierdoor wordt een kopie gebouwd van een trein inclusief wagons. Klik op deze knop en dan op een trein binnen of buiten het depot. Ctrl+klik deelt de orders
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Hierdoor wordt een kopie gebouwd van een wegvoertuig. Klik op deze knop en dan op een wegvoertuig binnen of buiten het depot. Ctrl+klik deelt de orders
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Hierdoor wordt een kopie gebouwd van een schip. Klik op deze knop en dan op een schip binnen of buiten het depot. Ctrl+klik deelt de orders
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Hierdoor wordt een kopie gebouw van een vliegtuig. Klik op deze knop en dan op een vliegtuig binnen of buiten de hangar. Ctrl+klik deelt de orders
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Nieuwe spoorvoertuigen
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Nieuwe elektrische spoorvoertuigen
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Nieuwe monorailvoertuigen
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Nieuwe maglev voertuigen
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Rails Voertuig
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Nieuwe Wegvoertuigen
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Nieuwe schepen
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Nieuw Vliegtuig
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Bouw voertuig
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Bouw Voertuigen
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Bouw schip
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Bouw Vliegtuig
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Treinonderdeel selectie lijst - klik op een voertuig voor informatie
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Wegvoertuig selectie lijst - klik op voertuig voor informatie
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Schepenlijst - klik op een schip voor informatie
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Vliegtuiglijst - klik op een vliegtuig voor informatie
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Bouw de geselecteerde treinonderdeel
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Bouw het geselecteerde wegvoertuig
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Bouw het geselecteerde schip
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Bouw het geselecteerde vliegtuig
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Hernoemen
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Hernoem
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Hernoem
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Hernoem
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Hernoem treinonderdeel
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Hernoem wegvoertuigtype
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Hernoem schiptype
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Hernoem vliegtuigtype
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Hernoem trein voertuig type
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Hernoem wegvoertuigtype
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Hernoem schiptype
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Hernoem vliegtuigtype
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nieuwe voertuigen
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nieuwe voertuigen
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nieuwe schepen
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nieuw vliegtuig
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treinen - klik op trein voor info., sleep voertuig om toe toevoegen/verwijderen van trein
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Voertuigen - klik op voertuig voor informatie
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schepen - klik op schip voor informatie
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vliegtuig - klik op vliegtuig voor informatie
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Bouw nieuw treinonderdeel
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Bouw nieuw wegvoertuig
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Bouw nieuw schip
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Bouw nieuw vliegtuig
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Sleep treinonderdeel hier om het te verkopen
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Sleep een wegvoertuig hier om het te verkopen
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Sleep schip hierheen om het te verkopen
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Sleep vliegtuig hierheen om het te verkopen
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centreer het scherm op de locatie van de trein depot
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centreer hoofdscherm op wegvoertuigdepot locatie
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centreer hoofdbeeld op de locatie van het schipdepot
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centreer hoofdbeeld op hangarlocatie
+
+
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Je staat op het punt alle voertuigen in het depot te verkopen. Weet je het zeker?
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Verkeerd depot type
@@ -3218,6 +3259,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons v
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Aan het vervangen: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wissel tussen motor- en wagonvervangvensters
+
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Trein is niet beschikbaar
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Voertuig is niet beschikbaar
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Schip is niet beschikbaar

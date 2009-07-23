@@ -355,19 +355,21 @@ STR_SORT_BY_CARGO_CAPACITY                                      :ظرفیت مح
 STR_NO_WAITING_CARGO                                            :{BLACK}هیچ نوع محموله در انتظار نیست
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}انتخاب تمامی تسهیلات
 STR_SELECT_ALL_TYPES                                            :{BLACK}انتخاب همه ی انواع محموله ها (شامل محموله های در انتظار)
-STR_AVAILABLE_TRAINS                                            :{BLACK}قطارهای موجود
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}خودروهای موجود
-STR_AVAILABLE_SHIPS                                             :{BLACK}کشتی های موجود
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}هواپیماهای موجود
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}مشاهده ی تمامی موتورهای موجود برای این نوع وسیله ی نقلیه
 STR_MANAGE_LIST                                                 :{BLACK}اداره ی لیست
 STR_MANAGE_LIST_TIP                                             :{BLACK}فرستادن دستورالعمل ها برای تمامی وسایل نقیله موجود در این لیست
 STR_REPLACE_VEHICLES                                            :جایگزین کردن وسایل نقلیه
+STR_SEND_FOR_SERVICING                                          :فرستادن برای سرویس
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}قطارهای موجود
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}خودروهای موجود
+STR_AVAILABLE_SHIPS                                             :{BLACK}کشتی های موجود
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}هواپیماهای موجود
+
 STR_SEND_TRAIN_TO_DEPOT                                         :فرستادن به ایستگاه نگه داری فنی
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :فرستادن به ایستگاه نگه داری فنی
 STR_SEND_SHIP_TO_DEPOT                                          :فرستادن به مقر فنی
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :فرستادن به آشیانه
-STR_SEND_FOR_SERVICING                                          :فرستادن برای سرویس
 
 ############ range for months starts
 STR_MONTH_ABBREV_JAN                                            :بهمن
@@ -412,6 +414,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}توضی
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}تنضیمات
 STR_SMALL_ARROW_UP                                              :{BLACK}{SMALLUPARROW}
 STR_SMALL_ARROW_DOWN                                            :{BLACK}{SMALLDOWNARROW}
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}امکان تغییر فواصل زمانی سرویس وجود ندارد...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}بستن پنجره
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}تخریب ساختمان و ... در بخشی از زمین
 STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}پایین آوردن گوشه ی نقشه
@@ -1398,7 +1401,6 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :لوکوموت�
 ##id 0x8800
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}شهروندان ورود اولین قطار را به {STATION} تبریک گفتند!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (جزئیات)
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}قطار در راه است
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 
@@ -1407,26 +1409,16 @@ STR_ORDER_SELECTED                                              :{RIGHTARROW}{SE
 
 
 
-
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}خالی
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} از {STATION}
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}وسیله ی جدید
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}قطار بسیار طولانی شده
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}قطار جدید
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}قطار جدید مونوریل
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}قطار جدید ریل مغناطیسی
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}وسایل ریل خط آهن
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}ساخت وسیله نقلیه
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}تغییر نام
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}رها کردن
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}پاک کردن
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}برو به
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (دستورات)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - پایان دستورات - -
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}نمیشود قطار  ساخت ...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   مدل: {LTBLUE}{NUM}{BLACK} قیمت: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}  قیمت: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -1438,24 +1430,10 @@ STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}نمی �
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}این دستور تغییر نمی کند...
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE} ...این وسیله را نمی توان حرکت داد
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}نمی شود قطار را فروخت...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}مسیری به ایستگاه راه آهن پیدا نمیشود
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}قطار را نمی شود حرکت داد / متوقف کرد...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}فاصله ی زمانی بین تعمیرات دوره ای: {LTBLUE}{COMMA}روز {BLACK}   آخیرین تعمسرات: {LTBLUE}{DATE_LONG}
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}قطارها-برای اطلاعات بیشتر روی قطار کلیک کنید. وسیله را بکشید تا آن را از قطار خارج/وارد کنید
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}ساخت قطار جدید
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}قطار را برای فروش به اینجا بکشید
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}نمای اصلی جایگاه ایستگاه قطار
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}لیست انتخاب قطار - برای اطلاعات بیشتر روی وسیله کلیک کنید
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}قطار مشخص شده را بخر
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}تغییر نام نوع قطار
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}فعالیت فعلی قطار - برای توقف/شروع حرکت قطار اینجا کلیک کن
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}نمایش دستورات قطار
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}نمای اصلی جایگاه قطار
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}این قطار را به ایستگاه راه آهن بفرست. Ctrl+Click فقط قطار را سرویس میکند
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}قطار را مجبور کن بدون صبر برای علامت ترخیص شروع به حرکت کند
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}برعکس کردن جهت حرکت قطار
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}نمایش مشخصات قطار
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}افزایش مدت سرویس
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}کاهش مدت سرویس
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}نمایش مشخصات محموله در حال حمل
@@ -1469,15 +1447,10 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}متوقف
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}در هنگام خطر نمی توان علامت عبور قطار را داد
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}تصادف کرده!
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}نام گذاری قطار
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}نمیتوان برای قطار نام انتخاب کرد...
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}نام گذاری قطار
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}تصادف قطار!{}{COMMA} مرگ در انفجار حاصل از برخورد
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}جهت قطار را نمی شود تغییر داد...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}نمیتوان جهت حرکت وسیله را معکوس کرد...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}نمیتوان جهت وسایلی که از چند قطعه تشکیل شده اند را معکوس کرد
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}تغییر نام انواع قطار ها
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}نمی شود نوع قطار ها را تغییر نام داد...
 STR_CLEAR_TIME                                                  :{BLACK}پاک کردن زمان
 
 
@@ -1485,106 +1458,35 @@ STR_CLEAR_TIME                                                  :{BLACK}پاک �
 
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}ماشین در جاده است
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}وسایل نقلیه ی جدید
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}ماشین های جدید
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}ساخت وسیله نقلیه
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}نمی شود ماشین ساخت...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}نمیشود ماشین را فروخت...
 
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}نام گذاری ماشین
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}شهروندان ورود اولین اتوبوس را به . . .{}{STATION} تبریک گفتند!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}شهروندان ورود اولین کامیون را به . . .{}{STATION} تبریک گفتند!
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}تصادف ماشین!{}راننده پس از تصادف با قطار در آتش سوخت
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}تصادف ماشین!{}راننده پس از تصادف با قطار{COMMA} در آتش سوخت
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}تغییر نام
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}تغییر نام انواع ماشین ها
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}تغییر نام انواع ماشین ها
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}نمی شود انواع ماشین ها را تغییر نام داد...
 
 
 ##id 0x9800
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}کشتی فروخته نمی شود...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}نمی شود کشتی ساخت...
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}قطار در راه است
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}نمی شود کشتی را حرکت داد / متوقف کرد ...
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}ساخت بندر
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}کشی ها -برای اطلاعات بر روی کشتی کلیک کنید
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}ساخت کشتی جدید
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}کشتی را به اینجا بکشید تا فروخته شود
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}نمای اصلی از جایگاه لنگرگاه کشتی
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}لیست انتخاب کشتی - برای اطلاعات بیشتر روی کشتی کلیک کنید
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}کشتی مشخص شده را بساز
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}عمل فعلی کشتی - برای شروع/توقف کشتی اینجا کلیک کنید
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}نمایش وظایف کشتی
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}نمای اصلی از جایگاه کشتی
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}فرستادن کشتی به لنگرگاه. ctrl+click فقط سرویس میکند
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}نمایش مشخصات کشتی
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}نام گذاری کشتی
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}نام گذاری کشتی
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}نمیتوان برای این کشتی نام انتخاب کرد
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}جشن گرفتن شهروندان. . . {} اولین کشتی به {STATION} رسید!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}یک شناور به عنوان نمایانگر راه قرار بده
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}نمیتوان اینجا شناوری قرار داد
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}نام گذاری مجدد
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}نام گذاری مجدد نوع کشتی
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}نام گذاری مجدد نوع کشتی
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}نمی توان نام جدید را انتخاب کرد
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}تعمیر مجدد کشتی باری برای حمل نوع دیگری از محموله ها
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (تعمیر مجدد)
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}تعمیر مجدد کشتی
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}انتخاب نوع محموله ای که این کشتی باید حمل کند
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}تعمیر مجدد کشتی باری برای حمل محموله مشخص شده
 STR_REFIT_TITLE                                                 :{GOLD}انتخاب محموله قابل حمل:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}ظرفیت جدید : {GOLD}{CARGO}{}{BLACK} بهای تعمیر مجدد: {GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}نمی توان این کشتی را تعمیر کرد. . .
 STR_REFITTABLE                                                  :(قابل تعمیر)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}فرودگاه ها
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}نمی توان اینجا فرودگاه ساخت. . .
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION}آشیانه هواپیما
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK} هواپیمای جدید
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}هواپیمای جدید
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}ساخت هواپیما
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}نمی توان هواپیما را ساخت
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}نمیتوان هواپیما را به آشیانه فرستاد. . .
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE}در آشیانه در حال انتظار است
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}هواپیما در راه است
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}نمیتوان هواپاما را متوقف/آغاز به کار کرد
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}هواپاما در حال پرواز است
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}هواپیما باید در آشیانه متوقف شود
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}نمیتوان هواپیما را فروخت
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :ساختمان فرودگاه
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}ساخت فرودگاه
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}هواپیما - برای اطلاعاتبیشتر روی هواپیماکلیک کنید
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}ساخت هواپیمای جدید
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}برای فروش هواپیما آن را به اینجا بکش
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}نمای اصلی از جایگاه آشیانه
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}لیست انتخاب هواپیما - برای اطلاعات بیشتر روی هواپیما کلیک کنید
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}ساخت هواپیمای مشخص شده
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}عمل فعلی هواپیما - برای توقف/شروع کار هواپیما اینجا کلیک کنید
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}نمایش وظایف هواپیما
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}نمای اصلی از جایگاه هواپیما
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}ارسال هواپیما به آشیانه. Ctrl+Click  فقط سرویس می کند
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}نمایش مشخصات هوا پیما
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}نامگذاری هواپیما
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}. . . نمیتوان نام هواپیما را انتخاب کرد
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}نامگذاری هواپیما
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}جشن شهروندان . . .{}اولین هواپیما به {STATION} می رسد!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}تصادف هواپیما!{}{COMMA} مرگ در انفجار در {STATION}
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}نام گذاری مجدد
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}نامگذاری مجدد نوع هواپیما
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}نامگذاری مجدد نوع هواپیما
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}نمیتوان نام جدید نوع هواپیما را انتخاب کرد
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}تعمیر مجدد هواپیما برای حمل نوع دیگری از محموله ها
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}تعمیر مجدد هواپیما
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}انتخاب نوع جدید محموله برای حمل با هواپیما
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}تعمیر جدید هواپیما برای حمل  محموله ی مشخص شده
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}نمی توان هواپیما را تعمیر کرد. . .
 
 
 ##id 0xB000
@@ -1616,7 +1518,148 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} هواپیما
 
 
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE}در آشیانه در حال انتظار است
+
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}تعمیر مجدد کشتی
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}تعمیر مجدد هواپیما
+
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}تعمیر مجدد کشتی باری برای حمل محموله مشخص شده
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}تعمیر جدید هواپیما برای حمل  محموله ی مشخص شده
+
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}انتخاب نوع محموله ای که این کشتی باید حمل کند
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}انتخاب نوع جدید محموله برای حمل با هواپیما
+
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION}آشیانه هواپیما
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}نام گذاری قطار
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}نام گذاری ماشین
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}نام گذاری کشتی
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}نامگذاری هواپیما
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}نام گذاری قطار
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}نام گذاری کشتی
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}نامگذاری هواپیما
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}قطار در راه است
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}ماشین در جاده است
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}قطار در راه است
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}هواپیما در راه است
+
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}نمی توان این کشتی را تعمیر کرد. . .
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}نمی توان هواپیما را تعمیر کرد. . .
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}نمیتوان برای قطار نام انتخاب کرد...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}نمیتوان برای این کشتی نام انتخاب کرد
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}. . . نمیتوان نام هواپیما را انتخاب کرد
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}قطار را نمی شود حرکت داد / متوقف کرد...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}نمی شود کشتی را حرکت داد / متوقف کرد ...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}نمیتوان هواپاما را متوقف/آغاز به کار کرد
+
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}نمیتوان هواپیما را به آشیانه فرستاد. . .
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}نمیشود قطار  ساخت ...
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}نمی شود ماشین ساخت...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}نمی شود کشتی ساخت...
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}نمی توان هواپیما را ساخت
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}نمی شود نوع قطار ها را تغییر نام داد...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}نمی شود انواع ماشین ها را تغییر نام داد...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}نمی توان نام جدید را انتخاب کرد
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}نمیتوان نام جدید نوع هواپیما را انتخاب کرد
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}نمی شود قطار را فروخت...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}نمیشود ماشین را فروخت...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}کشتی فروخته نمی شود...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}نمیتوان هواپیما را فروخت
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}فعالیت فعلی قطار - برای توقف/شروع حرکت قطار اینجا کلیک کن
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}عمل فعلی کشتی - برای شروع/توقف کشتی اینجا کلیک کنید
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}عمل فعلی هواپیما - برای توقف/شروع کار هواپیما اینجا کلیک کنید
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}نمایش دستورات قطار
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}نمایش وظایف کشتی
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}نمایش وظایف هواپیما
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}نمای اصلی جایگاه قطار
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}نمای اصلی از جایگاه کشتی
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}نمای اصلی از جایگاه هواپیما
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}این قطار را به ایستگاه راه آهن بفرست. Ctrl+Click فقط قطار را سرویس میکند
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}فرستادن کشتی به لنگرگاه. ctrl+click فقط سرویس میکند
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}ارسال هواپیما به آشیانه. Ctrl+Click  فقط سرویس می کند
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}نمایش مشخصات قطار
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}نمایش مشخصات کشتی
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}نمایش مشخصات هوا پیما
+
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}تعمیر مجدد کشتی باری برای حمل نوع دیگری از محموله ها
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}تعمیر مجدد هواپیما برای حمل نوع دیگری از محموله ها
+
+
+
+
+
+
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}قطار جدید
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}قطار جدید مونوریل
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}قطار جدید ریل مغناطیسی
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}وسایل ریل خط آهن
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}ماشین های جدید
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}هواپیمای جدید
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}ساخت وسیله نقلیه
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}ساخت وسیله نقلیه
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}ساخت هواپیما
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}لیست انتخاب قطار - برای اطلاعات بیشتر روی وسیله کلیک کنید
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}لیست انتخاب کشتی - برای اطلاعات بیشتر روی کشتی کلیک کنید
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}لیست انتخاب هواپیما - برای اطلاعات بیشتر روی هواپیما کلیک کنید
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}قطار مشخص شده را بخر
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}کشتی مشخص شده را بساز
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}ساخت هواپیمای مشخص شده
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}تغییر نام
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}تغییر نام
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}نام گذاری مجدد
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}نام گذاری مجدد
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}تغییر نام نوع قطار
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}تغییر نام انواع ماشین ها
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}نام گذاری مجدد نوع کشتی
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}نامگذاری مجدد نوع هواپیما
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}تغییر نام انواع قطار ها
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}تغییر نام انواع ماشین ها
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}نام گذاری مجدد نوع کشتی
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}نامگذاری مجدد نوع هواپیما
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}وسیله ی جدید
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}وسایل نقلیه ی جدید
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK} هواپیمای جدید
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}قطارها-برای اطلاعات بیشتر روی قطار کلیک کنید. وسیله را بکشید تا آن را از قطار خارج/وارد کنید
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}کشی ها -برای اطلاعات بر روی کشتی کلیک کنید
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}هواپیما - برای اطلاعاتبیشتر روی هواپیماکلیک کنید
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}ساخت قطار جدید
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}ساخت کشتی جدید
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}ساخت هواپیمای جدید
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}قطار را برای فروش به اینجا بکشید
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}کشتی را به اینجا بکشید تا فروخته شود
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}برای فروش هواپیما آن را به اینجا بکش
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}نمای اصلی جایگاه ایستگاه قطار
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}نمای اصلی از جایگاه لنگرگاه کشتی
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}نمای اصلی از جایگاه آشیانه
+
+
 ### depot strings
+
 
 
 

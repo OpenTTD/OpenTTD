@@ -355,19 +355,21 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Kapasite
 STR_NO_WAITING_CARGO                                            :{BLACK}Hiç kargo yok
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tüm türleri seç
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tüm kargo türlerini seç (hiç beklemeyenler dahil)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Kullanılabilir Trenler
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Kullanılabilir Arabalar
-STR_AVAILABLE_SHIPS                                             :{BLACK}Kullanılabilir Gemiler
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Kullanılabilir Uçaklar
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Bu araç türü için mümkün olan lokomotif tasarimlari
 STR_MANAGE_LIST                                                 :{BLACK}Listeyi yönet
 STR_MANAGE_LIST_TIP                                             :{BLACK}Listedeki tüm araçlara talimat ver
 STR_REPLACE_VEHICLES                                            :Araçları Değiştir
+STR_SEND_FOR_SERVICING                                          :Bakıma İçin Gönder
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}Kullanılabilir Trenler
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Kullanılabilir Arabalar
+STR_AVAILABLE_SHIPS                                             :{BLACK}Kullanılabilir Gemiler
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Kullanılabilir Uçaklar
+
 STR_SEND_TRAIN_TO_DEPOT                                         :Gara Gönder
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Garaja Gönder
 STR_SEND_SHIP_TO_DEPOT                                          :Tersaneye Gönder
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Hangara Gönder
-STR_SEND_FOR_SERVICING                                          :Bakıma İçin Gönder
 
 ############ range for months starts
 STR_MONTH_ABBREV_JAN                                            :Oca
@@ -524,7 +526,7 @@ STR_MUSIC_SHUFFLE                                               :{TINYFONT}Rastg
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Müzik Program Seçimi
 STR_PLAYLIST_TRACK_SINGLE_DIGIT                                 :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
-STR_PLAYLIST_TRACK_DOUBLE_DIGIT                                 :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
+STR_PLAYLIST_TRACK_DOUBLE_DIGIT                                 :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Parça Listesi
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Temizle
@@ -762,9 +764,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Yeni fabrika ku
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Yeni fabrika aç
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...yalnızca yağmur ormanlarında yapılabilir
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...yalnızca çöllerde yapılabilir
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  DURAKLATILDI  *  *
@@ -1190,6 +1189,8 @@ STR_GO_NON_STOP_TO_WAYPOINT                                     :{WAYPOINT} üze
 
 STR_WAYPOINTNAME_CITY                                           :Yerimi {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :Yerimi {TOWN} #{COMMA}
+STR_BUOYNAME_CITY                                               :{TOWN} Şamandırası
+STR_BUOYNAME_CITY_SERIAL                                        :{TOWN} Şamandırası #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Yerimi
 
 STR_WAYPOINT                                                    :{WHITE}Yerimi
@@ -1197,7 +1198,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Yerimi t
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Yerimi adını değiştir
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Yerimi adı değiştirilemedi...
@@ -1264,11 +1264,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Fabrika 
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...başka bir fabrikaya çok yakın
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Treni başka bir kargo taşıması için modifiye et
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Modifiye
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenin taşıyacağı kargo türünü seçin
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Treni seçilen kargoyu taşıyacak şekilde modifiye et
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Modifiye edilemiyor...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Üretimi değiştir
 
 ############ network gui strings
@@ -1418,12 +1413,12 @@ STR_NETWORK_COMPANY_NAME                                        :{SILVER}Şirket
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Kurulus: {WHITE}{NUM}
 STR_NETWORK_VALUE                                               :{SILVER}Şirket değeri: {WHITE}{CURRENCY}
 STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Şimdiki dengesi: {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Geçen seneki geliri:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Performans:  {WHITE}{NUM}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Geçen seneki geliri: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Performans: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Araçlar:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}İstasyon:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Oyuncular:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Araçlar: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}İstasyon: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Oyuncular: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Bağlanıyor...
 
@@ -1450,12 +1445,12 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Oyuncu l
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Gözlemle
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Yeni Şirket
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Network aygıtı bulunamadı veya ENABLE_NETWORK olmadan derlendi
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Network oyunu bulunamadı
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Sunucu isteğe cevap vermedi
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} NewGRF uyuşmazlığı yüzünden bağlanılamadı
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Network-Oyunu senkronizasyonu başarısız
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Network-Oyunu bağlatısı düştü
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Network aygıtı bulunamadı veya ENABLE_NETWORK olmadan derlendi
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Network oyunu bulunamadı
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Sunucu isteğe cevap vermedi
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}NewGRF uyuşmazlığı yüzünden bağlanılamadı
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Network-Oyunu senkronizasyonu başarısız
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Network-Oyunu bağlatısı düştü
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Kayıtlı oyun yüklenemedi
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Sunucu başlatılamadı
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Bağlanamadı
@@ -1778,11 +1773,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Çadır
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Çaydanlık ev
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Domuz bankası
 
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_STATION_NAME                                                :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Arazi
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Ağaç dik
@@ -1836,6 +1826,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :Çok iyi
 STR_CARGO_RATING_EXCELLENT                                      :Harika
 STR_CARGO_RATING_OUTSTANDING                                    :Mükemmel
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Talimat listesinde bu durak olan trenleri listele
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Talimat listesinde bu durak olan arabaları listele
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Talimat listesinde bu durak olan uçakları listele
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Talimat listesinde bu durak olan gemileri listele
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} artık {STRING} istemiyor
@@ -2080,6 +2076,9 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Havali
 STR_SV_STNAME_OILFIELD                                          :{STRING} Kuyusu
 STR_SV_STNAME_MINES                                             :{STRING} Madeni
 STR_SV_STNAME_DOCKS                                             :{STRING} İskelesi
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Eklemesi
 STR_SV_STNAME_SIDINGS                                           :{STRING} Kenarı
 STR_SV_STNAME_BRANCH                                            :{STRING} Kolu
@@ -2162,7 +2161,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Katı
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :(Company {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Yeni Surat
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Renkler
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Renk:
@@ -2195,7 +2193,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Toplam:
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gelir Grafiği
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Çalıştirma Geliri Grafiği
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Banka Hesabı
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Kredi
@@ -2598,10 +2595,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monoray lokomot
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev lokomotifi
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Tren Garaji
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Kutlama Yapıldı . . .{} {STATION} istasyonuna ilk kez tren geldi!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaylar)
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Yolda tren var
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Durmaksızın
@@ -2691,38 +2686,16 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :ve şuraya sefe
 STR_TIMETABLE_DAYS                                              :{COMMA} gün
 STR_TIMETABLE_TICKS                                             :{COMMA} birim
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}{TOWN} Tren Garına gidiyor
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}{TOWN} Tren Garına gidiyor, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{TOWN} Garında Bakım
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{TOWN} Garında Bakım, {VELOCITY}
-
 STR_INVALID_ORDER                                               :{RED} (Hatalı talimat)
 
 STR_UNKNOWN_STATION                                             :bilinmeyen istasyon
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Boş
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} - {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} geldiği yer: {STATION} (x{NUM})
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} garajda bekliyor
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Yeni Araç
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren çok uzun
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Sadece garda durdurulmuş trenler üzerinde işlem yapılabilir
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tren
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Yeni Tren
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Yeni Elektrikli Trenler
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Yeni Monoray
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Yeni Maglev
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Trenler
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Satın Al
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Arabayı kopyala
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Arabanın bir kopyasını yapar. CTRL-tıklama talimatları paylaştırır
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Arabanın bir kopyasını yapar. Önce bu düğmeye sonra da garın içindeki veya dışındaki bir araca tıklayın. CTRL-tıklama talimatları paylaştırır
-STR_CLONE_TRAIN                                                 :{BLACK}Treni kopyala
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Tüm vagonlarla birlikte treni kopyalar. CTRL-tıklama talimatları paylaştırır
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Tüm vagonlarla birlikte treni kopyalar. Önce bu düğmeye sonra da garın içindeki veya dışındaki bir araca tıklayın. CTRL-tıklama talimatları paylaştırır
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Yeni isim
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Atla
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Sil
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Git
@@ -2738,14 +2711,12 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Emir gö
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Talimatlar)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Talimatların Sonu - -
 STR_SERVICE                                                     :{BLACK}Bakım
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Tren satın alınamaz...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Tarih: {LTBLUE}{NUM}{BLACK} Değeri: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Değeri: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Yükleme / Boşaltma
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Ayrılıyor
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Tren garda durdurulmalı
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Tren gara gönderilemiyor...
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Çok fazla talimat var
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Çok fazla talimat
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Yeni talimat verilemiyor...
@@ -2760,26 +2731,11 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}bu emri 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Araç hareket edemiyor...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Arkadaki lokomotif daima önündekini takip edecek
 STR_CARGO_N_A                                                   :yok{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Tren satılamaz...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Yakındaki bir gara gidecek yol yok
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Tren durdurulamaz/başlatılamaz...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Bakım zamanı: {LTBLUE}{COMMA}günde bir{BLACK}   Son bakım: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Bakım zamanı: {LTBLUE}%{COMMA}{BLACK}   Son bakım: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trenlar - daha fazla bilgi için trene tıklayın
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenlar - bilgi için trene tıklayın., trene vagon eklemek/kaldırmak için sürükleyin
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Yeni tren satın al
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Satmak için aracı buraya sürükleyin
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Tren garini göster
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Tren seçim listesi - daha fazla bilgi için araca tıklayın
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Seçili treni satın al
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Treni yeniden adlandır
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Tren durumu - treni durdurmak/başlatmak için buraya tıklayın
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Trenin talimatlarıni göster
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Treni göster
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Treni gara gönder
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Treni sinyale uymadan ilerlemeye zorla
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Treni ters çevir
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Tren ayrıntılarını göster
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Bakım zamanını ertele
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Bakım zamanını azalt
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Taşınan kargonun ayrıntıları
@@ -2813,13 +2769,10 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Durdu
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Tehlikedeki tren sinyali geçemez...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Çarptı!
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Treni adlandır
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Tren adlandırılamıyor...
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Treni adlandır
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Tren Kazasi!{}{COMMA} ölü var.
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Tren çevrilemez...
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Tren yeniden adlandırılamaz
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Tren yeniden adlandırılamaz...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Aracın yönü çevrilemiyor...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Birden fazla birimden oluşan araçlar çevrilemez
 STR_CLEAR_TIME                                                  :{BLACK}Zamanı Temizle
 STR_RESET_LATENESS                                              :{BLACK}Gecikme sayacını sıfırla
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Yolimi adını değiştir
@@ -2851,178 +2804,55 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatik
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Zaman tablosunu bir sonraki yolculuktaki değerlerle otomatik doldur (Bekleme sürelerini tutmak için CTRL ile tıklanır)
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Yolda araba var
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Arabalar
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Araba Garaji
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Yeni Araba
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Yeni Araba
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Araba Al
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Araba alınamıyor...
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...bir araba garajında duruyor olmalı
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Araba satılamıyor...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Araba başlayamıyor/duramıyor...
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} garajda bekliyor
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}{TOWN} Garajina gidiyor
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}{TOWN} Garajina gidiyor, {VELOCITY}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}{TOWN} Garajinda Bakıma Gir
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}{TOWN} Garajinda Bakım, {VELOCITY}
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Araç garaja gidemiyor...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Yerel garaj bulunamadı
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Arabalar - bilgi için arabaya tıklayın
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aracın durumu - durdurmak/başlatmak için tıklayın
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Aracın talimatlarını görmek için tıklayın
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Arabayı göster
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Aracı garaja gönder
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Aracı etrafta dolaşmaya zorla
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Araba ayrıntılarını göster
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Arabalar - ayrıntılı bilgi için araca tıklayın
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Yeni araba al
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Satmak için arabayı buraya sürükle
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Araba garajını göster
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Araba listesi - bilgi için arabayı tıklayın
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Seçili arabayı al
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasite: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} araç{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Arabayı adlandır
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Araba adlandırılamıyor...
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Arabayı adlandır
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}Şuraya ilk kez otobüs geldi: {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}Şuraya ilk kez kamyon geldi: {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yolcu tramvayı geldi!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yük tramvayı geldi!
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Trafik kazasi!{}Trenle çarpisan aracın soförü feci şekilde can verdi
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Trafik kazasi!{}{COMMA} kişi patlamadan kurtulamadı
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Birden fazla birimden oluşan araçlar çevrilemez
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}İsim
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Araç türünü yeniden adlandır
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Araç türünü yeniden adlandır
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Araç türü yeniden adlandırılamıyor...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Kara taşıtı U dönüşü yapamıyor...
 
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Kamyonu başka türde kargo taşıyabilmesi için modifiye et
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Kamyonu modifiye et
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Kamyonu seçili kargoyu taşıyabilmesi için modifiye et
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kamyon modifiye edilemiyor...
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kamyonun taşıyacağı kargo türünü seçin
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Suyolu inşaatı
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Suyolu inşaatı
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Suyolu
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Buraya iskele yapılamaz...
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Tersanesi
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Yeni gemi
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Gemi
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Yeni gemi
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Gemi yap
-STR_CLONE_SHIP                                                  :{BLACK}Gemiyi kopyala
-STR_CLONE_SHIP_INFO                                             :{BLACK}Geminin bir kopyasını oluşturur. CTRL-tıklama talimatları paylaştırır
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Geminin bir kopyasını oluşturur. Önce bu düğmeye sonra da tersanenin içindeki veya dışındaki bir gemiye tıklayın. CTRL-tıklama talimatları paylaştırır
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Gemi tersanede durdurulmalı
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Gemi satılamaz...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Yemi yapılamaz...
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Yolda gemi var
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Gemi durdurulamaz/başlatılamaz...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Gemi tersaneye gönderilemez...
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Gidiyor: {TOWN} Tersanesi
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Gidiyor: {TOWN} Tersanesi, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN} Tersanesinde Bakım
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} Tersanesinde Bakım, {VELOCITY}
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} barınakta bekliyor
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}İskele yap
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Tersane yap (gemi yapmak ve bakımları için)
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Gemiler - bilgi için gemiye tıkla
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Yeni gemi yap
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Satmak için gemiyi buraya sürükle
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Tersaneyi göster
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Gemiler - bilgi için gemiye tıkla
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Gemi seçim listesi - bilgi için gemiye tıkla
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Seçili gemiyi yap
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Geminin durumu - durdurmak/başlatmak için buraya tıkla
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Geminin talimatlarıni göster
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Gemiyi göster
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Tersaneye gönder
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Gemi ayrıntılarını göster
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Gemiyi adlandır
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Gemiyi adlandır
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Gemi adlandırılamaz...
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}Şuraya ilk kez gemi geldi: {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Yerimi olarak kullanilabilecek bir şamandıra yerlestir
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Şamandıra yerlestirilemez...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Su kemeri yap
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Buraya su kemeri yapılamaz...
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}İsim
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Gemi türünü adlandır
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Gemi türünü adlandır
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Gemi türü adlandırılamaz...
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Başka bir yük taşımasi için modifiye et
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Modifiye)
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}modifiye
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Tasinacak kargoyu seçin
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Seçili kargoyu taşımak için modifiye et
 STR_REFIT_TITLE                                                 :{GOLD}Tasinacak kargo türünü seçin:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Yeni kapasite: {GOLD}{CARGO}{}{BLACK}Modifiye fiyatı: {GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Modifiye edilemez...
 STR_REFITTABLE                                                  :(modifiyeli)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Havalimanları
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Buraya havalimanı yapılamaz...
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangarı
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Yeni Uçak
-STR_CLONE_AIRCRAFT                                              :{BLACK}Uçağı kopyala
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Uçağın bir kopyasını oluşturur. CTRL-tıklama talimatları paylaştırır
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Uçağın bir kopyasını oluşturur. Önce bu düğmeye sonra da hangarın içindeki veya dışındaki bir uçaga tıklayın. CTRL-tıklama talimatları paylaştırır
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Yeni Uçak
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Uçak Yap
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Uçak alınamaz...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Uçak
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Hangara gönderilemiyor...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATION} Hangarına gidiyor
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION} Hangarına gidiyor, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}{STATION} Hangarında Bakım
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}{STATION} Hangarında Bakım, {VELOCITY}
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} hangarda bekliyor
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Yolda uçak var
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Uçak durdurulamaz/başlatılamaz...
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Şu an uçusta
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Uçak hangarda durdurulmalı
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Uçak satılamıyor...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Havalimanı binasi
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Havalimanı yap
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Uçak - ayrıntılı bilgi için uçağı tıkla
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Uçak - bilgi için uçaga tıkla
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Yeni uçak al
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Satmak için uçağı buraya sürükleyin
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Hangarı göster
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Uçak listesi - bilgi için uçaga tıklayın
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Seçili uçaktan al
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Uçağın durumu - uçağı durdurmak/başlatmak için tıkla
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Uçağın talimatlarıni göster
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Uçağı göster
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Uçağı hangara gönder
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Uçak ayrıntılarını göster
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Uçağı adlandır
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Uçak adlandırılamaz...
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Uçağı adlandır
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez uçak geldi!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Uçak Kazasi!{}{COMMA} ölü var - {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Uçak Kazasi!{}Benzin yetmedi, {COMMA} kisi öldü!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}İsim
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Uçak türünü adlandır
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Uçak türünü adlandır
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Uçak türü adlandırılamaz...
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Başka bir yük taşımak için modifiye et
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Modifiye
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Tasinacak kargo türünü seçin
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Seçili kargoyu taşımasi için uçağı modifiye et
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Modifiye edilemez...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Zaman çizelgesi)
 
@@ -3176,14 +3006,224 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trenlar - daha fazla bilgi için trene tıklayın
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Arabalar - bilgi için arabaya tıklayın
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Gemiler - bilgi için gemiye tıkla
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Uçak - ayrıntılı bilgi için uçağı tıkla
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Talimat listesinde bu durak olan trenleri listele
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Talimat listesinde bu durak olan arabaları listele
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Talimat listesinde bu durak olan uçakları listele
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Talimat listesinde bu durak olan gemileri listele
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tren
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Arabalar
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Gemi
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Uçak
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} Aracın paylaşılan talimatları
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Aynı talimatlara sahip bütün araçları göster
+
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} garajda bekliyor
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} garajda bekliyor
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} barınakta bekliyor
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} hangarda bekliyor
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Modifiye
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Kamyonu modifiye et
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}modifiye
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Modifiye
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Treni seçilen kargoyu taşıyacak şekilde modifiye et
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Kamyonu seçili kargoyu taşıyabilmesi için modifiye et
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Seçili kargoyu taşımak için modifiye et
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Seçili kargoyu taşımasi için uçağı modifiye et
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenin taşıyacağı kargo türünü seçin
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kamyonun taşıyacağı kargo türünü seçin
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Tasinacak kargoyu seçin
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Tasinacak kargo türünü seçin
+
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Tren Garaji
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Araba Garaji
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Tersanesi
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangarı
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Treni adlandır
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Arabayı adlandır
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Gemiyi adlandır
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Uçağı adlandır
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Treni adlandır
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Arabayı adlandır
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Gemiyi adlandır
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Uçağı adlandır
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Yolda tren var
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Yolda araba var
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Yolda gemi var
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Yolda uçak var
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Modifiye edilemiyor...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kamyon modifiye edilemiyor...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Modifiye edilemez...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Modifiye edilemez...
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Tren adlandırılamıyor...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Araba adlandırılamıyor...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Gemi adlandırılamaz...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Uçak adlandırılamaz...
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Tren durdurulamaz/başlatılamaz...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Araba başlayamıyor/duramıyor...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Gemi durdurulamaz/başlatılamaz...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Uçak durdurulamaz/başlatılamaz...
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Tren gara gönderilemiyor...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Araç garaja gidemiyor...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Gemi tersaneye gönderilemez...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Hangara gönderilemiyor...
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Tren satın alınamaz...
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Araba alınamıyor...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Yemi yapılamaz...
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Uçak alınamaz...
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Tren yeniden adlandırılamaz...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Araç türü yeniden adlandırılamıyor...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Gemi türü adlandırılamaz...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Uçak türü adlandırılamaz...
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Tren satılamaz...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Araba satılamıyor...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Gemi satılamaz...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Uçak satılamıyor...
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Tren durumu - treni durdurmak/başlatmak için buraya tıklayın
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aracın durumu - durdurmak/başlatmak için tıklayın
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Geminin durumu - durdurmak/başlatmak için buraya tıkla
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Uçağın durumu - uçağı durdurmak/başlatmak için tıkla
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Trenin talimatlarıni göster
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Aracın talimatlarını görmek için tıklayın
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Geminin talimatlarıni göster
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Uçağın talimatlarıni göster
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Treni göster
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Arabayı göster
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Gemiyi göster
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Uçağı göster
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Treni gara gönder
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Aracı garaja gönder
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Tersaneye gönder
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Uçağı hangara gönder
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Tren ayrıntılarını göster
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Araba ayrıntılarını göster
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Gemi ayrıntılarını göster
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Uçak ayrıntılarını göster
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Treni başka bir kargo taşıması için modifiye et
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Kamyonu başka türde kargo taşıyabilmesi için modifiye et
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Başka bir yük taşımasi için modifiye et
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Başka bir yük taşımak için modifiye et
+
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}{TOWN} Tren Garına gidiyor
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}{TOWN} Tren Garına gidiyor, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}{TOWN} Garajina gidiyor
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}{TOWN} Garajina gidiyor, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Gidiyor: {TOWN} Tersanesi
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Gidiyor: {TOWN} Tersanesi, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATION} Hangarına gidiyor
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION} Hangarına gidiyor, {VELOCITY}
+
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{TOWN} Garında Bakım
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{TOWN} Garında Bakım, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}{TOWN} Garajinda Bakıma Gir
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}{TOWN} Garajinda Bakım, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN} Tersanesinde Bakım
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} Tersanesinde Bakım, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}{STATION} Hangarında Bakım
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}{STATION} Hangarında Bakım, {VELOCITY}
+
+
+STR_CLONE_TRAIN                                                 :{BLACK}Treni kopyala
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Arabayı kopyala
+STR_CLONE_SHIP                                                  :{BLACK}Gemiyi kopyala
+STR_CLONE_AIRCRAFT                                              :{BLACK}Uçağı kopyala
+
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Tüm vagonlarla birlikte treni kopyalar. CTRL-tıklama talimatları paylaştırır
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Arabanın bir kopyasını yapar. CTRL-tıklama talimatları paylaştırır
+STR_CLONE_SHIP_INFO                                             :{BLACK}Geminin bir kopyasını oluşturur. CTRL-tıklama talimatları paylaştırır
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Uçağın bir kopyasını oluşturur. CTRL-tıklama talimatları paylaştırır
+
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Tüm vagonlarla birlikte treni kopyalar. Önce bu düğmeye sonra da garın içindeki veya dışındaki bir araca tıklayın. CTRL-tıklama talimatları paylaştırır
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Arabanın bir kopyasını yapar. Önce bu düğmeye sonra da garın içindeki veya dışındaki bir araca tıklayın. CTRL-tıklama talimatları paylaştırır
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Geminin bir kopyasını oluşturur. Önce bu düğmeye sonra da tersanenin içindeki veya dışındaki bir gemiye tıklayın. CTRL-tıklama talimatları paylaştırır
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Uçağın bir kopyasını oluşturur. Önce bu düğmeye sonra da hangarın içindeki veya dışındaki bir uçaga tıklayın. CTRL-tıklama talimatları paylaştırır
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Yeni Tren
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Yeni Elektrikli Trenler
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Yeni Monoray
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Yeni Maglev
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Trenler
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Yeni Araba
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Yeni gemi
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Yeni Uçak
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Satın Al
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Araba Al
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Gemi yap
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Uçak Yap
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Tren seçim listesi - daha fazla bilgi için araca tıklayın
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Araba listesi - bilgi için arabayı tıklayın
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Gemi seçim listesi - bilgi için gemiye tıkla
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Uçak listesi - bilgi için uçaga tıklayın
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Seçili treni satın al
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Seçili arabayı al
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Seçili gemiyi yap
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Seçili uçaktan al
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Yeni isim
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}İsim
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}İsim
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}İsim
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Treni yeniden adlandır
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Araç türünü yeniden adlandır
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Gemi türünü adlandır
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Uçak türünü adlandır
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Tren yeniden adlandırılamaz
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Araç türünü yeniden adlandır
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Gemi türünü adlandır
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Uçak türünü adlandır
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Yeni Araç
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Yeni Araba
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Yeni gemi
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Yeni Uçak
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenlar - bilgi için trene tıklayın., trene vagon eklemek/kaldırmak için sürükleyin
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Arabalar - ayrıntılı bilgi için araca tıklayın
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Gemiler - bilgi için gemiye tıkla
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Uçak - bilgi için uçaga tıkla
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Yeni tren satın al
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Yeni araba al
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Yeni gemi yap
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Yeni uçak al
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Satmak için aracı buraya sürükleyin
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Satmak için arabayı buraya sürükle
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Satmak için gemiyi buraya sürükle
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Satmak için uçağı buraya sürükleyin
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Tren garini göster
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Araba garajını göster
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Tersaneyi göster
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Hangarı göster
+
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Garajdaki bütün araçları satmak üzeresiniz. Emin misiniz?
@@ -3204,7 +3244,6 @@ STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Garajdak
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Tersanedeki tüm gemileri otomatik yenile
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Hangardaki tüm uçakları otomatik yenile
 
-
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} Değiştir
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Araçları Değiştirmeye Başla
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Araçları değiştirmeyi durdur
@@ -3220,6 +3259,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon ka
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Otomatik yenilemede tren boyutunun artması gerekiyorsa vagonları kaldır(en önden başlayarak yeterli sayıda vagon silinir).
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Değiştiriyor: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Lokomotif ve vagon değişimi pencereleri arasında geçiş yap.
+
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Tren kullanılamaz
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Araba kullanılamaz
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Gemi kullanılamaz
@@ -3370,17 +3410,6 @@ STR_MEASURE_AREA                                                :{BLACK}Alan: {N
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Uzunluk: {NUM}{}Yükseklik farkı: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Alan: {NUM} x {NUM}{}Yükseklik farkı: {NUM} m
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Aktarma Maliyeti: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...bu yol belediyeye ait
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...yol yanlış yönde
@@ -3405,7 +3434,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}%{NUM}{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :Grup {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Bütün trenler
 STR_GROUP_ALL_ROAD_VEHICLES                                     :Bütün arabalar
@@ -3434,12 +3462,35 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Seçili 
 STR_GROUP_RENAME_TIP                                            :{BLACK}Seçili grubun ismini değiştir
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Bu grubu otomatik yenilemeden ayrı tutmak için tıklayın
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :(Company {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Grup {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}İsim daha önce kullanılmamış olmalı
 

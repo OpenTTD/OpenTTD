@@ -355,19 +355,21 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Kapasitas kargo
 STR_NO_WAITING_CARGO                                            :{BLACK}Tidak ada barang yang sedang menunggu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Pilih semua fasilitas
 STR_SELECT_ALL_TYPES                                            :{BLACK}Pilih semua jenis kargo (termasuk kargo tanpa jeda)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Kereta api tersedia
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Kendaraan tersedia
-STR_AVAILABLE_SHIPS                                             :{BLACK}Kapal tersedia
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Pesawat tersedia
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Lihat daftar desain mesin yang tersedia untuk kendaraan tipe ini
 STR_MANAGE_LIST                                                 :{BLACK}Atur Daftar
 STR_MANAGE_LIST_TIP                                             :{BLACK}Kirim perintah untuk semua kendaraan dalam daftar ini.
 STR_REPLACE_VEHICLES                                            :Ganti kendaraan
+STR_SEND_FOR_SERVICING                                          :Kirim untuk di servis
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}Kereta api tersedia
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Kendaraan tersedia
+STR_AVAILABLE_SHIPS                                             :{BLACK}Kapal tersedia
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Pesawat tersedia
+
 STR_SEND_TRAIN_TO_DEPOT                                         :Kirim ke depo
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Kirim ke depo
 STR_SEND_SHIP_TO_DEPOT                                          :Kirim ke Galangan
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Kirim ke Hangar
-STR_SEND_FOR_SERVICING                                          :Kirim untuk di servis
 
 ############ range for months starts
 STR_MONTH_ABBREV_JAN                                            :Jan
@@ -762,9 +764,6 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Danai industri 
 ############ range ends here
 
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Danai industri baru
-STR_JUST_STRING                                                 :{STRING}
-STR_JUST_RAW_STRING                                             :{STRING}
-STR_JUST_INT                                                    :{NUM}
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...hanya dapat dibangun di area hutan hujan
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...hanya dapat dibangun di area gurun
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  BERHENTI  *  *
@@ -1190,6 +1189,8 @@ STR_GO_NON_STOP_TO_WAYPOINT                                     :Pergi non stop 
 
 STR_WAYPOINTNAME_CITY                                           :Titik penunjuk arah {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :Titik penunjuk arah {TOWN} #{COMMA}
+STR_BUOYNAME_CITY                                               :Pelampung {TOWN}
+STR_BUOYNAME_CITY_SERIAL                                        :Pelampung {TOWN} #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Titik penunjuk arah
 
 STR_WAYPOINT                                                    :{WHITE}Titik Penunjuk arah
@@ -1197,7 +1198,6 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Pilih je
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edit nama titik penunjuk arah
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Tidak dapat mengganti nama sinyal jalur...
@@ -1264,11 +1264,6 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nama ind
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...terlalu dekat dengan industri lain
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Renovasi gerbong untuk membawa tipe kargo lain
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Renovasi gerbong
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pilih jenis kargo yang akan dibawa kereta
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Ubah kargo lokomotif untuk membawa kargo terpilih
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Tidak dapat mengubah kargo lokomotif...
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Perubahan produksi
 
 ############ network gui strings
@@ -1778,11 +1773,6 @@ STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tepees (rumah p
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Kedai teh
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Bank-Piggy
 
-STR_INDUSTRY_NAME                                               :{INDUSTRY}
-STR_TOWN_NAME                                                   :{TOWN}
-STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
-STR_STATION_NAME                                                :{STATION}
-
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Proses Landsekap
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Menanam pohon
@@ -1836,6 +1826,12 @@ STR_CARGO_RATING_VERY_GOOD                                      :Sangat Baik
 STR_CARGO_RATING_EXCELLENT                                      :Sempurna
 STR_CARGO_RATING_OUTSTANDING                                    :Diatas Sempurna
 ############ range for rating ends
+
+### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Tampilkan semua kereta yang memiliki jadwal menuju stasiun ini.
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Tampilkan semua bus/truk yang memiliki jadwal menuju terminal ini.
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Tampilkan semua Pesawat yang memiliki jadwal menuju bandara ini.
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Tampilkan semua kapal yang memiliki jadwal menuju pelabuhan ini.
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} tidak lagi menerima {STRING}
@@ -2080,6 +2076,9 @@ STR_SV_STNAME_AIRPORT                                           :Bandara {STRING
 STR_SV_STNAME_OILFIELD                                          :{STRING} Kota minyak
 STR_SV_STNAME_MINES                                             :Tambang {STRING}
 STR_SV_STNAME_DOCKS                                             :Pelabuhan {STRING}
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
+##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Tenggara
 STR_SV_STNAME_SIDINGS                                           :Simpang {STRING}
 STR_SV_STNAME_BRANCH                                            :{STRING} Baru
@@ -2162,7 +2161,6 @@ STR_CITY_APPROVAL_HOSTILE                                       :Bermusuhan
 
 ##id 0x7000
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_FORMAT_COMPANY_NUM                                          :(Perusahaan {COMMA})
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Ganti Wajah
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Warna tema
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Warna tema:
@@ -2195,7 +2193,6 @@ STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total:
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafik Pendapatan
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_JUST_COMMA                                                  :{COMMA}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafik keuntungan operasional
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Saldo Bank
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Pinjaman
@@ -2598,10 +2595,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :lokomotif monor
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :lokomotif maglev
 
 ##id 0x8800
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE} Depo Kereta {TOWN}
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Kereta Api pertama tiba di {STATION}!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detail)
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Kereta sedang berjalan
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
@@ -2691,38 +2686,16 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :dan berjalan se
 STR_TIMETABLE_DAYS                                              :{COMMA} hari
 STR_TIMETABLE_TICKS                                             :{COMMA} titik
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Menuju ke Depo Kereta api di {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Menuju ke Depo Kereta api di {TOWN}, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servis di Depo Kereta api {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servis di Depo Kereta api {TOWN}, {VELOCITY}
-
 STR_INVALID_ORDER                                               :{RED} (Perintah keliru)
 
 STR_UNKNOWN_STATION                                             :stasiun tidak dikenal
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Kosong
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} dari {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} dari {STATION} (x{NUM})
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} sedang menunggu di depo
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Buat Kendaraan
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Kereta api terlalu panjang
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Kereta api hanya dapat diubah ketika berhenti di dalam depo
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Kereta Api
 
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Kereta Api Baru
-STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Kereta listrik baru
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Monorel Baru
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Maglev Baru
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Semua Kereta
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Membuat Kendaraan
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Gandakan
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Untuk membuat kendaraan yang sama persis. Ctrl-klik akan membuat perintah berbagi
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Untuk membuat kendaraan yang sama persis. Klik tombol ini lalu klik kendaraan yang ingin digandakan, baik didalam maupun diluar depo.Ctrl-klik akan membuat perintah berbagi
-STR_CLONE_TRAIN                                                 :{BLACK}Gandakan
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Untuk membuat kereta api yang sama persis termasuk gerbongnya. Ctrl-klik akan membuat perintah berbagi
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Untuk membuat kereta yang sama persis. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar depo. the Ctrl-klik akan membuat perintah berbagi
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Ubah Nama
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Lewati
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Hapus
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Pergi ke
@@ -2738,14 +2711,12 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Tampilka
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Perintah)
 STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Akhir Perintah - -
 STR_SERVICE                                                     :{BLACK}Perbaikan
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Tidak dapat membuat kendaraan...
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} Buatan: {LTBLUE}{NUM}{BLACK} Nilai: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK} Nilai: {LTBLUE}{CURRENCY}
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Bongkar/Muat
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Berangkat
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Kereta harus diberhentikan di dalam depo
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Tidak dapat mengirim kereta ke depo...
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Tidak ada tempat untuk perintah lagi
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Terlalu banyak perintah
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Tidak dapat menambah perintah baru...
@@ -2760,26 +2731,11 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}kendaraa
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Tidak dapat memindahkan kendaraan...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Bagian belakang mesin akan selalu mengikuti bagian depannya
 STR_CARGO_N_A                                                   :N/A{SKIP}
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Tidak dapat menjual kendaraan...
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Tidak menemukan rute menuju depo terdekat
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Tidak dapat menghentikan/menjalankan kereta...
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Jangka waktu servis: {LTBLUE}{COMMA} hari{BLACK}   Servis terakhir: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Jangka waktu servis: {LTBLUE}{COMMA} %{BLACK}   Servis terakhir: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Kereta - klik pada kereta untuk melihat informasi
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kereta Api - klik untuk info kereta., drag kendaraan untuk menambah atau menghapus dari kereta
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Membuat kereta baru
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Drag kereta ke sini untuk menjualnya
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Arahkan pandangan utama pada lokasi depo kereta
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Daftar pilihan kereta - klik pada kereta untuk menampilkan informasi
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Membuat kereta sesuai pilihan
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Ubah nama jenis kereta api
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Aksi kereta saat ini - klik disini untuk menjalankan/menghentikan kereta
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Tampilkan perintah kereta
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Arahkan tampilan pada lokasi kereta
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Kirim kereta ke depo. CTRL+klik hanya akan memerintahkan servis
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Paksa kereta terus berjalan tanpa menunggu sinyal hijau
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Balikkan arah kereta api
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Tampilkan informasi kereta
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Menambah jarak waktu servis
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Mengurangi jarak waktu servis
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Tampilkan detail kargo terangkut
@@ -2813,15 +2769,10 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Berhenti
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Tidak dapat memaksa kereta melanggar sinyal pada saat bahaya...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Kecelakaan!
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nama kereta
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Tdak dapat menamai kereta...
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nama kereta
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Kecelakaan Kereta Api!{}{COMMA} mati dalam api setelah kecelakaan
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Tidak dapat memutar balik arah kereta...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Tidak dapat memutar balik arah kendaraan...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Tidak dapat membalik arah kendaraan yang terdiri dari beberapa unit
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Ubah nama jenis kereta
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Tidak dapat mengubah nama jenis kereta...
 STR_CLEAR_TIME                                                  :{BLACK}Hapus waktu
 STR_RESET_LATENESS                                              :{BLACK}Reset
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Ganti nama penunjuk arah
@@ -2853,45 +2804,15 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatis
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi jadwal keberangkatan secara otomatis dari perjalanan berikutnya (Ctrl-klik agar waktu tinggalnya tetap)
 
 ##id 0x9000
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Bus/truk sedang berjalan
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Bus/truk
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Bengkel Bus/truk
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Kendaraan Baru
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Bus/truk Baru
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Membuat Kendaraan
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Tidak dapat membuat bus/truk...
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...harus dihentikan didalam bengkel bus/truk
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Tidak dapat menjual kendaraan...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Tidak dapat menghentikan/menjalankan kendaraan...
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} sedang menunggu di bengkel
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Menuju ke bengkel {TOWN}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Menuju ke Bengkel {TOWN}, {VELOCITY}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Servis di Bengkel {TOWN}
-STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Servis di Bengkel {TOWN}, {VELOCITY}
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Tidak dapat mengirim kendaraan ke garasi...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Tidak dapat menemukan garasi terdekat
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Bus/truk - klik pada kendaraan untuk menampilkan informasi
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Kegiatan kendaraan saat ini - klik disini untuk menghentikan / menjalankan kendaraan
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Tampilkan perintah kendaraan
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Arahkan pandangan pada lokasi kendaraan
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Kirim kendaraan ke garasi. CTRL + klik hanya akan memerintahkan servis
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Paksa kendaraan untuk berbalik arah
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Tampilkan detail bus/truk
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kendaraan - klik pada kendaraan untuk informasi
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Membuat bus/truk baru
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Drag kendaraan ke sini untuk menjualnya
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Arahkan pandangan pada lokasi garasi bus/truk
-STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Daftar pilihan bus/truk - klik pada kendaraan untuk menampilkan informasi
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Membuat bus/truk yang dipilih
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasitas: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kendaraan{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nama kendaraan
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Tidak dapat menamai kendaraan...
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nama kendaraan
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Bus pertama tiba di {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Truk pertama tiba di {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Trem Penumpang pertama tiba di {STATION}!
@@ -2899,132 +2820,39 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Terjadi tabrakan!{}Seorang sopir meninggal dalam ledakan setelah ditabrak kereta
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Terjadi tabrakan!{}{COMMA} orang meninggal dalam ledakan setelah ditabrak kereta
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Tidak dapat memutar kendaraan...
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Ganti Nama
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Ganti nama jenis bus/truk
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Ganti nama jenis bus/truk
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Tidak bisa mengganti nama jenis bus/truk
 
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Ubah karoseri truk untuk jenis kargo yang lain
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Karoseri truk
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Ubah karoseri truk untuk mengangkut jenis kargo yang terpilih
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Tidak dapat meng-karoseri ulang truk.
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pilih jenis kargo truk yang akan dibawa
 
 ##id 0x9800
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Konstruksi Perairan.
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Konstruksi Perairan.
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Perairan
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Tidak dapat membuat pelabuhan disini...
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Galangan Kapal
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Kapal Baru
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Kapal
-STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Kapal Baru
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Membuat Kapal
-STR_CLONE_SHIP                                                  :{BLACK}Gandakan
-STR_CLONE_SHIP_INFO                                             :{BLACK}Untuk menggandakan satu unit kapal. Kontrol-klik akan berbagi perintah
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Untuk menggandakan satu unit Kapal . Klik tombol ini dan kemudian pada satu kapal di dalam atau diluar galangan. Kontrol-klik untuk berbagi perintah
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Kapal harus berhenti di galangan
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Tidak dapat menjual kapal...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Tidak dapat membuat kapal...
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Kapal sedang berjalan
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Tidak dapat menghentikan / menjalankan kapal...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Tidak dapat mengirim kapal ke galangan...
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Menuju ke Galangan Kapal {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Menuju ke Galangan Kapal {TOWN}, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servis di Galangan Kapal {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servis di Galangan Kapal {TOWN}, {VELOCITY}
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} sedang menunggu di galangan
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Membangun pelabuhan
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Membangun Galangan Kapal (untuk membuat dan memperbaiki kapal)
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Kapal - klik pada kapal untuk menampilkan informasi
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Membuat kapal baru
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Drag kapal kesini untuk menjualnya
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Arahkan pandangan pada lokasi Galangan Kapal
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Kapal - klik pada kapal untuk menampilkan informasi
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Daftar kapal - klik pada kapal untuk informasi
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Buat kapal yang dipilih
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Aksi kapal saat ini - klik disini untuk menghentikan / menjalankan kapal
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Tampilkan perintah kapal
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Arahkan pandangan pada lokasi kapal
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Kirim kapal ke Galangan. CTRL+klik hanya akan memerintahkan servis
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Tampilkan detail kapal
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nama kapal
 
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nama kapal
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Tidak dapat memberi nama kapal...
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Kapal pertama tiba di {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Menempatkan rambu yang dapat digunakan sebagai petunjuk jalan
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Tidak dapat menempatkan rambu disini...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Membangun jembatan air
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Tidak dapat membangun jembatan air disini...
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Ubah Nama
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Ubah nama jenis kapal
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Ubah nama jenis kapal
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Tidak dapat mengubah nama jenis kapal...
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Renovasi kargo kapal untuk membawa barang yang berbeda jenis
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Renovasi)
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Renovasi kapal
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Pilih jenis kargo yang akan dibawa kapal
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Ubah kargo kapal untuk membawa jenis kargo terpilih
 STR_REFIT_TITLE                                                 :{GOLD}Pilih jenis kargo yang akan dibawa:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Kapasitas baru: {GOLD}{CARGO}{}{BLACK}Biaya ubah kargo: {GOLD}{CURRENCY}
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Tidak dapat mengubah kargo kapal...
 STR_REFITTABLE                                                  :(kargo dapat diubah)
 
 ##id 0xA000
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Bandara
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Tidak dapat membangun bandara disini...
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar Pesawat
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Buat Pesawat
-STR_CLONE_AIRCRAFT                                              :{BLACK}Gandakan
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Untuk menggandakan satu unit Pesawat. Kontrol-klik untuk berbagi perintah
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Untuk menggandakan satu unit Pesawat. Klik tombol ini dan kemudian pada satu Pesawat Udara didalam atau diluar hangar. Kontrol-klik untuk berbagi perintah
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Buat Pesawat
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Buat Pesawat
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Tidak dapat membuat pesawat ...
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Pesawat
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Tidak dapat mengirim pesawat ke hangar...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}Menuju ke hangar di {STATION}
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Menuju ke hangar di {STATION}, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Perbaikkan di Hangar {STATION}
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Perbaikkan di Hangar {STATION}, {VELOCITY}
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} sedang menunggu di hangar
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Pesawat sedang berjalan
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Tidak dapat menghentikan / menjalankan pesawat...
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Pesawat sedang terbang
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Pesawat harus berhenti di hangar
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Tidak dapat menjual pesawat...
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Konstruksi Bandara
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Membangun bandara
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Pesawat - klik pada pesawat untuk informasi
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Pesawat - klik pada pesawat untuk informasi
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Membuat pesawat baru
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Drag pesawat kesini untuk menjualnya
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Arahkan pandangan ke lokasi hangar
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Daftar pilihan Pesawat - Klik pada pesawat untuk informasi
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Membuat pesawat yang dipilih
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Aksi pesawat saat ini - klik disini untuk menghentikan / menjalankan pesawat
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Tampilkan order pesawat
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Arahkan pandangan pada lokasi pesawat
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Kirim pesawat ke hangar. CTRL+klik hanya akan memerintahkan servis
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Tampilkan detail pesawat
 
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nama pesawat
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Tidak dapat memberi nama pesawat
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nama pesawat
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Pesawat pertama tiba di {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Kecelakaan Pesawat!{}{COMMA} orang mati dalam kebakaran di {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Kecelakaan pada Pesawat!{}Pesawat kehabisan bahan bakar, {COMMA}orang mati dalam lautan api!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Ubah Nama
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Ubah nama jenis pesawat
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ubah nama jenis pesawat
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Tidak dapat mengubah nama jenis pesawat...
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Renovasi kargo untuk membawa barang jenis lain
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Ubah kargo pesawat
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Pilih jenis kargo yang akan dibawa pesawat
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Ubah kargo pesawat agar bisa membawa kargo terpilih
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Tidak dapat mengubah kargo pesawat...
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Sesuai dengan jadwal)
 
@@ -3178,14 +3006,224 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+############ Vehicle lists
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Kereta - klik pada kereta untuk melihat informasi
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Bus/truk - klik pada kendaraan untuk menampilkan informasi
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Kapal - klik pada kapal untuk menampilkan informasi
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Pesawat - klik pada pesawat untuk informasi
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Tampilkan semua kereta yang memiliki jadwal menuju stasiun ini.
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Tampilkan semua bus/truk yang memiliki jadwal menuju terminal ini.
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Tampilkan semua Pesawat yang memiliki jadwal menuju bandara ini.
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Tampilkan semua kapal yang memiliki jadwal menuju pelabuhan ini.
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Kereta Api
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Bus/truk
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Kapal
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Pesawat
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Perintah bersama {COMMA} kendaraan
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Tampilkan semua kendaraan yang mempunyai perintah bersama.
+
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} sedang menunggu di depo
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} sedang menunggu di bengkel
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} sedang menunggu di galangan
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} sedang menunggu di hangar
+
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Renovasi gerbong
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Karoseri truk
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Renovasi kapal
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Ubah kargo pesawat
+
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Ubah kargo lokomotif untuk membawa kargo terpilih
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Ubah karoseri truk untuk mengangkut jenis kargo yang terpilih
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Ubah kargo kapal untuk membawa jenis kargo terpilih
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Ubah kargo pesawat agar bisa membawa kargo terpilih
+
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pilih jenis kargo yang akan dibawa kereta
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pilih jenis kargo truk yang akan dibawa
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Pilih jenis kargo yang akan dibawa kapal
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Pilih jenis kargo yang akan dibawa pesawat
+
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE} Depo Kereta {TOWN}
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Bengkel Bus/truk
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Galangan Kapal
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar Pesawat
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nama kereta
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nama kendaraan
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nama kapal
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nama pesawat
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nama kereta
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nama kendaraan
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nama kapal
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nama pesawat
+
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Kereta sedang berjalan
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Bus/truk sedang berjalan
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Kapal sedang berjalan
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Pesawat sedang berjalan
+
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Tidak dapat mengubah kargo lokomotif...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Tidak dapat meng-karoseri ulang truk.
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Tidak dapat mengubah kargo kapal...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Tidak dapat mengubah kargo pesawat...
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Tdak dapat menamai kereta...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Tidak dapat menamai kendaraan...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Tidak dapat memberi nama kapal...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Tidak dapat memberi nama pesawat
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Tidak dapat menghentikan/menjalankan kereta...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Tidak dapat menghentikan/menjalankan kendaraan...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Tidak dapat menghentikan / menjalankan kapal...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Tidak dapat menghentikan / menjalankan pesawat...
+
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Tidak dapat mengirim kereta ke depo...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Tidak dapat mengirim kendaraan ke garasi...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Tidak dapat mengirim kapal ke galangan...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Tidak dapat mengirim pesawat ke hangar...
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}Tidak dapat membuat kendaraan...
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}Tidak dapat membuat bus/truk...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}Tidak dapat membuat kapal...
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}Tidak dapat membuat pesawat ...
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Tidak dapat mengubah nama jenis kereta...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Tidak bisa mengganti nama jenis bus/truk
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Tidak dapat mengubah nama jenis kapal...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Tidak dapat mengubah nama jenis pesawat...
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Tidak dapat menjual kendaraan...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Tidak dapat menjual kendaraan...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Tidak dapat menjual kapal...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Tidak dapat menjual pesawat...
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Aksi kereta saat ini - klik disini untuk menjalankan/menghentikan kereta
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Kegiatan kendaraan saat ini - klik disini untuk menghentikan / menjalankan kendaraan
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Aksi kapal saat ini - klik disini untuk menghentikan / menjalankan kapal
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Aksi pesawat saat ini - klik disini untuk menghentikan / menjalankan pesawat
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Tampilkan perintah kereta
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Tampilkan perintah kendaraan
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Tampilkan perintah kapal
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Tampilkan order pesawat
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Arahkan tampilan pada lokasi kereta
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Arahkan pandangan pada lokasi kendaraan
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Arahkan pandangan pada lokasi kapal
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Arahkan pandangan pada lokasi pesawat
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Kirim kereta ke depo. CTRL+klik hanya akan memerintahkan servis
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Kirim kendaraan ke garasi. CTRL + klik hanya akan memerintahkan servis
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Kirim kapal ke Galangan. CTRL+klik hanya akan memerintahkan servis
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Kirim pesawat ke hangar. CTRL+klik hanya akan memerintahkan servis
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Tampilkan informasi kereta
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Tampilkan detail bus/truk
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Tampilkan detail kapal
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Tampilkan detail pesawat
+
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Renovasi gerbong untuk membawa tipe kargo lain
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Ubah karoseri truk untuk jenis kargo yang lain
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Renovasi kargo kapal untuk membawa barang yang berbeda jenis
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Renovasi kargo untuk membawa barang jenis lain
+
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Menuju ke Depo Kereta api di {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Menuju ke Depo Kereta api di {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT                              :{ORANGE}Menuju ke bengkel {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL                          :{ORANGE}Menuju ke Bengkel {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Menuju ke Galangan Kapal {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Menuju ke Galangan Kapal {TOWN}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Menuju ke hangar di {STATION}
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Menuju ke hangar di {STATION}, {VELOCITY}
+
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servis di Depo Kereta api {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servis di Depo Kereta api {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE                      :{LTBLUE}Servis di Bengkel {TOWN}
+STR_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL                  :{LTBLUE}Servis di Bengkel {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servis di Galangan Kapal {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servis di Galangan Kapal {TOWN}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Perbaikkan di Hangar {STATION}
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Perbaikkan di Hangar {STATION}, {VELOCITY}
+
+
+STR_CLONE_TRAIN                                                 :{BLACK}Gandakan
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Gandakan
+STR_CLONE_SHIP                                                  :{BLACK}Gandakan
+STR_CLONE_AIRCRAFT                                              :{BLACK}Gandakan
+
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Untuk membuat kereta api yang sama persis termasuk gerbongnya. Ctrl-klik akan membuat perintah berbagi
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Untuk membuat kendaraan yang sama persis. Ctrl-klik akan membuat perintah berbagi
+STR_CLONE_SHIP_INFO                                             :{BLACK}Untuk menggandakan satu unit kapal. Kontrol-klik akan berbagi perintah
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Untuk menggandakan satu unit Pesawat. Kontrol-klik untuk berbagi perintah
+
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Untuk membuat kereta yang sama persis. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar depo. the Ctrl-klik akan membuat perintah berbagi
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Untuk membuat kendaraan yang sama persis. Klik tombol ini lalu klik kendaraan yang ingin digandakan, baik didalam maupun diluar depo.Ctrl-klik akan membuat perintah berbagi
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Untuk menggandakan satu unit Kapal . Klik tombol ini dan kemudian pada satu kapal di dalam atau diluar galangan. Kontrol-klik untuk berbagi perintah
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Untuk menggandakan satu unit Pesawat. Klik tombol ini dan kemudian pada satu Pesawat Udara didalam atau diluar hangar. Kontrol-klik untuk berbagi perintah
+
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}Kereta Api Baru
+STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Kereta listrik baru
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Monorel Baru
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Maglev Baru
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Semua Kereta
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Bus/truk Baru
+STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Kapal Baru
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Buat Pesawat
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}Membuat Kendaraan
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}Membuat Kendaraan
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_BUTTON                     :{BLACK}Membuat Kapal
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}Buat Pesawat
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}Daftar pilihan kereta - klik pada kereta untuk menampilkan informasi
+STR_BUILD_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                     :{BLACK}Daftar pilihan bus/truk - klik pada kendaraan untuk menampilkan informasi
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}Daftar kapal - klik pada kapal untuk informasi
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}Daftar pilihan Pesawat - Klik pada pesawat untuk informasi
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}Membuat kereta sesuai pilihan
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_TOOLTIP            :{BLACK}Membuat bus/truk yang dipilih
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}Buat kapal yang dipilih
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}Membuat pesawat yang dipilih
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}Ubah Nama
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}Ganti Nama
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}Ubah Nama
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}Ubah Nama
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}Ubah nama jenis kereta api
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}Ganti nama jenis bus/truk
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}Ubah nama jenis kapal
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}Ubah nama jenis pesawat
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Ubah nama jenis kereta
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Ganti nama jenis bus/truk
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Ubah nama jenis kapal
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ubah nama jenis pesawat
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Buat Kendaraan
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Kendaraan Baru
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Kapal Baru
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Buat Pesawat
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kereta Api - klik untuk info kereta., drag kendaraan untuk menambah atau menghapus dari kereta
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kendaraan - klik pada kendaraan untuk informasi
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Kapal - klik pada kapal untuk menampilkan informasi
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Pesawat - klik pada pesawat untuk informasi
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Membuat kereta baru
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Membuat bus/truk baru
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Membuat kapal baru
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Membuat pesawat baru
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Drag kereta ke sini untuk menjualnya
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Drag kendaraan ke sini untuk menjualnya
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Drag kapal kesini untuk menjualnya
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Drag pesawat kesini untuk menjualnya
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Arahkan pandangan utama pada lokasi depo kereta
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Arahkan pandangan pada lokasi garasi bus/truk
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Arahkan pandangan pada lokasi Galangan Kapal
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Arahkan pandangan ke lokasi hangar
+
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Anda akan menjual semua kendaraan didalam depo. Anda yakin?
@@ -3206,7 +3244,6 @@ STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}Penggant
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Penggantian secara otomatis semua kapal di dalam galangan
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Penggantian secara otomatis semua Pesawat di dalam hangar
 
-
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ganti {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Mulai Mengganti
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Berhenti Mengganti
@@ -3222,6 +3259,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Membuang
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Membuat panjang kereta tetap sama saat penggantian secara otomatis dengan cara membuang gerbong(dihitung dari bagian depan), jika penggantian lokomotif membuat kereta lebih panjang.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Mengganti: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Pindah tampilan penggantian lokomitif atau gerbong
+
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Kereta tidak tersedia
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Bus/truk tidak tersedia
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Kapal tidak tersedia
@@ -3372,17 +3410,6 @@ STR_MEASURE_AREA                                                :{BLACK}Area: {N
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Panjang: {NUM}{}beda tinggi: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}beda tinggi: {NUM} m
 
-############ Date formatting
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_JUST_DATE_TINY                                              :{DATE_TINY}
-STR_JUST_DATE_LONG                                              :{DATE_LONG}
-STR_JUST_DATE_ISO                                               :{DATE_ISO}
-########
-
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Nilai Transfer: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...jalan ini milik kota
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...menghadap pada arah yang salah
@@ -3407,7 +3434,6 @@ STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHIT
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
-STR_FORMAT_GROUP_NAME                                           :Kelompok {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Semua Kereta
 STR_GROUP_ALL_ROAD_VEHICLES                                     :Semua Bus/truk
@@ -3436,12 +3462,35 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Hapus ke
 STR_GROUP_RENAME_TIP                                            :{BLACK}Ubah Nama kelompok terpilih
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klik untuk memproteksi kelompok ini dari perintah penggantian otomatis
 
+#### String control codes and their formatting
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_COMPANY_NUM                                          :(Perusahaan {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Kelompok {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Nama haruslah unik
 
