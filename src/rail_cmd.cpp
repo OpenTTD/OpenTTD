@@ -1280,7 +1280,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				case MP_RAILWAY:
 					break;
 				case MP_STATION:
-					if (!IsRailwayStation(tile) && !IsRailWaypoint(tile)) continue;
+					if (!HasStationRail(tile)) continue;
 					break;
 				case MP_ROAD:
 					if (!IsLevelCrossing(tile)) continue;

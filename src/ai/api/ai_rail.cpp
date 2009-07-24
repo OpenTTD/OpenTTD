@@ -17,7 +17,7 @@
 	if (!::IsValidTile(tile)) return false;
 
 	return (::IsTileType(tile, MP_RAILWAY) && !::IsRailDepot(tile)) ||
-			(::IsRailwayStationTile(tile) && !::IsStationTileBlocked(tile)) || ::IsLevelCrossingTile(tile);
+			(::HasStationTileRail(tile) && !::IsStationTileBlocked(tile)) || ::IsLevelCrossingTile(tile);
 }
 
 /* static */ bool AIRail::IsLevelCrossingTile(TileIndex tile)

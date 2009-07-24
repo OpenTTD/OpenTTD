@@ -109,6 +109,28 @@ static inline bool IsRailWaypointTile(TileIndex t)
 	return IsTileType(t, MP_STATION) && IsRailWaypoint(t);
 }
 
+/**
+ * Has this station tile a rail? In other words, is this station
+ * tile a rail station or rail waypoint?
+ * @param t the tile to check
+ * @pre IsTileType(t, MP_STATION)
+ * @return true if and only if the tile has rail
+ */
+static inline bool HasStationRail(TileIndex t)
+{
+	return IsRailwayStation(t) || IsRailWaypoint(t);
+}
+
+/**
+ * Has this station tile a rail? In other words, is this station
+ * tile a rail station or rail waypoint?
+ * @param t the tile to check
+ * @return true if and only if the tile is a station tile and has rail
+ */
+static inline bool HasStationTileRail(TileIndex t)
+{
+	return IsTileType(t, MP_STATION) && HasStationRail(t);
+}
 
 static inline bool IsAirport(TileIndex t)
 {

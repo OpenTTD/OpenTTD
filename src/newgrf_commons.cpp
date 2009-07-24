@@ -291,7 +291,7 @@ TileIndex GetNearbyTile(byte parameter, TileIndex tile)
 	if (y >= 8) y -= 16;
 
 	/* Swap width and height depending on axis for railway stations */
-	if (IsRailwayStationTile(tile) && GetRailStationAxis(tile) == AXIS_Y) Swap(x, y);
+	if (HasStationTileRail(tile) && GetRailStationAxis(tile) == AXIS_Y) Swap(x, y);
 
 	/* Make sure we never roam outside of the map, better wrap in that case */
 	return TILE_MASK(tile + TileDiffXY(x, y));

@@ -26,7 +26,7 @@ TrackBits GetReservedTrackbits(TileIndex t)
 			break;
 
 		case MP_STATION:
-			if (IsRailwayStation(t) || IsRailWaypoint(t)) return GetStationReservationTrackBits(t);
+			if (HasStationRail(t)) return GetStationReservationTrackBits(t);
 			break;
 
 		case MP_TUNNELBRIDGE:
@@ -99,7 +99,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 			break;
 
 		case MP_STATION:
-			if ((IsRailwayStation(tile) || IsRailWaypoint(tile)) && !HasStationReservation(tile)) {
+			if (HasStationRail(tile) && !HasStationReservation(tile)) {
 				SetRailwayStationReservation(tile, true);
 				MarkTileDirtyByTile(tile); // some GRFs need redraw after reserving track
 				return true;
@@ -150,7 +150,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 			break;
 
 		case MP_STATION:
-			if (IsRailwayStation(tile) || IsRailWaypoint(tile)) {
+			if (HasStationRail(tile)) {
 				SetRailwayStationReservation(tile, false);
 				MarkTileDirtyByTile(tile);
 			}

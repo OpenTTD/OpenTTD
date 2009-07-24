@@ -550,7 +550,7 @@ static void NPFSaveTargetData(AyStar *as, OpenListNode *current)
 static bool CanEnterTileOwnerCheck(Owner owner, TileIndex tile, DiagDirection enterdir)
 {
 	if (IsTileType(tile, MP_RAILWAY) || // Rail tile (also rail depot)
-			IsRailwayStationTile(tile) ||   // Rail station tile
+			HasStationTileRail(tile) ||     // Rail station tile/waypoint
 			IsRoadDepotTile(tile) ||        // Road depot tile
 			IsStandardRoadStopTile(tile)) { // Road station tile (but not drive-through stops)
 		return IsTileOwner(tile, owner);  // You need to own these tiles entirely to use them

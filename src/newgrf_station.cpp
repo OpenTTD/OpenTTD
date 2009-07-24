@@ -283,7 +283,7 @@ static TileIndex FindRailStationEnd(TileIndex tile, TileIndexDiff delta, bool ch
 		TileIndex new_tile = TILE_ADD(tile, delta);
 
 		if (!IsTileType(new_tile, MP_STATION) || GetStationIndex(new_tile) != sid) break;
-		if (!IsRailwayStation(new_tile) && !IsRailWaypoint(new_tile)) break;
+		if (!HasStationRail(new_tile)) break;
 		if (check_type && GetCustomStationSpecIndex(new_tile) != orig_type) break;
 		if (check_axis && GetRailStationAxis(new_tile) != orig_axis) break;
 
@@ -479,7 +479,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		case 0x68: { // Station info of nearby tiles
 			TileIndex nearby_tile = GetNearbyTile(parameter, tile);
 
-			if (!IsRailwayStationTile(nearby_tile)) return 0xFFFFFFFF;
+			if (!HasStationTileRail(nearby_tile)) return 0xFFFFFFFF;
 
 			uint32 grfid = st->speclist[GetCustomStationSpecIndex(tile)].grfid;
 			bool perpendicular = GetRailStationAxis(tile) != GetRailStationAxis(nearby_tile);

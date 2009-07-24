@@ -99,7 +99,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 			return GetCrossingRailBits(t);
 
 		case MP_STATION:
-			if (!IsRailwayStation(t) && !IsRailWaypoint(t)) return TRACK_BIT_NONE;
+			if (!HasStationRail(t)) return TRACK_BIT_NONE;
 			if (!HasCatenary(GetRailType(t))) return TRACK_BIT_NONE;
 			if (!IsStationTileElectrifiable(t)) return TRACK_BIT_NONE;
 			return TrackToTrackBits(GetRailStationTrack(t));
