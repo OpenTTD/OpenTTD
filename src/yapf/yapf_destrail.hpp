@@ -160,7 +160,7 @@ public:
 	{
 		bool bDest;
 		if (m_dest_station_id != INVALID_STATION) {
-			bDest = IsRailwayStationTile(tile)
+			bDest = IsRailStationTile(tile)
 				&& (GetStationIndex(tile) == m_dest_station_id)
 				&& (GetRailStationTrack(tile) == TrackdirToTrack(td));
 		} else {

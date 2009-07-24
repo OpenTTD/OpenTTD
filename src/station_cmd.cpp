@@ -700,7 +700,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
 		 * so station points to INVALID_STATION if we can build on any station.
 		 * Or it points to a station if we're only allowed to build on exactly that station. */
 		if (station != NULL && IsTileType(tile_cur, MP_STATION)) {
-			if (!IsRailwayStation(tile_cur)) {
+			if (!IsRailStation(tile_cur)) {
 				return ClearTile_Station(tile_cur, DC_AUTO); // get error message
 			} else {
 				StationID st = GetStationIndex(tile_cur);
@@ -1013,15 +1013,15 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 			int w = plat_len;
 			do {
 				byte layout = *layout_ptr++;
-				if (IsRailwayStationTile(tile) && HasStationReservation(tile)) {
+				if (IsRailStationTile(tile) && HasStationReservation(tile)) {
 					/* Check for trains having a reservation for this tile. */
 					Train *v = GetTrainForReservation(tile, AxisToTrack(GetRailStationAxis(tile)));
 					if (v != NULL) {
 						FreeTrainTrackReservation(v);
 						*affected_vehicles.Append() = v;
-						if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), false);
+						if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), false);
 						for (; v->Next() != NULL; v = v->Next()) ;
-						if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), false);
+						if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), false);
 					}
 				}
 
@@ -1058,10 +1058,10 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 		for (uint i = 0; i < affected_vehicles.Length(); ++i) {
 			/* Restore reservations of trains. */
 			Train *v = affected_vehicles[i];
-			if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
+			if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
 			TryPathReserve(v, true, true);
 			for (; v->Next() != NULL; v = v->Next()) ;
-			if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
+			if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
 		}
 
 		st->MarkTilesDirty(false);
@@ -1076,7 +1076,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 	return cost;
 }
 
-static void MakeRailwayStationAreaSmaller(Station *st)
+static void MakeRailStationAreaSmaller(Station *st)
 {
 	uint w = st->trainst_w;
 	uint h = st->trainst_h;
@@ -1165,7 +1165,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 	/* Do the action for every tile into the area */
 	BEGIN_TILE_LOOP(tile2, size_x, size_y, tile) {
 		/* Make sure the specified tile is a railroad station */
-		if (!IsRailwayStationTile(tile2)) {
+		if (!IsRailStationTile(tile2)) {
 			continue;
 		}
 
@@ -1200,10 +1200,10 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 				if (v != NULL) {
 					/* Free train reservation. */
 					FreeTrainTrackReservation(v);
-					if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), false);
+					if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), false);
 					Vehicle *temp = v;
 					for (; temp->Next() != NULL; temp = temp->Next()) ;
-					if (IsRailwayStationTile(temp->tile)) SetRailwayStationPlatformReservation(temp->tile, TrackdirToExitdir(ReverseTrackdir(temp->GetVehicleTrackdir())), false);
+					if (IsRailStationTile(temp->tile)) SetRailStationPlatformReservation(temp->tile, TrackdirToExitdir(ReverseTrackdir(temp->GetVehicleTrackdir())), false);
 				}
 			}
 
@@ -1218,10 +1218,10 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 
 			if (v != NULL) {
 				/* Restore station reservation. */
-				if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
+				if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
 				TryPathReserve(v, true, true);
 				for (; v->Next() != NULL; v = v->Next()) ;
-				if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
+				if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
 			}
 		}
 	} END_TILE_LOOP(tile2, size_x, size_y, tile)
@@ -1232,7 +1232,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 		/* now we need to make the "spanned" area of the railway station smaller
 		 * if we deleted something at the edges.
 		 * we also need to adjust train_tile. */
-		MakeRailwayStationAreaSmaller(st);
+		MakeRailStationAreaSmaller(st);
 		st->MarkTilesDirty(false);
 		UpdateStationSignCoord(st);
 
@@ -2135,7 +2135,7 @@ static void DrawTile_Station(TileInfo *ti)
 	int32 total_offset;
 	int32 custom_ground_offset;
 
-	if (IsRailwayStation(ti->tile) || IsRailWaypoint(ti->tile)) {
+	if (HasStationRail(ti->tile)) {
 		const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 		roadtypes = ROADTYPES_NONE;
 		total_offset = rti->total_offset;
@@ -2212,13 +2212,13 @@ static void DrawTile_Station(TileInfo *ti)
 		DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, palette));
 
 		/* PBS debugging, draw reserved tracks darker */
-		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && (IsRailwayStation(ti->tile) || IsRailWaypoint(ti->tile)) && HasStationReservation(ti->tile)) {
+		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasStationRail(ti->tile) && HasStationReservation(ti->tile)) {
 			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 			DrawGroundSprite(GetRailStationAxis(ti->tile) == AXIS_X ? rti->base_sprites.single_y : rti->base_sprites.single_x, PALETTE_CRASH);
 		}
 	}
 
-	if ((IsRailwayStation(ti->tile) || IsRailWaypoint(ti->tile)) && HasCatenaryDrawn(GetRailType(ti->tile)) && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);
+	if (HasStationRail(ti->tile) && HasCatenaryDrawn(GetRailType(ti->tile)) && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);
 
 	if (HasBit(roadtypes, ROADTYPE_TRAM)) {
 		Axis axis = GetRoadStopDir(ti->tile) == DIAGDIR_NE ? AXIS_X : AXIS_Y;
@@ -2359,7 +2359,7 @@ static TrackStatus GetTileTrackStatus_Station(TileIndex tile, TransportType mode
 
 	switch (mode) {
 		case TRANSPORT_RAIL:
-			if ((IsRailwayStation(tile) || IsRailWaypoint(tile)) && !IsStationTileBlocked(tile)) {
+			if (HasStationRail(tile) && !IsStationTileBlocked(tile)) {
 				trackbits = TrackToTrackBits(GetRailStationTrack(tile));
 			}
 			break;
@@ -2444,7 +2444,7 @@ static void AnimateTile_Station(TileIndex tile)
 		{ GFX_WINDSACK_INTERCON_FIRST,   GFX_WINDSACK_INTERCON_LAST,   1 }
 	};
 
-	if (IsRailwayStation(tile)) {
+	if (HasStationRail(tile)) {
 		AnimateStationTile(tile);
 		return;
 	}
@@ -2483,7 +2483,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 
 	if (v->type == VEH_TRAIN) {
 		if (!v->current_order.ShouldStopAtStation(v, station_id)) return VETSB_CONTINUE;
-		if (!IsRailwayStation(tile) || !Train::From(v)->IsFrontEngine()) return VETSB_CONTINUE;
+		if (!IsRailStation(tile) || !Train::From(v)->IsFrontEngine()) return VETSB_CONTINUE;
 
 		int station_ahead;
 		int station_length;

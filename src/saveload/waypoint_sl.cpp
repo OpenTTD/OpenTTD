@@ -104,7 +104,7 @@ void MoveWaypointsToBaseStations()
 			new_wp->facilities |= FACIL_TRAIN;
 			new_wp->owner = GetTileOwner(t);
 
-			SetRailwayStationReservation(t, reserved);
+			SetRailStationReservation(t, reserved);
 
 			if (wp->spec != NULL) {
 				SetCustomStationSpecIndex(t, AllocateSpecToStation(wp->spec, new_wp, true));

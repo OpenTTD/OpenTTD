@@ -133,7 +133,7 @@ public:
 
 	/* virtual */ FORCEINLINE bool TileBelongsToRailStation(TileIndex tile) const
 	{
-		return IsRailwayStationTile(tile) && GetStationIndex(tile) == this->index;
+		return IsRailStationTile(tile) && GetStationIndex(tile) == this->index;
 	}
 
 	/* virtual */ uint32 GetNewGRFVariable(const ResolverObject *object, byte variable, byte parameter, bool *available) const;

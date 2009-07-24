@@ -45,6 +45,7 @@ enum {
 
 static inline StationType GetStationType(TileIndex t)
 {
+	assert(IsTileType(t, MP_STATION));
 	return (StationType)GB(_m[t].m6, 3, 3);
 }
 
@@ -78,14 +79,14 @@ static inline void SetStationAnimationFrame(TileIndex t, uint8 frame)
 	_me[t].m7 = frame;
 }
 
-static inline bool IsRailwayStation(TileIndex t)
+static inline bool IsRailStation(TileIndex t)
 {
 	return GetStationType(t) == STATION_RAIL;
 }
 
-static inline bool IsRailwayStationTile(TileIndex t)
+static inline bool IsRailStationTile(TileIndex t)
 {
-	return IsTileType(t, MP_STATION) && IsRailwayStation(t);
+	return IsTileType(t, MP_STATION) && IsRailStation(t);
 }
 
 /**
@@ -118,7 +119,7 @@ static inline bool IsRailWaypointTile(TileIndex t)
  */
 static inline bool HasStationRail(TileIndex t)
 {
-	return IsRailwayStation(t) || IsRailWaypoint(t);
+	return IsRailStation(t) || IsRailWaypoint(t);
 }
 
 /**
@@ -230,7 +231,7 @@ static inline bool IsHangarTile(TileIndex t)
 
 static inline Axis GetRailStationAxis(TileIndex t)
 {
-	assert(IsRailwayStation(t) || IsRailWaypoint(t));
+	assert(HasStationRail(t));
 	return HasBit(GetStationGfx(t), 0) ? AXIS_Y : AXIS_X;
 }
 
@@ -247,9 +248,9 @@ static inline TrackBits GetRailStationTrackBits(TileIndex t)
 
 static inline bool IsCompatibleTrainStationTile(TileIndex t1, TileIndex t2)
 {
-	assert(IsRailwayStationTile(t2));
+	assert(IsRailStationTile(t2));
 	return
-		IsRailwayStationTile(t1) &&
+		IsRailStationTile(t1) &&
 		IsCompatibleRail(GetRailType(t1), GetRailType(t2)) &&
 		GetRailStationAxis(t1) == GetRailStationAxis(t2) &&
 		GetStationIndex(t1) == GetStationIndex(t2) &&
@@ -258,31 +259,31 @@ static inline bool IsCompatibleTrainStationTile(TileIndex t1, TileIndex t2)
 
 /**
  * Get the reservation state of the rail station
- * @pre IsRailwayStation(t) || IsRailWaypoint(t)
+ * @pre HasStationRail(t)
  * @param t the station tile
  * @return reservation state
  */
 static inline bool HasStationReservation(TileIndex t)
 {
-	assert(IsRailwayStation(t) || IsRailWaypoint(t));
+	assert(HasStationRail(t));
 	return HasBit(_m[t].m6, 2);
 }
 
 /**
  * Set the reservation state of the rail station
- * @pre IsRailwayStation(t) || IsRailWaypoint(t)
+ * @pre HasStationRail(t)
  * @param t the station tile
  * @param b the reservation state
  */
-static inline void SetRailwayStationReservation(TileIndex t, bool b)
+static inline void SetRailStationReservation(TileIndex t, bool b)
 {
-	assert(IsRailwayStation(t) || IsRailWaypoint(t));
+	assert(HasStationRail(t));
 	SB(_m[t].m6, 2, 1, b ? 1 : 0);
 }
 
 /**
  * Get the reserved track bits for a waypoint
- * @pre IsRailwayStation(t) || IsRailWaypoint(t)
+ * @pre HasStationRail(t)
  * @param t the tile
  * @return reserved track bits
  */
@@ -366,14 +367,14 @@ static inline void MakeRailStation(TileIndex t, Owner o, StationID sid, Axis a, 
 {
 	MakeStation(t, o, sid, STATION_RAIL, section + a);
 	SetRailType(t, rt);
-	SetRailwayStationReservation(t, false);
+	SetRailStationReservation(t, false);
 }
 
 static inline void MakeRailWaypoint(TileIndex t, Owner o, StationID sid, Axis a, byte section, RailType rt)
 {
 	MakeStation(t, o, sid, STATION_WAYPOINT, section + a);
 	SetRailType(t, rt);
-	SetRailwayStationReservation(t, false);
+	SetRailStationReservation(t, false);
 }
 
 static inline void MakeRoadStop(TileIndex t, Owner o, StationID sid, RoadStopType rst, RoadTypes rt, DiagDirection d)

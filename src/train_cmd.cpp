@@ -482,7 +482,7 @@ static int GetTrainAcceleration(Train *v, bool mode)
 	assert(max_speed == GetTrainCurveSpeedLimit(v)); // safety check, will be removed later
 	int speed = v->cur_speed * 10 / 16; // km-ish/h -> mp/h
 
-	if (IsRailwayStationTile(v->tile) && v->IsFrontEngine()) {
+	if (IsRailStationTile(v->tile) && v->IsFrontEngine()) {
 		StationID sid = GetStationIndex(v->tile);
 		if (v->current_order.ShouldStopAtStation(v, sid)) {
 			int station_ahead;
@@ -1977,7 +1977,7 @@ static void ReverseTrainDirection(Train *v)
 			HasSignalOnTrackdir(v->tile, v->GetVehicleTrackdir()) &&
 			!IsPbsSignal(GetSignalType(v->tile, FindFirstTrack(v->track))));
 
-		if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
+		if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
 		if (TryPathReserve(v, false, first_tile_okay)) {
 			/* Do a look-ahead now in case our current tile was already a safe tile. */
 			CheckNextTrainTile(v);
@@ -2404,7 +2404,7 @@ static void CheckNextTrainTile(Train *v)
 	/* Exit if we reached our destination depot or are inside a depot. */
 	if ((v->tile == v->dest_tile && v->current_order.IsType(OT_GOTO_DEPOT)) || v->track == TRACK_BIT_DEPOT) return;
 	/* Exit if we are on a station tile and are going to stop. */
-	if (IsRailwayStationTile(v->tile) && v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile))) return;
+	if (IsRailStationTile(v->tile) && v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile))) return;
 	/* Exit if the current order doesn't have a destination, but the train has orders. */
 	if ((v->current_order.IsType(OT_NOTHING) || v->current_order.IsType(OT_LEAVESTATION) || v->current_order.IsType(OT_LOADING)) && v->GetNumOrders() > 0) return;
 
@@ -2529,12 +2529,12 @@ static void ClearPathReservation(const Train *v, TileIndex tile, Trackdir track_
 				}
 			}
 		}
-	} else if (IsRailwayStationTile(tile)) {
+	} else if (IsRailStationTile(tile)) {
 		TileIndex new_tile = TileAddByDiagDir(tile, dir);
 		/* If the new tile is not a further tile of the same station, we
 		 * clear the reservation for the whole platform. */
 		if (!IsCompatibleTrainStationTile(new_tile, tile)) {
-			SetRailwayStationPlatformReservation(tile, ReverseDiagDir(dir), false);
+			SetRailStationPlatformReservation(tile, ReverseDiagDir(dir), false);
 		}
 	} else {
 		/* Any other tile */
@@ -2549,8 +2549,8 @@ void FreeTrainTrackReservation(const Train *v, TileIndex origin, Trackdir orig_t
 
 	TileIndex tile = origin != INVALID_TILE ? origin : v->tile;
 	Trackdir  td = orig_td != INVALID_TRACKDIR ? orig_td : v->GetVehicleTrackdir();
-	bool      free_tile = tile != v->tile || !(IsRailwayStationTile(v->tile) || IsTileType(v->tile, MP_TUNNELBRIDGE));
-	StationID station_id = IsRailwayStationTile(v->tile) ? GetStationIndex(v->tile) : INVALID_STATION;
+	bool      free_tile = tile != v->tile || !(IsRailStationTile(v->tile) || IsTileType(v->tile, MP_TUNNELBRIDGE));
+	StationID station_id = IsRailStationTile(v->tile) ? GetStationIndex(v->tile) : INVALID_STATION;
 
 	/* Don't free reservation if it's not ours. */
 	if (TracksOverlap(GetReservedTrackbits(tile) | TrackToTrackBits(TrackdirToTrack(td)))) return;
@@ -2607,7 +2607,7 @@ static bool NtpCallbFindStation(TileIndex tile, TrainTrackFollowerData *ttfd, Tr
 
 	/* did we reach the final station? */
 	if ((ttfd->station_index == INVALID_STATION && tile == ttfd->dest_coords) || (
-				IsRailwayStationTile(tile) &&
+				IsRailStationTile(tile) &&
 				GetStationIndex(tile) == ttfd->station_index
 			)) {
 		/* We do not check for dest_coords if we have a station_index,
@@ -3010,7 +3010,7 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 		orders.SwitchToNextOrder(false);
 	} else if (v->current_order.IsType(OT_LOADING) || (!v->current_order.IsType(OT_GOTO_DEPOT) && (
 			v->current_order.IsType(OT_GOTO_STATION) ?
-			IsRailwayStationTile(v->tile) && v->current_order.GetDestination() == GetStationIndex(v->tile) :
+			IsRailStationTile(v->tile) && v->current_order.GetDestination() == GetStationIndex(v->tile) :
 			v->tile == v->dest_tile))) {
 		orders.SwitchToNextOrder(true);
 	}

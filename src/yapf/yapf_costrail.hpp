@@ -163,7 +163,7 @@ public:
 	{
 		if (n.m_num_signals_passed >= m_sig_look_ahead_costs.Size() / 2) return 0;
 
-		if (IsRailwayStationTile(tile) && IsAnyStationTileReserved(tile, trackdir, skipped)) {
+		if (IsRailStationTile(tile) && IsAnyStationTileReserved(tile, trackdir, skipped)) {
 			return Yapf().PfGetSettings().rail_pbs_station_penalty * (skipped + 1);
 		} else if (TrackOverlapsTracks(GetReservedTrackbits(tile), TrackdirToTrack(trackdir))) {
 			int cost = Yapf().PfGetSettings().rail_pbs_cross_penalty;

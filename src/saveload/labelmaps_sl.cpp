@@ -64,7 +64,7 @@ void AfterLoadLabelMaps()
 					break;
 
 				case MP_STATION:
-					if (IsRailwayStation(t)) {
+					if (HasStationRail(t)) {
 						SetRailType(t, railtype_conversion_map[GetRailType(t)]);
 					}
 					break;

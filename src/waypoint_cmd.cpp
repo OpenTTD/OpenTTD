@@ -186,7 +186,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 
 		bool reserved = HasBit(GetRailReservationTrackBits(tile), AxisToTrack(axis));
 		MakeRailWaypoint(tile, owner, wp->index, axis, 0, GetRailType(tile));
-		SetRailwayStationReservation(tile, reserved);
+		SetRailStationReservation(tile, reserved);
 		MarkTileDirtyByTile(tile);
 
 		SetCustomStationSpecIndex(tile, AllocateSpecToStation(GetCustomStationSpec(STAT_CLASS_WAYP, p1), wp, true));

@@ -561,7 +561,7 @@ bool AfterLoadGame()
 					if (HasBit(_m[t].m6, 3)) SetBit(_m[t].m6, 2);
 					StationGfx gfx = GetStationGfx(t);
 					StationType st;
-					if (       IsInsideMM(gfx,   0,   8)) { // Railway station
+					if (       IsInsideMM(gfx,   0,   8)) { // Rail station
 						st = STATION_RAIL;
 						SetStationGfx(t, gfx - 0);
 					} else if (IsInsideMM(gfx,   8,  67)) { // Airport
@@ -573,13 +573,13 @@ bool AfterLoadGame()
 					} else if (IsInsideMM(gfx,  71,  75)) { // Bus
 						st = STATION_BUS;
 						SetStationGfx(t, gfx - 71);
-					} else if (gfx == 75) {                    // Oil rig
+					} else if (gfx == 75) {                 // Oil rig
 						st = STATION_OILRIG;
 						SetStationGfx(t, gfx - 75);
 					} else if (IsInsideMM(gfx,  76,  82)) { // Dock
 						st = STATION_DOCK;
 						SetStationGfx(t, gfx - 76);
-					} else if (gfx == 82) {                    // Buoy
+					} else if (gfx == 82) {                 // Buoy
 						st = STATION_BUOY;
 						SetStationGfx(t, gfx - 82);
 					} else if (IsInsideMM(gfx,  83, 168)) { // Extended airport
@@ -1654,7 +1654,7 @@ bool AfterLoadGame()
 					break;
 
 				case MP_STATION: // Clear PBS reservation on station
-					if (IsRailwayStation(t)) SetRailwayStationReservation(t, false);
+					if (HasStationRail(t)) SetRailStationReservation(t, false);
 					break;
 
 				case MP_TUNNELBRIDGE: // Clear PBS reservation on tunnels/birdges

@@ -38,7 +38,7 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return ::IsRailwayStationTile(tile);
+	return ::IsRailStationTile(tile);
 }
 
 /* static */ bool AIRail::IsRailWaypointTile(TileIndex tile)

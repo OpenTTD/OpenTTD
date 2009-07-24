@@ -191,7 +191,7 @@ protected:
 		m_new_tile = TILE_ADD(m_old_tile, diff);
 
 		/* special handling for stations */
-		if (IsRailTT() && IsRailwayStationTile(m_new_tile)) {
+		if (IsRailTT() && IsRailStationTile(m_new_tile)) {
 			m_is_station = true;
 		} else if (IsRoadTT() && IsRoadStopTile(m_new_tile)) {
 			m_is_station = true;
