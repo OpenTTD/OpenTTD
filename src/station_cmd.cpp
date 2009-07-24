@@ -720,21 +720,24 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
 	return cost;
 }
 
-static bool CanExpandRailroadStation(const Station *st, uint *fin, Axis axis)
+/**
+ * Check whether we can expand the rail part of the given station.
+ * @param st the station to expand
+ * @param cur_ta the current (and if all is fine new) tile area of the rail part of the station
+ * @param axis the axis of the newly build rail
+ * @return true if we are allowed to extend
+ */
+static bool CanExpandRailStation(const Station *st, TileArea &cur_ta, Axis axis)
 {
-	uint curw = st->trainst_w;
-	uint curh = st->trainst_h;
-	TileIndex tile = fin[0];
-	uint w = fin[1];
-	uint h = fin[2];
+	TileArea new_ta = cur_ta;
 
 	if (_settings_game.station.nonuniform_stations) {
 		/* determine new size of train station region.. */
-		int x = min(TileX(st->train_tile), TileX(tile));
-		int y = min(TileY(st->train_tile), TileY(tile));
-		curw = max(TileX(st->train_tile) + curw, TileX(tile) + w) - x;
-		curh = max(TileY(st->train_tile) + curh, TileY(tile) + h) - y;
-		tile = TileXY(x, y);
+		int x = min(TileX(st->train_tile), TileX(cur_ta.tile));
+		int y = min(TileY(st->train_tile), TileY(cur_ta.tile));
+		new_ta.w = max(TileX(st->train_tile) + new_ta.w, TileX(cur_ta.tile) + cur_ta.w) - x;
+		new_ta.h = max(TileY(st->train_tile) + new_ta.h, TileY(cur_ta.tile) + cur_ta.h) - y;
+		new_ta.tile = TileXY(x, y);
 	} else {
 		/* do not allow modifying non-uniform stations,
 		 * the uniform-stations code wouldn't handle it well */
@@ -752,36 +755,33 @@ static bool CanExpandRailroadStation(const Station *st, uint *fin, Axis axis)
 		}
 
 		/* check if the new station adjoins the old station in either direction */
-		if (curw == w && st->train_tile == tile + TileDiffXY(0, h)) {
+		if (new_ta.w == cur_ta.w && st->train_tile == cur_ta.tile + TileDiffXY(0, cur_ta.h)) {
 			/* above */
-			curh += h;
-		} else if (curw == w && st->train_tile == tile - TileDiffXY(0, curh)) {
+			new_ta.h += cur_ta.h;
+		} else if (new_ta.w == cur_ta.w && st->train_tile == cur_ta.tile - TileDiffXY(0, new_ta.h)) {
 			/* below */
-			tile -= TileDiffXY(0, curh);
-			curh += h;
-		} else if (curh == h && st->train_tile == tile + TileDiffXY(w, 0)) {
+			new_ta.tile -= TileDiffXY(0, new_ta.h);
+			new_ta.h += cur_ta.h;
+		} else if (new_ta.h == cur_ta.h && st->train_tile == cur_ta.tile + TileDiffXY(cur_ta.w, 0)) {
 			/* to the left */
-			curw += w;
-		} else if (curh == h && st->train_tile == tile - TileDiffXY(curw, 0)) {
+			new_ta.w += cur_ta.w;
+		} else if (new_ta.h == cur_ta.h && st->train_tile == cur_ta.tile - TileDiffXY(new_ta.w, 0)) {
 			/* to the right */
-			tile -= TileDiffXY(curw, 0);
-			curw += w;
+			new_ta.tile -= TileDiffXY(new_ta.w, 0);
+			new_ta.w += cur_ta.w;
 		} else {
 			_error_message = STR_NONUNIFORM_STATIONS_DISALLOWED;
 			return false;
 		}
 	}
 	/* make sure the final size is not too big. */
-	if (curw > _settings_game.station.station_spread || curh > _settings_game.station.station_spread) {
+	if (new_ta.w > _settings_game.station.station_spread || new_ta.h > _settings_game.station.station_spread) {
 		_error_message = STR_ERROR_STATION_TOO_SPREAD_OUT;
 		return false;
 	}
 
-	/* now tile contains the new value for st->train_tile
-	 * curw, curh contain the new value for width and height */
-	fin[0] = tile;
-	fin[1] = curw;
-	fin[2] = curh;
+	/* Update the current values with the new. */
+	cur_ta = new_ta;
 	return true;
 }
 
@@ -872,10 +872,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 	if (h_org > _settings_game.station.station_spread || w_org > _settings_game.station.station_spread) return CMD_ERROR;
 
 	/* these values are those that will be stored in train_tile and station_platforms */
-	uint finalvalues[3];
-	finalvalues[0] = tile_org;
-	finalvalues[1] = w_org;
-	finalvalues[2] = h_org;
+	TileArea new_location = { tile_org, w_org, h_org };
 
 	/* Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station) */
 	StationID est = INVALID_STATION;
@@ -929,7 +926,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 			/* check if we want to expanding an already existing station? */
 			if (!_settings_game.station.join_stations)
 				return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD);
-			if (!CanExpandRailroadStation(st, finalvalues, axis))
+			if (!CanExpandRailStation(st, new_location, axis))
 				return CMD_ERROR;
 		}
 
@@ -985,11 +982,11 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 		ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << axis, _settings_game.station.nonuniform_stations ? &est : NULL);
 		if (CmdFailed(ret)) return ret;
 
-		st->train_tile = finalvalues[0];
-		st->AddFacility(FACIL_TRAIN, finalvalues[0]);
+		st->train_tile = new_location.tile;
+		st->AddFacility(FACIL_TRAIN, new_location.tile);
 
-		st->trainst_w = finalvalues[1];
-		st->trainst_h = finalvalues[2];
+		st->trainst_w = new_location.w;
+		st->trainst_h = new_location.h;
 
 		st->rect.BeforeAddRect(tile_org, w_org, h_org, StationRect::ADD_TRY);
 
