@@ -2570,7 +2570,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
  */
 static bool StationHandleBigTick(BaseStation *st)
 {
-	if ((st->facilities & ~FACIL_WAYPOINT) == 0 && ++st->delete_ctr >= 8) {
+	if (!st->IsInUse() && ++st->delete_ctr >= 8) {
 		delete st;
 		return false;
 	}
@@ -2698,7 +2698,7 @@ static void UpdateStationRating(Station *st)
 /* called for every station each tick */
 static void StationHandleSmallTick(BaseStation *st)
 {
-	if ((st->facilities & FACIL_WAYPOINT) != 0 || st->facilities == 0) return;
+	if ((st->facilities & FACIL_WAYPOINT) != 0 || !st->IsInUse()) return;
 
 	byte b = st->delete_ctr + 1;
 	if (b >= 185) b = 0;

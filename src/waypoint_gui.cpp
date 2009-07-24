@@ -59,9 +59,9 @@ public:
 	virtual void OnPaint()
 	{
 		/* You can only change your own waypoints */
-		this->SetWidgetDisabledState(WAYPVW_RENAME, (this->wp->facilities & ~FACIL_WAYPOINT) == 0 || (this->wp->owner != _local_company && this->wp->owner != OWNER_NONE));
-		/* Disable the widget for waypoints with no owner (after company bankrupt) */
-		this->SetWidgetDisabledState(WAYPVW_SHOW_VEHICLES, (this->wp->facilities & ~FACIL_WAYPOINT) == 0);
+		this->SetWidgetDisabledState(WAYPVW_RENAME, !this->wp->IsInUse() || (this->wp->owner != _local_company && this->wp->owner != OWNER_NONE));
+		/* Disable the widget for waypoints with no use */
+		this->SetWidgetDisabledState(WAYPVW_SHOW_VEHICLES, !this->wp->IsInUse());
 
 		SetDParam(0, this->wp->index);
 		this->DrawWidgets();

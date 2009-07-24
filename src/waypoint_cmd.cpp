@@ -107,7 +107,7 @@ static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile, StringID str)
 	uint thres = 8;
 
 	FOR_ALL_WAYPOINTS(wp) {
-		if ((wp->facilities & ~FACIL_WAYPOINT) == 0 && wp->string_id == str && (wp->owner == _current_company || wp->owner == OWNER_NONE)) {
+		if (!wp->IsInUse() && wp->string_id == str && (wp->owner == _current_company || wp->owner == OWNER_NONE)) {
 			uint cur_dist = DistanceManhattan(tile, wp->xy);
 
 			if (cur_dist < thres) {

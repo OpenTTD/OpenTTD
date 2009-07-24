@@ -638,7 +638,7 @@ static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 		FOR_ALL_BASE_STATIONS(st) {
 			/* There can be buoys, remove them */
 			if (IsBuoyTile(st->xy)) DoCommand(st->xy, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
-			if ((st->facilities & ~FACIL_WAYPOINT) == 0) delete st;
+			if (!st->IsInUse()) delete st;
 		}
 
 		MarkWholeScreenDirty();

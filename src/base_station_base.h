@@ -94,6 +94,17 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	{
 		return BaseStation::Get(GetStationIndex(tile));
 	}
+
+	/**
+	 * Check whether the base station currently is in use; in use means
+	 * that it is not scheduled for deletion and that it still has some
+	 * facilities left.
+	 * @return true if still in use
+	 */
+	FORCEINLINE bool IsInUse() const
+	{
+		return (this->facilities & ~FACIL_WAYPOINT) != 0;
+	}
 };
 
 #define FOR_ALL_BASE_STATIONS(var) FOR_ALL_ITEMS_FROM(BaseStation, station_index, var, 0)
