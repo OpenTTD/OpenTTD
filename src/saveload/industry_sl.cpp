@@ -46,7 +46,7 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, last_cargo_accepted_at,     SLE_INT32,                 70, SL_MAX_VERSION),
 	SLE_CONDVAR(Industry, selected_layout,            SLE_UINT8,                 73, SL_MAX_VERSION),
 
-	SLE_CONDARRX(cpp_offsetof(Industry, psa) + cpp_offsetof(Industry::PersistentStorage, storage), SLE_UINT32, 16, 76, SL_MAX_VERSION),
+	SLE_CONDARR(Industry, psa.storage,                SLE_UINT32, 16,            76, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Industry, random_triggers,            SLE_UINT8,                 82, SL_MAX_VERSION),
 	SLE_CONDVAR(Industry, random,                     SLE_UINT16,                82, SL_MAX_VERSION),

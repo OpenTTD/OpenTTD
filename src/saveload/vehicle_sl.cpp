@@ -453,21 +453,21 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		/* This next line is for version 4 and prior compatibility.. it temporarily reads
 		 type and flags (which were both 4 bits) into type. Later on this is
 		 converted correctly */
-		SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, type),           SLE_UINT8,                    0,   4),
-		SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, dest),           SLE_FILE_U8  | SLE_VAR_U16,   0,   4),
+		 SLE_CONDVAR(Vehicle, current_order.type,    SLE_UINT8,                    0,   4),
+		 SLE_CONDVAR(Vehicle, current_order.dest,    SLE_FILE_U8  | SLE_VAR_U16,   0,   4),
 
 		/* Orders for version 5 and on */
-		SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, type),           SLE_UINT8,                    5, SL_MAX_VERSION),
-		SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, flags),          SLE_UINT8,                    5, SL_MAX_VERSION),
-		SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, dest),           SLE_UINT16,                   5, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, current_order.type,    SLE_UINT8,                    5, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, current_order.flags,   SLE_UINT8,                    5, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, current_order.dest,    SLE_UINT16,                   5, SL_MAX_VERSION),
 
 		/* Refit in current order */
-		SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, refit_cargo),    SLE_UINT8,                   36, SL_MAX_VERSION),
-		SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, refit_subtype),  SLE_UINT8,                   36, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, current_order.refit_cargo,   SLE_UINT8,             36, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, current_order.refit_subtype, SLE_UINT8,             36, SL_MAX_VERSION),
 
 		/* Timetable in current order */
-		SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, wait_time),      SLE_UINT16,                  67, SL_MAX_VERSION),
-		SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, travel_time),    SLE_UINT16,                  67, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, current_order.wait_time,     SLE_UINT16,            67, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, current_order.travel_time,   SLE_UINT16,            67, SL_MAX_VERSION),
 
 		 SLE_CONDREF(Vehicle, orders,                REF_ORDER,                    0, 104),
 		 SLE_CONDREF(Vehicle, orders,                REF_ORDERLIST,              105, SL_MAX_VERSION),
@@ -524,7 +524,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 
 	static const SaveLoad _train_desc[] = {
 		SLE_WRITEBYTE(Vehicle, type, VEH_TRAIN),
-		SLE_VEH_INCLUDEX(),
+		SLE_VEH_INCLUDE(),
 		     SLE_VAR(Train, crash_anim_pos,      SLE_UINT16),
 		     SLE_VAR(Train, force_proceed,       SLE_UINT8),
 		     SLE_VAR(Train, railtype,            SLE_UINT8),
@@ -543,7 +543,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 
 	static const SaveLoad _roadveh_desc[] = {
 		SLE_WRITEBYTE(Vehicle, type, VEH_ROAD),
-		SLE_VEH_INCLUDEX(),
+		SLE_VEH_INCLUDE(),
 		     SLE_VAR(RoadVehicle, state,                SLE_UINT8),
 		     SLE_VAR(RoadVehicle, frame,                SLE_UINT8),
 		     SLE_VAR(RoadVehicle, blocked_ctr,          SLE_UINT16),
@@ -563,7 +563,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 
 	static const SaveLoad _ship_desc[] = {
 		SLE_WRITEBYTE(Vehicle, type, VEH_SHIP),
-		SLE_VEH_INCLUDEX(),
+		SLE_VEH_INCLUDE(),
 		     SLE_VAR(Ship, state, SLE_UINT8),
 
 		/* reserve extra space in savegame here. (currently 16 bytes) */
@@ -574,7 +574,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 
 	static const SaveLoad _aircraft_desc[] = {
 		SLE_WRITEBYTE(Vehicle, type, VEH_AIRCRAFT),
-		SLE_VEH_INCLUDEX(),
+		SLE_VEH_INCLUDE(),
 		     SLE_VAR(Aircraft, crashed_counter,       SLE_UINT16),
 		     SLE_VAR(Aircraft, pos,                   SLE_UINT8),
 
@@ -642,8 +642,8 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		SLE_CONDNULL(5,                                                            0,  57),
 		     SLE_VAR(Vehicle, owner,                 SLE_UINT8),
 		     SLE_VAR(Vehicle, vehstatus,             SLE_UINT8),
-		SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, dest),           SLE_FILE_U8 | SLE_VAR_U16,   0,   4),
-		SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, dest),           SLE_UINT16,                  5, SL_MAX_VERSION),
+		 SLE_CONDVAR(Vehicle, current_order.dest,    SLE_FILE_U8 | SLE_VAR_U16,    0,   4),
+		 SLE_CONDVAR(Vehicle, current_order.dest,    SLE_UINT16,                   5, SL_MAX_VERSION),
 
 		     SLE_VAR(Vehicle, cur_image,             SLE_UINT16),
 		 SLE_CONDVAR(Vehicle, age,                   SLE_FILE_U16 | SLE_VAR_I32,   0,  30),

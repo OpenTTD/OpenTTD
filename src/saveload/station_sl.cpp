@@ -297,7 +297,7 @@ static const SaveLoad _base_station_desc[] = {
 
 static const SaveLoad _station_desc[] = {
 	SLE_WRITEBYTE(Station, facilities,                 FACIL_NONE),
-	SLE_ST_INCLUDEX(),
+	SLE_ST_INCLUDE(),
 
 	      SLE_VAR(Station, train_tile,                 SLE_UINT32),
 	      SLE_VAR(Station, trainst_w,                  SLE_UINT8),
@@ -323,7 +323,7 @@ static const SaveLoad _station_desc[] = {
 
 static const SaveLoad _waypoint_desc[] = {
 	SLE_WRITEBYTE(Waypoint, facilities,                FACIL_WAYPOINT),
-	SLE_ST_INCLUDEX(),
+	SLE_ST_INCLUDE(),
 
 	      SLE_VAR(Waypoint, town_cn,                   SLE_UINT16),
 
