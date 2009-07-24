@@ -92,7 +92,7 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	 * @param tile A tile that contains the platform in question
 	 * @return The length of the platform
 	 */
-	virtual uint GetPlatformLength(TileIndex tile, DiagDirection dir) const = 0;
+	virtual uint GetPlatformLength(TileIndex tile) const = 0;
 
 	/**
 	 * Determines the REMAINING length of a platform, starting at (and including)
@@ -101,7 +101,7 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	 * @param dir The direction in which to search.
 	 * @return The platform length
 	 */
-	virtual uint GetPlatformLength(TileIndex tile) const = 0;
+	virtual uint GetPlatformLength(TileIndex tile, DiagDirection dir) const = 0;
 
 	/**
 	 * Get the base station belonging to a specific tile.
