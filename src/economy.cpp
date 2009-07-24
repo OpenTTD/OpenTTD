@@ -1505,7 +1505,8 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		}
 	}
 
-	v->load_unload_time_rem = unloading_time;
+	/* Always wait at least 1, otherwise we'll wait 'infinitively' long. */
+	v->load_unload_time_rem = max(1, unloading_time);
 
 	if (completely_emptied) {
 		TriggerVehicle(v, VEHICLE_TRIGGER_EMPTY);
