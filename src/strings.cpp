@@ -142,10 +142,7 @@ static char *GetStringWithArgs(char *buffr, uint string, int64 *argv, const char
 	}
 
 	if (index >= _langtab_num[tab]) {
-		error(
-			"String 0x%X is invalid. "
-			"Probably because an old version of the .lng file.\n", string
-		);
+		error("String 0x%X is invalid. You are probably using an old version of the .lng file.\n", string);
 	}
 
 	return FormatString(buffr, GetStringPtr(GB(string, 0, 16)), argv, GB(string, 24, 8), last);
