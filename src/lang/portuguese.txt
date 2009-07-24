@@ -1165,7 +1165,9 @@ STR_GO_TO_WAYPOINT                                              :Ir via {WAYPOIN
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Ir sem parar via {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY                                           :Ponto de passagem {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :Ponto de passagem {TOWN} #{COMMA}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Ponto de passagem {TOWN}#{COMMA}
+STR_BUOYNAME_CITY                                               :Boia de {TOWN}
+STR_BUOYNAME_CITY_SERIAL                                        :Boia de {TOWN}#{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Ponto de passagem
 
 STR_WAYPOINT                                                    :{WHITE}Ponto de passagem
@@ -2051,6 +2053,8 @@ STR_SV_STNAME_AIRPORT                                           :Aeroporto de {S
 STR_SV_STNAME_OILFIELD                                          :Petrolífera de {STRING}
 STR_SV_STNAME_MINES                                             :Minas de {STRING}
 STR_SV_STNAME_DOCKS                                             :Docas de {STRING}
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Anexo
 STR_SV_STNAME_SIDINGS                                           :Desvio de {STRING}
@@ -3450,6 +3454,7 @@ STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
@@ -3606,6 +3611,7 @@ STR_AI_AUTHOR                                                   :{BLACK}Autor: {
 STR_AI_VERSION                                                  :{BLACK}Versão: {NUM}
 STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Um dos jogadores computador teve um erro. Por favor relate isto ao autor do jogador com uma imagem da janela de depuramento de erros.
+STR_AI_NO_AI_FOUND                                              :Não foi encontrada IA adequada para carregar.{}Esta IA é um pacote vazio e não fará nada.{}Pode descarregar várias IA através do sistema 'Conteúdo Online'.
 ########
 
 ############ town controlled noise level

@@ -3611,6 +3611,7 @@ STR_AI_AUTHOR                                                   :{BLACK}Maker: {
 STR_AI_VERSION                                                  :{BLACK}Versie: {NUM}
 STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Een van de draaiende AI's is gecrashed. Meldt dit bij de schrijver van deze AI met een schermprint van het AI Debugscherm.
+STR_AI_NO_AI_FOUND                                              :Geen geschikte AI gevonden. {} Deze AI is een 'dummy' en voert niets uit.{}Verschillende AI's kunnen worden gedownload via het 'Online Content' systeem.
 ########
 
 ############ town controlled noise level

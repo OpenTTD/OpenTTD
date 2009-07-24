@@ -3612,7 +3612,7 @@ STR_AI_AUTHOR                                                   :{BLACK}Autor: {
 STR_AI_VERSION                                                  :{BLACK}Version: {NUM}
 STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Einer der laufenden KIs ist abgestürzt. Es ist nett, den Fehler dem Autor der KI mittels eines Screenshots vom KI-Debug-Fenster unter Angabe der OpenTTD-Versionsnummer zu melden.
-STR_AI_NO_AI_FOUND                                              :Keine passende KI gefunden.{}Diese KI ist die Dummy-KI und wird nichts tun.{}Man kann aber KIs als Erweiterung herunterladen
+STR_AI_NO_AI_FOUND                                              :Keine passende KI gefunden.{}Diese KI ist ein Platzhalter und wird nichts tun.{}KIs können im Hauptmenü als Erweiterung heruntergeladen werden.
 ########
 
 ############ town controlled noise level

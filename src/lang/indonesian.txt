@@ -3611,6 +3611,7 @@ STR_AI_AUTHOR                                                   :{BLACK}Pembuat:
 STR_AI_VERSION                                                  :{BLACK}Versi: {NUM}
 STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Salah satu AI gagal. Laporkan ini kepada AI Author dengan potongan layar dari Jendela Debug AI.
+STR_AI_NO_AI_FOUND                                              :Tidak ada AI yang cocok untuk digunakan.{}Ini adalah dummy AI yang tidak akan melakukan apapun.{}Anda dapat download beberapa AI melalui sistem 'Konten Online'.
 ########
 
 ############ town controlled noise level

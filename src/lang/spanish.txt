@@ -292,7 +292,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
-STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Gráfico de benefício operativo
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Gráfico de beneficio operativo
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Gráfico de ingresos
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Gráfico de carga entregada
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Gráfico de rendimiento
@@ -619,7 +619,7 @@ STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}No se pu
 STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...debe constuirse la población primero
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...solo se permite uno por población
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árboles
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Colocar señal
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Colocar cartel
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Árboles al azar
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta árboles al azar sobre el paisaje
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Coloca zonas rocosas sobre el paisaje
@@ -679,12 +679,12 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configuración 
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opciones de transparencia
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Ver nombres de poblaciones
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Ver nombres de estaciones
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Ver señales
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Ver carteles
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Ver puntos de comprobación
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animación completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Detalle completo
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Edificios transparentes
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Señales transparentes
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Carteles transparentes
 ############ range ends here
 
 ############ range for menu starts
@@ -705,7 +705,7 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvenciones
 ############ 'Display map' dropdown. In SE, there is one more item.
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa del mundo
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Punto de vista extra
-STR_MAP_MENU_SIGN_LIST                                          :Lista de señales
+STR_MAP_MENU_SIGN_LIST                                          :Lista de carteles
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Directorio de poblaciones
 ############ end of the 'Display map' dropdown
 
@@ -1067,12 +1067,12 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Cuando 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Coloca automáticamente semáforos antes de: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activar la GUI de señales: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipo de señal a construir por defecto: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normal
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Avanzada
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Un sentido avanzada
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Señales de bloque
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Señales de ruta
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Señales de ruta de un sentido
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Cambiar entre tipos de señales: {ORANGE}{STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Solo normales
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Solo avanzada
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Solo señales de bloque
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Solo señales de ruta
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todas
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Patrón de construcción de carreteras para las nuevas ciudades: {ORANGE}{STRING}
@@ -1572,15 +1572,15 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Seleccio
 STR_RAILROAD_TRACK                                              :Vía del tren
 STR_RAILROAD_TRAIN_DEPOT                                        :Depósito de trenes
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...otra compañía posee el área
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vía del tren con señales normales
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vía del tren con señales de bloque
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vía del tren con pre-señales
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Vía del tren con señales de salida
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vía del tren con señales combo
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Via del tren con señales pbs
-STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Vía de tren con señales avanzadas de un sentido
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Vía de tren con señales normales y preseñalización
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Vía de tren con señales normales y señales de salida
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Vía de tren con señales combo y normales
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Vía del tren con señales de ruta
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Vía de tren con señales de ruta de un sentido
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Vía de tren con señales de bloque y preseñales
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Vía de tren con señales de bloque y de salida
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Vía de tren con señales combo y de bloque
 STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Vía de tren con señales de bloque y de ruta
 STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Vía de tren con señales de bloque y de ruta de un sentido
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Vía de tren con preseñalización y señales de salida
@@ -1754,17 +1754,17 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Banco Cerdito
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Paisaje
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plantar árboles
-STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Colocar señal
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Colocar cartel
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árboles
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...ya hay árboles aquí
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}No se pueden plantar árboles aquí...
 STR_SIGN_WHITE                                                  :{WHITE}{SIGN}
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...demasiadas señales
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}No se puede colocar una señal aquí...
-STR_SIGN_DEFAULT                                                :Señal
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar texto de la señal
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}No se puede cambiar el nombre de la señal...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}No se puede borrar la señal...
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...demasiados carteles
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}No se puede colocar un cartel aqui...
+STR_SIGN_DEFAULT                                                :Cartel
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar texto del cartel
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}No se puede cambiar el nombre del cartel...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}No se puede borrar el cartel...
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Seleccione el tipo de árboles a plantar
 STR_TREE_NAME_TREES                                             :Árboles
 STR_TREE_NAME_RAINFOREST                                        :Selváticos
@@ -3010,7 +3010,7 @@ STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Reformar
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Reformar barco para que transporte el tipo de carga resaltado
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Reformar aeronave para que lleve el tipo de carga resaltado
 
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Elegir tipo de carga para que el tren lleve
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Elegir tipo de carga transportable para el tren
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecciona tipo de carga que transportará el vehículo de carretera
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Seleccione tipo de carga para que el barco la lleve
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Seleccione tipo de carga para que la aeronave la lleve
@@ -3257,7 +3257,7 @@ STR_MASS_STOP_LIST_TIP                                          :{BLACK}Pulsa pa
 STR_MASS_START_LIST_TIP                                         :{BLACK}Pulsa para arrancar todos los vehículos de la lista
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de señales - {COMMA} Señales
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de carteles - {COMMA} Carteles
 
 STR_ORDER_REFIT_FAILED                                          :{WHITE}Orden de fallo en recarga ha parado {VEHICLE}
 
@@ -3498,9 +3498,9 @@ STR_BLACK_7                                                     :{BLACK}7
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}El nombre debe ser único
 
 #### Improved sign GUI
-STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Ir a la siguiente señal
-STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Ir a la señal anterior
-STR_SIGN_OSKTITLE                                               :{BLACK}Introduce un nombre para la señal
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Ir al siguiente cartel
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Ir al anterior cartel
+STR_SIGN_OSKTITLE                                               :{BLACK}Introduce un nombre para el cartel
 
 ########
 
@@ -3560,7 +3560,7 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Cambiar 
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Selección de Señales
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}No se pueden convertir las señales aquí...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Señal de bloque(semáforo){}Este es el tipo de señal mas básico, que permite a un único tren estar a la vez en el mismo bloque.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Señal de bloque (semáforo){}Este es el tipo de señal mas básico, que permite a un único tren estar a la vez en el mismo bloque.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Señal de entrada (semáforo){}Verde si existe una o más señales de salida en el tramo en verde, de lo contrario estará en rojo
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Señal de salida (semáforo){}Se comporta de la misma manera que una señal de bloque, pero es necesaria para activar el color correcto en las preseñales de entrada y combo.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Señales combo (semáforos){}Las señales combo simplemente actúan como una preseñal de entrada y de salida. Esto permite construir "árboles" de preseñales.
@@ -3678,6 +3678,6 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No ha si
 
 STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Consultar contenido online
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Comprobar si hay nuevos contenidos actualizados para descargar
-STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Encontrar contenido perdido en línea
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Encontrar contenido que falta en línea
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Comprobar si el contenido que falta puede ser encontrado en línea
 ########

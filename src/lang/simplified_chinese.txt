@@ -1166,6 +1166,8 @@ STR_GO_NON_STOP_TO_WAYPOINT                                     :经过(不停) 
 
 STR_WAYPOINTNAME_CITY                                           :路点 {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :路点 {TOWN} #{COMMA}
+STR_BUOYNAME_CITY                                               :{TOWN} 浮标
+STR_BUOYNAME_CITY_SERIAL                                        :{TOWN} 浮标 #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :路点
 
 STR_WAYPOINT                                                    :{WHITE}路点
@@ -2051,6 +2053,8 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} 机场
 STR_SV_STNAME_OILFIELD                                          :{STRING} 油田
 STR_SV_STNAME_MINES                                             :{STRING} 矿
 STR_SV_STNAME_DOCKS                                             :{STRING} 码头
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} 村
 STR_SV_STNAME_SIDINGS                                           :{STRING} 坝
@@ -3607,6 +3611,7 @@ STR_AI_AUTHOR                                                   :{BLACK}作者: 
 STR_AI_VERSION                                                  :{BLACK}版本: {NUM}
 STR_AI_URL                                                      :{BLACK}URL： {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}一个运行中的 AI 崩溃了。请附上一张 AI 调试窗口的截图，将此错误通报 AI 作者。
+STR_AI_NO_AI_FOUND                                              :找不到可使用的AI。这个AI只是一个演示而不会有任何动作，{}您可以通过“在线查找扩展包”功能下载AI程序。
 ########
 
 ############ town controlled noise level
