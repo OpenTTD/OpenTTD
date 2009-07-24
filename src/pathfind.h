@@ -7,6 +7,7 @@
 
 #include "direction_type.h"
 #include "station_base.h"
+#include "waypoint_base.h"
 
 enum {
 	STR_FACTOR  = 2,
@@ -89,7 +90,10 @@ void NewTrainPathfind(TileIndex tile, TileIndex dest, RailTypes railtypes, DiagD
  */
 static inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile)
 {
-	const Station *st = Station::Get(station);
+	const BaseStation *bst = BaseStation::Get(station);
+	if (Waypoint::IsExpected(bst)) return bst->xy;
+
+	const Station *st = Station::From(bst);
 
 	/* If the rail station is (temporarily) not present, use the station sign to drive near the station */
 	if (st->train_tile == INVALID_TILE) return st->xy;

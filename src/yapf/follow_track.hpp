@@ -191,7 +191,7 @@ protected:
 		m_new_tile = TILE_ADD(m_old_tile, diff);
 
 		/* special handling for stations */
-		if (IsRailTT() && IsRailStationTile(m_new_tile)) {
+		if (IsRailTT() && HasStationTileRail(m_new_tile)) {
 			m_is_station = true;
 		} else if (IsRoadTT() && IsRoadStopTile(m_new_tile)) {
 			m_is_station = true;
@@ -346,7 +346,7 @@ protected:
 		if (IsRailTT() && m_is_station) {
 			/* entered railway station
 			 * get platform length */
-			uint length = Station::GetByTile(m_new_tile)->GetPlatformLength(m_new_tile, TrackdirToExitdir(m_old_td));
+			uint length = BaseStation::GetByTile(m_new_tile)->GetPlatformLength(m_new_tile, TrackdirToExitdir(m_old_td));
 			/* how big step we must do to get to the last platform tile; */
 			m_tiles_skipped = length - 1;
 			/* move to the platform end */

@@ -24,6 +24,16 @@ struct Waypoint : SpecializedStation<Waypoint, true> {
 	/* virtual */ uint32 GetNewGRFVariable(const struct ResolverObject *object, byte variable, byte parameter, bool *available) const;
 
 	/* virtual */ void GetTileArea(TileArea *ta, StationType type) const;
+
+	/* virtual */ uint GetPlatformLength(TileIndex tile, DiagDirection dir) const
+	{
+		return 1;
+	}
+
+	/* virtual */ uint GetPlatformLength(TileIndex tile) const
+	{
+		return 1;
+	}
 };
 
 #define FOR_ALL_WAYPOINTS(var) FOR_ALL_BASE_STATIONS_OF_TYPE(Waypoint, var)

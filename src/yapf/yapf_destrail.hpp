@@ -129,15 +129,10 @@ public:
 	{
 		switch (v->current_order.GetType()) {
 			case OT_GOTO_STATION:
+			case OT_GOTO_WAYPOINT:
 				m_destTile = CalcClosestStationTile(v->current_order.GetDestination(), v->tile);
 				m_dest_station_id = v->current_order.GetDestination();
 				m_destTrackdirs = INVALID_TRACKDIR_BIT;
-				break;
-
-			case OT_GOTO_WAYPOINT:
-				m_destTile = Waypoint::Get(v->current_order.GetDestination())->xy;
-				m_dest_station_id = INVALID_STATION;
-				m_destTrackdirs = IsRailWaypointTile(m_destTile) ? TrackToTrackdirBits(GetRailStationTrack(m_destTile)) : INVALID_TRACKDIR_BIT;
 				break;
 
 			default:
@@ -160,7 +155,7 @@ public:
 	{
 		bool bDest;
 		if (m_dest_station_id != INVALID_STATION) {
-			bDest = IsRailStationTile(tile)
+			bDest = HasStationTileRail(tile)
 				&& (GetStationIndex(tile) == m_dest_station_id)
 				&& (GetRailStationTrack(tile) == TrackdirToTrack(td));
 		} else {

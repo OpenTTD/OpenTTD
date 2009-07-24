@@ -412,9 +412,9 @@ static TileIndex GetOrderLocation(const Order& o)
 {
 	switch (o.GetType()) {
 		default: NOT_REACHED();
-		case OT_GOTO_WAYPOINT: // This function is only called for ships, thus waypoints are buoys which are stations.
-		case OT_GOTO_STATION: return Station::Get(o.GetDestination())->xy;
-		case OT_GOTO_DEPOT:   return Depot::Get(o.GetDestination())->xy;
+		case OT_GOTO_WAYPOINT: return Waypoint::Get(o.GetDestination())->xy;
+		case OT_GOTO_STATION:  return Station::Get(o.GetDestination())->xy;
+		case OT_GOTO_DEPOT:    return Depot::Get(o.GetDestination())->xy;
 	}
 }
 
@@ -1688,11 +1688,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			if (v->type == VEH_TRAIN) {
-				v->dest_tile = Waypoint::Get(order->GetDestination())->xy;
-			} else {
-				v->dest_tile = Station::Get(order->GetDestination())->xy;
-			}
+			v->dest_tile = Waypoint::Get(order->GetDestination())->xy;
 			return true;
 
 		case OT_CONDITIONAL: {
@@ -1755,17 +1751,11 @@ bool ProcessOrders(Vehicle *v)
 	 */
 	bool may_reverse = v->current_order.IsType(OT_NOTHING);
 
-	/* Check if we've reached the waypoint? */
-	if (v->current_order.IsType(OT_GOTO_WAYPOINT) && v->tile == v->dest_tile) {
-		UpdateVehicleTimetable(v, true);
-		v->IncrementOrderIndex();
-	}
-
 	/* Check if we've reached a non-stop station.. */
-	if (v->current_order.IsType(OT_GOTO_STATION) && (v->current_order.GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) &&
+	if (((v->current_order.IsType(OT_GOTO_STATION) && (v->current_order.GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) || v->current_order.IsType(OT_GOTO_WAYPOINT)) &&
 			IsTileType(v->tile, MP_STATION) &&
 			v->current_order.GetDestination() == GetStationIndex(v->tile)) {
-		v->last_station_visited = v->current_order.GetDestination();
+		if (v->current_order.IsType(OT_GOTO_STATION)) v->last_station_visited = v->current_order.GetDestination();
 		UpdateVehicleTimetable(v, true);
 		v->IncrementOrderIndex();
 	}
