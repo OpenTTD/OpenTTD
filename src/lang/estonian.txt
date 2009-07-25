@@ -773,28 +773,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Kleebi v
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Vaatealma koha võtmine peamiseks vaateks
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuuta
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valuuta valimine
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mõõtühikud
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Mõõtühikute valik
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Sõidukid
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Vali, kummal pool teed mootorsõidukid liiklevad
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vasakpoolne liiklus
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Parempoolne liiklus
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Linnanimed
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Vali linnanimede stiil
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Isesalvestus
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vali automaatselt mängu salvestamise vahemik
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Väljas
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Iga kuu
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Iga 3 kuu tagant
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Iga 6 kuu tagant
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Iga 12 kuu tagant
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Alusta uut mängu
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Laadi salvestatud mäng
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Loo oma mängukaart
@@ -887,7 +870,6 @@ STR_CURR_EEK                                                    :Eesti Kroon (EE
 STR_CURR_CUSTOM                                                 :Omatehtud...
 
 STR_OPTIONS_LANG                                                :{BLACK}Keel
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Vali kasutajaliideses kasutatav keel
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Täisekraan
@@ -895,17 +877,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Märgi s
 STR_FULLSCREEN_FAILED                                           :{WHITE}Täisekraanrežiim ebaõnnestus
 
 STR_OPTIONS_RES                                                 :{BLACK}Ekraanilahutus
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Ekraanilahutuse valimine
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekraanipildi vorming
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vali kasutatav ekraanipildi vorming
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Põhigraafikakomplekt
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Valige kasutatav põhigraafikakomplekt
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} puuduv{P "" ad}/viga{P ne sed} fail{P "" id}
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} puuduv{P "" ad}/viga{P ne sed} fail{P "" id}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Lisaandmed põhigraafikakomplekti kohta
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automaatne salvestus nurjus

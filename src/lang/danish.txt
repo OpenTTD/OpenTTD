@@ -716,28 +716,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Sæt glo
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopier lokaliteten af dette vindue til det globale vindue
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenhed
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valg af valutaenhed
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Måleenheder
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Vælg måleenheder
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vejkøretøjer
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Vælg den side af vejen, køretøjer skal kører i
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kør i venstre side
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Kør i højre side
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Bynavne
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Vælg stil for bynavne
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisk gemning
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vælg interval imellem automatisk gemning
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Fra
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Hver måned
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Hver 3. måned
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Hver 6. måned
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Hver 12. måned
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start et nyt spil
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Hent et gemt spil
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Lav en brugerdefineret verden/scenarie
@@ -830,7 +813,6 @@ STR_CURR_EEK                                                    :Estiske Kroon (
 STR_CURR_CUSTOM                                                 :Brugerdefineret...
 
 STR_OPTIONS_LANG                                                :{BLACK}Sprog
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Vælg sprog til brugerfladen
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Fuld skærm
@@ -838,17 +820,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Afkryds 
 STR_FULLSCREEN_FAILED                                           :{WHITE}Fuldskærmstilstand fejlede
 
 STR_OPTIONS_RES                                                 :{BLACK}Skærmopløsning
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Vælg ønsket skærmopløsning
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Skærmbillede-format
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vælg skærmbillede-format
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis-grafiksæt
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Vælg det basis-grafiksæt der skal bruges
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} forsvund{P en ne}/ødelagt{P "" e} fil{P "" er}
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} forsvund{P en ne}/ødelagt{P "" e} fil{P "" er}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Yderligere information om basis-grafiksættet
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fejl under autogem

@@ -717,28 +717,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Επικ
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Επικόλληση της περιοχής αυτής της εμφάνισης στην παγκόσμια προβολή
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Νομισματικές μονάδες
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Επιλογή νομισματικών μονάδων
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Μονάδες μέτρησης
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Επιλογή μονάδων μέτρησης
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Οχήματα δρόμου
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Επιλογή πλευράς δρόμου όπου τα οχήματα οδηγούν
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Οδήγηση στα αριστερά
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Οδήγηση στα δεξιά
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Ονόματα πόλεων
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Επιλογή στυλ ονομάτων πόλεων
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Αυτόματη αποθήκευση
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Επιλογή διάκενου ανάμεσα στις αυτόματες αποθηκεύσεις
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Ανενεργό
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Κάθε μήνα
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Κάθε 3 μήνες
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Κάθε 6 μήνες
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Κάθε 12 μήνες
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Φόρτωση αποθηκευμένου παιχνιδιού
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Δημιουργία προσαρμοσμένου κόσμου/σεναρίου
@@ -831,7 +814,6 @@ STR_CURR_EEK                                                    :Εσθονικ�
 STR_CURR_CUSTOM                                                 :Άλλο...
 
 STR_OPTIONS_LANG                                                :{BLACK}Γλώσσα
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Επιλογή της γλώσσας σε χρήση
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Σε όλη την οθόνη
@@ -839,17 +821,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Τσεκ
 STR_FULLSCREEN_FAILED                                           :{WHITE}Πλήρεις Οθόνη απέτυχε
 
 STR_OPTIONS_RES                                                 :{BLACK}Ανάλυση οθόνης
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Διαλέξτε την ανάλυση της οθόνης που θέλετε
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Διαμόρφωση φωτογραφίας
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Επιλογή της διαμόρφωσης της φωτογραφίας σε χρήση
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Βασικό σετ γραφικών
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} αρχείο που λείπε ή είναι κατεστραμμένο{P "" s}
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} αρχείο που λείπε ή είναι κατεστραμμένο{P "" s}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Επιπλέον πληροφορίες σχετικά με το βασικό σετ γραφικών
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Το αυτόματο σώσιμο απέτυχε

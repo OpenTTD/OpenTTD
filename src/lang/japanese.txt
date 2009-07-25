@@ -712,28 +712,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}ビュ�
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}このビューアの場所をメイン画面にペーストします
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}通貨単位
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}通貨単位の選択
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}測定単位
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}測定単位の選択
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}バス／トラック
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}道路の運転側を選択します
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :左側通行
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :右側通行
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}市町村名
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}市町村名の種類の選択
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自動保存
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}自動保存の間隔を選択します
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :切
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :毎月
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :毎3月
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :毎6月
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :毎12月
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}新規ゲームを開始します
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}ゲームを開きます
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}カスタムシナリオを作成します
@@ -826,7 +809,6 @@ STR_CURR_EEK                                                    :エストニア
 STR_CURR_CUSTOM                                                 :カスタム...
 
 STR_OPTIONS_LANG                                                :{BLACK}言語
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}ゲームの言語を選択します
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}フルスクリーン
@@ -834,15 +816,12 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}OpenTTD 
 STR_FULLSCREEN_FAILED                                           :{WHITE}フルスクリーンモードが設定できません
 
 STR_OPTIONS_RES                                                 :{BLACK}画面の解像度
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}画面の解像度を選択します
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}スクリーンショットフォーマット
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}スクリーンショットのファイルフォーマットを選択します
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}ベースGRFセット
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}使用するGRFの選択
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}ベースGRFセットについての追加情報
 

@@ -407,23 +407,11 @@ STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Hiển
 
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Đơn vị tiền tệ
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Lựa chọn đơn vị tiền tệ
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Đơn vị đo lường
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Lựa chọn đơn vị đo lường
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Xe cộ
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Chọn phía đường lái xe
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Lái bên trái
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Lái bên phải
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Tên thành phố
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Lựa chọn kiểu tên thành phố
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Lưu tự động
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Lựa chọn khoảng thời gian tự động lưu
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Tắt
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Hàng tháng
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Mỗi 3 tháng
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Mỗi 6 tháng
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Mỗi 12 tháng
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Chơi mới
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Tải trò chơi
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Hiển thị tùy chọn trò chơi

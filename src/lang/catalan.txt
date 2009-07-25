@@ -716,28 +716,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Ves a la
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Ves al lloc d'aquesta vista a la vista global
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unitats de moneda
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecció d'unitats de moneda
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Unitats de mesura
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Unitats de mesura seleccionades
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Automòbils
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Selecciona el sentit de circulació dels automòbils
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Condueix per l'esquerra
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Condueix per la dreta
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Noms de Poblacions
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Selecciona l'estil des noms de poblacions
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Desa automàticament
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selecciona l'interval en que el joc es desa automàticament
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Inactiu
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Cada mes
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Cada 3 mesos
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Cada 6 mesos
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Cada 12 mesos
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comença un joc nou
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Carrega un joc desat
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Crea un joc amb un món/escenari personalitzat
@@ -830,7 +813,6 @@ STR_CURR_EEK                                                    :Corona Estonian
 STR_CURR_CUSTOM                                                 :Personalitzat...
 
 STR_OPTIONS_LANG                                                :{BLACK}Idioma
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Selecciona l'idioma de la interfície
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Pantalla Completa
@@ -838,17 +820,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Marca la
 STR_FULLSCREEN_FAILED                                           :{WHITE}El mode en pantalla completa ha fallat
 
 STR_OPTIONS_RES                                                 :{BLACK}Resolució de Pantalla
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Selecciona la resolució de pantalla
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format de captures de pantalla
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecciona el format per les captures de pantalla
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Conjunt de gràfics bàsics
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selecciona el conjunt de gràfics bàsics a utilitzar
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} arxiu{P "" s} faltant{P "" s}/corromput{P "" s}
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} arxiu{P "" s} faltant{P "" s}/corromput{P "" s}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Informació adicional sobre el conjunt de gràfics base
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Ha fallat el desat automàtic

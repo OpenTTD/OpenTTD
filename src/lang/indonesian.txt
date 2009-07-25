@@ -716,28 +716,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Tampilan
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Perlihatkan di peta lokasi yang terlihat di viewport
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Mata uang
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Pilih mata uang
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Satuan pengukuran
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Pilihan satuan pengukuran
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Bus/truk
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Pilih lajur yang dilalui bus/truk
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Berkendara di lajur kiri
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Berkendara di lajur kanan
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nama kota
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Pilih model nama kota
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Simpan Otomatis
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Pilih selang waktu permainan otomatis disimpan
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Mati
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Setiap bulan
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Setiap 3 bulan
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Setiap 6 bulan
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Setiap 12 bulan
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Mulai permainan baru
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Membuka permainan yang telah disimpan
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Buat kustomisasi skenario permainan
@@ -830,7 +813,6 @@ STR_CURR_EEK                                                    :Krooni Estonia 
 STR_CURR_CUSTOM                                                 :Atur sendiri...
 
 STR_OPTIONS_LANG                                                :{BLACK}Bahasa
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Pilih antar muka bahasa yang akan dipergunakan
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Layar Penuh
@@ -838,17 +820,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Klik cek
 STR_FULLSCREEN_FAILED                                           :{WHITE}Modus layar penuh gagal
 
 STR_OPTIONS_RES                                                 :{BLACK}Resolusi Layar
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Pilih resolusi layar yang diinginkan
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format tangkapan layar
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Pilih format hasil tangkapan layar
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Set Grafik Dasar
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Pilih grafik dasar yang digunakan
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} berkas hilang atau rusak
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} berkas hilang atau rusak
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Informasi tambahan tentang set grafik dasar
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Simpan otomatis gagal

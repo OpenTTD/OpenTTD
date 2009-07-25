@@ -716,28 +716,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Importa 
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Importă locaţia acestui ecran în ecranul principal
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unitate monetară
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Alege unitatea monetară
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Unităţi de măsură
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Selecţie unităţi de măsură
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Autovehiculele circulă...
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Alege partea străzii pe care se circulă
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Pe partea stângă
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Pe partea dreaptă
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Numele oraşelor
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Alege naţionalitatea numelor oraşelor
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvare automată
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Alege intervalul de timp dintre salvările automate
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Dezactivată
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :În fiecare lună
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :La fiecare 3 luni
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :La fiecare 6 luni
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :La fiecare 12 luni
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Începere joc nou
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Încarcă un joc salvat
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Creează un joc/scenariu propriu
@@ -830,7 +813,6 @@ STR_CURR_EEK                                                    :Coroane Estonie
 STR_CURR_CUSTOM                                                 :Personalizată...
 
 STR_OPTIONS_LANG                                                :{BLACK}Limba
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Alege limba în care doreşti afişată interfaţa
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Ecran intreg
@@ -838,17 +820,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Bifeaza 
 STR_FULLSCREEN_FAILED                                           :{WHITE}Comutarea in ecran-complet a esuat
 
 STR_OPTIONS_RES                                                 :{BLACK}Rezolutia ecranului
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Alege rezoluţia dorită pentru joc
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formatul capturii de ecran
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Alege tipul fişierului în care se salvează captura de ecran (screenshot)
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Set grafic de bază
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selectează setul grafic de bază utilizat în joc
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} fişier{P "" "e"} lipsă/corupt{P "" e}
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} fişier{P "" "e"} lipsă/corupt{P "" e}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Informaţii adiţionale despre setul grafic de bază
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Auto-salvarea a esuat

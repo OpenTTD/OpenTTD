@@ -716,28 +716,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Klistra 
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Flytta kartans position till den här vyn
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenheter
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Välj valutaenhet
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mätenheter
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Val av mätenheter
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vägfordon
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Välj sida av vägen som fordonen kör på
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kör på vänster sida
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Kör på höger sida
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Stadsnamn
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Välj typ av stadsnamn
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosparning
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Välj intervall mellan automatiskt sparande
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Avstängd
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Varje månad
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Var 3:e månad
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Var 6:e månad
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Var 12:e månad
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Starta ett nytt spel
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ladda ett sparat spel
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Skapa en egen spelvärld/scenario
@@ -830,7 +813,6 @@ STR_CURR_EEK                                                    :Estniska Kroon 
 STR_CURR_CUSTOM                                                 :Egen...
 
 STR_OPTIONS_LANG                                                :{BLACK}Språk
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Välj språk att använda
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Helskärm
@@ -838,17 +820,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Kryssa i
 STR_FULLSCREEN_FAILED                                           :{WHITE}Fullskärmsläge misslyckades
 
 STR_OPTIONS_RES                                                 :{BLACK}Skärmupplösning
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Välj skärmupplösning att använda
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Skärmdumpsformat
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Välj filformat för skärmdump
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Grafikpaket som standard
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Välj vilket grafikpaket som ska användas som standard
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} saknad/korrumperad fil{P "" s}
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} saknad/korrumperad fil{P "" s}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Ytterligare information om bas-grafik settet
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autosparning misslyckades

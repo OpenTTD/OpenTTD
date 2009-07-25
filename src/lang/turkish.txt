@@ -716,28 +716,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Görün�
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Bu görünümü küresel görünüme yapıştır
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Para birimleri
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Para birimi seçimi
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Ölçü Birimleri
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Ölçü birimi seçimi
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Karayolu taşıtları
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Trafik akış yönünü seçin
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Soldan gidişli
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Sağdan gidişli
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Şehir isimleri
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Şehir isimleri stilini seçin
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Otokaydet
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Otokaydetme aralığını seçin
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Kapalı
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Her ay
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Her 3 ay
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Her 6 ay
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Her 12 ay
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Yeni oyuna başla
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Oyun yükle
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Kendi dünyani/senoryonu yarat
@@ -830,7 +813,6 @@ STR_CURR_EEK                                                    :Estonya Kronu (
 STR_CURR_CUSTOM                                                 :Özel...
 
 STR_OPTIONS_LANG                                                :{BLACK}Dil
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Görünen dili seçin
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Tam ekran
@@ -838,17 +820,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Tam ekra
 STR_FULLSCREEN_FAILED                                           :{WHITE}Tam ekran modu başarısız
 
 STR_OPTIONS_RES                                                 :{BLACK}Ekran Çözünürlüğü
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Kullanılacak ekran çözünürlüğünü seçin
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekran görüntüsü biçimi
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Kullanılacak ekran görüntüsü biçimini seçin
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Temel grafik seti
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Kullanılacak temel grafik setini seçin
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} kayıp/bozuk dosya
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} kayıp/bozuk dosya
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Temel grafik setiyle ilgili ilave bilgiler
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Otokayıt başarısız

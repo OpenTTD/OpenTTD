@@ -709,28 +709,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Deeg van
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Deeg die lokasie van die gesigspunt na die hoofskerm
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Geld eenhede
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Geld eendheid keuse
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Meet eenhede
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Meet eenhede keuse
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Pad voertuie
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Kies kant van pad waarop voertuie ry
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Bestuur op linkerkant
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Bestuur op regterkant
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Dorp name
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Kies dorp naam styl
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Outostoor
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Kies interval tussen outomatiese store
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Af
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Elke maand
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Elke 3 maande
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Elke 6 maande
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Elke 12 maande
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Begin nuwe spel
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Laai 'n gestoorde spel
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Skep 'n doelgeboude spel wêreld/draaiboek
@@ -822,7 +805,6 @@ STR_CURR_EEK                                                    :Estonian Krooni
 STR_CURR_CUSTOM                                                 :Gebruiklike...
 
 STR_OPTIONS_LANG                                                :{BLACK}Taal
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Kies die koppelvlak taal om te gebruik
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Volskerm
@@ -830,16 +812,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Kies die
 STR_FULLSCREEN_FAILED                                           :{WHITE}Volskerm metode gedop
 
 STR_OPTIONS_RES                                                 :{BLACK}Skerm resolusie
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Kies die skerm resolusie om te gebruik
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Skermskyf formaat
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Kies die skermskyf formaat om te gebruik
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis grafiek stel
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Kies die Basiese grafiek stel om te gebruik
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} verlore / korrupte ler{P "" s}
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} verlore / korrupte ler{P "" s}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Addisioneel informasie oor die basis grapfieke stel
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Outostoor het misluk

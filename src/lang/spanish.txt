@@ -717,28 +717,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Pegar pu
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Pega la localización de este punto de vista a la global
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidades de moneda
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selección de unidades de moneda
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Medir unidades
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Medir unidades seleccionadas
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vehículos de carretera
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Selecciona a qué lado de la carretera se debe conducir
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Conducir por la izquierda
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Conducir por la derecha
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nombres de las poblaciones
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Selección del estilo del nombre de las poblaciones
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autoguardado
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selección del intervalo entre grabados automáticos del juego
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Apagado
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Cada mes
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Cada 3 meses
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Cada 6 meses
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Cada 12 meses
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comenzar nuevo juego
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Cargar un juego guardado
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Crear un mundo/escenario de juego personalizado
@@ -831,7 +814,6 @@ STR_CURR_EEK                                                    :Krooni Estonio 
 STR_CURR_CUSTOM                                                 :Personalizado...
 
 STR_OPTIONS_LANG                                                :{BLACK}Idioma
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Seleccione el idioma para el interfaz del juego
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Pantalla completa
@@ -839,17 +821,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Marca es
 STR_FULLSCREEN_FAILED                                           :{WHITE}El modo de pantalla completa ha fallado
 
 STR_OPTIONS_RES                                                 :{BLACK}Resolución de pantalla
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Seleccine la resolución de pantalla a utilizar
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formato de captura de pantalla
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Seleccione el formato de captura de pantalla a utilizar
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Conjunto de gráficos base
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selecciona el conjunto de gráficos base a usar
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} fichero perdido/corrupto{P "" s}
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} fichero perdido/corrupto{P "" s}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Información adicional acerca de este fichero de gráficos
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Error en Autoguardado

@@ -716,28 +716,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Vun der 
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Setzt d'Plaz vun dëser Usiicht op déi global Usiicht
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Währungseenheet
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Währungseenheet wielen
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Moosseenheeten
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Moosseenheetenauswiel
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Stroossengefierer
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Wéi eng Stroossensäit sollen d'Gefierer fueren
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Lenks fueren
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Riets fueren
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Stiednimm
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Stil vun den Stiednimm wielen
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autospäicheren
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Wiel den Intervall aus fir d'Autospäicherung
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Aus
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :All Mount
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :All 3 Méint
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :All 6 Méint
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :All 12 Méint
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start en neit Spill
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Lueden eng Partie
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Erstell eng eegen Spillwelt/Szenario
@@ -830,7 +813,6 @@ STR_CURR_EEK                                                    :Estnësch Kroun
 STR_CURR_CUSTOM                                                 :Eegen...
 
 STR_OPTIONS_LANG                                                :{BLACK}Sprooch
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Wielt d'Interfacesprooch
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Vollbild
@@ -838,17 +820,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Klickt d
 STR_FULLSCREEN_FAILED                                           :{WHITE}Fehler beim Vollbild
 
 STR_OPTIONS_RES                                                 :{BLACK}Bildopléisung
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Wielt d'Bildopléisung
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Screenshotformat
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Wielt de Screenshotformat deen benotzt sollt ginn
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis Grafikset
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Wielt den Basis Grafikset fir ze benotzen
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} fehlend/korrupt Datei{P "" en}
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} fehlend/korrupt Datei{P "" en}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Méi Infos iwwert den Basis Grafikset
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fehler beim Autospäicheren

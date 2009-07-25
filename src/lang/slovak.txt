@@ -783,28 +783,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Mapa pod
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Nastavit hlavny pohlad na mapu podla tohto pohladu
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Mena
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Vyber meny
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Merné jednotky
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Výber jednotiek vzdialenosti
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cestné vozidlá
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Strana po ktorej jazdia cestne vozidla
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Jazdia nalavo
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Jazdia napravo
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Názvy miest
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Vyber styl nazvov miest
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatické ukladanie
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vyber interval automatickeho ukladania
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Vypnute
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Každý mesiac
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Každé 3 mesiace
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Každých 6 mesiacov
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Každých 12 mesiacov
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Spustit novu hru
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Nahrat ulozenú hru
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Vytvorit vlastny scenar
@@ -897,7 +880,6 @@ STR_CURR_EEK                                                    :Estónsky (EEK)
 STR_CURR_CUSTOM                                                 :Vlastná ...
 
 STR_OPTIONS_LANG                                                :{BLACK}Jazyk
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Vyber jazyka rozhrania
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Celá obrazovka
@@ -905,17 +887,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Zaskrtni
 STR_FULLSCREEN_FAILED                                           :{WHITE}Zobrazovanie na celú obrazovku zlyhalo
 
 STR_OPTIONS_RES                                                 :{BLACK}Rozlíšenie obrazovky
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Vyber rozlisenia obrazovky
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formát screenshotov
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vyber format screenshotov
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Základná sada grafiky
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Zvoľte sadu grafiky, ktorá má byť použitá
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} chýbajúci/poškodený súbor{P "" "y" "ov"}
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} chýbajúci/poškodený súbor{P "" "y" "ov"}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Dodatočné informácie o základnom grafickom sete
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autoulozenie zlyhalo

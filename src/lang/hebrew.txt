@@ -708,28 +708,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}עבור
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}העתק את המיקום הנוכחי אל חלון התצוגה
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}מטבע
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}בחירת מטבע
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}יחידות מדידה
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}בחירת יחידות מדידה
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}כלי רכב
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}בחר את צד הכביש בו יסעו כלי הרכב
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :סע בצד שמאל
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :סע בצד ימין
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}שמות הערים
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}בחר סגנון של שמות הערים
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}שמירה אוטומטית
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}בחר פרק זמן בין שמירות אוטומטיות
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :כבוי
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :מידי חודש
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :כל 3 חודשים
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :כל 6 חודשים
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :כל 12 חודשים
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}התחל משחק חדש
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}טען משחק שמור
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}צור מפה/סצנריו מותאמים אישית
@@ -822,7 +805,6 @@ STR_CURR_EEK                                                    :(EEK) קרונ�
 STR_CURR_CUSTOM                                                 :אחר...
 
 STR_OPTIONS_LANG                                                :{BLACK}שפה
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}בחר את שפת הממשק
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}מסך מלא
@@ -830,15 +812,12 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}סמן �
 STR_FULLSCREEN_FAILED                                           :{WHITE}נכשל בשינויי למסך מלא
 
 STR_OPTIONS_RES                                                 :{BLACK}רזלוציית המסך
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}בחר את רזולוציית המסך
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}פורמט צילום המסך
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}בחר את הפורמט של צילום המסך
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}סט גרפיקה בסיסי
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}בחר בסט גרפיקה בסיסי לשימוש
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}שמירה אוטומטית נכשלה

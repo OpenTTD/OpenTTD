@@ -841,28 +841,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Пере
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Перейти на основному екрані до цього місця
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Грошова одиниця
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Виберіть грошову одиницю
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Система одиниць виміру
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Виберіть систему одиниць виміру
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Транспорт
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Виберіть, по якій стороні їхатиме транспорт
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :їде по лівій стороні
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :їде по правій стороні
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Назви міст
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Виберіть стиль назв міст
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Автозбереження
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Виберіть період автозбереження гри
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :вимкнено
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :щомісяця
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :кожні три місяці
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :кожні півроку
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :щороку
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Почати нову гру
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Продовжити збережену гру
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Створити свій сценарій
@@ -955,7 +938,6 @@ STR_CURR_EEK                                                    :Естонсь�
 STR_CURR_CUSTOM                                                 :Власна...
 
 STR_OPTIONS_LANG                                                :{BLACK}Мова
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Виберіть мову для використання
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}В повний екран
@@ -963,17 +945,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Нати
 STR_FULLSCREEN_FAILED                                           :{WHITE}Повноекранний режим не працює
 
 STR_OPTIONS_RES                                                 :{BLACK}Роздільна здатність
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Виберіть роздільну здатність екрану
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Формат копій екрану
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Виберіть формат для створення копій екрану
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Основна графіка
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Оберіть, яку основну графіку використовувати
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} відсутн{P ий их их}/пошкоджен{P ий их их} файл{P "" а ів}
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} відсутн{P ий их их}/пошкоджен{P ий их их} файл{P "" а ів}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Додаткова інформація про базовий набір графіки
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Помилка автозбереження

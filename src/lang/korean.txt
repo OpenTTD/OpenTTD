@@ -717,28 +717,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}이 장�
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}외부 화면에 저장된 장소로 이동합니다.
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}화폐 단위
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}화폐 단위 선택
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}길이 단위
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}길이 단위 선택
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}차량
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}차량 통행 방법 선택
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :좌측통행
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :우측통행
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}도시 이름
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}도시 이름의 스타일 선택
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}자동저장
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}게임 자동저장 간격을 선택
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :사용 안함
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :매달
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :3개월마다
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :6개월마다
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12개월마다
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}새 게임을 시작합니다
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}저장한 게임을 불러옵니다
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}사용자 게임/시나리오를 만듭니다
@@ -831,7 +814,6 @@ STR_CURR_EEK                                                    :에스토니아
 STR_CURR_CUSTOM                                                 :사용자 설정...
 
 STR_OPTIONS_LANG                                                :{BLACK}언어
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}사용하실 언어를 선택하세요
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}전체화면
@@ -839,17 +821,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}OpenTTD�
 STR_FULLSCREEN_FAILED                                           :{WHITE}풀스크린 모드 실패
 
 STR_OPTIONS_RES                                                 :{BLACK}화면 해상도
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}사용하실 화면 해상도를 선택하세요
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}스크린샷 형식
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}사용하실 스크린샷의 형식을 선택하세요
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}기본 그래픽 세트
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}사용할 기본 그래픽을 선택하세요
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM}개 파일 손실
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM}개 파일 손실
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}기본 그래픽 세트에 대한 추가 정보
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}자동 저장 실패

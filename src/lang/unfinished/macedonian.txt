@@ -583,7 +583,6 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Игра
 
 
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој месец
 
 ############ range for menu starts
 ############ range ends here

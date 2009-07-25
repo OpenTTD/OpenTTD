@@ -750,28 +750,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Látkép
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}A látkép pozicióját beállítja a globális látképre
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Pénznem
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}A használt pénznem kiválasztása
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mértékegységek
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Mértékegység választás
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Közúti járművek
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Válaszd ki,az út melyik oldalán haladjanak a közúti járművek
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Balra hajtás
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Jobbra hajtás
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Városnevek
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}A városnevek stílusának kiválasztása
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatikus mentés
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Az automatikus mentések közötti időtartam kiválasztása
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Nincs
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Minden hónapban
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :3 havonta
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :6 havonta
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12 havonta
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Új játék kezdése
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Mentett játék betöltése
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Testreszabott pálya készítése
@@ -864,7 +847,6 @@ STR_CURR_EEK                                                    :Észt Korona (E
 STR_CURR_CUSTOM                                                 :Saját...
 
 STR_OPTIONS_LANG                                                :{BLACK}Nyelv
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Válassz nyelvet
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Teljes képernyő
@@ -872,17 +854,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Jelöld 
 STR_FULLSCREEN_FAILED                                           :{WHITE}Teljesképernyős módra váltás sikertelen
 
 STR_OPTIONS_RES                                                 :{BLACK}A képernyő felbontása
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Válaszd ki, milyen felbontást szeretnél a játékhoz
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Képmentés formátuma
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Válaszd ki milyen formátumú képmentést szeretnél
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Grafikus alapcsomag
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Kiválaszthatod melyik grafikus alapcsomagot szeretnéd használni
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} hiányzó/hibás fájl{P "" s}
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} hiányzó/hibás fájl{P "" s}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Kiegészítő információ az alap grafikus szettről
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatikus mentés sikertelen

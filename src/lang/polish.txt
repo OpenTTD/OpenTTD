@@ -1088,28 +1088,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Wstaw z 
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Ustawia okno główne na pozycje z podglądu
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Waluta
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Wybór waluty
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Jednostki miar
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Wybór jednostek miar
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Pojazdy drogowe
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Wybierz stronę po której mają jeździć samochody
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Jazda po lewej
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Jazda po prawej
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nazwy miast
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Wybierz styl nazw miast
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autozapis
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Wybierz przerwy pomiędzy autozapisami
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Wył.
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Co 1 miesiąc
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Co 3 miesiące
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Co 6 miesięcy
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Co 12 miesięcy
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Rozpocznij nową grę
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Wczytaj zapisaną grę
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Stwórz własny świat/scenariusz
@@ -1202,7 +1185,6 @@ STR_CURR_EEK                                                    :Korony estońsk
 STR_CURR_CUSTOM                                                 :Wlasna...
 
 STR_OPTIONS_LANG                                                :{BLACK}Język
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Wybierz język interfejsu
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Pełny ekran
@@ -1210,15 +1192,12 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Zaznacz 
 STR_FULLSCREEN_FAILED                                           :{WHITE}Uruchomienie trybu pelnoekranowego nie powiodlo sie
 
 STR_OPTIONS_RES                                                 :{BLACK}Rozdzielczość ekranu
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Wybierz rozdzielczość ekranu
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format zrzutu ekranu
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Wybierz format zrzutu ekranu
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Główny zestaw grafik
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Wybierz główny zestaw grafik do użycia
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Błąd autozapisu

@@ -717,28 +717,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Gluu de 
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Gluu la lokon de ĉi tiu videjo al la ĉefvido
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Monunuoj
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Elekto de monunuoj
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mezurunuoj
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Elekto de mezurunuoj
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vojveturiloj
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Elektu vojflankon kie veturu vojveturiloj
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Veturu maldekstre
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Veturu dekstre
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Urbonomoj
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Elektu stilon de urbonomoj
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Aŭtomata konservado
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Elektu intervalon inter aŭtomataj konservadoj de la ludo
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Malaktiva
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Je ĉiu monato
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Je ĉiuj 3 monatoj
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Je ĉiuj 6 monatoj
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Je ĉiuj 12 monatoj
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Startu novan ludon
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ŝarĝu konservitan ludon
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Kreu mem ludmondon/scenaron
@@ -831,7 +814,6 @@ STR_CURR_EEK                                                    :Estona Krono (E
 STR_CURR_CUSTOM                                                 :Alia...
 
 STR_OPTIONS_LANG                                                :{BLACK}Lingvo
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Elektu uzotan interfacan lingvon
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Plena ekrano
@@ -839,17 +821,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Ŝaltu �
 STR_FULLSCREEN_FAILED                                           :{WHITE}Plenekrana moduso fiaskis
 
 STR_OPTIONS_RES                                                 :{BLACK}Ekrana montrogrando
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Elektu uzotan ekranan montrograndon
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekranfota formato
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Elektu uzotan ekranfotan formaton
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Baza grafikaro
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selektu la uzendan bazgrafikaron
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} mankanta/koruptita dosiero{P "" s}
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} mankanta/koruptita dosiero{P "" s}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Aldonaj informoj pri la baza grafikaro
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fiaskis aŭtomate konservi

@@ -168,11 +168,13 @@ struct GameOptionsWindow : Window {
 	GameSettings *opt;
 	bool reload;
 
-	GameOptionsWindow(const WindowDesc *desc) : Window(desc)
+	GameOptionsWindow(const WindowDesc *desc) : Window()
 	{
 		this->opt = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
 		this->reload = false;
-		this->FindWindowPlacementAndResize(desc);
+
+		this->InitNested(desc);
+		this->OnInvalidateData(0);
 	}
 
 	~GameOptionsWindow()
@@ -181,34 +183,43 @@ struct GameOptionsWindow : Window {
 		if (this->reload) _switch_mode = SM_MENU;
 	}
 
+	virtual void SetStringParameters(int widget) const
+	{
+		switch (widget) {
+			case GOW_CURRENCY_DROPDOWN:   SetDParam(0, _currency_specs[this->opt->locale.currency].name); break;
+			case GOW_DISTANCE_DROPDOWN:   SetDParam(0, STR_UNITS_IMPERIAL + this->opt->locale.units); break;
+			case GOW_ROADSIDE_DROPDOWN:   SetDParam(0, STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT + this->opt->vehicle.road_side); break;
+			case GOW_TOWNNAME_DROPDOWN:   SetDParam(0, TownName(this->opt->game_creation.town_name)); break;
+			case GOW_AUTOSAVE_DROPDOWN:   SetDParam(0, _autosave_dropdown[_settings_client.gui.autosave]); break;
+			case GOW_LANG_DROPDOWN:       SetDParam(0, SPECSTR_LANGUAGE_START + _dynlang.curr); break;
+			case GOW_RESOLUTION_DROPDOWN: SetDParam(0, GetCurRes() == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + GetCurRes()); break;
+			case GOW_SCREENSHOT_DROPDOWN: SetDParam(0, SPECSTR_SCREENSHOT_START + _cur_screenshot_format); break;
+			case GOW_BASE_GRF_DROPDOWN:   SetDParamStr(0, GetGraphicsSetName(GetIndexOfCurrentGraphicsSet())); break;
+			case GOW_BASE_GRF_STATUS:     SetDParam(0, GetGraphicsSetNumMissingFiles(GetIndexOfCurrentGraphicsSet())); break;
+		}
+	}
+
 	virtual void OnPaint()
 	{
-		SetDParam(1, _currency_specs[this->opt->locale.currency].name);
-		SetDParam(2, STR_UNITS_IMPERIAL + this->opt->locale.units);
-		SetDParam(3, STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT + this->opt->vehicle.road_side);
-		SetDParam(4, TownName(this->opt->game_creation.town_name));
-		SetDParam(5, _autosave_dropdown[_settings_client.gui.autosave]);
-		SetDParam(6, SPECSTR_LANGUAGE_START + _dynlang.curr);
-		int i = GetCurRes();
-		SetDParam(7, i == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + i);
-		SetDParam(8, SPECSTR_SCREENSHOT_START + _cur_screenshot_format);
-		this->SetWidgetLoweredState(GOW_FULLSCREEN_BUTTON, _fullscreen);
-		SetDParamStr(9, GetGraphicsSetName(GetIndexOfCurrentGraphicsSet()));
-		int missing_files = GetGraphicsSetNumMissingFiles(GetIndexOfCurrentGraphicsSet());
-		SetDParam(10, missing_files);
-		SetWidgetHiddenState(GOW_BASE_GRF_STATUS, missing_files == 0);
-
 		this->DrawWidgets();
+	}
 
-		SetDParam(0, STR_JUST_RAW_STRING);
-		SetDParamStr(1, GetGraphicsSetDescription(GetIndexOfCurrentGraphicsSet()));
-		const Widget *desc = &this->widget[GOW_BASE_GRF_DESCRIPTION];
-		int y = DrawStringMultiLine(desc->left, desc->right, desc->top, UINT16_MAX, STR_BLACK_STRING);
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != GOW_BASE_GRF_DESCRIPTION) return;
 
-		if (y != desc->bottom) {
-			this->SetDirty();
-			ResizeWindowForWidget(this, GOW_BASE_GRF_DESCRIPTION, 0, y - desc->bottom);
-			this->SetDirty();
+		SetDParamStr(0, GetGraphicsSetDescription(GetIndexOfCurrentGraphicsSet()));
+		DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_BLACK_RAW_STRING);
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
+	{
+		if (widget != GOW_BASE_GRF_DESCRIPTION) return;
+
+		/* Find the biggest description for the default size. */
+		for (int i = 0; i < GetNumGraphicsSets(); i++) {
+			SetDParamStr(0, GetGraphicsSetDescription(i));
+			size->height = max(size->height, (uint)GetStringHeight(STR_BLACK_RAW_STRING, size->width));
 		}
 	}
 
@@ -346,44 +357,19 @@ struct GameOptionsWindow : Window {
 					SetGraphicsSet(name);
 					this->reload = true;
 					this->SetDirty();
+					this->OnInvalidateData(0);
 				}
 				break;
 		}
 	}
-};
 
-static const Widget _game_options_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                           STR_TOOLTIP_CLOSE_WINDOW},                          // GOW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   369,     0,    13, STR_GAME_OPTIONS_CAPTION,                  STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},                // GOW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   369,    14,   248, 0x0,                                       STR_NULL},                                          // GOW_BACKGROUND
-{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   179,    20,    55, STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME,     STR_NULL},                                          // GOW_CURRENCY_FRAME
-{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,    34,    45, STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN,  STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP},  // GOW_CURRENCY_DROPDOWN
-{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,   190,   359,    20,    55, STR_GAME_OPTIONS_MEASURING_UNITS_FRAME,    STR_NULL},                                          // GOW_DISTANCE_FRAME
-{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,   200,   349,    34,    45, STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN, STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP}, // GOW_DISTANCE_DROPDOWN
-{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   179,    62,    97, STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME,      STR_NULL},                                          // GOW_ROADSIDE_FRAME
-{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,    76,    87, STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN,   STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP},   // GOW_ROADSIDE_DROPDOWN
-{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,   190,   359,    62,    97, STR_GAME_OPTIONS_TOWN_NAMES_FRAME,         STR_NULL},                                          // GOW_TOWNNAME_FRAME
-{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,   200,   349,    76,    87, STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN,      STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP},      // GOW_TOWNNAME_DROPDOWN
-{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   179,   104,   139, STR_GAME_OPTIONS_AUTOSAVE_FRAME,           STR_NULL},                                          // GOW_AUTOSAVE_FRAME
-{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,   118,   129, STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN,        STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP},        // GOW_AUTOSAVE_DROPDOWN
+	virtual void OnInvalidateData(int data)
+	{
+		this->SetWidgetLoweredState(GOW_FULLSCREEN_BUTTON, _fullscreen);
 
-{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,   190,   359,   104,   139, STR_OPTIONS_LANG,                          STR_NULL},                                          // GOW_LANG_FRAME
-{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,   200,   349,   118,   129, STR_OPTIONS_LANG_CBO,                      STR_OPTIONS_LANG_TIP},                              // GOW_LANG_DROPDOWN
-
-{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   179,   146,   190, STR_OPTIONS_RES,                           STR_NULL},                                          // GOW_RESOLUTION_FRAME
-{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,   160,   171, STR_OPTIONS_RES_CBO,                       STR_OPTIONS_RES_TIP},                               // GOW_RESOLUTION_DROPDOWN
-{       WWT_TEXT,   RESIZE_NONE,  COLOUR_GREY,    20,   146,   175,   186, STR_OPTIONS_FULLSCREEN,                    STR_NULL},                                          // GOW_FULLSCREEN_LABEL
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   149,   169,   176,   184, STR_EMPTY,                                 STR_OPTIONS_FULLSCREEN_TIP},                        // GOW_FULLSCREEN_BUTTON
-
-{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,   190,   359,   146,   190, STR_OPTIONS_SCREENSHOT_FORMAT,             STR_NULL},                                          // GOW_SCREENSHOT_FRAME
-{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,   200,   349,   160,   171, STR_OPTIONS_SCREENSHOT_FORMAT_CBO,         STR_OPTIONS_SCREENSHOT_FORMAT_TIP},                 // GOW_SCREENSHOT_DROPDOWN
-
-{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   359,   197,   238, STR_OPTIONS_BASE_GRF,                      STR_NULL},                                          // GOW_BASE_GRF_FRAME
-{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,   211,   222, STR_OPTIONS_BASE_GRF_CBO,                  STR_OPTIONS_BASE_GRF_TIP},                          // GOW_BASE_GRF_DROPDOWN
-{       WWT_TEXT,   RESIZE_NONE,  COLOUR_GREY,   200,   349,   211,   222, STR_OPTIONS_BASE_GRF_STATUS,               STR_NULL},                                          // GOW_BASE_GRF_STATUS
-{       WWT_TEXT,   RESIZE_NONE,  COLOUR_GREY,    20,   349,   229,   228, STR_EMPTY,                                 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP},              // GOW_BASE_GRF_DESCRIPTION
-
-{   WIDGETS_END},
+		bool missing_files = GetGraphicsSetNumMissingFiles(GetIndexOfCurrentGraphicsSet()) == 0;
+		this->nested_array[GOW_BASE_GRF_STATUS]->SetDataTip(missing_files ? STR_EMPTY : STR_OPTIONS_BASE_GRF_STATUS, STR_NULL);
+	}
 };
 
 static const NWidgetPart _nested_game_options_widgets[] = {
@@ -395,16 +381,16 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 		NWidget(NWID_HORIZONTAL), SetPIP(10, 10, 10),
 			NWidget(NWID_VERTICAL), SetPIP(0, 6, 0),
 				NWidget(WWT_FRAME, COLOUR_GREY, GOW_CURRENCY_FRAME), SetDataTip(STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_CURRENCY_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN, STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP), SetPadding(14, 10, 10, 10),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_CURRENCY_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP), SetPadding(14, 10, 10, 10),
 				EndContainer(),
 				NWidget(WWT_FRAME, COLOUR_GREY, GOW_ROADSIDE_FRAME), SetDataTip(STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_ROADSIDE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN, STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP), SetPadding(14, 10, 10, 10),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_ROADSIDE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP), SetPadding(14, 10, 10, 10),
 				EndContainer(),
 				NWidget(WWT_FRAME, COLOUR_GREY, GOW_AUTOSAVE_FRAME), SetDataTip(STR_GAME_OPTIONS_AUTOSAVE_FRAME, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_AUTOSAVE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN, STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP), SetPadding(14, 10, 10, 10),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_AUTOSAVE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP), SetPadding(14, 10, 10, 10),
 				EndContainer(),
 				NWidget(WWT_FRAME, COLOUR_GREY, GOW_RESOLUTION_FRAME), SetDataTip(STR_OPTIONS_RES, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_RESOLUTION_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_OPTIONS_RES_CBO, STR_OPTIONS_RES_TIP), SetPadding(14, 10, 3, 10),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_RESOLUTION_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_OPTIONS_RES_TIP), SetPadding(14, 10, 3, 10),
 					NWidget(NWID_HORIZONTAL),
 						NWidget(WWT_TEXT, COLOUR_GREY, GOW_FULLSCREEN_LABEL), SetMinimalSize(0, 12), SetFill(true, false), SetDataTip(STR_OPTIONS_FULLSCREEN, STR_NULL), SetPadding(0, 2, 4, 10),
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, GOW_FULLSCREEN_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_OPTIONS_FULLSCREEN_TIP), SetPadding(0, 10, 4, 0),
@@ -414,16 +400,16 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 
 			NWidget(NWID_VERTICAL), SetPIP(0, 6, 0),
 				NWidget(WWT_FRAME, COLOUR_GREY, GOW_DISTANCE_FRAME), SetDataTip(STR_GAME_OPTIONS_MEASURING_UNITS_FRAME, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_DISTANCE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN, STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP), SetPadding(14, 10, 10, 10),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_DISTANCE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP), SetPadding(14, 10, 10, 10),
 				EndContainer(),
 				NWidget(WWT_FRAME, COLOUR_GREY, GOW_TOWNNAME_FRAME), SetDataTip(STR_GAME_OPTIONS_TOWN_NAMES_FRAME, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_TOWNNAME_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN, STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP), SetPadding(14, 10, 10, 10),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_TOWNNAME_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP), SetPadding(14, 10, 10, 10),
 				EndContainer(),
 				NWidget(WWT_FRAME, COLOUR_GREY, GOW_LANG_FRAME), SetDataTip(STR_OPTIONS_LANG, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_LANG_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_OPTIONS_LANG_CBO, STR_OPTIONS_LANG_TIP), SetPadding(14, 10, 10, 10),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_LANG_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_OPTIONS_LANG_TIP), SetPadding(14, 10, 10, 10),
 				EndContainer(),
 				NWidget(WWT_FRAME, COLOUR_GREY, GOW_SCREENSHOT_FRAME), SetDataTip(STR_OPTIONS_SCREENSHOT_FORMAT, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_SCREENSHOT_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_OPTIONS_SCREENSHOT_FORMAT_CBO, STR_OPTIONS_SCREENSHOT_FORMAT_TIP), SetPadding(14, 10, 10, 10),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_SCREENSHOT_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_OPTIONS_SCREENSHOT_FORMAT_TIP), SetPadding(14, 10, 10, 10),
 					NWidget(NWID_SPACER), SetMinimalSize(0, 9),
 				EndContainer(),
 			EndContainer(),
@@ -431,7 +417,7 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 
 		NWidget(WWT_FRAME, COLOUR_GREY, GOW_BASE_GRF_FRAME), SetDataTip(STR_OPTIONS_BASE_GRF, STR_NULL),
 			NWidget(NWID_HORIZONTAL), SetPIP(10, 30, 10),
-				NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_BASE_GRF_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_OPTIONS_BASE_GRF_CBO, STR_OPTIONS_BASE_GRF_TIP), SetPadding(14, 0, 0, 0),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_BASE_GRF_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_OPTIONS_BASE_GRF_TIP), SetPadding(14, 0, 0, 0),
 				NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_GRF_STATUS), SetMinimalSize(150, 12), SetDataTip(STR_OPTIONS_BASE_GRF_STATUS, STR_NULL), SetPadding(14, 0, 0, 0),
 			EndContainer(),
 			NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_GRF_DESCRIPTION), SetMinimalSize(330, 0), SetDataTip(STR_EMPTY, STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP), SetPadding(6, 10, 10, 10),
@@ -443,7 +429,7 @@ static const WindowDesc _game_options_desc(
 	WDP_CENTER, WDP_CENTER, 370, 249, 370, 249,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_game_options_widgets, _nested_game_options_widgets, lengthof(_nested_game_options_widgets)
+	NULL, _nested_game_options_widgets, lengthof(_nested_game_options_widgets)
 );
 
 

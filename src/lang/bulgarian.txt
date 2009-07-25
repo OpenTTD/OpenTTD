@@ -716,28 +716,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Прем
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Преместване глобалната камера до тази
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Парична единица
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Избор на парична единица
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Система мерни единици
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Избор на система от мерни единици
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Движение по пътищата
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Избор посоката на движение по пътищата
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :ляво
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :дясно
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Имена на градовете
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Избор стила на имената на градовете
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Автозаписване
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Интервала между две автозаписваня
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :изключено
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :всеки месец
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :всеки 3 месеца
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :всеки 6 месеца
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :всеки 12 месеца
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Започни нова игра
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Отвори запасена игра
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Създай свой собствен карта-свят
@@ -829,7 +812,6 @@ STR_CURR_EEK                                                    :Естонск�
 STR_CURR_CUSTOM                                                 :друга...
 
 STR_OPTIONS_LANG                                                :{BLACK}Език
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Избор на език
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Цял екран
@@ -837,15 +819,12 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Избе
 STR_FULLSCREEN_FAILED                                           :{WHITE}Проблем при включване на режим "цял екран"
 
 STR_OPTIONS_RES                                                 :{BLACK}Размер на екрана
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Избор размера на екран
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Формат на снимките
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Избор на файловия форма в който ще се записват екранните снимки
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Базов графичен набор
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Изберете базов графичен набор
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Автозапазването е неуспешно

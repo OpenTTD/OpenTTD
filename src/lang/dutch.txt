@@ -716,28 +716,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Plak van
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Plak de locatie van dit kijkvenster naar het algemene scherm
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuta
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Kies valuta
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Meeteenheden
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Selectie meeteenheden
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Voertuigen
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Kies aan welke kant de voertuigen moeten rijden
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Links rijden
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Rechts rijden
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Plaatsnamen
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Kies type plaatsnamen
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisch opslaan
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Kies interval tussen autosaves
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Uit
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Elke maand
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Iedere 3 maanden
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Iedere 6 maanden
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Iedere 12 maanden
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start een nieuw spel
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Laad een opgeslagen spel
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Maak een eigen spelwereld/scenario
@@ -830,7 +813,6 @@ STR_CURR_EEK                                                    :Estse Kronen (E
 STR_CURR_CUSTOM                                                 :Aangepast...
 
 STR_OPTIONS_LANG                                                :{BLACK}Taal
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Selecteer de interfacetaal
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Volledig scherm
@@ -838,17 +820,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Vink dit
 STR_FULLSCREEN_FAILED                                           :{WHITE}Modus volledigscherm is mislukt
 
 STR_OPTIONS_RES                                                 :{BLACK}Schermresolutie
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Selecteer de schermresolutie
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Screenshotformaat
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecteer het formaat van de schermprint
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis graphics set
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selecteer de te gebruiken basis graphics set
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} ontbrekend/corrupt bestand{P "" en}
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} ontbrekend/corrupt bestand{P "" en}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Aanvullende informatie over de basis graphics set
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatisch opslaan mislukt

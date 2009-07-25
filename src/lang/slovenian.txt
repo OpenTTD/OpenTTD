@@ -758,28 +758,11 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Prilepi 
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Prilepi lokacijo tega pogleda v splošni pogled
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valute
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN                        :{BLACK}{SKIP}{STRING}
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Izbira valut
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Merske enote
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN                       :{BLACK}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Izbor merskih enot
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cestna vozila
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN                         :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Izberi smer vožnje cestnih vozil
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vožnja po levi
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Vožnja po desni
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Imena mest
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Izberi slog imena mest
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Samo-shrani
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Izberi časovni interval samodejnega shranjevanja igre
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Izključeno
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Vsak mesec
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Vsake 3 mesece
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Vsakih 6 mesecev
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Vsakih 12 mesecev
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Začni novo igro
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Naloži shranjeno igro
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Ustvari poljubni svet/scenarij
@@ -872,7 +855,6 @@ STR_CURR_EEK                                                    :estonske krone 
 STR_CURR_CUSTOM                                                 :Poljubno...
 
 STR_OPTIONS_LANG                                                :{BLACK}Jezik
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Izberi jezik vmesnika
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Cel zaslon
@@ -880,17 +862,14 @@ STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Označi 
 STR_FULLSCREEN_FAILED                                           :{WHITE}Celozaslonski način spodletel
 
 STR_OPTIONS_RES                                                 :{BLACK}Ločljivost
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Izberi ločljivost zaslona
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format zajema slike
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Izberi format zajema slike
 
 STR_OPTIONS_BASE_GRF                                            :{BLACK}Osnovni komplet grafik
-STR_OPTIONS_BASE_GRF_CBO                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Izberi osnovni komplet grafik za uporabo
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{10:NUM} manjkajoč{P a i e e} /okvarjen{P a i e e} datotek{P a i e e}
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} manjkajoč{P a i e e} /okvarjen{P a i e e} datotek{P a i e e}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Dodatne informacije o osnovnem kompletu grafik
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Samodejno shranjevanje spodletelo
