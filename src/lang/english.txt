@@ -678,8 +678,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF settings
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparency options
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Town names displayed
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Station names displayed
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Waypoint names displayed
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Signs displayed
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Waypoints displayed
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Full animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Full detail
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Transparent buildings
