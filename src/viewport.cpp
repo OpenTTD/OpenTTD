@@ -1229,7 +1229,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 	const Waypoint *wp;
 	int left, top, right, bottom;
 
-	if (!HasBit(_display_opt, DO_WAYPOINTS))
+	if (!HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES))
 		return;
 
 	left = dpi->left;
@@ -2016,7 +2016,7 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 {
 	const Waypoint *wp;
 
-	if (!HasBit(_display_opt, DO_WAYPOINTS) || IsInvisibilitySet(TO_SIGNS)) return false;
+	if (!HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES) || IsInvisibilitySet(TO_SIGNS)) return false;
 
 	switch (vp->zoom) {
 		case ZOOM_LVL_NORMAL:

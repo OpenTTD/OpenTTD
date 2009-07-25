@@ -29,12 +29,12 @@ enum SwitchMode {
 
 /* Display Options */
 enum {
-	DO_SHOW_TOWN_NAMES    = 0,
-	DO_SHOW_STATION_NAMES = 1,
-	DO_SHOW_SIGNS         = 2,
-	DO_FULL_ANIMATION     = 3,
-	DO_FULL_DETAIL        = 5,
-	DO_WAYPOINTS          = 6,
+	DO_SHOW_TOWN_NAMES     = 0,
+	DO_SHOW_STATION_NAMES  = 1,
+	DO_SHOW_SIGNS          = 2,
+	DO_FULL_ANIMATION      = 3,
+	DO_FULL_DETAIL         = 5,
+	DO_SHOW_WAYPOINT_NAMES = 6,
 };
 
 extern GameMode _game_mode;

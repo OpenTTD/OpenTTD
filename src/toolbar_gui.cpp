@@ -294,7 +294,7 @@ static void ToolbarOptionsClick(Window *w)
 	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED,    OME_SHOW_TOWNNAMES, false, HasBit(_display_opt, DO_SHOW_TOWN_NAMES)));
 	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED, OME_SHOW_STATIONNAMES, false, HasBit(_display_opt, DO_SHOW_STATION_NAMES)));
 	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_SIGNS_DISPLAYED,         OME_SHOW_SIGNS, false, HasBit(_display_opt, DO_SHOW_SIGNS)));
-	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED,     OME_SHOW_WAYPOINTNAMES, false, HasBit(_display_opt, DO_WAYPOINTS)));
+	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED,     OME_SHOW_WAYPOINTNAMES, false, HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES)));
 	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_FULL_ANIMATION,          OME_FULL_ANIMATION, false, HasBit(_display_opt, DO_FULL_ANIMATION)));
 	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_FULL_DETAIL,             OME_FULL_DETAILS, false, HasBit(_display_opt, DO_FULL_DETAIL)));
 	list->push_back(new DropDownListCheckedItem(STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS,   OME_TRANSPARENTBUILDINGS, false, IsTransparencySet(TO_HOUSES)));
@@ -307,20 +307,20 @@ static void ToolbarOptionsClick(Window *w)
 static void MenuClickSettings(int index)
 {
 	switch (index) {
-		case OME_GAMEOPTIONS:          ShowGameOptions();                              return;
-		case OME_DIFFICULTIES:         ShowGameDifficulty();                           return;
-		case OME_SETTINGS:             ShowGameSettings();                             return;
+		case OME_GAMEOPTIONS:          ShowGameOptions();                               return;
+		case OME_DIFFICULTIES:         ShowGameDifficulty();                            return;
+		case OME_SETTINGS:             ShowGameSettings();                              return;
 		case OME_NEWGRFSETTINGS:       ShowNewGRFSettings(!_networking, true, true, &_grfconfig);   return;
-		case OME_TRANSPARENCIES:       ShowTransparencyToolbar();                      break;
+		case OME_TRANSPARENCIES:       ShowTransparencyToolbar();                       break;
 
-		case OME_SHOW_TOWNNAMES:       ToggleBit(_display_opt, DO_SHOW_TOWN_NAMES);    break;
-		case OME_SHOW_STATIONNAMES:    ToggleBit(_display_opt, DO_SHOW_STATION_NAMES); break;
-		case OME_SHOW_SIGNS:           ToggleBit(_display_opt, DO_SHOW_SIGNS);         break;
-		case OME_SHOW_WAYPOINTNAMES:   ToggleBit(_display_opt, DO_WAYPOINTS);          break;
-		case OME_FULL_ANIMATION:       ToggleBit(_display_opt, DO_FULL_ANIMATION);     break;
-		case OME_FULL_DETAILS:         ToggleBit(_display_opt, DO_FULL_DETAIL);        break;
-		case OME_TRANSPARENTBUILDINGS: ToggleTransparency(TO_HOUSES);                  break;
-		case OME_SHOW_STATIONSIGNS:    ToggleTransparency(TO_SIGNS);                   break;
+		case OME_SHOW_TOWNNAMES:       ToggleBit(_display_opt, DO_SHOW_TOWN_NAMES);     break;
+		case OME_SHOW_STATIONNAMES:    ToggleBit(_display_opt, DO_SHOW_STATION_NAMES);  break;
+		case OME_SHOW_SIGNS:           ToggleBit(_display_opt, DO_SHOW_SIGNS);          break;
+		case OME_SHOW_WAYPOINTNAMES:   ToggleBit(_display_opt, DO_SHOW_WAYPOINT_NAMES); break;
+		case OME_FULL_ANIMATION:       ToggleBit(_display_opt, DO_FULL_ANIMATION);      break;
+		case OME_FULL_DETAILS:         ToggleBit(_display_opt, DO_FULL_DETAIL);         break;
+		case OME_TRANSPARENTBUILDINGS: ToggleTransparency(TO_HOUSES);                   break;
+		case OME_SHOW_STATIONSIGNS:    ToggleTransparency(TO_SIGNS);                    break;
 	}
 	MarkWholeScreenDirty();
 }
