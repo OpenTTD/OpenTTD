@@ -1404,7 +1404,7 @@ static TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st)
 
 	switch (v->type) {
 		default: NOT_REACHED();
-		case VEH_TRAIN:     return st->train_tile;
+		case VEH_TRAIN:     return st->train_station.tile;
 		case VEH_AIRCRAFT:  return st->airport_tile;
 		case VEH_SHIP:      return st->dock_tile;
 		case VEH_ROAD:      return st->GetPrimaryRoadStop(RoadVehicle::From(v))->xy;

@@ -387,17 +387,17 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(2)) {
 		Station *st;
 		FOR_ALL_STATIONS(st) {
-			if (st->train_tile != 0 && st->trainst_h == 0) {
+			if (st->train_station.tile != 0 && st->train_station.h == 0) {
 				uint n = _savegame_type == SGT_OTTD ? 4 : 3; // OTTD uses 4 bits per dimensions, TTD 3 bits
-				uint w = GB(st->trainst_w, n, n);
-				uint h = GB(st->trainst_w, 0, n);
+				uint w = GB(st->train_station.w, n, n);
+				uint h = GB(st->train_station.w, 0, n);
 
-				if (GetRailStationAxis(st->train_tile) != AXIS_X) Swap(w, h);
+				if (GetRailStationAxis(st->train_station.tile) != AXIS_X) Swap(w, h);
 
-				st->trainst_w = w;
-				st->trainst_h = h;
+				st->train_station.w = w;
+				st->train_station.h = h;
 
-				assert(GetStationIndex(st->train_tile + TileDiffXY(w - 1, h - 1)) == st->index);
+				assert(GetStationIndex(st->train_station.tile + TileDiffXY(w - 1, h - 1)) == st->index);
 			}
 		}
 	}
@@ -452,9 +452,9 @@ bool AfterLoadGame()
 		/* no station is determined by 'tile == INVALID_TILE' now (instead of '0') */
 		Station *st;
 		FOR_ALL_STATIONS(st) {
-			if (st->airport_tile == 0) st->airport_tile = INVALID_TILE;
-			if (st->dock_tile    == 0) st->dock_tile    = INVALID_TILE;
-			if (st->train_tile   == 0) st->train_tile   = INVALID_TILE;
+			if (st->airport_tile       == 0) st->airport_tile = INVALID_TILE;
+			if (st->dock_tile          == 0) st->dock_tile    = INVALID_TILE;
+			if (st->train_station.tile == 0) st->train_station.tile   = INVALID_TILE;
 		}
 
 		/* the same applies to Company::location_of_HQ */

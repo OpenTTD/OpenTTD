@@ -25,6 +25,11 @@ struct StationSpecList {
 
 /** Represents the covered area */
 struct TileArea {
+	/** Just construct this tile area */
+	TileArea() {}
+	/** Construct this tile area with some set values */
+	TileArea(TileIndex tile, uint8 w, uint8 h) : tile(tile), w(w), h(h) {}
+
 	TileIndex tile; ///< The base tile of the area
 	uint8 w;        ///< The width of the area
 	uint8 h;        ///< The height of the area

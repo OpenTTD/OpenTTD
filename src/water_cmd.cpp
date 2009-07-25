@@ -749,11 +749,11 @@ static void FloodVehicles(TileIndex tile)
 	if (!_settings_game.station.nonuniform_stations && IsTileType(tile, MP_STATION) && GetStationType(tile) == STATION_RAIL) {
 		const Station *st = Station::GetByTile(tile);
 
-		BEGIN_TILE_LOOP(t, st->trainst_w, st->trainst_h, st->train_tile)
+		BEGIN_TILE_LOOP(t, st->train_station.w, st->train_station.h, st->train_station.tile)
 			if (st->TileBelongsToRailStation(t)) {
 				FindVehicleOnPos(tile, &z, &FloodVehicleProc);
 			}
-		END_TILE_LOOP(t, st->trainst_w, st->trainst_h, st->train_tile)
+		END_TILE_LOOP(t, st->train_station.w, st->train_station.h, st->train_station.tile)
 
 		return;
 	}

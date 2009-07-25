@@ -83,11 +83,11 @@ public:
 		return GetAirport(airport_type);
 	}
 
-	RoadStop *bus_stops;
-	RoadStop *truck_stops;
-	TileIndex train_tile;
-	TileIndex airport_tile;
-	TileIndex dock_tile;
+	RoadStop *bus_stops;    ///< All the road stops
+	RoadStop *truck_stops;  ///< All the truck stops
+	TileArea train_station; ///< Tile area the train station part covers
+	TileIndex airport_tile; ///< The location of the airport
+	TileIndex dock_tile;    ///< The location of the dock
 
 	IndustryType indtype;   ///< Industry type to get the name from
 
@@ -96,9 +96,6 @@ public:
 	byte time_since_load;
 	byte time_since_unload;
 	byte airport_type;
-
-	/* trainstation width/height */
-	byte trainst_w, trainst_h;
 
 	uint64 airport_flags;   ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
 

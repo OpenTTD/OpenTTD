@@ -179,9 +179,9 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 
 		case OT_GOTO_STATION: {
 			const Station *st = ::Station::Get(order->GetDestination());
-			if (st->train_tile != INVALID_TILE) {
-				for (uint i = 0; i < st->trainst_w; i++) {
-					TileIndex t = st->train_tile + TileDiffXY(i, 0);
+			if (st->train_station.tile != INVALID_TILE) {
+				for (uint i = 0; i < st->train_station.w; i++) {
+					TileIndex t = st->train_station.tile + TileDiffXY(i, 0);
 					if (st->TileBelongsToRailStation(t)) return t;
 				}
 			} else if (st->dock_tile != INVALID_TILE) {

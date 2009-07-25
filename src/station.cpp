@@ -39,7 +39,7 @@ BaseStation::~BaseStation()
 
 Station::Station(TileIndex tile) :
 	SpecializedStation<Station, false>(tile),
-	train_tile(INVALID_TILE),
+	train_station(INVALID_TILE, 0, 0),
 	airport_tile(INVALID_TILE),
 	dock_tile(INVALID_TILE),
 	indtype(IT_INVALID),
@@ -156,7 +156,7 @@ void Station::AddFacility(StationFacility new_facility_bit, TileIndex facil_xy)
 
 void Station::MarkTilesDirty(bool cargo_change) const
 {
-	TileIndex tile = this->train_tile;
+	TileIndex tile = this->train_station.tile;
 	int w, h;
 
 	if (tile == INVALID_TILE) return;
@@ -170,8 +170,8 @@ void Station::MarkTilesDirty(bool cargo_change) const
 		if (this->num_specs == 0) return;
 	}
 
-	for (h = 0; h < trainst_h; h++) {
-		for (w = 0; w < trainst_w; w++) {
+	for (h = 0; h < train_station.h; h++) {
+		for (w = 0; w < train_station.w; w++) {
 			if (this->TileBelongsToRailStation(tile)) {
 				MarkTileDirtyByTile(tile);
 			}
@@ -226,13 +226,13 @@ uint Station::GetCatchmentRadius() const
 	uint ret = CA_NONE;
 
 	if (_settings_game.station.modified_catchment) {
-		if (this->bus_stops    != NULL)         ret = max<uint>(ret, CA_BUS);
-		if (this->truck_stops  != NULL)         ret = max<uint>(ret, CA_TRUCK);
-		if (this->train_tile   != INVALID_TILE) ret = max<uint>(ret, CA_TRAIN);
-		if (this->dock_tile    != INVALID_TILE) ret = max<uint>(ret, CA_DOCK);
-		if (this->airport_tile != INVALID_TILE) ret = max<uint>(ret, this->Airport()->catchment);
+		if (this->bus_stops          != NULL)         ret = max<uint>(ret, CA_BUS);
+		if (this->truck_stops        != NULL)         ret = max<uint>(ret, CA_TRUCK);
+		if (this->train_station.tile != INVALID_TILE) ret = max<uint>(ret, CA_TRAIN);
+		if (this->dock_tile          != INVALID_TILE) ret = max<uint>(ret, CA_DOCK);
+		if (this->airport_tile       != INVALID_TILE) ret = max<uint>(ret, this->Airport()->catchment);
 	} else {
-		if (this->bus_stops != NULL || this->truck_stops != NULL || this->train_tile != INVALID_TILE || this->dock_tile != INVALID_TILE || this->airport_tile != INVALID_TILE) {
+		if (this->bus_stops != NULL || this->truck_stops != NULL || this->train_station.tile != INVALID_TILE || this->dock_tile != INVALID_TILE || this->airport_tile != INVALID_TILE) {
 			ret = CA_UNMODIFIED;
 		}
 	}

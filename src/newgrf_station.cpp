@@ -628,7 +628,7 @@ static const SpriteGroup *StationResolveReal(const ResolverObject *object, const
 			break;
 	}
 
-	if (HasBit(statspec->flags, SSF_DIV_BY_STATION_SIZE)) cargo /= (st->trainst_w + st->trainst_h);
+	if (HasBit(statspec->flags, SSF_DIV_BY_STATION_SIZE)) cargo /= (st->train_station.w + st->train_station.h);
 	cargo = min(0xfff, cargo);
 
 	if (cargo > statspec->cargo_threshold) {

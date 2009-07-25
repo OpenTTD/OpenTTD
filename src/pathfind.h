@@ -83,7 +83,7 @@ void NewTrainPathfind(TileIndex tile, TileIndex dest, RailTypes railtypes, DiagD
 /**
  * Calculates the tile of given station that is closest to a given tile
  * for this we assume the station is a rectangle,
- * as defined by its top tile (st->train_tile) and its width/height (st->trainst_w, st->trainst_h)
+ * as defined by its tile are (st->train_station)
  * @param station The station to calculate the distance to
  * @param tile The tile from where to calculate the distance
  * @return The closest station tile to the given tile.
@@ -96,12 +96,12 @@ static inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile
 	const Station *st = Station::From(bst);
 
 	/* If the rail station is (temporarily) not present, use the station sign to drive near the station */
-	if (st->train_tile == INVALID_TILE) return st->xy;
+	if (st->train_station.tile == INVALID_TILE) return st->xy;
 
-	uint minx = TileX(st->train_tile);  // topmost corner of station
-	uint miny = TileY(st->train_tile);
-	uint maxx = minx + st->trainst_w - 1; // lowermost corner of station
-	uint maxy = miny + st->trainst_h - 1;
+	uint minx = TileX(st->train_station.tile);  // topmost corner of station
+	uint miny = TileY(st->train_station.tile);
+	uint maxx = minx + st->train_station.w - 1; // lowermost corner of station
+	uint maxy = miny + st->train_station.h - 1;
 
 	/* we are going the aim for the x coordinate of the closest corner
 	 * but if we are between those coordinates, we will aim for our own x coordinate */
