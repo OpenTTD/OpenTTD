@@ -716,11 +716,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Sæt glo
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopier lokaliteten af dette vindue til det globale vindue
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenhed
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Valg af valutaenhed
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Måleenheder
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Vælg måleenheder
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vejkøretøjer
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Vælg den side af vejen, køretøjer skal kører i
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kør i venstre side
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Kør i højre side
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Bynavne
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Vælg stil for bynavne
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisk gemning
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vælg interval imellem automatisk gemning
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Fra
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Hver måned
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Hver 3. måned
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Hver 6. måned
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Hver 12. måned
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start et nyt spil
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Hent et gemt spil
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Lav en brugerdefineret verden/scenarie

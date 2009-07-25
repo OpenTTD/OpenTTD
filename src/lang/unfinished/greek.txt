@@ -717,11 +717,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Επικ
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Επικόλληση της περιοχής αυτής της εμφάνισης στην παγκόσμια προβολή
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Νομισματικές μονάδες
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Επιλογή νομισματικών μονάδων
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Μονάδες μέτρησης
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Επιλογή μονάδων μέτρησης
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Οχήματα δρόμου
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Επιλογή πλευράς δρόμου όπου τα οχήματα οδηγούν
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Οδήγηση στα αριστερά
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Οδήγηση στα δεξιά
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Ονόματα πόλεων
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Επιλογή στυλ ονομάτων πόλεων
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Αυτόματη αποθήκευση
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Επιλογή διάκενου ανάμεσα στις αυτόματες αποθηκεύσεις
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Ανενεργό
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Κάθε μήνα
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Κάθε 3 μήνες
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Κάθε 6 μήνες
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Κάθε 12 μήνες
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Φόρτωση αποθηκευμένου παιχνιδιού
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Δημιουργία προσαρμοσμένου κόσμου/σεναρίου

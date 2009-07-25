@@ -716,11 +716,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}لصق �
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}لصق شاشة العرض هذة للشاشة الرئيسية
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}وحدة العملة
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}اختيار وحدة العملة
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}وحدات القياس
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}اختيار وحدات القياس
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}العربات البرية
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}اختار الجانب الذي تسير فيه المركبات
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :القيادة على اليسار
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :القيادة على اليمين
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}اسماء المدن
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}اختيار طريقة عرض اسماء المدن
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}حفظ آلي
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}اختار مدة الحفظ الآلي
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :بدون
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :كل شهر
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :كل 3 اشهر
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :كل 6 اشهر
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :كل سنة
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}بدأ لعبة جديدة
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}تحميل لعبة محفوظة
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}انشاء خريطة عالم خاصة

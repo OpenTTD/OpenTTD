@@ -841,11 +841,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Пере
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Перейти на основному екрані до цього місця
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Грошова одиниця
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Виберіть грошову одиницю
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Система одиниць виміру
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Виберіть систему одиниць виміру
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Транспорт
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Виберіть, по якій стороні їхатиме транспорт
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :їде по лівій стороні
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :їде по правій стороні
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Назви міст
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Виберіть стиль назв міст
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Автозбереження
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Виберіть період автозбереження гри
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :вимкнено
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :щомісяця
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :кожні три місяці
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :кожні півроку
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :щороку
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Почати нову гру
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Продовжити збережену гру
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Створити свій сценарій

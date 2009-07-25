@@ -716,11 +716,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Klistra 
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Flytta kartans position till den här vyn
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenheter
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Välj valutaenhet
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mätenheter
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Val av mätenheter
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vägfordon
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Välj sida av vägen som fordonen kör på
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kör på vänster sida
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Kör på höger sida
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Stadsnamn
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Välj typ av stadsnamn
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosparning
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Välj intervall mellan automatiskt sparande
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Avstängd
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Varje månad
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Var 3:e månad
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Var 6:e månad
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Var 12:e månad
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Starta ett nytt spel
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ladda ett sparat spel
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Skapa en egen spelvärld/scenario

@@ -716,11 +716,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Görün�
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Bu görünümü küresel görünüme yapıştır
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Para birimleri
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Para birimi seçimi
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Ölçü Birimleri
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Ölçü birimi seçimi
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Karayolu taşıtları
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Trafik akış yönünü seçin
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Soldan gidişli
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Sağdan gidişli
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Şehir isimleri
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Şehir isimleri stilini seçin
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Otokaydet
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Otokaydetme aralığını seçin
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Kapalı
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Her ay
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Her 3 ay
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Her 6 ay
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Her 12 ay
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Yeni oyuna başla
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Oyun yükle
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Kendi dünyani/senoryonu yarat

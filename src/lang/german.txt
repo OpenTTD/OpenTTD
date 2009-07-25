@@ -717,11 +717,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Aus Zusa
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Hauptansicht zur Position dieser Zusatzansicht scrollen
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Währung
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Währung auswählen
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Maßeinheiten
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Auswahl der Maßeinheiten
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Fahrzeuge
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Wähle, auf welcher Straßenseite der Verkehr fahren soll
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Linksverkehr
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Rechtsverkehr
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Städtenamen
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Wähle die Sprache für die Städtenamen aus
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosicherung
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Abstand zwischen den automatischen Spielesicherungen wählen
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Aus
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Jeden Monat
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Alle  3 Monate
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Alle  6 Monate
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Alle 12 Monate
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Ein neues Spiel beginnen
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ein gespeichertes Spiel laden
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Eine eigene Spielwelt / eigenes Szenario kreieren

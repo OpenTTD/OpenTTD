@@ -716,11 +716,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Importa 
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Importă locaţia acestui ecran în ecranul principal
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unitate monetară
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Alege unitatea monetară
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Unităţi de măsură
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Selecţie unităţi de măsură
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Autovehiculele circulă...
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Alege partea străzii pe care se circulă
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Pe partea stângă
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Pe partea dreaptă
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Numele oraşelor
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Alege naţionalitatea numelor oraşelor
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvare automată
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Alege intervalul de timp dintre salvările automate
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Dezactivată
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :În fiecare lună
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :La fiecare 3 luni
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :La fiecare 6 luni
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :La fiecare 12 luni
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Începere joc nou
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Încarcă un joc salvat
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Creează un joc/scenariu propriu

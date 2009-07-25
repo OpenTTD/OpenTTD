@@ -714,11 +714,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Kopier f
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopier staden til dette vindauget til den globale synsvinkelen
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaeining
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Vel valutaeining
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Einingar for mål
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Vel einingar for mål
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Køyreretning
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Vel køyreretning
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Venstrekøyring
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Høgrekøyring
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Namn på byar
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Vel stil på bynamn
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisk lagring
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vel intervall for automatisk lagring
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Av
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Kvar månad
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Kvar 3. månad
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Kvar 6. månad
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Kvar 12. månad
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start nytt spel
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Last inn eit lagra spel
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Spesiallag ei spelverd eller eit scenario

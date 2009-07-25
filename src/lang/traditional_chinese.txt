@@ -716,11 +716,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}將主�
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}將主視野移到這個視窗的視野位置
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}幣值單位
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}選擇幣值單位
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}度量單位
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}度量單位
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}車輛
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}選擇車輛在路上的行駛位置
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :靠左行駛
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :靠右行駛
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}市鎮名稱
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}選擇市鎮命名風格
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自動存檔
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}選擇自動存檔頻率
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :關閉
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :每個月
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :每 3 個月
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :每 6 個月
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :每 12 個月
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}開始新遊戲
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}載入舊遊戲
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}建立自訂遊戲世界／場景

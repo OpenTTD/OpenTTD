@@ -714,11 +714,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Kopēt n
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopēt atrašanās vietu no šī skata uz globālo skatu
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Naudas vienības
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Naudas vienību izvēle
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mērvienības
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Mērvienību izvēle
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Ceļu satiksmes līdzekļi
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Braucamās ceļa puses izvēle
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :brauc pa kreiso pusi
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :brauc pa labo pusi
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Pilsētu nosaukumi
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Pilsētu nosaukumu stila izvēle
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Auto-saglabāšana
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Spēles auto-saglabāšanas laika inervāla izvēle
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Izslēgta
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Ikmēnesi
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Katrus 3 mēnešus
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Katrus 6 mēnešus
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Katrus 12 mēnešus
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Sākt jaunu spēli
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ielādēt saglabāto spēli
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Izveidot speciālu spēles pasauli/scenāriju

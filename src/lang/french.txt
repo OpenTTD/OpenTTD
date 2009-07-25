@@ -717,11 +717,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Coller d
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colle l'emplacement de cette vue vers la vue globale
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Devise monétaire
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Sélectionner l'unité monétaire
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Unité de mesure
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Sélectionner l'unité de mesure
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Véhicules routiers
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Choisir le sens de conduite routière
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Conduire à gauche
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Conduire à droite
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nom des villes
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Sélectionner le style des noms de ville
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Sauvegarde automatique
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Sélectionner l'intervalle de temps entre les sauvegardes automatiques
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Désactivé
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Tous les mois
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Tous les 3 mois
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Tous les 6 mois
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Tous les 12 mois
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Démarrer une nouvelle partie
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Charger une partie sauvée
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Créer un monde/scénario de jeu personnalisé

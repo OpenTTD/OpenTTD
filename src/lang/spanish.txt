@@ -717,11 +717,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Pegar pu
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Pega la localización de este punto de vista a la global
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidades de moneda
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selección de unidades de moneda
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Medir unidades
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Medir unidades seleccionadas
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vehículos de carretera
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Selecciona a qué lado de la carretera se debe conducir
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Conducir por la izquierda
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Conducir por la derecha
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nombres de las poblaciones
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Selección del estilo del nombre de las poblaciones
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autoguardado
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selección del intervalo entre grabados automáticos del juego
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Apagado
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Cada mes
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Cada 3 meses
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Cada 6 meses
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Cada 12 meses
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comenzar nuevo juego
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Cargar un juego guardado
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Crear un mundo/escenario de juego personalizado

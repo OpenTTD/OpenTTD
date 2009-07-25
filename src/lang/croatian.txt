@@ -778,11 +778,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Zalijepi
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Zalijepi lokaciju ovog mini pogleda na globalni pogled
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Novčane jedinice
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Izbor novčanih jedinica
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mjerni sustav
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Izbor mjernog sustava
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cestovna vozila
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Odaberi na kojoj će strani ceste vozila prometovati
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vozi na lijevoj strani
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Vozi na desnoj strani
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Imena gradova
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Odaberi stil za imena gradova
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatsko spremanje
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Odaberi interval između automatskih spremanja igre
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Isključeno
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Svaki mjesec
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Svaka 3 mjeseca
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Svakih 6 mjeseci
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Svakih 12 mjeseci
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započni novu igru
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Učitaj spremljenu igru
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Izradi proizvoljni igrački svijet/scenarij

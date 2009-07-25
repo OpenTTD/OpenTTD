@@ -783,11 +783,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Mapa pod
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Nastavit hlavny pohlad na mapu podla tohto pohladu
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Mena
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Vyber meny
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Merné jednotky
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Výber jednotiek vzdialenosti
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cestné vozidlá
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Strana po ktorej jazdia cestne vozidla
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Jazdia nalavo
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Jazdia napravo
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Názvy miest
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Vyber styl nazvov miest
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatické ukladanie
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vyber interval automatickeho ukladania
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Vypnute
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Každý mesiac
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Každé 3 mesiace
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Každých 6 mesiacov
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Každých 12 mesiacov
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Spustit novu hru
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Nahrat ulozenú hru
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Vytvorit vlastny scenar

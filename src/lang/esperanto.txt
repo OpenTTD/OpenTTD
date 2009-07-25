@@ -717,11 +717,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Gluu de 
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Gluu la lokon de ĉi tiu videjo al la ĉefvido
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Monunuoj
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Elekto de monunuoj
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mezurunuoj
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Elekto de mezurunuoj
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vojveturiloj
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Elektu vojflankon kie veturu vojveturiloj
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Veturu maldekstre
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Veturu dekstre
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Urbonomoj
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Elektu stilon de urbonomoj
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Aŭtomata konservado
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Elektu intervalon inter aŭtomataj konservadoj de la ludo
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Malaktiva
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Je ĉiu monato
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Je ĉiuj 3 monatoj
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Je ĉiuj 6 monatoj
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Je ĉiuj 12 monatoj
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Startu novan ludon
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ŝarĝu konservitan ludon
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Kreu mem ludmondon/scenaron

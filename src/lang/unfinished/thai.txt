@@ -573,11 +573,20 @@ STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...ม�
 ############ end of the 'Display map' dropdown
 
 
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}การเลือกสกุลเงิน
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}หน่วยในการวัด
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}การเลือกหน่วยในการวัด
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}ยานยนต์
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :ขับชิดซ้าย
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :ขับชิดขวา
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}ชื่อเมือง
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}เลือกรูปแบบของชื่อเมือง
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}บันทึกเกมอัตโนมัติ
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :ปิด
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :ทุก 3 เดือน
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :ทุก 6 เดือน
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :ทุก 12 เดือน
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}เริ่มเกมใหม่
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}เปิดเกมที่บันทึกไว้
 STR_INTRO_QUIT                                                  :{BLACK}ออก

@@ -716,11 +716,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Vun der 
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Setzt d'Plaz vun dëser Usiicht op déi global Usiicht
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Währungseenheet
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Währungseenheet wielen
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Moosseenheeten
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Moosseenheetenauswiel
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Stroossengefierer
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Wéi eng Stroossensäit sollen d'Gefierer fueren
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Lenks fueren
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Riets fueren
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Stiednimm
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Stil vun den Stiednimm wielen
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autospäicheren
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Wiel den Intervall aus fir d'Autospäicherung
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Aus
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :All Mount
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :All 3 Méint
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :All 6 Méint
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :All 12 Méint
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start en neit Spill
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Lueden eng Partie
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Erstell eng eegen Spillwelt/Szenario

@@ -709,11 +709,23 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Deeg van
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Deeg die lokasie van die gesigspunt na die hoofskerm
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Geld eenhede
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Geld eendheid keuse
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Meet eenhede
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Meet eenhede keuse
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Pad voertuie
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Kies kant van pad waarop voertuie ry
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Bestuur op linkerkant
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Bestuur op regterkant
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Dorp name
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Kies dorp naam styl
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Outostoor
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Kies interval tussen outomatiese store
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Af
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Elke maand
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Elke 3 maande
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Elke 6 maande
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Elke 12 maande
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Begin nuwe spel
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Laai 'n gestoorde spel
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Skep 'n doelgeboude spel wêreld/draaiboek
