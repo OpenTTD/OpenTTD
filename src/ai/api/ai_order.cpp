@@ -198,7 +198,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 			}
 			return INVALID_TILE;
 		}
-		case OT_GOTO_WAYPOINT: return v->type == VEH_TRAIN ? ::Waypoint::Get(order->GetDestination())->xy : ::Station::Get(order->GetDestination())->xy;
+		case OT_GOTO_WAYPOINT: return ::Waypoint::Get(order->GetDestination())->xy;
 		default:               return INVALID_TILE;
 	}
 }

@@ -352,7 +352,7 @@ static Station *GetClosestDeletedStation(TileIndex tile)
 	Station *st;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->facilities == 0 && st->owner == _current_company) {
+		if (!st->IsInUse() && st->owner == _current_company) {
 			uint cur_dist = DistanceManhattan(tile, st->xy);
 
 			if (cur_dist < threshold) {
@@ -420,11 +420,7 @@ void UpdateAllStationVirtCoords()
 {
 	BaseStation *st;
 
-	FOR_ALL_STATIONS(st) {
-		st->UpdateVirtCoord();
-	}
-
-	FOR_ALL_WAYPOINTS(st) {
+	FOR_ALL_BASE_STATIONS(st) {
 		st->UpdateVirtCoord();
 	}
 }
@@ -628,7 +624,7 @@ static void UpdateStationSignCoord(Station *st)
  */
 static void DeleteStationIfEmpty(Station *st)
 {
-	if (st->facilities == 0) {
+	if (!st->IsInUse()) {
 		st->delete_ctr = 0;
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
 	}
@@ -2951,7 +2947,7 @@ void DeleteOilRig(TileIndex tile)
 
 	st->UpdateVirtCoord();
 	st->RecomputeIndustriesNear();
-	if (st->facilities == 0) delete st;
+	if (!st->IsInUse()) delete st;
 }
 
 static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_owner)

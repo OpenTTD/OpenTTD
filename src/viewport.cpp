@@ -1092,7 +1092,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 
 static void AddStation(const Station *st, StringID str, uint16 width)
 {
-	AddStringToDraw(st->sign.left + 1, st->sign.top + 1, str, st->index, st->facilities, (st->owner == OWNER_NONE || st->facilities == 0) ? 0xE : _company_colours[st->owner], width);
+	AddStringToDraw(st->sign.left + 1, st->sign.top + 1, str, st->index, st->facilities, (st->owner == OWNER_NONE || !st->IsInUse()) ? 0xE : _company_colours[st->owner], width);
 }
 
 
