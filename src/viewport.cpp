@@ -1090,33 +1090,40 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 }
 
 
-static void AddStation(const Station *st, StringID str, uint16 width)
+static void AddStation(const BaseStation *st, bool tiny, uint16 width)
 {
+	/* Check whether the base station is a station or a waypoint */
+	bool is_station = Station::IsExpected(st);
+
+	/* Don't draw if the display options are disabled */
+	if (!HasBit(_display_opt, is_station ? DO_SHOW_STATION_NAMES : DO_SHOW_WAYPOINT_NAMES)) return;
+
+	StringID str = (is_station ? STR_STATION_SIGN : STR_WAYPOINT_VIEWPORT) + tiny;
+
 	AddStringToDraw(st->sign.left + 1, st->sign.top + 1, str, st->index, st->facilities, (st->owner == OWNER_NONE || !st->IsInUse()) ? 0xE : _company_colours[st->owner], width);
 }
 
 
 static void ViewportAddStationNames(DrawPixelInfo *dpi)
 {
-	int left, top, right, bottom;
-	const Station *st;
-
-	if (!HasBit(_display_opt, DO_SHOW_STATION_NAMES) || _game_mode == GM_MENU)
+	if (!(HasBit(_display_opt, DO_SHOW_STATION_NAMES) || HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES)) || _game_mode == GM_MENU) {
 		return;
+	}
 
-	left = dpi->left;
-	top = dpi->top;
-	right = left + dpi->width;
-	bottom = top + dpi->height;
+	int left = dpi->left;
+	int top = dpi->top;
+	int right = left + dpi->width;
+	int bottom = top + dpi->height;
+	const BaseStation *st;
 
 	switch (dpi->zoom) {
 		case ZOOM_LVL_NORMAL:
-			FOR_ALL_STATIONS(st) {
+			FOR_ALL_BASE_STATIONS(st) {
 				if (bottom > st->sign.top &&
 						top    < st->sign.top + 12 &&
 						right  > st->sign.left &&
 						left   < st->sign.left + st->sign.width_normal) {
-					AddStation(st, STR_STATION_SIGN, st->sign.width_normal);
+					AddStation(st, false, st->sign.width_normal);
 				}
 			}
 			break;
@@ -1124,12 +1131,12 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 		case ZOOM_LVL_OUT_2X:
 			right += 2;
 			bottom += 2;
-			FOR_ALL_STATIONS(st) {
+			FOR_ALL_BASE_STATIONS(st) {
 				if (bottom > st->sign.top &&
 						top    < st->sign.top + 24 &&
 						right  > st->sign.left &&
 						left   < st->sign.left + st->sign.width_normal * 2) {
-					AddStation(st, STR_STATION_SIGN, st->sign.width_normal);
+					AddStation(st, false, st->sign.width_normal);
 				}
 			}
 			break;
@@ -1139,12 +1146,12 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 			right += ScaleByZoom(1, dpi->zoom);
 			bottom += ScaleByZoom(1, dpi->zoom) + 1;
 
-			FOR_ALL_STATIONS(st) {
+			FOR_ALL_BASE_STATIONS(st) {
 				if (bottom > st->sign.top &&
 						top    < st->sign.top + ScaleByZoom(12, dpi->zoom) &&
 						right  > st->sign.left &&
 						left   < st->sign.left + ScaleByZoom(st->sign.width_small, dpi->zoom)) {
-					AddStation(st, STR_STATION_SIGN_TINY, st->sign.width_small | 0x8000);
+					AddStation(st, true, st->sign.width_small | 0x8000);
 				}
 			}
 			break;
@@ -1209,70 +1216,6 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 						right  > si->sign.left &&
 						left   < si->sign.left + ScaleByZoom(si->sign.width_small, dpi->zoom)) {
 					AddSign(si, IsTransparencySet(TO_SIGNS) ? STR_SIGN_SMALL_WHITE : STR_SIGN_SMALL_BLACK, si->sign.width_small | 0x8000);
-				}
-			}
-			break;
-
-		default: NOT_REACHED();
-	}
-}
-
-
-static void AddWaypoint(const Waypoint *wp, StringID str, uint16 width)
-{
-	AddStringToDraw(wp->sign.left + 1, wp->sign.top + 1, str, wp->index, 0, (wp->owner == OWNER_NONE || !wp->IsInUse()) ? 0xE : _company_colours[wp->owner], width);
-}
-
-
-static void ViewportAddWaypoints(DrawPixelInfo *dpi)
-{
-	const Waypoint *wp;
-	int left, top, right, bottom;
-
-	if (!HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES))
-		return;
-
-	left = dpi->left;
-	top = dpi->top;
-	right = left + dpi->width;
-	bottom = top + dpi->height;
-
-	switch (dpi->zoom) {
-		case ZOOM_LVL_NORMAL:
-			FOR_ALL_WAYPOINTS(wp) {
-				if (bottom > wp->sign.top &&
-						top    < wp->sign.top + 12 &&
-						right  > wp->sign.left &&
-						left   < wp->sign.left + wp->sign.width_normal) {
-					AddWaypoint(wp, STR_WAYPOINT_VIEWPORT, wp->sign.width_normal);
-				}
-			}
-			break;
-
-		case ZOOM_LVL_OUT_2X:
-			right += 2;
-			bottom += 2;
-			FOR_ALL_WAYPOINTS(wp) {
-				if (bottom > wp->sign.top &&
-						top    < wp->sign.top + 24 &&
-						right  > wp->sign.left &&
-						left   < wp->sign.left + wp->sign.width_normal * 2) {
-					AddWaypoint(wp, STR_WAYPOINT_VIEWPORT, wp->sign.width_normal);
-				}
-			}
-			break;
-
-		case ZOOM_LVL_OUT_4X:
-		case ZOOM_LVL_OUT_8X:
-			right += ScaleByZoom(1, dpi->zoom);
-			bottom += ScaleByZoom(1, dpi->zoom) + 1;
-
-			FOR_ALL_WAYPOINTS(wp) {
-				if (bottom > wp->sign.top &&
-						top    < wp->sign.top + ScaleByZoom(12, dpi->zoom) &&
-						right  > wp->sign.left &&
-						left   < wp->sign.left + ScaleByZoom(wp->sign.width_small, dpi->zoom)) {
-					AddWaypoint(wp, STR_WAYPOINT_VIEWPORT_TINY, wp->sign.width_small | 0x8000);
 				}
 			}
 			break;
@@ -1528,7 +1471,6 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	ViewportAddTownNames(&_vd.dpi);
 	ViewportAddStationNames(&_vd.dpi);
 	ViewportAddSigns(&_vd.dpi);
-	ViewportAddWaypoints(&_vd.dpi);
 
 	DrawTextEffects(&_vd.dpi);
 
@@ -1894,24 +1836,42 @@ static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
 	return false;
 }
 
+static bool ClickOnStation(const BaseStation *st)
+{
+	/* Check whether the base station is a station or a waypoint */
+	bool is_station = Station::IsExpected(st);
+
+	/* Don't draw if the display options are disabled */
+	if (!HasBit(_display_opt, is_station ? DO_SHOW_STATION_NAMES : DO_SHOW_WAYPOINT_NAMES)) return false;
+
+	if (is_station) {
+		ShowStationViewWindow(st->index);
+	} else {
+		ShowWaypointWindow(Waypoint::From(st));
+	}
+	return true;
+}
 
 static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 {
-	const Station *st;
+	if (!(HasBit(_display_opt, DO_SHOW_STATION_NAMES) || HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES)) || IsInvisibilitySet(TO_SIGNS)) {
+		return false;
+	}
 
-	if (!HasBit(_display_opt, DO_SHOW_STATION_NAMES) || IsInvisibilitySet(TO_SIGNS)) return false;
+	const BaseStation *st;
+	bool ret = false;
 
 	switch (vp->zoom) {
 		case ZOOM_LVL_NORMAL:
 			x = x - vp->left + vp->virtual_left;
 			y = y - vp->top  + vp->virtual_top;
-			FOR_ALL_STATIONS(st) {
+			FOR_ALL_BASE_STATIONS(st) {
 				if (y >= st->sign.top &&
 						y < st->sign.top + 12 &&
 						x >= st->sign.left &&
 						x < st->sign.left + st->sign.width_normal) {
-					ShowStationViewWindow(st->index);
-					return true;
+					ret = ClickOnStation(st);
+					if (ret) break;
 				}
 			}
 			break;
@@ -1919,13 +1879,13 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 		case ZOOM_LVL_OUT_2X:
 			x = (x - vp->left + 1) * 2 + vp->virtual_left;
 			y = (y - vp->top  + 1) * 2 + vp->virtual_top;
-			FOR_ALL_STATIONS(st) {
+			FOR_ALL_BASE_STATIONS(st) {
 				if (y >= st->sign.top &&
 						y < st->sign.top + 24 &&
 						x >= st->sign.left &&
 						x < st->sign.left + st->sign.width_normal * 2) {
-					ShowStationViewWindow(st->index);
-					return true;
+					ret = ClickOnStation(st);
+					if (ret) break;
 				}
 			}
 			break;
@@ -1935,13 +1895,13 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 			x = ScaleByZoom(x - vp->left + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_left;
 			y = ScaleByZoom(y - vp->top  + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_top;
 
-			FOR_ALL_STATIONS(st) {
+			FOR_ALL_BASE_STATIONS(st) {
 				if (y >= st->sign.top &&
 						y < st->sign.top + ScaleByZoom(12, vp->zoom) &&
 						x >= st->sign.left &&
 						x < st->sign.left + ScaleByZoom(st->sign.width_small, vp->zoom)) {
-					ShowStationViewWindow(st->index);
-					return true;
+					ret = ClickOnStation(st);
+					if (ret) break;
 				}
 			}
 			break;
@@ -1949,7 +1909,7 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 		default: NOT_REACHED();
 	}
 
-	return false;
+	return ret;
 }
 
 
@@ -2012,64 +1972,6 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 }
 
 
-static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
-{
-	const Waypoint *wp;
-
-	if (!HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES) || IsInvisibilitySet(TO_SIGNS)) return false;
-
-	switch (vp->zoom) {
-		case ZOOM_LVL_NORMAL:
-			x = x - vp->left + vp->virtual_left;
-			y = y - vp->top  + vp->virtual_top;
-			FOR_ALL_WAYPOINTS(wp) {
-				if (y >= wp->sign.top &&
-						y < wp->sign.top + 12 &&
-						x >= wp->sign.left &&
-						x < wp->sign.left + wp->sign.width_normal) {
-					ShowWaypointWindow(wp);
-					return true;
-				}
-			}
-			break;
-
-		case ZOOM_LVL_OUT_2X:
-			x = (x - vp->left + 1) * 2 + vp->virtual_left;
-			y = (y - vp->top  + 1) * 2 + vp->virtual_top;
-			FOR_ALL_WAYPOINTS(wp) {
-				if (y >= wp->sign.top &&
-						y < wp->sign.top + 24 &&
-						x >= wp->sign.left &&
-						x < wp->sign.left + wp->sign.width_normal * 2) {
-					ShowWaypointWindow(wp);
-					return true;
-				}
-			}
-			break;
-
-		case ZOOM_LVL_OUT_4X:
-		case ZOOM_LVL_OUT_8X:
-			x = ScaleByZoom(x - vp->left + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_left;
-			y = ScaleByZoom(y - vp->top  + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_top;
-
-			FOR_ALL_WAYPOINTS(wp) {
-				if (y >= wp->sign.top &&
-						y < wp->sign.top + ScaleByZoom(12, vp->zoom) &&
-						x >= wp->sign.left &&
-						x < wp->sign.left + ScaleByZoom(wp->sign.width_small, vp->zoom)) {
-					ShowWaypointWindow(wp);
-					return true;
-				}
-			}
-			break;
-
-		default: NOT_REACHED();
-	}
-
-	return false;
-}
-
-
 static bool CheckClickOnLandscape(const ViewPort *vp, int x, int y)
 {
 	Point pt = TranslateXYToTileCoord(vp, x, y);
@@ -2086,7 +1988,6 @@ bool HandleViewportClicked(const ViewPort *vp, int x, int y)
 	if (CheckClickOnTown(vp, x, y)) return true;
 	if (CheckClickOnStation(vp, x, y)) return true;
 	if (CheckClickOnSign(vp, x, y)) return true;
-	if (CheckClickOnWaypoint(vp, x, y)) return true;
 	CheckClickOnLandscape(vp, x, y);
 
 	v = CheckClickOnVehicle(vp, x, y);
