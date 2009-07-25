@@ -333,7 +333,6 @@ struct GameOptionsWindow : Window {
 				CheckForMissingGlyphsInLoadedLanguagePack();
 				UpdateAllStationVirtCoords();
 				ReInitAllWindows();
-				MarkWholeScreenDirty();
 				break;
 
 			case GOW_RESOLUTION_DROPDOWN: // Change resolution
