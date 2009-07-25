@@ -517,7 +517,7 @@ static const NWidgetPart _nested_town_directory_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_BROWN, TDW_CENTERTOWN), SetMinimalSize(196, 164), SetDataTip(0x0, STR_TOWN_DIRECTORY_LIST_TOOLTIP),
 							SetFill(1, 0), SetResize(0, 10), EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_BROWN, TDW_BOTTOM_PANEL),
-				NWidget(WWT_TEXT, COLOUR_BROWN, TDW_BOTTOM_TEXT), SetPadding(2, 0, 0, 2), SetMinimalSize(196, 12), SetFill(1, 0), SetDataTip(STR_EMPTY, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_BROWN, TDW_BOTTOM_TEXT), SetPadding(2, 0, 0, 2), SetMinimalSize(196, 12), SetFill(1, 0), SetDataTip(STR_TOWN_POPULATION, STR_NULL),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
@@ -611,6 +611,11 @@ public:
 		this->DrawWidgets();
 	}
 
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == TDW_BOTTOM_TEXT) SetDParam(0, GetWorldPopulation());
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch(widget) {
@@ -638,11 +643,6 @@ public:
 					if (++n == this->vscroll.cap) break; // max number of towns in 1 window
 				}
 			} break;
-
-			case TDW_BOTTOM_TEXT:
-				SetDParam(0, GetWorldPopulation());
-				DrawString(r.left, r.right, r.top, STR_TOWN_POPULATION);
-				break;
 		}
 	}
 

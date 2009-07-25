@@ -1128,12 +1128,12 @@ public:
 				}
 				break;
 			}
-
-			case BRSW_NEWST_DROPDOWN:
-				SetDParam(0, GetStationClassName(_railstation.station_class));
-				DrawString(r.left + WD_DROPDOWNTEXT_LEFT, r.right - WD_DROPDOWNTEXT_RIGHT, r.top + WD_DROPDOWNTEXT_TOP, STR_BLACK_STRING, TC_BLACK);
-				break;
 		}
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == BRSW_NEWST_DROPDOWN) SetDParam(0, GetStationClassName(_railstation.station_class));
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1377,7 +1377,7 @@ static const NWidgetPart _nested_newstation_builder_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRSW_BACKGROUND),
 		/* begin newstations gui additions. */
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, BRSW_NEWST_DROPDOWN), SetMinimalSize(134, 12), SetPadding(0, 7, 0, 7), SetDataTip(STR_EMPTY, STR_SELECT_STATION_CLASS_TIP),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, BRSW_NEWST_DROPDOWN), SetMinimalSize(134, 12), SetPadding(0, 7, 0, 7), SetDataTip(STR_BLACK_STRING, STR_SELECT_STATION_CLASS_TIP),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
 		NWidget(NWID_HORIZONTAL), SetPIP(7, 0, 7),
 			NWidget(WWT_MATRIX, COLOUR_GREY, BRSW_NEWST_LIST), SetMinimalSize(122, 71), SetFill(1, 0), SetDataTip(0x501, STR_SELECT_STATION_TYPE_TIP),

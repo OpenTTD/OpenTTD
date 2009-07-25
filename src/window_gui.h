@@ -534,6 +534,14 @@ public:
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize) {}
 
 	/**
+	 * Initialize string parameters for a widget.
+	 * Calls to this function are made during initialization to measure the size (that is as part of #InitNested()), during drawing,
+	 * and while re-initializing the window. Only for widgets that render text initializing is requested.
+	 * @param widget  Widget number.
+	 */
+	virtual void SetStringParameters(int widget) const {}
+
+	/**
 	 * Called when window gains focus
 	 */
 	virtual void OnFocus() {}

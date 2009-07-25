@@ -1694,7 +1694,10 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 		Dimension d = {this->min_x, this->min_y};
 		Dimension resize  = {this->resize_x, this->resize_y};
 		if (w != NULL) { // A non-NULL window pointer acts as switch to turn dynamic widget size on.
-			if (this->type == WWT_FRAME || this->type == WWT_INSET) d = maxdim(d, GetStringBoundingBox(this->widget_data));
+			if (this->type == WWT_FRAME || this->type == WWT_INSET) {
+				if (this->index >= 0) w->SetStringParameters(this->index);
+				d = maxdim(d, GetStringBoundingBox(this->widget_data));
+			}
 			if (this->index >= 0) {
 				static const Dimension padding = {0, 0};
 				w->UpdateWidgetSize(this->index, &d, padding, &resize);
@@ -1745,10 +1748,12 @@ void NWidgetBackground::Draw(const Window *w)
 			break;
 
 		case WWT_FRAME:
+			if (this->index >= 0) w->SetStringParameters(this->index);
 			DrawFrame(r, this->colour, this->widget_data);
 			break;
 
 		case WWT_INSET:
+			if (this->index >= 0) w->SetStringParameters(this->index);
 			DrawInset(r, this->colour, this->widget_data);
 			break;
 
@@ -1983,6 +1988,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 		case WWT_TEXTBTN_2: {
 			static const Dimension extra = {WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT,  WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM};
 			padding = &extra;
+			if (this->index >= 0) w->SetStringParameters(this->index);
 			Dimension d2 = GetStringBoundingBox(this->widget_data);
 			d2.width += extra.width;
 			d2.height += extra.height;
@@ -1993,12 +1999,14 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 		case WWT_TEXT: {
 			static const Dimension extra = {0, 0};
 			padding = &extra;
+			if (this->index >= 0) w->SetStringParameters(this->index);
 			size = maxdim(size, GetStringBoundingBox(this->widget_data));
 			break;
 		}
 		case WWT_CAPTION: {
 			static const Dimension extra = {WD_CAPTIONTEXT_LEFT + WD_CAPTIONTEXT_RIGHT, WD_CAPTIONTEXT_TOP + WD_CAPTIONTEXT_BOTTOM};
 			padding = &extra;
+			if (this->index >= 0) w->SetStringParameters(this->index);
 			Dimension d2 = GetStringBoundingBox(this->widget_data);
 			d2.width += extra.width;
 			d2.height += extra.height;
@@ -2008,6 +2016,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 		case WWT_DROPDOWN: {
 			static const Dimension extra = {WD_DROPDOWNTEXT_LEFT + WD_DROPDOWNTEXT_RIGHT, WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM};
 			padding = &extra;
+			if (this->index >= 0) w->SetStringParameters(this->index);
 			Dimension d2 = GetStringBoundingBox(this->widget_data);
 			d2.width += extra.width;
 			d2.height += extra.height;
@@ -2059,15 +2068,18 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_TEXTBTN:
 		case WWT_PUSHTXTBTN:
 		case WWT_TEXTBTN_2:
+			if (this->index >= 0) w->SetStringParameters(this->index);
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FR_LOWERED : FR_NONE);
 			DrawLabel(r, this->type, clicked, this->widget_data);
 			break;
 
 		case WWT_LABEL:
+			if (this->index >= 0) w->SetStringParameters(this->index);
 			DrawLabel(r, this->type, clicked, this->widget_data);
 			break;
 
 		case WWT_TEXT:
+			if (this->index >= 0) w->SetStringParameters(this->index);
 			DrawText(r, (TextColour)this->colour, this->widget_data);
 			break;
 
@@ -2094,6 +2106,7 @@ void NWidgetLeaf::Draw(const Window *w)
 			break;
 
 		case WWT_CAPTION:
+			if (this->index >= 0) w->SetStringParameters(this->index);
 			DrawCaption(r, this->colour, w->owner, this->widget_data);
 			break;
 
@@ -2119,6 +2132,7 @@ void NWidgetLeaf::Draw(const Window *w)
 			break;
 
 		case WWT_DROPDOWN:
+			if (this->index >= 0) w->SetStringParameters(this->index);
 			DrawDropdown(r, this->colour, clicked, this->widget_data);
 			break;
 
