@@ -182,7 +182,7 @@ public:
 	virtual void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl) = 0;
 
 	virtual NWidgetCore *GetWidgetFromPos(int x, int y) = 0;
-	virtual NWidgetBase *GetWidgetOfType(WidgetType tp) = 0;
+	virtual NWidgetBase *GetWidgetOfType(WidgetType tp);
 
 	/**
 	 * Set additional space (padding) around the widget.
@@ -295,6 +295,7 @@ public:
 	inline bool IsDisabled();
 
 	void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
+	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y);
 
 	virtual Scrollbar *FindScrollbar(Window *w, bool allow_next = true) = 0;
 
@@ -444,7 +445,6 @@ public:
 	/* virtual */ void Draw(const Window *w);
 	/* virtual */ void Invalidate(const Window *w) const;
 	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y);
-	/* virtual */ NWidgetBase *GetWidgetOfType(WidgetType tp);
 };
 
 /** Nested widget with a child.
@@ -480,8 +480,6 @@ public:
 	/* virtual */ void SetupSmallestSize(Window *w, bool init_array);
 	/* virtual */ void Draw(const Window *w);
 	/* virtual */ void Invalidate(const Window *w) const;
-	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y);
-	/* virtual */ NWidgetBase *GetWidgetOfType(WidgetType tp);
 	/* virtual */ Scrollbar *FindScrollbar(Window *w, bool allow_next = true);
 
 	static void InvalidateDimensionCache();

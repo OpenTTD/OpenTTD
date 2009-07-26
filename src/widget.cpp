@@ -973,7 +973,7 @@ void NWidgetBase::Invalidate(const Window *w) const
 }
 
 /**
- * @fn NWidgetCore *GetWidgetFromPos(int x, int y)
+ * @fn NWidgetCore *NWidgetBase::GetWidgetFromPos(int x, int y)
  * Retrieve a widget by its position.
  * @param x Horizontal position relative to the left edge of the window.
  * @param y Vertical position relative to the top edge of the window.
@@ -981,11 +981,14 @@ void NWidgetBase::Invalidate(const Window *w) const
  */
 
 /**
- * @fn NWidgetBase *GetWidgetOfType(WidgetType tp)
  * Retrieve a widget by its type.
  * @param tp Widget type to search for.
  * @return Returns the first widget of the specified type, or \c NULL if no widget can be found.
  */
+NWidgetBase *NWidgetBase::GetWidgetOfType(WidgetType tp)
+{
+	return (this->type == tp) ? this : NULL;
+}
 
 /**
  * Constructor for resizable nested widgets.
@@ -1109,6 +1112,11 @@ void NWidgetCore::StoreWidgets(Widget *widgets, int length, bool left_moving, bo
 	w->tooltips = this->tool_tip;
 }
 
+NWidgetCore *NWidgetCore::GetWidgetFromPos(int x, int y)
+{
+	return (IsInsideBS(x, this->pos_x, this->current_x) && IsInsideBS(y, this->pos_y, this->current_y)) ? this : NULL;
+}
+
 /**
  * @fn Scrollbar *NWidgetCore::FindScrollbar(Window *w, bool allow_next = true)
  * Find the scrollbar of the widget through the Window::nested_array.
@@ -1199,7 +1207,6 @@ static inline uint ComputeOffset(uint space, uint max_space)
 	if (space >= max_space) return 0;
 	return (max_space - space) / 2;
 }
-
 
 /**
  * Widgets stacked on top of each other.
@@ -1613,11 +1620,6 @@ void NWidgetSpacer::Invalidate(const Window *w) const
 NWidgetCore *NWidgetSpacer::GetWidgetFromPos(int x, int y)
 {
 	return NULL;
-}
-
-NWidgetBase *NWidgetSpacer::GetWidgetOfType(WidgetType tp)
-{
-	return (this->type == tp) ? this : NULL;
 }
 
 /**
@@ -2152,10 +2154,6 @@ void NWidgetLeaf::Invalidate(const Window *w) const
 	NWidgetBase::Invalidate(w);
 }
 
-NWidgetCore *NWidgetLeaf::GetWidgetFromPos(int x, int y)
-{
-	return (IsInsideBS(x, this->pos_x, this->current_x) && IsInsideBS(y, this->pos_y, this->current_y)) ? this : NULL;
-}
 
 Scrollbar *NWidgetLeaf::FindScrollbar(Window *w, bool allow_next)
 {
@@ -2167,11 +2165,6 @@ Scrollbar *NWidgetLeaf::FindScrollbar(Window *w, bool allow_next)
 		if (next_wid != NULL) return next_wid->FindScrollbar(w, false);
 	}
 	return NULL;
-}
-
-NWidgetBase *NWidgetLeaf::GetWidgetOfType(WidgetType tp)
-{
-	return (this->type == tp) ? this : NULL;
 }
 
 /**
