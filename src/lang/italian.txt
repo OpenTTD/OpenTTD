@@ -680,8 +680,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Impostazioni Ne
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opzioni trasparenza
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Mostra nomi città
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Mostra nomi stazioni
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Mostra cartelli
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Waypoint mostrati
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Mostra cartelli
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animazione completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Massimo dettaglio
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Edifici trasparenti
@@ -3605,6 +3605,7 @@ STR_AI_AUTHOR                                                   :{BLACK}Autore: 
 STR_AI_VERSION                                                  :{BLACK}Versione: {NUM}
 STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Una delle IA in funzione è andata in crash. Si prega di inviare una segnalazione all'autore della IA con uno screenshot della finestra Debug IA.
+STR_AI_NO_AI_FOUND                                              :Impossibile trovare una IA adatta da caricare.{}La IA caricata è solo un abbozzo e resterà semplicemente passiva.{}È possibile scaricare numerose IA tramite il sistema 'Contenuti online'.
 ########
 
 ############ town controlled noise level

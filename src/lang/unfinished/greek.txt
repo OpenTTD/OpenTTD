@@ -51,20 +51,20 @@ STR_CARGO_PLURAL_SUGAR                                          :Ζάχαρη
 STR_CARGO_PLURAL_TOYS                                           :Παιχνίδια
 STR_CARGO_PLURAL_CANDY                                          :Γλυκίσματα
 STR_CARGO_PLURAL_COLA                                           :Κόλα
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Ινοποιημένη ζάχαρη
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Μαλλι της γριας
 STR_CARGO_PLURAL_BUBBLES                                        :Φυσαλίδες
-STR_CARGO_PLURAL_TOFFEE                                         :Καραμέλα
+STR_CARGO_PLURAL_TOFFEE                                         :Ζαχαρωτά
 STR_CARGO_PLURAL_BATTERIES                                      :Μπαταρίες
 STR_CARGO_PLURAL_PLASTIC                                        :Πλαστικά
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Ανθρακούχα ποτά
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Αναψυκτικά
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Επιβάτης
 STR_CARGO_SINGULAR_COAL                                         :Κάρβουνο
 STR_CARGO_SINGULAR_MAIL                                         :Ταχυδρομείο
 STR_CARGO_SINGULAR_OIL                                          :Πετρέλαιο
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Ζώα
-STR_CARGO_SINGULAR_GOODS                                        :Βιομηχανικα Προϊόντα
-STR_CARGO_SINGULAR_GRAIN                                        :Σιτάρι
+STR_CARGO_SINGULAR_GOODS                                        :Αγαθά
+STR_CARGO_SINGULAR_GRAIN                                        :Σιτηρά
 STR_CARGO_SINGULAR_WOOD                                         :Ξυλεία
 STR_CARGO_SINGULAR_IRON_ORE                                     :Σιδηρομετάλλευμα
 STR_CARGO_SINGULAR_STEEL                                        :Χάλυβας
@@ -83,9 +83,9 @@ STR_CARGO_SINGULAR_SUGAR                                        :Ζάχαρη
 STR_CARGO_SINGULAR_TOY                                          :Παιχνίδι
 STR_CARGO_SINGULAR_CANDY                                        :Γλυκό
 STR_CARGO_SINGULAR_COLA                                         :Κόλα
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Ινοποιημένη ζάχαρη
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Μαλλί της γριάς
 STR_CARGO_SINGULAR_BUBBLE                                       :Φυσαλίδα
-STR_CARGO_SINGULAR_TOFFEE                                       :Καραμέλα
+STR_CARGO_SINGULAR_TOFFEE                                       :Ζαχαρωτά
 STR_CARGO_SINGULAR_BATTERY                                      :Μπαταρία
 STR_CARGO_SINGULAR_PLASTIC                                      :Πλαστικό
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Αναψυκτικό
@@ -94,15 +94,15 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA} επι�
 STR_QUANTITY_COAL                                               :{WEIGHT} άνθρακα
 STR_QUANTITY_MAIL                                               :{COMMA} σάκος{P "" s} με αλληλογραφία
 STR_QUANTITY_OIL                                                :{VOLUME} πετρελαίου
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} αντικείμενο{P "" s} ζώων
-STR_QUANTITY_GOODS                                              :{COMMA} κιβώτιο{P "" s} αγαθών
-STR_QUANTITY_GRAIN                                              :{WEIGHT} σιτηρά
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} τεμάχι{P ο α} ζώων
+STR_QUANTITY_GOODS                                              :{COMMA} κιβώτι{P ο α} αγαθών
+STR_QUANTITY_GRAIN                                              :{WEIGHT} σιτηρών
 STR_QUANTITY_WOOD                                               :{WEIGHT} ξύλου
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} μεταλλεύματος σιδήρου
 STR_QUANTITY_STEEL                                              :{WEIGHT} ατσαλιού
 STR_QUANTITY_VALUABLES                                          :{COMMA} τσάντ{P α ες} με τιμαλφή
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} μεταλλεύματος χαλκού
-STR_QUANTITY_MAIZE                                              :{WEIGHT} αραβόσιτου
+STR_QUANTITY_MAIZE                                              :{WEIGHT} καλαμποκιού
 STR_QUANTITY_FRUIT                                              :{WEIGHT} φρούτων
 STR_QUANTITY_DIAMONDS                                           :{COMMA} τσάντ{P α ες} με διαμάντια
 STR_QUANTITY_FOOD                                               :{WEIGHT} τροφίμων
@@ -115,51 +115,51 @@ STR_QUANTITY_SUGAR                                              :{WEIGHT} ζάχ
 STR_QUANTITY_TOYS                                               :{COMMA} παιχνίδι{P "" α}
 STR_QUANTITY_SWEETS                                             :{COMMA} τσάντ{P α ες} με γλυκά
 STR_QUANTITY_COLA                                               :{VOLUME} κόλας
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} μαλλί της γριάς
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} μαλλιού της γριάς
 STR_QUANTITY_BUBBLES                                            :{COMMA} φυσαλίδ{P α ες}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} τόφυ
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} ζαχαρωτών
 STR_QUANTITY_BATTERIES                                          :{COMMA} μπαταρί{P α ες}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} πλαστικού
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} αναψυκτικ{P ό ά}
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}ΕΠ
 STR_ABBREV_COAL                                                 :{TINYFONT}CL
-STR_ABBREV_MAIL                                                 :{TINYFONT}ML
-STR_ABBREV_OIL                                                  :{TINYFONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
-STR_ABBREV_GOODS                                                :{TINYFONT}GD
-STR_ABBREV_GRAIN                                                :{TINYFONT}GR
+STR_ABBREV_MAIL                                                 :{TINYFONT}ΑΓ
+STR_ABBREV_OIL                                                  :{TINYFONT}ΠΤ
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}ΖΩ
+STR_ABBREV_GOODS                                                :{TINYFONT}ΧΡ
+STR_ABBREV_GRAIN                                                :{TINYFONT}ΣΡ
 STR_ABBREV_WOOD                                                 :{TINYFONT}ΞΛ
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}OR
-STR_ABBREV_STEEL                                                :{TINYFONT}ST
-STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CO
-STR_ABBREV_MAIZE                                                :{TINYFONT}MZ
-STR_ABBREV_FRUIT                                                :{TINYFONT}FT
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}FD
-STR_ABBREV_PAPER                                                :{TINYFONT}PR
-STR_ABBREV_GOLD                                                 :{TINYFONT}GD
-STR_ABBREV_WATER                                                :{TINYFONT}WR
-STR_ABBREV_WHEAT                                                :{TINYFONT}WH
-STR_ABBREV_RUBBER                                               :{TINYFONT}RB
-STR_ABBREV_SUGAR                                                :{TINYFONT}SG
-STR_ABBREV_TOYS                                                 :{TINYFONT}TY
-STR_ABBREV_SWEETS                                               :{TINYFONT}SW
-STR_ABBREV_COLA                                                 :{TINYFONT}CL
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CF
-STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
-STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
-STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
-STR_ABBREV_NONE                                                 :{TINYFONT}NO
-STR_ABBREV_ALL                                                  :{TINYFONT}ALL
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}ΣΜ
+STR_ABBREV_STEEL                                                :{TINYFONT}ΑΣ
+STR_ABBREV_VALUABLES                                            :{TINYFONT}ΤΜ
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}ΧΜ
+STR_ABBREV_MAIZE                                                :{TINYFONT}ΚΛ
+STR_ABBREV_FRUIT                                                :{TINYFONT}ΦΡ
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}ΔΜ
+STR_ABBREV_FOOD                                                 :{TINYFONT}ΦΓ
+STR_ABBREV_PAPER                                                :{TINYFONT}ΧΤ
+STR_ABBREV_GOLD                                                 :{TINYFONT}ΧΡ
+STR_ABBREV_WATER                                                :{TINYFONT}ΝΕ
+STR_ABBREV_WHEAT                                                :{TINYFONT}ΣΤ
+STR_ABBREV_RUBBER                                               :{TINYFONT}ΚΤ
+STR_ABBREV_SUGAR                                                :{TINYFONT}ΖΧ
+STR_ABBREV_TOYS                                                 :{TINYFONT}ΠΧ
+STR_ABBREV_SWEETS                                               :{TINYFONT}ΓΛ
+STR_ABBREV_COLA                                                 :{TINYFONT}ΚΟ
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}ΜΓ
+STR_ABBREV_BUBBLES                                              :{TINYFONT}ΦΥ
+STR_ABBREV_TOFFEE                                               :{TINYFONT}ΖΤ
+STR_ABBREV_BATTERIES                                            :{TINYFONT}ΜΠ
+STR_ABBREV_PLASTIC                                              :{TINYFONT}ΠΛ
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ΑΨ
+STR_ABBREV_NONE                                                 :{TINYFONT}ΤΠ
+STR_ABBREV_ALL                                                  :{TINYFONT}ΟΛΑ
 STR_SMALLMAP_CAPTION                                            :{WHITE}Χάρτης - {STRING}
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Επιλογές Παιχνιδιού
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Μήνυμα
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Μήνυμα από {STRING}
-STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Προσχή!
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Προσοχή!
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Αυτό δεν γίνεται....
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Αυτή η περιοχή είναι αδύνατο να καθαριστεί...
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Αρχικά Πνευματικά Δικαιώματα {COPYRIGHT} 1995 Chris Sawyer, Όλα τα δικαιώματα διατηρούνται
@@ -359,8 +359,8 @@ STR_AVAILABLE_SHIPS                                             :{BLACK}Διαθ
 STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Διαθέσιμα Αεροσκάφη
 
 STR_SEND_TRAIN_TO_DEPOT                                         :Στείλε στο υπόστεγο
-STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Στείλε στο υπόστεγο
-STR_SEND_SHIP_TO_DEPOT                                          :Στείλε στο υπόστεγο
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Στείλε στο αμαξοστασίο
+STR_SEND_SHIP_TO_DEPOT                                          :Στείλε στο ναυπηγείο
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Στείλε στο υπόστεγο
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
@@ -1080,7 +1080,7 @@ STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Κέντρο
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Δεξιά
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}απενεργοποιημένο
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Ρυθμός ανάπτυξης πόλεων: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Ρυθμός ανάπτυξης πόλης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Μηδενικός
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Αργός
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Κανονικός
@@ -1091,7 +1091,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Ανα�
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Αρχικός πολλαπλασιαστής μεγέθους πόλης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Να αφαιρούνται παράλογα στοιχεία δρόμων κατά την κατασκευή τους: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_GUI                                          :{ORANGE}Σύστημα Διεπαφής
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}Περιβάλλον λειτουργίας
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Κατασκευή
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Οχήματα
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Σταθμοί
@@ -1100,7 +1100,7 @@ STR_CONFIG_SETTING_AI                                           :{ORANGE}Αντ�
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Επιλογές εμφάνισης
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Αλληλεπιδράσεις
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Σηματοδότες
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Χειρισμός φορτίων
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Χειρισμός εμπορευμάτων
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Παίκτες υπολογιστή
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Αυτόματη ανανέωση
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Έλεγχος οχημάτων
@@ -1134,8 +1134,8 @@ STR_SUB_ARCTIC_LANDSCAPE                                        :Πολικό τ
 STR_SUB_TROPICAL_LANDSCAPE                                      :Υποτροπικό τοπίο
 STR_TOYLAND_LANDSCAPE                                           :Παιχνιδιάστικο τοπίο
 
-STR_CHEATS                                                      :{WHITE}Κλεψιές
-STR_CHEATS_TIP                                                  :{BLACK}Τα κουτάκια δείχνουν αν έχετε χρησιμοποιήσει αυτό το κόλπο πρίν
+STR_CHEATS                                                      :{WHITE}Cheats
+STR_CHEATS_TIP                                                  :{BLACK}Τα κουτάκια δείχνουν αν έχετε χρησιμοποιήσει αυτό το cheat πρίν
 STR_CHEATS_WARNING                                              :{BLACK}Προσοχή! Είστε έτοιμος να προδώσετε τους φίλους ανταγωνιστές σας. Θυμηθείτε ότι αυτή η ντροπή θα μείνει για πάντα.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Αύξηση χρημάτων κατά {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Παίζετε με την εταιρία: {ORANGE}{COMMA}
@@ -1150,7 +1150,7 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ενε�
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Καθ' οδόν {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Πορεία προς {WAYPOINT}, {VELOCITY}
 
-STR_GO_TO_WAYPOINT                                              :Πήγαινε δια μέσου {WAYPOINT}
+STR_GO_TO_WAYPOINT                                              :Πήγαινε μέσω {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Πήγαινε χωρίς στάση μέσω {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY                                           :Σημείο καθοδηγήσης {TOWN}
@@ -1617,9 +1617,15 @@ STR_ROAD_DESCRIPTION_TRAMWAY                                    :Τροχιόδ�
 
 ##id 0x2000
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Πόλεις
+STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_SIGN_SMALL_BLACK                                            :{TINYFONT}{BLACK}{SIGN}
+STR_SIGN_SMALL_WHITE                                            :{TINYFONT}{WHITE}{SIGN}
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Το κτίριο πρέπει πρώτα να κατεδαφιστεί
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
+STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Πόλη)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Πληθυσμός: {ORANGE}{COMMA}{BLACK}  Σπίτια: {ORANGE}{COMMA}
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Μετονομασία Πόλης
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Αδύνατο να μετονομαστεί η πόλη...
@@ -1629,6 +1635,9 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντ
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Αλλαγή ονόματος πόλεως
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Επιβάτες τον προηγούμενο μήνα: {ORANGE}{COMMA}{BLACK}  μεγ: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Αλληλογραφία τον προηγούμενο μήνα: {ORANGE}{COMMA}{BLACK}  μεγ: {ORANGE}{COMMA}
+STR_CARGO_FOR_TOWNGROWTH                                        :{BLACK}Εμπορεύματα που χρειάζονται για την ανάπτυξη της πόλης:
+STR_CARGO_FOR_TOWNGROWTH_REQUIRED                               :{SETX 20}{ORANGE}{STRING}{BLACK} απαιτείται
+STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH                             :{SETX 20}{ORANGE}{CARGO}{BLACK} παραδόθηκε τον τελευταίο μήνα
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Ψηλό συγκρότημα γραφείων
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Συγκρότημα γραφείων
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Μικρό συγκρότημα διαμερισμάτων
@@ -1665,6 +1674,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται τριπλά για το επόμενο έτος!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται τετραπλά για το επόμενο έτος!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Η τοπική αρχή της πόλης {TOWN} αρνείται να επιτρέψει τη δημιουργία νέου αεροδρομίου
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} Οι τοπικές αρχές αρνούνται να δώσουν την άδεια για αεροδρόμιο λογω ανησυχιών για τον θόρυβο
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Χωράφια
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Σπίτια
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Διαμερίσματα
@@ -1688,6 +1698,7 @@ STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Επιχορή�
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Χτίσιμο αγάλματος ιδιοκτήτη εταιρείας
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Επιχορήγηση νέων κτιρίων
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Αγορά αποκλειστικών δικαιωμάτων μεταφοράς
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Δωροδοκίστε την τοπική αρχή
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}'Eναρξη μικρής τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Έναρξη μεσαίας τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Έναρξη μεγάλης τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY}
@@ -1695,6 +1706,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Χτίστε ένα άγαλμα προς τιμήν της εταιρείας σας.{} Κόστος: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Χρηματοδοτήστε την κατασκευή νέων εμπορικών κτιρίων στην πόλη.{} Κόστος: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Αγορά αποκλειστικών δικαιωμάτων διάρκειας 1 χρόνου για την πόλη. Η τοπική αρχή θα επιτρέπει στους επιβάτες και τα φορτία να χρησιμοποιούν μόνο τους σταθμούς της εταιρείας σας.{} Κόστος: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Δωροδοκίστε τις τοπικές αρχές για να αυξησετε τα ποσοστά σας, με ρίσκο ένα μεγάλο πρόστιμο εαν συλληφθείτε.{}Κόστος: {CURRENCY}
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Χαώδης κίνηση στην πόλη {TOWN}!{}{}Χρηματοδοτήθηκε πρόγραμμα επανακατασκευής των δρόμων από την εταιρεία {STRING} και προκαλεί 6 μήνες μιζέριας στους οδηγούς!
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -1705,6 +1717,7 @@ STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Σπίτι-Κα
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Τράπεζα-κουμπαράς
 
 ##id 0x2800
+STR_LANDSCAPING_MENU_LANDSCAPING                                :Μορφοποίηση εδάφους
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Φύτευση δέντρων
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Τοποθέτηση σηματοδότη
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Δέντρα
@@ -1757,6 +1770,10 @@ STR_CARGO_RATING_OUTSTANDING                                    :Καταπλη�
 ############ range for rating ends
 
 ### station view strings
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Εμφάνιση όλων των τραίνων που έχουν αυτό το σταθμό στο δρομολόγιο τους
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Εμφάνιση όλων των οχημάτων που έχουν αυτό το σταθμό στο δρομολόγιο τους
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Εμφάνιση όλων των αεροπλάνων που έχουν αυτό το σταθμό στο δρομολόγιο τους
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Εμφάνιση όλων των αεροπλάνων που έχουν αυτό το σταθμό στο δρομολόγιο τους
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}Ο σταθμός {STATION} δεν δέχεται πια {STRING}
@@ -1784,6 +1801,7 @@ STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Εμφά
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ονόματα σταθμών - Κλικ στο όνομα για κεντράρισμα εικόνας
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Επιλογή μεγέθους/τύπου αεροδρομίου
 STR_STATION_SIGN                                                :{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_STATION_DESCRIPTION_RAILROAD_STATION                        :Σιδηροδρομικός σταθμός
 STR_STATION_DESCRIPTION_AIRCRAFT_HANGAR                         :Υπόστεγο Αεροσκαφών
 STR_STATION_DESCRIPTION_AIRPORT                                 :Αεροδρόμιο
@@ -1798,9 +1816,11 @@ STR_STATION_DESCRIPTION_BUOY                                    :Σημαδού�
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...σημαδούρα στη μέση
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...ο σταθμός είναι υπερβολικά απλωμένος
 STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...ανομοιόμορφοι σταθμοί απενεργοποιημένοι
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Κρατήστε πατημένο το Ctrl για να επιλέξετε περισσοτέρα αντικείμενα
 
 STR_UNDEFINED                                                   :(αποσδιόριστο)
 STR_STAT_CLASS_DFLT                                             :Εξ ορισμού σταθμός
+STR_STAT_CLASS_WAYP                                             :Σημείο καθοδηγήσης
 
 ##id 0x3800
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Προσανατολισμός Αποθήκης Πλοίων
@@ -1958,6 +1978,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...εί�
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
+STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Ανώνυμο
 STR_SV_TRAIN_NAME                                               :Τραίνο {COMMA}
 STR_SV_ROAD_VEHICLE_NAME                                        :Όχημα {COMMA}
@@ -2292,19 +2313,184 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Φορτηγό 
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Φορτηγό Χαλκού
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Φορτηγό Μαλλιού της Γριάς
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Φορτηγό ζαχαρωτών
+STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
+STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
+STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
+STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :Yate Haugan
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :Bakewell Cotswald LB-3
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :Bakewell Luckett LB-8
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :Bakewell Luckett LB-9
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :Bakewell Luckett LB80
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :Bakewell Luckett LB-10
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :Bakewell Luckett LB-11
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :Yate Aerospace YAC 1-11
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :Darwin 100
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :Darwin 200
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :Darwin 300
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :Darwin 400
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :Darwin 500
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :Darwin 600
+STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :Guru Galaxy
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :Airtaxi A21
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :Airtaxi A31
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Airtaxi A32
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Airtaxi A33
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :Yate Aerospace YAe46
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Dinger 100
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :AirTaxi A34-1000
+STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Yate Z-Shuttle
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :Kelling K1
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :Kelling K6
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :Kelling K7
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :Darwin 700
+STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP Hyperdart 2
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :Dinger 200
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :Dinger 1000
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :Ploddyphut 100
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :Ploddyphut 500
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :Flashbang X1
+STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :Juggerplane M1
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Flashbang Wizzer
+STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Ελικόπτερο Tricario
+STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Ελικόπτερο Guru X2
+STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Ελικόπτερο Powernaut
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Μύνημα από τον κατασκευαστή οχήματων
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Μόλις ολοκληρώσαμε την σχεδιάση ενός νέου {STRING} - θα ενδιαφερόσασταν για ενός έτους αποκλειστικής χρήσης αυτού του οχήματος, για να δούμε την απόδοση του πριν το κάνουμε ευρέως διαθέσιμο;
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :Όχημα δρόμου
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :αεροπλάνου
+STR_ENGINE_PREVIEW_SHIP                                         :πλοιού
 
 ##id 0x8800
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο τραίνο φτάνει στο στάθμο{STATION}!
+STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Λεπτομέριες)
+STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Χωρίς στάση
+STR_ORDER_GO_TO                                                 :Πήγαινε στο
+STR_ORDER_GO_NON_STOP_TO                                        :Πήγαινε χωρίς στάση στο
+STR_ORDER_GO_VIA                                                :Πήγαινε μέσω
+STR_ORDER_GO_NON_STOP_VIA                                       :Πήγαινε χωρίς στάση μέσω
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[κοντά στο τέλος]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[μέση]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[στην άκρη]
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Πλήρης φορτωση οποιουδήποτε εμπορεύματος
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Φορτώση εαν υπάρχει διαθεσίμο
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Πλήρης φόρτωση όλων των εμπορευμάτων
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Πλήρης φορτωση οποιουδήποτε εμπορεύματος
+STR_ORDER_DROP_NO_LOADING                                       :Δίχως φόρτωση
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Ξεφόρτωμα όλων
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Ξεφόρτωμα έαν είναι αποδεκτό
+STR_ORDER_DROP_UNLOAD                                           :Ξεφόρτωμα όλων
+STR_ORDER_DROP_TRANSFER                                         :Μεταφορά
+STR_ORDER_DROP_NO_UNLOADING                                     :Δίχως ξεφόρτωση
+STR_ORDER_FULL_LOAD                                             :(Πλήρης φόρτωση)
+STR_ORDER_FULL_LOAD_ANY                                         :(Πλήρης φόρτωση οποιουδήποτε εμπορεύματος)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Ξεφόρτωμα και αναμόνη για πλήρης φόρτωση)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Ξεφόρτωμα και αναμόνη για πλήρης φόρτωση οποιουδήποτε)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Ξεφόρτωμα και φύγε άδειο)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Αλλάξε τη συμπεριφορά στάσης για την τονισμένη εντολή
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Αλλάξε τη συμπεριφορά φόρτωσης για την τονισμένη εντολή
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Αλλάξε τη συμπεριφορά ξεφόρτωσης για την τονισμένη εντολή
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Εισαγώγη μιας προχωρημένης εντολής
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Πήγαινε στο κοντινότερο αμαξοστάσιο
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Πήγαινε στο κοντινότερο υπόστεγο
+STR_ORDER_NEAREST_DEPOT                                         :το κοντινότερο
+STR_ORDER_NEAREST_HANGAR                                        :το κοντινότερο Υπόστεγο
+STR_ORDER_SERVICE_AT                                            :Επισκευή στο
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Επισκευή χωρις στάση στο
+STR_ORDER_TRAIN_DEPOT                                           :Αμαξοστάσιο τραίνων
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Αμαξοστάσιο οχημάτων
+STR_ORDER_SHIP_DEPOT                                            :Ναυπηγείο Πλοίων
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Υπόστεγο
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Πάντα πήγαινε
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Επισκευή έαν χρειάζεται
+STR_ORDER_DROP_HALT_DEPOT                                       :Στάση
 
+STR_ORDER_CONDITIONAL                                           :Εκτέλεση εντόλης υπο προυπόθεση
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ποσοστό φόρτωσης
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Αξιοπιστία
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Μέγιστη ταχύτητα
+STR_ORDER_CONDITIONAL_AGE                                       :Ηλικία οχήματος (χρόνια)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Απαιτεί επισκευή
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Πάντα
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :είναι ίσο με
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :δεν είναι ίσο με
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :είναι μικρότερο από
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :είναι μικρότερο ή ίσο από
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :είναι περισσότερο από
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :είναι περισσότερο ή ισο από
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :είναι αληθές
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :είναι ψευδές
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Μη ταξιδέψεις
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Ταξίδεψε (όχι προγραμματισμένο)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Ταξίδεψε για {STRING}
+STR_TIMETABLE_STAY_FOR                                          :και μείνε για {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} μέρ{P α ες}
 
+STR_INVALID_ORDER                                               :{RED} (Μη Έγκυρη Εντολή)
 
+STR_UNKNOWN_STATION                                             :άγνωστος σταθμός
+STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Άδειο
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} από σταθμό {STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} από σταθμό {STATION} (x{NUM})
+STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Τραίνο πολύ μεγάλο
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Τα τραίνα μπόρουν να τροποιηθούν μόνο όταν σταματήσουν μέσα σε αμαξοστάσιο
 
+STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Παρέλειψε
+STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Διέγραψε
+STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Πήγαινε Στο
+STR_STOP_ORDER                                                  :(Στάση)
+STR_TIMETABLE_VIEW                                              :{BLACK}Προγραμματισμός
+STR_ORDER_VIEW                                                  :{BLACK}Οδηγίες
+STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Εντολές)
+STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - Τέλος Εντολών - -
+STR_SERVICE                                                     :{BLACK}Επισκευή
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Κατασκευασμένο: {LTBLUE}{NUM}{BLACK} Αξία: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Αξία: {LTBLUE}{CURRENCY}
+STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
+STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Φόρτωση / Ξεφόρτωση
+STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Αποχώρηση
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Το τραίνο πρέπει να σταματήσει μέσα σε αμαξοστάσιο
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Δεν υπάρχει χώρος για εντολές
+STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Πάρα πολλές εντολές
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Δεν μπορεί να γίνει εισαγώγη νέας εντολής...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Δεν μπόρει να διαγραφεί η εντολή...
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Δεν μπορεί να τροποποιηθεί η εντολή..
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Δεν μπορεί να μετακινηθεί η εντολή...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Δεν μπορεί να παραληφθεί η τρέχουσα εντολή...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Δεν μπορεί να παραληφθεί για τη επιλεγμένη εντολή...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}το όχημα δε μπορεί να πάει σε όλους τους σταθμούς
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}Το όχημα δεν μπορεί να πάει σε αυτό τον σταθμό
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}όχημα που μοιράζεται αυτή την εντολή δεν μπορεί να πάει σε αυτό τον σταθμό
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Δεν μπορεί να μετακινηθεί το όχημα...
+STR_CARGO_N_A                                                   :Μ/Δ{SKIP}
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Αδύνατο να βρέθει δρόμος για το τοπικό αμαξοστάσιο
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Διάστημα επισκευών: {LTBLUE}{COMMA}μέρες{BLACK}   Τελευταία επισκευή: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Διάστημα επισκευών: {LTBLUE}{COMMA}%{BLACK}   Τελευταία επισκευή: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Αναγκάστε το τραίνο να προχωρήσει χώρις να περιμένει το σηματοδότη να ανοίξει
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Αναστροφή
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Αύξηση διαστημάτων επισκευών
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Μείωση διαστημάτων επισκευών
+STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Παρουσίαση λεπτομερίων μεταφερώμενων εμπορευμάτων
+STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Παρουσίαση λεπτομερίων των βαγονιών
+STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Παρουσίαση χωρητικότητας κάθε βαγονιού
+STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Διαγράφη της επιλεγμένης εντολής
+STR_SERVICE_HINT                                                :{BLACK}Παράλειψη αυτής της εντολής εκτός αν χρειάζεται επισκευή
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Κόστος: {CURRENCY} Βάρος: {WEIGHT_S}{}Ταχύτητα: {VELOCITY}  Ιπποδύναμη: {POWER}{}Κόστος Λειτουργίας: {CURRENCY}/χρ{}Χωρητικότητα: {CARGO}
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST       :{BLACK}Κόστος: {CURRENCY} Μεγ. Ταχύτητα: {VELOCITY}{}Χωρητικότητα: {CARGO}, {CARGO}{}Κόστος Λειτουργίας: {CURRENCY}/χρ
+STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Κόστος: {CURRENCY} Μεγ. Ταχύτητα: {VELOCITY}{}Χωρητικότητα: {CARGO}{}Κόστος Λειτουργίας: {CURRENCY}/χρ
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ηλικία: {LTBLUE}{STRING}{BLACK}   Κόστος Λειτουργίας: {LTBLUE}{CURRENCY}/χρ
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Μεγ. ταχύτητα: {LTBLUE}{VELOCITY}
 
+STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Σύγκρουση Τραίνων!{}{COMMA} σκοτώθηκαν σε φωτιά μετά την σύγκρουση
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Δεν αντιστρέφεται η κατεύθυνση του τραίνου...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Δεν αντιστρέφεται η κατεύθυνση του οχήματος...
 
@@ -2317,6 +2503,8 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Το χ�
 
 ##id 0x9000
 
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Σύγκρουση Οχήματος!{}Ο οδηγός σκοτώθησε σε φωτιά μετά από σύγκρουση με τραίνο
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Σύγκρουση Οχήματος!{}{COMMA} σκοτώθηκαν σε φωτιά μετά από σύγκρουση με τραίνο
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Δεν γίνεται το όχημα να αλάξει πορεία...
 
 
@@ -2347,16 +2535,50 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 ############ Those following lines need to be in this order!!
 ############ End of order list
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Ρυθμίσεις NewGRF
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Ρυθμίσεις NewGRF
+STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Εφαρμογή αλλαγών
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Εναλλαγή παλέτας
+STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Ρύθμιση παραμέτρων
+STR_NEWGRF_FILENAME                                             :{BLACK}Όνομα αρχείου: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Παλέτα: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Προειδοποίηση: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Λάθος: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Καταστροφικό: {SILVER}{STRING}
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} είναι για την {STRING} έκδοση του TTD.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} πρέπει να φόρτωθει πριν από το {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} πρέπει να φόρτωθει μετά από το {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} απαιτεί έκδοση OpenTTD {STRING} ή μεγαλύτερη.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Άγνωστη ιδιότητα Action 0
+
+STR_NEWGRF_ADD                                                  :{BLACK}Πρόσθεσε
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Πρόσθεσε ένα αρχείο NewGRF στη λίστα
+STR_NEWGRF_REMOVE                                               :{BLACK}Αφαίρεσε
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Αφαίρεσε ένα αρχείο NewGRF από τη λίστα
+STR_NEWGRF_PARAMETER                                            :{BLACK}Παράμετροι: {SILVER}{STRING}
+STR_NEWGRF_NO_INFO                                              :{BLACK}Δεν υπάρχουν διαθέσιμες πληροφορίες
 
 
-
-
+STR_NEWGRF_DISABLED                                             :{RED}Απενεργοποιημένο
 
 
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Τρένο'{VEHICLE}' που ανήκει στην '{COMPANY}' έχει μη έγκυρο μήκος. Πιθανόν να προέρχεται από πρόβλημα του NewGRFs. Το Παιχνίδι μπορεί ν΄αποσυγχρονιστεί ή να κρασάρει.
 
 
 
+STR_CURRENCY_WINDOW                                             :{WHITE}Προσαρμοσμένο νόμισμα
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Ισοτιμία: {ORANGE}{0:CURRENCY} = £ {1:COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Διαχωριστικό: {ORANGE}{2:STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Πρόθεμα: {ORANGE}{3:STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Επίθεμα: {ORANGE}{4:STRING}
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Αλλαγή σε Ευρώ: {ORANGE}{5:NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Αλλαγή σε Ευρώ: {ORANGE}ποτέ
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Προεπισκόπιση: {ORANGE}{6:CURRENCY}
 STR_TOOLTIP_DECREASE_EXCHANGE_RATE                              :{BLACK}Μείωση του ποσού της ισοτιμίας σας για μία λίρα (£)
 STR_TOOLTIP_INCREASE_EXCHANGE_RATE                              :{BLACK}Αύξηση του ποσού της ισοτιμίας σας για μία λίρα (£)
 STR_TOOLTIP_SET_EXCHANGE_RATE                                   :{BLACK}Ρυθμίστε τη συναλλαγματική ισοτιμία του νομίσματος για μια λίρα (£)
@@ -2368,6 +2590,11 @@ STR_TOOLTIP_INCREASE_CUSTOM_CURRENCY_TO_EURO                    :{BLACK}Να γ�
 STR_TOOLTIP_SET_CUSTOM_CURRENCY_TO_EURO                         :{BLACK}Θέστε το χρόνο που γίνεται η μετάβαση σε Ευρώ
 STR_TOOLTIP_CUSTOM_CURRENCY_PREVIEW                             :{BLACK}10000 Λίρες (£) στο νόμισμά σας
 
+STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
+STR_LORRY                                                       :{BLACK}{LORRY}
+STR_PLANE                                                       :{BLACK}{PLANE}
+STR_SHIP                                                        :{BLACK}{SHIP}
 
 ############ Vehicle lists
 
@@ -2438,18 +2665,27 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Αερο
 
 ############ End of list of rail types
 
+STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 
 ########### For showing numbers in widgets
 
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 
+STR_GENERATE                                                    :{WHITE}Δημιουργία
+STR_RANDOM                                                      :{BLACK}Τυχαία δημιουργία
 
 
 # Strings for map borders at game generation
 
 ########### String for new airports
+STR_HELIPORT                                                    :{BLACK}Ελικοδρόμιο
+STR_HELIDEPOT                                                   :{BLACK}Υπόστεγο ελικοπτέρων
+STR_HELISTATION                                                 :{BLACK}Στάθμος ελικοπτέρων
 
 
 ############ Tooltip measurment
@@ -2457,8 +2693,20 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Αερο
 
 
 
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Όλα τα τραίνα
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Όλα τα οχήματα δρόμου
+STR_GROUP_ALL_SHIPS                                             :Όλα τα πλοία
+STR_GROUP_ALL_AIRCRAFTS                                         :Όλα τα αεροπλάνα
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 
 
 
@@ -2493,6 +2741,7 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_FORMAT_COMPANY_NUM                                          :(Εταιρία {COMMA})
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
 STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
@@ -2520,6 +2769,7 @@ STR_BLACK_5                                                     :{BLACK}5
 STR_BLACK_6                                                     :{BLACK}6
 STR_BLACK_7                                                     :{BLACK}7
 
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Το όνομα πρέπει να είναι μοναδικό
 
 #### Improved sign GUI
 

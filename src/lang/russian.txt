@@ -3278,7 +3278,7 @@ STR_CLONE_SHIP                                                  :{BLACK}Копи
 STR_CLONE_AIRCRAFT                                              :{BLACK}Копировать
 
 STR_CLONE_TRAIN_INFO                                            :{BLACK}Создать копию поезда, включая все вагоны. Ctrl+щелчок создаст поезд с общими заданиями.
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Создать копию автомобиля. Control+щелчок создаст автомобиль с оющими заданиями.
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Создать копию автомобиля. Control+щелчок создаст автомобиль с общими заданиями.
 STR_CLONE_SHIP_INFO                                             :{BLACK}Создать копию корабля. Control+щелчок создаст корабль с общими заданиями.
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Создать копию возд. судна. Control+щелчок создаст копию с общими заданиями.
 

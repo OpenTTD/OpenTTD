@@ -678,8 +678,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Newgrf ayarlar�
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Şeffaflık seçenekleri
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Şehir isimlerini göster
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}İstasyon isimlerini göster
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Tabelaları göster
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Yolimlerini göster
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Tabelaları göster
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Tüm animasyonlar
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Tam detay
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Şeffaf binalar
@@ -3603,6 +3603,7 @@ STR_AI_AUTHOR                                                   :{BLACK}Yazar: {
 STR_AI_VERSION                                                  :{BLACK}Sürüm: {NUM}
 STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Çalışan YZ'lerden biri çakıldı. Lütfen bu durumu AI Hata Ayıklama Penceresi görüntüsüyle birlikte YZ'nin yazarına bildirin.
+STR_AI_NO_AI_FOUND                                              :Yüklenecek uygun bir YZ bulunamadı.{}Bu YZ boş bir YZ'dir ve hiçbir şey yapmaz.{}'Çevrimiçi İçerik" sistemiyle pekçok YZ'yi indirebilirsiniz.
 ########
 
 ############ town controlled noise level

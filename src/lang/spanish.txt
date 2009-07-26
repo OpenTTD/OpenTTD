@@ -407,7 +407,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Mostrar 
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Mostrar vegetación en el mapa
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Mostrar propietarios de terrenos en el mapa
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Poner/quitar nombres de pueblos en el mapa
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Benefício este año: {CURRENCY} (año anterior: {CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Beneficio este año: {CURRENCY} (año anterior: {CURRENCY})
 
 ############ range for service numbers starts
 STR_AGE                                                         :{COMMA} año{P "" s} ({COMMA})
@@ -659,7 +659,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Tamaño
 STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Patrón de carretera:
 STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Seleccionar patrón de carreteras para este pueblo
 STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Original
-STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Mejores carreteras
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Mejorado
 STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}Rejilla de 2x2
 STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}Rejilla 3x3
 STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Aleatorio
@@ -679,7 +679,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configuración 
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opciones de transparencia
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Ver nombres de pueblos
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Ver nombres de estaciones
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Ver puntos de comprobación
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Ver puntos de ruta
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Ver carteles
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animación completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Detalle completo
@@ -1066,9 +1066,9 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Solo señales d
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Solo señales de ruta
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todas
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Patrón de construcción de carreteras para los nuevos pueblos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Patrón de carreteras para los nuevos pueblos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :por defecto
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :mejores carreteras
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :mejorado
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :rejilla 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :rejilla 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleatorio
@@ -1145,7 +1145,7 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jugando
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer mágico (elimina industrias, etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Los túneles pueden cruzarse: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Construir mientras se está en pausa: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Los Jets no se estrellarán (frecuentemente) en aeropuertos pequeños: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jets se estrellan menos en aeropuertos pequeños: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Cambiar clima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Cambiar fecha: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activar modificación de los valores de producción: {ORANGE}{STRING}
@@ -1154,25 +1154,25 @@ STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Hacia {
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Hacia {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT                                              :Ir vía {WAYPOINT}
-STR_GO_NON_STOP_TO_WAYPOINT                                     :Ir directo via {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT                                     :Ir sin paradas via {WAYPOINT}
 
-STR_WAYPOINTNAME_CITY                                           :Punto de paso {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :Punto de paso {TOWN} #{COMMA}
+STR_WAYPOINTNAME_CITY                                           :Punto de ruta {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Punto de ruta {TOWN} #{COMMA}
 STR_BUOYNAME_CITY                                               :Boya {TOWN}
 STR_BUOYNAME_CITY_SERIAL                                        :Boya {TOWN} #{COMMA}
-STR_LANDINFO_WAYPOINT                                           :Punto de paso
+STR_LANDINFO_WAYPOINT                                           :Punto de ruta
 
-STR_WAYPOINT                                                    :{WHITE}Punto de paso
-STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Seleccione tipo de punto de paso
+STR_WAYPOINT                                                    :{WHITE}Punto de ruta
+STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Seleccione tipo de punto de ruta
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nombre del punto de paso
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nombre del punto de ruta
 
-STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}No se puede cambiar el nombre del punto de paso...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Convertir raíl a punto de paso
-STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}No se puede construir punto de paso para trenes aquí...
-STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}No se puede retirar punto de paso aquí...
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}No se puede cambiar el nombre del punto de ruta...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Convertir raíl a punto de ruta
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}No se puede construir punto de ruta para trenes aquí...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}No se puede retirar punto de ruta aquí...
 
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Construir tramos de ferrocarril usando modo Autorraíl
 
@@ -1655,7 +1655,7 @@ STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Habitantes: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Renombrar pueblo
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}No se puede renombrar pueblo...
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} las autoridades locales rechazan esto
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Las autoridades locales de {TOWN} rechazan esto
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nombres de pueblo - click sobre el nombre para centrar la vista en el pueblo
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar vista sobre el pueblo
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambiar nombre del pueblo
@@ -1853,7 +1853,7 @@ STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Mantén 
 
 STR_UNDEFINED                                                   :(cadena sin determinar)
 STR_STAT_CLASS_DFLT                                             :Estación por defecto
-STR_STAT_CLASS_WAYP                                             :Puntos de paso
+STR_STAT_CLASS_WAYP                                             :Puntos de ruta
 
 ##id 0x3800
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientación del astillero
@@ -2742,7 +2742,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}No se pu
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}No se pude dar la vuelta a un vehículo compuesto por múltiples unidades
 STR_CLEAR_TIME                                                  :{BLACK}Limpiar Horario
 STR_RESET_LATENESS                                              :{BLACK}Resetear Retrasos
-STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Cambiar nombre del punto de paso
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Cambiar nombre del punto de ruta
 
 STR_TRAIN_STOPPING                                              :{RED}Parándose
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parándose, {VELOCITY}
@@ -2798,7 +2798,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construi
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir astillero (para construir y despachar barcos)
 
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Los ciudadanos celebran . . .{}¡Primer barco llega a {STATION}!
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Boya de posición, que puede usarse como itinerarios adicionales
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar boya que puede ser usada como punto de ruta
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}No se puede colocar boya aquí...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Construir acueducto
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}No se puede construir un acueducto aquí
@@ -3385,7 +3385,7 @@ STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Ajustar 
 STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Ajustar transparencia para árboles. Ctrl+Click para bloquear.
 STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Ajustar transparencia para casas. Ctrl+Click para bloquear.
 STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Ajustar transparencia para industrias. Ctrl+Click para bloquear.
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Ajustar transparencia para construcciones como estaciones, depósitos o puntos de paso. Ctrl+Click para bloquear.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Ajustar transparencia para construcciones como estaciones, depósitos o puntos de ruta. Ctrl+Click para bloquear.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Ajustar transparencia para puentes. Ctrl+Click para bloquear.
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Ajustar transparencia para estructuras como faros, antenas, etc. Ctrl+Click para bloquear.
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Ajustar transparencia para catenaria. Ctrl+Click para bloquear.
@@ -3553,13 +3553,13 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Cambiar 
 STR_SIGNAL_SELECTION                                            :{WHITE}Selección de Señales
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}No se pueden convertir las señales aquí...
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Señal de bloque (semáforo){}Este es el tipo de señal mas básico, que permite a un único tren estar a la vez en el mismo bloque.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Señal de entrada (semáforo){}Verde si existe una o más señales de salida en el tramo en verde, de lo contrario estará en rojo
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Señal de entrada (semáforo){}Verde si existen una o más señales de salida en el tramo en verde, de lo contrario estará en rojo
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Señal de salida (semáforo){}Se comporta de la misma manera que una señal de bloque, pero es necesaria para activar el color correcto en las señales de entrada y combo.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Señal combo (semáforo){}La señal combo actua como señal de entrada y salida a la vez. Esto permite construir grandes "árboles" de señales condicionales.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Señal de ruta (semáforo){}Una señal de ruta permite a más de un tren entrar a un bloque de señales a la vez, si el tren puede reservar una ruta hasta un lugar seguro. Pueden ser traspasadas desde atrás.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Señal de ruta de un sentido (semáforo){}Una señal de ruta permite a más de un tren entrar a un bloque de señales a la vez, si el tren puede reservar una ruta hasta un lugar seguro. No pueden ser traspasadas desde atrás.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Señal de bloque (eléctrica){}Es el tipo de señal mas básico, que permite a un único tren estar a la vez en el mismo bloque.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Señal de entrada (eléctrica){}Verde si existe una o más señales verdes en el siguiente segmento de vía. Si no, mostrará el rojo.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Señal de entrada (eléctrica){}Verde si existen una o más señales verdes en el siguiente segmento de vía, de lo contrario estará en rojo
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Señal de salida (eléctrica){}Se comporta de la misma manera que una señal de bloque, pero es necesaria para activar el color correcto en las señales de entrada y combo.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Señal combo (eléctrica){}La señal combo actua como señal de entrada y salida a la vez. Esto permite construir grandes "árboles" de señales condicionales.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Señal de ruta (eléctrica){}Una señal de ruta permite a más de un tren entrar a un bloque de señales a la vez, si el tren puede reservar una ruta hasta un lugar seguro. Pueden ser traspasadas desde atrás.
@@ -3652,7 +3652,7 @@ STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descrip
 STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tipo: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Tamaño descarga: {WHITE}{BYTES}
-STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Seleccionado por: {WHITE}{STRING}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Seleccionado debido a: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependencias: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etiquetas: {WHITE}{STRING}
 
