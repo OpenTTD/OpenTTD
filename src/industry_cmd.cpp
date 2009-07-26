@@ -136,7 +136,7 @@ Industry::~Industry()
 	 * This means that we do not have to clear tiles either. */
 	if (this->width == 0) return;
 
-	BEGIN_TILE_LOOP(tile_cur, this->width, this->height, this->xy);
+	TILE_LOOP(tile_cur, this->width, this->height, this->xy) {
 		if (IsTileType(tile_cur, MP_INDUSTRY)) {
 			if (GetIndustryIndex(tile_cur) == this->index) {
 				/* MakeWaterKeepingClass() can also handle 'land' */
@@ -149,17 +149,17 @@ Industry::~Industry()
 		} else if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			DeleteOilRig(tile_cur);
 		}
-	END_TILE_LOOP(tile_cur, this->width, this->height, this->xy);
+	}
 
 	if (GetIndustrySpec(this->type)->behaviour & INDUSTRYBEH_PLANT_FIELDS) {
 		/* Remove the farmland and convert it to regular tiles over time. */
-		BEGIN_TILE_LOOP(tile_cur, 42, 42, this->xy - TileDiffXY(21, 21)) {
+		TILE_LOOP(tile_cur, 42, 42, this->xy - TileDiffXY(21, 21)) {
 			tile_cur = TILE_MASK(tile_cur);
 			if (IsTileType(tile_cur, MP_CLEAR) && IsClearGround(tile_cur, CLEAR_FIELDS) &&
 					GetIndustryIndexOfField(tile_cur) == this->index) {
 				SetIndustryIndexOfField(tile_cur, INVALID_INDUSTRY);
 			}
-		} END_TILE_LOOP(tile_cur, 42, 42, this->xy - TileDiff(21, 21))
+		}
 	}
 
 	/* don't let any disaster vehicle target invalid industry */
@@ -957,10 +957,10 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 
 	/* check the amount of bad tiles */
 	count = 0;
-	BEGIN_TILE_LOOP(cur_tile, size_x, size_y, tile)
+	TILE_LOOP(cur_tile, size_x, size_y, tile) {
 		assert(cur_tile < MapSize());
 		count += IsBadFarmFieldTile(cur_tile);
-	END_TILE_LOOP(cur_tile, size_x, size_y, tile)
+	}
 	if (count * 2 >= size_x * size_y) return;
 
 	/* determine type of field */
@@ -969,14 +969,14 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	field_type = GB(r, 8, 8) * 9 >> 8;
 
 	/* make field */
-	BEGIN_TILE_LOOP(cur_tile, size_x, size_y, tile)
+	TILE_LOOP(cur_tile, size_x, size_y, tile) {
 		assert(cur_tile < MapSize());
 		if (!IsBadFarmFieldTile2(cur_tile)) {
 			MakeField(cur_tile, field_type, industry);
 			SetClearCounter(cur_tile, counter);
 			MarkTileDirtyByTile(cur_tile);
 		}
-	END_TILE_LOOP(cur_tile, size_x, size_y, tile)
+	}
 
 	type = 3;
 	if (_settings_game.game_creation.landscape != LT_ARCTIC && _settings_game.game_creation.landscape != LT_TROPIC) {
@@ -1340,7 +1340,7 @@ static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int i
 	if (TileX(tile) == 0 || TileY(tile) == 0 || GetTileType(tile) == MP_VOID) return false;
 
 	tile += TileDiffXY(-1, -1);
-	BEGIN_TILE_LOOP(tile_walk, size_x, size_y, tile) {
+	TILE_LOOP(tile_walk, size_x, size_y, tile) {
 		curh = TileHeight(tile_walk);
 		/* Is the tile clear? */
 		if ((GetTileType(tile_walk) != MP_CLEAR) && (GetTileType(tile_walk) != MP_TREES))
@@ -1356,7 +1356,7 @@ static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int i
 			if (TileX(tile_walk) == 0 || TileY(tile_walk) == 0 || !CheckCanTerraformSurroundingTiles(tile_walk + TileDiffXY(-1, -1), height, internal + 1))
 				return false;
 		}
-	} END_TILE_LOOP(tile_walk, size_x, size_y, tile);
+	}
 
 	return true;
 }
@@ -1399,7 +1399,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 	CompanyID old_company = _current_company;
 	_current_company = OWNER_TOWN;
 
-	BEGIN_TILE_LOOP(tile_walk, size_x, size_y, cur_tile) {
+	TILE_LOOP(tile_walk, size_x, size_y, cur_tile) {
 		curh = TileHeight(tile_walk);
 		if (curh != h) {
 			/* This tile needs terraforming. Check if we can do that without
@@ -1415,11 +1415,11 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 				return false;
 			}
 		}
-	} END_TILE_LOOP(tile_walk, size_x, size_y, cur_tile)
+	}
 
 	if (flags & DC_EXEC) {
 		/* Terraform the land under the industry */
-		BEGIN_TILE_LOOP(tile_walk, size_x, size_y, cur_tile) {
+		TILE_LOOP(tile_walk, size_x, size_y, cur_tile) {
 			curh = TileHeight(tile_walk);
 			while (curh != h) {
 				/* We give the terraforming for free here, because we can't calculate
@@ -1428,7 +1428,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 				DoCommand(tile_walk, SLOPE_N, (curh > h) ? 0 : 1, flags, CMD_TERRAFORM_LAND);
 				curh += (curh > h) ? -1 : 1;
 			}
-		} END_TILE_LOOP(tile_walk, size_x, size_y, cur_tile)
+		}
 	}
 
 	_current_company = old_company;

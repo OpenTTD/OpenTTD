@@ -142,11 +142,11 @@
 	if (!HasHeliport(industry_id)) return INVALID_TILE;
 
 	const Industry *ind = ::Industry::Get(industry_id);
-	BEGIN_TILE_LOOP(tile_cur, ind->width, ind->height, ind->xy);
+	TILE_LOOP(tile_cur, ind->width, ind->height, ind->xy) {
 		if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			return tile_cur;
 		}
-	END_TILE_LOOP(tile_cur, ind->width, ind->height, ind->xy);
+	}
 
 	return INVALID_TILE;
 }
@@ -164,11 +164,11 @@
 	if (!HasDock(industry_id)) return INVALID_TILE;
 
 	const Industry *ind = ::Industry::Get(industry_id);
-	BEGIN_TILE_LOOP(tile_cur, ind->width, ind->height, ind->xy);
+	TILE_LOOP(tile_cur, ind->width, ind->height, ind->xy) {
 		if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			return tile_cur;
 		}
-	END_TILE_LOOP(tile_cur, ind->width, ind->height, ind->xy);
+	}
 
 	return INVALID_TILE;
 }

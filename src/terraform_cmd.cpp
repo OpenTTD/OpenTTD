@@ -385,7 +385,7 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
-	BEGIN_TILE_LOOP(tile2, size_x, size_y, tile) {
+	TILE_LOOP(tile2, size_x, size_y, tile) {
 		uint curh = TileHeight(tile2);
 		while (curh != h) {
 			CommandCost ret = DoCommand(tile2, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
@@ -403,7 +403,7 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			cost.AddCost(ret);
 			curh += (curh > h) ? -1 : 1;
 		}
-	} END_TILE_LOOP(tile2, size_x, size_y, tile)
+	}
 
 	return (cost.GetCost() == 0) ? CMD_ERROR : cost;
 }

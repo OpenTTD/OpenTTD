@@ -34,9 +34,7 @@ void AITileList::AddRectangle(TileIndex t1, TileIndex t2)
 	uint w = TileX(t2) - TileX(t1) + 1;
 	uint h = TileY(t2) - TileY(t1) + 1;
 
-	BEGIN_TILE_LOOP(t, w, h, t1) {
-		this->AddItem(t);
-	} END_TILE_LOOP(t, w, h, t1)
+	TILE_LOOP(t, w, h, t1) this->AddItem(t);
 }
 
 void AITileList::AddTile(TileIndex tile)
@@ -56,9 +54,7 @@ void AITileList::RemoveRectangle(TileIndex t1, TileIndex t2)
 	uint w = TileX(t2) - TileX(t1) + 1;
 	uint h = TileY(t2) - TileY(t1) + 1;
 
-	BEGIN_TILE_LOOP(t, w, h, t1) {
-		this->RemoveItem(t);
-	} END_TILE_LOOP(t, w, h, t1)
+	TILE_LOOP(t, w, h, t1) this->RemoveItem(t);
 }
 
 void AITileList::RemoveTile(TileIndex tile)
@@ -85,7 +81,7 @@ AITileList_IndustryAccepting::AITileList_IndustryAccepting(IndustryID industry_i
 
 	if (!_settings_game.station.modified_catchment) radius = CA_UNMODIFIED;
 
-	BEGIN_TILE_LOOP(cur_tile, i->width + radius * 2, i->height + radius * 2, i->xy - ::TileDiffXY(radius, radius)) {
+	TILE_LOOP(cur_tile, i->width + radius * 2, i->height + radius * 2, i->xy - ::TileDiffXY(radius, radius)) {
 		if (!::IsValidTile(cur_tile)) continue;
 		/* Exclude all tiles that belong to this industry */
 		if (::IsTileType(cur_tile, MP_INDUSTRY) && ::GetIndustryIndex(cur_tile) == industry_id) continue;
@@ -102,7 +98,7 @@ AITileList_IndustryAccepting::AITileList_IndustryAccepting(IndustryID industry_i
 		}
 
 		this->AddTile(cur_tile);
-	} END_TILE_LOOP(cur_tile, i->width + radius * 2, i->height + radius * 2, i->xy - ::TileDiffXY(radius, radius))
+	}
 }
 
 AITileList_IndustryProducing::AITileList_IndustryProducing(IndustryID industry_id, int radius)
@@ -122,7 +118,7 @@ AITileList_IndustryProducing::AITileList_IndustryProducing(IndustryID industry_i
 
 	if (!_settings_game.station.modified_catchment) radius = CA_UNMODIFIED;
 
-	BEGIN_TILE_LOOP(cur_tile, i->width + radius * 2, i->height + radius * 2, i->xy - ::TileDiffXY(radius, radius)) {
+	TILE_LOOP(cur_tile, i->width + radius * 2, i->height + radius * 2, i->xy - ::TileDiffXY(radius, radius)) {
 		if (!::IsValidTile(cur_tile)) continue;
 		/* Exclude all tiles that belong to this industry */
 		if (::IsTileType(cur_tile, MP_INDUSTRY) && ::GetIndustryIndex(cur_tile) == industry_id) continue;
@@ -139,7 +135,7 @@ AITileList_IndustryProducing::AITileList_IndustryProducing(IndustryID industry_i
 		}
 
 		this->AddTile(cur_tile);
-	} END_TILE_LOOP(cur_tile, i->width + radius * 2, i->height + radius * 2, i->xy - ::TileDiffXY(radius, radius))
+	}
 }
 
 AITileList_StationType::AITileList_StationType(StationID station_id, AIStation::StationType station_type)
@@ -157,10 +153,10 @@ AITileList_StationType::AITileList_StationType(StationID station_id, AIStation::
 	if ((station_type & AIStation::STATION_AIRPORT) != 0)    station_type_value |= (1 << ::STATION_AIRPORT) | (1 << ::STATION_OILRIG);
 	if ((station_type & AIStation::STATION_DOCK) != 0)       station_type_value |= (1 << ::STATION_DOCK)    | (1 << ::STATION_OILRIG);
 
-	BEGIN_TILE_LOOP(cur_tile, rect->right - rect->left + 1, rect->bottom - rect->top + 1, ::TileXY(rect->left, rect->top)) {
+	TILE_LOOP(cur_tile, rect->right - rect->left + 1, rect->bottom - rect->top + 1, ::TileXY(rect->left, rect->top)) {
 		if (!::IsTileType(cur_tile, MP_STATION)) continue;
 		if (::GetStationIndex(cur_tile) != station_id) continue;
 		if (!HasBit(station_type_value, ::GetStationType(cur_tile))) continue;
 		this->AddTile(cur_tile);
-	} END_TILE_LOOP(cur_tile, rect->right - rect->left + 1, rect->bottom - rect->top + 1, ::TileXY(rect->left, rect->top))
+	}
 }

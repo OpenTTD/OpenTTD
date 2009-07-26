@@ -415,9 +415,9 @@ bool StationRect::BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mo
 	int width = right_a - left_a + 1;
 	int height = bottom_a - top_a + 1;
 
-	BEGIN_TILE_LOOP(tile, width, height, top_left)
+	TILE_LOOP(tile, width, height, top_left) {
 		if (IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st_id) return true;
-	END_TILE_LOOP(tile, width, height, top_left);
+	}
 
 	return false;
 }

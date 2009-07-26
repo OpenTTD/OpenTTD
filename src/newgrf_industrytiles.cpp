@@ -389,7 +389,7 @@ bool StartStopIndustryTileAnimation(const Industry *ind, IndustryAnimationTrigge
 {
 	bool ret = true;
 	uint32 random = Random();
-	BEGIN_TILE_LOOP(tile, ind->width, ind->height, ind->xy)
+	TILE_LOOP(tile, ind->width, ind->height, ind->xy) {
 		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == ind->index) {
 			if (StartStopIndustryTileAnimation(tile, iat, random)) {
 				SB(random, 0, 16, Random());
@@ -397,7 +397,7 @@ bool StartStopIndustryTileAnimation(const Industry *ind, IndustryAnimationTrigge
 				ret = false;
 			}
 		}
-	END_TILE_LOOP(tile, ind->width, ind->height, ind->xy)
+	}
 
 	return ret;
 }
@@ -433,9 +433,9 @@ void TriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger)
 
 void TriggerIndustry(Industry *ind, IndustryTileTrigger trigger)
 {
-	BEGIN_TILE_LOOP(tile, ind->width, ind->height, ind->xy)
+	TILE_LOOP(tile, ind->width, ind->height, ind->xy) {
 		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == ind->index) {
 			DoTriggerIndustryTile(tile, trigger, ind);
 		}
-	END_TILE_LOOP(tile, ind->width, ind->height, ind->xy)
+	}
 }

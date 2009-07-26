@@ -370,9 +370,9 @@ static bool IsRadioTowerNearby(TileIndex tile)
 	uint w = min(TileX(tile), 4U) + 1 + min(MapMaxX() - TileX(tile), 4U);
 	uint h = min(TileY(tile), 4U) + 1 + min(MapMaxY() - TileY(tile), 4U);
 
-	BEGIN_TILE_LOOP(tile, w, h, tile_s)
+	TILE_LOOP(tile, w, h, tile_s) {
 		if (IsTransmitterTile(tile)) return true;
-	END_TILE_LOOP(tile, w, h, tile_s)
+	}
 
 	return false;
 }

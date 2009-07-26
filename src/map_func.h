@@ -327,7 +327,7 @@ uint DistanceMaxPlusManhattan(TileIndex, TileIndex); ///< Max + Manhattan
 uint DistanceFromEdge(TileIndex); ///< shortest distance from any edge of the map
 
 /**
- * Starts a loop which iterates to a square of tiles
+ * A loop which iterates to a square of tiles
  *
  * This macro starts 2 nested loops which iterates over a square of tiles.
  *
@@ -336,22 +336,10 @@ uint DistanceFromEdge(TileIndex); ///< shortest distance from any edge of the ma
  * @param h The heigth (y-width) of the square
  * @param tile The start tile of the square
  */
-#define BEGIN_TILE_LOOP(var, w, h, tile)                      \
-	{                                                        \
-		int h_cur = h;                                         \
-		uint var = tile;                                       \
-		do {                                                   \
-			int w_cur = w;                                       \
-			do {
-/**
- * Ends the square-loop used before
- *
- * @see BEGIN_TILE_LOOP
- */
-#define END_TILE_LOOP(var, w, h, tile)                        \
-			} while (++var, --w_cur != 0);                       \
-		} while (var += TileDiffXY(0, 1) - (w), --h_cur != 0); \
-	}
+#define TILE_LOOP(var, w, h, tile)                                                      \
+	for (uint var = tile, cur_h = (h); cur_h > 0; --cur_h, var += TileDiffXY(0, 1) - (w)) \
+		for (uint cur_w = (w); cur_w > 0; --cur_w, var++)
+
 /**
  * Convert a DiagDirection to a TileIndexDiff
  *

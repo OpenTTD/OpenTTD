@@ -58,11 +58,11 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 	size_y = (ey - sy) + 1;
 
 	_generating_world = true;
-	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
+	TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
 		SetTropicZone(tile, (_ctrl_pressed) ? TROPICZONE_NORMAL : TROPICZONE_DESERT);
 		DoCommandP(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
 		MarkTileDirtyByTile(tile);
-	} END_TILE_LOOP(tile, size_x, size_y, 0);
+	}
 	_generating_world = false;
 }
 
@@ -83,7 +83,7 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
 	size_x = (ex - sx) + 1;
 	size_y = (ey - sy) + 1;
 
-	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
+	TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
 		switch (GetTileType(tile)) {
 			case MP_TREES:
 				if (GetTreeGround(tile) == TREE_GROUND_SHORE) continue;
@@ -96,7 +96,7 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
 		}
 		MarkTileDirtyByTile(tile);
 		success = true;
-	} END_TILE_LOOP(tile, size_x, size_y, 0);
+	}
 
 	if (success) SndPlayTileFx(SND_1F_SPLAT, end);
 }
@@ -410,22 +410,22 @@ static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 		if (mode != 0) {
 			/* Raise land */
 			h = 15; // XXX - max height
-			BEGIN_TILE_LOOP(tile2, sizex, sizey, tile) {
+			TILE_LOOP(tile2, sizex, sizey, tile) {
 				h = min(h, TileHeight(tile2));
-			} END_TILE_LOOP(tile2, sizex, sizey, tile)
+			}
 		} else {
 			/* Lower land */
 			h = 0;
-			BEGIN_TILE_LOOP(tile2, sizex, sizey, tile) {
+			TILE_LOOP(tile2, sizex, sizey, tile) {
 				h = max(h, TileHeight(tile2));
-			} END_TILE_LOOP(tile2, sizex, sizey, tile)
+			}
 		}
 
-		BEGIN_TILE_LOOP(tile2, sizex, sizey, tile) {
+		TILE_LOOP(tile2, sizex, sizey, tile) {
 			if (TileHeight(tile2) == h) {
 				DoCommandP(tile2, SLOPE_N, (uint32)mode, CMD_TERRAFORM_LAND);
 			}
-		} END_TILE_LOOP(tile2, sizex, sizey, tile)
+		}
 	}
 }
 

@@ -307,7 +307,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	/* Outside the editor you can only drag canals, and not areas */
 	if (_game_mode != GM_EDITOR && (sx != x && sy != y)) return CMD_ERROR;
 
-	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
+	TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
 		CommandCost ret;
 
 		Slope slope = GetTileSlope(tile, NULL);
@@ -335,7 +335,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		}
 
 		cost.AddCost(_price.clear_water);
-	} END_TILE_LOOP(tile, size_x, size_y, 0);
+	}
 
 	if (cost.GetCost() == 0) {
 		return_cmd_error(STR_ERROR_ALREADY_BUILT);
@@ -749,11 +749,11 @@ static void FloodVehicles(TileIndex tile)
 	if (!_settings_game.station.nonuniform_stations && IsTileType(tile, MP_STATION) && GetStationType(tile) == STATION_RAIL) {
 		const Station *st = Station::GetByTile(tile);
 
-		BEGIN_TILE_LOOP(t, st->train_station.w, st->train_station.h, st->train_station.tile)
+		TILE_LOOP(t, st->train_station.w, st->train_station.h, st->train_station.tile) {
 			if (st->TileBelongsToRailStation(t)) {
 				FindVehicleOnPos(tile, &z, &FloodVehicleProc);
 			}
-		END_TILE_LOOP(t, st->train_station.w, st->train_station.h, st->train_station.tile)
+		}
 
 		return;
 	}

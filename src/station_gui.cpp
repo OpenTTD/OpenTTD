@@ -1132,9 +1132,9 @@ static const Station *FindStationsNearby(TileArea ta, bool distant_join)
 	_deleted_stations_nearby.Clear();
 
 	/* Check the inside, to return, if we sit on another station */
-	BEGIN_TILE_LOOP(t, ta.w, ta.h, ta.tile)
+	TILE_LOOP(t, ta.w, ta.h, ta.tile) {
 		if (t < MapSize() && IsTileType(t, MP_STATION) && Station::IsValidID(GetStationIndex(t))) return Station::GetByTile(t);
-	END_TILE_LOOP(t, ta.w, ta.h, ta.tile)
+	}
 
 	/* Look for deleted stations */
 	const BaseStation *st;

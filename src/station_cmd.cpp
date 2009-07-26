@@ -76,7 +76,7 @@ static uint GetNumRoadStopsInStation(const Station *st, RoadStopType type)
 static Station *GetStationAround(TileIndex tile, int w, int h, StationID closest_station)
 {
 	/* check around to see if there's any stations there */
-	BEGIN_TILE_LOOP(tile_cur, w + 2, h + 2, tile - TileDiffXY(1, 1))
+	TILE_LOOP(tile_cur, w + 2, h + 2, tile - TileDiffXY(1, 1)) {
 		if (IsTileType(tile_cur, MP_STATION)) {
 			StationID t = GetStationIndex(tile_cur);
 
@@ -87,7 +87,7 @@ static Station *GetStationAround(TileIndex tile, int w, int h, StationID closest
 				return CHECK_STATIONS_ERR;
 			}
 		}
-	END_TILE_LOOP(tile_cur, w + 2, h + 2, tile - TileDiffXY(1, 1))
+	}
 	return (closest_station == INVALID_STATION) ? NULL : Station::Get(closest_station);
 }
 
@@ -649,7 +649,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	int allowed_z = -1;
 
-	BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
+	TILE_LOOP(tile_cur, w, h, tile) {
 		if (MayHaveBridgeAbove(tile_cur) && IsBridgeAbove(tile_cur)) {
 			return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 		}
@@ -709,7 +709,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
 			if (CmdFailed(ret)) return ret;
 			cost.AddCost(ret);
 		}
-	} END_TILE_LOOP(tile_cur, w, h, tile)
+	}
 
 	return cost;
 }
@@ -735,12 +735,12 @@ static bool CanExpandRailStation(const Station *st, TileArea &cur_ta, Axis axis)
 	} else {
 		/* do not allow modifying non-uniform stations,
 		 * the uniform-stations code wouldn't handle it well */
-		BEGIN_TILE_LOOP(t, st->train_station.w, st->train_station.h, st->train_station.tile)
+		TILE_LOOP(t, st->train_station.w, st->train_station.h, st->train_station.tile) {
 			if (!st->TileBelongsToRailStation(t)) { // there may be adjoined station
 				_error_message = STR_NONUNIFORM_STATIONS_DISALLOWED;
 				return false;
 			}
-		END_TILE_LOOP(t, st->train_station.w, st->train_station.h, st->train_station.tile)
+		}
 
 		/* check so the orientation is the same */
 		if (GetRailStationAxis(st->train_station.tile) != axis) {
@@ -1147,7 +1147,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 	SmallVector<Station *, 4> affected_stations;
 
 	/* Do the action for every tile into the area */
-	BEGIN_TILE_LOOP(tile2, size_x, size_y, tile) {
+	TILE_LOOP(tile2, size_x, size_y, tile) {
 		/* Make sure the specified tile is a railroad station */
 		if (!IsRailStationTile(tile2)) {
 			continue;
@@ -1208,7 +1208,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 				if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
 			}
 		}
-	} END_TILE_LOOP(tile2, size_x, size_y, tile)
+	}
 
 	for (Station **stp = affected_stations.Begin(); stp != affected_stations.End(); stp++) {
 		Station *st = *stp;
@@ -1837,10 +1837,10 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		{
 			const byte *b = _airport_sections[p1];
 
-			BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
+			TILE_LOOP(tile_cur, w, h, tile) {
 				MakeAirport(tile_cur, st->owner, st->index, *b);
 				b++;
-			} END_TILE_LOOP(tile_cur, w, h, tile)
+			}
 		}
 
 		st->UpdateVirtCoord();
@@ -1886,14 +1886,14 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 		if (a->targetairport == st->index && a->state != FLYING) return CMD_ERROR;
 	}
 
-	BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
+	TILE_LOOP(tile_cur, w, h, tile) {
 		if (!EnsureNoVehicleOnGround(tile_cur)) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
 			DeleteAnimatedTile(tile_cur);
 			DoClearSquare(tile_cur);
 		}
-	} END_TILE_LOOP(tile_cur, w, h, tile)
+	}
 
 	if (flags & DC_EXEC) {
 		for (uint i = 0; i < afc->nof_depots; ++i) {
