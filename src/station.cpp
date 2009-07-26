@@ -39,7 +39,6 @@ BaseStation::~BaseStation()
 
 Station::Station(TileIndex tile) :
 	SpecializedStation<Station, false>(tile),
-	train_station(INVALID_TILE, 0, 0),
 	airport_tile(INVALID_TILE),
 	dock_tile(INVALID_TILE),
 	indtype(IT_INVALID),
@@ -423,7 +422,7 @@ bool StationRect::BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mo
 	return false;
 }
 
-bool StationRect::AfterRemoveTile(Station *st, TileIndex tile)
+bool StationRect::AfterRemoveTile(BaseStation *st, TileIndex tile)
 {
 	int x = TileX(tile);
 	int y = TileY(tile);
@@ -473,7 +472,7 @@ bool StationRect::AfterRemoveTile(Station *st, TileIndex tile)
 	return false; // non-empty remaining rect
 }
 
-bool StationRect::AfterRemoveRect(Station *st, TileIndex tile, int w, int h)
+bool StationRect::AfterRemoveRect(BaseStation *st, TileIndex tile, int w, int h)
 {
 	assert(PtInExtendedRect(TileX(tile), TileY(tile)));
 	assert(PtInExtendedRect(TileX(tile) + w - 1, TileY(tile) + h - 1));

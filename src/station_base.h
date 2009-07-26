@@ -41,29 +41,6 @@ struct GoodsEntry {
 	CargoList cargo; ///< The cargo packets of cargo waiting in this station
 };
 
-/** StationRect - used to track station spread out rectangle - cheaper than scanning whole map */
-struct StationRect : public Rect {
-	enum StationRectMode
-	{
-		ADD_TEST = 0,
-		ADD_TRY,
-		ADD_FORCE
-	};
-
-	StationRect();
-	void MakeEmpty();
-	bool PtInExtendedRect(int x, int y, int distance = 0) const;
-	bool IsEmpty() const;
-	bool BeforeAddTile(TileIndex tile, StationRectMode mode);
-	bool BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mode);
-	bool AfterRemoveTile(Station *st, TileIndex tile);
-	bool AfterRemoveRect(Station *st, TileIndex tile, int w, int h);
-
-	static bool ScanForStationTiles(StationID st_id, int left_a, int top_a, int right_a, int bottom_a);
-
-	StationRect& operator = (Rect src);
-};
-
 
 typedef SmallVector<Industry *, 2> IndustryVector;
 
@@ -85,7 +62,6 @@ public:
 
 	RoadStop *bus_stops;    ///< All the road stops
 	RoadStop *truck_stops;  ///< All the truck stops
-	TileArea train_station; ///< Tile area the train station part covers
 	TileIndex airport_tile; ///< The location of the airport
 	TileIndex dock_tile;    ///< The location of the dock
 
@@ -104,8 +80,6 @@ public:
 	GoodsEntry goods[NUM_CARGO];  ///< Goods at this station
 
 	IndustryVector industries_near; ///< Cached list of industries near the station that can accept cargo, @see DeliverGoodsToIndustry()
-
-	StationRect rect; ///< Station spread out rectangle (not saved) maintained by StationRect_xxx() functions
 
 	Station(TileIndex tile = INVALID_TILE);
 	~Station();

@@ -35,6 +35,30 @@ struct TileArea {
 	uint8 h;        ///< The height of the area
 };
 
+
+/** StationRect - used to track station spread out rectangle - cheaper than scanning whole map */
+struct StationRect : public Rect {
+	enum StationRectMode
+	{
+		ADD_TEST = 0,
+		ADD_TRY,
+		ADD_FORCE
+	};
+
+	StationRect();
+	void MakeEmpty();
+	bool PtInExtendedRect(int x, int y, int distance = 0) const;
+	bool IsEmpty() const;
+	bool BeforeAddTile(TileIndex tile, StationRectMode mode);
+	bool BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mode);
+	bool AfterRemoveTile(BaseStation *st, TileIndex tile);
+	bool AfterRemoveRect(BaseStation *st, TileIndex tile, int w, int h);
+
+	static bool ScanForStationTiles(StationID st_id, int left_a, int top_a, int right_a, int bottom_a);
+
+	StationRect& operator = (Rect src);
+};
+
 /** Base class for all station-ish types */
 struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	TileIndex xy;                   ///< Base tile of the station
@@ -57,7 +81,18 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	byte waiting_triggers;          ///< Waiting triggers (NewGRF) for this station
 	uint8 cached_anim_triggers;     ///< NOSAVE: Combined animation trigger bitmask, used to determine if trigger processing should happen.
 
-	BaseStation(TileIndex tile) : xy(tile) { }
+	TileArea train_station;         ///< Tile area the train 'station' part covers
+	StationRect rect;               ///< NOSAVE: Station spread out rectangle maintained by StationRect::xxx() functions
+
+	/**
+	 * Initialize the base station.
+	 * @param tile The location of the station sign
+	 */
+	BaseStation(TileIndex tile) :
+		xy(tile),
+		train_station(INVALID_TILE, 0, 0)
+	{
+	}
 
 	virtual ~BaseStation();
 

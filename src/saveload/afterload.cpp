@@ -605,11 +605,14 @@ bool AfterLoadGame()
 	for (TileIndex t = 0; t < map_size; t++) {
 		switch (GetTileType(t)) {
 			case MP_STATION: {
-				Station *st = Station::GetByTile(t);
-				if (st == NULL) break;
+				BaseStation *bst = BaseStation::GetByTile(t);
 
-				/* Set up station spread; waypoints do not have one */
-				st->rect.BeforeAddTile(t, StationRect::ADD_FORCE);
+				/* Set up station spread */
+				bst->rect.BeforeAddTile(t, StationRect::ADD_FORCE);
+
+				/* Waypoints don't have road stops/oil rigs in the old format */
+				if (!Station::IsExpected(bst)) break;
+				Station *st = Station::From(bst);
 
 				switch (GetStationType(t)) {
 					case STATION_TRUCK:

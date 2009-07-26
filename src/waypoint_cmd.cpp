@@ -184,6 +184,8 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 		}
 		wp->owner = owner;
 
+		wp->rect.BeforeAddTile(tile, StationRect::ADD_TRY);
+
 		bool reserved = HasBit(GetRailReservationTrackBits(tile), AxisToTrack(axis));
 		MakeRailWaypoint(tile, owner, wp->index, axis, 0, GetRailType(tile));
 		SetRailStationReservation(tile, reserved);
@@ -249,6 +251,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justre
 		if (v != NULL) TryPathReserve(v, true);
 
 		DeallocateSpecFromStation(wp, specindex);
+		wp->rect.AfterRemoveTile(wp, tile);
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_train_depot);
@@ -296,6 +299,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			wp->xy = tile;
 			InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
 		}
+		wp->rect.BeforeAddTile(tile, StationRect::ADD_TRY);
 
 		wp->string_id = STR_SV_STNAME_BUOY;
 
@@ -343,6 +347,8 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
 		 * remove it and flood the land (if the canal edge is at level 0) */
 		MakeWaterKeepingClass(tile, GetTileOwner(tile));
 		MarkTileDirtyByTile(tile);
+
+		wp->rect.AfterRemoveTile(wp, tile);
 
 		wp->UpdateVirtCoord();
 		wp->delete_ctr = 0;
