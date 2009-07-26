@@ -9,15 +9,16 @@
 
 typedef uint16 VehicleID;
 
+/** Available vehicle types. */
 enum VehicleType {
-	VEH_TRAIN,
-	VEH_ROAD,
-	VEH_SHIP,
-	VEH_AIRCRAFT,
-	VEH_EFFECT,
-	VEH_DISASTER,
+	VEH_TRAIN,          ///< %Train vehicle type.
+	VEH_ROAD,           ///< Road vehicle type.
+	VEH_SHIP,           ///< %Ship vehicle type.
+	VEH_AIRCRAFT,       ///< %Aircraft vehicle type.
+	VEH_EFFECT,         ///< Effect vehicle type (smoke, explosions, sparks, bubbles)
+	VEH_DISASTER,       ///< Disaster vehicle type.
 	VEH_END,
-	VEH_INVALID = 0xFF,
+	VEH_INVALID = 0xFF, ///< Non-existing type of vehicle.
 };
 DECLARE_POSTFIX_INCREMENT(VehicleType);
 /** It needs to be 8bits, because we save and load it as such */
@@ -36,7 +37,7 @@ struct BaseVehicle
 	VehicleTypeByte type;    ///< Type of vehicle
 };
 
-static const VehicleID INVALID_VEHICLE = 0xFFFF;
+static const VehicleID INVALID_VEHICLE = 0xFFFF; ///< Constant representing a non-existing vehicle.
 
 /** Pathfinding option states */
 enum {

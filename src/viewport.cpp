@@ -1578,6 +1578,10 @@ static inline void ClampViewportToMap(const ViewPort *vp, int &x, int &y)
 	y -= vp->virtual_height / 2;
 }
 
+/**
+ * Update the viewport position being displayed.
+ * @param w %Window owning the viewport.
+ */
 void UpdateViewportPosition(Window *w)
 {
 	const ViewPort *vp = w->viewport;
@@ -2037,7 +2041,14 @@ void PlaceObject()
 }
 
 
-/* scrolls the viewport in a window to a given location */
+/** Scrolls the viewport in a window to a given location.
+ * @param x       Desired x location of the map to scroll to (world coordinate).
+ * @param y       Desired y location of the map to scroll to (world coordinate).
+ * @param z       Desired z location of the map to scroll to (world coordinate). Use \c -1 to scroll to the height of the map at the \a x, \a y location.
+ * @param w       %Window containing the viewport.
+ * @param instant Jump to the location instead of slowly moving to it.
+ * @return Destination of the viewport was changed (to activate other actions when the viewport is already at the desired position).
+ */
 bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant)
 {
 	/* The slope cannot be acquired outside of the map, so make sure we are always within the map. */
