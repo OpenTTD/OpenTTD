@@ -551,8 +551,8 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 
 		/* Make sure the station can accept the goods type. */
 		bool is_passengers = IsCargoInClass(i, CC_PASSENGERS);
-		if ((!is_passengers && !(st->facilities & (byte)~FACIL_BUS_STOP)) ||
-				(is_passengers && !(st->facilities & (byte)~FACIL_TRUCK_STOP))) {
+		if ((!is_passengers && !(st->facilities & ~FACIL_BUS_STOP)) ||
+				(is_passengers && !(st->facilities & ~FACIL_TRUCK_STOP))) {
 			amt = 0;
 		}
 
@@ -564,7 +564,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	if (old_acc == new_acc) return;
 
 	/* show a message to report that the acceptance was changed? */
-	if (show_msg && st->owner == _local_company && st->facilities) {
+	if (show_msg && st->owner == _local_company && st->IsInUse()) {
 		/* List of accept and reject strings for different number of
 		 * cargo types */
 		static const StringID accept_msg[] = {

@@ -1076,22 +1076,15 @@ struct TileAndStation {
 static SmallVector<TileAndStation, 8> _deleted_stations_nearby;
 static SmallVector<StationID, 8> _stations_nearby_list;
 
-/** Context for FindStationsNearby */
-struct FindNearbyStationContext {
-	TileIndex tile; ///< Base tile of station to be built
-	uint      w;    ///< Width of station to be built
-	uint      h;    ///< Height of station to be built
-};
-
 /**
  * Add station on this tile to _stations_nearby_list if it's fully within the
  * station spread.
  * @param tile Tile just being checked
- * @param user_data Pointer to FindNearbyStationContext context
+ * @param user_data Pointer to TileArea context
  */
 static bool AddNearbyStation(TileIndex tile, void *user_data)
 {
-	FindNearbyStationContext *ctx = (FindNearbyStationContext *)user_data;
+	TileArea *ctx = (TileArea *)user_data;
 
 	/* First check if there were deleted stations here */
 	for (uint i = 0; i < _deleted_stations_nearby.Length(); i++) {
@@ -1107,6 +1100,10 @@ static bool AddNearbyStation(TileIndex tile, void *user_data)
 	if (!IsTileType(tile, MP_STATION)) return false;
 
 	StationID sid = GetStationIndex(tile);
+
+	/* This station is (likely) a waypoint */
+	if (!Station::IsValidID(sid)) return false;
+
 	Station *st = Station::Get(sid);
 	if (st->owner != _local_company || _stations_nearby_list.Contains(sid)) return false;
 
@@ -1129,7 +1126,7 @@ static bool AddNearbyStation(TileIndex tile, void *user_data)
  **/
 static const Station *FindStationsNearby(TileIndex tile, int w, int h, bool distant_join)
 {
-	FindNearbyStationContext ctx;
+	TileArea ctx;
 	ctx.tile = tile;
 	ctx.w = w;
 	ctx.h = h;
@@ -1139,13 +1136,13 @@ static const Station *FindStationsNearby(TileIndex tile, int w, int h, bool dist
 
 	/* Check the inside, to return, if we sit on another station */
 	BEGIN_TILE_LOOP(t, w, h, tile)
-		if (t < MapSize() && IsTileType(t, MP_STATION)) return Station::GetByTile(t);
+		if (t < MapSize() && IsTileType(t, MP_STATION) && Station::IsValidID(GetStationIndex(t))) return Station::GetByTile(t);
 	END_TILE_LOOP(t, w, h, tile)
 
 	/* Look for deleted stations */
-	const Station *st;
-	FOR_ALL_STATIONS(st) {
-		if (st->facilities == 0 && st->owner == _local_company) {
+	const BaseStation *st;
+	FOR_ALL_BASE_STATIONS(st) {
+		if (Station::IsExpected(st) && !st->IsInUse() && st->owner == _local_company) {
 			/* Include only within station spread (yes, it is strictly less than) */
 			if (max(DistanceMax(tile, st->xy), DistanceMax(TILE_ADDXY(tile, w - 1, h - 1), st->xy)) < _settings_game.station.station_spread) {
 				TileAndStation *ts = _deleted_stations_nearby.Append();
