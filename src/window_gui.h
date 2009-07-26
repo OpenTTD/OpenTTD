@@ -193,7 +193,7 @@ enum SortButtonState {
  * A viewport is either following a vehicle (its id in then in #follow_vehicle), or it aims to display a specific
  * location #dest_scrollpos_x, #dest_scrollpos_y (#follow_vehicle is then #INVALID_VEHICLE).
  * The actual location being shown is #scrollpos_x, #scrollpos_y.
- * @see InitializeViewport(), UpdateViewportPosition().
+ * @see InitializeViewport(), UpdateViewportPosition(), UpdateViewportCoordinates().
  */
 struct ViewportData : ViewPort {
 	VehicleID follow_vehicle; ///< VehicleID to follow if following a vehicle, #INVALID_VEHICLE otherwise.
@@ -644,6 +644,7 @@ public:
 
 	/**
 	 * Called after the window got resized.
+	 * For nested windows with a viewport, call NWidgetViewport::UpdateViewportCoordinates.
 	 * @param delta The amount of which the window size changed.
 	 */
 	virtual void OnResize(Point delta) {}

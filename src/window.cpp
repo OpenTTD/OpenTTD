@@ -560,9 +560,7 @@ void SetWindowDirty(const Window *w)
 	if (w != NULL) w->SetDirty();
 }
 
-/** Re-initialize a window.
- * @todo Extend the function to handle viewports.
- */
+/** Re-initialize a window. */
 void Window::ReInit()
 {
 	if (this->nested_root == NULL) return; // Only nested widget windows can re-initialize.
@@ -595,6 +593,10 @@ void Window::ReInit()
 
 	if (dx == 0 && dy == 0) { // No resize needed.
 		this->SetDirty();
+		if (this->viewport != NULL) {
+			NWidgetViewport *nvp = (NWidgetViewport *)nested_root->GetWidgetOfType(NWID_VIEWPORT);
+			nvp->UpdateViewportCoordinates(this);
+		}
 		return;
 	}
 
@@ -602,7 +604,7 @@ void Window::ReInit()
 	Point diff;
 	diff.x = dx;
 	diff.y = dy;
-	this->OnResize(diff);
+	this->OnResize(diff); // Calls NWidgetViewport::UpdateViewportCoordinates()
 }
 
 /** Find the Window whose parent pointer points to this window

@@ -6,6 +6,8 @@
 #include "company_func.h"
 #include "gfx_func.h"
 #include "window_gui.h"
+#include "viewport_func.h"
+#include "zoom_func.h"
 #include "debug.h"
 #include "strings_func.h"
 
@@ -1798,6 +1800,65 @@ NWidgetBase *NWidgetBackground::GetWidgetOfType(WidgetType tp)
 	return nwid;
 }
 
+NWidgetViewport::NWidgetViewport(int index) : NWidgetCore(NWID_VIEWPORT, INVALID_COLOUR, true, true, 0x0, STR_NULL)
+{
+	this->SetIndex(index);
+}
+
+void NWidgetViewport::SetupSmallestSize(Window *w, bool init_array)
+{
+	if (init_array && this->index >= 0) {
+		assert(w->nested_array_size > (uint)this->index);
+		w->nested_array[this->index] = this;
+	}
+	this->smallest_x = this->min_x;
+	this->smallest_y = this->min_y;
+}
+
+void NWidgetViewport::StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl)
+{
+	NOT_REACHED();
+}
+
+void NWidgetViewport::Draw(const Window *w)
+{
+	w->DrawViewport();
+}
+
+Scrollbar *NWidgetViewport::FindScrollbar(Window *w, bool allow_next)
+{
+	return NULL;
+}
+
+/**
+ * Initialize the viewport of the window.
+ * @param w            Window owning the viewport.
+ * @param follow_flags Type of viewport, see #InitializeViewport().
+ * @param zoom         Zoom level.
+ */
+void NWidgetViewport::InitializeViewport(Window *w, uint32 follow_flags, ZoomLevel zoom)
+{
+	InitializeWindowViewport(w, this->pos_x, this->pos_y, this->current_x, this->current_y, follow_flags, zoom);
+}
+
+/**
+ * Update the position and size of the viewport (after eg a resize).
+ * @param w Window owning the viewport.
+ */
+void NWidgetViewport::UpdateViewportCoordinates(Window *w)
+{
+	ViewPort *vp = w->viewport;
+	if (vp != NULL) {
+		vp->left = w->left + this->pos_x;
+		vp->top  = w->top + this->pos_y;
+		vp->width  = this->current_x;
+		vp->height = this->current_y;
+
+		vp->virtual_width  = ScaleByZoom(vp->width, vp->zoom);
+		vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
+	}
+}
+
 /** Reset the cached dimensions. */
 /* static */ void NWidgetLeaf::InvalidateDimensionCache()
 {
@@ -2401,9 +2462,15 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 			case WPT_ENDCONTAINER:
 				return num_used;
 
+			case NWID_VIEWPORT:
+				if (*dest != NULL) return num_used;
+				*dest = new NWidgetViewport(parts->u.widget.index);
+				*biggest_index = max(*biggest_index, (int)parts->u.widget.index);
+				break;
+
 			default:
 				if (*dest != NULL) return num_used;
-				assert((parts->type & WWT_MASK) < NWID_HORIZONTAL);
+				assert((parts->type & WWT_MASK) < WWT_LAST);
 				*dest = new NWidgetLeaf(parts->type, parts->u.widget.colour, parts->u.widget.index, 0x0, STR_NULL);
 				*biggest_index = max(*biggest_index, (int)parts->u.widget.index);
 				break;

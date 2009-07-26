@@ -113,6 +113,7 @@ enum WidgetType {
 	NWID_SPACER,         ///< Invisible widget that takes some space.
 	NWID_SELECTION,      ///< Stacked widgets, only one visible at a time (eg in a panel with tabs).
 	NWID_LAYERED,        ///< Widgets layered on top of each other, all visible at the same time.
+	NWID_VIEWPORT,       ///< Nested widget containing a viewport.
 
 	/* Nested widget part types. */
 	WPT_RESIZE,       ///< Widget part for specifying resizing.
@@ -469,6 +470,25 @@ public:
 
 private:
 	NWidgetPIPContainer *child; ///< Child widget.
+};
+
+/**
+ * Nested widget to display a viewport in a window.
+ * After initializing the nested widget tree, call #InitializeViewport(). After changing the window size,
+ * call #UpdateViewportCoordinates() eg from Window::OnResize().
+ * @todo Class derives from #NWidgetCore, but does not use #colour, #widget_data, or #tool_tip.
+ * @ingroup NestedWidgets */
+class NWidgetViewport : public NWidgetCore {
+public:
+	NWidgetViewport(int index);
+
+	/* virtual */ void SetupSmallestSize(Window *w, bool init_array);
+	/* virtual */ void StoreWidgets(Widget *widgets, int length, bool left_moving, bool top_moving, bool rtl);
+	/* virtual */ void Draw(const Window *w);
+	/* virtual */ Scrollbar *FindScrollbar(Window *w, bool allow_next = true);
+
+	void InitializeViewport(Window *w, uint32 follow_flags, ZoomLevel zoom);
+	void UpdateViewportCoordinates(Window *w);
 };
 
 /** Leaf widget.
