@@ -491,6 +491,21 @@ StationRect& StationRect::operator = (Rect src)
 	return *this;
 }
 
+TileArea::TileArea(TileIndex start, TileIndex end)
+{
+	uint sx = TileX(start);
+	uint sy = TileY(start);
+	uint ex = TileX(end);
+	uint ey = TileY(end);
+
+	if (sx > ex) Swap(sx, ex);
+	if (sy > ey) Swap(sy, ey);
+
+	this->tile = TileXY(sx, sy);
+	this->w    = ex - sx + 1;
+	this->h    = ey - sy + 1;
+}
+
 
 void InitializeStations()
 {

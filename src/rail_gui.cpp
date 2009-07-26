@@ -181,7 +181,7 @@ static void PlaceRail_Station(TileIndex tile)
 		if (!_railstation.orientation) Swap(w, h);
 
 		CommandContainer cmdcont = { tile, p1, p2, CMD_BUILD_RAILROAD_STATION | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION), CcStation, "" };
-		ShowSelectStationIfNeeded(cmdcont, w, h);
+		ShowSelectStationIfNeeded(cmdcont, TileArea(tile, w, h));
 	}
 }
 
@@ -873,26 +873,17 @@ void ShowBuildRailToolbar(RailType railtype, int button)
 
 static void HandleStationPlacement(TileIndex start, TileIndex end)
 {
-	uint sx = TileX(start);
-	uint sy = TileY(start);
-	uint ex = TileX(end);
-	uint ey = TileY(end);
-	uint w, h;
+	TileArea ta(start, end);
+	uint numtracks = ta.w;
+	uint platlength = ta.h;
 
-	if (sx > ex) Swap(sx, ex);
-	if (sy > ey) Swap(sy, ey);
-	w = ex - sx + 1;
-	h = ey - sy + 1;
-
-	uint numtracks = w;
-	uint platlength = h;
 	if (_railstation.orientation == AXIS_X) Swap(numtracks, platlength);
 
-	uint32 p1 = _cur_railtype | _railstation.orientation << 4 | _ctrl_pressed << 24;
+	uint32 p1 = _cur_railtype | _railstation.orientation << 4 | numtracks << 8 | platlength << 16 | _ctrl_pressed << 24;
 	uint32 p2 = _railstation.station_class | _railstation.station_type << 8 | INVALID_STATION << 16;
 
-	CommandContainer cmdcont = { TileXY(sx, sy), p1 | numtracks << 8 | platlength << 16, p2, CMD_BUILD_RAILROAD_STATION | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION), CcStation, "" };
-	ShowSelectStationIfNeeded(cmdcont, w, h);
+	CommandContainer cmdcont = { ta.tile, p1, p2, CMD_BUILD_RAILROAD_STATION | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION), CcStation, "" };
+	ShowSelectStationIfNeeded(cmdcont, ta);
 }
 
 /** Enum referring to the widgets of the rail stations window */

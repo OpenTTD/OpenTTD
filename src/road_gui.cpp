@@ -212,7 +212,7 @@ static void PlaceRoadStop(TileIndex tile, uint32 p2, uint32 cmd)
 		p1 -= DIAGDIR_END; // Adjust picker result to actual direction
 	}
 	CommandContainer cmdcont = { tile, p1, p2, cmd, CcRoadDepot, "" };
-	ShowSelectStationIfNeeded(cmdcont, 1, 1);
+	ShowSelectStationIfNeeded(cmdcont, TileArea(tile, 1, 1));
 }
 
 static void PlaceRoad_BusStation(TileIndex tile)

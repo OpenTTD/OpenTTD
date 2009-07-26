@@ -50,7 +50,7 @@ static void PlaceDocks_Dock(TileIndex tile)
 
 	/* tile is always the land tile, so need to evaluate _thd.pos */
 	CommandContainer cmdcont = { tile, _ctrl_pressed, p2, CMD_BUILD_DOCK | CMD_MSG(STR_ERROR_CAN_T_BUILD_DOCK_HERE), CcBuildDocks, "" };
-	ShowSelectStationIfNeeded(cmdcont, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE);
+	ShowSelectStationIfNeeded(cmdcont, TileArea(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE));
 }
 
 static void PlaceDocks_Depot(TileIndex tile)

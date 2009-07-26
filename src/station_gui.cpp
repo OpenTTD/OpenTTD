@@ -1124,27 +1124,24 @@ static bool AddNearbyStation(TileIndex tile, void *user_data)
  * @param distant_join Search for adjacent stations (false) or stations fully
  *                     within station spread
  **/
-static const Station *FindStationsNearby(TileIndex tile, int w, int h, bool distant_join)
+static const Station *FindStationsNearby(TileArea ta, bool distant_join)
 {
-	TileArea ctx;
-	ctx.tile = tile;
-	ctx.w = w;
-	ctx.h = h;
+	TileArea ctx = ta;
 
 	_stations_nearby_list.Clear();
 	_deleted_stations_nearby.Clear();
 
 	/* Check the inside, to return, if we sit on another station */
-	BEGIN_TILE_LOOP(t, w, h, tile)
+	BEGIN_TILE_LOOP(t, ta.w, ta.h, ta.tile)
 		if (t < MapSize() && IsTileType(t, MP_STATION) && Station::IsValidID(GetStationIndex(t))) return Station::GetByTile(t);
-	END_TILE_LOOP(t, w, h, tile)
+	END_TILE_LOOP(t, ta.w, ta.h, ta.tile)
 
 	/* Look for deleted stations */
 	const BaseStation *st;
 	FOR_ALL_BASE_STATIONS(st) {
 		if (Station::IsExpected(st) && !st->IsInUse() && st->owner == _local_company) {
 			/* Include only within station spread (yes, it is strictly less than) */
-			if (max(DistanceMax(tile, st->xy), DistanceMax(TILE_ADDXY(tile, w - 1, h - 1), st->xy)) < _settings_game.station.station_spread) {
+			if (max(DistanceMax(ta.tile, st->xy), DistanceMax(TILE_ADDXY(ta.tile, ta.w - 1, ta.h - 1), st->xy)) < _settings_game.station.station_spread) {
 				TileAndStation *ts = _deleted_stations_nearby.Append();
 				ts->tile = st->xy;
 				ts->station = st->index;
@@ -1161,11 +1158,11 @@ static const Station *FindStationsNearby(TileIndex tile, int w, int h, bool dist
 	/* Only search tiles where we have a chance to stay within the station spread.
 	 * The complete check needs to be done in the callback as we don't know the
 	 * extent of the found station, yet. */
-	if (distant_join && min(w, h) >= _settings_game.station.station_spread) return NULL;
-	uint max_dist = distant_join ? _settings_game.station.station_spread - min(w, h) : 1;
+	if (distant_join && min(ta.w, ta.h) >= _settings_game.station.station_spread) return NULL;
+	uint max_dist = distant_join ? _settings_game.station.station_spread - min(ta.w, ta.h) : 1;
 
-	tile = TILE_ADD(ctx.tile, TileOffsByDir(DIR_N));
-	CircularTileSearch(&tile, max_dist, w, h, AddNearbyStation, &ctx);
+	TileIndex tile = TILE_ADD(ctx.tile, TileOffsByDir(DIR_N));
+	CircularTileSearch(&tile, max_dist, ta.w, ta.h, AddNearbyStation, &ctx);
 
 	return NULL;
 }
@@ -1203,21 +1200,17 @@ static const NWidgetPart _nested_select_station_widgets[] = {
 
 struct SelectStationWindow : Window {
 	CommandContainer select_station_cmd; ///< Command to build new station
-	TileIndex tile; ///< Base tile of new station
-	int size_x;     ///< Size in x direction of new station
-	int size_y;     ///< Size in y direction of new station
+	TileArea area; ///< Location of new station
 
-	SelectStationWindow(const WindowDesc *desc, CommandContainer cmd, int w, int h) :
+	SelectStationWindow(const WindowDesc *desc, CommandContainer cmd, TileArea ta) :
 		Window(desc, 0),
 		select_station_cmd(cmd),
-		tile(cmd.tile),
-		size_x(w),
-		size_y(h)
+		area(ta)
 	{
 		this->vscroll.cap = 6;
 		this->resize.step_height = 10;
 
-		FindStationsNearby(this->tile, this->size_x, this->size_y, true);
+		FindStationsNearby(this->area, true);
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -1281,7 +1274,7 @@ struct SelectStationWindow : Window {
 
 	virtual void OnInvalidateData(int data)
 	{
-		FindStationsNearby(this->tile, this->size_x, this->size_y, true);
+		FindStationsNearby(this->area, true);
 		this->SetDirty();
 	}
 };
@@ -1301,7 +1294,7 @@ static const WindowDesc _select_station_desc(
  * @param h Height of the to-be-built station
  * @return whether we need to show the station selection window.
  */
-static bool StationJoinerNeeded(CommandContainer cmd, int w, int h)
+static bool StationJoinerNeeded(CommandContainer cmd, TileArea ta)
 {
 	/* Only show selection if distant join is enabled in the settings */
 	if (!_settings_game.station.distant_join_stations) return false;
@@ -1326,7 +1319,7 @@ static bool StationJoinerNeeded(CommandContainer cmd, int w, int h)
 	/* Test for adjacent station or station below selection.
 	 * If adjacent-stations is disabled and we are building next to a station, do not show the selection window.
 	 * but join the other station immediatelly. */
-	const Station *st = FindStationsNearby(cmd.tile, w, h, false);
+	const Station *st = FindStationsNearby(ta, false);
 	return st == NULL && (_settings_game.station.adjacent_stations || _stations_nearby_list.Length() == 0);
 }
 
@@ -1336,12 +1329,12 @@ static bool StationJoinerNeeded(CommandContainer cmd, int w, int h)
  * @param w Width of the to-be-built station
  * @param h Height of the to-be-built station
  */
-void ShowSelectStationIfNeeded(CommandContainer cmd, int w, int h)
+void ShowSelectStationIfNeeded(CommandContainer cmd, TileArea ta)
 {
-	if (StationJoinerNeeded(cmd, w, h)) {
+	if (StationJoinerNeeded(cmd, ta)) {
 		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 		if (BringWindowToFrontById(WC_SELECT_STATION, 0)) return;
-		new SelectStationWindow(&_select_station_desc, cmd, w, h);
+		new SelectStationWindow(&_select_station_desc, cmd, ta);
 	} else {
 		DoCommandP(&cmd);
 	}

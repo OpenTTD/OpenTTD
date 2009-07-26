@@ -6,6 +6,7 @@
 #define STATION_GUI_H
 
 #include "command_type.h"
+#include "station_type.h"
 
 /** Enum for StationView, referring to _station_view_widgets and _station_view_expanded_widgets */
 enum StationViewWidgets {
@@ -36,6 +37,6 @@ enum StationCoverageType {
 int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageType sct, int rad, bool supplies);
 void CheckRedrawStationCoverage(const Window *w);
 
-void ShowSelectStationIfNeeded(CommandContainer cmd, int w, int h);
+void ShowSelectStationIfNeeded(CommandContainer cmd, TileArea ta);
 
 #endif /* STATION_GUI_H */
