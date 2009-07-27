@@ -1614,6 +1614,7 @@ STR_ROAD_DESCRIPTION_TREE_LINED_ROAD                            :Δρόμος μ
 STR_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                         :Αμαξοστάσιο οχημάτων
 STR_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING                   :Διασταύρωση δρόμου/σιδηρόδρομου
 STR_ROAD_DESCRIPTION_TRAMWAY                                    :Τροχιόδρομος(τραμ)
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Αδύνατο να αφαιρεθεί η στάση λεωφορείων...
 
 ##id 0x2000
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Πόλεις

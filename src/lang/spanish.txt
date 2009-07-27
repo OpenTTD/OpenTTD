@@ -2553,7 +2553,7 @@ STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Tricario Helic�
 STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Guru X2 Helicóptero
 STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut Helicóptero
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensaje del fabricante de vehículos
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}WHemos diseñado un nuevo vehículo: {STRING} - ¿estás interesado en el uso exclusivo por un año de este vehículo, para que podamos ver cómo rinde antes de ponerlo universalmente disponible?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Hemos diseñado un nuevo vehículo: {STRING} - ¿estás interesado en el uso exclusivo por un año de este vehículo, para que podamos ver cómo rinde antes de ponerlo universalmente disponible?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :locomotora
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :vehículo de carretera
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :aeronave
@@ -2578,7 +2578,7 @@ STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Carga co
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Cargar si está disponible
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Carga completa de todas las cargas
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Carga completa de cualquier carga
-STR_ORDER_DROP_NO_LOADING                                       :Sin carga
+STR_ORDER_DROP_NO_LOADING                                       :Sin cargar
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Descargar todo
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descargar si es aceptado
 STR_ORDER_DROP_UNLOAD                                           :Descargar todo

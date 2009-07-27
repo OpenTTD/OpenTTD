@@ -745,8 +745,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavenie newg
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavenia priehladnosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Zobrazit nazvy miest
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Zobrazit nazvy stanic
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Zobrazit popisy
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Zobrazit navigacne body
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Zobrazit popisy
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Plna animacia
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Plne detaily
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Priesvitne budovy
@@ -1224,6 +1224,8 @@ STR_GO_NON_STOP_TO_WAYPOINT                                     :Chod bez zastav
 
 STR_WAYPOINTNAME_CITY                                           :Smerovy bod {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :Smerovy bod {TOWN} #{COMMA}
+STR_BUOYNAME_CITY                                               :{TOWN} Bójka
+STR_BUOYNAME_CITY_SERIAL                                        :{TOWN} Bójka #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Smerovy bod
 
 STR_WAYPOINT                                                    :{WHITE}Smerovy bod
@@ -1429,7 +1431,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Litovsky
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sietova hra - lobby
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Pripravuje sa k vstupu:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Pripravuje sa k vstupu: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Aktualny zoznam spolocnosti v tejto hre. Bud mozes do jednej vstupit, alebo zalozit novu spolocnost.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nová spolocnost
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Zalozit novu spolocnost
@@ -1442,16 +1444,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Obnovit 
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFO O SPOLOCNOSTI
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nazov spolocnosti:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Zalozene:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Hodnota spolocnosti:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Stav uctu:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Zisk v minulom roku:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Vykon:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nazov spolocnosti: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Zalozene: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Hodnota spolocnosti: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Stav uctu: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Zisk v minulom roku: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Vykon: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Vozidla:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Stanice:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Hraci:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Vozidla: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Stanice: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Hraci: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Pripajam sa ...
 
@@ -1478,23 +1480,23 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Zoznam k
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Pozorovať
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nová spoločnosť
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Nie su ziadne sietove zariadenie alebo hra je kompilovana bez ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nebola najdena ziadna sietova hra
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Server neodpoveda na ziadost
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Nie su ziadne sietove zariadenie alebo hra je kompilovana bez ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Nebola najdena ziadna sietova hra
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Server neodpoveda na ziadost
 STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Pripojenie zlyhalo kvoli nespravnemu NewGRF
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Siet - Chyba synchronizacie hry
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Siet - Stratene spojenie
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nedokazem nahrat hru zo servera
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Nemozem spustit server.
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Nemozem sa pripojit.
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Vyprsal casovy limit pre spojenie #{NUM}.
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Chyba vznikla v protokole a spojenie je zatvorene.
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Revizia hry u tohto klienta nezodpoveda revizii hry na serveri.
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Nespravne heslo.
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Server je plny
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Si zablokovany na tomto serveri
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Bol si vyhodeny z hry
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Cheatovanie nie je povolene na tomto serveri
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}Siet - Chyba synchronizacie hry
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE}Siet - Stratene spojenie
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Nedokazem nahrat hru zo servera
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Nemozem spustit server.
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Nemozem sa pripojit.
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Vyprsal casovy limit pre spojenie #{NUM}.
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Chyba vznikla v protokole a spojenie je zatvorene.
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Revizia hry u tohto klienta nezodpoveda revizii hry na serveri.
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Nespravne heslo.
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Server je plny
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Si zablokovany na tomto serveri
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Bol si vyhodeny z hry
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Cheatovanie nie je povolene na tomto serveri
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :generalna chyba
@@ -1789,10 +1791,10 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Postavit sochu 
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financovat vystavbu budov
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Zakupit exkluzivne dopravne prava
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podplatit miestnu spravu
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Spustit malu reklamnu kampan vasich dopravnych sluzieb.{}  Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Spustit strednu reklamnu kampan vasich dopravnych sluzieb.{}  Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Spustit velku reklamnu kampan vasich dopravnych sluzieb.{}  Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Financovat rekonstrukciu a vystavbu cesty. Sposobi dopravny chaos a zapchy trvajuce dalsich 6 mesiacov.{}  Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Spustit malu reklamnu kampan vasich dopravnych sluzieb.{} Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Spustit strednu reklamnu kampan vasich dopravnych sluzieb.{} Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Spustit velku reklamnu kampan vasich dopravnych sluzieb.{} Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Financovat rekonstrukciu a vystavbu cesty. Sposobi dopravny chaos a zapchy trvajuce dalsich 6 mesiacov.{} Cena: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} Postavit sochu na oslavu vasej spolocnosti.{} Cena: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} Financovat vystavbu administrativnych a obchodnych budov.{}  Cena: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} Zakupit exkluzivne dopravne prava na 1 rok pre vasu spolocnost. Miestna sprava vam zaruci vyuzivanie len dopravnych sluzieb vasej spolocnosti.{} Cena: {CURRENCY}
@@ -2109,6 +2111,8 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Letisk
 STR_SV_STNAME_OILFIELD                                          :{STRING} Vrtna plosina
 STR_SV_STNAME_MINES                                             :{STRING} Bane
 STR_SV_STNAME_DOCKS                                             :{STRING} Pristav
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Zastavka
 STR_SV_STNAME_SIDINGS                                           :{STRING} Vidiek
@@ -2800,6 +2804,7 @@ STR_VEHICLE_STATUS_CRASHED                                      :{RED}Znicene!
 
 STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Vlakove nestastie!{}{COMMA} mrtv{P i i ych} pri poziari po kolizii
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nemozno zmenit smer vlaku ...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nemôžem otočiť vozidlo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nie je mozne otacat vozidla zlozené z viacerych jednotiek
 STR_CLEAR_TIME                                                  :{BLACK}Vymazat cas
 STR_RESET_LATENESS                                              :{BLACK}Reset meskania
@@ -2846,6 +2851,7 @@ STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvá nákladná elektricka dorazila do stanice {STATION}!
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Dopravna nehoda!{}Vodic zahynul po kolizii s vlakom
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Dopravna nehoda!{}{COMMA} mrtvych po kolizii s vlakom
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Nemôžem otočiť cestné vozidlo...
 
 
 ##id 0x9800
@@ -3664,6 +3670,7 @@ STR_AI_AUTHOR                                                   :{BLACK}Autor: {
 STR_AI_VERSION                                                  :{BLACK}Verzia: {NUM}
 STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Jedna z AI padla. Prosím nahláste to autorovi AI a priložte screenshot Debugovacej obrazovky AI.
+STR_AI_NO_AI_FOUND                                              :Nebolo nájdená žiadne použitelné AI.{}Toto AI je hlúpe a nebude nič robiť.{}Môžete si stiahnúť niekoľko AI cez 'Online Obsah' systém.
 ########
 
 ############ town controlled noise level

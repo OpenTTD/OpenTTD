@@ -410,10 +410,12 @@ STR_VEHICLE_TRAIN                                               :قطار
 STR_VEHICLE_ROAD_VEHICLE                                        :ماشین
 STR_VEHICLE_SHIP                                                :کشتی
 STR_VEHICLE_AIRCRAFT                                            :هواپیما
+STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} بسیار قدیمی شده و سریعا احتیاج به جایگزینی دارد
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}اطلاعات زمین
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}هزینه پاک کردن: {LTBLUE}0
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}هزینه پاک کردن: {RED}{CURRENCY}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :0
+STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}مالک: {LTBLUE}{STRING}
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}نام
 STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
 

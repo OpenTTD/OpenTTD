@@ -678,8 +678,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF inställ
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Genomskinlighetsinställningar
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Stadsnamn visas
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Stationsnamn visas
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Skyltar visas
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Kontrollstationer visas
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Skyltar visas
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Full animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Full detaljnivå
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Genomskinliga byggnader
@@ -2044,6 +2044,8 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} flygpl
 STR_SV_STNAME_OILFIELD                                          :{STRING} oljefält
 STR_SV_STNAME_MINES                                             :{STRING} gruva
 STR_SV_STNAME_DOCKS                                             :{STRING} Kaj
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} annex
 STR_SV_STNAME_SIDINGS                                           :{STRING} förort
@@ -3601,6 +3603,7 @@ STR_AI_AUTHOR                                                   :{BLACK}Upphovsm
 STR_AI_VERSION                                                  :{BLACK}Version: {NUM}
 STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}En av AI'erna som körs har krachat. Vänligen raportera detta till AIs skapare med en screenshot på "AI Debug Fönsteret".
+STR_AI_NO_AI_FOUND                                              :Ingen passande AI hittades. {}Denna AI är en test-AI och kommer inte göra någonting.{}Du kan ladda ner nya AI genom spelets system 'Online-innehåll"
 ########
 
 ############ town controlled noise level
@@ -3664,7 +3667,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ansl
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... kunde inte skriva till fil
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kunde inte packa upp den nedladdade filen
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Kontrollera innehåll Online
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Kontrollera Online-innehåll
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Kolla efter nytt och nyuppdaterat innehåll för nedladdning
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Hitta saknat innehåll online
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Kontrollera om saknat innehåll kan hittas online

@@ -530,6 +530,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Kendera
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Penukaran pada penerimaan kargo
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidi
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Maklumat umum
+STR_MESSAGES_ALL                                                :{YELLOW}Tetap semua jenis mesej ke: Tutup / Ringkasan/ Penuh
+STR_MESSAGE_SOUND                                               :{YELLOW}Mainkan bunyi untuk mesej berita ringkas
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...terlalu jauh daripada destinasi sebelumnya
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Syarikat-syarikat utama yang mencapai {NUM}{}({STRING} Level)
 STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
@@ -553,6 +555,7 @@ STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Hasilkan
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Membentuk lanskap semula
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Membentuk lanskap semula
 STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Keluarkan semua harta pemain dari peta
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Anda pasti untuk membuang semua harta milik pemain?
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Pembentukan lanskap
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Pembentukan bandar
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Pembentukan industri
@@ -569,6 +572,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Tidak bo
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...ruang tidak mencukupi di dalam peta
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Besarkan saiz bandar
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Kembangkan
+STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}Bandar ini tidak akan membina jalan. Anda boleh membenarkan pembinaan jalan melalui Advanced Settings->Economy->Towns.
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Bandar Secara Rawak
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Bina bandar secara rawak
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Tidak boleh bina {STRING} di sini...
@@ -608,32 +612,40 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Pilih sa
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Saiz bandar
 
 STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Susunan jalan raya bandar:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Pilih susunan jalan untuk bandar ini
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Asal
 STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Jalan raya lebih baik
 STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}Grid 2x2
 STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}Grid 3x3
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Rawak
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Tunjukkan utusan atau laporan berita terakhir
 STR_OFF                                                         :Padam
+STR_SUMMARY                                                     :Ringkasan
 STR_FULL                                                        :Penuh
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pilihan permainan
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Tetapan kesukaran
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Lebih tetapan
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Tetapan NewGRF
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Pilihan penembusan
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Paparkan nama bandar
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Paparkan nama stesyen
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Paparkan tanda
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animasi penuh
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Perincian penuh
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Bangunan-bangunan telus
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Nama stesen ditembusi
 ############ range ends here
 
 ############ range for menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasi kawasan tanah
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Togolkan konsol
+STR_ABOUT_MENU_AI_DEBUG                                         :Debug AI
 STR_ABOUT_MENU_SCREENSHOT                                       :Tangkap gambar skrin (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tangkap gambar skrin besar (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tentang 'OpenTTD'
@@ -655,6 +667,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Populasi
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unit kewangan
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Pilihan unit kewangan
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Ukuran unit
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Pilihan unit ukuran
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kenderaan tanah
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Pilih laluan memandu kenderaan sebelah kiri atau kanan
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Memandu di kiri
@@ -672,6 +685,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Setiap 12 bulan
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Mulakan permainan baru
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Muat permainan yang tersimpan
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Membentuk dunia permananan/senario custom
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Mula permainan multi-pemain
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Papar pilihan permainan
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Papar pilihan kesukaran
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Mulakan permainan baru, dengan mengunnakan senario custom
@@ -695,9 +709,13 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...hanya
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...hanya boleh dibina di kawasan gurun
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  DIHENTIKAN  *  *
 
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Tangkapan skrin berjaya disimpan sebagai '{STRING}'
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Tangkapan skrin gagal!
 
 STR_TERRAFORM_TOOLTIP_PURCHASE_LAND                             :{BLACK}Beli tanah untuk kegunaan masa hadapan
+STR_STATUSBAR_AUTOSAVE                                          :{RED}SIMPANAN AUTOMATIK
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SIMPAN PERMAINAN  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Penyimpanan sedang berjalan,{}sila tunggu sehingga selesai!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Pilih program 'Muzik gaya Ezy Street'
 
 ############ start of townname region
@@ -736,12 +754,20 @@ STR_CURR_RUR                                                    :Ruble Rusia (RU
 
 
 STR_OPTIONS_LANG                                                :{BLACK}Bahasa
+STR_OPTIONS_LANG_TIP                                            :{BLACK}Pilih bahasa hubungan untuk digunakan
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Skrin Penuh
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Tanda kotak ini untuk bermain OpenTTD dalam mod skrin penuh
+STR_FULLSCREEN_FAILED                                           :{WHITE}Mod skrin penuh gagal
 
 STR_OPTIONS_RES                                                 :{BLACK}Resolusi Skrin
+STR_OPTIONS_RES_TIP                                             :{BLACK}Pilih resolusi skrin untuk digunakan
 
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format tangkapan skrin
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Pilih format tangkapan skrin untuk digunakan
 
+STR_OPTIONS_BASE_GRF                                            :{BLACK}Set grafik asas
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Pilih set grafik asas untuk digunakan
 STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} fail hilang/rosak{P "" s}
 STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Maklumat tambahan tentang set grafik asas ini
 
@@ -1377,6 +1403,7 @@ STR_FORMAT_DATE_TINY                                            :{STRING}-{STRIN
 STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
 
 STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}

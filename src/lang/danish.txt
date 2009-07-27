@@ -678,8 +678,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF indstill
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gennemsigtighedsvalg
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Bynavne vist
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Stationsnavne vist
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Skilte vist
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Kontrolsteder vist
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Skilte vist
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Fuld animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Fuld detalje
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Gennemsigtige bygninger
@@ -1157,6 +1157,8 @@ STR_GO_NON_STOP_TO_WAYPOINT                                     :Kør uden stop 
 
 STR_WAYPOINTNAME_CITY                                           :Kontrolsted {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :Kontrolsted {TOWN} #{COMMA}
+STR_BUOYNAME_CITY                                               :{TOWN} Bøje
+STR_BUOYNAME_CITY_SERIAL                                        :{TOWN} Bøje #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Kontrolsted
 
 STR_WAYPOINT                                                    :{WHITE}Kontrolsted
@@ -1568,19 +1570,19 @@ STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Jernbane med av
 STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Jernbane med ensrettede avancerede signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Jernbanespor med normale og præ-signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Jernbanespor med normale og exit-signaler
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Jernbaneskinne med normale og kombi-signaler
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Jernbanespor med normale og kombi-signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Jernbane med normale og avancerede signaler
-STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Jernbane med normale og ensrettede avancerede signaler
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Jernbanespor med normale og ensrettede avancerede signaler
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Jernbanespor med præ- og exit-signaler
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Jernbaneskinne med præ- og kombi-signaler
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Jernbane med præ- og avancerede signaler
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Jernbanespor med præ- og kombi-signaler
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Jernbanespor med præ- og avancerede signaler
 STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Jernbane med præ- og ensrettede avancerede signaler
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Jernbaneskinne med exit- og kombi-signaler
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Jernbanespor med exit- og kombi-signaler
 STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Jernbane med exit- og avancerede signaler
-STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Jernbane med exit- og ensrettede avancerede signaler
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Jernbanespor med exit- og ensrettede avancerede signaler
 STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Jernbane med kombi- og avancerede signaler
-STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Jernbane med kombi- og ensrettede avancerede signaler
-STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Jernbane med avancerede og ensrettede avancerede signaler
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Jernbanespor med kombi- og ensrettede avancerede signaler
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Jernbanespor med avancerede og ensrettede avancerede signaler
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Jernbanestation skal fjernes først
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Byg en separat station
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Sammenkæd station
@@ -2042,6 +2044,8 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Luftha
 STR_SV_STNAME_OILFIELD                                          :{STRING} Oliefelt
 STR_SV_STNAME_MINES                                             :{STRING} Miner
 STR_SV_STNAME_DOCKS                                             :{STRING} Havn
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Forstad
 STR_SV_STNAME_SIDINGS                                           :{STRING} Sidespor
@@ -3555,7 +3559,7 @@ STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Avancere
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Ensrettet avanceret signal (semafor){}Et avanceret signal tillader, at mere en et tog ad gangen kan køre inden for en signalblok, hvis toget kan reservere en rute til et sikkert sted at stoppe. Ensrettede avancerede signaler kan ikke passeres fra bagsiden.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standardsignal (electrisk){}Signaler er nødvendige for at undgå sammenstød mellem tog på jernbanenetværk med mere end et tog.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Indgangssignal (elektrisk){}Grønt så længe der er et eller flere grønne udgangssignaler fra den efterfølgende sporsektion. Ellers vises rødt.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Udgangssignal (elektrisk){}Fungerer som et normalt signal men er nødvendigt for at vise den korrekte farve ved indgangs- og kombisignaler.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Udgangssignal (elektrisk){}Fungerer som et normalt signal, men er nødvendigt for at vise den korrekte farve ved indgangs- og kombisignaler.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombisignal (elektrisk){}Kombisignalet fungerer både som indgangs- og udgangssignal. Dette muliggør opbygning af store forgreninger af signaler.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Avanceret signal (elektrisk){}Et avanceret signal tillader, at mere en et tog ad gangen kan køre inden for en signalblok, hvis toget kan reservere en rute til et sikkert sted at stoppe. Avancerede signaler kan passeres fra bagsiden.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Ensrettet avanceret signal (elektrisk){}Et avanceret signal tillader, at mere en et tog ad gangen kan køre inden for en signalblok, hvis toget kan reservere en rute til et sikkert sted at stoppe. Ensrettede avancerede signaler kan ikke passeres fra bagsiden.
@@ -3599,6 +3603,7 @@ STR_AI_AUTHOR                                                   :{BLACK}Skaber: 
 STR_AI_VERSION                                                  :{BLACK}Version: {NUM}
 STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}En computerstyret spiller gik ned. Rapporter det venligst til udvikleren af computerspilleren med et skærmbilledet af computerspiller-debugvinduet.
+STR_AI_NO_AI_FOUND                                              :Ingen passende AI kan findes.{}Denne AI er en pladsholder, og vil ikke gøre noget.{} Du kan downloade indtil flere AI'er fra 'Online Contet' systemet.
 ########
 
 ############ town controlled noise level

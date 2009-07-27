@@ -678,8 +678,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-asetukse
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läpinäkyvyysvalinnat
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Kaupunkien nimet näkyvissä
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Asemien nimet näkyvissä
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Kyltit näkyvissä
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Reittipisteet näkyvissä
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Kyltit näkyvissä
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Täysi animointi
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Kaikki yksityiskohdat
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Läpinäkyvät rakennukset
@@ -3603,6 +3603,7 @@ STR_AI_AUTHOR                                                   :{BLACK}Tekijä:
 STR_AI_VERSION                                                  :{BLACK}Versio: {NUM}
 STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Yksi käynnissä olevista tekoälyistä kaatui. Ole hyvä ilmoita tästä tekoälyn kehittäjälle, sekä ota kuvankaappaus Tekoälyn Virheenkorjaus ikkunasta.
+STR_AI_NO_AI_FOUND                                              :Sopivaa tekoälyä ei löydetty.{}Tämä tekoäly ei tee mitään.{}Voit ladata tekoälyjä 'Online Sisältö' järjestelmällä.
 ########
 
 ############ town controlled noise level

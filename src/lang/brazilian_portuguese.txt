@@ -679,8 +679,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configurar NewG
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opções de Transparência
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Exibir nomes de cidades
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Exibir nomes de estações
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Exibir nomes de pontos de controle
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Exibir placas
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Exibir pontos de controle
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animação completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Máximo de detalhes
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Edifícios transparentes
@@ -1158,6 +1158,8 @@ STR_GO_NON_STOP_TO_WAYPOINT                                     :Ir sem parar vi
 
 STR_WAYPOINTNAME_CITY                                           :Ponto de controle {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :Ponto de controle {TOWN} #{COMMA}
+STR_BUOYNAME_CITY                                               :{TOWN} Bóia
+STR_BUOYNAME_CITY_SERIAL                                        :{TOWN} Bóia #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Ponto de controle
 
 STR_WAYPOINT                                                    :{WHITE}Ponto de controle
@@ -2043,6 +2045,8 @@ STR_SV_STNAME_AIRPORT                                           :Aeroporto de {S
 STR_SV_STNAME_OILFIELD                                          :Petrolífera de {STRING}
 STR_SV_STNAME_MINES                                             :Minas de {STRING}
 STR_SV_STNAME_DOCKS                                             :Docas de {STRING}
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :Anexo de {STRING}
 STR_SV_STNAME_SIDINGS                                           :Desvio de {STRING}
@@ -3600,6 +3604,7 @@ STR_AI_AUTHOR                                                   :{BLACK}Progamad
 STR_AI_VERSION                                                  :{BLACK}Versão: {NUM}
 STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Uma das IA's travou. Favor relatar ao autor da IA com uma screenshot da Janela de Debug da IA.
+STR_AI_NO_AI_FOUND                                              :Nenhuma IA encontrada. {} Essa é uma IA inativa e não faz nada. {} Você pode pode baixar várias IA através do sistema de 'Conteúdo Online'.
 ########
 
 ############ town controlled noise level
