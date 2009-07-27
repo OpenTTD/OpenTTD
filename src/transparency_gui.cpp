@@ -17,22 +17,25 @@ TransparencyOptionBits _invisibility_opt;
 
 /** Widget numbers of the transparency window. */
 enum TransparencyToolbarWidgets {
-	TTW_WIDGET_CLOSEBOX,     ///< Closebox
-	TTW_WIDGET_CAPTION,      ///< Titlebar caption
-	TTW_WIDGET_STICKYBOX,    ///< Stickybox
-	TTW_WIDGET_SIGNS,        ///< Make signs background transparent
-	TTW_WIDGET_TREES,        ///< Make trees transparent
-	TTW_WIDGET_HOUSES,       ///< Make houses transparent
-	TTW_WIDGET_INDUSTRIES,   ///< Make Industries transparent
-	TTW_WIDGET_BUILDINGS,    ///< Make company buildings and structures transparent
-	TTW_WIDGET_BRIDGES,      ///< Make bridges transparent
-	TTW_WIDGET_STRUCTURES,   ///< Make unmovable structures transparent
-	TTW_WIDGET_CATENARY,     ///< Make catenary transparent
-	TTW_WIDGET_LOADING,      ///< Make loading indicators transparent
-	TTW_WIDGET_END,          ///< End of toggle buttons
+	TTW_WIDGET_CLOSEBOX,                 ///< Closebox.
+	TTW_WIDGET_CAPTION,                  ///< Titlebar caption.
+	TTW_WIDGET_STICKYBOX,                ///< Stickybox.
+
+	/* Button row. */
+	TTW_WIDGET_BEGIN,                    ///< First toggle button.
+	TTW_WIDGET_SIGNS = TTW_WIDGET_BEGIN, ///< Signs background transparency toggle button.
+	TTW_WIDGET_TREES,                    ///< Trees transparency toggle button.
+	TTW_WIDGET_HOUSES,                   ///< Houses transparency toggle button.
+	TTW_WIDGET_INDUSTRIES,               ///< industries transparency toggle button.
+	TTW_WIDGET_BUILDINGS,                ///< Company buildings and structures transparency toggle button.
+	TTW_WIDGET_BRIDGES,                  ///< Bridges transparency toggle button.
+	TTW_WIDGET_STRUCTURES,               ///< Unmovable structures transparency toggle button.
+	TTW_WIDGET_CATENARY,                 ///< Catenary transparency toggle button.
+	TTW_WIDGET_LOADING,                  ///< Loading indicators transparency toggle button.
+	TTW_WIDGET_END,                      ///< End of toggle buttons.
 
 	/* Panel with buttons for invisibility */
-	TTW_BUTTONS = 12,        ///< Panel with 'invisibility' buttons
+	TTW_WIDGET_BUTTONS = TTW_WIDGET_END, ///< Panel with 'invisibility' buttons.
 };
 
 class TransparenciesWindow : public Window
@@ -47,40 +50,40 @@ public:
 	{
 		/* must be sure that the widgets show the transparency variable changes
 		 * also when we use shortcuts */
-		for (uint i = TTW_WIDGET_SIGNS; i < TTW_WIDGET_END; i++) {
-			this->SetWidgetLoweredState(i, IsTransparencySet((TransparencyOption)(i - TTW_WIDGET_SIGNS)));
+		for (uint i = TTW_WIDGET_BEGIN; i < TTW_WIDGET_END; i++) {
+			this->SetWidgetLoweredState(i, IsTransparencySet((TransparencyOption)(i - TTW_WIDGET_BEGIN)));
 		}
 
 		this->DrawWidgets();
 		for (uint i = TO_SIGNS; i < TO_END; i++) {
-			if (HasBit(_transparency_lock, i)) DrawSprite(SPR_LOCK, PAL_NONE, this->widget[TTW_WIDGET_SIGNS + i].left + 1, this->widget[TTW_WIDGET_SIGNS + i].top + 1);
+			if (HasBit(_transparency_lock, i)) DrawSprite(SPR_LOCK, PAL_NONE, this->widget[TTW_WIDGET_BEGIN + i].left + 1, this->widget[TTW_WIDGET_BEGIN + i].top + 1);
 		}
 
 		/* Do not draw button for invisible loading indicators */
-		for (uint i = TTW_WIDGET_SIGNS; i <= TTW_WIDGET_CATENARY; i++) {
+		for (uint i = TTW_WIDGET_BEGIN; i <= TTW_WIDGET_CATENARY; i++) {
 			const Widget *wi = &this->widget[i];
-			DrawFrameRect(wi->left + 1, 38, wi->right - 1, 46, COLOUR_PALE_GREEN, HasBit(_invisibility_opt, i - TTW_WIDGET_SIGNS) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(wi->left + 1, 38, wi->right - 1, 46, COLOUR_PALE_GREEN, HasBit(_invisibility_opt, i - TTW_WIDGET_BEGIN) ? FR_LOWERED : FR_NONE);
 		}
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget >= TTW_WIDGET_SIGNS && widget < TTW_WIDGET_END) {
+		if (widget >= TTW_WIDGET_BEGIN && widget < TTW_WIDGET_END) {
 			if (_ctrl_pressed) {
 				/* toggle the bit of the transparencies lock variable */
-				ToggleTransparencyLock((TransparencyOption)(widget - TTW_WIDGET_SIGNS));
+				ToggleTransparencyLock((TransparencyOption)(widget - TTW_WIDGET_BEGIN));
 				this->SetDirty();
 			} else {
 				/* toggle the bit of the transparencies variable and play a sound */
-				ToggleTransparency((TransparencyOption)(widget - TTW_WIDGET_SIGNS));
+				ToggleTransparency((TransparencyOption)(widget - TTW_WIDGET_BEGIN));
 				SndPlayFx(SND_15_BEEP);
 				MarkWholeScreenDirty();
 			}
-		} else if (widget == TTW_BUTTONS) {
+		} else if (widget == TTW_WIDGET_BUTTONS) {
 			uint x = pt.x / 22;
 
-			if (x > TTW_WIDGET_BRIDGES - TTW_WIDGET_SIGNS) x--;
-			if (x > TTW_WIDGET_CATENARY - TTW_WIDGET_SIGNS) return;
+			if (x > TTW_WIDGET_BRIDGES - TTW_WIDGET_BEGIN) x--;
+			if (x > TTW_WIDGET_CATENARY - TTW_WIDGET_BEGIN) return;
 
 			ToggleInvisibility((TransparencyOption)x);
 			SndPlayFx(SND_15_BEEP);
@@ -89,7 +92,7 @@ public:
 			if (IsTransparencySet((TransparencyOption)x)) {
 				MarkWholeScreenDirty();
 			} else {
-				this->InvalidateWidget(TTW_BUTTONS);
+				this->InvalidateWidget(TTW_WIDGET_BUTTONS);
 			}
 		}
 	}
