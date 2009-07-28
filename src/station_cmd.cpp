@@ -820,11 +820,12 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, const St
 	}
 }
 
-/** Build railroad station
- * @param tile_org starting position of station dragging/placement
+/**
+ * Build railroad station
+ * @param tile_org northern most position of station dragging/placement
  * @param flags operation to perform
  * @param p1 various bitstuffed elements
- * - p1 = (bit  0- 3) - railtype (p1 & 0xF)
+ * - p1 = (bit  0- 3) - railtype
  * - p1 = (bit  4)    - orientation (Axis)
  * - p1 = (bit  8-15) - number of tracks
  * - p1 = (bit 16-23) - platform length
@@ -832,18 +833,28 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, const St
  * @param p2 various bitstuffed elements
  * - p2 = (bit  0- 7) - custom station class
  * - p2 = (bit  8-15) - custom station id
- * - p2 = (bit 16-31) - station ID to join (INVALID_STATION if build new one)
+ * - p2 = (bit 16-31) - station ID to join (NEW_STATION if build new one)
  */
 CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
+	/* Unpack parameters */
+	RailType rt    = (RailType)GB(p1, 0, 4);
+	Axis axis      = Extract<Axis, 4>(p1);
+	byte numtracks = GB(p1,  8, 8);
+	byte plat_len  = GB(p1, 16, 8);
+	bool adjacent  = HasBit(p1, 24);
+
+	StationClassID spec_class = (StationClassID)GB(p2, 0, 8);
+	byte spec_index           = GB(p2, 8, 8);
+	StationID station_to_join = GB(p2, 16, 16);
+
 	/* Does the authority allow this? */
 	if (!CheckIfAuthorityAllowsNewStation(tile_org, flags)) return CMD_ERROR;
-	if (!ValParamRailtype((RailType)(p1 & 0xF))) return CMD_ERROR;
+	if (!ValParamRailtype(rt)) return CMD_ERROR;
 
-	/* unpack parameters */
-	Axis axis = Extract<Axis, 4>(p1);
-	uint numtracks = GB(p1,  8, 8);
-	uint plat_len  = GB(p1, 16, 8);
+	/* Check if the given station class is valid */
+	if ((uint)spec_class >= GetNumStationClasses()) return CMD_ERROR;
+	if (spec_index >= GetNumCustomStations(spec_class)) return CMD_ERROR;
 
 	int w_org, h_org;
 	if (axis == AXIS_X) {
@@ -854,7 +865,6 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 		w_org = numtracks;
 	}
 
-	StationID station_to_join = GB(p2, 16, 16);
 	bool reuse = (station_to_join != NEW_STATION);
 	if (!reuse) station_to_join = INVALID_STATION;
 	bool distant_join = (station_to_join != INVALID_STATION);
@@ -880,7 +890,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 
 	if (_settings_game.station.adjacent_stations) {
 		if (est != INVALID_STATION) {
-			if (HasBit(p1, 24) && est != station_to_join) {
+			if (adjacent && est != station_to_join) {
 				/* You can't build an adjacent station over the top of one that
 				 * already exists. */
 				return_cmd_error(STR_MUST_REMOVE_RAILWAY_STATION_FIRST);
@@ -893,7 +903,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 		} else {
 			/* There's no station here. Don't check the tiles surrounding this
 			 * one if the company wanted to build an adjacent station. */
-			if (HasBit(p1, 24)) check_surrounding = false;
+			if (adjacent) check_surrounding = false;
 		}
 	}
 
@@ -940,11 +950,8 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 		}
 	}
 
-	/* Check if the given station class is valid */
-	if (GB(p2, 0, 8) >= GetNumStationClasses()) return CMD_ERROR;
-
 	/* Check if we can allocate a custom stationspec to this station */
-	const StationSpec *statspec = GetCustomStationSpec((StationClassID)GB(p2, 0, 8), GB(p2, 8, 8));
+	const StationSpec *statspec = GetCustomStationSpec(spec_class, spec_index);
 	int specindex = AllocateSpecToStation(statspec, st, (flags & DC_EXEC) != 0);
 	if (specindex == -1) return_cmd_error(STR_ERROR_TOO_MANY_STATION_SPECS);
 
@@ -1014,7 +1021,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 				/* Remove animation if overbuilding */
 				DeleteAnimatedTile(tile);
 				byte old_specindex = IsTileType(tile, MP_STATION) ? GetCustomStationSpecIndex(tile) : 0;
-				MakeRailStation(tile, st->owner, st->index, axis, layout & ~1, (RailType)GB(p1, 0, 4));
+				MakeRailStation(tile, st->owner, st->index, axis, layout & ~1, rt);
 				/* Free the spec if we overbuild something */
 				DeallocateSpecFromStation(st, old_specindex);
 
@@ -1342,7 +1349,7 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station *st)
  *           bit 1: 0 for normal, 1 for drive-through
  *           bit 2..3: the roadtypes
  *           bit 5: allow stations directly adjacent to other stations.
- *           bit 16..31: station ID to join (INVALID_STATION if build new one)
+ *           bit 16..31: station ID to join (NEW_STATION if build new one)
  */
 CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1706,7 +1713,7 @@ void UpdateAirportsNoise()
  * @param p1 airport type, @see airport.h
  * @param p2 various bitstuffed elements
  * - p2 = (bit     0) - allow airports directly adjacent to other airports.
- * - p2 = (bit 16-31) - station ID to join (INVALID_STATION if build new one)
+ * - p2 = (bit 16-31) - station ID to join (NEW_STATION if build new one)
  */
 CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1960,7 +1967,7 @@ static const byte _dock_h_chk[4] = { 1, 2, 1, 2 };
  * @param tile tile where dock will be built
  * @param flags operation to perform
  * @param p1 (bit 0) - allow docks directly adjacent to other docks.
- * @param p2 bit 16-31: station ID to join (INVALID_STATION if build new one)
+ * @param p2 bit 16-31: station ID to join (NEW_STATION if build new one)
  */
 CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
