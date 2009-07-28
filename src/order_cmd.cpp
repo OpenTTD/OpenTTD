@@ -32,7 +32,6 @@
  * be any of them
  */
 assert_compile(sizeof(DestinationID) >= sizeof(DepotID));
-assert_compile(sizeof(DestinationID) >= sizeof(WaypointID));
 assert_compile(sizeof(DestinationID) >= sizeof(StationID));
 
 TileIndex _backup_orders_tile;
@@ -68,7 +67,7 @@ void Order::MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, OrderN
 	this->SetRefit(cargo, subtype);
 }
 
-void Order::MakeGoToWaypoint(WaypointID destination)
+void Order::MakeGoToWaypoint(StationID destination)
 {
 	this->type = OT_GOTO_WAYPOINT;
 	this->flags = 0;

@@ -12,7 +12,6 @@
 #include "depot_type.h"
 #include "station_type.h"
 #include "vehicle_type.h"
-#include "waypoint_type.h"
 
 typedef Pool<Order, OrderID, 256, 64000> OrderPool;
 typedef Pool<OrderList, OrderListID, 128, 64000> OrderListPool;
@@ -92,7 +91,7 @@ public:
 	 * Makes this order a Go To Waypoint order.
 	 * @param destination the waypoint to go to.
 	 */
-	void MakeGoToWaypoint(WaypointID destination);
+	void MakeGoToWaypoint(StationID destination);
 
 	/**
 	 * Makes this order a Loading order.

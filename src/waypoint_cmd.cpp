@@ -44,7 +44,7 @@ void MakeDefaultWaypointName(Waypoint *wp)
 {
 	uint32 used = 0; // bitmap of used waypoint numbers, sliding window with 'next' as base
 	uint32 next = 0; // first waypoint number in the bitmap
-	WaypointID idx = 0; // index where we will stop
+	StationID idx = 0; // index where we will stop
 
 	wp->town = ClosestTownFromTile(wp->xy, UINT_MAX);
 
@@ -58,7 +58,7 @@ void MakeDefaultWaypointName(Waypoint *wp)
 	 * If it wasn't using 'used' and 'idx', it would just search for increasing 'next',
 	 * but this way it is faster */
 
-	WaypointID cid = 0; // current index, goes to Waypoint::GetPoolSize()-1, then wraps to 0
+	StationID cid = 0; // current index, goes to Waypoint::GetPoolSize()-1, then wraps to 0
 	do {
 		Waypoint *lwp = Waypoint::GetIfValid(cid);
 
@@ -386,7 +386,7 @@ CommandCost CmdRenameWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	bool reset = StrEmpty(text);
 
 	if (!reset) {
-		if (strlen(text) >= MAX_LENGTH_WAYPOINT_NAME_BYTES) return CMD_ERROR;
+		if (strlen(text) >= MAX_LENGTH_STATION_NAME_BYTES) return CMD_ERROR;
 		if (!IsUniqueWaypointName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 	}
 

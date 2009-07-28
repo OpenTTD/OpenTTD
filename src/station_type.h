@@ -15,6 +15,7 @@ struct BaseStation;
 struct Station;
 struct RoadStop;
 struct StationSpec;
+struct Waypoint;
 
 static const StationID NEW_STATION = 0xFFFE;
 static const StationID INVALID_STATION = 0xFFFF;

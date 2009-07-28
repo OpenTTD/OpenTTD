@@ -7,7 +7,7 @@
 
 #include "rail_type.h"
 #include "command_type.h"
-#include "waypoint_type.h"
+#include "station_type.h"
 
 CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justremove);
 CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags);

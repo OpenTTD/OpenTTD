@@ -5,7 +5,6 @@
 #ifndef WAYPOINT_H
 #define WAYPOINT_H
 
-#include "waypoint_type.h"
 #include "base_station_base.h"
 
 struct Waypoint : SpecializedStation<Waypoint, true> {

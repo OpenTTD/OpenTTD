@@ -41,7 +41,7 @@
 {
 	EnforcePrecondition(false, IsValidWaypoint(waypoint_id));
 	EnforcePrecondition(false, !::StrEmpty(name));
-	EnforcePreconditionCustomError(false, ::strlen(name) < MAX_LENGTH_WAYPOINT_NAME_BYTES, AIError::ERR_PRECONDITION_STRING_TOO_LONG);
+	EnforcePreconditionCustomError(false, ::strlen(name) < MAX_LENGTH_STATION_NAME_BYTES, AIError::ERR_PRECONDITION_STRING_TOO_LONG);
 
 	return AIObject::DoCommand(0, waypoint_id, 0, CMD_RENAME_WAYPOINT, name);
 }

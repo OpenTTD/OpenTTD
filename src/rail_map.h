@@ -11,7 +11,6 @@
 #include "track_func.h"
 #include "tile_map.h"
 #include "signal_type.h"
-#include "waypoint_type.h"
 
 
 /** Different types of Rail-related tiles */
