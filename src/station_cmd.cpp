@@ -717,25 +717,25 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
 /**
  * Check whether we can expand the rail part of the given station.
  * @param st the station to expand
- * @param cur_ta the current (and if all is fine new) tile area of the rail part of the station
+ * @param new_ta the current (and if all is fine new) tile area of the rail part of the station
  * @param axis the axis of the newly build rail
  * @return true if we are allowed to extend
  */
-static bool CanExpandRailStation(const Station *st, TileArea &cur_ta, Axis axis)
+static bool CanExpandRailStation(const Station *st, TileArea &new_ta, Axis axis)
 {
-	TileArea new_ta = cur_ta;
+	TileArea cur_ta = st->train_station;
 
 	if (_settings_game.station.nonuniform_stations) {
 		/* determine new size of train station region.. */
-		int x = min(TileX(st->train_station.tile), TileX(cur_ta.tile));
-		int y = min(TileY(st->train_station.tile), TileY(cur_ta.tile));
-		new_ta.w = max(TileX(st->train_station.tile) + new_ta.w, TileX(cur_ta.tile) + cur_ta.w) - x;
-		new_ta.h = max(TileY(st->train_station.tile) + new_ta.h, TileY(cur_ta.tile) + cur_ta.h) - y;
+		int x = min(TileX(cur_ta.tile), TileX(new_ta.tile));
+		int y = min(TileY(cur_ta.tile), TileY(new_ta.tile));
+		new_ta.w = max(TileX(cur_ta.tile) + cur_ta.w, TileX(new_ta.tile) + new_ta.w) - x;
+		new_ta.h = max(TileY(cur_ta.tile) + cur_ta.h, TileY(new_ta.tile) + new_ta.h) - y;
 		new_ta.tile = TileXY(x, y);
 	} else {
 		/* do not allow modifying non-uniform stations,
 		 * the uniform-stations code wouldn't handle it well */
-		TILE_LOOP(t, st->train_station.w, st->train_station.h, st->train_station.tile) {
+		TILE_LOOP(t, cur_ta.w, cur_ta.h, cur_ta.tile) {
 			if (!st->TileBelongsToRailStation(t)) { // there may be adjoined station
 				_error_message = STR_NONUNIFORM_STATIONS_DISALLOWED;
 				return false;
@@ -743,25 +743,25 @@ static bool CanExpandRailStation(const Station *st, TileArea &cur_ta, Axis axis)
 		}
 
 		/* check so the orientation is the same */
-		if (GetRailStationAxis(st->train_station.tile) != axis) {
+		if (GetRailStationAxis(cur_ta.tile) != axis) {
 			_error_message = STR_NONUNIFORM_STATIONS_DISALLOWED;
 			return false;
 		}
 
 		/* check if the new station adjoins the old station in either direction */
-		if (new_ta.w == cur_ta.w && st->train_station.tile == cur_ta.tile + TileDiffXY(0, cur_ta.h)) {
+		if (cur_ta.w == new_ta.w && cur_ta.tile == new_ta.tile + TileDiffXY(0, new_ta.h)) {
 			/* above */
 			new_ta.h += cur_ta.h;
-		} else if (new_ta.w == cur_ta.w && st->train_station.tile == cur_ta.tile - TileDiffXY(0, new_ta.h)) {
+		} else if (cur_ta.w == new_ta.w && cur_ta.tile == new_ta.tile - TileDiffXY(0, cur_ta.h)) {
 			/* below */
-			new_ta.tile -= TileDiffXY(0, new_ta.h);
-			new_ta.h += cur_ta.h;
-		} else if (new_ta.h == cur_ta.h && st->train_station.tile == cur_ta.tile + TileDiffXY(cur_ta.w, 0)) {
+			new_ta.tile = cur_ta.tile;
+			new_ta.h += new_ta.h;
+		} else if (cur_ta.h == new_ta.h && cur_ta.tile == new_ta.tile + TileDiffXY(new_ta.w, 0)) {
 			/* to the left */
 			new_ta.w += cur_ta.w;
-		} else if (new_ta.h == cur_ta.h && st->train_station.tile == cur_ta.tile - TileDiffXY(new_ta.w, 0)) {
+		} else if (cur_ta.h == new_ta.h && cur_ta.tile == new_ta.tile - TileDiffXY(cur_ta.w, 0)) {
 			/* to the right */
-			new_ta.tile -= TileDiffXY(new_ta.w, 0);
+			new_ta.tile = cur_ta.tile;
 			new_ta.w += cur_ta.w;
 		} else {
 			_error_message = STR_NONUNIFORM_STATIONS_DISALLOWED;
@@ -774,8 +774,6 @@ static bool CanExpandRailStation(const Station *st, TileArea &cur_ta, Axis axis)
 		return false;
 	}
 
-	/* Update the current values with the new. */
-	cur_ta = new_ta;
 	return true;
 }
 
