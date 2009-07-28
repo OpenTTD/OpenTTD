@@ -679,8 +679,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-Einstell
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparenzeinstellungen
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Städtenamen anzeigen
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Stationsnamen anzeigen
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Wegpunktnamen anzeigen
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Schilder anzeigen
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Wegpunkte anzeigen
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Vollständige Animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Vollständige Detailansicht
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Transparenz für Gebäude
@@ -731,8 +731,8 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosich
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Abstand zwischen den automatischen Spielesicherungen wählen
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Aus
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Jeden Monat
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Alle  3 Monate
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Alle  6 Monate
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Alle 3 Monate
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Alle 6 Monate
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Alle 12 Monate
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Ein neues Spiel beginnen
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ein gespeichertes Spiel laden

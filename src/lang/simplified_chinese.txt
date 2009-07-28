@@ -678,8 +678,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 设置
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明选项
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}显示城镇名称
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}显示车站名称
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}显示标志
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}显示路点
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}显示标志
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}完全动画
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}完全细节
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}透明建筑
@@ -3552,13 +3552,13 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}选择�
 STR_SIGNAL_SELECTION                                            :{WHITE}信号灯
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}无法转换此处的信号灯…
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}标准信号（悬臂）{}信号灯是多列车铁路系统的必备设施
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}入口信号（悬臂）{}在下一轨道区间上{}当自少有一个出口信号是绿色时{}此信号亮绿灯 否则亮红灯
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}入口信号（悬臂）{}在下一轨道区间上{}当至少有一个出口信号是绿色时{}此信号亮绿灯 否则亮红灯
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}出口信号（悬臂）{}运作等同与普通信号{}但是对于触发入口及复合信号灯{}来说是必要的
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}复合信号（悬臂）{}复合信号灯可完全担当{}入口信号灯和出口信号灯的功能{}并可建立大的树状信号灯系统
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}双向高级信号（悬臂）{}高级信号允许列车在一个信号区间内{}预留一条到安全停止位的路径{}因此高级信号可以允许一列以上列车{}同时进入和通过一个信号区间
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}单向高级信号（悬臂）{}高级信号允许列车在一个信号区间内{}预留一条到安全停止位的路径{}因此高级信号可以允许一列以上列车{}同时进入和通过一个信号区间
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}标准信号（电子）{}信号灯是多列车铁路系统的必备设施
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}入口信号（电子）{}在下一轨道区间上{}当自少有一个出口信号是绿色时{}此信号亮绿灯 否则亮红灯
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}入口信号（电子）{}在下一轨道区间上{}当至少有一个出口信号是绿色时{}此信号亮绿灯 否则亮红灯
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}出口信号（电子）{}运作等同与普通信号{}但是对于触发入口及复合信号灯{}来说是必要的
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}复合信号（电子）{}复合信号灯可完全担当{}入口信号灯和出口信号灯的功能{}并可建立大的树状信号灯系统
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}双向高级信号（电子）{}高级信号允许列车在一个信号区间内{}预留一条到安全停止位的路径{}因此高级信号可以允许一列以上列车{}同时进入和通过一个信号区间
