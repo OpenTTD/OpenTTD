@@ -149,7 +149,7 @@ enum {
 	CMD_REMOVE_SINGLE_RAIL,           ///< remove a single rail track
 	CMD_LANDSCAPE_CLEAR,              ///< demolish a tile
 	CMD_BUILD_BRIDGE,                 ///< build a bridge
-	CMD_BUILD_RAILROAD_STATION,       ///< build a railroad station
+	CMD_BUILD_RAIL_STATION,           ///< build a rail station
 	CMD_BUILD_TRAIN_DEPOT,            ///< build a train depot
 	CMD_BUILD_SIGNALS,                ///< build a signal
 	CMD_REMOVE_SIGNALS,               ///< remove a signal
@@ -158,12 +158,12 @@ enum {
 	CMD_SELL_LAND_AREA,               ///< sell a bought tile before
 	CMD_BUILD_TUNNEL,                 ///< build a tunnel
 
-	CMD_REMOVE_FROM_RAILROAD_STATION, ///< remove a tile station
+	CMD_REMOVE_FROM_RAIL_STATION,     ///< remove a (rectangle of) tiles from a rail station
 	CMD_CONVERT_RAIL,                 ///< convert a rail type
 
-	CMD_BUILD_TRAIN_WAYPOINT,         ///< build a waypoint
+	CMD_BUILD_RAIL_WAYPOINT,          ///< build a waypoint
 	CMD_RENAME_WAYPOINT,              ///< rename a waypoint
-	CMD_REMOVE_TRAIN_WAYPOINT,        ///< remove a waypoint
+	CMD_REMOVE_FROM_RAIL_WAYPOINT,    ///< remove a (rectangle of) tiles from a rail waypoint
 
 	CMD_BUILD_ROAD_STOP,              ///< build a road stop
 	CMD_REMOVE_ROAD_STOP,             ///< remove a road stop

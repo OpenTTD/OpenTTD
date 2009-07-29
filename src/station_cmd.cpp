@@ -821,7 +821,7 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, const St
 }
 
 /**
- * Build railroad station
+ * Build rail station
  * @param tile_org northern most position of station dragging/placement
  * @param flags operation to perform
  * @param p1 various bitstuffed elements
@@ -835,7 +835,7 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, const St
  * - p2 = (bit  8-15) - custom station id
  * - p2 = (bit 16-31) - station ID to join (NEW_STATION if build new one)
  */
-CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Unpack parameters */
 	RailType rt    = (RailType)GB(p1, 0, 4);
@@ -1223,7 +1223,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 	return CommandCost(EXPENSES_CONSTRUCTION, quantity * removal_cost);
 }
 
-/** Remove a single tile from a railroad station.
+/** Remove a single tile from a rail station.
  * This allows for custom-built station with holes and weird layouts
  * @param start tile of station piece to remove
  * @param flags operation to perform
@@ -1232,7 +1232,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
  * @param text unused
  * @return cost of operation or error
  */
-CommandCost CmdRemoveFromRailroadStation(TileIndex start, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRemoveFromRailStation(TileIndex start, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	TileIndex end = p1 == 0 ? start : p1;
 	if (start >= MapSize() || end >= MapSize()) return CMD_ERROR;
@@ -1265,7 +1265,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex start, DoCommandFlag flags, u
  * @param text unused
  * @return cost of operation or error
  */
-CommandCost CmdRemoveTrainWaypoint(TileIndex start, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRemoveFromRailWaypoint(TileIndex start, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	TileIndex end = p1 == 0 ? start : p1;
 	if (start >= MapSize() || end >= MapSize()) return CMD_ERROR;
@@ -1348,11 +1348,11 @@ CommandCost RemoveRailStation(T *st, DoCommandFlag flags)
  * @param flags operation to perform
  * @return cost or failure of operation
  */
-static CommandCost RemoveRailroadStation(TileIndex tile, DoCommandFlag flags)
+static CommandCost RemoveRailStation(TileIndex tile, DoCommandFlag flags)
 {
 	/* if there is flooding and non-uniform stations are enabled, remove platforms tile by tile */
 	if (_current_company == OWNER_WATER && _settings_game.station.nonuniform_stations) {
-		return DoCommand(tile, 0, 0, DC_EXEC, CMD_REMOVE_FROM_RAILROAD_STATION);
+		return DoCommand(tile, 0, 0, DC_EXEC, CMD_REMOVE_FROM_RAIL_STATION);
 	}
 
 	Station *st = Station::GetByTile(tile);
@@ -1369,11 +1369,11 @@ static CommandCost RemoveRailroadStation(TileIndex tile, DoCommandFlag flags)
  * @param flags operation to perform
  * @return cost or failure of operation
  */
-static CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags)
+static CommandCost RemoveRailWaypoint(TileIndex tile, DoCommandFlag flags)
 {
 	/* if there is flooding and non-uniform stations are enabled, remove waypoints tile by tile */
 	if (_current_company == OWNER_WATER && _settings_game.station.nonuniform_stations) {
-		return DoCommand(tile, 0, 0, DC_EXEC, CMD_REMOVE_TRAIN_WAYPOINT);
+		return DoCommand(tile, 0, 0, DC_EXEC, CMD_REMOVE_FROM_RAIL_WAYPOINT);
 	}
 
 	return RemoveRailStation(Waypoint::GetByTile(tile), flags);
@@ -3089,8 +3089,8 @@ static CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 	}
 
 	switch (GetStationType(tile)) {
-		case STATION_RAIL:     return RemoveRailroadStation(tile, flags);
-		case STATION_WAYPOINT: return RemoveTrainWaypoint(tile, flags);
+		case STATION_RAIL:     return RemoveRailStation(tile, flags);
+		case STATION_WAYPOINT: return RemoveRailWaypoint(tile, flags);
 		case STATION_AIRPORT:  return RemoveAirport(tile, flags);
 		case STATION_TRUCK:
 			if (IsDriveThroughStopTile(tile) && !CanRemoveRoadWithStop(tile, flags))

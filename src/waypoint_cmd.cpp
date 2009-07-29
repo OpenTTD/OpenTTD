@@ -132,7 +132,7 @@ static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile, StringID str)
  * @todo When checking for the tile slope,
  * distingush between "Flat land required" and "land sloped in wrong direction"
  */
-CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildRailWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Axis axis;
 

@@ -45,8 +45,8 @@ DEF_COMMAND(CmdLandscapeClear);
 
 DEF_COMMAND(CmdBuildBridge);
 
-DEF_COMMAND(CmdBuildRailroadStation);
-DEF_COMMAND(CmdRemoveFromRailroadStation);
+DEF_COMMAND(CmdBuildRailStation);
+DEF_COMMAND(CmdRemoveFromRailStation);
 DEF_COMMAND(CmdConvertRail);
 
 DEF_COMMAND(CmdBuildSingleSignal);
@@ -60,9 +60,9 @@ DEF_COMMAND(CmdSellLandArea);
 DEF_COMMAND(CmdBuildTunnel);
 
 DEF_COMMAND(CmdBuildTrainDepot);
-DEF_COMMAND(CmdBuildTrainWaypoint);
+DEF_COMMAND(CmdBuildRailWaypoint);
 DEF_COMMAND(CmdRenameWaypoint);
-DEF_COMMAND(CmdRemoveTrainWaypoint);
+DEF_COMMAND(CmdRemoveFromRailWaypoint);
 
 DEF_COMMAND(CmdBuildRoadStop);
 DEF_COMMAND(CmdRemoveRoadStop);
@@ -208,7 +208,7 @@ static const Command _command_proc_table[] = {
 	{CmdRemoveSingleRail,                    CMD_AUTO}, // CMD_REMOVE_SINGLE_RAIL
 	{CmdLandscapeClear,                             0}, // CMD_LANDSCAPE_CLEAR
 	{CmdBuildBridge,                         CMD_AUTO}, // CMD_BUILD_BRIDGE
-	{CmdBuildRailroadStation, CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_RAILROAD_STATION
+	{CmdBuildRailStation,     CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_RAIL_STATION
 	{CmdBuildTrainDepot,      CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_TRAIN_DEPOT
 	{CmdBuildSingleSignal,                   CMD_AUTO}, // CMD_BUILD_SIGNALS
 	{CmdRemoveSingleSignal,                  CMD_AUTO}, // CMD_REMOVE_SIGNALS
@@ -216,11 +216,11 @@ static const Command _command_proc_table[] = {
 	{CmdPurchaseLandArea,     CMD_NO_WATER | CMD_AUTO}, // CMD_PURCHASE_LAND_AREA
 	{CmdSellLandArea,                               0}, // CMD_SELL_LAND_AREA
 	{CmdBuildTunnel,                         CMD_AUTO}, // CMD_BUILD_TUNNEL
-	{CmdRemoveFromRailroadStation,                  0}, // CMD_REMOVE_FROM_RAILROAD_STATION
+	{CmdRemoveFromRailStation,                      0}, // CMD_REMOVE_FROM_RAIL_STATION
 	{CmdConvertRail,                                0}, // CMD_CONVERT_RAILD
-	{CmdBuildTrainWaypoint,                         0}, // CMD_BUILD_TRAIN_WAYPOINT
+	{CmdBuildRailWaypoint,                          0}, // CMD_BUILD_RAIL_WAYPOINT
 	{CmdRenameWaypoint,                             0}, // CMD_RENAME_WAYPOINT
-	{CmdRemoveTrainWaypoint,                        0}, // CMD_REMOVE_TRAIN_WAYPOINT
+	{CmdRemoveFromRailWaypoint,                     0}, // CMD_REMOVE_FROM_RAIL_WAYPOINT
 
 	{CmdBuildRoadStop,        CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_ROAD_STOP
 	{CmdRemoveRoadStop,                             0}, // CMD_REMOVE_ROAD_STOP

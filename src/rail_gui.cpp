@@ -149,9 +149,9 @@ static void PlaceRail_Depot(TileIndex tile)
 static void PlaceRail_Waypoint(TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		DoCommandP(tile, 0, 0, CMD_REMOVE_TRAIN_WAYPOINT | CMD_MSG(STR_CANT_REMOVE_TRAIN_WAYPOINT), CcPlaySound1E);
+		DoCommandP(tile, 0, 0, CMD_REMOVE_FROM_RAIL_WAYPOINT | CMD_MSG(STR_CANT_REMOVE_TRAIN_WAYPOINT), CcPlaySound1E);
 	} else {
-		DoCommandP(tile, _cur_waypoint_type, 0, CMD_BUILD_TRAIN_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT), CcPlaySound1E);
+		DoCommandP(tile, _cur_waypoint_type, 0, CMD_BUILD_RAIL_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT), CcPlaySound1E);
 	}
 }
 
@@ -180,7 +180,7 @@ static void PlaceRail_Station(TileIndex tile)
 		int h = _settings_client.gui.station_platlength;
 		if (!_railstation.orientation) Swap(w, h);
 
-		CommandContainer cmdcont = { tile, p1, p2, CMD_BUILD_RAILROAD_STATION | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION), CcStation, "" };
+		CommandContainer cmdcont = { tile, p1, p2, CMD_BUILD_RAIL_STATION | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION), CcStation, "" };
 		ShowSelectStationIfNeeded(cmdcont, TileArea(tile, w, h));
 	}
 }
@@ -751,7 +751,7 @@ struct BuildRailToolbarWindow : Window {
 				case DDSP_REMOVE_STATION:
 				case DDSP_BUILD_STATION:
 					if (_remove_button_clicked) {
-						DoCommandP(end_tile, start_tile, 0, CMD_REMOVE_FROM_RAILROAD_STATION | CMD_MSG(STR_CANT_REMOVE_PART_OF_STATION), CcPlaySound1E);
+						DoCommandP(end_tile, start_tile, 0, CMD_REMOVE_FROM_RAIL_STATION | CMD_MSG(STR_CANT_REMOVE_PART_OF_STATION), CcPlaySound1E);
 						break;
 					}
 					HandleStationPlacement(start_tile, end_tile);
@@ -882,7 +882,7 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	uint32 p1 = _cur_railtype | _railstation.orientation << 4 | numtracks << 8 | platlength << 16 | _ctrl_pressed << 24;
 	uint32 p2 = _railstation.station_class | _railstation.station_type << 8 | INVALID_STATION << 16;
 
-	CommandContainer cmdcont = { ta.tile, p1, p2, CMD_BUILD_RAILROAD_STATION | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION), CcStation, "" };
+	CommandContainer cmdcont = { ta.tile, p1, p2, CMD_BUILD_RAIL_STATION | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_STATION), CcStation, "" };
 	ShowSelectStationIfNeeded(cmdcont, ta);
 }
 

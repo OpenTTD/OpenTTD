@@ -138,7 +138,7 @@
 	uint32 p1 = GetCurrentRailType() | (platform_length << 16) | (num_platforms << 8);
 	if (direction == RAILTRACK_NW_SE) p1 |= (1 << 4);
 	if (station_id != AIStation::STATION_JOIN_ADJACENT) p1 |= (1 << 24);
-	return AIObject::DoCommand(tile, p1, (AIStation::IsValidStation(station_id) ? station_id : INVALID_STATION) << 16, CMD_BUILD_RAILROAD_STATION);
+	return AIObject::DoCommand(tile, p1, (AIStation::IsValidStation(station_id) ? station_id : INVALID_STATION) << 16, CMD_BUILD_RAIL_STATION);
 }
 
 /* static */ bool AIRail::BuildNewGRFRailStation(TileIndex tile, RailTrack direction, uint num_platforms, uint platform_length, StationID station_id, CargoID cargo_id, IndustryType source_industry, IndustryType goal_industry, int distance, bool source_station)
@@ -167,7 +167,7 @@
 		}
 
 	}
-	return AIObject::DoCommand(tile, p1, p2, CMD_BUILD_RAILROAD_STATION);
+	return AIObject::DoCommand(tile, p1, p2, CMD_BUILD_RAIL_STATION);
 }
 
 /* static */ bool AIRail::BuildRailWaypoint(TileIndex tile)
@@ -177,7 +177,7 @@
 	EnforcePrecondition(false, GetRailTracks(tile) == RAILTRACK_NE_SW || GetRailTracks(tile) == RAILTRACK_NW_SE);
 	EnforcePrecondition(false, IsRailTypeAvailable(GetCurrentRailType()));
 
-	return AIObject::DoCommand(tile, 0, 0, CMD_BUILD_TRAIN_WAYPOINT);
+	return AIObject::DoCommand(tile, 0, 0, CMD_BUILD_RAIL_WAYPOINT);
 }
 
 /* static */ bool AIRail::RemoveRailWaypoint(TileIndex tile)
@@ -185,7 +185,7 @@
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, IsRailWaypointTile(tile));
 
-	return AIObject::DoCommand(tile, 0, 0, CMD_REMOVE_TRAIN_WAYPOINT);
+	return AIObject::DoCommand(tile, 0, 0, CMD_REMOVE_FROM_RAIL_WAYPOINT);
 }
 
 /* static */ bool AIRail::RemoveRailStationTileRect(TileIndex tile, TileIndex tile2)
@@ -193,7 +193,7 @@
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, ::IsValidTile(tile2));
 
-	return AIObject::DoCommand(tile, tile2, 0, CMD_REMOVE_FROM_RAILROAD_STATION);
+	return AIObject::DoCommand(tile, tile2, 0, CMD_REMOVE_FROM_RAIL_STATION);
 }
 
 /* static */ uint AIRail::GetRailTracks(TileIndex tile)
