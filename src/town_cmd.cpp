@@ -1747,6 +1747,12 @@ Town *CreateRandomTown(uint attempts, TownSize size, bool city, TownLayout layou
 
 static const byte _num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, normal, high
 
+/** This function will generate a certain amount of towns, with a certain layout
+ * It can be called from the scenario editor (i.e.: generate Random Towns)
+ * as well as from world creation.
+ * @param layout which towns will be set to, when created
+ * @return true if towns have been successfully created
+ */
 bool GenerateTowns(TownLayout layout)
 {
 	uint num = 0;
@@ -1755,25 +1761,27 @@ bool GenerateTowns(TownLayout layout)
 
 	SetGeneratingWorldProgress(GWP_TOWN, n);
 
+	/* First attempt will be made at creating the suggested number of towns.
+    * Note that this is really a suggested value, not a required one.
+    * We would not like the system to lock up just because the user wanted 100 cities on a 64*64 map, would we? */
 	do {
 		bool city = (_settings_game.economy.larger_towns != 0 && Chance16(1, _settings_game.economy.larger_towns));
 		IncreaseGeneratingWorldProgress(GWP_TOWN);
 		/* try 20 times to create a random-sized town for the first loop. */
-		if (CreateRandomTown(20, TS_RANDOM, city, layout) != NULL) num++;
+		if (CreateRandomTown(20, TS_RANDOM, city, layout) != NULL) num++; // if creation successfull, raise a flag
 	} while (--n);
 
-	/* give it a last try, but now more aggressive */
+	/* If num is still zero at this point, it means that not a single town has been created.
+    * So give it a last try, but now more aggressive */
 	if (num == 0 && CreateRandomTown(10000, TS_RANDOM, _settings_game.economy.larger_towns != 0, layout) == NULL) {
 		if (Town::GetNumItems() == 0) {
 			if (_game_mode != GM_EDITOR) {
 				extern StringID _switch_mode_errorstr;
 				_switch_mode_errorstr = STR_COULD_NOT_CREATE_TOWN;
 			}
-
-			return false;
 		}
+		return false;  // we are still without a town? we failed, simply
 	}
-
 	return true;
 }
 
