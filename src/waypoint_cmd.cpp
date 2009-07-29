@@ -197,6 +197,9 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 		wp->facilities |= FACIL_TRAIN;
 		wp->build_date = _date;
 		wp->string_id = STR_SV_STNAME_WAYPOINT;
+		wp->train_station.tile = tile;
+		wp->train_station.w = 1;
+		wp->train_station.h = 1;
 
 		if (wp->town == NULL) MakeDefaultWaypointName(wp);
 
@@ -215,7 +218,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
  * @pre IsRailWaypointTile(tile)
  * @return cost of operation or error
  */
-CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justremove)
+CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags)
 {
 	/* Make sure it's a waypoint */
 	if (!IsRailWaypointTile(tile) ||
@@ -233,20 +236,12 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justre
 
 		Train *v = NULL;
 		uint specindex = GetCustomStationSpecIndex(tile);
-		if (justremove) {
-			TrackBits tracks = GetRailStationTrackBits(tile);
-			bool reserved = HasStationReservation(tile);
-			MakeRailNormal(tile, wp->owner, tracks, GetRailType(tile));
-			if (reserved) SetTrackReservation(tile, tracks);
-			MarkTileDirtyByTile(tile);
-		} else {
-			if (HasStationReservation(tile)) {
-				v = GetTrainForReservation(tile, track);
-				if (v != NULL) FreeTrainTrackReservation(v);
-			}
-			DoClearSquare(tile);
-			AddTrackToSignalBuffer(tile, track, wp->owner);
+		if (HasStationReservation(tile)) {
+			v = GetTrainForReservation(tile, track);
+			if (v != NULL) FreeTrainTrackReservation(v);
 		}
+		DoClearSquare(tile);
+		AddTrackToSignalBuffer(tile, track, wp->owner);
 		YapfNotifyTrackLayoutChange(tile, track);
 		if (v != NULL) TryPathReserve(v, true);
 
@@ -256,21 +251,6 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, bool justre
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_train_depot);
 }
-
-/**
- * Delete a waypoint
- * @param tile tile where waypoint is to be deleted
- * @param flags type of operation
- * @param p1 unused
- * @param p2 unused
- * @param text unused
- * @return cost of operation or error
- */
-CommandCost CmdRemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
-{
-	return RemoveTrainWaypoint(tile, flags, true);
-}
-
 
 /** Build a buoy.
  * @param tile tile where to place the bouy

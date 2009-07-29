@@ -606,7 +606,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_ACCEPTLIST);
 }
 
-static void UpdateStationSignCoord(Station *st)
+static void UpdateStationSignCoord(BaseStation *st)
 {
 	const StationRect *r = &st->rect;
 
@@ -622,7 +622,7 @@ static void UpdateStationSignCoord(Station *st)
  * deleted after a little while.
  * @param st Station
  */
-static void DeleteStationIfEmpty(Station *st)
+static void DeleteStationIfEmpty(BaseStation *st)
 {
 	if (!st->IsInUse()) {
 		st->delete_ctr = 0;
@@ -855,6 +855,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 	/* Check if the given station class is valid */
 	if ((uint)spec_class >= GetNumStationClasses()) return CMD_ERROR;
 	if (spec_index >= GetNumCustomStations(spec_class)) return CMD_ERROR;
+	if (plat_len == 0 || numtracks == 0) return CMD_ERROR;
 
 	int w_org, h_org;
 	if (axis == AXIS_X) {
@@ -1069,7 +1070,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, DoCommandFlag flags, uin
 	return cost;
 }
 
-static void MakeRailStationAreaSmaller(Station *st)
+static void MakeRailStationAreaSmaller(BaseStation *st)
 {
 	TileArea ta = st->train_station;
 
@@ -1121,37 +1122,32 @@ restart:
 	st->train_station = ta;
 }
 
-/** Remove a single tile from a railroad station.
- * This allows for custom-built station with holes and weird layouts
- * @param start tile of station piece to remove
- * @param flags operation to perform
- * @param p1 start_tile
- * @param p2 unused
- * @param text unused
- * @return cost of operation or error
+/**
+ * Remove a number of tiles from any rail station within the area.
+ * @param ta the area to clear station tile from
+ * @param affected_stations the stations affected
+ * @param flags the command flags
+ * @param removal_cost the cost for removing the tile
+ * @param T the type of station to remove
+ * @return the number of cleared tiles or an error
  */
-CommandCost CmdRemoveFromRailroadStation(TileIndex start, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+template <class T>
+CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected_stations, DoCommandFlag flags, Money removal_cost)
 {
-	TileIndex end = p1 == 0 ? start : p1;
-	if (start >= MapSize() || end >= MapSize()) return CMD_ERROR;
-
 	/* Count of the number of tiles removed */
 	int quantity = 0;
 
-	TileArea ta(start, end);
-	SmallVector<Station *, 4> affected_stations;
-
 	/* Do the action for every tile into the area */
 	TILE_LOOP(tile, ta.w, ta.h, ta.tile) {
-		/* Make sure the specified tile is a railroad station */
-		if (!IsRailStationTile(tile)) continue;
+		/* Make sure the specified tile is a rail station */
+		if (!HasStationTileRail(tile)) continue;
 
 		/* If there is a vehicle on ground, do not allow to remove (flood) the tile */
 		if (!EnsureNoVehicleOnGround(tile)) continue;
 
 		/* Check ownership of station */
-		Station *st = Station::GetByTile(tile);
-		if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) continue;
+		T *st = T::GetByTile(tile);
+		if (st != NULL && _current_company != OWNER_WATER && !CheckOwnership(st->owner)) continue;
 
 		/* Do not allow removing from stations if non-uniform stations are not enabled
 		 * The check must be here to give correct error message
@@ -1166,6 +1162,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex start, DoCommandFlag flags, u
 			uint specindex = GetCustomStationSpecIndex(tile);
 			Track track = GetRailStationTrack(tile);
 			Owner owner = GetTileOwner(tile);
+			RailType rt = GetRailType(tile);
 			Train *v = NULL;
 
 			if (HasStationReservation(tile)) {
@@ -1180,7 +1177,11 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex start, DoCommandFlag flags, u
 				}
 			}
 
-			DoClearSquare(tile);
+			if (st->facilities & FACIL_WAYPOINT) {
+				MakeRailNormal(tile, owner, TrackToTrackBits(track), rt);
+			} else {
+				DoClearSquare(tile);
+			}
 			st->rect.AfterRemoveTile(st, tile);
 			AddTrackToSignalBuffer(tile, track, owner);
 			YapfNotifyTrackLayoutChange(tile, track);
@@ -1199,17 +1200,15 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex start, DoCommandFlag flags, u
 		}
 	}
 
-	/* If we've not removed any tiles, give an error */
 	if (quantity == 0) return CMD_ERROR;
 
-	for (Station **stp = affected_stations.Begin(); stp != affected_stations.End(); stp++) {
-		Station *st = *stp;
+	for (T **stp = affected_stations.Begin(); stp != affected_stations.End(); stp++) {
+		T *st = *stp;
 
 		/* now we need to make the "spanned" area of the railway station smaller
 		 * if we deleted something at the edges.
 		 * we also need to adjust train_tile. */
 		MakeRailStationAreaSmaller(st);
-		st->MarkTilesDirty(false);
 		UpdateStationSignCoord(st);
 
 		/* if we deleted the whole station, delete the train facility. */
@@ -1219,11 +1218,62 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex start, DoCommandFlag flags, u
 			st->UpdateVirtCoord();
 			DeleteStationIfEmpty(st);
 		}
+	}
 
+	return CommandCost(EXPENSES_CONSTRUCTION, quantity * removal_cost);
+}
+
+/** Remove a single tile from a railroad station.
+ * This allows for custom-built station with holes and weird layouts
+ * @param start tile of station piece to remove
+ * @param flags operation to perform
+ * @param p1 start_tile
+ * @param p2 unused
+ * @param text unused
+ * @return cost of operation or error
+ */
+CommandCost CmdRemoveFromRailroadStation(TileIndex start, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	TileIndex end = p1 == 0 ? start : p1;
+	if (start >= MapSize() || end >= MapSize()) return CMD_ERROR;
+
+	TileArea ta(start, end);
+	SmallVector<Station *, 4> affected_stations;
+
+	CommandCost ret = RemoveFromRailBaseStation(ta, affected_stations, flags, _price.remove_rail_station);
+	if (ret.Failed()) return ret;
+
+	/* Do all station specific functions here. */
+	for (Station **stp = affected_stations.Begin(); stp != affected_stations.End(); stp++) {
+		Station *st = *stp;
+
+		if (st->train_station.tile == INVALID_TILE) InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_TRAINS);
+		st->MarkTilesDirty(false);
 		st->RecomputeIndustriesNear();
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_rail_station * quantity);
+	/* Now apply the rail cost to the number that we deleted */
+	return ret;
+}
+
+/** Remove a single tile from a waypoint.
+ * This allows for custom-built waypoint with holes and weird layouts
+ * @param start tile of waypoint piece to remove
+ * @param flags operation to perform
+ * @param p1 start_tile
+ * @param p2 unused
+ * @param text unused
+ * @return cost of operation or error
+ */
+CommandCost CmdRemoveTrainWaypoint(TileIndex start, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	TileIndex end = p1 == 0 ? start : p1;
+	if (start >= MapSize() || end >= MapSize()) return CMD_ERROR;
+
+	TileArea ta(start, end);
+	SmallVector<Waypoint *, 4> affected_stations;
+
+	return RemoveFromRailBaseStation(ta, affected_stations, flags, _price.remove_train_depot);
 }
 
 
@@ -3008,7 +3058,7 @@ static CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 
 	switch (GetStationType(tile)) {
 		case STATION_RAIL:     return RemoveRailroadStation(tile, flags);
-		case STATION_WAYPOINT: return RemoveTrainWaypoint(tile, flags, false);
+		case STATION_WAYPOINT: return RemoveTrainWaypoint(tile, flags);
 		case STATION_AIRPORT:  return RemoveAirport(tile, flags);
 		case STATION_TRUCK:
 			if (IsDriveThroughStopTile(tile) && !CanRemoveRoadWithStop(tile, flags))
