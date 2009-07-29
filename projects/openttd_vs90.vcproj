@@ -1621,10 +1621,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\waypoint_type.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\widget_type.h"
 				>
 			</File>
