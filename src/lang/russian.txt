@@ -827,7 +827,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Настрой�
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Настройки прозрачности
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Показ названий городов
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Показ названий станций
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Показ точек пути
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Показ имён точек пути
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Показ знаков
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Полная анимация
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Полная детализация
@@ -2333,8 +2333,8 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Выбр
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Изменить цвет транспортных средств компании
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Изменение имени директора
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Изменение названия компании
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Взять/увеличить кредит
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Вернуть часть ссуды
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Взять деньги в кредит. Ctrl+щелчок - увеличить кредит до максимума.
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Вернуть часть ссуды. Ctrl+щелчок - вернуть всё, по возможности.
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Директор)
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}В должности с {WHITE}{NUM} года
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Транспорт:

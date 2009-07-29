@@ -679,8 +679,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Paramètres New
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Options de transparence
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Afficher le nom des villes
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Afficher le nom des stations
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Afficher les panneaux
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Afficher les points de contrôle
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Afficher les panneaux
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animation complète
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Détails maximums
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Édifices transparents
@@ -1156,8 +1156,8 @@ STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}En rout
 STR_GO_TO_WAYPOINT                                              :Passer par {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Passer sans arrêt par {WAYPOINT}
 
-STR_WAYPOINTNAME_CITY                                           :Point de contrôle {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :Point de contrôle {TOWN} #{COMMA}
+STR_WAYPOINTNAME_CITY                                           :Point de contrôle de {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Point de contrôle de {TOWN} #{COMMA}
 STR_BUOYNAME_CITY                                               :Bouée de {TOWN}
 STR_BUOYNAME_CITY_SERIAL                                        :Bouée de {TOWN} #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Point de contrôle
@@ -2177,8 +2177,8 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Choix d'
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Change la couleur des véhicules
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Change le nom du président directeur général
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Change le nom de la compagnie
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Augmenter le prêt
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Rembourser une partie du prêt
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Augmenter le prêt. Ctrl-clic pour emprunter autant que possible
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Rembourser une partie du prêt. Ctrl-clic pour rembourser autant que possible
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Président)
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inauguré en: {WHITE}{NUM}
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Véhicules:

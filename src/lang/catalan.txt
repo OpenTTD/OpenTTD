@@ -678,8 +678,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Extensions NewG
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcions de transparència
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Mostra els noms de les poblacions
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Mostra els noms de les estacions
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Mostra els punts de control
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Mostra les senyals
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Mostra punts de control
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animació completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Detall complet
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Edificis Transparents
@@ -1155,8 +1155,10 @@ STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Cap a {
 STR_GO_TO_WAYPOINT                                              :Ves via {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Ves sense parar via {WAYPOINT}
 
-STR_WAYPOINTNAME_CITY                                           :Punt de Control {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :Punt de Control {TOWN} #{COMMA}
+STR_WAYPOINTNAME_CITY                                           :{TOWN} Punt de Control
+STR_WAYPOINTNAME_CITY_SERIAL                                    :{TOWN} Punt de Control #{COMMA}
+STR_BUOYNAME_CITY                                               :{TOWN} Boia
+STR_BUOYNAME_CITY_SERIAL                                        :{TOWN} Boia #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Punt de Control
 
 STR_WAYPOINT                                                    :{WHITE}Punt de control
@@ -2042,6 +2044,8 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Aeropo
 STR_SV_STNAME_OILFIELD                                          :{STRING} Camp de Petroli
 STR_SV_STNAME_MINES                                             :{STRING} Mines
 STR_SV_STNAME_DOCKS                                             :{STRING} Port
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Annex
 STR_SV_STNAME_SIDINGS                                           :{STRING} Via Morta
@@ -3115,8 +3119,8 @@ STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Fa una c
 STR_CLONE_SHIP_INFO                                             :{BLACK}Fa una còpia del vaixell. Control+Clic compartirà les ordres
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Fa una còpia de l'avió. Control+Clic compartirà les ordres
 
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Fa una còpia del tren inclosos tots els vagons. Prem aquest botó i després en un tren dins o fora cotxeres. Control+Clic compartirà les ordres
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Fa una còpia del vehicle. Prem aquest botó i després en un vehicle dins o fora cotxeres. Control+Clic compartirà les ordres
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Fa una còpia del tren inclosos tots els vagons. Clica aquest botó i després en un tren dins o fora de les cotxeres. Control+Clic compartirà les ordres
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Fa una còpia del vehicle. Clica aquest botó i després en un vehicle dins o fora de les cotxeres. Control+Clic compartirà les ordres
 STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Fa una còpia del vaixell. Prem aquest botó i després en un vaixell dins o fora les drassanes. Control+Clic compartirà les ordres
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Fa una còpia de l'avió. Prem aquest botó i després en un avió dins o fora l'hangar. Control+Clic compartirà les ordres
 
@@ -3599,6 +3603,7 @@ STR_AI_AUTHOR                                                   :{BLACK}Autor: {
 STR_AI_VERSION                                                  :{BLACK}Versió: {NUM}
 STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_PLEASE_REPORT_CRASH                                      :{WHITE}Una de les IAs s'ha penjat. Si us plau reporta això a l'autor de la IA amb una captura de pantalla de la finestra de depuració IA.
+STR_AI_NO_AI_FOUND                                              :No s'ha trobat una IA adequada per carregar.{}Aquesta IA és una IA falsa i no farà res.{}Pots descarregar diverses IAs via el sistema de "Contingut en línia".
 ########
 
 ############ town controlled noise level

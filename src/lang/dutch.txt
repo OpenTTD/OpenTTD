@@ -678,8 +678,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Newgrf instelli
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Doorzichtigheidsopties
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Geef plaatsnamen weer
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Geef stationsnamen weer
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Geef borden weer
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Controleposten weergegeven
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Geef borden weer
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Alle animatie
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Alle details
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Transparante gebouwen
@@ -2176,8 +2176,8 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Kies nie
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Verander het uiterlijk van de bedrijfsvoertuigen
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Verander de naam van de directeur
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Verander de bedrijfsnaam
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Vergroot lening
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Betaal deel van lening terug
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Vergroot lening. Ctrl+Klik om zoveel als mogelijk te lenen.
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Betaal deel van lening terug. Ctrl+Klik om zoveel als mogelijk terug te betalen.
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Directeur)
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Opgericht: {WHITE}{NUM}
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Voertuigen:
