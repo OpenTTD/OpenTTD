@@ -2176,8 +2176,8 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Select n
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Change the company vehicle livery
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Change the manager's name
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Change the company name
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Increase size of loan
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Repay part of loan
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Increase size of loan. Ctrl+Click borrows as much as possible
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Repay part of loan. Ctrl+Click repays as much loan as possible
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manager)
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurated: {WHITE}{NUM}
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehicles:
