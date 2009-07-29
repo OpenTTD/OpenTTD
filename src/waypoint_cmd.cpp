@@ -210,48 +210,6 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.build_train_depot);
 }
 
-/**
- * Remove a waypoint
- * @param tile from which to remove waypoint
- * @param flags type of operation
- * @param justremove will indicate if it is removed from rail or if rails are removed too
- * @pre IsRailWaypointTile(tile)
- * @return cost of operation or error
- */
-CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags)
-{
-	/* Make sure it's a waypoint */
-	if (!IsRailWaypointTile(tile) ||
-			(!CheckTileOwnership(tile) && _current_company != OWNER_WATER) ||
-			!EnsureNoVehicleOnGround(tile)) {
-		return CMD_ERROR;
-	}
-
-	if (flags & DC_EXEC) {
-		Track track = GetRailStationTrack(tile);
-		Waypoint *wp = Waypoint::GetByTile(tile);
-
-		wp->sign.MarkDirty();
-		wp->facilities &= ~FACIL_TRAIN;
-
-		Train *v = NULL;
-		uint specindex = GetCustomStationSpecIndex(tile);
-		if (HasStationReservation(tile)) {
-			v = GetTrainForReservation(tile, track);
-			if (v != NULL) FreeTrainTrackReservation(v);
-		}
-		DoClearSquare(tile);
-		AddTrackToSignalBuffer(tile, track, wp->owner);
-		YapfNotifyTrackLayoutChange(tile, track);
-		if (v != NULL) TryPathReserve(v, true);
-
-		DeallocateSpecFromStation(wp, specindex);
-		wp->rect.AfterRemoveTile(wp, tile);
-	}
-
-	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_train_depot);
-}
-
 /** Build a buoy.
  * @param tile tile where to place the bouy
  * @param flags operation to perform

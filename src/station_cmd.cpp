@@ -1278,20 +1278,15 @@ CommandCost CmdRemoveTrainWaypoint(TileIndex start, DoCommandFlag flags, uint32 
 
 
 /**
- * Remove a rail road station
- * @param tile TileIndex been queried
+ * Remove a rail road station/waypoint
+ * @param st The station/waypoint to remove the rail part from
  * @param flags operation to perform
+ * @param T the type of station to remove
  * @return cost or failure of operation
  */
-static CommandCost RemoveRailroadStation(TileIndex tile, DoCommandFlag flags)
+template <class T>
+CommandCost RemoveRailStation(T *st, DoCommandFlag flags)
 {
-	/* if there is flooding and non-uniform stations are enabled, remove platforms tile by tile */
-	if (_current_company == OWNER_WATER && _settings_game.station.nonuniform_stations) {
-		return DoCommand(tile, 0, 0, DC_EXEC, CMD_REMOVE_FROM_RAILROAD_STATION);
-	}
-
-	Station *st = Station::GetByTile(tile);
-
 	/* Current company owns the station? */
 	if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) return CMD_ERROR;
 
@@ -1341,12 +1336,49 @@ static CommandCost RemoveRailroadStation(TileIndex tile, DoCommandFlag flags)
 
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_TRAINS);
 		st->UpdateVirtCoord();
-		st->RecomputeIndustriesNear();
 		DeleteStationIfEmpty(st);
 	}
 
 	return cost;
 }
+
+/**
+ * Remove a rail road station
+ * @param tile TileIndex been queried
+ * @param flags operation to perform
+ * @return cost or failure of operation
+ */
+static CommandCost RemoveRailroadStation(TileIndex tile, DoCommandFlag flags)
+{
+	/* if there is flooding and non-uniform stations are enabled, remove platforms tile by tile */
+	if (_current_company == OWNER_WATER && _settings_game.station.nonuniform_stations) {
+		return DoCommand(tile, 0, 0, DC_EXEC, CMD_REMOVE_FROM_RAILROAD_STATION);
+	}
+
+	Station *st = Station::GetByTile(tile);
+	CommandCost cost = RemoveRailStation(st, flags);
+
+	if (flags & DC_EXEC) st->RecomputeIndustriesNear();
+
+	return cost;
+}
+
+/**
+ * Remove a rail waypoint
+ * @param tile TileIndex been queried
+ * @param flags operation to perform
+ * @return cost or failure of operation
+ */
+static CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags)
+{
+	/* if there is flooding and non-uniform stations are enabled, remove waypoints tile by tile */
+	if (_current_company == OWNER_WATER && _settings_game.station.nonuniform_stations) {
+		return DoCommand(tile, 0, 0, DC_EXEC, CMD_REMOVE_TRAIN_WAYPOINT);
+	}
+
+	return RemoveRailStation(Waypoint::GetByTile(tile), flags);
+}
+
 
 /**
  * @param truck_station Determines whether a stop is ROADSTOP_BUS or ROADSTOP_TRUCK

@@ -9,7 +9,6 @@
 #include "command_type.h"
 #include "station_type.h"
 
-CommandCost RemoveTrainWaypoint(TileIndex tile, DoCommandFlag flags);
 CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags);
 
 void ShowWaypointWindow(const Waypoint *wp);
