@@ -1762,8 +1762,8 @@ bool GenerateTowns(TownLayout layout)
 	SetGeneratingWorldProgress(GWP_TOWN, n);
 
 	/* First attempt will be made at creating the suggested number of towns.
-    * Note that this is really a suggested value, not a required one.
-    * We would not like the system to lock up just because the user wanted 100 cities on a 64*64 map, would we? */
+	 * Note that this is really a suggested value, not a required one.
+	 * We would not like the system to lock up just because the user wanted 100 cities on a 64*64 map, would we? */
 	do {
 		bool city = (_settings_game.economy.larger_towns != 0 && Chance16(1, _settings_game.economy.larger_towns));
 		IncreaseGeneratingWorldProgress(GWP_TOWN);
@@ -1772,7 +1772,7 @@ bool GenerateTowns(TownLayout layout)
 	} while (--n);
 
 	/* If num is still zero at this point, it means that not a single town has been created.
-    * So give it a last try, but now more aggressive */
+	 * So give it a last try, but now more aggressive */
 	if (num == 0 && CreateRandomTown(10000, TS_RANDOM, _settings_game.economy.larger_towns != 0, layout) == NULL) {
 		if (Town::GetNumItems() == 0) {
 			if (_game_mode != GM_EDITOR) {
