@@ -1252,35 +1252,28 @@ static CommandCost RemoveRailroadStation(TileIndex tile, DoCommandFlag flags)
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	/* clear all areas of the station */
-	do {
-		int w_bak = ta.w;
-		do {
-			/* for nonuniform stations, only remove tiles that are actually train station tiles */
-			if (st->TileBelongsToRailStation(ta.tile)) {
-				if (!EnsureNoVehicleOnGround(ta.tile)) {
-					return CMD_ERROR;
-				}
-				cost.AddCost(_price.remove_rail_station);
-				if (flags & DC_EXEC) {
-					/* read variables before the station tile is removed */
-					Track track = GetRailStationTrack(ta.tile);
-					Owner owner = GetTileOwner(ta.tile); // _current_company can be OWNER_WATER
-					Train *v = NULL;
-					if (HasStationReservation(ta.tile)) {
-						v = GetTrainForReservation(ta.tile, track);
-						if (v != NULL) FreeTrainTrackReservation(v);
-					}
-					DoClearSquare(ta.tile);
-					AddTrackToSignalBuffer(ta.tile, track, owner);
-					YapfNotifyTrackLayoutChange(ta.tile, track);
-					if (v != NULL) TryPathReserve(v, true);
-				}
+	TILE_LOOP(tile, ta.w, ta.h, ta.tile) {
+		/* for nonuniform stations, only remove tiles that are actually train station tiles */
+		if (!st->TileBelongsToRailStation(tile)) continue;
+
+		if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+
+		cost.AddCost(_price.remove_rail_station);
+		if (flags & DC_EXEC) {
+			/* read variables before the station tile is removed */
+			Track track = GetRailStationTrack(tile);
+			Owner owner = GetTileOwner(tile); // _current_company can be OWNER_WATER
+			Train *v = NULL;
+			if (HasStationReservation(tile)) {
+				v = GetTrainForReservation(tile, track);
+				if (v != NULL) FreeTrainTrackReservation(v);
 			}
-			ta.tile += TileDiffXY(1, 0);
-		} while (--ta.w);
-		ta.w = w_bak;
-		ta.tile += TileDiffXY(-ta.w, 1);
-	} while (--ta.h);
+			DoClearSquare(tile);
+			AddTrackToSignalBuffer(tile, track, owner);
+			YapfNotifyTrackLayoutChange(tile, track);
+			if (v != NULL) TryPathReserve(v, true);
+		}
+	}
 
 	if (flags & DC_EXEC) {
 		st->rect.AfterRemoveRect(st, st->train_station.tile, st->train_station.w, st->train_station.h);
