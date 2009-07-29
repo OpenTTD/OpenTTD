@@ -106,6 +106,15 @@ enum FoundationPart {
 	FOUNDATION_PART_END
 };
 
+/** Mode of "sprite combining"
+ * @see StartSpriteCombine
+ */
+enum SpriteCombineMode {
+	SPRITE_COMBINE_NONE,     ///< Every #AddSortableSpriteToDraw start its own bounding box
+	SPRITE_COMBINE_PENDING,  ///< %Sprite combining will start with the next unclipped sprite.
+	SPRITE_COMBINE_ACTIVE,   ///< %Sprite combining is active. #AddSortableSpriteToDraw outputs child sprites.
+};
+
 typedef SmallVector<TileSpriteToDraw, 64> TileSpriteToDrawVector;
 typedef SmallVector<StringSpriteToDraw, 4> StringSpriteToDrawVector;
 typedef SmallVector<ParentSpriteToDraw, 64> ParentSpriteToDrawVector;
@@ -124,7 +133,7 @@ struct ViewportDrawer {
 
 	int *last_child;
 
-	byte combine_sprites;
+	SpriteCombineMode combine_sprites;               ///< Current mode of "sprite combining". @see StartSpriteCombine
 
 	int foundation[FOUNDATION_PART_END];             ///< Foundation sprites (index into parent_sprites_to_draw).
 	FoundationPart foundation_part;                  ///< Currently active foundation for ground sprite drawing.
@@ -619,7 +628,7 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 		pal = PALETTE_TO_TRANSPARENT;
 	}
 
-	if (_vd.combine_sprites == 2) {
+	if (_vd.combine_sprites == SPRITE_COMBINE_ACTIVE) {
 		AddCombinedSprite(image, pal, x, y, z, sub);
 		return;
 	}
@@ -683,17 +692,41 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 
 	_vd.last_child = &ps->first_child;
 
-	if (_vd.combine_sprites == 1) _vd.combine_sprites = 2;
+	if (_vd.combine_sprites == SPRITE_COMBINE_PENDING) _vd.combine_sprites = SPRITE_COMBINE_ACTIVE;
 }
 
+/**
+ * Starts a block of sprites, which are "combined" into a single bounding box.
+ *
+ * Subsequent calls to #AddSortableSpriteToDraw will be drawn into the same bounding box.
+ * That is: The first sprite that is not clipped by the viewport defines the bounding box, and
+ * the following sprites will be child sprites to that one.
+ *
+ * That implies:
+ *  - The drawing order is definite. No other sprites will be sorted between those of the block.
+ *  - You have to provide a valid bounding box for all sprites,
+ *    as you won't know which one is the first non-clipped one.
+ *    Preferable you use the same bounding box for all.
+ *  - You cannot use #AddChildSpriteScreen inside the block, as its result will be indefinite.
+ *
+ * The block is terminated by #EndSpriteCombine.
+ *
+ * You cannot nest "combined" blocks.
+ */
 void StartSpriteCombine()
 {
-	_vd.combine_sprites = 1;
+	assert(_vd.combine_sprites == SPRITE_COMBINE_NONE);
+	_vd.combine_sprites = SPRITE_COMBINE_PENDING;
 }
 
+/**
+ * Terminates a block of sprites started by #StartSpriteCombine.
+ * Take a look there for details.
+ */
 void EndSpriteCombine()
 {
-	_vd.combine_sprites = 0;
+	assert(_vd.combine_sprites != SPRITE_COMBINE_NONE);
+	_vd.combine_sprites = SPRITE_COMBINE_NONE;
 }
 
 /**
@@ -1451,7 +1484,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	_vd.dpi.zoom = vp->zoom;
 	int mask = ScaleByZoom(-1, vp->zoom);
 
-	_vd.combine_sprites = 0;
+	_vd.combine_sprites = SPRITE_COMBINE_NONE;
 
 	_vd.dpi.width = (right - left) & mask;
 	_vd.dpi.height = (bottom - top) & mask;
