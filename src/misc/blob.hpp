@@ -58,6 +58,10 @@ protected:
 		CHdr       *m_pHdr_1;   ///< ptr just after the CHdr holding m_size and m_max_size
 	} ptr_u;
 
+private:
+	/** Just to silence an unsilencable GCC 4.4+ warning */
+	static const CHdr hdrEmpty[];
+
 public:
 	static const bsize_t Ttail_reserve = 4; ///< four extra bytes will be always allocated and zeroed at the end
 
@@ -96,8 +100,7 @@ protected:
 	 *  both m_size and m_max_size containing zero */
 	FORCEINLINE void InitEmpty()
 	{
-		static CHdr hdrEmpty[] = {{0, 0}, {0, 0}};
-		ptr_u.m_pHdr_1 = &hdrEmpty[1];
+		ptr_u.m_pHdr_1 = const_cast<CHdr *>(&CBlobBaseSimple::hdrEmpty[1]);
 	}
 
 	/** initialize blob by attaching it to the given header followed by data */
@@ -297,6 +300,9 @@ public:
 	/** all deallocations should happen here */
 	static FORCEINLINE void RawFree(CHdr *p)
 	{
+		/* Just to silence an unsilencable GCC 4.4+ warning */
+		assert(p != CBlobBaseSimple::hdrEmpty);
+
 		free(p);
 	}
 	/** fixing the four bytes at the end of blob data - useful when blob is used to hold string */

@@ -167,3 +167,5 @@ void DumpTarget::EndStruct()
 	m_cur_struct.pop();
 }
 
+/** Just to silence an unsilencable GCC 4.4+ warning */
+/* static */ const CBlobBaseSimple::CHdr CBlobBaseSimple::hdrEmpty[] = {{0, 0}, {0, 0}};
