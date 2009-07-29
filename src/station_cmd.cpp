@@ -1123,51 +1123,35 @@ restart:
 
 /** Remove a single tile from a railroad station.
  * This allows for custom-built station with holes and weird layouts
- * @param tile tile of station piece to remove
+ * @param start tile of station piece to remove
  * @param flags operation to perform
  * @param p1 start_tile
  * @param p2 unused
+ * @param text unused
+ * @return cost of operation or error
  */
-CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRemoveFromRailroadStation(TileIndex start, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	TileIndex start = p1 == 0 ? tile : p1;
+	TileIndex end = p1 == 0 ? start : p1;
+	if (start >= MapSize() || end >= MapSize()) return CMD_ERROR;
 
 	/* Count of the number of tiles removed */
 	int quantity = 0;
 
-	if (tile >= MapSize() || start >= MapSize()) return CMD_ERROR;
-
-	/* make sure sx,sy are smaller than ex,ey */
-	int ex = TileX(tile);
-	int ey = TileY(tile);
-	int sx = TileX(start);
-	int sy = TileY(start);
-	if (ex < sx) Swap(ex, sx);
-	if (ey < sy) Swap(ey, sy);
-	tile = TileXY(sx, sy);
-
-	int size_x = ex - sx + 1;
-	int size_y = ey - sy + 1;
-
+	TileArea ta(start, end);
 	SmallVector<Station *, 4> affected_stations;
 
 	/* Do the action for every tile into the area */
-	TILE_LOOP(tile2, size_x, size_y, tile) {
+	TILE_LOOP(tile, ta.w, ta.h, ta.tile) {
 		/* Make sure the specified tile is a railroad station */
-		if (!IsRailStationTile(tile2)) {
-			continue;
-		}
+		if (!IsRailStationTile(tile)) continue;
 
 		/* If there is a vehicle on ground, do not allow to remove (flood) the tile */
-		if (!EnsureNoVehicleOnGround(tile2)) {
-			continue;
-		}
+		if (!EnsureNoVehicleOnGround(tile)) continue;
 
 		/* Check ownership of station */
-		Station *st = Station::GetByTile(tile2);
-		if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) {
-			continue;
-		}
+		Station *st = Station::GetByTile(tile);
+		if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) continue;
 
 		/* Do not allow removing from stations if non-uniform stations are not enabled
 		 * The check must be here to give correct error message
@@ -1179,13 +1163,13 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 
 		if (flags & DC_EXEC) {
 			/* read variables before the station tile is removed */
-			uint specindex = GetCustomStationSpecIndex(tile2);
-			Track track = GetRailStationTrack(tile2);
-			Owner owner = GetTileOwner(tile2);
+			uint specindex = GetCustomStationSpecIndex(tile);
+			Track track = GetRailStationTrack(tile);
+			Owner owner = GetTileOwner(tile);
 			Train *v = NULL;
 
-			if (HasStationReservation(tile2)) {
-				v = GetTrainForReservation(tile2, track);
+			if (HasStationReservation(tile)) {
+				v = GetTrainForReservation(tile, track);
 				if (v != NULL) {
 					/* Free train reservation. */
 					FreeTrainTrackReservation(v);
@@ -1196,10 +1180,10 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 				}
 			}
 
-			DoClearSquare(tile2);
-			st->rect.AfterRemoveTile(st, tile2);
-			AddTrackToSignalBuffer(tile2, track, owner);
-			YapfNotifyTrackLayoutChange(tile2, track);
+			DoClearSquare(tile);
+			st->rect.AfterRemoveTile(st, tile);
+			AddTrackToSignalBuffer(tile, track, owner);
+			YapfNotifyTrackLayoutChange(tile, track);
 
 			DeallocateSpecFromStation(st, specindex);
 
@@ -1214,6 +1198,9 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 			}
 		}
 	}
+
+	/* If we've not removed any tiles, give an error */
+	if (quantity == 0) return CMD_ERROR;
 
 	for (Station **stp = affected_stations.Begin(); stp != affected_stations.End(); stp++) {
 		Station *st = *stp;
@@ -1235,9 +1222,6 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, DoCommandFlag flags, ui
 
 		st->RecomputeIndustriesNear();
 	}
-
-	/* If we've not removed any tiles, give an error */
-	if (quantity == 0) return CMD_ERROR;
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_rail_station * quantity);
 }
