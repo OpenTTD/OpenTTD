@@ -153,15 +153,14 @@ static void PlaceRail_Waypoint(TileIndex tile)
 		return;
 	}
 
-	TrackBits bits = IsTileType(tile, MP_RAILWAY) && GetRailTileType(tile) == RAIL_TILE_NORMAL ? GetTrackBits(tile) : TRACK_BIT_NONE;
-	Track track = RemoveFirstTrack(&bits);
-	if (bits == TRACK_BIT_NONE && IsDiagonalTrack(track)) {
+	Axis axis = GetAxisForNewWaypoint(tile);
+	if (IsValidAxis(axis)) {
 		/* Valid tile for waypoints */
-		VpStartPlaceSizing(tile, track == TRACK_X ? VPM_FIX_X : VPM_FIX_Y, DDSP_BUILD_STATION);
+		VpStartPlaceSizing(tile, axis == AXIS_X ? VPM_FIX_X : VPM_FIX_Y, DDSP_BUILD_STATION);
 	} else {
 		/* Tile where we can't build rail waypoints. This is always going to fail,
 		 * but provides the user with a proper error message. */
-		DoCommandP(tile, 0, 0, CMD_BUILD_RAIL_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT));
+		DoCommandP(tile, 1 << 8 | 1 << 16, STAT_CLASS_WAYP | INVALID_STATION << 16, CMD_BUILD_RAIL_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT));
 	}
 }
 
@@ -177,7 +176,8 @@ void CcStation(bool success, TileIndex tile, uint32 p1, uint32 p2)
 static void PlaceRail_Station(TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_STATION);
+		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_REMOVE_STATION);
+		VpSetPlaceSizingLimit(-1);
 	} else if (_settings_client.gui.station_dragdrop) {
 		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_STATION);
 		VpSetPlaceSizingLimit(_settings_game.station.station_spread);
@@ -776,7 +776,7 @@ struct BuildRailToolbarWindow : Window {
 							uint32 p2 = STAT_CLASS_WAYP | _cur_waypoint_type << 8 | INVALID_STATION << 16;
 
 							CommandContainer cmdcont = { ta.tile, p1, p2, CMD_BUILD_RAIL_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT), CcPlaySound1E, "" };
-							ShowSelectStationIfNeeded(cmdcont, ta);
+							DoCommandP(&cmdcont);
 						}
 					}
 					break;
@@ -806,7 +806,7 @@ struct BuildRailToolbarWindow : Window {
 	virtual EventState OnCTRLStateChange()
 	{
 		/* do not toggle Remove button by Ctrl when placing station */
-		if (!this->IsWidgetLowered(RTW_BUILD_STATION) && RailToolbar_CtrlChanged(this)) return ES_HANDLED;
+		if (!this->IsWidgetLowered(RTW_BUILD_STATION) && !this->IsWidgetLowered(RTW_BUILD_WAYPOINT) && RailToolbar_CtrlChanged(this)) return ES_HANDLED;
 		return ES_NOT_HANDLED;
 	}
 };

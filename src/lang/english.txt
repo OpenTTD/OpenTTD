@@ -1584,6 +1584,7 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Railway track w
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Railway track with combo- and one-way path signals
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Railway track with path and one-way path signals
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Must remove railway station first
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Must remove rail waypoint first
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Build a separate station
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Join station
 
@@ -1768,11 +1769,13 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Number o
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platform length
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Too close to another railway station
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Adjoins more than one existing station/loading area
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Adjoins more than one existing waypoint
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Too many stations/loading areas
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Too many railway station parts
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Too many bus stops
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Too many lorry stations
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Too close to another station/loading area
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Too close to another waypoint
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Must demolish railway station first
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Too close to another airport

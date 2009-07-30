@@ -638,7 +638,7 @@ static void DeleteStationIfEmpty(BaseStation *st)
 	UpdateStationSignCoord(st);
 }
 
-static CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags);
+CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags);
 
 /** Tries to clear the given area.
  * @param tile TileIndex to start check
@@ -727,7 +727,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
  * @param axis the axis of the newly build rail
  * @return true if we are allowed to extend
  */
-static bool CanExpandRailStation(const Station *st, TileArea &new_ta, Axis axis)
+bool CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis axis)
 {
 	TileArea cur_ta = st->train_station;
 
@@ -887,6 +887,20 @@ CommandCost FindJoiningStation(StationID existing_station, StationID station_to_
 	if (*st == NULL && station_to_join != INVALID_STATION) *st = Station::GetIfValid(station_to_join);
 
 	return cost;
+}
+
+/**
+ * Find a nearby waypoint that joins this waypoint.
+ * @param existing_waypoint an existing waypoint we build over
+ * @param waypoint_to_join the waypoint to join to
+ * @param adjacent whether adjacent waypoints are allowed
+ * @param ta the area of the newly build waypoint
+ * @param st 'return' pointer for the found waypoint
+ * @return command cost with the error or 'okay'
+ */
+CommandCost FindJoiningWaypoint(StationID existing_waypoint, StationID waypoint_to_join, bool adjacent, TileArea ta, Waypoint **wp)
+{
+	return FindJoiningBaseStation<Waypoint, STR_MUST_REMOVE_RAILWAYPOINT_FIRST>(existing_waypoint, waypoint_to_join, adjacent, ta, wp);
 }
 
 /**
@@ -3099,7 +3113,7 @@ static bool CanRemoveRoadWithStop(TileIndex tile, DoCommandFlag flags)
 	return road_owner != OWNER_TOWN || CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile, ROADTYPE_ROAD), OWNER_TOWN, ROADTYPE_ROAD, flags);
 }
 
-static CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
+CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 {
 	if (flags & DC_AUTO) {
 		switch (GetStationType(tile)) {
