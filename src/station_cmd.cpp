@@ -70,25 +70,31 @@ static uint GetNumRoadStopsInStation(const Station *st, RoadStopType type)
 	return num;
 }
 
-
-#define CHECK_STATIONS_ERR ((Station*)-1)
-
-static Station *GetStationAround(TileIndex tile, int w, int h, StationID closest_station)
+/**
+ * Look for a station around the given tile area.
+ * @param ta the area to search over
+ * @param closest_station the closest station found so far
+ * @param st to 'return' the found station
+ * @return false if more than one stations are found. True when zero or one are found.
+ */
+template <class T>
+bool GetStationAround(TileArea ta, StationID closest_station, T **st)
 {
 	/* check around to see if there's any stations there */
-	TILE_LOOP(tile_cur, w + 2, h + 2, tile - TileDiffXY(1, 1)) {
+	TILE_LOOP(tile_cur, ta.w + 2, ta.h + 2, ta.tile - TileDiffXY(1, 1)) {
 		if (IsTileType(tile_cur, MP_STATION)) {
 			StationID t = GetStationIndex(tile_cur);
 
 			if (closest_station == INVALID_STATION) {
-				if (Station::IsValidID(t)) closest_station = t;
+				if (T::IsValidID(t)) closest_station = t;
 			} else if (closest_station != t) {
 				_error_message = STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING;
-				return CHECK_STATIONS_ERR;
+				return false;
 			}
 		}
 	}
-	return (closest_station == INVALID_STATION) ? NULL : Station::Get(closest_station);
+	*st = (closest_station == INVALID_STATION) ? NULL : T::Get(closest_station);
+	return true;
 }
 
 /**
@@ -821,6 +827,69 @@ void GetStationLayout(byte *layout, int numtracks, int plat_len, const StationSp
 }
 
 /**
+ * Find a nearby station that joins this station.
+ * @param T the class to find a station for
+ * @param error_message the error message when building a station on top of others
+ * @param existing_station an existing station we build over
+ * @param station_to_join the station to join to
+ * @param adjacent whether adjacent stations are allowed
+ * @param ta the area of the newly build station
+ * @param st 'return' pointer for the found station
+ * @return command cost with the error or 'okay'
+ */
+template <class T, StringID error_message>
+CommandCost FindJoiningBaseStation(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, T **st)
+{
+	assert(*st == NULL);
+	bool check_surrounding = true;
+
+	if (_settings_game.station.adjacent_stations) {
+		if (existing_station != INVALID_STATION) {
+			if (adjacent && existing_station != station_to_join) {
+				/* You can't build an adjacent station over the top of one that
+				 * already exists. */
+				return_cmd_error(error_message);
+			} else {
+				/* Extend the current station, and don't check whether it will
+				 * be near any other stations. */
+				*st = T::GetIfValid(existing_station);
+				check_surrounding = (*st == NULL);
+			}
+		} else {
+			/* There's no station here. Don't check the tiles surrounding this
+			 * one if the company wanted to build an adjacent station. */
+			if (adjacent) check_surrounding = false;
+		}
+	}
+
+	if (check_surrounding) {
+		/* Make sure there are no similar stations around us. */
+		if (!GetStationAround(ta, existing_station, st)) return CMD_ERROR;
+	}
+
+	return CommandCost();;
+}
+
+/**
+ * Find a nearby station that joins this station.
+ * @param existing_station an existing station we build over
+ * @param station_to_join the station to join to
+ * @param adjacent whether adjacent stations are allowed
+ * @param ta the area of the newly build station
+ * @param st 'return' pointer for the found station
+ * @return command cost with the error or 'okay'
+ */
+CommandCost FindJoiningStation(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, Station **st)
+{
+	CommandCost cost = FindJoiningBaseStation<Station, STR_MUST_REMOVE_RAILWAY_STATION_FIRST>(existing_station, station_to_join, adjacent, ta, st);
+
+	/* Distant join */
+	if (*st == NULL && station_to_join != INVALID_STATION) *st = Station::GetIfValid(station_to_join);
+
+	return cost;
+}
+
+/**
  * Build rail station
  * @param tile_org northern most position of station dragging/placement
  * @param flags operation to perform
@@ -887,35 +956,8 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 	CommandCost cost(EXPENSES_CONSTRUCTION, ret.GetCost() + (numtracks * _price.train_station_track + _price.train_station_length) * plat_len);
 
 	Station *st = NULL;
-	bool check_surrounding = true;
-
-	if (_settings_game.station.adjacent_stations) {
-		if (est != INVALID_STATION) {
-			if (adjacent && est != station_to_join) {
-				/* You can't build an adjacent station over the top of one that
-				 * already exists. */
-				return_cmd_error(STR_MUST_REMOVE_RAILWAY_STATION_FIRST);
-			} else {
-				/* Extend the current station, and don't check whether it will
-				 * be near any other stations. */
-				st = Station::GetIfValid(est);
-				check_surrounding = (st == NULL);
-			}
-		} else {
-			/* There's no station here. Don't check the tiles surrounding this
-			 * one if the company wanted to build an adjacent station. */
-			if (adjacent) check_surrounding = false;
-		}
-	}
-
-	if (check_surrounding) {
-		/* Make sure there are no similar stations around us. */
-		st = GetStationAround(tile_org, w_org, h_org, est);
-		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
-	}
-
-	/* Distant join */
-	if (st == NULL && distant_join) st = Station::GetIfValid(station_to_join);
+	ret = FindJoiningStation(est, station_to_join, adjacent, new_location, &st);
+	if (CmdFailed(ret)) return ret;
 
 	/* See if there is a deleted station close to us. */
 	if (st == NULL && reuse) st = GetClosestDeletedStation(tile_org);
@@ -1476,14 +1518,8 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	cost.AddCost(_price.build_road * roadbits_to_build);
 
 	Station *st = NULL;
-
-	if (!_settings_game.station.adjacent_stations || !HasBit(p2, 5)) {
-		st = GetStationAround(tile, 1, 1, INVALID_STATION);
-		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
-	}
-
-	/* Distant join */
-	if (st == NULL && distant_join) st = Station::GetIfValid(station_to_join);
+	CommandCost ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p2, 5), TileArea(tile, 1, 1), &st);
+	if (CmdFailed(ret)) return ret;
 
 	/* Find a deleted station close to us */
 	if (st == NULL && reuse) st = GetClosestDeletedStation(tile);
@@ -1797,7 +1833,6 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	Town *t = ClosestTownFromTile(tile, UINT_MAX);
 	int w = afc->size_x;
 	int h = afc->size_y;
-	Station *st = NULL;
 
 	if (w > _settings_game.station.station_spread || h > _settings_game.station.station_spread) {
 		_error_message = STR_ERROR_STATION_TOO_SPREAD_OUT;
@@ -1835,12 +1870,9 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		return_cmd_error(authority_refuse_message);
 	}
 
-	if (!_settings_game.station.adjacent_stations || !HasBit(p2, 0)) {
-		st = GetStationAround(tile, w, h, INVALID_STATION);
-		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
-	} else {
-		st = NULL;
-	}
+	Station *st = NULL;
+	CommandCost ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p2, 0), TileArea(tile, 1, 1), &st);
+	if (CmdFailed(ret)) return ret;
 
 	/* Distant join */
 	if (st == NULL && distant_join) st = Station::GetIfValid(station_to_join);
@@ -2070,13 +2102,10 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	/* middle */
 	Station *st = NULL;
-
-	if (!_settings_game.station.adjacent_stations || !HasBit(p1, 0)) {
-		st = GetStationAround(
-				tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
-				_dock_w_chk[direction], _dock_h_chk[direction], INVALID_STATION);
-		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
-	}
+	CommandCost ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p1, 0),
+			TileArea(tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
+					_dock_w_chk[direction], _dock_h_chk[direction]), &st);
+	if (CmdFailed(ret)) return ret;
 
 	/* Distant join */
 	if (st == NULL && distant_join) st = Station::GetIfValid(station_to_join);
