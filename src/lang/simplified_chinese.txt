@@ -1155,8 +1155,8 @@ STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}正在�
 STR_GO_TO_WAYPOINT                                              :经过 {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :经过(不停) {WAYPOINT}
 
-STR_WAYPOINTNAME_CITY                                           :路点 {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :路点 {TOWN} #{COMMA}
+STR_WAYPOINTNAME_CITY                                           :{TOWN} 路点
+STR_WAYPOINTNAME_CITY_SERIAL                                    :{TOWN} 路点 #{COMMA}
 STR_BUOYNAME_CITY                                               :{TOWN} 浮标
 STR_BUOYNAME_CITY_SERIAL                                        :{TOWN} 浮标 #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :路点
@@ -2176,7 +2176,7 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}为总�
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}改变公司车船的颜色
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}为总裁改名
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}改变公司的名称
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}增加贷款{}Ctrl+点击 可贷款最大额度
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}贷款{}Ctrl+点击 可贷款最大额度
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}偿还贷款{}Ctrl+点击 可最大额度偿还贷款
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(总裁)
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}开业时间：{WHITE}{NUM}

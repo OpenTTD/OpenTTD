@@ -988,8 +988,8 @@ STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Aus
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Mausradgeschwindigkeit auf dem Spielfeld: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Rechtsklick-Emulation: {ORANGE}{STRING}
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando-Klick
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Strg-Klick
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando+Klick
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Strg+Klick
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Aus
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Scrollen mit linker Maustaste: {ORANGE}{STRING}
@@ -2177,8 +2177,8 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Neues Po
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Firmenfarbe ändern
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Managername ändern
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Firmenname ändern
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Kredit aufnehmen. Strg + Klick: maximalen Kredit aufnehmen
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Kredit abzahlen. Strg + Klick: größte, mögliche Summe zurückzahlen
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Kredit aufnehmen. Strg+Klick, um maximalen Kredit aufzunehmen
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Kredit abzahlen. Strg+Klick, um die größtmögliche Summe zurückzuzahlen
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manager)
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Gegründet: {WHITE}{NUM}
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Fahrzeuge:
@@ -3076,8 +3076,8 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Hauptans
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Hauptansicht zum Schiff scrollen
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Hauptansicht zum Flugzeug scrollen
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Zug ins Depot schicken. Strg+Klick um dort nur Wartung durchzuführen.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Das Fahrzeug ins Depot schicken. Strg+Klick um dort nur Wartung durchzuführen.
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Zug ins Depot schicken. Strg+Klick, um dort nur Wartung durchzuführen.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Das Fahrzeug ins Depot schicken. Strg+Klick, um dort nur Wartung durchzuführen.
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Das Schiff zur Werft schicken. Strg+Klick, um dort nur Wartung durchzuführen.
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Das Flugzeug in den Hangar schicken. Strg+Klick, um dort nur Wartung durchzuführen.
 
