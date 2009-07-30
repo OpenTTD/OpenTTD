@@ -373,8 +373,10 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 			}
 
 			if (flags & DC_EXEC) {
+				/* We do this here because when replacing a bridge with another
+				 * type calling SetBridgeMiddle isn't needed. After all, the
+				 * tile alread has the has_bridge_above bits set. */
 				SetBridgeMiddle(tile, direction);
-				MarkTileDirtyByTile(tile);
 			}
 		}
 
@@ -404,8 +406,12 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 			default:
 				NOT_REACHED();
 		}
-		MarkTileDirtyByTile(tile_start);
-		MarkTileDirtyByTile(tile_end);
+
+		/* Mark all tiles dirty */
+		TileIndexDiff delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+		for (TileIndex tile = tile_start; tile <= tile_end; tile += delta) {
+			MarkTileDirtyByTile(tile);
+		}
 	}
 
 	if ((flags & DC_EXEC) && transport_type == TRANSPORT_RAIL) {
