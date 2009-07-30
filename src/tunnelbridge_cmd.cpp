@@ -179,35 +179,17 @@ bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len, DoCommandFlag fl
  */
 CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	BridgeType bridge_type;
 	RailType railtype = INVALID_RAILTYPE;
 	RoadTypes roadtypes = ROADTYPES_NONE;
-	uint x;
-	uint y;
-	uint sx;
-	uint sy;
-	TileIndex tile_start;
-	TileIndex tile_end;
-	Slope tileh_start;
-	Slope tileh_end;
-	uint z_start;
-	uint z_end;
-	TileIndex tile;
-	TileIndexDiff delta;
-	uint bridge_len;
-	Axis direction;
 	CommandCost cost(EXPENSES_CONSTRUCTION);
-	CommandCost ret;
-	bool replace_bridge = false;
-	BridgeType replaced_bridge_type;
-	TransportType transport_type;
+	Owner owner;
 
 	/* unpack parameters */
-	bridge_type = GB(p2, 0, 8);
+	BridgeType bridge_type = GB(p2, 0, 8);
 
 	if (p1 >= MapSize()) return CMD_ERROR;
 
-	transport_type = (TransportType)GB(p2, 15, 2);
+	TransportType transport_type = (TransportType)GB(p2, 15, 2);
 
 	/* type of bridge */
 	switch (transport_type) {
@@ -225,42 +207,42 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 			break;
 
 		default:
-			/* Airports don't have tunnels. */
+			/* Airports don't have bridges. */
 			return CMD_ERROR;
 	}
+	TileIndex tile_start = p1;
+	TileIndex tile_end = end_tile;
 
-	x = TileX(end_tile);
-	y = TileY(end_tile);
-	sx = TileX(p1);
-	sy = TileY(p1);
+	if (tile_start == tile_end) {
+		return_cmd_error(STR_ERROR_CANNOT_START_AND_END_ON);
+	}
 
-	/* check if valid, and make sure that (x,y) are smaller than (sx,sy) */
-	if (x == sx) {
-		if (y == sy) return_cmd_error(STR_ERROR_CANNOT_START_AND_END_ON);
+	Axis direction;
+	if (TileX(tile_start) == TileX(tile_end)) {
 		direction = AXIS_Y;
-		if (y > sy) Swap(y, sy);
-	} else if (y == sy) {
+	} else if (TileY(tile_start) == TileY(tile_end)) {
 		direction = AXIS_X;
-		if (x > sx) Swap(x, sx);
 	} else {
 		return_cmd_error(STR_ERROR_START_AND_END_MUST_BE_IN);
 	}
 
-	bridge_len = sx + sy - x - y - 1;
+	if (tile_end < tile_start) Swap(tile_start, tile_end);
+
+	uint bridge_len = GetTunnelBridgeLength(tile_start, tile_end);
 	if (transport_type != TRANSPORT_WATER) {
 		/* set and test bridge length, availability */
 		if (!CheckBridge_Stuff(bridge_type, bridge_len, flags)) return_cmd_error(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE);
 	}
 
 	/* retrieve landscape height and ensure it's on land */
-	tile_start = TileXY(x, y);
-	tile_end = TileXY(sx, sy);
 	if (IsWaterTile(tile_start) || IsWaterTile(tile_end)) {
 		return_cmd_error(STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH);
 	}
 
-	tileh_start = GetTileSlope(tile_start, &z_start);
-	tileh_end = GetTileSlope(tile_end, &z_end);
+	uint z_start;
+	uint z_end;
+	Slope tileh_start = GetTileSlope(tile_start, &z_start);
+	Slope tileh_end = GetTileSlope(tile_end, &z_end);
 
 	CommandCost terraform_cost_north = CheckBridgeSlopeNorth(direction, &tileh_start, &z_start);
 	CommandCost terraform_cost_south = CheckBridgeSlopeSouth(direction, &tileh_end,   &z_end);
@@ -301,8 +283,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		}
 
 		cost.AddCost((bridge_len + 1) * _price.clear_bridge); // The cost of clearing the current bridge.
-		replace_bridge = true;
-		replaced_bridge_type = GetBridgeType(tile_start);
+		owner = GetTileOwner(tile_start);
 
 		/* Do not remove road types when upgrading a bridge */
 		roadtypes |= GetRoadTypes(tile_start);
@@ -312,7 +293,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		bool allow_on_slopes = (_settings_game.construction.build_on_slopes && transport_type != TRANSPORT_WATER);
 
 		/* Try and clear the start landscape */
-		ret = DoCommand(tile_start, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+		CommandCost ret = DoCommand(tile_start, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (CmdFailed(ret)) return ret;
 		cost = ret;
 
@@ -331,13 +312,9 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		cost.AddCost(terraform_cost_south);
 
 		if (transport_type == TRANSPORT_WATER && (tileh_start == SLOPE_FLAT || tileh_end == SLOPE_FLAT)) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
-	}
 
-	if (!replace_bridge) {
 		TileIndex Heads[] = {tile_start, tile_end};
-		int i;
-
-		for (i = 0; i < 2; i++) {
+		for (int i = 0; i < 2; i++) {
 			if (MayHaveBridgeAbove(Heads[i])) {
 				if (IsBridgeAbove(Heads[i])) {
 					TileIndex north_head = GetNorthernBridgeEnd(Heads[i]);
@@ -350,12 +327,63 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 				}
 			}
 		}
+
+		TileIndexDiff delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+		for (TileIndex tile = tile_start + delta; tile != tile_end; tile += delta) {
+			if (GetTileMaxZ(tile) > z_start) return_cmd_error(STR_BRIDGE_TOO_LOW_FOR_TERRAIN);
+
+			if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) {
+				/* Disallow crossing bridges for the time being */
+				return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+			}
+
+			switch (GetTileType(tile)) {
+				case MP_WATER:
+					if (!IsWater(tile) && !IsCoast(tile)) goto not_valid_below;
+					break;
+
+				case MP_RAILWAY:
+					if (!IsPlainRail(tile)) goto not_valid_below;
+					break;
+
+				case MP_ROAD:
+					if (IsRoadDepot(tile)) goto not_valid_below;
+					break;
+
+				case MP_TUNNELBRIDGE:
+					if (IsTunnel(tile)) break;
+					if (direction == DiagDirToAxis(GetTunnelBridgeDirection(tile))) goto not_valid_below;
+					if (z_start < GetBridgeHeight(tile)) goto not_valid_below;
+					break;
+
+				case MP_UNMOVABLE:
+					if (!IsOwnedLand(tile)) goto not_valid_below;
+					break;
+
+				case MP_CLEAR:
+					break;
+
+				default:
+	not_valid_below:;
+					/* try and clear the middle landscape */
+					ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+					if (CmdFailed(ret)) return ret;
+					cost.AddCost(ret);
+					break;
+			}
+
+			if (flags & DC_EXEC) {
+				SetBridgeMiddle(tile, direction);
+				MarkTileDirtyByTile(tile);
+			}
+		}
+
+		owner = _current_company;
 	}
 
 	/* do the drill? */
 	if (flags & DC_EXEC) {
 		DiagDirection dir = AxisToDiagDir(direction);
-		Owner owner = replace_bridge ? GetTileOwner(tile_start) : _current_company;
 
 		switch (transport_type) {
 			case TRANSPORT_RAIL:
@@ -375,61 +403,9 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 			default:
 				NOT_REACHED();
-				break;
 		}
 		MarkTileDirtyByTile(tile_start);
 		MarkTileDirtyByTile(tile_end);
-	}
-
-	delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
-	for (tile = tile_start + delta; tile != tile_end; tile += delta) {
-		if (GetTileMaxZ(tile) > z_start) return_cmd_error(STR_BRIDGE_TOO_LOW_FOR_TERRAIN);
-
-		if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile) && !replace_bridge) {
-			/* Disallow crossing bridges for the time being */
-			return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
-		}
-
-		switch (GetTileType(tile)) {
-			case MP_WATER:
-				if (!IsWater(tile) && !IsCoast(tile)) goto not_valid_below;
-				break;
-
-			case MP_RAILWAY:
-				if (!IsPlainRail(tile)) goto not_valid_below;
-				break;
-
-			case MP_ROAD:
-				if (IsRoadDepot(tile)) goto not_valid_below;
-				break;
-
-			case MP_TUNNELBRIDGE:
-				if (IsTunnel(tile)) break;
-				if (replace_bridge) break;
-				if (direction == DiagDirToAxis(GetTunnelBridgeDirection(tile))) goto not_valid_below;
-				if (z_start < GetBridgeHeight(tile)) goto not_valid_below;
-				break;
-
-			case MP_UNMOVABLE:
-				if (!IsOwnedLand(tile)) goto not_valid_below;
-				break;
-
-			case MP_CLEAR:
-				break;
-
-			default:
-not_valid_below:;
-				/* try and clear the middle landscape */
-				ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-				if (CmdFailed(ret)) return ret;
-				cost.AddCost(ret);
-				break;
-		}
-
-		if (flags & DC_EXEC) {
-			SetBridgeMiddle(tile, direction);
-			MarkTileDirtyByTile(tile);
-		}
 	}
 
 	if ((flags & DC_EXEC) && transport_type == TRANSPORT_RAIL) {
@@ -466,16 +442,8 @@ not_valid_below:;
  */
 CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	TileIndexDiff delta;
-	TileIndex end_tile;
-	DiagDirection direction;
-	Slope start_tileh;
-	Slope end_tileh;
 	TransportType transport_type = (TransportType)GB(p1, 9, 1);
-	uint start_z;
-	uint end_z;
 	CommandCost cost(EXPENSES_CONSTRUCTION);
-	CommandCost ret;
 
 	_build_tunnel_endtile = 0;
 	if (transport_type == TRANSPORT_RAIL) {
@@ -485,13 +453,15 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 		if (!AreValidRoadTypes(rts) || !HasRoadTypesAvail(_current_company, rts)) return CMD_ERROR;
 	}
 
-	start_tileh = GetTileSlope(start_tile, &start_z);
-	direction = GetInclinedSlopeDirection(start_tileh);
+	uint start_z;
+	uint end_z;
+	Slope start_tileh = GetTileSlope(start_tile, &start_z);
+	DiagDirection direction = GetInclinedSlopeDirection(start_tileh);
 	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL);
 
 	if (IsWaterTile(start_tile)) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
 
-	ret = DoCommand(start_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	CommandCost ret = DoCommand(start_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return ret;
 
 	/* XXX - do NOT change 'ret' in the loop, as it is used as the price
@@ -499,7 +469,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 	 * cost before the loop will yield different costs depending on start-
 	 * position, because of increased-cost-by-length: 'cost += cost >> 3' */
 
-	delta = TileOffsByDiagDir(direction);
+	TileIndexDiff delta = TileOffsByDiagDir(direction);
 	DiagDirection tunnel_in_way_dir;
 	if (DiagDirToAxis(direction) == AXIS_Y) {
 		tunnel_in_way_dir = (TileX(start_tile) < (MapMaxX() / 2)) ? DIAGDIR_SW : DIAGDIR_NE;
@@ -507,15 +477,16 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 		tunnel_in_way_dir = (TileY(start_tile) < (MapMaxX() / 2)) ? DIAGDIR_SE : DIAGDIR_NW;
 	}
 
-	end_tile = start_tile;
+	TileIndex end_tile = start_tile;
 
-	/** Tile shift coeficient. Will decrease for very long tunnels to avoid exponential growth of price*/
+	/* Tile shift coeficient. Will decrease for very long tunnels to avoid exponential growth of price*/
 	int tiles_coef = 3;
-	/** Number of tiles from start of tunnel */
+	/* Number of tiles from start of tunnel */
 	int tiles = 0;
-	/** Number of tiles at which the cost increase coefficient per tile is halved */
+	/* Number of tiles at which the cost increase coefficient per tile is halved */
 	int tiles_bump = 25;
 
+	Slope end_tileh;
 	for (;;) {
 		end_tile += delta;
 		if (!IsValidTile(end_tile)) return_cmd_error(STR_TUNNEL_THROUGH_MAP_BORDER);
