@@ -188,6 +188,14 @@
 	return AIObject::DoCommand(tile, 0, 0, CMD_REMOVE_FROM_RAIL_WAYPOINT);
 }
 
+/* static */ bool AIRail::RemoveRailWaypointTileRect(TileIndex tile, TileIndex tile2)
+{
+	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, ::IsValidTile(tile2));
+
+	return AIObject::DoCommand(tile, tile2, 0, CMD_REMOVE_FROM_RAIL_WAYPOINT);
+}
+
 /* static */ bool AIRail::RemoveRailStationTileRect(TileIndex tile, TileIndex tile2)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));

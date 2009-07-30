@@ -282,7 +282,17 @@ public:
 	static bool RemoveRailWaypoint(TileIndex tile);
 
 	/**
-	 * Remove a rectangle of platform pieces from a rail station.
+	 * Remove all rail waypoint pieces within a rectangle on the map.
+	 * @param tile One corner of the rectangle to clear.
+	 * @param tile2 The oppposite corner.
+	 * @pre IsValidTile(tile).
+	 * @pre IsValidTile(tile2).
+	 * @return Whether at least one tile has been/can be cleared or not.
+	 */
+	static bool RemoveRailWaypointTileRect(TileIndex tile, TileIndex tile2);
+
+	/**
+	 * Remove all rail station platform pieces within a rectangle on the map.
 	 * @param tile One corner of the rectangle to clear.
 	 * @param tile2 The oppposite corner.
 	 * @pre IsValidTile(tile).
