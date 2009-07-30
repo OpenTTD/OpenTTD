@@ -796,7 +796,7 @@ static inline byte *CreateMulti(byte *layout, int n, byte b)
 	return layout;
 }
 
-static void GetStationLayout(byte *layout, int numtracks, int plat_len, const StationSpec *statspec)
+void GetStationLayout(byte *layout, int numtracks, int plat_len, const StationSpec *statspec)
 {
 	if (statspec != NULL && statspec->lengths >= plat_len &&
 			statspec->platforms[plat_len - 1] >= numtracks &&

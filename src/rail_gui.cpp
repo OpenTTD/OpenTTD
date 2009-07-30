@@ -150,8 +150,18 @@ static void PlaceRail_Waypoint(TileIndex tile)
 {
 	if (_remove_button_clicked) {
 		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_STATION);
+		return;
+	}
+
+	TrackBits bits = IsTileType(tile, MP_RAILWAY) && GetRailTileType(tile) == RAIL_TILE_NORMAL ? GetTrackBits(tile) : TRACK_BIT_NONE;
+	Track track = RemoveFirstTrack(&bits);
+	if (bits == TRACK_BIT_NONE && IsDiagonalTrack(track)) {
+		/* Valid tile for waypoints */
+		VpStartPlaceSizing(tile, track == TRACK_X ? VPM_FIX_X : VPM_FIX_Y, DDSP_BUILD_STATION);
 	} else {
-		DoCommandP(tile, _cur_waypoint_type, 0, CMD_BUILD_RAIL_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT), CcPlaySound1E);
+		/* Tile where we can't build rail waypoints. This is always going to fail,
+		 * but provides the user with a proper error message. */
+		DoCommandP(tile, 0, 0, CMD_BUILD_RAIL_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT));
 	}
 }
 
@@ -760,6 +770,13 @@ struct BuildRailToolbarWindow : Window {
 						/* Waypoint */
 						if (_remove_button_clicked) {
 							DoCommandP(end_tile, start_tile, 0, CMD_REMOVE_FROM_RAIL_WAYPOINT | CMD_MSG(STR_CANT_REMOVE_TRAIN_WAYPOINT), CcPlaySound1E);
+						} else {
+							TileArea ta(start_tile, end_tile);
+							uint32 p1 = _cur_railtype | (select_method == VPM_FIX_X ? AXIS_X : AXIS_Y) << 4 | ta.w << 8 | ta.h << 16 | _ctrl_pressed << 24;
+							uint32 p2 = STAT_CLASS_WAYP | _cur_waypoint_type << 8 | INVALID_STATION << 16;
+
+							CommandContainer cmdcont = { ta.tile, p1, p2, CMD_BUILD_RAIL_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT), CcPlaySound1E, "" };
+							ShowSelectStationIfNeeded(cmdcont, ta);
 						}
 					}
 					break;

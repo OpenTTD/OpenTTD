@@ -120,30 +120,16 @@ static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile, StringID str)
 	return best;
 }
 
-/** Convert existing rail to waypoint. Eg build a waypoint station over
- * piece of rail
- * @param tile tile where waypoint will be built
- * @param flags type of operation
- * @param p1 graphics for waypoint type, 0 indicates standard graphics
- * @param p2 unused
- * @param text unused
- * @return cost of operation or error
- *
- * @todo When checking for the tile slope,
- * distingush between "Flat land required" and "land sloped in wrong direction"
+/**
+ * Check whether the given tile is suitable for a waypoint.
+ * @param tile the tile to check for suitability
+ * @param axis the axis of the waypoint
  */
-CommandCost CmdBuildRailWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis)
 {
-	Axis axis;
-
-	/* if custom gfx are used, make sure it is within bounds */
-	if (p1 >= GetNumCustomStations(STAT_CLASS_WAYP)) return CMD_ERROR;
-
 	if (!IsTileType(tile, MP_RAILWAY) ||
-			GetRailTileType(tile) != RAIL_TILE_NORMAL || (
-				(axis = AXIS_X, GetTrackBits(tile) != TRACK_BIT_X) &&
-				(axis = AXIS_Y, GetTrackBits(tile) != TRACK_BIT_Y)
-			)) {
+			GetRailTileType(tile) != RAIL_TILE_NORMAL ||
+			GetTrackBits(tile) != AxisToTrackBits(axis)) {
 		return_cmd_error(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK);
 	}
 
@@ -159,55 +145,106 @@ CommandCost CmdBuildRailWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1,
 
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
+	return CommandCost();
+}
+
+extern void GetStationLayout(byte *layout, int numtracks, int plat_len, const StationSpec *statspec);
+
+/** Convert existing rail to waypoint. Eg build a waypoint station over
+ * piece of rail
+ * @param start_tile northern most tile where waypoint will be built
+ * @param flags type of operation
+ * @param p1 various bitstuffed elements
+ * - p1 = (bit  4)    - orientation (Axis)
+ * - p1 = (bit  8-15) - width of waypoint
+ * - p1 = (bit 16-23) - height of waypoint
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit  0- 7) - custom station class
+ * - p2 = (bit  8-15) - custom station id
+ * @param text unused
+ * @return cost of operation or error
+ */
+CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	/* Unpack parameters */
+	Axis axis      = (Axis)GB(p1,  4, 1);
+	byte width     = GB(p1,  8, 8);
+	byte height    = GB(p1, 16, 8);
+
+	StationClassID spec_class = (StationClassID)GB(p2, 0, 8);
+	byte spec_index           = GB(p2, 8, 8);
+
+	/* Check if the given station class is valid */
+	if (spec_class != STAT_CLASS_WAYP) return CMD_ERROR;
+	if (spec_index >= GetNumCustomStations(spec_class)) return CMD_ERROR;
+
+	/* The number of parts to build */
+	byte count = axis == AXIS_X ? height : width;
+
+	if ((axis == AXIS_X ? width : height) != 1) return CMD_ERROR;
+	if (count == 0 || count > _settings_game.station.station_spread) return CMD_ERROR;
+
+	/* Check whether the tiles we're building on are valid rail or not. */
+	TileIndexDiff offset = TileOffsByDiagDir(AxisToDiagDir(OtherAxis(axis)));
+	for (int i = 0; i < count; i++) {
+		TileIndex tile = start_tile + i * offset;
+		CommandCost ret = IsValidTileForWaypoint(tile, axis);
+		if (ret.Failed()) return ret;
+	}
+
 	/* Check if there is an already existing, deleted, waypoint close to us that we can reuse. */
-	Waypoint *wp = FindDeletedWaypointCloseTo(tile, STR_SV_STNAME_WAYPOINT);
+	TileIndex center_tile = start_tile + (count / 2) * offset;
+	Waypoint *wp = FindDeletedWaypointCloseTo(center_tile, STR_SV_STNAME_WAYPOINT);
 	if (wp == NULL && !Waypoint::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 
 	if (flags & DC_EXEC) {
 		if (wp == NULL) {
-			wp = new Waypoint(tile);
-		} else {
+			wp = new Waypoint(start_tile);
+		} else if (!wp->IsInUse()) {
 			/* Move existing (recently deleted) waypoint to the new location */
-
-			/* First we update the destination for all vehicles that
-			 * have the old waypoint in their orders. */
-			Vehicle *v;
-			FOR_ALL_TRAINS(v) {
-				if (v->First() == v && v->current_order.IsType(OT_GOTO_WAYPOINT) &&
-						v->dest_tile == wp->xy) {
-					v->dest_tile = tile;
-				}
-			}
-
-			wp->xy = tile;
+			wp->xy = start_tile;
 			InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
 		}
-		wp->owner = owner;
+		wp->owner = GetTileOwner(start_tile);
 
-		wp->rect.BeforeAddTile(tile, StationRect::ADD_TRY);
-
-		bool reserved = HasBit(GetRailReservationTrackBits(tile), AxisToTrack(axis));
-		MakeRailWaypoint(tile, owner, wp->index, axis, 0, GetRailType(tile));
-		SetRailStationReservation(tile, reserved);
-		MarkTileDirtyByTile(tile);
-
-		SetCustomStationSpecIndex(tile, AllocateSpecToStation(GetCustomStationSpec(STAT_CLASS_WAYP, p1), wp, true));
+		wp->rect.BeforeAddRect(start_tile, width, height, StationRect::ADD_TRY);
 
 		wp->delete_ctr = 0;
 		wp->facilities |= FACIL_TRAIN;
 		wp->build_date = _date;
 		wp->string_id = STR_SV_STNAME_WAYPOINT;
-		wp->train_station.tile = tile;
-		wp->train_station.w = 1;
-		wp->train_station.h = 1;
+		wp->train_station.tile = start_tile;
+		wp->train_station.w = width;
+		wp->train_station.h = height;
 
 		if (wp->town == NULL) MakeDefaultWaypointName(wp);
 
 		wp->UpdateVirtCoord();
-		YapfNotifyTrackLayoutChange(tile, AxisToTrack(axis));
+
+		const StationSpec *spec = GetCustomStationSpec(spec_class, spec_index);
+		byte *layout_ptr = AllocaM(byte, count);
+		if (spec == NULL) {
+			/* The layout must be 0 for the 'normal' waypoints by design. */
+			memset(layout_ptr, 0, count);
+		} else {
+			/* But for NewGRF waypoints we like to have their style. */
+			GetStationLayout(layout_ptr, count, 1, spec);
+		}
+		byte map_spec_index = AllocateSpecToStation(spec, wp, true);
+
+		for (int i = 0; i < count; i++) {
+			TileIndex tile = start_tile + i * offset;
+			bool reserved = HasBit(GetRailReservationTrackBits(tile), AxisToTrack(axis));
+			MakeRailWaypoint(tile, wp->owner, wp->index, axis, layout_ptr[i], GetRailType(tile));
+			SetCustomStationSpecIndex(tile, map_spec_index);
+			SetRailStationReservation(tile, reserved);
+			MarkTileDirtyByTile(tile);
+
+			YapfNotifyTrackLayoutChange(tile, AxisToTrack(axis));
+		}
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price.build_train_depot);
+	return CommandCost(EXPENSES_CONSTRUCTION, count * _price.build_train_depot);
 }
 
 /** Build a buoy.

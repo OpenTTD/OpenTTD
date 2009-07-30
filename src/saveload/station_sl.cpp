@@ -95,11 +95,6 @@ void AfterLoadStations()
 
 		if (Station::IsExpected(st)) {
 			for (CargoID c = 0; c < NUM_CARGO; c++) Station::From(st)->goods[c].cargo.InvalidateCache();
-		} else if (st->facilities & FACIL_TRAIN) {
-			/* Temporary fill this variable with correct data. */
-			st->train_station.tile = st->xy;
-			st->train_station.w = 1;
-			st->train_station.h = 1;
 		}
 
 		StationUpdateAnimTriggers(st);
@@ -331,6 +326,10 @@ static const SaveLoad _waypoint_desc[] = {
 	SLE_ST_INCLUDE(),
 
 	      SLE_VAR(Waypoint, town_cn,                   SLE_UINT16),
+
+	  SLE_CONDVAR(Waypoint, train_station.tile,        SLE_UINT32,                  124, SL_MAX_VERSION),
+	  SLE_CONDVAR(Waypoint, train_station.w,           SLE_UINT8,                   124, SL_MAX_VERSION),
+	  SLE_CONDVAR(Waypoint, train_station.h,           SLE_UINT8,                   124, SL_MAX_VERSION),
 
 	      SLE_END()
 };
