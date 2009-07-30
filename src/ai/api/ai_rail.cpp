@@ -177,7 +177,7 @@
 	EnforcePrecondition(false, GetRailTracks(tile) == RAILTRACK_NE_SW || GetRailTracks(tile) == RAILTRACK_NW_SE);
 	EnforcePrecondition(false, IsRailTypeAvailable(GetCurrentRailType()));
 
-	return AIObject::DoCommand(tile, 0, 0, CMD_BUILD_RAIL_WAYPOINT);
+	return AIObject::DoCommand(tile, GetCurrentRailType() | (GetRailTracks(tile) == RAILTRACK_NE_SW ? AXIS_X : AXIS_Y) << 4 | 1 << 8 | 1 << 16, STAT_CLASS_WAYP | INVALID_STATION << 16, CMD_BUILD_RAIL_WAYPOINT);
 }
 
 /* static */ bool AIRail::RemoveRailWaypoint(TileIndex tile)
