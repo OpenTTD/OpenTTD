@@ -38,6 +38,7 @@ bool ContentInfo::IsSelected() const
 	switch (this->state) {
 		case ContentInfo::SELECTED:
 		case ContentInfo::AUTOSELECTED:
+		case ContentInfo::ALREADY_HERE:
 			return true;
 
 		default:
