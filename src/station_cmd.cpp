@@ -828,7 +828,7 @@ void GetStationLayout(byte *layout, int numtracks, int plat_len, const StationSp
 
 /**
  * Find a nearby station that joins this station.
- * @param T the class to find a station for
+ * @tparam T the class to find a station for
  * @param error_message the error message when building a station on top of others
  * @param existing_station an existing station we build over
  * @param station_to_join the station to join to
@@ -867,6 +867,9 @@ CommandCost FindJoiningBaseStation(StationID existing_station, StationID station
 		if (!GetStationAround(ta, existing_station, st)) return CMD_ERROR;
 	}
 
+	/* Distant join */
+	if (*st == NULL && station_to_join != INVALID_STATION) *st = T::GetIfValid(station_to_join);
+
 	return CommandCost();;
 }
 
@@ -881,12 +884,7 @@ CommandCost FindJoiningBaseStation(StationID existing_station, StationID station
  */
 CommandCost FindJoiningStation(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, Station **st)
 {
-	CommandCost cost = FindJoiningBaseStation<Station, STR_MUST_REMOVE_RAILWAY_STATION_FIRST>(existing_station, station_to_join, adjacent, ta, st);
-
-	/* Distant join */
-	if (*st == NULL && station_to_join != INVALID_STATION) *st = Station::GetIfValid(station_to_join);
-
-	return cost;
+	return FindJoiningBaseStation<Station, STR_MUST_REMOVE_RAILWAY_STATION_FIRST>(existing_station, station_to_join, adjacent, ta, st);
 }
 
 /**
@@ -1184,7 +1182,7 @@ restart:
  * @param affected_stations the stations affected
  * @param flags the command flags
  * @param removal_cost the cost for removing the tile
- * @param T the type of station to remove
+ * @tparam T the type of station to remove
  * @return the number of cleared tiles or an error
  */
 template <class T>
@@ -1337,7 +1335,7 @@ CommandCost CmdRemoveFromRailWaypoint(TileIndex start, DoCommandFlag flags, uint
  * Remove a rail road station/waypoint
  * @param st The station/waypoint to remove the rail part from
  * @param flags operation to perform
- * @param T the type of station to remove
+ * @tparam T the type of station to remove
  * @return cost or failure of operation
  */
 template <class T>

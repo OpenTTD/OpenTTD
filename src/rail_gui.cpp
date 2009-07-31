@@ -776,7 +776,7 @@ struct BuildRailToolbarWindow : Window {
 							uint32 p2 = STAT_CLASS_WAYP | _cur_waypoint_type << 8 | INVALID_STATION << 16;
 
 							CommandContainer cmdcont = { ta.tile, p1, p2, CMD_BUILD_RAIL_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT), CcPlaySound1E, "" };
-							DoCommandP(&cmdcont);
+							ShowSelectWaypointIfNeeded(cmdcont, ta);
 						}
 					}
 					break;

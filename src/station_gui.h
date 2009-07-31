@@ -38,5 +38,6 @@ int DrawStationCoverageAreaText(int left, int right, int top, StationCoverageTyp
 void CheckRedrawStationCoverage(const Window *w);
 
 void ShowSelectStationIfNeeded(CommandContainer cmd, TileArea ta);
+void ShowSelectWaypointIfNeeded(CommandContainer cmd, TileArea ta);
 
 #endif /* STATION_GUI_H */

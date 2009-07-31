@@ -225,8 +225,11 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 	if ((axis == AXIS_X ? width : height) != 1) return CMD_ERROR;
 	if (count == 0 || count > _settings_game.station.station_spread) return CMD_ERROR;
 
-	/* Temporary */
-	if (station_to_join != INVALID_STATION) return CMD_ERROR;
+	bool reuse = (station_to_join != NEW_STATION);
+	if (!reuse) station_to_join = INVALID_STATION;
+	bool distant_join = (station_to_join != INVALID_STATION);
+
+	if (distant_join && (!_settings_game.station.distant_join_stations || !Waypoint::IsValidID(station_to_join))) return CMD_ERROR;
 
 	/* Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station) */
 	StationID est = INVALID_STATION;
@@ -246,7 +249,7 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 
 	/* Check if there is an already existing, deleted, waypoint close to us that we can reuse. */
 	TileIndex center_tile = start_tile + (count / 2) * offset;
-	if (wp == NULL) wp = FindDeletedWaypointCloseTo(center_tile, STR_SV_STNAME_WAYPOINT);
+	if (wp == NULL && reuse) wp = FindDeletedWaypointCloseTo(center_tile, STR_SV_STNAME_WAYPOINT);
 
 	if (wp != NULL) {
 		/* Reuse an existing station. */
