@@ -79,6 +79,8 @@ void MoveBuoysToWaypoints()
 		if (IsBuoyTile(xy) && GetStationIndex(xy) == index) {
 			wp->facilities |= FACIL_DOCK;
 		}
+
+		wp->rect.BeforeAddTile(st->xy, StationRect::ADD_FORCE);
 	}
 }
 

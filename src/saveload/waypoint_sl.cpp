@@ -109,6 +109,7 @@ void MoveWaypointsToBaseStations()
 			if (wp->spec != NULL) {
 				SetCustomStationSpecIndex(t, AllocateSpecToStation(wp->spec, new_wp, true));
 			}
+			new_wp->rect.BeforeAddTile(t, StationRect::ADD_FORCE);
 		}
 
 		wp->new_index = new_wp->index;
