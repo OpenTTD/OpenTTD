@@ -1,3 +1,8 @@
+0.7.2 (2009-08-01)
+------------------------------------------------------------------------
+- Fix: Vehicles would wait "very long" when they had nothing to unload and gradual loading was disabled [FS#3054] (r16933)
+
+
 0.7.2-RC2 (2009-07-21)
 ------------------------------------------------------------------------
 - Fix: When marking trains stuck do not reset the unload/stuck counter when the vehicle is unloading. It will be automatically reset once the vehicle wants to leave the station [FS#3038] (r16901)
