@@ -45,3 +45,10 @@
 
 	return ::BaseStation::Get(station_id)->xy;
 }
+
+/* static */ int32 AIBaseStation::GetConstructionDate(StationID station_id)
+{
+	if (!IsValidBaseStation(station_id)) return -1;
+
+	return ::BaseStation::Get(station_id)->build_date;
+}

@@ -61,6 +61,13 @@ public:
 	 * @return The tile the basestation is currently on.
 	 */
 	static TileIndex GetLocation(StationID station_id);
+
+	/**
+	 * Get the last date a station part was added to this station.
+	 * @param station_id The station to look at.
+	 * @return The last date some part of this station was build.
+	 */
+	static int32 GetConstructionDate(StationID station_id);
 };
 
 #endif /* AI_BASESTATION_HPP */
