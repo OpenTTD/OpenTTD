@@ -1,6 +1,6 @@
 ##name Serbian
 ##ownname Srpski
-##isocode srp
+##isocode sr_RS
 ##plural 6
 ##textdir ltr
 ##digitsep .
