@@ -34,6 +34,7 @@ BEGIN {
 	enum_value_size = 0
 	enum_string_to_error_size = 0
 	enum_error_to_string_size = 0
+	const_size = 0
 	struct_size = 0
 	method_size = 0
 	static_method_size = 0
@@ -217,6 +218,17 @@ BEGIN {
 	}
 	if (enum_value_size != 0) print ""
 
+	# Const values
+	mlen = 0
+	for (i = 1; i <= const_size; i++) {
+		if (mlen <= length(const_value[i])) mlen = length(const_value[i])
+	}
+	for (i = 1; i <= const_size; i++) {
+		print "	SQ" cls ".DefSQConst(engine, " cls "::" const_value[i] ", " substr(spaces, 1, mlen - length(const_value[i])) "\""  const_value[i] "\");"
+		delete const_value[i]
+	}
+	if (const_size != 0) print ""
+
 	# Mapping of OTTD strings to errors
 	mlen = 0
 	for (i = 1; i <= enum_string_to_error_size; i++) {
@@ -318,6 +330,13 @@ BEGIN {
 		}
 		next
 	}
+}
+
+# Add a const (non-enum) value
+/^[ 	]*static const \w+ \w+ = \w+;$/ {
+	const_size++
+	const_value[const_size] = $4
+	next
 }
 
 # Add a method to the list
