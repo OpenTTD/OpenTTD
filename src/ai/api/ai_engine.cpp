@@ -153,6 +153,13 @@
 	return ::Engine::Get(engine_id)->GetDisplayMaxTractiveEffort();
 }
 
+/* static */ int32 AIEngine::GetDesignDate(EngineID engine_id)
+{
+	if (!IsValidEngine(engine_id)) return -1;
+
+	return ::Engine::Get(engine_id)->intro_date;
+}
+
 /* static */ AIVehicle::VehicleType AIEngine::GetVehicleType(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return AIVehicle::VT_INVALID;
