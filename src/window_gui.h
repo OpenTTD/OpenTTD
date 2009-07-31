@@ -60,6 +60,12 @@ enum WidgetDrawDistances {
 	WD_FRAMETEXT_LEFT  = 6,     ///< Left offset of the text of the frame.
 	WD_FRAMETEXT_RIGHT = 6,     ///< Right offset of the text of the frame.
 
+	/* WWT_MATRIX */
+	WD_MATRIX_LEFT   = 2,       ///< Offset at left of a matrix cell.
+	WD_MATRIX_RIGHT  = 2,       ///< Offset at right of a matrix cell.
+	WD_MATRIX_TOP    = 3,       ///< Offset at top of a matrix cell.
+	WD_MATRIX_BOTTOM = 1,       ///< Offset at bottom of a matrix cell.
+
 	/* WWT_STICKYBOX */
 	WD_STICKYBOX_WIDTH  = 12,   ///< Width of a standard sticky box widget.
 	WD_STICKYBOX_LEFT   = 2,    ///< Left offset of sticky sprite.

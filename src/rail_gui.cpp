@@ -1000,7 +1000,6 @@ private:
 public:
 	BuildRailStationWindow(const WindowDesc *desc, Window *parent, bool newstation) : PickerWindowBase(parent)
 	{
-		this->line_height = FONT_HEIGHT_NORMAL + 4;
 		this->InitNested(desc, TRANSPORT_RAIL);
 
 		this->LowerWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
@@ -1019,7 +1018,7 @@ public:
 			_railstation.station_count = GetNumCustomStations(_railstation.station_class);
 
 			this->vscroll.count = _railstation.station_count;
-			this->vscroll.cap   = 5;
+			this->vscroll.cap   = GB(this->nested_array[BRSW_NEWST_LIST]->widget_data, MAT_ROW_START, MAT_ROW_BITS);
 			this->vscroll.pos   = Clamp(_railstation.station_type - 2, 0, this->vscroll.count - this->vscroll.cap);
 		} else {
 			/* New stations are not available, so ensure the default station
@@ -1082,17 +1081,26 @@ public:
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
 	{
-		if (widget != BRSW_NEWST_DROPDOWN) return;
+		switch (widget) {
+			case BRSW_NEWST_DROPDOWN: {
+				Dimension d = {0, 0};
+				for (uint i = 0; i < GetNumStationClasses(); i++) {
+					if (i == STAT_CLASS_WAYP) continue;
+					SetDParam(0, GetStationClassName((StationClassID)i));
+					d = maxdim(d, GetStringBoundingBox(STR_BLACK_STRING));
+				}
+				d.width += padding.width;
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
+			case BRSW_NEWST_LIST: {
+				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
 
-		Dimension d = {0, 0};
-		for (uint i = 0; i < GetNumStationClasses(); i++) {
-			if (i == STAT_CLASS_WAYP) continue;
-			SetDParam(0, GetStationClassName((StationClassID)i));
-			d = maxdim(d, GetStringBoundingBox(STR_BLACK_STRING));
+				size->height = GB(this->nested_array[widget]->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
+				break;
+			}
 		}
-		d.width += padding.width;
-		d.height += padding.height;
-		*size = maxdim(*size, d);
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -1125,19 +1133,18 @@ public:
 				break;
 
 			case BRSW_NEWST_LIST: {
-				uint y = r.top + 3;
+				uint y = r.top;
 				for (uint16 i = this->vscroll.pos; i < _railstation.station_count && i < (uint)(this->vscroll.pos + this->vscroll.cap); i++) {
 					const StationSpec *statspec = GetCustomStationSpec(_railstation.station_class, i);
 
+					StringID str = STR_STAT_CLASS_DFLT;
 					if (statspec != NULL && statspec->name != 0) {
 						if (HasBit(statspec->callbackmask, CBM_STATION_AVAIL) && GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
-							GfxFillRect(r.left + 1, y - 2, r.right - 1, y + FONT_HEIGHT_NORMAL, 0, FILLRECT_CHECKER);
+							GfxFillRect(r.left + 1, y + 1, r.right - 1, y + this->line_height - 2, 0, FILLRECT_CHECKER);
 						}
-
-						DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, statspec->name, i == _railstation.station_type ? TC_WHITE : TC_BLACK);
-					} else {
-						DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_STAT_CLASS_DFLT, i == _railstation.station_type ? TC_WHITE : TC_BLACK);
+						str = statspec->name;
 					}
+					DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, str, i == _railstation.station_type ? TC_WHITE : TC_BLACK);
 
 					y += this->line_height;
 				}
