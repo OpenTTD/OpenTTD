@@ -1,0 +1,35 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_waypoint.hpp"
+
+namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> AIBaseStation::SpecialStationIDs GetParam(ForceType<AIBaseStation::SpecialStationIDs>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIBaseStation::SpecialStationIDs)tmp; }
+	template <> int Return<AIBaseStation::SpecialStationIDs>(HSQUIRRELVM vm, AIBaseStation::SpecialStationIDs res) { sq_pushinteger(vm, (int32)res); return 1; }
+
+	/* Allow AIBaseStation to be used as Squirrel parameter */
+	template <> AIBaseStation *GetParam(ForceType<AIBaseStation *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIBaseStation *)instance; }
+	template <> AIBaseStation &GetParam(ForceType<AIBaseStation &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIBaseStation *)instance; }
+	template <> const AIBaseStation *GetParam(ForceType<const AIBaseStation *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIBaseStation *)instance; }
+	template <> const AIBaseStation &GetParam(ForceType<const AIBaseStation &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIBaseStation *)instance; }
+	template <> int Return<AIBaseStation *>(HSQUIRRELVM vm, AIBaseStation *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIBaseStation", res, NULL, DefSQDestructorCallback<AIBaseStation>); return 1; }
+}; // namespace SQConvert
+
+void SQAIBaseStation_Register(Squirrel *engine) {
+	DefSQClass <AIBaseStation> SQAIBaseStation("AIBaseStation");
+	SQAIBaseStation.PreRegister(engine);
+	SQAIBaseStation.AddConstructor<void (AIBaseStation::*)(), 1>(engine, "x");
+
+	SQAIBaseStation.DefSQConst(engine, AIBaseStation::STATION_NEW,           "STATION_NEW");
+	SQAIBaseStation.DefSQConst(engine, AIBaseStation::STATION_JOIN_ADJACENT, "STATION_JOIN_ADJACENT");
+	SQAIBaseStation.DefSQConst(engine, AIBaseStation::STATION_INVALID,       "STATION_INVALID");
+	SQAIBaseStation.DefSQConst(engine, AIBaseStation::WAYPOINT_INVALID,      "WAYPOINT_INVALID");
+
+	SQAIBaseStation.DefSQStaticMethod(engine, &AIBaseStation::IsValidBaseStation, "IsValidBaseStation", 2, ".i");
+	SQAIBaseStation.DefSQStaticMethod(engine, &AIBaseStation::GetName,            "GetName",            2, ".i");
+	SQAIBaseStation.DefSQStaticMethod(engine, &AIBaseStation::SetName,            "SetName",            3, ".is");
+	SQAIBaseStation.DefSQStaticMethod(engine, &AIBaseStation::GetLocation,        "GetLocation",        2, ".i");
+
+	SQAIBaseStation.PostRegister(engine);
+}

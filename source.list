@@ -608,6 +608,7 @@ ai/api/ai_abstractlist.hpp
 ai/api/ai_accounting.hpp
 ai/api/ai_airport.hpp
 ai/api/ai_base.hpp
+ai/api/ai_basestation.hpp
 ai/api/ai_bridge.hpp
 ai/api/ai_bridgelist.hpp
 ai/api/ai_buoylist.hpp
@@ -662,6 +663,7 @@ ai/api/ai_abstractlist.cpp
 ai/api/ai_accounting.cpp
 ai/api/ai_airport.cpp
 ai/api/ai_base.cpp
+ai/api/ai_basestation.cpp
 ai/api/ai_bridge.cpp
 ai/api/ai_bridgelist.cpp
 ai/api/ai_buoylist.cpp

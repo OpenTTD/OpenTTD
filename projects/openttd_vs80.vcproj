@@ -2620,6 +2620,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\ai\api\ai_basestation.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\ai\api\ai_bridge.hpp"
 				>
 			</File>
@@ -2829,6 +2833,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\ai\api\ai_base.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_basestation.cpp"
 				>
 			</File>
 			<File

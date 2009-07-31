@@ -8,11 +8,12 @@
 #include "ai_object.hpp"
 #include "ai_error.hpp"
 #include "ai_road.hpp"
+#include "ai_basestation.hpp"
 
 /**
  * Class that handles all station related functions.
  */
-class AIStation : public AIObject {
+class AIStation : public AIBaseStation {
 public:
 	static const char *GetClassName() { return "AIStation"; }
 
@@ -50,16 +51,6 @@ public:
 	};
 
 	/**
-	 * Special station IDs for building adjacent/new stations when
-	 * the adjacent/distant join features are enabled.
-	 */
-	enum SpecialStationIDs {
-		STATION_NEW = 0xFFFD,           //!< Build a new station
-		STATION_JOIN_ADJACENT = 0xFFFE, //!< Join an neighbouring station if one exists
-		STATION_INVALID = 0xFFFF,       //!< Invalid station id.
-	};
-
-	/**
 	 * Checks whether the given station is valid and owned by you.
 	 * @param station_id The station to check.
 	 * @return True if and only if the station is valid.
@@ -73,34 +64,6 @@ public:
 	 * @post Use IsValidStation() to see if the station is valid.
 	 */
 	static StationID GetStationID(TileIndex tile);
-
-	/**
-	 * Get the name of a station.
-	 * @param station_id The station to get the name of.
-	 * @pre IsValidStation(station_id).
-	 * @return The name of the station.
-	 */
-	static char *GetName(StationID station_id);
-
-	/**
-	 * Set the name this station.
-	 * @param station_id The station to set the name of.
-	 * @param name The new name of the station.
-	 * @pre IsValidStation(station_id).
-	 * @pre 'name' must have at least one character.
-	 * @pre 'name' must have at most 30 characters.
-	 * @exception AIError::ERR_NAME_IS_NOT_UNIQUE
-	 * @return True if the name was changed.
-	 */
-	static bool SetName(StationID station_id, const char *name);
-
-	/**
-	 * Get the current location of a station.
-	 * @param station_id The station to get the location of.
-	 * @pre IsValidStation(station_id).
-	 * @return The tile the station is currently on.
-	 */
-	static TileIndex GetLocation(StationID station_id);
 
 	/**
 	 * See how much cargo there is waiting on a station.

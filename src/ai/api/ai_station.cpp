@@ -28,34 +28,6 @@
 	return ::GetStationIndex(tile);
 }
 
-/* static */ char *AIStation::GetName(StationID station_id)
-{
-	if (!IsValidStation(station_id)) return NULL;
-
-	static const int len = 64;
-	char *station_name = MallocT<char>(len);
-
-	::SetDParam(0, Station::Get(station_id)->index);
-	::GetString(station_name, STR_STATION_NAME, &station_name[len - 1]);
-	return station_name;
-}
-
-/* static */ bool AIStation::SetName(StationID station_id, const char *name)
-{
-	EnforcePrecondition(false, IsValidStation(station_id));
-	EnforcePrecondition(false, !::StrEmpty(name));
-	EnforcePreconditionCustomError(false, ::strlen(name) < MAX_LENGTH_STATION_NAME_BYTES, AIError::ERR_PRECONDITION_STRING_TOO_LONG);
-
-	return AIObject::DoCommand(0, station_id, 0, CMD_RENAME_STATION, name);
-}
-
-/* static */ TileIndex AIStation::GetLocation(StationID station_id)
-{
-	if (!IsValidStation(station_id)) return INVALID_TILE;
-
-	return ::Station::Get(station_id)->xy;
-}
-
 /* static */ int32 AIStation::GetCargoWaiting(StationID station_id, CargoID cargo_id)
 {
 	if (!IsValidStation(station_id)) return -1;
