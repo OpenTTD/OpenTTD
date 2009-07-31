@@ -1799,8 +1799,7 @@ static bool AirportMove(Aircraft *v, const AirportFTAClass *apc)
 	} while (current != NULL);
 
 	DEBUG(misc, 0, "[Ap] cannot move further on Airport! (pos %d state %d) for vehicle %d", v->pos, v->state, v->index);
-	assert(0);
-	return false;
+	NOT_REACHED();
 }
 
 /*  returns true if the road ahead is busy, eg. you must wait before proceeding */

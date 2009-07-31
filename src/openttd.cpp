@@ -116,6 +116,8 @@ void CDECL error(const char *s, ...)
 	ShowOSErrorBox(buf, true);
 	if (_video_driver != NULL) _video_driver->Stop();
 
+	/* Don't go into NOT_REACHED here; NOT_REACHED is using error, so
+	 * using it would result in an infinite loop instead of errors. */
 	assert(0);
 	exit(1);
 }

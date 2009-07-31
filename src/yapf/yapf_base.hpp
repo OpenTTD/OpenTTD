@@ -275,9 +275,7 @@ public:
 				 *  - PfCalcEstimate() gives too large numbers
 				 *  - PfCalcCost() gives too small numbers
 				 *  - You have used negative cost penalty in some cases (cost bonus) */
-				assert(0);
-
-				return;
+				NOT_REACHED();
 			}
 			return;
 		}

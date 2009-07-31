@@ -1248,8 +1248,7 @@ static char *GetSpecialNameString(char *buff, int ind, int64 *argv, const char *
 		return strecpy(buff, GetScreenshotFormatDesc(i), last);
 	}
 
-	assert(0);
-	return NULL;
+	NOT_REACHED();
 }
 
 #ifdef ENABLE_NETWORK
