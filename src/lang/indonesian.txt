@@ -678,8 +678,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Pengaturan NewG
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Pengaturan Transparansi
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Nama kota ditampilkan
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Nama stasiun ditampilkan
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Tampilkan daftar waypoint
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Tanda ditampilkan
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Tampilkan Penunjuk Arah
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animasi penuh
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Detail penuh
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Bangunan tembus pandang
@@ -1155,23 +1155,23 @@ STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Menuju 
 STR_GO_TO_WAYPOINT                                              :Pergi lewat {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Pergi non stop lewat {WAYPOINT}
 
-STR_WAYPOINTNAME_CITY                                           :Titik penunjuk arah {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :Titik penunjuk arah {TOWN} #{COMMA}
+STR_WAYPOINTNAME_CITY                                           :Waypoint {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Waypoint {TOWN} #{COMMA}
 STR_BUOYNAME_CITY                                               :Pelampung {TOWN}
 STR_BUOYNAME_CITY_SERIAL                                        :Pelampung {TOWN} #{COMMA}
-STR_LANDINFO_WAYPOINT                                           :Titik penunjuk arah
+STR_LANDINFO_WAYPOINT                                           :Waypoint
 
-STR_WAYPOINT                                                    :{WHITE}Titik Penunjuk arah
-STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Pilih jenis titik penunjuk arah
+STR_WAYPOINT                                                    :{WHITE}Waypoint
+STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Pilih jenis waypoint
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edit nama titik penunjuk arah
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ubah nama waypoint
 
-STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Tidak dapat mengganti nama sinyal jalur...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Rubah rel ke titik penunjuk arah
-STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Tidak dapat membuat sinyal jalur kereta disini...
-STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Tidak dapat menghapus sinyal jalur kereta disini...
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Tidak dapat mengganti nama waypoint...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Ubah rel menjadi waypoint
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Tidak dapat membuat waypoint kereta disini...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Tidak dapat menghapus waypoint kereta disini...
 
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Membangun rel kereta menggunakan mode Rel Otomatis
 
@@ -1584,6 +1584,7 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Jalur rel keret
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Rel dengan sinyal campuran dan jalan satu arah
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Rel dengan sinyal jalan dan sinyal jalan satu arah
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Harus menghapus stasiun dulu
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Harus membongkar rel waypoint terlebih dahulu
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Pisahkan stasiun
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Gabung stasiun
 
@@ -1767,12 +1768,14 @@ STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Arah
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Jumlah jalur
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Panjang peron
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Terlalu dekat dengan stasion kereta lainnya
-STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}bergandengan dengan lebih dari satu stasiun yang telah ada
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}berdempetan dengan lebih dari satu stasiun yang telah ada
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Berdempetan dengan lebih dari satu waypoint yang ada
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Terlalu banyak stasiun/area bongkar muat
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Terlalu banyak bag. stasiun
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Terlalu banyak pemberhentian Bus
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Terlalu banyak terminal truk
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Terlalu dekat dengan stasiun/area bongkar muat lainnya
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Terlalu dekat dengan waypoint yang lain
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Harus menghancurkan jalur rel stasiun terlebih dahul
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Terlalu dekat dengan bandara lainnya
@@ -1852,7 +1855,7 @@ STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Tekan CT
 
 STR_UNDEFINED                                                   :(belum terdefinisi)
 STR_STAT_CLASS_DFLT                                             :Stasiun asli/"default"
-STR_STAT_CLASS_WAYP                                             :Penunjuk Arah
+STR_STAT_CLASS_WAYP                                             :Waypoint
 
 ##id 0x3800
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientasi Galangan
@@ -2176,8 +2179,8 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Pilih wa
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Ubah warna kendaraan perusahaan
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Ubah nama pimpinan
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Ubah nama perusahaan
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Tambah jumlah pinjaman
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Bayar sebagian pinjaman
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Tambah jumlah pinjaman. Tekan Ctrl+Click untuk meminjam sebanyak mungkin.
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Bayar cicilan pinjaman. Tekan Ctrl+Click untuk membayar cicilan sebanyak mungkin.
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Pimpinan)
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Dilantik : {WHITE}{NUM}
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Kendaraan:
@@ -2741,7 +2744,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Tidak da
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Tidak dapat membalik arah kendaraan yang terdiri dari beberapa unit
 STR_CLEAR_TIME                                                  :{BLACK}Hapus waktu
 STR_RESET_LATENESS                                              :{BLACK}Reset
-STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Ganti nama penunjuk arah
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Ubah nama waypoint
 
 STR_TRAIN_STOPPING                                              :{RED}Berhenti
 STR_TRAIN_STOPPING_VEL                                          :{RED}Akan berhenti, {VELOCITY}
@@ -2797,7 +2800,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Membangu
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Membangun Galangan Kapal (untuk membuat dan memperbaiki kapal)
 
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Kapal pertama tiba di {STATION}!
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Menempatkan rambu yang dapat digunakan sebagai petunjuk jalan
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Tempatkan rambu yang dapat digunakan sebagai petunjuk arah
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Tidak dapat menempatkan rambu disini...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Membangun jembatan air
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Tidak dapat membangun jembatan air disini...
@@ -3384,7 +3387,7 @@ STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Hidup/ma
 STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Hidup/matikan transparansi pepohonan. CTRL+klik untuk mengunci.
 STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Hidup/matikan transparansi perumahan. CTRL+klik untuk mengunci.
 STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Hidup/matikan transparansi industri. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Hidup/matikan transparansi bangunan semacam stasiun, depo dan waypoints. CTRL+klik untuk mengunci.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Hidup/matikan transparansi bangunan seperti stasiun, depo dan waypoint. CTRL+klik untuk mengunci.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Hidup/matikan transparansi jembatan. CTRL+klik untuk mengunci.
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Hidup/matikan transparansi struktur bangunan semacam mercusuar dan antena. CTRL+klik untuk mengunci.
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Hidup/matikan transparansi katenari CTRL+klik untuk mengunci.

@@ -678,8 +678,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Definições Ne
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opções de Transparência
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Mostrar nomes de cidades
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Mostrar nomes de estações
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Mostrar nomes dos pontos de passagem
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Mostrar indicações
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Mostrar pontos de passagem
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Animação completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Máximo de detalhes
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Edifícios transparentes
@@ -1584,6 +1584,7 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Linha férrea c
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Linha férrea com sinais multi- e de sentido único
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Linha férrea com sinais de trajecto e de sentido único
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}É preciso remover a estação primeiro
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}É preciso remover o ponto de passagem primeiro
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Construir uma estação separada
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Juntar estação
 
@@ -1768,11 +1769,13 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Número 
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Tamanho da plataforma
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Demasiado perto de outra estação ferroviária
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Muito junto de uma estação/local de carga já existente
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Junta mais do que um ponto de passagem existente
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Demasiadas estações/locais de carga
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Demasiadas partes na estação ferroviária
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paragens de autocarro
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Demasiadas estações de carga
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Muito junto de uma estação/local de carga
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Demasiado perto de outro ponto de passagem
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Precisa de demolir a estação primeiro
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Demasiado perto de outro aeroporto
@@ -2176,8 +2179,8 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Seleccio
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Alterar cores dos veículos
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Alterar nome do presidente
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Alterar nome da empresa
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Aumentar empréstimo
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Pagar parte do empréstimo
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Aumentar empréstimo. Ctrl+Clique aumenta tanto empréstimo quanto possível
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Pagar parte do empréstimo. Ctrl+Clique paga tanto empréstimo quanto possível
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Presidente)
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurado: {WHITE}{NUM}
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Veículos:

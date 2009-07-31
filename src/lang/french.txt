@@ -1585,6 +1585,7 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Rails avec des 
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Rails avec des signaux combinés et de chemin à sens unique
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Rails avec des signaux de chemin et de chemin à sens unique
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Vous devez d'abord retirer la gare
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Vous devez d'abord retirer le point de contrôle
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Construire une station séparée
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Joindre une station
 
@@ -1769,11 +1770,13 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Nombre d
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Longueur du quai
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Trop près d'une autre gare
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Adjacent à plus d'une gare à la fois
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Adjacent à plus d'un point de contrôle
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Trop de gares
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Trop de parties de gare
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Trop d'arrêts d'autobus
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Trop d'aires de chargement
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Trop près d'une autre gare
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Trop près d'un autre point de contrôle
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Vous devez d'abord détruire la gare
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Trop près d'un autre aéroport

@@ -1533,7 +1533,7 @@ STR_ERROR_TOO_HIGH                                              :{WHITE}Zu hoch
 STR_ALREADY_LEVELLED                                            :{WHITE}... ist schon flach
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Keine geeigneten Gleise
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}...ist bereits gebaut
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Gleise müssen erst entfernt werden
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Gleise müssen erst abgerissen werden
 STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Einbahnstraße oder blockierter Weg
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Gleis- / Bahnhofsbau
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Bau elektrifizierter Strecken
@@ -1585,6 +1585,7 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Gleis mit Kombi
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Gleis mit Kombinations- und einseitigem Pfadsignal
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Gleis mit Pfadsignal und einseitigem Pfadsignal
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Bahnhof muss erst abgerissen werden
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Wegpunkt muss erst abgerissen werden
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Errichte eine getrennte Station
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Verbinde die Station
 
@@ -1769,11 +1770,13 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Anzahl d
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Bahnsteiglänge
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Zu nah an einem anderen Bahnhof
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grenzt an mehr als eine vorhandene Station/Ladeplatz
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Grenzt an mehr als einen vorhandenen Wegpunkt
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Zu viele Stationen/Ladeplätze im Umkreis
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Zu viele Bahnsteigteile
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Zu viele Busbahnhöfe
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Zu viele Lkw-Ladeplätze
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Stationen/Ladeplätze liegen zu dicht beisammen
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Zu nahe an einem anderen Wegpunkt
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Bahnhof muss erst abgerissen werden
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Zu dicht an einem anderen Flughafen
