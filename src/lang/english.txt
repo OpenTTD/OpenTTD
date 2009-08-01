@@ -1833,6 +1833,8 @@ STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Select l
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Select passenger tram station orientation
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Select freight tram station orientation
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centre main view on station location
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centre main view on waypoint location
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centre main view on buoy location
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Show station ratings
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Change name of station
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Show list of accepted cargo
@@ -2748,6 +2750,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Can't re
 STR_CLEAR_TIME                                                  :{BLACK}Clear Time
 STR_RESET_LATENESS                                              :{BLACK}Reset Late Counter
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Change waypoint name
+STR_CHANGE_BUOY_NAME                                            :{BLACK}Change buoy name
 
 STR_TRAIN_STOPPING                                              :{RED}Stopping
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopping, {VELOCITY}

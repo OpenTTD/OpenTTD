@@ -44,7 +44,11 @@ public:
 		if (this->wp->owner != OWNER_NONE) this->owner = this->wp->owner;
 
 		this->CreateNestedTree(desc);
-		if (this->vt == VEH_TRAIN) this->nested_array[WAYPVW_SHOW_VEHICLES]->SetDataTip(STR_TRAIN, STR_SCHEDULED_TRAINS_TIP);
+		if (this->vt == VEH_TRAIN) {
+			this->nested_array[WAYPVW_SHOW_VEHICLES]->SetDataTip(STR_TRAIN, STR_SCHEDULED_TRAINS_TIP);
+			this->nested_array[WAYPVW_CENTERVIEW]->tool_tip = STR_WAYPOINT_VIEW_CENTER_TOOLTIP;
+			this->nested_array[WAYPVW_RENAME]->tool_tip = STR_CHANGE_WAYPOINT_NAME;
+		}
 		this->FinishInitNested(desc, window_number);
 
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
@@ -124,8 +128,8 @@ static const NWidgetPart _nested_waypoint_view_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_CENTERVIEW), SetMinimalSize(100, 12), SetFill(1, 0), SetDataTip(STR_BUTTON_LOCATION, STR_STATION_VIEW_CENTER_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_RENAME), SetMinimalSize(100, 12), SetFill(1, 0), SetDataTip(STR_QUERY_RENAME, STR_CHANGE_WAYPOINT_NAME),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_CENTERVIEW), SetMinimalSize(100, 12), SetFill(1, 0), SetDataTip(STR_BUTTON_LOCATION, STR_BUOY_VIEW_CENTER_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_RENAME), SetMinimalSize(100, 12), SetFill(1, 0), SetDataTip(STR_QUERY_RENAME, STR_CHANGE_BUOY_NAME),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_SHOW_VEHICLES), SetMinimalSize(15, 12), SetDataTip(STR_SHIP, STR_SCHEDULED_SHIPS_TIP),
 	EndContainer(),
 };
