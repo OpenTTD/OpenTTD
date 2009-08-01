@@ -26,6 +26,13 @@ public:
 		COMPANY_SELF    = 254, //!< Constant that gets resolved to the correct company index for your company.
 	};
 
+	/** Possible genders for company presidents. */
+	enum Gender {
+		GENDER_MALE,         //!< A male person.
+		GENDER_FEMALE,       //!< A female person.
+		GENDER_INVALID = -1, //!< An invalid gender.
+	};
+
 	/**
 	 * Resolved the given company index to the correct index for the company. If
 	 *  the company index was COMPANY_SELF it will be resolved to the index of
@@ -77,6 +84,22 @@ public:
 	 * @return The name of the president of the given company.
 	 */
 	static char *GetPresidentName(CompanyID company);
+
+	/**
+	 * Set the gender of the president of your company.
+	 * @param gender The new gender for your president.
+	 * @pre GetPresidentGender(AICompany.COMPANY_SELF) != gender.
+	 * @return True if the gender was changed.
+	 * @note When succesfull a random face will be created.
+	 */
+	static bool SetPresidentGender(Gender gender);
+
+	/**
+	 * Get the gender of the president of the given company.
+	 * @param company The company to get the presidents gender off.
+	 * @return The gender of the president.
+	 */
+	static Gender GetPresidentGender(CompanyID company);
 
 	/**
 	 * Sets the amount to loan.

@@ -8,6 +8,7 @@
 #include "../../command_func.h"
 #include "../../company_func.h"
 #include "../../company_base.h"
+#include "../../company_manager_face.h"
 #include "../../economy_func.h"
 #include "../../strings_func.h"
 #include "../../tile_map.h"
@@ -70,6 +71,27 @@
 	}
 
 	return president_name;
+}
+
+/* static */ bool AICompany::SetPresidentGender(Gender gender)
+{
+	EnforcePrecondition(false, gender == GENDER_MALE || gender == GENDER_FEMALE);
+	EnforcePrecondition(false, GetPresidentGender(AICompany::COMPANY_SELF) != gender);
+
+	CompanyManagerFace cmf;
+	GenderEthnicity ge = (GenderEthnicity)((gender == GENDER_FEMALE ? (1 << ::GENDER_FEMALE) : 0) | (::InteractiveRandom() & (1 << ETHNICITY_BLACK)));
+	RandomCompanyManagerFaceBits(cmf, ge, false);
+
+	return AIObject::DoCommand(0, 0, cmf, CMD_SET_COMPANY_MANAGER_FACE);
+}
+
+/* static */ AICompany::Gender AICompany::GetPresidentGender(CompanyID company)
+{
+	company = ResolveCompanyID(company);
+	if (company == COMPANY_INVALID) return GENDER_INVALID;
+
+	GenderEthnicity ge = (GenderEthnicity)GetCompanyManagerFaceBits(Company::Get(company)->face, CMFV_GEN_ETHN, GE_WM);
+	return HasBit(ge, ::GENDER_FEMALE) ? GENDER_FEMALE : GENDER_MALE;
 }
 
 /* static */ Money AICompany::GetCompanyValue(AICompany::CompanyID company)
