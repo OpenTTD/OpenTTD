@@ -19,9 +19,11 @@
  * \li AIAbstractList::SORT_ASCENDING
  * \li AIAbstractList::SORT_DESCENDING
  * \li AIBaseStation
+ * \li AIBuoyList
  * \li AICompany::GetPresidentGender
  * \li AICompany::SetPresidentGender
  * \li AIEngine::GetDesignDate
+ * \li AIRail::RemoveRailWaypointTileRect
  *
  * Other changes:
  * \li The GetName / SetName / GetLocation functions were moved from AIStation
