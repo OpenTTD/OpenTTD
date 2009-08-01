@@ -2644,6 +2644,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\ai\api\ai_changelog.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\ai\api\ai_company.hpp"
 				>
 			</File>

@@ -614,6 +614,7 @@ ai/api/ai_bridgelist.hpp
 ai/api/ai_buoylist.hpp
 ai/api/ai_cargo.hpp
 ai/api/ai_cargolist.hpp
+ai/api/ai_changelog.hpp
 ai/api/ai_company.hpp
 ai/api/ai_controller.hpp
 ai/api/ai_date.hpp
