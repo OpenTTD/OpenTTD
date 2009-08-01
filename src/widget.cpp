@@ -1980,11 +1980,15 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 	const Dimension *padding = NULL;
 	switch (this->type) {
 		case WWT_EMPTY:
-		case WWT_MATRIX:
 		case WWT_SCROLLBAR:
 		case WWT_SCROLL2BAR:
 		case WWT_HSCROLLBAR: {
 			static const Dimension extra = {0, 0};
+			padding = &extra;
+			break;
+		}
+		case WWT_MATRIX: {
+			static const Dimension extra = {WD_MATRIX_LEFT + WD_MATRIX_RIGHT, WD_MATRIX_TOP + WD_MATRIX_BOTTOM};
 			padding = &extra;
 			break;
 		}
