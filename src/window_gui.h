@@ -220,7 +220,7 @@ struct Window : ZeroedMemoryAllocator {
 	};
 
 protected:
-	void InitializeData(WindowClass cls, const Widget *widget, NWidgetBase *nwid, int window_number, int biggest_index);
+	void InitializeData(WindowClass cls, const Widget *widget, int window_number);
 	void InitializePositionSize(int x, int y, int min_width, int min_height);
 	void FindWindowPlacementAndResize(int def_width, int def_height);
 	void FindWindowPlacementAndResize(const WindowDesc *desc);
@@ -268,6 +268,8 @@ public:
 	Window *z_back;                  ///< The window behind us in z-order.
 
 	void InitNested(const WindowDesc *desc, WindowNumber number = 0);
+	void CreateNestedTree(const WindowDesc *desc, bool fill_nested = true);
+	void FinishInitNested(const WindowDesc *desc, WindowNumber window_number);
 
 	/**
 	 * Sets the enabled/disabled status of a widget.
