@@ -185,18 +185,38 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 
 extern void UpdateAllStationVirtCoords();
 
+/** Widgets of the main window. */
+enum MainWindowWidgets {
+	MW_VIEWPORT, ///< Main window viewport.
+};
+
+static const struct NWidgetPart _nested_main_window_widgets[] = {
+	NWidget(NWID_VIEWPORT, INVALID_COLOUR, MW_VIEWPORT), SetResize(1, 1),
+};
+
+static const WindowDesc _main_window_desc(
+	0, 0, 0, 0, 0, 0,
+	WC_MAIN_WINDOW, WC_NONE,
+	0,
+	NULL, _nested_main_window_widgets, lengthof(_nested_main_window_widgets)
+);
+
 struct MainWindow : Window
 {
-	MainWindow(int width, int height) : Window(0, 0, width, height, WC_MAIN_WINDOW, NULL)
+	MainWindow() : Window()
 	{
-		InitializeWindowViewport(this, 0, 0, width, height, TileXY(32, 32), ZOOM_LVL_VIEWPORT);
+		this->InitNested(&_main_window_desc, 0);
+		ResizeWindow(this, _screen.width, _screen.height);
+
+		NWidgetViewport *nvp = (NWidgetViewport *)this->nested_array[MW_VIEWPORT];
+		nvp->InitializeViewport(this, TileXY(32, 32), ZOOM_LVL_VIEWPORT);
 	}
 
 	virtual void OnPaint()
 	{
-		this->DrawViewport();
+		this->DrawWidgets();
 		if (_game_mode == GM_MENU) {
-			int off_x = _screen.width / 2;
+			int off_x = this->width / 2;
 
 			DrawSprite(SPR_OTTD_O, PAL_NONE, off_x - 120, 50);
 			DrawSprite(SPR_OTTD_P, PAL_NONE, off_x -  86, 50);
@@ -356,6 +376,14 @@ struct MainWindow : Window
 		ZoomInOrOutToCursorWindow(wheel < 0, this);
 	}
 
+	virtual void OnResize(Point delta)
+	{
+		if (this->viewport != NULL) {
+			NWidgetViewport *nvp = (NWidgetViewport *)this->nested_array[MW_VIEWPORT];
+			nvp->UpdateViewportCoordinates(this);
+		}
+	}
+
 	virtual void OnInvalidateData(int data)
 	{
 		/* Forward the message to the appropiate toolbar (ingame or scenario editor) */
@@ -375,7 +403,7 @@ void SetupColoursAndInitialWindow()
 		memcpy(_colour_gradient[i], b + 0xC6, sizeof(_colour_gradient[i]));
 	}
 
-	new MainWindow(_screen.width, _screen.height);
+	new MainWindow;
 
 	/* XXX: these are not done */
 	switch (_game_mode) {
