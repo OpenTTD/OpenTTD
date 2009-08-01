@@ -34,6 +34,8 @@ void Waypoint::UpdateVirtCoord()
 	Point pt = RemapCoords2(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE);
 	SetDParam(0, this->index);
 	this->sign.UpdatePosition(pt.x, pt.y - 0x20, STR_WAYPOINT_VIEWPORT);
+	/* Recenter viewport */
+	InvalidateWindowData(WC_WAYPOINT_VIEW, this->index);
 }
 
 /**
@@ -270,7 +272,6 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 		} else if (!wp->IsInUse()) {
 			/* Move existing (recently deleted) waypoint to the new location */
 			wp->xy = start_tile;
-			InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
 		}
 		wp->owner = GetTileOwner(start_tile);
 
