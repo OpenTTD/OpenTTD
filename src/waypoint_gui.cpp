@@ -24,6 +24,7 @@ enum WaypointWindowWidgets {
 	WAYPVW_STICKY,
 	WAYPVW_VIEWPORTPANEL,
 	WAYPVW_SPACER,
+	WAYPVW_VIEWPORT,
 	WAYPVW_CENTERVIEW,
 	WAYPVW_RENAME,
 	WAYPVW_SHOW_VEHICLES,
@@ -35,20 +36,22 @@ private:
 	Waypoint *wp;
 
 public:
-	WaypointWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	WaypointWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		this->wp = Waypoint::Get(this->window_number);
+		this->wp = Waypoint::Get(window_number);
 		this->vt = (wp->string_id == STR_SV_STNAME_WAYPOINT) ? VEH_TRAIN : VEH_SHIP;
 
 		if (this->wp->owner != OWNER_NONE) this->owner = this->wp->owner;
 
+		this->CreateNestedTree(desc);
+		if (this->vt == VEH_TRAIN) this->nested_array[WAYPVW_SHOW_VEHICLES]->SetDataTip(STR_TRAIN, STR_SCHEDULED_TRAINS_TIP);
+		this->FinishInitNested(desc, window_number);
+
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
-		InitializeWindowViewport(this, 3, 17, 254, 86, this->wp->xy, ZOOM_LVL_MIN);
+		NWidgetViewport *nvp = (NWidgetViewport *)this->nested_array[WAYPVW_VIEWPORT];
+		nvp->InitializeViewport(this, this->wp->xy, ZOOM_LVL_MIN);
 
-		this->widget[WAYPVW_SHOW_VEHICLES].data     = this->vt == VEH_TRAIN ? STR_TRAIN : STR_SHIP;
-		this->widget[WAYPVW_SHOW_VEHICLES].tooltips = this->vt == VEH_TRAIN ? STR_SCHEDULED_TRAINS_TIP : STR_SCHEDULED_SHIPS_TIP;
-
-		this->FindWindowPlacementAndResize(desc);
+		this->OnInvalidateData(0);
 	}
 
 	~WaypointWindow()
@@ -56,17 +59,14 @@ public:
 		DeleteWindowById(WC_TRAINS_LIST, (this->window_number << 16) | (this->vt << 11) | VLW_WAYPOINT_LIST | this->wp->owner);
 	}
 
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == WAYPVW_CAPTION) SetDParam(0, this->wp->index);
+	}
+
 	virtual void OnPaint()
 	{
-		/* You can only change your own waypoints */
-		this->SetWidgetDisabledState(WAYPVW_RENAME, !this->wp->IsInUse() || (this->wp->owner != _local_company && this->wp->owner != OWNER_NONE));
-		/* Disable the widget for waypoints with no use */
-		this->SetWidgetDisabledState(WAYPVW_SHOW_VEHICLES, !this->wp->IsInUse());
-
-		SetDParam(0, this->wp->index);
 		this->DrawWidgets();
-
-		this->DrawViewport();
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -93,6 +93,11 @@ public:
 
 	virtual void OnInvalidateData(int data)
 	{
+		/* You can only change your own waypoints */
+		this->SetWidgetDisabledState(WAYPVW_RENAME, !this->wp->IsInUse() || (this->wp->owner != _local_company && this->wp->owner != OWNER_NONE));
+		/* Disable the widget for waypoints with no use */
+		this->SetWidgetDisabledState(WAYPVW_SHOW_VEHICLES, !this->wp->IsInUse());
+
 		int x = TileX(this->wp->xy) * TILE_SIZE;
 		int y = TileY(this->wp->xy) * TILE_SIZE;
 		ScrollWindowTo(x, y, -1, this);
@@ -107,38 +112,21 @@ public:
 
 };
 
-static const Widget _waypoint_view_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,       STR_TOOLTIP_CLOSE_WINDOW},           // WAYPVW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   247,     0,    13, STR_WAYPOINT_VIEWPORT, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // WAYPVW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   248,   259,     0,    13, 0x0,                   STR_STICKY_BUTTON},                  // WAYPVW_STICKY
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   259,    14,   105, 0x0,                   STR_NULL},                           // WAYPVW_VIEWPORTPANEL
-{      WWT_INSET,   RESIZE_NONE,  COLOUR_GREY,     2,   257,    16,   103, 0x0,                   STR_NULL},                           // WAYPVW_SPACER
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   121,   106,   117, STR_BUTTON_LOCATION,   STR_STATION_VIEW_CENTER_TOOLTIP},    // WAYPVW_CENTERVIEW
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   122,   244,   106,   117, STR_QUERY_RENAME,      STR_CHANGE_WAYPOINT_NAME},           // WAYPVW_RENAME
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   245,   259,   106,   117, STR_NULL,              STR_NULL },                          // WAYPVW_SHOW_TRAINS
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_waypoint_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, WAYPVW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WAYPVW_CAPTION), SetMinimalSize(237, 14), SetDataTip(STR_WAYPOINT_VIEWPORT, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WAYPVW_CAPTION), SetDataTip(STR_WAYPOINT_VIEWPORT, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY, WAYPVW_STICKY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, WAYPVW_VIEWPORTPANEL),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
-			NWidget(WWT_INSET, COLOUR_GREY, WAYPVW_SPACER), SetMinimalSize(256, 88), SetResize(1, 1),
-			EndContainer(),
-			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
+		NWidget(WWT_INSET, COLOUR_GREY, WAYPVW_SPACER), SetPadding(2, 2, 2, 2),
+			NWidget(NWID_VIEWPORT, COLOUR_GREY, WAYPVW_VIEWPORT), SetMinimalSize(256, 88), SetPadding(1, 1, 1, 1),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_CENTERVIEW), SetMinimalSize(122, 12), SetDataTip(STR_BUTTON_LOCATION, STR_STATION_VIEW_CENTER_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_RENAME), SetMinimalSize(123, 12), SetDataTip(STR_QUERY_RENAME, STR_CHANGE_WAYPOINT_NAME),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_SHOW_VEHICLES), SetMinimalSize(15, 12),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_CENTERVIEW), SetMinimalSize(100, 12), SetFill(1, 0), SetDataTip(STR_BUTTON_LOCATION, STR_STATION_VIEW_CENTER_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_RENAME), SetMinimalSize(100, 12), SetFill(1, 0), SetDataTip(STR_QUERY_RENAME, STR_CHANGE_WAYPOINT_NAME),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_SHOW_VEHICLES), SetMinimalSize(15, 12), SetDataTip(STR_SHIP, STR_SCHEDULED_SHIPS_TIP),
 	EndContainer(),
 };
 
@@ -146,7 +134,7 @@ static const WindowDesc _waypoint_view_desc(
 	WDP_AUTO, WDP_AUTO, 260, 118, 260, 118,
 	WC_WAYPOINT_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_waypoint_view_widgets, _nested_waypoint_view_widgets, lengthof(_nested_waypoint_view_widgets)
+	NULL, _nested_waypoint_view_widgets, lengthof(_nested_waypoint_view_widgets)
 );
 
 void ShowWaypointWindow(const Waypoint *wp)
