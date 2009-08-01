@@ -1171,7 +1171,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}编辑�
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}不能更改路点名称……
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}将铁路变为路点
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}不能在这里设置路点……
-STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}不能从这里移处路点……
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}不能从这里拆除路点……
 
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}使用全向路轨工具铺设铁轨
 
@@ -1584,8 +1584,11 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :带有复合和
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :带有复合和单向高级信号灯的铁路
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :带有高级和单向高级信号灯的铁路
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}请先拆除火车站
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}必须先拆除铁路路点
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}建造分体车站
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}建造分体路点
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}合并车站
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}合并路点
 
 
 
@@ -1768,11 +1771,13 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}轨道�
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}月台长度
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}距离另一火车站过近
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}与另一车站相连
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}距离另一路点过近
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}车站过多
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}分体站台太多
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}公共汽车站过多
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}汽车货场过多
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}距离另一车站过近
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}距离另一路点过近
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}必须先拆除火车站
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}距离另一机场过近
@@ -1816,6 +1821,7 @@ STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}请先�
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}请先移除货运电车车站
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} 车站
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- 没有 -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}距离另一码头过近
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}必须先拆除码头

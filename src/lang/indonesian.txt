@@ -1586,7 +1586,9 @@ STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Rel dengan siny
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Harus menghapus stasiun dulu
 STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Harus membongkar rel waypoint terlebih dahulu
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Pisahkan stasiun
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}Pisahkan waypoint
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Gabung stasiun
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}Gabungkan waypoint
 
 
 
@@ -1819,6 +1821,7 @@ STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Harus me
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Harus menghancurkan terminal kargo trem terlebih dahulu
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stasiun
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Tidak ada -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Terlalu dekat dengan dok/galangan kapal lainnya
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Harus menghancurkan pelabuhan terlebih dahulu

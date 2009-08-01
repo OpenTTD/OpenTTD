@@ -1816,6 +1816,7 @@ STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Primer h
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Primer has de demolir l'estació de tramvies de mercaderies
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estacions/Parades
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Cap -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Massa a prop d'un altre moll
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Primer has d'enderrocar el moll
@@ -2176,8 +2177,8 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Seleccio
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Canvia l'aspecte dels vehicles de la companyia
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Canvia el nom del president
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Canvia el nom de la companyia
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Augmenta l'import del préstec
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Amortitza part del préstec
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Augmenta l'import del préstec Ctrl+Clic per demanar tants diners com sigui possible
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Amortitza part del préstec. Ctrl+Clic per tornar tants diners com sigui possible
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(President)
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurat: {WHITE}{NUM}
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehicles:

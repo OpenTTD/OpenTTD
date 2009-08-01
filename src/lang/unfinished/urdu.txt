@@ -220,8 +220,38 @@ STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}زمین
 
 
 
+STR_CREATE_RIVER                                                :{BLACK}دریا رکھو.
+STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}مٹائو
+STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}اس شہر کو پورا مٹا دو
+STR_MENU_LOAD_HEIGHTMAP                                         :اونچائی کا نقشہ دکھائو
+STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
+STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکلو
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}اونچائی کے نقشے کو کھیلو
+STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}ایک نیا کھیل شروع کرو، اونچائی کے نقشے کو زمین بنا کر
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}...صرف ان شہروں میں بن سکتا ہے جن کی آبادی ۱۲۰۰ سے زیادہ ہے
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}شروع کرنے کی تاریخ کو ایک سال پیچھے کرو
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}شروع کرنے کی تاریخ کو ایک سال آگے کرو
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...پل کے دونوں کنارے زمین پر ہونے چاہییں
+STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{G=m}{BLACK}چھوٹا
+STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{G=m}{BLACK}درمیانہ
+STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{G=m}{BLACK}بڑا
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{G=m}{BLACK}کوئی سا
+STR_FOUND_TOWN_CITY                                             :{BLACK}شہر
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}شہر کا حجم منتخب کرو
+STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}شہر کا حجم:
 
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}شہر کی سڑکوں کا پھیلائو:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}اس شہر کیلئے سڑکوں کا بھیلائو منتخب کرو
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}اصلی
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}بہتر سڑکیں
+STR_SELECT_LAYOUT_RANDOM                                        :{G=f}{BLACK}کوئٰ سی
 
+STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
+STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}آخری پیغام یا خبر دکھائو
+STR_OFF                                                         :بند
+STR_SUMMARY                                                     :خلاصہ
+STR_FULL                                                        :مکمل
+STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
 ############ range ends here

@@ -679,8 +679,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 설정
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :투명 설정
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}도시 이름을 표시함
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}역 이름을 표시함
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}팻말을 표시함
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}웨이포인트를 표시함
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}팻말을 표시함
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}완전한 애니메이션
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}아주 상세하게
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}건물 안 보이기
@@ -1585,8 +1585,11 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :콤보 및 경�
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :콤보 및 일방통행 경로 신호기가 있는 철로
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :경로 및 일방통행 경로 신호기가 있는 철로
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}먼저 기차 정거장을 제거해야 합니다
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}철도 웨이포인트를 먼저 제거하십시오
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}분리된 역을 새로 만들기
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}분리된 웨이포인트를 새로 만들기
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}같은 이름으로 정거장 만들기
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}연결할 웨이포인트
 
 
 
@@ -1769,11 +1772,13 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}트랙 �
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}플랫폼 길이
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}다른 기차역과 너무 가깝습니다!
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}2개 이상의 역이 인접합니다
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}적어도 하나 이상의 인접한 웨이포인트와 연결하십시오
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}역이 너무 많습니다
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}정거장 조각이 너무 많습니다
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}버스 정류장이 너무 많습니다
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}트럭 적하장이 너무 많습니다
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}다른 역과 너무 가깝습니다!
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}다른 웨이포인트와 너무 가깝습니다!
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}기차역을 먼저 제거하십시오!
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}다른 공항과 너무 가깝습니다!
@@ -1817,6 +1822,7 @@ STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}승객 �
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}화물 전차 정거장을 먼저 제거하십시오.
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA}개 역사
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- 없음 -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}다른 항구와 너무 가깝습니다!
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}항구를 먼저 제거하십시오!

@@ -1445,6 +1445,11 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :Διακομι�
 ############ End of leave-in-this-order
 STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Παύση παιχνιδιού (δεν υπάρχουν αρκετοί παίκτες)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Συνέχιση παιχνιδιού (υπάρχουν αρκετοί παίκτες)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Παύση παιχνιδιού (σύνδεση πελάτη)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Συνέχιση παιχνιδιού (πελάτης συνδέθηκε)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Συνέχιση παιχνιδιού (πελάτης απέτυχε να συνδεθεί)
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :αποχώρηση
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} συμμετέχει στο παιχνίδι
@@ -1464,6 +1469,7 @@ STR_NETWORK_CHAT_TO_CLIENT                                      :[Προσωπι
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Σε όλους] :
 STR_NETWORK_CHAT_ALL                                            :[Σε όλους] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Εισάγετε το κείμενο για δικτυακή συζήτηση
+STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Ο διακομιστής έκλεισε την συνεδρία
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Ο διακομιστής κάνει επανεκκίνηση...{}Παρακαλώ πολύ...
 
 STR_NETWORK_SERVER                                              :Διακομιστής
@@ -1745,6 +1751,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Μήκο
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Πολύ κοντά σε άλλο σιδηροδρομικό σταθμό
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Γειτονεύει με περισσότερες από μια υπάρχουσες περιοχές σταθμών/φόρτωσης
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Πάρα πολλές περιοχές σταθμών/φόρτωσης
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Πάρα πολλά κομμάτια σιδηροδρομικού σταθμού
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Πάρα πολλές στάσεις λεωφορείου
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Πάρα πολλοί σταθμοί φορτηγών
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Πολύ κοντά σε μιά άλλη περιοχή σταθμού/φόρτωσης
@@ -1783,10 +1790,15 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}Ο στ�
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}Ο σταθμός {STATION} τώρα δέχεται {STRING} και {STRING}
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Προσανατολισμός Στάσης Λεωφορείου
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Προς. Στάσης Λεωφορείου
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Προσανατολισμός επιβατικού σταθμού τραμ
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Προσανατολισμός εμπορευτικού σταθμού τραμ
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Πρέπει να κατεδαφιστεί η στάσης λεωφορείου πρώτα
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Πρέπει να κατεδαφιστεί ο σταθμός φορτηγών πρώτα
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Πρέπει να κατεδαφιστεί ο επιβατικός σταθμός τραμ πρώτα
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Πρέπει να κατεδαφιστεί ο εμπορευτικός σταθμός τραμ πρώτα
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Σταθμός{P "" s}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Κανένα -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Πολύ κοντά σε άλλη αποβάθρα
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Πρέπει να κατεδαφιστεί η αποβάθρα πρώτα
@@ -2779,15 +2791,37 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Το ό�
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Κατασκευή
 
 ############ Face formatting
+STR_FACE_NOSE                                                   :Μύτη:
+STR_FACE_LIPS                                                   :Χείλια:
+STR_FACE_MOUSTACHE                                              :Μουστάκι:
+STR_FACE_COLLAR                                                 :Κολλάρο:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Αλλαγή κολλάρου
+STR_FACE_TIE                                                    :Γραβάτα:
+STR_FACE_EARRING                                                :Σκουλαρίκι:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Αλλαγή γραβάτας ή σκουλαρικιού
 ########
 
 ############ signal GUI
 ########
 
 ############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Εμφάνιση ρυθμίσεων AI
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Ρύθμιση AI
+STR_AI_CHANGE                                                   :{BLACK}Επιλόγη AI
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Ρύθμιση των παραμέτρων ενός AI
+STR_AI_LIST_CAPTION                                             :{WHITE}Διαθέσιμο AI
+STR_AI_ACCEPT                                                   :{BLACK}Αποδοχή
+STR_AI_CANCEL                                                   :{BLACK}Άκυρο
+STR_AI_CLOSE                                                    :{BLACK}Κλείσιμο
+STR_AI_HUMAN_PLAYER                                             :Ανθρώπινος παίκτης
+STR_AI_RANDOM_AI                                                :Τυχαίο AI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Παράμετροι AI
+STR_AI_AUTHOR                                                   :{BLACK}Συγγραφέας: {STRING}
+STR_AI_VERSION                                                  :{BLACK}Έκδοση: {NUM}
 STR_AI_URL                                                      :{BLACK}Ιστιοσελίδα: {STRING}
 STR_AI_NO_AI_FOUND                                              :Δεν βρέθηκε κατάλληλο AI για φόρτωση.{}Αυτό το AI είναι ένα ψεύτικο AI και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορα AΙ από το σύστημα 'Online περιεχομένου"
 ########
@@ -2799,9 +2833,15 @@ STR_STATION_NOISE                                               :{BLACK}Παρα
 
 ############ Downloading of content from the central server
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD είναι χτισμένο χωρίς την υποστηριξη "zlib"...
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Βιβλιοθήκη AI
 STR_CONTENT_TYPE_SCENARIO                                       :Σενάριο
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Τύπος
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Όνομα
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Επιλογή όλων
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Επιλέξτε αναβαθμίσεις
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Αποεπιλογή όλων
 STR_CONTENT_FILTER_TIP                                          :{BLACK}Εισάγετε μια λέξη για να φιλτραριστεί η λίστα για
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Κατέβασμα
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Έναρξη κατεβάσματος του επιλεγμένου περιεχόμενου

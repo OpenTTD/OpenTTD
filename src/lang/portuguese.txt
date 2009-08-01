@@ -690,7 +690,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}Sinais
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informações do terreno
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Activar Consola
-STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
+STR_ABOUT_MENU_AI_DEBUG                                         :Depuração da IA
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de ecrã (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura gigante (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre o OpenTTD...
@@ -1586,7 +1586,9 @@ STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Linha férrea c
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}É preciso remover a estação primeiro
 STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}É preciso remover o ponto de passagem primeiro
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Construir uma estação separada
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}Construir um ponto de passagem separado
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Juntar estação
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}Juntar ponto de passagem
 
 
 
@@ -1819,6 +1821,7 @@ STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Precisa 
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Precisa demolir estação de eléctricos primeiro
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estações
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nenhuma -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Muito perto de outra doca
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Deverá demolir a doca primeiro
@@ -3579,29 +3582,29 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :|!"#$%&/()=?»Q
 
 ############ AI GUI
 STR_AI_SETTINGS_BUTTON                                          :{BLACK}Definições da IA
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Mostrar definições da AI
-STR_AI_DEBUG                                                    :{WHITE}AI Debug
-STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nome da AI
-STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar AI
-STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Terminar a AI, recarrega o script e reinicia a AI
-STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}A janela AI Debug está disponível apenas para o servidor
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuração AI
-STR_AI_CHANGE                                                   :{BLACK}Seleccionar AI
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Mostrar definições da IA
+STR_AI_DEBUG                                                    :{WHITE}Depuração da IA
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nome da IA
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar IA
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Terminar a IA, recarrega o script e reinicia a IA
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}A janela Depuração da IA está disponível apenas para o servidor
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuração IA
+STR_AI_CHANGE                                                   :{BLACK}Seleccionar IA
 STR_AI_CONFIGURE                                                :{BLACK}Configurar
-STR_AI_CHANGE_TIP                                               :{BLACK}Carregar outra AI
-STR_AI_CONFIGURE_TIP                                            :{BLACK}Configurar os parametros da AI
-STR_AI_LIST_TIP                                                 :{BLACK}Todas as AIs que serão carregadas no próximo jogo
-STR_AI_LIST_CAPTION                                             :{WHITE}AIs Disponíveis
-STR_AI_AILIST_TIP                                               :{BLACK}Clique para seleccionar uma AI
+STR_AI_CHANGE_TIP                                               :{BLACK}Carregar outra IA
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Configurar os parâmetros da IA
+STR_AI_LIST_TIP                                                 :{BLACK}Todas as IAs que serão carregadas no próximo jogo
+STR_AI_LIST_CAPTION                                             :{WHITE}IAs Disponíveis
+STR_AI_AILIST_TIP                                               :{BLACK}Clique para seleccionar uma IA
 STR_AI_ACCEPT                                                   :{BLACK}Aceitar
-STR_AI_ACCEPT_TIP                                               :{BLACK}Seleccionar AI marcada
+STR_AI_ACCEPT_TIP                                               :{BLACK}Seleccionar IA marcada
 STR_AI_CANCEL                                                   :{BLACK}Cancelar
-STR_AI_CANCEL_TIP                                               :{BLACK}Não mudar a AI
+STR_AI_CANCEL_TIP                                               :{BLACK}Não mudar a IA
 STR_AI_CLOSE                                                    :{BLACK}Fechar
 STR_AI_RESET                                                    :{BLACK}Repor
 STR_AI_HUMAN_PLAYER                                             :Jogador humano
-STR_AI_RANDOM_AI                                                :AI Aleatória
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parâmetros da AI
+STR_AI_RANDOM_AI                                                :IA Aleatória
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parâmetros da IA
 STR_AI_AUTHOR                                                   :{BLACK}Autor: {STRING}
 STR_AI_VERSION                                                  :{BLACK}Versão: {NUM}
 STR_AI_URL                                                      :{BLACK}URL: {STRING}
@@ -3619,8 +3622,8 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... não é possível o descarregamento de conteúdo!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Gráficos base
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
-STR_CONTENT_TYPE_AI                                             :AI
-STR_CONTENT_TYPE_AI_LIBRARY                                     :Livraria AI
+STR_CONTENT_TYPE_AI                                             :IA
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Livraria IA
 STR_CONTENT_TYPE_SCENARIO                                       :Cenário
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa de alturas
 STR_CONTENT_TITLE                                               :{WHITE}Descarregamento de conteúdo

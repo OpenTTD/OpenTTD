@@ -678,7 +678,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Newgrf instelli
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Doorzichtigheidsopties
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Geef plaatsnamen weer
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Geef stationsnamen weer
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Namen controlepost weergegeven
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Geef controlepostnamen weer
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Borden tonen
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Alle animatie
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Alle details
@@ -1584,9 +1584,11 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Treinrails met 
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Treinrails met combinatie- en eenrichtings pbs seinen
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Treinrails met pbs en eenrichtings pbs seinen
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Treinstation moet eerst verwijderd worden
-STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Eerst trein controlepost verwijderd
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Controlepost moet eerst verwijderd worden
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Bouw een losstaand station
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}Bouw een losstaande controlepost
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Station samenvoegen
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}Controlepost samenvoegen
 
 
 
@@ -1769,7 +1771,7 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Aantal s
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platformlengte
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Te dicht bij een ander station
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Voegt meer dan één bestaand (laad)station samen
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Voegt meer dan een bestaande controlepost samen
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Voegt meer dan één bestaande controlepost samen
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Teveel (laad)stations
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Te veel treinstationsonderdelen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te veel bushaltes
@@ -1819,6 +1821,7 @@ STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Verwijde
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Verwijder eerst vracht tram station
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stations
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Geen -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Te dicht bij een andere haven
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Verwijder eerst haven

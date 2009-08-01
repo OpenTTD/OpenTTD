@@ -594,8 +594,8 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Reducir 
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generar terreno al azar
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Hacer reset del paisaje
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Hacer reset del paisaje
-STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Quitar todas las propiedades del jugador del mapa
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}¿Estás seguro de quitar todas las propiedades del jugador?
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Eliminar todas las propiedades de jugadores del mapa
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}¿Estás seguro de querer eliminar todas las propiedades de jugadores?
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Generación de paisaje
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Creación de pueblos
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generación de industria
@@ -1584,9 +1584,12 @@ STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Vía de tren co
 STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Vía de tren con señales combo y de ruta
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Vía de tren con señales combo y de ruta de un sentido
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Vía de tren con señales de ruta y señales de ruta de un sentido
-STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Debes quitar la estación de tren primero
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Debes retirar la estación de tren primero
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Primero se debe retirar punto de ruta para trenes
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Construir una estación separada
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}Construir un punto de ruta separado
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Unir estación
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}Unir punto de ruta
 
 
 
@@ -1636,7 +1639,7 @@ STR_ROAD_DESCRIPTION_TREE_LINED_ROAD                            :Carretera arbol
 STR_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                         :Depósito de carretera
 STR_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING                   :Paso a nivel
 STR_ROAD_DESCRIPTION_TRAMWAY                                    :Tranvía
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}No se puede quitar la estación de bus...
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}No se puede retirar estación de bus...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}No se puede quitar la estación de camiones...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}No se puede quitar estación de tranvía de pasajeros...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}No se puede quitar estación de tranvía de carga...
@@ -1769,11 +1772,13 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Número 
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Longitud de andén
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Demasiado cerca de otra estación de tren
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Adjunta más de una estación/zona de carga existente
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Une más de un punto de ruta existente
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Demasiadas estaciones/zonas de carga
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Demasiadas partes de estación de tren
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paradas de Autobús
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Demasiadas zonas de carga
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Demasiado cerca de otra estación/zona de carga
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Demasiado cerca de otro punto de ruta
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Primero debe demolerse estación de tren
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Demasiado cerca de otro aeropuerto
@@ -1817,6 +1822,7 @@ STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Debe dem
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Debe demoler la estación del tranvía de carga primero
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estaciones
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ninguna -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Demasiado cerca de otro muelle
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Primero debe demolerse el muelle
@@ -2667,7 +2673,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Saltarse
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Borrar
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Ir a
 STR_REFIT                                                       :{BLACK}Reformar
-STR_REFIT_TIP                                                   :{BLACK}Selecciona el tipo de carga a reformar en esta orden. Ctrl+Click para quitar la orden de reforma
+STR_REFIT_TIP                                                   :{BLACK}Selecciona el tipo de carga a reformar en esta orden. Ctrl+Click para eliminar la orden de reforma
 STR_REFIT_ORDER                                                 :(Reformar en {STRING})
 STR_REFIT_STOP_ORDER                                            :(Reformar en {STRING} y parar)
 STR_STOP_ORDER                                                  :(Parar)
@@ -2751,7 +2757,7 @@ STR_TRAIN_NO_POWER                                              :{RED}Sin potenc
 STR_TRAIN_START_NO_CATENARY                                     :Esta vía carece la catenaria, así que el tren no puede comenzar
 STR_TRAIN_STUCK                                                 :{ORANGE}Esperando vía libre
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nuevo{STRING} ahora disponible!
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nuevo {STRING} ahora disponible!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nuevo {STRING} ahora disponible!  -  {ENGINE}
 
@@ -2909,8 +2915,8 @@ STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Borrar p
 STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Borrar la programación seleccionada
 STR_NEWGRF_ADD                                                  :{BLACK}Añadir
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Añadir un NewGRF a la lista
-STR_NEWGRF_REMOVE                                               :{BLACK}Quitar
-STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Quitar el NewGRF seleccionado de la lista
+STR_NEWGRF_REMOVE                                               :{BLACK}Retirar
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Retirar el NewGRF seleccionado de la lista
 STR_NEWGRF_MOVEUP                                               :{BLACK}Mover Arriba
 STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Mueve el NewGRF seleccionado arriba en la lista
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Mover Abajo
@@ -3221,7 +3227,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Presiona
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Presiona este botón si quieres reemplazar la locomotora seleccionada a la izquierda por la seleccionada en la derecha
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccione tipo de rail para seleccionar locomotoras para ese tipo
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Muestra que locomotora será reemplazada
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Quitar vagón: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retirar vagón: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Hacer que el cambio automático mantenga la longitud del tren quitando vagones (empezando por adelante), si el cambio de locomotora produce un tren más largo.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Reemplazando: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Cambia entre las ventanas de cambio de vagón y locomotora

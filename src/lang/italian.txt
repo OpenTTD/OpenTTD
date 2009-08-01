@@ -1586,8 +1586,11 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Ferrovia con se
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Ferrovia con segnali combinati e a percorso s.u.
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ferrovia con segnali a percorso e a percorso s.u.
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Bisogna rimuovere la stazione prima
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Bisogna rimuovere il waypoint ferroviario prima
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Costruisci stazione separata
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}Costruisci waypoint separato
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Unisci stazione
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}Unisci waypoint
 
 
 
@@ -1770,11 +1773,13 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Numero d
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Lunghezza banchina
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Troppo vicino a un'altra stazione ferroviaria
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Farebbe parte di due o più stazioni/aree di carico
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Farebbe parte di due o più waypoint
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Troppe stazioni/aree di carico
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Stazione composta da troppe parti
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Troppe stazioni degli autobus
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Troppe aree di carico per camion
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Troppo vicino ad un'altra stazione/area di carico
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Troppo vicino a un altro waypoint
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Bisogna demolire la stazione ferroviaria prima
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Troppo vicino ad un altro aeroporto
@@ -1818,6 +1823,7 @@ STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Bisogna 
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Bisogna demolire la stazione tram merci prima
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} stazion{P 2 e i}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nessuna -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Troppo vicino ad un altro molo
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Bisogna demolire il molo prima

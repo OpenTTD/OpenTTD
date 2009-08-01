@@ -1584,8 +1584,11 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Karışık- ve 
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Karışık- ve tek yön sinyalleri olan demiryolu
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ön ve tek yön sinyalli ray
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Önce tren istasyonu kaldırılmalı
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Önce demiryolu yerimi kaldırılmalı
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Ayrı bir istasyon inşa et
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}Ayrı bir yerimi yap
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}İstasyonu birleştir
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}Yerimini birleştir
 
 
 
@@ -1739,7 +1742,7 @@ STR_TOWN_DESCRIPTION_UNDER_CONSTRUCTION                         :{STRING} (inşa
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Eskimo Evi
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Çadır
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Çaydanlık ev
-STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Domuz bankası
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Kumbara
 
 ##id 0x2800
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Arazi
@@ -1768,11 +1771,13 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Ray say�
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platform uzunluğu
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Başka tren istasyonuna çok yakın
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Birden fazla istasyona bitişik
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Birden fazla mevcut yerimini birleştirir
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Haritada çok fazla istasyon var
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Çok fazla demiryolu istasyon parçası var
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Çok fazla durak var
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Çok fazla kamyon yükleme yeri var
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Başka bir istasyona çok yakın
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Diğer yerimine çok yakın
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Önce tren istasyonu yıkılmalı
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Başka bir havalimanına çok yakın
@@ -1816,6 +1821,7 @@ STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Önce yo
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Önce yük tramvayı istasyonu kaldırılmalı
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} istasyonları
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Yok -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Başka bir limana çok yakın
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Önce liman yıkılmalı
@@ -2573,7 +2579,7 @@ STR_ORDER_GO_NON_STOP_VIA                                       :Durmadan üzeri
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[yakın uç]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[orta]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[uzak uç]
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Herhangi bir kargoyu tam doldur
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Bir kargoyu tam yükle
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Mümkünse yükle
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Tüm kargoyu yükle
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Her kargoyu yükle
@@ -2584,7 +2590,7 @@ STR_ORDER_DROP_UNLOAD                                           :Tümünü boşa
 STR_ORDER_DROP_TRANSFER                                         :Aktar
 STR_ORDER_DROP_NO_UNLOADING                                     :Boşaltma yapma
 STR_ORDER_FULL_LOAD                                             :(Tam yükle)
-STR_ORDER_FULL_LOAD_ANY                                         :(Her kargoyu tam yükle)
+STR_ORDER_FULL_LOAD_ANY                                         :(Bir kargoyu tam yükle)
 STR_ORDER_NO_LOAD                                               :(Yükleme yapma)
 STR_ORDER_UNLOAD                                                :(Kargoyu boşalt ve al)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Boşalt ve tam yüklemeyi bekle)

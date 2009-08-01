@@ -118,6 +118,7 @@ STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PZ
 STR_ABBREV_COAL                                                 :{TINYFONT}KL
 STR_ABBREV_MAIL                                                 :{TINYFONT}PT
+STR_ABBREV_OIL                                                  :{TINYFONT}OL
 STR_ABBREV_GRAIN                                                :{TINYFONT}NT
 STR_ABBREV_COLA                                                 :{TINYFONT}KL
 STR_SMALLMAP_CAPTION                                            :{WHITE}Kaart - {STRING}
@@ -549,6 +550,7 @@ STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spul Opsjes
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Swierrichheid ynstellings
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Stêd nammen sjen litte
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Stasjon nammen sjen litte
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Nammen fan kontrôleposten sjen litte
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Buordsjes sjen litte
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Folle animaasje
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Folle detail
@@ -645,6 +647,7 @@ STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selektea
 
 
 
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksimale ôfstân fan râne oant Oaljefjild {ORANGE}{STRING}
 
 
 
@@ -665,11 +668,29 @@ STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selektea
 
 
 
+STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Ûnderweis nei {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Ûnderweis nei {WAYPOINT}, {VELOCITY}
 
+STR_GO_TO_WAYPOINT                                              :Lâns {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT                                     :Oanienwei lâns {WAYPOINT}
 
+STR_WAYPOINTNAME_CITY                                           :{TOWN} Kontrôlepost
+STR_WAYPOINTNAME_CITY_SERIAL                                    :{TOWN} Kontrôlepost #{COMMA}
+STR_BUOYNAME_CITY                                               :{TOWN} Boei
+STR_BUOYNAME_CITY_SERIAL                                        :{TOWN} Boei #{COMMA}
+STR_LANDINFO_WAYPOINT                                           :Kontrôlepost
 
+STR_WAYPOINT                                                    :{WHITE}Kontrôlepost
+STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Selectear type kontrôlepost
 
+STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namme fan kontrôlepost oanpasse
 
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Kin de namme fan it kontrôlepost net oanpasse...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Spoar nei kontrôlepost omsette
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Kin jirre gjin kontrôlepost bouwe...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Kin kontrôlepost jirre net fuorthelje...
 
 
 
@@ -692,12 +713,28 @@ STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selektea
 ############ network gui strings
 
 
+STR_NETWORK_PLAYER_NAME                                         :{BLACK}Namme fan spieler:
+STR_NETWORK_CONNECTION                                          :{BLACK}Ferbining:
+
+
+STR_NETWORK_GAME_NAME                                           :{BLACK}Namme
+
+
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 
 
 
 
 
 
+
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} taskôger{P "" s}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maksimaal tal taskôgers:
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 
 
@@ -706,15 +743,6 @@ STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selektea
 
 
 ############ Leave those lines in this order!!
-############ End of leave-in-this-order
-
-
-
-
-
-
-
-############ Leave those lines in this order!!
 
 ############ End of leave-in-this-order
 
@@ -725,6 +753,13 @@ STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selektea
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} is in neie taskôger
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} hat syn/har namme oanpast nei {STRING}
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
+STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] Oan {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privee] :
+STR_NETWORK_CHAT_CLIENT                                         :[Privee] {STRING}: {WHITE}{STRING}
 
 
 
@@ -788,6 +823,9 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Selektea
 STR_RAILROAD_TRACK                                              :Spoarwei
 STR_RAILROAD_TRAIN_DEPOT                                        :Treindepot
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...gebiet is fan in oar bedriuw
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Kontrôlepost op it spoar earst ferwiderje
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}In apart kontrôlepost bouwe
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}Kontrôlepost gearfoegje
 
 
 
@@ -925,10 +963,12 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Oantal b
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Stasjon lengte
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Te ticht by in oar stasjon
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Ferbynt mear dan ien stasjon
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Foeget mear dan ien kontrôlepost gear
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Te folle stasjons
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te folle bushaltes
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te folle frachtstasjons
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Te ticht by in oar stasjon
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Te ticht by in oar kontrôlepost
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Treinspoar moat earst fuorthelle wurde
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Te ticht by in oar fleanfjild
@@ -956,6 +996,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Bushalte moat earst fuorthelle wurde
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Frachtstasjon moat earst fuorthelle wurde
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Gjin -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Te ticht by in oare haven
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Haven moat earst fuorthelle wurde
@@ -972,6 +1013,7 @@ STR_STATION_DESCRIPTION_BUOY                                    :Boei
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...boei yn it paad
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...stasjon is te grut
 
+STR_STAT_CLASS_WAYP                                             :Kontrôleposten
 
 ##id 0x3800
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...moat bout wurde op it wetter
@@ -996,6 +1038,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_NAME_COAL_MINE                                     :Stienkoalmyn
 STR_INDUSTRY_NAME_POWER_STATION                                 :Enerzjysintrale
 STR_INDUSTRY_NAME_FOREST                                        :Bosk
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :Oaljefjild
 STR_INDUSTRY_NAME_OIL_RIG                                       :Boarplatform
 STR_INDUSTRY_NAME_FACTORY                                       :Fabryk
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Drukkerij
@@ -1105,6 +1148,8 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...it is
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 
+STR_SV_STNAME_OILFIELD                                          :{STRING} Oaljefjild
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 
 ############ end of savegame specific region!
@@ -1217,8 +1262,8 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Selektea
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Feroarje de bedriuwskleuren
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Feroarje de namme fan de direkteur
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Feroarje de bedriuwsnamme
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Lien mear jild
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Betelje in diel fan de liening werom
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Lien mear jild. Ctrl+Klik om it maksimale te lienen
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Betelje in diel fan de liening werom. Ctrl+Klik om it maksimale werom te beteljen
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Bedriuwslieder)
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Oprjochte: {WHITE}{NUM}
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Fiertúchen:
@@ -1412,9 +1457,14 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry Posttruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover Posttruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught Posttruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow Posttruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe Oaljetenker
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster Oaljetenker
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry Oaljetenker
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford Nôttruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas Nôttruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss Nôttruck
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS Oaljetenker
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. Oaljetenker
 
 ##id 0x8800
 
@@ -1425,6 +1475,7 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss Nôttruck
 
 
 
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Namme fan kontrôlepost oanpasse
 
 
 
@@ -1442,6 +1493,7 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss Nôttruck
 
 
 ##id 0xB000
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BLACK}{BIGFONT}Eksploazje op Oaljefjild yn {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BLACK}{BIGFONT}Stiekkoalmien stoart yn, in bult rommel yn {TOWN}!
 
 
