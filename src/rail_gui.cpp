@@ -1095,8 +1095,17 @@ public:
 				break;
 			}
 			case BRSW_NEWST_LIST: {
-				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				Dimension d = GetStringBoundingBox(STR_STAT_CLASS_DFLT);
+				for (StationClassID statclass = STAT_CLASS_BEGIN; statclass < (StationClassID)GetNumStationClasses(); statclass++) {
+					if (statclass == STAT_CLASS_WAYP) continue;
+					for (uint16 j = 0; j < GetNumCustomStations(statclass); j++) {
+						const StationSpec *statspec = GetCustomStationSpec(statclass, j);
+						if (statspec != NULL && statspec->name != 0) d = maxdim(d, GetStringBoundingBox(statspec->name));
+					}
+				}
+				size->width = max(size->width, d.width + padding.width);
 
+				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
 				size->height = GB(this->nested_array[widget]->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
 				break;
 			}
@@ -1398,9 +1407,7 @@ static const NWidgetPart _nested_newstation_builder_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRSW_BACKGROUND),
 		/* begin newstations gui additions. */
-		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, BRSW_NEWST_DROPDOWN), SetMinimalSize(134, 12), SetPadding(0, 7, 0, 7), SetDataTip(STR_BLACK_STRING, STR_SELECT_STATION_CLASS_TIP),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, BRSW_NEWST_DROPDOWN), SetMinimalSize(134, 12), SetFill(1, 0), SetPadding(3, 7, 3, 7), SetDataTip(STR_BLACK_STRING, STR_SELECT_STATION_CLASS_TIP),
 		NWidget(NWID_HORIZONTAL), SetPIP(7, 0, 7),
 			NWidget(WWT_MATRIX, COLOUR_GREY, BRSW_NEWST_LIST), SetMinimalSize(122, 71), SetFill(1, 0), SetDataTip(0x501, STR_SELECT_STATION_TYPE_TIP),
 			NWidget(WWT_SCROLLBAR, COLOUR_GREY, BRSW_NEWST_SCROLL),
