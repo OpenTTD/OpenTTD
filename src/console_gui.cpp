@@ -143,18 +143,36 @@ static inline void IConsoleResetHistoryPos() {_iconsole_historypos = ICON_HISTOR
 static void IConsoleHistoryAdd(const char *cmd);
 static void IConsoleHistoryNavigate(int direction);
 
+/** Widgets of the console window. */
+enum ConsoleWidgets {
+	CW_BACKGROUND, ///< Background of the console
+};
+
+static const struct NWidgetPart _nested_console_window_widgets[] = {
+	NWidget(WWT_EMPTY, INVALID_COLOUR, CW_BACKGROUND), SetResize(1, 1),
+};
+
+static const WindowDesc _console_window_desc(
+	0, 0, 0, 0, 0, 0,
+	WC_CONSOLE, WC_NONE,
+	0,
+	NULL, _nested_console_window_widgets, lengthof(_nested_console_window_widgets)
+);
+
 struct IConsoleWindow : Window
 {
 	static int scroll;
 	int line_height;
 	int line_offset;
 
-	IConsoleWindow() : Window(0, 0, _screen.width, _screen.height / 3, WC_CONSOLE, NULL)
+	IConsoleWindow() : Window()
 	{
 		_iconsole_mode = ICONSOLE_OPENED;
-
 		this->line_height = FONT_HEIGHT_NORMAL + ICON_LINE_SPACING;
 		this->line_offset = GetStringBoundingBox("] ").width + 5;
+
+		this->InitNested(&_console_window_desc, 0);
+		ResizeWindow(this, _screen.width, _screen.height / 3);
 	}
 
 	~IConsoleWindow()
