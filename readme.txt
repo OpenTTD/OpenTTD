@@ -17,6 +17,7 @@ Table of Contents:
 5.0) OpenTTD features
 6.0) Configuration File
 7.0) Compiling
+ * 7.1) Required/optional libraries
 8.0) Translating
  * 8.1 Guidelines
  * 8.2 Translation
@@ -316,18 +317,12 @@ Windows:
   You can also build it using the Makefile with MSYS/MinGW or Cygwin/MinGW.
   Please read the Makefile for more information.
 
-Solaris 10:
-  You need g++ (version 3 or higher), together with SDL. Installation of
-  libpng and zlib is recommended. For the first build it is required
-  to execute "bash configure" first. Note that ./configure does not work
-  yet. It is likely that you don't have a strip binary, so use the
-  --disable-strip option in that case. Fontconfig (>2.3.0) and freetype
-  are optional. "make run" will then run the program.
+Solaris, FreeBSD, OpenBSD:
+  Use "gmake", but do a "./configure" before the first build.
 
-Unix:
+Linux/Unix:
   OpenTTD can be built with GNU "make". On non-GNU systems it's called "gmake".
   However, for the first build one has to do a "./configure" first.
-  Note that you need SDL-devel 1.2.5 (or higher) to compile OpenTTD.
 
 MacOS X:
   Use "make" or Xcode (which will then call make for you)
@@ -338,15 +333,6 @@ MacOS X:
 
 BeOS:
   Use "make", but do a "./configure" before the first build.
-
-FreeBSD:
-  You need the port devel/sdl12 for a non-dedicated build.
-  graphics/png is optional for screenshots in the PNG format.
-  Use "gmake", but do a "./configure" before the first build.
-
-OpenBSD:
-  Use "gmake", but do a "./configure" before the first build.
-  Note that you need the port devel/sdl to compile OpenTTD.
 
 MorphOS:
   Use "make". However, for the first build one has to do a "./configure" first.
@@ -368,6 +354,8 @@ DOS:
   will be generated that does not need cwsdpmi.exe by adding the cswdstub.exe
   to the created OpenTTD binary.
 
+7.1) Required/optional libraries:
+---- -------------------
 The following libraries are used by OpenTTD for:
   - libSDL/liballegro: hardware access (video, sound, mouse)
   - zlib: (de)compressing of savegames
@@ -375,6 +363,11 @@ The following libraries are used by OpenTTD for:
   - libfreetype: loading generic fonts and rendering them
   - libfontconfig: searching for fonts, resolving font names to actual fonts
   - libicu: handling of right-to-left scripts (e.g. Arabic and Persian)
+
+OpenTTD does not require any of the libraries to be present, but without
+zlib you cannot open most savegames or use the content downloading system.
+Without libSDL/liballegro on non-Windows and non-MacOS X machines you have
+no graphical user interface; you would be building a dedicated server.
 
 8.0) Translating:
 ---- -------------------
