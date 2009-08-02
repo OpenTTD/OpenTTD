@@ -234,7 +234,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 					Point offset;
 					int width = u->GetDisplayImageWidth(&offset);
 					SpriteID pal = (u->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(u);
-					DrawSprite(u->GetImage(DIR_W), pal, x + offset.x, y + 6 + offset.y);
+					DrawSprite(u->GetImage(DIR_W), pal, px + offset.x, y + 6 + offset.y);
 					px += width;
 					u = u->Next();
 				} while (u != NULL && u->IsArticulatedPart() && u->cargo_cap == 0);
