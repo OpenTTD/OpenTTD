@@ -245,7 +245,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 	ContentID *ids = MallocT<ContentID>(infos.Length());
 	for (ContentIterator iter = infos.Begin(); iter != infos.End(); iter++) {
 		const ContentInfo *ci = *iter;
-		if (!ci->IsSelected()) continue;
+		if (!ci->IsSelected() || ci->state == ContentInfo::ALREADY_HERE) continue;
 
 		ids[files++] = ci->id;
 		bytes += ci->filesize;
