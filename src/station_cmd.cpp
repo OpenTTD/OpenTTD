@@ -1201,7 +1201,8 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 
 		/* Check ownership of station */
 		T *st = T::GetByTile(tile);
-		if (st != NULL && _current_company != OWNER_WATER && !CheckOwnership(st->owner)) continue;
+		if (st == NULL) continue;
+		if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) continue;
 
 		/* Do not allow removing from stations if non-uniform stations are not enabled
 		 * The check must be here to give correct error message
