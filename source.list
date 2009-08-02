@@ -515,6 +515,7 @@ table/landscape_sprite.h
 table/namegen.h
 table/palette_convert.h
 table/palettes.h
+table/pricebase.h
 table/railtypes.h
 table/road_land.h
 table/roadveh_movement.h

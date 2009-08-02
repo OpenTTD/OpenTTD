@@ -122,6 +122,23 @@ enum ExpensesType {
 	INVALID_EXPENSES      = 0xFF,
 };
 
+/**
+ * Categories of a price bases.
+ */
+enum PriceCategory {
+	PC_NONE,         ///< No category
+	PC_RUNNING,      ///< Price is affected by "vehicle running cost" difficulty setting
+	PC_CONSTRUCTION, ///< Price is affected by "construction cost" difficulty setting
+};
+
+/**
+ * Describes properties of price bases.
+ */
+struct PriceBaseSpec {
+	Money start_price;      ///< Default value at game start, before adding multipliers.
+	PriceCategory category; ///< Price is affected by certain difficulty settings.
+};
+
 /** The "steps" in loan size, in British Pounds! */
 static const int LOAN_INTERVAL = 10000;
 

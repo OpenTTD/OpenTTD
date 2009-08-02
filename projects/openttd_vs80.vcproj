@@ -2268,6 +2268,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\table\pricebase.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\table\railtypes.h"
 				>
 			</File>
