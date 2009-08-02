@@ -1166,8 +1166,8 @@ STR_LANDINFO_WAYPOINT                                           :Waypoint
 STR_WAYPOINT                                                    :{WHITE}Waypoint
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Seleziona il tipo di waypoint
 
-STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT                                           :{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Rinomina il waypoint
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Impossibile rinominare il waypoint...

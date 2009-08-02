@@ -1164,8 +1164,8 @@ STR_LANDINFO_WAYPOINT                                           :Ponto de passag
 STR_WAYPOINT                                                    :{WHITE}Ponto de passagem
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Seleccione um tipo de ponto de passagem
 
-STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT                                           :{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nome do ponto de passagem
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Não é possível alterar o nome do ponto de passagem...

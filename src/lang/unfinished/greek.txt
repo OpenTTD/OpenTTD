@@ -1162,8 +1162,8 @@ STR_LANDINFO_WAYPOINT                                           :Σημείο π
 STR_WAYPOINT                                                    :{WHITE}Σημείο πορείας
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Επιλογή τύπου σημείου πορείας
 
-STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT                                           :{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Διαμόρφωση ονόματος σημείου πορείας
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Αδύνατο να αλλαχτεί το όνομα του σημείου πορείας...

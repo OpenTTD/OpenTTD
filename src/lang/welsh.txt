@@ -1162,8 +1162,8 @@ STR_LANDINFO_WAYPOINT                                           :Pwynt Llwybr
 STR_WAYPOINT                                                    :{WHITE}Pwynt Llwybr
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Dewiswch math Pwynt Llwybr
 
-STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT                                           :{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Golygu enw Pwynt Llwybr
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Does dim modd newid enw Pwynt Llwybr...

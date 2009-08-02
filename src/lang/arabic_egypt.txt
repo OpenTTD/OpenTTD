@@ -1162,8 +1162,8 @@ STR_LANDINFO_WAYPOINT                                           :نقطة عبو
 STR_WAYPOINT                                                    :{WHITE} نقطة عبور
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK} اختر نوع نقطة العبور
 
-STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT                                           :{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}عدل اسم نقطة العبور
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}لا يمكن تعديل نقطة العبور

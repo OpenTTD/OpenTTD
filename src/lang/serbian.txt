@@ -1356,8 +1356,8 @@ STR_LANDINFO_WAYPOINT                                           :Putanja
 STR_WAYPOINT                                                    :{WHITE}Putanja
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Odaberite tip putanje
 
-STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT                                           :{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Promena naziva putanje
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Neuspešana promena naziva putanje...

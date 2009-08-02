@@ -1164,8 +1164,8 @@ STR_LANDINFO_WAYPOINT                                           :Haltă de mişc
 STR_WAYPOINT                                                    :{WHITE}Punct de tranzit
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Alege tipul de punct de tranzit
 
-STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT                                           :{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editează numele haltei
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nu pot schimba numele haltei...

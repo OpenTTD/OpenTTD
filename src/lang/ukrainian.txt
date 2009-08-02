@@ -1287,8 +1287,8 @@ STR_LANDINFO_WAYPOINT                                           :Пункт
 STR_WAYPOINT                                                    :{WHITE}Точка маршруту
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Виберіть тип точки маршруту
 
-STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT                                           :{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Перейменуйте точку маршруту
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Не можна перейменувати точку маршруту...

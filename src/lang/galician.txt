@@ -1140,8 +1140,8 @@ STR_LANDINFO_WAYPOINT                                           :Punto de contro
 STR_WAYPOINT                                                    :{WHITE}Punto de ruta
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Selecciona-lo tipo de punto de ruta
 
-STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT                                           :{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edita-lo nome do punto de control
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Non se pode cambia-lo nome do punto de control...

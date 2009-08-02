@@ -1164,8 +1164,8 @@ STR_LANDINFO_WAYPOINT                                           :Kontrolsted
 STR_WAYPOINT                                                    :{WHITE}Kontrolsted
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vælg udseende af kontrolsteder
 
-STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT                                           :{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Omdøb kontrolsted
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Kan ikke omdøbe kontrolsted...
