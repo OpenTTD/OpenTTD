@@ -554,7 +554,7 @@ bool NewHouseTileLoop(TileIndex tile)
 	}
 
 	TriggerHouse(tile, HOUSE_TRIGGER_TILE_LOOP);
-	TriggerHouse(tile, HOUSE_TRIGGER_TILE_LOOP_TOP);
+	if (hs->building_flags & BUILDING_HAS_1_TILE) TriggerHouse(tile, HOUSE_TRIGGER_TILE_LOOP_TOP);
 
 	if (HasBit(hs->callback_mask, CBM_HOUSE_ANIMATION_START_STOP)) {
 		/* If this house is marked as having a synchronised callback, all the
