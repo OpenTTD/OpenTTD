@@ -49,7 +49,8 @@ enum {
 	ATW_CAPTION,
 	ATW_STICKYBOX,
 	ATW_AIRPORT,
-	ATW_DEMOLISH
+	ATW_DEMOLISH,
+	ATW_SPACER,
 };
 
 
@@ -71,9 +72,9 @@ static OnButtonClick * const _build_air_button_proc[] = {
 };
 
 struct BuildAirToolbarWindow : Window {
-	BuildAirToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	BuildAirToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		this->FindWindowPlacementAndResize(desc);
+		this->InitNested(desc, window_number);
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
 
@@ -131,15 +132,6 @@ struct BuildAirToolbarWindow : Window {
 	}
 };
 
-static const Widget _air_toolbar_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_BLACK_CROSS,              STR_TOOLTIP_CLOSE_WINDOW },
-{    WWT_CAPTION,   RESIZE_NONE,   COLOUR_DARK_GREEN,    11,    51,     0,    13, STR_TOOLBAR_AIRCRAFT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS },
-{  WWT_STICKYBOX,   RESIZE_NONE,   COLOUR_DARK_GREEN,    52,    63,     0,    13, 0x0,                          STR_STICKY_BUTTON },
-{     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_DARK_GREEN,     0,    41,    14,    35, SPR_IMG_AIRPORT,              STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP },
-{     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_DARK_GREEN,    42,    63,    14,    35, SPR_IMG_DYNAMITE,             STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC },
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_air_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, ATW_CLOSEBOX),
@@ -147,8 +139,9 @@ static const NWidgetPart _nested_air_toolbar_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN, ATW_STICKYBOX),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, ATW_AIRPORT), SetMinimalSize(42, 22), SetDataTip(SPR_IMG_AIRPORT, STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, ATW_DEMOLISH), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, ATW_AIRPORT), SetFill(0, 1), SetMinimalSize(42, 22), SetDataTip(SPR_IMG_AIRPORT, STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, ATW_SPACER), SetMinimalSize(4, 22), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, ATW_DEMOLISH), SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
 	EndContainer(),
 };
 
@@ -156,7 +149,7 @@ static const WindowDesc _air_toolbar_desc(
 	WDP_ALIGN_TBR, 22, 64, 36, 64, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_CONSTRUCTION,
-	_air_toolbar_widgets, _nested_air_toolbar_widgets, lengthof(_nested_air_toolbar_widgets)
+	NULL, _nested_air_toolbar_widgets, lengthof(_nested_air_toolbar_widgets)
 );
 
 void ShowBuildAirToolbar()
@@ -202,18 +195,13 @@ enum AirportPickerWidgets {
 
 class AirportPickerWindow : public PickerWindowBase {
 public:
-	AirportPickerWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent, TRANSPORT_AIR)
+	AirportPickerWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
 	{
+		this->InitNested(desc, TRANSPORT_AIR);
 		this->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
 		this->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
 		this->OnInvalidateData();
 		this->SelectOtherAirport(_selected_airport_type);
-
-		if (_settings_game.economy.station_noise_level) {
-			ResizeWindowForWidget(this, BAW_BOTTOMPANEL, 0, 10);
-		}
-
-		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual ~AirportPickerWindow()
@@ -228,22 +216,24 @@ public:
 		const AirportFTAClass *airport = GetAirport(_selected_airport_type);
 		int rad = _settings_game.station.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
 
-		uint16 top = this->widget[BAW_BTN_DOHILIGHT].bottom + WD_PAR_VSEP_NORMAL;
+		uint16 top = this->nested_array[BAW_BTN_DOHILIGHT]->pos_y + this->nested_array[BAW_BTN_DOHILIGHT]->current_y + WD_PAR_VSEP_NORMAL;
+		NWidgetCore *panel_nwi = this->nested_array[BAW_BOTTOMPANEL];
+		int right = panel_nwi->pos_x +  panel_nwi->current_x;
+		int bottom = panel_nwi->pos_y +  panel_nwi->current_y;
 		/* only show the station (airport) noise, if the noise option is activated */
 		if (_settings_game.economy.station_noise_level) {
 			/* show the noise of the selected airport */
 			SetDParam(0, airport->noise_level);
-			DrawString(this->widget[BAW_BOTTOMPANEL].left + WD_FRAMERECT_LEFT, this->widget[BAW_BOTTOMPANEL].right - WD_FRAMERECT_RIGHT, top, STR_STATION_NOISE);
+			DrawString(panel_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, STR_STATION_NOISE);
 			top += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 		}
 
 		/* strings such as 'Size' and 'Coverage Area' */
-		top = DrawStationCoverageAreaText(this->widget[BAW_BOTTOMPANEL].left + WD_FRAMERECT_LEFT, this->widget[BAW_BOTTOMPANEL].right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
-		top = DrawStationCoverageAreaText(this->widget[BAW_BOTTOMPANEL].left + WD_FRAMERECT_LEFT, this->widget[BAW_BOTTOMPANEL].right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
-		if (top != this->widget[BAW_BOTTOMPANEL].bottom) {
-			this->SetDirty();
-			ResizeWindowForWidget(this, BAW_BOTTOMPANEL, 0, top - this->widget[BAW_BOTTOMPANEL].bottom);
-			this->SetDirty();
+		top = DrawStationCoverageAreaText(panel_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
+		top = DrawStationCoverageAreaText(panel_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
+		/* Resize background if the text is not equally long as the window. */
+		if (top > bottom || (top < bottom && panel_nwi->current_y > panel_nwi->smallest_y)) {
+			ResizeWindow(this, 0, top - bottom);
 		}
 	}
 
@@ -304,33 +294,6 @@ public:
 	}
 };
 
-static const Widget _build_airport_picker_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_DARK_GREEN,   0,    10,     0,    13, STR_BLACK_CROSS,                   STR_TOOLTIP_CLOSE_WINDOW},             // BAW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,   COLOUR_DARK_GREEN,  11,   147,     0,    13, STR_STATION_BUILD_AIRPORT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // BAW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,   COLOUR_DARK_GREEN,   0,   147,    14,    52, 0x0,                               STR_NULL},                             // BAW_SMALL_AIRPORTS_PANEL
-{      WWT_LABEL,   RESIZE_NONE,   COLOUR_DARK_GREEN,   0,   147,    14,    27, STR_SMALL_AIRPORTS,                STR_NULL},                             // BAW_SMALL_AIRPORTS_LABEL
-{      WWT_PANEL,   RESIZE_NONE,   COLOUR_DARK_GREEN,   0,   147,    53,    91, 0x0,                               STR_NULL},                             // BAW_LARGE_AIRPORTS_PANEL
-{      WWT_LABEL,   RESIZE_NONE,   COLOUR_DARK_GREEN,   0,   147,    53,    66, STR_LARGE_AIRPORTS,                STR_NULL},                             // BAW_LARGE_AIRPORTS_LABEL
-{      WWT_PANEL,   RESIZE_NONE,   COLOUR_DARK_GREEN,   0,   147,    92,   130, 0x0,                               STR_NULL},                             // BAW_HUB_AIRPORTS_PANEL
-{      WWT_LABEL,   RESIZE_NONE,   COLOUR_DARK_GREEN,   0,   147,    92,   105, STR_HUB_AIRPORTS,                  STR_NULL},                             // BAW_HUB_AIRPORTS_LABEL
-{      WWT_PANEL,   RESIZE_NONE,   COLOUR_DARK_GREEN,   0,   147,   131,   181, 0x0,                               STR_NULL},                             // BAW_HELIPORTS_PANEL
-{      WWT_LABEL,   RESIZE_NONE,   COLOUR_DARK_GREEN,   0,   147,   131,   144, STR_HELIPORTS,                     STR_NULL},                             // BAW_HELIPORTS_LABEL
-{      WWT_PANEL,   RESIZE_NONE,   COLOUR_DARK_GREEN,   0,   147,   182,   244, 0x0,                               STR_NULL},                             // BAW_BOTTOMPANEL
-{    WWT_TEXTBTN,   RESIZE_NONE,   COLOUR_GREY,         2,   145,    28,    39, STR_SMALL_AIRPORT,                 STR_STATION_BUILD_AIRPORT_TOOLTIP},    // BAW_SMALL_AIRPORT
-{    WWT_TEXTBTN,   RESIZE_NONE,   COLOUR_GREY,         2,   145,    67,    78, STR_CITY_AIRPORT,                  STR_STATION_BUILD_AIRPORT_TOOLTIP},    // BAW_CITY_AIRPORT
-{    WWT_TEXTBTN,   RESIZE_NONE,   COLOUR_GREY,         2,   145,   145,   156, STR_HELIPORT,                      STR_STATION_BUILD_AIRPORT_TOOLTIP},    // BAW_HELIPORT
-{    WWT_TEXTBTN,   RESIZE_NONE,   COLOUR_GREY,         2,   145,    79,    90, STR_METRO_AIRPORT ,                STR_STATION_BUILD_AIRPORT_TOOLTIP},    // BAW_METRO_AIRPORT
-{    WWT_TEXTBTN,   RESIZE_NONE,   COLOUR_GREY,         2,   145,   106,   117, STR_INTERNATIONAL_AIRPORT,         STR_STATION_BUILD_AIRPORT_TOOLTIP},    // BAW_INTERNATIONAL_AIRPORT
-{    WWT_TEXTBTN,   RESIZE_NONE,   COLOUR_GREY,         2,   145,    40,    51, STR_COMMUTER_AIRPORT,              STR_STATION_BUILD_AIRPORT_TOOLTIP},    // BAW_COMMUTER_AIRPORT
-{    WWT_TEXTBTN,   RESIZE_NONE,   COLOUR_GREY,         2,   145,   169,   180, STR_HELIDEPOT,                     STR_STATION_BUILD_AIRPORT_TOOLTIP},    // BAW_HELIDEPOT
-{    WWT_TEXTBTN,   RESIZE_NONE,   COLOUR_GREY,         2,   145,   118,   129, STR_INTERCONTINENTAL_AIRPORT,      STR_STATION_BUILD_AIRPORT_TOOLTIP},    // BAW_INTERCONTINENTAL_AIRPORT
-{    WWT_TEXTBTN,   RESIZE_NONE,   COLOUR_GREY,         2,   145,   157,   168, STR_HELISTATION,                   STR_STATION_BUILD_AIRPORT_TOOLTIP},    // BAW_HELISTATION
-{    WWT_TEXTBTN,   RESIZE_NONE,   COLOUR_GREY,        14,    73,   196,   207, STR_STATION_BUILD_COVERAGE_OFF,    STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP}, // BAW_BTN_DONTHILIGHT
-{    WWT_TEXTBTN,   RESIZE_NONE,   COLOUR_GREY,        74,   133,   196,   207, STR_STATION_BUILD_COVERAGE_ON,     STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP},  // BAW_BTN_DOHILIGHT
-{      WWT_LABEL,   RESIZE_NONE,   COLOUR_DARK_GREEN,   0,   147,   182,   195, STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL},                                // BAW_COVERAGE_LABEL
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_build_airport_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BAW_CLOSEBOX),
@@ -338,76 +301,80 @@ static const NWidgetPart _nested_build_airport_widgets[] = {
 	EndContainer(),
 	/* Small airports. */
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BAW_SMALL_AIRPORTS_PANEL),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BAW_SMALL_AIRPORTS_LABEL), SetMinimalSize(148, 14), SetDataTip(STR_SMALL_AIRPORTS, STR_NULL),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BAW_SMALL_AIRPORTS_LABEL), SetMinimalSize(148, 14), SetFill(1, 0), SetDataTip(STR_SMALL_AIRPORTS, STR_NULL),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(1, 0),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_SMALL_AIRPORT), SetMinimalSize(144, 12),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_SMALL_AIRPORT), SetMinimalSize(144, 12), SetFill(1, 0),
 									SetDataTip(STR_SMALL_AIRPORT, STR_STATION_BUILD_AIRPORT_TOOLTIP),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_COMMUTER_AIRPORT), SetMinimalSize(144, 12),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_COMMUTER_AIRPORT), SetMinimalSize(144, 12), SetFill(1, 0),
 									SetDataTip(STR_COMMUTER_AIRPORT, STR_STATION_BUILD_AIRPORT_TOOLTIP),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 1), SetFill(1, 0),
 			EndContainer(),
-			NWidget(NWID_SPACER), SetMinimalSize(1, 0),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 		EndContainer(),
 	EndContainer(),
 	/* Large airports. */
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BAW_LARGE_AIRPORTS_PANEL),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BAW_LARGE_AIRPORTS_LABEL), SetMinimalSize(148, 14), SetDataTip(STR_LARGE_AIRPORTS, STR_NULL),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BAW_LARGE_AIRPORTS_LABEL), SetMinimalSize(148, 14), SetFill(1, 0), SetDataTip(STR_LARGE_AIRPORTS, STR_NULL),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(1, 0),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_CITY_AIRPORT), SetMinimalSize(144, 12),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_CITY_AIRPORT), SetMinimalSize(144, 12), SetFill(1, 0),
 									SetDataTip(STR_CITY_AIRPORT, STR_STATION_BUILD_AIRPORT_TOOLTIP),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_METRO_AIRPORT), SetMinimalSize(144, 12),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_METRO_AIRPORT), SetMinimalSize(144, 12), SetFill(1, 0),
 									SetDataTip(STR_METRO_AIRPORT, STR_STATION_BUILD_AIRPORT_TOOLTIP),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 1), SetFill(1, 0),
 			EndContainer(),
-			NWidget(NWID_SPACER), SetMinimalSize(1, 0),
+			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 		EndContainer(),
 	EndContainer(),
 	/* Hub airports. */
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BAW_HUB_AIRPORTS_PANEL),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BAW_HUB_AIRPORTS_LABEL), SetMinimalSize(148, 14), SetDataTip(STR_HUB_AIRPORTS, STR_NULL),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BAW_HUB_AIRPORTS_LABEL), SetMinimalSize(148, 14), SetFill(1, 0), SetDataTip(STR_HUB_AIRPORTS, STR_NULL),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_INTERNATIONAL_AIRPORT), SetMinimalSize(144, 12),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_INTERNATIONAL_AIRPORT), SetMinimalSize(144, 12), SetFill(1, 0),
 									SetDataTip(STR_INTERNATIONAL_AIRPORT, STR_STATION_BUILD_AIRPORT_TOOLTIP),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_INTERCONTINENTAL_AIRPORT), SetMinimalSize(144, 12),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_INTERCONTINENTAL_AIRPORT), SetMinimalSize(144, 12), SetFill(1, 0),
 									SetDataTip(STR_INTERCONTINENTAL_AIRPORT, STR_STATION_BUILD_AIRPORT_TOOLTIP),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 1), SetFill(1, 0),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 		EndContainer(),
 	EndContainer(),
 	/* Heliports. */
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BAW_HELIPORTS_PANEL),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BAW_HELIPORTS_LABEL), SetMinimalSize(148, 14), SetDataTip(STR_HELIPORTS, STR_NULL),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BAW_HELIPORTS_LABEL), SetMinimalSize(148, 14), SetFill(1, 0), SetDataTip(STR_HELIPORTS, STR_NULL),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_HELIPORT), SetMinimalSize(144, 12),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_HELIPORT), SetMinimalSize(144, 12), SetFill(1, 0),
 									SetDataTip(STR_HELIPORT, STR_STATION_BUILD_AIRPORT_TOOLTIP),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_HELISTATION), SetMinimalSize(144, 12),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_HELISTATION), SetMinimalSize(144, 12), SetFill(1, 0),
 									SetDataTip(STR_HELISTATION, STR_STATION_BUILD_AIRPORT_TOOLTIP),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_HELIDEPOT), SetMinimalSize(144, 12),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_HELIDEPOT), SetMinimalSize(144, 12), SetFill(1, 0),
 									SetDataTip(STR_HELIDEPOT, STR_STATION_BUILD_AIRPORT_TOOLTIP),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 1), SetFill(1, 0),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
 		EndContainer(),
 	EndContainer(),
 	/* Bottom panel. */
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BAW_BOTTOMPANEL),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BAW_COVERAGE_LABEL), SetMinimalSize(148, 14), SetDataTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BAW_COVERAGE_LABEL), SetMinimalSize(148, 14), SetFill(1, 0), SetDataTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(14, 0),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_BTN_DONTHILIGHT), SetMinimalSize(60, 12), SetDataTip(STR_STATION_BUILD_COVERAGE_OFF, STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_BTN_DOHILIGHT), SetMinimalSize(60, 12), SetDataTip(STR_STATION_BUILD_COVERAGE_ON, STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_BTN_DONTHILIGHT), SetMinimalSize(60, 12), SetFill(1, 0),
+											SetDataTip(STR_STATION_BUILD_COVERAGE_OFF, STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, BAW_BTN_DOHILIGHT), SetMinimalSize(60, 12), SetFill(1, 0),
+											SetDataTip(STR_STATION_BUILD_COVERAGE_ON, STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP),
+			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(14, 0),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 37),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 10), SetResize(0, 1), SetFill(1, 0),
 	EndContainer(),
 };
 
@@ -415,7 +382,7 @@ static const WindowDesc _build_airport_desc(
 	WDP_AUTO, WDP_AUTO, 148, 245, 148, 245,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
-	_build_airport_picker_widgets, _nested_build_airport_widgets, lengthof(_nested_build_airport_widgets)
+	NULL, _nested_build_airport_widgets, lengthof(_nested_build_airport_widgets)
 );
 
 static void ShowBuildAirportPicker(Window *parent)
