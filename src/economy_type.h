@@ -126,9 +126,9 @@ enum ExpensesType {
  * Categories of a price bases.
  */
 enum PriceCategory {
-	PC_NONE,         ///< No category
-	PC_RUNNING,      ///< Price is affected by "vehicle running cost" difficulty setting
-	PC_CONSTRUCTION, ///< Price is affected by "construction cost" difficulty setting
+	PCAT_NONE,         ///< Not affected by difficulty settings
+	PCAT_RUNNING,      ///< Price is affected by "vehicle running cost" difficulty setting
+	PCAT_CONSTRUCTION, ///< Price is affected by "construction cost" difficulty setting
 };
 
 /**
