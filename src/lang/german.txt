@@ -1587,7 +1587,9 @@ STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Gleis mit Pfads
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Bahnhof muss erst abgerissen werden
 STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Wegpunkt muss erst abgerissen werden
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Errichte eine getrennte Station
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}Errichte einen getrennten Wegpunkt
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Verbinde die Station
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}Verbinde den Wegpunkt
 
 
 
@@ -1820,6 +1822,7 @@ STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Straßen
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Güterverladestelle muss vorher abgerissen werden
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Haltestelle{P "" n}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Keine -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Zu dicht an einem anderen Hafen
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Hafen muss erst entfernt werden
@@ -1831,6 +1834,8 @@ STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Ausricht
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Ausrichtung für die Straßenbahnhaltestelle wählen
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Ausrichtung der Güterverladestelle auswählen
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Hauptansicht zur Station scrollen
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Hauptansicht zum Wegpunkt scrollen
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Hauptansicht zur Boje scrollen
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Stationsbewertung anzeigen
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Namen der Station ändern
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Zeige Liste der akzeptierten Frachten
@@ -2746,6 +2751,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Fahrzeug
 STR_CLEAR_TIME                                                  :{BLACK}Zeit löschen
 STR_RESET_LATENESS                                              :{BLACK}Verspätung löschen
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Namen des Wegpunkts ändern
+STR_CHANGE_BUOY_NAME                                            :{BLACK}Namen der Boje ändern
 
 STR_TRAIN_STOPPING                                              :{RED}Halte an
 STR_TRAIN_STOPPING_VEL                                          :{RED}Halte an, {VELOCITY}

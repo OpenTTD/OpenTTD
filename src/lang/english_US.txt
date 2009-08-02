@@ -624,8 +624,8 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plant tr
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Place rocky areas on landscape
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Place lighthouse
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Place transmitter
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Define desert area.{}Press and hold CTRL to remove it
-STR_CREATE_LAKE                                                 :{BLACK}Define water area.{}Make a canal, unless CTRL is held down at sea level, when it will flood the surroundings instead
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Define desert area.{}Press and hold Ctrl to remove it
+STR_CREATE_LAKE                                                 :{BLACK}Define water area.{}Make a canal. If Ctrl is held down at sea level, it will flood the surroundings instead
 STR_CREATE_RIVER                                                :{BLACK}Place rivers.
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Delete
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Delete this town completely
@@ -678,7 +678,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Newgrf settings
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparency options
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Town names displayed
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Station names displayed
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Waypoints displayed
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Waypoint names displayed
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Signs displayed
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Full animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Full detail
@@ -691,8 +691,8 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Land area infor
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toggle Console
 STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
-STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Giant Screenshot (Ctrl-G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl+S)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Giant Screenshot (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :About 'OpenTTD'
 ############ range ends here
 
@@ -988,7 +988,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Map scr
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Right-click emulation: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-click
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-click
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Off
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Left-click scrolling: {ORANGE}{STRING}
@@ -1584,8 +1584,11 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Railroad track 
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Railroad track with combo- and one-way path signals
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Railroad track with path and one-way path signals
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Must remove railroad station first
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Must remove rail waypoint first
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Build a separate station
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}Build a separate waypoint
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Join station
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}Join waypoint
 
 
 
@@ -1768,11 +1771,13 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Number o
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platform length
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Too close to another railroad station
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Adjoins more than one existing station/loading area
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Adjoins more than one existing waypoint
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Too many stations/loading areas
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Too many railroad station parts
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Too many bus stops
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Too many truck stations
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Too close to another station/loading area
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Too close to another waypoint
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Must demolish railroad station first
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Too close to another airport
@@ -1816,6 +1821,7 @@ STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Must dem
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Must demolish freight streetcar station first
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Station{P "" s}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- None -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Too close to another dock
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Must demolish dock first
@@ -1827,6 +1833,8 @@ STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Select t
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Select passenger streetcar station orientation
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Select freight streetcar station orientation
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Center main view on station location
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Center main view on waypoint location
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Center main view on buoy location
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Show station ratings
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Change name of station
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Show list of accepted cargo
@@ -1848,7 +1856,7 @@ STR_STATION_DESCRIPTION_BUOY                                    :Buoy
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...buoy in the way
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...station too spread out
 STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...nonuniform stations disabled
-STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Hold down CTRL to select more than one item
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Hold down Ctrl to select more than one item
 
 STR_UNDEFINED                                                   :(undefined string)
 STR_STAT_CLASS_DFLT                                             :Default station
@@ -2176,8 +2184,8 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Select n
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Change the company vehicle livery
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Change the president's name
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Change the company name
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Increase size of loan
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Repay part of loan
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Increase size of loan. Ctrl+Click borrows as much as possible
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Repay part of loan. Ctrl+Click repays as much loan as possible
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(President)
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurated: {WHITE}{NUM}
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehicles:
@@ -2666,7 +2674,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Skip
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Delete
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Go To
 STR_REFIT                                                       :{BLACK}Refit
-STR_REFIT_TIP                                                   :{BLACK}Select what cargo type to refit to in this order. Control click to remove refit instruction
+STR_REFIT_TIP                                                   :{BLACK}Select what cargo type to refit to in this order. Ctrl+Click to remove refit instruction
 STR_REFIT_ORDER                                                 :(Refit to {STRING})
 STR_REFIT_STOP_ORDER                                            :(Refit to {STRING} and stop)
 STR_STOP_ORDER                                                  :(Stop)
@@ -2709,7 +2717,7 @@ STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Show det
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Show capacities of each vehicle
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Show total capacity of train, split by cargo type
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Orders list - click on order to highlight it
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Skip the current order, and start the next. CTRL + click skips to the selected order)
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Skip the current order, and start the next. Ctrl+Click skips to the selected order
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Delete the highlighted order
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insert a new order before the highlighted order, or add to end of list
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Timetable - click on an order to highlight it.
@@ -2742,6 +2750,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Can't tu
 STR_CLEAR_TIME                                                  :{BLACK}Clear Time
 STR_RESET_LATENESS                                              :{BLACK}Reset Late Counter
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Change waypoint name
+STR_CHANGE_BUOY_NAME                                            :{BLACK}Change buoy name
 
 STR_TRAIN_STOPPING                                              :{RED}Stopping
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopping, {VELOCITY}
@@ -2767,7 +2776,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}This veh
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}This timetable will take {STRING} to complete
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}This timetable will take at least {STRING} to complete (not all timetabled)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofill
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fill the timetable automatically with the values from the next journey (CTRL-click to try to keep waiting times)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fill the timetable automatically with the values from the next journey (Ctrl+Click to try to keep waiting times)
 
 ##id 0x9000
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...must be stopped inside a road vehicle depot
@@ -3114,15 +3123,15 @@ STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clone Ve
 STR_CLONE_SHIP                                                  :{BLACK}Clone Ship
 STR_CLONE_AIRCRAFT                                              :{BLACK}Clone Aircraft
 
-STR_CLONE_TRAIN_INFO                                            :{BLACK}This will build a copy of the train including all cars. Control-click will share the orders
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}This will build a copy of the road vehicle. Control-click will share the orders
-STR_CLONE_SHIP_INFO                                             :{BLACK}This will build a copy of the ship. Control-click will share the orders
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}This will build a copy of the aircraft. Control-click will share the orders
+STR_CLONE_TRAIN_INFO                                            :{BLACK}This will build a copy of the train including all cars. Ctrl+Click will share the orders
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}This will build a copy of the road vehicle. Ctrl+Click will share the orders
+STR_CLONE_SHIP_INFO                                             :{BLACK}This will build a copy of the ship. Ctrl+Click will share the orders
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}This will build a copy of the aircraft. Ctrl+Click will share the orders
 
 STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}This will build a copy of a train including all cars. Click this button and then on a train inside or outside the depot. Control-click will share the orders
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}This will build a copy of a road vehicle. Click this button and then on a road vehicle inside or outside the depot. Control-click will share the orders
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}This will build a copy of a ship. Click this button and then on a ship inside or outside the depot. Control-click will share the orders
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}This will build a copy of an aircraft. Click this button and then on an aircraft inside or outside the hangar. Control-click will share the orders
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}This will build a copy of a road vehicle. Click this button and then on a road vehicle inside or outside the depot. Ctrl+Click will will share the orders
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}This will build a copy of a ship. Click this button and then on a ship inside or outside the depot. Ctrl+Click will share the orders
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}This will build a copy of an aircraft. Click this button and then on an aircraft inside or outside the hangar. Ctrl+Click will share the orders
 
 STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}New Rail Vehicles
 STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}New Electric Rail Vehicles
@@ -3380,7 +3389,7 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...this 
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...road facing in the wrong direction
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Transparency Options
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Toggle transparency for station signs
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Toggle transparency for station signs. Ctrl+Click to lock.
 STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Toggle transparency for trees
 STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Toggle transparency for houses
 STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Toggle transparency for industries
@@ -3563,7 +3572,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exit-Sig
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-Signal (electric){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of presignals.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Standard path signals can be passed from the back side.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}One-way Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way path signals cannot be passed from the back side.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signal Convert{}When selected, clicking an existing signal will convert it to the selected signal type and variant, CTRL-click will toggle the existing variant.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signal Convert{}When selected, clicking an existing signal will convert it to the selected signal type and variant, Ctrl+Click will toggle the existing variant.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Dragging signal density
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Decrease dragging signal density
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Increase dragging signal density

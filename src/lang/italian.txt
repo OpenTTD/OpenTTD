@@ -1835,6 +1835,8 @@ STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selezion
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Seleziona l'orientamento della stazione tram passeggeri
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Seleziona l'orientamento della stazione tram merci
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centra la visuale principale sulla posizione della stazione
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra la visuale principale sulla posizione del waypoint
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la visuale principale sulla posizione della boa
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra la valutazione della stazione
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Cambia il nome della stazione
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostra la lista delle merci accettate
@@ -2750,6 +2752,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Impossib
 STR_CLEAR_TIME                                                  :{BLACK}Elimina tempo
 STR_RESET_LATENESS                                              :{BLACK}Azzera ritardo
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Cambia il nome del waypoint
+STR_CHANGE_BUOY_NAME                                            :{BLACK}Cambia il nome della boa
 
 STR_TRAIN_STOPPING                                              :{RED}In frenata
 STR_TRAIN_STOPPING_VEL                                          :{RED}In frenata, {VELOCITY}

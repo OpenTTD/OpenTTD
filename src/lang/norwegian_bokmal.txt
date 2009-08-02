@@ -678,8 +678,8 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Innstillinger f
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Instillinger for gjennomsiktighet
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Vis bynavn
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Vis stasjonsnavn
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Vis skilt
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Vis kontrollpunkt
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Vis skilt
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Fullstending animasjon
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Maksimalt med detaljer
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}Gjennomsiktige bygninger
@@ -1816,6 +1816,7 @@ STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Må fjer
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Må fjerne trikkestasjon for frakt først
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stasjoner
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ingen -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}For nærme enn annen havn
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Må rive havn først
@@ -1827,6 +1828,8 @@ STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Velg ret
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Velg retning på trikkestasjon for passasjerer
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Velg retning på trikkestasjon for frakt
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Sentrer bildet på stasjonen
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Vis kontrollpunktets gjeldende posisjon
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vis bøyens gjeldende posisjon
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vis stasjonsvurdering
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Endre stasjonens navn
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Vis liste over godtatte varer
@@ -2742,6 +2745,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan ikke
 STR_CLEAR_TIME                                                  :{BLACK}Nullstill tid
 STR_RESET_LATENESS                                              :{BLACK}Nullstill senhetsteller
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Endre kontrollpunkt navn
+STR_CHANGE_BUOY_NAME                                            :{BLACK}Endre navnet på bøyen
 
 STR_TRAIN_STOPPING                                              :{RED}Stopper
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopper, {VELOCITY}

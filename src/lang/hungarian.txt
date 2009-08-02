@@ -1617,9 +1617,12 @@ STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Vasúti pálya 
 STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Vasúti pálya kombinált és fejlett jelzőkkel
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Vasúti pálya egy- és kétirányú fejlett jelzőkkel
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Vasúti pálya egy- és kétirányú fejlett jelzőkkel
-STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Előbb a vasútállomást le kell rombolni
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Előbb le kell rombolnod a vasútállomást
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Előbb le kell rombolnod az ellenőrző pontot
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Különálló állomás építése
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}Különálló ellenőrző pont építése
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Állomás egyesítése
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}Ellenőrző pont egyesítése
 
 
 
@@ -1802,11 +1805,13 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Vágány
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Vágányok hossza
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Túl közel van egy másik vasútállomáshoz
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Több állomással/rakodóhellyel érintkezik
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Több létező ellenőrző ponttal szomszédos
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Túl sok az állomás/rakodóhely
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Túl sok vasútállomás-rész
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Túl sok buszmegálló
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Túl sok kamion megálló
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Túl közel van egy másik állomáshoz/rakodóhelyhez
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Túl közel van egy másik ellenőrző ponthoz
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Előbb le kell rombolnod a vasútállomást
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Túl közel van egy másik repülőtérhez
@@ -1862,6 +1867,8 @@ STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Teheraut
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Villamos-utasváró helyzetének kiválasztása
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Tehervillamos-állomás helyzetének kiválasztása
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}A fő nézetet az állomásra állítja
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}A fő nézetet az ellenőrző pontra állítja
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}A fő nézetet a bójára állítja
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vélemény megmutatása az állomásról
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Az állomás nevének megváltoztatása
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Az elfogadott áruk listájának mutatása
@@ -2814,6 +2821,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Több r�
 STR_CLEAR_TIME                                                  :{BLACK}Idő törlése
 STR_RESET_LATENESS                                              :{BLACK}Késés nullázása
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Átnevezi az ellenőrző pontot
+STR_CHANGE_BUOY_NAME                                            :{BLACK}Bója átnevezése
 
 STR_TRAIN_STOPPING                                              :{RED}Lassít
 STR_TRAIN_STOPPING_VEL                                          :{RED}Lassít, {VELOCITY}

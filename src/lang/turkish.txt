@@ -1834,6 +1834,8 @@ STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Kamyon d
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Yolcu tramvayı istasyonu yönünü seçin
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Yük tramvayı istasyonu yönünü seçin
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Durağın oldugu yere git
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Ana görünümü yerimi konumuna ortala
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Ana görünümü şamandıra konumuna ortala
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}İstasyonun reytinglerini göster
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}İstasyonun ismini değiştir
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}İstenen kargoların listesini göster
@@ -1904,35 +1906,45 @@ STR_OBJECT_IN_THE_WAY                                           :{WHITE}yolda {S
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_NAME_COAL_MINE                                     :Kömür Madeni
 STR_INDUSTRY_NAME_POWER_STATION                                 :Elektrik Santrali
-STR_INDUSTRY_NAME_SAWMILL                                       :Kerestecisi
-STR_INDUSTRY_NAME_FOREST                                        :Ormanı
+STR_INDUSTRY_NAME_SAWMILL                                       :Keresteci
+STR_INDUSTRY_NAME_SAWMILL.tamlanan                              :Kerestecisi
+STR_INDUSTRY_NAME_FOREST                                        :Orman
+STR_INDUSTRY_NAME_FOREST.tamlanan                               :Ormanı
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :Petrol Rafinerisi
 STR_INDUSTRY_NAME_OIL_RIG                                       :Petrol Platformu
-STR_INDUSTRY_NAME_FACTORY                                       :Fabrikası
+STR_INDUSTRY_NAME_FACTORY                                       :Fabrika
+STR_INDUSTRY_NAME_FACTORY.tamlanan                              :Fabrikası
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Basımevi
 STR_INDUSTRY_NAME_STEEL_MILL                                    :Çelik Fabrikası
-STR_INDUSTRY_NAME_FARM                                          :Çiftliği
+STR_INDUSTRY_NAME_FARM                                          :Çiftlik
+STR_INDUSTRY_NAME_FARM.tamlanan                                 :Çiftliği
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Bakır Madeni
 STR_INDUSTRY_NAME_OIL_WELLS                                     :Petrol Kuyuları
 STR_INDUSTRY_NAME_BANK                                          :Banka
+STR_INDUSTRY_NAME_BANK.tamlanan                                 :Bankası
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Yemek Fabrikası
 STR_INDUSTRY_NAME_PAPER_MILL                                    :Kağıt Fabrikası
 STR_INDUSTRY_NAME_GOLD_MINE                                     :Altın Madeni
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Bankası
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Banka
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.tamlanan                   :Bankası
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Elmas Madeni
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Demir Madeni
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Meyve Bahçesi
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Kauçuk Bahçesi
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Su Kaynağı
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Su Kulesi
-STR_INDUSTRY_NAME_FACTORY_2                                     :Fabrikası
-STR_INDUSTRY_NAME_FARM_2                                        :Çiftliği
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Oduncusu
+STR_INDUSTRY_NAME_FACTORY_2                                     :Fabrika
+STR_INDUSTRY_NAME_FACTORY_2.tamlanan                            :Fabrikası
+STR_INDUSTRY_NAME_FARM_2                                        :Çiftlik
+STR_INDUSTRY_NAME_FARM_2.tamlanan                               :Çiftliği
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :Oduncu
+STR_INDUSTRY_NAME_LUMBER_MILL.tamlanan                          :Oduncusu
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Pamukhelva Ormanı
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Tatlı Fabrikası
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Pil Çiftliği
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Kola Kuyuları
-STR_INDUSTRY_NAME_TOY_SHOP                                      :Oyuncakçısı
+STR_INDUSTRY_NAME_TOY_SHOP                                      :Oyuncakçı
+STR_INDUSTRY_NAME_TOY_SHOP.tamlanan                             :Oyuncakçısı
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Oyuncak Fabrikası
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Plastik Fıskiyesi
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :İçecek Fabrikası
@@ -2749,6 +2761,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Birden f
 STR_CLEAR_TIME                                                  :{BLACK}Zamanı Temizle
 STR_RESET_LATENESS                                              :{BLACK}Gecikme sayacını sıfırla
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Yolimi adını değiştir
+STR_CHANGE_BUOY_NAME                                            :{BLACK}Şamandıra adını değiştir
 
 STR_TRAIN_STOPPING                                              :{RED}Frenliyor
 STR_TRAIN_STOPPING_VEL                                          :{RED}Frenliyor, {VELOCITY}
@@ -3465,7 +3478,7 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 
 STR_FORMAT_COMPANY_NUM                                          :(Company {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grup {COMMA}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING.tamlanan}
 
 STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}

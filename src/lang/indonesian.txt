@@ -1203,7 +1203,7 @@ STR_LANDINFO_LOCK                                               :Kunci
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Tidak dapat menempatkan sungai disini...
 STR_LANDINFO_RIVER                                              :Sungai
 
-STR_BUOY_IS_IN_USE                                              :{WHITE}...Rambu pelampung sedang digunakan!
+STR_BUOY_IS_IN_USE                                              :{WHITE}...Pelampung sedang digunakan!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Koordinat: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
@@ -1833,6 +1833,8 @@ STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Pilih ar
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Pilih arah stasiun trem penumpang
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Pilih arah stasiun trem angkutan barang
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Arahkan pandangan pada lokasi stasiun
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Arahkan pandangan pada lokasi waypoint
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Arahkan pandangan pada lokasi pelampung
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Tampilkna peringkat dari stasiun
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Ganti nama stasiun
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Tampilkan daftar kargo yang bisa diterima
@@ -1851,7 +1853,7 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Jangan s
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Jangkauan layanan
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Pelabuhan
 STR_STATION_DESCRIPTION_BUOY                                    :Pelampung
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...Rambu pelampung ada di jalan
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...pelampung ada di jalan
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...Stasiun terlalu membentang/melebar
 STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...Stasiun tidak seragam tidak aktif
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Tekan CTRL untuk memilih lebih dari satu item
@@ -2748,6 +2750,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Tidak da
 STR_CLEAR_TIME                                                  :{BLACK}Hapus waktu
 STR_RESET_LATENESS                                              :{BLACK}Reset
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Ubah nama waypoint
+STR_CHANGE_BUOY_NAME                                            :{BLACK}Ubah nama pelampung
 
 STR_TRAIN_STOPPING                                              :{RED}Berhenti
 STR_TRAIN_STOPPING_VEL                                          :{RED}Akan berhenti, {VELOCITY}
@@ -2803,8 +2806,8 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Membangu
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Membangun Galangan Kapal (untuk membuat dan memperbaiki kapal)
 
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Kapal pertama tiba di {STATION}!
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Tempatkan rambu yang dapat digunakan sebagai petunjuk arah
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Tidak dapat menempatkan rambu disini...
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Tempatkan pelampung yang dapat digunakan sebagai petunjuk arah
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Tidak dapat menempatkan pelampung disini...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Membangun jembatan air
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Tidak dapat membangun jembatan air disini...
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Renovasi)
@@ -3076,7 +3079,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Tampilka
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Tampilkan perintah kapal
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Tampilkan order pesawat
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Arahkan tampilan pada lokasi kereta
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Arahkan pandangan pada lokasi kereta
 STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Arahkan pandangan pada lokasi kendaraan
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Arahkan pandangan pada lokasi kapal
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Arahkan pandangan pada lokasi pesawat

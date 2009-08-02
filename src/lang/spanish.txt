@@ -1834,6 +1834,8 @@ STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Elige la
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Seleccione la orientación de la estación del tranvía de pasajeros
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Seleccione la orientación de la estación del tranvía de carga
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrar vista en la posición de la estación
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar vista en posición del punto de ruta
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar vista en posición de la boya
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ver calificación de la estación
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Cambiar nombre de la estación
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostrar lista de carga aceptada
@@ -2749,6 +2751,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}No se pu
 STR_CLEAR_TIME                                                  :{BLACK}Limpiar Horario
 STR_RESET_LATENESS                                              :{BLACK}Resetear Retrasos
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Cambiar nombre del punto de ruta
+STR_CHANGE_BUOY_NAME                                            :{BLACK}Cambiar nombre de boya
 
 STR_TRAIN_STOPPING                                              :{RED}Parándose
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parándose, {VELOCITY}

@@ -13,7 +13,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Fora del marc del mapa
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Massa a prop del marc del mapa
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Massa prop del marc del mapa
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}No tens prou diners - et fan falta {CURRENCY}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_EMPTY                                                       :
@@ -603,8 +603,8 @@ STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generaci
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova Població
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Construcció de nova població
 STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}No es pot construir una població aquí...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...massa aprop del límit del mapa
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...massa aprop d'una altra població
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...massa prop del límit del mapa
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...massa prop d'una altra població
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...lloc inadequat
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...massa poblacions
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Impossible construir poblacions
@@ -909,13 +909,13 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :cap
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :com les altres indústries
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospeccionant
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permet vàries indústries similars per població: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Permet construir a prop indústries del mateix tipus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Permet construir prop d'indústries del mateix tipus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Mostra sempre la data llarga a la barra d'estat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Mostra senyals en el sentit de la marxa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Mostra finestra de balanç al finalitzar cada any: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Les noves ordres són 'sense parada' per defecte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Noves ordres del tren parar per defecte {ORANGE}{STRING}{LTBLUE} de la plataforma
-STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :a prop del final
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :prop del final
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :a la meitat
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :lluny del final
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Cues d'automòbils (amb efectes quàntics): {ORANGE}{STRING}
@@ -1230,7 +1230,7 @@ STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUST
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nom de les indústries - clica al nom per centrar la vista a la indústria
 
-STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...massa a prop d'altres indústries
+STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...massa prop d'altres indústries
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Canvi de producció
 
@@ -1584,8 +1584,11 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Via de tren amb
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Via de tren amb senyals combo- i de camí d'un sentit
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Via de tren amb senyals de camí i de camí d'un sentit
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Primer has de treure la via de l'estació
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Primer s'ha de treure la via punt de control
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Construir una estació separada
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}Construeix un punt de control separat
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Ajuntar estació
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}Uneix punt de control
 
 
 
@@ -1655,8 +1658,8 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Poblaci�
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Reanomena Població
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}No es pot reanomenar la població...
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Les autoritats locals de {TOWN} no permeten fer això
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Noms de Població - clica al nom per centrar la pantalla principal a la població
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la pantalla principal a la població
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Noms de Població - clica al nom per centrar la vista principal a la població
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la vista principal a la població
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Canvia el nom de la població
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passatgers el darrer mes: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Correu el darrer mes: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
@@ -1766,16 +1769,18 @@ STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Aeroport
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Orientació
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Nombre de vies
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Mida de les andanes
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Massa a prop d'una altra estació de tren
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Massa prop d'una altra estació de tren
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Fusiona més d'una estació/àrea de càrrega existent
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Més d'un punt de control existent adjunt
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Massa estacions/àrees de càrrega
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Hi ha massa parts d'estacions de tren
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Massa parades d'autobús
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Masses estacions de càrrega
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Massa a prop d'una altra estació/àrea de càrrega
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Massa prop d'una altra estació/àrea de càrrega
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Massa prop d'un altre punt de control
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Primer has d'enderrocar l'estació de tren
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Massa a prop d'un altre aeroport
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Massa prop d'un altre aeroport
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Primer has d'enderrocar l'aeroport
 
 STR_QUERY_RENAME_STATION_CAPTION                                :Reanomena l'estació/àrea de càrrega
@@ -1818,7 +1823,7 @@ STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Cap -
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Massa a prop d'un altre moll
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Massa prop d'un altre moll
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Primer has d'enderrocar el moll
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Selecciona l'orientació de l'estació de tren
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Selecciona el nombre d'andanes de l'estació de tren
@@ -1827,11 +1832,13 @@ STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Seleccio
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selecciona l'orientació del moll de càrrega de camions
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Selecciona l'orientació de l'estació de tramvies de passatgers
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selecciona l'orientació de l'estació de tramvies de mercaderies
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centra la pantalla principal al lloc de l'estació
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centra la vista principal al lloc de l'estació
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra la vista principal al lloc del punt de control
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra vista principal al lloc de la boia
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra els ratis de l'estació
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Canvia el nom de l'estació
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostra la llista de càrregues admeses
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Noms d'estació - clica al nom per centrar la pantalla principal a l'estació
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Noms d'estació - clica al nom per centrar la vista principal a l'estació
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Selecciona mida/tipus d'aeroport
 STR_STATION_SIGN                                                :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
@@ -1949,9 +1956,9 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produeix
 
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producció del darrer mes:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportat)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra la pantalla principal al lloc de l'indústria
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}Nou/nova {STRING} en construcció a prop de {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}Nou/nova {STRING} s'està plantant a prop de {TOWN}!
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra la vista principal al lloc de l'indústria
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}Nou/nova {STRING} en construcció prop de {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}S'està plantant un nou {STRING} prop de {TOWN}!
 STR_INDUSTRY_BUILD_COST                                         :{BLACK}Cost: {YELLOW}{CURRENCY}
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Aquí no es pot construir aquest tipus d'indústria...
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...els boscos només es poden plantar sota la cota de neu
@@ -1964,7 +1971,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BLACK}{BIGFONT
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BLACK}{BIGFONT}Sistemes de conreu millorats a {INDUSTRY} fan preveure doblar la producció!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} la producció es redueix un 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BLACK}{BIGFONT}Una plaga d'insectes provoca el caos a {INDUSTRY}!{}La producció es redueix un 50%
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...només es pot situar a prop dels límits del mapa
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...només es pot situar prop dels límits del mapa
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BLACK}{BIGFONT}La producció de {STRING} a {INDUSTRY} creix un {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BLACK}{BIGFONT}La producció de {STRING} a {INDUSTRY} es redueix un {COMMA}%!
 
@@ -2571,7 +2578,7 @@ STR_ORDER_GO_TO                                                 :Ves a
 STR_ORDER_GO_NON_STOP_TO                                        :Ves sense parar a
 STR_ORDER_GO_VIA                                                :Ves via
 STR_ORDER_GO_NON_STOP_VIA                                       :Ves sense parar via
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[a prop del final]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[prop del final]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[a la meitat]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[lluny del final]
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Carrega del tot qualsevol càrrega
@@ -2743,6 +2750,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}No es po
 STR_CLEAR_TIME                                                  :{BLACK}Esborra Temps
 STR_RESET_LATENESS                                              :{BLACK}Reset. control de retard
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Canvia el nom del punt de trobada
+STR_CHANGE_BUOY_NAME                                            :{BLACK}Canvia el nom de la boia
 
 STR_TRAIN_STOPPING                                              :{RED}Parant
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parant, a {VELOCITY}
@@ -3071,10 +3079,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Mostra l
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Mostra les ordres del vaixell
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Mostra les ordres de l'avió
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centra la vista de la pantalla principal a la situació del tren
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centra la pantalla principal a la situació del vehicle
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centra la pantalla principal en la situació del vaixell
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centra la pantalla principal a la situació de l'avió
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centra la vista principal al lloc del tren
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centra la vista principal al lloc del vehicle
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centra la vista principal al lloc del vaixell
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centra la vista principal al lloc de l'avió
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Envia el tren a cotxera
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envia el vehicle a cotxera
@@ -3185,10 +3193,10 @@ STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arrosseg
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Arrossega el vaixell fins aquí per vendre'l
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Arrossega l'avió fins aquí per vendre'l
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centra la vista de la pantalla principal en la situació de la cotxera
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra la pantalla principal en la situació de la cotxera
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centra la pantalla principal en la situació de la drassana
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centra la pantalla principal en la situació de l'hangar
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centra la vista principal al lloc de la cotxera
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra la vista principal al lloc de la cotxera
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centra la vista principal al lloc de la drassana
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centra la vista principal al lloc de l'hangar
 
 
 ### depot strings
