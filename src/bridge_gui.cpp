@@ -192,7 +192,9 @@ public:
 					SetDParam(0, b->material);
 					text_dim = maxdim(text_dim, GetStringBoundingBox(STR_BUILD_BRIDGE_INFO));
 				}
-				resize->height = max(sprite_dim.height, text_dim.height) + 2;
+				sprite_dim.height++; // Sprite is rendered one pixel down in the matrix field.
+				text_dim.height++; // Allowing the bottom row pixels to be rendered on the edge of the matrix field.
+				resize->height = max(sprite_dim.height, text_dim.height) + 2; // Max of both sizes + account for matrix edges.
 
 				this->bridgetext_offset = WD_MATRIX_LEFT + sprite_dim.width + 1; // Left edge of text, 1 pixel distance from the sprite.
 				size->width = this->bridgetext_offset + text_dim.width + WD_MATRIX_RIGHT;
@@ -210,7 +212,7 @@ public:
 				break;
 
 			case BBSW_BRIDGE_LIST: {
-				uint y = r.top + 2;
+				uint y = r.top;
 				for (int i = this->vscroll.pos; i < this->vscroll.cap + this->vscroll.pos && i < (int)this->bridges->Length(); i++) {
 					const BridgeSpec *b = this->bridges->Get(i)->spec;
 
@@ -218,8 +220,8 @@ public:
 					SetDParam(1, b->speed);
 					SetDParam(0, b->material);
 
-					DrawSprite(b->sprite, b->pal, r.left + WD_MATRIX_LEFT, y);
-					DrawStringMultiLine(r.left + this->bridgetext_offset, r.right, y, y + this->resize.step_height, STR_BUILD_BRIDGE_INFO);
+					DrawSprite(b->sprite, b->pal, r.left + WD_MATRIX_LEFT, y + this->resize.step_height - 1 - GetSpriteSize(b->sprite).height);
+					DrawStringMultiLine(r.left + this->bridgetext_offset, r.right, y + 2, y + this->resize.step_height, STR_BUILD_BRIDGE_INFO);
 					y += this->resize.step_height;
 				}
 				break;
