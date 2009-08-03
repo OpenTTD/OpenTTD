@@ -312,14 +312,19 @@ static const NWidgetPart _nested_build_bridge_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BBSW_CLOSEBOX),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BBSW_CAPTION), SetFill(1, 0), SetDataTip(STR_SELECT_RAIL_BRIDGE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	/* Sort order + criteria buttons */
+
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, BBSW_DROPDOWN_ORDER), SetFill(1, 0), SetDataTip(STR_SORT_BY, STR_SORT_ORDER_TIP),
-		NWidget(WWT_DROPDOWN, COLOUR_DARK_GREEN, BBSW_DROPDOWN_CRITERIA), SetFill(1, 0), SetDataTip(0x0, STR_SORT_CRITERIA_TIP),
-	EndContainer(),
-	/* Matrix + scrollbar */
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, BBSW_BRIDGE_LIST), SetFill(1, 0), SetResize(0, 22), SetDataTip(0x401, STR_BUILD_BRIDGE_SELECTION_TOOLTIP),
+		NWidget(NWID_VERTICAL),
+			/* Sort order + criteria buttons */
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, BBSW_DROPDOWN_ORDER), SetFill(1, 0), SetDataTip(STR_SORT_BY, STR_SORT_ORDER_TIP),
+				NWidget(WWT_DROPDOWN, COLOUR_DARK_GREEN, BBSW_DROPDOWN_CRITERIA), SetFill(1, 0), SetDataTip(0x0, STR_SORT_CRITERIA_TIP),
+			EndContainer(),
+			/* Matrix. */
+			NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, BBSW_BRIDGE_LIST), SetFill(1, 0), SetResize(0, 22), SetDataTip(0x401, STR_BUILD_BRIDGE_SELECTION_TOOLTIP),
+		EndContainer(),
+
+		/* scrollbar + resize button */
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_DARK_GREEN, BBSW_SCROLLBAR), SetFill(0, 1),
 			NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN, BBSW_RESIZEBOX),
