@@ -1167,7 +1167,7 @@ STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Choisir 
 
 STR_WAYPOINT_VIEWPORT                                           :{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Modifier nom du point de contrôle
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Modifier le nom du point de contrôle
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Impossible de modifier le nom du point de contrôle...
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Construire un point de contrôle sur les rails
@@ -1587,7 +1587,9 @@ STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Rails avec des 
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Vous devez d'abord retirer la gare
 STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Vous devez d'abord retirer le point de contrôle
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Construire une station séparée
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}Construire un point de contrôle séparé
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Joindre une station
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}Joindre un point de contrôle
 
 
 
@@ -1820,6 +1822,7 @@ STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Vous dev
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Vous devez d'abord démolir la station de tramway pour fret
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Station{P 2 "" s}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Aucun -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Trop près d'un autre port
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Vous devez d'abord détruire le port
@@ -1831,6 +1834,8 @@ STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Choix de
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Choisir l'orientation de la station de tramway pour passagers
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Choisir l'orientation de la station de tramway pour fret
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrer la vue sur la station
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrer la vue sur le point de contrôle
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer la vue sur la bouée
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Afficher la notation de la station
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Renommer la station
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Afficher les marchandises acceptées
@@ -2745,7 +2750,8 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Impossib
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Impossible de faire faire demi-tour aux unités multiples
 STR_CLEAR_TIME                                                  :{BLACK}Annuler durée
 STR_RESET_LATENESS                                              :{BLACK}RAZ compteur de retard
-STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Renommer le Point de Contrôle
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Renommer le point decontrôle
+STR_CHANGE_BUOY_NAME                                            :{BLACK}Renommer la bouée
 
 STR_TRAIN_STOPPING                                              :{RED}Ralentit
 STR_TRAIN_STOPPING_VEL                                          :{RED}Ralentit, {VELOCITY}

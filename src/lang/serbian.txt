@@ -2025,6 +2025,8 @@ STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Izbor or
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Odaberite orijentaciju putničke tamvajske stanice
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Odaberite orijentaciju teretne tamvajske stanice
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centriraj glavni pogled na lokaciju stanice
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Prebacite se na lokaciju čvorišta
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Prebacite se na lokaciju bove
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Prikaži ocene stanice
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Preimenuj stanicu
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Prikaži spisak tovara koji stanica prihvata
@@ -2620,6 +2622,94 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh Kamion z
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl Kamion za ugalj
 STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW Kamion za ugalj
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS Kamion za poštu
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard Poštanski Kamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry Poštanski Kamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover Poštanski Kamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught Poštanski Kamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow Poštanski Kamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe Naftna Cisterna
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster Naftna Cisterna
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry Naftna Cisterna
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott Stočni Kamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl Stočni Kamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster Stočni Kamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh Robni Kamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead Robni Kamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss Robni Kamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford Kamion za žitarice
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas Kamion za žitarice
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss Kamion za žitarice
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe Kamion za drvo
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster Kamion za drvo
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland Kamion za drvo
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS Kamion za rude gvožđa
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl Kamion za rude gvožđa
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy Kamion za rude gvožđa
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh Kamion za čelik
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl Kamion za čelik
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling Kamion za čelik
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh Oklopljeni Kamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl Oklopljeni Kamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster Oklopljeni Kamion
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster Kamion za hranu
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry Kamion za hranu
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy Kamion za hranu
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl Kamion za papir
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh Kamion za papir
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS Kamion za papir
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS Kamion za rude bakra
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl Kamion za rude bakra
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss Kamion za rude bakra
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl Cisterna za vodu
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh Cisterna za vodu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS Cisterna za vodu
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh Kamion za voće
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl Kamion za voće
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling Kamion za voće
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh Kamion za kaučuk
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl Kamion za kaučuk
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT Kamion za kaučuk
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover Kamion za šećer
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught Kamion za šećer
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow Kamion za šećer
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover Kamion za kolu
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught Kamion za kolu
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow Kamion za kolu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover Kamion za šećernu vunu
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught Kamion za šećernu vunu
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow Kamion za šećernu vunu
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover Kamion za karamele
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught Kamion za karamele
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow Kamion za karamele
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover Kamion za igračke
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught Kamion za igračke
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow Kamion za igračke
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover Kamion za slatkiše
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught Kamion za slatkiše
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow Kamion za slatkiše
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover Kamion za baterije
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught Kamion za baterije
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow Kamion za baterije
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover Kamion za gazirana pića
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught Kamion za gazirana pića
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow Kamion za gazirana pića
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover Kamion za plastiku
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught Kamion za plastiku
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow Kamion za plastiku
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover Kamion za balone
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught Kamion za balone
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow Kamion za balone
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS Naftni Tanker
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. Naftni Tanker
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS Putnički Feribot
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP Putnički Feribot
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 Hoverkraft
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug Putnički Feribot
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake Putnički Feribot
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Teretni brod
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Teretni brod
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Teretni brod
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Teretni brod
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
@@ -2852,6 +2942,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Ne može
 STR_CLEAR_TIME                                                  :{BLACK}Ukloni Vreme
 STR_RESET_LATENESS                                              :{BLACK}Poništi Merač Kašnjenja
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Promena naziva putanje
+STR_CHANGE_BUOY_NAME                                            :{BLACK}Promeni naziv bove
 
 STR_TRAIN_STOPPING                                              :{RED}Zaustavlja se
 STR_TRAIN_STOPPING_VEL                                          :{RED}Zaustavlja se, {VELOCITY}
@@ -3320,18 +3411,53 @@ STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Automats
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Automatsko obnavljanje svih letelica u hangaru
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zameni {STRING}
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Počni Zamenu Vozila
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zaustavi Zamenu Vozila
+STR_NOT_REPLACING                                               :{BLACK}Nezamenjuje se
+STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Nijedno vozilo nije označeno
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izaberite vrstu lokomotive za zamenu
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Izaberite novu vrstu lokomotive koju biste želeli da koristite umesto obeležene s leve strane
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Pritisnite kako bi se zaustavila zamena vrsta lokomotive označene sa leve strane
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Pritisnite kako bi počela zamena vrste lokomotive označena sa leve strane sa vrstom označenom sa desne
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Izaberite vrstu pruge za koju želite da zamenite kompozicije
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Prikazuje koja lokomotiva će se zameniti označenom sa leve strane, ako ih ima
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Ukanjanje vagona: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ukoliko bi se zamenom kompozicija produžila, automatska obnova će ukloniti vagone (sa početka) kako bi se zadržala dužina kompozicije.
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zamenjuje se: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Prebacuje između prikaza zamene lokomotiva i zamene vagona
 
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Šinsko vozilo nije dostupno
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Drumsko vozilo nije dostupno
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Brod nije dostupan
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Letilica nije dostupna
 
 STR_ENGINES                                                     :Lokomotive
 STR_WAGONS                                                      :Vagoni
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Klikom se zaustavljaju svi vozovi unutar depoa
+STR_MASS_STOP_DEPOT_ROAD_VEHICLE_TIP                            :{BLACK}Klikom se zaustavljaju sva drumska vozila unutar depoa
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Klikom se zaustavljaju svi brodovi unutar depoa
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Klikom se zaustavljaju sve letilice unutar hangara
 
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Klikom se pokreću svi vozovi u depoima
+STR_MASS_START_DEPOT_ROAD_VEHICLE_TIP                           :{BLACK}Klikom se pokreću sva drumska vozila u depoima
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Klikom se pokreću svi brodovi u depoima
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Klikom se pokreću sve letilice u hangarima
 
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Klikom se zaustavljaju sva vozila na spisku
+STR_MASS_START_LIST_TIP                                         :{BLACK}Klikom se pokreću sva vozila na spisku
 
+STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Spisak Znakova - {COMMA} Znak{P "" a ova}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Neuspešna primena naredbe preuređivanja {VEHICLE}
 
 ############ Lists rail types
 
+STR_RAIL_VEHICLES                                               :Šinska Vozila
+STR_ELRAIL_VEHICLES                                             :Elektrošinska Vozila
+STR_MONORAIL_VEHICLES                                           :Jednošinska Vozila
+STR_MAGLEV_VEHICLES                                             :Magnetnošinska Vozila
 
 ############ End of list of rail types
 

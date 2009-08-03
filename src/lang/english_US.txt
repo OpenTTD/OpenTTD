@@ -1275,14 +1275,14 @@ STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Years
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Number of years{}the game is running
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}GAME INFO
-STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_LANGUAGE                                            :{SILVER}Language:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Map size:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Server version:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server address:  {WHITE}{STRING}
-STR_NETWORK_START_DATE                                          :{SILVER}Start date:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Current date:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CLIENTS                                             :{SILVER}Clients: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Language: {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Tileset: {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Map size: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Server version: {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server address: {WHITE}{STRING}
+STR_NETWORK_START_DATE                                          :{SILVER}Start date: {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Current date: {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Password protected!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER FULL
@@ -1364,7 +1364,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Latvian
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multiplayer game lobby
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparing to join:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparing to join: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}A list of all companies currently in this game. You can either join one or start a
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}New company
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Open a new company
@@ -1377,16 +1377,16 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Refresh 
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}COMPANY INFO
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Company name:  {WHITE}{STRING}
-STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inauguration:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Company value:  {WHITE}{CURRENCY}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Current balance:  {WHITE}{CURRENCY}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Last year's income:  {WHITE}{CURRENCY}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Performance:  {WHITE}{NUM}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Company name: {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inauguration: {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Company value: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Current balance: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Last year's income: {WHITE}{CURRENCY}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Performance: {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Vehicles:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_STATIONS                                            :{SILVER}Stations:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Players:  {WHITE}{STRING}
+STR_NETWORK_VEHICLES                                            :{SILVER}Vehicles: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Stations: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Players: {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Connecting...
 
@@ -1413,23 +1413,23 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Client L
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spectate
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}New Company
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} No network devices found or compiled without ENABLE_NETWORK
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Could not find any network games
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} The server didn't answer the request
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Could not connect due to NewGRF mismatch
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}No network devices found or compiled without ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Could not find any network games
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}The server didn't answer the request
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}Could not connect due to NewGRF mismatch
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Network-Game synchronization failed.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Network-Game connection lost.
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Could not load server-savegame.
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Could not start the server.
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Could not connect.
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Connection #{NUM} timed out.
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Could not load savegame
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Could not start the server
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Could not connect
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Connection #{NUM} timed out
 STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} We made a protocol-error and our connection is closed.
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} The revision of this client does not match the revision of the server.
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Wrong password.
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} The server is full
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} You are banned from this server
-STR_NETWORK_ERR_KICKED                                          :{WHITE} You are kicked out of the server
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Cheating is not allowed on this server
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}The revision of this client does not match the server's revision
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Wrong password
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}The server is full
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}You are banned from this server
+STR_NETWORK_ERR_KICKED                                          :{WHITE}You were kicked out of the game
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Cheating is not allowed on this server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :general error
@@ -1727,14 +1727,14 @@ STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Build statue of
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Fund new buildings
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Buy exclusive transport rights
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Bribe the local authority
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Initiate a small local advertising campaign, to attract more passengers and cargo to your transport services.{}  Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Initiate a medium local advertising campaign, to attract more passengers and cargo to your transport services.{}  Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Initiate a large local advertising campaign, to attract more passengers and cargo to your transport services.{}  Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Fund the reconstruction of the urban road network. Causes considerable disruption to road traffic for up to 6 months.{}  Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} Build a statue in honor of your company.{} Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} Fund the construction of new commercial buildings in the town.{}  Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} Buy 1 year's exclusive transport rights in town. Town authority will only allow passengers and cargo to use your company's stations.{} Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}  Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Initiate a small local advertising campaign, to attract more passengers and cargo to your transport services.{}Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Initiate a medium local advertising campaign, to attract more passengers and cargo to your transport services.{}Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Initiate a large local advertising campaign, to attract more passengers and cargo to your transport services.{}Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}Fund the reconstruction of the urban road network. Causes considerable disruption to road traffic for up to 6 months.{}Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Build a statue in honor of your company.{}Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Fund the construction of new commercial buildings in the town.{}Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Buy 1 year's exclusive transport rights in town. Town authority will only allow passengers and cargo to use your company's stations.{}Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}Cost: {CURRENCY}
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Traffic chaos in {TOWN}!{}{}Road rebuilding program funded by {STRING} brings 6 months of misery to motorists!
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -2170,7 +2170,7 @@ STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Operating Profit Graph
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bank Balance
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Loan
-STR_MAX_LOAN                                                    :{WHITE}Max Loan:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Max Loan: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Borrow {SKIP}{SKIP}{CURRENCY}
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Repay {SKIP}{SKIP}{CURRENCY}
@@ -2300,7 +2300,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Show shi
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Show aircraft color schemes
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Choose the primary color for the selected scheme
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Choose the secondary color for the selected scheme
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Select a color scheme to change, or multiple schemes with CTRL+click. Click on the box to toggle use of the scheme
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Select a color scheme to change, or multiple schemes with Ctrl+Click. Click on the box to toggle use of the scheme
 
 ##id 0x8000
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (Steam)
@@ -2878,7 +2878,7 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total po
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Settings
 STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Display NewGRF settings
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf settings
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF settings
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Apply changes
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Toggle palette
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Toggle the palette of the selected NewGRF.{}Do this when the graphics from this NewGRF look pink in-game
@@ -2992,7 +2992,7 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aircraft
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Shared orders of {COMMA} Vehicle{P "" s}
-STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Show all vehicles which have the same schedule
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Show all vehicles that share this schedule
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} is waiting in depot
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} is waiting in depot
@@ -3272,14 +3272,14 @@ STR_MAGLEV_VEHICLES                                             :Maglev Vehicles
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Weight: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Speed: {GOLD}{VELOCITY}{BLACK}   Power: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Speed: {GOLD}{VELOCITY}{BLACK} Power: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Speed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Running Cost: {GOLD}{CURRENCY}/yr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacity: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designed: {GOLD}{NUM}{BLACK} Life: {GOLD}{COMMA} years
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Reliability: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Weight: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Weight: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Speed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacity: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Powered Wagons: {GOLD}+{POWER}{BLACK} Weight: {GOLD}+{WEIGHT_S}
@@ -3390,14 +3390,14 @@ STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...road 
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Transparency Options
 STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Toggle transparency for station signs. Ctrl+Click to lock.
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Toggle transparency for trees
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Toggle transparency for houses
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Toggle transparency for industries
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Toggle transparency for trees. Ctrl+Click to lock.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Toggle transparency for houses. Ctrl+Click to lock.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Toggle transparency for industries. Ctrl+Click to lock.
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Toggle transparency for buildables like stations, depots and waypoints. Ctrl+Click to lock.
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Toggle transparency for bridges
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Toggle transparency for structures like lighthouses and antennas, maybe in future for eyecandy
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Toggle transparency for catenary. CTRL+click to lock.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Toggle transparency for loading indicators
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Toggle transparency for bridges. Ctrl+Click to lock.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Toggle transparency for structures like lighthouses and antennas. Ctrl+Click to lock.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Toggle transparency for catenary. Ctrl+Click to lock.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Toggle transparency for loading indicators. Ctrl+Click to lock.
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Set objects invisible instead of transparent
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3430,7 +3430,7 @@ STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Can't re
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Can't add the vehicle to this group...
 STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Can't add shared vehicles to group...
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Groups - Click on a group to list all of its vehicles
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Groups - click on a group to list all vehicles of this group
 STR_GROUP_CREATE_TIP                                            :{BLACK}Click to create a group
 STR_GROUP_DELETE_TIP                                            :{BLACK}Delete the selected group
 STR_GROUP_RENAME_TIP                                            :{BLACK}Rename the selected group

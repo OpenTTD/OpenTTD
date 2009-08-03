@@ -1833,6 +1833,8 @@ STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}选择�
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}选择客运电车车站方向
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}选择货运电车车站方向
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}将屏幕中心移动到车站所在的位置
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}将屏幕中心移动到路点所在的位置
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到浮标所在的位置
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}显示车站评价
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}重命名车站
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}显示接受的货物列表
@@ -2748,6 +2750,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}不能�
 STR_CLEAR_TIME                                                  :{BLACK}清除时间
 STR_RESET_LATENESS                                              :{BLACK}清除晚点计数器
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}修改路点名
+STR_CHANGE_BUOY_NAME                                            :{BLACK}修改浮标名
 
 STR_TRAIN_STOPPING                                              :{RED}正在停止
 STR_TRAIN_STOPPING_VEL                                          :{RED}正在停止，{VELOCITY}
@@ -3076,7 +3079,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}显示�
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}显示船只的调度计划
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}显示飞机的调度计划
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}将视点移动到列车的位置
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}将屏幕中心移动到列车所在的位置
 STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}将屏幕中心移动到汽车所在的位置
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}将屏幕中心移动到船只所在的位置
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}将屏幕中心移动到飞机所在的位置

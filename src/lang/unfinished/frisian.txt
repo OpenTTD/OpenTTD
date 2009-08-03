@@ -44,7 +44,7 @@ STR_CARGO_PLURAL_FOOD                                           :Iten
 STR_CARGO_PLURAL_PAPER                                          :Papier
 STR_CARGO_PLURAL_GOLD                                           :Goud
 STR_CARGO_PLURAL_WATER                                          :Wetter
-STR_CARGO_PLURAL_WHEAT                                          :Weet
+STR_CARGO_PLURAL_WHEAT                                          :Nôt
 STR_CARGO_PLURAL_RUBBER                                         :Rubber
 STR_CARGO_PLURAL_SUGAR                                          :Sûker
 STR_CARGO_PLURAL_TOYS                                           :Boartersguod
@@ -76,7 +76,7 @@ STR_CARGO_SINGULAR_FOOD                                         :Iten
 STR_CARGO_SINGULAR_PAPER                                        :Papier
 STR_CARGO_SINGULAR_GOLD                                         :Goud
 STR_CARGO_SINGULAR_WATER                                        :Wetter
-STR_CARGO_SINGULAR_WHEAT                                        :Weet
+STR_CARGO_SINGULAR_WHEAT                                        :Nôt
 STR_CARGO_SINGULAR_RUBBER                                       :Rubber
 STR_CARGO_SINGULAR_SUGAR                                        :Sûker
 STR_CARGO_SINGULAR_TOY                                          :Boartersguod
@@ -101,7 +101,7 @@ STR_QUANTITY_IRON_ORE                                           :{WEIGHT} izerer
 STR_QUANTITY_STEEL                                              :{WEIGHT} stiel
 STR_QUANTITY_VALUABLES                                          :{COMMA} sekken kostber guod
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} koper
-STR_QUANTITY_MAIZE                                              :{WEIGHT} ton mais
+STR_QUANTITY_MAIZE                                              :{WEIGHT} mais
 STR_QUANTITY_FRUIT                                              :{WEIGHT} fruit
 STR_QUANTITY_DIAMONDS                                           :{COMMA} sek{P "" ken} diamanten
 STR_QUANTITY_FOOD                                               :{WEIGHT} iten
@@ -133,7 +133,18 @@ STR_ABBREV_IRON_ORE                                             :{TINYFONT}IE
 STR_ABBREV_STEEL                                                :{TINYFONT}ST
 STR_ABBREV_VALUABLES                                            :{TINYFONT}KG
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}KE
+STR_ABBREV_MAIZE                                                :{TINYFONT}MS
+STR_ABBREV_FRUIT                                                :{TINYFONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
+STR_ABBREV_FOOD                                                 :{TINYFONT}IT
+STR_ABBREV_PAPER                                                :{TINYFONT}PR
+STR_ABBREV_GOLD                                                 :{TINYFONT}GD
+STR_ABBREV_WATER                                                :{TINYFONT}WR
+STR_ABBREV_WHEAT                                                :{TINYFONT}NÔ
+STR_ABBREV_RUBBER                                               :{TINYFONT}RB
+STR_ABBREV_SUGAR                                                :{TINYFONT}SÛ
 STR_ABBREV_TOYS                                                 :{TINYFONT}BG
+STR_ABBREV_SWEETS                                               :{TINYFONT}SG
 STR_ABBREV_COLA                                                 :{TINYFONT}KL
 STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}SS
 STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
@@ -151,7 +162,7 @@ STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Warskôg
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kin dit net dwaan....
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kin dit gebiet net leech meitsje....
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Orizjineel copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
-STR_ABOUT_VERSION                                               :{BLACK}OpenTTD fersje {REV}
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD-ferzje {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 It OpenTTD team
 
 STR_QUIT_CAPTION                                                :{WHITE}Ôfslúte
@@ -198,7 +209,7 @@ STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFON
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}Auto's
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}Skepen
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}Fleantugen
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Transport Rûtes
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Transportrûtes
 STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}Bosk
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Treinstasjon
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Frachtweinstasjon
@@ -244,6 +255,8 @@ STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARG
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_INTRO_NEW_GAME                                              :{BLACK}Nei Spul
 STR_INTRO_LOAD_GAME                                             :{BLACK}Laad Spul
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Multispiler
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Lânskipferbouer
 
 STR_MAPSIZE                                                     :{BLACK}Lângrutte:
 STR_BY                                                          :{BLACK}*
@@ -281,10 +294,11 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Fertsjinstengrafyk
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Ynkomsten grafyk
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Ôflevere fracht grafyk
-STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Prestaasje skiednis grafyk
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Prestaasjeskiednisgrafyk
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Bedriuwswearde grafyk
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Fracht ôfbetelling grafyk
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Bedriuwskompetysje tabel
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Wiidweidiche prestaasjewurdearring
 ############ range for menu ends
 
 STR_ABOUT_OPENTTD                                               :{WHITE}Oer OpenTTD
@@ -294,6 +308,9 @@ STR_FILE_MENU_QUIT_GAME                                         :Spul ferlitte
 STR_FILE_MENU_EXIT                                              :Ôfslúte
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Wolsto echt dit lânskip slúte?
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Ferlit Spul
+STR_SORT_ORDER_TIP                                              :{BLACK}Selektear skiftrjochting (oprinnend/ôfrinnend)
+STR_SORT_CRITERIA_TIP                                           :{BLACK}Selektear skiftnoarm
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}Selekear filternoarm
 STR_SORT_BY                                                     :{BLACK}Skifte op
 
 ### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
@@ -302,9 +319,19 @@ STR_SORT_BY_NAME                                                :{BLACK}Namme
 STR_SORT_BY_DATE                                                :{BLACK}Datum
 STR_SORT_BY_PRODUCTION                                          :Produksje
 STR_SORT_BY_TYPE                                                :Type
+STR_SORT_BY_TRANSPORTED                                         :Ferfierd
 STR_SORT_BY_NUMBER                                              :Nûmer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Fertsjinste lêst jier
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Fertsjinste dit jier
+STR_SORT_BY_AGE                                                 :Âldens
+STR_SORT_BY_RELIABILITY                                         :Fertroudens
+STR_SORT_BY_MAX_SPEED                                           :Maksimale gong
+STR_SORT_BY_MODEL                                               :Model
+STR_SORT_BY_VALUE                                               :Wearde
+STR_SORT_BY_LENGTH                                              :Lingte
+STR_SORT_BY_FACILITY                                            :Stasjonstype
+STR_SORT_BY_COST                                                :Kosten
+STR_SORT_BY_POWER                                               :Krêft
 
 STR_SEND_FOR_SERVICING                                          :Stjoer foar ûnderhâldsbeurt
 
@@ -526,7 +553,7 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} behellet '{STRING}' status!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} fan {COMPANY} behellet '{STRING}' status!
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
-STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Lânskip Ferbouer
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Lânskipferbouer
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Lân Generaasje
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Fergrutsje gebiet om te ferheegjen/ferleegjen
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Ferlyts gebiet om te ferheegjen/ferleegjen
@@ -950,7 +977,7 @@ STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Alde hûzen
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Gemeente
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Lit ynformaasje sjen oer de gemeente
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} gemeente
-STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Transportbedrieuw rang:
+STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Transportbedrieuwwurdearring:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsydzjes
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subsydzjes dy't oanbean wurde:
@@ -1112,11 +1139,13 @@ STR_INDUSTRY_NAME_FARM                                          :Buorkerij
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Koperertsmyn
 STR_INDUSTRY_NAME_OIL_WELLS                                     :Oaljebron
 STR_INDUSTRY_NAME_BANK                                          :Bank
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Itenfabryk
 STR_INDUSTRY_NAME_PAPER_MILL                                    :Papierfabryk
 STR_INDUSTRY_NAME_GOLD_MINE                                     :Goudmyn
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Bank
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Diamantmyn
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :IIzerertsmyn
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Fruitplantaazje
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Wetterbron
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Wettertoer
 STR_INDUSTRY_NAME_FACTORY_2                                     :Fabryk
@@ -1238,7 +1267,7 @@ STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Oantal 
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maksimale rinte: {ORANGE}{CURRENCY}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Hichte rinte: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Ûnderhâldskosten fan fiertúchen: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Konstruksjesnelhyd fan tsjinstanders: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Konstruksjegong fan tsjinstanders: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Fiertúch hawwe pech: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Subsydzje fermannichfâldiger: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Konstruksjekosten: {ORANGE}{STRING}
@@ -1349,7 +1378,7 @@ STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Lit kaai
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Kaai foar bedriuwsgrafiken
 STR_GRAPH_KEY_COMPANY_SELECTION                                 :{BLACK}Klik hjir om te bedriuwstagong foar grafyk oan of út te sette
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Stiks fracht ôflevere
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Bedriuwsprestaasjeweardering (maksimale weardering=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Bedriuwsprestaasjewurdearring (maksimale wurdearring=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Bedriuwswearden
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Bedriuwskompetysjetabel
 STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
@@ -1363,7 +1392,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Wy sykje
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BLACK}{BIGFONT}Fallyt!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BLACK}{BIGFONT}{STRING} is slúten troch skuldeaskers en alles is ferkocht!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BLACK}{BIGFONT}Nij transportbedriuw oprjochte!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING} begjint te boue by {TOWN}!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING} begjint te bouen yn {TOWN}!
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kin bedriuw net keapje...
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Frachtbetellingshichtes
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{BLACK}{TINYFONT}Deien ûnderweis
@@ -1545,9 +1574,15 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy Izererts
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh Stieltruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl Stieltruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling Stieltruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster Itentruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry Itentruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy Itentruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS Koperertstruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl Koperertstruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss Koperertstruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh Fruittruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl Fruittruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling Fruittruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover Sûkerspintruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught Sûkerspintruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow Sûkerspintruck
@@ -1785,6 +1820,11 @@ STR_BLACK_7                                                     :{BLACK}7
 ########
 
 ############ AI GUI
+STR_AI_ACCEPT                                                   :{BLACK}Akseptearje
+STR_AI_CANCEL                                                   :{BLACK}Annulearje
+STR_AI_CLOSE                                                    :{BLACK}Slúte
+STR_AI_VERSION                                                  :{BLACK}Ferzje: {NUM}
+STR_AI_URL                                                      :{BLACK}URL: {STRING}
 STR_AI_NO_AI_FOUND                                              :Gjin geskikte compjûterspiler fûn.{}Disse compjûterspiler is in dummy en docht neat.{}Jo kinne compjûterspilers delhelje fan 'Online Inhâld' ôf.
 ########
 
@@ -1792,11 +1832,25 @@ STR_AI_NO_AI_FOUND                                              :Gjin geskikte c
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_SCENARIO                                       :Lânskip
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Hichtemap
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Namme
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Delhelje
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Namme: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Ferzje: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Beskriuwing: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Type: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Bestângrutte: {WHITE}{BYTES}
 
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Freechet bestânen an...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Besich met delheljen fan {STRING} ({NUM} fan {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Delheljen dien
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} fan {BYTES} delhelle ({NUM} %)
 
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Delheljen net slagge...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ferbining kwyt
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... bestân koe net opslein wurde
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kin it delhelle bestân net útpakke

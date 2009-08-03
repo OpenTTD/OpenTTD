@@ -1584,8 +1584,11 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Rautatieraiteet
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Rautatieraiteet yhdistelmä- ja yksisuuntaisopastimilla
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Rautatieraiteet reitti- ja yksisuuntaisopastimilla
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Poista asema ensin
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Junaradan reittipiste täytyy poistaa ensin
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Rakenna erillinen asema
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}Rakenna erillinen reittipiste
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Liitä asema
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}Liitä reittipiste
 
 
 
@@ -1768,11 +1771,13 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Ratojen 
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Asemalaiturin pituus
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Liian lähellä toista rautatieasemaa.
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Liitä yhteen useampi asema/lastausalue.
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Liittää useamman kuin yhden reittipisteen
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Liian monta asemaa ja lastausaluetta.
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Rautatieasema on jakautunut liian moneen osaan
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Liian monta linja-autopysäkkiä.
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Liian monta lastauslaituria.
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Liian lähellä toista asemaa tai lastausaluetta.
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Liian lähellä toista reittipistettä
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Rautatieasema pitää tuhota ensin.
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Liian lähellä toista lentokenttää.
@@ -1816,6 +1821,7 @@ STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Asema t�
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Rahtiasema täytyy purkaa ensin
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} asema{P "" a}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ei mitään -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Liian lähellä toista satamaa.
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Satama pitää tuhota ensin.
@@ -1827,6 +1833,8 @@ STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Valitse 
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Valitse aseman suunta
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Valitse rahtiaseman suunta
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Keskitä näkymä aseman sijaintiin.
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Keskitä ruutu reittipisteen sijaintiin
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskitä ruutu poijun sijaintiin
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näytä aseman arviot.
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Muuta aseman nimi.
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Näytä luettelo vastaanotettavasta rahdista.
@@ -2742,6 +2750,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Ei voi k
 STR_CLEAR_TIME                                                  :{BLACK}Nollaa aika
 STR_RESET_LATENESS                                              :{BLACK}Nollaa myöhästymislaskuri
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Muuta reittipisteen nimeä
+STR_CHANGE_BUOY_NAME                                            :{BLACK}Vaihda poijun nimeä
 
 STR_TRAIN_STOPPING                                              :{RED}Pysäytetään
 STR_TRAIN_STOPPING_VEL                                          :{RED}Pysäytetään, {VELOCITY}

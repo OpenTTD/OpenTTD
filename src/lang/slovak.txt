@@ -1651,8 +1651,11 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Železničná t
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Železničná trasa s kombo a jednosmernými signálmi
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Železničná trať s obojstrannými a jednosmernými signálmi
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Je potrebné najprv odstránit železnicnú stanicu
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Najprv musí byť odstránený železničný navádzač
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Postaviť oddelene stanicu
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}Postaviť oddelený navádzač
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Spojiť stanicu
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}Nasledovať navádzač
 
 
 
@@ -1835,11 +1838,13 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Pocet ko
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Dlzka nastupista
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Prilis blizko inej zeleznicnej stanice
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Susedi z viacerymi stanicami/vykladkami
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Pridať viac než jeden existujúci navádzač
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Prilis vela stanic/vykladok
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Veľa častí vlakovej stanice
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Prilis vela autobusovych zastavok
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Prilis vela zastavok nakladnych automobilov
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Prilis blizko inej stanice/vykladky
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Veľmi blízko k ďaľšiemu navádzaču
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Zeleznicna stanica sa musi naskor zburat
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Prilis blizko ineho letiska
@@ -1883,6 +1888,7 @@ STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Najprv s
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Najprv sa musí zbúrat nákladná elektricková stanica
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stanic{P a e ""}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ziadne -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Priliz blizko ineho pristavu
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Pristav musi byt najskor zburany
@@ -1894,6 +1900,8 @@ STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Vybrat o
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Vyberte orientáciu osobnej elektrickovej stanice
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Vyberte orientáciu nákladnej elektrickovej stanice
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Vycentrovat pohlad na poziciu stanice
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Vycentrovať pohľad na umiestnenie navádzača
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vycentrovať pohľad na umiestnenie bójky
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Zobrazit hodnotenie stanice
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Zmenit nazov stanice
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Zobrazit zoznam prijimaneho nakladu
@@ -2809,6 +2817,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nie je m
 STR_CLEAR_TIME                                                  :{BLACK}Vymazat cas
 STR_RESET_LATENESS                                              :{BLACK}Reset meskania
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Zmeniť meno smerového bodu
+STR_CHANGE_BUOY_NAME                                            :{BLACK}Zmeniť meno bójky
 
 STR_TRAIN_STOPPING                                              :{RED}Zastavuje
 STR_TRAIN_STOPPING_VEL                                          :{RED}Zastavuje, {VELOCITY}

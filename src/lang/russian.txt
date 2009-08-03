@@ -1733,8 +1733,11 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Ж/д пути 
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Ж/д пути с комбо- и одностор. маршр. сигналами
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ж/д пути с маршр. и одностор. маршр. сигналами
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Сначала удалите ж/д станцию
+STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Сначала нужно убрать точку пути
 STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Построить отдельную станцию
+STR_CREATE_SPLITTED_WAYPOINT                                    :{YELLOW}Поставить отдельную точку пути
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Объединить станции
+STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}Объединить точки
 
 
 
@@ -1917,11 +1920,13 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Числ
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Длина платформы
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Слишком близко к другой ж/д станции
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Присоединяется более чем к одной существующей станции
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Примыкает к нескольким точкам пути
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Слишком много станций и остановок
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Слишком большая ж/д станция
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Слишком много автобусных остановок
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Слишком много погрузочных станций
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Слишком близко к другой станции
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Слишком близко к другой точке пути
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Сначала нужно удалить ж/д станцию
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Слишком близко к другому аэропорту
@@ -1965,6 +1970,7 @@ STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Снач
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Сначала надо уничтожить грузовую трамвайную остановку
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} станци{P я и й}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Нет -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Слишком близко к другой пристани
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Сначала удалите пристань
@@ -1976,6 +1982,8 @@ STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Выбе
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Выберите направление пассажирской трамвайной остановки
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Выберите направление грузовой трамвайной остановки
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Показать станцию в основном окне
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Показать точку пути в основном окне
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показать буй в основном окне
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Показать рейтинг станции
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Переименовать станцию
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Показать список принимаемых грузов
@@ -2905,6 +2913,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Нево
 STR_CLEAR_TIME                                                  :{BLACK}Сбросить время
 STR_RESET_LATENESS                                              :{BLACK}Сброс счётчика
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Переименовать точку пути
+STR_CHANGE_BUOY_NAME                                            :{BLACK}Изменить название буя
 
 STR_TRAIN_STOPPING                                              :{RED}Остановлен
 STR_TRAIN_STOPPING_VEL                                          :{RED}Останавливается; {VELOCITY}

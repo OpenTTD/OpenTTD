@@ -1658,8 +1658,8 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Bevolkin
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Hernoem dorp
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan dorp niet hernoemen...
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}De gemeenteraad van {TOWN} staat dit niet toe
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Plaatsnamen - klik op naam om het hoofdbeeld te centreren op de plaats
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer het hoofdbeeld op de locatie van de plaats
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Plaatsnamen - klik op naam om het scherm te centreren op de plaats
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer het scherm op plaatslocatie
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Hernoem plaats
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passagiers afgelopen maand: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Post afgelopen maand: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
@@ -1832,7 +1832,9 @@ STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Selectee
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selecteer richting van vrachtwagenstation
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Selecteer passagiers tram station richting
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selecteer vracht tram station richting
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centreer hoofdbeeld op locatie van station
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centreer het scherm op stationslocatie
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centreer hoofdscherm op routepunt locatie
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer hoofdscherm op boeilocatie
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Bekijk stationsreputaties
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Hernoem station
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Laat lijst van gevraagde goederen zien
@@ -1954,7 +1956,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Producee
 
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Productie vorige maand:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% getransporteerd)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centreer het hoofdbeeld op de locatie van de industrie
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centreer het scherm op de locatie van de industrie
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}Nieuw {STRING} in aanbouw bij {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}Nieuw {STRING} in aanplant bij {TOWN}!
 STR_INDUSTRY_BUILD_COST                                         :{BLACK}Kosten: {YELLOW}{CURRENCY}
@@ -2748,6 +2750,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan voer
 STR_CLEAR_TIME                                                  :{BLACK}Reset de tijd
 STR_RESET_LATENESS                                              :{BLACK}Reset teller
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Verander naam controlepost
+STR_CHANGE_BUOY_NAME                                            :{BLACK}Verander boei naam
 
 STR_TRAIN_STOPPING                                              :{RED}Gestopt
 STR_TRAIN_STOPPING_VEL                                          :{RED}Aan het stoppen, {VELOCITY}
@@ -3076,10 +3079,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Laat ord
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Laat orders van schip zien
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Laat vliegtuigorders zien
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centreer het scherm op de locatie van de trein
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centreer het scherm op treinlocatie
 STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centreer hoofdscherm op de locatie van het voertuig
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centreer hoofdbeeld op de locatie van dit schip
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centreer hoofdbeeld op de vliegtuiglocatie
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centreer het scherm op schiplocatie
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centreer het scherm op de vliegtuiglocatie
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Stuur trein naar depot
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Stuur voertuig naar depot
@@ -3192,8 +3195,8 @@ STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Sleep vl
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centreer het scherm op de locatie van de trein depot
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centreer hoofdscherm op wegvoertuigdepot locatie
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centreer hoofdbeeld op de locatie van het schipdepot
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centreer hoofdbeeld op hangarlocatie
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centreer het scherm op de locatie van het schipdepot
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centreer het scherm op hangarlocatie
 
 
 ### depot strings
