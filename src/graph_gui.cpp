@@ -187,13 +187,16 @@ protected:
 	uint16 x_values_start;
 	uint16 x_values_increment;
 
-	int gd_left, gd_top;  ///< Where to start drawing the graph, in pixels.
-	uint gd_height;    ///< The height of the graph in pixels.
+	Rect graph_location;
 	StringID format_str_y_axis;
 	byte colours[GRAPH_MAX_DATASETS];
 	OverflowSafeInt64 cost[GRAPH_MAX_DATASETS][24]; ///< last 2 years
 
-	void DrawGraph() const
+	/**
+	 * Actually draw the graph.
+	 * @param r the rectangle of the data field of the graph
+	 */
+	void DrawGraph(Rect &r) const
 	{
 		uint x, y;                       ///< Reused whenever x and y coordinates are needed.
 		OverflowSafeInt64 highest_value; ///< Highest value to be drawn.
@@ -207,40 +210,40 @@ protected:
 		byte grid_colour = _colour_gradient[COLOUR_GREY][4];
 
 		/* The coordinates of the opposite edges of the graph. */
-		int bottom = this->gd_top + this->gd_height - 1;
-		int right  = this->gd_left + GRAPH_X_POSITION_BEGINNING + this->num_vert_lines * GRAPH_X_POSITION_SEPARATION - 1;
+		assert(r.left + GRAPH_X_POSITION_BEGINNING + this->num_vert_lines * GRAPH_X_POSITION_SEPARATION - 1 == r.right);
+		int height = r.bottom - r.top + 1;
 
 		/* Draw the vertical grid lines. */
 
 		/* Don't draw the first line, as that's where the axis will be. */
-		x = this->gd_left + GRAPH_X_POSITION_BEGINNING + GRAPH_X_POSITION_SEPARATION;
+		x = r.left + GRAPH_X_POSITION_BEGINNING + GRAPH_X_POSITION_SEPARATION;
 
 		for (int i = 0; i < this->num_vert_lines; i++) {
-			GfxFillRect(x, this->gd_top, x, bottom, grid_colour);
+			GfxFillRect(x, r.top, x, r.bottom, grid_colour);
 			x += GRAPH_X_POSITION_SEPARATION;
 		}
 
 		/* Draw the horizontal grid lines. */
-		x = this->gd_left + GRAPH_X_POSITION_BEGINNING;
-		y = this->gd_height + this->gd_top;
+		x = r.left + GRAPH_X_POSITION_BEGINNING;
+		y = r.bottom;
 
 		for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
-			GfxFillRect(x, y, right, y, grid_colour);
-			y -= (this->gd_height / (GRAPH_NUM_LINES_Y - 1));
+			GfxFillRect(x, y, r.right, y, grid_colour);
+			y -= height / (GRAPH_NUM_LINES_Y - 1);
 		}
 
 		/* Draw the y axis. */
-		GfxFillRect(x, this->gd_top, x, bottom, GRAPH_AXIS_LINE_COLOUR);
+		GfxFillRect(x, r.top, x, r.bottom, GRAPH_AXIS_LINE_COLOUR);
 
 		/* Find the distance from the gd_top of the graph to the x axis. */
-		x_axis_offset = this->gd_height;
+		x_axis_offset = height;
 
 		/* The graph is currently symmetrical about the x axis. */
 		if (this->has_negative_values) x_axis_offset /= 2;
 
 		/* Draw the x axis. */
-		y = x_axis_offset + this->gd_top;
-		GfxFillRect(x, y, right, y, GRAPH_AXIS_LINE_COLOUR);
+		y = x_axis_offset + r.top;
+		GfxFillRect(x, y, r.right, y, GRAPH_AXIS_LINE_COLOUR);
 
 		/* Find the largest value that will be drawn. */
 		if (this->num_on_x_axis == 0)
@@ -283,8 +286,8 @@ protected:
 		 * -highest_value, not highest_value to 0. */
 		if (this->has_negative_values) y_label_separation *= 2;
 
-		x = this->gd_left + GRAPH_X_POSITION_BEGINNING + 1;
-		y = this->gd_top - 3;
+		x = r.left + GRAPH_X_POSITION_BEGINNING + 1;
+		y = r.top - 3;
 
 		for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
 			SetDParam(0, this->format_str_y_axis);
@@ -292,13 +295,13 @@ protected:
 			DrawString(x - GRAPH_X_POSITION_BEGINNING, x, y, STR_GRAPH_Y_LABEL, graph_axis_label_colour, SA_RIGHT);
 
 			y_label -= y_label_separation;
-			y += (this->gd_height / (GRAPH_NUM_LINES_Y - 1));
+			y += height / (GRAPH_NUM_LINES_Y - 1);
 		}
 
 		/* draw strings on the x axis */
 		if (this->month != 0xFF) {
-			x = this->gd_left + GRAPH_X_POSITION_BEGINNING;
-			y = this->gd_top + this->gd_height + 1;
+			x = r.left + GRAPH_X_POSITION_BEGINNING;
+			y = r.bottom + 2;
 			byte month = this->month;
 			Year year  = this->year;
 			for (int i = 0; i < this->num_on_x_axis; i++) {
@@ -316,8 +319,8 @@ protected:
 			}
 		} else {
 			/* Draw the label under the data point rather than on the grid line. */
-			x = this->gd_left + GRAPH_X_POSITION_BEGINNING;
-			y = this->gd_top + this->gd_height + 1;
+			x = r.left + GRAPH_X_POSITION_BEGINNING;
+			y = r.bottom + 2;
 			uint16 label = this->x_values_start;
 
 			for (int i = 0; i < this->num_on_x_axis; i++) {
@@ -333,7 +336,7 @@ protected:
 		for (int i = 0; i < this->num_dataset; i++) {
 			if (!HasBit(this->excluded_data, i)) {
 				/* Centre the dot between the grid lines. */
-				x = this->gd_left + GRAPH_X_POSITION_BEGINNING + (GRAPH_X_POSITION_SEPARATION / 2);
+				x = r.left + GRAPH_X_POSITION_BEGINNING + (GRAPH_X_POSITION_SEPARATION / 2);
 
 				byte colour  = this->colours[i];
 				uint prev_x = INVALID_DATAPOINT_POS;
@@ -364,7 +367,7 @@ protected:
 							datapoint >>= reduce_range;
 						}
 
-						y = this->gd_top + x_axis_offset - (x_axis_offset * datapoint) / (highest_value >> reduce_range);
+						y = r.top + x_axis_offset - (x_axis_offset * datapoint) / (highest_value >> reduce_range);
 
 						/* Draw the point. */
 						GfxFillRect(x - 1, y - 1, x + 1, y + 1, colour);
@@ -389,13 +392,19 @@ protected:
 	BaseGraphWindow(const WindowDesc *desc, WindowNumber window_number, int left,
 									int top, int height, bool has_negative_values, StringID format_str_y_axis) :
 			Window(desc, window_number), has_negative_values(has_negative_values),
-			gd_left(left), gd_top(top), gd_height(height), format_str_y_axis(format_str_y_axis)
+			format_str_y_axis(format_str_y_axis)
 	{
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
 		this->num_vert_lines = 24;
 
 		/* Initialise the dataset */
 		this->OnTick();
+
+		this->graph_location.left   = left;
+		this->graph_location.right  = left + GRAPH_X_POSITION_BEGINNING + this->num_vert_lines * GRAPH_X_POSITION_SEPARATION - 1;
+
+		this->graph_location.top    = top;
+		this->graph_location.bottom = top + height - 1;
 	}
 
 public:
@@ -403,7 +412,7 @@ public:
 	{
 		this->DrawWidgets();
 
-		this->DrawGraph();
+		this->DrawGraph(this->graph_location);
 	}
 
 	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
@@ -766,12 +775,14 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 		this->SetDirty();
 
-		this->gd_height = this->height - 38;
 		this->num_on_x_axis = 20;
 		this->num_vert_lines = 20;
 		this->month = 0xFF;
 		this->x_values_start     = 10;
 		this->x_values_increment = 10;
+
+		this->graph_location.right  = this->graph_location.left + GRAPH_X_POSITION_BEGINNING + this->num_vert_lines * GRAPH_X_POSITION_SEPARATION - 1;
+		this->graph_location.bottom = this->graph_location.top + (this->height - 38) - 1;
 
 		/* Initialise the dataset */
 		this->OnHundredthTick();
@@ -809,10 +820,10 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			i++;
 		}
 
-		this->DrawGraph();
+		this->DrawGraph(this->graph_location);
 
-		DrawString(2 + 46, this->width, 24 + this->gd_height + 7, STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL);
-		DrawString(2 + 84, this->width, 24 - 9, STR_GRAPH_CARGO_PAYMENT_RATES_TITLE);
+		DrawString(2 + 46, this->width, this->graph_location.bottom + 8, STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL);
+		DrawString(2 + 84, this->width, this->graph_location.top - 9, STR_GRAPH_CARGO_PAYMENT_RATES_TITLE);
 	}
 
 	virtual void OnClick(Point pt, int widget)
