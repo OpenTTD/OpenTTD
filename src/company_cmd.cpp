@@ -61,6 +61,7 @@ Company::~Company()
 	if (CleaningPool()) return;
 
 	DeleteCompanyWindows(this->index);
+	InvalidateWindowData(WC_GRAPH_LEGEND, 0, this->index);
 }
 
 /**

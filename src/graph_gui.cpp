@@ -41,34 +41,35 @@ enum GraphLegendWidgetNumbers {
 };
 
 struct GraphLegendWindow : Window {
-	GraphLegendWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	GraphLegendWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		for (uint i = GLW_FIRST_COMPANY; i < this->widget_count; i++) {
-			if (!HasBit(_legend_excluded_companies, i - GLW_FIRST_COMPANY)) this->LowerWidget(i);
-		}
+		this->InitNested(desc, window_number);
 
-		this->FindWindowPlacementAndResize(desc);
+		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+			if (!HasBit(_legend_excluded_companies, c)) this->LowerWidget(c + GLW_FIRST_COMPANY);
+
+			this->OnInvalidateData(c);
+		}
 	}
 
 	virtual void OnPaint()
 	{
-		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-			if (Company::IsValidID(c)) continue;
-
-			SetBit(_legend_excluded_companies, c);
-			this->RaiseWidget(c + GLW_FIRST_COMPANY);
-		}
-
 		this->DrawWidgets();
+	}
 
-		const Company *c;
-		FOR_ALL_COMPANIES(c) {
-			DrawCompanyIcon(c->index, 4, 18 + c->index * 12);
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (!IsInsideMM(widget, GLW_FIRST_COMPANY, MAX_COMPANIES + GLW_FIRST_COMPANY)) return;
 
-			SetDParam(0, c->index);
-			SetDParam(1, c->index);
-			DrawString(21, this->width - 4, 17 + c->index * 12, STR_COMPANY_NAME_COMPANY_NUM, HasBit(_legend_excluded_companies, c->index) ? TC_BLACK : TC_WHITE);
-		}
+		CompanyID cid = (CompanyID)(widget - GLW_FIRST_COMPANY);
+
+		if (!Company::IsValidID(cid)) return;
+
+		DrawCompanyIcon(cid, r.left + 2, r.top + 2);
+
+		SetDParam(0, cid);
+		SetDParam(1, cid);
+		DrawString(r.left + 19, r.right - 2, r.top + 1, STR_COMPANY_NAME_COMPANY_NUM, HasBit(_legend_excluded_companies, cid) ? TC_BLACK : TC_WHITE);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -83,6 +84,14 @@ struct GraphLegendWindow : Window {
 		InvalidateWindow(WC_DELIVERED_CARGO, 0);
 		InvalidateWindow(WC_PERFORMANCE_HISTORY, 0);
 		InvalidateWindow(WC_COMPANY_VALUE, 0);
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		if (Company::IsValidID(data)) return;
+
+		SetBit(_legend_excluded_companies, data);
+		this->RaiseWidget(data + GLW_FIRST_COMPANY);
 	}
 };
 
@@ -107,28 +116,6 @@ static NWidgetBase *MakeNWidgetCompanyLines(int *biggest_index)
 	return vert;
 }
 
-static const Widget _graph_legend_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,       STR_TOOLTIP_CLOSE_WINDOW},           // GLW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   249,     0,    13, STR_GRAPH_KEY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // GLW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   249,    14,   195, 0x0,                   STR_NULL},                           // GLW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    16,    27, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},    // GLW_FIRST_COMPANY
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    28,    39, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    40,    51, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    52,    63, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    64,    75, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    76,    87, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    88,    99, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   100,   111, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   112,   123, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   124,   135, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   136,   147, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   148,   159, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   160,   171, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   172,   183, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   184,   195, 0x0,                   STR_GRAPH_KEY_COMPANY_SELECTION},    // GLW_LAST_COMPANY
-{   WIDGETS_END},
-};
-
 static const NWidgetPart _nested_graph_legend_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, GLW_CLOSEBOX),
@@ -148,7 +135,7 @@ static const WindowDesc _graph_legend_desc(
 	WDP_AUTO, WDP_AUTO, 250, 196, 250, 196,
 	WC_GRAPH_LEGEND, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_graph_legend_widgets, _nested_graph_legend_widgets, lengthof(_nested_graph_legend_widgets)
+	NULL, _nested_graph_legend_widgets, lengthof(_nested_graph_legend_widgets)
 );
 
 static void ShowGraphLegend()
