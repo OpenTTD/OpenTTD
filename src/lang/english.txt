@@ -1558,7 +1558,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Build ra
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Build railway tunnel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toggle build/remove for railway track and signals
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Bridge selection - click on your prefered bridge to build it
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Select railway depot orientation
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Select railway depot orientation
 STR_RAILROAD_TRACK                                              :Railway track
 STR_RAILROAD_TRAIN_DEPOT                                        :Railway train depot
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...area is owned by another company
@@ -1603,8 +1603,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Can't bu
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Can't build tramway here...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Can't remove road from here...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Can't remove tramway from here...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Road Depot Orientation
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Tram Depot Orientation
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Road Depot Orientation
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Tram Depot Orientation
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Can't build road vehicle depot here...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Can't build tram vehicle depot here...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Can't build bus station...

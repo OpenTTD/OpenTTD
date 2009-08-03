@@ -1553,7 +1553,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Κατα
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Κατασκευή τούνελ σιδηρόδρομου
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για σιδηρόδρομους και σηματοδότες
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Επιλογή γέφυρας - κάντε κλικ στην γέφυρα της προτίμησής σας για κατασκευή
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Επιλογή προσανατολισμού αμαξοστασίου
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Επιλογή προσανατολισμού αμαξοστασίου
 STR_RAILROAD_TRACK                                              :Σιδηρόδρομος
 STR_RAILROAD_TRAIN_DEPOT                                        :Αμαξοστάσιο
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...αυτή η περιοχή είναι ιδιοκτησία άλλης εταιρείας
@@ -1586,8 +1586,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Αδύν
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Δεν μπορεί να χτιστεί γραμμή τραμ εδώ...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Αδύνατο να αφαιρεθεί δρόμος από εδώ...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Δεν μπορω να αφαιρέσω τροχιόδρομο(τραμ) από εδώ
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Προσανατοισμός Σταθμού Οχημάτων
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Προσανατολισμός αμαξοστασίου τραμ
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Προσανατοισμός Σταθμού Οχημάτων
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Προσανατολισμός αμαξοστασίου τραμ
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Αδύνατο να χτιστεί σταθμός οχημάτων εδώ...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Δεν μπορεί να χτιστεί σταθμαρχείο τραμ εδώ...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Αδύνατο να χτιστεί στάση λεωφορείων...

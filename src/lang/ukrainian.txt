@@ -1681,7 +1681,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Буду
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Будувати тунель
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Будувати/демонтувати колію або сигнали
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Вибір мосту - натисніть на міст, який бажаєте збудувати
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Вибір орієнтації депо
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Вибір орієнтації депо
 STR_RAILROAD_TRACK                                              :Залізнична колія
 STR_RAILROAD_TRAIN_DEPOT                                        :Залізничне депо
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...ця ділянка у власності іншої компанії
@@ -1723,8 +1723,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Немо
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Тут не можна побудувати трамвайну колію...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Неможливо прибрати дорогу звідси...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не можна прибрати трамвайну колію звідси...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Орієнтація депо
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Орієнтація трамвайного депо
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Орієнтація депо
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Орієнтація трамвайного депо
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Неможливо будувати депо тут...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Тут не можна побудувати трамвайне депо...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Неможливо будувати зупинку тут...

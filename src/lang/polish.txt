@@ -1929,7 +1929,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Budowa m
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Budowa tunelu kolejowego
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Przełącz buduj/usuń dla torów i semaforów
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Wybór mostu - kliknij na wybranym moście, aby go zbudować
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Wybierz ukierunkowanie zajezdni kolejowej
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Wybierz ukierunkowanie zajezdni kolejowej
 STR_RAILROAD_TRACK                                              :Tory kolejowe
 STR_RAILROAD_TRAIN_DEPOT                                        :Zajezdnia kolejowa
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...teren jest własnością innej firmy
@@ -1971,8 +1971,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Nie moż
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Nie można tutaj zbudować torowiska...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nie można usunąć drogi z tego miejsca...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nie można torowiska z tego miejsca...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Ukierunkowanie zajezdni samochodowej
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Orientacja zajezdni tramwajowej
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Ukierunkowanie zajezdni samochodowej
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientacja zajezdni tramwajowej
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Nie można tutaj zbudować zajezdni...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Nie można tutaj zbudować zajezdni...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nie można zbudować przystanku...

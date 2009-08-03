@@ -1559,7 +1559,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Eisenbah
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Eisenbahntunnel bauen
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Umschalter für Bau/Abriss von aktuellem Bauwerkzeug
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Brückenauswahl - Klicke auf die gewünschte Brücke, um sie zu bauen
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Ausrichtung des Zugdepots auswählen
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Ausrichtung des Zugdepots auswählen
 STR_RAILROAD_TRACK                                              :Gleis
 STR_RAILROAD_TRAIN_DEPOT                                        :Zugdepot
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...Gelände gehört jemand anderem
@@ -1604,8 +1604,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Straße 
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Straßenbahn kann hier nicht gebaut werden...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Diese Straße kann nicht entfernt werden...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Straßenbahn kann hier nicht entfernt werden...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Ausrichtung Depot
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Ausrichtung Depot
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Ausrichtung Depot
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Ausrichtung Depot
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Fahrzeugdepot kann hier nicht gebaut werden...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Straßenbahndepot kann hier nicht gebaut werden...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Busbahnhof kann nicht gebaut werden...

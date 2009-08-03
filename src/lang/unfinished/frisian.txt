@@ -908,7 +908,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bou in s
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bou in spoartunnel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Set bouen/fuortheljen foar spoaren en stopljochten oan/út
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Brêge seleksje - klik op de brêge dyst boue wolst
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Selektearje treindepot rjochting
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Selektearje treindepot rjochting
 STR_RAILROAD_TRACK                                              :Spoarwei
 STR_RAILROAD_TRAIN_DEPOT                                        :Treindepot
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...gebiet is fan in oar bedriuw
@@ -924,7 +924,7 @@ STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Wegenbou
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selektear brêge
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Kin hjir gjin wei boue...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Kin hjir gjin wei fuorthelje...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Autodepot rjochting
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Autodepot rjochting
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kin hjir gjin auto depot boue...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Kin hjir gjin busstasjon boue...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Kin hjir gjin frachtweinstasjon boue...

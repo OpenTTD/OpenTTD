@@ -1560,7 +1560,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Costruis
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Costruisce un tunnel ferroviario
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Seleziona fra costruzione/rimozione di binari e segnali
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Selezione ponte - fare clic sul ponte desiderato per costruirlo
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Seleziona l'orientamento del deposito ferroviario
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Seleziona l'orientamento del deposito ferroviario
 STR_RAILROAD_TRACK                                              :Ferrovia
 STR_RAILROAD_TRAIN_DEPOT                                        :Deposito ferroviario
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...l'area appartiene a un'altra compagnia
@@ -1605,8 +1605,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Impossib
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Impossibile costruire la tranvia qui...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Impossibile rimuovere la strada da qui...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Impossibile rimuovere la tranvia da qui...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Orientamento deposito
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Orientamento deposito
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientamento deposito
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientamento deposito
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Impossibile costruire il deposito qui...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Impossibile costruire il deposito qui...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Impossibile costruire la stazione degli autobus qui...

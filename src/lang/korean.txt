@@ -1559,7 +1559,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}철교 �
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}터널 건설
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}철로/신호기 건설/제거툴 켜기/끄기
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}다리 건설 - 원하는 다리 종류를 선택하세요
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}차량기지의 방향을 선택하세요
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}차량기지의 방향을 선택하세요
 STR_RAILROAD_TRACK                                              :철로
 STR_RAILROAD_TRAIN_DEPOT                                        :철도 차량기지
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...다른 회사의 소유지입니다!
@@ -1604,8 +1604,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}도로�
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}여기에 전찻길을 건설할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}도로를 제거할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}이곳의 전찻길을 제거할 수 없습니다...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}차고 방향
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}차량기지 방향
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}차고 방향
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}차량기지 방향
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}여기에 차고를 지을 수 없습니다...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}여기에 차량기지를 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}버스 정류장을 지을 수 없습니다...

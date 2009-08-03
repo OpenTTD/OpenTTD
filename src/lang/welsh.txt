@@ -1556,7 +1556,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Adeiladu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Adeiladu twnnel rheilffordd
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toglu adeiladu/tynnu ar gyfer traciau a signalau
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Dewi pont - cliciwch ar y bont rydych chi'n dymuno ei hadeiladu
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Dewiswch gyfeiriad depo rheilffordd
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Dewiswch gyfeiriad depo rheilffordd
 STR_RAILROAD_TRACK                                              :Trac rheilffordd
 STR_RAILROAD_TRAIN_DEPOT                                        :Rheilffordd trên depo
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...mae'r ardal yn eiddo i gwmni arall
@@ -1598,8 +1598,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Methu ad
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Methu adeiladu tramffordd yma...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Meth clirio ffordd oddi yma...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Methu dileu tramffordd oddi yma...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Cyfeiriad Depo Ffordd
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Cyfeiriad Depo Tramiau
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Cyfeiriad Depo Ffordd
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Cyfeiriad Depo Tramiau
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Methu adeiladu depo cerbydau ffordd yma...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Methu adeiladu depo cerbyd tramiau yma...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Methu adeiladu gorsaf fysiau...

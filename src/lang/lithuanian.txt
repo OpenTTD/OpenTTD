@@ -1564,7 +1564,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Statyti 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Statyti geležinkelio tunelį
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Pašalina bėgius/šviesoforus
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Tilto statyba - spragtelkite ant pageidaujamo tilto
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Pasirinkite geležinkelio depo padėtį
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Pasirinkite geležinkelio depo padėtį
 STR_RAILROAD_TRACK                                              :Geležinkelio bėgiai
 STR_RAILROAD_TRAIN_DEPOT                                        :Traukinių depas
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...ši žemė priklauso kitai kompanijai
@@ -1605,8 +1605,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Čia tie
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Čia neįmanoma statyti tramvajaus...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Šio kelio pašalinti negalima...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Neįmanoma pašalinti tramvajaus...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Automobilių garažo padėtis
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Tramvajaus depo orientacija
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Automobilių garažo padėtis
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Tramvajaus depo orientacija
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Čia automomobilių garažo statyti negalima...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE} Čia neįmanoma statyti depo...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Čia autobusų stotelės statyti negalima...

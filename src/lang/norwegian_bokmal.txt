@@ -1558,7 +1558,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg jer
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg jernbanetunnel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Velg mellom bygging og fjerning for jernbanespor og signallykter
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Brovalg - trykk på broen du vil ha for å bygge den.
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Velg togstallens retning
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Velg togstallens retning
 STR_RAILROAD_TRACK                                              :Jernbanespor
 STR_RAILROAD_TRAIN_DEPOT                                        :Togstall
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...felt eies av et annet firma
@@ -1600,8 +1600,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Kan ikke bygge trikkespor her...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Kan ikke fjerne vei herfra...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kan ikke fjerne trikkespor herfra...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Retning for garasje
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Trikkestallretning
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Retning for garasje
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Trikkestallretning
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kan ikke bygge garasje her...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan ikke bygge trikkestall her...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Kan ikke bygge busstasjon...

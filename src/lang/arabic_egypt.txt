@@ -1558,7 +1558,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}بناء
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}بناء نفق قطار
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}تناوب بناء/ازالة سكك واشارات القطارات
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}بناء الجسور - اختر الجسر المفضل لديك لبنائة
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}اختر اتجاة ورشة صيانة القطارات
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}اختر اتجاة ورشة صيانة القطارات
 STR_RAILROAD_TRACK                                              :سكة القطار
 STR_RAILROAD_TRAIN_DEPOT                                        :ورشة صيانة القطار
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...المنطقة مملوكة لشركة منافسة
@@ -1603,8 +1603,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}لايم
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}لا يمكن بناء سكة ترام هنا ...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}لايمكن ازالة الطريق من هنا ...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}لا يمكن ازالة سكة الترام من هنا ...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}اتجاة ورشة الصيانة
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}اتجاة مستودع الصيانة لترام
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}اتجاة ورشة الصيانة
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}اتجاة مستودع الصيانة لترام
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}لا يمكن بناء الورشة هنا ...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}لا يمكن بناء ورشة ترام هنا ...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}لا يمكن بناء محطة باصات هنا ...

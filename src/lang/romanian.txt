@@ -1558,7 +1558,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construieşte tunel feroviar
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Comutator pentru construcţie/înlăturare căi ferate şi semnale
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Alegere pod - clic pe podul selectat pentru a-l construi
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Alege orientarea depoului
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Alege orientarea depoului
 STR_RAILROAD_TRACK                                              :Cale ferată
 STR_RAILROAD_TRAIN_DEPOT                                        :Depou de cale ferată
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...terenul se află în proprietatea altei companii
@@ -1600,8 +1600,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Nu se po
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Nu pot construi şină de tramvai aici...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nu se poate înlătura şoseaua...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nu pot înlătura şina de tramvai de aici...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Orientarea autobazei
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Orientarea Depoului de Tramvaie
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientarea autobazei
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientarea Depoului de Tramvaie
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Nu se poate construi autobază aici...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Nu pot construi depou de tramvaie aici...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nu se poate construi staţie de autobuz...

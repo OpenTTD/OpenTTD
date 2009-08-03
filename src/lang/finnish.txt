@@ -1558,7 +1558,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Rakenna 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Rakenna rautatietunneli.
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Rautatien ja opastimien rakentaminen/poisto päälle/pois.
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Sillan valinta - napsauta valittua siltaa rakentaaksesi sen.
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Valitse veturitallin suunta.
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Valitse veturitallin suunta.
 STR_RAILROAD_TRACK                                              :Rautatie
 STR_RAILROAD_TRAIN_DEPOT                                        :Veturitalli
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...alueen omistaa toinen yhtiö.
@@ -1603,8 +1603,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Tietä e
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Tähän ei voi rakentaa raitiotietä.
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Tietä ei voi poistaa.
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Tästä ei voi poistaa raitiotietä.
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Autovarikon suunta
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Varikon suunta
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Autovarikon suunta
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Varikon suunta
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Autovarikkoa ei voi rakentaa.
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Tähän ei voi rakentaa varikkoa.
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Linja-autoasemaa ei voi rakentaa.

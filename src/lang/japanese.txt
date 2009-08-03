@@ -1533,7 +1533,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}鉄道�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}鉄道のトンネルを建設します
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}線路と信号の建設／破壊を切り替えます
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}橋の選択 - お好きな橋を建設するにはクリックします
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}鉄道車庫の配置方向を選択します
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}鉄道車庫の配置方向を選択します
 STR_RAILROAD_TRACK                                              :線路
 STR_RAILROAD_TRAIN_DEPOT                                        :鉄道車庫
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...この土地は他の会社に所有されています
@@ -1575,8 +1575,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}ここ�
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}ここに路面電車線を建設できません...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}ここから道路を破壊できません...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}ここから路面電車線を破壊できません...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}車庫の配置
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}路面電車庫の配置
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}車庫の配置
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}路面電車庫の配置
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}ここに車庫を建設できません...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}ここに路面電車庫を建設できません...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}バス停を建設できません...

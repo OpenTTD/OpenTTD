@@ -1533,7 +1533,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Пост
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Строене на жп тунел
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Строене/премахване на жп линия и семафори
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Избиране на мост - натисни върху избрания от теб мост, за да се построи
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Избиране ориентация на ЖП депо
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Избиране ориентация на ЖП депо
 STR_RAILROAD_TRACK                                              :ЖП линия
 STR_RAILROAD_TRAIN_DEPOT                                        :ЖП депо
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...земята е притежание на друга компания
@@ -1575,8 +1575,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Пътя
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Не може да се построи трамвайна линия...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Пътя не може да се махне...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не може да се разруши трамвайната линия...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Ориентация на гараж
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Посока на трамвайно депо
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Ориентация на гараж
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Посока на трамвайно депо
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Гаража не може да се построи...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Не може да се построи трамвайно депо...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Автогарата не може да се построи...

@@ -1554,7 +1554,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Zuchbré
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zuchtunnel bauen
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Wiesselt zwëschen bauen/ofrappen vun Schinnen an Signaler
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Bréckenauswiel - Wielt äer Bréck aus
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Wielt d'Richtung vum Zuchdepot
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Wielt d'Richtung vum Zuchdepot
 STR_RAILROAD_TRACK                                              :Schinnen
 STR_RAILROAD_TRAIN_DEPOT                                        :Schinnen Zuchdepot
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...d'Plaz ass am Besëtz vun enger aanerer Firma
@@ -1596,8 +1596,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Kann d'S
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Kann den Tram heinet bauen...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}CKann d'Strooss hei net ewesch huelen...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kann den Tram net  ewesch huelen...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Stroossendepot Richtung
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Tramdepot Richtung
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Stroossendepot Richtung
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Tramdepot Richtung
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kann den Depot hei net bauen...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kann den Tramschapp hei net bauen...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Kann d'Busgare hei net bauen...

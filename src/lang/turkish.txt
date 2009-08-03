@@ -1559,7 +1559,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Demiryol
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Demiryolu tüneli yap
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Trenyolu yapımında sil/yap arasında geçiş
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Köprü seçimi - yapacağınız köprüyü seçin
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Tren garı yönünü seçin
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Tren garı yönünü seçin
 STR_RAILROAD_TRACK                                              :Ray
 STR_RAILROAD_TRAIN_DEPOT                                        :Tren garı
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...alan başka bir şirkete ait
@@ -1604,8 +1604,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Yol bura
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Buraya tramvay yapılamaz...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Yol buradan kaldırılamıyor...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Tramvay kaldırılamaz...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Garaj Yönü
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Tramvay Garı Yönü
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Garaj Yönü
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Tramvay Garı Yönü
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Buraya garaj yapılamaz...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Buraya tramvay garı yapılamaz...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Otobüs durağı yapılamıyor...

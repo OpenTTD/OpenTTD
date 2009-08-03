@@ -1559,7 +1559,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar construir/remover ferrovias e sinais
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Seleção de ponte - clique na ponte desejada para construir
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Selecionar a orientação do depósito ferroviário
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Selecionar a orientação do depósito ferroviário
 STR_RAILROAD_TRACK                                              :Ferrovia
 STR_RAILROAD_TRAIN_DEPOT                                        :Depósito ferroviário
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...a área é propriedade de outra empresa
@@ -1601,8 +1601,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Impossí
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Impossível construir bonde aqui...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Impossível remover rodovia daqui...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Impossível remover bonde daqui...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Orientação da Garagem
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Orientação do Depósito
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientação da Garagem
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientação do Depósito
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Impossível construir garagem aqui...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Impossível construir depósito aqui...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Impossível construir estação de ônibus...

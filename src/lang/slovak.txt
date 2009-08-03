@@ -1625,7 +1625,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Postavit
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Postavit zeleznicny tunel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Prepnut stavbu/odstranenie zeleznicnych kolaji a semaforov
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Vyber mostu - kliknut na vybrany most
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Vyber orientacie depa
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Vyber orientacie depa
 STR_RAILROAD_TRACK                                              :Zeleznicne kolaje
 STR_RAILROAD_TRAIN_DEPOT                                        :Zeleznicne depo
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... oblast vlastni ina spolocnost
@@ -1670,8 +1670,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Tu sa ne
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Nie je možné postavit elektrickovú trat ...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Tu sa neda odstranit cesta ...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nie je možné odstránit elektrickovú trat ...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Orientacia garaze
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Orientácia elektrickového depa
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientacia garaze
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientácia elektrickového depa
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Tu sa neda postavit garaz ...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Nie je možné postavit elektrickové depo ...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nemozno postavit autobusovu zastavku ...

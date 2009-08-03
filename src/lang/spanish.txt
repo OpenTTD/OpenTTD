@@ -1559,7 +1559,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviario
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Cambiar entre construir/retirar tramos y señales de ferrocarril
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Selección de puente - click en el puente elegido para construirlo
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Seleccione la orientación del depósito de trenes
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Seleccione la orientación del depósito de trenes
 STR_RAILROAD_TRACK                                              :Vía del tren
 STR_RAILROAD_TRAIN_DEPOT                                        :Depósito de trenes
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...otra compañía posee el área
@@ -1604,8 +1604,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}No se pu
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}No se puede construir un tranvía aquí...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}No se puede retirar carretera de aquí...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}No se puede quitar el tranvía de aquí...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Orientación del depósito
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Orientación del depósito de tranvía
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientación del depósito
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientación del depósito de tranvía
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}No se puede construir depósito de carretera aquí...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}No se puede construir depósito de tranvía aquí...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}No se puede construir estación de autobuses...

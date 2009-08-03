@@ -1556,7 +1556,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}興建�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}挖掘鐵路隧道
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切換建築／移除鐵軌與號誌
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}選擇橋樑 - 點選想建的橋樑即可建造
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}選擇鐵路機廠方向
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}選擇鐵路機廠方向
 STR_RAILROAD_TRACK                                              :鐵軌
 STR_RAILROAD_TRAIN_DEPOT                                        :鐵路機廠
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...此區域屬於其它公司所有
@@ -1598,8 +1598,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}不能�
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}無法在此鋪設電車軌...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}不能從此移除道路...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}無法移除此處的電車軌...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}車庫方向
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}電車
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}車庫方向
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}電車
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}不能在此興建車庫...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}無法在此興建電車維修廠...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}無法興建公車站...

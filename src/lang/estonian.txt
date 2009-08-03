@@ -1613,7 +1613,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Ehita ra
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Ehita rongitunnel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Lülitu rööbastee ja signaalide ehitamise ja lammutamise vahel
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Silla valik - klõpsa sobivale sillale, et seda ehitada
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Depoole suuna valimine
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Depoole suuna valimine
 STR_RAILROAD_TRACK                                              :Rööbastee
 STR_RAILROAD_TRAIN_DEPOT                                        :Rongidepoo
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...ala kuulub teisele ettevõttele
@@ -1655,8 +1655,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Siia ei 
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Trammiteed ei ole võimalik siia rajada...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Siinset sõiduteed ei saa lammutada...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Siinset trammiteed ei saa lammutada...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Depoo suund
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Trammidepoo suund
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Depoo suund
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Trammidepoo suund
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Siia ei saa depood ehitada...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Trammidepood ei saa siia rajada
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Siia ei saa bussijaama ehitada...

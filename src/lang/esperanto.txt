@@ -1557,7 +1557,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Konstruu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Konstruu fervojtunelon
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Elektu inter konstruado kaj forigado de reloj kaj signaloj
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Pontelekton - alklaku vian preferatan ponton por konstrui ĝin
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Elektu deponejan orientadon
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Elektu deponejan orientadon
 STR_RAILROAD_TRACK                                              :Reloj
 STR_RAILROAD_TRAIN_DEPOT                                        :Trajndeponejo
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...regiono estas posedata de alia kompanio
@@ -1578,7 +1578,7 @@ STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Vojkonst
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Elektu Vojan Ponton
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Ne povas konstrui vojon ĉi tie...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Ne povas forigi vojon de ĉi tie...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Deponeja Direkto
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Deponeja Direkto
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Ne povas konstrui vojveturilan deponejon ĉi tie...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Ne povas konstrui bushaltejon...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Ne povas konstrui ŝarĝstacion...

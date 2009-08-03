@@ -1592,7 +1592,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Vasúti 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Vasúti alagút építése
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Felszedés/lerakás közötti váltás vasúti pályánál és jelzőnél
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Híd kiválasztása - kattints arra a hídra, amit meg akarsz építeni
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Válaszd ki a járműtelep helyzetét
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Válaszd ki a járműtelep helyzetét
 STR_RAILROAD_TRACK                                              :Vasúti pálya
 STR_RAILROAD_TRAIN_DEPOT                                        :Járműtelep
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...a terület más cégé
@@ -1637,8 +1637,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Nem ép�
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Ide nem lehet villamospályát építeni...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nem rombolhatod le innen az utat...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Innen nem lehet villamospályát eltávolítani...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Garázs helyzete
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Remíz helyzete
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Garázs helyzete
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Remíz helyzete
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Nem építhetsz ide garázst...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ide nem lehet remízt építeni...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nem építhetsz ide buszmegállót...

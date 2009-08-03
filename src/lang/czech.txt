@@ -1626,7 +1626,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Postavit
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Postavit železniční tunel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Přepnout režim stavba/odstranění pro koleje a semafory
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Výběr mostů - staví se kliknutím na obrázek mostu
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Zvolit orientaci železničního depa
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Zvolit orientaci železničního depa
 STR_RAILROAD_TRACK                                              :Koleje
 STR_RAILROAD_TRAIN_DEPOT                                        :Železniční depo
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... území vlastní jiná společnost
@@ -1668,8 +1668,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Zde nemo
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Zde není možné postavit tramvajovou trať...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nemohu odsud odstranit silnici
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Není možné odsud odstranit tramvajovou trať...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Orientace garáže
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Orientace tramvajového depa
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientace garáže
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientace tramvajového depa
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Tady nejde postavit garáž
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Zde není možné postavit depo pro tramvaje...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nemohu postavit autobusovou stanici...

@@ -1536,7 +1536,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}בניי
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}חציבת מנהרות למסילות
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}החלף בנייה/הסרה של פסי רכבת ורמזורים
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK} בחירת סוג הגשר – בחר את הסוג שברצונך לבנות
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}בחר את הכיוון של מוסך הרכבת
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}בחר את הכיוון של מוסך הרכבת
 STR_RAILROAD_TRACK                                              :מסילת רכבת
 STR_RAILROAD_TRAIN_DEPOT                                        :מוסך רכבת
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...השטח בבעלותה של חברה אחרת
@@ -1578,8 +1578,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}...לא 
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}...לא ניתן לבנות מסילות חשמלית כאן
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}...לא ניתן להסיר כביש ממשבצת זו
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}...לא ניתן לפרק מסילת רכבת חשמלית מכאן
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}כיוון המוסך
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}התמצאות מוסך חשמלית
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}כיוון המוסך
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}התמצאות מוסך חשמלית
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}...לא ניתן למקם מוסך כלי רכב במשבצת זו
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}...לא ניתן לבנות מוסך לחשמלית כאן
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}...לא ניתן לבנות תחנת אוטובוס

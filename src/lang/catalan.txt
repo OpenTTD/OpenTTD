@@ -1558,7 +1558,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construe
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construeix túnel de tren
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Intercanvia funció construeix/treu per vies de tren i senyals
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Selecció de pont - clica al pont triat per construir-lo
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Selecciona l'orientació de les cotxeres de tren
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Selecciona l'orientació de les cotxeres de tren
 STR_RAILROAD_TRACK                                              :Via de tren
 STR_RAILROAD_TRAIN_DEPOT                                        :Cotxeres de tren
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...l'àrea és propietat d'una altra companyia
@@ -1603,8 +1603,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Aquí no
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}No puc construir la via de tramvia aquí...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Aquí no es pot treure una carretera...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}No puc treure la via de tramvia d'aquí...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Cotxeres
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Orientació de les cotxeres de tramvies
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Cotxeres
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientació de les cotxeres de tramvies
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Aquí no es pot construir una cotxera...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Aquí no puc construir les cotxeres de tramvies...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}No es pot construir una parada d'autobús...

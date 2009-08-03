@@ -1707,7 +1707,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Стро
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Строительство ж/д туннелей
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Строительство/удаление ж/д путей, сигналов, станций
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Выбор моста - кликните на изображении моста, который вы хотите построить
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Выбор направления депо
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Выбор направления депо
 STR_RAILROAD_TRACK                                              :Рельсы
 STR_RAILROAD_TRAIN_DEPOT                                        :Ж/д депо
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...область принадлежит другой компании
@@ -1752,8 +1752,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Здес
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Здесь нельзя проложить трамвайные рельсы...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Не могу удалить дорогу...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не могу удалить трамвайные рельсы...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Направление гаража
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Ориентация трамвайного депо
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Направление гаража
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Ориентация трамвайного депо
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Здесь невозможно построить гараж...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Здесь нельзя построить трамвайное депо...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Здесь невозможно построить остановку...

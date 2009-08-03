@@ -1558,7 +1558,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Membangu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Membangun terowongan kereta
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Membangun/bongkar rel kereta dan sinyal
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Pilihan jembatan - Klik pada jembatan yang ingin anda bangun
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Pilih arah depo kereta
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Pilih arah depo kereta
 STR_RAILROAD_TRACK                                              :Jalur rel
 STR_RAILROAD_TRAIN_DEPOT                                        :Depo kereta api
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...area ini dimiliki oleh perusahaan lain
@@ -1603,8 +1603,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Tidak da
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Tidak dapat membangun jalan trem disini...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Tidak dapat membongkar jalan di sini...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Tidak dapat membongkar jalan trem disini...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Arah Depo kendaraan
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Orientasi Depo Trem
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Arah Depo kendaraan
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientasi Depo Trem
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Tidak dapat membangun bengkel disini...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Tidak dapat membangun depo trem disini...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Tidak dapat membangunstasiun bus...

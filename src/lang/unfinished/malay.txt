@@ -1007,7 +1007,7 @@ STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...kawas
 ##id 0x1800
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Pembinaan Jalan
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Pilihkan Jambatan Jalan
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Orientasi Depot Kenderaan Jalan
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientasi Depot Kenderaan Jalan
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bina stesen bas
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bina ruang punggah lori
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bina stesen trem penumpang

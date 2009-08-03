@@ -1547,7 +1547,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Būvēt 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Būvēt dzelzceļa tuneli
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Pārslēgties starp sliežu un semaforu būvēšanas/nojaukšanas režīmiem
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Tilta izvēle - klik uz vēlamo tiltu, lai to uzbūvētu
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Izvēlieties vilcienu depo orientāciju
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Izvēlieties vilcienu depo orientāciju
 STR_RAILROAD_TRACK                                              :Sliežu ceļš
 STR_RAILROAD_TRAIN_DEPOT                                        :Vilcienu depo
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...zemes gabals pieder citam uzņēmumam
@@ -1589,8 +1589,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Šeit ne
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Šeit nav iespējams būvēt tramvaju...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Šeit nevar nojaukt ceļu...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}No šejienes nevar novākt tramvaju...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Automašīnu depo orientācija
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Tramvaja depo orientācija
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Automašīnu depo orientācija
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Tramvaja depo orientācija
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Šeit nevar uzbūvēt automašīnu depo...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Šeit nav iespējams uzbūvēt tramvaja depo...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nevar uzbūvēt autobusa pieturu...

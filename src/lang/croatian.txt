@@ -1612,7 +1612,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Izgradi 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Izgradi željeznički tunel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Aktiviraj izgradnju/uklanjanje željezničke pruge i znakova
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Izbor mosta - klikni na most koji želiš izgraditi
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Odaberi smjer željezničkog spremišta
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Odaberi smjer željezničkog spremišta
 STR_RAILROAD_TRACK                                              :Željeznička pruga
 STR_RAILROAD_TRAIN_DEPOT                                        :Željezničko spremište vlakova
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...područje je u vlasništvu druge tvrke
@@ -1654,8 +1654,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Ovdje ni
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Ovdje nije moguće izgraditi tramvaj...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nije moguće ukloniti cestu odavdje...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nije moguće ukloniti tramvaj odavdje...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Smjer cestovnog spremišta
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Smjer tramvajskog spremišta
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Smjer cestovnog spremišta
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Smjer tramvajskog spremišta
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Ovdje nije moguće izgraditi spremište cestovnih vozila...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ovdje nije moguće izgraditi tramvajsko spremište...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nije moguće izgraditi autobusnu postaju...

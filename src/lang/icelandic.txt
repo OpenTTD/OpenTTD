@@ -1557,7 +1557,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Byggja l
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Byggja lestargöng
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skipta á milli byggja/fjarlægja lestarteina og lestarljós
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Brúarval - veldu brú til að byggja
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Veldu legu lestarskýlis
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Veldu legu lestarskýlis
 STR_RAILROAD_TRACK                                              :Lestarteinn
 STR_RAILROAD_TRAIN_DEPOT                                        :Lestarskýli
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...svæðið er í eigu annars fyrirtækis
@@ -1599,8 +1599,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Get ekki
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Get ekki lagt sporvagnaspor hér...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Get ekki fjarlægt veg héðan...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Get ekki fjarlægt sporvagnaspor héðan...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Bifreiðaskýli
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Staða sporvagnaskýlis
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Bifreiðaskýli
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Staða sporvagnaskýlis
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Get ekki fjarlægt bifreiðaskýli héðan...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Get ekki reist sporvagnaskýli hér...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Get ekki byggt strætóstoppistöð...

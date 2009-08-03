@@ -1750,7 +1750,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Izgradnj
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Izgradnja železničkog tunela
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Uklanjanje železničkih pruga i signalizacije (kad je uključeno)
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Izbor mosta - gradnja se potvrđuje klikom na željeni most
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Izbor orijentacije železničkog depoa
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Izbor orijentacije železničkog depoa
 STR_RAILROAD_TRACK                                              :Železnička pruga
 STR_RAILROAD_TRAIN_DEPOT                                        :Železnički depo
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...zemljište je u vlasništvu druge kompanije
@@ -1795,8 +1795,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Izgradnj
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Izgradnja tramvajske pruge ovde nije moguća...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nemoguće je ukloniti put odatle...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nemoguće je ukloniti tramvajsku prugu odatle...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Orijentacija drumskog depoa
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Izbor orijentacije tramvajskog depoa
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orijentacija drumskog depoa
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Izbor orijentacije tramvajskog depoa
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Izgradnja drumskog depoa ovde nije moguća...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Izgradnja tramvajkog depoa ovde nije moguća...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Izgradnja autobuske stanice ovde nije moguća...

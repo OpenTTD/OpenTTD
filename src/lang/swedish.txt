@@ -1558,7 +1558,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg jä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg järnvägstunnel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Växla mellan att bygga/ta bort järnväg och signaler
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}Välj bro - klicka på önskad bro för att bygga den
-STR_BUILD_DEPOT_TRAIN_ORIENTATION                               :{BLACK}Välj riktning för depå
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Välj riktning för depå
 STR_RAILROAD_TRACK                                              :Järnvägsspår
 STR_RAILROAD_TRAIN_DEPOT                                        :Järnvägsdepå
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...området ägs av ett annat företag
@@ -1600,8 +1600,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Kan inte
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Kan inte bygga spårvagnsräls här...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Kan inte ta bort väg här...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kan inte ta bort spårvagnsrälsen härifrån...
-STR_BUILD_DEPOT_ROAD_ORIENTATION                                :{WHITE}Riktning för bussgarage
-STR_BUILD_DEPOT_TRAM_ORIENTATION                                :{WHITE}Spårvagnsdepåns orientering
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Riktning för bussgarage
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Spårvagnsdepåns orientering
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kan inte bygga bussgarage här...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan inte bygga spårvagnsdepå här...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Kan inte bygga busshållplats...
