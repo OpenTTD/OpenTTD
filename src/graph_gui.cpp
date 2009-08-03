@@ -392,6 +392,10 @@ protected:
 			gd_left(left), gd_top(top), gd_height(height), format_str_y_axis(format_str_y_axis)
 	{
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
+		this->num_vert_lines = 24;
+
+		/* Initialise the dataset */
+		this->OnTick();
 	}
 
 public:
@@ -399,21 +403,34 @@ public:
 	{
 		this->DrawWidgets();
 
+		this->DrawGraph();
+	}
+
+	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
+	{
+		return INVALID_DATAPOINT;
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		/* Clicked on legend? */
+		if (widget == BGW_KEY_BUTTON) ShowGraphLegend();
+	}
+
+	virtual void OnTick()
+	{
 		uint excluded_companies = _legend_excluded_companies;
 
 		/* Exclude the companies which aren't valid */
 		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 			if (!Company::IsValidID(c)) SetBit(excluded_companies, c);
 		}
-		this->excluded_data = excluded_companies;
-		this->num_vert_lines = 24;
 
 		byte nums = 0;
 		const Company *c;
 		FOR_ALL_COMPANIES(c) {
-			nums = max(nums, c->num_valid_stat_ent);
+			nums = min(this->num_vert_lines, max(nums, c->num_valid_stat_ent));
 		}
-		this->num_on_x_axis = min(nums, 24);
 
 		int mo = (_cur_month / 3 - nums) * 3;
 		int yr = _cur_year;
@@ -422,6 +439,14 @@ public:
 			mo += 12;
 		}
 
+		if (this->excluded_data == excluded_companies && this->num_on_x_axis == nums &&
+				this->year == yr && this->month == mo) {
+			/* There's no reason to get new stats */
+			return;
+		}
+
+		this->excluded_data = excluded_companies;
+		this->num_on_x_axis = nums;
 		this->year = yr;
 		this->month = mo;
 
@@ -439,19 +464,6 @@ public:
 		}
 
 		this->num_dataset = numd;
-
-		this->DrawGraph();
-	}
-
-	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
-	{
-		return INVALID_DATAPOINT;
-	}
-
-	virtual void OnClick(Point pt, int widget)
-	{
-		/* Clicked on legend? */
-		if (widget == BGW_KEY_BUTTON) ShowGraphLegend();
 	}
 };
 
@@ -761,14 +773,15 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		this->x_values_start     = 10;
 		this->x_values_increment = 10;
 
+		/* Initialise the dataset */
+		this->OnHundredthTick();
+
 		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
-
-		this->excluded_data = _legend_excluded_cargo;
 
 		int x = 495;
 		int y = 24;
@@ -793,15 +806,8 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 				DrawString(x + 14 + clk_dif, this->width, y + clk_dif, STR_GRAPH_CARGO_PAYMENT_CARGO);
 				y += 8;
 			}
-
-			this->colours[i] = cs->legend_colour;
-			for (uint j = 0; j != 20; j++) {
-				this->cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, cs->Index());
-			}
-
 			i++;
 		}
-		this->num_dataset = i;
 
 		this->DrawGraph();
 
@@ -814,8 +820,31 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		if (widget >= CPW_CARGO_FIRST) {
 			ToggleBit(_legend_excluded_cargo, widget - CPW_CARGO_FIRST);
 			this->ToggleWidgetLoweredState(widget);
+			this->excluded_data = _legend_excluded_cargo;
 			this->SetDirty();
 		}
+	}
+
+	virtual void OnTick()
+	{
+		/* Override default OnTick */
+	}
+
+	virtual void OnHundredthTick()
+	{
+		this->excluded_data = _legend_excluded_cargo;
+
+		int i = 0;
+		const CargoSpec *cs;
+		FOR_ALL_CARGOSPECS(cs) {
+			this->colours[i] = cs->legend_colour;
+			for (uint j = 0; j != 20; j++) {
+				this->cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, cs->Index());
+			}
+
+			i++;
+		}
+		this->num_dataset = i;
 	}
 };
 
