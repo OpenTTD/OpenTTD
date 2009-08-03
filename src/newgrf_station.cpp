@@ -817,14 +817,10 @@ void DeallocateSpecFromStation(BaseStation *st, byte specindex)
 
 	ETileArea area = ETileArea(st, INVALID_TILE, TA_WHOLE);
 	/* Check all tiles over the station to check if the specindex is still in use */
-	for (uint y = 0; y < area.h; y++) {
-		for (uint x = 0; x < area.w; x++) {
-			if (st->TileBelongsToRailStation(area.tile) && GetCustomStationSpecIndex(area.tile) == specindex) {
-				return;
-			}
-			area.tile += TileDiffXY(1, 0);
+	TILE_LOOP(tile, area.w, area.h, area.tile) {
+		if (st->TileBelongsToRailStation(tile) && GetCustomStationSpecIndex(tile) == specindex) {
+			return;
 		}
-		area.tile += TileDiffXY(-area.w, 1);
 	}
 
 	/* This specindex is no longer in use, so deallocate it */
