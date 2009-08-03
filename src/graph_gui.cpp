@@ -160,6 +160,7 @@ protected:
 	enum {
 		GRAPH_MAX_DATASETS = 32,
 		GRAPH_AXIS_LINE_COLOUR  = 215,
+		GRAPH_NUM_MONTHS = 24, ///< Number of months displayed in the graph.
 
 		GRAPH_X_POSITION_BEGINNING  = 44,  ///< Start the graph 44 pixels from gd_left
 		GRAPH_X_POSITION_SEPARATION = 22,  ///< There are 22 pixels between each X value
@@ -190,7 +191,7 @@ protected:
 	Rect graph_location;
 	StringID format_str_y_axis;
 	byte colours[GRAPH_MAX_DATASETS];
-	OverflowSafeInt64 cost[GRAPH_MAX_DATASETS][24]; ///< last 2 years
+	OverflowSafeInt64 cost[GRAPH_MAX_DATASETS][GRAPH_NUM_MONTHS]; ///< Stored costs for the last #GRAPH_NUM_MONTHS months
 
 	/**
 	 * Actually draw the graph.

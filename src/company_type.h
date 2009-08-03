@@ -37,6 +37,10 @@ enum {
 	MAX_LENGTH_COMPANY_NAME_PIXELS   = 150, ///< The maximum length of a company name in pixels
 };
 
+enum {
+	MAX_HISTORY_MONTHS               =  24, ///< The maximum number of months kept as performance's history
+};
+
 /** Define basic enum properties */
 template <> struct EnumPropsT<Owner> : MakeEnumPropsT<Owner, byte, OWNER_BEGIN, OWNER_END, INVALID_OWNER> {};
 typedef TinyEnumT<Owner> OwnerByte;

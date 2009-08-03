@@ -75,7 +75,7 @@ struct Company : CompanyPool::PoolItem<&_company_pool> {
 
 	Money yearly_expenses[3][EXPENSES_END];
 	CompanyEconomyEntry cur_economy;
-	CompanyEconomyEntry old_economy[24];
+	CompanyEconomyEntry old_economy[MAX_HISTORY_MONTHS];
 	EngineRenewList engine_renew_list; ///< Defined later
 	CompanySettings settings;          ///< settings specific for each company
 	uint16 *num_engines; ///< caches the number of engines of each type the company owns (no need to save this)
