@@ -1277,7 +1277,6 @@ STR_QUERY_CANCEL                                                :{BLACK}Avbryt
 STR_QUERY_OK                                                    :{BLACK}OK
 STR_QUERY_RENAME                                                :{BLACK}Byt namn
 
-STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Plantera träd, placera skyltar etc.
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan inte ändra service-intervall...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Stäng fönster
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Fönstertitel - dra för att flytta fönstret

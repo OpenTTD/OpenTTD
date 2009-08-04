@@ -510,7 +510,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Буду
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Будувати дороги
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Будувати порти
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Будувати аеропорти
-STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Посадити дерева, позначити місце, тощо
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Інформація про земельну ділянку
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Опції
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не можна змінити інтервал обслуговування...

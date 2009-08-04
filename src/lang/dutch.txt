@@ -1277,7 +1277,6 @@ STR_QUERY_CANCEL                                                :{BLACK}Annulere
 STR_QUERY_OK                                                    :{BLACK}OK
 STR_QUERY_RENAME                                                :{BLACK}Hernoem
 
-STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Plaats bomen, borden, etc.
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan onderhoudsinterval niet aanpassen...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Sluit venster
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Vensternaam - sleep om venster te verplaatsen

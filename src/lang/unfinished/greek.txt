@@ -386,7 +386,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Κατα
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Κατασκευή δρόμων
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Κατασκευή λιμένων
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Κατασκευή αεροδρομίων
-STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Τοποθέτηση δεντρων, πινακίδων κλπ.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Πληροφορίες περιοχής
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Επιλογές
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Δεν μπορεί να αλλάξει το διάστημα της συντήρησης...

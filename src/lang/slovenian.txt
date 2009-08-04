@@ -427,7 +427,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Postavi 
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Zgradi ceste
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Zgradi pristanišča
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Zgradi letališča
-STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Posadi drevesa, postavi znake, ipd.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informacije o terenu
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Možnosti
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ni mogoča sprememba obdobja servisiranja ...

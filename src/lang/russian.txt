@@ -511,7 +511,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Стро
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Строительство автомобильных дорог
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Строительство водных коммуникаций
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Строительство аэропортов
-STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Высадка деревьев
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация о земле
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Настройки
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Невозможно изменить сервисный интервал...

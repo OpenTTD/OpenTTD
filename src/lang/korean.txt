@@ -1278,7 +1278,6 @@ STR_QUERY_CANCEL                                                :{BLACK}취소
 STR_QUERY_OK                                                    :{BLACK}확인
 STR_QUERY_RENAME                                                :{BLACK}이름 바꾸기
 
-STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}나무 심기
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}점검 기간 간격을 바꿀 수 없습니다...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}창 닫기
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}창 제목 - 창을 움직이려면 여기를 드래그하세요

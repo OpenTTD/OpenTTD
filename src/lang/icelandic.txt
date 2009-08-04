@@ -386,7 +386,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Leggja l
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Leggja veg
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Byggja bryggju
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Byggja flugvöll
-STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Gróðursetja tré, setja skilti o.s.frv.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landssvæðisupplýsingar
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Stillingar
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Get ekki breytt viðgerðarmillibili...

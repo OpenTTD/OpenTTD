@@ -385,7 +385,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}ساخت
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}ساخت جاده
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}ساخت اسکله
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ساخت فرودگاه
-STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}کاشتن درختان، قرار دادن علامت و غیره
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}توضیحات درباره ی زمین
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}تنضیمات
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}امکان تغییر فواصل زمانی سرویس وجود ندارد...

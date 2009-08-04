@@ -1277,7 +1277,6 @@ STR_QUERY_CANCEL                                                :{BLACK}Cancel
 STR_QUERY_OK                                                    :{BLACK}OK
 STR_QUERY_RENAME                                                :{BLACK}Rename
 
-STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Plant trees, place signs etc.
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Can't change servicing interval...
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Close window
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Window title - drag this to move window

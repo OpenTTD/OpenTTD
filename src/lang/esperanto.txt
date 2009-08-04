@@ -386,7 +386,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Konstruu
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Konstruu vojojn
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Konstruu havenojn
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Konstruu flughavenojn
-STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Plantu arbojn, metu afiŝojn ktp.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landregionaj informoj
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcioj
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ne povas ŝanĝi prizorga intervalo...

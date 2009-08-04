@@ -355,7 +355,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}สร�
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}สร้างถนน
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}สร้างท่าเรือ
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}สร้างสนามบิน
-STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}ปลูกต้นไม้ ปักป้าย ฯลฯ
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}ข้อมูลที่ดิน
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}ตั้งค่า
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}ไม่สามารถเปลี่ยนระยะเวลาการซ่อมบำรุงได้...

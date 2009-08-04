@@ -452,7 +452,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Výstavb
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Výstavba ciest
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Výstavba prístavov
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Výstavba letísk
-STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}Výsadba stromov, kúpa pozemku, ...
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informácie o pozemku
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Nastavenia
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nie je možné zmenit servisný interval ...

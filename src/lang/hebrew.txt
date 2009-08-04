@@ -383,7 +383,6 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}הנחת
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}סלילת כבישים
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}בניית נתיבים ימיים
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}בניית נתיבי אויר
-STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}'נטיעת עצים, הצבת סימניות וכו
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}מידע על משבצת קרקע
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}אפשרויות
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}...לא ניתן לשנות את מרווחי הטיפול
