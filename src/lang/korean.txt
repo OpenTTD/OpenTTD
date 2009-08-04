@@ -13,18 +13,10 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}맵 가장자리에서 너무 멉니다!
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}맵 가장자리와 너무 가깝습니다!
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}재정이 부족합니다 - {CURRENCY} 이(가) 필요합니다
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_EMPTY                                                       :
-STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}평지가 필요합니다!
-STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}대기: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({1:STATION}에서 온 {0:SHORTCARGO})
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}받음: {WHITE}
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}받음: {GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}공급: {GOLD}
+
+# Cargo related strings
+# Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :{G=m}승객
 STR_CARGO_PLURAL_COAL                                           :{G=m}석탄
@@ -57,6 +49,8 @@ STR_CARGO_PLURAL_TOFFEE                                         :{G=f}태피
 STR_CARGO_PLURAL_BATTERIES                                      :{G=f}배터리
 STR_CARGO_PLURAL_PLASTIC                                        :{G=m}플라스틱
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=f}탄산음료
+
+# Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}승객
 STR_CARGO_SINGULAR_COAL                                         :{G=m}석탄
@@ -89,6 +83,8 @@ STR_CARGO_SINGULAR_TOFFEE                                       :{G=f}태피
 STR_CARGO_SINGULAR_BATTERY                                      :{G=f}배터리
 STR_CARGO_SINGULAR_PLASTIC                                      :{G=m}플라스틱
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}탄산음료
+
+# Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :승객 {COMMA}명
 STR_QUANTITY_COAL                                               :석탄 {WEIGHT}
@@ -121,6 +117,8 @@ STR_QUANTITY_TOFFEE                                             :태피 {WEIGHT}
 STR_QUANTITY_BATTERIES                                          :배터리 {COMMA}개
 STR_QUANTITY_PLASTIC                                            :플라스틱 {VOLUME}
 STR_QUANTITY_FIZZY_DRINKS                                       :탄산음료 {COMMA}개
+
+# Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
 STR_ABBREV_COAL                                                 :{TINYFONT}CL
@@ -155,23 +153,8 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
 STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
-STR_SMALLMAP_CAPTION                                            :{WHITE}지도 - {STRING}
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}게임 설정
-STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}알림
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}{STRING}{G 0 "이" "가"} 보낸 메시지
-STR_POPUP_CAUTION_CAPTION                                       :{WHITE}경고!
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}그렇게 할 수 없습니다....
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}이 지역을 파괴할 수 없습니다....
-STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
-STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 버전 {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD 개발팀
 
-STR_QUIT_CAPTION                                                :{WHITE}종료
-STR_YES                                                         :{BLACK}예
-STR_NO                                                          :{BLACK}아니요
-STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}정말 이 게임을 끝내고 {STRING}{G 0 "으" ""}로 돌아가시겠습니까?
-
-STR_JUST_NOTHING                                                :없음
+# Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :짙은 파랑
 STR_COLOUR_PALE_GREEN                                           :엷은 녹색
 STR_COLOUR_PINK                                                 :분홍
@@ -188,54 +171,8 @@ STR_COLOUR_ORANGE                                               :주황색
 STR_COLOUR_BROWN                                                :갈색
 STR_COLOUR_GREY                                                 :회색
 STR_COLOUR_WHITE                                                :흰색
-STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}게임에 차량이 너무 많습니다!
-STR_BUTTON_LOCATION                                             :{BLACK}위치
-STR_SMALLMAP_TYPE_CONTOURS                                      :고도
-STR_SMALLMAP_TYPE_VEHICLES                                      :차량
-STR_SMALLMAP_TYPE_INDUSTRIES                                    :산업시설
-STR_SMALLMAP_TYPE_ROUTES                                        :경로
-STR_SMALLMAP_TYPE_VEGETATION                                    :초목
-STR_SMALLMAP_TYPE_OWNERS                                        :소유주
-STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}도로
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}철도
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}역/공항/항구
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}건물/산업시설
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}차량
-STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100m
-STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200m
-STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300m
-STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400m
-STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500m
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}열차
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}자동차
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}선박
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}항공기
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}운송 경로
-STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}숲
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}철도역
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}트럭 적하장
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}버스 정류장
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}공항/헬리포트
-STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}항만
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}거친 땅
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}잔디 땅
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}맨 땅
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}들판
-STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}나무
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}바위
-STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}물
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}소유주 없음
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}도시
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}산업 시설
-STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}사막
-STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}눈
-STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}메시지
-STR_QUERY_CAPTION                                               :{WHITE}{STRING}
-STR_DEFAULT                                                     :{BLACK}기본값
-STR_QUERY_CANCEL                                                :{BLACK}취소
-STR_QUERY_OK                                                    :{BLACK}확인
-STR_QUERY_RENAME                                                :{BLACK}이름 바꾸기
 
+# Supported OSes
 STR_OSNAME_WINDOWS                                              :{G=f}윈도우
 STR_OSNAME_DOS                                                  :{G=f}DOS
 STR_OSNAME_UNIX                                                 :{G=f}Unix
@@ -246,29 +183,7 @@ STR_OSNAME_AMIGAOS                                              :{G=f}AmigaOS
 STR_OSNAME_OS2                                                  :{G=f}OS/2
 STR_OSNAME_SUNOS                                                :{G=f}SunOS
 
-STR_ERROR_OWNED_BY                                              :{WHITE}... {STRING}의 소유입니다.
-STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}화물
-STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}정보
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}수용량
-STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}총 화물량
-STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}이 열차의 총 수용량:
-STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
-STR_INTRO_NEW_GAME                                              :{BLACK}새 게임
-STR_INTRO_LOAD_GAME                                             :{BLACK}불러오기
-STR_INTRO_MULTIPLAYER                                           :{BLACK}멀티 플레이
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}시나리오 에디터
-
-STR_MAPSIZE                                                     :{BLACK}맵 크기:
-STR_BY                                                          :{BLACK}x
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}게임 설정
-
-STR_COMPANY_SOMEONE                                             :누군가{SKIP}{SKIP}
-
-STR_UNITS_IMPERIAL                                              :임페리얼법
-STR_UNITS_METRIC                                                :미터법
-STR_UNITS_SI                                                    :SI법
-
+# Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}m/s
@@ -291,30 +206,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-############ range for menu starts
-STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :경영 수익 그래프
-STR_GRAPH_MENU_INCOME_GRAPH                                     :수익 그래프
-STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :수송 화물량 그래프
-STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :성취도 그래프
-STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :회사가치 그래프
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :화물 운송단가 그래프
-STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :회사 성취도 순위
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :상세 성취도
-############ range for menu ends
-
-STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD에 대해서
-STR_FILE_MENU_SAVE_GAME                                         :게임 저장하기
-STR_FILE_MENU_LOAD_GAME                                         :불러오기
-STR_FILE_MENU_QUIT_GAME                                         :게임 그만두기
-STR_FILE_MENU_EXIT                                              :종료
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}정말 이 게임을 종료하고 메인으로 이동하시겠습니까?
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}게임 그만하기
-STR_SORT_ORDER_TIP                                              :{BLACK}정렬 방법을 선택하십시오 (내림차순/오름차순)
-STR_SORT_CRITERIA_TIP                                           :{BLACK}정렬 기준 선택
-STR_FILTER_CRITERIA_TIP                                         :{BLACK}필터링 기준 선택
-STR_SORT_BY                                                     :{BLACK}정렬
-
-### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}인구
 STR_SORT_BY_NAME                                                :{BLACK}이름
 STR_SORT_BY_DATE                                                :{BLACK}날짜
@@ -344,38 +236,20 @@ STR_SORT_BY_RUNNING_COST                                        :운행비용
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :힘/운행비용
 STR_SORT_BY_CARGO_CAPACITY                                      :화물 수송량
 
-STR_NO_WAITING_CARGO                                            :{BLACK}대기 중인 화물이 없습니다.
-STR_SELECT_ALL_FACILITIES                                       :{BLACK}모든 시설 선택
-STR_SELECT_ALL_TYPES                                            :{BLACK}모든 종류의 화물을 선택 (대기하지 않는 화물 포함)
-STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}이 차량 타입에 사용할 수 있는 기관차의 목록 보기
-STR_MANAGE_LIST                                                 :{BLACK}관리
-STR_MANAGE_LIST_TIP                                             :{BLACK}이 목록에 있는 모든 열차에게 지시
-STR_REPLACE_VEHICLES                                            :차량 교체
-STR_SEND_FOR_SERVICING                                          :점검하러 보냄
-
-STR_AVAILABLE_TRAINS                                            :{BLACK}사용 가능 열차
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}사용 가능 자동차
-STR_AVAILABLE_SHIPS                                             :{BLACK}사용 가능 선박
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}사용 가능 항공기
-
-STR_SEND_TRAIN_TO_DEPOT                                         :차량기지로 보내기
-STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :차고로 보내기
-STR_SEND_SHIP_TO_DEPOT                                          :정박소로 보내기
-STR_SEND_AIRCRAFT_TO_HANGAR                                     :격납고로 보내기
-
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}-
+# Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}게임 일시정지
+STR_FAST_FORWARD                                                :{BLACK}게임 고속 진행
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}옵션
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}게임 저장, 중지, 게임 종료
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}회사의 역 목록을 보여주기
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}맵 보여주기
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}맵, 도시 목록 보여주기
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}도시 목록 보여주기
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}보조금 표시
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}회사의 역 목록을 보여주기
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}회사 재정 정보 보여주기
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}회사 기본 정보 보여주기
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}그래프 표시
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}회사의 성취도 순위 표시
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}새 산업시설에 투자
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}회사의 열차 목록 표시
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}회사의 자동차 목록 표시
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}회사의 선박 목록 표시
@@ -386,54 +260,117 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}철로 �
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}도로 건설
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}항만 건설
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}공항 건설
-STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}나무 심기
+STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}땅을 올리기/내리기, 나무 심기가 있는 지형 툴바를 엽니다.
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}사운드/음악 창을 엽니다.
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}최근 메시지/뉴스 기록이나 메시지 설정을 엽니다.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}지역 정보
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}옵션
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}점검 기간 간격을 바꿀 수 없습니다...
-STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}창 닫기
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}창 제목 - 창을 움직이려면 여기를 드래그하세요
-STR_STICKY_BUTTON                                               :{BLACK}이 창을 '모든 창 닫기' 키로 닫을 수 없게 하기
-STR_RESIZE_BUTTON                                               :{BLACK}이 창의 크기를 조절하려면 여기를 클릭하고 드래그하세요
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}기본 저장/불러오기 폴더로 이동하려면 여기를 클릭하세요
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}사각형 모양의 땅에 있는 건물과 땅 등을 부숩니다.
-STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}땅의 모퉁이를 낮춥니다.
-STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}땅의 모퉁이를 높입니다.
-STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}스크롤바 - 목록을 상/하로 스크롤하세요
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}스크롤바 - 목록을 좌/우로 스크롤하세요
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}맵에 등고선 표시
-STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}맵에 차량 표시
-STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}맵에 산업시설 표시
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}맵에 수송경로 표시
-STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}맵에 초목 표시
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}맵에 부지 소유주 표시
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}도시 이름 표시/숨기기
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}올해 수입: {CURRENCY} (작년: {CURRENCY})
 
-############ range for service numbers starts
-STR_AGE                                                         :{COMMA}년 ({COMMA})
-STR_AGE_RED                                                     :{RED}{COMMA}년 ({COMMA})
-############ range for service numbers ends
+# Extra tooltips for the scenario editor toolbar
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}맵, 도시 목록 보여주기
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}지형 만들기
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}도시 만들기
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}산업 시설 만들기
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}도로 건설
 
-STR_VEHICLE_TRAIN                                               :{G=f}열차
-STR_VEHICLE_ROAD_VEHICLE                                        :{G=f}자동차
-STR_VEHICLE_SHIP                                                :{G=m}선박
-STR_VEHICLE_AIRCRAFT                                            :{G=f}항공기
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE}{P "이" "가"} 오래되었습니다
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE}{P "이" "가"} 매우 오래되었습니다
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE}{P "이" "가"} 너무 오래되어 교체가 시급합니다
-STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}이 지역의 지형 정보
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}초기화 가격: {LTBLUE}없음
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}초기화 가격: {RED}{CURRENCY}
-STR_REVENUE_WHEN_CLEARED                                        :{BLACK}제거시 들어오는 환불금: {LTBLUE}{CURRENCY}
-STR_LAND_AREA_INFORMATION_OWNER_N_A                             :없음
-STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}소유주: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}도로 소유주: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}전찻길 소유주: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}철도 소유주: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}지역 당국: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :없음
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}이름
-STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
+############ range for settings menu starts
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 옵션
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :난이도 설정
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :고급 설정
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 설정
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :투명 설정
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}도시 이름을 표시함
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}역 이름을 표시함
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}웨이포인트 이름을 표시함
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}팻말을 표시함
+STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}완전한 애니메이션
+STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}아주 상세하게
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}건물 안 보이기
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}역명판 감추기
+############ range ends here
+
+############ range for file menu starts
+STR_FILE_MENU_SAVE_GAME                                         :게임 저장하기
+STR_FILE_MENU_LOAD_GAME                                         :불러오기
+STR_FILE_MENU_QUIT_GAME                                         :게임 그만두기
+STR_FILE_MENU_EXIT                                              :종료
+############ range ends here
+
+############ range for map menu starts
+STR_MAP_MENU_MAP_OF_WORLD                                       :전체 지도 보기
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :외부 화면
+STR_MAP_MENU_SIGN_LIST                                          :팻말 목록
+############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :도시 목록
+############ both ranges ends here
+
+############ range for subsidies menu starts
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :보조금
+############ range ends here
+
+############ range for graph menu starts
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :경영 수익 그래프
+STR_GRAPH_MENU_INCOME_GRAPH                                     :수익 그래프
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :수송 화물량 그래프
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :성취도 그래프
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :회사가치 그래프
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :화물 운송단가 그래프
+############ range ends here
+
+############ range for company league menu starts
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :회사 성취도 순위
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :상세 성취도
+############ range ends here
+
+############ range for industry menu starts
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :산업시설 목록
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :새 산업시설 건설
+############ range ends here
+
+############ range for railway construction menu starts
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :철도 건설
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :전기철도 건설
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :모노레일 건설
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :자기부상열차 건설
+############ range ends here
+
+############ range for road construction menu starts
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :도로 건설
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :전찻길 건설
+############ range ends here
+
+############ range for waterways construction menu starts
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :항만 건설
+############ range ends here
+
+############ range for airport construction menu starts
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :공항 건설
+############ range ends here
+
+############ range for landscaping menu starts
+STR_LANDSCAPING_MENU_LANDSCAPING                                :지형 편집
+STR_LANDSCAPING_MENU_PLANT_TREES                                :나무 심기
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :팻말 달기
+############ range ends here
+
+############ range for music menu starts
+STR_TOOLBAR_SOUND_MUSIC                                         :사운드/음악
+############ range ends here
+
+############ range for message menu starts
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :최근 메시지/뉴스 기록
+STR_NEWS_MENU_MESSAGE_SETTINGS                                  :메시지 설정
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :과거 메시지 목록
+############ range ends here
+
+############ range for about menu starts
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :지형 정보
+STR_ABOUT_MENU_SEPARATOR                                        :
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :콘솔 켜기/끄기
+STR_ABOUT_MENU_AI_DEBUG                                         :AI 디버그
+STR_ABOUT_MENU_SCREENSHOT                                       :스크린 샷 (Ctrl+S)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :대형 스크린샷 (Ctrl+G)
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'에 대해서
+############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
@@ -497,14 +434,78 @@ STR_MONTH_NOV                                                   :{G=m}11월
 STR_MONTH_DEC                                                   :{G=m}12월
 ############ range for months ends
 
+# Graph window
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}키
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}그래프의 키를 보여줍니다.
+STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}-
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}화물 인수: {LTBLUE}
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}경영 수익 그래프
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}수익 그래프
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}수송 화물량
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}회사 성취도 (최고 1000)
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}회사 가치
 
-STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}화물 운송단가 비율
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{BLACK}{TINYFONT}통과시간
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{BLACK}{TINYFONT}10 단위(1만 리터)의 화물을 20칸 거리만큼 운송할 때의 운송비 지급량
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}이 화물에 대한 그래프 켜기/끄기
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{BLACK}{TINYFONT}{STRING}
+
+STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}상세 성취도를 봅니다
+
+# Graph key window
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}회사 그래프의 키를 보여줍니다.
+STR_GRAPH_KEY_COMPANY_SELECTION                                 :{BLACK}특정 회사의 그래프를 켜거나 숨기려면 클릭하세요
+
+# Company league window
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}회사 성취도 순위
+STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_OTHER                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :{G=f}엔지니어
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :{G=f}교통망 관리자
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :{G=f}수송 조정자
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :{G=f}노선 관리자
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :{G=f}이사
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :{G=m}이사장
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :{G=m}의장
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :{G=m}회장
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :{G=m}타이쿤!
+
+# Performance detail window
+STR_PERFORMANCE_DETAIL                                          :{WHITE}상세 성취도
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}자세히
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
+############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}차량:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}역:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}최소 이익:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}최소 수입:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}최대 수입:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}수송량:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}화물:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}재정:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}대출:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}종합:
+############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}차량의 수를 나타냅니다. 자동차, 열차, 선박, 항공기도 포함입니다.
+STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}총 역사의 수를 나타냅니다. 한개의 역으로 묶여있다고 해도 모든 역의 부분(기차역, 버스정류장, 항구, 공항)은 개별적으로 셉니다.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}모든 차량을 통틀어 가장 낮은 수입을 가진 열차의 이익입니다. (2년 이상된 열차에 한함)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}지난 12분기동안 최소 이익을 달성한 열차가 번 돈의 양입니다.
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}지난 12분기동안 최대 이익을 달성한 열차가 번 돈의 양입니다.
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}지난 4분기동안 수송한 화물량입니다.
+STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}지난 1분기에 수송한 화물의 종류 수입니다.
+STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}회사가 소지한 재정입니다.
+STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}회사가 대출해간 재정의 양입니다.
+STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}산출 가능한 점수들의 총 합계 점수입니다.
+
+# Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}재즈 쥬크박스
-STR_TOOLBAR_SOUND_MUSIC                                         :사운드/음악
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}사운드/음악 창을 엽니다.
 STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}모두
 STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}고전 스타일
 STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}뉴 스타일
@@ -514,11 +515,6 @@ STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}사�
 STR_MUSIC_MUSIC_VOLUME                                          :{BLACK}{TINYFONT}음량
 STR_MUSIC_EFFECTS_VOLUME                                        :{BLACK}{TINYFONT}효과 음량
 STR_MUSIC_MIN_MAX_RULER                                         :{BLACK}{TINYFONT}최소  '  '  ' '  '  '  최대
-STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}이전 트랙으로 건너뛰기
-STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}다음 트랙으로 건너뛰기
-STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}음악 중지
-STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}음악 재생
-STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}음악과 사운드 효과 음량을 조절하려면 슬라이더를 드래그하세요
 STR_MUSIC_TRACK_NONE                                            :{DKGREEN}{TINYFONT}--
 STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{DKGREEN}{TINYFONT}0{COMMA}
 STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{DKGREEN}{TINYFONT}{COMMA}
@@ -527,6 +523,21 @@ STR_MUSIC_TITLE_NAME                                            :{DKGREEN}{TINYF
 STR_MUSIC_TRACK_XTITLE                                          :{BLACK}{TINYFONT}트랙{SETX 88}{BLACK}{TINYFONT}제목
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}무작위
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}프로그램
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}이전 트랙으로 건너뛰기
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}다음 트랙으로 건너뛰기
+STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}음악 중지
+STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}음악 재생
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}음악과 사운드 효과 음량을 조절하려면 슬라이더를 드래그하세요
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}'모든 트랙' 프로그램을 선택합니다
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}'고전 스타일 음악' 프로그램을 선택합니다
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}'뉴 스타일 음악' 프로그램을 선택합니다
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Street 스타일 음악' 프로그램을 선택합니다
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}'사용자 1' (유저 정의) 음악 프로그램을 선택합니다
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'사용자 2' (유저 정의) 음악 프로그램을 선택합니다
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}무작위 재생 켜기/끄기
+STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}음악 트랙 선택창 보이기
+
+# Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}음악 프로그램 선택
 STR_PLAYLIST_TRACK_SINGLE_DIGIT                                 :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
 STR_PLAYLIST_TRACK_DOUBLE_DIGIT                                 :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
@@ -534,25 +545,103 @@ STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLAC
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}프로그램 - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}초기화
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}저장
-STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}'모든 트랙' 프로그램을 선택합니다
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}'고전 스타일 음악' 프로그램을 선택합니다
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}'뉴 스타일 음악' 프로그램을 선택합니다
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}'사용자 1' (유저 정의) 음악 프로그램을 선택합니다
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'사용자 2' (유저 정의) 음악 프로그램을 선택합니다
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}현재 음악 프로그램을 초기화합니다 (사용자1, 사용자2에서만 선택 가능합니다)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}음악 설정을 저장합니다
 STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}음악 목록에 트랙을 추가하려면 클릭하세요 (사용자1, 사용자2만 사용 가능합니다)
 STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}음악 목록에서 트랙을 제거하려면 클릭하세요 (사용자1, 사용자2만 사용 가능)
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}무작위 재생 켜기/끄기
-STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}음악 트랙 선택창 보이기
-STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}산업시설/도시가 있는 곳으로 이동하려면 클릭
-STR_INTRO_DIFFICULTY                                            :{BLACK}난이도 ({STRING})
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :최근 메시지/뉴스 기록
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :메시지 설정
-STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :과거 메시지 목록
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}최근 메시지/뉴스 기록이나 메시지 설정을 엽니다.
+
+# Highscore window
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}{NUM}에 달성한 최고의 회사 ({STRING} 난이도)
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}{NUM}의 회사 성취도 목록
+STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :{G=f}초보자
+STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :{G=f}사업주
+STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :{G=f}공업가
+STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :{G=f}자본가
+STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :{G=f}권력자
+STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :{G=m}거물
+STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :{G=m}금세기의 타이쿤!
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY}가 '{STRING}'{G 0 "을" "를"} 달성했습니다!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME}의 {COMPANY}이(가) 드디어 {STRING}을(를) 달성했습니다!
+
+# Smallmap window
+STR_SMALLMAP_CAPTION                                            :{WHITE}지도 - {STRING}
+
+STR_SMALLMAP_TYPE_CONTOURS                                      :고도
+STR_SMALLMAP_TYPE_VEHICLES                                      :차량
+STR_SMALLMAP_TYPE_INDUSTRIES                                    :산업시설
+STR_SMALLMAP_TYPE_ROUTES                                        :경로
+STR_SMALLMAP_TYPE_VEGETATION                                    :초목
+STR_SMALLMAP_TYPE_OWNERS                                        :소유주
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}맵에 등고선 표시
+STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}맵에 차량 표시
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}맵에 산업시설 표시
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}맵에 수송경로 표시
+STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}맵에 초목 표시
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}맵에 부지 소유주 표시
+
+STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}도로
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}철도
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}역/공항/항구
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}건물/산업시설
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}차량
+STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100m
+STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200m
+STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300m
+STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400m
+STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500m
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}열차
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}자동차
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}선박
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}항공기
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}운송 경로
+STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}숲
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}철도역
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}트럭 적하장
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}버스 정류장
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}공항/헬리포트
+STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}항만
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}거친 땅
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}잔디 땅
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}맨 땅
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}들판
+STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}나무
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}바위
+STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}물
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}소유주 없음
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}도시
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}산업 시설
+STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}사막
+STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}눈
+
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}도시 이름 표시/숨기기
+STR_SMALLMAP_CENTER                                             :{BLACK}소형맵을 현재 위치에 위치시킵니다
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+
+# Status bar messages
+STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}마지막 메시지/뉴스 보기
+STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
+STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  일시정지  *  *
+STR_STATUSBAR_AUTOSAVE                                          :{RED}자동저장
+STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  게임 저장 중  *  *
+
+# News message history
+STR_MESSAGE_HISTORY                                             :{WHITE}메시지 기록
+STR_MESSAGE_HISTORY_TIP                                         :{BLACK}최근 뉴스 메시지의 기록입니다
+STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
+
+# Message settings window
+STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}메시지
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}메시지 설정
+STR_MESSAGES_ALL                                                :{YELLOW}모든 메시지 종류 : 끄기 / 요약 / 전체
+STR_MESSAGE_SOUND                                               :{YELLOW}요약된 메시지와 함께 소리를 들려줍니다
+STR_OFF                                                         :끄기
+STR_SUMMARY                                                     :요약
+STR_FULL                                                        :전체
+
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}메시지 종류:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}당신의 첫 차량 도착
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}경쟁사의 첫 차량 도착
@@ -569,23 +658,668 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}새 차
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}역에서 받는 화물의 변경
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}보조금
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}일반 정보
-STR_MESSAGES_ALL                                                :{YELLOW}모든 메시지 종류 : 끄기 / 요약 / 전체
-STR_MESSAGE_SOUND                                               :{YELLOW}요약된 메시지와 함께 소리를 들려줍니다
+
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}{STATION}에 처음으로 기차가 도착했습니다!{}사람들이 환호성을 지릅니다!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}첫 버스가 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}첫 트럭이 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}{STATION}에 처음으로 승객 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}{STATION}에 처음으로 화물 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}첫 선박이 {STATION}에 도착했습니다!{}시민들이 환호하고 있습니다!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}첫 항공기가 {STATION}공항에 도착했습니다!{}시민들이 환호하고 있습니다!
+
+STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}열차 충돌 사고!{}충돌로 인한 폭발로 {COMMA}명의 사망자가 발생하였습니다!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 운전사가 사망했습니다!
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 {COMMA}명이 사망했습니다!
+STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}항공기 충돌사고 발생!{}{COMMA}명이 {STATION}공항에서 사망하였습니다!
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}항공기 추락사고 발생!{}연료 부족으로 인하여 {COMMA}명이 사망하였습니다!
+
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}{STATION}에서 체펠린 재앙이 발생했습니다!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}UFO의 폭격으로 자동차가 파괴되었습니다!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BLACK}{BIGFONT}{TOWN} 근처의 석유 정제소가 폭발하였습니다!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BLACK}{BIGFONT}{TOWN} 근처의 공장이 의심스러운 상황으로 인해 파괴되었습니다!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BLACK}{BIGFONT}UFO가 {TOWN} 근처에 착륙했습니다!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BLACK}{BIGFONT}{TOWN} 근처의 석탄 광산이 함몰되어 그 파괴의 흔적을 남겼습니다!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BLACK}{BIGFONT}홍수 발생!{}최소 {COMMA}명의 실종자가 발생하였으며, 범람 후에 사상자도 발생할 것입니다!
+
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BLACK}{BIGFONT}운송회사에 문제가 생김!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BLACK}{BIGFONT}성취도를 바로 올리지 못하면 {STRING}{G 0 "은" "는"} 팔리거나 파산할 것입니다!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BLACK}{BIGFONT}운송 회사 합병!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING}{G 0 "이" "가"} {STRING}에게 {CURRENCY}의 가격으로 인수합병되었습니다!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BLACK}{BIGFONT}파산!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BLACK}{BIGFONT}{STRING}가 채권자에 의해 파산되고 모든 자산이 팔렸습니다!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BLACK}{BIGFONT}새 운송회사 등장!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING}{G 0 "이" "가"} {TOWN}에서 공사를 시작했습니다!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BLACK}{BIGFONT}{STRING}의 관리권이 {STRING}(으)로 넘어갔습니다!
+
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}새 {STRING}{G 0 "이" "가"} {TOWN} 근처에 지어지고 있습니다!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}새 {STRING}{G 0 "이" "가"} {TOWN} 근처에서 자라나고 있습니다!
+
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT}{STRING}의 긴급폐쇄를 알립니다!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}연결된 수요가 없는 관계로 {STRING}의 긴급 폐쇄를 알립니다!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}근처에 나무 고갈로 인한 {STRING}의 긴급 폐쇄를 알립니다!
+
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}유럽 화폐단위 통일!{}{}국가의 단일 유통 화폐로 유로화가 도입되었습니다!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}세계 공황!{}{}경제 전문가들이 경제 슬럼프에 대해 우려를 표망하고 있습니다!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}공황 종료!{}{}무역량의 증대로 경제를 살려낸 결과 산업시설에 대한 신뢰를 가져왔습니다!
+
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY}{G 0 "이" "가"} 생산량을 늘렸습니다!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BLACK}{BIGFONT}{INDUSTRY}에서 새 석탄 광맥을 찾았습니다!{}생산량이 2배가 되었습니다!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BLACK}{BIGFONT}{INDUSTRY}에서 새 유전을 찾았습니다!{}생산량이 2배가 되었습니다!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BLACK}{BIGFONT}{INDUSTRY}에서 향상된 농업 기술을 발견해 생산량이 2배가 되었습니다!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BLACK}{BIGFONT}{1:INDUSTRY}의 {0:STRING} 생산량이 {2:COMMA}% 증가하였습니다!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY}의 생산량이 50%로 떨어졌습니다.
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BLACK}{BIGFONT}{INDUSTRY}{G 0 "이" "가"} 곤충떼의 습격으로 황폐화되었습니다!{}생산량이 50%로 떨어졌습니다.
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BLACK}{BIGFONT}{1:INDUSTRY}의 {0:STRING} 생산량이 {2:COMMA}% 감소하였습니다!
+
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE}{P "가" "이"} 차량기지 안에서 대기 중입니다
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE}{P "가" "이"} 차고에서 대기 중입니다
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE}{P "가" "이"} 정박소 안에서 대기 중입니다
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE}{P "가" "이"} 격납고 안에서 대기 중입니다
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE}에 경로가 너무 적습니다
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE}에 빈 경로가 지정되어 있습니다
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE}에 중복된 경로가 지정되어 있습니다
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE}에 잘못된 경로가 지정되어 있습니다
+# end of order system
+
+STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE}{P "가" "이"} 오래되었습니다
+STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE}{P "가" "이"} 매우 오래되었습니다
+STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE}{P "가" "이"} 너무 오래되어 교체가 시급합니다
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE}{P "가" "이"} 진행할 경로를 찾지 못했습니다.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE}{P "가" "이"} 길을 잃었습니다.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY} 입니다.
+
+STR_ORDER_REFIT_FAILED                                          :{WHITE}경로 수리에 실패하여 {VEHICLE}{P "가" "이"} 멈췄습니다
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}{VEHICLE}의 자동교체에 실패하였습니다{}{STRING}
+
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}신형 {STRING} 이(가) 출시되었습니다!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}신형 {STRING} 이(가) 출시되었습니다!  -  {ENGINE}
+
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION}에서 더 이상 {STRING}{G 1 "을" "를"} 받지 않습니다.
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION}에서 더 이상 {STRING}/{STRING}{G 2 "을" "를"} 받지 않습니다.
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION}에서 이제 {STRING}{G 1 "을" "를"} 받을 수 있습니다.
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION}에서 이제 {STRING}/{STRING}{G 2 "을" "를"} 받을 수 있습니다.
+
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}보조금 제공 계약 파기:{}{}{1:STRING}에서 {2:STRING}까지의 {0:STRING} 수송은 더이상 보조금을 지급하지 않습니다.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}보조금 제공 철회:{}{}지역 당국은 {1:STATION}에서 {2:STATION}까지의 {0:STRING} 수송에 대한 보조금을 철회하였습니다.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}보조금 제공 안내:{}{}처음으로 {1:STRING}에서 {2:STRING}까지 {0:STRING}{G 0 "을" "를"} 수송하는 회사는 지역 당국으로부터 보조금을 받게 될 것입니다!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}{0:STRING}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 50%의 추가 보조금을 내년까지 받게 됩니다!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}{0:STRING}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 2배의 추가 보조금을 내년까지 받게 됩니다!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}{0:STRING}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 3배의 추가 보조금을 내년까지 받게 됩니다!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}{0:STRING}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 4배의 추가 보조금을 내년까지 받게 됩니다!
+
+STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}{TOWN}의 교통 혼잡!{}{}{STRING}에 의한 도로 재공사 프로그램이 운전자들에게 6개월간의 고통을 가져왔습니다!
+
+# Extra view window
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}외부 화면 {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}외부 화면에 복사
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}현재 장소를 외부 화면에 복사합니다.
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}이 장소로 이동
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}외부 화면에 저장된 장소로 이동합니다.
+
+# Game options window
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}게임 설정
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}화폐 단위
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}화폐 단위 선택
+
+############ start of currency region
+STR_CURR_GBP                                                    :파운드 (￡)
+STR_CURR_USD                                                    :달러 ($)
+STR_CURR_EUR                                                    :유로 (€)
+STR_CURR_YEN                                                    :엔 (￥)
+STR_CURR_ATS                                                    :오스트리아 실링 (ATS)
+STR_CURR_BEF                                                    :벨기에 프랑크 (BEF)
+STR_CURR_CHF                                                    :스위스 프랑크 (CHF)
+STR_CURR_CZK                                                    :체코 코루나 (CZK)
+STR_CURR_DEM                                                    :독일 마르크 (DEM)
+STR_CURR_DKK                                                    :덴마크 크로네 (DKK)
+STR_CURR_ESP                                                    :페세타 (ESP)
+STR_CURR_FIM                                                    :핀란드 마르카 (FIM)
+STR_CURR_FRF                                                    :프랑크 (FRF)
+STR_CURR_GRD                                                    :그리스 드라크마 (GRD)
+STR_CURR_HUF                                                    :헝가리 프로인트 (HUF)
+STR_CURR_ISK                                                    :아이슬란드 크로나 (ISK)
+STR_CURR_ITL                                                    :이탈리아 리라 (ITL)
+STR_CURR_NLG                                                    :네덜란드 길더 (NLG)
+STR_CURR_NOK                                                    :노르웨이 크로네 (NOK)
+STR_CURR_PLN                                                    :폴란드 즐로티 (PLN)
+STR_CURR_RON                                                    :루마니아 레우 (RON)
+STR_CURR_RUR                                                    :러시아 루블 (RUR)
+STR_CURR_SIT                                                    :슬로바키아 톨라 (SIT)
+STR_CURR_SEK                                                    :스웨덴 크로나 (SEK)
+STR_CURR_TRY                                                    :터키 리라 (TRY)
+STR_CURR_SKK                                                    :슬로바키아 코루나 (SKK)
+STR_CURR_BRL                                                    :브라질 레알 (BRL)
+STR_CURR_EEK                                                    :에스토니아 크룬 (EEK)
+STR_CURR_CUSTOM                                                 :사용자 설정...
+############ end of currency region
+
+STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}길이 단위
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}길이 단위 선택
+
+############ start of measuring units region
+STR_UNITS_IMPERIAL                                              :임페리얼법
+STR_UNITS_METRIC                                                :미터법
+STR_UNITS_SI                                                    :SI법
+############ end of measuring units region
+
+STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}차량
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}차량 통행 방법 선택
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :좌측통행
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :우측통행
+
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}도시 이름
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}도시 이름의 스타일 선택
+
+############ start of townname region
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :영국 식 (기본)
+STR_TOWNNAME_FRENCH                                             :프랑스 식
+STR_TOWNNAME_GERMAN                                             :독일 식
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :영국 식 (추가)
+STR_TOWNNAME_LATIN_AMERICAN                                     :라틴아메리카 식
+STR_TOWNNAME_SILLY                                              :바보같은 도시 이름
+STR_TOWNNAME_SWEDISH                                            :스웨덴 식
+STR_TOWNNAME_DUTCH                                              :네덜란드 식
+STR_TOWNNAME_FINNISH                                            :핀란드 식
+STR_TOWNNAME_POLISH                                             :폴란드 식
+STR_TOWNNAME_SLOVAK                                             :슬로바키아 식
+STR_TOWNNAME_NORWEGIAN                                          :노르웨이 식
+STR_TOWNNAME_HUNGARIAN                                          :헝가리 식
+STR_TOWNNAME_AUSTRIAN                                           :오스트리아 식
+STR_TOWNNAME_ROMANIAN                                           :루마니아 식
+STR_TOWNNAME_CZECH                                              :체코 식
+STR_TOWNNAME_SWISS                                              :스위스 식
+STR_TOWNNAME_DANISH                                             :덴마크 식
+STR_TOWNNAME_TURKISH                                            :터키 식
+STR_TOWNNAME_ITALIAN                                            :이탈리아 식
+STR_TOWNNAME_CATALAN                                            :카탈로니아 식
+############ end of townname region
+
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}자동저장
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}게임 자동저장 간격을 선택
+
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :사용 안함
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :매달
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :3개월마다
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :6개월마다
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12개월마다
+
+STR_OPTIONS_LANG                                                :{BLACK}언어
+STR_OPTIONS_LANG_TIP                                            :{BLACK}사용하실 언어를 선택하세요
+
+STR_OPTIONS_FULLSCREEN                                          :{BLACK}전체화면
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}OpenTTD를 전체화면으로 플레이하려면 클릭하세요
+STR_FULLSCREEN_FAILED                                           :{WHITE}풀스크린 모드 실패
+
+STR_OPTIONS_RES                                                 :{BLACK}화면 해상도
+STR_OPTIONS_RES_TIP                                             :{BLACK}사용하실 화면 해상도를 선택하세요
+
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}스크린샷 형식
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}사용하실 스크린샷의 형식을 선택하세요
+
+STR_OPTIONS_BASE_GRF                                            :{BLACK}기본 그래픽 세트
+STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}사용할 기본 그래픽을 선택하세요
+STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM}개 파일 손실
+STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}기본 그래픽 세트에 대한 추가 정보
+
+# Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
+
+STR_INTRO_NEW_GAME                                              :{BLACK}새 게임
+STR_INTRO_LOAD_GAME                                             :{BLACK}불러오기
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}시나리오 플레이
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Heightmap 플레이
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}시나리오 에디터
+STR_INTRO_MULTIPLAYER                                           :{BLACK}멀티 플레이
+
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}게임 설정
+STR_INTRO_DIFFICULTY                                            :{BLACK}난이도 ({STRING})
+STR_CONFIG_SETTING                                              :{BLACK}고급 설정
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF 설정
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}온라인 콘텐츠 체크
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}인공지능 설정
+STR_INTRO_QUIT                                                  :{BLACK}종료
+
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}새 게임을 시작합니다
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}저장한 게임을 불러옵니다
+STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Heightmap을 지형으로 사용하여 게임을 시작합니다.
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}사용자 시나리오로 새 게임을 시작합니다
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}사용자 게임/시나리오를 만듭니다
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}멀티 플레이 게임을 시작합니다
+
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}온대 기후 선택
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}냉대 기후 선택
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}아열대 기후 선택
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}장난감나라 선택
+
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}게임 설정 창을 보여줍니다
+STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}난이도 설정 창을 보여줍니다
+STR_CONFIG_SETTING_TIP                                          :{BLACK}고급 설정 표시
+STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}NewGRF 세팅을 봅니다
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다.
+STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}인공지능 설정 보기
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}OpenTTD를 종료합니다
+
+# Cheat window
+STR_CHEATS                                                      :{WHITE}치트
+STR_CHEATS_TIP                                                  :{BLACK}체크박스는 이전에 사용한 치트를 나타냅니다.
+STR_CHEATS_WARNING                                              :{BLACK}경고! 치트는 경쟁자를 속이는 행위입니다. 치트 기록은 절대로 지워지지 않음을 명심하십시오.
+STR_CHEAT_MONEY                                                 :{LTBLUE}재정을 {CURRENCY} 만큼 증가
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}다음 회사로 플레이중: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설, 움직이지 못하는 것들 제거) : {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 교차를 허용 : {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}일시정지 상태에서의 건설 허용 : {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}제트항공기가 소형 공항에서 (자주) 폭발하지 않게 함 : {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}기후 변경: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}날짜 변경: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}산업시설의 생산량 조절 허가 : {ORANGE}{STRING}
+
+# Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}새 색상
+
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}일반 색상 선택
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}열차 색상 선택
+STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}자동차 색상 선택
+STR_LIVERY_SHIP_TIP                                             :{BLACK}선박 색상 선택
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}항공기 색상 선택
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}선택한 색상을 1차 색상으로 선택
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}선택한 색상을 2차 색상으로 선택
+STR_LIVERY_PANEL_TIP                                            :{BLACK}색상 스키마 변경을 원하시면 선택하세요. (2개 이상 선택시 CTRL+클릭). 박스를 클릭하여 스키마를 전환합니다.
+
+STR_LIVERY_DEFAULT                                              :기본 색상
+STR_LIVERY_STEAM                                                :증기 기관차
+STR_LIVERY_DIESEL                                               :디젤 기관차
+STR_LIVERY_ELECTRIC                                             :전기 기관차
+STR_LIVERY_MONORAIL                                             :모노레일
+STR_LIVERY_MAGLEV                                               :자기부상
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :객차 (증기)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :객차 (디젤)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :객차 (전기)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :승객 객차 (모노레일)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :승객 객차 (자기부상열차)
+STR_LIVERY_FREIGHT_WAGON                                        :화물차
+STR_LIVERY_BUS                                                  :버스
+STR_LIVERY_TRUCK                                                :트럭
+STR_LIVERY_PASSENGER_SHIP                                       :여객선
+STR_LIVERY_FREIGHT_SHIP                                         :화물선
+STR_LIVERY_HELICOPTER                                           :헬리콥터
+STR_LIVERY_SMALL_PLANE                                          :소형 항공기
+STR_LIVERY_LARGE_PLANE                                          :대형 항공기
+STR_LIVERY_PASSENGER_TRAM                                       :승객 전차
+STR_LIVERY_FREIGHT_TRAM                                         :화물 전차
+
+# Face selection window
+STR_FACE_CAPTION                                                :{WHITE}얼굴 선택
+STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}새 얼굴 선택을 취소합니다.
+STR_FACE_OK_TOOLTIP                                             :{BLACK}이 얼굴을 선택합니다.
+
+STR_FACE_MALE_BUTTON                                            :{BLACK}남성
+STR_FACE_MALE_TOOLTIP                                           :{BLACK}남성의 얼굴을 선택합니다.
+STR_FACE_FEMALE_BUTTON                                          :{BLACK}여성
+STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}여성의 얼굴을 선택합니다.
+STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}새 얼굴
+STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}얼굴을 만듭니다.
+STR_FACE_ADVANCED                                               :{BLACK}고급
+STR_FACE_ADVANCED_TIP                                           :{BLACK}고급 얼굴 선택
+STR_FACE_SIMPLE                                                 :{BLACK}간단
+STR_FACE_SIMPLE_TIP                                             :{BLACK}간단한 얼굴 선택
+STR_FACE_LOAD                                                   :{BLACK}불러오기
+STR_FACE_LOAD_TIP                                               :{BLACK}즐겨찾는 얼굴 불러오기
+STR_FACE_LOAD_DONE                                              :{WHITE}당신이 즐겨찾는 얼굴을 OpenTTD 설정 파일로부터 불러왔습니다.
+STR_FACE_FACECODE                                               :{BLACK}플레이어 얼굴 번호
+STR_FACE_FACECODE_TIP                                           :{BLACK}플레이어 얼굴 번호 보기/설정
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}플레이어 얼굴 번호 보기/설정
+STR_FACE_FACECODE_SET                                           :{WHITE}새 얼굴 번호 코드가 설정되었습니다.
+STR_FACE_FACECODE_ERR                                           :{WHITE}플레이어 얼굴 번호를 설정할 수 없습니다 - 0에서 4,294,967,295 사이의 값을 입력하십시오!
+STR_FACE_SAVE                                                   :{BLACK}저장
+STR_FACE_SAVE_TIP                                               :{BLACK}즐겨찾는 얼굴로 저장
+STR_FACE_SAVE_DONE                                              :{WHITE}이 얼굴이 OpenTTD 설정 파일에 즐겨찾는 얼굴로 저장될 것입니다.
+STR_FACE_EUROPEAN                                               :{BLACK}유럽인
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}유럽인 얼굴 선택
+STR_FACE_AFRICAN                                                :{BLACK}흑인
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}흑인 얼굴 선택
+STR_FACE_YES                                                    :예
+STR_FACE_NO                                                     :아니요
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}콧수염이나 귀걸이 착용
+STR_FACE_HAIR                                                   :머리:
+STR_FACE_HAIR_TIP                                               :{BLACK}머리 변경
+STR_FACE_EYEBROWS                                               :눈썹:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}눈썹 변경
+STR_FACE_EYECOLOUR                                              :눈동자 색:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}눈동자색 변경
+STR_FACE_GLASSES                                                :안경:
+STR_FACE_GLASSES_TIP                                            :{BLACK}안경 착용
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}안경 변경
+STR_FACE_NOSE                                                   :코:
+STR_FACE_NOSE_TIP                                               :{BLACK}코 변경
+STR_FACE_LIPS                                                   :입술:
+STR_FACE_MOUSTACHE                                              :콧수염:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}입술/콧수염 변경
+STR_FACE_CHIN                                                   :턱:
+STR_FACE_CHIN_TIP                                               :{BLACK}턱 변경
+STR_FACE_JACKET                                                 :자켓:
+STR_FACE_JACKET_TIP                                             :{BLACK}자켓 변경
+STR_FACE_COLLAR                                                 :옷깃:
+STR_FACE_COLLAR_TIP                                             :{BLACK}옷깃 변경
+STR_FACE_TIE                                                    :넥타이:
+STR_FACE_EARRING                                                :귀걸이:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}넥타이/귀걸이 변경
+
+# Content downloading window
+STR_CONTENT_TITLE                                               :{WHITE}콘텐츠 다운로드
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}종류
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}콘텐츠의 종류
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}이름
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}콘텐츠의 이름
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}항목을 클릭하면 자세히 볼 수 있습니다{}다운로드할 항목을 누르세요
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}모두 선택
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}모든 콘텐츠를 선택합니다.
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}업데이트 선택
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}업데이트 항목이 있는 컨텐츠를 선택합니다.
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}모두 선택해제
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}모든 콘텐츠의 선택을 해제합니다.
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}검색할 문자를 입력하세요
+STR_CONTENT_FILTER_TIP                                          :{BLACK}검색할 키워드를 입력하세요
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}태그/이름 검색:
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}다운로드
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}선택한 콘텐츠의 다운로드를 시작합니다.
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}총 파일 크기: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}콘텐츠 정보
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}당신은 이것을 선택하지 않았습니다
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}당신은 이것을 선택했습니다
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}이것은 다른 콘텐츠에 종속되어 자동선택되었습니다
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}당신은 이미 가지고 있습니다
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}이 콘텐츠는 알려지지 않은 콘텐츠이고 OpenTTD 게임 상에서 받을 수 없는 것입니다
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}이것은 이미 존재하는 {STRING}를 대체하는 것입니다.
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}이름: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}버젼: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}설명: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}주소: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}종류: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}파일 크기: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}다음에 종속됨: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}종속: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}태그: {WHITE}{STRING}
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD는 "zlib" 지원을 포함하지 않고 빌드되었습니다.
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 콘텐츠 다운로드가 불가능합니다!
+
+# Order of these is important!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :기본 그래픽
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :인공지능
+STR_CONTENT_TYPE_AI_LIBRARY                                     :인공지능 라이브러리
+STR_CONTENT_TYPE_SCENARIO                                       :시나리오
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Heightmap
+
+# Content downloading progress window
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}콘텐츠 다운로드...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}파일 요청중...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}현재 다운로드 {STRING} ({NUM} / {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}다운로드 완료
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} / {BYTES} 다운로드 ({NUM} %)
+
+# Transparency settings window
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}투명 옵션
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}역명판 투명 전환. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}나무 투명 전환. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}집 투명 전환. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}산업시설 투명 전환. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}정거장, 차량기지, 웨이포인트와 같은 건설 가능한 것들에 대한 투명 전환. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}다리를 투명하게 합니다. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}등대나 안테나 같은 구조물 투명 전환. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}전차선 보이기/숨기기. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}적재 정도 투명 전환. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}투명이 아니라 아예 안보이게 할 항목을 선택하세요
+
+# Base for station construction window(s)
+STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}역세권 하이라이트
+STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}끄기
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}역세권을 하이라이트하지 않습니다.
+STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}켜기
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}역세권을 하이라이트합니다.
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}받음: {GOLD}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}공급: {GOLD}
+
+# Rail construction toolbar
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}일반 철도를 건설합니다
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}자동 레일 기능으로 철로 만들기
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}차량기지를 건설합니다 (열차 건설 및 점검용)
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}웨이포인트를 건설합니다
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}철도 역사 건설
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}철도 신호기 건설
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}철교 건설
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}터널 건설
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}철로/신호기 건설/제거툴 켜기/끄기
+STR_CONVERT_RAIL_TIP                                            :{BLACK}철도의 타입을 변경/업그레이드 합니다
+
+# Rail depot construction window
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}차량 기지 방향
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}차량기지의 방향을 선택하세요
+
+# Rail station construction window
+STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}철도 역사 선택
+STR_STATION_BUILD_ORIENTATION                                   :{BLACK}방향
+STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}기차역의 방향을 선택합니다.
+STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}트랙 수
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}기차역의 플랫폼 개수를 선택합니다.
+STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}플랫폼 길이
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}기차역의 길이를 선택합니다.
+STR_DRAG_DROP                                                   :{BLACK}드래그 & 드롭
+STR_STATION_DRAG_DROP                                           :{BLACK}드래그 & 드롭으로 역 건설
+
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}표시할 역의 종류를 선택합니다
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}건설할 역의 종류를 선택합니다
+
+# Signal window
+STR_SIGNAL_SELECTION                                            :{WHITE}신호기 선택
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}이곳의 신호기를 변환할 수 없습니다...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}폐색 신호기 (까치발){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}입구 신호기 (까치발){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}출구-신호기 (까치발){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}콤보-신호기 (까치발){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 전면신호기의 거대한 "나뭇가지 구조"를 건설할 수 있게 도와줍니다.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}경로 신호기 (까치발){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}일방통행 경로 신호기 (까치발){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 신호기는 반대편에서 통과가 불가능합니다.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}폐색 신호기 (전자식){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}입구-신호기 (전자식){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}출구-신호기 (전자식){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}콤보-신호기 (전자식){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 전면신호기의  거대한 "나뭇가지 구조"를 건설할 수 있게 도와줍니다.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}일방통행 경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 경로 신호기는 반대편에서 통과가 불가능합니다.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}신호기 변환{}선택했을 때, 이미 설치한 신호기를 클릭하면 선택한 신호기의 타입과 종류를 변경하게 되고, CTRL+클릭은 존재하는 종류를 토글할 것입니다.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}드래그시 신호기 간격
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}드래그시 신호기 간격 감소
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}드래그시 신호기 증가
+
+# Road construction toolbar
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}도로 건설
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}전찻길 건설
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}도로 섹션 건설
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}전찻길 섹션 건설
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}자동건설 모드로 도로 섹션 건설
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}자동건설 모드로 전차 섹션 건설
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}차고 건설 (차량의 제작/점검용)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}차량기지 건설 (차량 건설/점검용)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}버스 정류장 건설
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}승객 전차 정거장 건설
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}트럭 적하장 건설
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}화물 전차 전거장 건설
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}일방통행 활성/비활성화
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}다리 건설
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}전차교 건설
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}터널 건설
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}터널 건설
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}도로 제거툴 켜기/끄기
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}전찻길/신호등 건설/제거툴 켜기/끄기
+
+# Road depot construction window
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}차고 방향
+STR_ROAD_TOOLBAR_TOOLTIP_SELECT_ROAD_VEHICLE_DEPOT              :{BLACK}차고의 방향을 선택하십시오
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}차량기지 방향
+STR_ROAD_TOOLBAR_TOOLTIP_SELECT_TRAM_VEHICLE_DEPOT              :{BLACK}차량기지의 방향을 선택하세요
+
+# Road vehicle station construction window
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}버스 정류장 방향
+STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}버스 정류장의 방향을 선택합니다.
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}트럭 적하장 방향
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}트럭 적하장의 방향을 선택합니다.
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}승객 전차 정거장 방향
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}승객 전차 정거장의 방향을 선택하세요.
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}화물 전차 정거장 방향
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}화물 전차 정거장의 방향을 선택하세요.
+
+# Waterways toolbar
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}항만 건설
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}항만
+STR_BUILD_CANALS_TIP                                            :{BLACK}운하 만들기
+STR_BUILD_LOCKS_TIP                                             :{BLACK}갑문 짓기
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}정박소 만들기 (선박 제작 및 점검용)
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}항구 건설
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}웨이포인트로 사용할 부이를 설치합니다.
+STR_BUILD_AQUEDUCT                                              :{BLACK}수도교 짓기
+
+# Ship depot construction window
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}정박소 방향
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}정박소의 방향을 선택합니다.
+
+# Dock construction window
+STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}항구
+
+# Airport toolbar
+STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}공항
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}공항 건설
+
+# Airport construction window
+STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}공항 선택
+STR_SMALL_AIRPORT                                               :{BLACK}소형 공항
+STR_CITY_AIRPORT                                                :{BLACK}도시 공항
+STR_METRO_AIRPORT                                               :{BLACK}대도시 공항
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}국제 공항
+STR_COMMUTER_AIRPORT                                            :{BLACK}국내 공항
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}대륙간 공항
+STR_HELIPORT                                                    :{BLACK}헬리콥터 탑승장
+STR_HELIDEPOT                                                   :{BLACK}헬리콥터 격납고
+STR_HELISTATION                                                 :{BLACK}헬리콥터 정류장
+
+STR_SMALL_AIRPORTS                                              :{BLACK}소형 공항
+STR_LARGE_AIRPORTS                                              :{BLACK}대형 공항
+STR_HUB_AIRPORTS                                                :{BLACK}허브 공항
+STR_HELIPORTS                                                   :{BLACK}헬리콥터 공항
+
+
+# Unsorted
+STR_TOWN_POPULATION                                             :{BLACK}세계 인구: {COMMA}
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...도시에만 건설할 수 있습니다!
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}맵 가장자리에서 너무 멉니다!
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}맵 가장자리와 너무 가깝습니다!
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}재정이 부족합니다 - {CURRENCY} 이(가) 필요합니다
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}평지가 필요합니다!
+STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}대기: {WHITE}{STRING}
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({1:STATION}에서 온 {0:SHORTCARGO})
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}받음: {WHITE}
+
+STR_NO_WAITING_CARGO                                            :{BLACK}대기 중인 화물이 없습니다.
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}모든 시설 선택
+STR_SELECT_ALL_TYPES                                            :{BLACK}모든 종류의 화물을 선택 (대기하지 않는 화물 포함)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}이 차량 타입에 사용할 수 있는 기관차의 목록 보기
+STR_MANAGE_LIST                                                 :{BLACK}관리
+STR_MANAGE_LIST_TIP                                             :{BLACK}이 목록에 있는 모든 열차에게 지시
+STR_REPLACE_VEHICLES                                            :차량 교체
+STR_SEND_FOR_SERVICING                                          :점검하러 보냄
+
+STR_ERROR_OWNED_BY                                              :{WHITE}... {STRING}의 소유입니다.
+STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}화물
+STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}정보
+STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}수용량
+STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}총 화물량
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}이 열차의 총 수용량:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+
+STR_MAPSIZE                                                     :{BLACK}맵 크기:
+STR_BY                                                          :{BLACK}x
+
+STR_COMPANY_SOMEONE                                             :누군가{SKIP}{SKIP}
+
+STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD에 대해서
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}정말 이 게임을 종료하고 메인으로 이동하시겠습니까?
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}게임 그만하기
+STR_SORT_ORDER_TIP                                              :{BLACK}정렬 방법을 선택하십시오 (내림차순/오름차순)
+STR_SORT_CRITERIA_TIP                                           :{BLACK}정렬 기준 선택
+STR_FILTER_CRITERIA_TIP                                         :{BLACK}필터링 기준 선택
+STR_SORT_BY                                                     :{BLACK}정렬
+
+STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}알림
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}{STRING}{G 0 "이" "가"} 보낸 메시지
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}경고!
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}그렇게 할 수 없습니다....
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}이 지역을 파괴할 수 없습니다....
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 버전 {REV}
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD 개발팀
+
+STR_QUIT_CAPTION                                                :{WHITE}종료
+STR_YES                                                         :{BLACK}예
+STR_NO                                                          :{BLACK}아니요
+STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}정말 이 게임을 끝내고 {STRING}{G 0 "으" ""}로 돌아가시겠습니까?
+
+STR_JUST_NOTHING                                                :없음
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}게임에 차량이 너무 많습니다!
+STR_BUTTON_LOCATION                                             :{BLACK}위치
+STR_QUERY_CAPTION                                               :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}기본값
+STR_QUERY_CANCEL                                                :{BLACK}취소
+STR_QUERY_OK                                                    :{BLACK}확인
+STR_QUERY_RENAME                                                :{BLACK}이름 바꾸기
+
+STR_TOOLBAR_TOOLTIP_PLANT_TREES_PLACE_SIGNS                     :{BLACK}나무 심기
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}점검 기간 간격을 바꿀 수 없습니다...
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}창 닫기
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}창 제목 - 창을 움직이려면 여기를 드래그하세요
+STR_STICKY_BUTTON                                               :{BLACK}이 창을 '모든 창 닫기' 키로 닫을 수 없게 하기
+STR_RESIZE_BUTTON                                               :{BLACK}이 창의 크기를 조절하려면 여기를 클릭하고 드래그하세요
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}기본 저장/불러오기 폴더로 이동하려면 여기를 클릭하세요
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}사각형 모양의 땅에 있는 건물과 땅 등을 부숩니다.
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}땅의 모퉁이를 낮춥니다.
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}땅의 모퉁이를 높입니다.
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}스크롤바 - 목록을 상/하로 스크롤하세요
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}스크롤바 - 목록을 좌/우로 스크롤하세요
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}올해 수입: {CURRENCY} (작년: {CURRENCY})
+
+############ range for service numbers starts
+STR_AGE                                                         :{COMMA}년 ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA}년 ({COMMA})
+############ range for service numbers ends
+
+STR_VEHICLE_TRAIN                                               :{G=f}열차
+STR_VEHICLE_ROAD_VEHICLE                                        :{G=f}자동차
+STR_VEHICLE_SHIP                                                :{G=m}선박
+STR_VEHICLE_AIRCRAFT                                            :{G=f}항공기
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}이 지역의 지형 정보
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}초기화 가격: {LTBLUE}없음
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}초기화 가격: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}제거시 들어오는 환불금: {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_OWNER_N_A                             :없음
+STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}소유주: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}도로 소유주: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}전찻길 소유주: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}철도 소유주: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}지역 당국: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :없음
+STR_VEHICLE_NAME_BUTTON                                         :{BLACK}이름
+STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
+
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}화물 인수: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}산업시설/도시가 있는 곳으로 이동하려면 클릭
+STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...이전의 목적지로부터 너무 멉니다
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}{NUM}에 달성한 최고의 회사 ({STRING} 난이도)
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}{NUM}의 회사 성취도 목록
-STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
-STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :{G=f}초보자
-STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :{G=f}사업주
-STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :{G=f}공업가
-STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :{G=f}자본가
-STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :{G=f}권력자
-STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :{G=m}거물
-STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :{G=m}금세기의 타이쿤!
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY}가 '{STRING}'{G 0 "을" "를"} 달성했습니다!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME}의 {COMPANY}이(가) 드디어 {STRING}을(를) 달성했습니다!
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}시나리오 에디터
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}지형 만들기
@@ -596,10 +1330,6 @@ STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}지형�
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}플레이어 소유물 제거
 STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}맵에서 모든 플레이어 소유의 자산을 제거
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}이 작업은 기본 지형(도시 포함) 이외의 모든 플레이어의 소유물(철도,도로 등)을 제거할 것입니다. 계속하시겠습니까?
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}지형 만들기
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}도시 만들기
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}산업 시설 만들기
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}도로 건설
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}도시 만들기
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}새 도시
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}새 도시 건설
@@ -639,9 +1369,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}시나리오 저장, 불러오기, 에디터 종료, 게임 종료 등
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}시나리오 불러오기
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}시나리오 저장하기
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}시나리오 플레이
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Heightmap 플레이
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Heightmap을 지형으로 사용하여 게임을 시작합니다.
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}정말 이 시나리오를 종료하시겠습니까?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...인구 1200명 이상의 도시에만 건설할 수 있습니다!
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}시작년도를 1년 앞당깁니다.
@@ -664,184 +1391,15 @@ STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 칸
 STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 칸
 STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}임의
 
-STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
-STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}마지막 메시지/뉴스 보기
-STR_OFF                                                         :끄기
-STR_SUMMARY                                                     :요약
-STR_FULL                                                        :전체
-STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-
-############ range for menu starts
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 옵션
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :난이도 설정
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :고급 설정
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 설정
-STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :투명 설정
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}도시 이름을 표시함
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}역 이름을 표시함
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}웨이포인트를 표시함
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}팻말을 표시함
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}완전한 애니메이션
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}아주 상세하게
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}건물 안 보이기
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :{SETX 12}역명판 감추기
-############ range ends here
-
-############ range for menu starts
-STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :지형 정보
-STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :콘솔 켜기/끄기
-STR_ABOUT_MENU_AI_DEBUG                                         :AI 디버그
-STR_ABOUT_MENU_SCREENSHOT                                       :스크린 샷 (Ctrl+S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :대형 스크린샷 (Ctrl+G)
-STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'에 대해서
-############ range ends here
-
-STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}끄기
-STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}켜기
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}보조금 표시
-STR_SUBSIDIES_MENU_SUBSIDIES                                    :보조금
-
-############ 'Display map' dropdown. In SE, there is one more item.
-STR_MAP_MENU_MAP_OF_WORLD                                       :전체 지도 보기
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :외부 화면
-STR_MAP_MENU_SIGN_LIST                                          :팻말 목록
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :도시 목록
-############ end of the 'Display map' dropdown
-
-STR_TOWN_POPULATION                                             :{BLACK}세계 인구: {COMMA}
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}외부 화면 {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}외부 화면에 복사
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}현재 장소를 외부 화면에 복사합니다.
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}이 장소로 이동
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}외부 화면에 저장된 장소로 이동합니다.
-
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}화폐 단위
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}화폐 단위 선택
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}길이 단위
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}길이 단위 선택
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}차량
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}차량 통행 방법 선택
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :좌측통행
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :우측통행
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}도시 이름
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}도시 이름의 스타일 선택
-
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}자동저장
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}게임 자동저장 간격을 선택
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :사용 안함
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :매달
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :3개월마다
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :6개월마다
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12개월마다
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}새 게임을 시작합니다
-STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}저장한 게임을 불러옵니다
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}사용자 게임/시나리오를 만듭니다
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}멀티 플레이 게임을 시작합니다
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}게임 설정 창을 보여줍니다
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}난이도 설정 창을 보여줍니다
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}사용자 시나리오로 새 게임을 시작합니다
-STR_INTRO_QUIT                                                  :{BLACK}종료
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}OpenTTD를 종료합니다
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...도시에만 건설할 수 있습니다!
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}온대 기후 선택
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}냉대 기후 선택
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}아열대 기후 선택
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}장난감나라 선택
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}새 산업시설에 투자
-
-############ range for menu starts
-STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :산업시설 목록
-STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :새 산업시설 건설
-############ range ends here
-
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}새 산업시설 건설
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...열대우림 지역에만 건설할 수 있습니다!
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...사막 지역에만 건설할 수 있습니다!
-STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  일시정지  *  *
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}스크린 샷이 다음과 같이 저장되었습니다 : '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}스크린 샷을 찍지 못했습니다!
 
 STR_TERRAFORM_TOOLTIP_PURCHASE_LAND                             :{BLACK}나중에 그 땅을 사용하기 위해 소유권을 사 놓습니다
-STR_STATUSBAR_AUTOSAVE                                          :{RED}자동저장
-STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  게임 저장 중  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}저장중입니다,{}끝날때까지 기다려주세요
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Street 스타일 음악' 프로그램을 선택합니다
-
-############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :영국 식 (기본)
-STR_TOWNNAME_FRENCH                                             :프랑스 식
-STR_TOWNNAME_GERMAN                                             :독일 식
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :영국 식 (추가)
-STR_TOWNNAME_LATIN_AMERICAN                                     :라틴아메리카 식
-STR_TOWNNAME_SILLY                                              :바보같은 도시 이름
-STR_TOWNNAME_SWEDISH                                            :스웨덴 식
-STR_TOWNNAME_DUTCH                                              :네덜란드 식
-STR_TOWNNAME_FINNISH                                            :핀란드 식
-STR_TOWNNAME_POLISH                                             :폴란드 식
-STR_TOWNNAME_SLOVAK                                             :슬로바키아 식
-STR_TOWNNAME_NORWEGIAN                                          :노르웨이 식
-STR_TOWNNAME_HUNGARIAN                                          :헝가리 식
-STR_TOWNNAME_AUSTRIAN                                           :오스트리아 식
-STR_TOWNNAME_ROMANIAN                                           :루마니아 식
-STR_TOWNNAME_CZECH                                              :체코 식
-STR_TOWNNAME_SWISS                                              :스위스 식
-STR_TOWNNAME_DANISH                                             :덴마크 식
-STR_TOWNNAME_TURKISH                                            :터키 식
-STR_TOWNNAME_ITALIAN                                            :이탈리아 식
-STR_TOWNNAME_CATALAN                                            :카탈로니아 식
-############ end of townname region
-
-STR_CURR_GBP                                                    :파운드 (￡)
-STR_CURR_USD                                                    :달러 ($)
-STR_CURR_EUR                                                    :유로 (€)
-STR_CURR_YEN                                                    :엔 (￥)
-STR_CURR_ATS                                                    :오스트리아 실링 (ATS)
-STR_CURR_BEF                                                    :벨기에 프랑크 (BEF)
-STR_CURR_CHF                                                    :스위스 프랑크 (CHF)
-STR_CURR_CZK                                                    :체코 코루나 (CZK)
-STR_CURR_DEM                                                    :독일 마르크 (DEM)
-STR_CURR_DKK                                                    :덴마크 크로네 (DKK)
-STR_CURR_ESP                                                    :페세타 (ESP)
-STR_CURR_FIM                                                    :핀란드 마르카 (FIM)
-STR_CURR_FRF                                                    :프랑크 (FRF)
-STR_CURR_GRD                                                    :그리스 드라크마 (GRD)
-STR_CURR_HUF                                                    :헝가리 프로인트 (HUF)
-STR_CURR_ISK                                                    :아이슬란드 크로나 (ISK)
-STR_CURR_ITL                                                    :이탈리아 리라 (ITL)
-STR_CURR_NLG                                                    :네덜란드 길더 (NLG)
-STR_CURR_NOK                                                    :노르웨이 크로네 (NOK)
-STR_CURR_PLN                                                    :폴란드 즐로티 (PLN)
-STR_CURR_RON                                                    :루마니아 레우 (RON)
-STR_CURR_RUR                                                    :러시아 루블 (RUR)
-STR_CURR_SIT                                                    :슬로바키아 톨라 (SIT)
-STR_CURR_SEK                                                    :스웨덴 크로나 (SEK)
-STR_CURR_TRY                                                    :터키 리라 (TRY)
-STR_CURR_SKK                                                    :슬로바키아 코루나 (SKK)
-STR_CURR_BRL                                                    :브라질 레알 (BRL)
-STR_CURR_EEK                                                    :에스토니아 크룬 (EEK)
-
-STR_CURR_CUSTOM                                                 :사용자 설정...
-
-STR_OPTIONS_LANG                                                :{BLACK}언어
-STR_OPTIONS_LANG_TIP                                            :{BLACK}사용하실 언어를 선택하세요
-
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}전체화면
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}OpenTTD를 전체화면으로 플레이하려면 클릭하세요
-STR_FULLSCREEN_FAILED                                           :{WHITE}풀스크린 모드 실패
-
-STR_OPTIONS_RES                                                 :{BLACK}화면 해상도
-STR_OPTIONS_RES_TIP                                             :{BLACK}사용하실 화면 해상도를 선택하세요
-
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}스크린샷 형식
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}사용하실 스크린샷의 형식을 선택하세요
-
-STR_OPTIONS_BASE_GRF                                            :{BLACK}기본 그래픽 세트
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}사용할 기본 그래픽을 선택하세요
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM}개 파일 손실
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}기본 그래픽 세트에 대한 추가 정보
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}자동 저장 실패
 
@@ -863,26 +1421,10 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}경로�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}경로를 복사할 수 없습니다...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 공유된 경로의 끝 - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE}{P "이" "가"} 진행할 경로를 찾지 못했습니다.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE}{P "이" "가"} 길을 잃었습니다.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY} 입니다.
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}유럽 화폐단위 통일!{}{}국가의 단일 유통 화폐로 유로화가 도입되었습니다!
-
-# Start of order review system.
-# DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE}에 경로가 너무 적습니다
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE}에 빈 경로가 지정되어 있습니다
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE}에 중복된 경로가 지정되어 있습니다
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE}에 잘못된 경로가 지정되어 있습니다
-# end of order system
-
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}{VEHICLE}의 자동교체에 실패하였습니다{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE}{P "이" "가"} 교체된지 너무 오래되었습니다
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE}{P "가" "이"} 교체된지 너무 오래되었습니다
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}자동교체/갱신 규칙이 적용되지 않았습니다.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(자금 제한)
 
-STR_CONFIG_SETTING                                              :{BLACK}고급 설정
-STR_CONFIG_SETTING_TIP                                          :{BLACK}고급 설정 표시
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}고급 설정
 
 STR_CONFIG_SETTING_OFF                                          :끔
@@ -1137,19 +1679,6 @@ STR_SUB_ARCTIC_LANDSCAPE                                        :냉대 기후
 STR_SUB_TROPICAL_LANDSCAPE                                      :아열대 기후
 STR_TOYLAND_LANDSCAPE                                           :장난감 나라
 
-STR_CHEATS                                                      :{WHITE}치트
-STR_CHEATS_TIP                                                  :{BLACK}체크박스는 이전에 사용한 치트를 나타냅니다.
-STR_CHEATS_WARNING                                              :{BLACK}경고! 치트는 경쟁자를 속이는 행위입니다. 치트 기록은 절대로 지워지지 않음을 명심하십시오.
-STR_CHEAT_MONEY                                                 :{LTBLUE}재정을 {CURRENCY} 만큼 증가
-STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}다음 회사로 플레이중: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설, 움직이지 못하는 것들 제거) : {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 교차를 허용 : {ORANGE}{STRING}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}일시정지 상태에서의 건설 허용 : {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}제트항공기가 소형 공항에서 (자주) 폭발하지 않게 함 : {ORANGE}{STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}기후 변경: {ORANGE} {STRING}
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}날짜 변경: {ORANGE} {DATE_SHORT}
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}산업시설의 생산량 조절 허가 : {ORANGE}{STRING}
-
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}{WAYPOINT}{G 0 "으" ""}로 향하는 중
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}{WAYPOINT}{G 0 "으" ""}로 향하는 중, {VELOCITY}
 
@@ -1170,11 +1699,8 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYP
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}웨이포인트 이름 설정
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}웨이포인트 이름을 변경할 수 없습니다...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}웨이포인트를 건설합니다
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}여기에 웨이포인트를 건설할 수 없습니다.
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}이 웨이포인트를 제거할 수 없습니다.
-
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}자동 레일 기능으로 철로 만들기
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...시나리오에 도시가 없습니다.
 STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}맵 생성이 중지되었습니다...{}...도시 위치가 부적절합니다
@@ -1185,20 +1711,16 @@ STR_MANY_RANDOM_INDUSTRIES                                      :무작위 산�
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}무작위로 산업시설을 건설합니다.
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}산업시설을 만들 수 없습니다...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}땅을 올리기/내리기, 나무 심기가 있는 지형 툴바를 엽니다.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}지평편집
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}땅을 평평하게 고릅니다.
-
 
 STR_TREES_RANDOM_TYPE                                           :{BLACK}무작위 나무
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}나무를 무작위로 심습니다.
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}여기에 운하를 건설할 수 없습니다...
-STR_BUILD_CANALS_TIP                                            :{BLACK}운하 만들기
 STR_LANDINFO_CANAL                                              :운하
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}여기에 갑문을 지을 수 없습니다...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}갑문 짓기
 STR_LANDINFO_LOCK                                               :갑문
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}여기에 강을 만들 수 없습니다...
@@ -1210,18 +1732,9 @@ STR_LANDINFO_COORDS                                             :{BLACK}좌표: 
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}역의 일부를 제거할 수 없습니다...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}이곳의 철로 형식을 바꿀 수 없습니다...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}철도의 타입을 변경/업그레이드 합니다
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}열차 전체를 팔려면 기관차를 여기로 드래그하세요
 
-STR_DRAG_DROP                                                   :{BLACK}드래그 & 드롭
-STR_STATION_DRAG_DROP                                           :{BLACK}드래그 & 드롭으로 역 건설
-STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}표시할 역의 종류를 선택합니다
-STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}건설할 역의 종류를 선택합니다
-
-STR_FAST_FORWARD                                                :{BLACK}게임 고속 진행
-STR_MESSAGE_HISTORY                                             :{WHITE}메시지 기록
-STR_MESSAGE_HISTORY_TIP                                         :{BLACK}최근 뉴스 메시지의 기록입니다
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}모두 사용 안함
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}모두 사용
 
@@ -1546,20 +2059,7 @@ STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}여기�
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}여기에 철로를 건설할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}이곳의 철로를 제거할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}이곳의 신호기를 제거할 수 없습니다...
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}차량 기지 방향
-STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :철도 건설
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :전기철도 건설
-STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :모노레일 건설
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :자기부상열차 건설
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}일반 철도를 건설합니다
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}차량기지를 건설합니다 (열차 건설 및 점검용)
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}철도 역사 건설
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}철도 신호기 건설
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}철교 건설
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}터널 건설
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}철로/신호기 건설/제거툴 켜기/끄기
 STR_BUILD_BRIDGE_SELECTION_TOOLTIP                              :{BLACK}다리 건설 - 원하는 다리 종류를 선택하세요
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}차량기지의 방향을 선택하세요
 STR_RAILROAD_TRACK                                              :철로
 STR_RAILROAD_TRAIN_DEPOT                                        :철도 차량기지
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...다른 회사의 소유지입니다!
@@ -1596,43 +2096,18 @@ STR_SELECT_WAYPOINT_TO_JOIN                                     :{BLACK}연결�
 ##id 0x1800
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}도로를 먼저 제거하십시오
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}도로 작업이 진행중입니다
-STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}도로 건설
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}전찻길 건설
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}다리 종류를 선택하십시오
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... 일방통행 도로는 교차로를 만들 수 없습니다
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}도로를 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}여기에 전찻길을 건설할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}도로를 제거할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}이곳의 전찻길을 제거할 수 없습니다...
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}차고 방향
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}차량기지 방향
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}여기에 차고를 지을 수 없습니다...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}여기에 차량기지를 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}버스 정류장을 지을 수 없습니다...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}트럭 적하장을 지을 수 없습니다...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}여기에 승객 전차 정거장을 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}여기에 화물 전차 정거장을 건설할 수 없습니다...
-STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :도로 건설
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :전찻길 건설
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}도로 섹션 건설
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}자동건설 모드로 도로 섹션 건설
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}전찻길 섹션 건설
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}자동건설 모드로 전차 섹션 건설
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}차고 건설 (차량의 제작/점검용)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}차량기지 건설 (차량 건설/점검용)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}버스 정류장 건설
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}트럭 적하장 건설
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}승객 전차 정거장 건설
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}화물 전차 전거장 건설
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}다리 건설
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}전차교 건설
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}터널 건설
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}터널 건설
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}일방통행 활성/비활성화
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}도로 제거툴 켜기/끄기
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}전찻길/신호등 건설/제거툴 켜기/끄기
-STR_ROAD_TOOLBAR_TOOLTIP_SELECT_ROAD_VEHICLE_DEPOT              :{BLACK}차고의 방향을 선택하십시오
-STR_ROAD_TOOLBAR_TOOLTIP_SELECT_TRAM_VEHICLE_DEPOT              :{BLACK}차량기지의 방향을 선택하세요
 STR_ROAD_DESCRIPTION_ROAD                                       :도로
 STR_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                     :가로등이 있는 도로
 STR_ROAD_DESCRIPTION_TREE_LINED_ROAD                            :가로수가 있는 도로
@@ -1660,7 +2135,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :도시 이름 �
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}도시 이름을 바꿀 수 없습니다...
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}에 대한 낮은 성취도로 인해 지역당국이 이 행위를 거절했습니다!
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}도시 이름
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}이 도시가 있는 곳으로 화면을 이동합니다
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}이 도시가 있는 곳으로 이동합니다
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}도시 이름 변경
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}지난달 승객수: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}지난달 우편수: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
@@ -1695,13 +2170,6 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{1:STRI
 STR_SUBSIDIES_NONE                                              :{ORANGE}없음
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}이미 지급된 보조금:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{1:STATION}에서 {2:STATION}까지 {0:STRING} 수송{YELLOW} ({3:COMPANY}{YELLOW}, {DATE_SHORT}까지)
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}보조금 제공 계약 파기:{}{}{1:STRING}에서 {2:STRING}까지의 {0:STRING} 수송은 더이상 보조금을 지급하지 않습니다.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}보조금 제공 철회:{}{}지역 당국은 {1:STATION}에서 {2:STATION}까지의 {0:STRING} 수송에 대한 보조금을 철회하였습니다.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}보조금 제공 안내:{}{}처음으로 {1:STRING}에서 {2:STRING}까지의 {0:STRING}{G 0 "을" "를"} 수송하는 회사는 지역 당국으로부터 보조금을 받게 될 것입니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}{0:STRING}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 50%의 추가 보조금을 내년까지 받게 됩니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}{0:STRING}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 2배의 추가 보조금을 내년까지 받게 됩니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}{0:STRING}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 3배의 추가 보조금을 내년까지 받게 됩니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}{0:STRING}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 4배의 추가 보조금을 내년까지 받게 됩니다!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} 지역당국은 이 도시에 다른 공항이 들어서는 것을 거부합니다!
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} 지역 당국이 소음 문제로 인해 공항 건설을 거부하였습니다
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :아담한 집
@@ -1736,8 +2204,6 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} 도시 상업 건물의 건설에 투자합니다.{}가격: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} 1년간의 수송 권한 독점권을 구입합니다. 도시 당국은 오직 당신 회사의 역에만 승객과 화물을 허용할 것입니다.{}가격: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} 성취도를 올리기 위해 처벌을 감수하고 지역 당국에 뇌물을 줍니다.{}가격: {CURRENCY}
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}{TOWN}의 교통 혼잡!{}{}{STRING}에 의한 도로 재공사 프로그램이 운전자들에게 6개월간의 고통을 가져왔습니다!
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DESCRIPTION_UNDER_CONSTRUCTION                         :{STRING} (공사중)
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :이글루
@@ -1746,9 +2212,6 @@ STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :찻잔 집
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :돼지 저금통
 
 ##id 0x2800
-STR_LANDSCAPING_MENU_LANDSCAPING                                :지형 편집
-STR_LANDSCAPING_MENU_PLANT_TREES                                :나무 심기
-STR_LANDSCAPING_MENU_PLACE_SIGN                                 :팻말 달기
 STR_PLANT_TREE_CAPTION                                          :{WHITE}나무
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...이미 나무가 심어져 있습니다.
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}여기에 나무를 심을 수 없습니다...
@@ -1765,11 +2228,6 @@ STR_TREE_NAME_RAINFOREST                                        :열대우림
 STR_TREE_NAME_CACTUS_PLANTS                                     :선인장
 
 ##id 0x3000
-STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}철도 역사 선택
-STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}공항 선택
-STR_STATION_BUILD_ORIENTATION                                   :{BLACK}방향
-STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}트랙 수
-STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}플랫폼 길이
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}다른 기차역과 너무 가깝습니다!
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}2개 이상의 역이 인접합니다
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}적어도 하나 이상의 인접한 웨이포인트와 연결하십시오
@@ -1808,14 +2266,6 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}이 역�
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}이 역을 거쳐가는 모든 선박을 표시합니다
 
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION}에서 더 이상 {STRING}{G 1 "을" "를"} 받지 않습니다.
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION}에서 더 이상 {STRING}/{STRING}{G 2 "을" "를"} 받지 않습니다.
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION}에서 이제 {STRING}{G 1 "을" "를"} 받을 수 있습니다.
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION}에서 이제 {STRING}/{STRING}{G 2 "을" "를"} 받을 수 있습니다.
-STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}버스 정류장 방향
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}트럭 적하장 방향
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}승객 전차 정거장 방향
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}화물 전차 정거장 방향
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}버스 정류장을 먼저 제거하십시오.
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}트럭 적하장을 먼저 제거하십시오.
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}승객 전차 정거장을 먼저 제거하십시오.
@@ -1826,14 +2276,9 @@ STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOI
 STR_STATION_LIST_NONE                                           :{YELLOW}- 없음 -
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}다른 항구와 너무 가깝습니다!
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}항구를 먼저 제거하십시오!
-STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}기차역의 방향을 선택합니다.
-STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}기차역의 플랫폼 개수를 선택합니다.
-STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}기차역의 길이를 선택합니다.
-STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}버스 정류장의 방향을 선택합니다.
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}트럭 적하장의 방향을 선택합니다.
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}승객 전차 정거장의 방향을 선택하세요.
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}화물 전차 정거장의 방향을 선택하세요.
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}이 역이 있는 곳으로 이동합니다.
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}이 역이 있는 곳으로 이동합니다
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}이 웨이포인트가 있는 곳으로 이동합니다
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}이 부이가 있는 곳으로 이동합니다
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}역의 등급 표시
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}역 이름 변경
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}받는 화물의 목록 표시
@@ -1847,10 +2292,6 @@ STR_STATION_DESCRIPTION_AIRPORT                                 :공항
 STR_STATION_DESCRIPTION_TRUCK_LOADING_AREA                      :트럭 적하장
 STR_STATION_DESCRIPTION_BUS_STATION                             :버스 정류장
 STR_STATION_DESCRIPTION_SHIP_DOCK                               :항구
-STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}역세권을 하이라이트합니다.
-STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}역세권을 하이라이트하지 않습니다.
-STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}역세권 하이라이트
-STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}항구
 STR_STATION_DESCRIPTION_BUOY                                    :부이
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...도중에 부이가 있습니다.
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...역이 너무 큽니다.
@@ -1862,10 +2303,8 @@ STR_STAT_CLASS_DFLT                                             :기본 역사
 STR_STAT_CLASS_WAYP                                             :웨이포인트
 
 ##id 0x3800
-STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}정박소 방향
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...물 위에 지어져야 합니다!
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}여기에 정박소를 지을 수 없습니다...
-STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}정박소의 방향을 선택합니다.
 STR_WATER_DESCRIPTION_WATER                                     :물
 STR_WATER_DESCRIPTION_COAST_OR_RIVERBANK                        :해안 또는 강기슭
 STR_WATER_DESCRIPTION_SHIP_DEPOT                                :정박소
@@ -1906,11 +2345,11 @@ STR_INDUSTRY_NAME_COAL_MINE                                     :{G=m}석탄 광
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}발전소
 STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}제재소
 STR_INDUSTRY_NAME_FOREST                                        :숲
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :석유 정제소
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}석유 정제소
 STR_INDUSTRY_NAME_OIL_RIG                                       :유전
 STR_INDUSTRY_NAME_FACTORY                                       :공장
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :인쇄소
-STR_INDUSTRY_NAME_STEEL_MILL                                    :제철소
+STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}제철소
 STR_INDUSTRY_NAME_FARM                                          :농장
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :구리 광산
 STR_INDUSTRY_NAME_OIL_WELLS                                     :유정
@@ -1956,23 +2395,10 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}생산: 
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}지난달 생산량:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% 수송됨)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}이 산업시설이 있는 곳으로 이동
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}새 {STRING}{G 0 "이" "가"} {TOWN} 근처에 지어지고 있습니다!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}새 {STRING}{G 0 "이" "가"} {TOWN} 근처에서 자라나고 있습니다!
 STR_INDUSTRY_BUILD_COST                                         :{BLACK}가격: {YELLOW}{CURRENCY}
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}여기에 이 산업시설을 건설할 수 없습니다...
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...숲은 만년설 높이 이상의 고도에만 심을 수 있습니다.
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT}{STRING}의 긴급폐쇄를 알립니다!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}연결된 수요가 없는 관계로 {STRING}의 긴급 폐쇄를 알립니다!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}근처에 나무 고갈로 인한 {STRING}의 긴급 폐쇄를 알립니다!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY}{G 0 "이" "가"} 생산량을 늘렸습니다!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BLACK}{BIGFONT}{INDUSTRY}에서 새 석탄 광맥을 찾았습니다!{}생산량이 2배가 되었습니다!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BLACK}{BIGFONT}{INDUSTRY}에서 새 유전을 찾았습니다!{}생산량이 2배가 되었습니다!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BLACK}{BIGFONT}{INDUSTRY}에서 향상된 농업 기술을 발견해 생산량이 2배가 되었습니다!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY}의 생산량이 50%로 떨어졌습니다.
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BLACK}{BIGFONT}{INDUSTRY}{G 0 "이" "가"} 곤충떼의 습격으로 황폐화되었습니다!{}생산량이 50%로 떨어졌습니다.
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...맵 가장자리에만 위치할 수 있습니다.
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BLACK}{BIGFONT}{1:INDUSTRY}의 {0:STRING} 생산량이 {2:COMMA}% 증가하였습니다!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BLACK}{BIGFONT}{1:INDUSTRY}의 {0:STRING} 생산량이 {2:COMMA}% 감소하였습니다!
 
 ##id 0x5000
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}도중에 다른 터널이 있습니다
@@ -2137,7 +2563,6 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}새 얼굴
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}색상
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}색상:
-STR_LIVERY_CAPTION                                              :{WHITE}새 색상
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}회사 이름
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}매니저 이름
 STR_QUERY_COMPANY_NAME_CAPTION                                  :회사 이름
@@ -2164,9 +2589,6 @@ STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURREN
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}총계:
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
-STR_GRAPH_INCOME_CAPTION                                        :{WHITE}수익 그래프
-STR_CURRCOMPACT                                                 :{CURRCOMPACT}
-STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}경영 수익 그래프
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}소유금
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}대출
 STR_MAX_LOAN                                                    :{WHITE}최대 대출: {BLACK}{CURRENCY}
@@ -2183,8 +2605,8 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}매니�
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}회사 차량의 색상을 변경합니다.
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}매니저의 이름을 변경합니다.
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}회사 이름을 변경합니다.
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}돈을 빌립니다.
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}돈을 갚습니다.
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}돈을 빌립니다. Ctrl+클릭하면 빌릴 수 있는만큼 빌립니다
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}돈을 갚습니다. Ctrl+클릭하시면 갚을 수 있는 만큼 갚습니다
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(매니저)
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}설립: {WHITE}{NUM}
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}차량:
@@ -2193,51 +2615,9 @@ STR_ROAD_VEHICLES                                               :{WHITE}자동�
 STR_AIRCRAFT                                                    :{WHITE}항공기 {COMMA}대
 STR_SHIPS                                                       :{WHITE}선박 {COMMA}대
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}없음
-STR_FACE_CAPTION                                                :{WHITE}얼굴 선택
-STR_FACE_MALE_BUTTON                                            :{BLACK}남성
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}여성
-STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}새 얼굴
-STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}새 얼굴 선택을 취소합니다.
-STR_FACE_OK_TOOLTIP                                             :{BLACK}이 얼굴을 선택합니다.
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}남성의 얼굴을 선택합니다.
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}여성의 얼굴을 선택합니다.
-STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}얼굴을 만듭니다.
-STR_GRAPH_KEY_BUTTON                                            :{BLACK}키
-STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}그래프의 키를 보여줍니다.
-STR_SHOW_DETAILED_PERFORMANCE_RATINGS                           :{BLACK}상세 성취도를 봅니다
-STR_GRAPH_KEY_CAPTION                                           :{WHITE}회사 그래프의 키를 보여줍니다.
-STR_GRAPH_KEY_COMPANY_SELECTION                                 :{BLACK}특정 회사의 그래프를 켜거나 숨기려면 클릭하세요
-STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}수송 화물량
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}회사 성취도 (최고 1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}회사 가치
-STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}회사 성취도 순위
-STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
-STR_COMPANY_LEAGUE_OTHER                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BLACK}{BIGFONT}운송회사에 문제가 생김!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BLACK}{BIGFONT}성취도를 바로 올리지 못하면 {STRING}{G 0 "은" "는"} 팔리거나 파산할 것입니다!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(매니저)
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BLACK}{BIGFONT}운송 회사 합병!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING}{G 0 "이" "가"} {STRING}에게 {CURRENCY}의 가격으로 인수합병되었습니다!
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}저희 회사를 거두어주실 운송회사를 찾고있습니다.{}{}저희 {COMPANY} 회사를 {CURRENCY}의 가격으로 인수합병하시겠습니까?
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BLACK}{BIGFONT}파산!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BLACK}{BIGFONT}{STRING}가 채권자에 의해 파산되고 모든 자산이 팔렸습니다!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BLACK}{BIGFONT}새 운송회사 등장!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING}{G 0 "이" "가"} {TOWN}에서 공사를 시작했습니다!
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}회사를 인수할 수 없습니다...
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}화물 운송단가 비율
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{BLACK}{TINYFONT}통과시간
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{BLACK}{TINYFONT}10 단위(1만 리터)의 화물을 20칸 거리만큼 운송할 때의 운송비 지급량
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}이 화물에 대한 그래프 켜기/끄기
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{BLACK}{TINYFONT}{STRING}
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :{G=f}엔지니어
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :{G=f}교통망 관리자
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :{G=f}수송 조정자
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :{G=f}노선 관리자
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :{G=f}이사
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :{G=m}이사장
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :{G=m}의장
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :{G=m}회장
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :{G=m}타이쿤!
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}본사(HQ) 건설
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}본사를 건설합니다 / 본사를 봅니다
 STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}회사가치의 1% 가격으로 본사를 다른 위치에 재건축합니다.
@@ -2254,8 +2634,6 @@ STR_COMPANY_PASSWORD_OK                                         :{BLACK}이 회�
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}회사 비밀번호
 STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}회사 비밀번호 기본값
 STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}이 회사 비밀번호를 새 회사의 비밀번호 기본값으로 사용
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}세계 공황!{}{}경제 전문가들이 경제 슬럼프에 대해 우려를 표망하고 있습니다!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}공황 종료!{}{}무역량의 증대로 경제를 살려낸 결과 산업시설에 대한 신뢰를 가져왔습니다!
 STR_TOGGLE_LARGE_SMALL_WINDOW                                   :{BLACK}대형/소형 창 크기 토글
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}회사가치: {WHITE}{CURRENCY}
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}회사 주식의 25%를 매입
@@ -2265,41 +2643,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}이 회�
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}이 회사 주식의 25%를 매입할 수 없습니다...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}이 회사 주식의 25%를 매도할 수 없습니다...
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% {COMPANY}의 소유)
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BLACK}{BIGFONT}{STRING}의 관리권이 {STRING}(으)로 넘어갔습니다!
 STR_PROTECTED                                                   :{WHITE}이 회사는 주식을 거래할 만큼 오래되지 않았습니다...
-
-STR_LIVERY_DEFAULT                                              :기본 색상
-STR_LIVERY_STEAM                                                :증기 기관차
-STR_LIVERY_DIESEL                                               :디젤 기관차
-STR_LIVERY_ELECTRIC                                             :전기 기관차
-STR_LIVERY_MONORAIL                                             :모노레일
-STR_LIVERY_MAGLEV                                               :자기부상
-STR_LIVERY_DMU                                                  :DMU
-STR_LIVERY_EMU                                                  :EMU
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :객차 (증기)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :객차 (디젤)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :객차 (전기)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :승객 객차 (모노레일)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :승객 객차 (자기부상열차)
-STR_LIVERY_FREIGHT_WAGON                                        :화물차
-STR_LIVERY_BUS                                                  :버스
-STR_LIVERY_TRUCK                                                :트럭
-STR_LIVERY_PASSENGER_SHIP                                       :여객선
-STR_LIVERY_FREIGHT_SHIP                                         :화물선
-STR_LIVERY_HELICOPTER                                           :헬리콥터
-STR_LIVERY_SMALL_PLANE                                          :소형 항공기
-STR_LIVERY_LARGE_PLANE                                          :대형 항공기
-STR_LIVERY_PASSENGER_TRAM                                       :승객 전차
-STR_LIVERY_FREIGHT_TRAM                                         :화물 전차
-
-STR_LIVERY_GENERAL_TIP                                          :{BLACK}일반 색상 선택
-STR_LIVERY_TRAIN_TIP                                            :{BLACK}열차 색상 선택
-STR_LIVERY_ROAD_VEHICLE_TIP                                     :{BLACK}자동차 색상 선택
-STR_LIVERY_SHIP_TIP                                             :{BLACK}선박 색상 선택
-STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}항공기 색상 선택
-STR_LIVERY_PRIMARY_TIP                                          :{BLACK}선택한 색상을 1차 색상으로 선택
-STR_LIVERY_SECONDARY_TIP                                        :{BLACK}선택한 색상을 2차 색상으로 선택
-STR_LIVERY_PANEL_TIP                                            :{BLACK}색상 스키마 변경을 원하시면 선택하세요. (2개 이상 선택시 CTRL+클릭). 박스를 클릭하여 스키마를 전환합니다.
 
 ##id 0x8000
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (증기)
@@ -2568,7 +2912,6 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :모노레일 �
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :자기부상열차
 
 ##id 0x8800
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}{STATION}에 처음으로 기차가 도착했습니다!{}사람들이 환호성을 지릅니다!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (상세정보)
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
@@ -2742,13 +3085,13 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}정지함
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}너무 위험해서 신호를 무시할 수 없습니다...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}충돌!!
 
-STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}열차 충돌 사고!{}충돌로 인한 폭발로 {COMMA}명의 사망자가 발생하였습니다!
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}열차를 회차시킬 수 없습니다...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}차량의 방향을 뒤집을 수 없습니다...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}여러 대가 연결된 차량은 뒤집을 수 없습니다...
 STR_CLEAR_TIME                                                  :{BLACK}시간 초기화
 STR_RESET_LATENESS                                              :{BLACK}지연 카운터 초기화
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}웨이포인트 이름 변경
+STR_CHANGE_BUOY_NAME                                            :{BLACK}부이 이름 바꾸기
 
 STR_TRAIN_STOPPING                                              :{RED}정지중
 STR_TRAIN_STOPPING_VEL                                          :{RED}{VELOCITY}의 속도로 정지중
@@ -2756,10 +3099,6 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :알맞지 않�
 STR_TRAIN_NO_POWER                                              :{RED}기관차 없음
 STR_TRAIN_START_NO_CATENARY                                     :전차선이 없어서 운행할 수 없습니다.
 STR_TRAIN_STUCK                                                 :{ORANGE}빈 경로 탐색중
-
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}신형 {STRING} 이(가) 출시되었습니다!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}신형 {STRING} 이(가) 출시되었습니다!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}폭발한 차량을 팔 수 없습니다...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}파괴된 차량은 개조할 수 없습니다...
@@ -2785,28 +3124,14 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} 차량{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}첫 버스가 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}첫 트럭이 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}{STATION}에 처음으로 승객 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}{STATION}에 처음으로 화물 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 운전사가 사망했습니다!
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 {COMMA}명이 사망했습니다!
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}자동차를 U턴시킬 수 없습니다...
 
 
 ##id 0x9800
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :항만 건설
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}항만 건설
-STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}항만
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}여기에 항구를 건설할 수 없습니다...
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}정박소 내에서 정지해있어야 합니다!
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}항구 건설
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}정박소 만들기 (선박 제작 및 점검용)
 
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}첫 선박이 {STATION}에 도착했습니다!{}시민들이 환호하고 있습니다!
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}웨이포인트로 사용할 부이를 설치합니다.
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}여기에 부이를 설치할 수 없습니다...
-STR_BUILD_AQUEDUCT                                              :{BLACK}수도교 짓기
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}여기에 수도교를 지을 수 없습니다...
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (개조)
 STR_REFIT_TITLE                                                 :{GOLD}수송할 화물 선택:
@@ -2814,29 +3139,15 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}새 수�
 STR_REFITTABLE                                                  :(개조 가능)
 
 ##id 0xA000
-STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}공항
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}여기에 공항을 만들 수 없습니다...
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}항공기가 운항중입니다
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}격납고 내에서 정지해있어야합니다
-STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :공항 건설
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}공항 건설
 
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}첫 항공기가 {STATION}공항에 도착했습니다!{}시민들이 환호하고 있습니다!
-STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}항공기 충돌사고 발생!{}{COMMA}명이 {STATION}공항에서 사망하였습니다!
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}항공기 추락사고 발생!{}연료 부족으로 인하여 {COMMA}명이 사망하였습니다!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (시간표)
 
 ##id 0xB000
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}{STATION}에서 체펠린 재앙이 발생했습니다!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}UFO의 폭격으로 자동차가 파괴되었습니다!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BLACK}{BIGFONT}{TOWN} 근처의 석유 정제소가 폭발하였습니다!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BLACK}{BIGFONT}{TOWN} 근처의 공장이 의심스러운 상황으로 인해 파괴되었습니다!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BLACK}{BIGFONT}UFO가 {TOWN} 근처에 착륙했습니다!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BLACK}{BIGFONT}{TOWN} 근처의 석탄 광산이 함몰되어 그 파괴의 흔적을 남겼습니다!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BLACK}{BIGFONT}홍수 발생!{}최소 {COMMA}명의 실종자가 발생하였으며, 범람 후에 사상자도 발생할 것입니다!
-
 STR_BRIBE_FAILED                                                :{WHITE}당신의 뇌물 수수 행위가
 STR_BRIBE_FAILED_2                                              :{WHITE}지역 당국에 의해 발각되었습니다!
 STR_BUILD_DATE                                                  :{BLACK}건설날짜: {LTBLUE}{DATE_LONG}
@@ -2845,37 +3156,6 @@ STR_TILEDESC_STATION_CLASS                                      :{BLACK}정거�
 STR_TILEDESC_STATION_TYPE                                       :{BLACK}정거장 종류: {LTBLUE}{STRING}
 STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
-STR_PERFORMANCE_DETAIL                                          :{WHITE}상세 성취도
-STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}자세히
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
-STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
-STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
-############ Those following lines need to be in this order!!
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}차량:
-STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}역:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}최소 이익:
-STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}최소 수입:
-STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}최대 수입:
-STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}수송량:
-STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}화물:
-STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}재정:
-STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}대출:
-STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}종합:
-############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}차량의 수를 나타냅니다. 자동차, 열차, 선박, 항공기도 포함입니다.
-STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}총 역사의 수를 나타냅니다. 한개의 역으로 묶여있다고 해도 모든 역의 부분(기차역, 버스정류장, 항구, 공항)은 개별적으로 셉니다.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}모든 차량을 통틀어 가장 낮은 수입을 가진 열차의 이익입니다. (2년 이상된 열차에 한함)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}지난 12분기동안 최소 이익을 달성한 열차가 번 돈의 양입니다.
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}지난 12분기동안 최대 이익을 달성한 열차가 번 돈의 양입니다.
-STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}지난 4분기동안 수송한 화물량입니다.
-STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}지난 1분기에 수송한 화물의 종류 수입니다.
-STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}회사가 소지한 재정입니다.
-STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}회사가 대출해간 재정의 양입니다.
-STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}산출 가능한 점수들의 총 합계 점수입니다.
-
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF 설정
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}NewGRF 세팅을 봅니다
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 설정
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}변경사항 적용
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}팔레트 바꾸기
@@ -2992,11 +3272,6 @@ STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING}
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} 차량의 공유된 경로 목록
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}이 경로를 공유하고 있는 모든 차량을 표시합니다.
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE}{P "이" "가"} 차량기지 안에서 대기 중입니다
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE}{P "이" "가"} 차고에서 대기 중입니다
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE}{P "이" "가"} 정박소 안에서 대기 중입니다
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE}{P "이" "가"} 격납고 안에서 대기 중입니다
-
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}열차 개조
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}자동차 개조
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}선박 개조
@@ -3077,7 +3352,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}차량 �
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}선박의 경로 보여주기
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}항공기 경로를 보여줍니다
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}이 열차가 있는 곳으로 이동
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}이 열차가 있는 곳으로 이동합니다
 STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}이 차량이 있는 곳으로 이동
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}이 선박이 있는 곳으로 이동합니다
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}이 항공기가 있는 곳으로 이동
@@ -3194,7 +3469,7 @@ STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}항공�
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}차량기지가 있는 곳으로 이동
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}이 차고가 있는 곳으로 이동
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}이 정박소가 잇는 위치로 이동합니다
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}이 격납고가 있는 공항으로 이동
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}이 격납고가 있는 공항으로 이동합니다
 
 
 ### depot strings
@@ -3215,6 +3490,16 @@ STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}이 차�
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TIP                          :{BLACK}이 차고지에 있는 모든 자동차를 자동으로 교체합니다.
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}이 정박소에 있는 모든 선박을 자동으로 교체합니다.
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}이 격납고에 있는 모든 항공기를 자동으로 교체합니다.
+
+STR_AVAILABLE_TRAINS                                            :{BLACK}사용 가능 열차
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}사용 가능 자동차
+STR_AVAILABLE_SHIPS                                             :{BLACK}사용 가능 선박
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}사용 가능 항공기
+
+STR_SEND_TRAIN_TO_DEPOT                                         :차량기지로 보내기
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :차고로 보내기
+STR_SEND_SHIP_TO_DEPOT                                          :정박소로 보내기
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :격납고로 보내기
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} 교체
 STR_REPLACE_VEHICLES_START                                      :{BLACK}차량 교체 시작
@@ -3255,8 +3540,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}이 목�
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}팻말 목록 - 팻말 {COMMA}개
-
-STR_ORDER_REFIT_FAILED                                          :{WHITE}경로 수리에 실패하여 {VEHICLE}{P "이" "가"} 멈췄습니다
 
 ############ Lists rail types
 
@@ -3344,9 +3627,6 @@ STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}평지�
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}평지의 높이 변경
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}평지의 높이:
 
-STR_SMALLMAP_CENTER                                             :{BLACK}소형맵을 현재 위치에 위치시킵니다
-STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
-
 # Strings for map borders at game generation
 STR_BORDER_TYPE                                                 :{BLACK}맵 가장자리:
 STR_NORTHWEST                                                   :{BLACK}북서
@@ -3359,22 +3639,6 @@ STR_BORDER_RANDOM                                               :{BLACK}임의
 STR_BORDER_RANDOMIZE                                            :{BLACK}임의
 STR_BORDER_MANUAL                                               :{BLACK}사용자 정의
 
-########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}소형 공항
-STR_CITY_AIRPORT                                                :{BLACK}도시 공항
-STR_METRO_AIRPORT                                               :{BLACK}대도시 공항
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}국제 공항
-STR_COMMUTER_AIRPORT                                            :{BLACK}국내 공항
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}대륙간 공항
-STR_HELIPORT                                                    :{BLACK}헬리콥터 탑승장
-STR_HELIDEPOT                                                   :{BLACK}헬리콥터 격납고
-STR_HELISTATION                                                 :{BLACK}헬리콥터 정류장
-
-STR_SMALL_AIRPORTS                                              :{BLACK}소형 공항
-STR_LARGE_AIRPORTS                                              :{BLACK}대형 공항
-STR_HUB_AIRPORTS                                                :{BLACK}허브 공항
-STR_HELIPORTS                                                   :{BLACK}헬리콥터 공항
-
 ############ Tooltip measurment
 
 STR_MEASURE_LENGTH                                              :{BLACK}길이: {NUM}
@@ -3385,18 +3649,6 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}넓이: 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}환승 단위: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...여기는 도시 소유의 도로 입니다
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...도로가 잘못된 방향을 향하고 있습니다
-
-STR_TRANSPARENCY_TOOLB                                          :{WHITE}투명 옵션
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}역명판 투명 전환. 고정하려면 CTRL+클릭하세요.
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}나무 투명 전환. 고정하려면 CTRL+클릭하세요.
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}집 투명 전환. 고정하려면 CTRL+클릭하세요.
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}산업시설 투명 전환. 고정하려면 CTRL+클릭하세요.
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}정거장, 차량기지, 웨이포인트와 같은 건설 가능한 것들에 대한 투명 전환. 고정하려면 CTRL+클릭하세요.
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}다리를 투명하게 합니다. 고정하려면 CTRL+클릭하세요.
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}등대나 안테나 같은 구조물 투명 전환. 고정하려면 CTRL+클릭하세요.
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}전차선 보이기/숨기기. 고정하려면 CTRL+클릭하세요.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}적재 정도 투명 전환. 고정하려면 CTRL+클릭하세요.
-STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}투명이 아니라 아예 안보이게 할 항목을 선택하세요
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3449,6 +3701,7 @@ STR_WAYPOINT_NAME                                               :{WAYPOINT}
 STR_JUST_CARGO                                                  :{CARGO}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_JUST_CURRENCY                                               :{CURRENCY}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
@@ -3507,83 +3760,12 @@ STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}답사
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}건설
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}목록에서 적당한 산업시설을 선택하십시오
 
-############ Face formatting
-STR_FACE_ADVANCED                                               :{BLACK}고급
-STR_FACE_ADVANCED_TIP                                           :{BLACK}고급 얼굴 선택
-STR_FACE_SIMPLE                                                 :{BLACK}간단
-STR_FACE_SIMPLE_TIP                                             :{BLACK}간단한 얼굴 선택
-STR_FACE_LOAD                                                   :{BLACK}불러오기
-STR_FACE_LOAD_TIP                                               :{BLACK}즐겨찾는 얼굴 불러오기
-STR_FACE_LOAD_DONE                                              :{WHITE}당신이 즐겨찾는 얼굴을 OpenTTD 설정 파일로부터 불러왔습니다.
-STR_FACE_FACECODE                                               :{BLACK}플레이어 얼굴 번호
-STR_FACE_FACECODE_TIP                                           :{BLACK}플레이어 얼굴 번호 보기/설정
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}플레이어 얼굴 번호 보기/설정
-STR_FACE_FACECODE_SET                                           :{WHITE}새 얼굴 번호 코드가 설정되었습니다.
-STR_FACE_FACECODE_ERR                                           :{WHITE}플레이어 얼굴 번호를 설정할 수 없습니다 - 0에서 4,294,967,295 사이의 값을 입력하십시오!
-STR_FACE_SAVE                                                   :{BLACK}저장
-STR_FACE_SAVE_TIP                                               :{BLACK}즐겨찾는 얼굴로 저장
-STR_FACE_SAVE_DONE                                              :{WHITE}이 얼굴이 OpenTTD 설정 파일에 즐겨찾는 얼굴로 저장될 것입니다.
-STR_FACE_EUROPEAN                                               :{BLACK}유럽인
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}유럽인 얼굴 선택
-STR_FACE_AFRICAN                                                :{BLACK}흑인
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}흑인 얼굴 선택
-STR_FACE_YES                                                    :예
-STR_FACE_NO                                                     :아니요
-STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}콧수염이나 귀걸이 착용
-STR_FACE_HAIR                                                   :머리:
-STR_FACE_HAIR_TIP                                               :{BLACK}머리 변경
-STR_FACE_EYEBROWS                                               :눈썹:
-STR_FACE_EYEBROWS_TIP                                           :{BLACK}눈썹 변경
-STR_FACE_EYECOLOUR                                              :눈동자 색:
-STR_FACE_EYECOLOUR_TIP                                          :{BLACK}눈동자색 변경
-STR_FACE_GLASSES                                                :안경:
-STR_FACE_GLASSES_TIP                                            :{BLACK}안경 착용
-STR_FACE_GLASSES_TIP_2                                          :{BLACK}안경 변경
-STR_FACE_NOSE                                                   :코:
-STR_FACE_NOSE_TIP                                               :{BLACK}코 변경
-STR_FACE_LIPS                                                   :입술:
-STR_FACE_MOUSTACHE                                              :콧수염:
-STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}입술/콧수염 변경
-STR_FACE_CHIN                                                   :턱:
-STR_FACE_CHIN_TIP                                               :{BLACK}턱 변경
-STR_FACE_JACKET                                                 :자켓:
-STR_FACE_JACKET_TIP                                             :{BLACK}자켓 변경
-STR_FACE_COLLAR                                                 :옷깃:
-STR_FACE_COLLAR_TIP                                             :{BLACK}옷깃 변경
-STR_FACE_TIE                                                    :넥타이:
-STR_FACE_EARRING                                                :귀걸이:
-STR_FACE_TIE_EARRING_TIP                                        :{BLACK}넥타이/귀걸이 변경
-########
-
-############ signal GUI
-STR_SIGNAL_SELECTION                                            :{WHITE}신호기 선택
-STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}이곳의 신호기를 변환할 수 없습니다...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}폐색 신호기 (까치발){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}입구 신호기 (까치발){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}출구-신호기 (까치발){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}콤보-신호기 (까치발){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 전면신호기의 거대한 "나뭇가지 구조"를 건설할 수 있게 도와줍니다.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}경로 신호기 (까치발){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}일방통행 경로 신호기 (까치발){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 신호기는 반대편에서 통과가 불가능합니다.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}폐색 신호기 (전자식){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}입구-신호기 (전자식){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}출구-신호기 (전자식){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}콤보-신호기 (전자식){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 전면신호기의  거대한 "나뭇가지 구조"를 건설할 수 있게 도와줍니다.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}일방통행 경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 경로 신호기는 반대편에서 통과가 불가능합니다.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}신호기 변환{}선택했을 때, 이미 설치한 신호기를 클릭하면 선택한 신호기의 타입과 종류를 변경하게 되고, CTRL+클릭은 존재하는 종류를 토글할 것입니다.
-STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}드래그시 신호기 간격
-STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}드래그시 신호기 간격 감소
-STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}드래그시 신호기 증가
-########
-
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}인공지능 설정
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}인공지능 설정 보기
 STR_AI_DEBUG                                                    :{WHITE}AI 디버그
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}AI의 이름
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI 재시작
@@ -3619,63 +3801,12 @@ STR_STATION_NOISE                                               :{BLACK}발생 �
 ########
 
 ############ Downloading of content from the central server
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD는 "zlib" 지원을 포함하지 않고 빌드되었습니다.
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 콘텐츠 다운로드가 불가능합니다!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :기본 그래픽
-STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
-STR_CONTENT_TYPE_AI                                             :인공지능
-STR_CONTENT_TYPE_AI_LIBRARY                                     :인공지능 라이브러리
-STR_CONTENT_TYPE_SCENARIO                                       :시나리오
-STR_CONTENT_TYPE_HEIGHTMAP                                      :Heightmap
-STR_CONTENT_TITLE                                               :{WHITE}콘텐츠 다운로드
-STR_CONTENT_TYPE_CAPTION                                        :{BLACK}종류
-STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}콘텐츠의 종류
-STR_CONTENT_NAME_CAPTION                                        :{BLACK}이름
-STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}콘텐츠의 이름
-STR_CONTENT_MATRIX_TIP                                          :{BLACK}항목을 클릭하면 자세히 볼 수 있습니다{}다운로드할 항목을 누르세요
-STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}모두 선택
-STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}모든 콘텐츠를 선택합니다.
-STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}업데이트 선택
-STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}업데이트 항목이 있는 컨텐츠를 선택합니다.
-STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}모두 선택해제
-STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}모든 콘텐츠의 선택을 해제합니다.
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}검색할 문자를 입력하세요
-STR_CONTENT_FILTER_TIP                                          :{BLACK}검색할 키워드를 입력하세요
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}태그/이름 검색:
-STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}다운로드
-STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}선택한 콘텐츠의 다운로드를 시작합니다.
-STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}총 파일 크기: {WHITE}{BYTES}
-STR_CONTENT_DETAIL_TITLE                                        :{SILVER}콘텐츠 정보
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}당신은 이것을 선택하지 않았습니다
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}당신은 이것을 선택했습니다
-STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}이것은 다른 콘텐츠에 종속되어 자동선택되었습니다
-STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}당신은 이미 가지고 있습니다
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}이 콘텐츠는 알려지지 않은 콘텐츠이고 OpenTTD 게임 상에서 받을 수 없는 것입니다
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}이것은 이미 존재하는 {STRING}를 대체하는 것입니다.
-STR_CONTENT_DETAIL_NAME                                         :{SILVER}이름: {WHITE}{STRING}
-STR_CONTENT_DETAIL_VERSION                                      :{SILVER}버젼: {WHITE}{STRING}
-STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}설명: {WHITE}{STRING}
-STR_CONTENT_DETAIL_URL                                          :{SILVER}주소: {WHITE}{STRING}
-STR_CONTENT_DETAIL_TYPE                                         :{SILVER}종류: {WHITE}{STRING}
-STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}파일 크기: {WHITE}{BYTES}
-STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}다음에 종속됨: {WHITE}{STRING}
-STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}종속: {WHITE}{STRING}
-STR_CONTENT_DETAIL_TAGS                                         :{SILVER}태그: {WHITE}{STRING}
-
-STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}콘텐츠 다운로드...
-STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}파일 요청중...
-STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}현재 다운로드 {STRING} ({NUM} / {NUM})
-STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}다운로드 완료
-STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} / {BYTES} 다운로드 ({NUM} %)
-
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}콘텐츠 서버에 접속할 수 없습니다...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}다운로드 실패...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 접속 손실
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 파일 쓰기 실패
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}다운로드한 파일의 압축을 풀 수 없습니다
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}온라인 콘텐츠 체크
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다.
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}빠져있는 콘텐츠를 온라인으로 찾습니다.
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}빠져있는 콘텐츠를 온라인으로 찾을 수 있는지 검사합니다.
 ########
