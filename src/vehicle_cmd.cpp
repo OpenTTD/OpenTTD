@@ -221,7 +221,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
 			did_something = true;
 			cost.AddCost(ret);
 		} else {
-			if (ret.GetErrorMessage() != STR_AUTOREPLACE_NOTHING_TO_DO && all_or_nothing) {
+			if (ret.GetErrorMessage() != STR_ERROR_AUTOREPLACE_NOTHING_TO_DO && all_or_nothing) {
 				/* We failed to replace a vehicle even though we set all or nothing.
 				 * We should never reach this if DC_EXEC is set since then it should
 				 * have failed the estimation guess. */

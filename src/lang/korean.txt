@@ -238,7 +238,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :화물 수송�
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}게임 일시정지
-STR_FAST_FORWARD                                                :{BLACK}게임 고속 진행
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}게임 고속 진행
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}옵션
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}게임 저장, 중지, 게임 종료
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}맵 보여주기
@@ -260,13 +260,13 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}철로 �
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}도로 건설
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}항만 건설
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}공항 건설
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}땅을 올리기/내리기, 나무 심기가 있는 지형 툴바를 엽니다.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}땅을 올리기/내리기, 나무 심기가 있는 지형 툴바를 엽니다.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}사운드/음악 창을 엽니다.
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}최근 메시지/뉴스 기록이나 메시지 설정을 엽니다.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}지역 정보
 
 # Extra tooltips for the scenario editor toolbar
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}맵, 도시 목록 보여주기
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}맵, 도시 목록 보여주기
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}지형 만들기
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}도시 만들기
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}산업 시설 만들기
@@ -547,8 +547,8 @@ STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLAC
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}저장
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}현재 음악 프로그램을 초기화합니다 (사용자1, 사용자2에서만 선택 가능합니다)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}음악 설정을 저장합니다
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}음악 목록에 트랙을 추가하려면 클릭하세요 (사용자1, 사용자2만 사용 가능합니다)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}음악 목록에서 트랙을 제거하려면 클릭하세요 (사용자1, 사용자2만 사용 가능)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}음악 목록에 트랙을 추가하려면 클릭하세요 (사용자1, 사용자2만 사용 가능합니다)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}음악 목록에서 트랙을 제거하려면 클릭하세요 (사용자1, 사용자2만 사용 가능)
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}{NUM}에 달성한 최고의 회사 ({STRING} 난이도)
@@ -636,11 +636,11 @@ STR_NEWS_MESSAGE                                                :{STRING}  -  {S
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}메시지
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}메시지 설정
-STR_MESSAGES_ALL                                                :{YELLOW}모든 메시지 종류 : 끄기 / 요약 / 전체
-STR_MESSAGE_SOUND                                               :{YELLOW}요약된 메시지와 함께 소리를 들려줍니다
-STR_OFF                                                         :끄기
-STR_SUMMARY                                                     :요약
-STR_FULL                                                        :전체
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}모든 메시지 종류 : 끄기 / 요약 / 전체
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}요약된 메시지와 함께 소리를 들려줍니다
+STR_NEWS_MESSAGES_OFF                                           :끄기
+STR_NEWS_MESSAGES_SUMMARY                                       :요약
+STR_NEWS_MESSAGES_FULL                                          :전체
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}메시지 종류:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}당신의 첫 차량 도착
@@ -671,7 +671,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 운전사가 사망했습니다!
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 {COMMA}명이 사망했습니다!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}항공기 충돌사고 발생!{}{COMMA}명이 {STATION}공항에서 사망하였습니다!
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}항공기 추락사고 발생!{}연료 부족으로 인하여 {COMMA}명이 사망하였습니다!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}항공기 추락사고 발생!{}연료 부족으로 인하여 {COMMA}명이 사망하였습니다!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}{STATION}에서 체펠린 재앙이 발생했습니다!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}UFO의 폭격으로 자동차가 파괴되었습니다!
@@ -698,7 +698,7 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}연결된 수요가 없는 관계로 {STRING}의 긴급 폐쇄를 알립니다!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}근처에 나무 고갈로 인한 {STRING}의 긴급 폐쇄를 알립니다!
 
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}유럽 화폐단위 통일!{}{}국가의 단일 유통 화폐로 유로화가 도입되었습니다!
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}유럽 화폐단위 통일!{}{}국가의 단일 유통 화폐로 유로화가 도입되었습니다!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}세계 공황!{}{}경제 전문가들이 경제 슬럼프에 대해 우려를 표망하고 있습니다!
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}공황 종료!{}{}무역량의 증대로 경제를 살려낸 결과 산업시설에 대한 신뢰를 가져왔습니다!
 
@@ -718,25 +718,25 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE}에 경로가 너무 적습니다
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE}에 빈 경로가 지정되어 있습니다
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE}에 중복된 경로가 지정되어 있습니다
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE}에 잘못된 경로가 지정되어 있습니다
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE}에 경로가 너무 적습니다
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE}에 빈 경로가 지정되어 있습니다
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE}에 중복된 경로가 지정되어 있습니다
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE}에 잘못된 경로가 지정되어 있습니다
 # end of order system
 
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE}{P "가" "이"} 오래되었습니다
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE}{P "가" "이"} 매우 오래되었습니다
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE}{P "가" "이"} 너무 오래되어 교체가 시급합니다
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE}{P "가" "이"} 진행할 경로를 찾지 못했습니다.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE}{P "가" "이"} 길을 잃었습니다.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY} 입니다.
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE}{P "가" "이"} 오래되었습니다
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE}{P "가" "이"} 매우 오래되었습니다
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE}{P "가" "이"} 너무 오래되어 교체가 시급합니다
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE}{P "가" "이"} 진행할 경로를 찾지 못했습니다.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE}{P "가" "이"} 길을 잃었습니다.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY} 입니다.
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}경로 수리에 실패하여 {VEHICLE}{P "가" "이"} 멈췄습니다
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}{VEHICLE}의 자동교체에 실패하였습니다{}{STRING}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}경로 수리에 실패하여 {VEHICLE}{P "가" "이"} 멈췄습니다
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE}의 자동교체에 실패하였습니다{}{STRING}
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}신형 {STRING} 이(가) 출시되었습니다!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}신형 {STRING} 이(가) 출시되었습니다!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}신형 {STRING} 이(가) 출시되었습니다!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}신형 {STRING} 이(가) 출시되었습니다!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION}에서 더 이상 {STRING}{G 1 "을" "를"} 받지 않습니다.
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION}에서 더 이상 {STRING}/{STRING}{G 2 "을" "를"} 받지 않습니다.
@@ -766,44 +766,44 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}화폐 �
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}화폐 단위 선택
 
 ############ start of currency region
-STR_CURR_GBP                                                    :파운드 (￡)
-STR_CURR_USD                                                    :달러 ($)
-STR_CURR_EUR                                                    :유로 (€)
-STR_CURR_YEN                                                    :엔 (￥)
-STR_CURR_ATS                                                    :오스트리아 실링 (ATS)
-STR_CURR_BEF                                                    :벨기에 프랑크 (BEF)
-STR_CURR_CHF                                                    :스위스 프랑크 (CHF)
-STR_CURR_CZK                                                    :체코 코루나 (CZK)
-STR_CURR_DEM                                                    :독일 마르크 (DEM)
-STR_CURR_DKK                                                    :덴마크 크로네 (DKK)
-STR_CURR_ESP                                                    :페세타 (ESP)
-STR_CURR_FIM                                                    :핀란드 마르카 (FIM)
-STR_CURR_FRF                                                    :프랑크 (FRF)
-STR_CURR_GRD                                                    :그리스 드라크마 (GRD)
-STR_CURR_HUF                                                    :헝가리 프로인트 (HUF)
-STR_CURR_ISK                                                    :아이슬란드 크로나 (ISK)
-STR_CURR_ITL                                                    :이탈리아 리라 (ITL)
-STR_CURR_NLG                                                    :네덜란드 길더 (NLG)
-STR_CURR_NOK                                                    :노르웨이 크로네 (NOK)
-STR_CURR_PLN                                                    :폴란드 즐로티 (PLN)
-STR_CURR_RON                                                    :루마니아 레우 (RON)
-STR_CURR_RUR                                                    :러시아 루블 (RUR)
-STR_CURR_SIT                                                    :슬로바키아 톨라 (SIT)
-STR_CURR_SEK                                                    :스웨덴 크로나 (SEK)
-STR_CURR_TRY                                                    :터키 리라 (TRY)
-STR_CURR_SKK                                                    :슬로바키아 코루나 (SKK)
-STR_CURR_BRL                                                    :브라질 레알 (BRL)
-STR_CURR_EEK                                                    :에스토니아 크룬 (EEK)
-STR_CURR_CUSTOM                                                 :사용자 설정...
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :파운드 (￡)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :달러 ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :유로 (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :엔 (￥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :오스트리아 실링 (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :벨기에 프랑크 (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :스위스 프랑크 (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :체코 코루나 (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :독일 마르크 (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :덴마크 크로네 (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :페세타 (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :핀란드 마르카 (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :프랑크 (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :그리스 드라크마 (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :헝가리 프로인트 (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :아이슬란드 크로나 (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :이탈리아 리라 (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :네덜란드 길더 (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :노르웨이 크로네 (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :폴란드 즐로티 (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :루마니아 레우 (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :러시아 루블 (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :슬로바키아 톨라 (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :스웨덴 크로나 (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :터키 리라 (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :슬로바키아 코루나 (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :브라질 레알 (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :에스토니아 크룬 (EEK)
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :사용자 설정...
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}길이 단위
 STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}길이 단위 선택
 
 ############ start of measuring units region
-STR_UNITS_IMPERIAL                                              :임페리얼법
-STR_UNITS_METRIC                                                :미터법
-STR_UNITS_SI                                                    :SI법
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :임페리얼법
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :미터법
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI법
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}차량
@@ -815,27 +815,27 @@ STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}도시 �
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}도시 이름의 스타일 선택
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :영국 식 (기본)
-STR_TOWNNAME_FRENCH                                             :프랑스 식
-STR_TOWNNAME_GERMAN                                             :독일 식
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :영국 식 (추가)
-STR_TOWNNAME_LATIN_AMERICAN                                     :라틴아메리카 식
-STR_TOWNNAME_SILLY                                              :바보같은 도시 이름
-STR_TOWNNAME_SWEDISH                                            :스웨덴 식
-STR_TOWNNAME_DUTCH                                              :네덜란드 식
-STR_TOWNNAME_FINNISH                                            :핀란드 식
-STR_TOWNNAME_POLISH                                             :폴란드 식
-STR_TOWNNAME_SLOVAK                                             :슬로바키아 식
-STR_TOWNNAME_NORWEGIAN                                          :노르웨이 식
-STR_TOWNNAME_HUNGARIAN                                          :헝가리 식
-STR_TOWNNAME_AUSTRIAN                                           :오스트리아 식
-STR_TOWNNAME_ROMANIAN                                           :루마니아 식
-STR_TOWNNAME_CZECH                                              :체코 식
-STR_TOWNNAME_SWISS                                              :스위스 식
-STR_TOWNNAME_DANISH                                             :덴마크 식
-STR_TOWNNAME_TURKISH                                            :터키 식
-STR_TOWNNAME_ITALIAN                                            :이탈리아 식
-STR_TOWNNAME_CATALAN                                            :카탈로니아 식
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :영국 식 (기본)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :프랑스 식
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :독일 식
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :영국 식 (추가)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :라틴아메리카 식
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :바보같은 도시 이름
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :스웨덴 식
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :네덜란드 식
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :핀란드 식
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :폴란드 식
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :슬로바키아 식
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :노르웨이 식
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :헝가리 식
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :오스트리아 식
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :루마니아 식
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :체코 식
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :스위스 식
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :덴마크 식
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :터키 식
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :이탈리아 식
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :카탈로니아 식
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}자동저장
@@ -847,23 +847,23 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :3개월마다
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :6개월마다
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12개월마다
 
-STR_OPTIONS_LANG                                                :{BLACK}언어
-STR_OPTIONS_LANG_TIP                                            :{BLACK}사용하실 언어를 선택하세요
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}언어
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}사용하실 언어를 선택하세요
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}전체화면
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}OpenTTD를 전체화면으로 플레이하려면 클릭하세요
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}전체화면
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}OpenTTD를 전체화면으로 플레이하려면 클릭하세요
 STR_FULLSCREEN_FAILED                                           :{WHITE}풀스크린 모드 실패
 
-STR_OPTIONS_RES                                                 :{BLACK}화면 해상도
-STR_OPTIONS_RES_TIP                                             :{BLACK}사용하실 화면 해상도를 선택하세요
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}화면 해상도
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}사용하실 화면 해상도를 선택하세요
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}스크린샷 형식
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}사용하실 스크린샷의 형식을 선택하세요
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}스크린샷 형식
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}사용하실 스크린샷의 형식을 선택하세요
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}기본 그래픽 세트
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}사용할 기본 그래픽을 선택하세요
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM}개 파일 손실
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}기본 그래픽 세트에 대한 추가 정보
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}기본 그래픽 세트
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}사용할 기본 그래픽을 선택하세요
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM}개 파일 손실
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}기본 그래픽 세트에 대한 추가 정보
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -877,15 +877,15 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}멀티 �
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}게임 설정
 STR_INTRO_DIFFICULTY                                            :{BLACK}난이도 ({STRING})
-STR_CONFIG_SETTING                                              :{BLACK}고급 설정
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF 설정
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}온라인 콘텐츠 체크
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}인공지능 설정
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}고급 설정
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 설정
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠 체크
+STR_INTRO_AI_SETTINGS                                           :{BLACK}인공지능 설정
 STR_INTRO_QUIT                                                  :{BLACK}종료
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}새 게임을 시작합니다
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}저장한 게임을 불러옵니다
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Heightmap을 지형으로 사용하여 게임을 시작합니다.
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Heightmap을 지형으로 사용하여 게임을 시작합니다.
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}사용자 시나리오로 새 게임을 시작합니다
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}사용자 게임/시나리오를 만듭니다
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}멀티 플레이 게임을 시작합니다
@@ -897,10 +897,10 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}장난�
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}게임 설정 창을 보여줍니다
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}난이도 설정 창을 보여줍니다
-STR_CONFIG_SETTING_TIP                                          :{BLACK}고급 설정 표시
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}NewGRF 세팅을 봅니다
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다.
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}인공지능 설정 보기
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}고급 설정 표시
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF 세팅을 봅니다
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다.
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}인공지능 설정 보기
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}OpenTTD를 종료합니다
 
 # Cheat window
@@ -1087,15 +1087,15 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}공급: 
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}일반 철도를 건설합니다
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}자동 레일 기능으로 철로 만들기
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}자동 레일 기능으로 철로 만들기
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}차량기지를 건설합니다 (열차 건설 및 점검용)
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}웨이포인트를 건설합니다
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}웨이포인트를 건설합니다
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}철도 역사 건설
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}철도 신호기 건설
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}철교 건설
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}터널 건설
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}철로/신호기 건설/제거툴 켜기/끄기
-STR_CONVERT_RAIL_TIP                                            :{BLACK}철도의 타입을 변경/업그레이드 합니다
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}철도의 타입을 변경/업그레이드 합니다
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}차량 기지 방향
@@ -1109,8 +1109,8 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}트랙 �
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}기차역의 플랫폼 개수를 선택합니다.
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}플랫폼 길이
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}기차역의 길이를 선택합니다.
-STR_DRAG_DROP                                                   :{BLACK}드래그 & 드롭
-STR_STATION_DRAG_DROP                                           :{BLACK}드래그 & 드롭으로 역 건설
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}드래그 & 드롭
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}드래그 & 드롭으로 역 건설
 
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}표시할 역의 종류를 선택합니다
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}건설할 역의 종류를 선택합니다
@@ -1175,12 +1175,12 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}화물 �
 # Waterways toolbar
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}항만 건설
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}항만
-STR_BUILD_CANALS_TIP                                            :{BLACK}운하 만들기
-STR_BUILD_LOCKS_TIP                                             :{BLACK}갑문 짓기
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}운하 만들기
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}갑문 짓기
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}정박소 만들기 (선박 제작 및 점검용)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}항구 건설
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}웨이포인트로 사용할 부이를 설치합니다.
-STR_BUILD_AQUEDUCT                                              :{BLACK}수도교 짓기
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}수도교 짓기
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}정박소 방향
@@ -1195,20 +1195,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}공항 �
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}공항 선택
-STR_SMALL_AIRPORT                                               :{BLACK}소형 공항
-STR_CITY_AIRPORT                                                :{BLACK}도시 공항
-STR_METRO_AIRPORT                                               :{BLACK}대도시 공항
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}국제 공항
-STR_COMMUTER_AIRPORT                                            :{BLACK}국내 공항
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}대륙간 공항
-STR_HELIPORT                                                    :{BLACK}헬리콥터 탑승장
-STR_HELIDEPOT                                                   :{BLACK}헬리콥터 격납고
-STR_HELISTATION                                                 :{BLACK}헬리콥터 정류장
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}소형 공항
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}도시 공항
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}대도시 공항
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}국제 공항
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}국내 공항
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}대륙간 공항
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}헬리콥터 탑승장
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}헬리콥터 격납고
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}헬리콥터 정류장
 
-STR_SMALL_AIRPORTS                                              :{BLACK}소형 공항
-STR_LARGE_AIRPORTS                                              :{BLACK}대형 공항
-STR_HUB_AIRPORTS                                                :{BLACK}허브 공항
-STR_HELIPORTS                                                   :{BLACK}헬리콥터 공항
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}소형 공항
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}대형 공항
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}허브 공항
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}헬리콥터 공항
 
 
 # Unsorted
@@ -1421,9 +1421,9 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}경로�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}경로를 복사할 수 없습니다...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 공유된 경로의 끝 - -
 
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE}{P "가" "이"} 교체된지 너무 오래되었습니다
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}자동교체/갱신 규칙이 적용되지 않았습니다.
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(자금 제한)
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE}{P "가" "이"} 교체된지 너무 오래되었습니다
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}자동교체/갱신 규칙이 적용되지 않았습니다.
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(자금 제한)
 
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}고급 설정
 

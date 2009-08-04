@@ -455,7 +455,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 			}
 
 			/* When wagon removal is enabled and the new engines without any wagons are already longer than the old, we have to fail */
-			if (cost.Succeeded() && wagon_removal && new_head->tcache.cached_total_length > old_total_length) cost = CommandCost(STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT);
+			if (cost.Succeeded() && wagon_removal && new_head->tcache.cached_total_length > old_total_length) cost = CommandCost(STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT);
 
 			/* Append/insert wagons into the new vehicle chain
 			 * We do this from back to front, so we can stop when wagon removal or maximum train length (i.e. from mammoth-train setting) is triggered.
@@ -671,6 +671,6 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
 		if (!was_stopped) cost.AddCost(StartStopVehicle(v, false));
 	}
 
-	if (cost.Succeeded() && nothing_to_do) cost = CommandCost(STR_AUTOREPLACE_NOTHING_TO_DO);
+	if (cost.Succeeded() && nothing_to_do) cost = CommandCost(STR_ERROR_AUTOREPLACE_NOTHING_TO_DO);
 	return cost;
 }

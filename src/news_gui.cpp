@@ -896,7 +896,7 @@ enum NewsSettingsWidgets {
 	WIDGET_NEWSOPT_START_OPTION,      ///< First widget that is part of a group [<] .. [.]
 };
 
-static const StringID _message_opt[] = {STR_OFF, STR_SUMMARY, STR_FULL, INVALID_STRING_ID};
+static const StringID _message_opt[] = {STR_NEWS_MESSAGES_OFF, STR_NEWS_MESSAGES_SUMMARY, STR_NEWS_MESSAGES_FULL, INVALID_STRING_ID};
 
 struct MessageOptionsWindow : Window {
 	int state;
@@ -1048,7 +1048,7 @@ static const Widget _message_options_widgets[] = {
 
 {      WWT_TEXT, RESIZE_NONE, COLOUR_YELLOW,
 	103, 409,  34 + NT_END * NEWS_SETTING_BASELINE_SKIP,  45 + NT_END * NEWS_SETTING_BASELINE_SKIP,
-	STR_MESSAGES_ALL, STR_NULL},
+	STR_NEWS_MESSAGES_ALL, STR_NULL},
 
 /* Below is widget WIDGET_NEWSOPT_SOUNDTICKER */
 { WWT_TEXTBTN_2, RESIZE_NONE, COLOUR_YELLOW,
@@ -1057,7 +1057,7 @@ static const Widget _message_options_widgets[] = {
 
 {      WWT_TEXT, RESIZE_NONE, COLOUR_YELLOW,
 	103, 409,  46 + NT_END * NEWS_SETTING_BASELINE_SKIP,  57 + NT_END * NEWS_SETTING_BASELINE_SKIP,
-	STR_MESSAGE_SOUND, STR_NULL},
+	STR_NEWS_MESSAGES_SOUND, STR_NULL},
 
 /* List of news-setting lines (4 widgets for each line).
  * First widget must be number WIDGET_NEWSOPT_START_OPTION
@@ -1132,11 +1132,11 @@ static const NWidgetPart _nested_message_options_widgets[] = {
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL), SetPadding(0, 0, 0, 4),
 				NWidget(WWT_DROPDOWN, COLOUR_YELLOW, WIDGET_NEWSOPT_DROP_SUMMARY), SetMinimalSize(95, 12), SetDataTip(0x0, STR_NULL),
-				NWidget(WWT_TEXT, COLOUR_YELLOW, WIDGET_NEWSOPT_LABEL_SUMMARY), SetMinimalSize(307, 12), SetDataTip(STR_MESSAGES_ALL, STR_NULL), SetPadding(0, 0, 0, 4),
+				NWidget(WWT_TEXT, COLOUR_YELLOW, WIDGET_NEWSOPT_LABEL_SUMMARY), SetMinimalSize(307, 12), SetDataTip(STR_NEWS_MESSAGES_ALL, STR_NULL), SetPadding(0, 0, 0, 4),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL), SetPadding(0, 0, 0, 4),
 				NWidget(WWT_TEXTBTN_2, COLOUR_YELLOW, WIDGET_NEWSOPT_SOUNDTICKER), SetMinimalSize(95, 12), SetDataTip(STR_STATION_BUILD_COVERAGE_OFF, STR_NULL),
-				NWidget(WWT_TEXT, COLOUR_YELLOW, WIDGET_NEWSOPT_SOUNDTICKER_LABEL), SetMinimalSize(307, 12), SetDataTip(STR_MESSAGE_SOUND, STR_NULL), SetPadding(0, 0, 0, 4),
+				NWidget(WWT_TEXT, COLOUR_YELLOW, WIDGET_NEWSOPT_SOUNDTICKER_LABEL), SetMinimalSize(307, 12), SetDataTip(STR_NEWS_MESSAGES_SOUND, STR_NULL), SetPadding(0, 0, 0, 4),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 7),

@@ -265,9 +265,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spel Ops
 
 STR_COMPANY_SOMEONE                                             :iemand{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :Imperiaal
-STR_UNITS_METRIC                                                :Metriek
-STR_UNITS_SI                                                    :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperiaal
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metriek
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -370,7 +370,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pouseer 
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Stoor spel, verlaat spel, verlaat
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Vertoon lys van maatskappy se stasies
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Vertoon landkaart, ekstra uitsig of lys van tekens
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Vertoon landkaart, dorp gids
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Vertoon landkaart, dorp gids
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Vertoon stad gids
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Vertoon maatskappy se finasiële inligting
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Vertoon algemene maatskappy inligting
@@ -418,9 +418,9 @@ STR_VEHICLE_TRAIN                                               :Trein
 STR_VEHICLE_ROAD_VEHICLE                                        :Pad voertuig
 STR_VEHICLE_SHIP                                                :Skip
 STR_VEHICLE_AIRCRAFT                                            :Vliegtuig
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} raak oud.
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} raak baie oud.
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} raak baie oud en benodig dringende vervanging.
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} raak oud.
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} raak baie oud.
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} raak baie oud en benodig dringende vervanging.
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land gebied informasie
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Koste om skoon te maak: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Koste om skoon te maak: {RED}{CURRENCY}
@@ -540,8 +540,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Kies 'Be
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Kies 'Bestelling 2' (gebruiker-verklaarde) program
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Maak huidige musiek keuse skoon (slegs Bestelling1 of Bestelling2)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Stoor musiek stellings
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Kliek op 'n liedjie om by huidige musiek lys by te sit (slegs Bestelling1 of Bestelling2)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Kliek op musiek lied om te verwyder van huidige program (Slegs Gewoonte1 of Gewoonte2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Kliek op 'n liedjie om by huidige musiek lys by te sit (slegs Bestelling1 of Bestelling2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliek op musiek lied om te verwyder van huidige program (Slegs Gewoonte1 of Gewoonte2)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Tokkel musiek lys skommel aan/af
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Vertoon liedjie keuse venster
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}Kliek op diens om uitsig op die nywerheid/stad te senter
@@ -568,8 +568,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nuwe vo
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Veranderings van vrag aanvaarding
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidieë
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Algemene informasie
-STR_MESSAGES_ALL                                                :{YELLOW}Stel alle boodskap tipes na: Af/Opsomming/Volle
-STR_MESSAGE_SOUND                                               :{YELLOW}Speel geluid vir opsommige nuus boodskappe
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Stel alle boodskap tipes na: Af/Opsomming/Volle
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Speel geluid vir opsommige nuus boodskappe
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...te ver van vorige destinasie
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Beste maatskappye wat {NUM}{}({STRING} Vlak) behaal het
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Maatskappy Liga Tafel in {NUM}
@@ -639,7 +639,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Laai Dra
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Stoor Draaiboek
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Speel Draaiboek
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Speel Hoogtekaart
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}begin 'n nuwe speletjie, gebruikend 'n hoogtekaart as 'n landskap
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}begin 'n nuwe speletjie, gebruikend 'n hoogtekaart as 'n landskap
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Is jy seker jy wil die draaiboek verlaat?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...kan slegs in dorpe met te minste 1200 mense gebou word
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Beweeg die begin datum 1 jaar terug
@@ -659,9 +659,9 @@ STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Beter st
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Toon laaste boodskap of nuus verslag
-STR_OFF                                                         :Af
-STR_SUMMARY                                                     :Opsomming
-STR_FULL                                                        :Vol
+STR_NEWS_MESSAGES_OFF                                           :Af
+STR_NEWS_MESSAGES_SUMMARY                                       :Opsomming
+STR_NEWS_MESSAGES_FULL                                          :Vol
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
@@ -762,77 +762,77 @@ STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Spaar no
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Kies 'Ezy Straat styl musiek' program
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engels (Oorspronkilik)
-STR_TOWNNAME_FRENCH                                             :Frans
-STR_TOWNNAME_GERMAN                                             :Duits
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Engels (Addisioneel)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latyns-Amerikaans
-STR_TOWNNAME_SILLY                                              :Snaaks
-STR_TOWNNAME_SWEDISH                                            :Sweeds
-STR_TOWNNAME_DUTCH                                              :Hollands
-STR_TOWNNAME_FINNISH                                            :Finnish
-STR_TOWNNAME_POLISH                                             :Polish
-STR_TOWNNAME_SLOVAK                                             :Slovak
-STR_TOWNNAME_NORWEGIAN                                          :Norwegian
-STR_TOWNNAME_HUNGARIAN                                          :Hungarian
-STR_TOWNNAME_AUSTRIAN                                           :Austrian
-STR_TOWNNAME_ROMANIAN                                           :Romanian
-STR_TOWNNAME_CZECH                                              :Czech
-STR_TOWNNAME_SWISS                                              :Swiss
-STR_TOWNNAME_DANISH                                             :Deens
-STR_TOWNNAME_TURKISH                                            :Turks
-STR_TOWNNAME_ITALIAN                                            :Italiaans
-STR_TOWNNAME_CATALAN                                            :Catalan
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Engels (Oorspronkilik)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Frans
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Duits
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Engels (Addisioneel)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latyns-Amerikaans
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Snaaks
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Sweeds
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollands
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finnish
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polish
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovak
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norwegian
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungarian
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austrian
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romanian
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Czech
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Swiss
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Deens
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turks
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiaans
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalan
 ############ end of townname region
 
-STR_CURR_GBP                                                    :Pounds ()
-STR_CURR_USD                                                    :Dollars ($)
-STR_CURR_EUR                                                    :Euro (€)
-STR_CURR_YEN                                                    :Yen (¥)
-STR_CURR_ATS                                                    :Austrian Shilling (ATS)
-STR_CURR_BEF                                                    :Belgian Franc (BEF)
-STR_CURR_CHF                                                    :Swiss Franc (CHF)
-STR_CURR_CZK                                                    :Czech Koruna (CZK)
-STR_CURR_DEM                                                    :Deutschmark (DEM)
-STR_CURR_DKK                                                    :Danish Krone (DKK)
-STR_CURR_ESP                                                    :Peseta (ESP)
-STR_CURR_FIM                                                    :Finnish Markka (FIM)
-STR_CURR_FRF                                                    :Franc (FRF)
-STR_CURR_GRD                                                    :Greek Drachma (GRD)
-STR_CURR_HUF                                                    :Hungarian Forint (HUF)
-STR_CURR_ISK                                                    :Icelandic Krona (ISK)
-STR_CURR_ITL                                                    :Italian Lira (ITL)
-STR_CURR_NLG                                                    :Dutch Guilder (NLG)
-STR_CURR_NOK                                                    :Norwegian Krone (NOK)
-STR_CURR_PLN                                                    :Polish Zloty (PLN)
-STR_CURR_RON                                                    :Romanian Leu (RON)
-STR_CURR_RUR                                                    :Russian Rubles (RUR)
-STR_CURR_SIT                                                    :Slovenian Tolar (SIT)
-STR_CURR_SEK                                                    :Swedish Krona (SEK)
-STR_CURR_TRY                                                    :Turkish Lira (TRY)
-STR_CURR_SKK                                                    :Slovak Koruna (SKK)
-STR_CURR_BRL                                                    :Brazilian Real (BRL)
-STR_CURR_EEK                                                    :Estonian Krooni (EEK)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pounds ()
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollars ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austrian Shilling (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgian Franc (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Swiss Franc (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Czech Koruna (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danish Krone (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finnish Markka (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Greek Drachma (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Hungarian Forint (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Icelandic Krona (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italian Lira (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Dutch Guilder (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norwegian Krone (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polish Zloty (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Romanian Leu (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russian Rubles (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenian Tolar (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Swedish Krona (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkish Lira (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovak Koruna (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilian Real (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estonian Krooni (EEK)
 
-STR_CURR_CUSTOM                                                 :Gebruiklike...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Gebruiklike...
 
-STR_OPTIONS_LANG                                                :{BLACK}Taal
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Kies die koppelvlak taal om te gebruik
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Taal
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Kies die koppelvlak taal om te gebruik
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Volskerm
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Kies die blokkie om OpenTTD in volleskerm te speel
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Volskerm
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Kies die blokkie om OpenTTD in volleskerm te speel
 STR_FULLSCREEN_FAILED                                           :{WHITE}Volskerm metode gedop
 
-STR_OPTIONS_RES                                                 :{BLACK}Skerm resolusie
-STR_OPTIONS_RES_TIP                                             :{BLACK}Kies die skerm resolusie om te gebruik
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skerm resolusie
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Kies die skerm resolusie om te gebruik
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Skermskyf formaat
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Kies die skermskyf formaat om te gebruik
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Skermskyf formaat
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Kies die skermskyf formaat om te gebruik
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis grafiek stel
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Kies die Basiese grafiek stel om te gebruik
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} verlore / korrupte ler{P "" s}
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Addisioneel informasie oor die basis grapfieke stel
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis grafiek stel
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kies die Basiese grafiek stel om te gebruik
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} verlore / korrupte ler{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Addisioneel informasie oor die basis grapfieke stel
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Outostoor het misluk
 
@@ -854,26 +854,26 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan nie 
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan nie opdrag lys kopie nie...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Einde van Gedeel Opdrae - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} kan nie 'n roete vind om aan te gaan nie.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} is verlore.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} se wins was verlede jaar {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europees Geldelik Samesmelting!{}{}Die Euro is ingevoer as die enigste koers vir daagliks transaksies in u land!
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan nie 'n roete vind om aan te gaan nie.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} is verlore.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} se wins was verlede jaar {CURRENCY}
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Europees Geldelik Samesmelting!{}{}Die Euro is ingevoer as die enigste koers vir daagliks transaksies in u land!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} het te min bevele in skedule
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} het 'n leë bevel
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} het duplikaat bevele
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} het onwettige stasie in sy bevele
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} het te min bevele in skedule
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} het 'n leë bevel
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} het duplikaat bevele
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} het onwettige stasie in sy bevele
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Automatiese hernuwing het misluk met {VEHICLE}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} is te lank na vervanging
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}geen outo-vervang/hernu reëls toegepas nie
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(geld perk)
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automatiese hernuwing het misluk met {VEHICLE}{}{STRING}
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} is te lank na vervanging
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}geen outo-vervang/hernu reëls toegepas nie
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(geld perk)
 
-STR_CONFIG_SETTING                                              :{BLACK}Gevorderde stellings
-STR_CONFIG_SETTING_TIP                                          :{BLACK}Toon gevorderde stellings
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Gevorderde stellings
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Toon gevorderde stellings
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Gevorderde stellings
 
 STR_CONFIG_SETTING_OFF                                          :Af
@@ -1142,11 +1142,11 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYP
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Redigeer wegpunt naam
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Kan nie wegpunt naam verander nie...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Verdoel spoor na wegpunt
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Verdoel spoor na wegpunt
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Kanie nie trein wegpunt hier bou nie...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Kan nie trein wegpunt van hier werwyder nie...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Bou spoorweg spoor met die Outospoor metode
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bou spoorweg spoor met die Outospoor metode
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...daar is geen dorp in die draaiboek
 
@@ -1156,7 +1156,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Baie luraak nyw
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Maak die kaart vol met wildweg geplaased nywerhede
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Kan nie nywerhede opwek nie...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Oppe die landargitekteur werktuigbaan om land te verhoog/verlaag, boome beplant, ens.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Oppe die landargitekteur werktuigbaan om land te verhoog/verlaag, boome beplant, ens.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landargitekteur
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Vlakte daal
 
@@ -1165,11 +1165,11 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Boome va
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Plaas boome van lukraak tipe
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kan nie kanaale hier bou nie...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Bou kanaale.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bou kanaale.
 STR_LANDINFO_CANAL                                              :Kanaal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan nie sluite hier bou nie...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Bou sluite
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bou sluite
 STR_LANDINFO_LOCK                                               :Sluit
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Can nie riviere hier plaas nie...
@@ -1181,16 +1181,16 @@ STR_LANDINFO_COORDS                                             :{BLACK}Koördin
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Kan nie deel van stasie verwyder nie...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Kan nie spoor tipe hier verdoel nie...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Verdoel/Opgradeer die spoor tipe
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Verdoel/Opgradeer die spoor tipe
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Sleep trein enjin hier om hele trein te verkoop
 
-STR_DRAG_DROP                                                   :{BLACK}Sleep & Drop
-STR_STATION_DRAG_DROP                                           :{BLACK}Bou 'n stasie gebruikend sleep & drop
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Sleep & Drop
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bou 'n stasie gebruikend sleep & drop
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Kies 'n stasie klas om te vertoon
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Kies die stasie tipe om te bou
 
-STR_FAST_FORWARD                                                :{BLACK}Vinnig vooruit die spel
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Vinnig vooruit die spel
 STR_MESSAGE_HISTORY                                             :{WHITE}Boodskap Geskidenis
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}'n Lys van al die onlangs nuus boodskappe
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Sper alle
@@ -2686,9 +2686,9 @@ STR_TRAIN_NO_POWER                                              :{RED}Geen Krag
 STR_TRAIN_START_NO_CATENARY                                     :Die spoor kort n kettinglyn, dus kan die trien nie aanskakel nie
 STR_TRAIN_STUCK                                                 :{ORANGE}Wag vir beskikbare pad
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nuwe {STRING} nou beskikbaar!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nuwe {STRING} nou beskikbaar!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}Nuwe {STRING} nou beskikbaar!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nuwe {STRING} nou beskikbaar!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Kan nie vernietige voertuig verkoop nie...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Kan nie vernietigte voertuig aanpas nie...
@@ -2734,7 +2734,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bou skip
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste skip arriveer by {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plaas baken wat kan as 'n wegpunt gebruik word
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan nie baken hier plaas nie...
-STR_BUILD_AQUEDUCT                                              :{BLACK}Bou akwamaryn
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bou akwamaryn
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Kan nie akwamaryn hier bou nie...
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Herstel)
 STR_REFIT_TITLE                                                 :{GOLD}Kies vrag tipe vir skip te ontvoer:
@@ -2751,7 +2751,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bou lugh
 
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste vliegtuig arriveer by {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Vliegtuig Botsing!{}{COMMA} stef in die vuurbol by {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Vliegtuig Ongeluk!{}Vliegtuig het geen petrol nie, {COMMA} sterf in 'n bal van vuur!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Vliegtuig Ongeluk!{}Vliegtuig het geen petrol nie, {COMMA} sterf in 'n bal van vuur!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Rooster)
@@ -2802,8 +2802,8 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Bedrag v
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Die bedrag van geld dat die maatskappy het gevat op lening
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Totaale punte uit van moontlike punte
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Stellings
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Wys NewGRF stellings
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stellings
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Wys NewGRF stellings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF stellings
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Wend aan veranderings
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Tokkel pallet
@@ -3274,20 +3274,20 @@ STR_BORDER_RANDOM                                               :{BLACK}Lukraak
 STR_BORDER_RANDOMIZE                                            :{BLACK}Lukraak
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}Klein
-STR_CITY_AIRPORT                                                :{BLACK}Dorp
-STR_METRO_AIRPORT                                               :{BLACK}Metropolitaans lughawe
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internasionaale lughawe
-STR_COMMUTER_AIRPORT                                            :{BLACK}Pendelaar
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Tussenkontinentaal
-STR_HELIPORT                                                    :{BLACK}Helihawe
-STR_HELIDEPOT                                                   :{BLACK}Helidepot
-STR_HELISTATION                                                 :{BLACK}Helistasie
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Klein
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Dorp
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitaans lughawe
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internasionaale lughawe
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Pendelaar
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Tussenkontinentaal
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helihawe
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helidepot
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helistasie
 
-STR_SMALL_AIRPORTS                                              :{BLACK}Klein lughawe
-STR_LARGE_AIRPORTS                                              :{BLACK}Groot Lughawe
-STR_HUB_AIRPORTS                                                :{BLACK}Naaf lughawe
-STR_HELIPORTS                                                   :{BLACK}Helikopter lughawe
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Klein lughawe
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Groot Lughawe
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Naaf lughawe
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopter lughawe
 
 ############ Tooltip measurment
 
@@ -3484,8 +3484,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI Stellings
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Wys AI stellings
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI Stellings
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Wys AI stellings
 STR_AI_DEBUG                                                    :{WHITE}AI ontfout
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Naam van die AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaai AI
@@ -3532,8 +3532,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... verb
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... lêer nie skryfbaar nie
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kon nie die afgelaaide lêer dekompakteer
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Kyk Na Aanlyn Inhoud
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Kyk vir nuwe of bygewerkde inhoud om af te laai
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kyk Na Aanlyn Inhoud
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kyk vir nuwe of bygewerkde inhoud om af te laai
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Vind vermisde inhoud aanlyn
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Kyk of die vermisde inhoud aanlyn kan gevind word
 ########

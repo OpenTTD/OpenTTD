@@ -238,7 +238,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Kapasite
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Oyunu durdur
-STR_FAST_FORWARD                                                :{BLACK}Oyunu hızlandır
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Oyunu hızlandır
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Seçenekler
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Kaydet, ana menüye dön, çık
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Haritayı göster
@@ -260,13 +260,13 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Tren ray
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Karayolu yapımı
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}İskele yapımı
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Havalimanı yapımı
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Arazi düzenleme araç çubuğunu aç (ağaç dikme, alçaltma/yükseltme vb. için).
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Arazi düzenleme araç çubuğunu aç (ağaç dikme, alçaltma/yükseltme vb. için).
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Ses/müzik penceresini göster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Son mesajı/haberi göster, mesaj ayarlarını göster
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Arazi bilgisi
 
 # Extra tooltips for the scenario editor toolbar
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Haritayı, şehir listesini göster
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Haritayı, şehir listesini göster
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Harita yapımı
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Şehir yapımı
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Fabrika yapımı
@@ -547,8 +547,8 @@ STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLAC
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Kaydet
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Şimdiki programı temizle (Sadece Özel1 ve Özel2 için)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Müzik ayarlarını kaydet
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Şu anki programa eklenecek parçayı seçin (Sadece Özel1 ve Özel2 için)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Kullanilan programdan kaldırilacak müzige tıklayın(Custom1 veya Custom2 için geçerli)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Şu anki programa eklenecek parçayı seçin (Sadece Özel1 ve Özel2 için)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kullanilan programdan kaldırilacak müzige tıklayın(Custom1 veya Custom2 için geçerli)
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK} {NUM}{} yılına kalan en iyi şirketler ({STRING} Seviye)
@@ -636,11 +636,11 @@ STR_NEWS_MESSAGE                                                :{STRING}  -  {S
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mesaj
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Mesaj Seçenekleri
-STR_MESSAGES_ALL                                                :{YELLOW}Tüm mesajlar (kapalı/özet/tam)
-STR_MESSAGE_SOUND                                               :{YELLOW}Özet geçerken ses çıkar
-STR_OFF                                                         :Kapalı
-STR_SUMMARY                                                     :Özet
-STR_FULL                                                        :Tam
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Tüm mesajlar (kapalı/özet/tam)
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Özet geçerken ses çıkar
+STR_NEWS_MESSAGES_OFF                                           :Kapalı
+STR_NEWS_MESSAGES_SUMMARY                                       :Özet
+STR_NEWS_MESSAGES_FULL                                          :Tam
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Mesaj türleri:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Oyuncunun durağına ilk aracın gelişi
@@ -671,7 +671,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Trafik kazasi!{}Trenle çarpisan aracın soförü feci şekilde can verdi
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Trafik kazasi!{}{COMMA} kişi patlamadan kurtulamadı
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Uçak Kazasi!{}{COMMA} ölü var - {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Uçak Kazasi!{}Benzin yetmedi, {COMMA} kisi öldü!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Uçak Kazasi!{}Benzin yetmedi, {COMMA} kisi öldü!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}Zeplin düştü - {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}UFO'yla çarpışan araba parçalandı!
@@ -698,7 +698,7 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}{STRING} kaynak sorunları yüzünden kapaniyor!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}Yakında ağaç olmadığı için {STRING} kapanıyor!
 
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Avrupa Birliği Karar Aldı!{}{}Artık ülkemizde para birimi olarak Euro kullanılacak!
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Avrupa Birliği Karar Aldı!{}{}Artık ülkemizde para birimi olarak Euro kullanılacak!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Dünyada Kriz!{}{}Çok büyük bir ekonomik kriz yaşanacağı öngörüldü!
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Kriz Atlatıldı!{}{}Ekonomi yine eski güzel günlerine döndü!
 
@@ -718,25 +718,25 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} aracının programında çok az emir var
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} aracının boş bir emri var
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} emirleri arasında aynı olanlar var
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} aracının geçersiz emirleri var
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} aracının programında çok az emir var
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} aracının boş bir emri var
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} emirleri arasında aynı olanlar var
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} aracının geçersiz emirleri var
 # end of order system
 
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} eskiyor
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} çok eskidi
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} çok eskiyor ve acilen değiştirilmesi gerekiyor
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} devam edecek bir yol bulamıyor.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} kayboldu
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} aracının geçen yıl karı {CURRENCY} idi
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} eskiyor
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} çok eskidi
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} çok eskiyor ve acilen değiştirilmesi gerekiyor
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} devam edecek bir yol bulamıyor.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} kayboldu
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} aracının geçen yıl karı {CURRENCY} idi
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Kargo tipi değişikliğinin başarısız olması {VEHICLE} aracını durdurdu
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Otomatik yenileme {VEHICLE} için başarısız oldu{}{STRING}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Kargo tipi değişikliğinin başarısız olması {VEHICLE} aracını durdurdu
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Otomatik yenileme {VEHICLE} için başarısız oldu{}{STRING}
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING} artık kullanılabilir!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING} artık kullanılabilir!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}{STRING} artık kullanılabilir!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING} artık kullanılabilir!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} artık {STRING} istemiyor
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} artık {STRING} ve {STRING} istemiyor
@@ -766,44 +766,44 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Para bir
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Para birimi seçimi
 
 ############ start of currency region
-STR_CURR_GBP                                                    :Sterlin (£)
-STR_CURR_USD                                                    :Dolar ($)
-STR_CURR_EUR                                                    :Euro (€)
-STR_CURR_YEN                                                    :Yen (¥)
-STR_CURR_ATS                                                    :Avusturya Şilini (ATS)
-STR_CURR_BEF                                                    :Belcika Frangı (BEF)
-STR_CURR_CHF                                                    :İsviçre Frangı (CHF)
-STR_CURR_CZK                                                    :Çek Koruna (CZK)
-STR_CURR_DEM                                                    :Alman markı (DEM)
-STR_CURR_DKK                                                    :Danimarka Kronu (DKK)
-STR_CURR_ESP                                                    :Peseta (ESP)
-STR_CURR_FIM                                                    :Fin Markka (FIM)
-STR_CURR_FRF                                                    :Frank (FRF)
-STR_CURR_GRD                                                    :Yunan Drachma (GRD)
-STR_CURR_HUF                                                    :Macar Forinti (HUF)
-STR_CURR_ISK                                                    :Iceland Kronasi (ISK)
-STR_CURR_ITL                                                    :İtalyan Lirasi (ITL)
-STR_CURR_NLG                                                    :Hollanda Guilder (NLG)
-STR_CURR_NOK                                                    :Norweç Krone (NOK)
-STR_CURR_PLN                                                    :Polon Zilotu (PLN)
-STR_CURR_RON                                                    :Romanya Leusu (RON)
-STR_CURR_RUR                                                    :Rus Rublesi (RUR)
-STR_CURR_SIT                                                    :Slovenya Toları (SIT)
-STR_CURR_SEK                                                    :İsveç Kronasi (SEK)
-STR_CURR_TRY                                                    :Türk Lirasi (TRY)
-STR_CURR_SKK                                                    :Slovak Korunasi (SKK)
-STR_CURR_BRL                                                    :Brezilya Reali (BRL)
-STR_CURR_EEK                                                    :Estonya Kronu (EEK)
-STR_CURR_CUSTOM                                                 :Özel...
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Sterlin (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Avusturya Şilini (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belcika Frangı (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :İsviçre Frangı (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Çek Koruna (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Alman markı (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danimarka Kronu (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Fin Markka (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frank (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Yunan Drachma (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Macar Forinti (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Iceland Kronasi (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :İtalyan Lirasi (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollanda Guilder (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norweç Krone (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polon Zilotu (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Romanya Leusu (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rus Rublesi (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenya Toları (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :İsveç Kronasi (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Türk Lirasi (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovak Korunasi (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brezilya Reali (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estonya Kronu (EEK)
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Özel...
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Ölçü Birimleri
 STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Ölçü birimi seçimi
 
 ############ start of measuring units region
-STR_UNITS_IMPERIAL                                              :Amerikan
-STR_UNITS_METRIC                                                :Metrik
-STR_UNITS_SI                                                    :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Amerikan
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrik
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Karayolu taşıtları
@@ -815,27 +815,27 @@ STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Şehir i
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Şehir isimleri stilini seçin
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :İngilizce (Orjinal)
-STR_TOWNNAME_FRENCH                                             :Fransizca
-STR_TOWNNAME_GERMAN                                             :Almanca
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :İngilizce (Modifiye)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latin-Amerikanca
-STR_TOWNNAME_SILLY                                              :Saçma İngilizce
-STR_TOWNNAME_SWEDISH                                            :İsveççe
-STR_TOWNNAME_DUTCH                                              :Hollandaca
-STR_TOWNNAME_FINNISH                                            :Fince
-STR_TOWNNAME_POLISH                                             :Polonca
-STR_TOWNNAME_SLOVAK                                             :Slovakça
-STR_TOWNNAME_NORWEGIAN                                          :Norveççe
-STR_TOWNNAME_HUNGARIAN                                          :Macarca
-STR_TOWNNAME_AUSTRIAN                                           :Avusturyaca
-STR_TOWNNAME_ROMANIAN                                           :Romanca
-STR_TOWNNAME_CZECH                                              :Çekçe
-STR_TOWNNAME_SWISS                                              :İsviçrece
-STR_TOWNNAME_DANISH                                             :Danimarkaca
-STR_TOWNNAME_TURKISH                                            :Türkçe
-STR_TOWNNAME_ITALIAN                                            :Italyanca
-STR_TOWNNAME_CATALAN                                            :Katalanca
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :İngilizce (Orjinal)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Fransizca
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Almanca
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :İngilizce (Modifiye)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-Amerikanca
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Saçma İngilizce
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :İsveççe
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollandaca
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Fince
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polonca
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakça
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norveççe
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Macarca
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Avusturyaca
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romanca
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Çekçe
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :İsviçrece
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danimarkaca
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Türkçe
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italyanca
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanca
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Otokaydet
@@ -847,23 +847,23 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Her 3 ay
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Her 6 ay
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Her 12 ay
 
-STR_OPTIONS_LANG                                                :{BLACK}Dil
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Görünen dili seçin
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Dil
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Görünen dili seçin
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Tam ekran
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Tam ekran oynamak için bunu isaretleyin
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Tam ekran
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Tam ekran oynamak için bunu isaretleyin
 STR_FULLSCREEN_FAILED                                           :{WHITE}Tam ekran modu başarısız
 
-STR_OPTIONS_RES                                                 :{BLACK}Ekran Çözünürlüğü
-STR_OPTIONS_RES_TIP                                             :{BLACK}Kullanılacak ekran çözünürlüğünü seçin
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekran Çözünürlüğü
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Kullanılacak ekran çözünürlüğünü seçin
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekran görüntüsü biçimi
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Kullanılacak ekran görüntüsü biçimini seçin
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Ekran görüntüsü biçimi
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Kullanılacak ekran görüntüsü biçimini seçin
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Temel grafik seti
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Kullanılacak temel grafik setini seçin
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} kayıp/bozuk dosya
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Temel grafik setiyle ilgili ilave bilgiler
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Temel grafik seti
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kullanılacak temel grafik setini seçin
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} kayıp/bozuk dosya
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Temel grafik setiyle ilgili ilave bilgiler
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -877,15 +877,15 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Çok Oyu
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Seçenekler
 STR_INTRO_DIFFICULTY                                            :{BLACK}Zorluk ({STRING})
-STR_CONFIG_SETTING                                              :{BLACK}Gelişmiş Ayarlar
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Ayarları
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Çevrimiçi İçeriği Kontrol Et
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}YZ Ayarları
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Gelişmiş Ayarlar
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Ayarları
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Çevrimiçi İçeriği Kontrol Et
+STR_INTRO_AI_SETTINGS                                           :{BLACK}YZ Ayarları
 STR_INTRO_QUIT                                                  :{BLACK}Çıkış
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Yeni oyuna başla
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Oyun yükle
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Yükseklik haritasını kullanarak yeni oyun başlat
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Yükseklik haritasını kullanarak yeni oyun başlat
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Özel bir senaryo kullanarak yeni oyun başlat
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Kendi dünyani/senoryonu yarat
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Çok oyunculu oyun başlat
@@ -897,10 +897,10 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}'oyuncak
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Seçenekleri göster
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Zorluk ayarlarını göster
-STR_CONFIG_SETTING_TIP                                          :{BLACK}Gelişmiş ayarları görüntüle
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}NewGRF ayarlarını göster
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}İndirilecek yeni ve güncellenmiş içeriği kontrol et
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}YZ ayarlarını göster
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Gelişmiş ayarları görüntüle
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF ayarlarını göster
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}İndirilecek yeni ve güncellenmiş içeriği kontrol et
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}YZ ayarlarını göster
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' den çık
 
 # Cheat window
@@ -1087,15 +1087,15 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Sağlad�
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Ray yap
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Otoray modunda ray yap
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Otoray modunda ray yap
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Tren garı yap (tren yapımı ve bakımı için)
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Rayı yerimine çevir
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Rayı yerimine çevir
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Tren istasyonu yap
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Demiryolu sinyali yap
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Demiryolu köprüsü yap
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Demiryolu tüneli yap
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Trenyolu yapımında sil/yap arasında geçiş
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Ray türünü dönüştür/geliştir
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Ray türünü dönüştür/geliştir
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Tren Garı Yönü
@@ -1109,8 +1109,8 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Ray say�
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Tren istasyonu için peron sayısı seç
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platform uzunluğu
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Tren istasyonu uzunluğu seç
-STR_DRAG_DROP                                                   :{BLACK}Sürükle Bırak
-STR_STATION_DRAG_DROP                                           :{BLACK}Sürükle bırak tekniğiyle istasyon kur
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Sürükle Bırak
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Sürükle bırak tekniğiyle istasyon kur
 
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Görüntülenecek istasyon türünü seçin
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Yapılacak istasyon türünü seçin
@@ -1175,12 +1175,12 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Yük tra
 # Waterways toolbar
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Suyolu inşaatı
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Suyolu
-STR_BUILD_CANALS_TIP                                            :{BLACK}Kanal yap.
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Kilit yap
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanal yap.
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Kilit yap
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Tersane yap (gemi yapmak ve bakımları için)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}İskele yap
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Yerimi olarak kullanilabilecek bir şamandıra yerlestir
-STR_BUILD_AQUEDUCT                                              :{BLACK}Su kemeri yap
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Su kemeri yap
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Tersane Yönü
@@ -1195,20 +1195,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Havalima
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Havalimanı seçimi
-STR_SMALL_AIRPORT                                               :{BLACK}Küçük
-STR_CITY_AIRPORT                                                :{BLACK}Şehirlerarası
-STR_METRO_AIRPORT                                               :{BLACK}Büyükşehir havalimanı
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Uluslararası havalimanı
-STR_COMMUTER_AIRPORT                                            :{BLACK}Abonman
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Kıtalararası
-STR_HELIPORT                                                    :{BLACK}Heliport
-STR_HELIDEPOT                                                   :{BLACK}Heligaraj
-STR_HELISTATION                                                 :{BLACK}Helistasyon
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Küçük
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Şehirlerarası
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Büyükşehir havalimanı
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Uluslararası havalimanı
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Abonman
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Kıtalararası
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliport
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Heligaraj
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helistasyon
 
-STR_SMALL_AIRPORTS                                              :{BLACK}Küçük havalimanları
-STR_LARGE_AIRPORTS                                              :{BLACK}Büyük Havalimanları
-STR_HUB_AIRPORTS                                                :{BLACK}Merkezi havalimanları
-STR_HELIPORTS                                                   :{BLACK}Helikopter havalimanları
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Küçük havalimanları
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Büyük Havalimanları
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Merkezi havalimanları
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopter havalimanları
 
 
 # Unsorted
@@ -1421,9 +1421,9 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Talimat 
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Talimat listesi kopyalanamiyor...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Paylaşılmış talimat sonu - -
 
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} değiştirmeden sonra çok uzun oldu
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Hiçbir otomatik değiştirme/yenileme kuralı uygulanmadı.
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(para yetmedi)
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} değiştirmeden sonra çok uzun oldu
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Hiçbir otomatik değiştirme/yenileme kuralı uygulanmadı.
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(para yetmedi)
 
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Gelişmiş Ayarlar
 

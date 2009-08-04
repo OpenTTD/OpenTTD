@@ -265,9 +265,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludaj Op
 
 STR_COMPANY_SOMEONE                                             :iu{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :Angla sistemo
-STR_UNITS_METRIC                                                :Metra sistemo
-STR_UNITS_SI                                                    :Sistemo Internacia
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Angla sistemo
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metra sistemo
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :Sistemo Internacia
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -370,7 +370,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Paŭzigu
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Konservu ludon, foriru de la ludo, fermu
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Montru liston da stacidomoj de kompanioj
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Montru mapon
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Montru mapon, urbaron
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Montru mapon, urbaron
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Montru urbaron
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Montru kompaniajn financajn informojn
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Montru ĝeneralajn kompaniajn informojn
@@ -418,9 +418,9 @@ STR_VEHICLE_TRAIN                                               :Trajno
 STR_VEHICLE_ROAD_VEHICLE                                        :Vojveturilo
 STR_VEHICLE_SHIP                                                :Ŝipo
 STR_VEHICLE_AIRCRAFT                                            :Aviadilo
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} malnoviĝis
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} tre malnoviĝis
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} tro malnoviĝis kaj postulas anstataŭiĝon
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} malnoviĝis
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} tre malnoviĝis
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} tro malnoviĝis kaj postulas anstataŭiĝon
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landregionaj informoj
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Forviŝkosto: {LTBLUE}ne eblas
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Forviŝkosto: {RED}{CURRENCY}
@@ -541,8 +541,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Elektu l
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Elektu la duan propran programon
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Viŝu nunan programon (nur propran)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Konservu muzikagordojn
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Alklaku muzikeron por aldoni al la nuna programo (nur propra)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Alklaku muzikeron por viŝi el la nuna programo (nur propra)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Alklaku muzikeron por aldoni al la nuna programo (nur propra)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Alklaku muzikeron por viŝi el la nuna programo (nur propra)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Miksu/ne miksu
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Montru muziker-elektan fenestron
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}Alklaku servon por centrigi la vidon al industrio/urbo
@@ -569,8 +569,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Novaj v
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Ŝarĝakceptado ŝanĝiĝas
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subvencioj
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Ĝeneralaj informoj
-STR_MESSAGES_ALL                                                :{YELLOW}Turnu ĉiujn mesaĝtipojn al: Ne / Resume/ Plene
-STR_MESSAGE_SOUND                                               :{YELLOW}Ludu sonon por resumaj novaĵoj
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Turnu ĉiujn mesaĝtipojn al: Ne / Resume/ Plene
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Ludu sonon por resumaj novaĵoj
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...tro for de la antaŭa destino
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Superkompanioj kiuj atingis {NUM}{}(Nivelo {STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Kompania tabelo en {NUM}
@@ -641,7 +641,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Ŝarĝu 
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Konservu Scenaron
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Ludu Scenaron
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Ludu Altecmapon
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Startu novan ludon, uzante altecmapon por landaspekto
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Startu novan ludon, uzante altecmapon por landaspekto
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Ĉu vi certas ke vi volas forlasi ĉi tiun scenaron?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...nur konstruebla en urboj havantaj pli ol 1200 enloĝantojn
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Movu la komencdaton 1 jaron posten
@@ -666,9 +666,9 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Hazarde
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Montru lastan mesaĝon aŭ novaĵon
-STR_OFF                                                         :Ne
-STR_SUMMARY                                                     :Resume
-STR_FULL                                                        :Plene
+STR_NEWS_MESSAGES_OFF                                           :Ne
+STR_NEWS_MESSAGES_SUMMARY                                       :Resume
+STR_NEWS_MESSAGES_FULL                                          :Plene
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
@@ -771,77 +771,77 @@ STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Ankoraŭ
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Elektu programon de 'Facilvoja muziko'
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Angle (Origine)
-STR_TOWNNAME_FRENCH                                             :France
-STR_TOWNNAME_GERMAN                                             :Germane
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Angle (Aldone)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latin-Amerike
-STR_TOWNNAME_SILLY                                              :Angle (Stulte)
-STR_TOWNNAME_SWEDISH                                            :Svede
-STR_TOWNNAME_DUTCH                                              :Nederlande
-STR_TOWNNAME_FINNISH                                            :Finne
-STR_TOWNNAME_POLISH                                             :Pole
-STR_TOWNNAME_SLOVAK                                             :Slovake
-STR_TOWNNAME_NORWEGIAN                                          :Norvege
-STR_TOWNNAME_HUNGARIAN                                          :Hungare
-STR_TOWNNAME_AUSTRIAN                                           :Aŭstrie
-STR_TOWNNAME_ROMANIAN                                           :Rumane
-STR_TOWNNAME_CZECH                                              :Ĉeĥe
-STR_TOWNNAME_SWISS                                              :Svise
-STR_TOWNNAME_DANISH                                             :Dane
-STR_TOWNNAME_TURKISH                                            :Turke
-STR_TOWNNAME_ITALIAN                                            :Itale
-STR_TOWNNAME_CATALAN                                            :Katalune
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Angle (Origine)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :France
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Germane
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Angle (Aldone)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-Amerike
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Angle (Stulte)
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Svede
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Nederlande
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finne
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Pole
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovake
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norvege
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungare
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Aŭstrie
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumane
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Ĉeĥe
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Svise
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Dane
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turke
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Itale
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalune
 ############ end of townname region
 
-STR_CURR_GBP                                                    :Pundoj (£)
-STR_CURR_USD                                                    :Dolaroj ($)
-STR_CURR_EUR                                                    :Eŭroj (€)
-STR_CURR_YEN                                                    :Enoj (¥)
-STR_CURR_ATS                                                    :Aŭstriaj Ŝilingoj (ATS)
-STR_CURR_BEF                                                    :Belgaj Frankoj (BEF)
-STR_CURR_CHF                                                    :Svisaj Frankoj (CHF)
-STR_CURR_CZK                                                    :Ĉeĥaj Korunoj (CZK)
-STR_CURR_DEM                                                    :Germanaj Markoj (DEM)
-STR_CURR_DKK                                                    :Danaj Kronoj (DKK)
-STR_CURR_ESP                                                    :Pesetoj (ESP)
-STR_CURR_FIM                                                    :Finnaj Markoj (FIM)
-STR_CURR_FRF                                                    :Frankoj (FRF)
-STR_CURR_GRD                                                    :Grekaj Draĥmoj (GRD)
-STR_CURR_HUF                                                    :Hungaraj Forintoj (HUF)
-STR_CURR_ISK                                                    :Islandaj Kronoj (ISK)
-STR_CURR_ITL                                                    :Italaj Liroj (ITL)
-STR_CURR_NLG                                                    :Nederlandaj Guldenoj (NLG)
-STR_CURR_NOK                                                    :Norvegaj Kronoj (NOK)
-STR_CURR_PLN                                                    :Polaj Zlotoj (PLN)
-STR_CURR_RON                                                    :Rumanaj Leŭoj (RON)
-STR_CURR_RUR                                                    :Rusaj Rubloj (RUR)
-STR_CURR_SIT                                                    :Slovenaj Tolaroj (SIT)
-STR_CURR_SEK                                                    :Svedaj Kronoj (SEK)
-STR_CURR_TRY                                                    :Turkaj Liroj (TRY)
-STR_CURR_SKK                                                    :Slovakaj Korunoj (SKK)
-STR_CURR_BRL                                                    :Brazilaj Realoj (BRL)
-STR_CURR_EEK                                                    :Estona Krono (EEK)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pundoj (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolaroj ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Eŭroj (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Enoj (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Aŭstriaj Ŝilingoj (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgaj Frankoj (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Svisaj Frankoj (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Ĉeĥaj Korunoj (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Germanaj Markoj (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danaj Kronoj (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pesetoj (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finnaj Markoj (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frankoj (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grekaj Draĥmoj (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Hungaraj Forintoj (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandaj Kronoj (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italaj Liroj (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Nederlandaj Guldenoj (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norvegaj Kronoj (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polaj Zlotoj (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumanaj Leŭoj (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rusaj Rubloj (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenaj Tolaroj (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svedaj Kronoj (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkaj Liroj (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakaj Korunoj (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilaj Realoj (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estona Krono (EEK)
 
-STR_CURR_CUSTOM                                                 :Alia...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Alia...
 
-STR_OPTIONS_LANG                                                :{BLACK}Lingvo
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Elektu uzotan interfacan lingvon
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Lingvo
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Elektu uzotan interfacan lingvon
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Plena ekrano
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Ŝaltu ĉi tiun kvadrateton por plenekrane ludi OpenTTD
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Plena ekrano
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Ŝaltu ĉi tiun kvadrateton por plenekrane ludi OpenTTD
 STR_FULLSCREEN_FAILED                                           :{WHITE}Plenekrana moduso fiaskis
 
-STR_OPTIONS_RES                                                 :{BLACK}Ekrana montrogrando
-STR_OPTIONS_RES_TIP                                             :{BLACK}Elektu uzotan ekranan montrograndon
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekrana montrogrando
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Elektu uzotan ekranan montrograndon
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekranfota formato
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Elektu uzotan ekranfotan formaton
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Ekranfota formato
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Elektu uzotan ekranfotan formaton
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Baza grafikaro
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selektu la uzendan bazgrafikaron
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} mankanta/koruptita dosiero{P "" s}
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Aldonaj informoj pri la baza grafikaro
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Baza grafikaro
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selektu la uzendan bazgrafikaron
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} mankanta/koruptita dosiero{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Aldonaj informoj pri la baza grafikaro
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fiaskis aŭtomate konservi
 
@@ -863,26 +863,26 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Ne povas
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Ne povas kopii ordenliston...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fino de Dividitaj Ordenoj - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} ne povas trovi padon por daŭrigi.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} estas perdita.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} pasintjare gajnis {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Eŭropa Mona Unio!{}{}De nun uziĝos la Eŭro kiel monunuo por ĉiutagaj montransskriboj en via lando!
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne povas trovi padon por daŭrigi.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} estas perdita.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} pasintjare gajnis {CURRENCY}
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Eŭropa Mona Unio!{}{}De nun uziĝos la Eŭro kiel monunuo por ĉiutagaj montransskriboj en via lando!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} ne havas sufiĉajn ordonojn en la itinero
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} havas malplenan ordonon
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} havas duoblajn ordonojn
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}Ordonoj de {VEHICLE} enhavas nevalidan stacion
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} ne havas sufiĉajn ordonojn en la itinero
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} havas malplenan ordonon
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} havas duoblajn ordonojn
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Ordonoj de {VEHICLE} enhavas nevalidan stacion
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Aŭtorenovigo fiaskis ĉe {VEHICLE}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} tro longas post anstataŭado
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Neniuj aŭtoanstataŭo/renovigo-reguloj aplikitaj.
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(monlimo)
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Aŭtorenovigo fiaskis ĉe {VEHICLE}{}{STRING}
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} tro longas post anstataŭado
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Neniuj aŭtoanstataŭo/renovigo-reguloj aplikitaj.
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(monlimo)
 
-STR_CONFIG_SETTING                                              :{BLACK}Avancitaj agordoj
-STR_CONFIG_SETTING_TIP                                          :{BLACK}Montru avancitajn agordojn
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancitaj agordoj
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Montru avancitajn agordojn
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancitaj agordoj
 
 STR_CONFIG_SETTING_OFF                                          :Malaktiva
@@ -1168,11 +1168,11 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYP
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ŝanĝu trairejan nomon
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Ne povas ŝanĝi trairejan nomon...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Ŝanĝu relon al trairejo
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ŝanĝu relon al trairejo
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Ne povas konstrui trajnan trairejon ĉi tie...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Ne povas forigi trajnan trairejon ĉi tie...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Konstruu fervojojn per Aŭtomata relo
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Konstruu fervojojn per Aŭtomata relo
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...mankas urboj en ĉi tiu scenaro
 STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Mapkreado haltita...{}...mankas taŭgaj urbejoj
@@ -1183,7 +1183,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Multaj hazardaj
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Kovru la mapon per hazarde metitajn industriojn
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Ne povas generi industriojn...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Malfermu la landaspektan ilbreton por (mal)altigi landon, planti arbojn ktp.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Malfermu la landaspektan ilbreton por (mal)altigi landon, planti arbojn ktp.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landaspekto
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Ebenigu landon
 
@@ -1192,11 +1192,11 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Arboj de
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Metu arbojn de hazardaj tipoj
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Ne povas konstrui kanalojn ĉi tie...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Konstruu kanalojn.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Konstruu kanalojn.
 STR_LANDINFO_CANAL                                              :Kanalo
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Ne povas konstrui kluzojn ĉi tie...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Konstruu kluzojn
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Konstruu kluzojn
 STR_LANDINFO_LOCK                                               :Kluzo
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Ne povas meti riverojn ĉi tien...
@@ -1208,16 +1208,16 @@ STR_LANDINFO_COORDS                                             :{BLACK}Troviĝo
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Ne povas forigi stacidomeron...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Ne povas transigi reltipon ĉi tie...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Transigu reltipon
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Transigu reltipon
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Tiru la lokomotivon ĉi tien por vendi la tutan trajnon.
 
-STR_DRAG_DROP                                                   :{BLACK}Tiru k metu
-STR_STATION_DRAG_DROP                                           :{BLACK}Tiru por konstrui stacidomon
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Tiru k metu
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tiru por konstrui stacidomon
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Elektu stacidomklason por montri
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Elektu stacidomtipon por konstrui
 
-STR_FAST_FORWARD                                                :{BLACK}Rapide pluirigu la ludon
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Rapide pluirigu la ludon
 STR_MESSAGE_HISTORY                                             :{WHITE}Mesaĝa Historio
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Listo da aktualaj novaĵoj
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Malaktivigu ĉiujn
@@ -2553,9 +2553,9 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Neinterŝanĝeb
 STR_TRAIN_NO_POWER                                              :{RED}Senforte
 STR_TRAIN_START_NO_CATENARY                                     :Mankas ĉi-trake supera elektro, do la trajno ne povas starti
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nova {STRING} nun haveblas!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nova {STRING} nun haveblas!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}Nova {STRING} nun haveblas!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nova {STRING} nun haveblas!  -  {ENGINE}
 
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ŝanĝu tempon
@@ -2600,7 +2600,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Kreu flu
 
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Enloĝantoj festas . . .{}Unua aviadilo alvenas en {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Aviadilo Kraŝas!{}{COMMA} mortas pro fajro en {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Aviadila Kraŝo!{}Aviadilo ne havis sufiĉan brulaĵon, {COMMA} mortas pro fajro!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Aviadila Kraŝo!{}Aviadilo ne havis sufiĉan brulaĵon, {COMMA} mortas pro fajro!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Timetable)
@@ -2648,7 +2648,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Monkvant
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}La monkvanto pruntita de ĉi tiu kompanio
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Entuta poentaro el eblaj poentoj
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Agordoj de NewGRF
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Agordoj de NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Agordoj de NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Apliku ŝanĝojn
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Agordu parametrojn
@@ -3080,20 +3080,20 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 # Strings for map borders at game generation
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}Malgranda flughaveno
-STR_CITY_AIRPORT                                                :{BLACK}Urba flughaveno
-STR_METRO_AIRPORT                                               :{BLACK}Ĉefurba flughaveno
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internacia flughaveno
-STR_COMMUTER_AIRPORT                                            :{BLACK}Urbeta flughaveno
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinenta
-STR_HELIPORT                                                    :{BLACK}Helikopterejo
-STR_HELIDEPOT                                                   :{BLACK}Helikopterdeponejo
-STR_HELISTATION                                                 :{BLACK}Helikopterstacio
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Malgranda flughaveno
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Urba flughaveno
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Ĉefurba flughaveno
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internacia flughaveno
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Urbeta flughaveno
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Interkontinenta
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helikopterejo
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helikopterdeponejo
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helikopterstacio
 
-STR_SMALL_AIRPORTS                                              :{BLACK}Malgrandaj flughavenoj
-STR_LARGE_AIRPORTS                                              :{BLACK}Grandaj flughavenoj
-STR_HUB_AIRPORTS                                                :{BLACK}Nabaj flughavenoj
-STR_HELIPORTS                                                   :{BLACK}Helikopterhaveno
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Malgrandaj flughavenoj
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Grandaj flughavenoj
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Nabaj flughavenoj
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopterhaveno
 
 ############ Tooltip measurment
 

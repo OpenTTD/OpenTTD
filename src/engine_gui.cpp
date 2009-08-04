@@ -231,12 +231,12 @@ void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
 	const DrawEngineInfo *dei = &_draw_engine_list[Engine::Get(engine)->type];
 
 	SetDParam(0, GetEngineCategoryName(engine));
-	DrawStringMultiLine(1, w->width - 2, 0, 56, STR_NEW_VEHICLE_NOW_AVAILABLE, TC_FROMSTRING, SA_CENTER);
+	DrawStringMultiLine(1, w->width - 2, 0, 56, STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE, TC_FROMSTRING, SA_CENTER);
 
 	GfxFillRect(25, 56, w->width - 25, w->height - 2, 10);
 
 	SetDParam(0, engine);
-	DrawStringMultiLine(1, w->width - 2, 56, 88, STR_NEW_VEHICLE_TYPE, TC_FROMSTRING, SA_CENTER);
+	DrawStringMultiLine(1, w->width - 2, 56, 88, STR_NEWS_NEW_VEHICLE_TYPE, TC_FROMSTRING, SA_CENTER);
 
 	dei->engine_proc(w->width >> 1, 88, engine, GetEnginePalette(engine, _local_company));
 	GfxFillRect(25, 56, w->width - 56, 112, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOUR);

@@ -321,9 +321,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Mängu v
 
 STR_COMPANY_SOMEONE                                             :keegi{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :Mittemeetriline
-STR_UNITS_METRIC                                                :Meetriline
-STR_UNITS_SI                                                    :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Mittemeetriline
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Meetriline
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} miili tunnis
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -426,7 +426,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Seisata 
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Mängu salvestamine/laadimine, mängust lahkumine, väljumine
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Kuvab ettevõtte jaamade nimistu
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Kuva kaart
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Kuva kaart, linnade nimistu
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Kuva kaart, linnade nimistu
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Kuva linnade nimistu
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Kuva ettevõtte finantsolukord
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Kuva üldine info ettevõtte kohta
@@ -474,9 +474,9 @@ STR_VEHICLE_TRAIN                                               :Rong
 STR_VEHICLE_ROAD_VEHICLE                                        :Sõiduk
 STR_VEHICLE_SHIP                                                :Laev
 STR_VEHICLE_AIRCRAFT                                            :Õhusõiduk
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} on vanaks saamas
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} on väga vanaks saamas
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} on väga vanaks saamas ja vajab kiiret väljavahetamist
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} on vanaks saamas
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} on väga vanaks saamas
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} on väga vanaks saamas ja vajab kiiret väljavahetamist
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Maa-ala andmed
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Puhastustasu: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Puhastustasu: {RED}{CURRENCY}
@@ -597,8 +597,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Vali 'om
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Vali 'omatehtud 2' programm
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Tühjenda valitud programm (ainult omatehtud 1 ja omatehtud 2)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Muusikaseadete salvestamine
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Vajuta loole, et seda programmi lisada (ainult omatehtud 1 ja omatehtud 2)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Vajuta laulule, et see eemaldada praegusest progammist (Custom1 või Custom2 ainult)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Vajuta loole, et seda programmi lisada (ainult omatehtud 1 ja omatehtud 2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Vajuta laulule, et see eemaldada praegusest progammist (Custom1 või Custom2 ainult)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Lülita lugude segamine sisse ja välja
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Näita muusikalugude valimise akent
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}Vajuta pakkumisele, et näha linna või tööstuse asukohta
@@ -625,8 +625,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Uus vee
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Veoste vastuvõtutingimuste muutumine
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Toetused
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Üldine teave
-STR_MESSAGES_ALL                                                :{YELLOW}Vali kõikide uudiste tüüp: Väljas / Kokkuvõte / Täielikult
-STR_MESSAGE_SOUND                                               :{YELLOW}Mängi heli ka kokkuvõetud uudistele
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Vali kõikide uudiste tüüp: Väljas / Kokkuvõte / Täielikult
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Mängi heli ka kokkuvõetud uudistele
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...liiga kaugel eelmisest sihtpunktist
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Parimad ettevõtted, kes jõudsid tasemeni {NUM}{}({STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Ettevõtete edetabelis {NUM} kohal
@@ -697,7 +697,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Laadi st
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Salvesta stsenaarium
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Stsenaariumi mängimine
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Kõrguskaardil mängimine
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Alusta uut mängu kasutades kõrguskaarti maastikuna
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Alusta uut mängu kasutades kõrguskaarti maastikuna
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Kas sa oled kindel, et sa tahad kaardi tegemise lõpetada?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...saab ainult ehitada linna, mille rahvastikuarv ületab 1200
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Alguse liigutamine 1 aasta võrra tagasi
@@ -722,9 +722,9 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Suvaline
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Näita viimast teadet
-STR_OFF                                                         :Väljas
-STR_SUMMARY                                                     :Lühike
-STR_FULL                                                        :Täielik
+STR_NEWS_MESSAGES_OFF                                           :Väljas
+STR_NEWS_MESSAGES_SUMMARY                                       :Lühike
+STR_NEWS_MESSAGES_FULL                                          :Täielik
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
@@ -827,77 +827,77 @@ STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Ikka sal
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Street' stiilis muusikaprogrammi valimine
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Inglise (originaalne)
-STR_TOWNNAME_FRENCH                                             :Prantsusmaa
-STR_TOWNNAME_GERMAN                                             :Saksamaa
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Inglise (Lisa)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Ladina-Ameerika
-STR_TOWNNAME_SILLY                                              :Tobedad
-STR_TOWNNAME_SWEDISH                                            :Rootsi
-STR_TOWNNAME_DUTCH                                              :Hollandi
-STR_TOWNNAME_FINNISH                                            :Soome
-STR_TOWNNAME_POLISH                                             :Poola
-STR_TOWNNAME_SLOVAK                                             :Slovakkia
-STR_TOWNNAME_NORWEGIAN                                          :Norra
-STR_TOWNNAME_HUNGARIAN                                          :Ungari
-STR_TOWNNAME_AUSTRIAN                                           :Austria
-STR_TOWNNAME_ROMANIAN                                           :Rumeenia
-STR_TOWNNAME_CZECH                                              :Tšehhi
-STR_TOWNNAME_SWISS                                              :Šveitsi
-STR_TOWNNAME_DANISH                                             :Taani
-STR_TOWNNAME_TURKISH                                            :Türgi
-STR_TOWNNAME_ITALIAN                                            :Itaalia
-STR_TOWNNAME_CATALAN                                            :Katalaani
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Inglise (originaalne)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Prantsusmaa
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Saksamaa
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Inglise (Lisa)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Ladina-Ameerika
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Tobedad
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Rootsi
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollandi
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Soome
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Poola
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakkia
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norra
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungari
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austria
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumeenia
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tšehhi
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Šveitsi
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Taani
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Türgi
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Itaalia
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalaani
 ############ end of townname region
 
-STR_CURR_GBP                                                    :Naelad (£)
-STR_CURR_USD                                                    :Dollarid ($)
-STR_CURR_EUR                                                    :Euro (€)
-STR_CURR_YEN                                                    :Jeen (¥)
-STR_CURR_ATS                                                    :Austria ðilling (ATS)
-STR_CURR_BEF                                                    :Belgia frank (BEF)
-STR_CURR_CHF                                                    :Sveitði frank (CHF)
-STR_CURR_CZK                                                    :Tðehhi kroon (CZK)
-STR_CURR_DEM                                                    :Saksamargad (DEM)
-STR_CURR_DKK                                                    :Taani kroon (DKK)
-STR_CURR_ESP                                                    :Peseeta (ESP)
-STR_CURR_FIM                                                    :Soome mark (FIM)
-STR_CURR_FRF                                                    :Frank (FRF)
-STR_CURR_GRD                                                    :Kreeka drahm (GRD)
-STR_CURR_HUF                                                    :Ungari Forint (HUF)
-STR_CURR_ISK                                                    :Islandi kroon (ISK)
-STR_CURR_ITL                                                    :Itaalia liir (ITL)
-STR_CURR_NLG                                                    :Hollandi kulden (NLG)
-STR_CURR_NOK                                                    :Norra kroon (NOK)
-STR_CURR_PLN                                                    :Poola Zlott (PLN)
-STR_CURR_RON                                                    :Rumeenia Leu (RON)
-STR_CURR_RUR                                                    :Vene rubla (RUR)
-STR_CURR_SIT                                                    :Sloveenia Talaar (SIT)
-STR_CURR_SEK                                                    :Rootsi kroon (SEK)
-STR_CURR_TRY                                                    :Türgi Liir (TRY)
-STR_CURR_SKK                                                    :Slovakkia Kroon (SKK)
-STR_CURR_BRL                                                    :Brasiilia Reaal (BRL
-STR_CURR_EEK                                                    :Eesti Kroon (EEK)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Naelad (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollarid ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jeen (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austria ðilling (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgia frank (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveitði frank (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tðehhi kroon (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Saksamargad (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Taani kroon (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseeta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Soome mark (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frank (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Kreeka drahm (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungari Forint (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandi kroon (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Itaalia liir (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollandi kulden (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norra kroon (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Poola Zlott (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumeenia Leu (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Vene rubla (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Sloveenia Talaar (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Rootsi kroon (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Türgi Liir (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakkia Kroon (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasiilia Reaal (BRL
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Eesti Kroon (EEK)
 
-STR_CURR_CUSTOM                                                 :Omatehtud...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Omatehtud...
 
-STR_OPTIONS_LANG                                                :{BLACK}Keel
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Vali kasutajaliideses kasutatav keel
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Keel
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Vali kasutajaliideses kasutatav keel
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Täisekraan
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Märgi see kast, et OpenTTD täisekraanirežiimis mängida
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Täisekraan
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Märgi see kast, et OpenTTD täisekraanirežiimis mängida
 STR_FULLSCREEN_FAILED                                           :{WHITE}Täisekraanrežiim ebaõnnestus
 
-STR_OPTIONS_RES                                                 :{BLACK}Ekraanilahutus
-STR_OPTIONS_RES_TIP                                             :{BLACK}Ekraanilahutuse valimine
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekraanilahutus
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Ekraanilahutuse valimine
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekraanipildi vorming
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vali kasutatav ekraanipildi vorming
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Ekraanipildi vorming
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Vali kasutatav ekraanipildi vorming
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Põhigraafikakomplekt
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Valige kasutatav põhigraafikakomplekt
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} puuduv{P "" ad}/viga{P ne sed} fail{P "" id}
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Lisaandmed põhigraafikakomplekti kohta
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Põhigraafikakomplekt
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valige kasutatav põhigraafikakomplekt
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} puuduv{P "" ad}/viga{P ne sed} fail{P "" id}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Lisaandmed põhigraafikakomplekti kohta
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automaatne salvestus nurjus
 
@@ -919,26 +919,26 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Sihtpunk
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Sihtpunktide nimekirja ei saa kopeerida...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Jagatud sihtpunktide lõpp - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} ei leia jätkamiseks rada.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} on eksinud.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} tulud eelmisel aastal olid {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Euroopa rahaliit!{}{}Nüüdsest on riigi igapäevaseks käiberahaks Euro!
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ei leia jätkamiseks rada.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} on eksinud.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} tulud eelmisel aastal olid {CURRENCY}
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Euroopa rahaliit!{}{}Nüüdsest on riigi igapäevaseks käiberahaks Euro!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}Sõidukil {VEHICLE} on plaanis liiga vähe käske
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}Sõidukil {VEHICLE} on tühistatud käsk
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}Sõidukil {VEHICLE} on topeltkäske
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}Sõiduki {VEHICLE} käskudes on väär jaam
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Sõidukil {VEHICLE} on plaanis liiga vähe käske
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Sõidukil {VEHICLE} on tühistatud käsk
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Sõidukil {VEHICLE} on topeltkäske
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Sõiduki {VEHICLE} käskudes on väär jaam
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}{VEHICLE} uuendamine ebaõnnestus {}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} on pärast asendamist liiga pikk
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Automaatse asendamise/uuendamise reegleid ei ole rakendatud
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(rahalimiit)
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE} uuendamine ebaõnnestus {}{STRING}
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} on pärast asendamist liiga pikk
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Automaatse asendamise/uuendamise reegleid ei ole rakendatud
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(rahalimiit)
 
-STR_CONFIG_SETTING                                              :{BLACK}Täpsemad seaded
-STR_CONFIG_SETTING_TIP                                          :{BLACK}Näidata täpsemaid seadeid
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Täpsemad seaded
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Näidata täpsemaid seadeid
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Täpsemad seaded
 
 STR_CONFIG_SETTING_OFF                                          :Väljas
@@ -1224,11 +1224,11 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYP
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Muuda meldepunkti nime
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Meldepunkti nime ei saa muuta...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Muuda rööpad meldepunktiks
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Muuda rööpad meldepunktiks
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Meldepunkti ei saa siia rajada...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Meldepunkti ei saa siit eemaldada...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Rööbaste ehitamine kasutades "lohistamist"
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Rööbaste ehitamine kasutades "lohistamist"
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...kaardil puudub linn
 STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Kaarditekitamine katkes...{}...linnadele pole sobilike kohti
@@ -1239,7 +1239,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Palju suvalisi 
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Kata kaart suvaliselt paigutatud tööstustega
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Tööstust ei saa tekitada...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Maastiku tööriistade avamine maa tõstmiseks/langetamiseks, puude istutamiseks, jne.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Maastiku tööriistade avamine maa tõstmiseks/langetamiseks, puude istutamiseks, jne.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Maastik
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Maapinna kõrgus
 
@@ -1248,11 +1248,11 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Suvalise
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Istutab suvalisi puid
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Siia ei saa kanaleid ehitada...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Ehita kanaleid.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Ehita kanaleid.
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Siia ei saa lüüse ehitada...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Lüüsi ehitamine
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Lüüsi ehitamine
 STR_LANDINFO_LOCK                                               :Lüüs
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Jõgesid ei saa siia teha...
@@ -1264,16 +1264,16 @@ STR_LANDINFO_COORDS                                             :{BLACK}Koordina
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Siinset jaamablokki ei saa lammutada...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Siin ei saa raudtee tüüpi muuta...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Muuda/uuenda rööpaliiki
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Muuda/uuenda rööpaliiki
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Tõsta vedur siia, et kogu rong maha müüa
 
-STR_DRAG_DROP                                                   :{BLACK}Venitamine
-STR_STATION_DRAG_DROP                                           :{BLACK}Ehita jaam kasutades hiirega venitust
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Venitamine
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Ehita jaam kasutades hiirega venitust
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Vali jaama klass mida tahad näidata
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Vali ehitatava jaama tüüp
 
-STR_FAST_FORWARD                                                :{BLACK}Mängu aja kiirendamine
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Mängu aja kiirendamine
 STR_MESSAGE_HISTORY                                             :{WHITE}Sõnumite ajalugu
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Nimekiri hiljutistest uudistest
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Kõik välja
@@ -2802,9 +2802,9 @@ STR_TRAIN_NO_POWER                                              :{RED}Vool puudu
 STR_TRAIN_START_NO_CATENARY                                     :Selle raja ahel puudub, rong ei saa sõitu alustada
 STR_TRAIN_STUCK                                                 :{ORANGE}Ootamas vaba rada
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Uus {STRING} saadaval!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Uus {STRING} saadaval!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}Uus {STRING} saadaval!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Uus {STRING} saadaval!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Hävinenud sõidukit ei saa müüa...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Hävitatud sõidukit pole võimalik ümber seadistada...
@@ -2850,7 +2850,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Ehita la
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}{STATION} terminali saabus esimene laev!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Raja teemärgisena kasutatav poi
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Poid ei saa siia asetada...
-STR_BUILD_AQUEDUCT                                              :{BLACK}Ehita veejuhe
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Ehita veejuhe
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Siia ei saa veejuhet ehitada...
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Seadista ümber)
 STR_REFIT_TITLE                                                 :{GOLD}Vali veetav veoseliik:
@@ -2867,7 +2867,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Ehita le
 
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}{STATION} terminali saabus esimene lennuk!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Lennuõnnetus!{}{COMMA} surid tules {STATION}s
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Lennuõnnetus!{}Lennukil lõppes kütus, {COMMA} surid tules!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Lennuõnnetus!{}Lennukil lõppes kütus, {COMMA} surid tules!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Sõiduplaan)
@@ -2918,8 +2918,8 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Rahakogu
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Selle ettevõtte kogulaen
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Kokku punkte võimalikest punktidest
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF seadistused
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Näita NewGRF-seadeid
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF seadistused
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näita NewGRF-seadeid
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Uue graafika sätted
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Rakenda muudatused
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Vaheta paletti
@@ -3300,7 +3300,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Vajuta, 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Siltide nimekiri - {COMMA} Silt{P "" i}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Ümberseadistamise käsu ebaõnnestumine peatas sõiduki {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Ümberseadistamise käsu ebaõnnestumine peatas sõiduki {VEHICLE}
 
 ############ Lists rail types
 
@@ -3404,20 +3404,20 @@ STR_BORDER_RANDOMIZE                                            :{BLACK}Suvaline
 STR_BORDER_MANUAL                                               :{BLACK}Ise valitud
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}Väike
-STR_CITY_AIRPORT                                                :{BLACK}Linn
-STR_METRO_AIRPORT                                               :{BLACK}Metropoli lennuväli
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Rahvusvaheline lennuväli
-STR_COMMUTER_AIRPORT                                            :{BLACK}Turisti
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Ülemaailmne lennuväli
-STR_HELIPORT                                                    :{BLACK}Kopteriväljak
-STR_HELIDEPOT                                                   :{BLACK}Helikopteridepoo
-STR_HELISTATION                                                 :{BLACK}Helijaam
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Väike
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Linn
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropoli lennuväli
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Rahvusvaheline lennuväli
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Turisti
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Ülemaailmne lennuväli
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Kopteriväljak
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helikopteridepoo
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helijaam
 
-STR_SMALL_AIRPORTS                                              :{BLACK}Väikesed lennuväljad
-STR_LARGE_AIRPORTS                                              :{BLACK}Suured lennuväljad
-STR_HUB_AIRPORTS                                                :{BLACK}Suured lennuväljad
-STR_HELIPORTS                                                   :{BLACK}Helikopteri lennuväljad
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Väikesed lennuväljad
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Suured lennuväljad
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Suured lennuväljad
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopteri lennuväljad
 
 ############ Tooltip measurment
 
@@ -3626,8 +3626,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}Tehismõistuse seaded
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Näita tehismõistuse seadeid
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Tehismõistuse seaded
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Näita tehismõistuse seadeid
 STR_AI_DEBUG                                                    :{WHITE}Tehismõistuse debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Tehismõistuse nimi
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Laadi tehismõistus uuesti
@@ -3717,8 +3717,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ühe
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fail pole kirjutatav
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Alla laaditud faili ei saa lahti pakkida
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Internetisisu kontrollimine
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Otsi allalaadimiseks uut ja uuendatud sisu
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Internetisisu kontrollimine
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Otsi allalaadimiseks uut ja uuendatud sisu
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Otsi internetist puuduvat sisu
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Otsi kas puuduvat sisu leidub internetis
 ########

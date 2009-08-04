@@ -249,9 +249,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Tùy ch�
 
 STR_COMPANY_SOMEONE                                             :ai đó{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :Hệ Anh-Mỹ
-STR_UNITS_METRIC                                                :Hệ Mét
-STR_UNITS_SI                                                    :Hệ SI
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Hệ Anh-Mỹ
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Hệ Mét
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :Hệ SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} dặm/giờ
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -331,7 +331,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tạm d�
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lưu, thoat trò chơi, thoát
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Hiển thị danh sách công ty
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Hiển thị bản đồ
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Hiển thị bản đồ, thư mục thành phố
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Hiển thị bản đồ, thư mục thành phố
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Hiển thị thư mục thành phố
 
 ############ range for service numbers starts
@@ -343,9 +343,9 @@ STR_VEHICLE_TRAIN                                               :Tàu
 STR_VEHICLE_ROAD_VEHICLE                                        :Xe cộ
 STR_VEHICLE_SHIP                                                :Tàu thủy
 STR_VEHICLE_AIRCRAFT                                            :Máy bay
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} đang cũ đi
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} đang xuống cấp
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} đang xuống cấp trầm trọng và cần được thay thế ngay lập tức
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} đang cũ đi
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} đang xuống cấp
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} đang xuống cấp trầm trọng và cần được thay thế ngay lập tức
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Tên
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -440,19 +440,19 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...chỉ
 ############ start of townname region
 ############ end of townname region
 
-STR_CURR_GBP                                                    :Bảng Anh (£)
-STR_CURR_USD                                                    :Đô-la Mỹ ($)
-STR_CURR_YEN                                                    :Yên (¥)
-STR_CURR_ATS                                                    :Shilling Úc (ATS)
-STR_CURR_BEF                                                    :Phơ-răng Bỉ (BEF)
-STR_CURR_CHF                                                    :Phơ-răng Thụy Sỹ (CHF)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Bảng Anh (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Đô-la Mỹ ($)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yên (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Shilling Úc (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Phơ-răng Bỉ (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Phơ-răng Thụy Sỹ (CHF)
 
-STR_CURR_CUSTOM                                                 :Tùy chọn...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Tùy chọn...
 
-STR_OPTIONS_LANG                                                :{BLACK}Ngôn ngữ
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Lựa chọn sử dụng ngôn ngữ giao diện
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Ngôn ngữ
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Lựa chọn sử dụng ngôn ngữ giao diện
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Toàn màn hình
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Toàn màn hình
 
 
 

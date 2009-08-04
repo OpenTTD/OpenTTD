@@ -265,9 +265,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}אפשר
 
 STR_COMPANY_SOMEONE                                             :{SKIP}{SKIP}מישהו
 
-STR_UNITS_IMPERIAL                                              :אימפריאל
-STR_UNITS_METRIC                                                :מטרית
-STR_UNITS_SI                                                    :השיטה הבינלאומית
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :אימפריאל
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :מטרית
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :השיטה הבינלאומית
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} מייל לשעה
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} קמ"ש
@@ -367,7 +367,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}השהה
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}צא, עזוב משחק, שמור
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}הצג רשימת תחנות
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}הראה מפה,חלון תצוגה נוסף או רשימת סימניות
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}הצג מפה, מדריך עיירות
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}הצג מפה, מדריך עיירות
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}הצג מדריך ערים
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}הצג מידע כספי על החברה
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}הצג מידע כללי על החברה
@@ -415,9 +415,9 @@ STR_VEHICLE_TRAIN                                               :רכבת
 STR_VEHICLE_ROAD_VEHICLE                                        :רכב
 STR_VEHICLE_SHIP                                                :כלי שייט
 STR_VEHICLE_AIRCRAFT                                            :כלי טייס
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}מתיישן {VEHICLE}
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}מתיישן מאוד {VEHICLE}
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}מתיישן מאוד, וזקוק להחלפה בדחיפות {VEHICLE}
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}מתיישן {VEHICLE}
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}מתיישן מאוד {VEHICLE}
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}מתיישן מאוד, וזקוק להחלפה בדחיפות {VEHICLE}
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}מידע על שטח קרקע
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{LTBLUE}לא זמין {BLACK}:עלות פינוי
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{RED}{CURRENCY}{BLACK} :עלות פינוי
@@ -538,8 +538,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}(בחר 
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}(בחר בתוכנית 'מותאמת 2' (מוגדר על ידי המשתמש
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}מחק תוכנית נוכחית
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}שמור הגדרות נגינה
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}(לחץ כאן כדי להוסיף לתוכנית הנוכחית(מותאם אישית1 או מותאם אישית 2 בלבד
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}(לחץ על רצועה כדי להסיר אותה מהתוכנית הנוחכית(מותאם אישית 1 או מותאם אישית 2 בלבד
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}(לחץ כאן כדי להוסיף לתוכנית הנוכחית(מותאם אישית1 או מותאם אישית 2 בלבד
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}(לחץ על רצועה כדי להסיר אותה מהתוכנית הנוחכית(מותאם אישית 1 או מותאם אישית 2 בלבד
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}עירבוב תוכניות פועל/כבוי
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}הצג את חלון בחירת המנגינה
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}לחץ על שירות כדי להתמקד על עיר/תעשייה
@@ -566,8 +566,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}דגמ�
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}שינויים במטענים המתקבלים
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}סובסידיות
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}מידע כללי
-STR_MESSAGES_ALL                                                :{YELLOW}שנה הכל ל- כבוי\תמציתי\פועל
-STR_MESSAGE_SOUND                                               :{YELLOW}נגן סאונד להודעות תמציות
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}שנה הכל ל- כבוי\תמציתי\פועל
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}נגן סאונד להודעות תמציות
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...רחוק מידי מהיעד הקודם
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}החברות שהגיעו {NUM}{}({STRING} לרמת)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}טבלת ליגה של חברות ב {NUM}
@@ -637,7 +637,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}פתח �
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}שמור סצנריו
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}שחק סצנריו
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}שחק במפת גובה
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}התחל משחק חדש בשימוש מפת גובה כנוף.
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}התחל משחק חדש בשימוש מפת גובה כנוף.
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}?האם אתה בטוח שברצונך לצאת משלב זה
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...ניתן לבנות בערים עם אוכלוסיה של לפחות 1200 איש
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}שנה את שנת ההתחלה לשנה 1 פחות
@@ -657,9 +657,9 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}אקרא
 
 STR_NEWS_MESSAGE                                                :{1:STRING}  -  {0:STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}הצג הודעה או חדשות אחרונים
-STR_OFF                                                         :כבוי
-STR_SUMMARY                                                     :תמצית
-STR_FULL                                                        :מלא
+STR_NEWS_MESSAGES_OFF                                           :כבוי
+STR_NEWS_MESSAGES_SUMMARY                                       :תמצית
+STR_NEWS_MESSAGES_FULL                                          :מלא
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
@@ -762,75 +762,75 @@ STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}!שמי�
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}בחר בתוכנית מנגינה בסגנון קליל
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :אנגלית
-STR_TOWNNAME_FRENCH                                             :צרפתית
-STR_TOWNNAME_GERMAN                                             :גרמנית
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :אנגלית
-STR_TOWNNAME_LATIN_AMERICAN                                     :אמריקאי-לטיני
-STR_TOWNNAME_SILLY                                              :מצחיק
-STR_TOWNNAME_SWEDISH                                            :שוודית
-STR_TOWNNAME_DUTCH                                              :הולנדית
-STR_TOWNNAME_FINNISH                                            :פינית
-STR_TOWNNAME_POLISH                                             :פולנית
-STR_TOWNNAME_SLOVAK                                             :סלובקית
-STR_TOWNNAME_NORWEGIAN                                          :נורבגית
-STR_TOWNNAME_HUNGARIAN                                          :הונגרית
-STR_TOWNNAME_AUSTRIAN                                           :אוסטרית
-STR_TOWNNAME_ROMANIAN                                           :רומנית
-STR_TOWNNAME_CZECH                                              :צ'כית
-STR_TOWNNAME_SWISS                                              :שווצרית
-STR_TOWNNAME_DANISH                                             :דנית
-STR_TOWNNAME_TURKISH                                            :טורקית
-STR_TOWNNAME_ITALIAN                                            :איטלקית
-STR_TOWNNAME_CATALAN                                            :רומאית
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :אנגלית
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :צרפתית
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :גרמנית
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :אנגלית
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :אמריקאי-לטיני
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :מצחיק
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :שוודית
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :הולנדית
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :פינית
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :פולנית
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :סלובקית
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :נורבגית
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :הונגרית
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :אוסטרית
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :רומנית
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :צ'כית
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :שווצרית
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :דנית
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :טורקית
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :איטלקית
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :רומאית
 ############ end of townname region
 
-STR_CURR_GBP                                                    :(£) פאונדים
-STR_CURR_USD                                                    :($) דולרים
-STR_CURR_EUR                                                    :(€) יורו
-STR_CURR_YEN                                                    :(¥) ין
-STR_CURR_ATS                                                    :(ATS) שילינג אוסטרלי
-STR_CURR_BEF                                                    :(BEF) פרנק בולגרי
-STR_CURR_CHF                                                    :(CHF) פרנק שוודי
-STR_CURR_CZK                                                    :(CZK) קרונה צ'כית
-STR_CURR_DEM                                                    :מרק גרמני
-STR_CURR_DKK                                                    :(DKK) קרונה דנית
-STR_CURR_ESP                                                    :(ESP) פזטה
-STR_CURR_FIM                                                    :(FIM) מרק פיני
-STR_CURR_FRF                                                    :(FRF) פרנק
-STR_CURR_GRD                                                    :(GRD) דרכמה יוונית
-STR_CURR_HUF                                                    :(HUF) פורינט הונגרי
-STR_CURR_ISK                                                    :(ISK) קרונה איסלנדית
-STR_CURR_ITL                                                    :(ITL) לירה איטלקית
-STR_CURR_NLG                                                    :(NLG) גילדן הולנדי
-STR_CURR_NOK                                                    :(NOK) קרונה נורווגית
-STR_CURR_PLN                                                    :(PLN) זלוטי פולני
-STR_CURR_RON                                                    :(RON) ליו רומני
-STR_CURR_RUR                                                    :(RUR) רובל רוסי
-STR_CURR_SIT                                                    :(SIT) טולר סלובני
-STR_CURR_SEK                                                    :(SEK) קרונה שוודית
-STR_CURR_TRY                                                    :(TRY) לירה טורקית
-STR_CURR_SKK                                                    :(SKK) קורונה סלובקית
-STR_CURR_BRL                                                    :(BRL) ריל ברזילאי
-STR_CURR_EEK                                                    :(EEK) קרוני אסטוני
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :(£) פאונדים
+STR_GAME_OPTIONS_CURRENCY_USD                                   :($) דולרים
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :(€) יורו
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :(¥) ין
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :(ATS) שילינג אוסטרלי
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :(BEF) פרנק בולגרי
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :(CHF) פרנק שוודי
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :(CZK) קרונה צ'כית
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :מרק גרמני
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :(DKK) קרונה דנית
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :(ESP) פזטה
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :(FIM) מרק פיני
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :(FRF) פרנק
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :(GRD) דרכמה יוונית
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :(HUF) פורינט הונגרי
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :(ISK) קרונה איסלנדית
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :(ITL) לירה איטלקית
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :(NLG) גילדן הולנדי
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :(NOK) קרונה נורווגית
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :(PLN) זלוטי פולני
+STR_GAME_OPTIONS_CURRENCY_RON                                   :(RON) ליו רומני
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :(RUR) רובל רוסי
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :(SIT) טולר סלובני
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :(SEK) קרונה שוודית
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :(TRY) לירה טורקית
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :(SKK) קורונה סלובקית
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :(BRL) ריל ברזילאי
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :(EEK) קרוני אסטוני
 
-STR_CURR_CUSTOM                                                 :אחר...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :אחר...
 
-STR_OPTIONS_LANG                                                :{BLACK}שפה
-STR_OPTIONS_LANG_TIP                                            :{BLACK}בחר את שפת הממשק
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}שפה
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}בחר את שפת הממשק
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}מסך מלא
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}סמן תיבה זו כדי לשחק OpenTTD על כל המסך
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}מסך מלא
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}סמן תיבה זו כדי לשחק OpenTTD על כל המסך
 STR_FULLSCREEN_FAILED                                           :{WHITE}נכשל בשינויי למסך מלא
 
-STR_OPTIONS_RES                                                 :{BLACK}רזלוציית המסך
-STR_OPTIONS_RES_TIP                                             :{BLACK}בחר את רזולוציית המסך
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}רזלוציית המסך
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}בחר את רזולוציית המסך
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}פורמט צילום המסך
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}בחר את הפורמט של צילום המסך
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}פורמט צילום המסך
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}בחר את הפורמט של צילום המסך
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}סט גרפיקה בסיסי
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}בחר בסט גרפיקה בסיסי לשימוש
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}סט גרפיקה בסיסי
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}בחר בסט גרפיקה בסיסי לשימוש
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}שמירה אוטומטית נכשלה
 
@@ -852,26 +852,26 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}לא נ�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}לא ניתן להעתיק יעדים...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - סוף של הוראות משותפות - -
 
-STR_TRAIN_IS_STUCK                                              :איננה יכולה למצוא נתיב המשכה {WHITE}{VEHICLE}
-STR_TRAIN_IS_LOST                                               :הלכה לאיבוד {WHITE}{VEHICLE}
-STR_VEHICLE_IS_UNPROFITABLE                                     :ריווחי {WHITE}{VEHICLE} שנה שעברה הם {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}!היורו הינו המטבע היחידי המשמש לסחר חליפין בארצך {} האיחוד המוניטרי האירופאי
+STR_NEWS_TRAIN_IS_STUCK                                         :איננה יכולה למצוא נתיב המשכה {WHITE}{VEHICLE}
+STR_NEWS_TRAIN_IS_LOST                                          :הלכה לאיבוד {WHITE}{VEHICLE}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :ריווחי {WHITE}{VEHICLE} שנה שעברה הם {CURRENCY}
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}!היורו הינו המטבע היחידי המשמש לסחר חליפין בארצך {} האיחוד המוניטרי האירופאי
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}ל{VEHICLE} חסר(ים) יעד(ים) במסלול הנסיעה של
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}ל{VEHICLE} יעד שאינו קיים עוד עבור
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}ל{VEHICLE} כפילות ברשימת היעדים של
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} יעד בלתי חוקי במסלול הנסיעה של
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}ל{VEHICLE} חסר(ים) יעד(ים) במסלול הנסיעה של
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}ל{VEHICLE} יעד שאינו קיים עוד עבור
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}ל{VEHICLE} כפילות ברשימת היעדים של
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} יעד בלתי חוקי במסלול הנסיעה של
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}{1:STRING}{}נכשל {NBSP}{0:VEHICLE} חידוש אוטומטי עבור
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}ארוכה מידי לאחר ביצוע ההחלפה {VEHICLE}
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}אין כללים להחלפה/חידוש אוטומטיים
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(הגבלת כסף)
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{1:STRING}{}נכשל {NBSP}{0:VEHICLE} חידוש אוטומטי עבור
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}ארוכה מידי לאחר ביצוע ההחלפה {VEHICLE}
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}אין כללים להחלפה/חידוש אוטומטיים
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(הגבלת כסף)
 
-STR_CONFIG_SETTING                                              :{BLACK}הגדרות מתקדמות
-STR_CONFIG_SETTING_TIP                                          :{BLACK}הצג הגדרות מתקדמות
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}הגדרות מתקדמות
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}הצג הגדרות מתקדמות
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}הגדרות מתקדמות
 
 STR_CONFIG_SETTING_OFF                                          :כבוי
@@ -1148,11 +1148,11 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYP
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}ערוך שם נקודת ציון
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}שינוי שם היעד נכשל...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}הפוך מסילה לנקודת ציון
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}הפוך מסילה לנקודת ציון
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}לא ניתן לבנות תחנת רכבת באתר זה
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}לא ניתן להסיר תחנת רכבת מאתר זה
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}בנה מסילה במצב אוטומטי
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}בנה מסילה במצב אוטומטי
 
 STR_NO_TOWN_IN_SCENARIO                                         ::{WHITE}אין ערים בסצנריו זה...
 
@@ -1162,7 +1162,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :תעשיות א
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}פזר על המפה תעשיות באופן אקראי
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}ניסיון ליצור תעשיות נכשל
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}'הצג את סרגל פני השטח לעיצוב פני הקרקע, נטיעת עצים וכו
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}'הצג את סרגל פני השטח לעיצוב פני הקרקע, נטיעת עצים וכו
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}שינוי פני השטח
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}שיטוח הקרקע
 
@@ -1171,11 +1171,11 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}עצים
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}נטע עצים מסוג אקראי במקום זה
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}לא ניתן לבנות כאן תעלה
-STR_BUILD_CANALS_TIP                                            :{BLACK}בנה תעלות
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}בנה תעלות
 STR_LANDINFO_CANAL                                              :תעלה
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}לא ניתן לבנות כאן שער ימי
-STR_BUILD_LOCKS_TIP                                             :{BLACK}בניית שערים ימיים
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}בניית שערים ימיים
 STR_LANDINFO_LOCK                                               :תא שייט
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}...לא ניתן לבנות כאן נהר
@@ -1187,16 +1187,16 @@ STR_LANDINFO_COORDS                                             :{LTBLUE}{NUM}x{
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}...לא ניתן לבטל חלק מהתחנה
 STR_CANT_CONVERT_RAIL                                           :{WHITE}...לא ניתן לשנות את סוג המסילה
-STR_CONVERT_RAIL_TIP                                            :{BLACK}שנה/שדרג את המסילה
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}שנה/שדרג את המסילה
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}גרור את הקטר לכאן כדי למכור את הרכבת
 
-STR_DRAG_DROP                                                   :{BLACK}גרירה ושחרור
-STR_STATION_DRAG_DROP                                           :{BLACK}בניית תחנה ע"י גרירה ושחרור
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}גרירה ושחרור
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}בניית תחנה ע"י גרירה ושחרור
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}בחר את סוג התחנה שיוצג
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}בחר את סוג התחנה לבנייה
 
-STR_FAST_FORWARD                                                :{BLACK}הרץ את הזמן במהירות
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}הרץ את הזמן במהירות
 STR_MESSAGE_HISTORY                                             :{WHITE}היסטוריית ההודעות
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}רשימת ההודעות האחרונות
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}השתק את כולן
@@ -2704,9 +2704,9 @@ STR_TRAIN_NO_POWER                                              :{RED}סוג מ�
 STR_TRAIN_START_NO_CATENARY                                     :סוג מסילה לא מתאים לרכבת זו
 STR_TRAIN_STUCK                                                 :{ORANGE}...ממתינה לנתיב פנוי
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}!חדש זמין {STRING}
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}! חדש זמין כעת {STRING}  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}!חדש זמין {STRING}
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}! חדש זמין כעת {STRING}  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}...הכלי הושמד, לא ניתן למכרו
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}... הכלי הושמד, לא ניתן להתאימו
@@ -2752,7 +2752,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}(בני�
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}!{STATION} התושבים חוגגים... {}ספינה ראשונה הגיעה ל
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}מקם מצוף שיכול לשמש כנקודת ציון לכלי שייט
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}לא ניתן למקם מצוף במשבצת זו
-STR_BUILD_AQUEDUCT                                              :{BLACK}בנה אקוודוקט
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}בנה אקוודוקט
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}...לא ניתן לבנות אקוודוקט באתר זה
 STR_REFIT_CAPTION                                               :{WHITE}(התאם) {VEHICLE}
 STR_REFIT_TITLE                                                 :{GOLD}בחר את סוג המטען עבור כלי שייט זה
@@ -2769,7 +2769,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}בנה �
 
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}!{STATION} התושבים חוגגים... {}מטוס ראשון הגיע ל
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT} !התרסקות מטוס {}{NBSP}{1:STATION} נספו בפיצוץ בשדה התעופה {NBSP}{0:COMMA}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}!התרסקות מטוס{} {NBSP}נספו בפיצוץ {COMMA} ,הדלק אזל במהלך הטיסה
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}!התרסקות מטוס{} {NBSP}נספו בפיצוץ {COMMA} ,הדלק אזל במהלך הטיסה
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE} (לוח זמנים){VEHICLE}
@@ -2820,7 +2820,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}מאזן
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}גודל ההלוואה שלקחה החברה
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}סה"כ נקודות מתוך 1000 נקודות אפשריות
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}(NewGRF)הגדרות שדרוג גראפי
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}(NewGRF)הגדרות שדרוג גראפי
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}(NewGRF)הגדרות שדרוג גראפי
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}החל הגדרות
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}החלף פלטת צבעים
@@ -3185,7 +3185,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}לחץ �
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}סימניות {COMMA} - רשימת סימניות
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}{VEHICLE} כשלון בהתאמה מחדש הביא לעצירה של
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} כשלון בהתאמה מחדש הביא לעצירה של
 
 ############ Lists rail types
 
@@ -3288,20 +3288,20 @@ STR_BORDER_RANDOMIZE                                            :{BLACK}אקרא
 STR_BORDER_MANUAL                                               :{BLACK}ידני
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}קטן
-STR_CITY_AIRPORT                                                :{BLACK}עירוני
-STR_METRO_AIRPORT                                               :{BLACK}שדה תעופה מחוזי
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}שדה תעופה לאומי
-STR_COMMUTER_AIRPORT                                            :{BLACK}שדה תעופה מאסף
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}שדה תעופה בינלאומי
-STR_HELIPORT                                                    :{BLACK}מנחת מסוקים
-STR_HELIDEPOT                                                   :{BLACK}מוסך מסוקים
-STR_HELISTATION                                                 :{BLACK}תחנת מסוקים
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}קטן
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}עירוני
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}שדה תעופה מחוזי
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}שדה תעופה לאומי
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}שדה תעופה מאסף
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}שדה תעופה בינלאומי
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}מנחת מסוקים
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}מוסך מסוקים
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}תחנת מסוקים
 
-STR_SMALL_AIRPORTS                                              :{BLACK}שדות תעופה קטנים
-STR_LARGE_AIRPORTS                                              :{BLACK}שדות תעופה גדולים
-STR_HUB_AIRPORTS                                                :{BLACK}נמלי תעופה
-STR_HELIPORTS                                                   :{BLACK}שדות תעופה למסוקים
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}שדות תעופה קטנים
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}שדות תעופה גדולים
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}נמלי תעופה
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}שדות תעופה למסוקים
 
 ############ Tooltip measurment
 
@@ -3510,7 +3510,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}הגדרות בינה מלאכותית
+STR_INTRO_AI_SETTINGS                                           :{BLACK}הגדרות בינה מלאכותית
 STR_AI_DEBUG                                                    :{WHITE}דה-באג לבינה מלאכותית
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}שם הבינה המלאכותית
 STR_AI_DEBUG_RELOAD                                             :{BLACK}טען מחדש בינה מלאכותית
@@ -3594,8 +3594,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE} הקש�
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE} לא ניתן לכתוב קובץ
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE} נכשלה פתיחה של קובץ מכווץ
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK} בדוק תוכן מקוון
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK} חפש תוכן חדש/מעודכן להורדה
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK} בדוק תוכן מקוון
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK} חפש תוכן חדש/מעודכן להורדה
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK} מצא תוכן חסר אונליין
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK} בדוק האם ניתן לאתר את התוכן החסר בשרת
 ########

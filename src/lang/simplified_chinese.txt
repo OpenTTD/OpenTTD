@@ -264,9 +264,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}游戏�
 
 STR_COMPANY_SOMEONE                                             :某人{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :英制
-STR_UNITS_METRIC                                                :公制
-STR_UNITS_SI                                                    :国际单位制
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :英制
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :公制
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :国际单位制
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} 英里/时
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} 千米/小时
@@ -369,7 +369,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}暂停�
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}保存游戏、放弃游戏、退出
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}显示公司所有的车站列表
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}显示地图、附加视点或标志列表
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}显示地图和城镇列表
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}显示地图和城镇列表
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}显示城镇列表
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}显示公司财务状况
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}显示公司综合信息
@@ -417,9 +417,9 @@ STR_VEHICLE_TRAIN                                               :火车
 STR_VEHICLE_ROAD_VEHICLE                                        :汽车
 STR_VEHICLE_SHIP                                                :船只
 STR_VEHICLE_AIRCRAFT                                            :飞机
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} 即将达到报废年限
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE}  已经达到报废年限
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} 已经达到报废年限，必须马上更新！
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} 即将达到报废年限
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE}  已经达到报废年限
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} 已经达到报废年限，必须马上更新！
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地块信息
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}清除费用：{LTBLUE}N/A 不能清除
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}清除费用：{RED}{CURRENCY}
@@ -540,8 +540,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}选择'�
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}选择'自定义2'（用户定义）的列表
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}清除当前列表中曲目{}（仅限自定义1或自定义2）
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}保存游戏设定
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}点击音乐曲目以加入当前播放列表{}(仅限自定义1或自定义2)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}点击音乐曲目以从当前播放列表中删除{}(仅限自定义1或自定义2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}点击音乐曲目以加入当前播放列表{}(仅限自定义1或自定义2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}点击音乐曲目以从当前播放列表中删除{}(仅限自定义1或自定义2)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}开启/关闭 随机播放列表中的曲目
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}打开音乐选单窗口
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}点击项目可将屏幕中心移动到{}城镇/工业 所在的位置
@@ -568,8 +568,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}新的�
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}货物接受情况变更
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}财政补贴
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}综合信息
-STR_MESSAGES_ALL                                                :{YELLOW}将所有信息调整为：关闭/摘要/完全
-STR_MESSAGE_SOUND                                               :{YELLOW}为摘要的信息播放声音
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}将所有信息调整为：关闭/摘要/完全
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}为摘要的信息播放声音
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}距离前一目的地太远……
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}达到 {NUM} 的顶级公司！{}({STRING} 级别)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}公司表现值为 {NUM}
@@ -640,7 +640,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}读取�
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}保存场景
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}以场景开始游戏
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}以高度图开始游戏
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}以高度图决定的地形开始一个新游戏
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}以高度图决定的地形开始一个新游戏
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}你确定要退出当前场景吗？
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}只能在人口超过 1200 的城镇建造……
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}将开始年份向前调整 1 年
@@ -665,9 +665,9 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}随机
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}显示最后一条消息或新闻
-STR_OFF                                                         :关闭
-STR_SUMMARY                                                     :摘要
-STR_FULL                                                        :完全
+STR_NEWS_MESSAGES_OFF                                           :关闭
+STR_NEWS_MESSAGES_SUMMARY                                       :摘要
+STR_NEWS_MESSAGES_FULL                                          :完全
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
@@ -770,77 +770,77 @@ STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}保存�
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}选择'Ezy街头'风格的音乐列表
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :英国 (原始的)
-STR_TOWNNAME_FRENCH                                             :法国
-STR_TOWNNAME_GERMAN                                             :德国
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :英国 (增强的)
-STR_TOWNNAME_LATIN_AMERICAN                                     :美式拉丁
-STR_TOWNNAME_SILLY                                              :搞笑地名
-STR_TOWNNAME_SWEDISH                                            :瑞典
-STR_TOWNNAME_DUTCH                                              :荷兰
-STR_TOWNNAME_FINNISH                                            :芬兰
-STR_TOWNNAME_POLISH                                             :波兰
-STR_TOWNNAME_SLOVAK                                             :斯洛伐克
-STR_TOWNNAME_NORWEGIAN                                          :挪威
-STR_TOWNNAME_HUNGARIAN                                          :匈牙利
-STR_TOWNNAME_AUSTRIAN                                           :澳大利亚
-STR_TOWNNAME_ROMANIAN                                           :罗马尼亚
-STR_TOWNNAME_CZECH                                              :捷克
-STR_TOWNNAME_SWISS                                              :瑞士
-STR_TOWNNAME_DANISH                                             :丹麦
-STR_TOWNNAME_TURKISH                                            :土耳其
-STR_TOWNNAME_ITALIAN                                            :意大利
-STR_TOWNNAME_CATALAN                                            :加泰罗尼亚
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :英国 (原始的)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :法国
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :德国
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :英国 (增强的)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :美式拉丁
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :搞笑地名
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :瑞典
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :荷兰
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :芬兰
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :波兰
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :斯洛伐克
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :挪威
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :匈牙利
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :澳大利亚
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :罗马尼亚
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :捷克
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :瑞士
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :丹麦
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :土耳其
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :意大利
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :加泰罗尼亚
 ############ end of townname region
 
-STR_CURR_GBP                                                    :英镑 (£)
-STR_CURR_USD                                                    :美元 ($)
-STR_CURR_EUR                                                    :欧元 (€)
-STR_CURR_YEN                                                    :日元 (¥)
-STR_CURR_ATS                                                    :澳大利亚先令 (ATS)
-STR_CURR_BEF                                                    :比利时法郎 (BEF)
-STR_CURR_CHF                                                    :瑞士法郎 (CHF)
-STR_CURR_CZK                                                    :捷克克朗 (CZK)
-STR_CURR_DEM                                                    :德国马克 (DEM)
-STR_CURR_DKK                                                    :丹麦克朗 (DKK)
-STR_CURR_ESP                                                    :西班牙比赛塔 (ESP)
-STR_CURR_FIM                                                    :芬兰马克 (FIM)
-STR_CURR_FRF                                                    :法郎 (FRF)
-STR_CURR_GRD                                                    :希腊德拉克马 (GRD)
-STR_CURR_HUF                                                    :匈牙利福林 (HUF)
-STR_CURR_ISK                                                    :冰岛克朗 (ISK)
-STR_CURR_ITL                                                    :意大利里拉 (ITL)
-STR_CURR_NLG                                                    :荷兰盾 (NLG)
-STR_CURR_NOK                                                    :挪威克朗 (NOK)
-STR_CURR_PLN                                                    :波兰兹罗提 (PLN)
-STR_CURR_RON                                                    :罗马尼亚列伊 (RON)
-STR_CURR_RUR                                                    :卢布 (RUR)
-STR_CURR_SIT                                                    :斯洛文尼亚托拉捷夫 (SIT)
-STR_CURR_SEK                                                    :瑞典克朗 (SEK)
-STR_CURR_TRY                                                    :土耳其里拉 (TRY)
-STR_CURR_SKK                                                    :斯洛伐克克朗 (SKK)
-STR_CURR_BRL                                                    :巴西里亚伊 (BRL)
-STR_CURR_EEK                                                    :爱沙尼亚克鲁恩 (EEK)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :英镑 (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :美元 ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :欧元 (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :日元 (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :澳大利亚先令 (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :比利时法郎 (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :瑞士法郎 (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :捷克克朗 (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :德国马克 (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :丹麦克朗 (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :西班牙比赛塔 (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :芬兰马克 (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :法郎 (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :希腊德拉克马 (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :匈牙利福林 (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :冰岛克朗 (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :意大利里拉 (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :荷兰盾 (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :挪威克朗 (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :波兰兹罗提 (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :罗马尼亚列伊 (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :卢布 (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :斯洛文尼亚托拉捷夫 (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :瑞典克朗 (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :土耳其里拉 (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :斯洛伐克克朗 (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :巴西里亚伊 (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :爱沙尼亚克鲁恩 (EEK)
 
-STR_CURR_CUSTOM                                                 :自定义……
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :自定义……
 
-STR_OPTIONS_LANG                                                :{BLACK}语言
-STR_OPTIONS_LANG_TIP                                            :{BLACK}选择界面语言
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}语言
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}选择界面语言
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}全屏幕
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}选择此项可以在全屏幕模式下进行 OpenTTD 游戏
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}全屏幕
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}选择此项可以在全屏幕模式下进行 OpenTTD 游戏
 STR_FULLSCREEN_FAILED                                           :{WHITE}无法切换到全屏模式{}尝试使用不同的分辨率
 
-STR_OPTIONS_RES                                                 :{BLACK}屏幕分辨率
-STR_OPTIONS_RES_TIP                                             :{BLACK}选择要使用的屏幕分辨率
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}屏幕分辨率
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}选择要使用的屏幕分辨率
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}屏幕截图类型
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}选择屏幕截图类型
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}屏幕截图类型
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}选择屏幕截图类型
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}基础图形组
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}选择要使用的基础图形组
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} 文件{}未找到或不正确
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}关于基本图组的额外信息
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基础图形组
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}选择要使用的基础图形组
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} 文件{}未找到或不正确
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}关于基本图组的额外信息
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}自动保存失败
 
@@ -862,26 +862,26 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}不能�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}不能复制调度计划……
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 共享调度计划结束 - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} 无法找到道路
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} 迷路了.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}去年的利润为 {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}欧元区成立！{}{}欧元将作为您公司的作为唯一货币！
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} 无法找到道路
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} 迷路了.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}去年的利润为 {CURRENCY}
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}欧元区成立！{}{}欧元将作为您公司的作为唯一货币！
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} 的调度计划太少
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE}的调度计划中有无效调度命令
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} 有重复调度命令
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE}的调度计划有无效的车站
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} 的调度计划太少
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE}的调度计划中有无效调度命令
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} 有重复调度命令
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE}的调度计划有无效的车站
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}无法自动更新 {VEHICLE}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE}在更新后总长会过长
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}当前无车辆更新进行中.
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(现金不够)
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}无法自动更新 {VEHICLE}{}{STRING}
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE}在更新后总长会过长
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}当前无车辆更新进行中.
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(现金不够)
 
-STR_CONFIG_SETTING                                              :{BLACK}高级设置
-STR_CONFIG_SETTING_TIP                                          :{BLACK}显示高级设置
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}高级设置
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}显示高级设置
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}高级设置
 
 STR_CONFIG_SETTING_OFF                                          :关闭
@@ -1169,11 +1169,11 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYP
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}编辑路点名称
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}不能更改路点名称……
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}将铁路变为路点
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}将铁路变为路点
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}不能在这里设置路点……
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}不能从这里拆除路点……
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}使用全向路轨工具铺设铁轨
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}使用全向路轨工具铺设铁轨
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}当前场景中没有城镇……
 STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}生成场景失败！无合适地点建设城镇。
@@ -1184,7 +1184,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :大量随机工
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}在地图上创建大量随机的工业设施
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}不能生成工业设施……
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}打开景观美化工具栏{}以修改地形、设置地貌等
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}打开景观美化工具栏{}以修改地形、设置地貌等
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}景观美化
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}拉平地面
 
@@ -1193,11 +1193,11 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}随机�
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}种植随机类型的树木
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}不能在这里兴建运河……
-STR_BUILD_CANALS_TIP                                            :{BLACK}修建运河
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}修建运河
 STR_LANDINFO_CANAL                                              :运河
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}不能在这里兴建船闸……
-STR_BUILD_LOCKS_TIP                                             :{BLACK}建设船闸
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}建设船闸
 STR_LANDINFO_LOCK                                               :船闸
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}不能在这里加设河流...
@@ -1209,16 +1209,16 @@ STR_LANDINFO_COORDS                                             :{BLACK}坐标�
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}不能拆除站台的一部分……
 STR_CANT_CONVERT_RAIL                                           :{WHITE}不能转换铁路的类型……
-STR_CONVERT_RAIL_TIP                                            :{BLACK}转换/升级 铁路类型
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}转换/升级 铁路类型
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}将车头拖到这里可以出售整列火车
 
-STR_DRAG_DROP                                                   :{BLACK}拖动模式
-STR_STATION_DRAG_DROP                                           :{BLACK}使用拖动模式建设车站
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}拖动模式
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}使用拖动模式建设车站
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}选择一个要显示车站类型
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}选择要建造的车站类型
 
-STR_FAST_FORWARD                                                :{BLACK}快速游戏模式
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}快速游戏模式
 STR_MESSAGE_HISTORY                                             :{WHITE}消息历史
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}最新的新闻列表
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}全部禁用
@@ -2759,9 +2759,9 @@ STR_TRAIN_NO_POWER                                              :{RED}没有电�
 STR_TRAIN_START_NO_CATENARY                                     :这不是电气化铁路，电力机车不能启动
 STR_TRAIN_STUCK                                                 :{ORANGE}等待空余轨道
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}新 {STRING} 上市了！
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}新 {STRING} 上市了！  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}新 {STRING} 上市了！
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}新 {STRING} 上市了！  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}无法出售毁坏的列车……
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}无法调整毁坏的列车
@@ -2808,7 +2808,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}建造�
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一艘船抵达 {STATION}！
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}放置一个浮标
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}不能将浮标放置在这里。
-STR_BUILD_AQUEDUCT                                              :{BLACK}建设水渠
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}建设水渠
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}无法在此建设水渠……
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (改装)
 STR_REFIT_TITLE                                                 :{GOLD}选择要运输的货物类型：
@@ -2825,7 +2825,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}新建�
 
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一架飞机到达 {STATION} ！
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}飞机坠毁！{}{COMMA} 人在 {STATION} 的事故中罹难！
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}飞机坠毁！{}燃油不足，{COMMA} 人在事故中罹难！
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}飞机坠毁！{}燃油不足，{COMMA} 人在事故中罹难！
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (时间表)
@@ -2876,8 +2876,8 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}银行�
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}向银行贷款的数量
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}总的评价点数
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF 设置
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}显示GRF设定
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 设置
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}显示GRF设定
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 设置
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}应用
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}切换调色板
@@ -3258,7 +3258,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}点击�
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}标志列表 - {COMMA} 个标志
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}重新填充调度计划失败，停止了 {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}重新填充调度计划失败，停止了 {VEHICLE}
 
 ############ Lists rail types
 
@@ -3362,20 +3362,20 @@ STR_BORDER_RANDOMIZE                                            :{BLACK}随机
 STR_BORDER_MANUAL                                               :{BLACK}手动
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}小型机场
-STR_CITY_AIRPORT                                                :{BLACK}城市机场
-STR_METRO_AIRPORT                                               :{BLACK}国内机场
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}国际机场
-STR_COMMUTER_AIRPORT                                            :{BLACK}通勤机场
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}全球机场
-STR_HELIPORT                                                    :{BLACK}直升机停机楼
-STR_HELIDEPOT                                                   :{BLACK}直升机专用机场
-STR_HELISTATION                                                 :{BLACK}直升机小型机场
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}小型机场
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}城市机场
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}国内机场
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}国际机场
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}通勤机场
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}全球机场
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}直升机停机楼
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}直升机专用机场
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}直升机小型机场
 
-STR_SMALL_AIRPORTS                                              :{BLACK}小型机场
-STR_LARGE_AIRPORTS                                              :{BLACK}大型机场
-STR_HUB_AIRPORTS                                                :{BLACK}空运枢纽
-STR_HELIPORTS                                                   :{BLACK}直升机机场
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}小型机场
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}大型机场
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}空运枢纽
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}直升机机场
 
 ############ Tooltip measurment
 
@@ -3584,8 +3584,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI 设定
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}显示AI设定
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI 设定
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}显示AI设定
 STR_AI_DEBUG                                                    :{WHITE}AI 调试
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}AI名称
 STR_AI_DEBUG_RELOAD                                             :{BLACK}重载 AI
@@ -3676,8 +3676,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 丢�
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 文件无法写入
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}无法解压该扩展包
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}在线查找扩展包
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}连接服务器并查找扩展包
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}在线查找扩展包
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}连接服务器并查找扩展包
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}在线查找缺失的扩展包
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}看看您需要的扩展包是否能在线找到
 ########

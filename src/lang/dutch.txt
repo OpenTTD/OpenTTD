@@ -237,7 +237,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Vracht capacite
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauzeer spel
-STR_FAST_FORWARD                                                :{BLACK}Verhoog de spelsnelheid
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Verhoog de spelsnelheid
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opties
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spel opslaan, spel stoppen, afsluiten
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Toon kaart
@@ -259,13 +259,13 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bouw tre
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bouw wegen
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bouw havens
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bouw vliegvelden
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Open de landschapsbalk om land te verhogen/verlagen, bomen te planten, etc.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Open de landschapsbalk om land te verhogen/verlagen, bomen te planten, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Toon geluid/muziekscherm
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Toon laatste (nieuws)bericht, toon berichtinstellingen
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landinformatie
 
 # Extra tooltips for the scenario editor toolbar
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Toon kaart, dorpenlijst
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Toon kaart, dorpenlijst
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landschapproductie
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Stadproductie
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrieproductie
@@ -546,8 +546,8 @@ STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLAC
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Opslaan
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Leeg huidig programma (alleen Aangepast 1 en Aangepast 2)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Sla muziekinstellingen op
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Klik op het nummer om aan programma toe te voegen (alleen Aangepast 1 en Aangepast 2)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klik op het muziek item om het van de lijst te verwijderen (Aangepast 1 en Aangepast 2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik op het nummer om aan programma toe te voegen (alleen Aangepast 1 en Aangepast 2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik op het muziek item om het van de lijst te verwijderen (Aangepast 1 en Aangepast 2)
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top bedrijven die {NUM} bereikt hebben{}({STRING} Niveau)
@@ -635,11 +635,11 @@ STR_NEWS_MESSAGE                                                :{STRING} - {STR
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Bericht
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Berichtopties
-STR_MESSAGES_ALL                                                :{YELLOW}Instelling voor alle berichttypes (aan/uit/samenvatting)
-STR_MESSAGE_SOUND                                               :{YELLOW}Speel een geluid af voor samengevatte nieuwsberichten
-STR_OFF                                                         :Uit
-STR_SUMMARY                                                     :Kort
-STR_FULL                                                        :Volledig
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Instelling voor alle berichttypes (aan/uit/samenvatting)
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Speel een geluid af voor samengevatte nieuwsberichten
+STR_NEWS_MESSAGES_OFF                                           :Uit
+STR_NEWS_MESSAGES_SUMMARY                                       :Kort
+STR_NEWS_MESSAGES_FULL                                          :Volledig
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Berichtsoorten:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Eerste voertuig bij eigen station
@@ -670,7 +670,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Wegvoertuig gebotst!{}Bestuurder verongelukt door treinbotsing
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Wegvoertuig gebotst!{}{COMMA} verongelukt door treinbotsing
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Vliegtuig neergestort!{}{COMMA} sterven in een vuurbal bij {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Vliegtuig Neergestort!{}Vliegtuig had brandstoftekort, {COMMA} komen om in explosie!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Vliegtuig Neergestort!{}Vliegtuig had brandstoftekort, {COMMA} komen om in explosie!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}Zeppelin ongeluk bij {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}Voertuig vernietigd in botsing met 'UFO'
@@ -697,7 +697,7 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}Leveringsproblemen noodzaken {STRING} dreigend faillissement aan te kondigen!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}Gebrek aan nabije bomen noodzaakt {STRING} dreigend faillissement aan te kondigen!
 
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europese Monetaire Unie!{}{}De Euro is geïntroduceerd als de enige munt voor alledaagse transacties in jouw land!
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Europese Monetaire Unie!{}{}De Euro is geïntroduceerd als de enige munt voor alledaagse transacties in jouw land!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Wereld Recessie!{}{}Financiële experts vrezen het ergste terwijl economie ineen stort!
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Recessie Voorbij!{}{}Stijgende handel geeft industrie vertrouwen terwijl economie verstevigd!
 
@@ -717,25 +717,25 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} heeft te weinig orders
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} heeft een lege order
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} heeft dubbele orders
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} heeft een ongeldig station in de orders
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} heeft te weinig orders
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} heeft een lege order
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} heeft dubbele orders
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} heeft een ongeldig station in de orders
 # end of order system
 
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} is oud aan het worden
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} is erg oud aan het worden
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} is erg oud aan het worden en moet nodig vervangen worden
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} kan geen route vinden om verder te gaan.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} is verdwaald.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Winst van {VEHICLE} was vorig jaar {CURRENCY}
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} is oud aan het worden
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} is erg oud aan het worden
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} is erg oud aan het worden en moet nodig vervangen worden
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan geen route vinden om verder te gaan.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} is verdwaald.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Winst van {VEHICLE} was vorig jaar {CURRENCY}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Order ombouwen mislukt gestopt {VEHICLE}
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Automatisch vernieuwen mislukt bij {VEHICLE}{}{STRING}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Order ombouwen mislukt gestopt {VEHICLE}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automatisch vernieuwen mislukt bij {VEHICLE}{}{STRING}
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nieuw {STRING} nu beschikbaar!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nieuw {STRING} nu beschikbaar!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}Nieuw {STRING} nu beschikbaar!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nieuw {STRING} nu beschikbaar!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} accepteert niet langer {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} accepteert niet langer {STRING} en {STRING}
@@ -765,44 +765,44 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Kies valuta
 
 ############ start of currency region
-STR_CURR_GBP                                                    :Pond (£)
-STR_CURR_USD                                                    :Dollar ($)
-STR_CURR_EUR                                                    :Euro (€)
-STR_CURR_YEN                                                    :Yen (¥)
-STR_CURR_ATS                                                    :Australische Shilling (ATS)
-STR_CURR_BEF                                                    :Belgische Franken (BEF)
-STR_CURR_CHF                                                    :Zwitserse Franken (CHF)
-STR_CURR_CZK                                                    :Tsjechische Corona (CZK)
-STR_CURR_DEM                                                    :Duitse Mark (DEM)
-STR_CURR_DKK                                                    :Deense Kronen (DKK)
-STR_CURR_ESP                                                    :Spaanse Peseta (ESP)
-STR_CURR_FIM                                                    :Finse Mark (FIM)
-STR_CURR_FRF                                                    :Franse Franc (FRF)
-STR_CURR_GRD                                                    :Griekse Drachme (GRD)
-STR_CURR_HUF                                                    :Hongaarse Forint (HUF)
-STR_CURR_ISK                                                    :IJslandse Kronen (ISK)
-STR_CURR_ITL                                                    :Italiaanse Lieren (ITL)
-STR_CURR_NLG                                                    :Nederlandse Gulden (NLG)
-STR_CURR_NOK                                                    :Noorse Kronen (NOK)
-STR_CURR_PLN                                                    :Poolse Zloty (PLN)
-STR_CURR_RON                                                    :Roemeense Leu (RON)
-STR_CURR_RUR                                                    :Russische Rubel (RUR)
-STR_CURR_SIT                                                    :Sloveense Tolar (SIT)
-STR_CURR_SEK                                                    :Zweedse Kronen (SEK)
-STR_CURR_TRY                                                    :Turkse Lire (TRY)
-STR_CURR_SKK                                                    :Slowaakse Corona (SKK)
-STR_CURR_BRL                                                    :Braziliaanse Real (BRL)
-STR_CURR_EEK                                                    :Estse Kronen (EEK)
-STR_CURR_CUSTOM                                                 :Aangepast...
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pond (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Australische Shilling (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgische Franken (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Zwitserse Franken (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tsjechische Corona (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Duitse Mark (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Deense Kronen (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Spaanse Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finse Mark (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franse Franc (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Griekse Drachme (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Hongaarse Forint (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :IJslandse Kronen (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italiaanse Lieren (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Nederlandse Gulden (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Noorse Kronen (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Poolse Zloty (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Roemeense Leu (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russische Rubel (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Sloveense Tolar (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Zweedse Kronen (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkse Lire (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slowaakse Corona (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Braziliaanse Real (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estse Kronen (EEK)
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Aangepast...
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Meeteenheden
 STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Selectie meeteenheden
 
 ############ start of measuring units region
-STR_UNITS_IMPERIAL                                              :Imperiaal
-STR_UNITS_METRIC                                                :Metrisch
-STR_UNITS_SI                                                    :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperiaal
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrisch
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Wegvoertuigen
@@ -814,27 +814,27 @@ STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Plaatsna
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Kies type plaatsnamen
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engels (Origineel)
-STR_TOWNNAME_FRENCH                                             :Frans
-STR_TOWNNAME_GERMAN                                             :Duits
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Engels (Extra)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latijns-Amerikaans
-STR_TOWNNAME_SILLY                                              :Zot
-STR_TOWNNAME_SWEDISH                                            :Zweeds
-STR_TOWNNAME_DUTCH                                              :Nederlands
-STR_TOWNNAME_FINNISH                                            :Fins
-STR_TOWNNAME_POLISH                                             :Pools
-STR_TOWNNAME_SLOVAK                                             :Slowaaks
-STR_TOWNNAME_NORWEGIAN                                          :Noors
-STR_TOWNNAME_HUNGARIAN                                          :Hongaars
-STR_TOWNNAME_AUSTRIAN                                           :Oostenrijks
-STR_TOWNNAME_ROMANIAN                                           :Roemeens
-STR_TOWNNAME_CZECH                                              :Tsjechisch
-STR_TOWNNAME_SWISS                                              :Zwitsers
-STR_TOWNNAME_DANISH                                             :Deens
-STR_TOWNNAME_TURKISH                                            :Turks
-STR_TOWNNAME_ITALIAN                                            :Italiaans
-STR_TOWNNAME_CATALAN                                            :Catalaans
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Engels (Origineel)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Frans
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Duits
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Engels (Extra)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latijns-Amerikaans
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Zot
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Zweeds
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Nederlands
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Fins
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Pools
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slowaaks
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Noors
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hongaars
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Oostenrijks
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Roemeens
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tsjechisch
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Zwitsers
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Deens
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turks
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiaans
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalaans
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisch opslaan
@@ -846,23 +846,23 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Iedere 3 maande
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Iedere 6 maanden
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Iedere 12 maanden
 
-STR_OPTIONS_LANG                                                :{BLACK}Taal
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Selecteer de interfacetaal
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Taal
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selecteer de interfacetaal
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Volledig scherm
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Vink dit vakje aan om OpenTTD in het volledige scherm te spelen
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Volledig scherm
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Vink dit vakje aan om OpenTTD in het volledige scherm te spelen
 STR_FULLSCREEN_FAILED                                           :{WHITE}Modus volledigscherm is mislukt
 
-STR_OPTIONS_RES                                                 :{BLACK}Schermresolutie
-STR_OPTIONS_RES_TIP                                             :{BLACK}Selecteer de schermresolutie
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Schermresolutie
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecteer de schermresolutie
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Screenshotformaat
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecteer het formaat van de schermprint
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Screenshotformaat
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecteer het formaat van de schermprint
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Basis graphics set
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selecteer de te gebruiken basis graphics set
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} ontbrekend/corrupt bestand{P "" en}
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Aanvullende informatie over de basis graphics set
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis graphics set
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecteer de te gebruiken basis graphics set
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ontbrekend/corrupt bestand{P "" en}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Aanvullende informatie over de basis graphics set
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -876,15 +876,15 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multipla
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelopties
 STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilijkheidsgraad ({STRING})
-STR_CONFIG_SETTING                                              :{BLACK}Geavanceerde instellingen
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Instellingen
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Online inhoud controleren
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI instellingen
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Geavanceerde instellingen
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Instellingen
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online inhoud controleren
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI instellingen
 STR_INTRO_QUIT                                                  :{BLACK}Afsluiten
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start een nieuw spel
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Laad een opgeslagen spel
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Start een nieuw spel, gebruik een hoogtekaart als landschap
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Start een nieuw spel, gebruik een hoogtekaart als landschap
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Start een nieuw spel, gebaseerd op een scenario
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Maak een eigen spelwereld/scenario
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Start een multi-player spel
@@ -896,10 +896,10 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Kies 'sp
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Bekijk opties
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Bekijk moeilijkheidsgraad
-STR_CONFIG_SETTING_TIP                                          :{BLACK}Toon geavanceerde instellingen
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Toon NewGRF instellingen
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Controleren voor nieuwe en aangepaste inhoud om binnen te halen
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Toon AI instellingen
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Toon geavanceerde instellingen
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Toon NewGRF instellingen
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Controleren voor nieuwe en aangepaste inhoud om binnen te halen
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Toon AI instellingen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Verlaat 'OpenTTD'
 
 # Cheat window
@@ -1086,15 +1086,15 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Bied aan
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Plaats spoor
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Bouw spoor met de Autorail-methode
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bouw spoor met de Autorail-methode
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bouw treindepot (om treinen te bouwen en te onderhouden)
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Converteer spoor naar controlepost
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converteer spoor naar controlepost
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bouw treinstation
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plaats seinen
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bouw spoorbrug
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Graaf spoortunnel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Kies tussen bouwen en weghalen voor spoor en seinen
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Verander railtype
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Verander railtype
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Treindepot richting
@@ -1108,8 +1108,8 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Aantal s
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Selecteer aantal platforms voor station
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platformlengte
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selecteer lengte van station
-STR_DRAG_DROP                                                   :{BLACK}Slepen
-STR_STATION_DRAG_DROP                                           :{BLACK}Bouw een station door te slepen
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Slepen
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bouw een station door te slepen
 
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Selecteer een stationtype
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Selecteer het type station om te bouwen
@@ -1174,12 +1174,12 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selectee
 # Waterways toolbar
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Kanaal constructie
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Kanalen
-STR_BUILD_CANALS_TIP                                            :{BLACK}Bouw kanalen.
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Bouw sluis
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bouw kanalen.
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bouw sluis
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bouw dok (voor bouw en onderhoud van schepen)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bouw dok
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plaats boei, kan gebruikt worden voor extra tussenstops
-STR_BUILD_AQUEDUCT                                              :{BLACK}Bouw aquaduct
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bouw aquaduct
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Dok richting
@@ -1194,20 +1194,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bouw vli
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Vliegveld selectie
-STR_SMALL_AIRPORT                                               :{BLACK}Klein
-STR_CITY_AIRPORT                                                :{BLACK}Stad
-STR_METRO_AIRPORT                                               :{BLACK}Hoofdstedelijk vliegveld
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internationaal vliegveld
-STR_COMMUTER_AIRPORT                                            :{BLACK}Pendel
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinentaal
-STR_HELIPORT                                                    :{BLACK}Heliport
-STR_HELIDEPOT                                                   :{BLACK}Helihangar
-STR_HELISTATION                                                 :{BLACK}Helikopter station
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Klein
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Stad
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Hoofdstedelijk vliegveld
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internationaal vliegveld
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Pendel
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Intercontinentaal
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliport
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helihangar
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helikopter station
 
-STR_SMALL_AIRPORTS                                              :{BLACK}Kleine vliegvelden
-STR_LARGE_AIRPORTS                                              :{BLACK}Grote vliegvelden
-STR_HUB_AIRPORTS                                                :{BLACK}Centraal vliegveld
-STR_HELIPORTS                                                   :{BLACK}Helikopter vliegveld
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Kleine vliegvelden
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Grote vliegvelden
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Centraal vliegveld
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopter vliegveld
 
 
 # Unsorted
@@ -1420,9 +1420,9 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan orde
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan orderlijst niet kopiëren...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Einde gedeelde orders - -
 
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} is te lang na het vervangen
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Geen automatischvervang/vernieuw regels opgegeven.
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(onvoldoende geld)
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} is te lang na het vervangen
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Geen automatischvervang/vernieuw regels opgegeven.
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(onvoldoende geld)
 
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Geavanceerde instellingen
 

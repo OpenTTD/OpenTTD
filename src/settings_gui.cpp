@@ -33,9 +33,9 @@
 #include "table/strings.h"
 
 static const StringID _units_dropdown[] = {
-	STR_UNITS_IMPERIAL,
-	STR_UNITS_METRIC,
-	STR_UNITS_SI,
+	STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL,
+	STR_GAME_OPTIONS_MEASURING_UNITS_METRIC,
+	STR_GAME_OPTIONS_MEASURING_UNITS_SI,
 	INVALID_STRING_ID
 };
 
@@ -77,7 +77,7 @@ void InitGRFTownGeneratorNames()
 
 static inline StringID TownName(int town_name)
 {
-	if (town_name < _nb_orig_names) return STR_TOWNNAME_ORIGINAL_ENGLISH + town_name;
+	if (town_name < _nb_orig_names) return STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + town_name;
 	town_name -= _nb_orig_names;
 	if (town_name < _nb_grf_names) return _grf_names[town_name];
 	return STR_UNDEFINED;
@@ -136,7 +136,7 @@ static void ShowTownnameDropdown(Window *w, int sel)
 	TownList townnames;
 
 	/* Add and sort original townnames generators */
-	for (int i = 0; i < _nb_orig_names; i++) townnames[STR_TOWNNAME_ORIGINAL_ENGLISH + i] = i;
+	for (int i = 0; i < _nb_orig_names; i++) townnames[STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + i] = i;
 
 	/* Add and sort newgrf townnames generators */
 	for (int i = 0; i < _nb_grf_names; i++) townnames[_grf_names[i]] = _nb_orig_names + i;
@@ -187,7 +187,7 @@ struct GameOptionsWindow : Window {
 	{
 		switch (widget) {
 			case GOW_CURRENCY_DROPDOWN:   SetDParam(0, _currency_specs[this->opt->locale.currency].name); break;
-			case GOW_DISTANCE_DROPDOWN:   SetDParam(0, STR_UNITS_IMPERIAL + this->opt->locale.units); break;
+			case GOW_DISTANCE_DROPDOWN:   SetDParam(0, STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL + this->opt->locale.units); break;
 			case GOW_ROADSIDE_DROPDOWN:   SetDParam(0, STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT + this->opt->vehicle.road_side); break;
 			case GOW_TOWNNAME_DROPDOWN:   SetDParam(0, TownName(this->opt->game_creation.town_name)); break;
 			case GOW_AUTOSAVE_DROPDOWN:   SetDParam(0, _autosave_dropdown[_settings_client.gui.autosave]); break;
@@ -367,7 +367,7 @@ struct GameOptionsWindow : Window {
 		this->SetWidgetLoweredState(GOW_FULLSCREEN_BUTTON, _fullscreen);
 
 		bool missing_files = GetGraphicsSetNumMissingFiles(GetIndexOfCurrentGraphicsSet()) == 0;
-		this->nested_array[GOW_BASE_GRF_STATUS]->SetDataTip(missing_files ? STR_EMPTY : STR_OPTIONS_BASE_GRF_STATUS, STR_NULL);
+		this->nested_array[GOW_BASE_GRF_STATUS]->SetDataTip(missing_files ? STR_EMPTY : STR_GAME_OPTIONS_BASE_GRF_STATUS, STR_NULL);
 	}
 };
 
@@ -388,11 +388,11 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 				NWidget(WWT_FRAME, COLOUR_GREY, GOW_AUTOSAVE_FRAME), SetDataTip(STR_GAME_OPTIONS_AUTOSAVE_FRAME, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_AUTOSAVE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP), SetPadding(14, 10, 10, 10),
 				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY, GOW_RESOLUTION_FRAME), SetDataTip(STR_OPTIONS_RES, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_RESOLUTION_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_OPTIONS_RES_TIP), SetPadding(14, 10, 3, 10),
+				NWidget(WWT_FRAME, COLOUR_GREY, GOW_RESOLUTION_FRAME), SetDataTip(STR_GAME_OPTIONS_RESOLUTION, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_RESOLUTION_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_RESOLUTION_TOOLTIP), SetPadding(14, 10, 3, 10),
 					NWidget(NWID_HORIZONTAL),
-						NWidget(WWT_TEXT, COLOUR_GREY, GOW_FULLSCREEN_LABEL), SetMinimalSize(0, 12), SetFill(true, false), SetDataTip(STR_OPTIONS_FULLSCREEN, STR_NULL), SetPadding(0, 2, 4, 10),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, GOW_FULLSCREEN_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_OPTIONS_FULLSCREEN_TIP), SetPadding(0, 10, 4, 0),
+						NWidget(WWT_TEXT, COLOUR_GREY, GOW_FULLSCREEN_LABEL), SetMinimalSize(0, 12), SetFill(true, false), SetDataTip(STR_GAME_OPTIONS_FULLSCREEN, STR_NULL), SetPadding(0, 2, 4, 10),
+						NWidget(WWT_TEXTBTN, COLOUR_GREY, GOW_FULLSCREEN_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP), SetPadding(0, 10, 4, 0),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
@@ -404,22 +404,22 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 				NWidget(WWT_FRAME, COLOUR_GREY, GOW_TOWNNAME_FRAME), SetDataTip(STR_GAME_OPTIONS_TOWN_NAMES_FRAME, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_TOWNNAME_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP), SetPadding(14, 10, 10, 10),
 				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY, GOW_LANG_FRAME), SetDataTip(STR_OPTIONS_LANG, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_LANG_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_OPTIONS_LANG_TIP), SetPadding(14, 10, 10, 10),
+				NWidget(WWT_FRAME, COLOUR_GREY, GOW_LANG_FRAME), SetDataTip(STR_GAME_OPTIONS_LANGUAGE, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_LANG_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_LANGUAGE_TOOLTIP), SetPadding(14, 10, 10, 10),
 				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY, GOW_SCREENSHOT_FRAME), SetDataTip(STR_OPTIONS_SCREENSHOT_FORMAT, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_SCREENSHOT_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_OPTIONS_SCREENSHOT_FORMAT_TIP), SetPadding(14, 10, 10, 10),
+				NWidget(WWT_FRAME, COLOUR_GREY, GOW_SCREENSHOT_FRAME), SetDataTip(STR_GAME_OPTIONS_SCREENSHOT_FORMAT, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_SCREENSHOT_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP), SetPadding(14, 10, 10, 10),
 					NWidget(NWID_SPACER), SetMinimalSize(0, 9),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),
 
-		NWidget(WWT_FRAME, COLOUR_GREY, GOW_BASE_GRF_FRAME), SetDataTip(STR_OPTIONS_BASE_GRF, STR_NULL),
+		NWidget(WWT_FRAME, COLOUR_GREY, GOW_BASE_GRF_FRAME), SetDataTip(STR_GAME_OPTIONS_BASE_GRF, STR_NULL),
 			NWidget(NWID_HORIZONTAL), SetPIP(10, 30, 10),
-				NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_BASE_GRF_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_OPTIONS_BASE_GRF_TIP), SetPadding(14, 0, 0, 0),
-				NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_GRF_STATUS), SetMinimalSize(150, 12), SetDataTip(STR_OPTIONS_BASE_GRF_STATUS, STR_NULL), SetPadding(14, 0, 0, 0),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_BASE_GRF_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_BASE_GRF_TOOLTIP), SetPadding(14, 0, 0, 0),
+				NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_GRF_STATUS), SetMinimalSize(150, 12), SetDataTip(STR_GAME_OPTIONS_BASE_GRF_STATUS, STR_NULL), SetPadding(14, 0, 0, 0),
 			EndContainer(),
-			NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_GRF_DESCRIPTION), SetMinimalSize(330, 0), SetDataTip(STR_EMPTY, STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP), SetPadding(6, 10, 10, 10),
+			NWidget(WWT_TEXT, COLOUR_GREY, GOW_BASE_GRF_DESCRIPTION), SetMinimalSize(330, 0), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP), SetPadding(6, 10, 10, 10),
 		EndContainer(),
 	EndContainer(),
 };

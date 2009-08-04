@@ -264,9 +264,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}تنضی
 
 STR_COMPANY_SOMEONE                                             :یک نفر{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :شاهنشاهی
-STR_UNITS_METRIC                                                :متری
-STR_UNITS_SI                                                    :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :شاهنشاهی
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :متری
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} مایل در ساعت
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} کیلومتر/ساعت
@@ -369,7 +369,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}متوق
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}ذخیره بازی، ترک بازی، خروج از بازی
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}نمایش لیست ایستگاه های شرکت
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}نقشه، پنجره اضافی یا لیست علامت ها را نشان می دهد
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}نقشه، لیست شهر ها را نشان می دهد
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}نقشه، لیست شهر ها را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}لیست شهرها را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}اطلاعات مالی شرکت را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}توضیحات کلی راجع به شرکت را نشان می دهد
@@ -410,7 +410,7 @@ STR_VEHICLE_TRAIN                                               :قطار
 STR_VEHICLE_ROAD_VEHICLE                                        :ماشین
 STR_VEHICLE_SHIP                                                :کشتی
 STR_VEHICLE_AIRCRAFT                                            :هواپیما
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} بسیار قدیمی شده و سریعا احتیاج به جایگزینی دارد
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} بسیار قدیمی شده و سریعا احتیاج به جایگزینی دارد
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}اطلاعات زمین
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}هزینه پاک کردن: {LTBLUE}0
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}هزینه پاک کردن: {RED}{CURRENCY}
@@ -643,7 +643,7 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}ذخیره
 
 
 
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK} اطلاعات اضافه در مورد بسته ی گرافیکی پایه
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK} اطلاعات اضافه در مورد بسته ی گرافیکی پایه
 
 
 
@@ -1756,8 +1756,8 @@ STR_BLACK_7                                                     :{BLACK}7
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}تنظیمات هوش مصنوعی
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}نمایش تنظیمات هوش مصنوعی
+STR_INTRO_AI_SETTINGS                                           :{BLACK}تنظیمات هوش مصنوعی
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}نمایش تنظیمات هوش مصنوعی
 STR_AI_DEBUG                                                    :{WHITE}رفع اشکالات هوش مصنوعی
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}نام هوش مصنوعی
 STR_AI_DEBUG_RELOAD                                             :{BLACK}بازگشایی مجدد هوش مصنوعی
@@ -1843,8 +1843,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ار
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... فایل قابلیت درج ندارد
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}بازگشایی فایل دانلود شده ممکن نیست
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}چک کردن محتوی آنلاین
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}بررسی وجود مجموعه ها و به روز رسانی های جدید در اینترنت
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}چک کردن محتوی آنلاین
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}بررسی وجود مجموعه ها و به روز رسانی های جدید در اینترنت
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}یافتن مجموعه ای که کم است در اینترنت
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK} بررسی اینکه آیا مجموعه ای که کم است در اینترنت یافت می شود یا نه
 ########

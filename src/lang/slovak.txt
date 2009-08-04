@@ -331,9 +331,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Nastaven
 
 STR_COMPANY_SOMEONE                                             :niekto{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :Imperialne
-STR_UNITS_METRIC                                                :Metrické
-STR_UNITS_SI                                                    :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperialne
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrické
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -436,7 +436,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauza
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Uložit hru, opustit hru, ukoncit OpenTTD
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Zoznam staníc spolocnosti
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Zobrazit mapu
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Zobrazit mapu, zoznam miest
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Zobrazit mapu, zoznam miest
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Zobrazit zoznam miest
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Financné informécie o spolocnosti
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Informácie o spolocnosti
@@ -484,9 +484,9 @@ STR_VEHICLE_TRAIN                                               :{G=m}Vlak
 STR_VEHICLE_ROAD_VEHICLE                                        :{G=m}Automobil
 STR_VEHICLE_SHIP                                                :{G=z}Lod
 STR_VEHICLE_AIRCRAFT                                            :{G=s}Lietadlo
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} zastaralo
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} je veľmi zastaralé
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} je veľmi zastaralé a urgentne potrebuje výmenu
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} zastaralo
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} je veľmi zastaralé
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} je veľmi zastaralé a urgentne potrebuje výmenu
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informácie o pozemku
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Náklady na odstránenie: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Náklady na odstránenie: {RED}{CURRENCY}
@@ -607,8 +607,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Vybrat '
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Vybrat 'Vlastny 2' (uzivatelom definovany) program
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Vymazat aktualny program (len Vlastny 1 a Vlastny 2 program)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Ulozit nastavenie hudby
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Kliknut na stopu pre ulozenie (len Vlastny 1 a Vlastny 2 program)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Kliknite na hudobnu stopu pre jej odstranenie z programu (len Vlastny1 alebo Vlastny2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Kliknut na stopu pre ulozenie (len Vlastny 1 a Vlastny 2 program)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliknite na hudobnu stopu pre jej odstranenie z programu (len Vlastny1 alebo Vlastny2)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Zapnut / Vypnut nahodny vyber
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Zobrazit okno pre vyber hudobnych stop
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}Kliknut na trasu pre centrovanie pohladu na tovaren/mesto
@@ -635,8 +635,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nove vo
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Zmeny prijmu nakladu
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Dotacie
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Hlavne informacie
-STR_MESSAGES_ALL                                                :{YELLOW}Nastavenie všetkých správ (vypnuté/obsah/plné)
-STR_MESSAGE_SOUND                                               :{YELLOW}Prehrat zvuk pre strucne novinove spravy
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Nastavenie všetkých správ (vypnuté/obsah/plné)
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Prehrat zvuk pre strucne novinove spravy
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...prilis daleko z predchadzajuceho ciela
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Najlepsie spolocnosti, ktore dosiahli {NUM}{}({STRING} uroven)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Tabulka spolocnosti v roku {NUM}
@@ -707,7 +707,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Nahrat s
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Ulozit scenar
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Hrat scenár
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Hrat výškovú mapu
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Zacat novu hru s pouzitim vyskovej mapy ako krajiny
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Zacat novu hru s pouzitim vyskovej mapy ako krajiny
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Si si isty ze chces ukoncit tento scenar ?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...moze byt postavene v mestach z populaciou vacsou ako 1200
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Posunut zaciatok o rok dozadu
@@ -732,9 +732,9 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Náhodn�
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Zobrazit poslednu spravu alebo novinku
-STR_OFF                                                         :Vypnute
-STR_SUMMARY                                                     :Obsah
-STR_FULL                                                        :Plne
+STR_NEWS_MESSAGES_OFF                                           :Vypnute
+STR_NEWS_MESSAGES_SUMMARY                                       :Obsah
+STR_NEWS_MESSAGES_FULL                                          :Plne
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
@@ -837,77 +837,77 @@ STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Ukladani
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Vyber 'Ezy Street style music' program
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Anglicke
-STR_TOWNNAME_FRENCH                                             :Francuzke
-STR_TOWNNAME_GERMAN                                             :Nemecke
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Anglicke (Dalsie)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latinsko-Americke
-STR_TOWNNAME_SILLY                                              :Hlupe (anglicky)
-STR_TOWNNAME_SWEDISH                                            :Svedske
-STR_TOWNNAME_DUTCH                                              :Holandske
-STR_TOWNNAME_FINNISH                                            :Finske
-STR_TOWNNAME_POLISH                                             :Polske
-STR_TOWNNAME_SLOVAK                                             :Slovenske
-STR_TOWNNAME_NORWEGIAN                                          :Norske
-STR_TOWNNAME_HUNGARIAN                                          :Madarske
-STR_TOWNNAME_AUSTRIAN                                           :Rakuske
-STR_TOWNNAME_ROMANIAN                                           :Rumunske
-STR_TOWNNAME_CZECH                                              :Ceske
-STR_TOWNNAME_SWISS                                              :Svajciarske
-STR_TOWNNAME_DANISH                                             :Danske
-STR_TOWNNAME_TURKISH                                            :Turecké
-STR_TOWNNAME_ITALIAN                                            :Talianske
-STR_TOWNNAME_CATALAN                                            :Katalanske
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Anglicke
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Francuzke
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Nemecke
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Anglicke (Dalsie)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latinsko-Americke
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Hlupe (anglicky)
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Svedske
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Holandske
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finske
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polske
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovenske
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norske
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Madarske
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Rakuske
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumunske
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Ceske
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Svajciarske
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danske
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turecké
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Talianske
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanske
 ############ end of townname region
 
-STR_CURR_GBP                                                    :Libry (£)
-STR_CURR_USD                                                    :Dolare ($)
-STR_CURR_EUR                                                    :Euro (€)
-STR_CURR_YEN                                                    :Jeny (¥)
-STR_CURR_ATS                                                    :Rakuske Silingy (ATS)
-STR_CURR_BEF                                                    :Belgicke Franky (BEF)
-STR_CURR_CHF                                                    :Svajciarske Franky (CHF)
-STR_CURR_CZK                                                    :Ceske Koruny (CZK)
-STR_CURR_DEM                                                    :Nemecke marky(DEM)
-STR_CURR_DKK                                                    :Danske Koruny (DKK)
-STR_CURR_ESP                                                    :Pesety (ESP)
-STR_CURR_FIM                                                    :Finske Marky (FIM)
-STR_CURR_FRF                                                    :Franky (FRF)
-STR_CURR_GRD                                                    :Grecke Drachny (GRD)
-STR_CURR_HUF                                                    :Madarske Forinty (HUF)
-STR_CURR_ISK                                                    :Islandske Koruny (ISK)
-STR_CURR_ITL                                                    :Talianske Liry (ITL)
-STR_CURR_NLG                                                    :Danske Guldeny (NLG)
-STR_CURR_NOK                                                    :Norske Koruny (NOK)
-STR_CURR_PLN                                                    :Polske Zloty (PLN)
-STR_CURR_RON                                                    :Rumunske Lei (RON)
-STR_CURR_RUR                                                    :Ruske Ruble (RUR)
-STR_CURR_SIT                                                    :Slovinske Toliare (SIT)
-STR_CURR_SEK                                                    :Svedske Koruny (SEK)
-STR_CURR_TRY                                                    :Turecke Liry (TRY)
-STR_CURR_SKK                                                    :Slovenske Koruny (SKK)
-STR_CURR_BRL                                                    :Brazílske Realy (BRL)
-STR_CURR_EEK                                                    :Estónsky (EEK)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libry (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolare ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jeny (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Rakuske Silingy (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgicke Franky (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Svajciarske Franky (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Ceske Koruny (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Nemecke marky(DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danske Koruny (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pesety (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finske Marky (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franky (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grecke Drachny (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Madarske Forinty (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandske Koruny (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Talianske Liry (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Danske Guldeny (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norske Koruny (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polske Zloty (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumunske Lei (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ruske Ruble (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovinske Toliare (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svedske Koruny (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turecke Liry (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovenske Koruny (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazílske Realy (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estónsky (EEK)
 
-STR_CURR_CUSTOM                                                 :Vlastná ...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Vlastná ...
 
-STR_OPTIONS_LANG                                                :{BLACK}Jazyk
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Vyber jazyka rozhrania
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jazyk
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Vyber jazyka rozhrania
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Celá obrazovka
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Zaskrtnite, ak chcete hrat OpenTTD na celej obrazovke
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Celá obrazovka
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Zaskrtnite, ak chcete hrat OpenTTD na celej obrazovke
 STR_FULLSCREEN_FAILED                                           :{WHITE}Zobrazovanie na celú obrazovku zlyhalo
 
-STR_OPTIONS_RES                                                 :{BLACK}Rozlíšenie obrazovky
-STR_OPTIONS_RES_TIP                                             :{BLACK}Vyber rozlisenia obrazovky
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rozlíšenie obrazovky
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vyber rozlisenia obrazovky
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formát screenshotov
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vyber format screenshotov
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formát screenshotov
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Vyber format screenshotov
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Základná sada grafiky
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Zvoľte sadu grafiky, ktorá má byť použitá
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} chýbajúci/poškodený súbor{P "" "y" "ov"}
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Dodatočné informácie o základnom grafickom sete
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Základná sada grafiky
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zvoľte sadu grafiky, ktorá má byť použitá
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} chýbajúci/poškodený súbor{P "" "y" "ov"}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatočné informácie o základnom grafickom sete
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Autoulozenie zlyhalo
 
@@ -929,26 +929,26 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nemozno 
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemozno kopirovat zoznam prikazov ...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Koniec zdielanych prikazov - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} nemôže nájsť cestu pre pokračovanie.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} sa stratilo.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} zisk vozidla v minulom roku bol {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europska Menova Unia!{}{}Euro bolo uvedene ako hlavna mena pre bezne pouzivanie v tejto krajine.
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nemôže nájsť cestu pre pokračovanie.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} sa stratilo.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} zisk vozidla v minulom roku bol {CURRENCY}
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Europska Menova Unia!{}{}Euro bolo uvedene ako hlavna mena pre bezne pouzivanie v tejto krajine.
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} má veľmi málo príkazov v poriadku
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} má neplatný príkaz
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} má dvojité príkazy
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} má nesprávnu stanicu v zozname
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} má veľmi málo príkazov v poriadku
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} má neplatný príkaz
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} má dvojité príkazy
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} má nesprávnu stanicu v zozname
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Autoobnovenie zlyhalo u {VEHICLE}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} je dlho po výmene
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Neboli využité žiadne pravidlá pre obnovu.
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(finacny limit)
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoobnovenie zlyhalo u {VEHICLE}{}{STRING}
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} je dlho po výmene
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Neboli využité žiadne pravidlá pre obnovu.
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(finacny limit)
 
-STR_CONFIG_SETTING                                              :{BLACK}Rozšírené nastavenia
-STR_CONFIG_SETTING_TIP                                          :{BLACK}Zobrazit rozšírené nastavenia
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Rozšírené nastavenia
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Zobrazit rozšírené nastavenia
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Rozšírené nastavenia
 
 STR_CONFIG_SETTING_OFF                                          :nie
@@ -1236,11 +1236,11 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYP
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Upravit nazvy smerovych bodov
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nazov smeroveho bodu sa neda zmenit ...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Konvertovat zeleznicu na smerove body
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Konvertovat zeleznicu na smerove body
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Tu nie je mozne postavit zeleznicny smerovy bod ...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Tu nie je mozne odstranit zeleznicny smerovy bod ...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Automaticka stavba zeleznicnych kolaji
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Automaticka stavba zeleznicnych kolaji
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}... v tomto scenari nie je ziadne mesto
 STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Generovanie mapy zrušené...{}...žiadne vyhovujúce lokácie miest
@@ -1251,7 +1251,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Vela nahodneho 
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Pokryt mapu nahodne umiestnenym priemyslom
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Nemozno vygenerovat priemysel ...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Otvorit panel nastrojov pre upravy terenu, vysadbu stromov, ...
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otvorit panel nastrojov pre upravy terenu, vysadbu stromov, ...
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Uprava terenu
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Vyrovnat teren
 
@@ -1260,11 +1260,11 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Nahodne 
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Umiestnit nahodne stromy
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Tu sa neda postavit prieplav ...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Stavba kanálov.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Stavba kanálov.
 STR_LANDINFO_CANAL                                              :Prieplav
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Tu sa neda postavit stavidlo ...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Postavit stavidla ...
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Postavit stavidla ...
 STR_LANDINFO_LOCK                                               :Stavidlo
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Tu nie je možné umiestnit rieku ...
@@ -1276,16 +1276,16 @@ STR_LANDINFO_COORDS                                             :{BLACK}Súradni
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Nemozno odstranit cast stanice ...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Tu nemozno zkonvertovat typ zeleznice ...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Konvertovat/vylepsit typ zeleznice
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konvertovat/vylepsit typ zeleznice
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Presun lokomotivu sem, pre predaj celeho vlaku
 
-STR_DRAG_DROP                                                   :{BLACK}Automaticky
-STR_STATION_DRAG_DROP                                           :{BLACK}Automaticky postavit stanicu podla oznaceneho bloku terenu
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Automaticky
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Automaticky postavit stanicu podla oznaceneho bloku terenu
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Vyberte druh stanice pre zobrazenie
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Vyberte typ stanice pre vystavbu
 
-STR_FAST_FORWARD                                                :{BLACK}Rychle posunutie hry do predu
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Rychle posunutie hry do predu
 STR_MESSAGE_HISTORY                                             :{WHITE}Archiv sprav
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Zoznam poslednych sprav
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Zakazat vsetky
@@ -2826,9 +2826,9 @@ STR_TRAIN_NO_POWER                                              :{RED}Nie je pru
 STR_TRAIN_START_NO_CATENARY                                     :Vlak nemoze nastartovat, pretoze trat nie je pripojena
 STR_TRAIN_STUCK                                                 :{ORANGE}Čakám na uvoľnenie trate
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nové {STRING} dostupné!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nové {STRING} dostupné!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}Nové {STRING} dostupné!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nové {STRING} dostupné!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Nie je možné predat znicené vozidlo ...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Nie je možné prestavat znicené vozidlo ...
@@ -2875,7 +2875,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Postavit
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prva lod dorazila do {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Postavit boju pouzitelnu pre vyznacenie trasy
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Tu nemozno postavit boju ...
-STR_BUILD_AQUEDUCT                                              :{BLACK}Postavit akvadukt
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Postavit akvadukt
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Tu nie je možné postavit akvadukt ...
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Prestavat)
 STR_REFIT_TITLE                                                 :{GOLD}Vyber typ nakladu:
@@ -2892,7 +2892,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Postavit
 
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prve lietadlo pristalo na {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Letecke nestastie!{}{COMMA} mrtv{P y i ych} po poziari na {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Letecke nestastie!{}Lietadlu doslo palivo, {COMMA} mrtvych pri poziari!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Letecke nestastie!{}Lietadlu doslo palivo, {COMMA} mrtvych pri poziari!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Cestovný poriadok)
@@ -2943,8 +2943,8 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Mnozstvo
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Vyska uveru spolocnosti
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Celkove body z vsetkych moznych
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Nastavenia NewGRF
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Zobraziť NewGRF nastavenia
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavenia NewGRF
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Zobraziť NewGRF nastavenia
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavenie novych grafickych suborov
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Potvrdit zmeny
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Prepnúť paletu
@@ -3325,7 +3325,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknite
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popis{P "" y ov}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Príkaz zmeňiť tovar po zlyhaní zastavil {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Príkaz zmeňiť tovar po zlyhaní zastavil {VEHICLE}
 
 ############ Lists rail types
 
@@ -3429,20 +3429,20 @@ STR_BORDER_RANDOMIZE                                            :{BLACK}Náhodn�
 STR_BORDER_MANUAL                                               :{BLACK}Manuál
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}Male
-STR_CITY_AIRPORT                                                :{BLACK}Mestske
-STR_METRO_AIRPORT                                               :{BLACK}Metropolitne
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Medzinarodne
-STR_COMMUTER_AIRPORT                                            :{BLACK}Vnutrostatne
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Medzikontinentalne
-STR_HELIPORT                                                    :{BLACK}Heliport
-STR_HELIDEPOT                                                   :{BLACK}Heliport s hangarom
-STR_HELISTATION                                                 :{BLACK}Velky heliport
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Male
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Mestske
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitne
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Medzinarodne
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Vnutrostatne
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Medzikontinentalne
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliport
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Heliport s hangarom
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Velky heliport
 
-STR_SMALL_AIRPORTS                                              :{BLACK}Male letiska
-STR_LARGE_AIRPORTS                                              :{BLACK}Velke letiska
-STR_HUB_AIRPORTS                                                :{BLACK}Najvacsie letiska
-STR_HELIPORTS                                                   :{BLACK}Heliporty
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Male letiska
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Velke letiska
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Najvacsie letiska
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Heliporty
 
 ############ Tooltip measurment
 
@@ -3651,8 +3651,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI nastavenia
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Zobraziť AI nastavenia
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI nastavenia
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Zobraziť AI nastavenia
 STR_AI_DEBUG                                                    :{WHITE}AI debugovanie
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Meno AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Znovu načítať AI
@@ -3743,8 +3743,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... spoj
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... súbor sa nedá zapísať
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nemôžem rozbaliť stiahnutý súbor
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Skontrolovať online obsah
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Skontrolovať nový a aktualizovaný obsah pre stiahnutie
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Skontrolovať online obsah
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skontrolovať nový a aktualizovaný obsah pre stiahnutie
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Nájsť chýbajúci obsah online
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Skontrolovať či chýbajúci obsah je dostupný online
 ########

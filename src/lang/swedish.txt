@@ -237,7 +237,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Lastkapacitet
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausa spelet
-STR_FAST_FORWARD                                                :{BLACK}Snabbspola spelet
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Snabbspola spelet
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Inställningar
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spara spelet, avbryt spelet, avsluta spelet
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Visa karta
@@ -259,13 +259,13 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bygg jä
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bygg vägar
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bygg hamnar
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bygg flygplatser
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Öppna landskapsarkitektursverktygen för att bla höja/sänka land, plantera träd, osv
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Öppna landskapsarkitektursverktygen för att bla höja/sänka land, plantera träd, osv
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Visa ljud-/musikfönster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Visa senaste meddelandet/nyheten, visa meddelandeinställningar
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Markinformation
 
 # Extra tooltips for the scenario editor toolbar
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Visa karta, lista av städer
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Visa karta, lista av städer
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Skapa landskap
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Bygg städer
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Bygg industrier
@@ -546,8 +546,8 @@ STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLAC
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Spara
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Töm aktuellt program (Enbart Personlig1 eller Personlig2)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Spara ljudinställningar
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Klicka på ett spår för att lägga till den till spellistan (Enbart Personlig1 eller Personlig2)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klicka på musikstycket för att ta bort det från den aktuella listan (endast Personlig1 och Personlig2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klicka på ett spår för att lägga till den till spellistan (Enbart Personlig1 eller Personlig2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klicka på musikstycket för att ta bort det från den aktuella listan (endast Personlig1 och Personlig2)
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}De bästa företagen som nådde {NUM}{}(nivå {STRING})
@@ -635,11 +635,11 @@ STR_NEWS_MESSAGE                                                :{STRING}  -  {S
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Meddelande
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Meddelandeinställningar
-STR_MESSAGES_ALL                                                :{YELLOW}Inställning för alla meddelandetyper (på/av/summarisk)
-STR_MESSAGE_SOUND                                               :{YELLOW}Spela upp ljud för summariska nyhetsmeddelanden
-STR_OFF                                                         :Av
-STR_SUMMARY                                                     :Summering
-STR_FULL                                                        :Full
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Inställning för alla meddelandetyper (på/av/summarisk)
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Spela upp ljud för summariska nyhetsmeddelanden
+STR_NEWS_MESSAGES_OFF                                           :Av
+STR_NEWS_MESSAGES_SUMMARY                                       :Summering
+STR_NEWS_MESSAGES_FULL                                          :Full
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Meddelandetyper:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Ankomst av första fordonet vid spelarens stn.
@@ -670,7 +670,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Vägfordonskrash!{}förare dör i eldklot efter kollision med tåg
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Vägfordonskrash!{}{COMMA} dör i eldklot efter kollision med tåg
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Flygplanskrasch!{}{COMMA} dör i eldklot på {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Flygplanskrasch!{}Flygplanet fick slut på bränsle, {COMMA} dör i eldklot!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Flygplanskrasch!{}Flygplanet fick slut på bränsle, {COMMA} dör i eldklot!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}Zeppelinare-katastrof på {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}Vägfordon förstört i 'UFO'-kollision!
@@ -697,7 +697,7 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}Leveransproblem får {STRING} att meddela att de stänger ner snarast!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}Avsaknad av träd får {STRING} att meddela att de stänger ner snarast!
 
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europeiska Valutasystemet!{}{}Euron introduceras och ditt land går över till den som dess enda valuta!
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Europeiska Valutasystemet!{}{}Euron introduceras och ditt land går över till den som dess enda valuta!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Lågkonjuktur!{}{}Finansexperter befarar det värsta när ekonomin sjunker!
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Lågkonjuktur Över!{}{}Uppsving i byteshandeln ger tillförsikt till industrier när ekonomin stärks!
 
@@ -717,25 +717,25 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} har för få ordrar i schemat
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} har en ogiltig order
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} har dubblerade destinationer
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} har en felaktig station ibland destinationerna
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} har för få ordrar i schemat
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} har en ogiltig order
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} har dubblerade destinationer
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} har en felaktig station ibland destinationerna
 # end of order system
 
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} börjar bli gammal
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} börjar bli väldigt gammal
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} börjar bli väldigt gammal och bör bytas ut omgående
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} kan inte hitta en rutt för att fortsätta
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} är vilse.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}'s vinst förra året var {CURRENCY}
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} börjar bli gammal
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} börjar bli väldigt gammal
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} börjar bli väldigt gammal och bör bytas ut omgående
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan inte hitta en rutt för att fortsätta
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} är vilse.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}'s vinst förra året var {CURRENCY}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Order att förändra frakttyp stoppades {VEHICLE}
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Autoförnya misslyckades på {VEHICLE}{}{STRING}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Order att förändra frakttyp stoppades {VEHICLE}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoförnya misslyckades på {VEHICLE}{}{STRING}
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Ny {STRING} tillgänglig!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nya {STRING} är nu tillgänglig  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}Ny {STRING} tillgänglig!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nya {STRING} är nu tillgänglig  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} tar inte längre emot {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} tar inte längre emot {STRING} och {STRING}
@@ -765,44 +765,44 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaen
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Välj valutaenhet
 
 ############ start of currency region
-STR_CURR_GBP                                                    :Pund (£)
-STR_CURR_USD                                                    :Dollar ($)
-STR_CURR_EUR                                                    :Euro (€)
-STR_CURR_YEN                                                    :Yen (¥)
-STR_CURR_ATS                                                    :Österrikiska shilling (ATS)
-STR_CURR_BEF                                                    :Belgiska franc (BEF)
-STR_CURR_CHF                                                    :Schweiziska franc (CHF)
-STR_CURR_CZK                                                    :Tjeckiska kronor (CZK)
-STR_CURR_DEM                                                    :Tyska mark (DEM)
-STR_CURR_DKK                                                    :Danska kronor (DKK)
-STR_CURR_ESP                                                    :Peseta (ESP)
-STR_CURR_FIM                                                    :Finska mark (FIM)
-STR_CURR_FRF                                                    :Franc (FRF)
-STR_CURR_GRD                                                    :Grekiska drachmer (GRD)
-STR_CURR_HUF                                                    :Ungerska Forint (HUF)
-STR_CURR_ISK                                                    :Isländska kronor (ISK)
-STR_CURR_ITL                                                    :Italienska lire (ITL)
-STR_CURR_NLG                                                    :Holländska guilder (NLG)
-STR_CURR_NOK                                                    :Norska kronor (NOK)
-STR_CURR_PLN                                                    :Polska Zloty (PLN)
-STR_CURR_RON                                                    :Rumänsk Leu (RON)
-STR_CURR_RUR                                                    :Ryska rubel (RUR)
-STR_CURR_SIT                                                    :Slovenska Tolar (SIT)
-STR_CURR_SEK                                                    :Svenska kronor (SEK)
-STR_CURR_TRY                                                    :Turkisk Lire (TRY)
-STR_CURR_SKK                                                    :Slovakisk Koruna (SKK)
-STR_CURR_BRL                                                    :Brasiliansk Real (BRL)
-STR_CURR_EEK                                                    :Estniska Kroon (EEK)
-STR_CURR_CUSTOM                                                 :Egen...
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pund (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Österrikiska shilling (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgiska franc (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Schweiziska franc (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tjeckiska kronor (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Tyska mark (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danska kronor (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finska mark (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grekiska drachmer (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungerska Forint (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Isländska kronor (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italienska lire (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Holländska guilder (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norska kronor (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polska Zloty (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumänsk Leu (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ryska rubel (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenska Tolar (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svenska kronor (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkisk Lire (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakisk Koruna (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasiliansk Real (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estniska Kroon (EEK)
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Egen...
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mätenheter
 STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Val av mätenheter
 
 ############ start of measuring units region
-STR_UNITS_IMPERIAL                                              :Engelsk
-STR_UNITS_METRIC                                                :Metrisk
-STR_UNITS_SI                                                    :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Engelsk
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrisk
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vägfordon
@@ -814,27 +814,27 @@ STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Stadsnam
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Välj typ av stadsnamn
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engelska
-STR_TOWNNAME_FRENCH                                             :Franska
-STR_TOWNNAME_GERMAN                                             :Tyska
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Engelska (Extra)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latinamerikanska
-STR_TOWNNAME_SILLY                                              :Löjliga
-STR_TOWNNAME_SWEDISH                                            :Svenska
-STR_TOWNNAME_DUTCH                                              :Hollänska
-STR_TOWNNAME_FINNISH                                            :Finska
-STR_TOWNNAME_POLISH                                             :Polska
-STR_TOWNNAME_SLOVAK                                             :Slovakiska
-STR_TOWNNAME_NORWEGIAN                                          :Norska
-STR_TOWNNAME_HUNGARIAN                                          :Ungerska
-STR_TOWNNAME_AUSTRIAN                                           :Österrikisk
-STR_TOWNNAME_ROMANIAN                                           :Rumänska
-STR_TOWNNAME_CZECH                                              :Tjeckiska
-STR_TOWNNAME_SWISS                                              :Schweiziska
-STR_TOWNNAME_DANISH                                             :Danska
-STR_TOWNNAME_TURKISH                                            :Turkiska
-STR_TOWNNAME_ITALIAN                                            :Italienska
-STR_TOWNNAME_CATALAN                                            :Katalanska
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Engelska
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Franska
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Tyska
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Engelska (Extra)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latinamerikanska
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Löjliga
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Svenska
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollänska
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finska
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polska
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakiska
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norska
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungerska
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Österrikisk
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumänska
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tjeckiska
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Schweiziska
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danska
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkiska
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italienska
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanska
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosparning
@@ -846,23 +846,23 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Var 3:e månad
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Var 6:e månad
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Var 12:e månad
 
-STR_OPTIONS_LANG                                                :{BLACK}Språk
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Välj språk att använda
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Språk
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Välj språk att använda
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Helskärm
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Kryssa i den här rutan för att spela OpenTTD i helskärmsläge
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Helskärm
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Kryssa i den här rutan för att spela OpenTTD i helskärmsläge
 STR_FULLSCREEN_FAILED                                           :{WHITE}Fullskärmsläge misslyckades
 
-STR_OPTIONS_RES                                                 :{BLACK}Skärmupplösning
-STR_OPTIONS_RES_TIP                                             :{BLACK}Välj skärmupplösning att använda
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skärmupplösning
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Välj skärmupplösning att använda
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Skärmdumpsformat
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Välj filformat för skärmdump
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Skärmdumpsformat
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Välj filformat för skärmdump
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Grafikpaket som standard
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Välj vilket grafikpaket som ska användas som standard
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} saknad/korrumperad fil{P "" s}
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Ytterligare information om bas-grafik settet
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikpaket som standard
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Välj vilket grafikpaket som ska användas som standard
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} saknad/korrumperad fil{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligare information om bas-grafik settet
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -876,15 +876,15 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Flera sp
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelinställningar
 STR_INTRO_DIFFICULTY                                            :{BLACK}Svårighetsgrad ({STRING})
-STR_CONFIG_SETTING                                              :{BLACK}Avancerade inställningar
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Inställningar
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Kontrollera Online-innehåll
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}Inställningar för datorspelare
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancerade inställningar
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Inställningar
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kontrollera Online-innehåll
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Inställningar för datorspelare
 STR_INTRO_QUIT                                                  :{BLACK}Avsluta
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Starta ett nytt spel
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ladda ett sparat spel
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Starta ett nytt spel, och använd en höjdkarta som landskap
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Starta ett nytt spel, och använd en höjdkarta som landskap
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Starta nytt spel, som använder ett eget scenario
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Skapa en egen spelvärld/scenario
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Starta ett multispelar spel
@@ -896,10 +896,10 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Välj 'l
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Visa spelinställningar
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Visa inställningar för svårighetsgrad
-STR_CONFIG_SETTING_TIP                                          :{BLACK}Visa avancerade inställningar
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Visa inställningar för NewGRF
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Kolla efter nytt och nyuppdaterat innehåll för nedladdning
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Visa inställningar för datorspelare
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Visa avancerade inställningar
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Visa inställningar för NewGRF
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kolla efter nytt och nyuppdaterat innehåll för nedladdning
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Visa inställningar för datorspelare
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Avsluta 'OpenTTD'
 
 # Cheat window
@@ -1086,15 +1086,15 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Leverar:
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bygg järnväg
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Bygg järnvägspår genom att använda Autorail-funktionen
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bygg järnvägspår genom att använda Autorail-funktionen
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bygg depå (för att bygga eller reparera tåg)
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Ändra räls till kontrollstation
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ändra räls till kontrollstation
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bygg järnvägsstation
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg järnvägssignaler
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg järnvägsbro
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg järnvägstunnel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Växla mellan att bygga/ta bort järnväg och signaler
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Konvertera/Uppgradera spårtyp
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konvertera/Uppgradera spårtyp
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Riktning för depå
@@ -1108,8 +1108,8 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Antal sp
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Välj antal plattformar för järnvägsstation
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Längd på plattform
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Välj längden på järnvägsstation
-STR_DRAG_DROP                                                   :{BLACK}Drag & Släpp
-STR_STATION_DRAG_DROP                                           :{BLACK}Bygg en station genom att dra & släppa
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Släpp
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bygg en station genom att dra & släppa
 
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Välj vilken stationsklass som ska visas
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Välj stationstyp att bygga
@@ -1174,12 +1174,12 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Välj fr
 # Waterways toolbar
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Farledskonstruktion
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Farled
-STR_BUILD_CANALS_TIP                                            :{BLACK}Bygg kanaler.
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Bygg slussar
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bygg kanaler.
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bygg slussar
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bygg skeppsdepå (för byggnad och lagning av skepp)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bygg hamn
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Positionsboj, som kan som kan användas för ytterligare vägpunkter
-STR_BUILD_AQUEDUCT                                              :{BLACK}Bygg akvedukt
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bygg akvedukt
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Skeppsdepå riktning
@@ -1194,20 +1194,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bygg fly
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Val av flygplats
-STR_SMALL_AIRPORT                                               :{BLACK}Liten
-STR_CITY_AIRPORT                                                :{BLACK}Stad
-STR_METRO_AIRPORT                                               :{BLACK}Storstads-Flygplats
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internationell Flygplats
-STR_COMMUTER_AIRPORT                                            :{BLACK}Pendlare
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinental
-STR_HELIPORT                                                    :{BLACK}Helikopterplatta
-STR_HELIDEPOT                                                   :{BLACK}Helikopterhangar
-STR_HELISTATION                                                 :{BLACK}Helikopterstation
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Liten
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Stad
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Storstads-Flygplats
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internationell Flygplats
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Pendlare
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Interkontinental
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helikopterplatta
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helikopterhangar
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helikopterstation
 
-STR_SMALL_AIRPORTS                                              :{BLACK}Små flygfält
-STR_LARGE_AIRPORTS                                              :{BLACK}Stora Flygplatser
-STR_HUB_AIRPORTS                                                :{BLACK}Centrala Flygplatser
-STR_HELIPORTS                                                   :{BLACK}Helikopterfält
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Små flygfält
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Stora Flygplatser
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Centrala Flygplatser
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopterfält
 
 
 # Unsorted
@@ -1420,9 +1420,9 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan inte
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan inte kopiera orderlistan...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slut på delade order - -
 
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} är för långt efter utbyte
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Förnyar ej fordon automatiskt
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(pengagräns)
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} är för långt efter utbyte
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Förnyar ej fordon automatiskt
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(pengagräns)
 
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancerade inställningar
 

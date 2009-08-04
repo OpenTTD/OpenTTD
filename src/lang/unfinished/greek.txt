@@ -265,9 +265,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Επιλ
 
 STR_COMPANY_SOMEONE                                             :κάποιος{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :Αυτοκρατορικό
-STR_UNITS_METRIC                                                :Μετρικό
-STR_UNITS_SI                                                    :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Αυτοκρατορικό
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Μετρικό
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} μαω
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} χλμ/ώρα
@@ -370,7 +370,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Παύσ
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Αποθήκευση, παραίτηση, έξοδος
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Εμφάνιση λίστας σταθμών της εταιρείας
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Εμφάνιση χάρτη
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Εμφάνιση χάρτη, καταλόγου πόλεων
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Εμφάνιση χάρτη, καταλόγου πόλεων
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Εμφάνιση του καταλόγου πόλεων
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Εμφάνιση οικονομικών πληροφοριών εταιρείας
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Εμφάνιση γενικών πληροφοριών της εταιρείας
@@ -418,9 +418,9 @@ STR_VEHICLE_TRAIN                                               :Τραίνο
 STR_VEHICLE_ROAD_VEHICLE                                        :Όχημα
 STR_VEHICLE_SHIP                                                :Πλοίο
 STR_VEHICLE_AIRCRAFT                                            :Αεροσκάφος
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} παλαιώνει
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} ξεπερνά το όριο ηλικίας
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} πάλιωσε πολύ και χρειάζεται επειγόντως αλλαγή
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} παλαιώνει
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} ξεπερνά το όριο ηλικίας
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} πάλιωσε πολύ και χρειάζεται επειγόντως αλλαγή
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Πληροφορίες Περιοχής Εδάφους
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Κόστος καθαρισμού: {LTBLUE}Μ/Δ
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Κόστος καθαρισμού: {RED}{CURRENCY}
@@ -541,8 +541,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Επιλ
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Επιλογή προγράμματος 'Προσαρμοσμένο 2'
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Καθαρισμός τρέχοντος προγράμματος (Προσαρμοσμένο1 ή Προσαρμοσμένο2 μόνο)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Αποθήκευση επιλογών μουσικής
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Κάντε κλίκ στο μουσικό κομμάτι για προσθήκη στο τρέχον πρόγραμμα (Προσαρμοσμένο1 ή Προσαρμοσμένο2 μόνο)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Κάντε κλικ στο τραγούδι για να το αφαιρέσετε από το πρόγραμμα (Προσαρμοσμένο 1 ή 2 μόνο)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Κάντε κλίκ στο μουσικό κομμάτι για προσθήκη στο τρέχον πρόγραμμα (Προσαρμοσμένο1 ή Προσαρμοσμένο2 μόνο)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Κάντε κλικ στο τραγούδι για να το αφαιρέσετε από το πρόγραμμα (Προσαρμοσμένο 1 ή 2 μόνο)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Εναλλαγή τυχαίας αναπαραγωγής on/off στο πρόγραμμα
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Εμφάνιση παραθύρου επιλογής μουσικού κομματιού
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}Κάντε κλίκ στην υπηρεσία για κεντράρισμα στην βιομηχανία/πόλη
@@ -569,8 +569,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Νέα 
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Αλλαγές στην αποδοχή φορτίου
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Επιχορηγήσεις
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Γενικές πληροφορίες
-STR_MESSAGES_ALL                                                :{YELLOW}Ρύθμιση όλων των μηνυμάτων σε: Κλειστά / Περιγραφή / Ολόκληρα
-STR_MESSAGE_SOUND                                               :{YELLOW}Αναπαραγωγή ήχου για μηνύματα σε περιγραφή
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Ρύθμιση όλων των μηνυμάτων σε: Κλειστά / Περιγραφή / Ολόκληρα
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Αναπαραγωγή ήχου για μηνύματα σε περιγραφή
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...πολύ μακριά από τον προηγούμενο προορισμό
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Οι καλύτερες εταιρείες που έφτασαν το {NUM}{}({STRING} Επίπεδο)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Πίνακας Πρωταθλήματος Εταιρειών σε {NUM}
@@ -641,7 +641,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Φόρτ
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Αποθήκευση Σεναρίου
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Παιξτε το Σενάριο
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Παίξτε Heightmap
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Εκκίνηση νέου παιχνιδιού, χρησιμοποιώντας heightmap για χάρτη
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Εκκίνηση νέου παιχνιδιού, χρησιμοποιώντας heightmap για χάρτη
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Είστε σίγουροι οτι θέλετε να παρατήσετε το σενάριο;
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...μπορεί να χτιστεί μόνο σε πόλεις με πληθυσμό άνω των 1200
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο πίσω
@@ -666,9 +666,9 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Τυχα
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Εμφάνιση τελευταίου μηνύματος ή αναφοράς νέων
-STR_OFF                                                         :Κλειστό
-STR_SUMMARY                                                     :Περιγραφή
-STR_FULL                                                        :Ολόκληρο
+STR_NEWS_MESSAGES_OFF                                           :Κλειστό
+STR_NEWS_MESSAGES_SUMMARY                                       :Περιγραφή
+STR_NEWS_MESSAGES_FULL                                          :Ολόκληρο
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
@@ -771,77 +771,77 @@ STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Η απ�
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Επιλογή προγράμματος 'Ezy Street στυλ μουσικής'
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Αγγλικά (Αυθεντικά)
-STR_TOWNNAME_FRENCH                                             :Γαλλικά
-STR_TOWNNAME_GERMAN                                             :Γερμανικά
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Αγγλικά (Πρόσθετα)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Λατινοαμερικάνικα
-STR_TOWNNAME_SILLY                                              :Αστεία
-STR_TOWNNAME_SWEDISH                                            :Σουηδικά
-STR_TOWNNAME_DUTCH                                              :Ολλανδικά
-STR_TOWNNAME_FINNISH                                            :Φινλανδικά
-STR_TOWNNAME_POLISH                                             :Πολωνικά
-STR_TOWNNAME_SLOVAK                                             :Σλοβάκικα
-STR_TOWNNAME_NORWEGIAN                                          :Νορβηγικά
-STR_TOWNNAME_HUNGARIAN                                          :Όυγγαρικά
-STR_TOWNNAME_AUSTRIAN                                           :Αυστριακά
-STR_TOWNNAME_ROMANIAN                                           :Ρουμάνικα
-STR_TOWNNAME_CZECH                                              :Τσέχικα
-STR_TOWNNAME_SWISS                                              :Ελβετικά
-STR_TOWNNAME_DANISH                                             :Δανέζικα
-STR_TOWNNAME_TURKISH                                            :Τούρκικα
-STR_TOWNNAME_ITALIAN                                            :Ιταλικά
-STR_TOWNNAME_CATALAN                                            :Καταλανικά
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Αγγλικά (Αυθεντικά)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Γαλλικά
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Γερμανικά
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Αγγλικά (Πρόσθετα)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Λατινοαμερικάνικα
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Αστεία
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Σουηδικά
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Ολλανδικά
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Φινλανδικά
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Πολωνικά
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Σλοβάκικα
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Νορβηγικά
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Όυγγαρικά
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Αυστριακά
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Ρουμάνικα
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Τσέχικα
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Ελβετικά
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Δανέζικα
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Τούρκικα
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Ιταλικά
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Καταλανικά
 ############ end of townname region
 
-STR_CURR_GBP                                                    :Αγγλική Λίρα (£)
-STR_CURR_USD                                                    :Δολλάρια ($)
-STR_CURR_EUR                                                    :Ευρώ (€)
-STR_CURR_YEN                                                    :Γιεν (¥)
-STR_CURR_ATS                                                    :Αυστραικό Σελίνι (ATS)
-STR_CURR_BEF                                                    :Βελγικό Φράγκο (BEF)
-STR_CURR_CHF                                                    :Ελβετικό Φράγκο (CHF)
-STR_CURR_CZK                                                    :Τσέχικη Κορώνα (CZK)
-STR_CURR_DEM                                                    :Γερμανικό Μάρκο (DEM)
-STR_CURR_DKK                                                    :Δανέζικη Κορώνα (DKK)
-STR_CURR_ESP                                                    :Πεσέτα (ESP)
-STR_CURR_FIM                                                    :Φινλανδικό Μάρκο (FIM)
-STR_CURR_FRF                                                    :Φράγκο (FRF)
-STR_CURR_GRD                                                    :Δραχμή(δρχ.)
-STR_CURR_HUF                                                    :Ουγγρικό Φλουρί (HUF)
-STR_CURR_ISK                                                    :Ισλανδική Κορώνα (ISK)
-STR_CURR_ITL                                                    :Ιταλική Λίρα (ITL)
-STR_CURR_NLG                                                    :Ολλανδικό Φιορίνι (NLG)
-STR_CURR_NOK                                                    :Νορβηγική Κορώνα (NOK)
-STR_CURR_PLN                                                    :Πολωνικό Zloty (PLN)
-STR_CURR_RON                                                    :Ρουμάνικο Λευ (RON)
-STR_CURR_RUR                                                    :Ρώσσικες Ρούβλες (RUR)
-STR_CURR_SIT                                                    :Σλοβένικο Tolar (SIT)
-STR_CURR_SEK                                                    :Σουηδική Κορώνα (SEK)
-STR_CURR_TRY                                                    :Τούρκικη Λίρα (TRY)
-STR_CURR_SKK                                                    :Σλοβάκικη Κορώνα (SKK)
-STR_CURR_BRL                                                    :Βραζιλιάνικο Real (BRL)
-STR_CURR_EEK                                                    :Εσθονική Κορώνα (EEK)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Αγγλική Λίρα (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Δολλάρια ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ευρώ (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Γιεν (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Αυστραικό Σελίνι (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Βελγικό Φράγκο (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Ελβετικό Φράγκο (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Τσέχικη Κορώνα (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Γερμανικό Μάρκο (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Δανέζικη Κορώνα (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Πεσέτα (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Φινλανδικό Μάρκο (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Φράγκο (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Δραχμή(δρχ.)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ουγγρικό Φλουρί (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Ισλανδική Κορώνα (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Ιταλική Λίρα (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Ολλανδικό Φιορίνι (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Νορβηγική Κορώνα (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Πολωνικό Zloty (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Ρουμάνικο Λευ (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ρώσσικες Ρούβλες (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Σλοβένικο Tolar (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Σουηδική Κορώνα (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Τούρκικη Λίρα (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Σλοβάκικη Κορώνα (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Βραζιλιάνικο Real (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Εσθονική Κορώνα (EEK)
 
-STR_CURR_CUSTOM                                                 :Άλλο...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Άλλο...
 
-STR_OPTIONS_LANG                                                :{BLACK}Γλώσσα
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Επιλογή της γλώσσας σε χρήση
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Γλώσσα
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Επιλογή της γλώσσας σε χρήση
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Σε όλη την οθόνη
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Τσεκάρεται αυτό το κουτάκι ωστε να παίξετε το OpenTTD σε όλη την οθόνη
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Σε όλη την οθόνη
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Τσεκάρεται αυτό το κουτάκι ωστε να παίξετε το OpenTTD σε όλη την οθόνη
 STR_FULLSCREEN_FAILED                                           :{WHITE}Πλήρεις Οθόνη απέτυχε
 
-STR_OPTIONS_RES                                                 :{BLACK}Ανάλυση οθόνης
-STR_OPTIONS_RES_TIP                                             :{BLACK}Διαλέξτε την ανάλυση της οθόνης που θέλετε
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ανάλυση οθόνης
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Διαλέξτε την ανάλυση της οθόνης που θέλετε
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Διαμόρφωση φωτογραφίας
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Επιλογή της διαμόρφωσης της φωτογραφίας σε χρήση
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Διαμόρφωση φωτογραφίας
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Επιλογή της διαμόρφωσης της φωτογραφίας σε χρήση
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Βασικό σετ γραφικών
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} αρχείο που λείπε ή είναι κατεστραμμένο{P "" s}
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Επιπλέον πληροφορίες σχετικά με το βασικό σετ γραφικών
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Βασικό σετ γραφικών
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} αρχείο που λείπε ή είναι κατεστραμμένο{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Επιπλέον πληροφορίες σχετικά με το βασικό σετ γραφικών
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Το αυτόματο σώσιμο απέτυχε
 
@@ -863,26 +863,26 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Αδύν
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Αδύνατο να αντιγραφεί η λίστα εντολών...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Τέλος Μοιρασμένων Οδηγιών - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} δεν μπορεί να βρει δρόμο να συνεχίσει
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} χάθηκε
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE} Το κέρδος του {VEHICLE} πέρυσι ήταν {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Ευρωπαϊκή Οικονομική Ένωση!{}{}Το Ευρώ είναι πλέον το μοναδικό νόμισμα για τις καθημερινές συναλλαγές στην χώρα σας!
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} δεν μπορεί να βρει δρόμο να συνεχίσει
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} χάθηκε
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE} Το κέρδος του {VEHICLE} πέρυσι ήταν {CURRENCY}
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Ευρωπαϊκή Οικονομική Ένωση!{}{}Το Ευρώ είναι πλέον το μοναδικό νόμισμα για τις καθημερινές συναλλαγές στην χώρα σας!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}Το {VEHICLE} έχει πολύ λίγες εντολές στο πρόγραμμα
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}ο {VEHICLE} έχει μη έγκυρη εντολή
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}Το {VEHICLE} έχει διπλή εντολή
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}Το {VEHICLE} έχει μη έγκυρο σταθμό στις εντολές του
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Το {VEHICLE} έχει πολύ λίγες εντολές στο πρόγραμμα
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}ο {VEHICLE} έχει μη έγκυρη εντολή
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Το {VEHICLE} έχει διπλή εντολή
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Το {VEHICLE} έχει μη έγκυρο σταθμό στις εντολές του
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Αποτυχία Αυτόματης Ανανέωσης για το {VEHICLE}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Το {VEHICLE} είναι πολύ μεγάλο μετά την ανανέωση
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Χωρίς επιλογή Αυτόματης Ανανέωσης
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(χρηματικό όριο)
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Αποτυχία Αυτόματης Ανανέωσης για το {VEHICLE}{}{STRING}
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}Το {VEHICLE} είναι πολύ μεγάλο μετά την ανανέωση
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Χωρίς επιλογή Αυτόματης Ανανέωσης
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(χρηματικό όριο)
 
-STR_CONFIG_SETTING                                              :{BLACK}Προηγμένες Ρυθμίσεις
-STR_CONFIG_SETTING_TIP                                          :{BLACK}Εμφάνιση προηγμένων ρυθμίσεων
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Προηγμένες Ρυθμίσεις
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Εμφάνιση προηγμένων ρυθμίσεων
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Προηγμένες Ρυθμίσεις
 
 STR_CONFIG_SETTING_OFF                                          :Κλειστό
@@ -1167,11 +1167,11 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYP
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Διαμόρφωση ονόματος σημείου πορείας
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Αδύνατο να αλλαχτεί το όνομα του σημείου πορείας...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Μετατροπή γραμμής σε σημείο πορείας
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Μετατροπή γραμμής σε σημείο πορείας
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Αδύνατο να χτιστεί σημείο πορείας τρένου εδώ...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Αδύνατο να αφαιρεθεί το σημείο πορείας τρένου από εδώ...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Κατασκευή σιδηροδρομικής γραμμής χρησιμοποιώντας την Αυτόματη Γραμμή
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Κατασκευή σιδηροδρομικής γραμμής χρησιμοποιώντας την Αυτόματη Γραμμή
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...δεν υπάρχει καμία πόλη στην πίστα
 STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Η δημιουργία του χάρτη εγκαταλήφτηκε...{}...Δεν υπάρχουν κατάλληλες τοποθεσίες για πόλεις
@@ -1182,7 +1182,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Πολλές τ
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Γέμισε τον χάρτη με τυχαίες τοποθετημένες βιομηχανίες
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Δεν γίνεται να δημιουργηθούν βιομηχανίες...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Ανοίξτε την μπάρα εργαλείων μορφοποίησης εδάφους για ανύψωση/βύθιση γης, δενδροφύτευση, κλπ.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Ανοίξτε την μπάρα εργαλείων μορφοποίησης εδάφους για ανύψωση/βύθιση γης, δενδροφύτευση, κλπ.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Μορφοποίηση εδάφους
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Επιπεδοποίηση γης
 
@@ -1191,11 +1191,11 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Δέντ
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Βάλε δέντρα τυχαίου τύπου
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Δεν μπορεί να χτιστεί κανάλι εδώ
-STR_BUILD_CANALS_TIP                                            :{BLACK}Δημιουργία καναλιών.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Δημιουργία καναλιών.
 STR_LANDINFO_CANAL                                              :Κανάλι
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Δεν μπορεί να χτιστεί υδατοφράκτης εδώ...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Κατασκευή Υδατοφράκτη
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Κατασκευή Υδατοφράκτη
 STR_LANDINFO_LOCK                                               :Κλείδωμα
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Δεν μπορούν να τοποθετηθούν ποτάμια εδώ...
@@ -1207,15 +1207,15 @@ STR_LANDINFO_COORDS                                             :{BLACK}Συντ
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Δεν μπορεί να αφαιρεθεί μέρος του σταθμού...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Δεν γίνεται να μετατραπεί ο τύπος της σιδηροτροχιάς εδώ...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Μετατρέψτε/Αλλάξτε τον τύπο της γραμμής
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Μετατρέψτε/Αλλάξτε τον τύπο της γραμμής
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Σύρε την μηχανή του τρένου για να διαγραφεί ολόκληρο το τρένο
 
-STR_DRAG_DROP                                                   :{BLACK}Έλξη & πτώση
-STR_STATION_DRAG_DROP                                           :{BLACK}Φτιάξε ένα σταθμό χρησιμοποιόντας έλξη & πτώση
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Έλξη & πτώση
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Φτιάξε ένα σταθμό χρησιμοποιόντας έλξη & πτώση
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Επέλεξε τον τύπο του σταθμού προς χτίσιμο
 
-STR_FAST_FORWARD                                                :{BLACK}Γρήγορη ταχύτητα παιχνιδιού
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Γρήγορη ταχύτητα παιχνιδιού
 STR_MESSAGE_HISTORY                                             :{WHITE}Ιστορικό Μηνυμάτων
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Λίστα των πρόσφατων μηνυμάτων ειδήσεων
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Απενεργοποίηση όλων
@@ -2523,7 +2523,7 @@ STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Δεν �
 
 ##id 0x9800
 
-STR_BUILD_AQUEDUCT                                              :{BLACK}Κατασκευή καναλιού
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Κατασκευή καναλιού
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Δεν μπορεί να χτιστεί κανάλι εδώ...
 
 ##id 0xA000
@@ -2548,8 +2548,8 @@ STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 ############ Those following lines need to be in this order!!
 ############ End of order list
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Ρυθμίσεις NewGRF
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ρυθμίσεις NewGRF
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Ρυθμίσεις NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Εφαρμογή αλλαγών
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Εναλλαγή παλέτας
@@ -2696,9 +2696,9 @@ STR_RANDOM                                                      :{BLACK}Τυχα
 # Strings for map borders at game generation
 
 ########### String for new airports
-STR_HELIPORT                                                    :{BLACK}Ελικοδρόμιο
-STR_HELIDEPOT                                                   :{BLACK}Υπόστεγο ελικοπτέρων
-STR_HELISTATION                                                 :{BLACK}Στάθμος ελικοπτέρων
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Ελικοδρόμιο
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Υπόστεγο ελικοπτέρων
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Στάθμος ελικοπτέρων
 
 
 ############ Tooltip measurment
@@ -2809,7 +2809,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Εμφάνιση ρυθμίσεων AI
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Εμφάνιση ρυθμίσεων AI
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Ρύθμιση AI
 STR_AI_CHANGE                                                   :{BLACK}Επιλόγη AI
 STR_AI_CONFIGURE_TIP                                            :{BLACK}Ρύθμιση των παραμέτρων ενός AI
@@ -2875,8 +2875,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... χά
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... αρχείο μη εγγράψιμο
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Δεν μπορεί να γίνει η αποσυμπίεση του κατεβασμένου αρχείου
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Έλεγχος Online περιεχομένου
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Έλεγχος για νέο και ανανεωμένο περιεχόμενο για κατέβασμα
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Έλεγχος Online περιεχομένου
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγχος για νέο και ανανεωμένο περιεχόμενο για κατέβασμα
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Αναζήτηση μη εγκατεστήμενου περιεχομένου online
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Έλεγχος πότε μη εγκατεστημένο περιεχόμενο μπορεί να βρεθεί online
 ########

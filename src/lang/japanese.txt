@@ -264,9 +264,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}ゲー�
 
 STR_COMPANY_SOMEONE                                             :誰かは{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :インペリアル法
-STR_UNITS_METRIC                                                :メートル法
-STR_UNITS_SI                                                    :国際単位法
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :インペリアル法
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :メートル法
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :国際単位法
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -366,7 +366,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}ポー�
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}セーブ、ゲームを断念、終了
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}会社の駅を表示します
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}地図を表示します
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}地図、町のリストを表示します
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}地図、町のリストを表示します
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}町のリストを表示します
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}会社の財務状況を表示します
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}会社の一般情報を表示します
@@ -414,9 +414,9 @@ STR_VEHICLE_TRAIN                                               :列車
 STR_VEHICLE_ROAD_VEHICLE                                        :道路車両
 STR_VEHICLE_SHIP                                                :船舶
 STR_VEHICLE_AIRCRAFT                                            :飛行機
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} は古くなっています
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} はとても古くなっています
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} はとても古くなっていて、すばやく取り替えなければなりません。
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} は古くなっています
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} はとても古くなっています
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} はとても古くなっていて、すばやく取り替えなければなりません。
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地域情報
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}破壊費用：{LTBLUE}破壊不可
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}破壊費用：{RED}{CURRENCY}
@@ -536,8 +536,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}プレ�
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}プレイリスト「カスタム 2」を選択します
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}選択したプレイリストの内容を消去します（カスタム 1／2 のみ）。
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}音楽の設定を保存
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}選択したプレイリストへ追加するには、曲をクリックします（カスタム 1／2 のみ）。
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}洗濯中のプレイリストから取り除くには、曲をクリックします（カスタム１、２のみ）
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}選択したプレイリストへ追加するには、曲をクリックします（カスタム 1／2 のみ）。
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}洗濯中のプレイリストから取り除くには、曲をクリックします（カスタム１、２のみ）
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}プレイリストのシャッフルを入／切にします
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}曲選択のウィンドウを表示します
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}町／産業を見るためにサービスをクリックして下さい
@@ -564,8 +564,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}新式�
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}貨物の受入れの変化
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}助成金
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}一般情報
-STR_MESSAGES_ALL                                                :{YELLOW}すべてのメッセージ種類を：切／概要／完全
-STR_MESSAGE_SOUND                                               :{YELLOW}概要ニュースを表示するときに、サウンドを再生
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}すべてのメッセージ種類を：切／概要／完全
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}概要ニュースを表示するときに、サウンドを再生
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...前の目的地から遠すぎます
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}{NUM}{}({STRING} レベル) に最初に到達した会社
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}{NUM}の会社リーグ表
@@ -636,7 +636,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}シナ�
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}シナリオを保存
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}シナリオをプレイ
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}ハイトマップをプレイ
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}地形をハイトマップに基づいて新規ゲームを開始します
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}地形をハイトマップに基づいて新規ゲームを開始します
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}このシナリオを終了してもよろしいですか？
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...人口が1200人以上の市町のみに建設できます
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}開始日を1年間減らします
@@ -661,9 +661,9 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}ラン�
 
 STR_NEWS_MESSAGE                                                :{STRING} - {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}最後のメッセージ／報道を表示します
-STR_OFF                                                         :切
-STR_SUMMARY                                                     :概要
-STR_FULL                                                        :完全
+STR_NEWS_MESSAGES_OFF                                           :切
+STR_NEWS_MESSAGES_SUMMARY                                       :概要
+STR_NEWS_MESSAGES_FULL                                          :完全
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
@@ -766,76 +766,76 @@ STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}ゲー�
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Street 式の音楽'のプレイリストを選択します
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :イギリス
-STR_TOWNNAME_FRENCH                                             :フランス
-STR_TOWNNAME_GERMAN                                             :ドイツ
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :イギリス（追加）
-STR_TOWNNAME_LATIN_AMERICAN                                     :ラテンアメリカ
-STR_TOWNNAME_SILLY                                              :玩具国
-STR_TOWNNAME_SWEDISH                                            :スウェーデン
-STR_TOWNNAME_DUTCH                                              :オランダ
-STR_TOWNNAME_FINNISH                                            :フィンランド
-STR_TOWNNAME_POLISH                                             :ポーランド
-STR_TOWNNAME_SLOVAK                                             :スロバキア
-STR_TOWNNAME_NORWEGIAN                                          :ノルウェー
-STR_TOWNNAME_HUNGARIAN                                          :ハンガリー
-STR_TOWNNAME_AUSTRIAN                                           :オーストリア
-STR_TOWNNAME_ROMANIAN                                           :ルーマニア
-STR_TOWNNAME_CZECH                                              :チェコ
-STR_TOWNNAME_SWISS                                              :スイス
-STR_TOWNNAME_DANISH                                             :デンマーク
-STR_TOWNNAME_TURKISH                                            :トルコ
-STR_TOWNNAME_ITALIAN                                            :イタリア
-STR_TOWNNAME_CATALAN                                            :カタラン
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :イギリス
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :フランス
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :ドイツ
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :イギリス（追加）
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :ラテンアメリカ
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :玩具国
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :スウェーデン
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :オランダ
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :フィンランド
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :ポーランド
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :スロバキア
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :ノルウェー
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :ハンガリー
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :オーストリア
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :ルーマニア
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :チェコ
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :スイス
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :デンマーク
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :トルコ
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :イタリア
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :カタラン
 ############ end of townname region
 
-STR_CURR_GBP                                                    :英ポンド（£）
-STR_CURR_USD                                                    :米ドル（$）
-STR_CURR_EUR                                                    :ユーロ（€）
-STR_CURR_YEN                                                    :日本円（￥）
-STR_CURR_ATS                                                    :オーストリアシリング（ATS）
-STR_CURR_BEF                                                    :ベルギーフランク（BEF）
-STR_CURR_CHF                                                    :スイスフランク（CHF）
-STR_CURR_CZK                                                    :チェココルナ（CZK）
-STR_CURR_DEM                                                    :ドイツマルク（DEM）
-STR_CURR_DKK                                                    :デンマーククローネ（DKK）
-STR_CURR_ESP                                                    :スペインペセタ（ESP）
-STR_CURR_FIM                                                    :フィンランドマーカ（FIM）
-STR_CURR_FRF                                                    :フランスフランク（FRF）
-STR_CURR_GRD                                                    :ギリシアドラクマ（GRD）
-STR_CURR_HUF                                                    :ハンガリーフォリント（HUF）
-STR_CURR_ISK                                                    :アイスランドクローナ（ISK）
-STR_CURR_ITL                                                    :イタリアリーラ（ITL）
-STR_CURR_NLG                                                    :オランダギルダー（NLG）
-STR_CURR_NOK                                                    :ノルウェイクローネ（NOK）
-STR_CURR_PLN                                                    :ポーランドズロティ（PLN）
-STR_CURR_RON                                                    :ルーマニアレイ（RON）
-STR_CURR_RUR                                                    :ロシアルーブル（RUR）
-STR_CURR_SIT                                                    :スロベニアトラール（SIT）
-STR_CURR_SEK                                                    :スウェーデンクローナ（SEK）
-STR_CURR_TRY                                                    :トルコリーラ（TL）
-STR_CURR_SKK                                                    :スロバキアコルナ（SKK）
-STR_CURR_BRL                                                    :ブラジルレアル（BRL）
-STR_CURR_EEK                                                    :エストニアクローン(EEK)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :英ポンド（£）
+STR_GAME_OPTIONS_CURRENCY_USD                                   :米ドル（$）
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :ユーロ（€）
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :日本円（￥）
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :オーストリアシリング（ATS）
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :ベルギーフランク（BEF）
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :スイスフランク（CHF）
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :チェココルナ（CZK）
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :ドイツマルク（DEM）
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :デンマーククローネ（DKK）
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :スペインペセタ（ESP）
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :フィンランドマーカ（FIM）
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :フランスフランク（FRF）
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :ギリシアドラクマ（GRD）
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :ハンガリーフォリント（HUF）
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :アイスランドクローナ（ISK）
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :イタリアリーラ（ITL）
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :オランダギルダー（NLG）
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :ノルウェイクローネ（NOK）
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :ポーランドズロティ（PLN）
+STR_GAME_OPTIONS_CURRENCY_RON                                   :ルーマニアレイ（RON）
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :ロシアルーブル（RUR）
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :スロベニアトラール（SIT）
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :スウェーデンクローナ（SEK）
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :トルコリーラ（TL）
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :スロバキアコルナ（SKK）
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :ブラジルレアル（BRL）
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :エストニアクローン(EEK)
 
-STR_CURR_CUSTOM                                                 :カスタム...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :カスタム...
 
-STR_OPTIONS_LANG                                                :{BLACK}言語
-STR_OPTIONS_LANG_TIP                                            :{BLACK}ゲームの言語を選択します
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}言語
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}ゲームの言語を選択します
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}フルスクリーン
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}OpenTTD をフルスクリーンでプレイするにはチックします
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}フルスクリーン
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}OpenTTD をフルスクリーンでプレイするにはチックします
 STR_FULLSCREEN_FAILED                                           :{WHITE}フルスクリーンモードが設定できません
 
-STR_OPTIONS_RES                                                 :{BLACK}画面の解像度
-STR_OPTIONS_RES_TIP                                             :{BLACK}画面の解像度を選択します
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}画面の解像度
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}画面の解像度を選択します
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}スクリーンショットフォーマット
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}スクリーンショットのファイルフォーマットを選択します
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}スクリーンショットフォーマット
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}スクリーンショットのファイルフォーマットを選択します
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}ベースGRFセット
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}使用するGRFの選択
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}ベースGRFセットについての追加情報
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ベースGRFセット
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}使用するGRFの選択
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}ベースGRFセットについての追加情報
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}自動保存に失敗しました
 
@@ -857,25 +857,25 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}指令�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}指令リストをコピーできません...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 共有指令の終了- -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} は目的地への経路を見つけられません。
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} が迷っています。
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}昨年 {VEHICLE} の利益は {CURRENCY}。
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}欧州通貨統合！{}{}我が国はここからユーロを通貨として使用！
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} は目的地への経路を見つけられません。
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} が迷っています。
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}昨年 {VEHICLE} の利益は {CURRENCY}。
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}欧州通貨統合！{}{}我が国はここからユーロを通貨として使用！
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} は無効な指令があります。
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} は重複している指令があります。
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} の指令の中で、無効な駅があります。
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} は無効な指令があります。
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} は重複している指令があります。
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} の指令の中で、無効な駅があります。
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}{VEHICLE} の自動交換が失敗しました。{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} は交換後に長過ぎます。
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE} 自動交換/更新の規則は適用されませんでした。
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(資金の限度)
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE} の自動交換が失敗しました。{}{STRING}
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} は交換後に長過ぎます。
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE} 自動交換/更新の規則は適用されませんでした。
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(資金の限度)
 
-STR_CONFIG_SETTING                                              :{BLACK}拡張設定(パッチ設定)
-STR_CONFIG_SETTING_TIP                                          :{BLACK}パッチ･拡張設定を表示
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}拡張設定(パッチ設定)
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}パッチ･拡張設定を表示
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}拡張設定･パッチ設定
 
 STR_CONFIG_SETTING_OFF                                          :切
@@ -1145,11 +1145,11 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYP
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}通過点名を変更
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}通過点名を変更できません...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}線路を通過点に交換します
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}線路を通過点に交換します
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}ここに線路通過点を建設できません...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}ここの線路通過点を破壊できません...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}自動線路建設モードを用いて線路を建設
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}自動線路建設モードを用いて線路を建設
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...このシナリオに市町村がありません
 
@@ -1159,7 +1159,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :多くのラン
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}地図にたくさんの産業を建設します
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}産業を建設できません...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}整地したり、植林したりするには、地形のツールバーを開きます
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}整地したり、植林したりするには、地形のツールバーを開きます
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}地形
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}土地をならす
 
@@ -1168,11 +1168,11 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}ラン�
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}ランドムな木を植林します
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}ここに運河を建設できません...
-STR_BUILD_CANALS_TIP                                            :{BLACK}運河を建設します
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}運河を建設します
 STR_LANDINFO_CANAL                                              :運河
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}ここに水門を建設できません...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}水門を建設
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}水門を建設
 STR_LANDINFO_LOCK                                               :水門
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}ここに川を設置できません
@@ -1184,16 +1184,16 @@ STR_LANDINFO_COORDS                                             :{BLACK}座標�
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}駅の部分を破壊できません...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}ここの線路の種類を交換できません...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}線路種類を交換／更新
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}線路種類を交換／更新
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}列車の全般を売却するにはここへドラッグします
 
-STR_DRAG_DROP                                                   :{BLACK}自動サイズ
-STR_STATION_DRAG_DROP                                           :{BLACK}ドラッグアンドドロップで駅を建設します
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}自動サイズ
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}ドラッグアンドドロップで駅を建設します
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}駅の種類を選択します
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}駅の種類を選択します
 
-STR_FAST_FORWARD                                                :{BLACK}ゲームを早送り
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}ゲームを早送り
 STR_MESSAGE_HISTORY                                             :{WHITE}メッセージ履歴
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}最近表示したニュースやその他のメッセージのリストを表示します
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}すべてを切
@@ -2708,9 +2708,9 @@ STR_TRAIN_NO_POWER                                              :{RED}動力が�
 STR_TRAIN_START_NO_CATENARY                                     :線路に架線がないため、この列車が動けません
 STR_TRAIN_STUCK                                                 :{ORANGE}空き経路待ち中
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING}が新登場！
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING}が新登場！ー{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}{STRING}が新登場！
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING}が新登場！ー{ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}破壊した車両は売却できません...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}破壊した車両は改装できません...
@@ -2754,7 +2754,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}造船�
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}町民の祝賀！{}初船舶が{STATION}に到着！
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}通過点として使えるブイを設置します
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}ここにブイを設置できません
-STR_BUILD_AQUEDUCT                                              :{BLACK}水路橋を建設
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}水路橋を建設
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}ここに水路橋を建設できません...
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE}(改装)
 STR_REFIT_TITLE                                                 :{GOLD}運送する貨物の種類を選択：
@@ -2771,7 +2771,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}空港�
 
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}町民の祝賀！{}初飛行機が{STATION}に到着！
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}墜落事故！{}{COMMA}人が{STATION}で死亡
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}墜落事故！{}燃料切れ、{COMMA}人が死亡
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}墜落事故！{}燃料切れ、{COMMA}人が死亡
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE}（時刻表）
@@ -2822,8 +2822,8 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}この�
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}この会社が借入している残額を表示します
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}最大ポイントから合計ポイント
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRFの設定
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}NewGRF の設定を表示
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRFの設定
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF の設定を表示
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRFの設定
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}変更を適用
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}パレットを切り替える
@@ -3296,20 +3296,20 @@ STR_BORDER_RANDOMIZE                                            :{BLACK}ラン�
 STR_BORDER_MANUAL                                               :{BLACK}手動
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}町空港
-STR_CITY_AIRPORT                                                :{BLACK}市空港
-STR_METRO_AIRPORT                                               :{BLACK}都市空港
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}国際空港
-STR_COMMUTER_AIRPORT                                            :{BLACK}通勤空港
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}大陸間空港
-STR_HELIPORT                                                    :{BLACK}ヘリポート
-STR_HELIDEPOT                                                   :{BLACK}ヘリコプター庫
-STR_HELISTATION                                                 :{BLACK}ヘリステーション
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}町空港
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}市空港
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}都市空港
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}国際空港
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}通勤空港
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}大陸間空港
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}ヘリポート
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}ヘリコプター庫
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}ヘリステーション
 
-STR_SMALL_AIRPORTS                                              :{BLACK}小型空港
-STR_LARGE_AIRPORTS                                              :{BLACK}大型空港
-STR_HUB_AIRPORTS                                                :{BLACK}ハブ型空港
-STR_HELIPORTS                                                   :{BLACK}ヘリコプター空港
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}小型空港
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}大型空港
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}ハブ型空港
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}ヘリコプター空港
 
 ############ Tooltip measurment
 
@@ -3518,8 +3518,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI の設定
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}AI の設定を表示します
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI の設定
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}AI の設定を表示します
 STR_AI_DEBUG                                                    :{WHITE}AI デバッグ
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}AI の名前
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI を再起動
@@ -3601,7 +3601,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}...接�
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}...ファイルに書くアクセス権がありません
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}ダウンロードしたファイルを開展することができませんでした
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}オンラインの項目を確認
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}オンラインの項目を確認
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}抜けている項目をオンラインで検索
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}抜けている項目はインターネットで検索します。
 ########

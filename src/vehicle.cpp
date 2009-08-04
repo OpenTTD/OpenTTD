@@ -621,15 +621,15 @@ void CallVehicleTicks()
 		}
 
 		StringID error_message = res.GetErrorMessage();
-		if (error_message == STR_AUTOREPLACE_NOTHING_TO_DO || error_message == INVALID_STRING_ID) continue;
+		if (error_message == STR_ERROR_AUTOREPLACE_NOTHING_TO_DO || error_message == INVALID_STRING_ID) continue;
 
-		if (error_message == STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY) error_message = STR_AUTOREPLACE_MONEY_LIMIT;
+		if (error_message == STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY) error_message = STR_ERROR_AUTOREPLACE_MONEY_LIMIT;
 
 		StringID message;
-		if (error_message == STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT) {
+		if (error_message == STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT) {
 			message = error_message;
 		} else {
-			message = STR_VEHICLE_AUTORENEW_FAILED;
+			message = STR_NEWS_VEHICLE_AUTORENEW_FAILED;
 		}
 
 		SetDParam(0, v->index);
@@ -877,11 +877,11 @@ void AgeVehicle(Vehicle *v)
 
 	StringID str;
 	if (age == -DAYS_IN_LEAP_YEAR) {
-		str = STR_VEHICLE_IS_GETTING_OLD;
+		str = STR_NEWS_VEHICLE_IS_GETTING_OLD;
 	} else if (age == 0) {
-		str = STR_VEHICLE_IS_GETTING_VERY_OLD;
+		str = STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD;
 	} else if (age > 0 && (age % DAYS_IN_LEAP_YEAR) == 0) {
-		str = STR_VEHICLE_IS_GETTING_VERY_OLD_AND;
+		str = STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND;
 	} else {
 		return;
 	}
@@ -1010,7 +1010,7 @@ void VehicleEnterDepot(Vehicle *v)
 				if (v->owner == _local_company) {
 					/* Notify the user that we stopped the vehicle */
 					SetDParam(0, v->index);
-					AddVehicleNewsItem(STR_ORDER_REFIT_FAILED, NS_ADVICE, v->index);
+					AddVehicleNewsItem(STR_NEWS_ORDER_REFIT_FAILED, NS_ADVICE, v->index);
 				}
 			} else if (v->owner == _local_company && cost.GetCost() != 0) {
 				ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost.GetCost());
@@ -1644,7 +1644,7 @@ void VehiclesYearlyLoop()
 					SetDParam(0, v->index);
 					SetDParam(1, profit);
 					AddVehicleNewsItem(
-						STR_VEHICLE_IS_UNPROFITABLE,
+						STR_NEWS_VEHICLE_IS_UNPROFITABLE,
 						NS_ADVICE,
 						v->index
 					);

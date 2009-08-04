@@ -389,9 +389,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Нала
 
 STR_COMPANY_SOMEONE                                             :дехто{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :Імперська
-STR_UNITS_METRIC                                                :Метрична
-STR_UNITS_SI                                                    :СІ
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Імперська
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Метрична
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :СІ
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} миль/год
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} км/год
@@ -494,7 +494,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауз
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Зберегти гру, покинути гру, вихід
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Показати зупинки, станції
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Показати карту
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Показати карту, показати міста
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Показати карту, показати міста
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Показати міста
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Фінансова інформація
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Головна інформація
@@ -542,9 +542,9 @@ STR_VEHICLE_TRAIN                                               :Поїзд
 STR_VEHICLE_ROAD_VEHICLE                                        :Авто
 STR_VEHICLE_SHIP                                                :Корабель
 STR_VEHICLE_AIRCRAFT                                            :Літак
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} зістарився
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} дуже зістарився
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} зістарився і негайно потребує заміни
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} зістарився
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} дуже зістарився
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} зістарився і негайно потребує заміни
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Інформація про ділянку
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Вартість очистки: {LTBLUE}неможливо
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Вартість очистки: {RED}{CURRENCY}
@@ -665,8 +665,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Вибр
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Вибрати програму 'Набір 2'
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Очистити програму (тільки для Набору 1 або Набору 2)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Зберегти налаштування музики
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Виберіть доріжку, щоб додати до програми (тільки для Набору 1 або Набору 2)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Клікніть на мелодії для її видалення зі списку (лише Набір1 та Набір2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Виберіть доріжку, щоб додати до програми (тільки для Набору 1 або Набору 2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Клікніть на мелодії для її видалення зі списку (лише Набір1 та Набір2)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Вкл./відкл. випадкову програму
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Показує вікно вибору музичної програми
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}Натисніть для показу в центрі екрану
@@ -693,8 +693,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Нов�
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Зміни в попиті на перевезення
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Субсидії
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Загальна інформація
-STR_MESSAGES_ALL                                                :{YELLOW}Відображати повідомлення: відкл. / коротко / повно
-STR_MESSAGE_SOUND                                               :{YELLOW}Звукове сповіщення для підсумкових новин
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Відображати повідомлення: відкл. / коротко / повно
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Звукове сповіщення для підсумкових новин
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...дуже далеко від попереднього пункту призначення
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Кращі компанії, які досягли {NUM}{}({STRING} рівень)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Таблиця компаній з {NUM}
@@ -765,7 +765,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Зава
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Зберегти сценарій
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Грати за сценарієм
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Грати з карти висот
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Почати нову гру, використавши карту висот за ландшафт
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Почати нову гру, використавши карту висот за ландшафт
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Ви дійсно бажаєте вийти з цього сценарію?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...можливо будувати лише у містах з населенням не менш 1200
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Перенести початкову дату на 1 рік назад
@@ -790,9 +790,9 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Дові
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Показує останнє повідомлення або новини
-STR_OFF                                                         :Відкл.
-STR_SUMMARY                                                     :Коротко
-STR_FULL                                                        :Повністю
+STR_NEWS_MESSAGES_OFF                                           :Відкл.
+STR_NEWS_MESSAGES_SUMMARY                                       :Коротко
+STR_NEWS_MESSAGES_FULL                                          :Повністю
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
@@ -895,77 +895,77 @@ STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Збер
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Вибрати програму 'Дорожні теми'
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Англійські (оригінальні)
-STR_TOWNNAME_FRENCH                                             :Французькі
-STR_TOWNNAME_GERMAN                                             :Німецькі
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Англійські (додаткові)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Латиноамериканські
-STR_TOWNNAME_SILLY                                              :Кумедні
-STR_TOWNNAME_SWEDISH                                            :Шведські
-STR_TOWNNAME_DUTCH                                              :Голландські
-STR_TOWNNAME_FINNISH                                            :Фінські
-STR_TOWNNAME_POLISH                                             :Польські
-STR_TOWNNAME_SLOVAK                                             :Словацькі
-STR_TOWNNAME_NORWEGIAN                                          :Норвезькі
-STR_TOWNNAME_HUNGARIAN                                          :Угорські
-STR_TOWNNAME_AUSTRIAN                                           :Австрійські
-STR_TOWNNAME_ROMANIAN                                           :Румунські
-STR_TOWNNAME_CZECH                                              :Чеські
-STR_TOWNNAME_SWISS                                              :Швейцарські
-STR_TOWNNAME_DANISH                                             :Датські
-STR_TOWNNAME_TURKISH                                            :Турецькі
-STR_TOWNNAME_ITALIAN                                            :Італійські
-STR_TOWNNAME_CATALAN                                            :Каталонські
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Англійські (оригінальні)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Французькі
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Німецькі
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Англійські (додаткові)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Латиноамериканські
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Кумедні
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Шведські
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Голландські
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Фінські
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Польські
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Словацькі
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Норвезькі
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Угорські
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Австрійські
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Румунські
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Чеські
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Швейцарські
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Датські
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Турецькі
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Італійські
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Каталонські
 ############ end of townname region
 
-STR_CURR_GBP                                                    :Фунт (£)
-STR_CURR_USD                                                    :Долар ($)
-STR_CURR_EUR                                                    :Євро (€)
-STR_CURR_YEN                                                    :Ієна (¥)
-STR_CURR_ATS                                                    :Австрійський шилінг (ATS)
-STR_CURR_BEF                                                    :Бельгійський франк (BEF)
-STR_CURR_CHF                                                    :Швейцарський франк (CHF)
-STR_CURR_CZK                                                    :Чеська крона (CZK)
-STR_CURR_DEM                                                    :Німецька марка (DEM)
-STR_CURR_DKK                                                    :Датська крона (DKK)
-STR_CURR_ESP                                                    :Іспанська песета (ESP)
-STR_CURR_FIM                                                    :Фінська марка (FIM)
-STR_CURR_FRF                                                    :Франк (FRF)
-STR_CURR_GRD                                                    :Грецька драхма (GRD)
-STR_CURR_HUF                                                    :Угорський форинт (HUF)
-STR_CURR_ISK                                                    :Ісландська крона (ISK)
-STR_CURR_ITL                                                    :Італійська ліра (ITL)
-STR_CURR_NLG                                                    :Голландський гульден (NLG)
-STR_CURR_NOK                                                    :Норвезька крона (NOK)
-STR_CURR_PLN                                                    :Польський злотий (PLN)
-STR_CURR_RON                                                    :Румунський лей (RON)
-STR_CURR_RUR                                                    :Російський рубель (RUR)
-STR_CURR_SIT                                                    :Словенський талер (SIT)
-STR_CURR_SEK                                                    :Шведська крона (SEK)
-STR_CURR_TRY                                                    :Турецька ліра (TRY)
-STR_CURR_SKK                                                    :Словацька крона (SKK)
-STR_CURR_BRL                                                    :Бразильський реал (BRL)
-STR_CURR_EEK                                                    :Естонська крона (EEK)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Фунт (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Долар ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Євро (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Ієна (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Австрійський шилінг (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Бельгійський франк (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Швейцарський франк (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Чеська крона (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Німецька марка (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Датська крона (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Іспанська песета (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Фінська марка (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Франк (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Грецька драхма (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Угорський форинт (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Ісландська крона (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Італійська ліра (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Голландський гульден (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Норвезька крона (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Польський злотий (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Румунський лей (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Російський рубель (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Словенський талер (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Шведська крона (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Турецька ліра (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Словацька крона (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Бразильський реал (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Естонська крона (EEK)
 
-STR_CURR_CUSTOM                                                 :Власна...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Власна...
 
-STR_OPTIONS_LANG                                                :{BLACK}Мова
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Виберіть мову для використання
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Мова
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Виберіть мову для використання
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}В повний екран
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Натисніть цю кнопку щоб грати в повний екран
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}В повний екран
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Натисніть цю кнопку щоб грати в повний екран
 STR_FULLSCREEN_FAILED                                           :{WHITE}Повноекранний режим не працює
 
-STR_OPTIONS_RES                                                 :{BLACK}Роздільна здатність
-STR_OPTIONS_RES_TIP                                             :{BLACK}Виберіть роздільну здатність екрану
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Роздільна здатність
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Виберіть роздільну здатність екрану
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Формат копій екрану
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Виберіть формат для створення копій екрану
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Формат копій екрану
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Виберіть формат для створення копій екрану
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Основна графіка
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Оберіть, яку основну графіку використовувати
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} відсутн{P ий их их}/пошкоджен{P ий их их} файл{P "" а ів}
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Додаткова інформація про базовий набір графіки
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Основна графіка
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Оберіть, яку основну графіку використовувати
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} відсутн{P ий их их}/пошкоджен{P ий их их} файл{P "" а ів}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Додаткова інформація про базовий набір графіки
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Помилка автозбереження
 
@@ -987,26 +987,26 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Немо
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Неможливо скопіювати список завдань...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Кінець наказів - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} не може знайти шлях.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} загубився.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}: торішній прибуток склав {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Європейська грошова одиниця!{}{}У вашій країні введено євро - єдину валюту для розрахунків!
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} не може знайти шлях.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} загубився.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}: торішній прибуток склав {CURRENCY}
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Європейська грошова одиниця!{}{}У вашій країні введено євро - єдину валюту для розрахунків!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} має замало пунктів у розкладі
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} немає завдань
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} має пункти у розкладі, що повторюються
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} має невірну станцію в завданні
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} має замало пунктів у розкладі
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} немає завдань
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} має пункти у розкладі, що повторюються
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} має невірну станцію в завданні
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Помилка оновлення {VEHICLE}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} дуже довгий після оновлення
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Правила автозаміни/оновлення не примінялись.
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(бракує коштів)
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Помилка оновлення {VEHICLE}{}{STRING}
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} дуже довгий після оновлення
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Правила автозаміни/оновлення не примінялись.
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(бракує коштів)
 
-STR_CONFIG_SETTING                                              :{BLACK}Розширені налаштування
-STR_CONFIG_SETTING_TIP                                          :{BLACK}Показати розширені налаштування
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Розширені налаштування
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Показати розширені налаштування
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Розширені налаштування
 
 STR_CONFIG_SETTING_OFF                                          :Ні
@@ -1292,11 +1292,11 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYP
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Перейменуйте точку маршруту
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Не можна перейменувати точку маршруту...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Встановити точку маршруту
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Встановити точку маршруту
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Тут не можна встановити точку маршруту..
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Тут не можна прибрати точку маршруту..
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Будувати колію, використовуючи авторежим
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Будувати колію, використовуючи авторежим
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...у цьому сценарію немає міст
 STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Генерація карти перервана...{}...немає де розташувати міста
@@ -1307,7 +1307,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Багато р
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Випадково розташувати промисловість по карті
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Неможливо створити промисловість...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Змінити ландшафт
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Змінити ландшафт
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Ландшафт
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Рівень землі
 
@@ -1316,11 +1316,11 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Дере
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Садити дерева випадкового типу
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Неможливо будувати канал тут...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Будувати канали.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Будувати канали.
 STR_LANDINFO_CANAL                                              :Канал
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Неможливо будувати шлюз тут...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Будувати шлюз
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Будувати шлюз
 STR_LANDINFO_LOCK                                               :Шлюз
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Тут не можна зробити річку...
@@ -1332,16 +1332,16 @@ STR_LANDINFO_COORDS                                             :{BLACK}Коор
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Не можна зруйнувати частину станції...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Тут не можна модернізувати колію...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Модернізувати колію
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Модернізувати колію
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Перетягніть сюди поїзд для його продажу повністю
 
-STR_DRAG_DROP                                                   :{BLACK}Малювати
-STR_STATION_DRAG_DROP                                           :{BLACK}Будувати станцію за методом "перетягнути й відпустити"
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Малювати
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Будувати станцію за методом "перетягнути й відпустити"
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Виберіть тип станції для відображення
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Виберіть тип станції для забудови
 
-STR_FAST_FORWARD                                                :{BLACK}Прискорити гру
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Прискорити гру
 STR_MESSAGE_HISTORY                                             :{WHITE}Історія повідомлень
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Список останніх нових повідомлень
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Вимкнути всі
@@ -2908,9 +2908,9 @@ STR_TRAIN_NO_POWER                                              :{RED}Не ел�
 STR_TRAIN_START_NO_CATENARY                                     :Нема електрики, поїзд стоїть
 STR_TRAIN_STUCK                                                 :{ORANGE}Чекає, поки звільниться шлях
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Став доступним новий {STRING}!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Став доступним новий {STRING}!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}Став доступним новий {STRING}!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Став доступним новий {STRING}!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Не можна продати знищений транспорт...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Не можна переобладнати знищений транспорт...
@@ -2957,7 +2957,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Буду
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Жителі святкують . . .{}Перший корабель з'явився на {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Розмістити бакен, який можна використовувати як точку маршруту
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Неможливо розмістити бакен тут...
-STR_BUILD_AQUEDUCT                                              :{BLACK}Побудувати акведук
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Побудувати акведук
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Тут не можна побудувати акведук...
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Переобладнання)
 STR_REFIT_TITLE                                                 :{GOLD}Виберіть вид вантажу для перевезення:-
@@ -2974,7 +2974,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Буду
 
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Жителі святкують . . .{}Перший літак з'явився на {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}{}{COMMA} загиблих в авіакатастрофі! Літак розбився біля {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Авіакатастрофа!{}В літака закінчилось пальне, {COMMA} людей загинуло!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Авіакатастрофа!{}В літака закінчилось пальне, {COMMA} людей загинуло!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (розклад)
@@ -3025,8 +3025,8 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Сума
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Сума позики, наданої компанії
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Загальна кількість балів
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Налаштування NewGRF
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Показати настройки NewGRF
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Налаштування NewGRF
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показати настройки NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Налаштування нової графіки
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Застосувати зміни
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Переключити палітру
@@ -3407,7 +3407,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Нати
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список позначень - {COMMA} Позначен{P ня ня ь}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Збій заміни наказів зупинив {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Збій заміни наказів зупинив {VEHICLE}
 
 ############ Lists rail types
 
@@ -3511,20 +3511,20 @@ STR_BORDER_RANDOMIZE                                            :{BLACK}Будь
 STR_BORDER_MANUAL                                               :{BLACK}Вручну
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}Малий
-STR_CITY_AIRPORT                                                :{BLACK}Міський
-STR_METRO_AIRPORT                                               :{BLACK}Столичний аеропорт
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Міжнародний аеропорт
-STR_COMMUTER_AIRPORT                                            :{BLACK}Приміський
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Міжконтинентальний
-STR_HELIPORT                                                    :{BLACK}Гелікопорт
-STR_HELIDEPOT                                                   :{BLACK}Депо
-STR_HELISTATION                                                 :{BLACK}Гелікоптерна станція
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Малий
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Міський
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Столичний аеропорт
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Міжнародний аеропорт
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Приміський
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Міжконтинентальний
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Гелікопорт
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Депо
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Гелікоптерна станція
 
-STR_SMALL_AIRPORTS                                              :{BLACK}Малі аеропорти
-STR_LARGE_AIRPORTS                                              :{BLACK}Великі аеропорти
-STR_HUB_AIRPORTS                                                :{BLACK}Вузлові аеропорти
-STR_HELIPORTS                                                   :{BLACK}Геліко-аеропорт
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Малі аеропорти
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Великі аеропорти
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Вузлові аеропорти
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Геліко-аеропорт
 
 ############ Tooltip measurment
 
@@ -3733,8 +3733,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|�
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}Параметри AI
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Показати настройки AI
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Параметри AI
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Показати настройки AI
 STR_AI_DEBUG                                                    :{WHITE}Дебаг AI
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Назва AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезавантажити AI
@@ -3824,8 +3824,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... пе
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... файл не відкритий для запису
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не можна розпакувати завантажений файл
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Перевірити вміст у Internet
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Перевірити новий та оновлений вміст для завантаження
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Перевірити вміст у Internet
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити новий та оновлений вміст для завантаження
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Знайти відсутній вміст в Інтернет
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Перевірити, чи можна знайти відсутній вміст в Інтернет
 ########

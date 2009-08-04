@@ -263,9 +263,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}ตั�
 
 STR_COMPANY_SOMEONE                                             :บางคน{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :ระบบอังกฤษ
-STR_UNITS_METRIC                                                :ระบบเมตริก
-STR_UNITS_SI                                                    :ระบบเอสไอ
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :ระบบอังกฤษ
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :ระบบเมตริก
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :ระบบเอสไอ
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} ไมล์/ชม.
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} กม./ชม.
@@ -339,7 +339,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}หย�
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}บันทึกและออกจากเกม
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}แสดงรายการสถานีขนส่งของบริษัท
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}แสดงจุดสังเกต, แผนที่และป้าย
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}แสดงแผนที่และทำเนียบชื่อเมือง
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}แสดงแผนที่และทำเนียบชื่อเมือง
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}แสดงทำเนียบชื่อเมือง
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}แสดงข้อมูลทางการเงินของบริษัท
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}แสดงข้อมูลทั่วไปของบริษัท
@@ -383,9 +383,9 @@ STR_VEHICLE_TRAIN                                               :รถไฟ
 STR_VEHICLE_ROAD_VEHICLE                                        :รถยนต์
 STR_VEHICLE_SHIP                                                :เรือ
 STR_VEHICLE_AIRCRAFT                                            :อากาศยาน
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} เริ่มเก่าแล้ว
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} เก่ามากแล้ว
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} เก่ามากแล้ว และควรเปลี่ยนใหม่ในทันที
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} เริ่มเก่าแล้ว
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} เก่ามากแล้ว
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} เก่ามากแล้ว และควรเปลี่ยนใหม่ในทันที
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}ข้อมูลที่ดิน
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}ราคาค่าทำพื้นที่ให้โล่ง: {LTBLUE}ไม่สามารถทำได้
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}ราคาค่าทำพื้นที่ให้โล่ง: {RED}{CURRENCY}
@@ -502,7 +502,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}เล�
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}เลือกโปรแกรม 'กำหนดเอง 2'
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}ลบโปรแกรมปัจจุบัน (สำหรับโปรแกรมกำหนดเอง 1 หรือ กำหนดเอง 2 เท่านั้น)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}บันทึกการตั้งค่าเพลง
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}คลิกที่รายการเพลงเพื่อเพิ่มไปยังโปรแกรมปัจจุบัน (สำหรับโปรแกรมกำหนดเอง 1 หรือ กำหนดเอง 2 เท่านั้น)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}คลิกที่รายการเพลงเพื่อเพิ่มไปยังโปรแกรมปัจจุบัน (สำหรับโปรแกรมกำหนดเอง 1 หรือ กำหนดเอง 2 เท่านั้น)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}เปิด/ปิด Toggle programme shuffle on/off
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}แสดงหน้าต่างเลือกรายการเพลง
 STR_INTRO_DIFFICULTY                                            :{BLACK}ระดับความยาก ({STRING})
@@ -602,20 +602,20 @@ STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}ขณ�
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}เลือกเพลงฟังรายการเพลง Ezy Street
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :อังกฤษ (ดั้งเดิม)
-STR_TOWNNAME_FRENCH                                             :ฝรั่งเศส
-STR_TOWNNAME_GERMAN                                             :เยอรมัน
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :อังกฤษ (ตัวเสริม)
-STR_TOWNNAME_SILLY                                              :อังกฤษอย่างง่าย
-STR_TOWNNAME_SWEDISH                                            :สวีดิช
-STR_TOWNNAME_DUTCH                                              :ดัชต์
-STR_TOWNNAME_FINNISH                                            :ฟินน์
-STR_TOWNNAME_POLISH                                             :โปลิช
-STR_TOWNNAME_SLOVAK                                             :สโลวากิช
-STR_TOWNNAME_NORWEGIAN                                          :นอร์วิเจียน
-STR_TOWNNAME_HUNGARIAN                                          :ฮังกาเรียน
-STR_TOWNNAME_AUSTRIAN                                           :ออสเตรียน
-STR_TOWNNAME_ROMANIAN                                           :โรมาเนียน
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :อังกฤษ (ดั้งเดิม)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :ฝรั่งเศส
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :เยอรมัน
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :อังกฤษ (ตัวเสริม)
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :อังกฤษอย่างง่าย
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :สวีดิช
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :ดัชต์
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :ฟินน์
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :โปลิช
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :สโลวากิช
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :นอร์วิเจียน
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :ฮังกาเรียน
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :ออสเตรียน
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :โรมาเนียน
 ############ end of townname region
 
 
@@ -644,9 +644,9 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}ไม�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}ไม่สามารถคัดลอกรายการสถานที่ได้
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - สิ้นสุดรายการที่ใช้ร่วมกัน - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} ไม่สามารถหาทางไปต่อได้.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} กำลังหลงทาง.
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}เงินสกุลยูโรเริ่มใช้แล้ว!{}{}สหภาพยุโรปได้เริ่มใช้เงินสกุลเดียวกันแล้ว นั่นคือเงินสกุลยูโร รวมถึงในประเทศนี้ตั้งแต่วันนี้เป็นต้นไป!
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ไม่สามารถหาทางไปต่อได้.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} กำลังหลงทาง.
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}เงินสกุลยูโรเริ่มใช้แล้ว!{}{}สหภาพยุโรปได้เริ่มใช้เงินสกุลเดียวกันแล้ว นั่นคือเงินสกุลยูโร รวมถึงในประเทศนี้ตั้งแต่วันนี้เป็นต้นไป!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE

@@ -400,10 +400,10 @@ static inline bool OrderGoesToStation(const Vehicle *v, const Order *o)
  */
 static void DeleteOrderWarnings(const Vehicle *v)
 {
-	DeleteVehicleNews(v->index, STR_VEHICLE_HAS_TOO_FEW_ORDERS);
-	DeleteVehicleNews(v->index, STR_VEHICLE_HAS_VOID_ORDER);
-	DeleteVehicleNews(v->index, STR_VEHICLE_HAS_DUPLICATE_ENTRY);
-	DeleteVehicleNews(v->index, STR_VEHICLE_HAS_INVALID_ENTRY);
+	DeleteVehicleNews(v->index, STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS);
+	DeleteVehicleNews(v->index, STR_NEWS_VEHICLE_HAS_VOID_ORDER);
+	DeleteVehicleNews(v->index, STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY);
+	DeleteVehicleNews(v->index, STR_NEWS_VEHICLE_HAS_INVALID_ENTRY);
 }
 
 
@@ -1475,7 +1475,7 @@ void CheckOrders(const Vehicle *v)
 		/* We don't have a problem */
 		if (problem_type < 0) return;
 
-		message = STR_VEHICLE_HAS_TOO_FEW_ORDERS + problem_type;
+		message = STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS + problem_type;
 		//DEBUG(misc, 3, "Triggered News Item for vehicle %d", v->index);
 
 		SetDParam(0, v->index);

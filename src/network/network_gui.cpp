@@ -808,7 +808,7 @@ static const Widget _network_game_window_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        215,   315,   215,   226, STR_NETWORK_JOIN_GAME,            STR_NULL},                         // NGWW_JOIN
 { WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        330,   435,   215,   226, STR_NETWORK_REFRESH,              STR_NETWORK_REFRESH_TIP},          // NGWW_REFRESH
 
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        330,   435,   197,   208, STR_NEWGRF_SETTINGS_BUTTON,       STR_NULL},                         // NGWW_NEWGRF
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        330,   435,   197,   208, STR_INTRO_NEWGRF_SETTINGS,        STR_NULL},                         // NGWW_NEWGRF
 
 /* BOTTOM */
 { WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,         10,   110,   246,   257, STR_NETWORK_FIND_SERVER,          STR_NETWORK_FIND_SERVER_TIP},      // NGWW_FIND
@@ -889,7 +889,7 @@ NWidgetPart _nested_network_game_widgets[] = {
 				NWidget(NWID_SPACER), SetMinimalSize(0, 155), SetResize(0, 1),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(NWID_SPACER), SetMinimalSize(120, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_NEWGRF), SetMinimalSize(106, 12), SetDataTip(STR_NEWGRF_SETTINGS_BUTTON, STR_NULL),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_NEWGRF), SetMinimalSize(106, 12), SetDataTip(STR_INTRO_NEWGRF_SETTINGS, STR_NULL),
 					NWidget(NWID_SPACER), SetMinimalSize(5, 0),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 6),

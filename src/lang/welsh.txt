@@ -264,9 +264,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Dewisiad
 
 STR_COMPANY_SOMEONE                                             :rhywun{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :Imperial
-STR_UNITS_METRIC                                                :Metrig
-STR_UNITS_SI                                                    :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperial
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrig
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -369,7 +369,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Oedi'r g
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Cadw'r gêm, cefnu ar y gêm, cau
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Dangos rhestr o orsafoedd y cwmni
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Dangos map
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Dangos map, cyfeiriadur trefi
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Dangos map, cyfeiriadur trefi
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Dangos cyfeiriadur trefi
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Dangos gwybodaeth cyllid cwmnïau
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Dangos gwybodaeth gyffredinol cwmnïau
@@ -417,9 +417,9 @@ STR_VEHICLE_TRAIN                                               :Mae Trên
 STR_VEHICLE_ROAD_VEHICLE                                        :Mae Cerbyd Ffordd
 STR_VEHICLE_SHIP                                                :Mae Llong
 STR_VEHICLE_AIRCRAFT                                            :Mae Awyren
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}Mae {VEHICLE} yn heneiddio
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE} Mae {VEHICLE} yn hynod o hen
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE} Mae {VEHICLE} yn hynod o hen ac angen ei ddisodli
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}Mae {VEHICLE} yn heneiddio
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE} Mae {VEHICLE} yn hynod o hen
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE} Mae {VEHICLE} yn hynod o hen ac angen ei ddisodli
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Gwybodath Ardal Tir
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Côst i'w glirio: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Côst i'w glirio: {RED}{CURRENCY}
@@ -540,8 +540,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Dewis y 
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Dewis y rhaglen 'Cyfaddas 2' (dewis y defnyddiwr)
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Clirio'r rhaglen gyfredol (Cyfaddas 1 neu Cyfaddas 2)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Cadw gosodiadau cerddoriaeth
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Cliciwch i ychwanegu trac cerddoriaeth i'r rhaglen gyfredol (Cyfaddas 1 Neu Cyfaddas 2 yn unig)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Cliciwch i dynnu trac cerddoriaeth o'r rhaglen gyfredol (Cyfaddas 1 Neu Cyfaddas 2 yn unig)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Cliciwch i ychwanegu trac cerddoriaeth i'r rhaglen gyfredol (Cyfaddas 1 Neu Cyfaddas 2 yn unig)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Cliciwch i dynnu trac cerddoriaeth o'r rhaglen gyfredol (Cyfaddas 1 Neu Cyfaddas 2 yn unig)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Togu cymysgu trefn raglen ymlaen neu i ffwrdd
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Dangos y ffenestr dewis traciau cerddoriaeth
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}Cliciwch ar y gwasanaeth i ganoli'r olygfa ar y diwydiant neu dref
@@ -568,8 +568,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Cerbyda
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Newidiadau i'r llwythi sy'n cael eu derbyn
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Cymorthdaliadau
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Gwybodaeth Gyffredinol
-STR_MESSAGES_ALL                                                :{YELLOW}Gosod pob math o neges: I Ffwrdd / Crynodeb/ Yn Llawn
-STR_MESSAGE_SOUND                                               :{YELLOW}Chwarae sain ar gyfer negeseuon newyddion cryno
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Gosod pob math o neges: I Ffwrdd / Crynodeb/ Yn Llawn
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Chwarae sain ar gyfer negeseuon newyddion cryno
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...rhy bell o'r gyrchfan flaenorol
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Y Cwmnïau Brig a gyrhaeddodd Lefel {NUM}{}({STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Y Tabl Cynghrair Cwmnïau yn {NUM}
@@ -640,7 +640,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Llwytho 
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Cadw Senario
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Chwarae Senario
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Chwarae Map Uchder
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Dechrau gêm newydd, gan ddefnyddio'r map uchder fel tirwedd
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Dechrau gêm newydd, gan ddefnyddio'r map uchder fel tirwedd
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Ydych chi'n siwr eich bod chi eisiau gadael y senario hwn?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...gellir ei adeiladu'n unig mewn trefi gyda phoblogaeth o 1200 neu fwy
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Symud y dyddiad cychwyn yn ôl 1 blwyddyn
@@ -665,9 +665,9 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Ar hap
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Dangos y neges neu'r adroddiad newyddion ddiwethaf...
-STR_OFF                                                         :I Ffwrdd
-STR_SUMMARY                                                     :Crynodeb
-STR_FULL                                                        :Llawn
+STR_NEWS_MESSAGES_OFF                                           :I Ffwrdd
+STR_NEWS_MESSAGES_SUMMARY                                       :Crynodeb
+STR_NEWS_MESSAGES_FULL                                          :Llawn
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
@@ -770,77 +770,77 @@ STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Mae'r g�
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Dewis y rhaglen 'Ezy Scoedent style music'
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Saesneg (Gwreiddiol)
-STR_TOWNNAME_FRENCH                                             :Ffrangeg
-STR_TOWNNAME_GERMAN                                             :Almaeneg
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Saesneg (Ychwanegol)
-STR_TOWNNAME_LATIN_AMERICAN                                     :America Ladin
-STR_TOWNNAME_SILLY                                              :Gwirion
-STR_TOWNNAME_SWEDISH                                            :Swedaidd
-STR_TOWNNAME_DUTCH                                              :Iseldireg
-STR_TOWNNAME_FINNISH                                            :Ffinnaidd
-STR_TOWNNAME_POLISH                                             :Pwylaidd
-STR_TOWNNAME_SLOVAK                                             :Slofacaidd
-STR_TOWNNAME_NORWEGIAN                                          :Norwyaidd
-STR_TOWNNAME_HUNGARIAN                                          :Hwngaraidd
-STR_TOWNNAME_AUSTRIAN                                           :Awstriaidd
-STR_TOWNNAME_ROMANIAN                                           :Rwmaniaidd
-STR_TOWNNAME_CZECH                                              :Tsecaidd
-STR_TOWNNAME_SWISS                                              :Swisaidd
-STR_TOWNNAME_DANISH                                             :Danaidd
-STR_TOWNNAME_TURKISH                                            :Twrcaidd
-STR_TOWNNAME_ITALIAN                                            :Eidalaidd
-STR_TOWNNAME_CATALAN                                            :Catalanaidd
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Saesneg (Gwreiddiol)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Ffrangeg
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Almaeneg
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Saesneg (Ychwanegol)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :America Ladin
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Gwirion
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Swedaidd
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Iseldireg
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Ffinnaidd
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Pwylaidd
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slofacaidd
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norwyaidd
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hwngaraidd
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Awstriaidd
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rwmaniaidd
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tsecaidd
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Swisaidd
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danaidd
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Twrcaidd
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Eidalaidd
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalanaidd
 ############ end of townname region
 
-STR_CURR_GBP                                                    :Punnoedd (£)
-STR_CURR_USD                                                    :Doleri ($)
-STR_CURR_EUR                                                    :Ewro (€)
-STR_CURR_YEN                                                    :Yen (¥)
-STR_CURR_ATS                                                    :Swllt Awstriaidd (ATS)
-STR_CURR_BEF                                                    :Ffranc Belgaidd (BEF)
-STR_CURR_CHF                                                    :Ffranc Swisaidd (CHF)
-STR_CURR_CZK                                                    :Koruna Tsecaidd (CZK)
-STR_CURR_DEM                                                    :Deutschmark (DEM)
-STR_CURR_DKK                                                    :Krone Danaidd (DKK)
-STR_CURR_ESP                                                    :Peseta (ESP)
-STR_CURR_FIM                                                    :Markka Ffinaidd(FIM)
-STR_CURR_FRF                                                    :Ffranc (FRF)
-STR_CURR_GRD                                                    :Drachma (GRD)
-STR_CURR_HUF                                                    :Forint (HUF)
-STR_CURR_ISK                                                    :Krona Ynys yr Iâ (ISK)
-STR_CURR_ITL                                                    :Lira Eidalaidd (ITL)
-STR_CURR_NLG                                                    :Guilder (NLG)
-STR_CURR_NOK                                                    :Krone Norwyaidd (NOK)
-STR_CURR_PLN                                                    :Zloty Pwylaidd (PLN)
-STR_CURR_RON                                                    :Leu Rwmanaidd (RON)
-STR_CURR_RUR                                                    :Rwbl Rwsaidd (RUR)
-STR_CURR_SIT                                                    :Tolar Slofenaidd (SIT)
-STR_CURR_SEK                                                    :Krona Swedaidd (SEK)
-STR_CURR_TRY                                                    :Lira Twrcaidd (TRY)
-STR_CURR_SKK                                                    :Koruna Slofacaidd (SKK)
-STR_CURR_BRL                                                    :Real Brazilaidd (BRL)
-STR_CURR_EEK                                                    :Krooni Estonia (EEK)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Punnoedd (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Doleri ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Ewro (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Swllt Awstriaidd (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Ffranc Belgaidd (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Ffranc Swisaidd (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Tsecaidd (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Krone Danaidd (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka Ffinaidd(FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Ffranc (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Krona Ynys yr Iâ (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Eidalaidd (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilder (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone Norwyaidd (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty Pwylaidd (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Rwmanaidd (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rwbl Rwsaidd (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Slofenaidd (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Krona Swedaidd (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Twrcaidd (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna Slofacaidd (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real Brazilaidd (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni Estonia (EEK)
 
-STR_CURR_CUSTOM                                                 :Addasedig...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Addasedig...
 
-STR_OPTIONS_LANG                                                :{BLACK}Iaith
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Dewiswch yr iaith rhyngwyneb i'w defnyddio
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Iaith
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Dewiswch yr iaith rhyngwyneb i'w defnyddio
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Sgrin Llawn
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Marciwch y blwch hwn i chwarae Open TTD gyda Sgrin Llawn
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Sgrin Llawn
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marciwch y blwch hwn i chwarae Open TTD gyda Sgrin Llawn
 STR_FULLSCREEN_FAILED                                           :{WHITE}Methodd y modd sgrin llawn
 
-STR_OPTIONS_RES                                                 :{BLACK}Cydraniad Sgrin
-STR_OPTIONS_RES_TIP                                             :{BLACK}Dewiswch y cydraniad sgrin i'w defnyddio
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Cydraniad Sgrin
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Dewiswch y cydraniad sgrin i'w defnyddio
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Fformat Ciplun
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Dewiswch y fformat ciplun i'w ddefnyddio
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Fformat Ciplun
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Dewiswch y fformat ciplun i'w ddefnyddio
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Set Raffeg Sylfaenol
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Dewiswch y set raffeg sylfaenol i'w defnyddio
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} ar goll/corrupted file{P "" iau}
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}gwybodaeth ychwanegol am y set sall graffeg
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set Raffeg Sylfaenol
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Dewiswch y set raffeg sylfaenol i'w defnyddio
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ar goll/corrupted file{P "" iau}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}gwybodaeth ychwanegol am y set sall graffeg
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Methodd yr Awtogadw
 
@@ -862,26 +862,26 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Does dim
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Does dim modd copïo'r rhestr gorchmynion...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Diwedd y Gorchmynion sydd wedi'u Rhannu - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Mae {VEHICLE} yn methu dod o hyd i lwybr er mwyn parhau.
-STR_TRAIN_IS_LOST                                               :{WHITE} Mae {VEHICLE} ar goll.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Elw {VEHICLE} y flwyddyn diwethaf oedd {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Arian Sengl Ewropeaidd!{}{}Cafodd yr Ewro ei gyflwyno fel unig arian cyfred eich gwlad!
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}Mae {VEHICLE} yn methu dod o hyd i lwybr er mwyn parhau.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE} Mae {VEHICLE} ar goll.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Elw {VEHICLE} y flwyddyn diwethaf oedd {CURRENCY}
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Arian Sengl Ewropeaidd!{}{}Cafodd yr Ewro ei gyflwyno fel unig arian cyfred eich gwlad!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}Mae gan {VEHICLE} rhy ychydig o orchmynion yn ei amserlen
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}Mae gan {VEHICLE} orchymyn gwallus
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}Mae gan {VEHICLE} orchmynion dyblyg
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}Mae gan {VEHICLE} orsaf annilys yn ei orchmynion
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Mae gan {VEHICLE} rhy ychydig o orchmynion yn ei amserlen
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Mae gan {VEHICLE} orchymyn gwallus
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Mae gan {VEHICLE} orchmynion dyblyg
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Mae gan {VEHICLE} orsaf annilys yn ei orchmynion
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Methwyd ag adnewyddu {VEHICLE}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE} Aeth gormod o amser heibio i allu adnewyddu {VEHICLE}
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ni weithredwyd unrhyw reolau awtogyfnewid/adnewydd.
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(terfyn arian)
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Methwyd ag adnewyddu {VEHICLE}{}{STRING}
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE} Aeth gormod o amser heibio i allu adnewyddu {VEHICLE}
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ni weithredwyd unrhyw reolau awtogyfnewid/adnewydd.
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(terfyn arian)
 
-STR_CONFIG_SETTING                                              :{BLACK}Ffurfweddu Addasiadau
-STR_CONFIG_SETTING_TIP                                          :{BLACK}Ffurfweddu'r Addasiadau
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ffurfweddu Addasiadau
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Ffurfweddu'r Addasiadau
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ffurfweddu Addasiadau
 
 STR_CONFIG_SETTING_OFF                                          :I  Ffwrdd
@@ -1167,11 +1167,11 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYP
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Golygu enw Pwynt Llwybr
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Does dim modd newid enw Pwynt Llwybr...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Newid rheilffordd yn bwynt llwybr
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Newid rheilffordd yn bwynt llwybr
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Does dim modd adeiladu pwynt llwybr trên yma...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Does dim modd tynnu'r pwynt llwybr trên yma...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Adeiladu trac yn defnyddio'r modd Awtoreilffordd
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Adeiladu trac yn defnyddio'r modd Awtoreilffordd
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...nid oes tref yn y senario hwn
 STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Ataliwyd creu map...{}...nid oedd lleoliadau addas ar gyfer trefi
@@ -1182,7 +1182,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Llawer o ddiwyd
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Gorchuddio'r map gyda diwydiannau wedi'i lleoli ar hap
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Doedd dim modd cynhyrchu diwydiannau...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Agor y bar offer tirweddu er mwyn codi neu ostwng tir, plannu coed ayb.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Agor y bar offer tirweddu er mwyn codi neu ostwng tir, plannu coed ayb.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Tirweddu
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Gwastatáu Tir
 
@@ -1191,11 +1191,11 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Coed o f
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Gosod coed o fath ar hap
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Methu adeiladu camlesi yma...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Adeiladu camlesi.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Adeiladu camlesi.
 STR_LANDINFO_CANAL                                              :Camlas
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Methu adeiladu lociau yma...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Adeiladu lociau
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Adeiladu lociau
 STR_LANDINFO_LOCK                                               :Loc
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Methu gosod afonydd yma...
@@ -1207,16 +1207,16 @@ STR_LANDINFO_COORDS                                             :{BLACK}Cyfeirno
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Methu tynnu rhan o orsaf...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Methu trosi'r math rheilffordd hwn...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Trosi/Diweddaru math y rheilffordd
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Trosi/Diweddaru math y rheilffordd
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Llusgwch injan y trên yma i werthu'r holl drên
 
-STR_DRAG_DROP                                                   :{BLACK}Llusgo a Gollwng
-STR_STATION_DRAG_DROP                                           :{BLACK}Adeiladu gorsaf gan ddefnyddio llusgo a gollwng
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Llusgo a Gollwng
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Adeiladu gorsaf gan ddefnyddio llusgo a gollwng
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Dewiswch y dosbarth o orsaf i'w dangos
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Dewiswch y math o orsaf i'w hadeiladu
 
-STR_FAST_FORWARD                                                :{BLACK}Cyflymu'r gêm
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Cyflymu'r gêm
 STR_MESSAGE_HISTORY                                             :{WHITE}Hanes Negeseuon
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Rhestr o'r negeseuon newyddion diweddaraf
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Analluogi popeth
@@ -2746,9 +2746,9 @@ STR_TRAIN_NO_POWER                                              :{RED}Dim Pŵer
 STR_TRAIN_START_NO_CATENARY                                     :Does gan y trac ddim catena felly does dim modd i't trên gychwyn
 STR_TRAIN_STUCK                                                 :{ORANGE}Aros am lwybr clir
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING} newydd yn awr ar gael!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}New {STRING} ar gael yn awr!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}{STRING} newydd yn awr ar gael!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}New {STRING} ar gael yn awr!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Methu gwerthu cerbyd sydd wedi'i ddinistrio...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Methu ailffitio'r cerbyd sydd wedi'i ddinistrio...
@@ -2795,7 +2795,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Adeiladu
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{}Mae'r llong gyntaf wedi cyrraedd {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Gosod bwi a ellir ei ddefnyddio fel pwynt llwybr
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Methu gosod bwi yma...
-STR_BUILD_AQUEDUCT                                              :{BLACK}Adeiladu traphont
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Adeiladu traphont
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Methu adeiladu traphont yma...
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ailffitio)
 STR_REFIT_TITLE                                                 :{GOLD}Dewiswch y math o lwyth i'w  gario:
@@ -2812,7 +2812,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Adeiladu
 
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Mae'r trigolion yn dathlu . . .{}Mae'r awyren gyntaf wedi cyrraedd {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Damwain Awyren!{}Bu farw {COMMA} mewn tanchwa yn {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Awyren wedi syrthio!{}Rhedodd yr awyren allan o danwydd, bu farw {COMMA} yn y ddamwain!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Awyren wedi syrthio!{}Rhedodd yr awyren allan o danwydd, bu farw {COMMA} yn y ddamwain!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Amserlen)
@@ -2863,8 +2863,8 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Cyfanswm
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Cyfanswm yr arian mae'r cwmni hwn wedi ei fenthyg ar hyn o bryd
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Cyfanswm y pwyntiau allan o'r pwyntiau posib
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Gosodiadau NewGRF
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Dangos gosodiadau NewGRF
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Gosodiadau NewGRF
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Dangos gosodiadau NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Gosodiadau NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Gweithredu newidiadau
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Toglu palet
@@ -3245,7 +3245,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Clicio i
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Rhestr Arwyddion - {COMMA} Arwydd{P "" ion}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Stopiodd methiant yr ailffitio {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Stopiodd methiant yr ailffitio {VEHICLE}
 
 ############ Lists rail types
 
@@ -3349,20 +3349,20 @@ STR_BORDER_RANDOMIZE                                            :{BLACK}Ar hap
 STR_BORDER_MANUAL                                               :{BLACK}Â Llaw
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}Bach
-STR_CITY_AIRPORT                                                :{BLACK}Dinas
-STR_METRO_AIRPORT                                               :{BLACK}Maes awyr metropolitan
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Maes awyr rhyngwladol
-STR_COMMUTER_AIRPORT                                            :{BLACK}Cymudol
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Rhyng-gyfandirol
-STR_HELIPORT                                                    :{BLACK}Porth Hofrennydd
-STR_HELIDEPOT                                                   :{BLACK}Depo Hofrennydd
-STR_HELISTATION                                                 :{BLACK}Gorsaf Hofrennydd
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Bach
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Dinas
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Maes awyr metropolitan
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Maes awyr rhyngwladol
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Cymudol
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Rhyng-gyfandirol
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Porth Hofrennydd
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Depo Hofrennydd
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Gorsaf Hofrennydd
 
-STR_SMALL_AIRPORTS                                              :{BLACK}Meysydd awyr bach
-STR_LARGE_AIRPORTS                                              :{BLACK}Meysydd awyr mawr
-STR_HUB_AIRPORTS                                                :{BLACK}Meysydd awyr cyfnewid
-STR_HELIPORTS                                                   :{BLACK}Meysydd awyr hofrennydd
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Meysydd awyr bach
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Meysydd awyr mawr
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Meysydd awyr cyfnewid
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Meysydd awyr hofrennydd
 
 ############ Tooltip measurment
 
@@ -3571,8 +3571,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}Gosodiadau Ai
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Dangos Gosodiadau AI
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Gosodiadau Ai
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Dangos Gosodiadau AI
 STR_AI_DEBUG                                                    :{WHITE}Dadfygio AI
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Enw'r AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ail-lwytho AI
@@ -3662,8 +3662,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... coll
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... dim modd ysgrifennu'r ffeil
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Doedd dim modd datgywasgu'r ffeil
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Gwirio Cynnwys Ar-lein
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Gwirio am gynnwys newydd neu wedi'i ddiweddaru i'w lwytho i lawr
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Gwirio Cynnwys Ar-lein
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Gwirio am gynnwys newydd neu wedi'i ddiweddaru i'w lwytho i lawr
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Canfod cynnwys coll arlein
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Gwirio a ellir cael hyd i'r cynnwys coll arlein
 ########

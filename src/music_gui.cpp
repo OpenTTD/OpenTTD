@@ -321,8 +321,8 @@ static const Widget _music_track_selection_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                      STR_TOOLTIP_CLOSE_WINDOW},                        // MTSW_CLOSE
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   431,     0,    13, STR_PLAYLIST_MUSIC_PROGRAM_SELECTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},              // MTSW_CAPTION
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   431,    14,   217, 0x0,                                  STR_NULL},                                        // MTSW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   181,    22,   215, 0x0,                                  STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO},       // MTSW_LIST_LEFT
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   250,   429,    22,   215, 0x0,                                  STR_CLICK_ON_TRACK_TO_REMOVE},                    // MTSW_LIST_RIGHT
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   181,    22,   215, 0x0,                                  STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK},         // MTSW_LIST_LEFT
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   250,   429,    22,   215, 0x0,                                  STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK},      // MTSW_LIST_RIGHT
 {    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   186,   245,    44,    51, 0x0,                                  STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM},     // MTSW_ALL
 {    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   186,   245,    52,    59, 0x0,                                  STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC},        // MTSW_OLD
 {    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   186,   245,    60,    67, 0x0,                                  STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC},        // MTSW_NEW
@@ -346,7 +346,7 @@ static const NWidgetPart _nested_music_track_selection_widgets[] = {
 			/* Left panel. */
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 8), // Space for the left heading text.
-				NWidget(WWT_PANEL, COLOUR_GREY, MTSW_LIST_LEFT), SetMinimalSize(180, 194), SetDataTip(0x0, STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO), EndContainer(),
+				NWidget(WWT_PANEL, COLOUR_GREY, MTSW_LIST_LEFT), SetMinimalSize(180, 194), SetDataTip(0x0, STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK), EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 			EndContainer(),
 			/* Middle buttons. */
@@ -369,7 +369,7 @@ static const NWidgetPart _nested_music_track_selection_widgets[] = {
 			/* Right panel. */
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 8), // Space for the right heading text.
-				NWidget(WWT_PANEL, COLOUR_GREY, MTSW_LIST_RIGHT), SetMinimalSize(180, 194), SetDataTip(0x0, STR_CLICK_ON_TRACK_TO_REMOVE), EndContainer(),
+				NWidget(WWT_PANEL, COLOUR_GREY, MTSW_LIST_RIGHT), SetMinimalSize(180, 194), SetDataTip(0x0, STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK), EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 			EndContainer(),
 		EndContainer(),

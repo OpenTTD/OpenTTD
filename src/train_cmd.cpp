@@ -3034,7 +3034,7 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 				if (_settings_client.gui.lost_train_warn && v->owner == _local_company) {
 					SetDParam(0, v->index);
 					AddVehicleNewsItem(
-						STR_TRAIN_IS_LOST,
+						STR_NEWS_TRAIN_IS_LOST,
 						NS_ADVICE,
 						v->index
 					);
@@ -4395,7 +4395,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 				if (_settings_client.gui.lost_train_warn && v->owner == _local_company) {
 					SetDParam(0, v->index);
 					AddVehicleNewsItem(
-						STR_TRAIN_IS_STUCK,
+						STR_NEWS_TRAIN_IS_STUCK,
 						NS_ADVICE,
 						v->index
 					);

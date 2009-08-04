@@ -265,9 +265,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opções
 
 STR_COMPANY_SOMEONE                                             :alguém{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :Imperial
-STR_UNITS_METRIC                                                :Métrico
-STR_UNITS_SI                                                    :Sistema Internacional
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperial
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Métrico
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :Sistema Internacional
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -370,7 +370,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar o
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvar jogo, abandonar jogo, sair
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Exibir lista de estações da empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Exibir mapa
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Exibir mapa, lista de cidades
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Exibir mapa, lista de cidades
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Exibir lista de cidades
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Exibir informações financeiras da empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Exibir informações gerais da empresa
@@ -418,9 +418,9 @@ STR_VEHICLE_TRAIN                                               :{G=m}Trem
 STR_VEHICLE_ROAD_VEHICLE                                        :{G=m}Automóvel
 STR_VEHICLE_SHIP                                                :{G=m}Embarcação
 STR_VEHICLE_AIRCRAFT                                            :{G=f}Aeronave
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} está ficando velho
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} está ficando muito velho
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} está ficando muito velho e necessita ser substituído
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} está ficando velho
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} está ficando muito velho
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} está ficando muito velho e necessita ser substituído
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informações do Terreno
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Custo para limpar: {LTBLUE}N/D
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Custo para limpar: {RED}{CURRENCY}
@@ -541,8 +541,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Selecion
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selecionar programa 'Personalizado 2'
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Limpar programa atual (somente Personaliz. 1 ou Personaliz. 2)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Gravar configuração de música
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Clique na faixa de música para a adicionar ao programa atual (somente Personaliz. 1 ou Personaliz. 2)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Clique na música para remover da programação (Custom1 ou Custom2 somente)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clique na faixa de música para a adicionar ao programa atual (somente Personaliz. 1 ou Personaliz. 2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Clique na música para remover da programação (Custom1 ou Custom2 somente)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Alternar exibir/ocultar programação aleatória
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Exibir janela de seleção de faixas de música
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}Clique num serviço para centralizar a visualização numa indústria/cidade
@@ -569,8 +569,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Novos v
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Alterações de aceitação de carga
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsídios
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informações gerais
-STR_MESSAGES_ALL                                                :{YELLOW}Configurações para todos os tipos de mensagem(on/off/resumo)
-STR_MESSAGE_SOUND                                               :{YELLOW}Tocar som para notícias resumidas
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Configurações para todos os tipos de mensagem(on/off/resumo)
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Tocar som para notícias resumidas
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...muito distante do destino anterior
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top de empresas que chegaram a {NUM}{} ({STRING} Nível)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Tabela da Liga de Empresas em {NUM}
@@ -641,7 +641,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Abrir Ce
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Salvar Cenário
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Jogar Cenário
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Jogar num mapa de relevo
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Inica um novo jogo, a partir de um mapa de relevo
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Inica um novo jogo, a partir de um mapa de relevo
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Tem a certeza que deseja abandonar este cenário?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...só pode ser construído em cidades com pelo menos 1200 habitantes
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Retroceder data de inicio em 1 ano
@@ -666,9 +666,9 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Randômi
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Exibir a última mensagem ou notícia
-STR_OFF                                                         :Desligado
-STR_SUMMARY                                                     :Resumo
-STR_FULL                                                        :Completo
+STR_NEWS_MESSAGES_OFF                                           :Desligado
+STR_NEWS_MESSAGES_SUMMARY                                       :Resumo
+STR_NEWS_MESSAGES_FULL                                          :Completo
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
@@ -771,77 +771,77 @@ STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Gravaç�
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selecionar programa 'Ezy Street'
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Inglês (Original)
-STR_TOWNNAME_FRENCH                                             :Francês
-STR_TOWNNAME_GERMAN                                             :Alemão
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Inglês (Adicional)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latino-Americano
-STR_TOWNNAME_SILLY                                              :Absurdo
-STR_TOWNNAME_SWEDISH                                            :Sueco
-STR_TOWNNAME_DUTCH                                              :Holandês
-STR_TOWNNAME_FINNISH                                            :Finlandês
-STR_TOWNNAME_POLISH                                             :Polaco
-STR_TOWNNAME_SLOVAK                                             :Eslovaco
-STR_TOWNNAME_NORWEGIAN                                          :Noreguês
-STR_TOWNNAME_HUNGARIAN                                          :Húngaro
-STR_TOWNNAME_AUSTRIAN                                           :Austríaco
-STR_TOWNNAME_ROMANIAN                                           :Romeno
-STR_TOWNNAME_CZECH                                              :Checo
-STR_TOWNNAME_SWISS                                              :Suiço
-STR_TOWNNAME_DANISH                                             :Dinamarquês
-STR_TOWNNAME_TURKISH                                            :Turco
-STR_TOWNNAME_ITALIAN                                            :Italiano
-STR_TOWNNAME_CATALAN                                            :Catalão
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Inglês (Original)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Francês
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Alemão
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Inglês (Adicional)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latino-Americano
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Absurdo
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Sueco
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Holandês
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finlandês
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polaco
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Eslovaco
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Noreguês
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Húngaro
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austríaco
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romeno
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Checo
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Suiço
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Dinamarquês
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turco
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiano
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalão
 ############ end of townname region
 
-STR_CURR_GBP                                                    :Libras (£)
-STR_CURR_USD                                                    :Dólar ($)
-STR_CURR_EUR                                                    :Euro (€)
-STR_CURR_YEN                                                    :Yen (¥)
-STR_CURR_ATS                                                    :Shilling Austríaco (ATS)
-STR_CURR_BEF                                                    :Franco Belga (BEF)
-STR_CURR_CHF                                                    :Franco Suíço (CHF)
-STR_CURR_CZK                                                    :Coroa Checa (CZK)
-STR_CURR_DEM                                                    :Marco Alemão (DEM)
-STR_CURR_DKK                                                    :Coroa Dinamarquesa (DKK)
-STR_CURR_ESP                                                    :Peso (ESP)
-STR_CURR_FIM                                                    :Marco Finlandês (FIM)
-STR_CURR_FRF                                                    :Franco (FRF)
-STR_CURR_GRD                                                    :Dracma Grego (GRD)
-STR_CURR_HUF                                                    :Forint Húngaro (HUF)
-STR_CURR_ISK                                                    :Coroa Islandesa (ISK)
-STR_CURR_ITL                                                    :Lira Italiana (ITL)
-STR_CURR_NLG                                                    :Guilda Holandesa (NLG)
-STR_CURR_NOK                                                    :Coroa Norueguesa (NOK)
-STR_CURR_PLN                                                    :Zloty Polaco (PLN)
-STR_CURR_RON                                                    :Lei Romeno (RON)
-STR_CURR_RUR                                                    :Rublo Russo (RUR)
-STR_CURR_SIT                                                    :Tolar Eslovênio (SIT)
-STR_CURR_SEK                                                    :Coroa Sueca (SEK)
-STR_CURR_TRY                                                    :Lira Turca (TRY)
-STR_CURR_SKK                                                    :Coroa Eslovaca (SKK)
-STR_CURR_BRL                                                    :Real Brasileiro (BRL)
-STR_CURR_EEK                                                    :Coroa Estoniana (EEK)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libras (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólar ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Shilling Austríaco (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franco Belga (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franco Suíço (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Coroa Checa (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marco Alemão (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Coroa Dinamarquesa (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peso (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Marco Finlandês (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franco (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Dracma Grego (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint Húngaro (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Coroa Islandesa (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Italiana (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilda Holandesa (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Coroa Norueguesa (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty Polaco (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Lei Romeno (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rublo Russo (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Eslovênio (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Coroa Sueca (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Turca (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Coroa Eslovaca (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real Brasileiro (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Coroa Estoniana (EEK)
 
-STR_CURR_CUSTOM                                                 :Personalizado...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizado...
 
-STR_OPTIONS_LANG                                                :{BLACK}Idioma
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Selecionar o idioma da interface do jogo
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selecionar o idioma da interface do jogo
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Tela cheia
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Selecione esta opção para jogar o OpenTTD em modo de tela cheia
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Tela cheia
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Selecione esta opção para jogar o OpenTTD em modo de tela cheia
 STR_FULLSCREEN_FAILED                                           :{WHITE}Falha no modo de tela cheia
 
-STR_OPTIONS_RES                                                 :{BLACK}Resolução da tela
-STR_OPTIONS_RES_TIP                                             :{BLACK}Selecionar a resolução da tela que deseja utilizar
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolução da tela
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecionar a resolução da tela que deseja utilizar
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Formato da foto
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecionar o formato de foto que deseja utilizar
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formato da foto
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecionar o formato de foto que deseja utilizar
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Jogo de gráficos base
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Selecione o jogo de gráficos a ser utilizado
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} arquivo faltando/corrupto{P "" s}
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Informações adicionais sobre o set de gráficos base
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Jogo de gráficos base
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecione o jogo de gráficos a ser utilizado
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} arquivo faltando/corrupto{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informações adicionais sobre o set de gráficos base
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Falha ao salvar automaticamente
 
@@ -863,26 +863,26 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Impossí
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Impossível copiar a lista de ordens...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fim de Ordens Compartilhadas - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} não pode encontrar um caminho para seguir
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} está perdido
-STR_VEHICLE_IS_UNPROFITABLE                                     :O lucro de {WHITE}{VEHICLE}, no ano passado foi de {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}União Monetária Europeia!{}{} O Euro é introduzido como moeda única para todas as transações no seu país!
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} não pode encontrar um caminho para seguir
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} está perdido
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :O lucro de {WHITE}{VEHICLE}, no ano passado foi de {CURRENCY}
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}União Monetária Europeia!{}{} O Euro é introduzido como moeda única para todas as transações no seu país!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} tem poucas ordens na lista de paradas
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} tem uma ordem inválida
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} tem ordens duplicadas
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} tem uma estação inválida na lista de paradas
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} tem poucas ordens na lista de paradas
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} tem uma ordem inválida
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} tem ordens duplicadas
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} tem uma estação inválida na lista de paradas
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Autosubstituição falhou com {VEHICLE}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} fica grande demais para ser substituído
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Regras de autosubstituição/renovação não estão ativadas.
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(limite de dinheiro)
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autosubstituição falhou com {VEHICLE}{}{STRING}
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} fica grande demais para ser substituído
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Regras de autosubstituição/renovação não estão ativadas.
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(limite de dinheiro)
 
-STR_CONFIG_SETTING                                              :{BLACK}Configurações avançadas
-STR_CONFIG_SETTING_TIP                                          :{BLACK}Exibe as configurações avançadas
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Configurações avançadas
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Exibe as configurações avançadas
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Configurações avançadas
 
 STR_CONFIG_SETTING_OFF                                          :Off
@@ -1170,11 +1170,11 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYP
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nome do ponto de controle
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Impossível alterar o nome do ponto de controle...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Converter linha em ponto de controle
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converter linha em ponto de controle
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Impossível construir ponto de controle de trem aqui...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Impossível remover ponto de controle de trem aqui...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Construir ferrovias usando o modo automático
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir ferrovias usando o modo automático
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...não existe cidade neste cenário
 STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Geração do mapa abortada... {}... não há locais para criação de cidades
@@ -1185,7 +1185,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Várias indúst
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Cobrir o mapa com indústrias colocadas aleatoriamente
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Impossível gerar indústrias...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Abra a barra de modelação ambiental para elevar ou baixar terreno, plantar árvores, etc.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abra a barra de modelação ambiental para elevar ou baixar terreno, plantar árvores, etc.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Terreno
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Nivelar terreno
 
@@ -1194,11 +1194,11 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Plantar árvores de tipo aleatório
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Impossível construir canais aqui...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Construir canais.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canais.
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Impossível construir eclusas aqui...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Construir eclusas
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir eclusas
 STR_LANDINFO_LOCK                                               :Eclusa
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Impossível fazer rios aqui...
@@ -1210,16 +1210,16 @@ STR_LANDINFO_COORDS                                             :{BLACK}Coordena
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Impossível remover parte da estação...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Impossível converter o tipo de linha aqui...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Converter/Atualizar tipo de linha
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de linha
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Arraste locomotiva aqui para vender todo o trem
 
-STR_DRAG_DROP                                                   :{BLACK}Arrastar
-STR_STATION_DRAG_DROP                                           :{BLACK}Construir estação arrastando
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastar
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construir estação arrastando
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Selecionar a classe de estação a ser exibida
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Selecionar o tipo de estação a construir
 
-STR_FAST_FORWARD                                                :{BLACK}Aumentar velocidade do jogo
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Aumentar velocidade do jogo
 STR_MESSAGE_HISTORY                                             :{WHITE}Histórico de Mensagens
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Lista de notícias recentes
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Desativar tudo
@@ -2751,9 +2751,9 @@ STR_TRAIN_NO_POWER                                              :{RED}Sem força
 STR_TRAIN_START_NO_CATENARY                                     :Essa linha não tem energia, portanto o trem não parte
 STR_TRAIN_STUCK                                                 :{ORANGE}Aguardando via livre
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nov{G o a} {STRING} agora disponível!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nov{G o a} {STRING} agora disponível!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}Nov{G o a} {STRING} agora disponível!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G o a} {STRING} agora disponível!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Impossível vender veículo destruído...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Impossível adptar veículo destruído...
@@ -2800,7 +2800,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construi
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Cidadãos celebram . . .{} Primeira embarcação chega a {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Posicione a bóia, que pode ser usada para marcar pontos de rota adicionais
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Impossível posicionar bóia aqui...
-STR_BUILD_AQUEDUCT                                              :{BLACK}Construir aqueduto
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir aqueduto
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Impossível construir aqueduto aqui
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Adaptar)
 STR_REFIT_TITLE                                                 :{GOLD}Selecionar tipo de carga:
@@ -2817,7 +2817,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construi
 
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeira aeronave chega a {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Acidente Aéreo!{} {COMMA} mortos numa explosão em {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Acidente Aéreo!{} Aeronave ficou sem combustivél, {COMMA} mortos numa explosão!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Acidente Aéreo!{} Aeronave ficou sem combustivél, {COMMA} mortos numa explosão!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Timetable)
@@ -2868,8 +2868,8 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Dinheiro
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Tem um empréstimo muito elevado?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total de pontos sobre o máximo de pontos
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Configurar NewGRF
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Exibir configs. dos NewGRF
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configurar NewGRF
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Exibir configs. dos NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configurar NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar alterações
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Liga/Desliga paleta
@@ -3250,7 +3250,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Clique p
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Placas - {COMMA} Placa{P "" s}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}{VEHICLE} parou após ser readaptado.
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} parou após ser readaptado.
 
 ############ Lists rail types
 
@@ -3354,20 +3354,20 @@ STR_BORDER_RANDOMIZE                                            :{BLACK}Randômi
 STR_BORDER_MANUAL                                               :{BLACK}Manual
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}Pequeno
-STR_CITY_AIRPORT                                                :{BLACK}Cidade
-STR_METRO_AIRPORT                                               :{BLACK}Aeroportos Metropolitanos
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Aeroporto Internacional
-STR_COMMUTER_AIRPORT                                            :{BLACK}Viajante
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinental
-STR_HELIPORT                                                    :{BLACK}Heliporto
-STR_HELIDEPOT                                                   :{BLACK}Deposito de helicópteros
-STR_HELISTATION                                                 :{BLACK}Heli-estação
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Pequeno
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Cidade
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Aeroportos Metropolitanos
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Aeroporto Internacional
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Viajante
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Intercontinental
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliporto
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Deposito de helicópteros
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Heli-estação
 
-STR_SMALL_AIRPORTS                                              :{BLACK}Aeroportos pequenos
-STR_LARGE_AIRPORTS                                              :{BLACK}Aeroportos grandes
-STR_HUB_AIRPORTS                                                :{BLACK}Aeroportos modulares
-STR_HELIPORTS                                                   :{BLACK}Heliportos
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Aeroportos pequenos
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Aeroportos grandes
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Aeroportos modulares
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Heliportos
 
 ############ Tooltip measurment
 
@@ -3576,8 +3576,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}Opções da IA
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Exibir configs. da IA
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Opções da IA
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Exibir configs. da IA
 STR_AI_DEBUG                                                    :{WHITE}Debug da IA
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nome da IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar IA
@@ -3668,8 +3668,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... cone
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... falha no salvamento
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Falha na descompactação do arquivo
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Checar conteúdo on-line
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Checka por conteúdo on-line e upgrades
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Checar conteúdo on-line
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Checka por conteúdo on-line e upgrades
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Procurar o conteúdo on-line
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Checa se o conteúdo que falta pode ser encontrado on-line
 ########

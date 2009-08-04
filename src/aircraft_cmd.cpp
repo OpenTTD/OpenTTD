@@ -1312,7 +1312,7 @@ static void CrashAirplane(Aircraft *v)
 	StringID newsitem;
 	AIEventVehicleCrashed::CrashReason crash_reason;
 	if (st == NULL) {
-		newsitem = STR_PLANE_CRASH_OUT_OF_FUEL;
+		newsitem = STR_NEWS_PLANE_CRASH_OUT_OF_FUEL;
 		crash_reason = AIEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT;
 	} else {
 		SetDParam(1, st->index);

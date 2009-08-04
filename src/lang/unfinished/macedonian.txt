@@ -263,9 +263,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Опци
 
 STR_COMPANY_SOMEONE                                             :некој{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :Империјален
-STR_UNITS_METRIC                                                :Метрички
-STR_UNITS_SI                                                    :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Империјален
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Метрички
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -362,7 +362,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауз
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Зачувај ја играта, напушти, излези
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Прикажи листа на станиците на компанијата
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Прикажи мапа, екстра viewport или листа на знаци
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Прикажи мапа, именик на градови
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Прикажи мапа, именик на градови
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Прикажи именик на градови
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Прикажи информации за финансиите на компанијата
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Прикажи општи информации за компанијата
@@ -510,7 +510,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Избе
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Избери 'Сопствен 2' (кориснички дефиниран) програм
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Исчисти го тековниот програм (само Сопствен1 или Сопствен2)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Зачувај поставки за музика
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Кликни на песна за да ја додадеш во тековниот програм (само Сопствен1 или Сопствен2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Кликни на песна за да ја додадеш во тековниот програм (само Сопствен1 или Сопствен2)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Вклучи/исклучи мешање за програм
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Прикажи диалог за избор на песна
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}Кликни на сервис за да се центрира погледот на индустријата/градот
@@ -612,8 +612,8 @@ STR_BAGS                                                        :вреќи
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
 
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ниту едно правило за автоматска промена не е применето.
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(лимит на пари)
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ниту едно правило за автоматска промена не е применето.
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(лимит на пари)
 
 
 
@@ -645,7 +645,7 @@ STR_AUTOREPLACE_MONEY_LIMIT                                     :(лимит н�
 
 
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Изгради пруга користејки 'Авто-пруга' мод
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Изгради пруга користејки 'Авто-пруга' мод
 
 
 
@@ -653,7 +653,7 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Изгр
 
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Не може да се направи канал овде...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Гради канали.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Гради канали.
 
 
 
@@ -812,7 +812,7 @@ STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Капа
 
 ##id 0x9800
 
-STR_BUILD_AQUEDUCT                                              :{BLACK}Изгради водовод
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Изгради водовод
 STR_REFIT_TITLE                                                 :{GOLD}Одбери тип на товар за носење:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Нов капацитет: {GOLD}{CARGO}{}{BLACK}Пренамената чини: {GOLD}{CURRENCY}
 

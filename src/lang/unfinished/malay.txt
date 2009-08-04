@@ -244,8 +244,8 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pilihan 
 
 STR_COMPANY_SOMEONE                                             :Seseorang{SKIP}{SKIP}
 
-STR_UNITS_METRIC                                                :Metrik
-STR_UNITS_SI                                                    :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrik
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -339,7 +339,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Henti Se
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Simpan Permainan, Tinggalkan Permainan, Keluar
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Papar Senarai Stesen Syarikat
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Papar peta, pandangan lebih atau senarai tanda
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Papar Peta, direktori Bandar
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Papar Peta, direktori Bandar
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Papar direktori bandar
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Papar maklumat kewangan syarikat
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Papar maklumat umum syarikat
@@ -384,9 +384,9 @@ STR_VEHICLE_TRAIN                                               :Keretapi
 STR_VEHICLE_ROAD_VEHICLE                                        :Kenderaan Jalan
 STR_VEHICLE_SHIP                                                :Kapal
 STR_VEHICLE_AIRCRAFT                                            :Kapal Terbang
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} menjadi semakin lama
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} menjadi terlalu lama
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} menjadi terlalu lama dan memerlukan penggantian dengan segera
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} menjadi semakin lama
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} menjadi terlalu lama
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} menjadi terlalu lama dan memerlukan penggantian dengan segera
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Maklumat Kawasan Tanah
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Harga untuk membersihkan: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Harga untuk membersihkan: {RED}{CURRENCY}
@@ -503,7 +503,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Pilih pr
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Pilih program 'Custom 2' (pilihan pengguna)
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Batal progam semasa (Custom1 atau Custom2 sahaja)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Simpan seting muzik
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Klik atas trek muzik untuk menambahkan ke program semasa (Custom1 atau Custom2 sahaja)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik atas trek muzik untuk menambahkan ke program semasa (Custom1 atau Custom2 sahaja)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Togol program kocok buka/tutup
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Paparkan tingkap pilihan trek muzik
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}Klik di atas servis untuk mendapatkan pandangan tengah pada industri/bandar
@@ -530,8 +530,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Kendera
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Penukaran pada penerimaan kargo
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidi
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Maklumat umum
-STR_MESSAGES_ALL                                                :{YELLOW}Tetap semua jenis mesej ke: Tutup / Ringkasan/ Penuh
-STR_MESSAGE_SOUND                                               :{YELLOW}Mainkan bunyi untuk mesej berita ringkas
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Tetap semua jenis mesej ke: Tutup / Ringkasan/ Penuh
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Mainkan bunyi untuk mesej berita ringkas
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...terlalu jauh daripada destinasi sebelumnya
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Syarikat-syarikat utama yang mencapai {NUM}{}({STRING} Level)
 STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
@@ -621,9 +621,9 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Rawak
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Tunjukkan utusan atau laporan berita terakhir
-STR_OFF                                                         :Padam
-STR_SUMMARY                                                     :Ringkasan
-STR_FULL                                                        :Penuh
+STR_NEWS_MESSAGES_OFF                                           :Padam
+STR_NEWS_MESSAGES_SUMMARY                                       :Ringkasan
+STR_NEWS_MESSAGES_FULL                                          :Penuh
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
@@ -719,57 +719,57 @@ STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Penyimpa
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Pilih program 'Muzik gaya Ezy Street'
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Inggeris (Original)
-STR_TOWNNAME_FRENCH                                             :French
-STR_TOWNNAME_GERMAN                                             :German
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Inggeris (Additional)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latin-American
-STR_TOWNNAME_SILLY                                              :Silly
-STR_TOWNNAME_SWEDISH                                            :Swedish
-STR_TOWNNAME_DUTCH                                              :Dutch
-STR_TOWNNAME_FINNISH                                            :Finnish
-STR_TOWNNAME_POLISH                                             :Polish
-STR_TOWNNAME_SLOVAK                                             :Slovak
-STR_TOWNNAME_NORWEGIAN                                          :Norwegian
-STR_TOWNNAME_HUNGARIAN                                          :Hungarian
-STR_TOWNNAME_AUSTRIAN                                           :Austrian
-STR_TOWNNAME_ROMANIAN                                           :Romanian
-STR_TOWNNAME_CZECH                                              :Czech
-STR_TOWNNAME_SWISS                                              :Swiss
-STR_TOWNNAME_DANISH                                             :Danish
-STR_TOWNNAME_TURKISH                                            :Turkish
-STR_TOWNNAME_ITALIAN                                            :Italian
-STR_TOWNNAME_CATALAN                                            :Catalan
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Inggeris (Original)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :French
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :German
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Inggeris (Additional)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-American
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Silly
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Swedish
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Dutch
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finnish
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polish
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovak
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norwegian
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungarian
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austrian
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romanian
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Czech
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Swiss
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danish
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkish
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italian
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalan
 ############ end of townname region
 
-STR_CURR_GBP                                                    :Paun (£)
-STR_CURR_USD                                                    :Dolar ($)
-STR_CURR_EUR                                                    :Euro (€)
-STR_CURR_YEN                                                    :Yen (¥)
-STR_CURR_ATS                                                    :Syiling Austria (ATS)
-STR_CURR_DEM                                                    :Mark Jerman (DEM)
-STR_CURR_FIM                                                    :Markka Finland (FIM)
-STR_CURR_FRF                                                    :Franc (FRF)
-STR_CURR_RUR                                                    :Ruble Rusia (RUR)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Paun (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Syiling Austria (ATS)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Mark Jerman (DEM)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka Finland (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc (FRF)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ruble Rusia (RUR)
 
 
-STR_OPTIONS_LANG                                                :{BLACK}Bahasa
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Pilih bahasa hubungan untuk digunakan
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Bahasa
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Pilih bahasa hubungan untuk digunakan
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Skrin Penuh
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Tanda kotak ini untuk bermain OpenTTD dalam mod skrin penuh
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Skrin Penuh
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Tanda kotak ini untuk bermain OpenTTD dalam mod skrin penuh
 STR_FULLSCREEN_FAILED                                           :{WHITE}Mod skrin penuh gagal
 
-STR_OPTIONS_RES                                                 :{BLACK}Resolusi Skrin
-STR_OPTIONS_RES_TIP                                             :{BLACK}Pilih resolusi skrin untuk digunakan
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolusi Skrin
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pilih resolusi skrin untuk digunakan
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format tangkapan skrin
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Pilih format tangkapan skrin untuk digunakan
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Format tangkapan skrin
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Pilih format tangkapan skrin untuk digunakan
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Set grafik asas
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Pilih set grafik asas untuk digunakan
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} fail hilang/rosak{P "" s}
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Maklumat tambahan tentang set grafik asas ini
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafik asas
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pilih set grafik asas untuk digunakan
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fail hilang/rosak{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Maklumat tambahan tentang set grafik asas ini
 
 
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Menuju ke {STATION}
@@ -787,8 +787,8 @@ STR_RES_OTHER                                                   :lain
 STR_NOTHING                                                     :
 
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} tidak boleh mencari arah jalan untuk teruskan jalan
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} telah hilang jalan.
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} tidak boleh mencari arah jalan untuk teruskan jalan
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} telah hilang jalan.
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -882,7 +882,7 @@ STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Tidak bo
 
 
 
-STR_BUILD_CANALS_TIP                                            :{BLACK}Bina terusan.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bina terusan.
 STR_LANDINFO_CANAL                                              :Terusan
 
 
@@ -892,7 +892,7 @@ STR_LANDINFO_RIVER                                              :Sungai
 
 
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Tidak boleh tukar jenis landasan di sini...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Menukarkan/Meningkatkan jenis landasan
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Menukarkan/Meningkatkan jenis landasan
 
 
 

@@ -264,9 +264,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spul Ops
 
 STR_COMPANY_SOMEONE                                             :immen{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :Imperiaal
-STR_UNITS_METRIC                                                :Metriesk
-STR_UNITS_SI                                                    :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperiaal
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metriesk
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} m/o
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/o
@@ -348,7 +348,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausear 
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Opslaan, ferlitte, ôfslúte
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Lit list fan stasjons sjen
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Lit de kaart sjen
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Lit de kaart en de stêdenlist sjen
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Lit de kaart en de stêdenlist sjen
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Lit in list fan alle stêden sjen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Lit finansjele ynformaasje sjen oer it bedriuw
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Lit algemiene bedriuwsynformaasje sjen
@@ -396,9 +396,9 @@ STR_VEHICLE_TRAIN                                               :Trein
 STR_VEHICLE_ROAD_VEHICLE                                        :Auto
 STR_VEHICLE_SHIP                                                :Skip
 STR_VEHICLE_AIRCRAFT                                            :Fleanmasine
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} wurdt âld
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} wurdt tige âld
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} wurdt tige âld en is nedich oan ferfaning ta
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} wurdt âld
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} wurdt tige âld
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} wurdt tige âld en is nedich oan ferfaning ta
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Lân Gebiet Ynformaasje
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Kosten om leech te meitsjen: {LTBLUE}N/B
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Kosten om leech te meitsjen: {RED}{CURRENCY}
@@ -507,8 +507,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Selektea
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selektear programma: 'Eigen 2 (selsmakke)'
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Leechje dit programma (allinnich Eigen 1 of Eigen 2)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Sla musyk ynstellings op
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Klik op musyk nûmer om te te foegjen oan dit programma (allinnich Eigen 1 of Eigen 2)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klik op musyknûmmer om't út it aktive programma it heljen (allinnich Custom1 of Custom2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik op musyk nûmer om te te foegjen oan dit programma (allinnich Eigen 1 of Eigen 2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik op musyknûmmer om't út it aktive programma it heljen (allinnich Custom1 of Custom2)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Set musyk wikseljen oan/út
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Lit musyk seleksje skerm sjen.
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}Klik om te sentrearen op yndusty/stêd
@@ -535,8 +535,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nije re
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Feroarings yn akseptearen fan fracht
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsydzjes
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Algemiene ynformaasje
-STR_MESSAGES_ALL                                                :{YELLOW}Set alle berjochtensoarten nei: Út / Gearfetting / Hielendal
-STR_MESSAGE_SOUND                                               :{YELLOW}Musykje ôfspielje by gearfette nijsberjochten
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Set alle berjochtensoarten nei: Út / Gearfetting / Hielendal
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Musykje ôfspielje by gearfette nijsberjochten
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...te fier fan lêste bestimming
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top bedriuwen dy't  niveau {NUM}{}({STRING} helle ha)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Bedriuwskompetysjetabel yn {NUM}
@@ -606,7 +606,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Laad Sce
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Sla Scenario op
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Spylje Scenario
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Spylje hichtekaart
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Begjin in nij spul, mei de hichtekaart as lânskip
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Begjin in nij spul, mei de hichtekaart as lânskip
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Wolsto echt dit lânskip slúte?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...kin allinnich bout wurde yn stêden mei 1200 ynwenners of mear
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Set it startjier 1 jier efterút
@@ -777,7 +777,7 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYP
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namme fan kontrôlepost oanpasse
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Kin de namme fan it kontrôlepost net oanpasse...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Spoar nei kontrôlepost omsette
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Spoar nei kontrôlepost omsette
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Kin jirre gjin kontrôlepost bouwe...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Kin kontrôlepost jirre net fuorthelje...
 

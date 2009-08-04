@@ -169,7 +169,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_PLAY_SCENARIO), SetMinimalSize(158, 12),
 								SetDataTip(STR_INTRO_PLAY_SCENARIO, STR_INTRO_TOOLTIP_PLAY_SCENARIO), SetPadding(0, 0, 0, 10), SetFill(1, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_PLAY_HEIGHTMAP), SetMinimalSize(158, 12),
-								SetDataTip(STR_INTRO_PLAY_HEIGHTMAP, STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP), SetPadding(0, 10, 0, 0), SetFill(1, 0),
+								SetDataTip(STR_INTRO_PLAY_HEIGHTMAP, STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP), SetPadding(0, 10, 0, 0), SetFill(1, 0),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
@@ -216,9 +216,9 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 		/* 'advanced settings' and 'newgrf settings' buttons */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_SETTINGS_OPTIONS), SetMinimalSize(158, 12),
-								SetDataTip(STR_CONFIG_SETTING, STR_CONFIG_SETTING_TIP), SetPadding(0, 0, 0, 10), SetFill(1, 0),
+								SetDataTip(STR_INTRO_ADVANCED_SETTINGS, STR_INTRO_TOOLTIP_ADVANCED_SETTINGS), SetPadding(0, 0, 0, 10), SetFill(1, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_GRF_SETTINGS), SetMinimalSize(158, 12),
-								SetDataTip(STR_NEWGRF_SETTINGS_BUTTON, STR_NEWGRF_SETTINGS_BUTTON_TIP), SetPadding(0, 10, 0, 0), SetFill(1, 0),
+								SetDataTip(STR_INTRO_NEWGRF_SETTINGS, STR_INTRO_TOOLTIP_NEWGRF_SETTINGS), SetPadding(0, 10, 0, 0), SetFill(1, 0),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
@@ -226,9 +226,9 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 		/* 'online content' and 'ai settings' buttons */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_CONTENT_DOWNLOAD), SetMinimalSize(158, 12),
-								SetDataTip(STR_CONTENT_INTRO_BUTTON, STR_CONTENT_INTRO_BUTTON_TIP), SetPadding(0, 0, 0, 10), SetFill(1, 0),
+								SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT), SetPadding(0, 0, 0, 10), SetFill(1, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, SGI_AI_SETTINGS), SetMinimalSize(158, 12),
-								SetDataTip(STR_AI_SETTINGS_BUTTON, STR_AI_SETTINGS_BUTTON_TIP), SetPadding(0, 10, 0, 0), SetFill(1, 0),
+								SetDataTip(STR_INTRO_AI_SETTINGS, STR_INTRO_TOOLTIP_AI_SETTINGS), SetPadding(0, 10, 0, 0), SetFill(1, 0),
 		EndContainer(),
 
 		NWidget(NWID_SPACER), SetMinimalSize(0, 6),

@@ -227,7 +227,7 @@ STR_MENU_LOAD_HEIGHTMAP                                         :اونچائی 
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکلو
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}اونچائی کے نقشے کو کھیلو
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}ایک نیا کھیل شروع کرو، اونچائی کے نقشے کو زمین بنا کر
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}ایک نیا کھیل شروع کرو، اونچائی کے نقشے کو زمین بنا کر
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}...صرف ان شہروں میں بن سکتا ہے جن کی آبادی ۱۲۰۰ سے زیادہ ہے
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}شروع کرنے کی تاریخ کو ایک سال پیچھے کرو
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}شروع کرنے کی تاریخ کو ایک سال آگے کرو
@@ -248,9 +248,9 @@ STR_SELECT_LAYOUT_RANDOM                                        :{G=f}{BLACK}ک�
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}آخری پیغام یا خبر دکھائو
-STR_OFF                                                         :بند
-STR_SUMMARY                                                     :خلاصہ
-STR_FULL                                                        :مکمل
+STR_NEWS_MESSAGES_OFF                                           :بند
+STR_NEWS_MESSAGES_SUMMARY                                       :خلاصہ
+STR_NEWS_MESSAGES_FULL                                          :مکمل
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts

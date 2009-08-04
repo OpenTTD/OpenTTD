@@ -237,7 +237,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Cargo Capacity
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause game
-STR_FAST_FORWARD                                                :{BLACK}Fast forward the game
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Fast forward the game
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Options
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Save game, quit game, quit
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Display map
@@ -259,13 +259,13 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Build ra
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Build roads
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Build ship docks
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Build airports
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Open the landscaping toolbar to raise/lower land, plant trees, etc.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Open the landscaping toolbar to raise/lower land, plant trees, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Show sound/music window
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Show last message/news report, show message options
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Land area information
 
 # Extra tooltips for the scenario editor toolbar
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Display map, town directory
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Display map, town directory
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landscape generation
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Town generation
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industry generation
@@ -546,8 +546,8 @@ STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLAC
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Save
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Clear current program (Custom1 or Custom2 only)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Save music settings
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Click on music track to add to current program (Custom1 or Custom2 only)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Click on music track to remove it from current program (Custom1 or Custom2 only)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Click on music track to add to current program (Custom1 or Custom2 only)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Click on music track to remove it from current program (Custom1 or Custom2 only)
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top companies who reached {NUM}{}({STRING} Level)
@@ -635,11 +635,11 @@ STR_NEWS_MESSAGE                                                :{STRING}  -  {S
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Message
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Message Options
-STR_MESSAGES_ALL                                                :{YELLOW}Setting for all messagetypes (off/summary/full)
-STR_MESSAGE_SOUND                                               :{YELLOW}Play sound for summarized newsmessages
-STR_OFF                                                         :Off
-STR_SUMMARY                                                     :Summary
-STR_FULL                                                        :Full
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Setting for all messagetypes (off/summary/full)
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Play sound for summarized newsmessages
+STR_NEWS_MESSAGES_OFF                                           :Off
+STR_NEWS_MESSAGES_SUMMARY                                       :Summary
+STR_NEWS_MESSAGES_FULL                                          :Full
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Message types:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Arrival of first vehicle at player's station
@@ -670,7 +670,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Road Vehicle Crash!{}Driver dies in fireball after collision with train
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Road Vehicle Crash!{}{COMMA} die in fireball after collision with train
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Plane Crash!{}{COMMA} die in fireball at {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Plane Crash!{}Aircraft ran out of fuel, {COMMA} die in fireball!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Plane Crash!{}Aircraft ran out of fuel, {COMMA} die in fireball!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}Zeppelin disaster at {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}Road vehicle destroyed in 'UFO' collision!
@@ -697,7 +697,7 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}Supply problems cause {STRING} to announce imminent closure!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}Lack of nearby trees causes {STRING} to announce imminent closure!
 
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}European Monetary Union!{}{}The Euro is introduced as the sole currency for everyday transactions in your country!
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}European Monetary Union!{}{}The Euro is introduced as the sole currency for everyday transactions in your country!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}World Recession!{}{}Financial experts fear worst as economy slumps!
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Recession Over!{}{}Upturn in trade gives confidence to industries as economy strengthens!
 
@@ -717,25 +717,25 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} has too few orders in the schedule
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} has a void order
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} has duplicate orders
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} has an invalid station in its orders
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} has too few orders in the schedule
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} has a void order
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} has duplicate orders
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} has an invalid station in its orders
 # end of order system
 
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} is getting old
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} is getting very old
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} is getting very old and urgently needs replacing
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} can't find a path to continue.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} is lost.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}'s profit last year was {CURRENCY}
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} is getting old
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} is getting very old
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} is getting very old and urgently needs replacing
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} can't find a path to continue.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} is lost.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}'s profit last year was {CURRENCY}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Order refit failure stopped {VEHICLE}
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Autorenew failed on {VEHICLE}{}{STRING}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Order refit failure stopped {VEHICLE}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autorenew failed on {VEHICLE}{}{STRING}
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}New {STRING} now available!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}New {STRING} now available!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}New {STRING} now available!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}New {STRING} now available!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} no longer accepts {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} no longer accepts {STRING} or {STRING}
@@ -765,44 +765,44 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Currency
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Currency units selection
 
 ############ start of currency region
-STR_CURR_GBP                                                    :Pounds (£)
-STR_CURR_USD                                                    :Dollars ($)
-STR_CURR_EUR                                                    :Euro (€)
-STR_CURR_YEN                                                    :Yen (¥)
-STR_CURR_ATS                                                    :Austrian Shilling (ATS)
-STR_CURR_BEF                                                    :Belgian Franc (BEF)
-STR_CURR_CHF                                                    :Swiss Franc (CHF)
-STR_CURR_CZK                                                    :Czech Koruna (CZK)
-STR_CURR_DEM                                                    :Deutschmark (DEM)
-STR_CURR_DKK                                                    :Danish Krone (DKK)
-STR_CURR_ESP                                                    :Peseta (ESP)
-STR_CURR_FIM                                                    :Finnish Markka (FIM)
-STR_CURR_FRF                                                    :Franc (FRF)
-STR_CURR_GRD                                                    :Greek Drachma (GRD)
-STR_CURR_HUF                                                    :Hungarian Forint (HUF)
-STR_CURR_ISK                                                    :Icelandic Krona (ISK)
-STR_CURR_ITL                                                    :Italian Lira (ITL)
-STR_CURR_NLG                                                    :Dutch Guilder (NLG)
-STR_CURR_NOK                                                    :Norwegian Krone (NOK)
-STR_CURR_PLN                                                    :Polish Zloty (PLN)
-STR_CURR_RON                                                    :Romanian Leu (RON)
-STR_CURR_RUR                                                    :Russian Rubel (RUR)
-STR_CURR_SIT                                                    :Slovenian Tolar (SIT)
-STR_CURR_SEK                                                    :Swedish Krona (SEK)
-STR_CURR_TRY                                                    :Turkish Lira (TRY)
-STR_CURR_SKK                                                    :Slovak Koruna (SKK)
-STR_CURR_BRL                                                    :Brazilian Real (BRL)
-STR_CURR_EEK                                                    :Estonian Krooni (EEK)
-STR_CURR_CUSTOM                                                 :Custom...
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pounds (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollars ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austrian Shilling (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgian Franc (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Swiss Franc (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Czech Koruna (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danish Krone (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finnish Markka (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Greek Drachma (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Hungarian Forint (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Icelandic Krona (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italian Lira (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Dutch Guilder (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norwegian Krone (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polish Zloty (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Romanian Leu (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Russian Rubel (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenian Tolar (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Swedish Krona (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkish Lira (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovak Koruna (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilian Real (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estonian Krooni (EEK)
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Custom...
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Measuring units
 STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Measuring units selection
 
 ############ start of measuring units region
-STR_UNITS_IMPERIAL                                              :Imperial
-STR_UNITS_METRIC                                                :Metric
-STR_UNITS_SI                                                    :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperial
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metric
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Road vehicles
@@ -814,27 +814,27 @@ STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Town nam
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Select style of town names
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :English (Original)
-STR_TOWNNAME_FRENCH                                             :French
-STR_TOWNNAME_GERMAN                                             :German
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :English (Additional)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latin-American
-STR_TOWNNAME_SILLY                                              :Silly
-STR_TOWNNAME_SWEDISH                                            :Swedish
-STR_TOWNNAME_DUTCH                                              :Dutch
-STR_TOWNNAME_FINNISH                                            :Finnish
-STR_TOWNNAME_POLISH                                             :Polish
-STR_TOWNNAME_SLOVAK                                             :Slovak
-STR_TOWNNAME_NORWEGIAN                                          :Norwegian
-STR_TOWNNAME_HUNGARIAN                                          :Hungarian
-STR_TOWNNAME_AUSTRIAN                                           :Austrian
-STR_TOWNNAME_ROMANIAN                                           :Romanian
-STR_TOWNNAME_CZECH                                              :Czech
-STR_TOWNNAME_SWISS                                              :Swiss
-STR_TOWNNAME_DANISH                                             :Danish
-STR_TOWNNAME_TURKISH                                            :Turkish
-STR_TOWNNAME_ITALIAN                                            :Italian
-STR_TOWNNAME_CATALAN                                            :Catalan
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :English (Original)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :French
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :German
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :English (Additional)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-American
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Silly
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Swedish
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Dutch
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finnish
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polish
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovak
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norwegian
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungarian
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austrian
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romanian
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Czech
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Swiss
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danish
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkish
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italian
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalan
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosave
@@ -846,23 +846,23 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Every 3 months
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Every 6 months
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Every 12 months
 
-STR_OPTIONS_LANG                                                :{BLACK}Language
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Select the interface language to use
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Language
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Select the interface language to use
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Fullscreen
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Check this box to play OpenTTD fullscreen mode
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Fullscreen
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Check this box to play OpenTTD fullscreen mode
 STR_FULLSCREEN_FAILED                                           :{WHITE}Fullscreen mode failed
 
-STR_OPTIONS_RES                                                 :{BLACK}Screen resolution
-STR_OPTIONS_RES_TIP                                             :{BLACK}Select the screen resolution to use
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Screen resolution
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Select the screen resolution to use
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Screenshot format
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Select the screenshot format to use
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Screenshot format
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Select the screenshot format to use
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Base graphics set
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Select the base graphics set to use
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} missing/corrupted file{P "" s}
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Additional information about the base graphics set
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base graphics set
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Select the base graphics set to use
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} missing/corrupted file{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Additional information about the base graphics set
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -876,15 +876,15 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multipla
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Game Options
 STR_INTRO_DIFFICULTY                                            :{BLACK}Difficulty ({STRING})
-STR_CONFIG_SETTING                                              :{BLACK}Advanced Settings
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Settings
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Check Online Content
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI Settings
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Advanced Settings
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Settings
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Check Online Content
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI Settings
 STR_INTRO_QUIT                                                  :{BLACK}Quit
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start a new game
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Load a saved game
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Start a new game, using a heightmap as landscape
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Start a new game, using a heightmap as landscape
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Start a new game, using a customized scenario
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Create a customized game world/scenario
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Start a multiplayer game
@@ -896,10 +896,10 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Select '
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Display game options
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Display difficulty options
-STR_CONFIG_SETTING_TIP                                          :{BLACK}Display advanced settings
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Display NewGRF settings
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Check for new and updated content to download
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Display AI settings
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Display advanced settings
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Display NewGRF settings
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check for new and updated content to download
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Display AI settings
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Quit 'OpenTTD'
 
 # Cheat window
@@ -1086,15 +1086,15 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Supplies
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Build railroad track
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Build railroad track using the Autorail mode
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Build railroad track using the Autorail mode
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Build train depot (for building and servicing trains)
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Convert rail to waypoint
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Convert rail to waypoint
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Build railroad station
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Build railroad signals
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Build railroad bridge
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Build railroad tunnel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Toggle build/remove for railroad track and signals
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Convert/Upgrade the type of the rail
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convert/Upgrade the type of the rail
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Train Depot Orientation
@@ -1108,8 +1108,8 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Number o
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Select number of platforms for railroad station
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platform length
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Select length of railroad station
-STR_DRAG_DROP                                                   :{BLACK}Drag & Drop
-STR_STATION_DRAG_DROP                                           :{BLACK}Build a station with drag & drop
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Build a station with drag & drop
 
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Select a station class to display
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Select the station type to build
@@ -1174,12 +1174,12 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Select f
 # Waterways toolbar
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Waterways construction
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waterways
-STR_BUILD_CANALS_TIP                                            :{BLACK}Build canals.
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Build locks
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Build canals.
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Build locks
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Build ship depot (for building and servicing ships)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Build ship dock
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Place a buoy which can be used as a waypoint
-STR_BUILD_AQUEDUCT                                              :{BLACK}Build aqueduct
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Build aqueduct
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Ship Depot Orientation
@@ -1194,20 +1194,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Build ai
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Airport Selection
-STR_SMALL_AIRPORT                                               :{BLACK}Small
-STR_CITY_AIRPORT                                                :{BLACK}City
-STR_METRO_AIRPORT                                               :{BLACK}Metropolitan airport
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}International airport
-STR_COMMUTER_AIRPORT                                            :{BLACK}Commuter
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinental
-STR_HELIPORT                                                    :{BLACK}Heliport
-STR_HELIDEPOT                                                   :{BLACK}Helidepot
-STR_HELISTATION                                                 :{BLACK}Helistation
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Small
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}City
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitan airport
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}International airport
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Commuter
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Intercontinental
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliport
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helidepot
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helistation
 
-STR_SMALL_AIRPORTS                                              :{BLACK}Small airports
-STR_LARGE_AIRPORTS                                              :{BLACK}Large airports
-STR_HUB_AIRPORTS                                                :{BLACK}Hub airports
-STR_HELIPORTS                                                   :{BLACK}Helicopter airports
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Small airports
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Large airports
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Hub airports
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helicopter airports
 
 
 # Unsorted
@@ -1420,9 +1420,9 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Can't sh
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Can't copy order list...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - End of Shared Orders - -
 
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} is too long after replacement
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}No autoreplace/renew rules applied.
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(money limit)
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} is too long after replacement
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}No autoreplace/renew rules applied.
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(money limit)
 
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Advanced Settings
 

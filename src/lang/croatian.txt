@@ -329,9 +329,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Postavke
 
 STR_COMPANY_SOMEONE                                             :netko{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :Imperijalni
-STR_UNITS_METRIC                                                :Metrički
-STR_UNITS_SI                                                    :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperijalni
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrički
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -431,7 +431,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Zaustavi
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spremi igru, napusti igru, prekini igru
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Prikaži popis postaja u vlasništvu tvrtke
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Prikaži kartu
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Prikaži kartu, popis gradova
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Prikaži kartu, popis gradova
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Prikaži popis gradova
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Prikaži financijske podatke tvrtke
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Prikaži opće podatke tvrtke
@@ -479,9 +479,9 @@ STR_VEHICLE_TRAIN                                               :Vlak
 STR_VEHICLE_ROAD_VEHICLE                                        :Cestovno vozilo
 STR_VEHICLE_SHIP                                                :Brod
 STR_VEHICLE_AIRCRAFT                                            :Zrakoplov
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} postaje star
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} postaje vrlo star
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} postaje vrlo star i hitno treba zamjenu
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} postaje star
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} postaje vrlo star
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} postaje vrlo star i hitno treba zamjenu
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Podaci o zemlji
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Troškovi čišćenja: {LTBLUE}Nedostupno
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Troškovi čišćenja: {RED}{CURRENCY}
@@ -602,8 +602,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Odaberi 
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Odaberi program 'Proizvoljna glazba 2'
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Obriši aktivni program (samo Proizvoljno 1 ili Proizvoljno 2)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Spremi glazbene postavke
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Klikni na glazbenu traku za dodavanje u aktivni program (samo Proizvoljno1 ili Proizvoljno2)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klikni na glazbenu traku kako bi ju uklonio iz trenutnog programa (samo Proizvoljno1 ili Proizvoljno2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klikni na glazbenu traku za dodavanje u aktivni program (samo Proizvoljno1 ili Proizvoljno2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikni na glazbenu traku kako bi ju uklonio iz trenutnog programa (samo Proizvoljno1 ili Proizvoljno2)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Uključi/isključi miješanje programa
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Pokaži prozor za izbor glazbenih traka
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}Klikni na uslugu za centriranje pogleda na industriju/grad
@@ -630,8 +630,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nova vo
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Promjene u prihvaćanju tereta
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subvencije
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Opće informacije
-STR_MESSAGES_ALL                                                :{YELLOW}Postavi sve tipove poruka na: Isključeno/Ukratko/Potpuno
-STR_MESSAGE_SOUND                                               :{YELLOW} Pusti zvuk za sve skraćene novinske poruke
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Postavi sve tipove poruka na: Isključeno/Ukratko/Potpuno
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW} Pusti zvuk za sve skraćene novinske poruke
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...predaleko od prethodnog odredišta
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Najbolje tvrtke koje su dosigle razinu {NUM}{}({STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Tablica tvrtki u {NUM}
@@ -702,7 +702,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Učitaj 
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Spremi scenarij
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Igraj scenarij
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Igraj visinsku kartu
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Pokreni novu igru, koristeći visinsku kartu kao krajolik
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Pokreni novu igru, koristeći visinsku kartu kao krajolik
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Jeste li sigurni da želite završiti ovaj scenarij?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...može biti izgrađen samo u gradovima s najmanje 1200 stanovnika
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pomakni početni datum 1 godinu unatrag
@@ -727,9 +727,9 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Nasumič
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Pokaži zadnju poruku ili vijest
-STR_OFF                                                         :Isključeno
-STR_SUMMARY                                                     :Sažetak
-STR_FULL                                                        :Puno
+STR_NEWS_MESSAGES_OFF                                           :Isključeno
+STR_NEWS_MESSAGES_SUMMARY                                       :Sažetak
+STR_NEWS_MESSAGES_FULL                                          :Puno
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
@@ -832,75 +832,75 @@ STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Spremanj
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Odaberi glazbeni program 'Ezy Street style'
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engleski (original)
-STR_TOWNNAME_FRENCH                                             :Francuski
-STR_TOWNNAME_GERMAN                                             :Njemački
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Engleski (dodatno)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latinoamerički
-STR_TOWNNAME_SILLY                                              :Blesavo
-STR_TOWNNAME_SWEDISH                                            :Švedski
-STR_TOWNNAME_DUTCH                                              :Nizozemski
-STR_TOWNNAME_FINNISH                                            :Finski
-STR_TOWNNAME_POLISH                                             :Poljski
-STR_TOWNNAME_SLOVAK                                             :Slovački
-STR_TOWNNAME_NORWEGIAN                                          :Norveški
-STR_TOWNNAME_HUNGARIAN                                          :Mađarski
-STR_TOWNNAME_AUSTRIAN                                           :Austrijski
-STR_TOWNNAME_ROMANIAN                                           :Rumunjski
-STR_TOWNNAME_CZECH                                              :Češki
-STR_TOWNNAME_SWISS                                              :Švicarski
-STR_TOWNNAME_DANISH                                             :Danski
-STR_TOWNNAME_TURKISH                                            :Turski
-STR_TOWNNAME_ITALIAN                                            :Talijanski
-STR_TOWNNAME_CATALAN                                            :Katalonski
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Engleski (original)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Francuski
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Njemački
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Engleski (dodatno)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latinoamerički
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Blesavo
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Švedski
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Nizozemski
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finski
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Poljski
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovački
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norveški
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Mađarski
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austrijski
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumunjski
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Češki
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Švicarski
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danski
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turski
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Talijanski
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalonski
 ############ end of townname region
 
-STR_CURR_GBP                                                    :Funte (£)
-STR_CURR_USD                                                    :Dolari ($)
-STR_CURR_EUR                                                    :Euri (€)
-STR_CURR_YEN                                                    :Jeni (¥)
-STR_CURR_ATS                                                    :Austrijski šiling (ATS)
-STR_CURR_BEF                                                    :Belgijski franak (BEF)
-STR_CURR_CHF                                                    :Švicarski franak (CHF)
-STR_CURR_CZK                                                    :Češka kruna (CZK)
-STR_CURR_DEM                                                    :Njemačka marka (DEM)
-STR_CURR_DKK                                                    :Danska kruna (DKK)
-STR_CURR_ESP                                                    :Pezeta (ESP)
-STR_CURR_FIM                                                    :Finska marka (FIM)
-STR_CURR_FRF                                                    :Franak (FRF)
-STR_CURR_GRD                                                    :Grčka drahma (GRD)
-STR_CURR_HUF                                                    :Mađarski forint (HUF)
-STR_CURR_ISK                                                    :Islandska kruna (ISK)
-STR_CURR_ITL                                                    :Talijanska lira (ITL)
-STR_CURR_NLG                                                    :Nizozemski gulden (NLG)
-STR_CURR_NOK                                                    :Norveška kruna (NOK)
-STR_CURR_PLN                                                    :Poljski zloti (PLN)
-STR_CURR_RON                                                    :Rumunjski lev (RON)
-STR_CURR_RUR                                                    :Ruske rublje (RUR)
-STR_CURR_SIT                                                    :Slovenski tolar (SIT)
-STR_CURR_SEK                                                    :Švedska kruna (SEK)
-STR_CURR_TRY                                                    :Turska lira(TRY)
-STR_CURR_SKK                                                    :Slovačka kruna (SKK)
-STR_CURR_BRL                                                    :Brazilski real (BRL)
-STR_CURR_EEK                                                    :estonska kruna(EEK)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Funte (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolari ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euri (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jeni (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austrijski šiling (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgijski franak (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Švicarski franak (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Češka kruna (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Njemačka marka (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danska kruna (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pezeta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finska marka (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franak (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grčka drahma (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Mađarski forint (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandska kruna (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Talijanska lira (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Nizozemski gulden (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norveška kruna (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Poljski zloti (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumunjski lev (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ruske rublje (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenski tolar (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Švedska kruna (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turska lira(TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovačka kruna (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilski real (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :estonska kruna(EEK)
 
-STR_CURR_CUSTOM                                                 :Proizvoljno...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Proizvoljno...
 
-STR_OPTIONS_LANG                                                :{BLACK}Jezik
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Izaberi jezično sučelje
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Jezik
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Izaberi jezično sučelje
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Cijeli ekran
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Označi ovu kućicu kako bi igrao OpenTTD preko cijelog ekrana
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Cijeli ekran
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Označi ovu kućicu kako bi igrao OpenTTD preko cijelog ekrana
 STR_FULLSCREEN_FAILED                                           :{WHITE}Neuspješan prelazak na prikaz na cijelom ekranu
 
-STR_OPTIONS_RES                                                 :{BLACK}Razlučivost ekrana
-STR_OPTIONS_RES_TIP                                             :{BLACK}Izaberi razlučivost ekrana
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Razlučivost ekrana
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Izaberi razlučivost ekrana
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format za sliku ekrana
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Izaberi format za sliku ekrana
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Format za sliku ekrana
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Izaberi format za sliku ekrana
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Osnovni set grafike
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Odaberi osnovni grafički set za igru
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni set grafike
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Odaberi osnovni grafički set za igru
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatsko spremanje neuspješno
 
@@ -923,26 +923,26 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nije mog
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nije moguće kopirati popis naredbi...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Kraj dijeljenih naredbi - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} ne može naći put da nastavi
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} je izgubljeno
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} je prošle godine zaradio {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europska Monetarna Unija!{}{}Euro je predstavljen kao jedinstvena valuta za svakodnevnu uporabu  u tvojoj zemlji!
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne može naći put da nastavi
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} je izgubljeno
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} je prošle godine zaradio {CURRENCY}
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Europska Monetarna Unija!{}{}Euro je predstavljen kao jedinstvena valuta za svakodnevnu uporabu  u tvojoj zemlji!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} ima premalo naredbi u rasporedu
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} ima poništavajuće naredbe
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} ima duplicirane naredbe
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} ima neispravnu stanicu u svojim naredbama
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} ima premalo naredbi u rasporedu
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} ima poništavajuće naredbe
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} ima duplicirane naredbe
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} ima neispravnu stanicu u svojim naredbama
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Neuspješno auto-obnavljanje na {VEHICLE}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} je predugačko nakon zamjene
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Pravilo bez autozamjene/obnove/ primjenjeno
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(novčano ograničenje)
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Neuspješno auto-obnavljanje na {VEHICLE}{}{STRING}
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} je predugačko nakon zamjene
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Pravilo bez autozamjene/obnove/ primjenjeno
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(novčano ograničenje)
 
-STR_CONFIG_SETTING                                              :{BLACK}Napredne postavke
-STR_CONFIG_SETTING_TIP                                          :{BLACK}Prikaži napredne postavke
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Napredne postavke
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Prikaži napredne postavke
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredne postavke
 
 STR_CONFIG_SETTING_OFF                                          :Isključeno
@@ -1223,11 +1223,11 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYP
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Promijeni ime čvorišta
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nije moguće promijeniti ime čvorišta...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Pretvori prugu u čvorište
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Pretvori prugu u čvorište
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Ovdje nije moguće izgraditi željezničko čvorište...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Nije moguće ukloniti željezničko čvorište odavdje...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Izgradi željezničku prugu koristeći Autorail način
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Izgradi željezničku prugu koristeći Autorail način
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...u ovom scenariju nema gradova
 STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Generiranje karte prekinuto...{}...ne postoje prigodne lokacije za gradove
@@ -1238,7 +1238,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Mnoge nasumičn
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Popuni kartu nasumce smještenim industrijama
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Nije moguće generirati industrije...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Otvori alatnu traku za snižavanje/povećavanje, sadnju drveća, itd.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otvori alatnu traku za snižavanje/povećavanje, sadnju drveća, itd.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Uređivanje krajolika
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Ravnanje površine
 
@@ -1247,11 +1247,11 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Raznovrs
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Posadi raznovrsno drveće
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Ovdje nije moguće izgraditi kanale...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Izgradi kanale.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Izgradi kanale.
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Ovdje nije moguće izgraditi brane...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Izgradi brane
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Izgradi brane
 STR_LANDINFO_LOCK                                               :Brana
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Ne mogu postaviti rijeku ovdje...
@@ -1263,16 +1263,16 @@ STR_LANDINFO_COORDS                                             :{BLACK}Koordina
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Nije moguće ukloniti dio postaje...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Ovdje nije moguće pretvoriti vrstu pruge...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Pretvori/nadogradi vrstu pruge
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Pretvori/nadogradi vrstu pruge
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Ovdje povuci lokomotivu kako bi prodao cijeli vlak
 
-STR_DRAG_DROP                                                   :{BLACK}Povuci i spusti
-STR_STATION_DRAG_DROP                                           :{BLACK}Napravi postaju koristeći drag & drop
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Povuci i spusti
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Napravi postaju koristeći drag & drop
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Odaberi vrstu postaje za prikazivanje
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Odaberi vrstu postaje za izgradnju
 
-STR_FAST_FORWARD                                                :{BLACK}Premotaj igru naprijed
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Premotaj igru naprijed
 STR_MESSAGE_HISTORY                                             :{WHITE}Povijest poruka
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Popis nedavnih novinskih poruka
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Onemogući sve
@@ -2784,9 +2784,9 @@ STR_TRAIN_NO_POWER                                              :{RED}Nema struj
 STR_TRAIN_START_NO_CATENARY                                     :Ovoj pruzi nedostaje vučna užad, stoga vlak ne može krenuti
 STR_TRAIN_STUCK                                                 :{ORANGE}Čekanje slobodne putanje
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Novi {STRING} je sada dostupan!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novi {STRING} je sada dostupan! - {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}Novi {STRING} je sada dostupan!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Novi {STRING} je sada dostupan! - {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Ne mogu prodati uništeno vozilo...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Ne mogu prenamijeniti uništeno vozilo...
@@ -2832,7 +2832,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Izgradi 
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Građani slave . . .{}Prvi brod je stigao na pristanište {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Smjesti plutaču koja može biti korištena kao pokazatelj puta
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Nije moguće staviti plutaču ovdje...
-STR_BUILD_AQUEDUCT                                              :{BLACK}Izgradi akvadukt
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Izgradi akvadukt
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Ovdje nije moguće izgraditi akvadukt...
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Prenamijeni)
 STR_REFIT_TITLE                                                 :{GOLD}Odaberi vrstu tereta za prijevoz:
@@ -2849,7 +2849,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Izgradi 
 
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Građani slave . . .{}Prvi zrakoplov je stigao u zračnu luku {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Pad zrakoplova!{}{COMMA} poginulih u eksploziji na {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Avionska nesreća{}Avion je ostao bez goriva, {COMMA} poginulo u nesreći
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Avionska nesreća{}Avion je ostao bez goriva, {COMMA} poginulo u nesreći
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Raspored)
@@ -2900,8 +2900,8 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Količin
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Iznos novca koji je ova tvrtka pozajmila
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Ukupni broj bodova od mogućih bodova
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Postavke
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Prikaži postavke NewGRF
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Postavke
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži postavke NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF postavke
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Potvrdi promjene
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Aktiviraj paletu
@@ -3271,7 +3271,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klikni z
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Popis znakova - {COMMA} znak{P "" a ova}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Naredba za obnavljanje zaustavila {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Naredba za obnavljanje zaustavila {VEHICLE}
 
 ############ Lists rail types
 
@@ -3374,20 +3374,20 @@ STR_BORDER_RANDOMIZE                                            :{BLACK}Nasumič
 STR_BORDER_MANUAL                                               :{BLACK}Ručno
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}Mala
-STR_CITY_AIRPORT                                                :{BLACK}Grad
-STR_METRO_AIRPORT                                               :{BLACK}Metropolitanska zračna luka
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Međunarodna zračna luka
-STR_COMMUTER_AIRPORT                                            :{BLACK}Redoviti putnik
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Međukontinentalni
-STR_HELIPORT                                                    :{BLACK}Heliodrom
-STR_HELIDEPOT                                                   :{BLACK}Spremište helikoptera
-STR_HELISTATION                                                 :{BLACK}Postaja za helikoptere
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Mala
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Grad
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitanska zračna luka
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Međunarodna zračna luka
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Redoviti putnik
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Međukontinentalni
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliodrom
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Spremište helikoptera
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Postaja za helikoptere
 
-STR_SMALL_AIRPORTS                                              :{BLACK}Male zračne luke
-STR_LARGE_AIRPORTS                                              :{BLACK}Velike zračne luke
-STR_HUB_AIRPORTS                                                :{BLACK}Središnje zračne luke
-STR_HELIPORTS                                                   :{BLACK}Helicopterske zračne luke
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Male zračne luke
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Velike zračne luke
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Središnje zračne luke
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helicopterske zračne luke
 
 ############ Tooltip measurment
 
@@ -3596,8 +3596,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI postavke
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Prikaži postavke umjetne inteligencije
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI postavke
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Prikaži postavke umjetne inteligencije
 STR_AI_DEBUG                                                    :{WHITE}Debugiranje UI
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Ime UI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno učitaj UI
@@ -3686,8 +3686,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... veza
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... datoteku nije moguće zapisati
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nije moguća dekompresija preuzete datoteke
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Provjeri online sadržaj
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Provjeri novi i nadograđeni sadržaj za preuzimanje
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Provjeri online sadržaj
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Provjeri novi i nadograđeni sadržaj za preuzimanje
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Pronađi nedostajeći sadržaj online
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Provjeri može li se nedostajeći sadržaj pronaći online
 ########

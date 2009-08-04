@@ -264,9 +264,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pelin As
 
 STR_COMPANY_SOMEONE                                             :joku{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :Englantilainen
-STR_UNITS_METRIC                                                :Metrinen
-STR_UNITS_SI                                                    :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Englantilainen
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrinen
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -369,7 +369,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tauko
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Pelin tallennus, hylkääminen ja lopetus.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Näytä luettelo yhtiön asemista.
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Näytä kartta.
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Näytä kartta, kaupunkihakemisto.
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Näytä kartta, kaupunkihakemisto.
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Näytä kaupunkihakemisto.
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Näytä yhtiön taloustiedot.
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Näytä yhtiön yleiset tiedot.
@@ -417,9 +417,9 @@ STR_VEHICLE_TRAIN                                               :Juna
 STR_VEHICLE_ROAD_VEHICLE                                        :Ajoneuvo
 STR_VEHICLE_SHIP                                                :Laiva
 STR_VEHICLE_AIRCRAFT                                            :Lentokone
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} on tulossa vanhaksi
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} on tulossa hyvin vanhaksi
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} on tulossa hyvin vanhaksi ja on uusimisen tarpeessa
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} on tulossa vanhaksi
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} on tulossa hyvin vanhaksi
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} on tulossa hyvin vanhaksi ja on uusimisen tarpeessa
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Maa-aluetiedot
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Puhdistuksen hinta: {LTBLUE}-
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Puhdistuksen hinta: {RED}{CURRENCY}
@@ -540,8 +540,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Valitse 
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Valitse 'oma 2' (käyttäjän määritettävissä)
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Tyhjennä nykyinen soittolista (vain Oma1 tai Oma2)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Tallenna musiikkiasetukset
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Valitse musiikkiraita lisätäksesi sen nykyiseen soittolistaan (vain Oma1 tai Oma2).
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klikkaa raitaa poistaaksesi se nykyisestä ohjelmasta (ainoastaan Custom1 tai Custom2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Valitse musiikkiraita lisätäksesi sen nykyiseen soittolistaan (vain Oma1 tai Oma2).
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikkaa raitaa poistaaksesi se nykyisestä ohjelmasta (ainoastaan Custom1 tai Custom2)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Sekoittaminen päälle/pois
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Näytä musiikkiraitojen valintaikkuna
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}Napsauta palvelussa keskittääksesi näkymän teollisuuteen/kaupunkiin.
@@ -568,8 +568,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Uudet a
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Rahdin vastaanottamisen muutokset
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Tuet
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Yleistä tietoa
-STR_MESSAGES_ALL                                                :{YELLOW}Asetukset kaikille viestityypeille (pois/tiivistelmä/täysi)
-STR_MESSAGE_SOUND                                               :{YELLOW}Soita ääni tiivistetyn uutisviestin kohdalla
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Asetukset kaikille viestityypeille (pois/tiivistelmä/täysi)
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Soita ääni tiivistetyn uutisviestin kohdalla
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...liian kaukana edellisestä määränpäästä
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Parhaat yhtiöt, jotka saavuttivat vuoden {NUM}{}(taso: {STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Yhtiökilpailutaulukko vuonna {NUM}
@@ -640,7 +640,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Lataa sk
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Tallenna skenaario
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Pelaa skenaariota
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Pelaa korkeuskartta
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Aloita uusi peli, käyttäen korkeuskarttaa maastona
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Aloita uusi peli, käyttäen korkeuskarttaa maastona
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Lopetetaanko skenaario?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...voidaan rakentaa vain kaupunkeihin, joissa on yli 1200 asukasta.
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Siirrä aloituspäivää vuodella taaksepäin.
@@ -665,9 +665,9 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Sattuman
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Näytä viimeisin viesti tai uutisraportti.
-STR_OFF                                                         :Pois
-STR_SUMMARY                                                     :Tiivistelmä
-STR_FULL                                                        :Täysi
+STR_NEWS_MESSAGES_OFF                                           :Pois
+STR_NEWS_MESSAGES_SUMMARY                                       :Tiivistelmä
+STR_NEWS_MESSAGES_FULL                                          :Täysi
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
@@ -770,77 +770,77 @@ STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Tallenta
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Valitse 'Ezy Street'.
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Englantilainen
-STR_TOWNNAME_FRENCH                                             :Ranskalainen
-STR_TOWNNAME_GERMAN                                             :Saksalainen
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Englantilainen 2
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latinalaisamerikkalainen
-STR_TOWNNAME_SILLY                                              :Hassu
-STR_TOWNNAME_SWEDISH                                            :Ruotsalainen
-STR_TOWNNAME_DUTCH                                              :Hollantilainen
-STR_TOWNNAME_FINNISH                                            :Suomalainen
-STR_TOWNNAME_POLISH                                             :Puolalainen
-STR_TOWNNAME_SLOVAK                                             :Slovakialainen
-STR_TOWNNAME_NORWEGIAN                                          :Norjalainen
-STR_TOWNNAME_HUNGARIAN                                          :Unkarilainen
-STR_TOWNNAME_AUSTRIAN                                           :Itävaltalainen
-STR_TOWNNAME_ROMANIAN                                           :Romanialainen
-STR_TOWNNAME_CZECH                                              :Tsekkiläinen
-STR_TOWNNAME_SWISS                                              :Sveitsiläinen
-STR_TOWNNAME_DANISH                                             :Tanskalainen
-STR_TOWNNAME_TURKISH                                            :Turkkilainen
-STR_TOWNNAME_ITALIAN                                            :Italialainen
-STR_TOWNNAME_CATALAN                                            :Katalonialainen
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Englantilainen
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Ranskalainen
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Saksalainen
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Englantilainen 2
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latinalaisamerikkalainen
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Hassu
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Ruotsalainen
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollantilainen
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Suomalainen
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Puolalainen
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakialainen
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norjalainen
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Unkarilainen
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Itävaltalainen
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romanialainen
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tsekkiläinen
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Sveitsiläinen
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Tanskalainen
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkkilainen
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italialainen
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalonialainen
 ############ end of townname region
 
-STR_CURR_GBP                                                    :Punta (£)
-STR_CURR_USD                                                    :Dollari ($)
-STR_CURR_EUR                                                    :Euro (€)
-STR_CURR_YEN                                                    :Jeni (¥)
-STR_CURR_ATS                                                    :Itävallan shillinki (ATS)
-STR_CURR_BEF                                                    :Belgian frangi (BEF)
-STR_CURR_CHF                                                    :Sveitsin frangi (CHF)
-STR_CURR_CZK                                                    :Tsekin koruna (CZK)
-STR_CURR_DEM                                                    :Saksan markka (DEM)
-STR_CURR_DKK                                                    :Tanskan kruunu (DKK)
-STR_CURR_ESP                                                    :Peseta (ESP)
-STR_CURR_FIM                                                    :Suomen markka (FIM)
-STR_CURR_FRF                                                    :Frangi (FRF)
-STR_CURR_GRD                                                    :Kreikan drakma (GRD)
-STR_CURR_HUF                                                    :Unkarin forintti (HUF)
-STR_CURR_ISK                                                    :Islannin kruunu (ISK)
-STR_CURR_ITL                                                    :Italian liira (ITL)
-STR_CURR_NLG                                                    :Hollannin guildeni (NLG)
-STR_CURR_NOK                                                    :Norjan kruunu (NOK)
-STR_CURR_PLN                                                    :Puolan zloty (PLN)
-STR_CURR_RON                                                    :Romanian leu (RON)
-STR_CURR_RUR                                                    :Venjän rupla (RUR)
-STR_CURR_SIT                                                    :Slovenian tolari (SIT)
-STR_CURR_SEK                                                    :Ruotsin kruunu (SEK)
-STR_CURR_TRY                                                    :Turkin liira (TRY)
-STR_CURR_SKK                                                    :Slovakian koruna (SKK)
-STR_CURR_BRL                                                    :Brasilian reali (BRL)
-STR_CURR_EEK                                                    :Viron kruunu (EEK)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Punta (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollari ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jeni (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Itävallan shillinki (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgian frangi (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Sveitsin frangi (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Tsekin koruna (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Saksan markka (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Tanskan kruunu (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Suomen markka (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frangi (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Kreikan drakma (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Unkarin forintti (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islannin kruunu (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italian liira (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollannin guildeni (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norjan kruunu (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Puolan zloty (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Romanian leu (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Venjän rupla (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenian tolari (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Ruotsin kruunu (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkin liira (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakian koruna (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilian reali (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Viron kruunu (EEK)
 
-STR_CURR_CUSTOM                                                 :Oma...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Oma...
 
-STR_OPTIONS_LANG                                                :{BLACK}Kieli
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Valitse käyttöliittymän kieli.
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Kieli
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Valitse käyttöliittymän kieli.
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Koko näyttö
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Valitse tämä pelataksesi kokoruututilassa.
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Koko näyttö
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Valitse tämä pelataksesi kokoruututilassa.
 STR_FULLSCREEN_FAILED                                           :{WHITE}Täyskuvatila ei toimi
 
-STR_OPTIONS_RES                                                 :{BLACK}Ruudun erottelukyky
-STR_OPTIONS_RES_TIP                                             :{BLACK}Valitse ruudun erottelukyky.
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ruudun erottelukyky
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Valitse ruudun erottelukyky.
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Kuvakaappauksen muoto
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Valitse kuvankaappauksen muoto.
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Kuvakaappauksen muoto
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Valitse kuvankaappauksen muoto.
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Perusgrafiikat
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Valitse käytettävät perusgrafiikat
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} puuttuva/korruptoitunut tiedosto{P "" ja}
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Lisätietoja perusgrafiikoista
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Perusgrafiikat
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valitse käytettävät perusgrafiikat
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} puuttuva/korruptoitunut tiedosto{P "" ja}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Lisätietoja perusgrafiikoista
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automaattitallennus epäonnistui.
 
@@ -862,26 +862,26 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Aikataul
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Aikataulua ei voi kopioida...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - jaetun aikataulun loppu - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} ei löydä reittiä päämäärään.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} on eksynyt.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Kulkuneuvon {VEHICLE} tulos viime vuonna oli {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Euroopan unionin talous- ja rahaliitto!{}{}Euro otetaan käyttöön maan ainoaksi valuutaksi päivittäisiin liiketapahtumiin!
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ei löydä reittiä päämäärään.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} on eksynyt.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Kulkuneuvon {VEHICLE} tulos viime vuonna oli {CURRENCY}
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Euroopan unionin talous- ja rahaliitto!{}{}Euro otetaan käyttöön maan ainoaksi valuutaksi päivittäisiin liiketapahtumiin!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}Kulkuneuvon {VEHICLE} aikataulussa on liian vähän käskyjä
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}Kulkuneuvon {VEHICLE} aikataulussa on epäkelpo käsky
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}Ajoneuvolla {VEHICLE} on toistuvia määräyksiä
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}Kulkuneuvon {VEHICLE} aikataulussa on virheellinen asema
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Kulkuneuvon {VEHICLE} aikataulussa on liian vähän käskyjä
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Kulkuneuvon {VEHICLE} aikataulussa on epäkelpo käsky
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Ajoneuvolla {VEHICLE} on toistuvia määräyksiä
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Kulkuneuvon {VEHICLE} aikataulussa on virheellinen asema
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Automaattinen korvaus epäonnistui ajoneuvolle {VEHICLE}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} on liian pitkä korvaamisen jälkeen
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ei käytössä olevia itsekorvaus- tai itseuudistussääntöjä
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(rahoitusraja)
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automaattinen korvaus epäonnistui ajoneuvolle {VEHICLE}{}{STRING}
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} on liian pitkä korvaamisen jälkeen
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ei käytössä olevia itsekorvaus- tai itseuudistussääntöjä
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(rahoitusraja)
 
-STR_CONFIG_SETTING                                              :{BLACK}Lisäasetukset
-STR_CONFIG_SETTING_TIP                                          :{BLACK}Näytä edistyneemmät asetukset
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Lisäasetukset
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Näytä edistyneemmät asetukset
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Lisäasetukset
 
 STR_CONFIG_SETTING_OFF                                          :pois
@@ -1169,11 +1169,11 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYP
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Muokkaa reittipisteen nimeä
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Reittipisteen nimeä ei voi muuttaa...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Muunna raide reittipisteeksi.
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Muunna raide reittipisteeksi.
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Junien reittipistettä ei voi rakentaa tähän...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Junien reittipistettä ei voi poistaa...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Rakenna rautatiet käyttäen Autorail-tilaa.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Rakenna rautatiet käyttäen Autorail-tilaa.
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...tässä skenaariossa ei ole kaupunkeja.
 STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Kartan generointi peruutettu...{}...ei kelvollisia kaupunkien sijainteja
@@ -1184,7 +1184,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Monta satunnais
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Peitä kartta satunnaisesti sijoitetuilla teollisuusalueilla.
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Teollisuusaluetta ei voi luoda...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Avaa maastonmuokkaustyökalupalkki maan kohottamiseen/madaltamiseen, puiden istuttamiseen, jne.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Avaa maastonmuokkaustyökalupalkki maan kohottamiseen/madaltamiseen, puiden istuttamiseen, jne.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Maastonmuokkaus
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Tasoita maata
 
@@ -1193,11 +1193,11 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Sattuman
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Aseta sattumanvaraisia puita
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kanaalia ei voi rakentaa tähän...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Rakenna kanavia.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Rakenna kanavia.
 STR_LANDINFO_CANAL                                              :Kanaali
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Sulkua ei voi rakentaa tähän...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Rakenna sulku
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Rakenna sulku
 STR_LANDINFO_LOCK                                               :Sulku
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Tähän ei voi asettaa jokea...
@@ -1209,16 +1209,16 @@ STR_LANDINFO_COORDS                                             :{BLACK}Koordina
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Aseman osaa ei voi poistaa...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Raidetyyppiä ei voi muuntaa...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Muunna/päivitä raidetyyppi.
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Muunna/päivitä raidetyyppi.
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Vedä junan veturi tähän myydäksesi koko junan.
 
-STR_DRAG_DROP                                                   :{BLACK}Vedä & Pudota
-STR_STATION_DRAG_DROP                                           :{BLACK}Rakenna asema vetämällä ja pudottamalla.
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Vedä & Pudota
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Rakenna asema vetämällä ja pudottamalla.
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Valitse asemaluokka
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Valitse asematyyppi
 
-STR_FAST_FORWARD                                                :{BLACK}Nopeuta peliä
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Nopeuta peliä
 STR_MESSAGE_HISTORY                                             :{WHITE}Viestihistoria
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Lista viimeisimmistä uutisviesteistä.
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Kaikki pois päältä
@@ -2759,9 +2759,9 @@ STR_TRAIN_NO_POWER                                              :{RED}Ei virtaa
 STR_TRAIN_START_NO_CATENARY                                     :Radalta puuttuu ajolinja, joten junaa ei voi käynnistää
 STR_TRAIN_STUCK                                                 :{ORANGE}Odottaa vapaata reittiä
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Uusi {STRING} on nyt saatavilla!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Uusi {STRING} on nyt saatavilla! - {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}Uusi {STRING} on nyt saatavilla!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Uusi {STRING} on nyt saatavilla! - {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Tuhoutunutta kulkuneuvoa ei voi myydä...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Ei voi sovittaa tuhoutunutta kulkuneuvoa...
@@ -2808,7 +2808,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Rakenna 
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen laiva saapuu asemalle {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Sijoita poiju; sitä voidaan käyttää ylimääräisenä opasteena.
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Poijua ei voi sijoittaa tähän...
-STR_BUILD_AQUEDUCT                                              :{BLACK}Rakenna akvedukti
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Rakenna akvedukti
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Tähän ei voi rakentaa akveduktia...
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (sovita)
 STR_REFIT_TITLE                                                 :{GOLD}Valitse kuljetettava rahtityyppi:
@@ -2825,7 +2825,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Rakenna 
 
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen lentokone saapuu asemalle {STATION}!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Lento-onnettomuus!{}{COMMA} kuolee tulipallossa asemalla {STATION}.
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Lento-onnettomuus!{}Lentokoneelta loppui polttoaine, {COMMA} kuolee tulipallossa!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Lento-onnettomuus!{}Lentokoneelta loppui polttoaine, {COMMA} kuolee tulipallossa!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (aikataulu)
@@ -2876,8 +2876,8 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Käteisv
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Tämän yhtiön ottaman lainan määrä
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Summa kaikista mahdollisista pisteistä.
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF-asetukset
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}Näytä NewGRF-asetukset
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-asetukset
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näytä NewGRF-asetukset
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-asetukset
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Ota käyttöön
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Käytä eri palettia
@@ -3258,7 +3258,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Käynnis
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Kylttilista - {COMMA} kylttiä
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Sovituskomento virhe pysäytti ajoneuvon {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Sovituskomento virhe pysäytti ajoneuvon {VEHICLE}
 
 ############ Lists rail types
 
@@ -3362,20 +3362,20 @@ STR_BORDER_RANDOMIZE                                            :{BLACK}Sattuman
 STR_BORDER_MANUAL                                               :{BLACK}Manuaalinen
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}Pieni
-STR_CITY_AIRPORT                                                :{BLACK}Kaupunki
-STR_METRO_AIRPORT                                               :{BLACK}Suurkaupungin lentokenttä
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Kansainvälinen lentokenttä
-STR_COMMUTER_AIRPORT                                            :{BLACK}Työmatkalainen
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Mannertenvälinen
-STR_HELIPORT                                                    :{BLACK}Helikopterikenttä
-STR_HELIDEPOT                                                   :{BLACK}Helikopterihalli
-STR_HELISTATION                                                 :{BLACK}Helikopteriasema
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Pieni
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Kaupunki
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Suurkaupungin lentokenttä
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Kansainvälinen lentokenttä
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Työmatkalainen
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Mannertenvälinen
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helikopterikenttä
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helikopterihalli
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helikopteriasema
 
-STR_SMALL_AIRPORTS                                              :{BLACK}Pienet lentokentät
-STR_LARGE_AIRPORTS                                              :{BLACK}Isot lentokentät
-STR_HUB_AIRPORTS                                                :{BLACK}Keskuslentokenttä
-STR_HELIPORTS                                                   :{BLACK}Helikopterikentät
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Pienet lentokentät
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Isot lentokentät
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Keskuslentokenttä
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopterikentät
 
 ############ Tooltip measurment
 
@@ -3584,8 +3584,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :½!"#¤%&/()=?`
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}Tekoälyasetukset
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}Näytä tekoälyasetukset
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Tekoälyasetukset
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Näytä tekoälyasetukset
 STR_AI_DEBUG                                                    :{WHITE}Tekoälyn virheenjäljitys
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Tekoälyn nimi
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Lataa tekoäly uudelleen
@@ -3676,8 +3676,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... yhte
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... tiedostoa ei voitu kirjoittaa
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Ei voitu purkaa ladattua tiedostoa
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Tarkista Online-Sisältö
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Tarkista uutta ja päivitettyä sisältöä ladattavaksi
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tarkista Online-Sisältö
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tarkista uutta ja päivitettyä sisältöä ladattavaksi
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Etsi puuttuvaa sisältöä online-palvelusta
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Tarkista löytyykö puuttuvaa sisältöä online-palvelusta
 ########

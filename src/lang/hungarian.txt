@@ -298,9 +298,9 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Beállí
 
 STR_COMPANY_SOMEONE                                             :valaki{SKIP}{SKIP}
 
-STR_UNITS_IMPERIAL                                              :Angolszász
-STR_UNITS_METRIC                                                :Metrikus
-STR_UNITS_SI                                                    :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Angolszász
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrikus
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mf/h
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -403,7 +403,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Játék 
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Játék mentése, kilépés a játékból, kilépés
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Állomások listája
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Térkép
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY                  :{BLACK}Térkép, városlista
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Térkép, városlista
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Városlista
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Pénzügyi adatok
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Általános adatok
@@ -451,9 +451,9 @@ STR_VEHICLE_TRAIN                                               :vonat
 STR_VEHICLE_ROAD_VEHICLE                                        :közúti jármű
 STR_VEHICLE_SHIP                                                :hajó
 STR_VEHICLE_AIRCRAFT                                            :repülőgép
-STR_VEHICLE_IS_GETTING_OLD                                      :{WHITE}{VEHICLE} elöregedett
-STR_VEHICLE_IS_GETTING_VERY_OLD                                 :{WHITE}{VEHICLE} nagyon elöregedett
-STR_VEHICLE_IS_GETTING_VERY_OLD_AND                             :{WHITE}{VEHICLE} nagyon elöregedett, sürgősen le kell cserélni
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} elöregedett
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} nagyon elöregedett
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} nagyon elöregedett, sürgősen le kell cserélni
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Terület-információ
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}{LTBLUE}Nem lehet lerombolni
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}A megtisztítás költsége: {RED}{CURRENCY}
@@ -574,8 +574,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}A 'Sajá
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}A 'Saját 2' (felhasználói) zenei műsor kiválasztása
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Az aktuális műsor kiürítése (csak Saját 1 és Saját 2)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Zenei beállítások elmentése
-STR_MUSIC_TOOLTIP_CLICK_ON_MUSIC_TRACK_TO                       :{BLACK}Egy számra kattintva hozzáadod azt a kiválasztott zenei műsorhoz (csak Saját 1 és Saját 2)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Kattints a zeneszámra annak aktuális listából való eltávolításához (csak Egyéni 1 és Egyéni 2 esetén)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Egy számra kattintva hozzáadod azt a kiválasztott zenei műsorhoz (csak Saját 1 és Saját 2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kattints a zeneszámra annak aktuális listából való eltávolításához (csak Egyéni 1 és Egyéni 2 esetén)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}A műsor megkeverése be/ki
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}A zenekiválasztó ablak megjelenítése
 STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                  :{BLACK}Kattints egy sorra a város/gazdasági épület megnézéséhez
@@ -602,8 +602,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Új já
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Áruk elfogadásának változásai
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Támogatások
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Általános információk
-STR_MESSAGES_ALL                                                :{YELLOW}Összes üzenettípus beállítása (be/rövid/ki)
-STR_MESSAGE_SOUND                                               :{YELLOW}Figyelmeztető hang lejátszása rövid üzenetnél
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Összes üzenettípus beállítása (be/rövid/ki)
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Figyelmeztető hang lejátszása rövid üzenetnél
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...túl távol van az előző céltól
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Legjobb cégek melyek elérték a {NUM}{}({STRING} Szintet)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Cégdicsőség tábla {NUM}
@@ -674,7 +674,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Pálya b
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Pálya mentése
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Játék saját pályán
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Játék magasságtérképen
-STR_INTRO_PLAY_HEIGHTMAP_TOOLTIP                                :{BLACK}Új játékot kezd egy magasságtérkép alapján
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Új játékot kezd egy magasságtérkép alapján
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Biztosan abba akarod hagyni a pálya szerkesztését ?
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...csak 1200-nál nagyobb lakosságszámú településeken építhető
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}A kezdődátum visszább állítása egy évvel
@@ -699,9 +699,9 @@ STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Véletle
 
 STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Utolsó üzenet vagy újsághír megmutatása
-STR_OFF                                                         :Ki
-STR_SUMMARY                                                     :Kivonat
-STR_FULL                                                        :Teljes
+STR_NEWS_MESSAGES_OFF                                           :Ki
+STR_NEWS_MESSAGES_SUMMARY                                       :Kivonat
+STR_NEWS_MESSAGES_FULL                                          :Teljes
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
@@ -804,77 +804,77 @@ STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}A menté
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}A 'szép az élet' zenei műsor kiválasztása
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Angol (Eredeti)
-STR_TOWNNAME_FRENCH                                             :Francia
-STR_TOWNNAME_GERMAN                                             :Német
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Angol (További)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latin-Amerikai
-STR_TOWNNAME_SILLY                                              :Komolytalan
-STR_TOWNNAME_SWEDISH                                            :Svéd
-STR_TOWNNAME_DUTCH                                              :Holland
-STR_TOWNNAME_FINNISH                                            :Finn
-STR_TOWNNAME_POLISH                                             :Lengyel
-STR_TOWNNAME_SLOVAK                                             :Szlovák
-STR_TOWNNAME_NORWEGIAN                                          :Norvég
-STR_TOWNNAME_HUNGARIAN                                          :Magyar
-STR_TOWNNAME_AUSTRIAN                                           :Osztrák
-STR_TOWNNAME_ROMANIAN                                           :Romániai
-STR_TOWNNAME_CZECH                                              :Cseh
-STR_TOWNNAME_SWISS                                              :Svájci
-STR_TOWNNAME_DANISH                                             :Dán
-STR_TOWNNAME_TURKISH                                            :Török
-STR_TOWNNAME_ITALIAN                                            :Olasz
-STR_TOWNNAME_CATALAN                                            :Katalán
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Angol (Eredeti)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Francia
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Német
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Angol (További)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-Amerikai
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Komolytalan
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Svéd
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Holland
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finn
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Lengyel
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Szlovák
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norvég
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Magyar
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Osztrák
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romániai
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Cseh
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Svájci
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Dán
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Török
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Olasz
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalán
 ############ end of townname region
 
-STR_CURR_GBP                                                    :Font (£)
-STR_CURR_USD                                                    :Dollár ($)
-STR_CURR_EUR                                                    :Euró (€)
-STR_CURR_YEN                                                    :Jen (¥)
-STR_CURR_ATS                                                    :Osztrák Shilling (ATS)
-STR_CURR_BEF                                                    :Belga Frank (BEF)
-STR_CURR_CHF                                                    :Svájci Frank (CHF)
-STR_CURR_CZK                                                    :Cseh Korona (CZK)
-STR_CURR_DEM                                                    :Német Márka (DEM)
-STR_CURR_DKK                                                    :Dán Korona (DKK)
-STR_CURR_ESP                                                    :Pezeta (ESP)
-STR_CURR_FIM                                                    :Finn Márka (FIM)
-STR_CURR_FRF                                                    :Frank (FRF)
-STR_CURR_GRD                                                    :Görög Drachma (GRD)
-STR_CURR_HUF                                                    :Magyar Forint (HUF)
-STR_CURR_ISK                                                    :Izlandi Korona (ISK)
-STR_CURR_ITL                                                    :Olasz Líra (ITL)
-STR_CURR_NLG                                                    :Holland Guilder (NLG)
-STR_CURR_NOK                                                    :Norvég Korona (NOK)
-STR_CURR_PLN                                                    :Legyel Zlotyi (PLN)
-STR_CURR_RON                                                    :Román Lej (RON)
-STR_CURR_RUR                                                    :Orosz Rubel (RUR)
-STR_CURR_SIT                                                    :Szlovén Tolár (SIT)
-STR_CURR_SEK                                                    :Svéd Korona (SEK)
-STR_CURR_TRY                                                    :Török Lira (TRY)
-STR_CURR_SKK                                                    :Szlovák Korona (SKK)
-STR_CURR_BRL                                                    :Brazil Real (BRL)
-STR_CURR_EEK                                                    :Észt Korona (EKK)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Font (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollár ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euró (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Jen (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Osztrák Shilling (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belga Frank (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Svájci Frank (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Cseh Korona (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Német Márka (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Dán Korona (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pezeta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finn Márka (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frank (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Görög Drachma (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Magyar Forint (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Izlandi Korona (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Olasz Líra (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Holland Guilder (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norvég Korona (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Legyel Zlotyi (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Román Lej (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Orosz Rubel (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Szlovén Tolár (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Svéd Korona (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Török Lira (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Szlovák Korona (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazil Real (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Észt Korona (EKK)
 
-STR_CURR_CUSTOM                                                 :Saját...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Saját...
 
-STR_OPTIONS_LANG                                                :{BLACK}Nyelv
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Válassz nyelvet
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Nyelv
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Válassz nyelvet
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Teljes képernyő
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Jelöld be ezt, ha teljes képernyős módban szeretnél OpenTTD-zni
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Teljes képernyő
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Jelöld be ezt, ha teljes képernyős módban szeretnél OpenTTD-zni
 STR_FULLSCREEN_FAILED                                           :{WHITE}Teljesképernyős módra váltás sikertelen
 
-STR_OPTIONS_RES                                                 :{BLACK}A képernyő felbontása
-STR_OPTIONS_RES_TIP                                             :{BLACK}Válaszd ki, milyen felbontást szeretnél a játékhoz
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}A képernyő felbontása
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Válaszd ki, milyen felbontást szeretnél a játékhoz
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Képmentés formátuma
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Válaszd ki milyen formátumú képmentést szeretnél
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Képmentés formátuma
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Válaszd ki milyen formátumú képmentést szeretnél
 
-STR_OPTIONS_BASE_GRF                                            :{BLACK}Grafikus alapcsomag
-STR_OPTIONS_BASE_GRF_TIP                                        :{BLACK}Kiválaszthatod melyik grafikus alapcsomagot szeretnéd használni
-STR_OPTIONS_BASE_GRF_STATUS                                     :{RED}{NUM} hiányzó/hibás fájl{P "" s}
-STR_OPTIONS_BASE_GRF_DESCRIPTION_TIP                            :{BLACK}Kiegészítő információ az alap grafikus szettről
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikus alapcsomag
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kiválaszthatod melyik grafikus alapcsomagot szeretnéd használni
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} hiányzó/hibás fájl{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Kiegészítő információ az alap grafikus szettről
 
 STR_AUTOSAVE_FAILED                                             :{WHITE}Automatikus mentés sikertelen
 
@@ -896,26 +896,26 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nem lehe
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nem lehet másolni a menetrendet...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Megosztott menetrend vége - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} nem talál utat a célpontjához.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} eltévedt.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} elmúlt évi bevétele {CURRENCY} volt
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Európai Pénzügyi Unió!{}{}Az Euro bevezetésre került mint egyedüli valuta a mindennapi pénzügyi tranzakciókra az országodban!
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nem talál utat a célpontjához.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} eltévedt.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} elmúlt évi bevétele {CURRENCY} volt
+STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Európai Pénzügyi Unió!{}{}Az Euro bevezetésre került mint egyedüli valuta a mindennapi pénzügyi tranzakciókra az országodban!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} menetrendje túl kevés utasításból áll
-STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} üres utasítással rendelkezik
-STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} duplikált utasítással rendelkezik
-STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} utasításai között nem létező állomás szerepel
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} menetrendje túl kevés utasításból áll
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} üres utasítással rendelkezik
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} duplikált utasítással rendelkezik
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} utasításai között nem létező állomás szerepel
 # end of order system
 
-STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Az automata felújítás sikertelen volt {VEHICLE}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} túl hosszú a csere után
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Nincsenek automata járműfelújítási szabályok alkalmazva.
-STR_AUTOREPLACE_MONEY_LIMIT                                     :(pénzlimit)
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Az automata felújítás sikertelen volt {VEHICLE}{}{STRING}
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} túl hosszú a csere után
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Nincsenek automata járműfelújítási szabályok alkalmazva.
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(pénzlimit)
 
-STR_CONFIG_SETTING                                              :{BLACK}Haladó beállítások
-STR_CONFIG_SETTING_TIP                                          :{BLACK}Haladó beállítások megjelenítése
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Haladó beállítások
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Haladó beállítások megjelenítése
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Haladó beállítások
 
 STR_CONFIG_SETTING_OFF                                          :Ki
@@ -1203,11 +1203,11 @@ STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WAYP
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ellenőrző pont nevének módosítása
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nem lehet megváltoztatni az ellenőrző pont nevét...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Ellenőrző pont építése vágányra
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ellenőrző pont építése vágányra
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Ide nem lehet vonat ellenőrző pontot építeni...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Nem lehet eltávolítani az ellenőrző pontot...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Vasúti pálya építése egyszerűsített módón
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Vasúti pálya építése egyszerűsített módón
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...nincs település ezen a pályán
 STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}A térkép generálása meghiúsult...{}...nincs városépítésre alkalmas hely
@@ -1218,7 +1218,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Sok véletlen g
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Elhelyez a térképen véletlenszerüen sok gazdasági épületet
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Nem tudok gazdasági épületet generálni...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Nyisd meg a tájrendező ablakot a talaj növeléshez/csökkentéshez, faültetéshez, stb.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Nyisd meg a tájrendező ablakot a talaj növeléshez/csökkentéshez, faültetéshez, stb.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Tájrendezés
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Talajszintezés
 
@@ -1227,11 +1227,11 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Véletle
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Véletlenszerűen kiválasztott fákat helyez el
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Ide nem lehet csatornát építeni...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Csatorna építése (vagy rosszabb esetben terület elárasztása!)
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Csatorna építése (vagy rosszabb esetben terület elárasztása!)
 STR_LANDINFO_CANAL                                              :Csatorna
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Ide nem lehet zsilipet építeni...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Zsilip építése
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Zsilip építése
 STR_LANDINFO_LOCK                                               :Zsilip
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Ide nem lehet folyót elhelyezni...
@@ -1243,16 +1243,16 @@ STR_LANDINFO_COORDS                                             :{BLACK}Koordin�
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Nem lehet eltávolítani az állomás részét...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Itt nem lehet átalakítani a vasúti pályát...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Sínek átalakítása a kiválasztott típusra
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Sínek átalakítása a kiválasztott típusra
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Húzd ide a mozdonyt a teljes vonat eladásához
 
-STR_DRAG_DROP                                                   :{BLACK}Fogd és dobd
-STR_STATION_DRAG_DROP                                           :{BLACK}Állomás építése fogd és dobd módon
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Fogd és dobd
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Állomás építése fogd és dobd módon
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Válasz egy megjelenítendő állomásfajtát
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Válaszd ki a megépítendő állomásfajtát
 
-STR_FAST_FORWARD                                                :{BLACK}Játék gyorsítása
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Játék gyorsítása
 STR_MESSAGE_HISTORY                                             :{WHITE}Előző üzenetek
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Az előző hírüzenetek listája
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Kikapcsol mind
@@ -2830,9 +2830,9 @@ STR_TRAIN_NO_POWER                                              :{RED}Nincs ára
 STR_TRAIN_START_NO_CATENARY                                     :Ennek a vágányszakasznak nincs felsővezetéke, a vonat nem tud indulni
 STR_TRAIN_STUCK                                                 :{ORANGE}Szabad útra vár
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Új {STRING} elérhető!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Új {STRING} elérhető!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}Új {STRING} elérhető!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Új {STRING} elérhető!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}A megsemmisült jármű nem eladható...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Nem lehetséges a megsemmisült jármű átalakítása...
@@ -2879,7 +2879,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Dokk ép
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az első hajó {STATION} állomásra!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Bója lerakása, ami az útvonal pontosítására használható
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Nem rakhatsz ide bóját...
-STR_BUILD_AQUEDUCT                                              :{BLACK}Akvadukt építése
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Akvadukt építése
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Ide nem lehet akvaduktot építeni...
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} átalakítása
 STR_REFIT_TITLE                                                 :{GOLD}Átalakítás, hogy szállíthasson:
@@ -2896,7 +2896,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Repülő
 
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az első repülőgép {STATION} állomásra!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Lezuhant egy repülőgép!{}{COMMA} ember halt meg a zuhanás után {STATION} állomáson
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Repülő baleset!{}A repülőnek elfogyott az üzemanyaga, {COMMA} ember halt meg a zuhanásban!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Repülő baleset!{}A repülőnek elfogyott az üzemanyaga, {COMMA} ember halt meg a zuhanásban!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} várakozási és menetidői
@@ -2947,8 +2947,8 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Elérhet
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Magas kölcsönöd van?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Megszerzett pontok az elérhető pontokból
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF beállítások
-STR_NEWGRF_SETTINGS_BUTTON_TIP                                  :{BLACK}NewGRF beállítások megjelenítése
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF beállítások
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF beállítások megjelenítése
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF beállítások
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Alkalmazás
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Palettaváltás
@@ -3329,7 +3329,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Kattints
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Hibás átalakítási utasítás miatt {VEHICLE} megállt
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Hibás átalakítási utasítás miatt {VEHICLE} megállt
 
 ############ Lists rail types
 
@@ -3433,20 +3433,20 @@ STR_BORDER_RANDOMIZE                                            :{BLACK}Véletle
 STR_BORDER_MANUAL                                               :{BLACK}Kézi
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}Kicsi
-STR_CITY_AIRPORT                                                :{BLACK}Városi
-STR_METRO_AIRPORT                                               :{BLACK}Nagyvárosi
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Nemzetközi
-STR_COMMUTER_AIRPORT                                            :{BLACK}Elővárosi
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinentális
-STR_HELIPORT                                                    :{BLACK}Helileszálló
-STR_HELIDEPOT                                                   :{BLACK}Helihangár
-STR_HELISTATION                                                 :{BLACK}Heliállomás
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Kicsi
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Városi
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Nagyvárosi
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Nemzetközi
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Elővárosi
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Interkontinentális
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helileszálló
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helihangár
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Heliállomás
 
-STR_SMALL_AIRPORTS                                              :{BLACK}Kis repterek
-STR_LARGE_AIRPORTS                                              :{BLACK}Nagy repterek
-STR_HUB_AIRPORTS                                                :{BLACK}Központi repterek
-STR_HELIPORTS                                                   :{BLACK}Helikopter-állomások
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Kis repterek
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Nagy repterek
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Központi repterek
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopter-állomások
 
 ############ Tooltip measurment
 
@@ -3655,8 +3655,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :§'"+!%/=()ÖÜ
 ########
 
 ############ AI GUI
-STR_AI_SETTINGS_BUTTON                                          :{BLACK}MI beállítások
-STR_AI_SETTINGS_BUTTON_TIP                                      :{BLACK}A gépi ellenfelek beállításainak megjelenítése
+STR_INTRO_AI_SETTINGS                                           :{BLACK}MI beállítások
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}A gépi ellenfelek beállításainak megjelenítése
 STR_AI_DEBUG                                                    :{WHITE}MI nyomkövetés
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}MI neve
 STR_AI_DEBUG_RELOAD                                             :{BLACK}MI újratöltése
@@ -3747,8 +3747,8 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... a ka
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... a fájl nem írható
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nem sikerült kicsomagolni a letöltött fájlt
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Letölthető tartalmak
-STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Új és frissített tartalmak megtekintése és letöltése
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Letölthető tartalmak
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Új és frissített tartalmak megtekintése és letöltése
 STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Keresd a hiányzó tartalmat online
 STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Ellenőrizd, hogy letölthető-e a hiányzó tartalom
 ########
