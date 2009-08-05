@@ -103,6 +103,13 @@ public:
 	static TileIndex GetLocation(StationID station_id);
 
 	/**
+	 * Get the last date a station part was added to this station.
+	 * @param station_id The station to look at.
+	 * @return The last date some part of this station was build.
+	 */
+	static int32 GetConstructionDate(StationID station_id);
+
+	/**
 	 * See how much cargo there is waiting on a station.
 	 * @param station_id The station to get the cargo-waiting of.
 	 * @param cargo_id The cargo to get the cargo-waiting of.

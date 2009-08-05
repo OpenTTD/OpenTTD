@@ -131,6 +131,13 @@ void Squirrel::AddConst(const char *var_name, int value)
 	sq_newslot(this->vm, -3, SQTrue);
 }
 
+void Squirrel::AddConst(const char *var_name, bool value)
+{
+	sq_pushstring(this->vm, OTTD2FS(var_name), -1);
+	sq_pushbool(this->vm, value);
+	sq_newslot(this->vm, -3, SQTrue);
+}
+
 void Squirrel::AddClassBegin(const char *class_name)
 {
 	sq_pushroottable(this->vm);

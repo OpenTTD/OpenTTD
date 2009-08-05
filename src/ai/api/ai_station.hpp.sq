@@ -59,6 +59,7 @@ void SQAIStation_Register(Squirrel *engine) {
 	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetName,                    "GetName",                    2, ".i");
 	SQAIStation.DefSQStaticMethod(engine, &AIStation::SetName,                    "SetName",                    3, ".is");
 	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetLocation,                "GetLocation",                2, ".i");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetConstructionDate,        "GetConstructionDate",        2, ".i");
 	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetCargoWaiting,            "GetCargoWaiting",            3, ".ii");
 	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetCargoRating,             "GetCargoRating",             3, ".ii");
 	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetCoverageRadius,          "GetCoverageRadius",          2, ".i");

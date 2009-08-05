@@ -7,6 +7,8 @@ namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
 	template <> AICompany::CompanyID GetParam(ForceType<AICompany::CompanyID>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AICompany::CompanyID)tmp; }
 	template <> int Return<AICompany::CompanyID>(HSQUIRRELVM vm, AICompany::CompanyID res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AICompany::Gender GetParam(ForceType<AICompany::Gender>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AICompany::Gender)tmp; }
+	template <> int Return<AICompany::Gender>(HSQUIRRELVM vm, AICompany::Gender res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow AICompany to be used as Squirrel parameter */
 	template <> AICompany *GetParam(ForceType<AICompany *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AICompany *)instance; }
@@ -25,6 +27,9 @@ void SQAICompany_Register(Squirrel *engine) {
 	SQAICompany.DefSQConst(engine, AICompany::COMPANY_FIRST,   "COMPANY_FIRST");
 	SQAICompany.DefSQConst(engine, AICompany::COMPANY_LAST,    "COMPANY_LAST");
 	SQAICompany.DefSQConst(engine, AICompany::COMPANY_SELF,    "COMPANY_SELF");
+	SQAICompany.DefSQConst(engine, AICompany::GENDER_MALE,     "GENDER_MALE");
+	SQAICompany.DefSQConst(engine, AICompany::GENDER_FEMALE,   "GENDER_FEMALE");
+	SQAICompany.DefSQConst(engine, AICompany::GENDER_INVALID,  "GENDER_INVALID");
 
 	SQAICompany.DefSQStaticMethod(engine, &AICompany::ResolveCompanyID,     "ResolveCompanyID",     2, ".i");
 	SQAICompany.DefSQStaticMethod(engine, &AICompany::IsMine,               "IsMine",               2, ".i");
@@ -32,6 +37,8 @@ void SQAICompany_Register(Squirrel *engine) {
 	SQAICompany.DefSQStaticMethod(engine, &AICompany::GetName,              "GetName",              2, ".i");
 	SQAICompany.DefSQStaticMethod(engine, &AICompany::SetPresidentName,     "SetPresidentName",     2, ".s");
 	SQAICompany.DefSQStaticMethod(engine, &AICompany::GetPresidentName,     "GetPresidentName",     2, ".i");
+	SQAICompany.DefSQStaticMethod(engine, &AICompany::SetPresidentGender,   "SetPresidentGender",   2, ".i");
+	SQAICompany.DefSQStaticMethod(engine, &AICompany::GetPresidentGender,   "GetPresidentGender",   2, ".i");
 	SQAICompany.DefSQStaticMethod(engine, &AICompany::SetLoanAmount,        "SetLoanAmount",        2, ".i");
 	SQAICompany.DefSQStaticMethod(engine, &AICompany::SetMinimumLoanAmount, "SetMinimumLoanAmount", 2, ".i");
 	SQAICompany.DefSQStaticMethod(engine, &AICompany::GetLoanAmount,        "GetLoanAmount",        1, ".");

@@ -55,6 +55,13 @@
 	return ::GetStation(station_id)->xy;
 }
 
+/* static */ int32 AIStation::GetConstructionDate(StationID station_id)
+{
+	if (!IsValidStation(station_id)) return -1;
+
+	return ::GetStation(station_id)->build_date;
+}
+
 /* static */ int32 AIStation::GetCargoWaiting(StationID station_id, CargoID cargo_id)
 {
 	if (!IsValidStation(station_id)) return -1;

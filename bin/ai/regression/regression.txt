@@ -648,70 +648,70 @@
     IsValidBridge():    true
     GetName():          Wooden rail bridge
     GetMaxSpeed():      32
-    GetPrice():         10
+    GetPrice():         15
     GetMaxLength():     102
     GetMinLength():     2
   Bridge 1
     IsValidBridge():    true
     GetName():          Concrete rail bridge
     GetMaxSpeed():      48
-    GetPrice():         15
+    GetPrice():         21
     GetMaxLength():     4
     GetMinLength():     2
   Bridge 2
     IsValidBridge():    true
     GetName():          Steel girder rail bridge
     GetMaxSpeed():      64
-    GetPrice():         19
+    GetPrice():         27
     GetMaxLength():     7
     GetMinLength():     2
   Bridge 3
     IsValidBridge():    true
     GetName():          Reinforced concrete suspension rail bridge
     GetMaxSpeed():      80
-    GetPrice():         22
+    GetPrice():         32
     GetMaxLength():     12
     GetMinLength():     4
   Bridge 4
     IsValidBridge():    true
     GetName():          Steel suspension rail bridge
     GetMaxSpeed():      96
-    GetPrice():         25
+    GetPrice():         35
     GetMaxLength():     102
     GetMinLength():     5
   Bridge 5
     IsValidBridge():    true
     GetName():          Steel suspension rail bridge
     GetMaxSpeed():      112
-    GetPrice():         26
+    GetPrice():         36
     GetMaxLength():     102
     GetMinLength():     5
   Bridge 6
     IsValidBridge():    true
     GetName():          Steel cantilever rail bridge
     GetMaxSpeed():      160
-    GetPrice():         30
+    GetPrice():         42
     GetMaxLength():     9
     GetMinLength():     5
   Bridge 7
     IsValidBridge():    true
     GetName():          Steel cantilever rail bridge
     GetMaxSpeed():      208
-    GetPrice():         31
+    GetPrice():         44
     GetMaxLength():     10
     GetMinLength():     5
   Bridge 8
     IsValidBridge():    true
     GetName():          Steel cantilever rail bridge
     GetMaxSpeed():      240
-    GetPrice():         33
+    GetPrice():         47
     GetMaxLength():     11
     GetMinLength():     5
   Bridge 9
     IsValidBridge():    true
     GetName():          Steel girder rail bridge
     GetMaxSpeed():      256
-    GetPrice():         32
+    GetPrice():         45
     GetMaxLength():     4
     GetMinLength():     2
   Bridge 10
@@ -773,16 +773,16 @@
     1 => 48
     0 => 32
   Price ListDump:
-    8 => 33
-    9 => 32
-    7 => 31
-    6 => 30
-    5 => 26
-    4 => 25
-    3 => 22
-    2 => 19
-    1 => 15
-    0 => 10
+    8 => 47
+    9 => 45
+    7 => 44
+    6 => 42
+    5 => 36
+    4 => 35
+    3 => 32
+    2 => 27
+    1 => 21
+    0 => 15
   MaxLength ListDump:
     5 => 102
     4 => 102
@@ -813,9 +813,9 @@
     4 => 96
     0 => 32
   Price ListDump:
-    5 => 73
-    4 => 70
-    0 => 30
+    5 => 220
+    4 => 212
+    0 => 91
 
 --AICargo--
   Cargo -1

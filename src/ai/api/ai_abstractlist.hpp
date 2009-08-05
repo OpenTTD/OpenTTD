@@ -25,6 +25,11 @@ public:
 		SORT_BY_ITEM,  //!< Sort the list based on the item itself.
 	};
 
+	/** Sort ascending */
+	static const bool SORT_ASCENDING = true;
+	/** Sort descnding */
+	static const bool SORT_DESCENDING = false;
+
 private:
 	AIAbstractListSorter *sorter;
 	SorterType sorter_type;
@@ -123,6 +128,7 @@ public:
 	 * @param sorter    the type of sorter to use
 	 * @param ascending if true, lowest value is on top, else at bottom.
 	 * @note the current item stays at the same place.
+	 * @see SORT_ASCENDING SORT_DESCENDING
 	 */
 	void Sort(SorterType sorter, bool ascending);
 

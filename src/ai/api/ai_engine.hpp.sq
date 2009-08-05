@@ -31,6 +31,7 @@ void SQAIEngine_Register(Squirrel *engine) {
 	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetPower,             "GetPower",             2, ".i");
 	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetWeight,            "GetWeight",            2, ".i");
 	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetMaxTractiveEffort, "GetMaxTractiveEffort", 2, ".i");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetDesignDate,        "GetDesignDate",        2, ".i");
 	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetVehicleType,       "GetVehicleType",       2, ".i");
 	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::IsWagon,              "IsWagon",              2, ".i");
 	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::CanRunOnRail,         "CanRunOnRail",         3, ".ii");

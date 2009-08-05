@@ -78,6 +78,12 @@ public:
 	void AddConst(const char *var_name, int value);
 
 	/**
+	 * Adds a const to the stack. Depending on the current state this means
+	 *  either a const to a class or to the global space.
+	 */
+	void AddConst(const char *var_name, bool value);
+
+	/**
 	 * Adds a class to the global scope. Make sure to call AddClassEnd when you
 	 *  are done adding methods.
 	 */

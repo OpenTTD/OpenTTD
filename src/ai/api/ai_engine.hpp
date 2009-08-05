@@ -153,6 +153,14 @@ public:
 	static int32 GetMaxTractiveEffort(EngineID engine_id);
 
 	/**
+	 * Get the date this engine was designed.
+	 * @param engine_id The engine to get the design date of.
+	 * @pre IsValidEngine(engine_id).
+	 * @return The date this engine was designed.
+	 */
+	static int32 GetDesignDate(EngineID engine_id);
+
+	/**
 	 * Get the type of an engine.
 	 * @param engine_id The engine to get the type of.
 	 * @pre IsValidEngine(engine_id).
