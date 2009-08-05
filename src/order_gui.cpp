@@ -191,7 +191,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 			OrderLoadFlags load = order->GetLoadType();
 			OrderUnloadFlags unload = order->GetUnloadType();
 
-			SetDParam(1, STR_GO_TO_STATION);
+			SetDParam(1, STR_ORDER_GO_TO_STATION);
 			SetDParam(2, STR_ORDER_GO_TO + ((v->type == VEH_TRAIN || v->type == VEH_ROAD) ? order->GetNonStopType() : 0));
 			SetDParam(3, order->GetDestination());
 
@@ -213,19 +213,19 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 		case OT_GOTO_DEPOT:
 			if (v->type == VEH_AIRCRAFT) {
 				if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
-					SetDParam(1, STR_GO_TO_NEAREST_DEPOT);
+					SetDParam(1, STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT);
 					SetDParam(3, STR_ORDER_NEAREST_HANGAR);
 				} else {
-					SetDParam(1, STR_GO_TO_HANGAR);
+					SetDParam(1, STR_ORDER_GO_TO_HANGAR_FORMAT);
 					SetDParam(3, order->GetDestination());
 				}
 				SetDParam(4, STR_EMPTY);
 			} else {
 				if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
-					SetDParam(1, STR_GO_TO_NEAREST_DEPOT);
+					SetDParam(1, STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT);
 					SetDParam(3, STR_ORDER_NEAREST_DEPOT);
 				} else {
-					SetDParam(1, STR_GO_TO_DEPOT);
+					SetDParam(1, STR_ORDER_GO_TO_DEPOT_FORMAT);
 					SetDParam(3, Depot::Get(order->GetDestination())->town_index);
 				}
 
@@ -239,27 +239,27 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 			}
 
 			if (!timetable && (order->GetDepotActionType() & ODATFB_HALT)) {
-				SetDParam(6, STR_STOP_ORDER);
+				SetDParam(6, STR_ORDER_STOP_ORDER);
 			}
 
 			if (!timetable && order->IsRefit()) {
-				SetDParam(6, (order->GetDepotActionType() & ODATFB_HALT) ? STR_REFIT_STOP_ORDER : STR_REFIT_ORDER);
+				SetDParam(6, (order->GetDepotActionType() & ODATFB_HALT) ? STR_ORDER_REFIT_STOP_ORDER : STR_ORDER_REFIT_ORDER);
 				SetDParam(7, CargoSpec::Get(order->GetRefitCargo())->name);
 			}
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
+			SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_GO_NON_STOP_TO_WAYPOINT : STR_ORDER_GO_TO_WAYPOINT);
 			SetDParam(2, order->GetDestination());
 			break;
 
 		case OT_CONDITIONAL:
 			SetDParam(2, order->GetConditionSkipToOrder() + 1);
 			if (order->GetConditionVariable() == OCV_UNCONDITIONALLY) {
-				SetDParam(1, STR_CONDITIONAL_UNCONDITIONAL);
+				SetDParam(1, STR_ORDER_CONDITIONAL_UNCONDITIONAL);
 			} else {
 				OrderConditionComparator occ = order->GetConditionComparator();
-				SetDParam(1, (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) ? STR_CONDITIONAL_TRUE_FALSE : STR_CONDITIONAL_NUM);
+				SetDParam(1, (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) ? STR_ORDER_CONDITIONAL_TRUE_FALSE : STR_ORDER_CONDITIONAL_NUM);
 				SetDParam(3, STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + order->GetConditionVariable());
 				SetDParam(4, STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + occ);
 
@@ -437,7 +437,7 @@ private:
 		if (this->vehicle->GetNumOrders() != 0 && _ctrl_pressed == 0) return false;
 
 		if (DoCommandP(this->vehicle->tile, this->vehicle->index | (u->index << 16), _ctrl_pressed ? CO_SHARE : CO_COPY,
-			_ctrl_pressed ? CMD_CLONE_ORDER | CMD_MSG(STR_CANT_SHARE_ORDER_LIST) : CMD_CLONE_ORDER | CMD_MSG(STR_CANT_COPY_ORDER_LIST))) {
+			_ctrl_pressed ? CMD_CLONE_ORDER | CMD_MSG(STR_ERROR_CAN_T_SHARE_ORDER_LIST) : CMD_CLONE_ORDER | CMD_MSG(STR_ERROR_CAN_T_COPY_ORDER_LIST))) {
 			this->selected_order = -1;
 			ResetObjectToPlace();
 		}
@@ -837,7 +837,7 @@ public:
 		}
 
 		if (i - this->vscroll.pos < this->vscroll.cap) {
-			str = shared_orders ? STR_END_OF_SHARED_ORDERS : STR_ORDERS_END_OF_ORDERS;
+			str = shared_orders ? STR_ORDERS_END_OF_SHARED_ORDERS : STR_ORDERS_END_OF_ORDERS;
 			DrawString(this->widget[ORDER_WIDGET_ORDER_LIST].left + 2, this->widget[ORDER_WIDGET_ORDER_LIST].right - 2, y, str, (i == this->selected_order) ? TC_WHITE : TC_BLACK);
 		}
 	}
@@ -1231,8 +1231,8 @@ public:
 static const Widget _orders_train_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,            STR_TOOLTIP_CLOSE_WINDOW},                 // ORDER_WIDGET_CLOSEBOX
 	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   371,     0,    13, STR_ORDERS_CAPTION,         STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},       // ORDER_WIDGET_CAPTION
-	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   311,   371,     0,    13, STR_TIMETABLE_VIEW,         STR_TIMETABLE_VIEW_TOOLTIP},               // ORDER_WIDGET_TIMETABLE_VIEW
-	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   372,   383,     0,    13, STR_NULL,                   STR_STICKY_BUTTON},                        // ORDER_WIDGET_STICKY
+	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   311,   371,     0,    13, STR_ORDERS_TIMETABLE_VIEW,  STR_ORDERS_TIMETABLE_VIEW_TOOLTIP},               // ORDER_WIDGET_TIMETABLE_VIEW
+	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   372,   383,     0,    13, STR_NULL,                   STR_TOOLTIP_STICKY},                        // ORDER_WIDGET_STICKY
 
 	{      WWT_PANEL,   RESIZE_RB,     COLOUR_GREY,     0,   371,    14,    75, 0x0,                        STR_ORDERS_LIST_TOOLTIP},                  // ORDER_WIDGET_ORDER_LIST
 
@@ -1242,23 +1242,23 @@ static const Widget _orders_train_widgets[] = {
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    88,    99, STR_ORDERS_DELETE_BUTTON,   STR_ORDERS_DELETE_TOOLTIP},                // ORDER_WIDGET_DELETE
 	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,     0,   123,    76,    87, STR_NULL,                   STR_ORDER_TOOLTIP_NON_STOP},               // ORDER_WIDGET_NON_STOP_DROPDOWN
 	{    WWT_TEXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   111,    76,    87, STR_ORDER_NON_STOP,         STR_ORDER_TOOLTIP_NON_STOP},               // ORDER_WIDGET_NON_STOP
-	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    88,    99, STR_EMPTY,                  STR_ORDER_GO_TO_DROPDOWN_TOOLTIP},         // ORDER_WIDGET_GOTO_DROPDOWN
+	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    88,    99, STR_EMPTY,                  STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP},         // ORDER_WIDGET_GOTO_DROPDOWN
 	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   359,    88,    99, STR_ORDERS_GO_TO_BUTTON,    STR_ORDERS_GO_TO_TOOLTIP},                 // ORDER_WIDGET_GOTO
 	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    76,    87, STR_NULL,                   STR_ORDER_TOOLTIP_FULL_LOAD},              // ORDER_WIDGET_FULL_LOAD_DROPDOWN
 	{    WWT_TEXTBTN,   RESIZE_TB,     COLOUR_GREY,   124,   235,    76,    87, STR_ORDER_TOGGLE_FULL_LOAD, STR_ORDER_TOOLTIP_FULL_LOAD},              // ORDER_WIDGET_FULL_LOAD
 	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    76,    87, STR_NULL,                   STR_ORDER_TOOLTIP_UNLOAD},                 // ORDER_WIDGET_UNLOAD_DROPDOWN
 	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   359,    76,    87, STR_ORDER_TOGGLE_UNLOAD,    STR_ORDER_TOOLTIP_UNLOAD},                 // ORDER_WIDGET_UNLOAD
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    76,    87, STR_REFIT,                  STR_REFIT_TIP},                            // ORDER_WIDGET_REFIT
-	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    76,    87, STR_NULL,                   STR_SERVICE_HINT},                         // ORDER_WIDGET_SERVICE_DROPDOWN
-	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   359,    76,    87, STR_SERVICE,                STR_SERVICE_HINT},                         // ORDER_WIDGET_SERVICE
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    76,    87, STR_ORDER_REFIT,            STR_ORDER_REFIT_TOOLTIP},                            // ORDER_WIDGET_REFIT
+	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    76,    87, STR_NULL,                   STR_ORDER_SERVICE_TOOLTIP},                         // ORDER_WIDGET_SERVICE_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   359,    76,    87, STR_ORDER_SERVICE,          STR_ORDER_SERVICE_TOOLTIP},                         // ORDER_WIDGET_SERVICE
 
 	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,     0,   123,    76,    87, STR_NULL,                   STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP},   // ORDER_WIDGET_COND_VARIABLE
 	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    76,    87, STR_NULL,                   STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP}, // ORDER_WIDGET_COND_COMPARATOR
-	{ WWT_PUSHTXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    76,    87, STR_CONDITIONAL_VALUE,      STR_ORDER_CONDITIONAL_VALUE_TOOLTIP},      // ORDER_WIDGET_COND_VALUE
+	{ WWT_PUSHTXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    76,    87, STR_ORDER_CONDITIONAL_VALUE,STR_ORDER_CONDITIONAL_VALUE_TOOLTIP},      // ORDER_WIDGET_COND_VALUE
 
-	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    76,    87, SPR_SHARED_ORDERS_ICON,     STR_VEH_WITH_SHARED_ORDERS_LIST_TIP},      // ORDER_WIDGET_SHARED_ORDER_LIST
+	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    76,    87, SPR_SHARED_ORDERS_ICON,     STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP},      // ORDER_WIDGET_SHARED_ORDER_LIST
 
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    88,    99, 0x0,                        STR_RESIZE_BUTTON},                        // ORDER_WIDGET_RESIZE
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    88,    99, 0x0,                        STR_TOOLTIP_RESIZE},                        // ORDER_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
 
@@ -1268,7 +1268,7 @@ static const NWidgetPart _nested_orders_train_widgets[] = {
 		NWidget(NWID_LAYERED),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_TIMETABLE_VIEW), SetMinimalSize(61, 14), SetDataTip(STR_TIMETABLE_VIEW, STR_TIMETABLE_VIEW_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_TIMETABLE_VIEW), SetMinimalSize(61, 14), SetDataTip(STR_ORDERS_TIMETABLE_VIEW, STR_ORDERS_TIMETABLE_VIEW_TOOLTIP),
 			EndContainer(),
 			NWidget(WWT_CAPTION, COLOUR_GREY, ORDER_WIDGET_CAPTION), SetDataTip(STR_ORDERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		EndContainer(),
@@ -1314,15 +1314,15 @@ static const NWidgetPart _nested_orders_train_widgets[] = {
 						EndContainer(),
 					EndContainer(),
 					NWidget(NWID_HORIZONTAL),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_REFIT), SetMinimalSize(124, 12), SetDataTip(STR_REFIT, STR_REFIT_TIP),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_REFIT), SetMinimalSize(124, 12), SetDataTip(STR_ORDER_REFIT, STR_ORDER_REFIT_TOOLTIP),
 						NWidget(NWID_LAYERED),
 							NWidget(NWID_HORIZONTAL),
 								NWidget(WWT_TEXTBTN, COLOUR_GREY, ORDER_WIDGET_SERVICE), SetMinimalSize(112, 12),
-											SetDataTip(STR_SERVICE, STR_SERVICE_HINT), SetResize(1, 0),
+											SetDataTip(STR_ORDER_SERVICE, STR_ORDER_SERVICE_TOOLTIP), SetResize(1, 0),
 								NWidget(NWID_SPACER), SetFill(1, 0),
 							EndContainer(),
 							NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_SERVICE_DROPDOWN), SetMinimalSize(124, 12),
-											SetDataTip(STR_NULL, STR_SERVICE_HINT), SetResize(1, 0),
+											SetDataTip(STR_NULL, STR_ORDER_SERVICE_TOOLTIP), SetResize(1, 0),
 						EndContainer(),
 					EndContainer(),
 				EndContainer(),
@@ -1332,11 +1332,11 @@ static const NWidgetPart _nested_orders_train_widgets[] = {
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_COND_VARIABLE), SetMinimalSize(124, 12), SetDataTip(STR_NULL, STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_COND_COMPARATOR), SetMinimalSize(124, 12), SetDataTip(STR_NULL, STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_COND_VALUE), SetMinimalSize(124, 12),
-											SetDataTip(STR_CONDITIONAL_VALUE, STR_ORDER_CONDITIONAL_VALUE_TOOLTIP), SetResize(1, 0),
+											SetDataTip(STR_ORDER_CONDITIONAL_VALUE, STR_ORDER_CONDITIONAL_VALUE_TOOLTIP), SetResize(1, 0),
 			EndContainer(),
 		EndContainer(),
 
-		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, ORDER_WIDGET_SHARED_ORDER_LIST), SetMinimalSize(12, 12), SetDataTip(SPR_SHARED_ORDERS_ICON, STR_VEH_WITH_SHARED_ORDERS_LIST_TIP),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, ORDER_WIDGET_SHARED_ORDER_LIST), SetMinimalSize(12, 12), SetDataTip(SPR_SHARED_ORDERS_ICON, STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP),
 	EndContainer(),
 
 	/* Second button row. */
@@ -1348,7 +1348,7 @@ static const NWidgetPart _nested_orders_train_widgets[] = {
 				NWidget(WWT_TEXTBTN, COLOUR_GREY, ORDER_WIDGET_GOTO), SetMinimalSize(112, 12), SetDataTip(STR_ORDERS_GO_TO_BUTTON, STR_ORDERS_GO_TO_TOOLTIP), SetResize(1, 0),
 				NWidget(NWID_SPACER), SetFill(1, 0),
 			EndContainer(),
-			NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_GOTO_DROPDOWN), SetMinimalSize(124, 12), SetDataTip(STR_EMPTY, STR_ORDER_GO_TO_DROPDOWN_TOOLTIP), SetResize(1, 0),
+			NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_GOTO_DROPDOWN), SetMinimalSize(124, 12), SetDataTip(STR_EMPTY, STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP), SetResize(1, 0),
 		EndContainer(),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY, ORDER_WIDGET_RESIZE),
 	EndContainer(),
@@ -1367,8 +1367,8 @@ static const WindowDesc _orders_train_desc(
 static const Widget _orders_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,            STR_TOOLTIP_CLOSE_WINDOW},                 // ORDER_WIDGET_CLOSEBOX
 	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   371,     0,    13, STR_ORDERS_CAPTION,         STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},       // ORDER_WIDGET_CAPTION
-	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   311,   371,     0,    13, STR_TIMETABLE_VIEW,         STR_TIMETABLE_VIEW_TOOLTIP},               // ORDER_WIDGET_TIMETABLE_VIEW
-	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   372,   383,     0,    13, STR_NULL,                   STR_STICKY_BUTTON},                        // ORDER_WIDGET_STICKY
+	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   311,   371,     0,    13, STR_ORDERS_TIMETABLE_VIEW,  STR_ORDERS_TIMETABLE_VIEW_TOOLTIP},               // ORDER_WIDGET_TIMETABLE_VIEW
+	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   372,   383,     0,    13, STR_NULL,                   STR_TOOLTIP_STICKY},                        // ORDER_WIDGET_STICKY
 
 	{      WWT_PANEL,   RESIZE_RB,     COLOUR_GREY,     0,   371,    14,    75, 0x0,                        STR_ORDERS_LIST_TOOLTIP},                  // ORDER_WIDGET_ORDER_LIST
 
@@ -1378,23 +1378,23 @@ static const Widget _orders_widgets[] = {
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    88,    99, STR_ORDERS_DELETE_BUTTON,   STR_ORDERS_DELETE_TOOLTIP},                // ORDER_WIDGET_DELETE
 	{      WWT_EMPTY,   RESIZE_TB,     COLOUR_GREY,     0,     0,    76,    87, 0x0,                        0x0},                                      // ORDER_WIDGET_NON_STOP_DROPDOWN
 	{      WWT_EMPTY,   RESIZE_TB,     COLOUR_GREY,     0,     0,    76,    87, 0x0,                        0x0},                                      // ORDER_WIDGET_NON_STOP
-	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    88,    99, STR_EMPTY,                  STR_ORDER_GO_TO_DROPDOWN_TOOLTIP},         // ORDER_WIDGET_GOTO_DROPDOWN
+	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    88,    99, STR_EMPTY,                  STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP},         // ORDER_WIDGET_GOTO_DROPDOWN
 	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   359,    88,    99, STR_ORDERS_GO_TO_BUTTON,    STR_ORDERS_GO_TO_TOOLTIP},                 // ORDER_WIDGET_GOTO
 	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,     0,   185,    76,    87, STR_NULL,                   STR_ORDER_TOOLTIP_FULL_LOAD},              // ORDER_WIDGET_FULL_LOAD_DROPDOWN
 	{    WWT_TEXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   173,    76,    87, STR_ORDER_TOGGLE_FULL_LOAD, STR_ORDER_TOOLTIP_FULL_LOAD},              // ORDER_WIDGET_FULL_LOAD
 	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   186,   371,    76,    87, STR_NULL,                   STR_ORDER_TOOLTIP_UNLOAD},                 // ORDER_WIDGET_UNLOAD_DROPDOWN
 	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   186,   359,    76,    87, STR_ORDER_TOGGLE_UNLOAD,    STR_ORDER_TOOLTIP_UNLOAD},                 // ORDER_WIDGET_UNLOAD
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   185,    76,    87, STR_REFIT,                  STR_REFIT_TIP},                            // ORDER_WIDGET_REFIT
-	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   186,   371,    76,    87, STR_NULL,                   STR_SERVICE_HINT},                         // ORDER_WIDGET_SERVICE_DROPDOWN
-	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   186,   359,    76,    87, STR_SERVICE,                STR_SERVICE_HINT},                         // ORDER_WIDGET_SERVICE
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   185,    76,    87, STR_ORDER_REFIT,            STR_ORDER_REFIT_TOOLTIP},                            // ORDER_WIDGET_REFIT
+	{   WWT_DROPDOWN,   RESIZE_RTB,    COLOUR_GREY,   186,   371,    76,    87, STR_NULL,                   STR_ORDER_SERVICE_TOOLTIP},                         // ORDER_WIDGET_SERVICE_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_RTB,    COLOUR_GREY,   186,   359,    76,    87, STR_ORDER_SERVICE,          STR_ORDER_SERVICE_TOOLTIP},                         // ORDER_WIDGET_SERVICE
 
 	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,     0,   123,    76,    87, STR_NULL,                   STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP},   // ORDER_WIDGET_COND_VARIABLE
 	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    76,    87, STR_NULL,                   STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP}, // ORDER_WIDGET_COND_COMPARATOR
-	{ WWT_PUSHTXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    76,    87, STR_CONDITIONAL_VALUE,      STR_ORDER_CONDITIONAL_VALUE_TOOLTIP},      // ORDER_WIDGET_COND_VALUE
+	{ WWT_PUSHTXTBTN,   RESIZE_RTB,    COLOUR_GREY,   248,   371,    76,    87, STR_ORDER_CONDITIONAL_VALUE,STR_ORDER_CONDITIONAL_VALUE_TOOLTIP},      // ORDER_WIDGET_COND_VALUE
 
-	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    76,    87, SPR_SHARED_ORDERS_ICON,     STR_VEH_WITH_SHARED_ORDERS_LIST_TIP},      // ORDER_WIDGET_SHARED_ORDER_LIST
+	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    76,    87, SPR_SHARED_ORDERS_ICON,     STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP},      // ORDER_WIDGET_SHARED_ORDER_LIST
 
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    88,    99, 0x0,                     STR_RESIZE_BUTTON},                           // ORDER_WIDGET_RESIZE
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    88,    99, 0x0,                        STR_TOOLTIP_RESIZE},                           // ORDER_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
 
@@ -1405,7 +1405,7 @@ static const NWidgetPart _nested_orders_widgets[] = {
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_TIMETABLE_VIEW), SetMinimalSize(61, 14),
-											SetDataTip(STR_TIMETABLE_VIEW, STR_TIMETABLE_VIEW_TOOLTIP),
+											SetDataTip(STR_ORDERS_TIMETABLE_VIEW, STR_ORDERS_TIMETABLE_VIEW_TOOLTIP),
 			EndContainer(),
 			NWidget(WWT_CAPTION, COLOUR_GREY, ORDER_WIDGET_CAPTION), SetDataTip(STR_ORDERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		EndContainer(),
@@ -1422,15 +1422,15 @@ static const NWidgetPart _nested_orders_widgets[] = {
 		NWidget(NWID_SELECTION),
 			/* Refit + service buttons. */
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_REFIT), SetMinimalSize(186, 12), SetDataTip(STR_REFIT, STR_REFIT_TIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_REFIT), SetMinimalSize(186, 12), SetDataTip(STR_ORDER_REFIT, STR_ORDER_REFIT_TOOLTIP),
 				NWidget(NWID_LAYERED),
 					NWidget(NWID_HORIZONTAL),
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, ORDER_WIDGET_SERVICE), SetMinimalSize(174, 12),
-											SetDataTip(STR_SERVICE, STR_SERVICE_HINT), SetResize(1, 0),
+											SetDataTip(STR_ORDER_SERVICE, STR_ORDER_SERVICE_TOOLTIP), SetResize(1, 0),
 						NWidget(NWID_SPACER), SetFill(1, 0),
 					EndContainer(),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_SERVICE_DROPDOWN), SetMinimalSize(186, 12),
-											SetDataTip(STR_NULL, STR_SERVICE_HINT), SetResize(1, 0),
+											SetDataTip(STR_NULL, STR_ORDER_SERVICE_TOOLTIP), SetResize(1, 0),
 				EndContainer(),
 			EndContainer(),
 			/* load + unload buttons. */
@@ -1472,11 +1472,11 @@ static const NWidgetPart _nested_orders_widgets[] = {
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_COND_VARIABLE), SetMinimalSize(124, 12), SetDataTip(STR_NULL, STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_COND_COMPARATOR), SetMinimalSize(124, 12), SetDataTip(STR_NULL, STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_COND_VALUE), SetMinimalSize(124, 12), SetResize(1, 0),
-											SetDataTip(STR_CONDITIONAL_VALUE, STR_ORDER_CONDITIONAL_VALUE_TOOLTIP),
+											SetDataTip(STR_ORDER_CONDITIONAL_VALUE, STR_ORDER_CONDITIONAL_VALUE_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 
-		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, ORDER_WIDGET_SHARED_ORDER_LIST), SetMinimalSize(12, 12), SetDataTip(SPR_SHARED_ORDERS_ICON, STR_VEH_WITH_SHARED_ORDERS_LIST_TIP),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, ORDER_WIDGET_SHARED_ORDER_LIST), SetMinimalSize(12, 12), SetDataTip(SPR_SHARED_ORDERS_ICON, STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP),
 	EndContainer(),
 
 	/* Second button row. */
@@ -1488,7 +1488,7 @@ static const NWidgetPart _nested_orders_widgets[] = {
 				NWidget(WWT_TEXTBTN, COLOUR_GREY, ORDER_WIDGET_GOTO), SetMinimalSize(112, 12), SetDataTip(STR_ORDERS_GO_TO_BUTTON, STR_ORDERS_GO_TO_TOOLTIP), SetResize(1, 0),
 				NWidget(NWID_SPACER), SetFill(1, 0),
 			EndContainer(),
-			NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_GOTO_DROPDOWN), SetMinimalSize(124, 12), SetDataTip(STR_EMPTY, STR_ORDER_GO_TO_DROPDOWN_TOOLTIP), SetResize(1, 0),
+			NWidget(WWT_DROPDOWN, COLOUR_GREY, ORDER_WIDGET_GOTO_DROPDOWN), SetMinimalSize(124, 12), SetDataTip(STR_EMPTY, STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP), SetResize(1, 0),
 		EndContainer(),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY, ORDER_WIDGET_RESIZE),
 	EndContainer(),
@@ -1507,8 +1507,8 @@ static const WindowDesc _orders_desc(
 static const Widget _other_orders_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,    STR_TOOLTIP_CLOSE_WINDOW},             // ORDER_WIDGET_CLOSEBOX
 	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   371,     0,    13, STR_ORDERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // ORDER_WIDGET_CAPTION
-	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   311,   371,     0,    13, STR_TIMETABLE_VIEW, STR_TIMETABLE_VIEW_TOOLTIP},           // ORDER_WIDGET_TIMETABLE_VIEW
-	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   372,   383,     0,    13, STR_NULL,           STR_STICKY_BUTTON},                    // ORDER_WIDGET_STICKY
+	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   311,   371,     0,    13, STR_ORDERS_TIMETABLE_VIEW, STR_ORDERS_TIMETABLE_VIEW_TOOLTIP},           // ORDER_WIDGET_TIMETABLE_VIEW
+	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   372,   383,     0,    13, STR_NULL,           STR_TOOLTIP_STICKY},                    // ORDER_WIDGET_STICKY
 
 	{      WWT_PANEL,   RESIZE_RB,     COLOUR_GREY,     0,   371,    14,    85, 0x0,                STR_ORDERS_LIST_TOOLTIP},              // ORDER_WIDGET_ORDER_LIST
 
@@ -1534,7 +1534,7 @@ static const Widget _other_orders_widgets[] = {
 
 	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,     0,     0, 0x0,                STR_NULL},                             // ORDER_WIDGET_SHARED_ORDER_LIST
 
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    74,    85, 0x0,                STR_RESIZE_BUTTON},                    // ORDER_WIDGET_RESIZE
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_GREY,   372,   383,    74,    85, 0x0,                STR_TOOLTIP_RESIZE},                    // ORDER_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
 
@@ -1548,7 +1548,7 @@ static const NWidgetPart _nested_other_orders_widgets[] = {
 					NWidget(NWID_HORIZONTAL),
 						NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
 						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, ORDER_WIDGET_TIMETABLE_VIEW), SetMinimalSize(61, 14),
-											SetDataTip(STR_TIMETABLE_VIEW, STR_TIMETABLE_VIEW_TOOLTIP),
+											SetDataTip(STR_ORDERS_TIMETABLE_VIEW, STR_ORDERS_TIMETABLE_VIEW_TOOLTIP),
 					EndContainer(),
 					NWidget(WWT_CAPTION, COLOUR_GREY, ORDER_WIDGET_CAPTION), SetDataTip(STR_ORDERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 				EndContainer(),

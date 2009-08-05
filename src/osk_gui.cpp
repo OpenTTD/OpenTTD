@@ -250,14 +250,14 @@ struct OskWindow : public Window {
 };
 
 static const Widget _osk_widgets[] = {
-{    WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,     0,   255,     0,    13, STR_QUERY_CAPTION, STR_NULL}, // OSK_WIDGET_CAPTION
+{    WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,     0,   255,     0,    13, STR_WHITE_STRINGN, STR_NULL}, // OSK_WIDGET_CAPTION
 {      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,     0,   255,    14,    29, 0x0,               STR_NULL}, // OSK_WIDGET_TEXT_BACKGROUND
 {    WWT_EDITBOX, RESIZE_NONE,  COLOUR_GREY,     2,   253,    16,    27, 0x0,               STR_NULL}, // OSK_WIDGET_TEXT
 
 {      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,     0,   255,    30,   139, 0x0,               STR_NULL}, // OSK_WIDGET_KEYS_BACKGROUND
 
-{    WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,     3,   108,    35,    46, STR_QUERY_CANCEL,  STR_NULL}, // OSK_WIDGET_CANCEL
-{    WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,   111,   216,    35,    46, STR_QUERY_OK,      STR_NULL}, // OSK_WIDGET_OK
+{    WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,     3,   108,    35,    46, STR_BUTTON_CANCEL, STR_NULL}, // OSK_WIDGET_CANCEL
+{    WWT_TEXTBTN, RESIZE_NONE,  COLOUR_GREY,   111,   216,    35,    46, STR_BUTTON_OK,     STR_NULL}, // OSK_WIDGET_OK
 { WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,   219,   252,    35,    46, SPR_OSK_BACKSPACE, STR_NULL}, // OSK_WIDGET_BACKSPACE
 
 { WWT_PUSHIMGBTN, RESIZE_NONE,  COLOUR_GREY,     3,    27,    67,    82, SPR_OSK_SPECIAL,   STR_NULL}, // OSK_WIDGET_SPECIAL
@@ -367,8 +367,8 @@ static NWidgetBase *MakeTopKeys(int *biggest_index)
 	NWidgetHorizontal *hor = new NWidgetHorizontal;
 	int key_height = 12;
 
-	AddKey(hor, key_height, 6 * 2, WWT_TEXTBTN,    OSK_WIDGET_CANCEL,    STR_QUERY_CANCEL,  biggest_index);
-	AddKey(hor, key_height, 6 * 2, WWT_TEXTBTN,    OSK_WIDGET_OK,        STR_QUERY_OK,      biggest_index);
+	AddKey(hor, key_height, 6 * 2, WWT_TEXTBTN,    OSK_WIDGET_CANCEL,    STR_BUTTON_CANCEL,  biggest_index);
+	AddKey(hor, key_height, 6 * 2, WWT_TEXTBTN,    OSK_WIDGET_OK,        STR_BUTTON_OK,      biggest_index);
 	AddKey(hor, key_height, 2 * 2, WWT_PUSHIMGBTN, OSK_WIDGET_BACKSPACE, SPR_OSK_BACKSPACE, biggest_index);
 	return hor;
 }
@@ -442,7 +442,7 @@ static NWidgetBase *MakeSpacebarKeys(int *biggest_index)
 
 
 static const NWidgetPart _nested_osk_widgets[] = {
-	NWidget(WWT_CAPTION, COLOUR_GREY, OSK_WIDGET_CAPTION), SetDataTip(STR_QUERY_CAPTION, STR_NULL),
+	NWidget(WWT_CAPTION, COLOUR_GREY, OSK_WIDGET_CAPTION), SetDataTip(STR_WHITE_STRINGN, STR_NULL),
 	NWidget(WWT_PANEL, COLOUR_GREY, OSK_WIDGET_TEXT_BACKGROUND),
 		NWidget(WWT_EDITBOX, COLOUR_GREY, OSK_WIDGET_TEXT), SetMinimalSize(252, 12), SetPadding(2, 2, 2, 2),
 	EndContainer(),

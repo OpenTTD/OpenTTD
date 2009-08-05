@@ -1080,7 +1080,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 						right  > t->sign.left &&
 						left   < t->sign.left + t->sign.width_normal) {
 					AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
-						_settings_client.gui.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
+						_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN,
 						t->index, t->population);
 				}
 			}
@@ -1096,7 +1096,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 						right  > t->sign.left &&
 						left   < t->sign.left + t->sign.width_normal * 2) {
 					AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
-						_settings_client.gui.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
+						_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN,
 						t->index, t->population);
 				}
 			}
@@ -1112,8 +1112,8 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 						top    < t->sign.top + ScaleByZoom(12, dpi->zoom) &&
 						right  > t->sign.left &&
 						left   < t->sign.left + ScaleByZoom(t->sign.width_small, dpi->zoom)) {
-					AddStringToDraw(t->sign.left + 5, t->sign.top + 1, STR_TOWN_LABEL_TINY_BLACK, t->index, 0);
-					AddStringToDraw(t->sign.left + 1, t->sign.top - 3, STR_TOWN_LABEL_TINY_WHITE, t->index, 0);
+					AddStringToDraw(t->sign.left + 5, t->sign.top + 1, STR_VIEWPORT_TOWN_TINY_BLACK, t->index, 0);
+					AddStringToDraw(t->sign.left + 1, t->sign.top - 3, STR_VIEWPORT_TOWN_TINY_WHITE, t->index, 0);
 				}
 			}
 			break;
@@ -1131,7 +1131,7 @@ static void AddStation(const BaseStation *st, bool tiny, uint16 width)
 	/* Don't draw if the display options are disabled */
 	if (!HasBit(_display_opt, is_station ? DO_SHOW_STATION_NAMES : DO_SHOW_WAYPOINT_NAMES)) return;
 
-	StringID str = (is_station ? STR_STATION_SIGN : STR_WAYPOINT_VIEWPORT) + tiny;
+	StringID str = (is_station ? STR_VIEWPORT_STATION : STR_VIEWPORT_WAYPOINT) + tiny;
 
 	AddStringToDraw(st->sign.left + 1, st->sign.top + 1, str, st->index, st->facilities, (st->owner == OWNER_NONE || !st->IsInUse()) ? 0xE : _company_colours[st->owner], width);
 }
@@ -1220,7 +1220,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 						top    < si->sign.top + 12 &&
 						right  > si->sign.left &&
 						left   < si->sign.left + si->sign.width_normal) {
-					AddSign(si, STR_SIGN_WHITE, si->sign.width_normal);
+					AddSign(si, STR_WHITE_SIGN, si->sign.width_normal);
 				}
 			}
 			break;
@@ -1233,7 +1233,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 						top    < si->sign.top + 24 &&
 						right  > si->sign.left &&
 						left   < si->sign.left + si->sign.width_normal * 2) {
-					AddSign(si, STR_SIGN_WHITE, si->sign.width_normal);
+					AddSign(si, STR_WHITE_SIGN, si->sign.width_normal);
 				}
 			}
 			break;
@@ -1248,7 +1248,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 						top    < si->sign.top + ScaleByZoom(12, dpi->zoom) &&
 						right  > si->sign.left &&
 						left   < si->sign.left + ScaleByZoom(si->sign.width_small, dpi->zoom)) {
-					AddSign(si, IsTransparencySet(TO_SIGNS) ? STR_SIGN_SMALL_WHITE : STR_SIGN_SMALL_BLACK, si->sign.width_small | 0x8000);
+					AddSign(si, IsTransparencySet(TO_SIGNS) ? STR_VIEWPORT_SIGN_SMALL_WHITE : STR_VIEWPORT_SIGN_SMALL_BLACK, si->sign.width_small | 0x8000);
 				}
 			}
 			break;
@@ -1425,7 +1425,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 
 		if (ss->width != 0) {
 			/* Do not draw signs nor station names if they are set invisible */
-			if (IsInvisibilitySet(TO_SIGNS) && ss->string != STR_SIGN_WHITE) continue;
+			if (IsInvisibilitySet(TO_SIGNS) && ss->string != STR_WHITE_SIGN) continue;
 
 			int x = UnScaleByZoom(ss->x, zoom) - 1;
 			int y = UnScaleByZoom(ss->y, zoom) - 1;
@@ -1440,8 +1440,8 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 			}
 
 		/* Draw the rectangle if 'tranparent station signs' is off,
-		 * or if we are drawing a general text sign (STR_SIGN_WHITE) */
-			if (!IsTransparencySet(TO_SIGNS) || ss->string == STR_SIGN_WHITE) {
+		 * or if we are drawing a general text sign (STR_WHITE_SIGN) */
+			if (!IsTransparencySet(TO_SIGNS) || ss->string == STR_WHITE_SIGN) {
 				DrawFrameRect(
 					x, y, x + w, bottom, (Colours)ss->colour,
 					IsTransparencySet(TO_SIGNS) ? FR_TRANSPARENT : FR_NONE
@@ -1453,7 +1453,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 		SetDParam(1, ss->params[1]);
 		/* if we didn't draw a rectangle, or if transparant building is on,
 		 * draw the text in the colour the rectangle would have */
-		if (IsTransparencySet(TO_SIGNS) && ss->string != STR_SIGN_WHITE && ss->width != 0) {
+		if (IsTransparencySet(TO_SIGNS) && ss->string != STR_WHITE_SIGN && ss->width != 0) {
 			/* Real colours need the IS_PALETTE_COLOUR flag
 			 * otherwise colours from _string_colourmap are assumed. */
 			colour = (TextColour)_colour_gradient[ss->colour][6] | IS_PALETTE_COLOUR;

@@ -472,7 +472,7 @@ bool AfterLoadGame()
 	/* Check if all NewGRFs are present, we are very strict in MP mode */
 	GRFListCompatibility gcf_res = IsGoodGRFConfigList();
 	if (_networking && gcf_res != GLC_ALL_GOOD) {
-		SetSaveLoadError(STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH);
+		SetSaveLoadError(STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH);
 		/* Restore the signals */
 		ResetSignalHandlers();
 		return false;
@@ -521,7 +521,7 @@ bool AfterLoadGame()
 
 	/* make sure there is a town in the game */
 	if (_game_mode == GM_NORMAL && !ClosestTownFromTile(0, UINT_MAX)) {
-		SetSaveLoadError(STR_NO_TOWN_IN_SCENARIO);
+		SetSaveLoadError(STR_ERROR_NO_TOWN_IN_SCENARIO);
 		/* Restore the signals */
 		ResetSignalHandlers();
 		return false;
@@ -1601,7 +1601,7 @@ bool AfterLoadGame()
 		FOR_ALL_ROADVEHICLES(v) {
 			if (v->First() == v && HasBit(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM)) {
 				if (_switch_mode_errorstr == INVALID_STRING_ID || _switch_mode_errorstr == STR_NEWGRF_COMPATIBLE_LOAD_WARNING) {
-					_switch_mode_errorstr = STR_LOADGAME_REMOVED_TRAMS;
+					_switch_mode_errorstr = STR_WARNING_LOADGAME_REMOVED_TRAMS;
 				}
 				delete v;
 			}

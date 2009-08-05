@@ -145,15 +145,15 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Bản đ
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Tùy chọn Trò chơi
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Thông điệp
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Tin nhắn từ {STRING}
-STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Chú ý!
+STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Chú ý!
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Không thể làm việc này....
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Không thể dọn dẹp khu vực này....
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD phiên bản {REV}
 
 STR_QUIT_CAPTION                                                :{WHITE}Thoát
-STR_YES                                                         :{BLACK}Đồng ý
-STR_NO                                                          :{BLACK}Không đồng ý
-STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Bạn có chắc chắn muốn thoát khỏi OpenTTD và trở lại {STRING}?
+STR_QUIT_YES                                                    :{BLACK}Đồng ý
+STR_QUIT_NO                                                     :{BLACK}Không đồng ý
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Bạn có chắc chắn muốn thoát khỏi OpenTTD và trở lại {STRING}?
 
 STR_JUST_NOTHING                                                :Không màu
 STR_COLOUR_DARK_BLUE                                            :Xanh da trời đậm
@@ -214,11 +214,11 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Sa mạc
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Tuyết
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Thông điệp
-STR_QUERY_CAPTION                                               :{WHITE}{STRING}
-STR_DEFAULT                                                     :{BLACK}Mặc định
-STR_QUERY_CANCEL                                                :{BLACK}Thôi
-STR_QUERY_OK                                                    :{BLACK}Đồng ý
-STR_QUERY_RENAME                                                :{BLACK}Đổi tên
+STR_WHITE_STRINGN                                               :{WHITE}{STRING}
+STR_BUTTON_DEFAULT                                              :{BLACK}Mặc định
+STR_BUTTON_CANCEL                                               :{BLACK}Thôi
+STR_BUTTON_OK                                                   :{BLACK}Đồng ý
+STR_BUTTON_RENAME                                               :{BLACK}Đổi tên
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -235,16 +235,16 @@ STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Toa xe
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Thông tin
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Sức chứa
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Tổng số toa xe
-STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Tổng số toa xe (sức chứa) của đoàn tàu:
-STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Tổng số toa xe (sức chứa) của đoàn tàu:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_INTRO_NEW_GAME                                              :{BLACK}Chơi mới
 STR_INTRO_LOAD_GAME                                             :{BLACK}Tải
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Nhiều người chơi
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Trình biên tập kịch bản
 
-STR_MAPSIZE                                                     :{BLACK}Kích thước bản đồ:
-STR_BY                                                          :{BLACK}*
+STR_MAPGEN_MAPSIZE                                              :{BLACK}Kích thước bản đồ:
+STR_MAPGEN_BY                                                   :{BLACK}*
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Tùy chọn trò chơi
 
 STR_COMPANY_SOMEONE                                             :ai đó{SKIP}{SKIP}
@@ -280,9 +280,9 @@ STR_FILE_MENU_QUIT_GAME                                         :Thoát trò ch�
 STR_FILE_MENU_EXIT                                              :Thoát
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bạn có chắc chắn muốn thoát khỏi trò chơi không?
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Thoát
-STR_SORT_ORDER_TIP                                              :{BLACK}Chọn thứ tự sắp xếp (giảm dần/tăng dần)
-STR_SORT_CRITERIA_TIP                                           :{BLACK}Chọn tiêu chí sắp xếp
-STR_SORT_BY                                                     :{BLACK}Sắp xếp bởi
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Chọn thứ tự sắp xếp (giảm dần/tăng dần)
+STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Chọn tiêu chí sắp xếp
+STR_BUTTON_SORT_BY                                              :{BLACK}Sắp xếp bởi
 
 ### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}Dân số
@@ -310,22 +310,22 @@ STR_SORT_BY_RUNNING_COST                                        :Chi phí chạy
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Năng lượng/Chi phí chạy
 STR_SORT_BY_CARGO_CAPACITY                                      :Dung lượng toa xe
 
-STR_NO_WAITING_CARGO                                            :{BLACK}Không có bất kỳ loại toa xe nào đang chờ
-STR_SELECT_ALL_TYPES                                            :{BLACK}Chọn tất cả loại toa xe (including no waiting cargo)
-STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Xam danh sách các động cơ thiết kế cho loại toa xe này.
-STR_MANAGE_LIST                                                 :{BLACK}Quản lý danh sách
-STR_MANAGE_LIST_TIP                                             :{BLACK}Gửi chỉ dẫn tới toàn bộ phương tiện trong danh sách
-STR_REPLACE_VEHICLES                                            :Thay phương tiện
-STR_SEND_FOR_SERVICING                                          :Gửi tới dịch vụ sửa chữa
+STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Không có bất kỳ loại toa xe nào đang chờ
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Chọn tất cả loại toa xe (including no waiting cargo)
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Xam danh sách các động cơ thiết kế cho loại toa xe này.
+STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Quản lý danh sách
+STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Gửi chỉ dẫn tới toàn bộ phương tiện trong danh sách
+STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Thay phương tiện
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Gửi tới dịch vụ sửa chữa
 
-STR_AVAILABLE_TRAINS                                            :{BLACK}Tàu sẵn có
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Xe sẵn có
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Máy bay sẵn có
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Tàu sẵn có
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Xe sẵn có
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Máy bay sẵn có
 
-STR_SEND_TRAIN_TO_DEPOT                                         :Gửi về xưởng
-STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Gửi về xưởng
-STR_SEND_SHIP_TO_DEPOT                                          :Gửi về xưởng
-STR_SEND_AIRCRAFT_TO_HANGAR                                     :Gửi về Hangar
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Gửi về xưởng
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Gửi về xưởng
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Gửi về xưởng
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Gửi về Hangar
 
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tạm dừng trò chơi
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lưu, thoat trò chơi, thoát
@@ -335,14 +335,14 @@ STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Hiển t
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Hiển thị thư mục thành phố
 
 ############ range for service numbers starts
-STR_AGE                                                         :{COMMA} năm{P "" s} ({COMMA})
-STR_AGE_RED                                                     :{RED}{COMMA} năm{P "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} năm{P "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} năm{P "" s} ({COMMA})
 ############ range for service numbers ends
 
-STR_VEHICLE_TRAIN                                               :Tàu
-STR_VEHICLE_ROAD_VEHICLE                                        :Xe cộ
-STR_VEHICLE_SHIP                                                :Tàu thủy
-STR_VEHICLE_AIRCRAFT                                            :Máy bay
+STR_REPLACE_VEHICLE_TRAIN                                       :Tàu
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Xe cộ
+STR_REPLACE_VEHICLE_SHIP                                        :Tàu thủy
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :Máy bay
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} đang cũ đi
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} đang xuống cấp
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} đang xuống cấp trầm trọng và cần được thay thế ngay lập tức
@@ -382,7 +382,7 @@ STR_MONTH_DEC                                                   :Tháng Mười 
 
 
 STR_TOOLBAR_SOUND_MUSIC                                         :Âm thanh/aamm nhạc
-STR_MENU_LOAD_HEIGHTMAP                                         :Tải bản đồ độ cao
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Tải bản đồ độ cao
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Thoat khỏi trình biên tập
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Thoát
 

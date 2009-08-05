@@ -1175,7 +1175,7 @@ static void DoAutosave()
 
 	DEBUG(sl, 2, "Autosaving to '%s'", buf);
 	if (SaveOrLoad(buf, SL_SAVE, AUTOSAVE_DIR) != SL_OK) {
-		ShowErrorMessage(INVALID_STRING_ID, STR_AUTOSAVE_FAILED, 0, 0);
+		ShowErrorMessage(INVALID_STRING_ID, STR_ERROR_AUTOSAVE_FAILED, 0, 0);
 	}
 }
 

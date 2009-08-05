@@ -492,7 +492,7 @@ static const Widget _chat_window_widgets[] = {
 {   WWT_CLOSEBOX, RESIZE_NONE,   COLOUR_GREY,   0,  10,  0, 13, STR_BLACK_CROSS,           STR_TOOLTIP_CLOSE_WINDOW},
 {      WWT_PANEL, RESIZE_RIGHT,  COLOUR_GREY,  11, 319,  0, 13, 0x0,                       STR_NULL}, // background
 {    WWT_EDITBOX, RESIZE_RIGHT,  COLOUR_GREY,  75, 257,  1, 12, STR_NETWORK_CHAT_OSKTITLE, STR_NULL}, // text box
-{ WWT_PUSHTXTBTN, RESIZE_LR,     COLOUR_GREY, 258, 319,  1, 12, STR_NETWORK_SEND,          STR_NULL}, // send button
+{ WWT_PUSHTXTBTN, RESIZE_LR,     COLOUR_GREY, 258, 319,  1, 12, STR_NETWORK_CHAT_SEND,          STR_NULL}, // send button
 {   WIDGETS_END},
 };
 
@@ -503,7 +503,7 @@ static const NWidgetPart _nested_chat_window_widgets[] = {
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_EDITBOX, COLOUR_GREY, NWCW_TEXTBOX), SetMinimalSize(183, 12), SetPadding(1, 0, 1, 64), SetResize(1, 0),
 															SetDataTip(STR_NETWORK_CHAT_OSKTITLE, STR_NULL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, NWCW_SENDBUTTON), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetDataTip(STR_NETWORK_SEND, STR_NULL),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, NWCW_SENDBUTTON), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetDataTip(STR_NETWORK_CHAT_SEND, STR_NULL),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),

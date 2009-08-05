@@ -31,7 +31,7 @@ public:
 		ERR_TILE_TOO_LOW,                      // [STR_ERROR_ALREADY_AT_SEA_LEVEL]
 
 		/** The area was already flat */
-		ERR_AREA_ALREADY_FLAT,                 // [STR_ALREADY_LEVELLED]
+		ERR_AREA_ALREADY_FLAT,                 // [STR_ERROR_ALREADY_LEVELLED]
 
 		/** There is a tunnel underneed */
 		ERR_EXCAVATION_WOULD_DAMAGE,           // [STR_ERROR_EXCAVATION_WOULD_DAMAGE]

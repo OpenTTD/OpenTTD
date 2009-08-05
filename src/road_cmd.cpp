@@ -244,7 +244,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 			const RoadBits other = GetOtherRoadBits(tile, rt);
 			const Foundation f = GetRoadFoundation(tileh, present);
 
-			if (HasRoadWorks(tile) && _current_company != OWNER_WATER) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
+			if (HasRoadWorks(tile) && _current_company != OWNER_WATER) return_cmd_error(STR_ERROR_ROAD_WORKS_IN_PROGRESS);
 
 			/* Autocomplete to a straight road
 			 * @li on steep slopes
@@ -476,7 +476,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		case MP_ROAD:
 			switch (GetRoadTileType(tile)) {
 				case ROAD_TILE_NORMAL: {
-					if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
+					if (HasRoadWorks(tile)) return_cmd_error(STR_ERROR_ROAD_WORKS_IN_PROGRESS);
 
 					other_bits = GetOtherRoadBits(tile, rt);
 					if (!HasTileRoadType(tile, rt)) break;
@@ -1458,14 +1458,14 @@ static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, u
 }
 
 static const StringID _road_tile_strings[] = {
-	STR_ROAD_DESCRIPTION_ROAD,
-	STR_ROAD_DESCRIPTION_ROAD,
-	STR_ROAD_DESCRIPTION_ROAD,
-	STR_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS,
-	STR_ROAD_DESCRIPTION_ROAD,
-	STR_ROAD_DESCRIPTION_TREE_LINED_ROAD,
-	STR_ROAD_DESCRIPTION_ROAD,
-	STR_ROAD_DESCRIPTION_ROAD,
+	STR_LAI_ROAD_DESCRIPTION_ROAD,
+	STR_LAI_ROAD_DESCRIPTION_ROAD,
+	STR_LAI_ROAD_DESCRIPTION_ROAD,
+	STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS,
+	STR_LAI_ROAD_DESCRIPTION_ROAD,
+	STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD,
+	STR_LAI_ROAD_DESCRIPTION_ROAD,
+	STR_LAI_ROAD_DESCRIPTION_ROAD,
 };
 
 static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
@@ -1476,7 +1476,7 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 
 	switch (GetRoadTileType(tile)) {
 		case ROAD_TILE_CROSSING: {
-			td->str = STR_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING;
+			td->str = STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING;
 			RoadTypes rts = GetRoadTypes(tile);
 			rail_owner = GetTileOwner(tile);
 			if (HasBit(rts, ROADTYPE_ROAD)) road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
@@ -1485,13 +1485,13 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 		}
 
 		case ROAD_TILE_DEPOT:
-			td->str = STR_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT;
+			td->str = STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT;
 			road_owner = GetTileOwner(tile); // Tile has only one owner, roadtype does not matter
 			break;
 
 		default: {
 			RoadTypes rts = GetRoadTypes(tile);
-			td->str = (HasBit(rts, ROADTYPE_ROAD) ? _road_tile_strings[GetRoadside(tile)] : STR_ROAD_DESCRIPTION_TRAMWAY);
+			td->str = (HasBit(rts, ROADTYPE_ROAD) ? _road_tile_strings[GetRoadside(tile)] : STR_LAI_ROAD_DESCRIPTION_TRAMWAY);
 			if (HasBit(rts, ROADTYPE_ROAD)) road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
 			if (HasBit(rts, ROADTYPE_TRAM)) tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
 			break;

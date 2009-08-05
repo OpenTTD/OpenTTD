@@ -96,8 +96,8 @@ STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}یہ ن�
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}یہ جگہ صاف نہیں کر سکتا۔۔۔
 
 STR_QUIT_CAPTION                                                :{WHITE}باہر نکلو
-STR_YES                                                         :{BLACK}ہاں
-STR_NO                                                          :{BLACK}نہیں
+STR_QUIT_YES                                                    :{BLACK}ہاں
+STR_QUIT_NO                                                     :{BLACK}نہیں
 
 STR_JUST_NOTHING                                                :کچھ نہیں
 STR_COLOUR_DARK_BLUE                                            :گہرا نیلا
@@ -160,9 +160,9 @@ STR_FILE_MENU_QUIT_GAME                                         :کھیل چھو
 STR_FILE_MENU_EXIT                                              :باہر نکلو
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}کیا آپ کو یقین ہے کہ آپ اس کھیل کو چھوڑنا چاہ رہے ہیں؟
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}کھیل چھوڑ دو
-STR_SORT_ORDER_TIP                                              :{BLACK} (ترتیب کا طریقہ منتخب کریں (کم ہوتا/بڑھتا
-STR_SORT_CRITERIA_TIP                                           :{BLACK}ترتیب کا طریقہ منتخب کریں
-STR_SORT_BY                                                     :{BLACK}سے ترتیب دو
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK} (ترتیب کا طریقہ منتخب کریں (کم ہوتا/بڑھتا
+STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}ترتیب کا طریقہ منتخب کریں
+STR_BUTTON_SORT_BY                                              :{BLACK}سے ترتیب دو
 
 ### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}آبادی
@@ -175,16 +175,16 @@ STR_SORT_BY_NUMBER                                              :تعداد
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :پچھلے سال کا منافع
 STR_SORT_BY_CARGO_CAPACITY                                      :سامان کی گنجایش
 
-STR_NO_WAITING_CARGO                                            :{BLACK}کسی قسم کا کویی سامان انتظار نہیں کر رہا ہے
-STR_SELECT_ALL_FACILITIES                                       :{BLACK}تمام سہولتوں کا انتخاب کرو
-STR_SELECT_ALL_TYPES                                            :{BLACK}تمام قسم کا سامان کا انتخاب کرو  (بشمول غیر منتظر سامان کے)
-STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}اس قسم کی گاڑیوں کےلیے دستیاب انجنوں کی فہرست دیکھو
-STR_MANAGE_LIST                                                 :{BLACK}فہرست کا انتظام کرو
+STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}کسی قسم کا کویی سامان انتظار نہیں کر رہا ہے
+STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}تمام سہولتوں کا انتخاب کرو
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}تمام قسم کا سامان کا انتخاب کرو  (بشمول غیر منتظر سامان کے)
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}اس قسم کی گاڑیوں کےلیے دستیاب انجنوں کی فہرست دیکھو
+STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرست کا انتظام کرو
 
-STR_AVAILABLE_TRAINS                                            :{BLACK}دستیاب ریل گاڑیاں
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}دستیاب گاڑیاں
-STR_AVAILABLE_SHIPS                                             :{BLACK}دستیاب کشتیاں
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}دستیاب ہوایی جہاز
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}دستیاب ریل گاڑیاں
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}دستیاب گاڑیاں
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}دستیاب کشتیاں
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}دستیاب ہوایی جہاز
 
 
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}کمپنی کی مالیاتی معلومات دکھاو
@@ -203,8 +203,8 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}زمین
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}کھڑکی بند کرو
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}کھڑکی کا نام - کھڑکی کو ہلانے کیلیے اسے پکڑ کر ہلاو
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}زمین کے ایک مربے پر عمارتیں وغیرہ گراو
-STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}زمین کا ایک کنارہ نیچے کرو
-STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}زمین کا ایک کنارہ اونچا کرو
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ نیچے کرو
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ اونچا کرو
 
 ############ range for service numbers starts
 ############ range for service numbers ends
@@ -219,10 +219,10 @@ STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}زمین
 
 
 
-STR_CREATE_RIVER                                                :{BLACK}دریا رکھو.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}دریا رکھو.
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}مٹائو
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}اس شہر کو پورا مٹا دو
-STR_MENU_LOAD_HEIGHTMAP                                         :اونچائی کا نقشہ دکھائو
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :اونچائی کا نقشہ دکھائو
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکلو
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}اونچائی کے نقشے کو کھیلو
@@ -234,18 +234,18 @@ STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...پل 
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{G=m}{BLACK}چھوٹا
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{G=m}{BLACK}درمیانہ
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{G=m}{BLACK}بڑا
-STR_SELECT_TOWN_SIZE_RANDOM                                     :{G=m}{BLACK}کوئی سا
+STR_FOUND_TOWN_SIZE_RANDOM                                      :{G=m}{BLACK}کوئی سا
 STR_FOUND_TOWN_CITY                                             :{BLACK}شہر
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}شہر کا حجم منتخب کرو
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}شہر کا حجم:
 
-STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}شہر کی سڑکوں کا پھیلائو:
-STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}اس شہر کیلئے سڑکوں کا بھیلائو منتخب کرو
-STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}اصلی
-STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}بہتر سڑکیں
-STR_SELECT_LAYOUT_RANDOM                                        :{G=f}{BLACK}کوئٰ سی
+STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}شہر کی سڑکوں کا پھیلائو:
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}اس شہر کیلئے سڑکوں کا بھیلائو منتخب کرو
+STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}اصلی
+STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}بہتر سڑکیں
+STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{G=f}{BLACK}کوئٰ سی
 
-STR_NEWS_MESSAGE                                                :{STRING}  -  {STRING}
+STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}آخری پیغام یا خبر دکھائو
 STR_NEWS_MESSAGES_OFF                                           :بند
 STR_NEWS_MESSAGES_SUMMARY                                       :خلاصہ

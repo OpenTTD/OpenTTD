@@ -687,15 +687,15 @@ static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 	switch (GetWaterTileType(tile)) {
 		case WATER_TILE_CLEAR:
 			switch (GetWaterClass(tile)) {
-				case WATER_CLASS_SEA:   td->str = STR_WATER_DESCRIPTION_WATER;     break;
-				case WATER_CLASS_CANAL: td->str = STR_LANDINFO_CANAL; break;
-				case WATER_CLASS_RIVER: td->str = STR_LANDINFO_RIVER; break;
+				case WATER_CLASS_SEA:   td->str = STR_LAI_WATER_DESCRIPTION_WATER; break;
+				case WATER_CLASS_CANAL: td->str = STR_LAI_WATER_DESCRIPTION_CANAL; break;
+				case WATER_CLASS_RIVER: td->str = STR_LAI_WATER_DESCRIPTION_RIVER; break;
 				default: NOT_REACHED(); break;
 			}
 			break;
-		case WATER_TILE_COAST: td->str = STR_WATER_DESCRIPTION_COAST_OR_RIVERBANK; break;
-		case WATER_TILE_LOCK : td->str = STR_LANDINFO_LOCK;           break;
-		case WATER_TILE_DEPOT: td->str = STR_WATER_DESCRIPTION_SHIP_DEPOT;         break;
+		case WATER_TILE_COAST: td->str = STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK; break;
+		case WATER_TILE_LOCK : td->str = STR_LAI_WATER_DESCRIPTION_LOCK;               break;
+		case WATER_TILE_DEPOT: td->str = STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT;         break;
 		default: NOT_REACHED(); break;
 	}
 
@@ -1143,7 +1143,7 @@ static VehicleEnterTileStatus VehicleEnter_Water(Vehicle *v, TileIndex tile, int
 static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	/* Canals can't be terraformed */
-	if (IsWaterTile(tile) && IsCanal(tile)) return_cmd_error(STR_MUST_DEMOLISH_CANAL_FIRST);
+	if (IsWaterTile(tile) && IsCanal(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_CANAL_FIRST);
 
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }

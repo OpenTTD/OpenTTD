@@ -238,7 +238,7 @@ CommandCost CmdRenameCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	if (!reset) {
 		if (strlen(text) >= MAX_LENGTH_COMPANY_NAME_BYTES) return CMD_ERROR;
-		if (!IsUniqueCompanyName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+		if (!IsUniqueCompanyName(text)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {
@@ -274,7 +274,7 @@ CommandCost CmdRenamePresident(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	if (!reset) {
 		if (strlen(text) >= MAX_LENGTH_PRESIDENT_NAME_BYTES) return CMD_ERROR;
-		if (!IsUniquePresidentName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+		if (!IsUniquePresidentName(text)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {

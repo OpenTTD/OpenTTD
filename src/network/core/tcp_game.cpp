@@ -57,7 +57,7 @@ NetworkRecvStatus NetworkClientSocket::CloseConnection(bool error)
 		_switch_mode = SM_MENU;
 		_networking = false;
 		extern StringID _switch_mode_errorstr;
-		_switch_mode_errorstr = STR_NETWORK_ERR_LOSTCONNECTION;
+		_switch_mode_errorstr = STR_NETWORK_ERROR_LOSTCONNECTION;
 
 		return NETWORK_RECV_STATUS_CONN_LOST;
 	}

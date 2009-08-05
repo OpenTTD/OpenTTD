@@ -829,7 +829,7 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
 CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Check if the engine-type is valid (for the company) */
-	if (!IsEngineBuildable(p1, VEH_TRAIN, _current_company)) return_cmd_error(STR_RAIL_VEHICLE_NOT_AVAILABLE);
+	if (!IsEngineBuildable(p1, VEH_TRAIN, _current_company)) return_cmd_error(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE);
 
 	const Engine *e = Engine::Get(p1);
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
@@ -1241,7 +1241,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 				if (callback != CALLBACK_FAILED) {
 					StringID error = STR_NULL;
 
-					if (callback == 0xFD) error = STR_INCOMPATIBLE_RAIL_TYPES;
+					if (callback == 0xFD) error = STR_ERROR_INCOMPATIBLE_RAIL_TYPES;
 					if (callback < 0xFD) error = GetGRFStringID(GetEngineGRFID(dst_head->engine_type), 0xD000 + callback);
 
 					if (error != STR_NULL) {
@@ -1443,7 +1443,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (p2 > 1) return CMD_ERROR;
 
-	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
+	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE);
 
 	v = v->GetFirstEnginePart();
 	Train *first = v->First();
@@ -2086,7 +2086,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (CheckTrainStoppedInDepot(v) < 0) return_cmd_error(STR_TRAIN_MUST_BE_STOPPED);
-	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_REFIT_DESTROYED_VEHICLE);
+	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE);
 
 	/* Check cargo */
 	if (new_cid >= NUM_CARGO) return CMD_ERROR;

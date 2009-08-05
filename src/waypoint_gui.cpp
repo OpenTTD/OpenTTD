@@ -45,9 +45,9 @@ public:
 
 		this->CreateNestedTree(desc);
 		if (this->vt == VEH_TRAIN) {
-			this->nested_array[WAYPVW_SHOW_VEHICLES]->SetDataTip(STR_TRAIN, STR_SCHEDULED_TRAINS_TIP);
+			this->nested_array[WAYPVW_SHOW_VEHICLES]->SetDataTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP);
 			this->nested_array[WAYPVW_CENTERVIEW]->tool_tip = STR_WAYPOINT_VIEW_CENTER_TOOLTIP;
-			this->nested_array[WAYPVW_RENAME]->tool_tip = STR_CHANGE_WAYPOINT_NAME;
+			this->nested_array[WAYPVW_RENAME]->tool_tip = STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME;
 		}
 		this->FinishInitNested(desc, window_number);
 
@@ -111,7 +111,7 @@ public:
 	{
 		if (str == NULL) return;
 
-		DoCommandP(0, this->window_number, 0, CMD_RENAME_WAYPOINT | CMD_MSG(STR_CANT_CHANGE_WAYPOINT_NAME), NULL, str);
+		DoCommandP(0, this->window_number, 0, CMD_RENAME_WAYPOINT | CMD_MSG(STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME), NULL, str);
 	}
 
 };
@@ -119,7 +119,7 @@ public:
 static const NWidgetPart _nested_waypoint_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, WAYPVW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WAYPVW_CAPTION), SetDataTip(STR_WAYPOINT_VIEWPORT, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WAYPVW_CAPTION), SetDataTip(STR_VIEWPORT_WAYPOINT, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY, WAYPVW_STICKY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, WAYPVW_VIEWPORTPANEL),
@@ -129,8 +129,8 @@ static const NWidgetPart _nested_waypoint_view_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_CENTERVIEW), SetMinimalSize(100, 12), SetFill(1, 0), SetDataTip(STR_BUTTON_LOCATION, STR_BUOY_VIEW_CENTER_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_RENAME), SetMinimalSize(100, 12), SetFill(1, 0), SetDataTip(STR_QUERY_RENAME, STR_CHANGE_BUOY_NAME),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_SHOW_VEHICLES), SetMinimalSize(15, 12), SetDataTip(STR_SHIP, STR_SCHEDULED_SHIPS_TIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_RENAME), SetMinimalSize(100, 12), SetFill(1, 0), SetDataTip(STR_BUTTON_RENAME, STR_BUOY_VIEW_CHANGE_BUOY_NAME),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WAYPVW_SHOW_VEHICLES), SetMinimalSize(15, 12), SetDataTip(STR_SHIP, STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP),
 	EndContainer(),
 };
 

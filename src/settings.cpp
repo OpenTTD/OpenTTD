@@ -810,7 +810,7 @@ static bool DifficultyChange(int32)
 {
 	if (_game_mode == GM_MENU) {
 		if (_settings_newgame.difficulty.diff_level != 3) {
-			ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
+			ShowErrorMessage(INVALID_STRING_ID, STR_WARNING_DIFFICULTY_TO_CUSTOM, 0, 0);
 			_settings_newgame.difficulty.diff_level = 3;
 		}
 		InvalidateWindowClasses(WC_SELECT_GAME);

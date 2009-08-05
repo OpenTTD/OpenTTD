@@ -747,7 +747,7 @@ CommandCost CmdRenameEngine(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (!reset) {
 		if (strlen(text) >= MAX_LENGTH_ENGINE_NAME_BYTES) return CMD_ERROR;
-		if (!IsUniqueEngineName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+		if (!IsUniqueEngineName(text)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {

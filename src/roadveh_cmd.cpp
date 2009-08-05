@@ -181,7 +181,7 @@ void RoadVehUpdateCache(RoadVehicle *v)
  */
 CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsEngineBuildable(p1, VEH_ROAD, _current_company)) return_cmd_error(STR_ROAD_VEHICLE_NOT_AVAILABLE);
+	if (!IsEngineBuildable(p1, VEH_ROAD, _current_company)) return_cmd_error(STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE);
 
 	const Engine *e = Engine::Get(p1);
 	/* Engines without valid cargo should not be available */
@@ -195,7 +195,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (!IsRoadDepotTile(tile)) return CMD_ERROR;
 	if (!IsTileOwner(tile, _current_company)) return CMD_ERROR;
 
-	if (HasTileRoadType(tile, ROADTYPE_TRAM) != HasBit(EngInfo(p1)->misc_flags, EF_ROAD_TRAM)) return_cmd_error(STR_DEPOT_WRONG_DEPOT_TYPE);
+	if (HasTileRoadType(tile, ROADTYPE_TRAM) != HasBit(EngInfo(p1)->misc_flags, EF_ROAD_TRAM)) return_cmd_error(STR_ERROR_DEPOT_WRONG_DEPOT_TYPE);
 
 	uint num_vehicles = 1 + CountArticulatedParts(p1, false);
 
@@ -339,7 +339,7 @@ CommandCost CmdSellRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	RoadVehicle *v = RoadVehicle::GetIfValid(p1);
 	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
+	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE);
 
 	if (!v->IsStoppedInDepot()) {
 		return_cmd_error(STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT);
@@ -2019,7 +2019,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT);
-	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_REFIT_DESTROYED_VEHICLE);
+	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE);
 
 	if (new_cid >= NUM_CARGO) return CMD_ERROR;
 

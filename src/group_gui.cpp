@@ -72,9 +72,9 @@ static void ShowGroupActionDropdown(Window *w, GroupID gid)
 {
 	DropDownList *list = new DropDownList();
 
-	list->push_back(new DropDownListStringItem(STR_REPLACE_VEHICLES,    GALF_REPLACE, false));
-	list->push_back(new DropDownListStringItem(STR_SEND_FOR_SERVICING,  GALF_SERVICE, false));
-	list->push_back(new DropDownListStringItem(STR_SEND_TRAIN_TO_DEPOT, GALF_DEPOT,   false));
+	list->push_back(new DropDownListStringItem(STR_VEHICLE_LIST_REPLACE_VEHICLES,    GALF_REPLACE, false));
+	list->push_back(new DropDownListStringItem(STR_VEHICLE_LIST_SEND_FOR_SERVICING,  GALF_SERVICE, false));
+	list->push_back(new DropDownListStringItem(STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT, GALF_DEPOT,   false));
 
 	if (Group::IsValidID(gid)) {
 		list->push_back(new DropDownListStringItem(STR_GROUP_ADD_SHARED_VEHICLE,  GALF_ADD_SHARED, false));
@@ -88,30 +88,30 @@ static void ShowGroupActionDropdown(Window *w, GroupID gid)
 static const Widget _group_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,      STR_TOOLTIP_CLOSE_WINDOW},          // GRP_WIDGET_CLOSEBOX
 {    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   447,     0,    13, 0x0,                  STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},// GRP_WIDGET_CAPTION
-{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   448,   459,     0,    13, 0x0,                  STR_STICKY_BUTTON},                 // GRP_WIDGET_STICKY
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   200,   280,    14,    25, STR_SORT_BY,          STR_SORT_ORDER_TIP},                // GRP_WIDGET_SORT_BY_ORDER
-{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,   281,   447,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},             // GRP_WIDGET_SORT_BY_DROPDOWN
+{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   448,   459,     0,    13, 0x0,                  STR_TOOLTIP_STICKY},                 // GRP_WIDGET_STICKY
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   200,   280,    14,    25, STR_BUTTON_SORT_BY,   STR_TOOLTIP_SORT_ORDER},                // GRP_WIDGET_SORT_BY_ORDER
+{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,   281,   447,    14,    25, 0x0,                  STR_TOOLTIP_SORT_CRITERIAP},             // GRP_WIDGET_SORT_BY_DROPDOWN
 {      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   448,   459,    14,    25, 0x0,                  STR_NULL},                          // GRP_WIDGET_EMPTY_TOP_RIGHT
 {     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,   200,   447,    26,   181, 0x701,                STR_NULL},                          // GRP_WIDGET_LIST_VEHICLE
 {  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   448,   459,    26,   181, 0x0,                  STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // GRP_WIDGET_LIST_VEHICLE_SCROLLBAR
 {      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,   188,   199,   169,   193, 0x0,                  STR_NULL},                          // GRP_WIDGET_EMPTY2
-{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   200,   305,   182,   193, 0x0,                  STR_AVAILABLE_ENGINES_TIP},         // GRP_WIDGET_AVAILABLE_VEHICLES
-{   WWT_DROPDOWN,     RESIZE_TB,  COLOUR_GREY,   306,   423,   182,   193, STR_MANAGE_LIST,      STR_MANAGE_LIST_TIP},               // GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   424,   435,   182,   193, SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP},            // GRP_WIDGET_STOP_ALL
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   436,   447,   182,   193, SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP},           // GRP_WIDGET_START_ALL
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   200,   305,   182,   193, 0x0,                  STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP},         // GRP_WIDGET_AVAILABLE_VEHICLES
+{   WWT_DROPDOWN,     RESIZE_TB,  COLOUR_GREY,   306,   423,   182,   193, STR_VEHICLE_LIST_MANAGE_LIST,      STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP},               // GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN
+{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   424,   435,   182,   193, SPR_FLAG_VEH_STOPPED, STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP},            // GRP_WIDGET_STOP_ALL
+{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   436,   447,   182,   193, SPR_FLAG_VEH_RUNNING, STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP},           // GRP_WIDGET_START_ALL
 {      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,   448,   447,   182,   193, 0x0,                  STR_NULL},                          // GRP_WIDGET_EMPTY_BOTTOM_RIGHT
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   448,   459,   182,   193, 0x0,                  STR_RESIZE_BUTTON},                 // GRP_WIDGET_RESIZE
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   448,   459,   182,   193, 0x0,                  STR_TOOLTIP_RESIZE},                 // GRP_WIDGET_RESIZE
 
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,    14,    25, 0x0,                  STR_NULL},                          // GRP_WIDGET_EMPTY_TOP_LEFT
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,    26,    38, 0x0,                  STR_NULL},                          // GRP_WIDGET_ALL_VEHICLES
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,    39,    51, 0x0,                  STR_NULL},                          // GRP_WIDGET_DEFAULT_VEHICLES
-{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   187,    52,   168, 0x701,                STR_GROUPS_CLICK_ON_GROUP_FOR_TIP}, // GRP_WIDGET_LIST_GROUP
+{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   187,    52,   168, 0x701,                STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP}, // GRP_WIDGET_LIST_GROUP
 { WWT_SCROLL2BAR, RESIZE_BOTTOM,  COLOUR_GREY,   188,   199,    52,   168, 0x0,                  STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // GRP_WIDGET_LIST_GROUP_SCROLLBAR
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,     0,    23,   169,   193, 0x0,                  STR_GROUP_CREATE_TIP},              // GRP_WIDGET_CREATE_GROUP
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,    24,    47,   169,   193, 0x0,                  STR_GROUP_DELETE_TIP},              // GRP_WIDGET_DELETE_GROUP
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,    48,    71,   169,   193, 0x0,                  STR_GROUP_RENAME_TIP},              // GRP_WIDGET_RENAME_GROUP
+{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,     0,    23,   169,   193, 0x0,                  STR_GROUP_CREATE_TOOLTIP},              // GRP_WIDGET_CREATE_GROUP
+{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,    24,    47,   169,   193, 0x0,                  STR_GROUP_DELETE_TOOLTIP},              // GRP_WIDGET_DELETE_GROUP
+{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,    48,    71,   169,   193, 0x0,                  STR_GROUP_RENAME_TOOLTIP},              // GRP_WIDGET_RENAME_GROUP
 {      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,    72,   163,   169,   193, 0x0,                  STR_NULL},                          // GRP_WIDGET_EMPTY1
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   164,   187,   169,   193, 0x0,                  STR_GROUP_REPLACE_PROTECTION_TIP},  // GRP_WIDGET_REPLACE_PROTECTION
+{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   164,   187,   169,   193, 0x0,                  STR_GROUP_REPLACE_PROTECTION_TOOLTIP},  // GRP_WIDGET_REPLACE_PROTECTION
 {   WIDGETS_END},
 };
 
@@ -130,23 +130,23 @@ static const NWidgetPart _nested_group_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_ALL_VEHICLES), SetMinimalSize(200, 13), EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_DEFAULT_VEHICLES), SetMinimalSize(200, 13), EndContainer(),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_MATRIX, COLOUR_GREY, GRP_WIDGET_LIST_GROUP), SetMinimalSize(188, 117), SetDataTip(0x701, STR_GROUPS_CLICK_ON_GROUP_FOR_TIP), SetResize(0, 1),
+				NWidget(WWT_MATRIX, COLOUR_GREY, GRP_WIDGET_LIST_GROUP), SetMinimalSize(188, 117), SetDataTip(0x701, STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP), SetResize(0, 1),
 				NWidget(WWT_SCROLL2BAR, COLOUR_GREY, GRP_WIDGET_LIST_GROUP_SCROLLBAR), SetMinimalSize(12, 117),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_CREATE_GROUP), SetMinimalSize(24, 25), SetDataTip(0x0, STR_GROUP_CREATE_TIP),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_DELETE_GROUP), SetMinimalSize(24, 25), SetDataTip(0x0, STR_GROUP_DELETE_TIP),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_RENAME_GROUP), SetMinimalSize(24, 25), SetDataTip(0x0, STR_GROUP_RENAME_TIP),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_CREATE_GROUP), SetMinimalSize(24, 25), SetDataTip(0x0, STR_GROUP_CREATE_TOOLTIP),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_DELETE_GROUP), SetMinimalSize(24, 25), SetDataTip(0x0, STR_GROUP_DELETE_TOOLTIP),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_RENAME_GROUP), SetMinimalSize(24, 25), SetDataTip(0x0, STR_GROUP_RENAME_TOOLTIP),
 				NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_EMPTY1), SetMinimalSize(92, 25), SetFill(1, 0), EndContainer(),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_REPLACE_PROTECTION), SetMinimalSize(24, 25), SetDataTip(0x0, STR_GROUP_REPLACE_PROTECTION_TIP),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_REPLACE_PROTECTION), SetMinimalSize(24, 25), SetDataTip(0x0, STR_GROUP_REPLACE_PROTECTION_TOOLTIP),
 				NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_EMPTY2), SetMinimalSize(12, 25), EndContainer(),
 			EndContainer(),
 		EndContainer(),
 		/* right part */
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, GRP_WIDGET_SORT_BY_ORDER), SetMinimalSize(81, 12), SetDataTip(STR_SORT_BY, STR_SORT_ORDER_TIP),
-				NWidget(WWT_DROPDOWN, COLOUR_GREY, GRP_WIDGET_SORT_BY_DROPDOWN), SetMinimalSize(167, 12), SetDataTip(0x0, STR_SORT_CRITERIA_TIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, GRP_WIDGET_SORT_BY_ORDER), SetMinimalSize(81, 12), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, GRP_WIDGET_SORT_BY_DROPDOWN), SetMinimalSize(167, 12), SetDataTip(0x0, STR_TOOLTIP_SORT_CRITERIAP),
 				NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_EMPTY_TOP_RIGHT), SetMinimalSize(12, 12), SetResize(1, 0), EndContainer(),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
@@ -154,10 +154,10 @@ static const NWidgetPart _nested_group_widgets[] = {
 				NWidget(WWT_SCROLLBAR, COLOUR_GREY, GRP_WIDGET_LIST_VEHICLE_SCROLLBAR), SetMinimalSize(12, 156),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, GRP_WIDGET_AVAILABLE_VEHICLES), SetMinimalSize(106, 12), SetDataTip(0x0, STR_AVAILABLE_ENGINES_TIP),
-				NWidget(WWT_DROPDOWN, COLOUR_GREY, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN), SetMinimalSize(118, 12), SetDataTip(STR_MANAGE_LIST, STR_MANAGE_LIST_TIP),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_STOP_ALL), SetMinimalSize(12, 12), SetDataTip(SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_START_ALL), SetMinimalSize(12, 12), SetDataTip(SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, GRP_WIDGET_AVAILABLE_VEHICLES), SetMinimalSize(106, 12), SetDataTip(0x0, STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN), SetMinimalSize(118, 12), SetDataTip(STR_VEHICLE_LIST_MANAGE_LIST, STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_STOP_ALL), SetMinimalSize(12, 12), SetDataTip(SPR_FLAG_VEH_STOPPED, STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_START_ALL), SetMinimalSize(12, 12), SetDataTip(SPR_FLAG_VEH_RUNNING, STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP),
 				NWidget(WWT_PANEL, COLOUR_GREY, GRP_WIDGET_EMPTY_BOTTOM_RIGHT), SetMinimalSize(0, 12), SetResize(1, 0), EndContainer(),
 				NWidget(WWT_RESIZEBOX, COLOUR_GREY, GRP_WIDGET_RESIZE), SetMinimalSize(12, 12),
 			EndContainer(),
@@ -263,7 +263,7 @@ public:
 		this->vehicle_sel = INVALID_VEHICLE;
 
 		this->widget[GRP_WIDGET_LIST_VEHICLE].tooltips   = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + this->vehicle_type;
-		this->widget[GRP_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_TRAINS + this->vehicle_type;
+		this->widget[GRP_WIDGET_AVAILABLE_VEHICLES].data = STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vehicle_type;
 
 		switch (this->vehicle_type) {
 			case VEH_TRAIN:
@@ -417,7 +417,7 @@ public:
 
 			/* draw the number of vehicles of the group */
 			SetDParam(0, g->num_vehicle);
-			DrawString(this->widget[GRP_WIDGET_LIST_GROUP].left, this->widget[GRP_WIDGET_LIST_GROUP].right, y1 + 1, STR_GROUP_TINY_NUM, (this->group_sel == g->index) ? TC_WHITE : TC_BLACK, SA_RIGHT);
+			DrawString(this->widget[GRP_WIDGET_LIST_GROUP].left, this->widget[GRP_WIDGET_LIST_GROUP].right, y1 + 1, STR_TINY_COMMA, (this->group_sel == g->index) ? TC_WHITE : TC_BLACK, SA_RIGHT);
 		}
 
 		this->DrawSortButtonState(GRP_WIDGET_SORT_BY_ORDER, this->vehicles.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
@@ -489,14 +489,14 @@ public:
 			}
 
 			case GRP_WIDGET_CREATE_GROUP: // Create a new group
-				DoCommandP(0, this->vehicle_type, 0, CMD_CREATE_GROUP | CMD_MSG(STR_GROUP_CAN_T_CREATE));
+				DoCommandP(0, this->vehicle_type, 0, CMD_CREATE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_CREATE));
 				break;
 
 			case GRP_WIDGET_DELETE_GROUP: { // Delete the selected group
 				GroupID group = this->group_sel;
 				this->group_sel = ALL_GROUP;
 
-				DoCommandP(0, group, 0, CMD_DELETE_GROUP | CMD_MSG(STR_GROUP_CAN_T_DELETE));
+				DoCommandP(0, group, 0, CMD_DELETE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_DELETE));
 				break;
 			}
 
@@ -543,7 +543,7 @@ public:
 		switch (widget) {
 			case GRP_WIDGET_ALL_VEHICLES: // All vehicles
 			case GRP_WIDGET_DEFAULT_VEHICLES: // Ungrouped vehicles
-				DoCommandP(0, DEFAULT_GROUP, this->vehicle_sel, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE));
+				DoCommandP(0, DEFAULT_GROUP, this->vehicle_sel, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE));
 
 				this->vehicle_sel = INVALID_VEHICLE;
 
@@ -565,7 +565,7 @@ public:
 
 				if (id_g >= this->groups.Length()) return;
 
-				DoCommandP(0, this->groups[id_g]->index, vindex, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE));
+				DoCommandP(0, this->groups[id_g]->index, vindex, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE));
 
 				break;
 			}
@@ -601,7 +601,7 @@ public:
 	{
 		if (str == NULL) return;
 
-		DoCommandP(0, this->group_sel, 0, CMD_RENAME_GROUP | CMD_MSG(STR_GROUP_CAN_T_RENAME), NULL, str);
+		DoCommandP(0, this->group_sel, 0, CMD_RENAME_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_RENAME), NULL, str);
 	}
 
 	virtual void OnResize(Point delta)
@@ -639,12 +639,12 @@ public:
 					case GALF_ADD_SHARED: // Add shared Vehicles
 						assert(Group::IsValidID(this->group_sel));
 
-						DoCommandP(0, this->group_sel, this->vehicle_type, CMD_ADD_SHARED_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_SHARED_VEHICLE));
+						DoCommandP(0, this->group_sel, this->vehicle_type, CMD_ADD_SHARED_VEHICLE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE));
 						break;
 					case GALF_REMOVE_ALL: // Remove all Vehicles from the selected group
 						assert(Group::IsValidID(this->group_sel));
 
-						DoCommandP(0, this->group_sel, this->vehicle_type, CMD_REMOVE_ALL_VEHICLES_GROUP | CMD_MSG(STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES));
+						DoCommandP(0, this->group_sel, this->vehicle_type, CMD_REMOVE_ALL_VEHICLES_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES));
 						break;
 					default: NOT_REACHED();
 				}

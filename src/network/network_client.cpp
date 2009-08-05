@@ -348,7 +348,7 @@ extern StringID _switch_mode_errorstr;
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_FULL)
 {
 	/* We try to join a server which is full */
-	_switch_mode_errorstr = STR_NETWORK_ERR_SERVER_FULL;
+	_switch_mode_errorstr = STR_NETWORK_ERROR_SERVER_FULL;
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 
 	return NETWORK_RECV_STATUS_SERVER_FULL;
@@ -357,7 +357,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_FULL)
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_BANNED)
 {
 	/* We try to join a server where we are banned */
-	_switch_mode_errorstr = STR_NETWORK_ERR_SERVER_BANNED;
+	_switch_mode_errorstr = STR_NETWORK_ERROR_SERVER_BANNED;
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 
 	return NETWORK_RECV_STATUS_SERVER_BANNED;
@@ -453,25 +453,25 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR)
 		case NETWORK_ERROR_NOT_AUTHORIZED:
 		case NETWORK_ERROR_NOT_EXPECTED:
 		case NETWORK_ERROR_COMPANY_MISMATCH:
-			_switch_mode_errorstr = STR_NETWORK_ERR_SERVER_ERROR;
+			_switch_mode_errorstr = STR_NETWORK_ERROR_SERVER_ERROR;
 			break;
 		case NETWORK_ERROR_FULL:
-			_switch_mode_errorstr = STR_NETWORK_ERR_SERVER_FULL;
+			_switch_mode_errorstr = STR_NETWORK_ERROR_SERVER_FULL;
 			break;
 		case NETWORK_ERROR_WRONG_REVISION:
-			_switch_mode_errorstr = STR_NETWORK_ERR_WRONG_REVISION;
+			_switch_mode_errorstr = STR_NETWORK_ERROR_WRONG_REVISION;
 			break;
 		case NETWORK_ERROR_WRONG_PASSWORD:
-			_switch_mode_errorstr = STR_NETWORK_ERR_WRONG_PASSWORD;
+			_switch_mode_errorstr = STR_NETWORK_ERROR_WRONG_PASSWORD;
 			break;
 		case NETWORK_ERROR_KICKED:
-			_switch_mode_errorstr = STR_NETWORK_ERR_KICKED;
+			_switch_mode_errorstr = STR_NETWORK_ERROR_KICKED;
 			break;
 		case NETWORK_ERROR_CHEATER:
-			_switch_mode_errorstr = STR_NETWORK_ERR_CHEATER;
+			_switch_mode_errorstr = STR_NETWORK_ERROR_CHEATER;
 			break;
 		default:
-			_switch_mode_errorstr = STR_NETWORK_ERR_LOSTCONNECTION;
+			_switch_mode_errorstr = STR_NETWORK_ERROR_LOSTCONNECTION;
 	}
 
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
@@ -505,7 +505,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHECK_NEWGRFS)
 		SEND_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)();
 	} else {
 		/* NewGRF mismatch, bail out */
-		_switch_mode_errorstr = STR_NETWORK_ERR_NEWGRF_MISMATCH;
+		_switch_mode_errorstr = STR_NETWORK_ERROR_NEWGRF_MISMATCH;
 	}
 	return ret;
 }
@@ -576,7 +576,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 	if (maptype == MAP_PACKET_START) {
 		file_pointer = FioFOpenFile("network_client.tmp", "wb", AUTOSAVE_DIR);;
 		if (file_pointer == NULL) {
-			_switch_mode_errorstr = STR_NETWORK_ERR_SAVEGAMEERROR;
+			_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
 			return NETWORK_RECV_STATUS_SAVEGAME;
 		}
 
@@ -603,7 +603,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 	if (maptype == MAP_PACKET_NORMAL) {
 		/* We are still receiving data, put it to the file */
 		if (fwrite(p->buffer + p->pos, 1, p->size - p->pos, file_pointer) != (size_t)(p->size - p->pos)) {
-			_switch_mode_errorstr = STR_NETWORK_ERR_SAVEGAMEERROR;
+			_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
 			return NETWORK_RECV_STATUS_SAVEGAME;
 		}
 
@@ -621,7 +621,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		/* The map is done downloading, load it */
 		if (!SafeSaveOrLoad("network_client.tmp", SL_LOAD, GM_NORMAL, AUTOSAVE_DIR)) {
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-			_switch_mode_errorstr = STR_NETWORK_ERR_SAVEGAMEERROR;
+			_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
 			return NETWORK_RECV_STATUS_SAVEGAME;
 		}
 		/* If the savegame has successfully loaded, ALL windows have been removed,
@@ -781,7 +781,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_QUIT)
 
 	ci = NetworkFindClientInfoFromClientID(client_id);
 	if (ci != NULL) {
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, NULL, STR_NETWORK_CLIENT_LEAVING);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, NULL, STR_NETWORK_MESSAGE_CLIENT_LEAVING);
 		delete ci;
 	} else {
 		DEBUG(net, 0, "Unknown client (%d) is leaving the game", client_id);
@@ -808,7 +808,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_JOIN)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_SHUTDOWN)
 {
-	_switch_mode_errorstr = STR_NETWORK_SERVER_SHUTDOWN;
+	_switch_mode_errorstr = STR_NETWORK_MESSAGE_SERVER_SHUTDOWN;
 
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
 }
@@ -820,7 +820,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEWGAME)
 	 * COMPANY_SPECTATOR is currently 255, so to avoid long wait periods
 	 *  set the max to 10. */
 	_network_reconnect = min(_local_company + 1, 10);
-	_switch_mode_errorstr = STR_NETWORK_SERVER_REBOOT;
+	_switch_mode_errorstr = STR_NETWORK_MESSAGE_SERVER_REBOOT;
 
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
 }

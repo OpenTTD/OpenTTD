@@ -33,7 +33,7 @@ void Waypoint::UpdateVirtCoord()
 {
 	Point pt = RemapCoords2(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE);
 	SetDParam(0, this->index);
-	this->sign.UpdatePosition(pt.x, pt.y - 0x20, STR_WAYPOINT_VIEWPORT);
+	this->sign.UpdatePosition(pt.x, pt.y - 0x20, STR_VIEWPORT_WAYPOINT);
 	/* Recenter viewport */
 	InvalidateWindowData(WC_WAYPOINT_VIEW, this->index);
 }
@@ -378,7 +378,7 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
 
 	Waypoint *wp = Waypoint::GetByTile(tile);
 
-	if (HasStationInUse(wp->index, INVALID_COMPANY)) return_cmd_error(STR_BUOY_IS_IN_USE);
+	if (HasStationInUse(wp->index, INVALID_COMPANY)) return_cmd_error(STR_ERROR_BUOY_IS_IN_USE);
 	/* remove the buoy if there is a ship on tile when company goes bankrupt... */
 	if (!(flags & DC_BANKRUPT) && !EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
@@ -432,7 +432,7 @@ CommandCost CmdRenameWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	if (!reset) {
 		if (strlen(text) >= MAX_LENGTH_STATION_NAME_BYTES) return CMD_ERROR;
-		if (!IsUniqueWaypointName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+		if (!IsUniqueWaypointName(text)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {

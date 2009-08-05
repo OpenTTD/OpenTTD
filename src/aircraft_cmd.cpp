@@ -250,7 +250,7 @@ uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo *avi)
  */
 CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsEngineBuildable(p1, VEH_AIRCRAFT, _current_company)) return_cmd_error(STR_AIRCRAFT_NOT_AVAILABLE);
+	if (!IsEngineBuildable(p1, VEH_AIRCRAFT, _current_company)) return_cmd_error(STR_ERROR_AIRCRAFT_NOT_AVAILABLE);
 
 	const AircraftVehicleInfo *avi = AircraftVehInfo(p1);
 	const Engine *e = Engine::Get(p1);
@@ -451,7 +451,7 @@ CommandCost CmdSellAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED);
 
-	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
+	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE);
 
 	CommandCost ret(EXPENSES_NEW_VEHICLES, -v->value);
 
@@ -522,7 +522,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	Aircraft *v = Aircraft::GetIfValid(p1);
 	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED);
-	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_REFIT_DESTROYED_VEHICLE);
+	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE);
 
 	/* Check cargo */
 	CargoID new_cid = GB(p2, 0, 8);

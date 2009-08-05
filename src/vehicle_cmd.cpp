@@ -70,7 +70,7 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 	switch (v->type) {
 		case VEH_TRAIN:
-			if ((v->vehstatus & VS_STOPPED) && Train::From(v)->tcache.cached_power == 0) return_cmd_error(STR_TRAIN_START_NO_CATENARY);
+			if ((v->vehstatus & VS_STOPPED) && Train::From(v)->tcache.cached_power == 0) return_cmd_error(STR_ERROR_TRAIN_START_NO_CATENARY);
 			break;
 
 		case VEH_SHIP:
@@ -517,7 +517,7 @@ CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	if (!reset) {
 		if (strlen(text) >= MAX_LENGTH_VEHICLE_NAME_BYTES) return CMD_ERROR;
-		if (!(flags & DC_AUTOREPLACE) && !IsUniqueVehicleName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+		if (!(flags & DC_AUTOREPLACE) && !IsUniqueVehicleName(text)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {

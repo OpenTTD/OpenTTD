@@ -981,7 +981,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 
 	NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, STR_NETWORK_CLIENT_LEAVING);
+	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, STR_NETWORK_MESSAGE_CLIENT_LEAVING);
 
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs->status > STATUS_AUTH) {

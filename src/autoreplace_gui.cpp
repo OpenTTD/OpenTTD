@@ -264,14 +264,14 @@ public:
 										!EngineHasReplacementForCompany(c, selected_id[0], selected_group));
 
 		/* now the actual drawing of the window itself takes place */
-		SetDParam(0, STR_VEHICLE_TRAIN + this->window_number);
+		SetDParam(0, STR_REPLACE_VEHICLE_TRAIN + this->window_number);
 
 		if (this->window_number == VEH_TRAIN) {
 			/* set on/off for renew_keep_length */
 			SetDParam(1, c->settings.renew_keep_length ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 
 			/* set wagon/engine button */
-			SetDParam(2, this->wagon_btnstate ? STR_ENGINES : STR_WAGONS);
+			SetDParam(2, this->wagon_btnstate ? STR_REPLACE_ENGINES : STR_REPLACE_WAGONS);
 
 			/* sets the colour of that art thing */
 			this->widget[RVW_WIDGET_TRAIN_FLUFF_LEFT].colour  = _company_colours[_local_company];
@@ -289,13 +289,13 @@ public:
 		/* sets up the string for the vehicle that is being replaced to */
 		if (selected_id[0] != INVALID_ENGINE) {
 			if (!EngineHasReplacementForCompany(c, selected_id[0], selected_group)) {
-				SetDParam(0, STR_NOT_REPLACING);
+				SetDParam(0, STR_REPLACE_NOT_REPLACING);
 			} else {
 				SetDParam(0, STR_ENGINE_NAME);
 				SetDParam(1, EngineReplacementForCompany(c, selected_id[0], selected_group));
 			}
 		} else {
-			SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);
+			SetDParam(0, STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED);
 		}
 
 		DrawString(this->widget[RVW_WIDGET_INFO_TAB].left + 6, this->widget[RVW_WIDGET_INFO_TAB].right - 6, this->widget[RVW_WIDGET_INFO_TAB].top + 1, STR_BLACK_STRING);
@@ -440,7 +440,7 @@ public:
 static const Widget _replace_vehicle_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                 STR_TOOLTIP_CLOSE_WINDOW},             // RVW_WIDGET_CLOSEBOX
 {    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   443,     0,    13, STR_REPLACE_VEHICLES_WHITE,      STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // RVW_WIDGET_CAPTION
-{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   444,   455,     0,    13, STR_NULL,                        STR_STICKY_BUTTON},                    // RVW_WIDGET_STICKY
+{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   444,   455,     0,    13, STR_NULL,                        STR_TOOLTIP_STICKY},                    // RVW_WIDGET_STICKY
 
 {     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   215,    14,    13, 0x1,                             STR_REPLACE_HELP_LEFT_ARRAY},          // RVW_WIDGET_LEFT_MATRIX
 {  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_GREY,   216,   227,    14,    13, STR_NULL,                        STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // RVW_WIDGET_LEFT_SCROLLBAR
@@ -452,7 +452,7 @@ static const Widget _replace_vehicle_widgets[] = {
 { WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   138,   106,   117, STR_REPLACE_VEHICLES_START,      STR_REPLACE_HELP_START_BUTTON},        // RVW_WIDGET_START_REPLACE
 {      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,   139,   305,   106,   117, 0x0,                             STR_REPLACE_HELP_REPLACE_INFO_TAB},    // RVW_WIDGET_INFO_TAB
 { WWT_PUSHTXTBTN,   RESIZE_LRTB,  COLOUR_GREY,   306,   443,   106,   117, STR_REPLACE_VEHICLES_STOP,       STR_REPLACE_HELP_STOP_BUTTON},         // RVW_WIDGET_STOP_REPLACE
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   444,   455,   106,   117, STR_NULL,                        STR_RESIZE_BUTTON},                    // RVW_WIDGET_RESIZE
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   444,   455,   106,   117, STR_NULL,                        STR_TOOLTIP_RESIZE},                    // RVW_WIDGET_RESIZE
 
 { WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   138,   128,   139, STR_REPLACE_ENGINE_WAGON_SELECT, STR_REPLACE_ENGINE_WAGON_SELECT_HELP}, // RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE
 {      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,   139,   153,   128,   139, 0x0,                             STR_NULL},                             // RVW_WIDGET_TRAIN_FLUFF_LEFT

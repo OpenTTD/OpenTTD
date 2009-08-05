@@ -31,7 +31,7 @@ public:
 		ERR_BRIDGE_CANNOT_END_IN_WATER,      // [STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH]
 
 		/** The bride heads need to be on the same height */
-		ERR_BRIDGE_HEADS_NOT_ON_SAME_HEIGHT, // [STR_BRIDGEHEADS_NOT_SAME_HEIGHT]
+		ERR_BRIDGE_HEADS_NOT_ON_SAME_HEIGHT, // [STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT]
 	};
 
 	static const char *GetClassName() { return "AIBridge"; }

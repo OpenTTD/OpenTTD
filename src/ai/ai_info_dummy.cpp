@@ -54,7 +54,7 @@ void AI_CreateAIDummy(HSQUIRRELVM vm)
 	 * 1) We get the error message
 	 */
 	char error_message[1024];
-	GetString(error_message, STR_AI_NO_AI_FOUND, lastof(error_message));
+	GetString(error_message, STR_ERROR_AI_NO_AI_FOUND, lastof(error_message));
 
 	/* 2) We construct the AI's code. This is done by merging a header, body and footer */
 	char dummy_script[4096];

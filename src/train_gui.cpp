@@ -282,7 +282,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 		}
 
 		/* draw total cargo tab */
-		DrawString(left, right, y + 2, STR_TOTAL_CAPACITY_TEXT);
+		DrawString(left, right, y + 2, STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT);
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (max_cargo[i] > 0 && --vscroll_pos < 0 && vscroll_pos > -vscroll_cap) {
 				y += 14;
@@ -291,10 +291,10 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 				SetDParam(2, i);            // {SHORTCARGO} #1
 				SetDParam(3, max_cargo[i]); // {SHORTCARGO} #2
 				SetDParam(4, _settings_game.vehicle.freight_trains);
-				DrawString(left, right, y + 2, FreightWagonMult(i) > 1 ? STR_TOTAL_CAPACITY_MULT : STR_TOTAL_CAPACITY);
+				DrawString(left, right, y + 2, FreightWagonMult(i) > 1 ? STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT : STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY);
 			}
 		}
 		SetDParam(0, feeder_share);
-		DrawString(left, right, y + 15, STR_FEEDER_CARGO_VALUE);
+		DrawString(left, right, y + 15, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
 	}
 }

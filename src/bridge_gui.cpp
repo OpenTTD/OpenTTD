@@ -190,7 +190,7 @@ public:
 					SetDParam(2, this->bridges->Get(i)->cost);
 					SetDParam(1, b->speed);
 					SetDParam(0, b->material);
-					text_dim = maxdim(text_dim, GetStringBoundingBox(STR_BUILD_BRIDGE_INFO));
+					text_dim = maxdim(text_dim, GetStringBoundingBox(STR_SELECT_BRIDGE_INFO));
 				}
 				sprite_dim.height++; // Sprite is rendered one pixel down in the matrix field.
 				text_dim.height++; // Allowing the bottom row pixels to be rendered on the edge of the matrix field.
@@ -221,7 +221,7 @@ public:
 					SetDParam(0, b->material);
 
 					DrawSprite(b->sprite, b->pal, r.left + WD_MATRIX_LEFT, y + this->resize.step_height - 1 - GetSpriteSize(b->sprite).height);
-					DrawStringMultiLine(r.left + this->bridgetext_offset, r.right, y + 2, y + this->resize.step_height, STR_BUILD_BRIDGE_INFO);
+					DrawStringMultiLine(r.left + this->bridgetext_offset, r.right, y + 2, y + this->resize.step_height, STR_SELECT_BRIDGE_INFO);
 					y += this->resize.step_height;
 				}
 				break;
@@ -317,11 +317,11 @@ static const NWidgetPart _nested_build_bridge_widgets[] = {
 		NWidget(NWID_VERTICAL),
 			/* Sort order + criteria buttons */
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, BBSW_DROPDOWN_ORDER), SetFill(1, 0), SetDataTip(STR_SORT_BY, STR_SORT_ORDER_TIP),
-				NWidget(WWT_DROPDOWN, COLOUR_DARK_GREEN, BBSW_DROPDOWN_CRITERIA), SetFill(1, 0), SetDataTip(0x0, STR_SORT_CRITERIA_TIP),
+				NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, BBSW_DROPDOWN_ORDER), SetFill(1, 0), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
+				NWidget(WWT_DROPDOWN, COLOUR_DARK_GREEN, BBSW_DROPDOWN_CRITERIA), SetFill(1, 0), SetDataTip(0x0, STR_TOOLTIP_SORT_CRITERIAP),
 			EndContainer(),
 			/* Matrix. */
-			NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, BBSW_BRIDGE_LIST), SetFill(1, 0), SetResize(0, 22), SetDataTip(0x401, STR_BUILD_BRIDGE_SELECTION_TOOLTIP),
+			NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, BBSW_BRIDGE_LIST), SetFill(1, 0), SetResize(0, 22), SetDataTip(0x401, STR_SELECT_BRIDGE_SELECTION_TOOLTIP),
 		EndContainer(),
 
 		/* scrollbar + resize button */

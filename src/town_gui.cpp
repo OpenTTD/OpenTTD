@@ -326,7 +326,7 @@ public:
 		}
 
 		if (cargo_needed_for_growth > 0) {
-			DrawString(2, this->width - 2, y += 10, STR_CARGO_FOR_TOWNGROWTH);
+			DrawString(2, this->width - 2, y += 10, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH);
 
 			CargoID first_food_cargo = CT_INVALID;
 			StringID food_name = STR_CARGO_PLURAL_FOOD;
@@ -347,20 +347,20 @@ public:
 			if (first_food_cargo != CT_INVALID && this->town->act_food > 0) {
 				SetDParam(0, first_food_cargo);
 				SetDParam(1, this->town->act_food);
-				DrawString(2, this->width - 2, y += 10, STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH);
+				DrawString(2, this->width - 2, y += 10, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH);
 			} else {
 				SetDParam(0, food_name);
-				DrawString(2, this->width - 2, y += 10, STR_CARGO_FOR_TOWNGROWTH_REQUIRED);
+				DrawString(2, this->width - 2, y += 10, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED);
 			}
 
 			if (cargo_needed_for_growth > 1) {
 				if (first_water_cargo != CT_INVALID && this->town->act_water > 0) {
 					SetDParam(0, first_water_cargo);
 					SetDParam(1, this->town->act_water);
-					DrawString(2, this->width - 2, y += 10, STR_CARGO_FOR_TOWNGROWTH_LAST_MONTH);
+					DrawString(2, this->width - 2, y += 10, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH);
 				} else {
 					SetDParam(0, water_name);
-					DrawString(2, this->width - 2, y += 10, STR_CARGO_FOR_TOWNGROWTH_REQUIRED);
+					DrawString(2, this->width - 2, y += 10, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED);
 				}
 			}
 		}
@@ -371,7 +371,7 @@ public:
 		if (_settings_game.economy.station_noise_level) {
 			SetDParam(0, this->town->noise_reached);
 			SetDParam(1, this->town->MaxTownNoise());
-			DrawString(2, this->width - 2, y += 10, STR_NOISE_IN_TOWN);
+			DrawString(2, this->width - 2, y += 10, STR_TOWN_VIEW_NOISE_IN_TOWN);
 		}
 	}
 
@@ -445,13 +445,13 @@ public:
 static const Widget _town_view_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_BLACK_CROSS,                      STR_TOOLTIP_CLOSE_WINDOW},              // TVW_CLOSEBOX
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_BROWN,    11,   171,     0,    13, STR_TOWN_VIEW_TOWN_CAPTION,           STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},    // TVW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_BROWN,   248,   259,     0,    13, 0x0,                                  STR_STICKY_BUTTON},                     // TVW_STICKY
+{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_BROWN,   248,   259,     0,    13, 0x0,                                  STR_TOOLTIP_STICKY},                     // TVW_STICKY
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   259,    14,   105, 0x0,                                  STR_NULL},                              // TVW_VIEWPORTPANEL
 {      WWT_INSET,   RESIZE_NONE,  COLOUR_BROWN,     2,   257,    16,   103, 0x0,                                  STR_NULL},                              // TVW_VIEWPORTINSET
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_BROWN,     0,   259,   106,   137, 0x0,                                  STR_NULL},                              // TVW_INFOPANEL
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,     0,    85,   138,   149, STR_BUTTON_LOCATION,                  STR_TOWN_VIEW_CENTER_TOOLTIP},          // TVW_CENTERVIEW
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,    86,   127,   138,   149, STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON, STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP}, // TVW_SHOWAUTHORITY
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,   172,   247,     0,    13, STR_QUERY_RENAME,                     STR_TOWN_VIEW_RENAME_TOOLTIP},          // TVW_CHANGENAME
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,   172,   247,     0,    13, STR_BUTTON_RENAME,                    STR_TOWN_VIEW_RENAME_TOOLTIP},          // TVW_CHANGENAME
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,   128,   171,   138,   149, STR_TOWN_VIEW_EXPAND_BUTTON,          STR_TOWN_VIEW_EXPAND_TOOLTIP},          // TVW_EXPAND
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_BROWN,   172,   259,   138,   149, STR_TOWN_VIEW_DELETE_BUTTON,          STR_TOWN_VIEW_DELETE_TOOLTIP},          // TVW_DELETE
 {   WIDGETS_END},
@@ -461,7 +461,7 @@ static const NWidgetPart _nested_town_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN, TVW_CLOSEBOX),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, TVW_CAPTION), SetDataTip(STR_TOWN_VIEW_TOWN_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_CHANGENAME), SetMinimalSize(76, 14), SetDataTip(STR_QUERY_RENAME, STR_TOWN_VIEW_RENAME_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TVW_CHANGENAME), SetMinimalSize(76, 14), SetDataTip(STR_BUTTON_RENAME, STR_TOWN_VIEW_RENAME_TOOLTIP),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN, TVW_STICKY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_BROWN, TVW_VIEWPORTPANEL),
@@ -511,8 +511,8 @@ static const NWidgetPart _nested_town_directory_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TDW_SORTNAME), SetMinimalSize(99, 12), SetDataTip(STR_SORT_BY_NAME, STR_SORT_ORDER_TIP), SetFill(1, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TDW_SORTPOPULATION), SetMinimalSize(97, 12), SetDataTip(STR_SORT_BY_POPULATION, STR_SORT_ORDER_TIP), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TDW_SORTNAME), SetMinimalSize(99, 12), SetDataTip(STR_SORT_BY_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TDW_SORTPOPULATION), SetMinimalSize(97, 12), SetDataTip(STR_SORT_BY_POPULATION, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_BROWN, TDW_CENTERTOWN), SetMinimalSize(196, 164), SetDataTip(0x0, STR_TOWN_DIRECTORY_LIST_TOOLTIP),
 							SetFill(1, 0), SetResize(0, 10), EndContainer(),
@@ -818,7 +818,7 @@ static const NWidgetPart _nested_found_town_widgets[] = {
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_RANDOMTOWN), SetMinimalSize(156, 12), SetFill(1, 0),
 										SetDataTip(STR_FOUND_TOWN_RANDOM_TOWN_BUTTON, STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP), SetPadding(0, 2, 1, 2),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_MANYRANDOMTOWNS), SetMinimalSize(156, 12), SetFill(1, 0),
-										SetDataTip(STR_MANY_RANDOM_TOWNS, STR_RANDOM_TOWNS_TIP), SetPadding(0, 2, 0, 2),
+										SetDataTip(STR_FOUND_TOWN_MANY_RANDOM_TOWNS, STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP), SetPadding(0, 2, 0, 2),
 		/* Town size selection. */
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetFill(1, 0),
@@ -836,7 +836,7 @@ static const NWidgetPart _nested_found_town_widgets[] = {
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_SIZE_LARGE), SetMinimalSize(78, 12), SetFill(1, 0),
 										SetDataTip(STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON, STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_SIZE_RANDOM), SetMinimalSize(78, 12), SetFill(1, 0),
-										SetDataTip(STR_SELECT_TOWN_SIZE_RANDOM, STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP),
+										SetDataTip(STR_FOUND_TOWN_SIZE_RANDOM, STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_CITY), SetPadding(0, 2, 0, 2), SetMinimalSize(156, 12), SetFill(1, 0),
@@ -844,21 +844,21 @@ static const NWidgetPart _nested_found_town_widgets[] = {
 		/* Town roads selection. */
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetFill(1, 0),
-			NWidget(WWT_LABEL, COLOUR_DARK_GREEN, TSEW_TOWNLAYOUT), SetMinimalSize(148, 14), SetDataTip(STR_TOWN_ROAD_LAYOUT, STR_NULL),
+			NWidget(WWT_LABEL, COLOUR_DARK_GREEN, TSEW_TOWNLAYOUT), SetMinimalSize(148, 14), SetDataTip(STR_FOUND_TOWN_ROAD_LAYOUT, STR_NULL),
 			NWidget(NWID_SPACER), SetFill(1, 0),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(2, 0, 2),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_LAYOUT_ORIGINAL), SetMinimalSize(78, 12), SetFill(1, 0), SetDataTip(STR_SELECT_LAYOUT_ORIGINAL, STR_SELECT_TOWN_ROAD_LAYOUT),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_LAYOUT_BETTER), SetMinimalSize(78, 12), SetFill(1, 0), SetDataTip(STR_SELECT_LAYOUT_BETTER_ROADS, STR_SELECT_TOWN_ROAD_LAYOUT),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_LAYOUT_ORIGINAL), SetMinimalSize(78, 12), SetFill(1, 0), SetDataTip(STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL, STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_LAYOUT_BETTER), SetMinimalSize(78, 12), SetFill(1, 0), SetDataTip(STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS, STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(2, 0, 2),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_LAYOUT_GRID2), SetMinimalSize(78, 12), SetFill(1, 0), SetDataTip(STR_SELECT_LAYOUT_2X2_GRID, STR_SELECT_TOWN_ROAD_LAYOUT),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_LAYOUT_GRID3), SetMinimalSize(78, 12), SetFill(1, 0), SetDataTip(STR_SELECT_LAYOUT_3X3_GRID, STR_SELECT_TOWN_ROAD_LAYOUT),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_LAYOUT_GRID2), SetMinimalSize(78, 12), SetFill(1, 0), SetDataTip(STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID, STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_LAYOUT_GRID3), SetMinimalSize(78, 12), SetFill(1, 0), SetDataTip(STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID, STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, TSEW_LAYOUT_RANDOM), SetPadding(0, 2, 0, 2), SetMinimalSize(0, 12), SetFill(1, 0),
-										SetDataTip(STR_SELECT_LAYOUT_RANDOM, STR_SELECT_TOWN_ROAD_LAYOUT), SetFill(1, 0),
+										SetDataTip(STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM, STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT), SetFill(1, 0),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 	EndContainer(),
 };
@@ -916,7 +916,7 @@ public:
 				_generating_world = false;
 
 				if (t == NULL) {
-					ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
+					ShowErrorMessage(STR_ERROR_NO_SPACE_FOR_TOWN, STR_ERROR_CAN_T_GENERATE_TOWN, 0, 0);
 				} else {
 					ScrollMainWindowToTile(t->xy);
 				}
@@ -928,7 +928,7 @@ public:
 				_generating_world = true;
 				UpdateNearestTownForRoadTiles(true);
 				if (!GenerateTowns(town_layout)) {
-					ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
+					ShowErrorMessage(STR_ERROR_NO_SPACE_FOR_TOWN, STR_ERROR_CAN_T_GENERATE_TOWN, 0, 0);
 				}
 				UpdateNearestTownForRoadTiles(false);
 				_generating_world = false;

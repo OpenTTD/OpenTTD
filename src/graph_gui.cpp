@@ -109,7 +109,7 @@ static NWidgetBase *MakeNWidgetCompanyLines(int *biggest_index)
 		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
 		panel->SetMinimalSize(246, 12);
 		panel->SetFill(false, false);
-		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION);
+		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP);
 		vert->Add(panel);
 	}
 	*biggest_index = GLW_LAST_COMPANY;
@@ -484,7 +484,7 @@ public:
 
 struct OperatingProfitGraphWindow : BaseGraphWindow {
 	OperatingProfitGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, window_number, 2, 18, 136, true, STR_CURRCOMPACT)
+			BaseGraphWindow(desc, window_number, 2, 18, 136, true, STR_JUST_CURRCOMPACT)
 	{
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -532,7 +532,7 @@ void ShowOperatingProfitGraph()
 
 struct IncomeGraphWindow : BaseGraphWindow {
 	IncomeGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, window_number, 2, 18, 104, false, STR_CURRCOMPACT)
+			BaseGraphWindow(desc, window_number, 2, 18, 104, false, STR_JUST_CURRCOMPACT)
 	{
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -655,7 +655,7 @@ static const Widget _performance_history_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,                               STR_TOOLTIP_CLOSE_WINDOW},              // PHW_CLOSEBOX
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   475,     0,    13, STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},    // PHW_CAPTION
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   526,   575,     0,    13, STR_GRAPH_KEY_BUTTON,                          STR_GRAPH_KEY_TOOLTIP},                 // PHW_KEY
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   476,   525,     0,    13, STR_PERFORMANCE_DETAIL_KEY,                    STR_SHOW_DETAILED_PERFORMANCE_RATINGS}, // PHW_DETAILED_PERFORMANCE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   476,   525,     0,    13, STR_PERFORMANCE_DETAIL_KEY,                    STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP}, // PHW_DETAILED_PERFORMANCE
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   575,    14,   237, 0x0,                                           STR_NULL},                              // PHW_BACKGROUND
 {   WIDGETS_END},
 };
@@ -664,7 +664,7 @@ static const NWidgetPart _nested_performance_history_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, PHW_CLOSEBOX),
 		NWidget(WWT_CAPTION, COLOUR_GREY, PHW_CAPTION), SetDataTip(STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, PHW_DETAILED_PERFORMANCE), SetMinimalSize(50, 14), SetDataTip(STR_PERFORMANCE_DETAIL_KEY, STR_SHOW_DETAILED_PERFORMANCE_RATINGS),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, PHW_DETAILED_PERFORMANCE), SetMinimalSize(50, 14), SetDataTip(STR_PERFORMANCE_DETAIL_KEY, STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, PHW_KEY), SetMinimalSize(50, 14), SetDataTip(STR_GRAPH_KEY_BUTTON, STR_GRAPH_KEY_TOOLTIP),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, PHW_BACKGROUND), SetMinimalSize(576, 224), EndContainer(),
@@ -688,7 +688,7 @@ void ShowPerformanceHistoryGraph()
 
 struct CompanyValueGraphWindow : BaseGraphWindow {
 	CompanyValueGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, window_number, 2, 18, 200, false, STR_CURRCOMPACT)
+			BaseGraphWindow(desc, window_number, 2, 18, 200, false, STR_JUST_CURRCOMPACT)
 	{
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -742,7 +742,7 @@ enum CargoPaymentRatesWidgets {
 
 struct PaymentRatesGraphWindow : BaseGraphWindow {
 	PaymentRatesGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, window_number, 2, 24, 200, false, STR_CURRCOMPACT)
+			BaseGraphWindow(desc, window_number, 2, 24, 200, false, STR_JUST_CURRCOMPACT)
 	{
 		uint num_active = 0;
 		const CargoSpec *cs;
@@ -1000,7 +1000,7 @@ enum CompanyLeagueWidgets {
 static const Widget _company_league_widgets[] = {
 {   WWT_CLOSEBOX, RESIZE_NONE,  COLOUR_GREY,   0,  10,  0,  13, STR_BLACK_CROSS,                  STR_TOOLTIP_CLOSE_WINDOW},
 {    WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,  11, 387,  0,  13, STR_COMPANY_LEAGUE_TABLE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX, RESIZE_NONE,  COLOUR_GREY, 388, 399,  0,  13, STR_NULL,                         STR_STICKY_BUTTON},
+{  WWT_STICKYBOX, RESIZE_NONE,  COLOUR_GREY, 388, 399,  0,  13, STR_NULL,                         STR_TOOLTIP_STICKY},
 {      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,   0, 399, 14, 166, 0x0,                              STR_NULL},
 {   WIDGETS_END},
 };
@@ -1238,16 +1238,16 @@ CompanyID PerformanceRatingDetailWindow::company = INVALID_COMPANY;
 static NWidgetBase *MakePerformanceDetailPanels(int *biggest_index)
 {
 	const StringID performance_tips[] = {
-		STR_PERFORMANCE_DETAIL_VEHICLES_TIP,
-		STR_PERFORMANCE_DETAIL_STATIONS_TIP,
-		STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP,
-		STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP,
-		STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP,
-		STR_PERFORMANCE_DETAIL_DELIVERED_TIP,
-		STR_PERFORMANCE_DETAIL_CARGO_TIP,
-		STR_PERFORMANCE_DETAIL_MONEY_TIP,
-		STR_PERFORMANCE_DETAIL_LOAN_TIP,
-		STR_PERFORMANCE_DETAIL_TOTAL_TIP,
+		STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP,
+		STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP,
+		STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP,
+		STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP,
+		STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP,
+		STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP,
+		STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP,
+		STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP,
+		STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP,
+		STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP,
 	};
 
 	assert(lengthof(performance_tips) == SCORE_END - SCORE_BEGIN);
@@ -1293,7 +1293,7 @@ static NWidgetBase *MakeCompanyButtonRows(int *biggest_index)
 		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
 		panel->SetMinimalSize(37, 13);
 		panel->SetFill(false, false);
-		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION);
+		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP);
 		hor->Add(panel);
 		hor_length++;
 	}
@@ -1315,32 +1315,32 @@ static const Widget _performance_rating_detail_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   298,     0,    13, STR_PERFORMANCE_DETAIL, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},  // PRW_CAPTION
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    14,    40, 0x0,                    STR_NULL},                            // PRW_BACKGROUND
 
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    41,    60, 0x0,                    STR_PERFORMANCE_DETAIL_VEHICLES_TIP}, // PRW_SCORE_FIRST
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    61,    80, 0x0,                    STR_PERFORMANCE_DETAIL_STATIONS_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    81,   100, 0x0,                    STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   101,   120, 0x0,                    STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   121,   140, 0x0,                    STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   141,   160, 0x0,                    STR_PERFORMANCE_DETAIL_DELIVERED_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   161,   180, 0x0,                    STR_PERFORMANCE_DETAIL_CARGO_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   181,   200, 0x0,                    STR_PERFORMANCE_DETAIL_MONEY_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   201,   220, 0x0,                    STR_PERFORMANCE_DETAIL_LOAN_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   221,   240, 0x0,                    STR_PERFORMANCE_DETAIL_TOTAL_TIP},    // PRW_SCORE_LAST
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    41,    60, 0x0,                    STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP}, // PRW_SCORE_FIRST
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    61,    80, 0x0,                    STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    81,   100, 0x0,                    STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   101,   120, 0x0,                    STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   121,   140, 0x0,                    STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   141,   160, 0x0,                    STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   161,   180, 0x0,                    STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   181,   200, 0x0,                    STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   201,   220, 0x0,                    STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   221,   240, 0x0,                    STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP},    // PRW_SCORE_LAST
 
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,    38,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},     // PRW_COMPANY_FIRST
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    39,    75,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    76,   112,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   113,   149,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   150,   186,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   187,   223,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   224,   260,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   261,   297,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,    38,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    39,    75,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    76,   112,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   113,   149,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   150,   186,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   187,   223,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   224,   260,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION},     // PRW_COMPANY_LAST
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,    38,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},     // PRW_COMPANY_FIRST
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    39,    75,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    76,   112,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   113,   149,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   150,   186,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   187,   223,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   224,   260,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   261,   297,    14,    26, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,    38,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    39,    75,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    76,   112,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   113,   149,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   150,   186,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   187,   223,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   224,   260,    27,    39, 0x0,                    STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP},     // PRW_COMPANY_LAST
 {   WIDGETS_END},
 };
 

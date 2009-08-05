@@ -45,8 +45,8 @@ static const Widget _engine_preview_widgets[] = {
 {   WWT_CLOSEBOX,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,    0,   10,    0,   13, STR_BLACK_CROSS,            STR_TOOLTIP_CLOSE_WINDOW},           // EPW_CLOSE
 {    WWT_CAPTION,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,   11,  299,    0,   13, STR_ENGINE_PREVIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // EPW_CAPTION
 {      WWT_PANEL,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,    0,  299,   14,  191, 0x0,                        STR_NULL},                           // EPW_BACKGROUND
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,   85,  144,  172,  183, STR_NO,                     STR_NULL},                           // EPW_NO
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,  155,  214,  172,  183, STR_YES,                    STR_NULL},                           // EPW_YES
+{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,   85,  144,  172,  183, STR_QUIT_NO,                     STR_NULL},                           // EPW_NO
+{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_LIGHT_BLUE,  155,  214,  172,  183, STR_QUIT_YES,                    STR_NULL},                           // EPW_YES
 {   WIDGETS_END},
 };
 
@@ -58,8 +58,8 @@ static const NWidgetPart _nested_engine_preview_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, EPW_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 158),
 		NWidget(NWID_HORIZONTAL), SetPIP(85, 10, 85),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, EPW_NO), SetMinimalSize(60, 12), SetDataTip(STR_NO, STR_NULL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, EPW_YES), SetMinimalSize(60, 12), SetDataTip(STR_YES, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, EPW_NO), SetMinimalSize(60, 12), SetDataTip(STR_QUIT_NO, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, EPW_YES), SetMinimalSize(60, 12), SetDataTip(STR_QUIT_YES, STR_NULL),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 	EndContainer(),
@@ -165,7 +165,7 @@ static void DrawTrainEngineInfo(EngineID engine, int left, int right, int top, i
 	} else {
 		SetDParam(5, CT_INVALID);
 	}
-	DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER, TC_FROMSTRING, SA_CENTER);
+	DrawStringMultiLine(left, right, top, bottom, STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER, TC_FROMSTRING, SA_CENTER);
 }
 
 static void DrawAircraftEngineInfo(EngineID engine, int left, int right, int top, int bottom)
@@ -182,7 +182,7 @@ static void DrawAircraftEngineInfo(EngineID engine, int left, int right, int top
 		SetDParam(5, e->u.air.mail_capacity);
 		SetDParam(6, e->GetRunningCost());
 
-		DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(left, right, top, bottom, STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
 	} else {
 		SetDParam(0, e->GetCost());
 		SetDParam(1, e->GetDisplayMaxSpeed());
@@ -190,7 +190,7 @@ static void DrawAircraftEngineInfo(EngineID engine, int left, int right, int top
 		SetDParam(3, e->GetDisplayDefaultCapacity());
 		SetDParam(4, e->GetRunningCost());
 
-		DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(left, right, top, bottom, STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
 	}
 }
 
@@ -209,7 +209,7 @@ static void DrawRoadVehEngineInfo(EngineID engine, int left, int right, int top,
 	}
 	SetDParam(4, e->GetRunningCost());
 
-	DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
+	DrawStringMultiLine(left, right, top, bottom, STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
 }
 
 static void DrawShipEngineInfo(EngineID engine, int left, int right, int top, int bottom)
@@ -221,7 +221,7 @@ static void DrawShipEngineInfo(EngineID engine, int left, int right, int top, in
 	SetDParam(2, e->GetDefaultCargoType());
 	SetDParam(3, e->GetDisplayDefaultCapacity());
 	SetDParam(4, e->GetRunningCost());
-	DrawStringMultiLine(left, right, top, bottom, STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
+	DrawStringMultiLine(left, right, top, bottom, STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST, TC_FROMSTRING, SA_CENTER);
 }
 
 void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)

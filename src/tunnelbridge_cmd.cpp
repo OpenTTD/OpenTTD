@@ -214,7 +214,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	TileIndex tile_end = end_tile;
 
 	if (tile_start == tile_end) {
-		return_cmd_error(STR_ERROR_CANNOT_START_AND_END_ON);
+		return_cmd_error(STR_ERROR_CAN_T_START_AND_END_ON);
 	}
 
 	Axis direction;
@@ -247,7 +247,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	CommandCost terraform_cost_north = CheckBridgeSlopeNorth(direction, &tileh_start, &z_start);
 	CommandCost terraform_cost_south = CheckBridgeSlopeSouth(direction, &tileh_end,   &z_end);
 
-	if (z_start != z_end) return_cmd_error(STR_BRIDGEHEADS_NOT_SAME_HEIGHT);
+	if (z_start != z_end) return_cmd_error(STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT);
 
 	if (IsBridgeTile(tile_start) && IsBridgeTile(tile_end) &&
 			GetOtherBridgeEnd(tile_start) == tile_end &&
@@ -330,7 +330,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 		TileIndexDiff delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 		for (TileIndex tile = tile_start + delta; tile != tile_end; tile += delta) {
-			if (GetTileMaxZ(tile) > z_start) return_cmd_error(STR_BRIDGE_TOO_LOW_FOR_TERRAIN);
+			if (GetTileMaxZ(tile) > z_start) return_cmd_error(STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN);
 
 			if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) {
 				/* Disallow crossing bridges for the time being */
@@ -495,7 +495,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 	Slope end_tileh;
 	for (;;) {
 		end_tile += delta;
-		if (!IsValidTile(end_tile)) return_cmd_error(STR_TUNNEL_THROUGH_MAP_BORDER);
+		if (!IsValidTile(end_tile)) return_cmd_error(STR_ERROR_TUNNEL_THROUGH_MAP_BORDER);
 		end_tileh = GetTileSlope(end_tile, &end_z);
 
 		if (start_z == end_z) break;
@@ -1229,9 +1229,9 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 	TransportType tt = GetTunnelBridgeTransportType(tile);
 
 	if (IsTunnel(tile)) {
-		td->str = (tt == TRANSPORT_RAIL) ? STR_TUNNEL_DESCRIPTION_RAILROAD : STR_TUNNEL_DESCRIPTION_ROAD;
+		td->str = (tt == TRANSPORT_RAIL) ? STR_LAI_TUNNEL_DESCRIPTION_RAILROAD : STR_LAI_TUNNEL_DESCRIPTION_ROAD;
 	} else { // IsBridge(tile)
-		td->str = (tt == TRANSPORT_WATER) ? STR_BRIDGE_DESCRIPTION_AQUEDUCT : GetBridgeSpec(GetBridgeType(tile))->transport_name[tt];
+		td->str = (tt == TRANSPORT_WATER) ? STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT : GetBridgeSpec(GetBridgeType(tile))->transport_name[tt];
 	}
 	td->owner[0] = GetTileOwner(tile);
 

@@ -418,7 +418,7 @@ void Station::UpdateVirtCoord()
 
 	SetDParam(0, this->index);
 	SetDParam(1, this->facilities);
-	this->sign.UpdatePosition(pt.x, pt.y, STR_STATION_SIGN);
+	this->sign.UpdatePosition(pt.x, pt.y, STR_VIEWPORT_STATION);
 }
 
 /** Update the virtual coords needed to draw the station sign for all stations. */
@@ -743,14 +743,14 @@ bool CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis axis)
 		 * the uniform-stations code wouldn't handle it well */
 		TILE_LOOP(t, cur_ta.w, cur_ta.h, cur_ta.tile) {
 			if (!st->TileBelongsToRailStation(t)) { // there may be adjoined station
-				_error_message = STR_NONUNIFORM_STATIONS_DISALLOWED;
+				_error_message = STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED;
 				return false;
 			}
 		}
 
 		/* check so the orientation is the same */
 		if (GetRailStationAxis(cur_ta.tile) != axis) {
-			_error_message = STR_NONUNIFORM_STATIONS_DISALLOWED;
+			_error_message = STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED;
 			return false;
 		}
 
@@ -770,7 +770,7 @@ bool CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis axis)
 			new_ta.tile = cur_ta.tile;
 			new_ta.w += cur_ta.w;
 		} else {
-			_error_message = STR_NONUNIFORM_STATIONS_DISALLOWED;
+			_error_message = STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED;
 			return false;
 		}
 	}
@@ -884,7 +884,7 @@ CommandCost FindJoiningBaseStation(StationID existing_station, StationID station
  */
 CommandCost FindJoiningStation(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, Station **st)
 {
-	return FindJoiningBaseStation<Station, STR_MUST_REMOVE_RAILWAY_STATION_FIRST>(existing_station, station_to_join, adjacent, ta, st);
+	return FindJoiningBaseStation<Station, STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST>(existing_station, station_to_join, adjacent, ta, st);
 }
 
 /**
@@ -898,7 +898,7 @@ CommandCost FindJoiningStation(StationID existing_station, StationID station_to_
  */
 CommandCost FindJoiningWaypoint(StationID existing_waypoint, StationID waypoint_to_join, bool adjacent, TileArea ta, Waypoint **wp)
 {
-	return FindJoiningBaseStation<Waypoint, STR_MUST_REMOVE_RAILWAYPOINT_FIRST>(existing_waypoint, waypoint_to_join, adjacent, ta, wp);
+	return FindJoiningBaseStation<Waypoint, STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST>(existing_waypoint, waypoint_to_join, adjacent, ta, wp);
 }
 
 /**
@@ -1207,7 +1207,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 		/* Do not allow removing from stations if non-uniform stations are not enabled
 		 * The check must be here to give correct error message
 		 */
-		if (!_settings_game.station.nonuniform_stations) return_cmd_error(STR_NONUNIFORM_STATIONS_DISALLOWED);
+		if (!_settings_game.station.nonuniform_stations) return_cmd_error(STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED);
 
 		/* If we reached here, the tile is valid so increase the quantity of tiles we will remove */
 		quantity++;
@@ -1490,7 +1490,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	/* If it is a drive-through stop check for valid axis */
 	if (is_drive_through && !IsValidAxis((Axis)p1)) return CMD_ERROR;
 	/* Road bits in the wrong direction */
-	if (build_over_road && (GetAllRoadBits(tile) & ((Axis)p1 == AXIS_X ? ROAD_Y : ROAD_X)) != 0) return_cmd_error(STR_DRIVE_THROUGH_ERROR_DIRECTION);
+	if (build_over_road && (GetAllRoadBits(tile) & ((Axis)p1 == AXIS_X ? ROAD_Y : ROAD_X)) != 0) return_cmd_error(STR_ERROR_DRIVE_THROUGH_DIRECTION);
 
 	if (!CheckIfAuthorityAllowsNewStation(tile, flags)) return CMD_ERROR;
 
@@ -1502,7 +1502,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		if (HasBit(cur_rts, ROADTYPE_ROAD)) {
 			road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
 			if (road_owner == OWNER_TOWN) {
-				if (!_settings_game.construction.road_stop_on_town_road) return_cmd_error(STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD);
+				if (!_settings_game.construction.road_stop_on_town_road) return_cmd_error(STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD);
 			} else if (!_settings_game.construction.road_stop_on_competitor_road && road_owner != OWNER_NONE && !CheckOwnership(road_owner)) {
 				return CMD_ERROR;
 			}
@@ -1865,7 +1865,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (_settings_game.economy.station_noise_level) {
 		/* do not allow to build a new airport if this raise the town noise over the maximum allowed by town */
 		if ((nearest->noise_reached + newnoise_level) > nearest->MaxTownNoise()) {
-			authority_refuse_message = STR_LOCAL_AUTHORITY_REFUSES_NOISE;
+			authority_refuse_message = STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE;
 		}
 	} else {
 		uint num = 0;
@@ -2428,16 +2428,16 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 	StringID str;
 	switch (GetStationType(tile)) {
 		default: NOT_REACHED();
-		case STATION_RAIL:     str = STR_STATION_DESCRIPTION_RAILROAD_STATION; break;
+		case STATION_RAIL:     str = STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION; break;
 		case STATION_AIRPORT:
-			str = (IsHangar(tile) ? STR_STATION_DESCRIPTION_AIRCRAFT_HANGAR : STR_STATION_DESCRIPTION_AIRPORT);
+			str = (IsHangar(tile) ? STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR : STR_LAI_STATION_DESCRIPTION_AIRPORT);
 			break;
-		case STATION_TRUCK:    str = STR_STATION_DESCRIPTION_TRUCK_LOADING_AREA; break;
-		case STATION_BUS:      str = STR_STATION_DESCRIPTION_BUS_STATION; break;
+		case STATION_TRUCK:    str = STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA; break;
+		case STATION_BUS:      str = STR_LAI_STATION_DESCRIPTION_BUS_STATION; break;
 		case STATION_OILRIG:   str = STR_INDUSTRY_NAME_OIL_RIG; break;
-		case STATION_DOCK:     str = STR_STATION_DESCRIPTION_SHIP_DOCK; break;
-		case STATION_BUOY:     str = STR_STATION_DESCRIPTION_BUOY; break;
-		case STATION_WAYPOINT: str = STR_LANDINFO_WAYPOINT; break;
+		case STATION_DOCK:     str = STR_LAI_STATION_DESCRIPTION_SHIP_DOCK; break;
+		case STATION_BUOY:     str = STR_LAI_STATION_DESCRIPTION_BUOY; break;
+		case STATION_WAYPOINT: str = STR_LAI_STATION_DESCRIPTION_WAYPOINT; break;
 	}
 	td->str = str;
 }
@@ -2877,7 +2877,7 @@ CommandCost CmdRenameStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	if (!reset) {
 		if (strlen(text) >= MAX_LENGTH_STATION_NAME_BYTES) return CMD_ERROR;
-		if (!IsUniqueStationName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+		if (!IsUniqueStationName(text)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {
@@ -3126,7 +3126,7 @@ CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 			case STATION_DOCK:     return_cmd_error(STR_ERROR_MUST_DEMOLISH_DOCK_FIRST);
 			case STATION_OILRIG:
 				SetDParam(0, STR_INDUSTRY_NAME_OIL_RIG);
-				return_cmd_error(STR_OBJECT_IN_THE_WAY);
+				return_cmd_error(STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY);
 		}
 	}
 

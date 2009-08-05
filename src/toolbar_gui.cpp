@@ -215,7 +215,7 @@ static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
 #ifdef ENABLE_NETWORK
 	if (widget == TBN_COMPANIES && _networking) {
 		/* Add the client list button for the companies menu */
-		list->push_back(new DropDownListStringItem(STR_NETWORK_CLIENT_LIST, CTMN_CLIENT_LIST, false));
+		list->push_back(new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_CLIENT_LIST, CTMN_CLIENT_LIST, false));
 
 		if (_local_company == COMPANY_SPECTATOR) {
 			list->push_back(new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_NEW_COMPANY, CTMN_NEW_COMPANY, NetworkMaxCompaniesReached()));

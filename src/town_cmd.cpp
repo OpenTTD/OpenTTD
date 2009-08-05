@@ -330,7 +330,7 @@ void Town::UpdateVirtCoord()
 	SetDParam(0, this->index);
 	SetDParam(1, this->population);
 	this->sign.UpdatePosition(pt.x, pt.y - 24,
-		_settings_client.gui.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL);
+		_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN);
 }
 
 /** Update the virtual coords needed to draw the town sign for all towns. */
@@ -631,7 +631,7 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 
 	if (!house_completed) {
 		SetDParamX(td->dparam, 0, td->str);
-		td->str = STR_TOWN_DESCRIPTION_UNDER_CONSTRUCTION;
+		td->str = STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION;
 	}
 
 	if (hs->grffile != NULL) {
@@ -1576,7 +1576,7 @@ CommandCost CmdBuildTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (size > TS_RANDOM) return CMD_ERROR;
 	if (layout > TL_RANDOM) return CMD_ERROR;
 
-	if (!VerifyTownName(townnameparts, &par)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+	if (!VerifyTownName(townnameparts, &par)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
 
 	CommandCost cost = TownCanBePlacedHere(tile);
 	if (CmdFailed(cost)) return cost;
@@ -1777,7 +1777,7 @@ bool GenerateTowns(TownLayout layout)
 		if (Town::GetNumItems() == 0) {
 			if (_game_mode != GM_EDITOR) {
 				extern StringID _switch_mode_errorstr;
-				_switch_mode_errorstr = STR_COULD_NOT_CREATE_TOWN;
+				_switch_mode_errorstr = STR_ERROR_COULD_NOT_CREATE_TOWN;
 			}
 		}
 		return false;  // we are still without a town? we failed, simply
@@ -2283,7 +2283,7 @@ CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 	if (!reset) {
 		if (strlen(text) >= MAX_LENGTH_TOWN_NAME_BYTES) return CMD_ERROR;
-		if (!IsUniqueTownName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+		if (!IsUniqueTownName(text)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {
@@ -2304,7 +2304,7 @@ void ExpandTown(Town *t)
 	 * but do this only onces per openttd run. */
 	static bool warned_no_roads = false;
 	if (!_settings_game.economy.allow_town_roads && !warned_no_roads) {
-		ShowErrorMessage(INVALID_STRING_ID, STR_TOWN_EXPAND_WARN_NO_ROADS, 0, 0);
+		ShowErrorMessage(INVALID_STRING_ID, STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS, 0, 0);
 		warned_no_roads = true;
 	}
 
@@ -2445,7 +2445,7 @@ static void TownActionBribe(Town *t)
 
 		/* only show errormessage to the executing player. All errors are handled command.c
 		 * but this is special, because it can only 'fail' on a DC_EXEC */
-		if (IsLocalCompany()) ShowErrorMessage(STR_BRIBE_FAILED_2, STR_BRIBE_FAILED, 0, 0);
+		if (IsLocalCompany()) ShowErrorMessage(STR_ERROR_BRIBE_FAILED_2, STR_ERROR_BRIBE_FAILED, 0, 0);
 
 		/* decrease by a lot!
 		 * ChangeTownRating is only for stuff in demolishing. Bribe failure should

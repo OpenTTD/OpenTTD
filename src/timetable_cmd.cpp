@@ -82,13 +82,13 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (wait_time != order->wait_time) {
 		switch (order->GetType()) {
 			case OT_GOTO_STATION:
-				if (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) return_cmd_error(STR_TIMETABLE_NOT_STOPPING_HERE);
+				if (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) return_cmd_error(STR_ERROR_TIMETABLE_NOT_STOPPING_HERE);
 				break;
 
 			case OT_CONDITIONAL:
 				break;
 
-			default: return_cmd_error(STR_TIMETABLE_ONLY_WAIT_AT_STATIONS);
+			default: return_cmd_error(STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS);
 		}
 	}
 

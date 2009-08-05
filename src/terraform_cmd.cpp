@@ -368,7 +368,7 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	/* Check range of destination height */
 	if (h > MAX_TILE_HEIGHT) return_cmd_error((oldh == 0) ? STR_ERROR_ALREADY_AT_SEA_LEVEL : STR_ERROR_TOO_HIGH);
-	if (p2 == 0) _error_message = STR_ALREADY_LEVELLED;
+	if (p2 == 0) _error_message = STR_ERROR_ALREADY_LEVELLED;
 
 	/* make sure sx,sy are smaller than ex,ey */
 	int ex = TileX(tile);

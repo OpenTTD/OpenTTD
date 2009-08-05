@@ -165,7 +165,7 @@ CommandCost CmdRenameGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	if (!reset) {
 		if (strlen(text) >= MAX_LENGTH_GROUP_NAME_BYTES) return CMD_ERROR;
-		if (!IsUniqueGroupName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+		if (!IsUniqueGroupName(text)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {

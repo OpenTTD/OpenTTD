@@ -50,7 +50,7 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 			}
 		}
 
-		GetString(capacity, STR_ARTICULATED_RV_CAPACITY, lastof(capacity));
+		GetString(capacity, STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY, lastof(capacity));
 
 		bool first = true;
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
@@ -111,7 +111,7 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
 
 	/* Draw Transfer credits text */
 	SetDParam(0, feeder_share);
-	DrawString(left, right, y + 33 + y_offset, STR_FEEDER_CARGO_VALUE);
+	DrawString(left, right, y + 33 + y_offset, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
 }
 
 /**

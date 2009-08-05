@@ -428,7 +428,7 @@ static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 	td->str = is->name;
 	if (!IsIndustryCompleted(tile)) {
 		SetDParamX(td->dparam, 0, td->str);
-		td->str = STR_TOWN_DESCRIPTION_UNDER_CONSTRUCTION;
+		td->str = STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION;
 	}
 
 	if (is->grf_prop.grffile != NULL) {
@@ -453,7 +453,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlag flags)
 				((indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) ||
 				HasBit(GetIndustryTileSpec(GetIndustryGfx(tile))->slopes_refused, 5)))) {
 		SetDParam(0, indspec->name);
-		return_cmd_error(flags & DC_AUTO ? STR_OBJECT_IN_THE_WAY : INVALID_STRING_ID);
+		return_cmd_error(flags & DC_AUTO ? STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY : INVALID_STRING_ID);
 	}
 
 	if (flags & DC_EXEC) {
@@ -1457,7 +1457,7 @@ static bool CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
 				_game_mode != GM_EDITOR || // editor must not be stopped
 				!_settings_game.economy.same_industry_close ||
 				!_settings_game.economy.multiple_industry_per_town)) {
-			_error_message = STR_INDUSTRY_TOO_CLOSE;
+			_error_message = STR_ERROR_INDUSTRY_TOO_CLOSE;
 			return false;
 		}
 
@@ -1466,7 +1466,7 @@ static bool CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
 				i->type == indspec->conflicting[1] ||
 				i->type == indspec->conflicting[2]) &&
 				in_low_distance) {
-			_error_message = STR_INDUSTRY_TOO_CLOSE;
+			_error_message = STR_ERROR_INDUSTRY_TOO_CLOSE;
 			return false;
 		}
 	}

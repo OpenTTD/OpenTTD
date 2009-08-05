@@ -278,7 +278,7 @@ set_name:;
 			SetDParam(1, STR_NEWS_COMPANY_LAUNCH_DESCRIPTION);
 			SetDParamStr(2, cni->company_name);
 			SetDParam(3, t->index);
-			AddNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_NEW, NR_TILE, c->last_build_coordinate, NR_NONE, UINT32_MAX, cni);
+			AddNewsItem(STR_MESSAGE_NEWS_FORMAT, NS_COMPANY_NEW, NR_TILE, c->last_build_coordinate, NR_NONE, UINT32_MAX, cni);
 		}
 		AI::BroadcastNewEvent(new AIEventCompanyNew(c->index), c->index);
 		return;
@@ -716,7 +716,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			SetDParam(0, STR_NEWS_COMPANY_BANKRUPT_TITLE);
 			SetDParam(1, STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION);
 			SetDParamStr(2, cni->company_name);
-			AddCompanyNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_BANKRUPT, cni);
+			AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, NS_COMPANY_BANKRUPT, cni);
 
 			/* Remove the company */
 			ChangeOwnershipOfCompanyItems(c->index, INVALID_OWNER);

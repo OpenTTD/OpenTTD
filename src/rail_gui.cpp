@@ -160,7 +160,7 @@ static void PlaceRail_Waypoint(TileIndex tile)
 	} else {
 		/* Tile where we can't build rail waypoints. This is always going to fail,
 		 * but provides the user with a proper error message. */
-		DoCommandP(tile, 1 << 8 | 1 << 16, STAT_CLASS_WAYP | INVALID_STATION << 16, CMD_BUILD_RAIL_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT));
+		DoCommandP(tile, 1 << 8 | 1 << 16, STAT_CLASS_WAYP | INVALID_STATION << 16, CMD_BUILD_RAIL_WAYPOINT | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT));
 	}
 }
 
@@ -240,7 +240,7 @@ static void GenericPlaceSignals(TileIndex tile)
 		}
 
 		DoCommandP(tile, p1, 0, CMD_BUILD_SIGNALS |
-			CMD_MSG((w != NULL && _convert_signal_button) ? STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_ERROR_CAN_T_BUILD_SIGNALS_HERE),
+			CMD_MSG((w != NULL && _convert_signal_button) ? STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_ERROR_CAN_T_BUILD_SIGNALS_HERE),
 			CcPlaySound1E);
 	}
 }
@@ -754,7 +754,7 @@ struct BuildRailToolbarWindow : Window {
 					break;
 
 				case DDSP_CONVERT_RAIL:
-					DoCommandP(end_tile, start_tile, _cur_railtype, CMD_CONVERT_RAIL | CMD_MSG(STR_CANT_CONVERT_RAIL), CcPlaySound10);
+					DoCommandP(end_tile, start_tile, _cur_railtype, CMD_CONVERT_RAIL | CMD_MSG(STR_ERROR_CAN_T_CONVERT_RAIL), CcPlaySound10);
 					break;
 
 				case DDSP_REMOVE_STATION:
@@ -762,20 +762,20 @@ struct BuildRailToolbarWindow : Window {
 					if (this->IsWidgetLowered(RTW_BUILD_STATION)) {
 						/* Station */
 						if (_remove_button_clicked) {
-							DoCommandP(end_tile, start_tile, 0, CMD_REMOVE_FROM_RAIL_STATION | CMD_MSG(STR_CANT_REMOVE_PART_OF_STATION), CcPlaySound1E);
+							DoCommandP(end_tile, start_tile, 0, CMD_REMOVE_FROM_RAIL_STATION | CMD_MSG(STR_ERROR_CAN_T_REMOVE_PART_OF_STATION), CcPlaySound1E);
 						} else {
 							HandleStationPlacement(start_tile, end_tile);
 						}
 					} else {
 						/* Waypoint */
 						if (_remove_button_clicked) {
-							DoCommandP(end_tile, start_tile, 0, CMD_REMOVE_FROM_RAIL_WAYPOINT | CMD_MSG(STR_CANT_REMOVE_TRAIN_WAYPOINT), CcPlaySound1E);
+							DoCommandP(end_tile, start_tile, 0, CMD_REMOVE_FROM_RAIL_WAYPOINT | CMD_MSG(STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT), CcPlaySound1E);
 						} else {
 							TileArea ta(start_tile, end_tile);
 							uint32 p1 = _cur_railtype | (select_method == VPM_FIX_X ? AXIS_X : AXIS_Y) << 4 | ta.w << 8 | ta.h << 16 | _ctrl_pressed << 24;
 							uint32 p2 = STAT_CLASS_WAYP | _cur_waypoint_type << 8 | INVALID_STATION << 16;
 
-							CommandContainer cmdcont = { ta.tile, p1, p2, CMD_BUILD_RAIL_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT), CcPlaySound1E, "" };
+							CommandContainer cmdcont = { ta.tile, p1, p2, CMD_BUILD_RAIL_WAYPOINT | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT), CcPlaySound1E, "" };
 							ShowSelectWaypointIfNeeded(cmdcont, ta);
 						}
 					}
@@ -1095,7 +1095,7 @@ public:
 				break;
 			}
 			case BRSW_NEWST_LIST: {
-				Dimension d = GetStringBoundingBox(STR_STAT_CLASS_DFLT);
+				Dimension d = GetStringBoundingBox(STR_STATION_CLASS_DFLT);
 				for (StationClassID statclass = STAT_CLASS_BEGIN; statclass < (StationClassID)GetNumStationClasses(); statclass++) {
 					if (statclass == STAT_CLASS_WAYP) continue;
 					for (uint16 j = 0; j < GetNumCustomStations(statclass); j++) {
@@ -1146,7 +1146,7 @@ public:
 				for (uint16 i = this->vscroll.pos; i < _railstation.station_count && i < (uint)(this->vscroll.pos + this->vscroll.cap); i++) {
 					const StationSpec *statspec = GetCustomStationSpec(_railstation.station_class, i);
 
-					StringID str = STR_STAT_CLASS_DFLT;
+					StringID str = STR_STATION_CLASS_DFLT;
 					if (statspec != NULL && statspec->name != 0) {
 						if (HasBit(statspec->callbackmask, CBM_STATION_AVAIL) && GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
 							GfxFillRect(r.left + 1, y + 1, r.right - 1, y + this->line_height - 2, 0, FILLRECT_CHECKER);
@@ -1407,9 +1407,9 @@ static const NWidgetPart _nested_newstation_builder_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRSW_BACKGROUND),
 		/* begin newstations gui additions. */
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, BRSW_NEWST_DROPDOWN), SetMinimalSize(134, 12), SetFill(1, 0), SetPadding(3, 7, 3, 7), SetDataTip(STR_BLACK_STRING, STR_SELECT_STATION_CLASS_TIP),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, BRSW_NEWST_DROPDOWN), SetMinimalSize(134, 12), SetFill(1, 0), SetPadding(3, 7, 3, 7), SetDataTip(STR_BLACK_STRING, STR_STATION_BUILD_STATION_CLASS_TOOLTIP),
 		NWidget(NWID_HORIZONTAL), SetPIP(7, 0, 7),
-			NWidget(WWT_MATRIX, COLOUR_GREY, BRSW_NEWST_LIST), SetMinimalSize(122, 71), SetFill(1, 0), SetDataTip(0x501, STR_SELECT_STATION_TYPE_TIP),
+			NWidget(WWT_MATRIX, COLOUR_GREY, BRSW_NEWST_LIST), SetMinimalSize(122, 71), SetFill(1, 0), SetDataTip(0x501, STR_STATION_BUILD_STATION_TYPE_TOOLTIP),
 			NWidget(WWT_SCROLLBAR, COLOUR_GREY, BRSW_NEWST_SCROLL),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 1),
@@ -1616,29 +1616,29 @@ public:
 static const NWidgetPart _nested_signal_builder_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BSW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BSW_CAPTION), SetDataTip( STR_SIGNAL_SELECTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BSW_CAPTION), SetDataTip( STR_BUILD_SIGNAL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_SEMAPHORE_NORM), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP), EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_SEMAPHORE_ENTRY), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP), EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_SEMAPHORE_EXIT), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP), EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_SEMAPHORE_COMBO), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP), EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_SEMAPHORE_PBS), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP), EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_SEMAPHORE_PBS_OWAY), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP), EndContainer(),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, BSW_CONVERT), SetMinimalSize(22, 27), SetDataTip(SPR_IMG_SIGNAL_CONVERT, STR_SIGNAL_CONVERT_TIP),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_SEMAPHORE_NORM), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_SEMAPHORE_ENTRY), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_SEMAPHORE_EXIT), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_SEMAPHORE_COMBO), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_SEMAPHORE_PBS), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_SEMAPHORE_PBS_OWAY), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP), EndContainer(),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, BSW_CONVERT), SetMinimalSize(22, 27), SetDataTip(SPR_IMG_SIGNAL_CONVERT, STR_BUILD_SIGNAL_CONVERT_TOOLTIP),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_ELECTRIC_NORM), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP), EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_ELECTRIC_ENTRY), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP), EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_ELECTRIC_EXIT), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP), EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_ELECTRIC_COMBO), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP), EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_ELECTRIC_PBS), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP), EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_ELECTRIC_PBS_OWAY), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP), EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_DRAG_SIGNALS_DENSITY), SetDataTip(STR_NULL, STR_DRAG_SIGNALS_DENSITY_TIP),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_ELECTRIC_NORM), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_ELECTRIC_ENTRY), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_ELECTRIC_EXIT), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_ELECTRIC_COMBO), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_ELECTRIC_PBS), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_ELECTRIC_PBS_OWAY), SetMinimalSize(22, 27), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BSW_DRAG_SIGNALS_DENSITY), SetDataTip(STR_NULL, STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP),
 			NWidget(NWID_SPACER), SetMinimalSize(0, 13),
 			NWidget(NWID_HORIZONTAL), SetPIP(2, 0, 2),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, BSW_DRAG_SIGNALS_DENSITY_DECREASE), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_LEFT, STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, BSW_DRAG_SIGNALS_DENSITY_INCREASE), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_RIGHT, STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, BSW_DRAG_SIGNALS_DENSITY_DECREASE), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_LEFT, STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, BSW_DRAG_SIGNALS_DENSITY_INCREASE), SetMinimalSize(9, 12), SetDataTip(SPR_ARROW_RIGHT, STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 		EndContainer(),
@@ -1823,16 +1823,16 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 static const NWidgetPart _nested_build_waypoint_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN, BRWW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BRWW_CAPTION), SetDataTip(STR_WAYPOINT, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, BRWW_CAPTION), SetDataTip(STR_WAYPOINT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
 		NWidget(NWID_HORIZONTAL), SetPIP(3, 2, 3),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_1), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TIP), EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_2), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TIP), EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_3), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TIP), EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_4), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TIP), EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_5), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TIP), EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_1), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TOOLTIP), EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_2), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TOOLTIP), EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_3), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TOOLTIP), EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_4), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TOOLTIP), EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_5), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TOOLTIP), EndContainer(),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
 		NWidget(WWT_HSCROLLBAR, COLOUR_DARK_GREEN, BRWW_SCROLL),

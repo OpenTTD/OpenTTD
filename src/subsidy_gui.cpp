@@ -173,10 +173,10 @@ struct SubsidyListWindow : Window {
 static const Widget _subsidies_list_widgets[] = {
 {   WWT_CLOSEBOX, RESIZE_NONE,   COLOUR_BROWN,   0,  10,   0,  13, STR_BLACK_CROSS,       STR_TOOLTIP_CLOSE_WINDOW},                       // SLW_CLOSEBOX
 {    WWT_CAPTION, RESIZE_RIGHT,  COLOUR_BROWN,  11, 307,   0,  13, STR_SUBSIDIES_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},             // SLW_CAPTION
-{  WWT_STICKYBOX, RESIZE_LR,     COLOUR_BROWN, 308, 319,   0,  13, STR_NULL,              STR_STICKY_BUTTON},                              // SLW_STICKYBOX
-{      WWT_PANEL, RESIZE_RB,     COLOUR_BROWN,   0, 307,  14, 126, 0x0,                   STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER}, // SLW_PANEL
+{  WWT_STICKYBOX, RESIZE_LR,     COLOUR_BROWN, 308, 319,   0,  13, STR_NULL,              STR_TOOLTIP_STICKY},                              // SLW_STICKYBOX
+{      WWT_PANEL, RESIZE_RB,     COLOUR_BROWN,   0, 307,  14, 126, 0x0,                   STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER}, // SLW_PANEL
 {  WWT_SCROLLBAR, RESIZE_LRB,    COLOUR_BROWN, 308, 319,  14, 114, 0x0,                   STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},           // SLW_SCROLLBAR
-{  WWT_RESIZEBOX, RESIZE_LRTB,   COLOUR_BROWN, 308, 319, 115, 126, 0x0,                   STR_RESIZE_BUTTON},                              // SLW_RESIZEBOX
+{  WWT_RESIZEBOX, RESIZE_LRTB,   COLOUR_BROWN, 308, 319, 115, 126, 0x0,                   STR_TOOLTIP_RESIZE},                              // SLW_RESIZEBOX
 
 {   WIDGETS_END},
 };
@@ -188,7 +188,7 @@ static const NWidgetPart _nested_subsidies_list_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN, SLW_STICKYBOX),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, SLW_PANEL), SetMinimalSize(308, 113), SetDataTip(0x0, STR_SUBSIDY_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetResize(1, 1), EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_BROWN, SLW_PANEL), SetMinimalSize(308, 113), SetDataTip(0x0, STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetResize(1, 1), EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_BROWN, SLW_SCROLLBAR),
 			NWidget(WWT_RESIZEBOX, COLOUR_BROWN, SLW_RESIZEBOX),

@@ -67,7 +67,7 @@ void SQAITile_Register(Squirrel *engine) {
 
 	AIError::RegisterErrorMap(STR_ERROR_ALREADY_AT_SEA_LEVEL,    AITile::ERR_TILE_TOO_HIGH);
 	AIError::RegisterErrorMap(STR_ERROR_ALREADY_AT_SEA_LEVEL,    AITile::ERR_TILE_TOO_LOW);
-	AIError::RegisterErrorMap(STR_ALREADY_LEVELLED,              AITile::ERR_AREA_ALREADY_FLAT);
+	AIError::RegisterErrorMap(STR_ERROR_ALREADY_LEVELLED,              AITile::ERR_AREA_ALREADY_FLAT);
 	AIError::RegisterErrorMap(STR_ERROR_EXCAVATION_WOULD_DAMAGE, AITile::ERR_EXCAVATION_WOULD_DAMAGE);
 
 	AIError::RegisterErrorMapString(AITile::ERR_TILE_TOO_HIGH,           "ERR_TILE_TOO_HIGH");

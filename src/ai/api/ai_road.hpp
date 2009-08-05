@@ -24,13 +24,13 @@ public:
 		ERR_ROAD_BASE = AIError::ERR_CAT_ROAD << AIError::ERR_CAT_BIT_SIZE,
 
 		/** Road works are in progress */
-		ERR_ROAD_WORKS_IN_PROGRESS,                   // [STR_ROAD_WORKS_IN_PROGRESS]
+		ERR_ROAD_WORKS_IN_PROGRESS,                   // [STR_ERROR_ROAD_WORKS_IN_PROGRESS]
 
 		/** Drive through is in the wrong direction */
-		ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION,       // [STR_DRIVE_THROUGH_ERROR_DIRECTION]
+		ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION,       // [STR_ERROR_DRIVE_THROUGH_DIRECTION]
 
 		/** Drive through roads can't be build on town owned roads */
-		ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD,           // [STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD]
+		ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD,           // [STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD]
 
 
 		/** One way roads can't have junctions */

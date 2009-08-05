@@ -162,7 +162,7 @@ public:
 				Money cost = costclear.GetCost();
 				if (cost < 0) {
 					cost = -cost; // Negate negative cost to a positive revenue
-					str = STR_REVENUE_WHEN_CLEARED;
+					str = STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED;
 				} else {
 					str = STR_LAND_AREA_INFORMATION_COST_TO_CLEAR;
 				}
@@ -179,7 +179,7 @@ public:
 		SetDParam(1, TileY(tile));
 		SetDParam(2, TileHeight(tile));
 		SetDParamStr(3, tmp);
-		GetString(this->landinfo_data[line_nr], STR_LANDINFO_COORDS, lastof(this->landinfo_data[line_nr]));
+		GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_LANDINFO_COORDS, lastof(this->landinfo_data[line_nr]));
 		line_nr++;
 
 		/* Local authority */
@@ -194,28 +194,28 @@ public:
 		/* Build date */
 		if (td.build_date != INVALID_DATE) {
 			SetDParam(0, td.build_date);
-			GetString(this->landinfo_data[line_nr], STR_BUILD_DATE, lastof(this->landinfo_data[line_nr]));
+			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_BUILD_DATE, lastof(this->landinfo_data[line_nr]));
 			line_nr++;
 		}
 
 		/* Station class */
 		if (td.station_class != STR_NULL) {
 			SetDParam(0, td.station_class);
-			GetString(this->landinfo_data[line_nr], STR_TILEDESC_STATION_CLASS, lastof(this->landinfo_data[line_nr]));
+			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_STATION_CLASS, lastof(this->landinfo_data[line_nr]));
 			line_nr++;
 		}
 
 		/* Station type name */
 		if (td.station_name != STR_NULL) {
 			SetDParam(0, td.station_name);
-			GetString(this->landinfo_data[line_nr], STR_TILEDESC_STATION_TYPE, lastof(this->landinfo_data[line_nr]));
+			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_STATION_TYPE, lastof(this->landinfo_data[line_nr]));
 			line_nr++;
 		}
 
 		/* NewGRF name */
 		if (td.grf != NULL) {
 			SetDParamStr(0, td.grf);
-			GetString(this->landinfo_data[line_nr], STR_TILEDESC_NEWGRF_NAME, lastof(this->landinfo_data[line_nr]));
+			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_NEWGRF_NAME, lastof(this->landinfo_data[line_nr]));
 			line_nr++;
 		}
 
@@ -1289,27 +1289,27 @@ struct QueryStringWindow : public QueryStringBaseWindow
 
 static const Widget _query_string_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,   STR_TOOLTIP_CLOSE_WINDOW}, // QUERY_STR_WIDGET_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   259,     0,    13, STR_QUERY_CAPTION, STR_NULL},              // QUERY_STR_WIDGET_CAPTION
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   259,     0,    13, STR_WHITE_STRINGN, STR_NULL},              // QUERY_STR_WIDGET_CAPTION
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   259,    14,    29, 0x0,               STR_NULL},              // QUERY_STR_WIDGET_BACKGROUND
 {    WWT_EDITBOX,   RESIZE_NONE,  COLOUR_GREY,     2,   257,    16,    27, 0x0,               STR_NULL},              // QUERY_STR_WIDGET_TEXT
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    86,    30,    41, STR_DEFAULT,       STR_NULL},              // QUERY_STR_WIDGET_DEFAULT
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    87,   172,    30,    41, STR_QUERY_CANCEL,  STR_NULL},              // QUERY_STR_WIDGET_CANCEL
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   173,   259,    30,    41, STR_QUERY_OK,      STR_NULL},              // QUERY_STR_WIDGET_OK
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    86,    30,    41, STR_BUTTON_DEFAULT,       STR_NULL},              // QUERY_STR_WIDGET_DEFAULT
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    87,   172,    30,    41, STR_BUTTON_CANCEL,  STR_NULL},              // QUERY_STR_WIDGET_CANCEL
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   173,   259,    30,    41, STR_BUTTON_OK,      STR_NULL},              // QUERY_STR_WIDGET_OK
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_query_string_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, QUERY_STR_WIDGET_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_GREY, QUERY_STR_WIDGET_CAPTION), SetDataTip(STR_QUERY_CAPTION, STR_NULL),
+		NWidget(WWT_CAPTION, COLOUR_GREY, QUERY_STR_WIDGET_CAPTION), SetDataTip(STR_WHITE_STRINGN, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, QUERY_STR_WIDGET_BACKGROUND),
 		NWidget(WWT_EDITBOX, COLOUR_GREY, QUERY_STR_WIDGET_TEXT), SetMinimalSize(256, 12), SetPadding(2, 2, 2, 2),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_DEFAULT), SetMinimalSize(87, 12), SetDataTip(STR_DEFAULT, STR_NULL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_CANCEL), SetMinimalSize(86, 12), SetDataTip(STR_QUERY_CANCEL, STR_NULL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_OK), SetMinimalSize(87, 12), SetDataTip(STR_QUERY_OK, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_DEFAULT), SetMinimalSize(87, 12), SetDataTip(STR_BUTTON_DEFAULT, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_CANCEL), SetMinimalSize(86, 12), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, QUERY_STR_WIDGET_OK), SetMinimalSize(87, 12), SetDataTip(STR_BUTTON_OK, STR_NULL),
 	EndContainer(),
 };
 
@@ -1450,8 +1450,8 @@ static const Widget _query_widgets[] = {
 {  WWT_CLOSEBOX, RESIZE_NONE,  COLOUR_RED,      0,  10,   0,  13, STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW}, // QUERY_WIDGET_CLOSEBOX
 {   WWT_CAPTION, RESIZE_NONE,  COLOUR_RED,     11, 209,   0,  13, STR_NULL,        STR_NULL},              // QUERY_WIDGET_CAPTION
 {     WWT_PANEL, RESIZE_NONE,  COLOUR_RED,      0, 209,  14,  81, 0x0, /*OVERRIDE*/STR_NULL},              // QUERY_WIDGET_BACKGROUND
-{WWT_PUSHTXTBTN, RESIZE_NONE,  COLOUR_YELLOW,  20,  90,  62,  73, STR_NO,          STR_NULL},              // QUERY_WIDGET_NO
-{WWT_PUSHTXTBTN, RESIZE_NONE,  COLOUR_YELLOW, 120, 190,  62,  73, STR_YES,         STR_NULL},              // QUERY_WIDGET_YES
+{WWT_PUSHTXTBTN, RESIZE_NONE,  COLOUR_YELLOW,  20,  90,  62,  73, STR_QUIT_NO,          STR_NULL},              // QUERY_WIDGET_NO
+{WWT_PUSHTXTBTN, RESIZE_NONE,  COLOUR_YELLOW, 120, 190,  62,  73, STR_QUIT_YES,         STR_NULL},              // QUERY_WIDGET_YES
 {   WIDGETS_END },
 };
 
@@ -1463,8 +1463,8 @@ static const NWidgetPart _nested_query_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_RED, QUERY_WIDGET_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 48),
 		NWidget(NWID_HORIZONTAL), SetPIP(20, 29, 19),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, QUERY_WIDGET_NO), SetMinimalSize(71, 12), SetDataTip(STR_NO, STR_NULL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, QUERY_WIDGET_YES), SetMinimalSize(71, 12), SetDataTip(STR_YES, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, QUERY_WIDGET_NO), SetMinimalSize(71, 12), SetDataTip(STR_QUIT_NO, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, QUERY_WIDGET_YES), SetMinimalSize(71, 12), SetDataTip(STR_QUIT_YES, STR_NULL),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 	EndContainer(),
@@ -1512,8 +1512,8 @@ enum SaveLoadWindowWidgets {
 static const Widget _load_dialog_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,          STR_TOOLTIP_CLOSE_WINDOW},             // SLWW_CLOSE
 {    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   256,     0,    13, STR_NULL,                 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // SLWW_WINDOWTITLE
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   127,    14,    25, STR_SORT_BY_NAME,         STR_SORT_ORDER_TIP},                   // SLWW_SORT_BYNAME
-{ WWT_PUSHTXTBTN,  RESIZE_RIGHT,  COLOUR_GREY,   128,   256,    14,    25, STR_SORT_BY_DATE,         STR_SORT_ORDER_TIP},                   // SLWW_SORT_BYDATE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   127,    14,    25, STR_SORT_BY_NAME,         STR_TOOLTIP_SORT_ORDER},                   // SLWW_SORT_BYNAME
+{ WWT_PUSHTXTBTN,  RESIZE_RIGHT,  COLOUR_GREY,   128,   256,    14,    25, STR_SORT_BY_DATE,         STR_TOOLTIP_SORT_ORDER},                   // SLWW_SORT_BYDATE
 {      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,     0,   256,    26,    47, 0x0,                      STR_NULL},                             // SLWW_BACKGROUND
 {      WWT_PANEL,     RESIZE_RB,  COLOUR_GREY,     0,   256,    48,   153, 0x0,                      STR_NULL},                             // SLWW_FILE_BACKGROUND
 { WWT_PUSHIMGBTN,     RESIZE_LR,  COLOUR_GREY,   245,   256,    48,    59, SPR_HOUSE_ICON,           STR_SAVELOAD_HOME_BUTTON},             // SLWW_HOME_BUTTON
@@ -1523,7 +1523,7 @@ static const Widget _load_dialog_widgets[] = {
 {      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                      STR_NULL},                             // SLWW_SAVE_OSK_TITLE
 {      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                      STR_NULL},                             // SLWW_DELETE_SELECTION
 {      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                      STR_NULL},                             // SLWW_SAVE_GAME
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   245,   256,   142,   153, 0x0,                      STR_RESIZE_BUTTON},                    // SLWW_RESIZE
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   245,   256,   142,   153, 0x0,                      STR_TOOLTIP_RESIZE},                    // SLWW_RESIZE
 {   WIDGETS_END},
 };
 
@@ -1535,8 +1535,8 @@ static const NWidgetPart _nested_load_dialog_widgets[] = {
 				NWidget(WWT_CAPTION, COLOUR_GREY, SLWW_WINDOWTITLE),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYNAME), SetMinimalSize(128, 12), SetDataTip(STR_SORT_BY_NAME, STR_SORT_ORDER_TIP),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYDATE), SetMinimalSize(129, 12), SetDataTip(STR_SORT_BY_DATE, STR_SORT_ORDER_TIP), SetResize(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYNAME), SetMinimalSize(128, 12), SetDataTip(STR_SORT_BY_NAME, STR_TOOLTIP_SORT_ORDER),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYDATE), SetMinimalSize(129, 12), SetDataTip(STR_SORT_BY_DATE, STR_TOOLTIP_SORT_ORDER), SetResize(1, 0),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_GREY, SLWW_BACKGROUND), SetMinimalSize(257, 22), SetResize(1, 0), EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_GREY, SLWW_FILE_BACKGROUND),
@@ -1572,18 +1572,18 @@ static const NWidgetPart _nested_load_dialog_widgets[] = {
 static const Widget _save_dialog_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,            STR_TOOLTIP_CLOSE_WINDOW},             // SLWW_CLOSE
 {    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   256,     0,    13, STR_NULL,                   STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},   // SLWW_WINDOWTITLE
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   127,    14,    25, STR_SORT_BY_NAME,           STR_SORT_ORDER_TIP},                   // SLWW_SORT_BYNAME
-{ WWT_PUSHTXTBTN,  RESIZE_RIGHT,  COLOUR_GREY,   128,   256,    14,    25, STR_SORT_BY_DATE,           STR_SORT_ORDER_TIP},                   // SLWW_SORT_BYDATE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   127,    14,    25, STR_SORT_BY_NAME,           STR_TOOLTIP_SORT_ORDER},                   // SLWW_SORT_BYNAME
+{ WWT_PUSHTXTBTN,  RESIZE_RIGHT,  COLOUR_GREY,   128,   256,    14,    25, STR_SORT_BY_DATE,           STR_TOOLTIP_SORT_ORDER},                   // SLWW_SORT_BYDATE
 {      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,     0,   256,    26,    47, 0x0,                        STR_NULL},                             // SLWW_BACKGROUND
 {      WWT_PANEL,     RESIZE_RB,  COLOUR_GREY,     0,   256,    48,   167, 0x0,                        STR_NULL},                             // SLWW_FILE_BACKGROUND
 { WWT_PUSHIMGBTN,     RESIZE_LR,  COLOUR_GREY,   245,   256,    48,    59, SPR_HOUSE_ICON,             STR_SAVELOAD_HOME_BUTTON},             // SLWW_HOME_BUTTON
 {      WWT_INSET,     RESIZE_RB,  COLOUR_GREY,     2,   243,    50,   150, 0x0,                        STR_SAVELOAD_LIST_TOOLTIP},            // SLWW_DRIVES_DIRECTORIES_LIST
 {  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   245,   256,    60,   150, 0x0,                        STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // SLWW_SCROLLBAR
 {      WWT_EMPTY,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,     0, 0x0,                        STR_NULL},                             // SLWW_CONTENT_DOWNLOAD
-{    WWT_EDITBOX,    RESIZE_RTB,  COLOUR_GREY,     2,   254,   154,   165, STR_SAVE_OSKTITLE,          STR_SAVELOAD_EDITBOX_TOOLTIP},         // SLWW_SAVE_OSK_TITLE
+{    WWT_EDITBOX,    RESIZE_RTB,  COLOUR_GREY,     2,   254,   154,   165, STR_SAVELOAD_OSKTITLE,          STR_SAVELOAD_EDITBOX_TOOLTIP},         // SLWW_SAVE_OSK_TITLE
 { WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   127,   168,   179, STR_SAVELOAD_DELETE_BUTTON, STR_SAVELOAD_DELETE_TOOLTIP},          // SLWW_DELETE_SELECTION
 { WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_GREY,   128,   244,   168,   179, STR_SAVELOAD_SAVE_BUTTON,   STR_SAVELOAD_SAVE_TOOLTIP},            // SLWW_SAVE_GAME
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   245,   256,   168,   179, 0x0,                        STR_RESIZE_BUTTON},                    // SLWW_RESIZE
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   245,   256,   168,   179, 0x0,                        STR_TOOLTIP_RESIZE},                    // SLWW_RESIZE
 {   WIDGETS_END},
 };
 
@@ -1595,8 +1595,8 @@ static const NWidgetPart _nested_save_dialog_widgets[] = {
 				NWidget(WWT_CAPTION, COLOUR_GREY, SLWW_WINDOWTITLE),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYNAME), SetMinimalSize(128, 12), SetDataTip(STR_SORT_BY_NAME, STR_SORT_ORDER_TIP),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYDATE), SetMinimalSize(129, 12), SetDataTip(STR_SORT_BY_DATE, STR_SORT_ORDER_TIP), SetResize(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYNAME), SetMinimalSize(128, 12), SetDataTip(STR_SORT_BY_NAME, STR_TOOLTIP_SORT_ORDER),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYDATE), SetMinimalSize(129, 12), SetDataTip(STR_SORT_BY_DATE, STR_TOOLTIP_SORT_ORDER), SetResize(1, 0),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_GREY, SLWW_BACKGROUND), SetMinimalSize(257, 22), SetResize(1, 0), EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_GREY, SLWW_FILE_BACKGROUND),
@@ -1609,7 +1609,7 @@ static const NWidgetPart _nested_save_dialog_widgets[] = {
 					EndContainer(),
 				EndContainer(),
 				NWidget(WWT_EDITBOX, COLOUR_GREY, SLWW_SAVE_OSK_TITLE), SetMinimalSize(253, 12), SetPadding(3, 2, 2, 2), SetResize(1, 0),
-												SetDataTip(STR_SAVE_OSKTITLE, STR_SAVELOAD_EDITBOX_TOOLTIP),
+												SetDataTip(STR_SAVELOAD_OSKTITLE, STR_SAVELOAD_EDITBOX_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_DELETE_SELECTION), SetMinimalSize(128, 12),
@@ -1711,7 +1711,7 @@ public:
 			STR_SAVELOAD_LOAD_SCENARIO,
 			STR_SAVELOAD_SAVE_CAPTION,
 			STR_SAVELOAD_SAVE_SCENARIO,
-			STR_LOAD_HEIGHTMAP,
+			STR_SAVELOAD_LOAD_HEIGHTMAP,
 		};
 
 		this->vscroll.cap = 10;
@@ -1886,7 +1886,7 @@ public:
 
 			case SLWW_CONTENT_DOWNLOAD:
 				if (!_network_available) {
-					ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
+					ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERROR_NOTAVAILABLE, 0, 0);
 				} else {
 #if defined(ENABLE_NETWORK)
 					switch (_saveload_mode) {

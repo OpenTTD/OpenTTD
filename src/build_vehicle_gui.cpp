@@ -50,9 +50,9 @@ static const Widget _build_vehicle_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS, STR_TOOLTIP_CLOSE_WINDOW },            // BUILD_VEHICLE_WIDGET_CLOSEBOX
 	{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   239,     0,    13, 0x0,             STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS },  // BUILD_VEHICLE_WIDGET_CAPTION
 	{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,     0,   239,    14,    37, 0x0,             STR_NULL },                            // BUILD_VEHICLE_WIDGET_LIST_CONTROL
-	{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    80,    14,    25, STR_SORT_BY,     STR_SORT_ORDER_TIP},                   // BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING
-	{   WWT_DROPDOWN,  RESIZE_RIGHT,  COLOUR_GREY,    81,   239,    14,    25, 0x0,             STR_SORT_CRITERIA_TIP},                // BUILD_VEHICLE_WIDGET_SORT_DROPDOWN
-	{   WWT_DROPDOWN,  RESIZE_RIGHT,  COLOUR_GREY,    81,   239,    26,    37, 0x0,             STR_FILTER_CRITERIA_TIP},              // BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN
+	{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    80,    14,    25, STR_BUTTON_SORT_BY,     STR_TOOLTIP_SORT_ORDER},                   // BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING
+	{   WWT_DROPDOWN,  RESIZE_RIGHT,  COLOUR_GREY,    81,   239,    14,    25, 0x0,             STR_TOOLTIP_SORT_CRITERIAP},                // BUILD_VEHICLE_WIDGET_SORT_DROPDOWN
+	{   WWT_DROPDOWN,  RESIZE_RIGHT,  COLOUR_GREY,    81,   239,    26,    37, 0x0,             STR_TOOLTIP_FILTER_CRITERIA},              // BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN
 	{     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,     0,   227,    38,    51, 0x101,           STR_NULL },                            // BUILD_VEHICLE_WIDGET_LIST
 	{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   228,   239,    38,    51, 0x0,             STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST },// BUILD_VEHICLE_WIDGET_SCROLLBAR
 
@@ -60,7 +60,7 @@ static const Widget _build_vehicle_widgets[] = {
 
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   114,   174,   185, 0x0,             STR_NULL },                            // BUILD_VEHICLE_WIDGET_BUILD
 	{ WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_GREY,   115,   227,   174,   185, 0x0,             STR_NULL },                            // BUILD_VEHICLE_WIDGET_RENAME
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   228,   239,   174,   185, 0x0,             STR_RESIZE_BUTTON },                   // BUILD_VEHICLE_WIDGET_RESIZE
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   228,   239,   174,   185, 0x0,             STR_TOOLTIP_RESIZE },                   // BUILD_VEHICLE_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
 
@@ -72,13 +72,13 @@ static const NWidgetPart _nested_build_vehicle_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, BUILD_VEHICLE_WIDGET_LIST_CONTROL),
 		/* Sort order + criteria button row. */
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING), SetMinimalSize(81, 12), SetDataTip(STR_SORT_BY, STR_SORT_ORDER_TIP),
-			NWidget(WWT_DROPDOWN, COLOUR_GREY, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN), SetMinimalSize(159, 12), SetResize(1, 0), SetDataTip(0x0, STR_SORT_CRITERIA_TIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING), SetMinimalSize(81, 12), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
+			NWidget(WWT_DROPDOWN, COLOUR_GREY, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN), SetMinimalSize(159, 12), SetResize(1, 0), SetDataTip(0x0, STR_TOOLTIP_SORT_CRITERIAP),
 		EndContainer(),
 		/* Filter criteria row. */
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetFill(1, 0),
-			NWidget(WWT_DROPDOWN, COLOUR_GREY, BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN), SetMinimalSize(159, 12), SetResize(1, 0), SetDataTip(0x0, STR_FILTER_CRITERIA_TIP),
+			NWidget(WWT_DROPDOWN, COLOUR_GREY, BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN), SetMinimalSize(159, 12), SetResize(1, 0), SetDataTip(0x0, STR_TOOLTIP_FILTER_CRITERIA),
 		EndContainer(),
 	EndContainer(),
 	/* Vehicle list. */
@@ -421,7 +421,7 @@ static int DrawCargoCapacityInfo(int left, int right, int y, EngineID engine, Ve
 
 		SetDParam(0, c);
 		SetDParam(1, cap[c]);
-		SetDParam(2, refittable ? STR_REFITTABLE : STR_EMPTY);
+		SetDParam(2, refittable ? STR_PURCHASE_INFO_REFITTABLE : STR_EMPTY);
 		DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY);
 		y += FONT_HEIGHT_NORMAL;
 
@@ -545,7 +545,7 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
 	/* Cargo type + capacity */
 	SetDParam(0, e->GetDefaultCargoType());
 	SetDParam(1, e->GetDisplayDefaultCapacity());
-	SetDParam(2, refittable ? STR_REFITTABLE : STR_EMPTY);
+	SetDParam(2, refittable ? STR_PURCHASE_INFO_REFITTABLE : STR_EMPTY);
 	DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY);
 	y += FONT_HEIGHT_NORMAL;
 
@@ -581,7 +581,7 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
 		 * callback, then the capacity shown is likely to be incorrect. */
 		SetDParam(0, cargo);
 		SetDParam(1, e->GetDisplayDefaultCapacity());
-		SetDParam(2, refittable ? STR_REFITTABLE : STR_EMPTY);
+		SetDParam(2, refittable ? STR_PURCHASE_INFO_REFITTABLE : STR_EMPTY);
 		DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY);
 	}
 	y += FONT_HEIGHT_NORMAL;
@@ -759,7 +759,7 @@ void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *
 		DrawVehicleEngine(type, x, y + y_offset, engine, (count_location != 0 && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_company));
 		if (count_location != 0) {
 			SetDParam(0, num_engines);
-			DrawString(x, count_location, y + (GetVehicleListHeight(type) == 14 ? 3 : 8), STR_TINY_BLACK, TC_FROMSTRING, SA_RIGHT);
+			DrawString(x, count_location, y + (GetVehicleListHeight(type) == 14 ? 3 : 8), STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT);
 		}
 	}
 }
@@ -872,7 +872,7 @@ struct BuildVehicleWindow : Window {
 	/* Setup widget strings to fit the different types of vehicles */
 	void SetupWindowStrings(VehicleType type)
 	{
-		this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = (this->listview_mode ? STR_AVAILABLE_TRAINS : STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION) + type;
+		this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = (this->listview_mode ? STR_VEHICLE_LIST_AVAILABLE_TRAINS : STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION) + type;
 		this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP + type;
 		this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON + type;
 		this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP + type;

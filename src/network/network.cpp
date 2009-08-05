@@ -210,20 +210,20 @@ void NetworkTextMessage(NetworkAction action, ConsoleColour colour, bool self_se
 			break;
 		case NETWORK_ACTION_COMPANY_SPECTATOR:
 			colour = CC_DEFAULT;
-			strid = STR_NETWORK_CLIENT_COMPANY_SPECTATE;
+			strid = STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE;
 			break;
 		case NETWORK_ACTION_COMPANY_JOIN:
 			colour = CC_DEFAULT;
-			strid = STR_NETWORK_CLIENT_COMPANY_JOIN;
+			strid = STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN;
 			break;
 		case NETWORK_ACTION_COMPANY_NEW:
 			colour = CC_DEFAULT;
-			strid = STR_NETWORK_CLIENT_COMPANY_NEW;
+			strid = STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW;
 			break;
-		case NETWORK_ACTION_JOIN:           strid = STR_NETWORK_CLIENT_JOINED; break;
-		case NETWORK_ACTION_LEAVE:          strid = STR_NETWORK_CLIENT_LEFT; break;
-		case NETWORK_ACTION_NAME_CHANGE:    strid = STR_NETWORK_NAME_CHANGE; break;
-		case NETWORK_ACTION_GIVE_MONEY:     strid = self_send ? STR_NETWORK_GAVE_MONEY_AWAY : STR_NETWORK_GIVE_MONEY;   break;
+		case NETWORK_ACTION_JOIN:           strid = STR_NETWORK_MESSAGE_CLIENT_JOINED; break;
+		case NETWORK_ACTION_LEAVE:          strid = STR_NETWORK_MESSAGE_CLIENT_LEFT; break;
+		case NETWORK_ACTION_NAME_CHANGE:    strid = STR_NETWORK_MESSAGE_NAME_CHANGE; break;
+		case NETWORK_ACTION_GIVE_MONEY:     strid = self_send ? STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY : STR_NETWORK_MESSAGE_GIVE_MONEY;   break;
 		case NETWORK_ACTION_CHAT_COMPANY:   strid = self_send ? STR_NETWORK_CHAT_TO_COMPANY : STR_NETWORK_CHAT_COMPANY; break;
 		case NETWORK_ACTION_CHAT_CLIENT:    strid = self_send ? STR_NETWORK_CHAT_TO_CLIENT  : STR_NETWORK_CHAT_CLIENT;  break;
 		default:                            strid = STR_NETWORK_CHAT_ALL; break;
@@ -266,7 +266,7 @@ static void NetworkError(StringID error_string)
 static void ServerStartError(const char *error)
 {
 	DEBUG(net, 0, "[server] could not start network: %s",error);
-	NetworkError(STR_NETWORK_ERR_SERVER_START);
+	NetworkError(STR_NETWORK_ERROR_SERVER_START);
 }
 
 static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket *cs)
@@ -313,21 +313,21 @@ StringID GetNetworkErrorMsg(NetworkErrorCode err)
 	/* List of possible network errors, used by
 	 * PACKET_SERVER_ERROR and PACKET_CLIENT_ERROR */
 	static const StringID network_error_strings[] = {
-		STR_NETWORK_ERR_CLIENT_GENERAL,
-		STR_NETWORK_ERR_CLIENT_DESYNC,
-		STR_NETWORK_ERR_CLIENT_SAVEGAME,
-		STR_NETWORK_ERR_CLIENT_CONNECTION_LOST,
-		STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR,
-		STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH,
-		STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED,
-		STR_NETWORK_ERR_CLIENT_NOT_EXPECTED,
-		STR_NETWORK_ERR_CLIENT_WRONG_REVISION,
-		STR_NETWORK_ERR_CLIENT_NAME_IN_USE,
-		STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD,
-		STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH,
-		STR_NETWORK_ERR_CLIENT_KICKED,
-		STR_NETWORK_ERR_CLIENT_CHEATER,
-		STR_NETWORK_ERR_CLIENT_SERVER_FULL
+		STR_NETWORK_ERROR_CLIENT_GENERAL,
+		STR_NETWORK_ERROR_CLIENT_DESYNC,
+		STR_NETWORK_ERROR_CLIENT_SAVEGAME,
+		STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST,
+		STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR,
+		STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH,
+		STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED,
+		STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED,
+		STR_NETWORK_ERROR_CLIENT_WRONG_REVISION,
+		STR_NETWORK_ERROR_CLIENT_NAME_IN_USE,
+		STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD,
+		STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH,
+		STR_NETWORK_ERROR_CLIENT_KICKED,
+		STR_NETWORK_ERROR_CLIENT_CHEATER,
+		STR_NETWORK_ERROR_CLIENT_SERVER_FULL
 	};
 
 	if (err >= (ptrdiff_t)lengthof(network_error_strings)) err = NETWORK_ERROR_GENERAL;
@@ -456,7 +456,7 @@ void NetworkCloseClient(NetworkClientSocket *cs, bool error)
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, STR_NETWORK_ERR_CLIENT_CONNECTION_LOST);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST);
 
 		/* Inform other clients of this... strange leaving ;) */
 		FOR_ALL_CLIENT_SOCKETS(new_cs) {
@@ -707,7 +707,7 @@ public:
 
 	virtual void OnFailure()
 	{
-		NetworkError(STR_NETWORK_ERR_NOCONNECTION);
+		NetworkError(STR_NETWORK_ERROR_NOCONNECTION);
 	}
 
 	virtual void OnConnect(SOCKET s)
@@ -865,7 +865,7 @@ static bool NetworkReceive()
 #else
 	int n = WaitSelect(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv, NULL);
 #endif
-	if (n == -1 && !_network_server) NetworkError(STR_NETWORK_ERR_LOSTCONNECTION);
+	if (n == -1 && !_network_server) NetworkError(STR_NETWORK_ERROR_LOSTCONNECTION);
 
 	/* accept clients.. */
 	for (SocketList::iterator s = _listensockets.Begin(); s != _listensockets.End(); s++) {
@@ -929,7 +929,7 @@ static bool NetworkDoClientLoop()
 #else
 			if (_sync_seed_1 != _random.state[0]) {
 #endif
-				NetworkError(STR_NETWORK_ERR_DESYNC);
+				NetworkError(STR_NETWORK_ERROR_DESYNC);
 				DEBUG(desync, 1, "sync_err: %d; %d\n", _date, _date_fract);
 				DEBUG(net, 0, "Sync error detected!");
 				NetworkClientError(NETWORK_RECV_STATUS_DESYNC, NetworkClientSocket::Get(0));

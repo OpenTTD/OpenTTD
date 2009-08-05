@@ -65,5 +65,5 @@ void DrawShipDetails(const Vehicle *v, int left, int right, int y)
 
 	/* Draw Transfer credits text */
 	SetDParam(0, v->cargo.FeederShare());
-	DrawString(left, right, y + 33, STR_FEEDER_CARGO_VALUE);
+	DrawString(left, right, y + 33, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
 }

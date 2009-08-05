@@ -170,7 +170,7 @@ static const Widget _build_trees_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        37,    70,   110,   155, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_32
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        72,   105,   110,   155, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_33
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       107,   140,   110,   155, 0x0,                           STR_PLANT_TREE_TOOLTIP},             // BTW_TYPE_34
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         2,   140,   157,   168, STR_TREES_RANDOM_TYPE,         STR_TREES_RANDOM_TYPE_TIP},          // BTW_TYPE_RANDOM
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         2,   140,   157,   168, STR_TREES_RANDOM_TYPE,         STR_TREES_RANDOM_TYPE_TOOLTIP},          // BTW_TYPE_RANDOM
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         2,   140,   170,   181, STR_TREES_RANDOM_TREES_BUTTON, STR_TREES_RANDOM_TREES_TOOLTIP},     // BTW_MANY_RANDOM
 {    WIDGETS_END},
 };
@@ -227,7 +227,7 @@ static const NWidgetPart _nested_build_trees_widgets[] = {
 					EndContainer(),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, BTW_TYPE_RANDOM), SetMinimalSize(139, 12), SetDataTip(STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TIP),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, BTW_TYPE_RANDOM), SetMinimalSize(139, 12), SetDataTip(STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TOOLTIP),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(WWT_TEXTBTN, COLOUR_GREY, BTW_MANY_RANDOM), SetMinimalSize(139, 12), SetDataTip(STR_TREES_RANDOM_TREES_BUTTON, STR_TREES_RANDOM_TREES_TOOLTIP),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),

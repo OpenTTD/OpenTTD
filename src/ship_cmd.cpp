@@ -745,7 +745,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 {
 	UnitID unit_num;
 
-	if (!IsEngineBuildable(p1, VEH_SHIP, _current_company)) return_cmd_error(STR_SHIP_NOT_AVAILABLE);
+	if (!IsEngineBuildable(p1, VEH_SHIP, _current_company)) return_cmd_error(STR_ERROR_SHIP_NOT_AVAILABLE);
 
 	const Engine *e = Engine::Get(p1);
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
@@ -845,7 +845,7 @@ CommandCost CmdSellShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p
 	Ship *v = Ship::GetIfValid(p1);
 	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
+	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE);
 
 	if (!v->IsStoppedInDepot()) {
 		return_cmd_error(STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT);
@@ -916,7 +916,7 @@ CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT);
-	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_REFIT_DESTROYED_VEHICLE);
+	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE);
 
 	/* Check cargo */
 	if (!ShipVehInfo(v->engine_type)->refittable) return CMD_ERROR;

@@ -224,7 +224,7 @@ public:
 		if (_settings_game.economy.station_noise_level) {
 			/* show the noise of the selected airport */
 			SetDParam(0, airport->noise_level);
-			DrawString(panel_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, STR_STATION_NOISE);
+			DrawString(panel_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, STR_STATION_BUILD_NOISE);
 			top += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 		}
 

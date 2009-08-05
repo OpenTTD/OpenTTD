@@ -33,7 +33,7 @@ static const NWidgetPart _nested_network_content_download_status_window_widgets[
 		NWidget(NWID_SPACER), SetMinimalSize(350, 55),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(125, 0),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCDSWW_CANCELOK), SetMinimalSize(101, 12), SetDataTip(STR_QUERY_CANCEL, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCDSWW_CANCELOK), SetMinimalSize(101, 12), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
 			NWidget(NWID_SPACER), SetFill(true, false),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 4),
@@ -167,7 +167,7 @@ public:
 
 		/* When downloading is finished change cancel in ok */
 		if (this->downloaded_bytes == this->total_bytes) {
-			this->nested_array[NCDSWW_CANCELOK]->widget_data = STR_QUERY_OK;
+			this->nested_array[NCDSWW_CANCELOK]->widget_data = STR_BUTTON_OK;
 		}
 
 		this->SetDirty();
@@ -398,7 +398,7 @@ public:
 		this->SetWidgetDisabledState(NCLWW_SELECT_ALL, !show_select_all);
 		this->SetWidgetDisabledState(NCLWW_SELECT_UPDATE, !show_select_upgrade);
 
-		this->widget[NCLWW_CANCEL].data = filesize == 0 ? STR_AI_CLOSE : STR_AI_CANCEL;
+		this->widget[NCLWW_CANCEL].data = filesize == 0 ? STR_AI_SETTINGS_CLOSE : STR_AI_LIST_CANCEL;
 
 		this->DrawWidgets();
 
@@ -745,27 +745,27 @@ static const Widget _network_content_list_widgets[] = {
 {    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_LIGHT_BLUE,    11,   449,     0,    13, STR_CONTENT_TITLE,                  STR_NULL},                               // NCLWW_CAPTION
 {      WWT_PANEL,   RESIZE_RB,     COLOUR_LIGHT_BLUE,     0,   449,    14,   277, 0x0,                                STR_NULL},                               // NCLWW_BACKGROUND
 
-{    WWT_EDITBOX,   RESIZE_LR,     COLOUR_LIGHT_BLUE,   210,   440,    20,    31, STR_CONTENT_FILTER_OSKTITLE,        STR_CONTENT_FILTER_TIP},                 // NCLWW_FILTER
+{    WWT_EDITBOX,   RESIZE_LR,     COLOUR_LIGHT_BLUE,   210,   440,    20,    31, STR_CONTENT_FILTER_OSKTITLE,        STR_CONTENT_FILTER_TOOLTIP},                 // NCLWW_FILTER
 
 /* LEFT SIDE */
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,          8,    20,    36,    47, STR_EMPTY,                          STR_NULL},                               // NCLWW_CHECKBOX
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         21,   110,    36,    47, STR_CONTENT_TYPE_CAPTION,           STR_CONTENT_TYPE_CAPTION_TIP},           // NCLWW_TYPE
-{ WWT_PUSHTXTBTN,   RESIZE_RIGHT,  COLOUR_WHITE,        111,   190,    36,    47, STR_CONTENT_NAME_CAPTION,           STR_CONTENT_NAME_CAPTION_TIP},           // NCLWW_NAME
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         21,   110,    36,    47, STR_CONTENT_TYPE_CAPTION,           STR_CONTENT_TYPE_CAPTION_TOOLTIP},           // NCLWW_TYPE
+{ WWT_PUSHTXTBTN,   RESIZE_RIGHT,  COLOUR_WHITE,        111,   190,    36,    47, STR_CONTENT_NAME_CAPTION,           STR_CONTENT_NAME_CAPTION_TOOLTIP},           // NCLWW_NAME
 
-{     WWT_MATRIX,   RESIZE_RB,     COLOUR_LIGHT_BLUE,     8,   190,    48,   244, (14 << 8) | 1,                      STR_CONTENT_MATRIX_TIP},                 // NCLWW_MATRIX
+{     WWT_MATRIX,   RESIZE_RB,     COLOUR_LIGHT_BLUE,     8,   190,    48,   244, (14 << 8) | 1,                      STR_CONTENT_MATRIX_TOOLTIP},                 // NCLWW_MATRIX
 {  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_LIGHT_BLUE,   191,   202,    36,   244, 0x0,                                STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},   // NCLWW_SCROLLBAR
 
 /* RIGHT SIDE */
 {      WWT_PANEL,   RESIZE_LRB,    COLOUR_LIGHT_BLUE,   210,   440,    36,   244, 0x0,                                STR_NULL},                               // NCLWW_DETAILS
 
 /* BOTTOM */
-{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,         10,   110,   252,   263, STR_CONTENT_SELECT_ALL_CAPTION,     STR_CONTENT_SELECT_ALL_CAPTION_TIP},     // NCLWW_SELECT_ALL
-{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,         10,   110,   252,   263, STR_CONTENT_SELECT_UPDATES_CAPTION, STR_CONTENT_SELECT_UPDATES_CAPTION_TIP}, // NCLWW_SELECT_UPDATE
-{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        118,   218,   252,   263, STR_CONTENT_UNSELECT_ALL_CAPTION,   STR_CONTENT_UNSELECT_ALL_CAPTION_TIP},   // NCLWW_UNSELECT
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        226,   326,   252,   263, STR_QUERY_CANCEL,                   STR_NULL},                               // NCLWW_CANCEL
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        334,   434,   252,   263, STR_CONTENT_DOWNLOAD_CAPTION,       STR_CONTENT_DOWNLOAD_CAPTION_TIP},       // NCLWW_DOWNLOAD
+{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,         10,   110,   252,   263, STR_CONTENT_SELECT_ALL_CAPTION,     STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP},     // NCLWW_SELECT_ALL
+{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,         10,   110,   252,   263, STR_CONTENT_SELECT_UPDATES_CAPTION, STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP}, // NCLWW_SELECT_UPDATE
+{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        118,   218,   252,   263, STR_CONTENT_UNSELECT_ALL_CAPTION,   STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP},   // NCLWW_UNSELECT
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        226,   326,   252,   263, STR_BUTTON_CANCEL,                   STR_NULL},                               // NCLWW_CANCEL
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        334,   434,   252,   263, STR_CONTENT_DOWNLOAD_CAPTION,       STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP},       // NCLWW_DOWNLOAD
 
-{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_LIGHT_BLUE,   438,   449,   266,   277, 0x0,                                STR_RESIZE_BUTTON },                     // NCLWW_RESIZE
+{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_LIGHT_BLUE,   438,   449,   266,   277, 0x0,                                STR_TOOLTIP_RESIZE },                     // NCLWW_RESIZE
 
 {   WIDGETS_END},
 };
@@ -785,12 +785,12 @@ static const NWidgetPart _nested_network_content_list_widgets[] = {
 						NWidget(NWID_HORIZONTAL),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_CHECKBOX), SetMinimalSize(13, 12), SetDataTip(STR_EMPTY, STR_NULL),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_TYPE), SetMinimalSize(90, 12),
-											SetDataTip(STR_CONTENT_TYPE_CAPTION, STR_CONTENT_TYPE_CAPTION_TIP),
+											SetDataTip(STR_CONTENT_TYPE_CAPTION, STR_CONTENT_TYPE_CAPTION_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_NAME), SetMinimalSize(80, 12), SetResize(1, 0),
-											SetDataTip(STR_CONTENT_NAME_CAPTION, STR_CONTENT_NAME_CAPTION_TIP),
+											SetDataTip(STR_CONTENT_NAME_CAPTION, STR_CONTENT_NAME_CAPTION_TOOLTIP),
 						EndContainer(),
 						NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NCLWW_MATRIX), SetMinimalSize(183, 197), SetResize(2, 14),
-											SetDataTip((14 << 8) | 1, STR_CONTENT_MATRIX_TIP),
+											SetDataTip((14 << 8) | 1, STR_CONTENT_MATRIX_TOOLTIP),
 					EndContainer(),
 					NWidget(WWT_SCROLLBAR, COLOUR_LIGHT_BLUE, NCLWW_SCROLLBAR),
 				EndContainer(),
@@ -798,7 +798,7 @@ static const NWidgetPart _nested_network_content_list_widgets[] = {
 			/* Right side. */
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
-				NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, NCLWW_FILTER), SetMinimalSize(231, 12), SetDataTip(STR_CONTENT_FILTER_OSKTITLE, STR_CONTENT_FILTER_TIP),
+				NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, NCLWW_FILTER), SetMinimalSize(231, 12), SetDataTip(STR_CONTENT_FILTER_OSKTITLE, STR_CONTENT_FILTER_TOOLTIP),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
 				NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NCLWW_DETAILS), SetMinimalSize(231, 209), SetResize(0, 1), EndContainer(),
 			EndContainer(),
@@ -809,18 +809,18 @@ static const NWidgetPart _nested_network_content_list_widgets[] = {
 			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 			NWidget(NWID_SELECTION),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_SELECT_ALL), SetMinimalSize(101, 12),
-										SetDataTip(STR_CONTENT_SELECT_ALL_CAPTION, STR_CONTENT_SELECT_ALL_CAPTION_TIP),
+										SetDataTip(STR_CONTENT_SELECT_ALL_CAPTION, STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_SELECT_UPDATE), SetMinimalSize(101, 12),
-										SetDataTip(STR_CONTENT_SELECT_UPDATES_CAPTION, STR_CONTENT_SELECT_UPDATES_CAPTION_TIP),
+										SetDataTip(STR_CONTENT_SELECT_UPDATES_CAPTION, STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(7, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_UNSELECT), SetMinimalSize(101, 12),
-										SetDataTip(STR_CONTENT_UNSELECT_ALL_CAPTION, STR_CONTENT_UNSELECT_ALL_CAPTION_TIP),
+										SetDataTip(STR_CONTENT_UNSELECT_ALL_CAPTION, STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP),
 			NWidget(NWID_SPACER), SetMinimalSize(7, 0), SetResize(1, 0),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_CANCEL), SetMinimalSize(101, 12), SetDataTip(STR_QUERY_CANCEL, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_CANCEL), SetMinimalSize(101, 12), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
 			NWidget(NWID_SPACER), SetMinimalSize(7, 0),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NCLWW_DOWNLOAD), SetMinimalSize(101, 12),
-										SetDataTip(STR_CONTENT_DOWNLOAD_CAPTION, STR_CONTENT_DOWNLOAD_CAPTION_TIP),
+										SetDataTip(STR_CONTENT_DOWNLOAD_CAPTION, STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP),
 			NWidget(NWID_SPACER), SetMinimalSize(15, 0),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 2), SetResize(1, 0),

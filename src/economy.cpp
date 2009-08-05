@@ -491,7 +491,7 @@ static void CompanyCheckBankrupt(Company *c)
 			SetDParam(0, STR_NEWS_COMPANY_IN_TROUBLE_TITLE);
 			SetDParam(1, STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION);
 			SetDParamStr(2, cni->company_name);
-			AddCompanyNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_TROUBLE, cni);
+			AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, NS_COMPANY_TROUBLE, cni);
 			AI::BroadcastNewEvent(new AIEventCompanyInTrouble(c->index));
 			break;
 		case 3: {
@@ -501,7 +501,7 @@ static void CompanyCheckBankrupt(Company *c)
 				SetDParam(0, STR_NEWS_COMPANY_IN_TROUBLE_TITLE);
 				SetDParam(1, STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION);
 				SetDParamStr(2, cni->company_name);
-				AddCompanyNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_TROUBLE, cni);
+				AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, NS_COMPANY_TROUBLE, cni);
 				break;
 			}
 
@@ -536,7 +536,7 @@ static void CompanyCheckBankrupt(Company *c)
 			SetDParam(0, STR_NEWS_COMPANY_BANKRUPT_TITLE);
 			SetDParam(1, STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION);
 			SetDParamStr(2, cni->company_name);
-			AddCompanyNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_BANKRUPT, cni);
+			AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, NS_COMPANY_BANKRUPT, cni);
 
 			/* Remove the company */
 			ChangeNetworkOwner(c->index, COMPANY_SPECTATOR);
@@ -1532,7 +1532,7 @@ static void DoAcquireCompany(Company *c)
 	SetDParamStr(2, cni->company_name);
 	SetDParamStr(3, cni->other_company_name);
 	SetDParam(4, c->bankrupt_value);
-	AddCompanyNewsItem(STR_NEWS_MESSAGE, NS_COMPANY_MERGER, cni);
+	AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, NS_COMPANY_MERGER, cni);
 	AI::BroadcastNewEvent(new AIEventCompanyMerger(ci, _current_company));
 
 	/* original code does this a little bit differently */
@@ -1584,7 +1584,7 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	if (c == NULL || !_settings_game.economy.allow_shares || _current_company == (CompanyID)p1) return CMD_ERROR;
 
 	/* Protect new companies from hostile takeovers */
-	if (_cur_year - c->inaugurated_year < 6) return_cmd_error(STR_PROTECTED);
+	if (_cur_year - c->inaugurated_year < 6) return_cmd_error(STR_ERROR_PROTECTED);
 
 	/* Those lines are here for network-protection (clients can be slow) */
 	if (GetAmountOwnedBy(c, COMPANY_SPECTATOR) == 0) return cost;

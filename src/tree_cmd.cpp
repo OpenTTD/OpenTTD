@@ -549,9 +549,9 @@ static void GetTileDesc_Trees(TileIndex tile, TileDesc *td)
 	TreeType tt = GetTreeType(tile);
 
 	if (IsInsideMM(tt, TREE_RAINFOREST, TREE_CACTUS)) {
-		td->str = STR_TREE_NAME_RAINFOREST;
+		td->str = STR_LAI_TREE_NAME_RAINFOREST;
 	} else {
-		td->str = tt == TREE_CACTUS ? STR_TREE_NAME_CACTUS_PLANTS : STR_TREE_NAME_TREES;
+		td->str = tt == TREE_CACTUS ? STR_LAI_TREE_NAME_CACTUS_PLANTS : STR_LAI_TREE_NAME_TREES;
 	}
 
 	td->owner[0] = GetTileOwner(tile);

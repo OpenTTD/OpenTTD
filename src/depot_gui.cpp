@@ -72,11 +72,11 @@ enum DepotWindowWidgets {
 static const Widget _depot_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,     STR_TOOLTIP_CLOSE_WINDOW},           // DEPOT_WIDGET_CLOSEBOX
 	{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,    23,     0,    13, 0x0,                 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // DEPOT_WIDGET_CAPTION
-	{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,    24,    35,     0,    13, 0x0,                 STR_STICKY_BUTTON},                  // DEPOT_WIDGET_STICKY
+	{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,    24,    35,     0,    13, 0x0,                 STR_TOOLTIP_STICKY},                  // DEPOT_WIDGET_STICKY
 
 	/* Widgets are set up run-time */
 	{     WWT_IMGBTN,    RESIZE_LRB,  COLOUR_GREY,     1,    23,    14,   -32, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_SELL
-	{     WWT_IMGBTN,   RESIZE_LRTB,  COLOUR_GREY,     1,    23,   -55,   -32, SPR_SELL_CHAIN_TRAIN,STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP}, // DEPOT_WIDGET_SELL_CHAIN, trains only
+	{     WWT_IMGBTN,   RESIZE_LRTB,  COLOUR_GREY,     1,    23,   -55,   -32, SPR_SELL_CHAIN_TRAIN,STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP}, // DEPOT_WIDGET_SELL_CHAIN, trains only
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,  COLOUR_GREY,     1,    23,   -31,    -9, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_SELL_ALL
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,  COLOUR_GREY,     1,    23,    -8,    14, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_AUTOREPLACE
 
@@ -93,7 +93,7 @@ static const Widget _depot_widgets[] = {
 	{ WWT_PUSHTXTBTN,   RESIZE_LRTB,  COLOUR_GREY,   -11,     0,    15,    26, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_VEHICLE_LIST
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,  COLOUR_GREY,     1,    11,    15,    26, SPR_FLAG_VEH_STOPPED,STR_NULL},                         // DEPOT_WIDGET_STOP_ALL
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,  COLOUR_GREY,    12,    23,    15,    26, SPR_FLAG_VEH_RUNNING,STR_NULL},                         // DEPOT_WIDGET_START_ALL
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,    24,    35,    15,    26, 0x0,                 STR_RESIZE_BUTTON},                // DEPOT_WIDGET_RESIZE
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,    24,    35,    15,    26, 0x0,                 STR_TOOLTIP_RESIZE},                // DEPOT_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
 
@@ -275,7 +275,7 @@ struct DepotWindow : Window {
 
 				/* Number of wagons relative to a standard length wagon (rounded up) */
 				SetDParam(0, (u->tcache.cached_total_length + 7) / 8);
-				DrawString(this->widget[DEPOT_WIDGET_MATRIX].left, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, TC_FROMSTRING, SA_RIGHT); // Draw the counter
+				DrawString(this->widget[DEPOT_WIDGET_MATRIX].left, this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT); // Draw the counter
 				break;
 			}
 
@@ -585,19 +585,19 @@ struct DepotWindow : Window {
 	void SetupStringsForDepotWindow(VehicleType type)
 	{
 		this->widget[DEPOT_WIDGET_CAPTION].data          = STR_DEPOT_TRAIN_CAPTION + type;
-		this->widget[DEPOT_WIDGET_STOP_ALL].tooltips     = STR_MASS_STOP_DEPOT_TRAIN_TIP + type;
-		this->widget[DEPOT_WIDGET_START_ALL].tooltips    = STR_MASS_START_DEPOT_TRAIN_TIP + type;
+		this->widget[DEPOT_WIDGET_STOP_ALL].tooltips     = STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP + type;
+		this->widget[DEPOT_WIDGET_START_ALL].tooltips    = STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP + type;
 		this->widget[DEPOT_WIDGET_SELL].tooltips         = STR_DEPOT_TRAIN_SELL_TOOLTIP + type;
-		this->widget[DEPOT_WIDGET_SELL_ALL].tooltips     = STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP + type;
+		this->widget[DEPOT_WIDGET_SELL_ALL].tooltips     = STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP + type;
 
 		this->widget[DEPOT_WIDGET_BUILD].data            = STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON + type;
 		this->widget[DEPOT_WIDGET_BUILD].tooltips        = STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP + type;
-		this->widget[DEPOT_WIDGET_CLONE].data            = STR_CLONE_TRAIN + type;
-		this->widget[DEPOT_WIDGET_CLONE].tooltips        = STR_CLONE_TRAIN_DEPOT_INFO + type;
+		this->widget[DEPOT_WIDGET_CLONE].data            = STR_DEPOT_CLONE_TRAIN + type;
+		this->widget[DEPOT_WIDGET_CLONE].tooltips        = STR_DEPOT_CLONE_TRAIN_DEPOT_INFO + type;
 
 		this->widget[DEPOT_WIDGET_LOCATION].tooltips     = STR_DEPOT_TRAIN_LOCATION_TOOLTIP + type;
-		this->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP + type;
-		this->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips  = STR_DEPOT_AUTOREPLACE_TRAIN_TIP + type;
+		this->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP + type;
+		this->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips  = STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP + type;
 
 		switch (type) {
 			default: NOT_REACHED();

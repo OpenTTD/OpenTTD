@@ -128,8 +128,8 @@ static const CheatEntry _cheats_ui[] = {
 
 static const Widget _cheat_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,   STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   399,     0,    13, STR_CHEATS, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   399,    14,   169, 0x0,        STR_CHEATS_TIP},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   399,     0,    13, STR_CHEATS,        STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   399,    14,   169, 0x0,               STR_CHEATS_TOOLTIP},
 {   WIDGETS_END},
 };
 
@@ -138,7 +138,7 @@ static const NWidgetPart _nested_cheat_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, 0),
 		NWidget(WWT_CAPTION, COLOUR_GREY, 1), SetDataTip(STR_CHEATS, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, 2), SetMinimalSize(400, 156), SetDataTip(0x0, STR_CHEATS_TIP), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, 2), SetMinimalSize(400, 156), SetDataTip(0x0, STR_CHEATS_TOOLTIP), EndContainer(),
 };
 
 struct CheatWindow : Window {
@@ -186,7 +186,7 @@ struct CheatWindow : Window {
 							break;
 
 						/* Set correct string for switch climate cheat */
-						case STR_CHEAT_SWITCH_CLIMATE: val += STR_TEMPERATE_LANDSCAPE;
+						case STR_CHEAT_SWITCH_CLIMATE: val += STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE;
 
 						/* Fallthrough */
 						default: SetDParam(0, val);

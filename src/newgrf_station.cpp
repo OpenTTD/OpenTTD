@@ -91,13 +91,13 @@ void ResetStationClasses()
 
 	/* Set up initial data */
 	_station_classes[0].id = 'DFLT';
-	_station_classes[0].name = STR_STAT_CLASS_DFLT;
+	_station_classes[0].name = STR_STATION_CLASS_DFLT;
 	_station_classes[0].stations = 1;
 	_station_classes[0].spec = MallocT<StationSpec*>(1);
 	_station_classes[0].spec[0] = NULL;
 
 	_station_classes[1].id = 'WAYP';
-	_station_classes[1].name = STR_STAT_CLASS_WAYP;
+	_station_classes[1].name = STR_STATION_CLASS_WAYP;
 	_station_classes[1].stations = 1;
 	_station_classes[1].spec = MallocT<StationSpec*>(1);
 	_station_classes[1].spec[0] = NULL;

@@ -158,7 +158,7 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}แผ�
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}การตั้งค่าของเกม
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}ข้อความ
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}ข้อความจาก {STRING}
-STR_POPUP_CAUTION_CAPTION                                       :{WHITE}คำเตือน!
+STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}คำเตือน!
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}ไม่สามารถทำได้....
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}ไม่สามารถทำให้พื้นที่นี้โล่งได้....
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}ลิขสิทธิ์เดิม {COPYRIGHT} ค.ศ.1995 ของ Chris Sawyer, สงวนลิขสิทธิ์
@@ -166,9 +166,9 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}ลิขสิทธิ์ OpenTTD {COPYRIGHT}2002-2008 ของ The OpenTTD team
 
 STR_QUIT_CAPTION                                                :{WHITE}ออกจากเกม
-STR_YES                                                         :{BLACK}ใช่
-STR_NO                                                          :{BLACK}ไม่
-STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}คุณแน่ใจว่าจะออกจากเกม OpenTTD แล้วกลับสู่ {STRING}?
+STR_QUIT_YES                                                    :{BLACK}ใช่
+STR_QUIT_NO                                                     :{BLACK}ไม่
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}คุณแน่ใจว่าจะออกจากเกม OpenTTD แล้วกลับสู่ {STRING}?
 
 STR_JUST_NOTHING                                                :ไม่มีอะไร
 STR_COLOUR_DARK_BLUE                                            :สีกรมท่า
@@ -229,11 +229,11 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}ทะเลทราย
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}หิมะ
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}ข้อความ
-STR_QUERY_CAPTION                                               :{WHITE}{STRING}
-STR_DEFAULT                                                     :{BLACK}ค่าปกติ
-STR_QUERY_CANCEL                                                :{BLACK}ยกเลิก
-STR_QUERY_OK                                                    :{BLACK}ตกลง
-STR_QUERY_RENAME                                                :{BLACK}เปลี่ยนชื่อ
+STR_WHITE_STRINGN                                               :{WHITE}{STRING}
+STR_BUTTON_DEFAULT                                              :{BLACK}ค่าปกติ
+STR_BUTTON_CANCEL                                               :{BLACK}ยกเลิก
+STR_BUTTON_OK                                                   :{BLACK}ตกลง
+STR_BUTTON_RENAME                                               :{BLACK}เปลี่ยนชื่อ
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_DOS                                                  :DOS
@@ -249,16 +249,16 @@ STR_ERROR_OWNED_BY                                              :{WHITE}...เ�
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}สินค้า
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}ข้อมูล
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}ปริมาณที่รับได้
-STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}ความจุสินค้าทั้งหมดของรถไฟขบวนนี้:
-STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}ความจุสินค้าทั้งหมดของรถไฟขบวนนี้:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_INTRO_NEW_GAME                                              :{BLACK}เริ่มเกมใหม่
 STR_INTRO_LOAD_GAME                                             :{BLACK}เปิดเกมเดิม
 STR_INTRO_MULTIPLAYER                                           :{BLACK}เล่นหลายคน
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}โปรแกรมแก้ฉาก
 
-STR_MAPSIZE                                                     :{BLACK}ขนาดแผนที่:
-STR_BY                                                          :{BLACK}*
+STR_MAPGEN_MAPSIZE                                              :{BLACK}ขนาดแผนที่:
+STR_MAPGEN_BY                                                   :{BLACK}*
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}ตั้งค่าเกม
 
 STR_COMPANY_SOMEONE                                             :บางคน{SKIP}{SKIP}
@@ -306,7 +306,7 @@ STR_FILE_MENU_QUIT_GAME                                         :เลิกเ
 STR_FILE_MENU_EXIT                                              :ออกจากเกม
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}แน่ใจนะว่าจะเลิกเล่นเกมนี้?
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}เลิกเล่น
-STR_SORT_BY                                                     :{BLACK}เรียงตาม
+STR_BUTTON_SORT_BY                                              :{BLACK}เรียงตาม
 
 ### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}ประชากร
@@ -327,10 +327,10 @@ STR_SORT_BY_INTRO_DATE                                          :วันเป
 
 
 
-STR_SEND_TRAIN_TO_DEPOT                                         :ส่งเข้าอู่ซ่อมบำรุง
-STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :ส่งเข้าอู่ซ่อมรถ
-STR_SEND_SHIP_TO_DEPOT                                          :ส่งเข้าอู่ต่อเรือ
-STR_SEND_AIRCRAFT_TO_HANGAR                                     :ส่งเข้าโรงเก็บเครื่องบิน
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :ส่งเข้าอู่ซ่อมบำรุง
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :ส่งเข้าอู่ซ่อมรถ
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :ส่งเข้าอู่ต่อเรือ
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :ส่งเข้าโรงเก็บเครื่องบิน
 
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -361,8 +361,8 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}ไม�
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}ปิดหน้าต่าง
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}หัวของหน้าต่าง - คลิกค้างแล้วลากเพื่อเลื่อนหน้าต่าง
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}ทำลายสิ่งก่อสร้างและอื่นๆ ในพื้นที่ช่องนั้น
-STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}ขุดส่วนมุมของที่ดินให้ต่ำลง
-STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}ถมส่วนมุมของที่ดินให้สูงขึ้น
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}ขุดส่วนมุมของที่ดินให้ต่ำลง
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}ถมส่วนมุมของที่ดินให้สูงขึ้น
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}แถบเลื่อน - ใช้เลื่อนรายการขึ้นลง
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}แสดงโครงร่างของพื้นดินบนแผนที่
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}แสดงยานยนต์บนแผนที่
@@ -374,14 +374,14 @@ STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}เป�
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}กำไรของปีนี้: {CURRENCY} (ปีที่ผ่านมา: {CURRENCY})
 
 ############ range for service numbers starts
-STR_AGE                                                         :{COMMA} ปี ({COMMA})
-STR_AGE_RED                                                     :{RED}{COMMA} ปี ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} ปี ({COMMA})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ปี ({COMMA})
 ############ range for service numbers ends
 
-STR_VEHICLE_TRAIN                                               :รถไฟ
-STR_VEHICLE_ROAD_VEHICLE                                        :รถยนต์
-STR_VEHICLE_SHIP                                                :เรือ
-STR_VEHICLE_AIRCRAFT                                            :อากาศยาน
+STR_REPLACE_VEHICLE_TRAIN                                       :รถไฟ
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :รถยนต์
+STR_REPLACE_VEHICLE_SHIP                                        :เรือ
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :อากาศยาน
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} เริ่มเก่าแล้ว
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} เก่ามากแล้ว
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} เก่ามากแล้ว และควรเปลี่ยนใหม่ในทันที
@@ -396,7 +396,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}เจ�
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}อาณาบริเวณ: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :ไม่มี
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}ชื่อ
-STR_VEHICLE_NAME_SMALL                                          :{TINYFONT}{BLACK}{VEHICLE}
+STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :อันดับที่ 1
@@ -556,8 +556,8 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...ต�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...ใกล้กับเมืองอื่นมากเกินไป
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...พื้นที่นั้นไม่เหมาะสม
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...มีเมืองมากเกินไป
-STR_CANNOT_GENERATE_TOWN                                        :{WHITE}ไม่สามารถสร้างเมืองใดได้อีก
-STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...มีพื้นที่บนแผนที่ไม่มากพอ
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}ไม่สามารถสร้างเมืองใดได้อีก
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...มีพื้นที่บนแผนที่ไม่มากพอ
 
 
 
@@ -597,7 +597,7 @@ STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}ออ�
 
 
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  กำลังบันทึกเกม  *  *
-STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}ขณะนี้กำลังบันทึก,{}โปรดรอจนกว่าจะเสร็จ!
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}ขณะนี้กำลังบันทึก,{}โปรดรอจนกว่าจะเสร็จ!
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}เลือกเพลงฟังรายการเพลง Ezy Street
 
 ############ start of townname region
@@ -625,10 +625,10 @@ STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :โรมาเ
 
 
 
-STR_HEADING_FOR_STATION                                         :{LTBLUE}มุ่งหน้าสู่ {STATION}
-STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}มุ่งหน้าสู่ {STATION}, {VELOCITY}
-STR_NO_ORDERS                                                   :{LTBLUE}ไม่มีสถานที่ที่ต้องไป
-STR_NO_ORDERS_VEL                                               :{LTBLUE}ไม่มีสถานที่ที่ต้องไป, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}มุ่งหน้าสู่ {STATION}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}มุ่งหน้าสู่ {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}ไม่มีสถานที่ที่ต้องไป
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}ไม่มีสถานที่ที่ต้องไป, {VELOCITY}
 
 STR_PASSENGERS                                                  :คน
 STR_BAGS                                                        :ถุง
@@ -639,9 +639,9 @@ STR_CRATES                                                      :ลัง
 STR_RES_OTHER                                                   :อื่นๆ
 STR_NOTHING                                                     :
 
-STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}ไม่สามารถใช้รายการสถานที่ร่วมกันได้
-STR_CANT_COPY_ORDER_LIST                                        :{WHITE}ไม่สามารถคัดลอกรายการสถานที่ได้
-STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - สิ้นสุดรายการที่ใช้ร่วมกัน - -
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}ไม่สามารถใช้รายการสถานที่ร่วมกันได้
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}ไม่สามารถคัดลอกรายการสถานที่ได้
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :{SETX 10}- - สิ้นสุดรายการที่ใช้ร่วมกัน - -
 
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ไม่สามารถหาทางไปต่อได้.
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} กำลังหลงทาง.

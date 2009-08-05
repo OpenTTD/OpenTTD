@@ -97,7 +97,7 @@ struct AIListWindow : public Window {
 				int y = this->nested_array[AIL_WIDGET_LIST]->pos_y;
 				/* First AI in the list is hardcoded to random */
 				if (this->vscroll.pos == 0) {
-					DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_LEFT, y + WD_MATRIX_TOP, STR_AI_RANDOM_AI, this->selected == -1 ? TC_WHITE : TC_BLACK);
+					DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_LEFT, y + WD_MATRIX_TOP, STR_AI_CONFIG_RANDOM_AI, this->selected == -1 ? TC_WHITE : TC_BLACK);
 					y += this->line_height;
 				}
 				AIInfoList::const_iterator it = this->ai_info_list->begin();
@@ -119,14 +119,14 @@ struct AIListWindow : public Window {
 				if (selected_info != NULL) {
 					int y = r.top + WD_FRAMERECT_TOP;
 					SetDParamStr(0, selected_info->GetAuthor());
-					DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, STR_AI_AUTHOR);
+					DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, STR_AI_LIST_AUTHOR);
 					y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 					SetDParam(0, selected_info->GetVersion());
-					DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, STR_AI_VERSION);
+					DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, STR_AI_LIST_VERSION);
 					y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 					if (selected_info->GetURL() != NULL) {
 						SetDParamStr(0, selected_info->GetURL());
-						DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, STR_AI_URL);
+						DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, y, STR_AI_LIST_URL);
 						y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 					}
 					SetDParamStr(0, selected_info->GetDescription());
@@ -173,7 +173,7 @@ struct AIListWindow : public Window {
 
 			case AIL_WIDGET_CONTENT_DOWNLOAD:
 				if (!_network_available) {
-					ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
+					ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERROR_NOTAVAILABLE, 0, 0);
 				} else {
 #if defined(ENABLE_NETWORK)
 					ShowNetworkContentListWindow(NULL, CONTENT_TYPE_AI);
@@ -212,14 +212,14 @@ static const NWidgetPart _nested_ai_list_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_MAUVE, AIL_WIDGET_CAPTION), SetMinimalSize(189, 14), SetDataTip(STR_AI_LIST_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_MAUVE, AIL_WIDGET_LIST), SetMinimalSize(188, 112), SetResize(1, 1), SetDataTip(0x501, STR_AI_AILIST_TIP),
+		NWidget(WWT_MATRIX, COLOUR_MAUVE, AIL_WIDGET_LIST), SetMinimalSize(188, 112), SetResize(1, 1), SetDataTip(0x501, STR_AI_LIST_TOOLTIP),
 		NWidget(WWT_SCROLLBAR, COLOUR_MAUVE, AIL_WIDGET_SCROLLBAR),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_MAUVE, AIL_WIDGET_INFO_BG), SetMinimalSize(200, 84), SetResize(1, 0),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, AIL_WIDGET_ACCEPT), SetMinimalSize(100, 12), SetResize(1, 0), SetDataTip(STR_AI_ACCEPT, STR_AI_ACCEPT_TIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, AIL_WIDGET_CANCEL), SetMinimalSize(100, 12), SetResize(1, 0), SetDataTip(STR_AI_CANCEL, STR_AI_CANCEL_TIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, AIL_WIDGET_ACCEPT), SetMinimalSize(100, 12), SetResize(1, 0), SetDataTip(STR_AI_LIST_ACCEPT, STR_AI_LIST_ACCEPT_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, AIL_WIDGET_CANCEL), SetMinimalSize(100, 12), SetResize(1, 0), SetDataTip(STR_AI_LIST_CANCEL, STR_AI_LIST_CANCEL_TOOLTIP),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, AIL_WIDGET_CONTENT_DOWNLOAD), SetMinimalSize(188, 12), SetResize(1, 0), SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
@@ -361,13 +361,13 @@ struct AISettingsWindow : public Window {
 
 					if (_settings_newgame.difficulty.diff_level != 3) {
 						_settings_newgame.difficulty.diff_level = 3;
-						ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
+						ShowErrorMessage(INVALID_STRING_ID, STR_WARNING_DIFFICULTY_TO_CUSTOM, 0, 0);
 					}
 				} else if (!bool_item) {
 					/* Display a query box so users can enter a custom value. */
 					this->clicked_row = num;
 					SetDParam(0, this->ai_config->GetSetting(config_item.name));
-					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPT, 10, 100, this, CS_NUMERAL, QSF_NONE);
+					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, 100, this, CS_NUMERAL, QSF_NONE);
 				}
 
 				this->SetDirty();
@@ -420,8 +420,8 @@ static const NWidgetPart _nested_ai_settings_widgets[] = {
 		NWidget(WWT_SCROLLBAR, COLOUR_MAUVE, AIS_WIDGET_SCROLLBAR),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, AIS_WIDGET_ACCEPT), SetMinimalSize(94, 12), SetResize(1, 0), SetDataTip(STR_AI_CLOSE, STR_NULL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, AIS_WIDGET_RESET), SetMinimalSize(94, 12), SetResize(1, 0), SetDataTip(STR_AI_RESET, STR_NULL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, AIS_WIDGET_ACCEPT), SetMinimalSize(94, 12), SetResize(1, 0), SetDataTip(STR_AI_SETTINGS_CLOSE, STR_NULL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, AIS_WIDGET_RESET), SetMinimalSize(94, 12), SetResize(1, 0), SetDataTip(STR_AI_SETTINGS_RESET, STR_NULL),
 		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE, AIS_WIDGET_RESIZE),
 	EndContainer(),
 };
@@ -462,14 +462,14 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_MAUVE, AIC_WIDGET_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 16),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_MATRIX, COLOUR_MAUVE, AIC_WIDGET_LIST), SetMinimalSize(288, 112), SetDataTip(0x801, STR_AI_LIST_TIP),
+			NWidget(WWT_MATRIX, COLOUR_MAUVE, AIC_WIDGET_LIST), SetMinimalSize(288, 112), SetDataTip(0x801, STR_AI_CONFIG_LIST_TOOLTIP),
 			NWidget(WWT_SCROLLBAR, COLOUR_MAUVE, AIC_WIDGET_SCROLLBAR),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 9),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(5, 0, 5),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, AIC_WIDGET_CHANGE), SetFill(1, 0), SetMinimalSize(93, 12), SetDataTip(STR_AI_CHANGE, STR_AI_CHANGE_TIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, AIC_WIDGET_CONFIGURE), SetFill(1, 0), SetMinimalSize(93, 12), SetDataTip(STR_AI_CONFIGURE, STR_AI_CONFIGURE_TIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, AIC_WIDGET_CLOSE), SetFill(1, 0), SetMinimalSize(93, 12), SetDataTip(STR_AI_CLOSE, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, AIC_WIDGET_CHANGE), SetFill(1, 0), SetMinimalSize(93, 12), SetDataTip(STR_AI_CONFIG_CHANGE, STR_AI_CONFIG_CHANGE_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, AIC_WIDGET_CONFIGURE), SetFill(1, 0), SetMinimalSize(93, 12), SetDataTip(STR_AI_CONFIG_CONFIGURE, STR_AI_CONFIG_CONFIGURE_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, AIC_WIDGET_CLOSE), SetFill(1, 0), SetMinimalSize(93, 12), SetDataTip(STR_AI_SETTINGS_CLOSE, STR_NULL),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 9),
 	EndContainer(),
@@ -544,9 +544,9 @@ struct AIConfigWindow : public Window {
 						SetDParamStr(0, AIConfig::GetConfig((CompanyID)i)->GetInfo()->GetName());
 						text = STR_JUST_RAW_STRING;
 					} else if (i == 0) {
-						text = STR_AI_HUMAN_PLAYER;
+						text = STR_AI_CONFIG_HUMAN_PLAYER;
 					} else {
-						text = STR_AI_RANDOM_AI;
+						text = STR_AI_CONFIG_RANDOM_AI;
 					}
 					DrawString(r.left + 10, r.right - 10, y + WD_MATRIX_TOP, text,
 							(this->selected_slot == i) ? TC_WHITE : ((i > _settings_newgame.difficulty.max_no_competitors || i == 0) ? TC_SILVER : TC_ORANGE));
@@ -881,48 +881,48 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_VIEW),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION),
+			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 1), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION),
+			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 1), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 2), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION),
+			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 2), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 3), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION),
+			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 3), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 4), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION),
+			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 4), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 5), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION),
+			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 5), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 6), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION),
+			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 6), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 7), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION),
+			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 7), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0), SetResize(1, 0),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 8), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION),
+			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 8), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 9), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION),
+			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 9), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 10), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION),
+			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 10), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 11), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION),
+			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 11), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 12), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION),
+			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 12), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 13), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION),
+			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 13), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 14), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION),
+			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 14), SetMinimalSize(37, 13), SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(39, 0), SetResize(1, 0),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 1), SetResize(1, 0),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_NAME_TEXT), SetMinimalSize(150, 20), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_NAME_TIP),
+		NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_NAME_TEXT), SetMinimalSize(150, 20), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_NAME_TOOLTIP),
 		EndContainer(),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, AID_WIDGET_RELOAD_TOGGLE), SetMinimalSize(149, 20), SetDataTip(STR_AI_DEBUG_RELOAD, STR_AI_DEBUG_RELOAD_TIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, AID_WIDGET_RELOAD_TOGGLE), SetMinimalSize(149, 20), SetDataTip(STR_AI_DEBUG_RELOAD, STR_AI_DEBUG_RELOAD_TOOLTIP),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_LOG_PANEL), SetMinimalSize(287, 180), SetResize(1, 1),
@@ -948,6 +948,6 @@ void ShowAIDebugWindow(CompanyID show_company)
 		if (w == NULL) w = new AIDebugWindow(&_ai_debug_desc, 0);
 		if (show_company != INVALID_COMPANY) w->ChangeToAI(show_company);
 	} else {
-		ShowErrorMessage(INVALID_STRING_ID, STR_AI_DEBUG_SERVER_ONLY, 0, 0);
+		ShowErrorMessage(INVALID_STRING_ID, STR_ERROR_AI_DEBUG_SERVER_ONLY, 0, 0);
 	}
 }

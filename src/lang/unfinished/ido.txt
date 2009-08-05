@@ -91,9 +91,9 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 La kruo OpenTTD
 
 STR_QUIT_CAPTION                                                :{WHITE}Livas
-STR_YES                                                         :{BLACK}Yes
-STR_NO                                                          :{BLACK}Ne
-STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Kad tu esas certa ke tu volas livar OpenTTD ed rivenar a {STRING}?
+STR_QUIT_YES                                                    :{BLACK}Yes
+STR_QUIT_NO                                                     :{BLACK}Ne
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Kad tu esas certa ke tu volas livar OpenTTD ed rivenar a {STRING}?
 
 STR_JUST_NOTHING                                                :Nulo
 STR_COLOUR_DARK_BLUE                                            :Obskur-blua
@@ -154,10 +154,10 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Dezerto
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Nivo
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Sendajo
-STR_QUERY_CAPTION                                               :{WHITE}{STRING}
-STR_QUERY_CANCEL                                                :{BLACK}Anular
-STR_QUERY_OK                                                    :{BLACK}OK
-STR_QUERY_RENAME                                                :{BLACK}Rinomizar
+STR_WHITE_STRINGN                                               :{WHITE}{STRING}
+STR_BUTTON_CANCEL                                               :{BLACK}Anular
+STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_RENAME                                               :{BLACK}Rinomizar
 
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Kargajo
@@ -198,10 +198,10 @@ STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLAC
 ############ range for service numbers starts
 ############ range for service numbers ends
 
-STR_VEHICLE_TRAIN                                               :Treni
-STR_VEHICLE_ROAD_VEHICLE                                        :Voy-vehili
-STR_VEHICLE_SHIP                                                :Bateli
-STR_VEHICLE_AIRCRAFT                                            :Aeroplani
+STR_REPLACE_VEHICLE_TRAIN                                       :Treni
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Voy-vehili
+STR_REPLACE_VEHICLE_SHIP                                        :Bateli
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeroplani
 
 ############ range for days starts (also used for the place in the highscore window)
 ############ range for days ends
@@ -387,7 +387,7 @@ STR_VEHICLE_AIRCRAFT                                            :Aeroplani
 ##id 0x5000
 
 ##id 0x5800
-STR_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                            :Faro
+STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Faro
 
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame

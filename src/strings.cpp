@@ -751,7 +751,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 				 *   8bit   - cargo type
 				 *   16-bit - cargo count */
 				CargoID cargo = GetInt32(&argv);
-				StringID cargo_str = (cargo == CT_INVALID) ? STR_CARGO_N_A : CargoSpec::Get(cargo)->quantifier;
+				StringID cargo_str = (cargo == CT_INVALID) ? STR_QUANTITY_N_A : CargoSpec::Get(cargo)->quantifier;
 				buff = GetStringWithArgs(buff, cargo_str, argv++, last);
 				break;
 			}
@@ -864,7 +864,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 					int64 temp[2];
 					temp[0] = wp->town->index;
 					temp[1] = wp->town_cn + 1;
-					StringID str = ((wp->string_id == STR_SV_STNAME_BUOY) ? STR_BUOYNAME_CITY : STR_WAYPOINTNAME_CITY);
+					StringID str = ((wp->string_id == STR_SV_STNAME_BUOY) ? STR_FORMAT_BUOY_NAME : STR_FORMAT_WAYPOINT_NAME);
 					if (wp->town_cn != 0) str++;
 					buff = GetStringWithArgs(buff, str, temp, last);
 				}
@@ -995,7 +995,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 				if (si->name != NULL) {
 					buff = strecpy(buff, si->name, last);
 				} else {
-					buff = GetStringWithArgs(buff, STR_SIGN_DEFAULT, NULL, last);
+					buff = GetStringWithArgs(buff, STR_DEFAULT_SIGN_NAME, NULL, last);
 				}
 				break;
 			}

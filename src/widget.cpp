@@ -1963,13 +1963,13 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 		case WWT_STICKYBOX:
 			this->SetFill(false, false);
 			this->SetMinimalSize(WD_STICKYBOX_WIDTH, 14);
-			this->SetDataTip(STR_NULL, STR_STICKY_BUTTON);
+			this->SetDataTip(STR_NULL, STR_TOOLTIP_STICKY);
 			break;
 
 		case WWT_RESIZEBOX:
 			this->SetFill(false, false);
 			this->SetMinimalSize(WD_RESIZEBOX_WIDTH, 12);
-			this->SetDataTip(STR_NULL, STR_RESIZE_BUTTON);
+			this->SetDataTip(STR_NULL, STR_TOOLTIP_RESIZE);
 			break;
 
 		case WWT_CLOSEBOX:

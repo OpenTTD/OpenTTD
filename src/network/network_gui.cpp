@@ -34,14 +34,14 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl);
 extern void SwitchToMode(SwitchMode new_mode);
 
 static const StringID _connection_types_dropdown[] = {
-	STR_NETWORK_LAN_INTERNET,
-	STR_NETWORK_INTERNET_ADVERTISE,
+	STR_NETWORK_START_SERVER_LAN_INTERNET,
+	STR_NETWORK_START_SERVER_INTERNET_ADVERTISE,
 	INVALID_STRING_ID
 };
 
 static const StringID _lan_internet_types_dropdown[] = {
-	STR_NETWORK_LAN,
-	STR_NETWORK_INTERNET,
+	STR_NETWORK_SERVER_LIST_LAN,
+	STR_NETWORK_SERVER_LIST_INTERNET,
 	INVALID_STRING_ID
 };
 
@@ -249,13 +249,13 @@ protected:
 			SetDParam(1, cur_item->info.clients_max);
 			SetDParam(2, cur_item->info.companies_on);
 			SetDParam(3, cur_item->info.companies_max);
-			DrawString(this->widget[NGWW_CLIENTS].left, this->widget[NGWW_CLIENTS].right, y, STR_NETWORK_GENERAL_ONLINE, TC_FROMSTRING, SA_CENTER);
+			DrawString(this->widget[NGWW_CLIENTS].left, this->widget[NGWW_CLIENTS].right, y, STR_NETWORK_SERVER_LIST_GENERAL_ONLINE, TC_FROMSTRING, SA_CENTER);
 
 			/* map size */
 			if (!this->IsWidgetHidden(NGWW_MAPSIZE)) {
 				SetDParam(0, cur_item->info.map_width);
 				SetDParam(1, cur_item->info.map_height);
-				DrawString(this->widget[NGWW_MAPSIZE].left, this->widget[NGWW_MAPSIZE].right, y, STR_NETWORK_MAP_SIZE_SHORT, TC_FROMSTRING, SA_CENTER);
+				DrawString(this->widget[NGWW_MAPSIZE].left, this->widget[NGWW_MAPSIZE].right, y, STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT, TC_FROMSTRING, SA_CENTER);
 			}
 
 			/* current date */
@@ -384,7 +384,7 @@ public:
 		/* Edit box to set client name */
 		this->DrawEditBox(NGWW_CLIENT);
 
-		DrawString(0, this->widget[NGWW_CLIENT].left - 5, 23, STR_NETWORK_PLAYER_NAME, TC_FROMSTRING, SA_RIGHT);
+		DrawString(0, this->widget[NGWW_CLIENT].left - 5, 23, STR_NETWORK_SERVER_LIST_PLAYER_NAME, TC_FROMSTRING, SA_RIGHT);
 
 		/* Sort based on widgets: name, clients, compatibility */
 		switch (this->servers.SortType()) {
@@ -412,16 +412,16 @@ public:
 		/* Draw the right menu */
 		GfxFillRect(this->widget[NGWW_DETAILS].left + 1, 43, this->widget[NGWW_DETAILS].right - 1, 92, 157);
 		if (sel == NULL) {
-			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 58, STR_NETWORK_GAME_INFO, TC_FROMSTRING, SA_CENTER);
+			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 58, STR_NETWORK_SERVER_LIST_GAME_INFO, TC_FROMSTRING, SA_CENTER);
 		} else if (!sel->online) {
 			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 68, sel->info.server_name, TC_ORANGE, SA_CENTER); // game name
 
-			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 132, STR_NETWORK_SERVER_OFFLINE, TC_FROMSTRING, SA_CENTER); // server offline
+			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 132, STR_NETWORK_SERVER_LIST_SERVER_OFFLINE, TC_FROMSTRING, SA_CENTER); // server offline
 		} else { // show game info
 			uint16 y = 100;
 			const uint16 x = this->widget[NGWW_DETAILS].left + 5;
 
-			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 48, STR_NETWORK_GAME_INFO, TC_FROMSTRING, SA_CENTER);
+			DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, 48, STR_NETWORK_SERVER_LIST_GAME_INFO, TC_FROMSTRING, SA_CENTER);
 
 			DrawString(this->widget[NGWW_DETAILS].left, this->widget[NGWW_DETAILS].right, 62, sel->info.server_name, TC_ORANGE, SA_CENTER); // game name
 			DrawString(this->widget[NGWW_DETAILS].left, this->widget[NGWW_DETAILS].right, 74, sel->info.map_name, TC_BLACK, SA_CENTER); // map name
@@ -430,47 +430,47 @@ public:
 			SetDParam(1, sel->info.clients_max);
 			SetDParam(2, sel->info.companies_on);
 			SetDParam(3, sel->info.companies_max);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_CLIENTS);
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_CLIENTS);
 			y += 10;
 
 			SetDParam(0, STR_NETWORK_LANG_ANY + sel->info.server_lang);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_LANGUAGE); // server language
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_LANGUAGE); // server language
 			y += 10;
 
-			SetDParam(0, STR_TEMPERATE_LANDSCAPE + sel->info.map_set);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_TILESET); // tileset
+			SetDParam(0, STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE + sel->info.map_set);
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_TILESET); // tileset
 			y += 10;
 
 			SetDParam(0, sel->info.map_width);
 			SetDParam(1, sel->info.map_height);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_MAP_SIZE); // map size
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_MAP_SIZE); // map size
 			y += 10;
 
 			SetDParamStr(0, sel->info.server_revision);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_VERSION); // server version
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_SERVER_VERSION); // server version
 			y += 10;
 
 			SetDParamStr(0, sel->address.GetAddressAsString());
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_ADDRESS); // server address
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_SERVER_ADDRESS); // server address
 			y += 10;
 
 			SetDParam(0, sel->info.start_date);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_START_DATE); // start date
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_START_DATE); // start date
 			y += 10;
 
 			SetDParam(0, sel->info.game_date);
-			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_CURRENT_DATE); // current date
+			DrawString(x, this->widget[NGWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_CURRENT_DATE); // current date
 			y += 10;
 
 			y += 2;
 
 			if (!sel->info.compatible) {
-				DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, y, sel->info.version_compatible ? STR_NETWORK_GRF_MISMATCH : STR_NETWORK_VERSION_MISMATCH, TC_FROMSTRING, SA_CENTER); // server mismatch
+				DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, y, sel->info.version_compatible ? STR_NETWORK_SERVER_LIST_GRF_MISMATCH : STR_NETWORK_SERVER_LIST_VERSION_MISMATCH, TC_FROMSTRING, SA_CENTER); // server mismatch
 			} else if (sel->info.clients_on == sel->info.clients_max) {
 				/* Show: server full, when clients_on == max_clients */
-				DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, y, STR_NETWORK_SERVER_FULL, TC_FROMSTRING, SA_CENTER); // server full
+				DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, y, STR_NETWORK_SERVER_LIST_SERVER_FULL, TC_FROMSTRING, SA_CENTER); // server full
 			} else if (sel->info.use_password) {
-				DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, y, STR_NETWORK_PASSWORD, TC_FROMSTRING, SA_CENTER); // password warning
+				DrawString(this->widget[NGWW_DETAILS].left + 1, this->widget[NGWW_DETAILS].right - 1, y, STR_NETWORK_SERVER_LIST_PASSWORD, TC_FROMSTRING, SA_CENTER); // password warning
 			}
 
 			y += 10;
@@ -546,7 +546,7 @@ public:
 				SetDParamStr(0, _settings_client.network.connect_to_ip);
 				ShowQueryString(
 					STR_JUST_RAW_STRING,
-					STR_NETWORK_ENTER_IP,
+					STR_NETWORK_SERVER_LIST_ENTER_IP,
 					NETWORK_HOSTNAME_LENGTH,  // maximum number of characters including '\0'
 					0,                        // no limit in pixels
 					this, CS_ALPHANUMERAL, QSF_ACCEPT_UNCHANGED);
@@ -781,42 +781,42 @@ GUIGameServerList::SortFunction * const NetworkGameWindow::sorter_funcs[] = {
 static const Widget _network_game_window_widgets[] = {
 /* TOP */
 {   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,                  STR_TOOLTIP_CLOSE_WINDOW},         // NGWW_CLOSE
-{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_LIGHT_BLUE,    11,   449,     0,    13, STR_NETWORK_MULTIPLAYER,          STR_NULL},                         // NGWW_CAPTION
+{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_LIGHT_BLUE,    11,   449,     0,    13, STR_NETWORK_SERVER_LIST_CAPTION,          STR_NULL},                         // NGWW_CAPTION
 {      WWT_PANEL,   RESIZE_RB,     COLOUR_LIGHT_BLUE,     0,   449,    14,   263, 0x0,                              STR_NULL},                         // NGWW_MAIN
 
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     9,    85,    23,    35, STR_NETWORK_CONNECTION,           STR_NULL},                         // NGWW_CONNECTION
-{   WWT_DROPDOWN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    90,   181,    22,    33, STR_NETWORK_LAN_INTERNET_COMBO,   STR_NETWORK_CONNECTION_TIP},       // NGWW_CONN_BTN
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     9,    85,    23,    35, STR_NETWORK_SERVER_LIST_CONNECTION,           STR_NULL},                         // NGWW_CONNECTION
+{   WWT_DROPDOWN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    90,   181,    22,    33, STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO,   STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP},       // NGWW_CONN_BTN
 
-{    WWT_EDITBOX,   RESIZE_LR,     COLOUR_LIGHT_BLUE,   290,   440,    22,    33, STR_NETWORK_PLAYER_NAME_OSKTITLE, STR_NETWORK_ENTER_NAME_TIP},       // NGWW_CLIENT
+{    WWT_EDITBOX,   RESIZE_LR,     COLOUR_LIGHT_BLUE,   290,   440,    22,    33, STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE, STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP},       // NGWW_CLIENT
 
 /* LEFT SIDE */
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         10,    70,    42,    53, STR_NETWORK_GAME_NAME,            STR_NETWORK_GAME_NAME_TIP},        // NGWW_NAME
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         71,   150,    42,    53, STR_NETWORK_CLIENTS_CAPTION,      STR_NETWORK_CLIENTS_CAPTION_TIP},  // NGWW_CLIENTS
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         71,   150,    42,    53, STR_NETWORK_MAP_SIZE_CAPTION,     STR_NETWORK_MAP_SIZE_CAPTION_TIP}, // NGWW_MAPSIZE
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         71,   130,    42,    53, STR_NETWORK_DATE_CAPTION,         STR_NETWORK_DATE_CAPTION_TIP},     // NGWW_DATE
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         71,   130,    42,    53, STR_NETWORK_YEARS_CAPTION,        STR_NETWORK_YEARS_CAPTION_TIP},    // NGWW_YEARS
-{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_WHITE,        151,   190,    42,    53, STR_EMPTY,                        STR_NETWORK_INFO_ICONS_TIP},       // NGWW_INFO
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         10,    70,    42,    53, STR_NETWORK_SERVER_LIST_GAME_NAME,            STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP},        // NGWW_NAME
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         71,   150,    42,    53, STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION,      STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP},  // NGWW_CLIENTS
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         71,   150,    42,    53, STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION,     STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP}, // NGWW_MAPSIZE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         71,   130,    42,    53, STR_NETWORK_SERVER_LIST_DATE_CAPTION,         STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP},     // NGWW_DATE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         71,   130,    42,    53, STR_NETWORK_SERVER_LIST_YEARS_CAPTION,        STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP},    // NGWW_YEARS
+{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_WHITE,        151,   190,    42,    53, STR_EMPTY,                        STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP},       // NGWW_INFO
 
-{     WWT_MATRIX,   RESIZE_RB,     COLOUR_LIGHT_BLUE,    10,   190,    54,   208, (11 << 8) + 1,                    STR_NETWORK_CLICK_GAME_TO_SELECT}, // NGWW_MATRIX
+{     WWT_MATRIX,   RESIZE_RB,     COLOUR_LIGHT_BLUE,    10,   190,    54,   208, (11 << 8) + 1,                    STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT}, // NGWW_MATRIX
 {  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_LIGHT_BLUE,   191,   202,    42,   208, 0x0,                              STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // NGWW_SCROLLBAR
-{       WWT_TEXT,   RESIZE_RTB,    COLOUR_LIGHT_BLUE,    10,   190,   211,   222, STR_NETWORK_LAST_JOINED_SERVER,   STR_NULL},                         // NGWW_LASTJOINED_LABEL
-{      WWT_PANEL,   RESIZE_RTB,    COLOUR_LIGHT_BLUE,    10,   190,   223,   236, 0x0,                              STR_NETWORK_CLICK_TO_SELECT_LAST}, // NGWW_LASTJOINED
+{       WWT_TEXT,   RESIZE_RTB,    COLOUR_LIGHT_BLUE,    10,   190,   211,   222, STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER,   STR_NULL},                         // NGWW_LASTJOINED_LABEL
+{      WWT_PANEL,   RESIZE_RTB,    COLOUR_LIGHT_BLUE,    10,   190,   223,   236, 0x0,                              STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST}, // NGWW_LASTJOINED
 
 /* RIGHT SIDE */
 {      WWT_PANEL,   RESIZE_LRB,    COLOUR_LIGHT_BLUE,   210,   440,    42,   236, 0x0,                              STR_NULL},                         // NGWW_DETAILS
 
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        215,   315,   215,   226, STR_NETWORK_JOIN_GAME,            STR_NULL},                         // NGWW_JOIN
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        330,   435,   215,   226, STR_NETWORK_REFRESH,              STR_NETWORK_REFRESH_TIP},          // NGWW_REFRESH
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        215,   315,   215,   226, STR_NETWORK_SERVER_LIST_JOIN_GAME,            STR_NULL},                         // NGWW_JOIN
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        330,   435,   215,   226, STR_NETWORK_SERVER_LIST_REFRESH,              STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP},          // NGWW_REFRESH
 
 { WWT_PUSHTXTBTN,   RESIZE_LRTB,   COLOUR_WHITE,        330,   435,   197,   208, STR_INTRO_NEWGRF_SETTINGS,        STR_NULL},                         // NGWW_NEWGRF
 
 /* BOTTOM */
-{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,         10,   110,   246,   257, STR_NETWORK_FIND_SERVER,          STR_NETWORK_FIND_SERVER_TIP},      // NGWW_FIND
-{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        118,   218,   246,   257, STR_NETWORK_ADD_SERVER,           STR_NETWORK_ADD_SERVER_TIP},       // NGWW_ADD
-{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        226,   326,   246,   257, STR_NETWORK_START_SERVER,         STR_NETWORK_START_SERVER_TIP},     // NGWW_START
-{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        334,   434,   246,   257, STR_QUERY_CANCEL,                 STR_NULL},                         // NGWW_CANCEL
+{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,         10,   110,   246,   257, STR_NETWORK_SERVER_LIST_FIND_SERVER,          STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP},      // NGWW_FIND
+{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        118,   218,   246,   257, STR_NETWORK_SERVER_LIST_ADD_SERVER,           STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP},       // NGWW_ADD
+{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        226,   326,   246,   257, STR_NETWORK_SERVER_LIST_START_SERVER,         STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP},     // NGWW_START
+{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_WHITE,        334,   434,   246,   257, STR_BUTTON_CANCEL,                 STR_NULL},                         // NGWW_CANCEL
 
-{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_LIGHT_BLUE,   438,   449,   252,   263, 0x0,                              STR_RESIZE_BUTTON },               // NGWW_RESIZE
+{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_LIGHT_BLUE,   438,   449,   252,   263, 0x0,                              STR_TOOLTIP_RESIZE },               // NGWW_RESIZE
 
 {   WIDGETS_END},
 };
@@ -829,7 +829,7 @@ NWidgetPart _nested_network_game_widgets[] = {
 	/* TOP */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NGWW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NGWW_CAPTION), SetMinimalSize(439, 14), SetDataTip(STR_NETWORK_MULTIPLAYER, STR_NULL), // XXX Add default caption tooltip!
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NGWW_CAPTION), SetMinimalSize(439, 14), SetDataTip(STR_NETWORK_SERVER_LIST_CAPTION, STR_NULL), // XXX Add default caption tooltip!
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NGWW_MAIN),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 8), SetResize(1, 0),
@@ -837,18 +837,18 @@ NWidgetPart _nested_network_game_widgets[] = {
 			NWidget(NWID_SPACER), SetMinimalSize(9, 0),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SPACER), SetMinimalSize(0,1), // Text is one pixel further down
-				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NGWW_CONNECTION), SetMinimalSize(77, 13), SetDataTip(STR_NETWORK_CONNECTION, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NGWW_CONNECTION), SetMinimalSize(77, 13), SetDataTip(STR_NETWORK_SERVER_LIST_CONNECTION, STR_NULL),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(4, 0),
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, NGWW_CONN_BTN), SetMinimalSize(92, 12),
-									SetDataTip(STR_NETWORK_LAN_INTERNET_COMBO, STR_NETWORK_CONNECTION_TIP),
+									SetDataTip(STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO, STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP),
 				NWidget(NWID_SPACER), SetMinimalSize(0,2), // Text ends two pixels further down
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(108, 0), SetFill(1,0), SetResize(1,0),
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, NGWW_CLIENT), SetMinimalSize(151, 12),
-									SetDataTip(STR_NETWORK_PLAYER_NAME_OSKTITLE, STR_NETWORK_ENTER_NAME_TIP),
+									SetDataTip(STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE, STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP),
 				NWidget(NWID_SPACER), SetMinimalSize(0,2), // Text ends two pixels further down
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(9, 0),
@@ -860,23 +860,23 @@ NWidgetPart _nested_network_game_widgets[] = {
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_NAME), SetMinimalSize(61, 12), SetResize(1, 0),
-									SetDataTip(STR_NETWORK_GAME_NAME, STR_NETWORK_GAME_NAME_TIP),
+									SetDataTip(STR_NETWORK_SERVER_LIST_GAME_NAME, STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_CLIENTS), SetMinimalSize(20, 12),
-									SetDataTip(STR_NETWORK_CLIENTS_CAPTION, STR_NETWORK_CLIENTS_CAPTION_TIP),
+									SetDataTip(STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION, STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_MAPSIZE), SetMinimalSize(20, 12),
-									SetDataTip(STR_NETWORK_MAP_SIZE_CAPTION, STR_NETWORK_MAP_SIZE_CAPTION_TIP),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_DATE), SetMinimalSize(20, 12), SetDataTip(STR_NETWORK_DATE_CAPTION, STR_NETWORK_DATE_CAPTION_TIP),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_YEARS), SetMinimalSize(20, 12), SetDataTip(STR_NETWORK_YEARS_CAPTION, STR_NETWORK_YEARS_CAPTION_TIP),
+									SetDataTip(STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION, STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_DATE), SetMinimalSize(20, 12), SetDataTip(STR_NETWORK_SERVER_LIST_DATE_CAPTION, STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_YEARS), SetMinimalSize(20, 12), SetDataTip(STR_NETWORK_SERVER_LIST_YEARS_CAPTION, STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP),
 					NWidget(NWID_SPACER), SetMinimalSize(0, 0), SetFill(0, 0), SetResize(1, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_INFO), SetMinimalSize(40, 12), SetDataTip(STR_EMPTY, STR_NETWORK_INFO_ICONS_TIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_INFO), SetMinimalSize(40, 12), SetDataTip(STR_EMPTY, STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP),
 				EndContainer(),
 				NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NGWW_MATRIX), SetMinimalSize(181, 155), SetResize(1,1),
-									SetDataTip((11 << 8) + 1, STR_NETWORK_CLICK_GAME_TO_SELECT),
+									SetDataTip((11 << 8) + 1, STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2), SetResize(1, 0),
 				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NGWW_LASTJOINED_LABEL), SetMinimalSize(181, 12), SetFill(1,0),
-									SetDataTip(STR_NETWORK_LAST_JOINED_SERVER, STR_NULL), SetResize(1, 0),
+									SetDataTip(STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER, STR_NULL), SetResize(1, 0),
 				NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NGWW_LASTJOINED), SetMinimalSize(181, 14), SetFill(1,0), SetResize(1, 0),
-									SetDataTip(0x0, STR_NETWORK_CLICK_TO_SELECT_LAST),
+									SetDataTip(0x0, STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST),
 				EndContainer(),
 			EndContainer(),
 			NWidget(NWID_VERTICAL),
@@ -895,9 +895,9 @@ NWidgetPart _nested_network_game_widgets[] = {
 				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(NWID_SPACER), SetMinimalSize(5, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_JOIN), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_JOIN_GAME, STR_NULL),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_JOIN), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_SERVER_LIST_JOIN_GAME, STR_NULL),
 					NWidget(NWID_SPACER), SetMinimalSize(14, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_REFRESH), SetMinimalSize(106, 12), SetDataTip(STR_NETWORK_REFRESH, STR_NETWORK_REFRESH_TIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_REFRESH), SetMinimalSize(106, 12), SetDataTip(STR_NETWORK_SERVER_LIST_REFRESH, STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP),
 					NWidget(NWID_SPACER), SetMinimalSize(5, 0),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 10),
@@ -910,13 +910,13 @@ NWidgetPart _nested_network_game_widgets[] = {
 			NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_FIND), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_FIND_SERVER, STR_NETWORK_FIND_SERVER_TIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_FIND), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_SERVER_LIST_FIND_SERVER, STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP),
 					NWidget(NWID_SPACER), SetMinimalSize(7, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_ADD), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_ADD_SERVER, STR_NETWORK_ADD_SERVER_TIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_ADD), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_SERVER_LIST_ADD_SERVER, STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP),
 					NWidget(NWID_SPACER), SetMinimalSize(7, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_START), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_START_SERVER, STR_NETWORK_START_SERVER_TIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_START), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_SERVER_LIST_START_SERVER, STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP),
 					NWidget(NWID_SPACER), SetMinimalSize(7, 0),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_CANCEL), SetMinimalSize(101, 12), SetDataTip(STR_QUERY_CANCEL, STR_NULL),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NGWW_CANCEL), SetMinimalSize(101, 12), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0,6),
 			EndContainer(),
@@ -1043,7 +1043,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			}
 
 			if (pos == 0) {
-				DrawString(this->widget[NSSW_SELMAP].left + 4, this->widget[NSSW_SELMAP].right - 4, y, STR_NETWORK_SERVER_RANDOM_GAME, TC_DARK_GREEN);
+				DrawString(this->widget[NSSW_SELMAP].left + 4, this->widget[NSSW_SELMAP].right - 4, y, STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME, TC_DARK_GREEN);
 			} else {
 				DrawString(this->widget[NSSW_SELMAP].left + 4, this->widget[NSSW_SELMAP].right - 4, y, item->title, _fios_colours[item->type] );
 			}
@@ -1065,7 +1065,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			case NSSW_SETPWD: // Set password button
 				this->widget_id = NSSW_SETPWD;
 				SetDParamStr(0, _settings_client.network.server_password);
-				ShowQueryString(STR_JUST_RAW_STRING, STR_NETWORK_SET_PASSWORD, 20, 250, this, CS_ALPHANUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_RAW_STRING, STR_NETWORK_START_SERVER_SET_PASSWORD, 20, 250, this, CS_ALPHANUMERAL, QSF_NONE);
 				break;
 
 			case NSSW_SELMAP: { // Select map
@@ -1108,19 +1108,19 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			case NSSW_CLIENTS_TXT:    // Click on number of clients
 				this->widget_id = NSSW_CLIENTS_TXT;
 				SetDParam(0, _settings_client.network.max_clients);
-				ShowQueryString(STR_JUST_INT, STR_NETWORK_NUMBER_OF_CLIENTS,    4, 50, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS,    4, 50, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case NSSW_COMPANIES_TXT:  // Click on number of companies
 				this->widget_id = NSSW_COMPANIES_TXT;
 				SetDParam(0, _settings_client.network.max_companies);
-				ShowQueryString(STR_JUST_INT, STR_NETWORK_NUMBER_OF_COMPANIES,  3, 50, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES,  3, 50, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case NSSW_SPECTATORS_TXT: // Click on number of spectators
 				this->widget_id = NSSW_SPECTATORS_TXT;
 				SetDParam(0, _settings_client.network.max_spectators);
-				ShowQueryString(STR_JUST_INT, STR_NETWORK_NUMBER_OF_SPECTATORS, 4, 50, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS, 4, 50, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case NSSW_LANGUAGE_BTN: { // Language
@@ -1220,45 +1220,45 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 static const Widget _network_start_server_window_widgets[] = {
 /* Window decoration and background panel */
 {   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,                    STR_TOOLTIP_CLOSE_WINDOW },            // NSSW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    11,   419,     0,    13, STR_NETWORK_START_GAME_WINDOW,      STR_NULL},                             // NSSW_CAPTION
+{    WWT_CAPTION,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    11,   419,     0,    13, STR_NETWORK_START_SERVER_CAPTION,      STR_NULL},                             // NSSW_CAPTION
 {      WWT_PANEL,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,   419,    14,   243, 0x0,                                STR_NULL},                             // NSSW_BACKGROUND
 
 /* Set game name and password widgets */
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,    90,    22,    34, STR_NETWORK_NEW_GAME_NAME,          STR_NULL},                             // NSSW_GAMENAME_LABEL
-{    WWT_EDITBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   100,   272,    22,    33, STR_NETWORK_NEW_GAME_NAME_OSKTITLE, STR_NETWORK_NEW_GAME_NAME_TIP},        // NSSW_GAMENAME
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        285,   405,    22,    33, STR_NETWORK_SET_PASSWORD,           STR_NETWORK_PASSWORD_TIP},             // NSSW_SETPWD
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,    90,    22,    34, STR_NETWORK_START_SERVER_NEW_GAME_NAME,          STR_NULL},                             // NSSW_GAMENAME_LABEL
+{    WWT_EDITBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   100,   272,    22,    33, STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE, STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP},        // NSSW_GAMENAME
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        285,   405,    22,    33, STR_NETWORK_START_SERVER_SET_PASSWORD,           STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP},             // NSSW_SETPWD
 
 /* List of playable scenarios */
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   110,    43,    55, STR_NETWORK_SELECT_MAP,             STR_NULL},                             // NSSW_SELECT_MAP_LABEL
-{      WWT_INSET,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   271,    62,   216, STR_NULL,                           STR_NETWORK_SELECT_MAP_TIP},           // NSSW_SELMAP
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   110,    43,    55, STR_NETWORK_START_SERVER_SELECT_MAP,             STR_NULL},                             // NSSW_SELECT_MAP_LABEL
+{      WWT_INSET,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   271,    62,   216, STR_NULL,                           STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP},           // NSSW_SELMAP
 {  WWT_SCROLLBAR,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   259,   270,    63,   215, 0x0,                                STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // NSSW_SCROLLBAR
 
 /* Combo/selection boxes to control Connection Type / Max Clients / Max Companies / Max Observers / Language */
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    63,    75, STR_NETWORK_CONNECTION,             STR_NULL},                             // NSSW_CONNTYPE_LABEL
-{   WWT_DROPDOWN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    77,    88, STR_NETWORK_LAN_INTERNET_COMBO,     STR_NETWORK_CONNECTION_TIP},           // NSSW_CONNTYPE_BTN
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    63,    75, STR_NETWORK_SERVER_LIST_CONNECTION,             STR_NULL},                             // NSSW_CONNTYPE_LABEL
+{   WWT_DROPDOWN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    77,    88, STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO,     STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP},           // NSSW_CONNTYPE_BTN
 
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    95,   107, STR_NETWORK_NUMBER_OF_CLIENTS,      STR_NULL},                             // NSSW_CLIENTS_LABEL
-{     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   291,   109,   120, SPR_ARROW_DOWN,                     STR_NETWORK_NUMBER_OF_CLIENTS_TIP},    // NSSW_CLIENTS_BTND
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   292,   397,   109,   120, STR_NETWORK_CLIENTS_SELECT,         STR_NETWORK_NUMBER_OF_CLIENTS_TIP},    // NSSW_CLIENTS_TXT
-{     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   398,   410,   109,   120, SPR_ARROW_UP,                       STR_NETWORK_NUMBER_OF_CLIENTS_TIP},    // NSSW_CLIENTS_BTNU
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,    95,   107, STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS,      STR_NULL},                             // NSSW_CLIENTS_LABEL
+{     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   291,   109,   120, SPR_ARROW_DOWN,                     STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP},    // NSSW_CLIENTS_BTND
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   292,   397,   109,   120, STR_NETWORK_START_SERVER_CLIENTS_SELECT,         STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP},    // NSSW_CLIENTS_TXT
+{     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   398,   410,   109,   120, SPR_ARROW_UP,                       STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP},    // NSSW_CLIENTS_BTNU
 
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   127,   139, STR_NETWORK_NUMBER_OF_COMPANIES,    STR_NULL},                             // NSSW_COMPANIES_LABEL
-{     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   291,   141,   152, SPR_ARROW_DOWN,                     STR_NETWORK_NUMBER_OF_COMPANIES_TIP},  // NSSW_COMPANIES_BTND
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   292,   397,   141,   152, STR_NETWORK_COMPANIES_SELECT,       STR_NETWORK_NUMBER_OF_COMPANIES_TIP},  // NSSW_COMPANIES_TXT
-{     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   398,   410,   141,   152, SPR_ARROW_UP,                       STR_NETWORK_NUMBER_OF_COMPANIES_TIP},  // NSSW_COMPANIES_BTNU
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   127,   139, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES,    STR_NULL},                             // NSSW_COMPANIES_LABEL
+{     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   291,   141,   152, SPR_ARROW_DOWN,                     STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP},  // NSSW_COMPANIES_BTND
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   292,   397,   141,   152, STR_NETWORK_START_SERVER_COMPANIES_SELECT,       STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP},  // NSSW_COMPANIES_TXT
+{     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   398,   410,   141,   152, SPR_ARROW_UP,                       STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP},  // NSSW_COMPANIES_BTNU
 
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   159,   171, STR_NETWORK_NUMBER_OF_SPECTATORS,   STR_NULL},                             // NSSW_SPECTATORS_LABEL
-{     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   291,   173,   184, SPR_ARROW_DOWN,                     STR_NETWORK_NUMBER_OF_SPECTATORS_TIP}, // NSSW_SPECTATORS_BTND
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   292,   397,   173,   184, STR_NETWORK_SPECTATORS_SELECT,      STR_NETWORK_NUMBER_OF_SPECTATORS_TIP}, // NSSW_SPECTATORS_TXT
-{     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   398,   410,   173,   184, SPR_ARROW_UP,                       STR_NETWORK_NUMBER_OF_SPECTATORS_TIP}, // NSSW_SPECTATORS_BTNU
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   159,   171, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS,   STR_NULL},                             // NSSW_SPECTATORS_LABEL
+{     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   291,   173,   184, SPR_ARROW_DOWN,                     STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP}, // NSSW_SPECTATORS_BTND
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   292,   397,   173,   184, STR_NETWORK_START_SERVER_SPECTATORS_SELECT,      STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP}, // NSSW_SPECTATORS_TXT
+{     WWT_IMGBTN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   398,   410,   173,   184, SPR_ARROW_UP,                       STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP}, // NSSW_SPECTATORS_BTNU
 
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   191,   203, STR_NETWORK_LANGUAGE_SPOKEN,        STR_NULL},                             // NSSW_LANGUAGE_LABEL
-{   WWT_DROPDOWN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   205,   216, STR_NETWORK_LANGUAGE_COMBO,         STR_NETWORK_LANGUAGE_TIP},             // NSSW_LANGUAGE_BTN
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   191,   203, STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN,        STR_NULL},                             // NSSW_LANGUAGE_LABEL
+{   WWT_DROPDOWN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   280,   410,   205,   216, STR_NETWORK_START_SERVER_LANGUAGE_COMBO,         STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP},             // NSSW_LANGUAGE_BTN
 
 /* Buttons Start / Load / Cancel */
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         40,   140,   224,   235, STR_NETWORK_START_GAME,             STR_NETWORK_START_GAME_TIP},           // NSSW_START
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        150,   250,   224,   235, STR_NETWORK_LOAD_GAME,              STR_NETWORK_LOAD_GAME_TIP},            // NSSW_LOAD
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        260,   360,   224,   235, STR_QUERY_CANCEL,                   STR_NULL},                             // NSSW_CANCEL
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         40,   140,   224,   235, STR_NETWORK_START_SERVER_START_GAME,             STR_NETWORK_START_SERVER_START_GAME_TOOLTIP},           // NSSW_START
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        150,   250,   224,   235, STR_NETWORK_START_SERVER_LOAD_GAME,              STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP},            // NSSW_LOAD
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        260,   360,   224,   235, STR_BUTTON_CANCEL,                   STR_NULL},                             // NSSW_CANCEL
 
 {   WIDGETS_END},
 };
@@ -1266,28 +1266,28 @@ static const Widget _network_start_server_window_widgets[] = {
 static const NWidgetPart _nested_network_start_server_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NSSW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NSSW_CAPTION), SetDataTip(STR_NETWORK_START_GAME_WINDOW, STR_NULL),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NSSW_CAPTION), SetDataTip(STR_NETWORK_START_SERVER_CAPTION, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NSSW_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 		/* Set game name and password widgets. */
 		NWidget(NWID_HORIZONTAL), SetPIP(10, 0, 14),
-			NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_GAMENAME_LABEL), SetMinimalSize(81, 13), SetDataTip(STR_NETWORK_NEW_GAME_NAME, STR_NULL),
+			NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_GAMENAME_LABEL), SetMinimalSize(81, 13), SetDataTip(STR_NETWORK_START_SERVER_NEW_GAME_NAME, STR_NULL),
 			NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, NSSW_GAMENAME), SetMinimalSize(173, 12), SetPadding(0, 0, 1, 9),
-												SetDataTip(STR_NETWORK_NEW_GAME_NAME_OSKTITLE, STR_NETWORK_NEW_GAME_NAME_TIP),
+												SetDataTip(STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE, STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NSSW_SETPWD), SetMinimalSize(121, 12), SetPadding(0, 0, 1, 12),
-												SetDataTip(STR_NETWORK_SET_PASSWORD, STR_NETWORK_PASSWORD_TIP),
+												SetDataTip(STR_NETWORK_START_SERVER_SET_PASSWORD, STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL), SetPIP(10, 8, 9),
 			NWidget(NWID_VERTICAL),
 				/* List of playable scenarios. */
 				NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_SELECT_MAP_LABEL), SetMinimalSize(101, 13), SetDataTip(STR_NETWORK_SELECT_MAP, STR_NULL),
+					NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_SELECT_MAP_LABEL), SetMinimalSize(101, 13), SetDataTip(STR_NETWORK_START_SERVER_SELECT_MAP, STR_NULL),
 					NWidget(NWID_SPACER), SetFill(true, false),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
-				NWidget(WWT_INSET, COLOUR_LIGHT_BLUE, NSSW_SELMAP), SetDataTip(STR_NULL, STR_NETWORK_SELECT_MAP_TIP),
+				NWidget(WWT_INSET, COLOUR_LIGHT_BLUE, NSSW_SELMAP), SetDataTip(STR_NULL, STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP),
 					NWidget(NWID_HORIZONTAL),
 						NWidget(NWID_SPACER), SetMinimalSize(249, 155),
 						NWidget(WWT_SCROLLBAR, COLOUR_LIGHT_BLUE, NSSW_SCROLLBAR), SetPadding(1, 1, 1, 0),
@@ -1297,61 +1297,61 @@ static const NWidgetPart _nested_network_start_server_window_widgets[] = {
 			NWidget(NWID_VERTICAL),
 				/* Combo/selection boxes to control Connection Type / Max Clients / Max Companies / Max Observers / Language */
 				NWidget(NWID_SPACER), SetMinimalSize(0, 28),
-				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_CONNTYPE_LABEL), SetMinimalSize(131, 13), SetDataTip(STR_NETWORK_CONNECTION, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_CONNTYPE_LABEL), SetMinimalSize(131, 13), SetDataTip(STR_NETWORK_SERVER_LIST_CONNECTION, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, NSSW_CONNTYPE_BTN), SetMinimalSize(131, 12),
-												SetDataTip(STR_NETWORK_LAN_INTERNET_COMBO, STR_NETWORK_CONNECTION_TIP),
+												SetDataTip(STR_NETWORK_START_SERVER_LAN_INTERNET_COMBO, STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP),
 
 				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
-				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_LABEL), SetMinimalSize(131, 13), SetDataTip(STR_NETWORK_NUMBER_OF_CLIENTS, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_LABEL), SetMinimalSize(131, 13), SetDataTip(STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_BTND), SetMinimalSize(12, 12),
-												SetDataTip(SPR_ARROW_DOWN, STR_NETWORK_NUMBER_OF_CLIENTS_TIP),
+												SetDataTip(SPR_ARROW_DOWN, STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_TXT), SetMinimalSize(106, 12),
-												SetDataTip(STR_NETWORK_CLIENTS_SELECT, STR_NETWORK_NUMBER_OF_CLIENTS_TIP),
+												SetDataTip(STR_NETWORK_START_SERVER_CLIENTS_SELECT, STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP),
 					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_CLIENTS_BTNU), SetMinimalSize(13, 12),
-												SetDataTip(SPR_ARROW_UP, STR_NETWORK_NUMBER_OF_CLIENTS_TIP),
+												SetDataTip(SPR_ARROW_UP, STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP),
 				EndContainer(),
 
 				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
-				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_LABEL), SetMinimalSize(131, 13), SetDataTip(STR_NETWORK_NUMBER_OF_COMPANIES, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_LABEL), SetMinimalSize(131, 13), SetDataTip(STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_BTND), SetMinimalSize(12, 12),
-												SetDataTip(SPR_ARROW_DOWN, STR_NETWORK_NUMBER_OF_COMPANIES_TIP),
+												SetDataTip(SPR_ARROW_DOWN, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_TXT), SetMinimalSize(106, 12),
-												SetDataTip(STR_NETWORK_COMPANIES_SELECT, STR_NETWORK_NUMBER_OF_COMPANIES_TIP),
+												SetDataTip(STR_NETWORK_START_SERVER_COMPANIES_SELECT, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP),
 					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_COMPANIES_BTNU), SetMinimalSize(13, 12),
-												SetDataTip(SPR_ARROW_UP, STR_NETWORK_NUMBER_OF_COMPANIES_TIP),
+												SetDataTip(SPR_ARROW_UP, STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP),
 				EndContainer(),
 
 				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
-				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_LABEL), SetMinimalSize(131, 13), SetDataTip(STR_NETWORK_NUMBER_OF_SPECTATORS, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_LABEL), SetMinimalSize(131, 13), SetDataTip(STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_BTND), SetMinimalSize(12, 12),
-												SetDataTip(SPR_ARROW_DOWN, STR_NETWORK_NUMBER_OF_SPECTATORS_TIP),
+												SetDataTip(SPR_ARROW_DOWN, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_TXT), SetMinimalSize(106, 12),
-												SetDataTip(STR_NETWORK_SPECTATORS_SELECT, STR_NETWORK_NUMBER_OF_SPECTATORS_TIP),
+												SetDataTip(STR_NETWORK_START_SERVER_SPECTATORS_SELECT, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP),
 					NWidget(WWT_IMGBTN, COLOUR_LIGHT_BLUE, NSSW_SPECTATORS_BTNU), SetMinimalSize(13, 12),
-												SetDataTip(SPR_ARROW_UP, STR_NETWORK_NUMBER_OF_SPECTATORS_TIP),
+												SetDataTip(SPR_ARROW_UP, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP),
 				EndContainer(),
 
 				NWidget(NWID_SPACER), SetMinimalSize(0, 6),
-				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_LANGUAGE_LABEL), SetMinimalSize(131, 13), SetDataTip(STR_NETWORK_LANGUAGE_SPOKEN, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NSSW_LANGUAGE_LABEL), SetMinimalSize(131, 13), SetDataTip(STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, NSSW_LANGUAGE_BTN), SetMinimalSize(131, 12),
-												SetDataTip(STR_NETWORK_LANGUAGE_COMBO, STR_NETWORK_LANGUAGE_TIP),
+												SetDataTip(STR_NETWORK_START_SERVER_LANGUAGE_COMBO, STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 
 		/* Buttons Start / Load / Cancel. */
 		NWidget(NWID_SPACER), SetMinimalSize(0, 7),
 		NWidget(NWID_HORIZONTAL), SetPIP(40, 9, 59),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NSSW_START), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_START_GAME, STR_NETWORK_START_GAME_TIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NSSW_LOAD), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_LOAD_GAME, STR_NETWORK_LOAD_GAME_TIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NSSW_CANCEL), SetMinimalSize(101, 12), SetDataTip(STR_QUERY_CANCEL, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NSSW_START), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_START_SERVER_START_GAME, STR_NETWORK_START_SERVER_START_GAME_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NSSW_LOAD), SetMinimalSize(101, 12), SetDataTip(STR_NETWORK_START_SERVER_LOAD_GAME, STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NSSW_CANCEL), SetMinimalSize(101, 12), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
 	EndContainer(),
@@ -1454,7 +1454,7 @@ struct NetworkLobbyWindow : public Window {
 
 		/* Draw info about selected company when it is selected in the left window */
 		GfxFillRect(174, 39, 403, 75, 157);
-		DrawString(this->widget[NLWW_DETAILS].left + 10, this->widget[NLWW_DETAILS].right - 10, 50, STR_NETWORK_COMPANY_INFO, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->widget[NLWW_DETAILS].left + 10, this->widget[NLWW_DETAILS].right - 10, 50, STR_NETWORK_GAME_LOBBY_COMPANY_INFO, TC_FROMSTRING, SA_CENTER);
 		if (this->company != INVALID_COMPANY && !StrEmpty(this->company_info[this->company].company_name)) {
 			const uint x = this->widget[NLWW_DETAILS].left + 10;
 			y = 80;
@@ -1463,31 +1463,31 @@ struct NetworkLobbyWindow : public Window {
 			SetDParam(1, gi->clients_max);
 			SetDParam(2, gi->companies_on);
 			SetDParam(3, gi->companies_max);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_CLIENTS);
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_SERVER_LIST_CLIENTS);
 			y += 10;
 
 			SetDParamStr(0, this->company_info[this->company].company_name);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_COMPANY_NAME);
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_COMPANY_NAME);
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].inaugurated_year);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_INAUGURATION_YEAR); // inauguration year
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR); // inauguration year
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].company_value);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_VALUE); // company value
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_VALUE); // company value
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].money);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_CURRENT_BALANCE); // current balance
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE); // current balance
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].income);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_LAST_YEARS_INCOME); // last year's income
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME); // last year's income
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].performance);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_PERFORMANCE); // performance
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_PERFORMANCE); // performance
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].num_vehicle[0]);
@@ -1495,7 +1495,7 @@ struct NetworkLobbyWindow : public Window {
 			SetDParam(2, this->company_info[this->company].num_vehicle[2]);
 			SetDParam(3, this->company_info[this->company].num_vehicle[3]);
 			SetDParam(4, this->company_info[this->company].num_vehicle[4]);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_VEHICLES); // vehicles
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_VEHICLES); // vehicles
 			y += 10;
 
 			SetDParam(0, this->company_info[this->company].num_station[0]);
@@ -1503,11 +1503,11 @@ struct NetworkLobbyWindow : public Window {
 			SetDParam(2, this->company_info[this->company].num_station[2]);
 			SetDParam(3, this->company_info[this->company].num_station[3]);
 			SetDParam(4, this->company_info[this->company].num_station[4]);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_STATIONS); // stations
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_STATIONS); // stations
 			y += 10;
 
 			SetDParamStr(0, this->company_info[this->company].clients);
-			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_PLAYERS); // players
+			DrawString(x, this->widget[NLWW_DETAILS].right, y, STR_NETWORK_GAME_LOBBY_PLAYERS); // players
 		}
 	}
 
@@ -1562,24 +1562,24 @@ struct NetworkLobbyWindow : public Window {
 
 static const Widget _network_lobby_window_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_BLACK_CROSS,             STR_TOOLTIP_CLOSE_WINDOW },        // NLWW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    11,   419,     0,    13, STR_NETWORK_GAME_LOBBY,      STR_NULL},                         // NLWW_CAPTION
+{    WWT_CAPTION,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    11,   419,     0,    13, STR_NETWORK_GAME_LOBBY_CAPTION,      STR_NULL},                         // NLWW_CAPTION
 {      WWT_PANEL,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     0,   419,    14,   234, 0x0,                         STR_NULL},                         // NLWW_BACKGROUND
-{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   419,    22,    34, STR_NETWORK_PREPARE_TO_JOIN, STR_NULL},                         // NLWW_TEXT
+{       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   419,    22,    34, STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN, STR_NULL},                         // NLWW_TEXT
 
 /* company list */
 {      WWT_PANEL,   RESIZE_NONE,   COLOUR_WHITE,         10,   155,    38,    49, 0x0,                         STR_NULL},                         // NLWW_HEADER
-{     WWT_MATRIX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   155,    50,   190, (10 << 8) + 1,               STR_NETWORK_COMPANY_LIST_TIP},     // NLWW_MATRIX
+{     WWT_MATRIX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   155,    50,   190, (10 << 8) + 1,               STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP},     // NLWW_MATRIX
 {  WWT_SCROLLBAR,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   156,   167,    38,   190, 0x0,                         STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // NLWW_SCROLLBAR
 
 /* company info */
 {      WWT_PANEL,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   173,   404,    38,   190, 0x0,                         STR_NULL},                         // NLWW_DETAILS
 
 /* buttons */
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         10,   151,   200,   211, STR_NETWORK_JOIN_COMPANY,    STR_NETWORK_JOIN_COMPANY_TIP},     // NLWW_JOIN
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         10,   151,   215,   226, STR_NETWORK_NEW_COMPANY,     STR_NETWORK_NEW_COMPANY_TIP},      // NLWW_NEW
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        158,   268,   200,   211, STR_NETWORK_SPECTATE_GAME,   STR_NETWORK_SPECTATE_GAME_TIP},    // NLWW_SPECTATE
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        158,   268,   215,   226, STR_NETWORK_REFRESH,         STR_NETWORK_REFRESH_TIP},          // NLWW_REFRESH
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        278,   388,   200,   211, STR_QUERY_CANCEL,            STR_NULL},                         // NLWW_CANCEL
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         10,   151,   200,   211, STR_NETWORK_GAME_LOBBY_JOIN_COMPANY,    STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP},     // NLWW_JOIN
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         10,   151,   215,   226, STR_NETWORK_GAME_LOBBY_NEW_COMPANY,     STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP},      // NLWW_NEW
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        158,   268,   200,   211, STR_NETWORK_GAME_LOBBY_SPECTATE_GAME,   STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP},    // NLWW_SPECTATE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        158,   268,   215,   226, STR_NETWORK_SERVER_LIST_REFRESH,         STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP},          // NLWW_REFRESH
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,        278,   388,   200,   211, STR_BUTTON_CANCEL,            STR_NULL},                         // NLWW_CANCEL
 
 {   WIDGETS_END},
 };
@@ -1587,16 +1587,16 @@ static const Widget _network_lobby_window_widgets[] = {
 static const NWidgetPart _nested_network_lobby_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NLWW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NLWW_CAPTION), SetDataTip(STR_NETWORK_GAME_LOBBY, STR_NULL),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NLWW_CAPTION), SetDataTip(STR_NETWORK_GAME_LOBBY_CAPTION, STR_NULL),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, NLWW_BACKGROUND),
-		NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NLWW_TEXT), SetDataTip(STR_NETWORK_PREPARE_TO_JOIN, STR_NULL), SetMinimalSize(410, 13), SetPadding(8, 0, 0, 10),
+		NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, NLWW_TEXT), SetDataTip(STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN, STR_NULL), SetMinimalSize(410, 13), SetPadding(8, 0, 0, 10),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
 		NWidget(NWID_HORIZONTAL), SetPIP(10, 0, 15),
 			/* Company list. */
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_PANEL, COLOUR_WHITE, NLWW_HEADER), SetMinimalSize(146, 12), SetFill(false, false), EndContainer(),
-				NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NLWW_MATRIX), SetMinimalSize(146, 141), SetDataTip((10 << 8) + 1, STR_NETWORK_COMPANY_LIST_TIP),
+				NWidget(WWT_MATRIX, COLOUR_LIGHT_BLUE, NLWW_MATRIX), SetMinimalSize(146, 141), SetDataTip((10 << 8) + 1, STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP),
 			EndContainer(),
 			NWidget(WWT_SCROLLBAR, COLOUR_LIGHT_BLUE, NLWW_SCROLLBAR),
 			NWidget(NWID_SPACER), SetMinimalSize(5, 0),
@@ -1607,17 +1607,17 @@ static const NWidgetPart _nested_network_lobby_window_widgets[] = {
 		/* Buttons. */
 		NWidget(NWID_HORIZONTAL), SetPIP(10, 0, 31),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_JOIN), SetMinimalSize(142, 12), SetDataTip(STR_NETWORK_JOIN_COMPANY, STR_NETWORK_JOIN_COMPANY_TIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_JOIN), SetMinimalSize(142, 12), SetDataTip(STR_NETWORK_GAME_LOBBY_JOIN_COMPANY, STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 3),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_NEW), SetMinimalSize(142, 12), SetDataTip(STR_NETWORK_NEW_COMPANY, STR_NETWORK_NEW_COMPANY_TIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_NEW), SetMinimalSize(142, 12), SetDataTip(STR_NETWORK_GAME_LOBBY_NEW_COMPANY, STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_VERTICAL), SetPadding(0, 0, 0, 6),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_SPECTATE), SetMinimalSize(111, 12), SetDataTip(STR_NETWORK_SPECTATE_GAME, STR_NETWORK_SPECTATE_GAME_TIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_SPECTATE), SetMinimalSize(111, 12), SetDataTip(STR_NETWORK_GAME_LOBBY_SPECTATE_GAME, STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 3),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_REFRESH), SetMinimalSize(111, 12), SetDataTip(STR_NETWORK_REFRESH, STR_NETWORK_REFRESH_TIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_REFRESH), SetMinimalSize(111, 12), SetDataTip(STR_NETWORK_SERVER_LIST_REFRESH, STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_VERTICAL), SetPadding(0, 0, 0, 9),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_CANCEL), SetMinimalSize(111, 12), SetDataTip(STR_QUERY_CANCEL, STR_NULL),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NLWW_CANCEL), SetMinimalSize(111, 12), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 15),
 			EndContainer(),
 		EndContainer(),
@@ -1682,8 +1682,8 @@ enum ClientListWidgets {
 
 static const Widget _client_list_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,          STR_TOOLTIP_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   237,     0,    13, STR_NETWORK_CLIENT_LIST,  STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   238,   249,     0,    13, STR_NULL,                 STR_STICKY_BUTTON},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   237,     0,    13, STR_NETWORK_COMPANY_LIST_CLIENT_LIST,  STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   238,   249,     0,    13, STR_NULL,                 STR_TOOLTIP_STICKY},
 
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   249,    14,    14 + CLNWND_ROWSIZE + 1, 0x0, STR_NULL},
 {   WIDGETS_END},
@@ -1692,7 +1692,7 @@ static const Widget _client_list_widgets[] = {
 static const NWidgetPart _nested_client_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, CLW_CLOSE),
-		NWidget(WWT_CAPTION, COLOUR_GREY, CLW_CAPTION), SetDataTip(STR_NETWORK_CLIENT_LIST, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, CLW_CAPTION), SetDataTip(STR_NETWORK_COMPANY_LIST_CLIENT_LIST, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY, CLW_STICKY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, CLW_PANEL), SetMinimalSize(250, CLNWND_ROWSIZE + 2), EndContainer(),
@@ -2140,16 +2140,16 @@ struct NetworkJoinStatusWindow : Window {
 };
 
 static const Widget _network_join_status_window_widget[] = {
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,      0,   249,     0,    13, STR_NETWORK_CONNECTING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // NJSW_CAPTION
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,      0,   249,     0,    13, STR_NETWORK_CONNECTING_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS}, // NJSW_CAPTION
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,      0,   249,    14,    84, 0x0,                    STR_NULL},                        // NJSW_BACKGROUND
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_WHITE,    75,   175,    69,    80, STR_NETWORK_DISCONNECT, STR_NULL},                        // NJSW_CANCELOK
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_WHITE,    75,   175,    69,    80, STR_NETWORK_CONNECTION_DISCONNECT, STR_NULL},                        // NJSW_CANCELOK
 {   WIDGETS_END},
 };
 
 static const NWidgetPart _nested_network_join_status_window_widgets[] = {
-	NWidget(WWT_CAPTION, COLOUR_GREY, NJSW_CAPTION), SetDataTip(STR_NETWORK_CONNECTING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	NWidget(WWT_CAPTION, COLOUR_GREY, NJSW_CAPTION), SetDataTip(STR_NETWORK_CONNECTING_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY, NJSW_BACKGROUND),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NJSW_CANCELOK), SetMinimalSize(101, 12), SetPadding(55, 74, 4, 75), SetDataTip(STR_NETWORK_DISCONNECT, STR_NULL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, NJSW_CANCELOK), SetMinimalSize(101, 12), SetPadding(55, 74, 4, 75), SetDataTip(STR_NETWORK_CONNECTION_DISCONNECT, STR_NULL),
 	EndContainer(),
 };
 
@@ -2258,11 +2258,11 @@ static const Widget _ncp_window_widgets[] = {
 {   WWT_CLOSEBOX,  RESIZE_NONE,  COLOUR_GREY,   0,  10,  0, 13, STR_BLACK_CROSS,                   STR_TOOLTIP_CLOSE_WINDOW},
 {    WWT_CAPTION,  RESIZE_NONE,  COLOUR_GREY,  11, 299,  0, 13, STR_COMPANY_PASSWORD_CAPTION,      STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
 {      WWT_PANEL,  RESIZE_NONE,  COLOUR_GREY,   0, 299, 14, 50, 0x0,                               STR_NULL},
-{       WWT_TEXT,  RESIZE_NONE,  COLOUR_GREY,   5, 100, 19, 30, STR_COMPANY_PASSWORD,              STR_NULL},
-{    WWT_EDITBOX,  RESIZE_NONE,  COLOUR_GREY, 101, 294, 19, 30, STR_SET_COMPANY_PASSWORD,          STR_NULL},
-{    WWT_TEXTBTN,  RESIZE_NONE,  COLOUR_GREY, 101, 294, 35, 46, STR_MAKE_DEFAULT_COMPANY_PASSWORD, STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP},
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_GREY,   0, 149, 51, 62, STR_QUERY_CANCEL,                  STR_COMPANY_PASSWORD_CANCEL},
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_GREY, 150, 299, 51, 62, STR_QUERY_OK,                      STR_COMPANY_PASSWORD_OK},
+{       WWT_TEXT,  RESIZE_NONE,  COLOUR_GREY,   5, 100, 19, 30, STR_COMPANY_VIEW_PASSWORD,              STR_NULL},
+{    WWT_EDITBOX,  RESIZE_NONE,  COLOUR_GREY, 101, 294, 19, 30, STR_COMPANY_VIEW_SET_PASSWORD,          STR_NULL},
+{    WWT_TEXTBTN,  RESIZE_NONE,  COLOUR_GREY, 101, 294, 35, 46, STR_COMPANY_PASSWORD_MAKE_DEFAULT, STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP},
+{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_GREY,   0, 149, 51, 62, STR_BUTTON_CANCEL,                  STR_COMPANY_PASSWORD_CANCEL},
+{ WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_GREY, 150, 299, 51, 62, STR_BUTTON_OK,                      STR_COMPANY_PASSWORD_OK},
 {   WIDGETS_END},
 };
 
@@ -2275,21 +2275,21 @@ static const NWidgetPart _nested_ncp_window_widgets[] = {
 		NWidget(NWID_SPACER), SetMinimalSize(0, 5),
 		NWidget(NWID_HORIZONTAL), SetPIP(5, 0, 5),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_TEXT, COLOUR_GREY, NCPWW_LABEL), SetMinimalSize(96, 12), SetDataTip(STR_COMPANY_PASSWORD, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_GREY, NCPWW_LABEL), SetMinimalSize(96, 12), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_NULL),
 				NWidget(NWID_SPACER), SetFill(false, true),
 			EndContainer(),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_EDITBOX, COLOUR_GREY, NCPWW_PASSWORD), SetMinimalSize(194, 12), SetDataTip(STR_SET_COMPANY_PASSWORD, STR_NULL),
+				NWidget(WWT_EDITBOX, COLOUR_GREY, NCPWW_PASSWORD), SetMinimalSize(194, 12), SetDataTip(STR_COMPANY_VIEW_SET_PASSWORD, STR_NULL),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
 				NWidget(WWT_TEXTBTN, COLOUR_GREY, NCPWW_SAVE_AS_DEFAULT_PASSWORD), SetMinimalSize(194, 12),
-											SetDataTip(STR_MAKE_DEFAULT_COMPANY_PASSWORD, STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP),
+											SetDataTip(STR_COMPANY_PASSWORD_MAKE_DEFAULT, STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 4),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, NCPWW_CANCEL), SetMinimalSize(150, 12), SetDataTip(STR_QUERY_CANCEL, STR_COMPANY_PASSWORD_CANCEL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, NCPWW_OK), SetMinimalSize(150, 12), SetDataTip(STR_QUERY_OK, STR_COMPANY_PASSWORD_OK),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, NCPWW_CANCEL), SetMinimalSize(150, 12), SetDataTip(STR_BUTTON_CANCEL, STR_COMPANY_PASSWORD_CANCEL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, NCPWW_OK), SetMinimalSize(150, 12), SetDataTip(STR_BUTTON_OK, STR_COMPANY_PASSWORD_OK),
 	EndContainer(),
 };
 

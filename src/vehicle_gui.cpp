@@ -390,7 +390,7 @@ static const Widget _vehicle_refit_widgets[] = {
 	{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_GREY,   228,   239,    28,   139, 0x0,               STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST}, // VRW_SCROLLBAR
 	{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,     0,   239,   140,   161, 0x0,               STR_NULL},                             // VRW_INFOPANEL
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   227,   162,   173, 0x0,               STR_NULL},                             // VRW_REFITBUTTON
-	{  WWT_RESIZEBOX,     RESIZE_TB,  COLOUR_GREY,   228,   239,   162,   173, 0x0,               STR_RESIZE_BUTTON},                    // VRW_RESIZEBOX
+	{  WWT_RESIZEBOX,     RESIZE_TB,  COLOUR_GREY,   228,   239,   162,   173, 0x0,               STR_TOOLTIP_RESIZE},                    // VRW_RESIZEBOX
 	{   WIDGETS_END},
 };
 
@@ -682,22 +682,22 @@ enum VehicleListWindowWidgets {
 static const Widget _vehicle_list_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_BLACK_CROSS,      STR_TOOLTIP_CLOSE_WINDOW},
 	{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   247,     0,    13, 0x0,                  STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},
-	{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   248,   259,     0,    13, 0x0,                  STR_STICKY_BUTTON},
-	{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    80,    14,    25, STR_SORT_BY,          STR_SORT_ORDER_TIP},
-	{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,    81,   247,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},
+	{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   248,   259,     0,    13, 0x0,                  STR_TOOLTIP_STICKY},
+	{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    80,    14,    25, STR_BUTTON_SORT_BY,          STR_TOOLTIP_SORT_ORDER},
+	{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,    81,   247,    14,    25, 0x0,                  STR_TOOLTIP_SORT_CRITERIAP},
 	{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   248,   259,    14,    25, 0x0,                  STR_NULL},
 	{     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,     0,   247,    26,   181, 0x0,                  STR_NULL},
 	{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   248,   259,    26,   181, 0x0,                  STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST},
 	/* Widget to be shown for other companies hiding the following 6 widgets */
 	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   247,   182,   193, 0x0,                  STR_NULL},
 
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   105,   182,   193, 0x0,                  STR_AVAILABLE_ENGINES_TIP},
-	{   WWT_DROPDOWN,     RESIZE_TB,  COLOUR_GREY,   106,   223,   182,   193, STR_MANAGE_LIST,      STR_MANAGE_LIST_TIP},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   105,   182,   193, 0x0,                  STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP},
+	{   WWT_DROPDOWN,     RESIZE_TB,  COLOUR_GREY,   106,   223,   182,   193, STR_VEHICLE_LIST_MANAGE_LIST,      STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP},
 
-	{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   224,   235,   182,   193, SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP},
-	{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   236,   247,   182,   193, SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP},
+	{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   224,   235,   182,   193, SPR_FLAG_VEH_STOPPED, STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP},
+	{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   236,   247,   182,   193, SPR_FLAG_VEH_RUNNING, STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP},
 	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,   248,   247,   182,   193, 0x0,                  STR_NULL},
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   248,   259,   182,   193, 0x0,                  STR_RESIZE_BUTTON},
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   248,   259,   182,   193, 0x0,                  STR_TOOLTIP_RESIZE},
 	{   WIDGETS_END},
 };
 
@@ -709,8 +709,8 @@ static const NWidgetPart _nested_vehicle_list[] = {
 	EndContainer(),
 
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLW_WIDGET_SORT_ORDER), SetMinimalSize(81, 12), SetDataTip(STR_SORT_BY, STR_SORT_ORDER_TIP),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, VLW_WIDGET_SORT_BY_PULLDOWN), SetMinimalSize(167, 12), SetDataTip(0x0, STR_SORT_CRITERIA_TIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLW_WIDGET_SORT_ORDER), SetMinimalSize(81, 12), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, VLW_WIDGET_SORT_BY_PULLDOWN), SetMinimalSize(167, 12), SetDataTip(0x0, STR_TOOLTIP_SORT_CRITERIAP),
 		NWidget(WWT_PANEL, COLOUR_GREY, VLW_WIDGET_EMPTY_TOP_RIGHT), SetMinimalSize(12, 12), SetResize(1, 0),
 		EndContainer(),
 	EndContainer(),
@@ -725,13 +725,13 @@ static const NWidgetPart _nested_vehicle_list[] = {
 		NWidget(WWT_PANEL, COLOUR_GREY, VLW_WIDGET_OTHER_COMPANY_FILLER),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLW_WIDGET_AVAILABLE_VEHICLES), SetMinimalSize(106, 12),
-								SetDataTip(0x0, STR_AVAILABLE_ENGINES_TIP),
+								SetDataTip(0x0, STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN), SetMinimalSize(118, 12),
-								SetDataTip(STR_MANAGE_LIST, STR_MANAGE_LIST_TIP),
+								SetDataTip(STR_VEHICLE_LIST_MANAGE_LIST, STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VLW_WIDGET_STOP_ALL), SetMinimalSize(12, 12),
-								SetDataTip(SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP),
+								SetDataTip(SPR_FLAG_VEH_STOPPED, STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VLW_WIDGET_START_ALL), SetMinimalSize(12, 12),
-								SetDataTip(SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP),
+								SetDataTip(SPR_FLAG_VEH_RUNNING, STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP),
 				NWidget(WWT_PANEL, COLOUR_GREY, VLW_WIDGET_EMPTY_BOTTOM_RIGHT), SetMinimalSize(0, 12), SetResize(1, 0),
 				EndContainer(),
 			EndContainer(),
@@ -753,7 +753,7 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y)
 
 		if (order->IsType(OT_GOTO_STATION)) {
 			SetDParam(0, order->GetDestination());
-			DrawString(left, right, y, STR_ORDER_STATION_SMALL);
+			DrawString(left, right, y, STR_TINY_BLACK_STATIONL);
 
 			y += 6;
 			if (++i == 4) break;
@@ -803,11 +803,11 @@ void BaseVehicleListWindow::DrawVehicleListItems(int x, VehicleID selected_vehic
 		if (v->name != NULL) {
 			/* The vehicle got a name so we will print it */
 			SetDParam(0, v->index);
-			DrawString(x + 19, this->widget[VLW_WIDGET_LIST].right, y, STR_VEHICLE_NAME_SMALL);
+			DrawString(x + 19, this->widget[VLW_WIDGET_LIST].right, y, STR_TINY_BLACK_VEHICLE);
 		} else if (v->group_id != DEFAULT_GROUP) {
 			/* The vehicle has no name, but is member of a group, so print group name */
 			SetDParam(0, v->group_id);
-			DrawString(x + 19, this->widget[VLW_WIDGET_LIST].right, y, STR_GROUP_TINY_NAME, TC_BLACK);
+			DrawString(x + 19, this->widget[VLW_WIDGET_LIST].right, y, STR_TINT_GROUP, TC_BLACK);
 		}
 
 		if (this->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG) DrawSmallOrderList(v, x + 138, this->widget[VLW_WIDGET_LIST].right, y);
@@ -848,10 +848,10 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 
 		/* Set up the window widgets */
 		this->widget[VLW_WIDGET_LIST].tooltips           = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + this->vehicle_type;
-		this->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_TRAINS + this->vehicle_type;
+		this->widget[VLW_WIDGET_AVAILABLE_VEHICLES].data = STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vehicle_type;
 
 		if (window_type == VLW_SHARED_ORDERS) {
-			this->widget[VLW_WIDGET_CAPTION].data = STR_VEH_WITH_SHARED_ORDERS_LIST;
+			this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION;
 		} else {
 			this->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_TRAIN_CAPTION + this->vehicle_type;
 		}
@@ -1015,17 +1015,17 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 
 			case VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN: {
 				static StringID action_str[] = {
-					STR_REPLACE_VEHICLES,
-					STR_SEND_FOR_SERVICING,
+					STR_VEHICLE_LIST_REPLACE_VEHICLES,
+					STR_VEHICLE_LIST_SEND_FOR_SERVICING,
 					STR_NULL,
 					INVALID_STRING_ID
 				};
 
 				static const StringID depot_name[] = {
-					STR_SEND_TRAIN_TO_DEPOT,
-					STR_SEND_ROAD_VEHICLE_TO_DEPOT,
-					STR_SEND_SHIP_TO_DEPOT,
-					STR_SEND_AIRCRAFT_TO_HANGAR
+					STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT,
+					STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT,
+					STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT,
+					STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR
 				};
 
 				/* XXX - Substite string since the dropdown cannot handle dynamic strings */
@@ -1199,7 +1199,7 @@ static const Widget _vehicle_details_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_BLACK_CROSS,                    STR_TOOLTIP_CLOSE_WINDOW},                      // VLD_WIDGET_CLOSEBOX
 	{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,  11, 352,   0,  13, STR_VEHICLE_DETAILS_CAPTION,        STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS},            // VLD_WIDGET_CAPTION
 	{ WWT_PUSHTXTBTN,     RESIZE_LR,  COLOUR_GREY, 353, 392,   0,  13, STR_VEHICLE_NAME_BUTTON,            STR_NULL /* filled in later */},                // VLD_WIDGET_RENAME_VEHICLE
-	{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY, 393, 404,   0,  13, STR_NULL,                           STR_STICKY_BUTTON},                             // VLD_WIDGET_STICKY
+	{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY, 393, 404,   0,  13, STR_NULL,                           STR_TOOLTIP_STICKY},                             // VLD_WIDGET_STICKY
 	{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   0, 404,  14,  55, 0x0,                                STR_NULL},                                      // VLD_WIDGET_TOP_DETAILS
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   0,  10, 101, 106, STR_BLACK_SMALL_ARROW_UP,           STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP},   // VLD_WIDGET_INCREASE_SERVICING_INTERVAL
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   0,  10, 107, 112, STR_BLACK_SMALL_ARROW_DOWN,         STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP},   // VLD_WIDGET_DECREASE_SERVICING_INTERVAL
@@ -1210,7 +1210,7 @@ static const Widget _vehicle_details_widgets[] = {
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,  96, 194, 113, 124, STR_VEHICLE_DETAIL_TAB_INFORMATION, STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP}, // VLD_WIDGET_DETAILS_TRAIN_VEHICLES
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY, 195, 293, 113, 124, STR_VEHICLE_DETAIL_TAB_CAPACITIES,  STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP},  // VLD_WIDGET_DETAILS_CAPACITY_OF_EACH
 	{ WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_GREY, 294, 392, 113, 124, STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO, STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP}, // VLD_WIDGET_DETAILS_TOTAL_CARGO
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY, 393, 404, 113, 124, 0x0,                                STR_RESIZE_BUTTON},                             // VLD_WIDGET_RESIZE
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY, 393, 404, 113, 124, 0x0,                                STR_TOOLTIP_RESIZE},                             // VLD_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
 
@@ -1374,7 +1374,7 @@ struct VehicleDetailsWindow : Window {
 
 		/* Draw running cost */
 		SetDParam(1, v->age / DAYS_IN_LEAP_YEAR);
-		SetDParam(0, (v->age + DAYS_IN_YEAR < v->max_age) ? STR_AGE : STR_AGE_RED);
+		SetDParam(0, (v->age + DAYS_IN_YEAR < v->max_age) ? STR_VEHICLE_INFO_AGE : STR_VEHICLE_INFO_AGE_RED);
 		SetDParam(2, v->max_age / DAYS_IN_LEAP_YEAR);
 		SetDParam(3, v->GetDisplayRunningCost());
 		DrawString(2, this->width - 2, 15, STR_VEHICLE_INFO_AGE_RUNNING_COST_YR);
@@ -1512,7 +1512,7 @@ static void ShowVehicleDetailsWindow(const Vehicle *v)
 static const Widget _vehicle_view_widgets[] = {
 	{   WWT_CLOSEBOX,  RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_BLACK_CROSS,          STR_TOOLTIP_CLOSE_WINDOW },           // VVW_WIDGET_CLOSEBOX
 	{    WWT_CAPTION, RESIZE_RIGHT,  COLOUR_GREY,  11, 237,   0,  13, STR_VEHICLE_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS }, // VVW_WIDGET_CAPTION
-	{  WWT_STICKYBOX,    RESIZE_LR,  COLOUR_GREY, 238, 249,   0,  13, 0x0,                      STR_STICKY_BUTTON },                  // VVW_WIDGET_STICKY
+	{  WWT_STICKYBOX,    RESIZE_LR,  COLOUR_GREY, 238, 249,   0,  13, 0x0,                      STR_TOOLTIP_STICKY },                  // VVW_WIDGET_STICKY
 	{      WWT_PANEL,    RESIZE_RB,  COLOUR_GREY,   0, 231,  14, 103, 0x0,                      STR_NULL },                           // VVW_WIDGET_PANEL
 	{      WWT_INSET,    RESIZE_RB,  COLOUR_GREY,   2, 229,  16, 101, 0x0,                      STR_NULL },                           // VVW_WIDGET_VIEWPORT
 	{    WWT_PUSHBTN,   RESIZE_RTB,  COLOUR_GREY,   0, 237, 104, 115, 0x0,                      0x0 /* filled later */ },             // VVW_WIDGET_START_STOP_VEH
@@ -1523,7 +1523,7 @@ static const Widget _vehicle_view_widgets[] = {
 	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  86, 103, SPR_SHOW_VEHICLE_DETAILS, 0x0 /* filled later */ },             // VVW_WIDGET_SHOW_DETAILS
 	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  32,  49, 0x0 /* filled later */,   0x0 /* filled later */ },             // VVW_WIDGET_CLONE_VEH
 	{      WWT_PANEL,   RESIZE_LRB,  COLOUR_GREY, 232, 249, 104, 103, 0x0,                      STR_NULL },                           // VVW_WIDGET_EMPTY_BOTTOM_RIGHT
-	{  WWT_RESIZEBOX,  RESIZE_LRTB,  COLOUR_GREY, 238, 249, 104, 115, 0x0,                      STR_RESIZE_BUTTON },                  // VVW_WIDGET_RESIZE
+	{  WWT_RESIZEBOX,  RESIZE_LRTB,  COLOUR_GREY, 238, 249, 104, 115, 0x0,                      STR_TOOLTIP_RESIZE },                  // VVW_WIDGET_RESIZE
 	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  50,  67, SPR_FORCE_VEHICLE_TURN,   STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP }, // VVW_WIDGET_TURN_AROUND
 	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  50,  67, SPR_IGNORE_SIGNALS,       STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP }, // VVW_WIDGET_FORCE_PROCEED
 {   WIDGETS_END},
@@ -1662,7 +1662,7 @@ struct VehicleViewWindow : Window {
 		this->widget[VVW_WIDGET_GOTO_DEPOT].tooltips       = STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP + v->type;
 		this->widget[VVW_WIDGET_SHOW_ORDERS].tooltips      = STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP + v->type;
 		this->widget[VVW_WIDGET_SHOW_DETAILS].tooltips     = STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP + v->type;
-		this->widget[VVW_WIDGET_CLONE_VEH].tooltips        = STR_CLONE_TRAIN_INFO + v->type;
+		this->widget[VVW_WIDGET_CLONE_VEH].tooltips        = STR_VEHICLE_VIEW_CLONE_TRAIN_INFO + v->type;
 
 		/*
 		 * fill in data and tooltip codes for the widgets and
@@ -1771,25 +1771,25 @@ struct VehicleViewWindow : Window {
 			if (v->type == VEH_TRAIN) {
 				if (v->cur_speed == 0) {
 					if (Train::From(v)->tcache.cached_power == 0) {
-						str = STR_TRAIN_NO_POWER;
+						str = STR_VEHICLE_STATUS_TRAIN_NO_POWER;
 					} else {
 						str = STR_VEHICLE_STATUS_STOPPED;
 					}
 				} else {
 					SetDParam(0, v->GetDisplaySpeed());
-					str = STR_TRAIN_STOPPING + _settings_client.gui.vehicle_speed;
+					str = STR_VEHICLE_STATUS_TRAIN_STOPPING + _settings_client.gui.vehicle_speed;
 				}
 			} else { // no train
 				str = STR_VEHICLE_STATUS_STOPPED;
 			}
 		} else if (v->type == VEH_TRAIN && HasBit(Train::From(v)->flags, VRF_TRAIN_STUCK) && !v->current_order.IsType(OT_LOADING)) {
-			str = STR_TRAIN_STUCK;
+			str = STR_VEHICLE_STATUS_TRAIN_STUCK;
 		} else { // vehicle is in a "normal" state, show current order
 			switch (v->current_order.GetType()) {
 				case OT_GOTO_STATION: {
 					SetDParam(0, v->current_order.GetDestination());
 					SetDParam(1, v->GetDisplaySpeed());
-					str = STR_HEADING_FOR_STATION + _settings_client.gui.vehicle_speed;
+					str = STR_VEHICLE_STATUS_HEADING_FOR_STATION + _settings_client.gui.vehicle_speed;
 				} break;
 
 				case OT_GOTO_DEPOT: {
@@ -1803,9 +1803,9 @@ struct VehicleViewWindow : Window {
 						SetDParam(1, v->GetDisplaySpeed());
 					}
 					if (v->current_order.GetDepotActionType() & ODATFB_HALT) {
-						str = STR_HEADING_FOR_TRAIN_DEPOT + 2 * v->type + _settings_client.gui.vehicle_speed;
+						str = STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT + 2 * v->type + _settings_client.gui.vehicle_speed;
 					} else {
-						str = STR_HEADING_FOR_TRAIN_DEPOT_SERVICE + 2 * v->type + _settings_client.gui.vehicle_speed;
+						str = STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE + 2 * v->type + _settings_client.gui.vehicle_speed;
 					}
 				} break;
 
@@ -1816,7 +1816,7 @@ struct VehicleViewWindow : Window {
 				case OT_GOTO_WAYPOINT: {
 					assert(v->type == VEH_TRAIN || v->type == VEH_SHIP);
 					SetDParam(0, v->current_order.GetDestination());
-					str = STR_HEADING_FOR_WAYPOINT + _settings_client.gui.vehicle_speed;
+					str = STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT + _settings_client.gui.vehicle_speed;
 					SetDParam(1, v->GetDisplaySpeed());
 					break;
 				}
@@ -1830,7 +1830,7 @@ struct VehicleViewWindow : Window {
 
 				default:
 					if (v->GetNumOrders() == 0) {
-						str = STR_NO_ORDERS + _settings_client.gui.vehicle_speed;
+						str = STR_VEHICLE_STATUS_NO_ORDERS + _settings_client.gui.vehicle_speed;
 						SetDParam(0, v->GetDisplaySpeed());
 					} else {
 						str = STR_EMPTY;

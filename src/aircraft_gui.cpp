@@ -58,7 +58,7 @@ void DrawAircraftDetails(const Aircraft *v, int left, int right, int y)
 	}
 
 	SetDParam(0, feeder_share);
-	DrawString(left, right, y + 33 + y_offset, STR_FEEDER_CARGO_VALUE);
+	DrawString(left, right, y + 33 + y_offset, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
 }
 
 
