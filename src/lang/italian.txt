@@ -197,39 +197,39 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrie
 STR_SMALLMAP_TYPE_ROUTES                                        :Percorsi
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetazione
 STR_SMALLMAP_TYPE_OWNERS                                        :Proprietari
-STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}Strade
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}Ferrovie
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}Stazioni/Aeroporti/Moli
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}Edifici/Industrie
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}Veicoli
-STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100m
-STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200m
-STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300m
-STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400m
-STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500m
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}Treni
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}Automezzi
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}Navi
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}Aeromobili
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Percorsi di trasporto
-STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}Foresta
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Stazione ferroviaria
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Area di carico camion
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}Stazione autobus
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}Aeroporto/Eliporto
-STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}Molo
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}Terreno accidentato
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}Terreno erboso
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}Terreno spoglio
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}Campi
-STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}Alberi
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}Roccie
-STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}Acqua
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}Senza proprietario
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}Città
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}Industrie
-STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}Deserto
-STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}Neve
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Strade
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Ferrovie
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stazioni/Aeroporti/Moli
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Edifici/Industrie
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Veicoli
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200m
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300m
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400m
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500m
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Treni
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Automezzi
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Navi
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Aeromobili
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Percorsi di trasporto
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Foresta
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Stazione ferroviaria
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Area di carico camion
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Stazione autobus
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Aeroporto/Eliporto
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Molo
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Terreno accidentato
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Terreno erboso
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Terreno spoglio
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Campi
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Alberi
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Roccie
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Acqua
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Senza proprietario
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Città
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Industrie
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Deserto
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Neve
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Messaggio
 STR_QUERY_CAPTION                                               :{WHITE}{STRING}
 STR_DEFAULT                                                     :{BLACK}Predefinito
@@ -433,7 +433,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Propriet
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autorità locale: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nessuno
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nome
-STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
+STR_VEHICLE_NAME_SMALL                                          :{TINYFONT}{BLACK}{VEHICLE}
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
@@ -511,20 +511,20 @@ STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Nuovo
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy street
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Personale 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Personale 2
-STR_MUSIC_MUSIC_VOLUME                                          :{BLACK}{TINYFONT}Volume musica
-STR_MUSIC_EFFECTS_VOLUME                                        :{BLACK}{TINYFONT}Volume effetti
-STR_MUSIC_MIN_MAX_RULER                                         :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
+STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volume musica
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volume effetti
+STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  ' '  '  '  MAX
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Salta al brano precedente
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Salta al brano successivo
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Ferma la musica
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Avvia la musica
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Trascina i selettori per regolare il volume della musica e degli effetti sonori
-STR_MUSIC_TRACK_NONE                                            :{DKGREEN}{TINYFONT}--
-STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{DKGREEN}{TINYFONT}0{COMMA}
-STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{DKGREEN}{TINYFONT}{COMMA}
-STR_MUSIC_TITLE_NONE                                            :{DKGREEN}{TINYFONT}------
-STR_MUSIC_TITLE_NAME                                            :{DKGREEN}{TINYFONT}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{BLACK}{TINYFONT}Brano{SETX 88}{BLACK}{TINYFONT}Titolo
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGREEN}0{COMMA}
+STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Brano{SETX 88}{BLACK}{TINYFONT}Titolo
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}Casuale
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Programma
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Selezione programma musicale
@@ -574,7 +574,7 @@ STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Riprodu
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...troppo lontano dalla destinazione precedente
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Le migliori compagnie che hanno raggiunto il {NUM}{}(Livello {STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Classifica compagnie nel {NUM}
-STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Uomo d'affari
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Imprenditore
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industriale
@@ -584,8 +584,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mogul
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnate del secolo
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} raggiunge lo status di '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} della {COMPANY} raggiunge lo status di '{STRING}'!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} raggiunge lo status di '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} della {COMPANY} raggiunge lo status di '{STRING}'!
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor di scenari
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generazione terreno
@@ -866,7 +866,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fi
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} non trova un percorso per proseguire
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} si è perso
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Il profitto di {VEHICLE} per l'anno scorso è stato {CURRENCY}
-STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Unione Monetaria Europea!{}{}È stato introdotto l'Euro come unica moneta per le transazioni quotidiane nel nostro Paese!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Unione Monetaria Europea!{}{}È stato introdotto l'Euro come unica moneta per le transazioni quotidiane nel nostro Paese!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -1695,13 +1695,13 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}Nessuno
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servizi già sovvenzionati:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} da {STATION} a {STATION}{YELLOW} ({COMPANY}{YELLOW}, fino al {DATE_SHORT})
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Offerta di sussidio scaduta:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non darà più diritto a sovvenzioni.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Sussidio terminato:{}{}Il trasporto di {STRING} da {STATION} a {STATION} non è più sovvenzionato.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Offerta di sussidio:{}{}Il primo servizio di {STRING} da {STRING} a {STRING} riceverà un'anno di sovvenzioni dall'autorità locale!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il 50% in più per il prossimo anno!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il doppio per il prossimo anno!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il triplo per il prossimo anno!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il quadruplo per il prossimo anno!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Offerta di sussidio scaduta:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non darà più diritto a sovvenzioni.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Sussidio terminato:{}{}Il trasporto di {STRING} da {STATION} a {STATION} non è più sovvenzionato.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Offerta di sussidio:{}{}Il primo servizio di {STRING} da {STRING} a {STRING} riceverà un'anno di sovvenzioni dall'autorità locale!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il 50% in più per il prossimo anno!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il doppio per il prossimo anno!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il triplo per il prossimo anno!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il quadruplo per il prossimo anno!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}L'autorita locale di {TOWN} rifiuta la costruzione di un altro aeroporto nella città
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}L'autorita locale di {TOWN} rifiuta il permesso per motivi di inquinamento acustico
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Cottage
@@ -1958,23 +1958,23 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produce:
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produzione il mese scorso:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% trasportato)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra la visuale principale sulla posizione dell'industria
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}Nuov{G o a} {STRING} in costruzione vicino a {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}Nuov{G o a} {STRING} piantat{G o a} vicino a {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nuov{G o a} {STRING} in costruzione vicino a {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nuov{G o a} {STRING} piantat{G o a} vicino a {TOWN}!
 STR_INDUSTRY_BUILD_COST                                         :{BLACK}Costo: {YELLOW}{CURRENCY}
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Impossibile costruire l'industria qui...
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...una foresta può essere piantata solo in una zona innevata
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT}{STRING} annuncia imminente chiusura!!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}Per problemi di rifornimenti {STRING} annuncia imminente chiusura!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}La mancanza di alberi vicini costringe la {STRING} ad imminente chiusura!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} incrementa la produzione!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BLACK}{BIGFONT}Trovato nuovo giacimento di carbone alla {INDUSTRY}!{}Atteso un raddoppiamento della produzione!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BLACK}{BIGFONT}Trovato nuovo giacimento di petrolio al {INDUSTRY}!{}Atteso un raddoppiamento della produzione!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BLACK}{BIGFONT}Grazie a metodi di coltivazione migliorati alla {INDUSTRY} è atteso un raddoppiamento della produzione!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT}La produzione a {INDUSTRY} scende del 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BLACK}{BIGFONT}Infestazione di insetti devasta la {INDUSTRY}!{}Produzione scesa del 50%
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} annuncia imminente chiusura!!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Per problemi di rifornimenti {STRING} annuncia imminente chiusura!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}La mancanza di alberi vicini costringe la {STRING} ad imminente chiusura!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} incrementa la produzione!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Trovato nuovo giacimento di carbone alla {INDUSTRY}!{}Atteso un raddoppiamento della produzione!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Trovato nuovo giacimento di petrolio al {INDUSTRY}!{}Atteso un raddoppiamento della produzione!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Grazie a metodi di coltivazione migliorati alla {INDUSTRY} è atteso un raddoppiamento della produzione!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}La produzione a {INDUSTRY} scende del 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Infestazione di insetti devasta la {INDUSTRY}!{}Produzione scesa del 50%
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...può essere posizionata solo vicino ai bordi della mappa
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BLACK}{BIGFONT}La produzione di {STRING} a {INDUSTRY} è aumentata del {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BLACK}{BIGFONT}La produzione di {STRING} a {INDUSTRY} è diminuita del {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}La produzione di {STRING} a {INDUSTRY} è aumentata del {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}La produzione di {STRING} a {INDUSTRY} è diminuita del {COMMA}%!
 
 ##id 0x5000
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Altro tunnel di mezzo
@@ -2215,22 +2215,22 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valore d
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Classifica compagnie
 STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_OTHER                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BLACK}{BIGFONT}Compagnia di trasporti in difficolta!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BLACK}{BIGFONT}La {STRING} verrà venduta o dichiarerà bancarotta a meno che le prestazioni non migliorino presto!
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Compagnia di trasporti in difficolta!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}La {STRING} verrà venduta o dichiarerà bancarotta a meno che le prestazioni non migliorino presto!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Presidente)
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BLACK}{BIGFONT}Fusione tra compagnie di trasporti!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BLACK}{BIGFONT}La {STRING} è stata venduta alla {STRING} per {CURRENCY}!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Fusione tra compagnie di trasporti!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}La {STRING} è stata venduta alla {STRING} per {CURRENCY}!
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Stiamo cercando una compagnia di trasporti disposta a rilevare la nostra società.{}{} Vorrebbe acquistare la {COMPANY} per {CURRENCY}?
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BLACK}{BIGFONT}Bancarotta!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BLACK}{BIGFONT}La {STRING} è stata chiusa dai creditori e tutti i suoi beni sono stati venduti!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BLACK}{BIGFONT}Nuova compagnia di trasporti!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BLACK}{BIGFONT}La {STRING} inizia a costruire vicino a {TOWN}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Bancarotta!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}La {STRING} è stata chiusa dai creditori e tutti i suoi beni sono stati venduti!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Nuova compagnia di trasporti!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}La {STRING} inizia a costruire vicino a {TOWN}!
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Impossibile comprare la compagnia...
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tariffe di pagamento merci
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{BLACK}{TINYFONT}Giorni di viaggio
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{BLACK}{TINYFONT}Pagamento per la consegna di 10 unità (o 10.000 litri) di merce alla distanza di 20 riquadri
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Giorni di viaggio
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Pagamento per la consegna di 10 unità (o 10.000 litri) di merce alla distanza di 20 riquadri
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Attiva/disattiva il grafico per il tipo di merce
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{BLACK}{TINYFONT}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingegnere
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Direttore del traffico
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordinatore dei trasporti
@@ -2267,7 +2267,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vende il
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Impossibile comprare il 25% delle azioni...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Impossibile vendere il 25% delle azioni...
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% posseduto dalla {COMPANY})
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BLACK}{BIGFONT}La {STRING} è stata rilevata dalla {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}La {STRING} è stata rilevata dalla {STRING}!
 STR_PROTECTED                                                   :{WHITE}Questa compagnia non è abbastanza vecchia per scambiare azioni...
 
 STR_LIVERY_DEFAULT                                              :Livrea standard
@@ -2570,7 +2570,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}motrice mo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}motrice maglev
 
 ##id 0x8800
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Il primo treno arriva a {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}I cittadini festeggiano . . .{}Il primo treno arriva a {STATION}!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Dettagli)
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
@@ -2744,7 +2744,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Fermo
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Impossibile far passare al treno un segnale di pericolo...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Distrutto!
 
-STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Incidente ferroviario!{}In {COMMA} muoiono nell'incendio seguito alla collisione
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Incidente ferroviario!{}In {COMMA} muoiono nell'incendio seguito alla collisione
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Impossibile invertire la direzione del treno...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Impossibile invertire la direzione del veicolo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Impossibile invertire i veicoli composti da più unità
@@ -2760,8 +2760,8 @@ STR_TRAIN_NO_POWER                                              :{RED}Alimentazi
 STR_TRAIN_START_NO_CATENARY                                     :In questo binario manca la catenaria, quindi il treno non può essere avviato
 STR_TRAIN_STUCK                                                 :{ORANGE}In attesa di un percorso libero
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}Nuov{G o a} {STRING} disponibile!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nuov{G o a} {STRING} disponibile!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nuov{G o a} {STRING} disponibile! -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Impossibile vendere un veicolo distrutto...
@@ -2788,12 +2788,12 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} component{P e i}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Il primo autobus arriva a {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Il primo camion arriva a {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Il primo tram passeggeri arriva a {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Il primo tram merci arriva a {STATION}!
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Incidente stradale!{}Il conducente muore nell'incendio seguito alla collisione con un treno
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Incidente stradale!{}In {COMMA} muoiono nell'incendio seguito alla collisione con un treno
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}I cittadini festeggiano . . .{}Il primo autobus arriva a {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}I cittadini festeggiano . . .{}Il primo camion arriva a {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}I cittadini festeggiano . . .{}Il primo tram passeggeri arriva a {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}I cittadini festeggiano . . .{}Il primo tram merci arriva a {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Incidente stradale!{}Il conducente muore nell'incendio seguito alla collisione con un treno
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Incidente stradale!{}In {COMMA} muoiono nell'incendio seguito alla collisione con un treno
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Impossibile far fare inversione all'automezzo...
 
 
@@ -2806,7 +2806,7 @@ STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}La nave 
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Costruisce un molo per le navi
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Costruisce un deposito navale (per costruire e manutenere le navi)
 
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}La prima nave attracca a {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}I cittadini festeggiano . . .{}La prima nave attracca a {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Posiziona una boa che può essere usata come waypoint
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Impossibile posizionare una boa qui...
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Costruisce un acquedotto
@@ -2824,21 +2824,21 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}L'aeromo
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Costruzione aeroporto
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Costruisce un aeroporto
 
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Il primo aereo atterra a {STATION}!
-STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Aeroplano precipitato!{}In {COMMA} muoiono nel fuoco a {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Incidente aereo!{}L'aereo ha esaurito il carburante. In {COMMA} muoiono fra le fiamme!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}I cittadini festeggiano . . .{}Il primo aereo atterra a {STATION}!
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Aeroplano precipitato!{}In {COMMA} muoiono nel fuoco a {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Incidente aereo!{}L'aereo ha esaurito il carburante. In {COMMA} muoiono fra le fiamme!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Tabella oraria)
 
 ##id 0xB000
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}Disastro Zeppelin a {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}Automezzo distrutto in una collisione con un 'UFO'!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BLACK}{BIGFONT}Esplosione in una raffineria vicino a {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BLACK}{BIGFONT}Fabbrica distrutta in circostanze sospette vicino a {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BLACK}{BIGFONT}Un 'UFO' atterra vicino a {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BLACK}{BIGFONT}Cedimento in una miniera di carbone lascia una scia di distruzione vicino a {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BLACK}{BIGFONT}Alluvione!{}Almeno {COMMA} dispersi, presunti morti, in una imponente alluvione!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Disastro Zeppelin a {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Automezzo distrutto in una collisione con un 'UFO'!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Esplosione in una raffineria vicino a {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Fabbrica distrutta in circostanze sospette vicino a {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}Un 'UFO' atterra vicino a {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Cedimento in una miniera di carbone lascia una scia di distruzione vicino a {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Alluvione!{}Almeno {COMMA} dispersi, presunti morti, in una imponente alluvione!
 
 STR_BRIBE_FAILED                                                :{WHITE}Il tuo tentativo di corruzione è stato
 STR_BRIBE_FAILED_2                                              :{WHITE}scoperto dalla Guardia di Finanzia.
@@ -3270,7 +3270,7 @@ STR_MAGLEV_VEHICLES                                             :Veicoli maglev
 
 ############ End of list of rail types
 
-STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
+STR_TINY_BLACK                                                  :{TINYFONT}{BLACK}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Costo: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocità: {GOLD}{VELOCITY}{BLACK} Potenza: {GOLD}{POWER}

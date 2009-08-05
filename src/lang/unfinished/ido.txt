@@ -120,39 +120,39 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrii
 STR_SMALLMAP_TYPE_ROUTES                                        :Voyi
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vejetado
 STR_SMALLMAP_TYPE_OWNERS                                        :Proprietanto
-STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}Voyi
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}Fervoyo
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}Stacioni/Aeroportua/Doko
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}Edifici/Industrii
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}Vehili
-STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100m
-STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200m
-STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300m
-STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400m
-STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500m
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}Treni
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}Voy-Vehili
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}Bateli
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}Aeroplani
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Transport-voyi
-STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}Foresto
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Fervoyala Staciono
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Kamiono-Kayo
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}Autobuso Staciono
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}Aeroportuo/Heliportuo
-STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}Portuo
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}Ruda Tereno
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}Herbo
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}Nudiga Tereno
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}Agri
-STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}Arbori
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}Roki
-STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}Aquo
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}Ne proprietanto
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}Urbi
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}Industrii
-STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}Dezerto
-STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}Nivo
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Voyi
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Fervoyo
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stacioni/Aeroportua/Doko
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Edifici/Industrii
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Vehili
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200m
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300m
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400m
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500m
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Treni
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Voy-Vehili
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Bateli
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Aeroplani
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Transport-voyi
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Foresto
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Fervoyala Staciono
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Kamiono-Kayo
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Autobuso Staciono
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Aeroportuo/Heliportuo
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Portuo
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Ruda Tereno
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Herbo
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Nudiga Tereno
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Agri
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Arbori
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Roki
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Aquo
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Ne proprietanto
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Urbi
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Industrii
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Dezerto
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Nivo
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Sendajo
 STR_QUERY_CAPTION                                               :{WHITE}{STRING}
 STR_QUERY_CANCEL                                                :{BLACK}Anular

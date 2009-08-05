@@ -195,39 +195,39 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrii
 STR_SMALLMAP_TYPE_ROUTES                                        :Rute
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetatie
 STR_SMALLMAP_TYPE_OWNERS                                        :Proprietari
-STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}Drumuri
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}Căi ferate
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}Staţii/Aeroporturi/Porturi
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}Clădiri/Industrii
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}Vehicule
-STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100m
-STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200m
-STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300m
-STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400m
-STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500m
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}Trenuri
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}Autovehicule
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}Nave
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}Aeronave
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Rute de transport
-STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}Pădure
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Gară
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Loc încărcare camioane
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}Staţie de autobuz
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}Aeroport/Heliport
-STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}Port
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}Teren pietros
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}Pajişte
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}Teren viran
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}Teren agricol
-STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}Copaci
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}Pietre
-STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}Apă
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}Fără proprietar
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}Oraşe
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}Industrii
-STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}Deşert
-STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}Zăpadă
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Drumuri
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Căi ferate
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Staţii/Aeroporturi/Porturi
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Clădiri/Industrii
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Vehicule
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200m
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300m
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400m
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500m
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Trenuri
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Autovehicule
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Nave
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Aeronave
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Rute de transport
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Pădure
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Gară
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Loc încărcare camioane
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Staţie de autobuz
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Aeroport/Heliport
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Port
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Teren pietros
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Pajişte
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Teren viran
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Teren agricol
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Copaci
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Pietre
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Apă
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Fără proprietar
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Oraşe
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Industrii
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Deşert
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Zăpadă
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mesaj
 STR_QUERY_CAPTION                                               :{WHITE}{STRING}
 STR_DEFAULT                                                     :{BLACK}Prestabilit(e)
@@ -431,7 +431,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Propriet
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autoritatea locală: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :nici una
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nume
-STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
+STR_VEHICLE_NAME_SMALL                                          :{TINYFONT}{BLACK}{VEHICLE}
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
@@ -509,20 +509,20 @@ STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Moder
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy Street
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Personale 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Personale 2
-STR_MUSIC_MUSIC_VOLUME                                          :{BLACK}{TINYFONT}Volumul muzicii
-STR_MUSIC_EFFECTS_VOLUME                                        :{BLACK}{TINYFONT}Volumul efectelor sonore
-STR_MUSIC_MIN_MAX_RULER                                         :{BLACK}{TINYFONT}MIN  '  '  '  '  '  '  MAX
+STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volumul muzicii
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volumul efectelor sonore
+STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  '  '  '  '  MAX
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Sări la piesa precedentă din selecţie
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Sări la piesa următoare din selecţie
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Opreste muzica
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Porneste muzica
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Foloseste aceste indicatoare pentru a regla volumul muzicii si al efectelor sonore
-STR_MUSIC_TRACK_NONE                                            :{DKGREEN}{TINYFONT}--
-STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{DKGREEN}{TINYFONT}0{COMMA}
-STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{DKGREEN}{TINYFONT}{COMMA}
-STR_MUSIC_TITLE_NONE                                            :{DKGREEN}{TINYFONT}------
-STR_MUSIC_TITLE_NAME                                            :{DKGREEN}{TINYFONT}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{BLACK}{TINYFONT}Piesa nr: {SETX 88}{BLACK}{TINYFONT}Titlul
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGREEN}0{COMMA}
+STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Piesa nr: {SETX 88}{BLACK}{TINYFONT}Titlul
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}Aleator
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Programare piese muzicale
@@ -572,7 +572,7 @@ STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Sunet p
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...prea departe de destinaţia precedentă
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Primele companii care au atins {NUM}{}(Nivelul {STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Clasamentul companiilor in {NUM}
-STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Om de afaceri
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Întreprinzător
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrias
@@ -582,8 +582,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mogul
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnatul Secolului
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} a dobandit titlul de '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} al {COMPANY} dobandeste titlul de '{STRING}'!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} a dobandit titlul de '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} al {COMPANY} dobandeste titlul de '{STRING}'!
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor de scenarii
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generator suprafaţă uscat
@@ -864,7 +864,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Sf
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nu găseşte calea către destinaţie.
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} s-a rătăcit.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Profitul {VEHICLE} pe anul precedent a fost de {CURRENCY}
-STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Uniunea Monetară Europeană!{}{}Euro este introdus în ţară ca monedă unică de folosinţă în tranzacţiile zilnice!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Uniunea Monetară Europeană!{}{}Euro este introdus în ţară ca monedă unică de folosinţă în tranzacţiile zilnice!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -1690,13 +1690,13 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- nici una
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Subvenţii acordate la ora actuală:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}- {STRING} de la {STATION} la {STATION}{YELLOW} ({COMPANY}{YELLOW}, până în {DATE_SHORT})
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Ofertă expirată:{}{}Transportul de {STRING} de la {STRING} la {STRING} nu va mai primi subvenţie
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Ofertă închisă:{}{}Transportul de {STRING} de la {STATION} la {STATION} nu va mai fi subvenţionat
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subvenţie oferită:{}{}Primul transport de {STRING} de la {STRING} la {STRING} va primi o subvenţie pe un an din partea autorităţilor locale
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări cu 50% mai mari timp de un an!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări duble timp de un an!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări triple timp de un an!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări de patru ori mai mari timp de un an!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Ofertă expirată:{}{}Transportul de {STRING} de la {STRING} la {STRING} nu va mai primi subvenţie
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Ofertă închisă:{}{}Transportul de {STRING} de la {STATION} la {STATION} nu va mai fi subvenţionat
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subvenţie oferită:{}{}Primul transport de {STRING} de la {STRING} la {STRING} va primi o subvenţie pe un an din partea autorităţilor locale
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări cu 50% mai mari timp de un an!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări duble timp de un an!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări triple timp de un an!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasări de patru ori mai mari timp de un an!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Autoritatea locală din {TOWN} refuză să permită construirea unui nou aeroport în acest oraş
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}Autoritatea locală din {TOWN} nu permite construirea unui nou aeroport datorită poluării fonice
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Căsuţe
@@ -1948,23 +1948,23 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produce:
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producţia lunii trecute:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportat)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrează imaginea pe locaţia industriei
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}Un nou obiectiv industrial ({STRING}) se construieşte lângă {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}O nouă {STRING} se plantează lângă {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Un nou obiectiv industrial ({STRING}) se construieşte lângă {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}O nouă {STRING} se plantează lângă {TOWN}!
 STR_INDUSTRY_BUILD_COST                                         :{BLACK}Cost: {YELLOW}{CURRENCY}
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Acest tip de industrie nu se poate construi aici...
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...pădurile pot fi plantate doar în zonele înzăpezite
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT}{STRING} anunţă închidere iminentă!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}Problemele de aprovizionare provoacă închiderea {STRING}!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}Lipsa de teren împădurit provoacă închiderea {STRING}!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} măreşte producţia!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BLACK}{BIGFONT}Rezerve noi de cărbune la {INDUSTRY}!{}Se preconizează dublarea producţiei!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BLACK}{BIGFONT}Rezerve noi de petrol la {INDUSTRY}!{}Se preconizează dublarea producţiei!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BLACK}{BIGFONT}Noile tehnologii folosite la {INDUSTRY} vor aduce dublarea producţiei!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} scade producţia cu 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BLACK}{BIGFONT}Insectele cauzează distrugeri masive la {INDUSTRY}!{}Producţia scade cu 50%
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} anunţă închidere iminentă!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Problemele de aprovizionare provoacă închiderea {STRING}!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Lipsa de teren împădurit provoacă închiderea {STRING}!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} măreşte producţia!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Rezerve noi de cărbune la {INDUSTRY}!{}Se preconizează dublarea producţiei!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Rezerve noi de petrol la {INDUSTRY}!{}Se preconizează dublarea producţiei!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Noile tehnologii folosite la {INDUSTRY} vor aduce dublarea producţiei!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} scade producţia cu 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insectele cauzează distrugeri masive la {INDUSTRY}!{}Producţia scade cu 50%
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...se poate construi doar la marginea hărţii
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BLACK}{BIGFONT}Productia de {STRING} de la {INDUSTRY} creste cu {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BLACK}{BIGFONT}Productia de {STRING} de la {INDUSTRY} scade cu {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Productia de {STRING} de la {INDUSTRY} creste cu {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Productia de {STRING} de la {INDUSTRY} scade cu {COMMA}%!
 
 ##id 0x5000
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Intersectare cu alt tunel
@@ -2205,22 +2205,22 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valorile
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Clasamentul companiilor
 STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_OTHER                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BLACK}{BIGFONT}Companie de transport cu probleme!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BLACK}{BIGFONT}{STRING} va fi vândută dacă situaţia financiară nu se va îmbunătăţi curând!
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Companie de transport cu probleme!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} va fi vândută dacă situaţia financiară nu se va îmbunătăţi curând!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Preşedinte)
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BLACK}{BIGFONT}Fuziune între companii de transport!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING} a fost vândută companiei {STRING} la preţul de {CURRENCY}!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Fuziune între companii de transport!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} a fost vândută companiei {STRING} la preţul de {CURRENCY}!
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Căutăm o companie de transport care să preia societatea noastră {}{}Doriţi să cumpăraţi {COMPANY} la preţul de {CURRENCY}?
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BLACK}{BIGFONT}Faliment!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BLACK}{BIGFONT}Compania {STRING} a fost închisă şi toate activele au fost valorificate de creditori!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BLACK}{BIGFONT}A apărut o nouă companie!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING} şi-a stabilit sediul lângă {TOWN}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Faliment!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}Compania {STRING} a fost închisă şi toate activele au fost valorificate de creditori!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}A apărut o nouă companie!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} şi-a stabilit sediul lângă {TOWN}!
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Nu se poate cumpăra compania...
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Preţurile transportului de călători şi mărfuri
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{BLACK}{TINYFONT}Zile în tranzit
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{BLACK}{TINYFONT}Plata pentru livrarea a 10 unităţi (sau 10.000 de litri) de marfă pe o distanţă de 20 de pătrăţele
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Zile în tranzit
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Plata pentru livrarea a 10 unităţi (sau 10.000 de litri) de marfă pe o distanţă de 20 de pătrăţele
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Comutator pentru afişarea graficului pentru marfă
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{BLACK}{TINYFONT}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Inginer
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Manager de trafic
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordonator transporturi
@@ -2257,7 +2257,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vinde 25
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Nu se pot cumpăra 25% din acţiunile acestei companii...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Nu se pot vinde 25% din acţiunile acestei companii...
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% deţinute de {COMPANY})
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BLACK}{BIGFONT}{STRING} a fost preluată de {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} a fost preluată de {STRING}!
 STR_PROTECTED                                                   :{WHITE}Această companie încă nu vinde acţiuni...
 
 STR_LIVERY_DEFAULT                                              :Uniforma standard
@@ -2560,7 +2560,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotivă mon
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotivă pernă magnetică
 
 ##id 0x8800
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Cetăţenii sărbătoresc {}sosirea primului tren la {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Cetăţenii sărbătoresc {}sosirea primului tren la {STATION}!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalii)
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
@@ -2734,7 +2734,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Oprit
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nu se poate permite trenului să treacă în caz de pericol...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accident!
 
-STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Accident feroviar!{}{COMMA} victime în urma unei coliziuni
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Accident feroviar!{}{COMMA} victime în urma unei coliziuni
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nu se poate schimba sensul de mers al trenului...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nu se poate inversa direcţia vehiculului...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nu se pot întoarce vehiculele alcătuite din mai multe unităţi
@@ -2749,8 +2749,8 @@ STR_TRAIN_NO_POWER                                              :{RED}Fara curen
 STR_TRAIN_START_NO_CATENARY                                     :Aceasta sina nu este electrificata, deci trenul nu poate porni
 STR_TRAIN_STUCK                                                 :{ORANGE}Astept cale libera
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}Un nou tip de {STRING} este acum disponibil!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Un nou tip de {STRING} este acum disponibil!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Un nou tip de {STRING} este acum disponibil!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Vehiculul distrus nu poate fi vandut...
@@ -2777,12 +2777,12 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehicul{P "" e}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Cetăţenii sărbătoresc{}Sosirea primului autobuz la {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Cetăţenii sărbătoresc{}Sosirea primului camion la {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Cetăţenii sărbătoresc . . .{}sosirea primului primul tramvai pentru călători la {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Cetăţenii sărbătoresc . . .{}sosirea primului primul tramvai pentru marfă la {STATION}!
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Accident rutier!{}Şoferul decedat în urma coliziunii cu un tren
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Accident rutier!{}{COMMA} victime în urma coliziunii cu un tren
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Cetăţenii sărbătoresc{}Sosirea primului autobuz la {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Cetăţenii sărbătoresc{}Sosirea primului camion la {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Cetăţenii sărbătoresc . . .{}sosirea primului primul tramvai pentru călători la {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Cetăţenii sărbătoresc . . .{}sosirea primului primul tramvai pentru marfă la {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Accident rutier!{}Şoferul decedat în urma coliziunii cu un tren
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Accident rutier!{}{COMMA} victime în urma coliziunii cu un tren
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Vehicolul nu poate întoarce la 180 de grade...
 
 
@@ -2795,7 +2795,7 @@ STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Nava tre
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construieşte port
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construieşte şantier naval (pentru construcţie si service nave)
 
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Cetăţenii sărbătoresc{}Sosirea primei nave la {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Cetăţenii sărbătoresc{}Sosirea primei nave la {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Amplasează o baliză ce poate fi utilizată pentru direcţionare
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Nu se poate amplasa baliză aici...
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construieste apeduct
@@ -2813,21 +2813,21 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Aeronava
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construire aeroport
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construieşte aeroport
 
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Cetăţenii sărbătoresc {}Sosirea primei aeronave la {STATION}!
-STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Accident aviatic!{}{COMMA} victime în urma prăbuşirii de la {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Accident aerian!{}Aeronava in pana de combustibil, {COMMA} victime in urma dezastrulu!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Cetăţenii sărbătoresc {}Sosirea primei aeronave la {STATION}!
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Accident aviatic!{}{COMMA} victime în urma prăbuşirii de la {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Accident aerian!{}Aeronava in pana de combustibil, {COMMA} victime in urma dezastrulu!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Orar)
 
 ##id 0xB000
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}Accident de zepelin la{STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}Autovehicul distrus în urma coliziunii cu un OZN!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BLACK}{BIGFONT}Explozie la o rafinărie de lângă {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BLACK}{BIGFONT}Fabrică de conserve distrusă în condiţii misterioase lângă {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BLACK}{BIGFONT}Un OZN a aterizat lângă {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BLACK}{BIGFONT}Prăbuşirea unei mine de cărbune lângă {TOWN} provoacă daune majore!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BLACK}{BIGFONT}Inundatii!{}Se estimeaza cel putin {COMMA}  victime!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Accident de zepelin la{STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Autovehicul distrus în urma coliziunii cu un OZN!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Explozie la o rafinărie de lângă {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Fabrică de conserve distrusă în condiţii misterioase lângă {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}Un OZN a aterizat lângă {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Prăbuşirea unei mine de cărbune lângă {TOWN} provoacă daune majore!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Inundatii!{}Se estimeaza cel putin {COMMA}  victime!
 
 STR_BRIBE_FAILED                                                :{WHITE}Încercarea ta de mituire
 STR_BRIBE_FAILED_2                                              :{WHITE}a fost descoperită de un procuror local
@@ -3259,7 +3259,7 @@ STR_MAGLEV_VEHICLES                                             :Vehicule Pernă
 
 ############ End of list of rail types
 
-STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
+STR_TINY_BLACK                                                  :{TINYFONT}{BLACK}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Greutate: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteză: {GOLD}{VELOCITY}{BLACK} Putere: {GOLD}{POWER}

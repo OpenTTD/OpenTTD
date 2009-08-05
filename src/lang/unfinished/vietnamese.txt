@@ -180,39 +180,39 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :Ngành kinh doa
 STR_SMALLMAP_TYPE_ROUTES                                        :Tuyến
 STR_SMALLMAP_TYPE_VEGETATION                                    :Cây cối
 STR_SMALLMAP_TYPE_OWNERS                                        :Chủ sở hữu
-STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}Đường bộ
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}Đường ray
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}Ga tàu/Sân bay/Bến cảng
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}Tòa nhà/Ngành nghề
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}Phương tiện
-STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100m
-STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200m
-STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300m
-STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400m
-STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500m
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}Tàu hỏa
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}Xe cộ
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}Tàu thủy
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}Máy bay
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Tuyến vận tải
-STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}Rừng
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Ga tàu hỏa
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Truck Loading Bay
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}Bến xe buýt
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}Sân bay/Bãi đỗ trực thăng
-STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}Cảng biển
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}Đất gồ ghề
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}Đất cỏ
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}Đất trơ trụi
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}Cánh đồng
-STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}Cây cối
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}Đá
-STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}Nước
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}Không có chủ sở hữu
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}Thị trấn
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}Ngành công nghiệp
-STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}Sa mạc
-STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}Tuyết
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Đường bộ
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Đường ray
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Ga tàu/Sân bay/Bến cảng
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Tòa nhà/Ngành nghề
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Phương tiện
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200m
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300m
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400m
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500m
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Tàu hỏa
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Xe cộ
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Tàu thủy
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Máy bay
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Tuyến vận tải
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Rừng
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Ga tàu hỏa
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Truck Loading Bay
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Bến xe buýt
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Sân bay/Bãi đỗ trực thăng
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Cảng biển
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Đất gồ ghề
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Đất cỏ
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Đất trơ trụi
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Cánh đồng
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Cây cối
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Đá
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Nước
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Không có chủ sở hữu
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Thị trấn
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Ngành công nghiệp
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Sa mạc
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Tuyết
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Thông điệp
 STR_QUERY_CAPTION                                               :{WHITE}{STRING}
 STR_DEFAULT                                                     :{BLACK}Mặc định
@@ -640,8 +640,8 @@ STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Toa xe �
 ############ range for produces ends
 
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Sản lượng tháng trước:
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} tăng sản lượng!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} sản lượng giảm 50%
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} tăng sản lượng!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} sản lượng giảm 50%
 
 ##id 0x5000
 

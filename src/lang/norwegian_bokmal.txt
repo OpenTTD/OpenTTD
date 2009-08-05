@@ -195,39 +195,39 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrier
 STR_SMALLMAP_TYPE_ROUTES                                        :Ruter
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetasjon
 STR_SMALLMAP_TYPE_OWNERS                                        :Eiere
-STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}Veier
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}Jernbaner
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}Stasjoner/Flyplasser/Havner
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}Bygninger/Industribygg
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}Kjøretøy
-STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100 m
-STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200 m
-STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300 m
-STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400 m
-STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500 m
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}Tog
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}Kjøretøy
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}Skip
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}Fly
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Transportruter
-STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}Skog
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Jernbanestasjon
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Lasteterminal
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}Busstasjon
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}Flyplass/Helikopterstasjon
-STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}Kai
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}Utmark
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}Gress
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}Bart land
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}Jorder
-STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}Trær
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}Steiner
-STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}Vann
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}Ingen eier
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}Byer
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}Industrier
-STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}Ørken
-STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}Snø
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Veier
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Jernbaner
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stasjoner/Flyplasser/Havner
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Bygninger/Industribygg
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Kjøretøy
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100 m
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200 m
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300 m
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400 m
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500 m
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Tog
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Kjøretøy
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Skip
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Fly
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Transportruter
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Skog
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Jernbanestasjon
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Lasteterminal
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Busstasjon
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Flyplass/Helikopterstasjon
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Kai
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Utmark
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Gress
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Bart land
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Jorder
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Trær
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Steiner
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Vann
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Ingen eier
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Byer
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Industrier
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Ørken
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Snø
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Melding
 STR_QUERY_CAPTION                                               :{WHITE}{STRING}
 STR_DEFAULT                                                     :{BLACK}Forhåndsstilt
@@ -431,7 +431,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Jernbane
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Lokal myndighet: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ingen
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Navn
-STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
+STR_VEHICLE_NAME_SMALL                                          :{TINYFONT}{BLACK}{VEHICLE}
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1.
@@ -509,20 +509,20 @@ STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Nye g
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy Street
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Egendefinert 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Egendefinert 2
-STR_MUSIC_MUSIC_VOLUME                                          :{BLACK}{TINYFONT}Musikkvolum
-STR_MUSIC_EFFECTS_VOLUME                                        :{BLACK}{TINYFONT}Lydeffektvolum
-STR_MUSIC_MIN_MAX_RULER                                         :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
+STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Musikkvolum
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Lydeffektvolum
+STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  ' '  '  '  MAX
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Spill forrige spor
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Spill neste spor
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Stopp musikken
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Start musikken
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Dra for å endre volum på musikk og lydeffekter
-STR_MUSIC_TRACK_NONE                                            :{DKGREEN}{TINYFONT}--
-STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{DKGREEN}{TINYFONT}0{COMMA}
-STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{DKGREEN}{TINYFONT}{COMMA}
-STR_MUSIC_TITLE_NONE                                            :{DKGREEN}{TINYFONT}------
-STR_MUSIC_TITLE_NAME                                            :{DKGREEN}{TINYFONT}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{BLACK}{TINYFONT}Spor{SETX 88}{BLACK}{TINYFONT}Tittel
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGREEN}0{COMMA}
+STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Spor{SETX 88}{BLACK}{TINYFONT}Tittel
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}Tilfeldig
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musikkprogram
@@ -572,7 +572,7 @@ STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Spill a
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...for langt i fra forrige destinasjon
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Beste firma som nådde {NUM}{}({STRING} Nivå)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Firmarangering i {NUM}
-STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Forretningsmann
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entreprenør
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrialist
@@ -582,8 +582,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mogul
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Århundrets finansfyrste
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} oppnår '{STRING}'-status!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} fra {COMPANY} oppnår '{STRING}'-status!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} oppnår '{STRING}'-status!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} fra {COMPANY} oppnår '{STRING}'-status!
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenarioredigerer
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landgenerering
@@ -864,7 +864,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Sl
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan ikke finne en rute å fortsette på.
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} har kjørt seg vill
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}s inntekt i fjord var {CURRENCY}
-STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Europeisk valutunion!{}{} Euro er introdusert som den utelukkede valuttaen for hverdagslige forretninger i landet ditt!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Europeisk valutunion!{}{} Euro er introdusert som den utelukkede valuttaen for hverdagslige forretninger i landet ditt!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -1690,13 +1690,13 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}Ingen
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Tjenester som allerede subsidieres:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} fra {STATION} til {STATION}{YELLOW} ({COMPANY}{YELLOW}, inntil {DATE_SHORT})
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsidietilbud har gått ut:{}{}{STRING} fra {STRING} til {STRING} vil ikke lenger gi subsidier.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidie trukket tilbake:{}{}Frakt av {STRING} fra {STATION} til {STATION} subsidieres ikke lenger.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subsidietilbud:{}{}Første frakt av {STRING} fra {STRING} til {STRING} vil subsidieres i et år av bystyret!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi 50{NBSP}% mer inntekt i løpet av et år!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi dobbelt så mye inntekt i løpet av et år!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subsidie gitt til {STRING}!{}{}Frakt av {STRING} fra {STATION} til {STATION} vil gi trippel betaling i løpet i et år fra nå!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi fire ganger så mye inntekt i løpet av et år!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Subsidietilbud har gått ut:{}{}{STRING} fra {STRING} til {STRING} vil ikke lenger gi subsidier.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsidie trukket tilbake:{}{}Frakt av {STRING} fra {STATION} til {STATION} subsidieres ikke lenger.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subsidietilbud:{}{}Første frakt av {STRING} fra {STRING} til {STRING} vil subsidieres i et år av bystyret!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi 50{NBSP}% mer inntekt i løpet av et år!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi dobbelt så mye inntekt i løpet av et år!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subsidie gitt til {STRING}!{}{}Frakt av {STRING} fra {STATION} til {STATION} vil gi trippel betaling i løpet i et år fra nå!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi fire ganger så mye inntekt i løpet av et år!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}s bystyre tillater ikke flere flyplasser i denne byen
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN}s bystyre nekter deg å anlegge en flyplass her pga. støynivået
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Hytter
@@ -1951,23 +1951,23 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produser
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produksjon forrige måned:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}{NBSP}% transportert)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Sentrer bildet på industriområdet
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}Ny {STRING} under bygging i nærheten av {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}Ny {STRING} plantes i nærheten av {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Ny {STRING} under bygging i nærheten av {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Ny {STRING} plantes i nærheten av {TOWN}!
 STR_INDUSTRY_BUILD_COST                                         :{BLACK}Koster: {YELLOW}{CURRENCY}
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan ikke bygge denne typen industri her...
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...skog kan bare plantes over snøgrensen
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT}{STRING} legger ned!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}{STRING} legger ned etter leveringsproblemer
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}{STRING} legger ned grunnet tremangel
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} øker produksjonen!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BLACK}{BIGFONT}Ny kullåre funnet i {INDUSTRY}!{}En dobling i produksjonen er ventet!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BLACK}{BIGFONT}Nye oljereserver funnet i {INDUSTRY}!{}En dobling i produksjonen er ventet!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BLACK}{BIGFONT}Forbedring i gårdbruksmetoder på {INDUSTRY} er forventet å doble produksjonen!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} sin produksjon har sunket med 50{NBSP}%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BLACK}{BIGFONT}Insektinvasjon på {INDUSTRY}!{}Produksjonen synker med 50{NBSP}%
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} legger ned!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}{STRING} legger ned etter leveringsproblemer
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}{STRING} legger ned grunnet tremangel
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} øker produksjonen!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Ny kullåre funnet i {INDUSTRY}!{}En dobling i produksjonen er ventet!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nye oljereserver funnet i {INDUSTRY}!{}En dobling i produksjonen er ventet!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Forbedring i gårdbruksmetoder på {INDUSTRY} er forventet å doble produksjonen!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} sin produksjon har sunket med 50{NBSP}%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insektinvasjon på {INDUSTRY}!{}Produksjonen synker med 50{NBSP}%
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...kan kun plasseres i nærheten av kartkanten
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BLACK}{BIGFONT}{STRING}produksjon ved {INDUSTRY} øker med {COMMA}{NBSP}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BLACK}{BIGFONT}{STRING}produksjon ved {INDUSTRY} synker med {COMMA}{NBSP}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING}produksjon ved {INDUSTRY} øker med {COMMA}{NBSP}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING}produksjon ved {INDUSTRY} synker med {COMMA}{NBSP}%!
 
 ##id 0x5000
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Annen tunnel i veien
@@ -2208,22 +2208,22 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaver
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Firmarangering
 STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_OTHER                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BLACK}{BIGFONT}Transportfirma har problemer!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BLACK}{BIGFONT}{STRING} vil bli solgt eller nedlagt, hvis ikke firmaets økonomi tar seg opp!
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Transportfirma har problemer!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} vil bli solgt eller nedlagt, hvis ikke firmaets økonomi tar seg opp!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Sjef)
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BLACK}{BIGFONT}Transportfirma fusjonerer!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING} har blitt solgt til {STRING} for {CURRENCY}!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Transportfirma fusjonerer!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} har blitt solgt til {STRING} for {CURRENCY}!
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Vi ser etter et firma som er villig til å overta oss.{}{}Vil du kjøpe {COMPANY} for {CURRENCY}?
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BLACK}{BIGFONT}Konkurs!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BLACK}{BIGFONT}{STRING} har blitt stengt av kreditorer og alt av verdi har blitt solgt!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BLACK}{BIGFONT}Nytt transportfirma startet!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING} starter bygging i nærheten av {TOWN}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Konkurs!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} har blitt stengt av kreditorer og alt av verdi har blitt solgt!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Nytt transportfirma startet!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} starter bygging i nærheten av {TOWN}!
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan ikke kjøpe firma...
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Betalingstakst for varer
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{BLACK}{TINYFONT}Dager i transport
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{BLACK}{TINYFONT}Betaling for levering av ti enheter (eller 10,000 liter) over en distanse på 20 ruter
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dager i transport
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betaling for levering av ti enheter (eller 10,000 liter) over en distanse på 20 ruter
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Skru av/på graf for en bestemt varetype
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{BLACK}{TINYFONT}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingeniør
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Trafikkleder
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Transportkoordinator
@@ -2260,7 +2260,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Selg 25{
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kan ikke kjøpe 25{NBSP}% av aksjene...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kan ikke selge 25{NBSP}% av aksjene...
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}{NBSP}% eies av {COMPANY})
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BLACK}{BIGFONT}{STRING} har blitt kjøpt opp av {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} har blitt kjøpt opp av {STRING}!
 STR_PROTECTED                                                   :{WHITE}Dette selskapet selger ikke aksjer enda...
 
 STR_LIVERY_DEFAULT                                              :Standardovertakelse
@@ -2563,7 +2563,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail-lokomo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-lokomotiv
 
 ##id 0x8800
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første tog ankommer {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Innbyggerne jubler . . .{}Første tog ankommer {STATION}!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaljer)
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
@@ -2737,7 +2737,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoppet
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikke tvinge tog til å kjøre på rødt lys ved fare...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Krasjet
 
-STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Togkrasj!{}{COMMA} dør i kollisjonen
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Togkrasj!{}{COMMA} dør i kollisjonen
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan ikke snu toget...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kan ikke snu kjøreretningen til kjøretøy...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan ikke snu kjøretøy som består av flere deler
@@ -2753,8 +2753,8 @@ STR_TRAIN_NO_POWER                                              :{RED}Ingen str�
 STR_TRAIN_START_NO_CATENARY                                     :Dette sporet mangler et kjede, så toget kan ikke starte
 STR_TRAIN_STUCK                                                 :{ORANGE}Venter på ledig rute
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}Ny {STRING} nå tilgjengelig!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Ny {STRING} nå tilgjengelig!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Ny {STRING} Nå tilgjengelig!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Kan ikke selge ødelagt kjøretøy...
@@ -2781,12 +2781,12 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kjøretøy{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første buss ankommer {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første lastebil ankommer {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Borgerne jubler . . .{}Første passasjertrikk ankommer {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Borgerne jubler . . .{}Første frakttrikk ankommer {STATION}!
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Kollisjon!{}Sjåfør dør etter kollisjon med tog
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Kollisjon!{}{COMMA} dør etter kollisjon med tog
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Innbyggerne jubler . . .{}Første buss ankommer {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Innbyggerne jubler . . .{}Første lastebil ankommer {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Borgerne jubler . . .{}Første passasjertrikk ankommer {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Borgerne jubler . . .{}Første frakttrikk ankommer {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Kollisjon!{}Sjåfør dør etter kollisjon med tog
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Kollisjon!{}{COMMA} dør etter kollisjon med tog
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Kan ikke snu kjøretøy...
 
 
@@ -2799,7 +2799,7 @@ STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Må vær
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bygg havn
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bygg skipsdepot (trengs for bygging og vedlikehold av skip)
 
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første skip ankommer {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Innbyggerne jubler . . .{}Første skip ankommer {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plasser bøye, kan brukes til å danne kontrollpunkter
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan ikke plassere bøye her...
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bygg akveduk
@@ -2817,21 +2817,21 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Må stå
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Bygg flyplass
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bygg flyplass
 
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første fly ankommer {STATION}!
-STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Flykrasj!{}{COMMA} dør ved {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Flystyrt!{}Fly gikk tom for drivstoff, {COMMA} døde i eksplosjon!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Innbyggerne jubler . . .{}Første fly ankommer {STATION}!
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Flykrasj!{}{COMMA} dør ved {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Flystyrt!{}Fly gikk tom for drivstoff, {COMMA} døde i eksplosjon!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Tidstabell)
 
 ##id 0xB000
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}Zeppelinulykke på {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}Kjøretøy ødelagt i UFO-kollisjon!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BLACK}{BIGFONT}Eksplosjon på oljeraffineri i nærheten av {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BLACK}{BIGFONT}Fabrikk ødelagt på mistenkeligvis i nærheten av {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BLACK}{BIGFONT}UFO lander i nærheten av {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BLACK}{BIGFONT}Gruvegangkollaps fører til store ødeleggelser i nærheten av {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BLACK}{BIGFONT}Flyter over!{}Minst {COMMA} antatt fortapt{P "" e} eller død{P "" s} etter dødlig flom!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zeppelinulykke på {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Kjøretøy ødelagt i UFO-kollisjon!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Eksplosjon på oljeraffineri i nærheten av {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Fabrikk ødelagt på mistenkeligvis i nærheten av {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}UFO lander i nærheten av {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Gruvegangkollaps fører til store ødeleggelser i nærheten av {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Flyter over!{}Minst {COMMA} antatt fortapt{P "" e} eller død{P "" s} etter dødlig flom!
 
 STR_BRIBE_FAILED                                                :{WHITE}Ditt forsøk på bestikkelse har blitt
 STR_BRIBE_FAILED_2                                              :{WHITE}oppdaget av en regional inspektør
@@ -3263,7 +3263,7 @@ STR_MAGLEV_VEHICLES                                             :Maglevlokomotiv
 
 ############ End of list of rail types
 
-STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
+STR_TINY_BLACK                                                  :{TINYFONT}{BLACK}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Vekt: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighet: {GOLD}{VELOCITY}{BLACK} Effekt: {GOLD}{POWER}

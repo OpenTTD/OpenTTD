@@ -195,39 +195,39 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :อุตสา
 STR_SMALLMAP_TYPE_ROUTES                                        :เส้นทาง
 STR_SMALLMAP_TYPE_VEGETATION                                    :ภาวะหยุดนิ่ง
 STR_SMALLMAP_TYPE_OWNERS                                        :เจ้าของ
-STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}ถนน
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}รางรถไฟ
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}สถานีขนส่ง/สนามบิน/ท่าเรือ
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}สิ่งก่อสร้าง/อุตสาหกรรม
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}ยานยนต์
-STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100 เมตร
-STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200 เมตร
-STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300 เมตร
-STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400 เมตร
-STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500 เมตร
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}รถไฟ
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}รถยนต์
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}เรือ
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}อากาศยาน
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}เส้นทางการขนส่ง
-STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}ป่าไม้
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}สถานีรถไฟ
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}สถานีถ่ายของรถบรรทุก
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}ป้ายรถเมล์
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}สนามบิน/จุดจอดเฮลิคอปเตอร์
-STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}ท่าเรือ
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}พื้นลูกรัง
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}พื้นหญ้า
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}ที่ดินเปล่า
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}ทุ่งนา
-STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}ต้นไม้
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}หิน
-STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}ผืนน้ำ
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}ไม่มีเจ้าของ
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}เมือง
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}อุตสาหกรรม
-STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}ทะเลทราย
-STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}หิมะ
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}ถนน
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}รางรถไฟ
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}สถานีขนส่ง/สนามบิน/ท่าเรือ
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}สิ่งก่อสร้าง/อุตสาหกรรม
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}ยานยนต์
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100 เมตร
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200 เมตร
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300 เมตร
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400 เมตร
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500 เมตร
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}รถไฟ
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}รถยนต์
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}เรือ
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}อากาศยาน
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}เส้นทางการขนส่ง
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}ป่าไม้
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}สถานีรถไฟ
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}สถานีถ่ายของรถบรรทุก
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}ป้ายรถเมล์
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}สนามบิน/จุดจอดเฮลิคอปเตอร์
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}ท่าเรือ
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}พื้นลูกรัง
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}พื้นหญ้า
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}ที่ดินเปล่า
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}ทุ่งนา
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}ต้นไม้
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}หิน
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}ผืนน้ำ
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}ไม่มีเจ้าของ
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}เมือง
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}อุตสาหกรรม
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}ทะเลทราย
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}หิมะ
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}ข้อความ
 STR_QUERY_CAPTION                                               :{WHITE}{STRING}
 STR_DEFAULT                                                     :{BLACK}ค่าปกติ
@@ -396,7 +396,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}เจ�
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}อาณาบริเวณ: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :ไม่มี
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}ชื่อ
-STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
+STR_VEHICLE_NAME_SMALL                                          :{TINYFONT}{BLACK}{VEHICLE}
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :อันดับที่ 1
@@ -471,20 +471,20 @@ STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}แ�
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}อีซี่สตรีท
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}กำหนดเอง 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}กำหนดเอง 2
-STR_MUSIC_MUSIC_VOLUME                                          :{BLACK}{TINYFONT}ระดับเสียงดนตรี
-STR_MUSIC_EFFECTS_VOLUME                                        :{BLACK}{TINYFONT}ระดับเสียงเอฟเฟกต์
-STR_MUSIC_MIN_MAX_RULER                                         :{BLACK}{TINYFONT}เงียบ  '  '  ' '  '  '  ดัง
+STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}ระดับเสียงดนตรี
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}ระดับเสียงเอฟเฟกต์
+STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}เงียบ  '  '  ' '  '  '  ดัง
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}ย้อนไปฟังเพลงก่อนหน้า
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}ข้ามไปฟังเพลงถัดไป
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}หยุดเล่นเพลง
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}เริ่มเล่นเพลง
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}คลิกและลากตัวเลื่อนเพื่อปรับระดับเสียงดนตรีและเอฟเฟกต์
-STR_MUSIC_TRACK_NONE                                            :{DKGREEN}{TINYFONT}--
-STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{DKGREEN}{TINYFONT}0{COMMA}
-STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{DKGREEN}{TINYFONT}{COMMA}
-STR_MUSIC_TITLE_NONE                                            :{DKGREEN}{TINYFONT}------
-STR_MUSIC_TITLE_NAME                                            :{DKGREEN}{TINYFONT}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{BLACK}{TINYFONT}เพลงที่{SETX 88}{BLACK}{TINYFONT}ชื่อเพลง
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGREEN}0{COMMA}
+STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}เพลงที่{SETX 88}{BLACK}{TINYFONT}ชื่อเพลง
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}สลับลำดับ
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}โปรแกรม
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}รายการเลือกโปรแกรมเพลง
@@ -524,7 +524,7 @@ STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}โค�
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}ข้อมูลทั่วไป
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...ไกลจากจุดเริ่มต้นมากเกินไป
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}บริษัทชั้นนำที่ก้าวไปสู่ {NUM}{}(ระดับ{STRING})
-STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :นักธุรกิจ
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :ผู้ประกอบการ
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :นักอุตสาหกรรม
@@ -534,8 +534,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :ผู้มี
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :นักธุรกิจผู้ร่ำรวยและมีอิทธิพลมากแห่งศตวรรษ
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} ได้ก้าวไปสู่ขั้น '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} จาก {COMPANY} ได้ก้าวไปสู่ขั้น '{STRING}'!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} ได้ก้าวไปสู่ขั้น '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} จาก {COMPANY} ได้ก้าวไปสู่ขั้น '{STRING}'!
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}โปรแกรมสร้างฉาก
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}สร้างแผ่นดิน
@@ -645,7 +645,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - �
 
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ไม่สามารถหาทางไปต่อได้.
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} กำลังหลงทาง.
-STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}เงินสกุลยูโรเริ่มใช้แล้ว!{}{}สหภาพยุโรปได้เริ่มใช้เงินสกุลเดียวกันแล้ว นั่นคือเงินสกุลยูโร รวมถึงในประเทศนี้ตั้งแต่วันนี้เป็นต้นไป!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}เงินสกุลยูโรเริ่มใช้แล้ว!{}{}สหภาพยุโรปได้เริ่มใช้เงินสกุลเดียวกันแล้ว นั่นคือเงินสกุลยูโร รวมถึงในประเทศนี้ตั้งแต่วันนี้เป็นต้นไป!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE

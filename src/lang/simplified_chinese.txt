@@ -195,39 +195,39 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :工业
 STR_SMALLMAP_TYPE_ROUTES                                        :路线
 STR_SMALLMAP_TYPE_VEGETATION                                    :植被
 STR_SMALLMAP_TYPE_OWNERS                                        :所有者
-STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}公路
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}铁路
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}车站/机场/码头
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}建筑物/工业
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}车辆
-STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100米
-STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200米
-STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300米
-STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400米
-STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500米
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}火车
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}汽车
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}船只
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}飞机
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}运输路线
-STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}森林
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}火车站
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}汽车货场
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}公共汽车站
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}机场/直升机平台
-STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}码头
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}荒地
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}草地
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}土地
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}田地
-STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}树木
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}岩石
-STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}水面
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}无主地块
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}城镇
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}工业
-STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}沙漠
-STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}雪地
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}公路
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}铁路
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}车站/机场/码头
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}建筑物/工业
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}车辆
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100米
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200米
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300米
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400米
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500米
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}火车
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}汽车
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}船只
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}飞机
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}运输路线
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}森林
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}火车站
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}汽车货场
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}公共汽车站
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}机场/直升机平台
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}码头
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}荒地
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}草地
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}土地
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}田地
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}树木
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}岩石
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}水面
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}无主地块
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}城镇
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}工业
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}沙漠
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}雪地
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}消息
 STR_QUERY_CAPTION                                               :{WHITE}{STRING}
 STR_DEFAULT                                                     :{BLACK}默认
@@ -431,7 +431,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}铁路�
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}地方政府：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :没有
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}名称
-STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
+STR_VEHICLE_NAME_SMALL                                          :{TINYFONT}{BLACK}{VEHICLE}
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1号
@@ -509,20 +509,20 @@ STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}新�
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy街头
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}自定义1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}自定义2
-STR_MUSIC_MUSIC_VOLUME                                          :{BLACK}{TINYFONT}音乐音量
-STR_MUSIC_EFFECTS_VOLUME                                        :{BLACK}{TINYFONT}音效音量
-STR_MUSIC_MIN_MAX_RULER                                         :{BLACK}{TINYFONT}小' ' '' ' '大
+STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}音乐音量
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}音效音量
+STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}小' ' '' ' '大
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}跳到上一首曲子
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}跳到下一首曲子
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}停止播放音乐
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}开始播放音乐
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}拖动滑块以调节音乐和音效的音量
-STR_MUSIC_TRACK_NONE                                            :{DKGREEN}{TINYFONT}--
-STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{DKGREEN}{TINYFONT}0{COMMA}
-STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{DKGREEN}{TINYFONT}{COMMA}
-STR_MUSIC_TITLE_NONE                                            :{DKGREEN}{TINYFONT}------
-STR_MUSIC_TITLE_NAME                                            :{DKGREEN}{TINYFONT}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{BLACK}{TINYFONT}音轨{SETX 88}{BLACK}{TINYFONT}乐曲主题
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGREEN}0{COMMA}
+STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}音轨{SETX 88}{BLACK}{TINYFONT}乐曲主题
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}随机播放
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}列表播放
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}音乐选单
@@ -572,7 +572,7 @@ STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}为摘�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}距离前一目的地太远……
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}达到 {NUM} 的顶级公司！{}({STRING} 级别)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}公司表现值为 {NUM}
-STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :小商贩
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :批发商
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :企业主
@@ -582,8 +582,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :巨擘
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :世纪大亨
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} 达到 '{STRING}' 的状态！
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} 在 {COMPANY} 达到 '{STRING}' 状态！
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} 达到 '{STRING}' 的状态！
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} 在 {COMPANY} 达到 '{STRING}' 状态！
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}场景编辑器
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}生成土地
@@ -864,7 +864,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - �
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} 无法找到道路
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} 迷路了.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}去年的利润为 {CURRENCY}
-STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}欧元区成立！{}{}欧元将作为您公司的作为唯一货币！
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}欧元区成立！{}{}欧元将作为您公司的作为唯一货币！
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -1693,13 +1693,13 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}将 {ST
 STR_SUBSIDIES_NONE                                              :{ORANGE}没有
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}已经中标的项目：
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}将 {STRING} 从 {STATION} 运送到 {STATION}{YELLOW} ({COMPANY}{YELLOW}，截止日期为 {DATE_SHORT})
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}财政补贴项目到期：{}{}将 {STRING} 从 {STRING} 运送到 {STRING} 将不再获得财政补贴。
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}财政补贴项目流标：{}{}将 {STRING} 从 {STATION} 运送到 {STATION} 将不是财政补贴项目。
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}财政补贴项目招标：{}{}第一个将 {STRING} 从 {STRING} 运送到 {STRING} 的公司将获得地方政府为期一年的财政补贴！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STATION} 运送到 {STATION} 将获得 50% 的额外报酬！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STATION} 运送到 {STATION} 将获得双倍的报酬！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STATION} 运送到 {STATION} 将获得三倍的报酬！
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STATION} 运送到 {STATION} 将获得四倍的报酬！
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}财政补贴项目到期：{}{}将 {STRING} 从 {STRING} 运送到 {STRING} 将不再获得财政补贴。
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}财政补贴项目流标：{}{}将 {STRING} 从 {STATION} 运送到 {STATION} 将不是财政补贴项目。
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}财政补贴项目招标：{}{}第一个将 {STRING} 从 {STRING} 运送到 {STRING} 的公司将获得地方政府为期一年的财政补贴！
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STATION} 运送到 {STATION} 将获得 50% 的额外报酬！
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STATION} 运送到 {STATION} 将获得双倍的报酬！
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STATION} 运送到 {STATION} 将获得三倍的报酬！
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}{STRING} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STATION} 运送到 {STATION} 将获得四倍的报酬！
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}地方政府{}不同意在本市范围内再兴建一座机场
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} 考虑到噪音控制，地方当局拒绝修建机场。
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :农舍
@@ -1956,23 +1956,23 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}产出: 
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}上月产量：
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% 已运输)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}将屏幕中心移动到工厂所在的位置
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}新 {STRING} 正在 {TOWN} 加紧建设！
-STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}新 {STRING} 即将落户 {TOWN}！
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}新 {STRING} 正在 {TOWN} 加紧建设！
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}新 {STRING} 即将落户 {TOWN}！
 STR_INDUSTRY_BUILD_COST                                         :{BLACK}费用：{YELLOW}{CURRENCY}
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}不能在此处建设这种类型的工业设施……
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}林场只能设置在雪线以上的地方……
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT}{STRING} 即将倒闭！
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}{STRING} 没有原料供应，即将倒闭！
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}{STRING} 周围没有可用的木材，即将倒闭！
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} 产量增加！
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BLACK}{BIGFONT}{INDUSTRY} 发现新的煤炭！{}产量即将翻番！
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BLACK}{BIGFONT}{INDUSTRY} 发现新的石油！{}产量即将翻番！
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BLACK}{BIGFONT}{INDUSTRY} 耕种方法改良！{}产量即将翻番！
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} 产量降低 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BLACK}{BIGFONT}{INDUSTRY} 虫害肆虐！{}产量降低 50%
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} 即将倒闭！
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}{STRING} 没有原料供应，即将倒闭！
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}{STRING} 周围没有可用的木材，即将倒闭！
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} 产量增加！
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY} 发现新的煤炭！{}产量即将翻番！
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}{INDUSTRY} 发现新的石油！{}产量即将翻番！
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} 耕种方法改良！{}产量即将翻番！
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} 产量降低 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} 虫害肆虐！{}产量降低 50%
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}只能被放置在地图边缘……
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BLACK}{BIGFONT}{STRING} {INDUSTRY} 的产量上升了 {COMMA}%！
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BLACK}{BIGFONT}{STRING} {INDUSTRY} 的产量下降了 {COMMA}%！
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} {INDUSTRY} 的产量上升了 {COMMA}%！
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} {INDUSTRY} 的产量下降了 {COMMA}%！
 
 ##id 0x5000
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}规划位置中有另一条隧道
@@ -2213,22 +2213,22 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}公司�
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}公司评价排名
 STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_OTHER                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BLACK}{BIGFONT}运输公司陷入困境！
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BLACK}{BIGFONT}{STRING} 如果不能在短期摆脱困境，{}则将被收购或破产！
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}运输公司陷入困境！
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} 如果不能在短期摆脱困境，{}则将被收购或破产！
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(总裁)
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BLACK}{BIGFONT}运输公司合并！
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING} 被 {STRING} 以 {CURRENCY} 收购！
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}运输公司合并！
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} 被 {STRING} 以 {CURRENCY} 收购！
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}我们正在寻找一家愿意收购我们的公司。{}{}您愿意收购 {COMPANY} ({CURRENCY}) 吗？
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BLACK}{BIGFONT}破产！
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BLACK}{BIGFONT}{STRING} 已经宣布破产，所有资产均已抵债！
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BLACK}{BIGFONT}新的运输公司开业大吉！
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING} 在 {TOWN} 附近开工建设！
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}破产！
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} 已经宣布破产，所有资产均已抵债！
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}新的运输公司开业大吉！
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} 在 {TOWN} 附近开工建设！
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}不能收购公司……
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}货物运输价格
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{BLACK}{TINYFONT}运输时间（天）
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{BLACK}{TINYFONT}将 10 单位 (或 10,000 升) 货物运输 20 个方格
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}运输时间（天）
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}将 10 单位 (或 10,000 升) 货物运输 20 个方格
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切换是否显示某种货物
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{BLACK}{TINYFONT}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :工程师
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :交通经理
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :运输总监
@@ -2265,7 +2265,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}出售�
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}不能购买此公司的股份……
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}不能出售此公司的股份……
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% 由 {COMPANY} 所有)
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BLACK}{BIGFONT}{STRING} 被 {STRING} 收购！
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} 被 {STRING} 收购！
 STR_PROTECTED                                                   :{WHITE}这个公司刚刚开业，还不能进行股权交易……
 
 STR_LIVERY_DEFAULT                                              :标准外观
@@ -2568,7 +2568,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :单轨机车
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :磁悬浮机车
 
 ##id 0x8800
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一列火车抵达 {STATION}！
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}市民举行庆祝仪式……{}第一列火车抵达 {STATION}！
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (详细信息)
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
@@ -2742,7 +2742,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}停运
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}不能让列车冒险通过信号...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}撞毁!
 
-STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}列车相撞!{}{COMMA} 人在爆炸中丧生
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}列车相撞!{}{COMMA} 人在爆炸中丧生
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}不能命令列车调头...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}无法调转车辆方向...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}不能命令多节的汽车掉头
@@ -2758,8 +2758,8 @@ STR_TRAIN_NO_POWER                                              :{RED}没有电�
 STR_TRAIN_START_NO_CATENARY                                     :这不是电气化铁路，电力机车不能启动
 STR_TRAIN_STUCK                                                 :{ORANGE}等待空余轨道
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}新 {STRING} 上市了！
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}新 {STRING} 上市了！
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}新 {STRING} 上市了！  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}无法出售毁坏的列车……
@@ -2786,12 +2786,12 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} 车辆{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一辆巴士抵达 {STATION}！
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一辆货车抵达 {STATION}！
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}市民欢庆~. . .{}首辆客运电车抵达 {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}市民欢庆~. . .{}首辆货运电车抵达 {STATION}!
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，司机在事故中丧生！
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，{COMMA} 人在事故中丧生！
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}市民举行庆祝仪式……{}第一辆巴士抵达 {STATION}！
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}市民举行庆祝仪式……{}第一辆货车抵达 {STATION}！
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}市民欢庆~. . .{}首辆客运电车抵达 {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}市民欢庆~. . .{}首辆货运电车抵达 {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}汽车事故！{}汽车与火车相撞，司机在事故中丧生！
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}汽车事故！{}汽车与火车相撞，{COMMA} 人在事故中丧生！
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}车辆无法调头...
 
 
@@ -2804,7 +2804,7 @@ STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}船只�
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}建造码头
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}建造船坞 (可以购买或保养船只)
 
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一艘船抵达 {STATION}！
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}市民举行庆祝仪式……{}第一艘船抵达 {STATION}！
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}放置一个浮标
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}不能将浮标放置在这里。
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}建设水渠
@@ -2822,21 +2822,21 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}飞机�
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :机场建设
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}新建机场
 
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一架飞机到达 {STATION} ！
-STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}飞机坠毁！{}{COMMA} 人在 {STATION} 的事故中罹难！
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}飞机坠毁！{}燃油不足，{COMMA} 人在事故中罹难！
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}市民举行庆祝仪式……{}第一架飞机到达 {STATION} ！
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}飞机坠毁！{}{COMMA} 人在 {STATION} 的事故中罹难！
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}飞机坠毁！{}燃油不足，{COMMA} 人在事故中罹难！
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (时间表)
 
 ##id 0xB000
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}齐柏林飞艇在 {STATION} 失事！
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}汽车被 'UFO' 炸毁！
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BLACK}{BIGFONT}在 {TOWN} 附近的炼油厂泄漏！
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BLACK}{BIGFONT}在 {TOWN} 附近的工厂神秘被毁！
-STR_NEWS_DISASTER_BIG_UFO                                       :{BLACK}{BIGFONT}'UFO' 在 {TOWN} 附近降落！
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BLACK}{BIGFONT}在 {TOWN} 附近的煤矿发生塌方！
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BLACK}{BIGFONT}洪水！{}至少 {COMMA} 人失踪，据推测凶多吉少！
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}齐柏林飞艇在 {STATION} 失事！
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}汽车被 'UFO' 炸毁！
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}在 {TOWN} 附近的炼油厂泄漏！
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}在 {TOWN} 附近的工厂神秘被毁！
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'UFO' 在 {TOWN} 附近降落！
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}在 {TOWN} 附近的煤矿发生塌方！
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}洪水！{}至少 {COMMA} 人失踪，据推测凶多吉少！
 
 STR_BRIBE_FAILED                                                :{WHITE}你试图行贿地方官员已经
 STR_BRIBE_FAILED_2                                              :{WHITE}被当地检察机关发现了！
@@ -3268,7 +3268,7 @@ STR_MAGLEV_VEHICLES                                             :磁悬浮列车
 
 ############ End of list of rail types
 
-STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
+STR_TINY_BLACK                                                  :{TINYFONT}{BLACK}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}售价：{GOLD}{CURRENCY}{BLACK}   重量：{GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK} 功率：{GOLD}{POWER}

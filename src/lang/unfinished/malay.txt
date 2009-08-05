@@ -176,39 +176,39 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industri
 STR_SMALLMAP_TYPE_ROUTES                                        :Laluan
 STR_SMALLMAP_TYPE_VEGETATION                                    :Tumbuhan
 STR_SMALLMAP_TYPE_OWNERS                                        :Pemilik
-STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}Jalan
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}Landasan Keretapi
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}Stesyen/Lapangan Terbang/Dermaga
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}Bangunan/Industri
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}Kenderaan
-STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100m
-STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200m
-STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300m
-STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400m
-STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500m
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}Keretapi
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}Kenderaan Darat
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}Kapal
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}Kapal Terbang
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Laluan Pengangkutan
-STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}Hutan
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Stesen Keretapi
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Tempat Pemunggahan Barang
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}Stesen Bas
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}Lapangan Terbang/Helikopter
-STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}Dermaga
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}Tanah Tidak Rata
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}Tanah Berumput
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}Tanah Lapang
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}Padang
-STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}Pokok
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}Batu
-STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}Air
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}Tidak Ada Pemilik
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}Bandar
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}Industri
-STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}Padang Pasir
-STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}Salji
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Jalan
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Landasan Keretapi
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stesyen/Lapangan Terbang/Dermaga
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Bangunan/Industri
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Kenderaan
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200m
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300m
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400m
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500m
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Keretapi
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Kenderaan Darat
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Kapal
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Kapal Terbang
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Laluan Pengangkutan
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Hutan
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Stesen Keretapi
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Tempat Pemunggahan Barang
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Stesen Bas
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Lapangan Terbang/Helikopter
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Dermaga
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Tanah Tidak Rata
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Tanah Berumput
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Tanah Lapang
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Padang
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Pokok
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Batu
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Air
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Tidak Ada Pemilik
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Bandar
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Industri
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Padang Pasir
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Salji
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Pesanan
 STR_QUERY_CAPTION                                               :{WHITE}{STRING}
 STR_QUERY_CANCEL                                                :{BLACK}Batal
@@ -397,7 +397,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Pemilik 
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Pihak berkuasa: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Tiada
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nama
-STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
+STR_VEHICLE_NAME_SMALL                                          :{TINYFONT}{BLACK}{VEHICLE}
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :Pertama
@@ -472,20 +472,20 @@ STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}Semua
 STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}Cara Lama
 STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Gaya baru
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Lorong Ezy
-STR_MUSIC_MUSIC_VOLUME                                          :{BLACK}{TINYFONT}Kekuatan muzik
-STR_MUSIC_EFFECTS_VOLUME                                        :{BLACK}{TINYFONT}Kekuatan Kesan Bunyi
-STR_MUSIC_MIN_MAX_RULER                                         :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
+STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Kekuatan muzik
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Kekuatan Kesan Bunyi
+STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  ' '  '  '  MAX
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Lompat ke lagu sebelumnya
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Lompat ke lagu seterusnya
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Henti muzik
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Main muzik
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Tarik pengelincir untuk penentuan muzik dan kesan bunyi
-STR_MUSIC_TRACK_NONE                                            :{DKGREEN}{TINYFONT}--
-STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{DKGREEN}{TINYFONT}0{COMMA}
-STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{DKGREEN}{TINYFONT}{COMMA}
-STR_MUSIC_TITLE_NONE                                            :{DKGREEN}{TINYFONT}------
-STR_MUSIC_TITLE_NAME                                            :{DKGREEN}{TINYFONT}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{BLACK}{TINYFONT}Tajuk {SETX 88}{BLACK}{TINYFONT}Trek
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGREEN}0{COMMA}
+STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Tajuk {SETX 88}{BLACK}{TINYFONT}Trek
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}Kocok
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Pilihan program muzik
@@ -533,7 +533,7 @@ STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Tetap s
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Mainkan bunyi untuk mesej berita ringkas
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...terlalu jauh daripada destinasi sebelumnya
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Syarikat-syarikat utama yang mencapai {NUM}{}({STRING} Level)
-STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Ahli perniagaan
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Usahawan
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Ahli perindustrian
@@ -543,8 +543,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mogul
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Taikun abad semasa
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} mencapai status '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} dari {COMPANY} mencapai status '{STRING}'!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} mencapai status '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} dari {COMPANY} mencapai status '{STRING}'!
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Penyunting Senario
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Pembentukan Tanah
@@ -1068,10 +1068,10 @@ STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} m
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Penarafan syarikat pengangkutan:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STATION} ke {STATION} akan dibayar tambahan 50% untuk tahun hadapan!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STATION} ke {STATION} akan dibayar dua kali ganda untuk tahun hadapan!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STATION} ke {STATION} akan dibayar tiga kali ganda untuk tahun hadapan!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STATION} ke {STATION} akan dibayar empat kali ganda untuk tahun hadapan!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STATION} ke {STATION} akan dibayar tambahan 50% untuk tahun hadapan!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STATION} ke {STATION} akan dibayar dua kali ganda untuk tahun hadapan!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STATION} ke {STATION} akan dibayar tiga kali ganda untuk tahun hadapan!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subsidi perkhidmatan dianugerahkan kepada {STRING}!{}{}{STRING} kihdmatan dari {STATION} ke {STATION} akan dibayar empat kali ganda untuk tahun hadapan!
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Pangsapuri
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Kedai-kedai dan pejabat-pejabat
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Kedai-kedai dan pejabat-pejabat

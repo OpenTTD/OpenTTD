@@ -195,39 +195,39 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :Индустр�
 STR_SMALLMAP_TYPE_ROUTES                                        :Рути
 STR_SMALLMAP_TYPE_VEGETATION                                    :Вегетација
 STR_SMALLMAP_TYPE_OWNERS                                        :Сопственици
-STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}Патишта
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}Пруги
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}Станици/Аеродроми/Докови
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}Згради/Индустрии
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}Возила
-STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100m
-STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200m
-STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300m
-STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400m
-STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500m
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}Возови
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}Патни Возила
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}Бродови
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}Летала
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Транспортни Рути
-STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}Шума
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Железничка Станица
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Станица за Товарење
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}Автобуска Станица
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}Аеродром/Хелипорт
-STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}Док
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}Груба Земја
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}Земја со Трева
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}Гола Земја
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}Полиња
-STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}Дрва
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}Карпи
-STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}Вода
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}Нема Сопственик
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}Градови
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}Индустрии
-STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}Пустина
-STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}Снег
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Патишта
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Пруги
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Станици/Аеродроми/Докови
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Згради/Индустрии
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Возила
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200m
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300m
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400m
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500m
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Возови
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Патни Возила
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Бродови
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Летала
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Транспортни Рути
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Шума
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Железничка Станица
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Станица за Товарење
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Автобуска Станица
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Аеродром/Хелипорт
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Док
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Груба Земја
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Земја со Трева
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Гола Земја
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Полиња
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Дрва
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Карпи
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Вода
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Нема Сопственик
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Градови
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Индустрии
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Пустина
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Снег
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Порака
 STR_QUERY_CAPTION                                               :{WHITE}{STRING}
 STR_DEFAULT                                                     :{BLACK}Зададено
@@ -413,7 +413,7 @@ STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Сопс
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Локална власт: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ништо
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Име
-STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
+STR_VEHICLE_NAME_SMALL                                          :{TINYFONT}{BLACK}{VEHICLE}
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1-в
@@ -479,20 +479,20 @@ STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Но�
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy Street
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Свое 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Свое 2
-STR_MUSIC_MUSIC_VOLUME                                          :{BLACK}{TINYFONT}Гласност на музка
-STR_MUSIC_EFFECTS_VOLUME                                        :{BLACK}{TINYFONT}Гласност на ефекти
-STR_MUSIC_MIN_MAX_RULER                                         :{BLACK}{TINYFONT}МИН  '  '  ' '  '  '  МАКС
+STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Гласност на музка
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Гласност на ефекти
+STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}МИН  '  '  ' '  '  '  МАКС
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Прескокни на претходна избрана песна
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Прескокни на следна избрана песна
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Запри ја музиката
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Вклучи музика
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Повлечи ги лизгачите за местење на гласноста на музиката и ефектите
-STR_MUSIC_TRACK_NONE                                            :{DKGREEN}{TINYFONT}--
-STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{DKGREEN}{TINYFONT}0{COMMA}
-STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{DKGREEN}{TINYFONT}{COMMA}
-STR_MUSIC_TITLE_NONE                                            :{DKGREEN}{TINYFONT}------
-STR_MUSIC_TITLE_NAME                                            :{DKGREEN}{TINYFONT}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{BLACK}{TINYFONT}Песна{SETX 88}{BLACK}{TINYFONT}Наслов
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGREEN}0{COMMA}
+STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Песна{SETX 88}{BLACK}{TINYFONT}Наслов
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}Измешај
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Програм
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Избор на музички програм
@@ -532,7 +532,7 @@ STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Суб�
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Општи информации
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}..предалеку од претходната дестинација
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Топ компании што постигнаа {NUM}{}({STRING} Ниво)
-STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бизнисмен
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Претпријатие
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Индустриалист
@@ -540,8 +540,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Капитал�
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Магнат
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Могул
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Тајкун на векот
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} постигна статус на '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} од {COMPANY} постигна статус на'{STRING}'!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} постигна статус на '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} од {COMPANY} постигна статус на'{STRING}'!
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Сценарио Едитор
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Генерирање на терен
@@ -823,19 +823,19 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Авио
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Изградба на аеродром
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Изгради аеродром
 
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Градска прослава . . .{}Првиот авион пристигна на {STATION}!
-STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Авионска несреќа!{}{COMMA} загинати во пожарот на {STATION}
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Градска прослава . . .{}Првиот авион пристигна на {STATION}!
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Авионска несреќа!{}{COMMA} загинати во пожарот на {STATION}
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 
 ##id 0xB000
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}Цепелинска несреќа на {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}Возило уништено при судир со 'НЛО'!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BLACK}{BIGFONT}Експлозија на рафинерија во близина на {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BLACK}{BIGFONT}Фабрика уништена под сомнителни околности во близина на {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BLACK}{BIGFONT}'НЛО' приземјено во близина на {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BLACK}{BIGFONT}Штета предизвикана од рудник за јаглен во близина на {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BLACK}{BIGFONT}Поплави!{}Најмалку {COMMA} исчезнати лица, се претпоставува дека се загинати!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Цепелинска несреќа на {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Возило уништено при судир со 'НЛО'!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Експлозија на рафинерија во близина на {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Фабрика уништена под сомнителни околности во близина на {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'НЛО' приземјено во близина на {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Штета предизвикана од рудник за јаглен во близина на {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Поплави!{}Најмалку {COMMA} исчезнати лица, се претпоставува дека се загинати!
 
 STR_BRIBE_FAILED                                                :{WHITE}Твојот обид за поткуп беше
 STR_BRIBE_FAILED_2                                              :{WHITE}разоткриен од локалната инспекција

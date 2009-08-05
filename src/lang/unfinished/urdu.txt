@@ -121,21 +121,21 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :صنعتیں
 STR_SMALLMAP_TYPE_ROUTES                                        :راستے
 STR_SMALLMAP_TYPE_VEGETATION                                    :سبزہ
 STR_SMALLMAP_TYPE_OWNERS                                        :مالکین
-STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}سڑکیں
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}اڈے/ہوایی اڈے/بندرگاہیں
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}عمارتیں/صنعتیں
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}سواریاں
-STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}۱۰۰ میٹر
-STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}۲۰۰ میٹر
-STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}۳۰۰میٹر
-STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}۴۰۰ میٹر
-STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}۵۰۰ میٹر
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}ریل گاڑیاں
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}سڑک کی گاڑیاں
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}کشتیاں
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}ہوایی جہاز
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}مواصلاتی راستے
-STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}جنگل
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}سڑکیں
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}اڈے/ہوایی اڈے/بندرگاہیں
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}عمارتیں/صنعتیں
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}سواریاں
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}۱۰۰ میٹر
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}۲۰۰ میٹر
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}۳۰۰میٹر
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}۴۰۰ میٹر
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}۵۰۰ میٹر
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}ریل گاڑیاں
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}سڑک کی گاڑیاں
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}کشتیاں
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}ہوایی جہاز
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}مواصلاتی راستے
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}جنگل
 
 
 

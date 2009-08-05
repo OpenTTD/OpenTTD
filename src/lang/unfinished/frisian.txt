@@ -195,39 +195,39 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :Yndustryen
 STR_SMALLMAP_TYPE_ROUTES                                        :Rûtes
 STR_SMALLMAP_TYPE_VEGETATION                                    :Fegetaasje
 STR_SMALLMAP_TYPE_OWNERS                                        :Eigners
-STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}Diken
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}Treinspoaren
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}Stasjons/Fleanfjilden/Havens
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}Gebouwen/Yndustrieen
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}Reauen
-STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100m
-STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200m
-STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300m
-STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400m
-STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500m
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}Treinen
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}Auto's
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}Skepen
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}Fleantugen
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Transportrûtes
-STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}Bosk
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Treinstasjon
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Frachtweinstasjon
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}Busstasjon
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}Fleanfjild/Helipoart
-STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}Dok
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}Rûch Lân
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}Gerslân
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}Skraal Lân
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}Fjilden
-STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}Beammen
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}Stiennen
-STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}Wetter
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}Gjin eigner
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}Stêden
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}Yndustrieen
-STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}Woastine
-STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}Snie
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Diken
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Treinspoaren
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stasjons/Fleanfjilden/Havens
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Gebouwen/Yndustrieen
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Reauen
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200m
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300m
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400m
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500m
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Treinen
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Auto's
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Skepen
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Fleantugen
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Transportrûtes
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Bosk
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Treinstasjon
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Frachtweinstasjon
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Busstasjon
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Fleanfjild/Helipoart
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Dok
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Rûch Lân
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Gerslân
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Skraal Lân
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Fjilden
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Beammen
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Stiennen
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Wetter
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Gjin eigner
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Stêden
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Yndustrieen
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Woastine
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Snie
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Berjocht
 STR_QUERY_CAPTION                                               :{WHITE}{STRING}
 STR_DEFAULT                                                     :{BLACK}Standert
@@ -410,7 +410,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Treinspo
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Gemiente: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Neat
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Namme
-STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
+STR_VEHICLE_NAME_SMALL                                          :{TINYFONT}{BLACK}{VEHICLE}
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
@@ -476,20 +476,20 @@ STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Nije 
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy Street
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Eigen 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Eigen 2
-STR_MUSIC_MUSIC_VOLUME                                          :{BLACK}{TINYFONT}Musyk Folume
-STR_MUSIC_EFFECTS_VOLUME                                        :{BLACK}{TINYFONT}Effekten Folume
-STR_MUSIC_MIN_MAX_RULER                                         :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAKS
+STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Musyk Folume
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Effekten Folume
+STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  ' '  '  '  MAKS
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Werom nei foargeand nûmer yn seleksje
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Foarút nei folgjend nûmer yn seleksje
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Stopje musyk ôf te spyljen
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Begjin musyk ôf te spyljen
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Fersleep de balkjes om de lûdssterkte te feroarjen
-STR_MUSIC_TRACK_NONE                                            :{DKGREEN}{TINYFONT}--
-STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{DKGREEN}{TINYFONT}0{COMMA}
-STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{DKGREEN}{TINYFONT}{COMMA}
-STR_MUSIC_TITLE_NONE                                            :{DKGREEN}{TINYFONT}------
-STR_MUSIC_TITLE_NAME                                            :{DKGREEN}{TINYFONT}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{BLACK}{TINYFONT}Nûmer{SETX 88}{BLACK}{TINYFONT}Titel
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGREEN}0{COMMA}
+STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Nûmer{SETX 88}{BLACK}{TINYFONT}Titel
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}Wikselje
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Programma
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musyk Programma Seleksje
@@ -539,7 +539,7 @@ STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Musykje
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...te fier fan lêste bestimming
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top bedriuwen dy't  niveau {NUM}{}({STRING} helle ha)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Bedriuwskompetysjetabel yn {NUM}
-STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Sakeman
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Undernimmer
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Yndustrialist
@@ -549,8 +549,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mongoal
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Tycoon fan 'e Ieuw
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} behellet '{STRING}' status!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} fan {COMPANY} behellet '{STRING}' status!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} behellet '{STRING}' status!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} fan {COMPANY} behellet '{STRING}' status!
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Lânskipferbouer
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Lân Generaasje
@@ -984,13 +984,13 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}Gjin
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Tsjinsten dy't al subsydzje krije:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} fan {STATION} nei {STATION}{YELLOW} ({COMPANY}{YELLOW}, oant {DATE_SHORT})
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsydzje oanbieding ferrûn:{}{}{STRING} fan {STRING} nei {STRING} sil no net in subsydzje krije.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsydzje ôfrûn:{}{}{STRING} tsjinst fan {STATION} nei {STATION} krijt gjin subsydzje mear.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subsydzje oanbean:{}{}Earste{STRING} tsjinst fan {STRING} nei {STRING} krijt in jier subsydzje fan 'e gemeente!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subsydzje tawezen oan {STRING}!{}{}{STRING} tsjinst fan {STATION} nei {STATION} krijt 50% ekstra betelle foar it kommende jier!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subsydzje tawezen oan {STRING}!{}{}{STRING} tsjinst fan {STATION} nei {STATION} krijt dûbel betelle foar it kommende jier!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subsydzje tawezen oan {STRING}!{}{}{STRING} tsjinst fan {STATION} nei {STATION} krijt trijedûbel betelle foar it kommende jier!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subsydzje tawezen oan {STRING}!{}{}{STRING} tsjinst fan {STATION} nei {STATION} krijt fjouwerdûbel betelle foar it kommende jier!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Subsydzje oanbieding ferrûn:{}{}{STRING} fan {STRING} nei {STRING} sil no net in subsydzje krije.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsydzje ôfrûn:{}{}{STRING} tsjinst fan {STATION} nei {STATION} krijt gjin subsydzje mear.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subsydzje oanbean:{}{}Earste{STRING} tsjinst fan {STRING} nei {STRING} krijt in jier subsydzje fan 'e gemeente!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsydzje tawezen oan {STRING}!{}{}{STRING} tsjinst fan {STATION} nei {STATION} krijt 50% ekstra betelle foar it kommende jier!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsydzje tawezen oan {STRING}!{}{}{STRING} tsjinst fan {STATION} nei {STATION} krijt dûbel betelle foar it kommende jier!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subsydzje tawezen oan {STRING}!{}{}{STRING} tsjinst fan {STATION} nei {STATION} krijt trijedûbel betelle foar it kommende jier!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subsydzje tawezen oan {STRING}!{}{}{STRING} tsjinst fan {STATION} nei {STATION} krijt fjouwerdûbel betelle foar it kommende jier!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} gemeente lit it net ta dat der noch in fleanfjild bout wurd yn dizze stêd
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Húskes
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Hûzen
@@ -1176,20 +1176,20 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produsea
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produksje lêste moanne:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportearre)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Sintrearje it byld op de lokaasje fan dizze yndustry
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}Nij {STRING} yn oanbou by {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}Nij {STRING} oanplante {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nij {STRING} yn oanbou by {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nij {STRING} oanplante {TOWN}!
 STR_INDUSTRY_BUILD_COST                                         :{BLACK}Kostet: {YELLOW}{CURRENCY}
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kin dit type yndustry hjir net boue...
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...bosk kin allinich boppe snieline boud wurde
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT}{STRING} ferkondigt drigende slúting!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}Troch problemen mei de oanfier ferkondigt {STRING} drigende slúting!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}Troch in tekoart oan beammen ferkondigt {STRING} drigende slúting!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} hellet produksje oan!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BLACK}{BIGFONT}Nije koalier fûn by {INDUSTRY}!{}Produksje wurdt ferwachte te ferdûbelje!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BLACK}{BIGFONT}Nije oaljereserves fûn by {INDUSTRY}!{}Produksje wurdt ferwachte te ferdûbelje!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BLACK}{BIGFONT}Troch ferbetterede metoden wurdt de produskje fan {INDUSTRY} te ferdûbelje!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT} Produksje fan {INDUSTRY} giet omleech mei 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BLACK}{BIGFONT}Troch in insektenpleach by {INDUSTRY}!{}Produksje giet omleech mei 50%
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} ferkondigt drigende slúting!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Troch problemen mei de oanfier ferkondigt {STRING} drigende slúting!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Troch in tekoart oan beammen ferkondigt {STRING} drigende slúting!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} hellet produksje oan!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nije koalier fûn by {INDUSTRY}!{}Produksje wurdt ferwachte te ferdûbelje!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nije oaljereserves fûn by {INDUSTRY}!{}Produksje wurdt ferwachte te ferdûbelje!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Troch ferbetterede metoden wurdt de produskje fan {INDUSTRY} te ferdûbelje!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK} Produksje fan {INDUSTRY} giet omleech mei 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Troch in insektenpleach by {INDUSTRY}!{}Produksje giet omleech mei 50%
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...kin allinich pleatse wurde by de rân fan'e kaart
 
 ##id 0x5000
@@ -1382,22 +1382,22 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Bedriuws
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Bedriuwskompetysjetabel
 STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_OTHER                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BLACK}{BIGFONT}Transportbedriuw yn'e problemen!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BLACK}{BIGFONT}{STRING} sil ôfkocht wurde of fallyt ferkleare wurde wannear prestaasjes net ferbetterje
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Transportbedriuw yn'e problemen!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} sil ôfkocht wurde of fallyt ferkleare wurde wannear prestaasjes net ferbetterje
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Direkteur)
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BLACK}{BIGFONT}Transportbedriuw fuseare!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING} is ferkocht  oan{STRING} foar {CURRENCY}!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Transportbedriuw fuseare!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} is ferkocht  oan{STRING} foar {CURRENCY}!
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Wy sykje in transportbedriuw om ús bedriuw oer te nimmen.{}{}Wolsto {COMPANY} foar {CURRENCY} keapje?
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BLACK}{BIGFONT}Fallyt!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BLACK}{BIGFONT}{STRING} is slúten troch skuldeaskers en alles is ferkocht!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BLACK}{BIGFONT}Nij transportbedriuw oprjochte!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING} begjint te bouen yn {TOWN}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Fallyt!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} is slúten troch skuldeaskers en alles is ferkocht!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Nij transportbedriuw oprjochte!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} begjint te bouen yn {TOWN}!
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kin bedriuw net keapje...
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Frachtbetellingshichtes
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{BLACK}{TINYFONT}Deien ûnderweis
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{BLACK}{TINYFONT}Betelling foar levering fan 10 ienheiden (of 10,000 liter) fracht oer in ôfstân fan 20 hokskes
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Deien ûnderweis
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betelling foar levering fan 10 ienheiden (of 10,000 liter) fracht oer in ôfstân fan 20 hokskes
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Set grafyk foar frachttype oan/út
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{BLACK}{TINYFONT}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Inzjenieur
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Ferkearsbehearder
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Transportcoördinator
@@ -1422,7 +1422,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Ferkeapj
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kin net 25% oandielen fan dit bedriuw keapje...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kin net 25% oandielen fan dit bedriuw ferkeapje...
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% besit fan {COMPANY})
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BLACK}{BIGFONT}{STRING} is oernaam troch {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} is oernaam troch {STRING}!
 
 
 
@@ -1637,8 +1637,8 @@ STR_CHANGE_BUOY_NAME                                            :{BLACK}Namme fa
 
 
 ##id 0xB000
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BLACK}{BIGFONT}Eksploazje op Oaljefjild yn {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BLACK}{BIGFONT}Stiekkoalmien stoart yn, in bult rommel yn {TOWN}!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Eksploazje op Oaljefjild yn {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Stiekkoalmien stoart yn, in bult rommel yn {TOWN}!
 
 
 

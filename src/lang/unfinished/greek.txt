@@ -196,39 +196,39 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :Βιομηχα�
 STR_SMALLMAP_TYPE_ROUTES                                        :Διαδρομές
 STR_SMALLMAP_TYPE_VEGETATION                                    :Βλάστηση
 STR_SMALLMAP_TYPE_OWNERS                                        :Ιδιοκτήτες
-STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}Δρόμοι
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}Σιδηρόδρομοι
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}Σταθμοί/Αεροδρόμια/Λιμάνια
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}Κτήρια/Βιομηχανίες
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}Οχήματα
-STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100μ
-STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200μ
-STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300μ
-STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400μ
-STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500μ
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}Τραίνα
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}Οχήματα
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}Πλοία
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}Αεροπλάνο
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Διαδρομές Μεταφορών
-STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}Δάσος
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Σιδηροδρομικός Σταθμός
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Περιοχή Φόρτωσης Φορτηγών
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}Στάση Λεωφορείου
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}Αεροδρόμιο/Ελικοδρόμιο
-STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}Λιμάνι
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}Τραχύ Έδαφος
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}Γρασίδι
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}Γυμνό Έδαφος
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}Χωράφια
-STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}Δέντρα
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}Βράχοι
-STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}Νερό
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}Χωρίς Ιδιοκτήτη
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}Πόλεις
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}Βιομηχανίες
-STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}Έρημος
-STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}Χιόνι
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Δρόμοι
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Σιδηρόδρομοι
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Σταθμοί/Αεροδρόμια/Λιμάνια
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Κτήρια/Βιομηχανίες
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Οχήματα
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100μ
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200μ
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300μ
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400μ
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500μ
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Τραίνα
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Οχήματα
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Πλοία
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Αεροπλάνο
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Διαδρομές Μεταφορών
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Δάσος
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Σιδηροδρομικός Σταθμός
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Περιοχή Φόρτωσης Φορτηγών
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Στάση Λεωφορείου
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Αεροδρόμιο/Ελικοδρόμιο
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Λιμάνι
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Τραχύ Έδαφος
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Γρασίδι
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Γυμνό Έδαφος
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Χωράφια
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Δέντρα
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Βράχοι
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Νερό
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Χωρίς Ιδιοκτήτη
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Πόλεις
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Βιομηχανίες
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Έρημος
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Χιόνι
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Μήνυμα
 STR_QUERY_CAPTION                                               :{WHITE}{STRING}
 STR_DEFAULT                                                     :{BLACK}Προεπιλογή
@@ -432,7 +432,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Ιδιο
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Τοπική αρχή: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Κανένα
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Όνομα
-STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
+STR_VEHICLE_NAME_SMALL                                          :{TINYFONT}{BLACK}{VEHICLE}
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1{G ος η ο}
@@ -510,20 +510,20 @@ STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Νέ�
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy Street
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Προσαρμοσμένο 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Προσαρμοσμένο 2
-STR_MUSIC_MUSIC_VOLUME                                          :{BLACK}{TINYFONT}Ένταση Μουσικής
-STR_MUSIC_EFFECTS_VOLUME                                        :{BLACK}{TINYFONT}Ένταση Εφέ
-STR_MUSIC_MIN_MAX_RULER                                         :{BLACK}{TINYFONT}ΕΛΑΧ  '  '  ' '  '  '  ΜΕΓ
+STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Ένταση Μουσικής
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Ένταση Εφέ
+STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}ΕΛΑΧ  '  '  ' '  '  '  ΜΕΓ
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Πλοήγηση στο προηγούμενο κομμάτι της συλλογής
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Πλοήγηση στο επόμενο κομμάτι στη συλλογή
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Σταμάτημα αναπαραγωγής
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Έναρξη αναπαραγωγής
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Μετακινήστε τις γραμμές κύλισης για ρύθμιση έντασης
-STR_MUSIC_TRACK_NONE                                            :{DKGREEN}{TINYFONT}--
-STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{DKGREEN}{TINYFONT}0{COMMA}
-STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{DKGREEN}{TINYFONT}{COMMA}
-STR_MUSIC_TITLE_NONE                                            :{DKGREEN}{TINYFONT}------
-STR_MUSIC_TITLE_NAME                                            :{DKGREEN}{TINYFONT}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{BLACK}{TINYFONT}Κομμάτι{SETX 88}{BLACK}{TINYFONT}Τίτλος
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGREEN}0{COMMA}
+STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Κομμάτι{SETX 88}{BLACK}{TINYFONT}Τίτλος
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}Τυχαία αναπαραγωγή
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Πρόγραμμα
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Επιλογή Μουσικού Προγράμματος
@@ -573,7 +573,7 @@ STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Ανα�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...πολύ μακριά από τον προηγούμενο προορισμό
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Οι καλύτερες εταιρείες που έφτασαν το {NUM}{}({STRING} Επίπεδο)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Πίνακας Πρωταθλήματος Εταιρειών σε {NUM}
-STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA},
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA},
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Επαγγελματίας
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Πρωτοπόρος
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Βιομήχανος
@@ -583,8 +583,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Τυχοδιώ�
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Μεγιστάνας του Αιώνα
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} έφτασε  στο επίπεδο '{STRING}'
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} της εταιρείας {COMPANY} έφτασε στο επίπεδο '{STRING}'!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} έφτασε  στο επίπεδο '{STRING}'
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} της εταιρείας {COMPANY} έφτασε στο επίπεδο '{STRING}'!
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Πρόγραμμα Επεξεργασίας Σεναρίου
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Δημιουργία Γης
@@ -865,7 +865,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Τ
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} δεν μπορεί να βρει δρόμο να συνεχίσει
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} χάθηκε
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE} Το κέρδος του {VEHICLE} πέρυσι ήταν {CURRENCY}
-STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Ευρωπαϊκή Οικονομική Ένωση!{}{}Το Ευρώ είναι πλέον το μοναδικό νόμισμα για τις καθημερινές συναλλαγές στην χώρα σας!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Ευρωπαϊκή Οικονομική Ένωση!{}{}Το Ευρώ είναι πλέον το μοναδικό νόμισμα για τις καθημερινές συναλλαγές στην χώρα σας!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -1672,13 +1672,13 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}Κανένα
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Υπηρεσίες που έχουν χρηματοδοτηθεί:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} από το σταθμό {STATION} προς το σταθμό {STATION}{YELLOW} ({COMPANY}{YELLOW}, έως {DATE_SHORT})
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Έληξε προσφορά χρηματοδότησης:{}{}{STRING} από {STRING} πρός {STRING} δεν θα προσελκύουν χρηματοδότηση πια.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Η χρηματοδότηση αποσύρθηκε:{}{}{STRING} υπηρεσία {STATION} προς {STATION} δεν χρηματοδοτείται πια.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Προσφορά χρηματοδότησης υπηρεσίας:{}{}Η πρώτη υπηρεσία για {STRING} από {STRING} προς {STRING} επιχορηγείται για ένα έτος από την τοπική αρχή!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται 50% παραπάνω για ένα έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται διπλά για το επόμενο έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται τριπλά για το επόμενο έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται τετραπλά για το επόμενο έτος!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Έληξε προσφορά χρηματοδότησης:{}{}{STRING} από {STRING} πρός {STRING} δεν θα προσελκύουν χρηματοδότηση πια.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Η χρηματοδότηση αποσύρθηκε:{}{}{STRING} υπηρεσία {STATION} προς {STATION} δεν χρηματοδοτείται πια.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Προσφορά χρηματοδότησης υπηρεσίας:{}{}Η πρώτη υπηρεσία για {STRING} από {STRING} προς {STRING} επιχορηγείται για ένα έτος από την τοπική αρχή!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται 50% παραπάνω για ένα έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται διπλά για το επόμενο έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται τριπλά για το επόμενο έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται τετραπλά για το επόμενο έτος!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Η τοπική αρχή της πόλης {TOWN} αρνείται να επιτρέψει τη δημιουργία νέου αεροδρομίου
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} Οι τοπικές αρχές αρνούνται να δώσουν την άδεια για αεροδρόμιο λογω ανησυχιών για τον θόρυβο
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Χωράφια
@@ -1922,20 +1922,20 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Απαι
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Παραγωγή προηγούμενου μήνα:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% μεταφέρθηκαν)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Κεντράρισμα εικόνας στην περιοχή της βιομηχανίας
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}Νέο {STRING} υπό κατασκευή κοντά στην πόλη {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}Νέα {STRING} φυτεύεται κοντά στην πόλη {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Νέο {STRING} υπό κατασκευή κοντά στην πόλη {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Νέα {STRING} φυτεύεται κοντά στην πόλη {TOWN}!
 STR_INDUSTRY_BUILD_COST                                         :{BLACK}Κόστος: {YELLOW}{CURRENCY}
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Αδύνατο να χτιστεί αυτός ο τύπος βιομηχανίας εδώ...
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...το δάσος μπορεί να φυτευτεί μόνο πάνω από την γραμμή χιονιού
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT}Η βιομηχανία {STRING} ανακοίνωσε άμεσο κλείσιμο!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}Προβλήματα στην προμήθεια αναγκάζουν την εταιρεία {STRING} να κλείσει αμέσως!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}Η έλλειψη δέντρων αναγκάζει την βιομηχανία {STRING} να κλείσει αμέσως!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}Η βιομηχανία {INDUSTRY} ανεβάζει την παραγωγή!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BLACK}{BIGFONT}Νέα φλέβα άνθρακα βρέθηκε στο {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BLACK}{BIGFONT}Νέα αποθέματα πετρελαίου βρέθηκαν στην {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BLACK}{BIGFONT}Βελτιωμένες μέθοδοι καλλιέργειας στην {INDUSTRY} αναμένεται να διπλασιάσουν την παραγωγή!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT}Η παραγωγή στο/στη {INDUSTRY} μειώθηκε κατά 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BLACK}{BIGFONT}Μόλυνση από έντομα προκαλεί καταστροφή στη {INDUSTRY}!{}Η παραγωγή μειώθηκε κατά 50%
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}Η βιομηχανία {STRING} ανακοίνωσε άμεσο κλείσιμο!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Προβλήματα στην προμήθεια αναγκάζουν την εταιρεία {STRING} να κλείσει αμέσως!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Η έλλειψη δέντρων αναγκάζει την βιομηχανία {STRING} να κλείσει αμέσως!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}Η βιομηχανία {INDUSTRY} ανεβάζει την παραγωγή!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Νέα φλέβα άνθρακα βρέθηκε στο {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Νέα αποθέματα πετρελαίου βρέθηκαν στην {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Βελτιωμένες μέθοδοι καλλιέργειας στην {INDUSTRY} αναμένεται να διπλασιάσουν την παραγωγή!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Η παραγωγή στο/στη {INDUSTRY} μειώθηκε κατά 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Μόλυνση από έντομα προκαλεί καταστροφή στη {INDUSTRY}!{}Η παραγωγή μειώθηκε κατά 50%
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...μπορούν να τοποθετηθούν μόνο στις άκρες του χάρτη
 
 ##id 0x5000
@@ -2174,22 +2174,22 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Αξία
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Πίνακας Πρωταθλήματος Εταιρειών
 STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_OTHER                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BLACK}{BIGFONT}Εταιρεία μεταφορών σε μπελάδες!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BLACK}{BIGFONT}Η εταιρεία {STRING} θα πωληθεί ή θα κυρήξει πτώχευση αν δεν αυξηθεί η απόδοσή της!
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Εταιρεία μεταφορών σε μπελάδες!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}Η εταιρεία {STRING} θα πωληθεί ή θα κυρήξει πτώχευση αν δεν αυξηθεί η απόδοσή της!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Διευθυντής)
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BLACK}{BIGFONT}Συγχώνευση εταιρειών μεταφοράς!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BLACK}{BIGFONT}Η εταιρεία {STRING} πουλήθηκε στην {STRING} για το ποσό των {CURRENCY}!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Συγχώνευση εταιρειών μεταφοράς!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}Η εταιρεία {STRING} πουλήθηκε στην {STRING} για το ποσό των {CURRENCY}!
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ψάχνουμε μία εταιρεία μεταφορών για να αναλάβει την εταιρεία μας.{}{}Θέλετε να αγοράσετε την {COMPANY} για {CURRENCY}?
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BLACK}{BIGFONT}Χρεωκοπία!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BLACK}{BIGFONT}Η {STRING} έκλεισε από τους επενδυτές και όλα εκποιήθηκαν!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BLACK}{BIGFONT}Ίδρυση νέας εταιρείας μεταφορών!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BLACK}{BIGFONT}Η {STRING} ξεκινά τις κατασκευές κοντά στην πόλη {TOWN}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Χρεωκοπία!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}Η {STRING} έκλεισε από τους επενδυτές και όλα εκποιήθηκαν!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Ίδρυση νέας εταιρείας μεταφορών!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}Η {STRING} ξεκινά τις κατασκευές κοντά στην πόλη {TOWN}!
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Αδύνατη η εξαγορά της εταιρείας...
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Ποσοστά Πληρωμής Φορτίων
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{BLACK}{TINYFONT}Μέρες σε μεταφορά
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{BLACK}{TINYFONT}Πληρωμή για την παράδοση 10 μονάδων (ή 10.000 λίτρων) φορτίου σε απόσταση 20 τετραγώνων
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Μέρες σε μεταφορά
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Πληρωμή για την παράδοση 10 μονάδων (ή 10.000 λίτρων) φορτίου σε απόσταση 20 τετραγώνων
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Ενναλαγή γραφήματος τύπου φορτίου
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{BLACK}{TINYFONT}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Μηχανικός
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Διαχειριστής Κυκλοφορίας
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Συντονιστής Μεταφορών
@@ -2226,7 +2226,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Πώλη
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Αδύνατη η αγορά μεριδίου 25% της εταιρείας...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Αδύνατη η πώληση μεριδίου 25% της εταιρείας...
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% είναι ιδιοκτησία της {COMPANY})
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BLACK}{BIGFONT}Η {STRING} εξαγοράστηκε από την {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}Η {STRING} εξαγοράστηκε από την {STRING}!
 STR_PROTECTED                                                   :{WHITE}Αυτή η εταιρεία δεν είναι αρκετά ώριμη για συναλλαγή μετοχών ακόμα...
 
 STR_LIVERY_DEFAULT                                              :Πρότυπο Μοτίβου Χρωμάτων
@@ -2373,7 +2373,7 @@ STR_ENGINE_PREVIEW_AIRCRAFT                                     :αεροπλά�
 STR_ENGINE_PREVIEW_SHIP                                         :πλοιού
 
 ##id 0x8800
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο τραίνο φτάνει στο στάθμο{STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο τραίνο φτάνει στο στάθμο{STATION}!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Λεπτομέριες)
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
@@ -2502,7 +2502,7 @@ STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Κόστ
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ηλικία: {LTBLUE}{STRING}{BLACK}   Κόστος Λειτουργίας: {LTBLUE}{CURRENCY}/χρ
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Μεγ. ταχύτητα: {LTBLUE}{VELOCITY}
 
-STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Σύγκρουση Τραίνων!{}{COMMA} σκοτώθηκαν σε φωτιά μετά την σύγκρουση
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Σύγκρουση Τραίνων!{}{COMMA} σκοτώθηκαν σε φωτιά μετά την σύγκρουση
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Δεν αντιστρέφεται η κατεύθυνση του τραίνου...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Δεν αντιστρέφεται η κατεύθυνση του οχήματος...
 
@@ -2515,8 +2515,8 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Το χ�
 
 ##id 0x9000
 
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Σύγκρουση Οχήματος!{}Ο οδηγός σκοτώθησε σε φωτιά μετά από σύγκρουση με τραίνο
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Σύγκρουση Οχήματος!{}{COMMA} σκοτώθηκαν σε φωτιά μετά από σύγκρουση με τραίνο
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Σύγκρουση Οχήματος!{}Ο οδηγός σκοτώθησε σε φωτιά μετά από σύγκρουση με τραίνο
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Σύγκρουση Οχήματος!{}{COMMA} σκοτώθηκαν σε φωτιά μετά από σύγκρουση με τραίνο
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Δεν γίνεται το όχημα να αλάξει πορεία...
 
 
@@ -2530,13 +2530,13 @@ STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Δεν �
 
 
 ##id 0xB000
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}Ατύχημα με ζέπελιν στο {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}Όχημα καταστράφηκε σε σύγκρουση με ΑΤΙΑ!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BLACK}{BIGFONT}Έκρηξη διυλιστηρίου κοντά στο  {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BLACK}{BIGFONT}Εργοστάσιο καταστράφηκε κάτω από ύποπτες συνθήκες κοντά στο {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BLACK}{BIGFONT}Α.Τ.Ι.Α. προσγειώθηκε κοντά στο {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BLACK}{BIGFONT}Κατάρρευση ανθρακωρυχείου αφήνει καταστροφικό ρήγμα κοντά στο {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BLACK}{BIGFONT}Πλημμύρα!{}Τουλάχιστον {COMMA} αγνοούμενοι, το πιθανότερο νεκροί μετά από μεγάλη πλημμύρα!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Ατύχημα με ζέπελιν στο {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Όχημα καταστράφηκε σε σύγκρουση με ΑΤΙΑ!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Έκρηξη διυλιστηρίου κοντά στο  {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Εργοστάσιο καταστράφηκε κάτω από ύποπτες συνθήκες κοντά στο {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}Α.Τ.Ι.Α. προσγειώθηκε κοντά στο {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Κατάρρευση ανθρακωρυχείου αφήνει καταστροφικό ρήγμα κοντά στο {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Πλημμύρα!{}Τουλάχιστον {COMMA} αγνοούμενοι, το πιθανότερο νεκροί μετά από μεγάλη πλημμύρα!
 
 STR_BRIBE_FAILED                                                :{WHITE}Η δωροδοκία έγινε
 STR_BRIBE_FAILED_2                                              :{WHITE}αντιληπτή από περιφερειακό επιθεωρητή
@@ -2677,7 +2677,7 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Αερο
 
 ############ End of list of rail types
 
-STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
+STR_TINY_BLACK                                                  :{TINYFONT}{BLACK}{COMMA}
 
 
 ########### For showing numbers in widgets

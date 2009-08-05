@@ -195,39 +195,39 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :Indústries
 STR_SMALLMAP_TYPE_ROUTES                                        :Rutes
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetació
 STR_SMALLMAP_TYPE_OWNERS                                        :Propietaris
-STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}Carreteres
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}Vies
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}Estacions/Aeroports/Ports
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}Edificis/Indústries
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}Vehicles
-STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100m
-STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200m
-STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300m
-STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400m
-STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500m
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}Trens
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}Vehicles de carretera
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}Vaixells
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}Avions
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Rutes de Transport
-STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}Bosc
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Estació de Ferrocarril
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Moll de Càrrega de Camions
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}Parada d'autobús
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}Aeroport/Heliport
-STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}Moll
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}Terreny Irregular
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}Gespa
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}Terreny erm
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}Camps
-STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}Arbres
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}Roques
-STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}Aigua
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}Sense Propietari
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}Poblacions
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}Indústries
-STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}Desert
-STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}Neu
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Carreteres
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Vies
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Estacions/Aeroports/Ports
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Edificis/Indústries
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Vehicles
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200m
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300m
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400m
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500m
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Trens
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Vehicles de carretera
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Vaixells
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Avions
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Rutes de Transport
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Bosc
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Estació de Ferrocarril
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Moll de Càrrega de Camions
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Parada d'autobús
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Aeroport/Heliport
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Moll
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Terreny Irregular
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Gespa
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Terreny erm
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Camps
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Arbres
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Roques
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Aigua
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Sense Propietari
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Poblacions
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Indústries
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Desert
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Neu
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Missatge
 STR_QUERY_CAPTION                                               :{WHITE}{STRING}
 STR_DEFAULT                                                     :{BLACK}Predeterminat
@@ -431,7 +431,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Propieta
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autoritat Local: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ningú
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nom
-STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
+STR_VEHICLE_NAME_SMALL                                          :{TINYFONT}{BLACK}{VEHICLE}
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
@@ -509,20 +509,20 @@ STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Nou E
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy Street
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Opcional 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Opcional 2
-STR_MUSIC_MUSIC_VOLUME                                          :{BLACK}{TINYFONT}Volum de la música
-STR_MUSIC_EFFECTS_VOLUME                                        :{BLACK}{TINYFONT}Volum dels efectes
-STR_MUSIC_MIN_MAX_RULER                                         :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
+STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volum de la música
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volum dels efectes
+STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  ' '  '  '  MAX
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Salta a la pista anterior de la selecció
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Salta a la pista següent de la selecció
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Para la música
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Engega la música
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Arrossega els controls per establir el volum de la música i els efectes de so
-STR_MUSIC_TRACK_NONE                                            :{DKGREEN}{TINYFONT}--
-STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{DKGREEN}{TINYFONT}0{COMMA}
-STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{DKGREEN}{TINYFONT}{COMMA}
-STR_MUSIC_TITLE_NONE                                            :{DKGREEN}{TINYFONT}------
-STR_MUSIC_TITLE_NAME                                            :{DKGREEN}{TINYFONT}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{BLACK}{TINYFONT}Pista{SETX 88}{BLACK}{TINYFONT}Títol
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGREEN}0{COMMA}
+STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Pista{SETX 88}{BLACK}{TINYFONT}Títol
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}Aleatori
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Programa
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Selecció del Programa de Música
@@ -572,7 +572,7 @@ STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Emetre 
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...massa lluny del destí previ
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Principals empreses en aconseguir el Nivell {NUM}{}({STRING} )
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Taula de Lliga d'Empreses a {NUM}
-STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Empresari
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Emprenedor
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrial
@@ -582,8 +582,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Gran Magnat
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnat del Segle
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} assoleix l'estat '{STRING}' !
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} de {COMPANY} assoleix l'estat '{STRING}' !
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} assoleix l'estat '{STRING}' !
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} de {COMPANY} assoleix l'estat '{STRING}' !
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor d'Escenaris
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generador de Terreny
@@ -864,7 +864,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fi
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} no pot trobar un camí per on continuar.
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} està perdut.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :El benefici del {WHITE}{VEHICLE} l'any passat va ser de {CURRENCY}
-STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Unió Monetària Europea!{}{}S'introdueix l'Euro com a moneda única per les transaccions diàries del teu país!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Unió Monetària Europea!{}{}S'introdueix l'Euro com a moneda única per les transaccions diàries del teu país!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -1693,13 +1693,13 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}Cap
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Serveis ja subvencionats:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} des de {STATION} fins a {STATION}{YELLOW} ({COMPANY}{YELLOW}, fins a {DATE_SHORT})
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Oferiment de subvenció caducada: {}{}{STRING} des de {STRING} fins a {STRING} s'ha declarat desert.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subvenció retirada:{}{}{STRING} des de {STATION} fins a {STATION} ja no està subvencionat.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subvenció per un servei oferta:{}{} El primer servei de {STRING} des de {STRING} fins a {STRING} tindrà una subvenció d'un any de l'autoritat local!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Subvenció per Servei concedida a {STRING}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} rebrà un 50% addicional durant el pròxim any!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Subvenció per Servei concedida a {STRING}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} percebrà el doble de la tarifa durant el pròxim any!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Subvenció per Servei concedida a {STRING}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} percebrà el triple de la tarifa durant el pròxim any!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Subvenció per Servei concedida a {STRING}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} percebrà el quàdruple de la tarifa durant el pròxim any!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Oferiment de subvenció caducada: {}{}{STRING} des de {STRING} fins a {STRING} s'ha declarat desert.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subvenció retirada:{}{}{STRING} des de {STATION} fins a {STATION} ja no està subvencionat.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subvenció per un servei oferta:{}{} El primer servei de {STRING} des de {STRING} fins a {STRING} tindrà una subvenció d'un any de l'autoritat local!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvenció per Servei concedida a {STRING}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} rebrà un 50% addicional durant el pròxim any!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subvenció per Servei concedida a {STRING}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} percebrà el doble de la tarifa durant el pròxim any!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subvenció per Servei concedida a {STRING}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} percebrà el triple de la tarifa durant el pròxim any!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subvenció per Servei concedida a {STRING}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} percebrà el quàdruple de la tarifa durant el pròxim any!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} l'autoritat local denega el permís de construir un altre aeroport en aquesta població
 STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}L'autoritat local de {TOWN} rebutja donar el permís per a l'aeroport degut al soroll que causaria
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Xalets
@@ -1956,23 +1956,23 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produeix
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producció del darrer mes:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportat)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra la vista principal al lloc de l'indústria
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}Nou/nova {STRING} en construcció prop de {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}S'està plantant un nou {STRING} prop de {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nou/nova {STRING} en construcció prop de {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}S'està plantant un nou {STRING} prop de {TOWN}!
 STR_INDUSTRY_BUILD_COST                                         :{BLACK}Cost: {YELLOW}{CURRENCY}
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Aquí no es pot construir aquest tipus d'indústria...
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...els boscos només es poden plantar sota la cota de neu
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT}{STRING} anuncia el seu imminent tancament!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}Problemes de subministrament fan que {STRING} anuncii el seu imminent tancament!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}La falta d'arbres propers fan que {STRING} anuncii el seu imminent tancament!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} incrementa la producció!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BLACK}{BIGFONT}Nova veta de carbó trobada a {INDUSTRY}!{}Es preveu doblar la producció!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BLACK}{BIGFONT}Noves reserves de petroli trobades a {INDUSTRY}!{}Es preveu doblar la producció!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BLACK}{BIGFONT}Sistemes de conreu millorats a {INDUSTRY} fan preveure doblar la producció!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} la producció es redueix un 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BLACK}{BIGFONT}Una plaga d'insectes provoca el caos a {INDUSTRY}!{}La producció es redueix un 50%
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} anuncia el seu imminent tancament!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Problemes de subministrament fan que {STRING} anuncii el seu imminent tancament!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}La falta d'arbres propers fan que {STRING} anuncii el seu imminent tancament!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} incrementa la producció!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nova veta de carbó trobada a {INDUSTRY}!{}Es preveu doblar la producció!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Noves reserves de petroli trobades a {INDUSTRY}!{}Es preveu doblar la producció!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Sistemes de conreu millorats a {INDUSTRY} fan preveure doblar la producció!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} la producció es redueix un 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Una plaga d'insectes provoca el caos a {INDUSTRY}!{}La producció es redueix un 50%
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...només es pot situar prop dels límits del mapa
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BLACK}{BIGFONT}La producció de {STRING} a {INDUSTRY} creix un {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BLACK}{BIGFONT}La producció de {STRING} a {INDUSTRY} es redueix un {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}La producció de {STRING} a {INDUSTRY} creix un {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}La producció de {STRING} a {INDUSTRY} es redueix un {COMMA}%!
 
 ##id 0x5000
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Un altre túnel en el camí
@@ -2213,22 +2213,22 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valors d
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Taula de la Lliga d'Empreses
 STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_OTHER                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BLACK}{BIGFONT}Empresa de Transport en dificultats!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BLACK}{BIGFONT}{STRING} ha de ser venuda o declarar-se en fallida a menys que el seu rendiment s'incrementi aviat!
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Empresa de Transport en dificultats!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} ha de ser venuda o declarar-se en fallida a menys que el seu rendiment s'incrementi aviat!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(President)
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BLACK}{BIGFONT}Fusió d'Empreses de Transport!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING} s'ha venut a {STRING} per {CURRENCY}!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Fusió d'Empreses de Transport!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} s'ha venut a {STRING} per {CURRENCY}!
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Busquem empresa de transports per absorbir la nostra companyia{}{}Vols comprar a {COMPANY} per {CURRENCY}?
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BLACK}{BIGFONT}Fallida!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BLACK}{BIGFONT}{STRING} ha estat tancada pels creditors i tots els seus actius han estat venuts!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BLACK}{BIGFONT}Creada nova companyia de transports!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING} comença la construcció prop de {TOWN}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Fallida!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} ha estat tancada pels creditors i tots els seus actius han estat venuts!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Creada nova companyia de transports!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} comença la construcció prop de {TOWN}!
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}No pots comprar la companyia...
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifes de Pagament de Càrrega
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{BLACK}{TINYFONT}Dies en trànsit
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{BLACK}{TINYFONT}Pagament per entregar 10 unitats (o 10,000 litres) de càrrega a una distància de 20 quadres
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dies en trànsit
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Pagament per entregar 10 unitats (o 10,000 litres) de càrrega a una distància de 20 quadres
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Activa/desactiva gràfic de tipus de càrrega
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{BLACK}{TINYFONT}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Enginyer
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Director de Trànsit
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordinador de Transport
@@ -2265,7 +2265,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Ven un 2
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}No pots comprar el 25% de participació en aquesta companyia...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}No pots vendre el 25% de participació en aquesta companyia...
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% propietat de {COMPANY})
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BLACK}{BIGFONT}{STRING} ha estat absorbida per {STRING}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} ha estat absorbida per {STRING}!
 STR_PROTECTED                                                   :{WHITE}Aquesta companyia ja no negocia participacions...
 
 STR_LIVERY_DEFAULT                                              :Decoració estàndard
@@ -2568,7 +2568,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotora de m
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotora de maglev
 
 ##id 0x8800
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Celebració popular . . .{} Arribada del 1er. tren a {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Celebració popular . . .{} Arribada del 1er. tren a {STATION}!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalls)
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
@@ -2742,7 +2742,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parat
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}No pots fer que un tren passi d'una senyal amb perill...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accident!
 
-STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Accident de Tren!{}{COMMA} moren en una bola de foc després de la col·lisió
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Accident de Tren!{}{COMMA} moren en una bola de foc després de la col·lisió
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}No es pot invertir la direcció del tren...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}No s'ha pogut invertir el sentit del vehicle...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}No es poden girar vehicles que estan formats per múltiples unitats
@@ -2758,8 +2758,8 @@ STR_TRAIN_NO_POWER                                              :{RED}Sense ener
 STR_TRAIN_START_NO_CATENARY                                     :Aquesta via no té catenària, el tren no pot arrencar
 STR_TRAIN_STUCK                                                 :{ORANGE}Esperant una ruta lliure
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}Nou/Nova {STRING} disponible!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nou/Nova {STRING} disponible!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nou/Nova {STRING} disponible!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}No es pot vendre el vehicle destruït...
@@ -2786,12 +2786,12 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehicle{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Celebració popular . . .{}Primer autobús arriba a {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Celebració popular . . .{}Primer camió arriba a {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Els ciutadans celebren . . .{}El primer tramvia de passatgers arriba a {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Els ciutadans celebren . . .{}El primer tramvia de mercaderies arriba a {STATION}!
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Accident d'automòbil!{}El conductor mor en una bola de foc després de la col·lisió amb un tren
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Accident d'automòbil!{}{COMMA} moren en una bola de foc després d'una col·lisió amb un tren
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Celebració popular . . .{}Primer autobús arriba a {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Celebració popular . . .{}Primer camió arriba a {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Els ciutadans celebren . . .{}El primer tramvia de passatgers arriba a {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Els ciutadans celebren . . .{}El primer tramvia de mercaderies arriba a {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Accident d'automòbil!{}El conductor mor en una bola de foc després de la col·lisió amb un tren
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Accident d'automòbil!{}{COMMA} moren en una bola de foc després d'una col·lisió amb un tren
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}No s'ha pogut fer girar el vehicle...
 
 
@@ -2804,7 +2804,7 @@ STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}El vaixe
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construeix un port
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construeix una drassana (per construir i revisar vaixells)
 
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Celebració popular . . .{}El 1er. vaixell arriba a {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Celebració popular . . .{}El 1er. vaixell arriba a {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Situa boia, que pot ser útil per marques de ruta addicionals
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Aquí no es pot situar una boia...
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK} Construeix aqüeducte
@@ -2822,21 +2822,21 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}L'avió 
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construcció d'Aeroport
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construeix un aeroport
 
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Celebració popular . . .{}El primer avió arriba a {STATION}!
-STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Accident d'avió!{}{COMMA} moren en una bola de foc a {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Accident d'aviació!{}L'avió s'ha quedat sense combustible, {COMMA} morts en l'accident!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Celebració popular . . .{}El primer avió arriba a {STATION}!
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Accident d'avió!{}{COMMA} moren en una bola de foc a {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Accident d'aviació!{}L'avió s'ha quedat sense combustible, {COMMA} morts en l'accident!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Horari)
 
 ##id 0xB000
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}Desastre de Zeppelin a {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}Automòbil destruït en col·lisionar amb un 'OVNI'!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BLACK}{BIGFONT}Explosió de refineria de petroli prop de {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BLACK}{BIGFONT}Fàbrica destruïda en estranyes circumstàncies prop de {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BLACK}{BIGFONT}'OVNI' aterra prop de {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BLACK}{BIGFONT}L'enfonsament d'una mina de carbó deixa un rastre de destrucció prop de {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BLACK}{BIGFONT}Inundacions!{}Al menys {COMMA} presumptament desapareguts o morts després de les inundacions!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Desastre de Zeppelin a {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Automòbil destruït en col·lisionar amb un 'OVNI'!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Explosió de refineria de petroli prop de {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Fàbrica destruïda en estranyes circumstàncies prop de {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'OVNI' aterra prop de {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}L'enfonsament d'una mina de carbó deixa un rastre de destrucció prop de {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Inundacions!{}Al menys {COMMA} presumptament desapareguts o morts després de les inundacions!
 
 STR_BRIBE_FAILED                                                :{WHITE}El teu intent de suborn ha estat
 STR_BRIBE_FAILED_2                                              :{WHITE}descobert per un investigador regional
@@ -3268,7 +3268,7 @@ STR_MAGLEV_VEHICLES                                             :Trens Maglev
 
 ############ End of list of rail types
 
-STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
+STR_TINY_BLACK                                                  :{TINYFONT}{BLACK}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Pes: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocitat: {GOLD}{VELOCITY}{BLACK} Potència: {GOLD}{POWER}

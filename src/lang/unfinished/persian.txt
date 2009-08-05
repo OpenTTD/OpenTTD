@@ -195,39 +195,39 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :کارخانه�
 STR_SMALLMAP_TYPE_ROUTES                                        :راه ها
 STR_SMALLMAP_TYPE_VEGETATION                                    :پوشش گیاهی
 STR_SMALLMAP_TYPE_OWNERS                                        :صاحبان
-STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}جاده ها
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}راه آهن
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}ایستگاه/فرودگاه/بندر
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}ساختمانها/کارخانجات
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}ماشینها
-STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100m
-STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200m
-STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300m
-STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400m
-STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500m
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}قطارها
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}ماشین ها
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}کشتی ها
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}هواپیما
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}مسیر حمل و نقل
-STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}جنگل
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}ایستگاه قطار
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}ایستگاه بارگیری/تخلیه بار کامیون
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}ایستگاه اتوبوس
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}هواپیما/بالگرد
-STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}اسکله
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}زمین سنگی
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}زمین علفی
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}زمین بایر
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}محوطه ها
-STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}درختان
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}سخره ها
-STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}آب
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}بدون مالک
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}شهر
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}کارخانه
-STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}صحرا
-STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}برف
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}جاده ها
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}راه آهن
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}ایستگاه/فرودگاه/بندر
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}ساختمانها/کارخانجات
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}ماشینها
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200m
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300m
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400m
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500m
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}قطارها
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}ماشین ها
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}کشتی ها
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}هواپیما
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}مسیر حمل و نقل
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}جنگل
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}ایستگاه قطار
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}ایستگاه بارگیری/تخلیه بار کامیون
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}ایستگاه اتوبوس
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}هواپیما/بالگرد
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}اسکله
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}زمین سنگی
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}زمین علفی
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}زمین بایر
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}محوطه ها
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}درختان
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}سخره ها
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}آب
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}بدون مالک
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}شهر
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}کارخانه
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}صحرا
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}برف
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}پیغام
 STR_QUERY_CAPTION                                               :{WHITE}{STRING}
 STR_DEFAULT                                                     :{BLACK}حالت قراردادی
@@ -416,7 +416,7 @@ STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}هزین
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :0
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}مالک: {LTBLUE}{STRING}
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}نام
-STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
+STR_VEHICLE_NAME_SMALL                                          :{TINYFONT}{BLACK}{VEHICLE}
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
@@ -480,18 +480,18 @@ STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}مد�
 STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}مدل جدید
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}انتخابی 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}انتخابی 2
-STR_MUSIC_MUSIC_VOLUME                                          :{BLACK}{TINYFONT}شدت صدای موسیقی
-STR_MUSIC_EFFECTS_VOLUME                                        :{BLACK}{TINYFONT}شدت صدای محیط
-STR_MUSIC_MIN_MAX_RULER                                         :{BLACK}{TINYFONT}حد اکثر . . . . . . . . . حد اقل
+STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}شدت صدای موسیقی
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}شدت صدای محیط
+STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}حد اکثر . . . . . . . . . حد اقل
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}بازگشت به آهنگ قبلی در لیست انتخاب شده ها
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}آهنگ بعدی در لیست انتخاب شده ها
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}توقف موسیقی
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}پخش موسیقی
-STR_MUSIC_TRACK_NONE                                            :{DKGREEN}{TINYFONT}--
-STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{DKGREEN}{TINYFONT}0{COMMA}
-STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{DKGREEN}{TINYFONT}{COMMA}
-STR_MUSIC_TITLE_NONE                                            :{DKGREEN}{TINYFONT}------
-STR_MUSIC_TITLE_NAME                                            :{DKGREEN}{TINYFONT}"{STRING}"
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGREEN}0{COMMA}
+STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}پخش تصادفی
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}برنامه
 STR_PLAYLIST_TRACK_SINGLE_DIGIT                                 :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
@@ -515,7 +515,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}تغی�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}کمک هزینه
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}توضیهات کلی
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}از هدف قبلی بسیار دور است......
-STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :تاجر
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}طراحی اتوماتیک سرزمین
@@ -1014,19 +1014,19 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}محصو
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}تولید در ماه گذشته:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% منتقل شد)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}مرکز تصویر را روی کارخانه قرار بده
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT} {STRING} جدیدی در مجاورت {TOWN} در حال ساخت است!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT} {STRING} جدیدی در مجاورت {TOWN} در حال کاشته شدن است!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK} {STRING} جدیدی در مجاورت {TOWN} در حال ساخت است!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK} {STRING} جدیدی در مجاورت {TOWN} در حال کاشته شدن است!
 STR_INDUSTRY_BUILD_COST                                         :{BLACK}خرج: {YELLOW}{CURRENCY}
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}این نوع کاخانه را در اینجا نمی شود ساخت...
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...جنگل باید بالای خط برف کاشته شود
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT}{STRING} تعطیلی فوری خود را اعلام کرد!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}مشکلات مالی باعث شد {STRING} تعطیلی فوری خود را اعلام کند!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}کمبود درختان مجاور {STRING} باعث شد که تعطیلی فوری خود را اعلام کننند!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} افزایش تولید داشت!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BLACK}{BIGFONT}رگه ی جدیدی از زغال در {INDUSTRY} پیدا شده!{}تولید این معدن دو برابر شد!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BLACK}{BIGFONT}مخزن جدیدی از نفت در مجاورت {INDUSTRY}پیدا شده!{}در نتیجه تولید خود را دو برابر کردند!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BLACK}{BIGFONT}پیشرفت روش مزرعه داری در {INDUSTRY} باعث شد تولید این مزرعه دو برابر شود!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT}تولید {INDUSTRY} 50% کاهش یافت
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} تعطیلی فوری خود را اعلام کرد!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}مشکلات مالی باعث شد {STRING} تعطیلی فوری خود را اعلام کند!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}کمبود درختان مجاور {STRING} باعث شد که تعطیلی فوری خود را اعلام کننند!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} افزایش تولید داشت!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}رگه ی جدیدی از زغال در {INDUSTRY} پیدا شده!{}تولید این معدن دو برابر شد!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}مخزن جدیدی از نفت در مجاورت {INDUSTRY}پیدا شده!{}در نتیجه تولید خود را دو برابر کردند!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}پیشرفت روش مزرعه داری در {INDUSTRY} باعث شد تولید این مزرعه دو برابر شود!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}تولید {INDUSTRY} 50% کاهش یافت
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...فقط در حاشیه ی نقشه ساخته می شود
 
 ##id 0x5000
@@ -1087,10 +1087,10 @@ STR_NUM_CUSTOM                                                  :انتخابی
 ##id 0x7000
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} هواپیما
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}مبلغ پرداختی محموله ها
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{BLACK}{TINYFONT}روز های گذشته در حمل
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{BLACK}{TINYFONT}مبلغ پرداختی برای 10 واحد (یا 10000لیتر) به ازای 20 مربع
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}روز های گذشته در حمل
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}مبلغ پرداختی برای 10 واحد (یا 10000لیتر) به ازای 20 مربع
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}روشن/خاموش کردن نمودار برای نوع محموله
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{BLACK}{TINYFONT}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :مهندس
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :مدیر ترافیکی
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :رئیس حمل و نقل
@@ -1113,7 +1113,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}25% سه
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}نمی شود 25% سهام این شرکت را خرید
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}نمی شود 25% سهام این شرکت را فروخت
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% توسط {COMPANY} خریداری شده)
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BLACK}{BIGFONT}{STRING} توسط {STRING} خریداری شد!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} توسط {STRING} خریداری شد!
 
 
 
@@ -1377,7 +1377,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :لوکوموت�
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :لوکوموتیو ریل مغناطیسی
 
 ##id 0x8800
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}شهروندان ورود اولین قطار را به {STATION} تبریک گفتند!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}شهروندان ورود اولین قطار را به {STATION} تبریک گفتند!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (جزئیات)
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
@@ -1425,7 +1425,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}متوقف
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}در هنگام خطر نمی توان علامت عبور قطار را داد
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}تصادف کرده!
 
-STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}تصادف قطار!{}{COMMA} مرگ در انفجار حاصل از برخورد
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}تصادف قطار!{}{COMMA} مرگ در انفجار حاصل از برخورد
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}جهت قطار را نمی شود تغییر داد...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}نمیتوان جهت حرکت وسیله را معکوس کرد...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}نمیتوان جهت وسایلی که از چند قطعه تشکیل شده اند را معکوس کرد
@@ -1437,16 +1437,16 @@ STR_CLEAR_TIME                                                  :{BLACK}پاک �
 
 ##id 0x9000
 
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}شهروندان ورود اولین اتوبوس را به . . .{}{STATION} تبریک گفتند!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}شهروندان ورود اولین کامیون را به . . .{}{STATION} تبریک گفتند!
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}تصادف ماشین!{}راننده پس از تصادف با قطار در آتش سوخت
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}تصادف ماشین!{}راننده پس از تصادف با قطار{COMMA} در آتش سوخت
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}شهروندان ورود اولین اتوبوس را به . . .{}{STATION} تبریک گفتند!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}شهروندان ورود اولین کامیون را به . . .{}{STATION} تبریک گفتند!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}تصادف ماشین!{}راننده پس از تصادف با قطار در آتش سوخت
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}تصادف ماشین!{}راننده پس از تصادف با قطار{COMMA} در آتش سوخت
 
 
 ##id 0x9800
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}ساخت بندر
 
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}جشن گرفتن شهروندان. . . {} اولین کشتی به {STATION} رسید!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}جشن گرفتن شهروندان. . . {} اولین کشتی به {STATION} رسید!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}یک شناور به عنوان نمایانگر راه قرار بده
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}نمیتوان اینجا شناوری قرار داد
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (تعمیر مجدد)
@@ -1462,8 +1462,8 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}هواپ
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :ساختمان فرودگاه
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}ساخت فرودگاه
 
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}جشن شهروندان . . .{}اولین هواپیما به {STATION} می رسد!
-STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}تصادف هواپیما!{}{COMMA} مرگ در انفجار در {STATION}
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}جشن شهروندان . . .{}اولین هواپیما به {STATION} می رسد!
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}تصادف هواپیما!{}{COMMA} مرگ در انفجار در {STATION}
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 

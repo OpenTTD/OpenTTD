@@ -196,39 +196,39 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :Nywerhede
 STR_SMALLMAP_TYPE_ROUTES                                        :Roetes
 STR_SMALLMAP_TYPE_VEGETATION                                    :Plantegroei
 STR_SMALLMAP_TYPE_OWNERS                                        :Eienaars
-STR_SMALLMAP_LEGENDA_ROADS                                      :{BLACK}{TINYFONT}Paaie
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{BLACK}{TINYFONT}Spoorweë
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{BLACK}{TINYFONT}Stasies/Lughawes/Hawens
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{BLACK}{TINYFONT}Geboue/Nywerhede
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{BLACK}{TINYFONT}Voertuie
-STR_SMALLMAP_LEGENDA_100M                                       :{BLACK}{TINYFONT}100m
-STR_SMALLMAP_LEGENDA_200M                                       :{BLACK}{TINYFONT}200m
-STR_SMALLMAP_LEGENDA_300M                                       :{BLACK}{TINYFONT}300m
-STR_SMALLMAP_LEGENDA_400M                                       :{BLACK}{TINYFONT}400m
-STR_SMALLMAP_LEGENDA_500M                                       :{BLACK}{TINYFONT}500m
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{BLACK}{TINYFONT}Treine
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{BLACK}{TINYFONT}Pad Voertuie
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{BLACK}{TINYFONT}Skepe
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{BLACK}{TINYFONT}Vliegtuie
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{BLACK}{TINYFONT}Vervoer Roetes
-STR_SMALLMAP_LEGENDA_FOREST                                     :{BLACK}{TINYFONT}Woud
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{BLACK}{TINYFONT}Spoorweg Stasie
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{BLACK}{TINYFONT}Vragmotor Laai Area
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{BLACK}{TINYFONT}Bus Stasie
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{BLACK}{TINYFONT}Lughawe/Helihawe
-STR_SMALLMAP_LEGENDA_DOCK                                       :{BLACK}{TINYFONT}Hawe
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{BLACK}{TINYFONT}Ongelyke Land
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{BLACK}{TINYFONT}Gras Land
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{BLACK}{TINYFONT}Kaal Land
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{BLACK}{TINYFONT}Velde
-STR_SMALLMAP_LEGENDA_TREES                                      :{BLACK}{TINYFONT}Bome
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{BLACK}{TINYFONT}Rotse
-STR_SMALLMAP_LEGENDA_WATER                                      :{BLACK}{TINYFONT}Water
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{BLACK}{TINYFONT}Geen Eienaar
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{BLACK}{TINYFONT}Dorpe
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{BLACK}{TINYFONT}Nywerhede
-STR_SMALLMAP_LEGENDA_DESERT                                     :{BLACK}{TINYFONT}Woestyn
-STR_SMALLMAP_LEGENDA_SNOW                                       :{BLACK}{TINYFONT}Sneeu
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Paaie
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Spoorweë
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stasies/Lughawes/Hawens
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Geboue/Nywerhede
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Voertuie
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200m
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300m
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400m
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500m
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Treine
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Pad Voertuie
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Skepe
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Vliegtuie
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Vervoer Roetes
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Woud
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Spoorweg Stasie
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Vragmotor Laai Area
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Bus Stasie
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Lughawe/Helihawe
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Hawe
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Ongelyke Land
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Gras Land
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Kaal Land
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Velde
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Bome
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Rotse
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Water
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Geen Eienaar
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Dorpe
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Nywerhede
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Woestyn
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Sneeu
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Boodskap
 STR_QUERY_CAPTION                                               :{WHITE}{STRING}
 STR_DEFAULT                                                     :{BLACK}Gewone
@@ -431,7 +431,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Spoorweg
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Plaaslike raad: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Geen
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Naam
-STR_VEHICLE_NAME_SMALL                                          :{BLACK}{TINYFONT}{VEHICLE}
+STR_VEHICLE_NAME_SMALL                                          :{TINYFONT}{BLACK}{VEHICLE}
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1ste
@@ -509,20 +509,20 @@ STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}Nuwe 
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}Ezy Straat
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}Op Bestelling 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}Op Bestelling 2
-STR_MUSIC_MUSIC_VOLUME                                          :{BLACK}{TINYFONT}Musiek Volume
-STR_MUSIC_EFFECTS_VOLUME                                        :{BLACK}{TINYFONT}Effek Volume
-STR_MUSIC_MIN_MAX_RULER                                         :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAKS
+STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Musiek Volume
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Effek Volume
+STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}MIN  '  '  ' '  '  '  MAKS
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Gaan terug na vorig liedjie in seleksie
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Gaan na volgende liedjie in seleksie
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Hou op musiek speel
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Begin musiek speel
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Sleep skyfie om musiek en effekte volumes te stel
-STR_MUSIC_TRACK_NONE                                            :{DKGREEN}{TINYFONT}--
-STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{DKGREEN}{TINYFONT}0{COMMA}
-STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{DKGREEN}{TINYFONT}{COMMA}
-STR_MUSIC_TITLE_NONE                                            :{DKGREEN}{TINYFONT}------
-STR_MUSIC_TITLE_NAME                                            :{DKGREEN}{TINYFONT}"{STRING}"
-STR_MUSIC_TRACK_XTITLE                                          :{BLACK}{TINYFONT}Liedjie{SETX 88}{BLACK}{TINYFONT}Titel
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGREEN}0{COMMA}
+STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK_XTITLE                                          :{TINYFONT}{BLACK}Liedjie{SETX 88}{BLACK}{TINYFONT}Titel
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}Skommel
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Musiek lys
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musiek Program Keuse
@@ -572,7 +572,7 @@ STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Speel g
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...te ver van vorige destinasie
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Beste maatskappye wat {NUM}{}({STRING} Vlak) behaal het
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Maatskappy Liga Tafel in {NUM}
-STR_HIGHSCORE_POSITION                                          :{BLACK}{BIGFONT}{COMMA}.
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Sakeman
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entrepreneur
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Nyweraar
@@ -582,8 +582,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Magnaat
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnaat van die Eeu
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BLACK}{BIGFONT}{COMPANY} behaal '{STRING}' status!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{WHITE}{BIGFONT}{PRESIDENTNAME} van {COMPANY} behaal '{STRING}' status!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} behaal '{STRING}' status!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} van {COMPANY} behaal '{STRING}' status!
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Draaiboek Redigeerder
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land Generasie
@@ -856,7 +856,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Ei
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan nie 'n roete vind om aan te gaan nie.
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} is verlore.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} se wins was verlede jaar {CURRENCY}
-STR_NEWS_EURO_INTRODUCTION                                      :{BLACK}{BIGFONT}Europees Geldelik Samesmelting!{}{}Die Euro is ingevoer as die enigste koers vir daagliks transaksies in u land!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Europees Geldelik Samesmelting!{}{}Die Euro is ingevoer as die enigste koers vir daagliks transaksies in u land!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -1648,13 +1648,13 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}Geen
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Dienste reeds gesubsidieer:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} van {STATION} tot {STATION}{YELLOW} ({COMPANY}{YELLOW}, tot {DATE_SHORT})
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Aanbod van subsidie verval:{}{}{STRING} van {STRING} tot {STRING} sal nou nie 'n subsidie aantrek nie.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidie terugtrek:{}{}{STRING} diens van {STATION} tot {STATION} is nie meer gesubsideieer nie.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Diens subsidie aanbod:{}{}Eerste {STRING} diens van {STRING} tot {STRING} sal 'n jaar se subsidie van die plaaslike raad kry!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BLACK}{BIGFONT}Diens subsidie toeken aan {STRING}!{}{}{STRING} Diens van {STATION} tot {STATION} sal nou 50% extra vir die volgende jaar betaal!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BLACK}{BIGFONT}Diens subsidie toeken aan {STRING}!{}{}{STRING} diens van {STATION} tot {STATION} sal nou dubbel pryse vir die volgende jaar betaal!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BLACK}{BIGFONT}Diens subsidie toeken aan {STRING}!{}{}{STRING} diens van {STATION} tot {STATION} sal nou driemaal pryse vir die volgende jaar betaal!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BLACK}{BIGFONT}Diens subsidie toeken aan {STRING}!{}{}{STRING} diens van {STATION} tot {STATION} sal nou viervoud pryse vir die volgende jaar betaal!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Aanbod van subsidie verval:{}{}{STRING} van {STRING} tot {STRING} sal nou nie 'n subsidie aantrek nie.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsidie terugtrek:{}{}{STRING} diens van {STATION} tot {STATION} is nie meer gesubsideieer nie.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Diens subsidie aanbod:{}{}Eerste {STRING} diens van {STRING} tot {STRING} sal 'n jaar se subsidie van die plaaslike raad kry!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Diens subsidie toeken aan {STRING}!{}{}{STRING} Diens van {STATION} tot {STATION} sal nou 50% extra vir die volgende jaar betaal!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Diens subsidie toeken aan {STRING}!{}{}{STRING} diens van {STATION} tot {STATION} sal nou dubbel pryse vir die volgende jaar betaal!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Diens subsidie toeken aan {STRING}!{}{}{STRING} diens van {STATION} tot {STATION} sal nou driemaal pryse vir die volgende jaar betaal!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Diens subsidie toeken aan {STRING}!{}{}{STRING} diens van {STATION} tot {STATION} sal nou viervoud pryse vir die volgende jaar betaal!
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} plaaslike raad weier om nog 'n lighawe te bou in hierdie stad
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Kothuise
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Huise
@@ -1905,23 +1905,23 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produsee
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produksie verlede maand:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% uitgevoer)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Senter skerm op nywerheid
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BLACK}{BIGFONT}Nuwe {STRING} onder opbou naby {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BLACK}{BIGFONT}Nuwe {STRING} word naby {TOWN} beplant!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nuwe {STRING} onder opbou naby {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nuwe {STRING} word naby {TOWN} beplant!
 STR_INDUSTRY_BUILD_COST                                         :{BLACK}Koste: {YELLOW}{CURRENCY}
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Nywerheid tipe kan nie hier gebou word nie...
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...woud kan net bo sneeu-lyn beplant word
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BLACK}{BIGFONT}{STRING} aankondig dreigend sluiting!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BLACK}{BIGFONT}Lewering probleme veroorsaak {STRING} om dreigend sluting te aankondig!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BLACK}{BIGFONT}Gemis van naby boome veroorsaak {STRING} om dreigend sluiting te aankondig!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} vermeerder produksie!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BLACK}{BIGFONT}Nuwe kool laag gevind by {INDUSTRY}!{}Produksie is verwag om te verdubbel!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BLACK}{BIGFONT}Nuwe olie reserwes gevind by {INDUSTRY}!{}Produksie is verwag om te verdubbel!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BLACK}{BIGFONT}Verbeterde boerdery metodes by {INDUSTRY} sal produksie verdubbel!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BLACK}{BIGFONT}{INDUSTRY} produksie verminder 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BLACK}{BIGFONT}Insek vervuiling oorsaak verwoesting by {INDUSTRY}!{}Produksie verminder 50%
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} aankondig dreigend sluiting!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Lewering probleme veroorsaak {STRING} om dreigend sluting te aankondig!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Gemis van naby boome veroorsaak {STRING} om dreigend sluiting te aankondig!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} vermeerder produksie!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nuwe kool laag gevind by {INDUSTRY}!{}Produksie is verwag om te verdubbel!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nuwe olie reserwes gevind by {INDUSTRY}!{}Produksie is verwag om te verdubbel!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Verbeterde boerdery metodes by {INDUSTRY} sal produksie verdubbel!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} produksie verminder 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insek vervuiling oorsaak verwoesting by {INDUSTRY}!{}Produksie verminder 50%
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...kan net naby aan kant van fkaart geplaas word
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BLACK}{BIGFONT}{STRING} produksie by {INDUSTRY} vermeerder {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BLACK}{BIGFONT}{STRING} produksie by {INDUSTRY} verminder {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} produksie by {INDUSTRY} vermeerder {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} produksie by {INDUSTRY} verminder {COMMA}%!
 
 ##id 0x5000
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Ander tonnel in die pad
@@ -2158,22 +2158,22 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Maatskap
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Maatskappy Liga Tabel
 STR_COMPANY_LEAGUE_FIRST                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_OTHER                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BLACK}{BIGFONT}Vervoer maatsappy in moelikheid!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BLACK}{BIGFONT}{STRING} sal binnekort afverkoop of bankrospeler verklaar word tensy prestasie verbeter!
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Vervoer maatsappy in moelikheid!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} sal binnekort afverkoop of bankrospeler verklaar word tensy prestasie verbeter!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Bestuurder)
-STR_NEWS_COMPANY_MERGER_TITLE                                   :{BLACK}{BIGFONT}Vervoer maatskappy samesmelting!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING} is na {STRING} vir  {CURRENCY} verkoop!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Vervoer maatskappy samesmelting!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} is na {STRING} vir  {CURRENCY} verkoop!
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ons is opsoek na 'n vervoer maatskappy wat ons se maatskappy sal oorvat.{}{}Wil jy {COMPANY} koop vir {CURRENCY}?
-STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BLACK}{BIGFONT}Bankrotspeler!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BLACK}{BIGFONT}{STRING} is deur skuldeisers toegemaak en alle bates is afverkoop!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BLACK}{BIGFONT}Nuwe vervoer maatskappy geloods!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BLACK}{BIGFONT}{STRING} begin konstruksie naby {TOWN}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Bankrotspeler!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} is deur skuldeisers toegemaak en alle bates is afverkoop!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Nuwe vervoer maatskappy geloods!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} begin konstruksie naby {TOWN}!
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Maatskappy kan nie aangekoop word nie...
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Vrag Betaalings Grade
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{BLACK}{TINYFONT}Dae in deurtog
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{BLACK}{TINYFONT}Betaaling vir aflewering van 10 eenhuide (of 10,000 liters) van vrag 'n afstand van 20 blokkies
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dae in deurtog
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betaaling vir aflewering van 10 eenhuide (of 10,000 liters) van vrag 'n afstand van 20 blokkies
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Skakel grafiek vir vrag tipe aan/af
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{BLACK}{TINYFONT}{STRING}
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingenieur
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Verkeer Bestuurder
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Vervoer Koordineerder
@@ -2210,7 +2210,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Verkoop 
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kan nie 25% aandeel in die maatskappy koop nie...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kan nie 25% aandeel in die maatskappy verkoop nie...
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% besit by {COMPANY})
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BLACK}{BIGFONT}{STRING} is deur {STRING} oorgevat!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} is deur {STRING} oorgevat!
 STR_PROTECTED                                                   :{WHITE}Die maatskappy is nie oud genoeg om aandeele te handel nie...
 
 STR_LIVERY_DEFAULT                                              :Standaard Lewery
@@ -2513,7 +2513,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :eenspoor lokomo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev lokomotief
 
 ##id 0x8800
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste trein arriveer by {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Burgers herdenk . . .{}Eerste trein arriveer by {STATION}!
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Aanwyse)
 STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
@@ -2671,7 +2671,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Gestop
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan nie trein forseer om sein te vermy op gevaar...
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Botsing!
 
-STR_NEWS_TRAIN_CRASH                                            :{BLACK}{BIGFONT}Trein Botsing!{}{COMMA} sterf in vuurbol na botsing
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Trein Botsing!{}{COMMA} sterf in vuurbol na botsing
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan nie rigting van trein omkeer nie...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan nie voertuie van veel deele draai nie
 STR_CLEAR_TIME                                                  :{BLACK}Reinig Tyd
@@ -2685,8 +2685,8 @@ STR_TRAIN_NO_POWER                                              :{RED}Geen Krag
 STR_TRAIN_START_NO_CATENARY                                     :Die spoor kort n kettinglyn, dus kan die trien nie aanskakel nie
 STR_TRAIN_STUCK                                                 :{ORANGE}Wag vir beskikbare pad
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BLACK}{BIGFONT}Nuwe {STRING} nou beskikbaar!
-STR_NEWS_NEW_VEHICLE_TYPE                                       :{BLACK}{BIGFONT}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nuwe {STRING} nou beskikbaar!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nuwe {STRING} nou beskikbaar!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Kan nie vernietige voertuig verkoop nie...
@@ -2713,12 +2713,12 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} voertuig{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste bus arriveer by {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste trok arriveer by {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste passasier trein arriveer by {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste vrag trein arriveer by {STATION}!
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Pad Voertuig Botsing!{}Bestuurder sterf in vuurbol na botsing met trein
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BLACK}{BIGFONT}Pad voertuig Botsing!{}{COMMA} sterf in vuurbol na botsing met trein
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Burgers herdenk . . .{}Eerste bus arriveer by {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Burgers herdenk . . .{}Eerste trok arriveer by {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Burgers herdenk . . .{}Eerste passasier trein arriveer by {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Burgers herdenk . . .{}Eerste vrag trein arriveer by {STATION}!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Pad Voertuig Botsing!{}Bestuurder sterf in vuurbol na botsing met trein
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Pad voertuig Botsing!{}{COMMA} sterf in vuurbol na botsing met trein
 
 
 ##id 0x9800
@@ -2730,7 +2730,7 @@ STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Skip moe
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bou skip werf
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bou skip depot (vir opbou en diens van skepe)
 
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste skip arriveer by {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Burgers herdenk . . .{}Eerste skip arriveer by {STATION}!
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plaas baken wat kan as 'n wegpunt gebruik word
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan nie baken hier plaas nie...
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bou akwamaryn
@@ -2748,21 +2748,21 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Vliegtui
 STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Lughawe konstruksie
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bou lughawe
 
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste vliegtuig arriveer by {STATION}!
-STR_NEWS_AIRCRAFT_CRASH                                         :{BLACK}{BIGFONT}Vliegtuig Botsing!{}{COMMA} stef in die vuurbol by {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BLACK}{BIGFONT}Vliegtuig Ongeluk!{}Vliegtuig het geen petrol nie, {COMMA} sterf in 'n bal van vuur!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Burgers herdenk . . .{}Eerste vliegtuig arriveer by {STATION}!
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Vliegtuig Botsing!{}{COMMA} stef in die vuurbol by {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Vliegtuig Ongeluk!{}Vliegtuig het geen petrol nie, {COMMA} sterf in 'n bal van vuur!
 STR_ORDER_STATION_SMALL                                         :{TINYFONT}{BLACK}{STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Rooster)
 
 ##id 0xB000
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BLACK}{BIGFONT}Zeppelin ramp by {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BLACK}{BIGFONT}Pad voertuig vernietig in 'VVV' botsing!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BLACK}{BIGFONT}Olie raffineerdery ontploffing naby {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BLACK}{BIGFONT}fabriek vernietig in agterdogtig omstandighede naby {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BLACK}{BIGFONT}'VVV' beland naby {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BLACK}{BIGFONT}Kool myn bedaaring los spoor van vernietiging naby {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BLACK}{BIGFONT}Oorstroom!{}Te minste {COMMA} vermis, aangeneem dood na beduidende oorstroom!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zeppelin ramp by {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Pad voertuig vernietig in 'VVV' botsing!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Olie raffineerdery ontploffing naby {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}fabriek vernietig in agterdogtig omstandighede naby {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'VVV' beland naby {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Kool myn bedaaring los spoor van vernietiging naby {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Oorstroom!{}Te minste {COMMA} vermis, aangeneem dood na beduidende oorstroom!
 
 STR_BRIBE_FAILED                                                :{WHITE}Jou omkooping onderneeming is deur
 STR_BRIBE_FAILED_2                                              :{WHITE}'n streek navorser uitgevind
@@ -3182,7 +3182,7 @@ STR_MAGLEV_VEHICLES                                             :Maglev Voertuie
 
 ############ End of list of rail types
 
-STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
+STR_TINY_BLACK                                                  :{TINYFONT}{BLACK}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kos: {GOLD}{CURRENCY}{BLACK} Gewig: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Spoed: {GOLD}{VELOCITY}{BLACK}   Krag: {GOLD}{POWER}
