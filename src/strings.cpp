@@ -189,7 +189,7 @@ static char *FormatCommaNumber(char *buff, int64 number, const char *last)
 	uint64 tot;
 	uint64 num;
 
-	if (number < 0) {
+	if (number < 0 && buff < last) {
 		*buff++ = '-';
 		number = -number;
 	}
@@ -197,7 +197,7 @@ static char *FormatCommaNumber(char *buff, int64 number, const char *last)
 	num = number;
 
 	tot = 0;
-	for (i = 0; i < 20; i++) {
+	for (i = 0; i < 20 && buff < last; i++) {
 		quot = 0;
 		if (num >= divisor) {
 			quot = num / divisor;
@@ -205,7 +205,7 @@ static char *FormatCommaNumber(char *buff, int64 number, const char *last)
 		}
 		if (tot |= quot || i == 19) {
 			*buff++ = '0' + quot;
-			if ((i % 3) == 1 && i != 19) *buff++ = ',';
+			if ((i % 3) == 1 && i != 19 && buff < last) *buff++ = ',';
 		}
 
 		divisor /= 10;
@@ -233,7 +233,7 @@ static char *FormatNoCommaNumber(char *buff, int64 number, const char *last)
 	num = number;
 
 	tot = 0;
-	for (i = 0; i < 20; i++) {
+	for (i = 0; i < 20 && buff < last; i++) {
 		quot = 0;
 		if (num >= divisor) {
 			quot = num / divisor;
