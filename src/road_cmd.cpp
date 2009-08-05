@@ -489,8 +489,11 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					}
 					if ((existing & pieces) == pieces) {
 						/* We only want to set the (dis)allowed road directions */
-						if (toggle_drd != DRD_NONE && rt != ROADTYPE_TRAM && IsRoadOwner(tile, ROADTYPE_ROAD, _current_company)) {
+						if (toggle_drd != DRD_NONE && rt != ROADTYPE_TRAM) {
 							if (crossing) return_cmd_error(STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION);
+
+							Owner owner = GetRoadOwner(tile, ROADTYPE_ROAD);
+							if (owner != OWNER_NONE && !CheckOwnership(owner)) return CMD_ERROR;
 
 							if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
