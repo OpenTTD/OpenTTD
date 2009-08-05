@@ -12,18 +12,11 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}خارج از نقشه
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}بسیار نزدیک به حاشیه ی نقشه
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}پول به اندازه ی کافی موجود نیست- به {CURRENCY} نیاز است
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_EMPTY                                                       :
-STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}زمین باید مسطح باشد
-STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}در انتظار: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} منشعب شده از {STATION})
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}قبول می کند: {WHITE}
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}قبول می کند: {GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}تدارکات: {GOLD}
+STR_JUST_NOTHING                                                :هیچی
+
+# Cargo related strings
+# Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :مسافر
 STR_CARGO_PLURAL_COAL                                           :ذغال
@@ -56,6 +49,8 @@ STR_CARGO_PLURAL_TOFFEE                                         :تافی
 STR_CARGO_PLURAL_BATTERIES                                      :باتری
 STR_CARGO_PLURAL_PLASTIC                                        :پلاستیک
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :نوشابه گازدار
+
+# Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :مسافر
 STR_CARGO_SINGULAR_COAL                                         :ذغال
@@ -88,6 +83,8 @@ STR_CARGO_SINGULAR_TOFFEE                                       :تافی
 STR_CARGO_SINGULAR_BATTERY                                      :باتری
 STR_CARGO_SINGULAR_PLASTIC                                      :پلاستیک
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :نوشابه گازدار
+
+# Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} مسافر{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} از زغال سنگ
@@ -120,6 +117,9 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} آب �
 STR_QUANTITY_BATTERIES                                          :{COMMA}باطری{P y ies}
 STR_QUANTITY_PLASTIC                                            :{VOLUME}پلاستیک
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} نوشیدنی گاز دار{P "" s}
+STR_QUANTITY_N_A                                                :N/A{SKIP}
+
+# Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
 STR_ABBREV_COAL                                                 :{TINYFONT}CL
@@ -154,23 +154,10 @@ STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
 STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}همه
-STR_SMALLMAP_CAPTION                                            :{WHITE}نقشه - {STRING}
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}تنظیمات بازی
-STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}پیام
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}پیام از {STRING}
-STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}اخطار!
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}نمی‌توانم انجام دهم
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}این منطقه پاک نمی‌شود
-STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
-STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 The OpenTTD team
 
-STR_QUIT_CAPTION                                                :{WHITE}خروج
-STR_QUIT_YES                                                    :{BLACK}بله
-STR_QUIT_NO                                                     :{BLACK}خیر
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}آیا می‌خواهید از بازی خارج شوید و برگردید به{STRING}?
+# 'Mode' of transport for cargoes
 
-STR_JUST_NOTHING                                                :هیچی
+# Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :آبی تیره
 STR_COLOUR_PALE_GREEN                                           :سبز روشن
 STR_COLOUR_PINK                                                 :صورتی
@@ -187,87 +174,8 @@ STR_COLOUR_ORANGE                                               :نارنجی
 STR_COLOUR_BROWN                                                :قهوه‌ای
 STR_COLOUR_GREY                                                 :خاکستری
 STR_COLOUR_WHITE                                                :سفید
-STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}ماشین‌های زیادی در بازی هستند
-STR_BUTTON_LOCATION                                             :{BLACK}مختصات
-STR_SMALLMAP_TYPE_CONTOURS                                      :حد فاصل ها
-STR_SMALLMAP_TYPE_VEHICLES                                      :وسایل نقلیه
-STR_SMALLMAP_TYPE_INDUSTRIES                                    :کارخانه‌ها
-STR_SMALLMAP_TYPE_ROUTES                                        :راه ها
-STR_SMALLMAP_TYPE_VEGETATION                                    :پوشش گیاهی
-STR_SMALLMAP_TYPE_OWNERS                                        :صاحبان
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}جاده ها
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}راه آهن
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}ایستگاه/فرودگاه/بندر
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}ساختمانها/کارخانجات
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}ماشینها
-STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
-STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200m
-STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300m
-STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400m
-STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500m
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}قطارها
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}ماشین ها
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}کشتی ها
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}هواپیما
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}مسیر حمل و نقل
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}جنگل
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}ایستگاه قطار
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}ایستگاه بارگیری/تخلیه بار کامیون
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}ایستگاه اتوبوس
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}هواپیما/بالگرد
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}اسکله
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}زمین سنگی
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}زمین علفی
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}زمین بایر
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}محوطه ها
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}درختان
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}سخره ها
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}آب
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}بدون مالک
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}شهر
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}کارخانه
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}صحرا
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}برف
-STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}پیغام
-STR_WHITE_STRINGN                                               :{WHITE}{STRING}
-STR_BUTTON_DEFAULT                                              :{BLACK}حالت قراردادی
-STR_BUTTON_CANCEL                                               :{BLACK}لغو
-STR_BUTTON_OK                                                   :{BLACK}تایید
-STR_BUTTON_RENAME                                               :{BLACK}نام گزاری
 
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_DOS                                                  :DOS
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS X
-STR_OSNAME_BEOS                                                 :BeOS
-STR_OSNAME_MORPHOS                                              :MorphOS
-STR_OSNAME_AMIGAOS                                              :AmigaOS
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
-
-STR_ERROR_OWNED_BY                                              :{WHITE} صاحب {STRING} است.
-STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}محموله
-STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}اطلاعات
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}ضرفیت ها
-STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}مجموع بار
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}مجموع ظرفیت بار این قطار:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
-STR_INTRO_NEW_GAME                                              :{BLACK}بازی جدید
-STR_INTRO_LOAD_GAME                                             :{BLACK}ادامه بازی های قبلی
-STR_INTRO_MULTIPLAYER                                           :{BLACK}بازی چند نفره
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}ساخت سناریو
-
-STR_MAPGEN_MAPSIZE                                              :{BLACK}اندازه نقشه:
-STR_MAPGEN_BY                                                   :{BLACK}*
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}تنضیمات بازی
-
-STR_COMPANY_SOMEONE                                             :یک نفر{SKIP}{SKIP}
-
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :شاهنشاهی
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :متری
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
-
+# Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} مایل در ساعت
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} کیلومتر/ساعت
 STR_UNITS_VELOCITY_SI                                           :{COMMA} متر/ثانیه
@@ -290,30 +198,29 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} متر 
 
 STR_UNITS_FORCE_SI                                              :{COMMA} کیلو نیوتن
 
-############ range for menu starts
-STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :نمودار سود خالص
-STR_GRAPH_MENU_INCOME_GRAPH                                     :نمودار درآمد
-STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :نمودار محموله های رسانده شده
-STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :نمودار پیشرفت شرکت ها
-STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :نمودار ارزش شرکت ها
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :نمودار قیمت پرداختی محموله ها
-STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :جدول اتحادیه شرکتها
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :جزییات امتیازهای کارایی
-############ range for menu ends
-
-STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD در باره ی
-STR_FILE_MENU_SAVE_GAME                                         :ذخیره بازی
-STR_FILE_MENU_LOAD_GAME                                         :فراخوانی بازی
-STR_FILE_MENU_QUIT_GAME                                         :رها کردن بازی
-STR_FILE_MENU_EXIT                                              :خروج
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}آیا مطمئن هستی که میخواهی این بازی را از بین ببری؟
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}رها کردن بازی
+# Common window strings
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}انتخاب طرز مرتب کردن (نزولی/صعودی)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}انتخاب معیار مرتب کردن
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}انتخاب معیار پایش
 STR_BUTTON_SORT_BY                                              :{BLACK}مرتب کردن بر اساس
+STR_BUTTON_LOCATION                                             :{BLACK}مختصات
+STR_BUTTON_RENAME                                               :{BLACK}نام گزاری
 
-### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}بستن پنجره
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}تغییر دادن اندازه ی صفحه
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}تخریب ساختمان و ... در بخشی از زمین
+
+# Query window
+STR_BUTTON_DEFAULT                                              :{BLACK}حالت قراردادی
+STR_BUTTON_CANCEL                                               :{BLACK}لغو
+STR_BUTTON_OK                                                   :{BLACK}تایید
+
+# On screen keyboard window
+
+# Measurement tooltip
+
+
+# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
 STR_SORT_BY_POPULATION                                          :{BLACK}جمعیت
 STR_SORT_BY_NAME                                                :{BLACK}نام
 STR_SORT_BY_DATE                                                :{BLACK}تاریخ
@@ -343,34 +250,13 @@ STR_SORT_BY_RUNNING_COST                                        :هزینه کا
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :توان/هزینه کارکرد
 STR_SORT_BY_CARGO_CAPACITY                                      :ظرفیت محموله
 
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}هیچ نوع محموله در انتظار نیست
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}انتخاب تمامی تسهیلات
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}انتخاب همه ی انواع محموله ها (شامل محموله های در انتظار)
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}مشاهده ی تمامی موتورهای موجود برای این نوع وسیله ی نقلیه
-STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}اداره ی لیست
-STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}فرستادن دستورالعمل ها برای تمامی وسایل نقیله موجود در این لیست
-STR_VEHICLE_LIST_REPLACE_VEHICLES                               :جایگزین کردن وسایل نقلیه
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :فرستادن برای سرویس
-
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}قطارهای موجود
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}خودروهای موجود
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}کشتی های موجود
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}هواپیماهای موجود
-
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :فرستادن به ایستگاه نگه داری فنی
-STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :فرستادن به ایستگاه نگه داری فنی
-STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :فرستادن به مقر فنی
-STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :فرستادن به آشیانه
-
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}-
+# Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}متوقف کردن بازی
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}تنضیمات
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}ذخیره بازی، ترک بازی، خروج از بازی
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}نمایش لیست ایستگاه های شرکت
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}نقشه، پنجره اضافی یا لیست علامت ها را نشان می دهد
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}نقشه، لیست شهر ها را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}لیست شهرها را نشان می دهد
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}نمایش لیست ایستگاه های شرکت
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}اطلاعات مالی شرکت را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}توضیحات کلی راجع به شرکت را نشان می دهد
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}نمودار ها را نشان می دهد
@@ -385,38 +271,109 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}ساخت
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}ساخت جاده
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}ساخت اسکله
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ساخت فرودگاه
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}صفحه ی صدا/موسیقی
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}توضیحات درباره ی زمین
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}تنضیمات
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}امکان تغییر فواصل زمانی سرویس وجود ندارد...
-STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}بستن پنجره
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}تخریب ساختمان و ... در بخشی از زمین
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}پایین آوردن گوشه ی نقشه
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}بال آوردن گوشه ی نقشه
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}حاشیه ی زمین را در نقشه نشان بده
-STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}وسایل حمل و نقل را در صفحه نشن بده
-STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}کارخانه ها را در نقشه نشان بده
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}مسیر های حمل و نقل را در نقشه نشان بده
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}صاحب زمین را در نقشه نشان بده
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}نشان دادن یا ندادن اسم شهر ها در نقشه
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}سود امسال : {CURRENCY} (سود پارسال: {CURRENCY})
 
-############ range for service numbers starts
-STR_VEHICLE_INFO_AGE                                            :{COMMA}سال{P "" s} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} سال{P "" s} ({COMMA})
-############ range for service numbers ends
+# Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}روز شروع بازی را یک سال به عقب برگردان
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}روز شروع بازی را یک سال جلو ببر
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}نقشه، لیست شهر ها را نشان می دهد
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}طراحی اتوماتیک سرزمین
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}طراحی مشخصات شهر ها
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}طراحی مشخصات کارخانه ها
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}طراحی مشخصات کارخانه ها
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}کاشت درخت
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}علامت گذاری
 
-STR_REPLACE_VEHICLE_TRAIN                                       :قطار
-STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :ماشین
-STR_REPLACE_VEHICLE_SHIP                                        :کشتی
-STR_REPLACE_VEHICLE_AIRCRAFT                                    :هواپیما
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} بسیار قدیمی شده و سریعا احتیاج به جایگزینی دارد
-STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}اطلاعات زمین
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}هزینه پاک کردن: {LTBLUE}0
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}هزینه پاک کردن: {RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_OWNER_N_A                             :0
-STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}مالک: {LTBLUE}{STRING}
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}نام
-STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
+############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :خارج شدن از محیط طراحی
+STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
+STR_SCENEDIT_FILE_MENU_QUIT                                     :خروج
+############ range for SE file menu starts
+
+############ range for settings menu starts
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :تنظیمات بازی
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :تنظیمات سختی
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}نام شهرها نشان داده شود
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}نام ایستگاه ها نشان داده شود
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}علامت ها نشان داده شوند
+STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}انیمیشن کامل
+STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}جزعیات کامل
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}ساختمان های نامرئی
+############ range ends here
+
+############ range for file menu starts
+STR_FILE_MENU_SAVE_GAME                                         :ذخیره بازی
+STR_FILE_MENU_LOAD_GAME                                         :فراخوانی بازی
+STR_FILE_MENU_QUIT_GAME                                         :رها کردن بازی
+STR_FILE_MENU_EXIT                                              :خروج
+############ range ends here
+
+############ range for map menu starts
+STR_MAP_MENU_MAP_OF_WORLD                                       :نقشه ی دنیا
+############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :لیست شهر ها
+############ both ranges ends here
+
+############ range for subsidies menu starts
+############ range ends here
+
+############ range for graph menu starts
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :نمودار سود خالص
+STR_GRAPH_MENU_INCOME_GRAPH                                     :نمودار درآمد
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :نمودار محموله های رسانده شده
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :نمودار پیشرفت شرکت ها
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :نمودار ارزش شرکت ها
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :نمودار قیمت پرداختی محموله ها
+############ range ends here
+
+############ range for company league menu starts
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :جدول اتحادیه شرکتها
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :جزییات امتیازهای کارایی
+############ range ends here
+
+############ range for industry menu starts
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :ساخت کارخانه جدید
+############ range ends here
+
+############ range for railway construction menu starts
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :ساخت راه آهن
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :ساخت مونوریل
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :ساخت ریل مغناطیسی
+############ range ends here
+
+############ range for road construction menu starts
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :ساخت جاده
+############ range ends here
+
+############ range for waterways construction menu starts
+############ range ends here
+
+############ range for airport construction menu starts
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :ساختمان فرودگاه
+############ range ends here
+
+############ range for landscaping menu starts
+STR_LANDSCAPING_MENU_PLANT_TREES                                :کاشتن درخت
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :قرار دادن علامت
+############ range ends here
+
+############ range for music menu starts
+STR_TOOLBAR_SOUND_MUSIC                                         :صدا/موسیقی
+############ range ends here
+
+############ range for message menu starts
+STR_NEWS_MENU_MESSAGE_SETTINGS                                  :تنظیمات پیغام ها
+############ range ends here
+
+############ range for about menu starts
+STR_ABOUT_MENU_SEPARATOR                                        :
+STR_ABOUT_MENU_AI_DEBUG                                         :رفع اشکالات هوش مصنوعی
+STR_ABOUT_MENU_SCREENSHOT                                       :(Ctrl-S) تصویر از بازی
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :(Ctrl-G) نصویر از دنیا
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' درباره
+############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
 STR_ORDINAL_NUMBER_1ST                                          :1
@@ -468,13 +425,39 @@ STR_MONTH_ABBREV_DEC                                            :دی
 
 ############ range for months ends
 
+# Graph window
+STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}-
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}محموله های دریافتی : {LTBLUE}
 
-STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
-STR_TOOLBAR_SOUND_MUSIC                                         :صدا/موسیقی
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}صفحه ی صدا/موسیقی
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}مبلغ پرداختی محموله ها
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}روز های گذشته در حمل
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}مبلغ پرداختی برای 10 واحد (یا 10000لیتر) به ازای 20 مربع
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}روشن/خاموش کردن نمودار برای نوع محموله
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
+
+
+# Graph key window
+
+# Company league window
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :مهندس
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :مدیر ترافیکی
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :رئیس حمل و نقل
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :مشاور جاده ها
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :رئیس کل
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :مشاور وزیر
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :وزیر ترابری
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :رئیس جمهور
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :ترک اصیل!
+
+# Performance detail window
+STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
+############ Those following lines need to be in this order!!
+############ End of order list
+
+# Music window
 STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}همه:
 STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}مدل قدیمی
 STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}مدل جدید
@@ -483,10 +466,6 @@ STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}ان�
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}شدت صدای موسیقی
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}شدت صدای محیط
 STR_MUSIC_MIN_MAX_RULER                                         :{TINYFONT}{BLACK}حد اکثر . . . . . . . . . حد اقل
-STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}بازگشت به آهنگ قبلی در لیست انتخاب شده ها
-STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}آهنگ بعدی در لیست انتخاب شده ها
-STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}توقف موسیقی
-STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}پخش موسیقی
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_SINGLE_DIGIT                                    :{TINYFONT}{DKGREEN}0{COMMA}
 STR_MUSIC_TRACK_DOUBLE_DIGIT                                    :{TINYFONT}{DKGREEN}{COMMA}
@@ -494,15 +473,87 @@ STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGR
 STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}پخش تصادفی
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}برنامه
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}بازگشت به آهنگ قبلی در لیست انتخاب شده ها
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}آهنگ بعدی در لیست انتخاب شده ها
+STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}توقف موسیقی
+STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}پخش موسیقی
+
+# Playlist window
 STR_PLAYLIST_TRACK_SINGLE_DIGIT                                 :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
 STR_PLAYLIST_TRACK_DOUBLE_DIGIT                                 :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}شماره ی آهنگ
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}پاک کن
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}ذخیره کن
-STR_INTRO_DIFFICULTY                                            :{BLACK}سختی ({STRING})
-STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :تنظیمات پیغام ها
+
+# Highscore window
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :تاجر
+
+# Smallmap window
+STR_SMALLMAP_CAPTION                                            :{WHITE}نقشه - {STRING}
+
+STR_SMALLMAP_TYPE_CONTOURS                                      :حد فاصل ها
+STR_SMALLMAP_TYPE_VEHICLES                                      :وسایل نقلیه
+STR_SMALLMAP_TYPE_INDUSTRIES                                    :کارخانه‌ها
+STR_SMALLMAP_TYPE_ROUTES                                        :راه ها
+STR_SMALLMAP_TYPE_VEGETATION                                    :پوشش گیاهی
+STR_SMALLMAP_TYPE_OWNERS                                        :صاحبان
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}حاشیه ی زمین را در نقشه نشان بده
+STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}وسایل حمل و نقل را در صفحه نشن بده
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}کارخانه ها را در نقشه نشان بده
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}مسیر های حمل و نقل را در نقشه نشان بده
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}صاحب زمین را در نقشه نشان بده
+
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}جاده ها
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}راه آهن
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}ایستگاه/فرودگاه/بندر
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}ساختمانها/کارخانجات
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}ماشینها
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200m
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300m
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400m
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500m
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}قطارها
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}ماشین ها
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}کشتی ها
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}هواپیما
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}مسیر حمل و نقل
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}جنگل
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}ایستگاه قطار
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}ایستگاه بارگیری/تخلیه بار کامیون
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}ایستگاه اتوبوس
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}هواپیما/بالگرد
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}اسکله
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}زمین سنگی
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}زمین علفی
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}زمین بایر
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}محوطه ها
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}درختان
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}سخره ها
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}آب
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}بدون مالک
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}شهر
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}کارخانه
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}صحرا
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}برف
+
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}نشان دادن یا ندادن اسم شهر ها در نقشه
+STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+
+# Status bar messages
+STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK} اخرین پیغام یا گزارش را نشان بده
+STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
+STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  توقف  *  *
+STR_STATUSBAR_AUTOSAVE                                          :{RED}ذخیره اتوماتیک
+
+# News message history
+STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
+
+# Message settings window
+STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}پیغام
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}انتخاب های پیغام ها
+
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}انواع پیغام ها
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}رسیدن اولین وسیله نقلیه به یکی ازایستگاه های بازیکن
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}رسیدن اولین وسیله نقلیه به یکی ازایستگاه ها کامپوتر
@@ -514,129 +565,86 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}وسی�
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}تغیرات دریاف کالا
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}کمک هزینه
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}توضیهات کلی
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}از هدف قبلی بسیار دور است......
-STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :تاجر
-STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
-STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}طراحی اتوماتیک سرزمین
-STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}نقشه ی تصادفی بساز
-STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}تمام تغییرات را بر گردان
-STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}تمام تغییرات را بر گردان
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}طراحی اتوماتیک سرزمین
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}طراحی مشخصات شهر ها
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}طراحی مشخصات کارخانه ها
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}طراحی مشخصات کارخانه ها
-STR_FOUND_TOWN_CAPTION                                          :{WHITE}طراحی مشخصات شهر ها
-STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}شهر جدید
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}ساختن شهر جدید
-STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}اینجا نمی شود شهر ساخت
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE} به حاشیه ی نقشه زیادی نزدیک است
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE} به شهر دیگری بسیار نزدیک است
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE} مکان مناسب نیست
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}تعداد شهر ها بسیار زیاد شده
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}شهر صادفی
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}شهری در مکانی تصادفی بساز
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}نمی شود {STRING} اینجا ساخت
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE} اول باید شهر ساخته شود
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE} فقط یکی به ازای هر شهر مجاز است
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}کاشت درخت
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}علامت گذاری
-STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK} درخت های تصادفی
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK} به شکل تصافی در تمام نقشه درخت بکار
-STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}مکان های سنگی در نقشه ایجاد کن
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}فانوس دریایی بساز
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK} ناحیه ی بیابانی را مشخص کن {} دکمه ی "کنترل" را فشار بده تا حذف کند
-STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}پاک کردن
-STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK} این شهر را به شکل کامل حذف کن
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :خارج شدن از محیط طراحی
-STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
-STR_SCENEDIT_FILE_MENU_QUIT                                     :خروج
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE} فقط در شهرهایی با جمعیت بیش از 1200 نفر ممکن است
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}روز شروع بازی را یک سال به عقب برگردان
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}روز شروع بازی را یک سال جلو ببر
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}هر دو سر پل باید در خشکی قرار بگیرد
-STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}کوچک
-STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}متوسط
-STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}بزرگ
-STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}انتخاب اندازه ی شهر
-STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}اندازه ی شهر :
+
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}شهروندان ورود اولین قطار را به {STATION} تبریک گفتند!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}شهروندان ورود اولین اتوبوس را به . . .{}{STATION} تبریک گفتند!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}شهروندان ورود اولین کامیون را به . . .{}{STATION} تبریک گفتند!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}جشن گرفتن شهروندان. . . {} اولین کشتی به {STATION} رسید!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}جشن شهروندان . . .{}اولین هواپیما به {STATION} می رسد!
+
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}تصادف قطار!{}{COMMA} مرگ در انفجار حاصل از برخورد
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}تصادف ماشین!{}راننده پس از تصادف با قطار در آتش سوخت
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}تصادف ماشین!{}راننده پس از تصادف با قطار{COMMA} در آتش سوخت
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}تصادف هواپیما!{}{COMMA} مرگ در انفجار در {STATION}
 
 
-STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
-STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK} اخرین پیغام یا گزارش را نشان بده
-STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} توسط {STRING} خریداری شد!
 
-############ range for menu starts
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :تنظیمات بازی
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :تنظیمات سختی
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}نام شهرها نشان داده شود
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}نام ایستگاه ها نشان داده شود
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}علامت ها نشان داده شوند
-STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}انیمیشن کامل
-STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}جزعیات کامل
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :{SETX 12}ساختمان های نامرئی
-############ range ends here
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK} {STRING} جدیدی در مجاورت {TOWN} در حال ساخت است!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK} {STRING} جدیدی در مجاورت {TOWN} در حال کاشته شدن است!
 
-############ range for menu starts
-STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_AI_DEBUG                                         :رفع اشکالات هوش مصنوعی
-STR_ABOUT_MENU_SCREENSHOT                                       :(Ctrl-S) تصویر از بازی
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :(Ctrl-G) نصویر از دنیا
-STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' درباره
-############ range ends here
-
-STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}خاموش
-STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}روشن
-
-############ 'Display map' dropdown. In SE, there is one more item.
-STR_MAP_MENU_MAP_OF_WORLD                                       :نقشه ی دنیا
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :لیست شهر ها
-############ end of the 'Display map' dropdown
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} تعطیلی فوری خود را اعلام کرد!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}مشکلات مالی باعث شد {STRING} تعطیلی فوری خود را اعلام کند!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}کمبود درختان مجاور {STRING} باعث شد که تعطیلی فوری خود را اعلام کننند!
 
 
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} افزایش تولید داشت!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}رگه ی جدیدی از زغال در {INDUSTRY} پیدا شده!{}تولید این معدن دو برابر شد!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}مخزن جدیدی از نفت در مجاورت {INDUSTRY}پیدا شده!{}در نتیجه تولید خود را دو برابر کردند!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}پیشرفت روش مزرعه داری در {INDUSTRY} باعث شد تولید این مزرعه دو برابر شود!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}تولید {INDUSTRY} 50% کاهش یافت
+
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE}در آشیانه در حال انتظار است
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} بسیار قدیمی شده و سریعا احتیاج به جایگزینی دارد
+
+
+
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} دیگر {STRING} قبول نمی کند
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} دیگر {STRING} و {STRING} قبول نمی کند
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} از این پس {STRING} را هم قبول می کند
+
+
+
+# Extra view window
+
+# Game options window
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}تنظیمات بازی
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}واحد پول
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}انتخب واحد پول
+
+############ start of currency region
+############ end of currency region
+
+
+############ start of measuring units region
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :شاهنشاهی
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :متری
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
+############ end of measuring units region
+
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK} وسایل حمل و نقل جاده ای
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}انتخاب جهت فرمان ماشین ها
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :چپ فرمان
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :راست فرمان
+
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK} نام شهرها
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}انتخاب نوع نام شهرها
-
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK} ذخیره اتوماتیک
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK} انتخاب فاصله زمانی بین ذخیره کردن های اتوماتیک
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :خاموش
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :هر 3 ماه
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :هر 6 ماه
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :هر 12 ماه
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}شروع بازی جدید
-STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}ادامه ی بازی گذشته
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}نشان دادن تنظیمات بازی
-STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK} نشان دادن تنظیمات سختی
-STR_INTRO_QUIT                                                  :{BLACK}خروج
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK} خروج از 'OpenTTD'
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}فقط می توان در شهر ها ساخت
-
-############ range for menu starts
-STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :ساخت کارخانه جدید
-############ range ends here
-
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE} ساخت کارخانه جدید
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE} فقط میتوان در جنگل های بارانی ساخت
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE} فقط می توان در صحرا ساخت
-STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  توقف  *  *
-
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE} تصویر با موفقیت در {STRING} ذخیره شد
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}تصئیر ذخیره نشد
-
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}خرید زمین برای استفاده های بعدی
-STR_STATUSBAR_AUTOSAVE                                          :{RED}ذخیره اتوماتیک
 
 ############ start of townname region
 ############ end of townname region
 
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK} ذخیره اتوماتیک
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK} انتخاب فاصله زمانی بین ذخیره کردن های اتوماتیک
 
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :خاموش
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :هر 3 ماه
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :هر 6 ماه
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :هر 12 ماه
 
 
 
@@ -645,19 +653,32 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}ذخیره
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK} اطلاعات اضافه در مورد بسته ی گرافیکی پایه
 
 
+# Custom currency window
 
 
 
 
-# Start of order review system.
-# DON'T ADD OR REMOVE LINES HERE
-# end of order system
 
 
+# Difficulty level window
+STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}سطح سختی
 
+############ range for difficulty levels starts
+STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}ساده
+STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}متوسط
+STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}سخت
+STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}انتخابی
+############ range for difficulty levels ends
 
 
+############ range for difficulty settings starts
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}حد اکثر تعداد رقبا :{ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}تعداد شهر ها: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}تعداد کارخانه ها: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}حد اکثر وام اولیه: {ORANGE}{CURRENCY}
+############ range for difficulty settings ends
 
+STR_NUM_CUSTOM                                                  :انتخابی
 
 
 
@@ -669,12 +690,12 @@ STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK} اطل�
 
 
 
+# Advanced settings window
 
 
 
 
 
-############ generic strings for settings
 
 
 
@@ -691,22 +712,61 @@ STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK} اطل�
 
 
 
+# Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
+STR_INTRO_NEW_GAME                                              :{BLACK}بازی جدید
+STR_INTRO_LOAD_GAME                                             :{BLACK}ادامه بازی های قبلی
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}ساخت سناریو
+STR_INTRO_MULTIPLAYER                                           :{BLACK}بازی چند نفره
 
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}تنضیمات بازی
+STR_INTRO_DIFFICULTY                                            :{BLACK}سختی ({STRING})
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}چک کردن محتوی آنلاین
+STR_INTRO_AI_SETTINGS                                           :{BLACK}تنظیمات هوش مصنوعی
+STR_INTRO_QUIT                                                  :{BLACK}خروج
 
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}شروع بازی جدید
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}ادامه ی بازی گذشته
 
 
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}نشان دادن تنظیمات بازی
+STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK} نشان دادن تنظیمات سختی
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}بررسی وجود مجموعه ها و به روز رسانی های جدید در اینترنت
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}نمایش تنظیمات هوش مصنوعی
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK} خروج از 'OpenTTD'
 
+# Quit window
+STR_QUIT_CAPTION                                                :{WHITE}خروج
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}آیا می‌خواهید از بازی خارج شوید و برگردید به{STRING}?
+STR_QUIT_YES                                                    :{BLACK}بله
+STR_QUIT_NO                                                     :{BLACK}خیر
 
+# Supported OSes
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
+# Abandon game
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}رها کردن بازی
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}آیا مطمئن هستی که میخواهی این بازی را از بین ببری؟
 
+# Cheat window
 
+# Livery window
 
-############ network gui strings
 
 
+# Face selection window
 
 
+# Network server list
 
 
 
@@ -714,50 +774,246 @@ STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK} اطل�
 
 
 
+# Start new multiplayer server
 
 
 
+
+
+# Network game languages
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+# Network game lobby
+
+
+
+
+
+# Network connecting window
 
 ############ Leave those lines in this order!!
+
 ############ End of leave-in-this-order
 
 
 
+# Network company list added strings
+
+# Network client list
 
 
 
+# Network set password
+
+# Network company info join/password
+
+# Network chat
+
+
+# Network messages
 
 ############ Leave those lines in this order!!
-
 ############ End of leave-in-this-order
 
-
-
-
-############ Leave those lines in this order!!
-############ End of leave-in-this-order
+# Network related errors
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 
+# Content downloading window
+STR_CONTENT_TITLE                                               :{WHITE} در حال دانلود
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}نوع
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}نوع محتوی
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}نام
+STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}نام محتوی
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}برای مشاهده ی جزئیات روی خط کلیک کنید {}برای اتنخاب برای دانلود روی چک باکس کلیک کنید
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}انتخاب تمامی موارد
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}علامت گذاری تمامی موارد را برای دانلود
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}انتخاب موارد ارتقاع
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK} علامت گذاری برای دانلود ِ تمام مواردی که برای ارتقاع محتوی موجود لازم می باشد
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}پاک کردن تمام انتخاب ها
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}علامت گذاری تمامی موارد را برای عدم دانلود
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}وارد کردن رشته پایش
+STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}وارد کردن واژه کلیدی برای پایش لیست
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}برچسب/پایش بر اساس نام
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}دانلود
+STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}شروع به دانلود موارد انتخاب شده
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}حجم کل دانلود: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}اطلاعات محتوی
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER} شما این گزینه را برای دانلود انتخاب نکرده اید
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}شما این گزینه را برای دانلود انتخاب کرده اید
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}این پیوست برای دانلود انتخاب شده است
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}شما این را از قبل داشته اید
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}این محتوی ناشناخته است و قابلیت دانلود در OpenTTD را ندارد
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}این مورد جایگزینی برای گزینه ی موجود است {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}نام:{WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}نسخه: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}شرح: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}آدرس اینترنتی: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}نوع: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}جحم دانلود: {BYTES}{WHITE}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}دلیل انتخاب: {STRING}{WHITE}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}وابستگی ها: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}برچسب ها: {WHITE}{STRING}
+STR_CONTENT_NO_ZLIB                                             :{WHITE}نرم افزار OpenTTD بدون استفاده از پشتیبانی "zlib" ساخته شده است
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... امکان دانلود این محتوی وجود ندارد!
+
+# Order of these is important!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :گرافیک پایه
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :هوش مصنوعی
+STR_CONTENT_TYPE_AI_LIBRARY                                     :مجموعه ماخذ AI
+STR_CONTENT_TYPE_SCENARIO                                       :سناریو
+STR_CONTENT_TYPE_HEIGHTMAP                                      :نقشه
+
+# Content downloading progress window
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}در حال دانلود...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}در حال درخواست فایل...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}دانلود شده {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}اتمام دانلود
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} از {BYTES} دانلود شده ({NUM} %)
+
+# Content downloading error messages
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}امکان برقراری ارتباط با سرور ممکن نیست...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}دانلود ناموفق بود...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ارتباط از بین رفت
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... فایل قابلیت درج ندارد
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}بازگشایی فایل دانلود شده ممکن نیست
+
+# Transparency settings window
+
+# Base for station construction window(s)
+STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}نور ناحیه ی اطراف ایستگاه
+STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}خاموش
+STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}روشن
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}قبول می کند: {GOLD}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}تدارکات: {GOLD}
+
+# Join station window
+
+
+# Rail construction toolbar
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}ساخت راه آهن
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}ساخت مونوریل
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}ساخت ریل مغناطیسی
+
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}ساخت راه آهن
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK} سات ایستگاه قطار
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}ساخت چراغ راهنمایی راه آهن
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK} ساخت پل راه آهن
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK} ساخت تونل راه آهن
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}تغییر بین حذف یا ساخت چراغ راهنمایی و ریل
+
+# Rail depot construction window
+
+# Rail waypoint construction window
+
+# Rail station construction window
+STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}انتخاب ایستگاه راه آهن
+STR_STATION_BUILD_ORIENTATION                                   :{BLACK} جهت
+STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}انتخاب جهت ایستگاه راه آهن
+STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK} تعداد خطوط
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}انتخاب تعداد سکوها برای ایستگاه راه آهن
+STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}طول ایستگاه
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}انتخاب طول ایستگاه راه آهن
+
+
+
+# Signal window
+
+# Bridge selection window
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}انتخب پل راه آهن
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE} ساخت پل ماشین رو
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK} ساخت پل - بر روی پل مورد نظر خود کلیک کنید تا ساخته شود
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_BRIDGE_NAME_WOODEN                                          :چوبی
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :لوله ای،فولادی
+
+
+# Road construction toolbar
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}ساخت جاده
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}بخش ساخت جاده
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}ساخت ایستگاه اتوبوس
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}ساخت ایستگاه بارگیری/تخلیه بار کامیون
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}ساخت پل ماشین رو
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}ساخت تون ماشین رو
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK} تغییر بین ساخت/حذف جاده
+
+# Road depot construction window
+
+# Road vehicle station construction window
+STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}انتخاب جهت ایستگاه اتوبوس
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}انتخاب جهت محل بارگیری کامیون
+
+# Waterways toolbar (last two for SE only)
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}ساخت بندر
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}یک شناور به عنوان نمایانگر راه قرار بده
+
+# Ship depot construction window
+
+# Dock construction window
+STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}اسکله
+
+# Airport toolbar
+STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}فرودگاه ها
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}ساخت فرودگاه
+
+# Airport construction window
+STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}انتخاب فرودگاه
+STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}انتخاب اندازه/نوع فرودگاه
 
 
 
 
-############ end network gui strings
+# Landscaping toolbar
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}پایین آوردن گوشه ی نقشه
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}بال آوردن گوشه ی نقشه
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}خرید زمین برای استفاده های بعدی
 
-##### PNG-MAP-Loader
+# Tree planting window (last two for SE only)
+STR_PLANT_TREE_CAPTION                                          :{WHITE}درختان
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}نوع درخت را مشخص کنید تا کاشته شود
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK} درخت های تصادفی
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK} به شکل تصافی در تمام نقشه درخت بکار
+
+# Land generation window (SE)
+STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}طراحی اتوماتیک سرزمین
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}مکان های سنگی در نقشه ایجاد کن
+STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}فانوس دریایی بساز
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK} ناحیه ی بیابانی را مشخص کن {} دکمه ی "کنترل" را فشار بده تا حذف کند
+STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}نقشه ی تصادفی بساز
+STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}تمام تغییرات را بر گردان
+
+STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}تمام تغییرات را بر گردان
+
+# Town generation window (SE)
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}طراحی مشخصات شهر ها
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}شهر جدید
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}ساختن شهر جدید
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}شهر صادفی
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}شهری در مکانی تصادفی بساز
+
+STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}اندازه ی شهر :
+STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}کوچک
+STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}متوسط
+STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}بزرگ
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}انتخاب اندازه ی شهر
 
 
+# Fund new industry window
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE} ساخت کارخانه جدید
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}خرج: {YELLOW}{CURRENCY}
 
-##id 0x0800
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}مخارج: {CURRENCY}
-STR_INCOME_FLOAT_COST                                           :{RED}مخارج: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}درآمد : {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}درآمد: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}مخارج تقریبی: {CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}در آمد تقریبی: {CURRENCY}
-STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}نمی شود افزایش ارتفاع اد
-STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}نمی توان ارتفاع زمین را کم کرد
+# Land area window
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}اطلاعات زمین
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}هزینه پاک کردن: {LTBLUE}0
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}هزینه پاک کردن: {RED}{CURRENCY}
+STR_LAND_AREA_INFORMATION_OWNER_N_A                             :0
+STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}مالک: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}محموله های دریافتی : {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+
+# Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :صخره
 STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :سرزمین سنگلاخی
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :سرزمین بایر
@@ -765,69 +1021,745 @@ STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :چمن
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :زمین پوشیده از برف
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :صحرا
 
-##id 0x1000
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}ترکیب ریل غیر ممکن است
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE} قبلا یه سطح دریا رسیده است
-STR_ERROR_TOO_HIGH                                              :{WHITE}بیش از اندازه ارتفاع دارد
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}قطعه مناسب راه آهن انتخاب نشده
-STR_ERROR_ALREADY_BUILT                                         :{WHITE} قبلا در اینجا ساخته شده
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}اول باید ریل راه آهن حذف شود
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}ساخت راه آهن
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}ساخت مونوریل
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}ساخت ریل مغناطیسی
-STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}انتخب پل راه آهن
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE} اینجا نمی شود ایستگاه راه آهن ساخت
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}اینجا نمی شود علامت ساخت
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE} اینجا نمی شود ریل ساخت
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}از اینجا نمی شود ریل را حذف کرد
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE} از اینجا نمی شود چراغ ها ی راهنمایی را حذف کرد
-STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :ساخت راه آهن
-STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :ساخت مونوریل
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :ساخت ریل مغناطیسی
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}ساخت راه آهن
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK} سات ایستگاه قطار
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}ساخت چراغ راهنمایی راه آهن
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK} ساخت پل راه آهن
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK} ساخت تونل راه آهن
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}تغییر بین حذف یا ساخت چراغ راهنمایی و ریل
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK} ساخت پل - بر روی پل مورد نظر خود کلیک کنید تا ساخته شود
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :قطعه ریل راه آهن
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE} این ناحیه توسط شرکت دیگری تصاحب شده
 
-
-
-##id 0x1800
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE} اول باید جاده حذف شود
-STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}ساخت جاده
-STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE} ساخت پل ماشین رو
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE} اینجا نمی توان جاده ساخت
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}جاده را نمی شود از اینجا حذف کرد
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}اینجا ایستگاه اتوبوس نمی شود ساخت
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}اینجا ایستگاه کامیون نمیشود ساخت
-STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :ساخت جاده
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}بخش ساخت جاده
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}ساخت ایستگاه اتوبوس
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}ساخت ایستگاه بارگیری/تخلیه بار کامیون
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}ساخت پل ماشین رو
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}ساخت تون ماشین رو
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK} تغییر بین ساخت/حذف جاده
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :جاده
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :جاده با چراغ راهنمایی رانندگی
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :جاده 3 لاین
 
-##id 0x2000
+# Houses come directly from their building names
+STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (در دست ساخت)
+
+STR_LAI_TREE_NAME_TREES                                         :درختان
+STR_LAI_TREE_NAME_RAINFOREST                                    :جنگل بارانی
+STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :کاکتوس
+
+STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :ایستگاه راه آهن
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :آشیانه هواپیما
+STR_LAI_STATION_DESCRIPTION_AIRPORT                             :فرودگاه
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :محوطه بارگیری کامیون
+STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :ایستگاه اتوبوس
+STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :اسکله
+
+STR_LAI_WATER_DESCRIPTION_WATER                                 :آب
+STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :خلیج یا ساحل رودخانه
+
+# Industries come directly from their industry names
+
+STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :تونل راه آهن
+STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :تونل ماشین رو
+
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :پل راه آهن چوبی
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :پل لوله ای راه آهن
+
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :پل ماشین رو چوبی
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :پل جاده ای لوله ای
+
+
+STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :فانوس دریایی
+STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :ساختمان اصلی شرکت
+STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :زمین خریداری شده
+
+# About OpenTTD window
+STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD در باره ی
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 The OpenTTD team
+
+# Save/load game/scenario
+STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}ذخیره ی بازی
+STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}ادامه ی بازی
+STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}لیست درایو ها، پوشه ها و بازی های ذخیره شده
+STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}حذف
+STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}ذخیره
+
+
+# World generation
+STR_MAPGEN_MAPSIZE                                              :{BLACK}اندازه نقشه:
+STR_MAPGEN_BY                                                   :{BLACK}*
+
+# Strings for map borders at game generation
+
+
+
+# SE Map generation
+
+
+# Map generation progress
+
+# NewGRF settings
+
+
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}یافتن مجموعه ای که کم است در اینترنت
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK} بررسی اینکه آیا مجموعه ای که کم است در اینترنت یافت می شود یا نه
+
+
+
+
+# NewGRF add window
+
+# NewGRF (self) generated warnings/errors
+
+# NewGRF related 'general' warnings
+STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}اخطار!
+
+
+
+# NewGRF 'it's broken' warnings
+
+
+# Sign list window
+
+# Sign window
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}تغییر نام علامت
+
+
+# Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}شهرها
-STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
-STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE} اول باید ساختمان تخریب شود
+STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+
+# Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}جمعیت: {ORANGE}{COMMA}{BLACK}  خانه ها: {ORANGE}{COMMA}
-STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :تغییر اسم شهر
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}نمی توان اسم شهر را تغییر داد
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE} انجمن شهر {TOWN} اجازه این کار را نمیدهد
-STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}تغییر نام شهر
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}مسافران در ماه گذشته: {ORANGE}{COMMA}{BLACK}  حداکثر: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}نامه ها در ماه گذشته: {ORANGE}{COMMA}{BLACK}  حداکثر: {ORANGE}{COMMA}
+STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}تغییر نام شهر
+
+STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}پاک کردن
+STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK} این شهر را به شکل کامل حذف کن
+
+STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :تغییر اسم شهر
+
+# Town local authority window
+STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK} امتیازات شرکت
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}کارهای ممکن :
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}لیست کارهایی که می شود در این شهر انجام داد- برای اطلاعات بیشتر کلیک کنید
+STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}انجام بده
+
+STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :ساخت مجسمه رئیس شرکت
+STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :ساخت اختمان های جدید
+
+
+# Subsidies window
+
+# Station list window
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}نام ایستگاه ها- بر روی نام کلیک کنید تا مرکز صفحه را بر روی ایستگاه قرار دهد
+STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}انتخاب تمامی تسهیلات
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}انتخاب همه ی انواع محموله ها (شامل محموله های در انتظار)
+STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}هیچ نوع محموله در انتظار نیست
+
+# Station view window
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
+STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}در انتظار: {WHITE}{STRING}
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} منشعب شده از {STATION})
+
+STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}قبول می کند
+STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}نشان دادن لیست کالاهای قابل دریافت
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}قبول می کند: {WHITE}
+
+STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}رده بندی
+STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}نشان دادن امتیازات ایستگاه
+STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}رده بندی محلی درباره ی وضعیت حمل و نقل
+STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
+
+############ range for rating starts
+STR_CARGO_RATING_APPALLING                                      :ترسناک
+STR_CARGO_RATING_VERY_POOR                                      :بسیار ضعیف
+STR_CARGO_RATING_POOR                                           :ضعیف
+STR_CARGO_RATING_MEDIOCRE                                       :متوسط
+STR_CARGO_RATING_GOOD                                           :خوب
+STR_CARGO_RATING_VERY_GOOD                                      :بسیار خوب
+STR_CARGO_RATING_EXCELLENT                                      :عالی
+STR_CARGO_RATING_OUTSTANDING                                    :بسیار عالی
+############ range for rating ends
+
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}مرکز تصویر اصلی را روی محل ایستگاه قرار بده
+STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}تغییر نام ایستگاه
+
+
+STR_STATION_VIEW_RENAME_STATION_CAPTION                         :نام گذاری محوطه ایستگاه/بارگیری
+
+# Waypoint/buoy view window
+
+
+# Finances window
+
+# Company view
+
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} هواپیما
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}ارزش شرکت: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% توسط {COMPANY} خریداری شده)
+
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}ساخت ساختمان مرکزی
+STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}دیدن ساختمان مرکزی
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}ساخت / دیدن ساختمان مرکزی
+
+
+STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}25% سهام شرکت را بخر
+STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}25% سهام شرکت را بفروش
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}25% سهام این شرکت را بخر
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}25% سهام این شرکت را بفروش
+
+
+
+# Industry directory
+
+# Industry view
+STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}تولید در ماه گذشته:
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% منتقل شد)
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}مرکز تصویر را روی کارخانه قرار بده
+
+############ range for requires starts
+STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}مواد اولیه: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}مواد اولیه: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}مواد اولیه: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
+############ range for requires ends
+
+############ range for produces starts
+STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}محصولات: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}محصولات: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+############ range for produces ends
+
+
+# Vehicle lists
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} قطار{P "" s}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} ماشین{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} هواپیما
+
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}قطارها-برای اطلاعات بیشتر روی قطار کلیک کنید
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}کشتی ها - برای اطلاعات بیشتر روی کشتی کلیک کنید
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}هواپیما - برای اطلاعات بیشتر روی هواپیما کلیک کنید
+
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}سود امسال : {CURRENCY} (سود پارسال: {CURRENCY})
+
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}قطارهای موجود
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}خودروهای موجود
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}کشتی های موجود
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}هواپیماهای موجود
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}مشاهده ی تمامی موتورهای موجود برای این نوع وسیله ی نقلیه
+
+STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}اداره ی لیست
+STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}فرستادن دستورالعمل ها برای تمامی وسایل نقیله موجود در این لیست
+STR_VEHICLE_LIST_REPLACE_VEHICLES                               :جایگزین کردن وسایل نقلیه
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :فرستادن برای سرویس
+
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :فرستادن به ایستگاه نگه داری فنی
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :فرستادن به ایستگاه نگه داری فنی
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :فرستادن به مقر فنی
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :فرستادن به آشیانه
+
+
+
+# Group window
+
+
+
+
+
+# Build vehicle window
+STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}قطار جدید
+STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}قطار جدید مونوریل
+STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}قطار جدید ریل مغناطیسی
+
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}وسایل ریل خط آهن
+STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}ماشین های جدید
+STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}هواپیمای جدید
+
+STR_PURCHASE_INFO_REFITTABLE                                    :(قابل تعمیر)
+
+STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}لیست انتخاب قطار - برای اطلاعات بیشتر روی وسیله کلیک کنید
+STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}لیست انتخاب کشتی - برای اطلاعات بیشتر روی کشتی کلیک کنید
+STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}لیست انتخاب هواپیما - برای اطلاعات بیشتر روی هواپیما کلیک کنید
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}ساخت وسیله نقلیه
+STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}ساخت وسیله نقلیه
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}ساخت هواپیما
+
+STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}قطار مشخص شده را بخر
+STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}کشتی مشخص شده را بساز
+STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}ساخت هواپیمای مشخص شده
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}تغییر نام
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}تغییر نام
+STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}نام گذاری مجدد
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}نام گذاری مجدد
+
+STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}تغییر نام نوع قطار
+STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}تغییر نام انواع ماشین ها
+STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}نام گذاری مجدد نوع کشتی
+STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}نامگذاری مجدد نوع هواپیما
+
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}تغییر نام انواع قطار ها
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}تغییر نام انواع ماشین ها
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}نام گذاری مجدد نوع کشتی
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}نامگذاری مجدد نوع هواپیما
+
+# Depot window
+STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION}آشیانه هواپیما
+
+STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}قطارها-برای اطلاعات بیشتر روی قطار کلیک کنید. وسیله را بکشید تا آن را از قطار خارج/وارد کنید
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}کشی ها -برای اطلاعات بر روی کشتی کلیک کنید
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}هواپیما - برای اطلاعاتبیشتر روی هواپیماکلیک کنید
+
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}قطار را برای فروش به اینجا بکشید
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}کشتی را به اینجا بکشید تا فروخته شود
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}برای فروش هواپیما آن را به اینجا بکش
+
+
+
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}وسیله ی جدید
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}وسایل نقلیه ی جدید
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK} هواپیمای جدید
+
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}ساخت قطار جدید
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}ساخت کشتی جدید
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}ساخت هواپیمای جدید
+
+
+
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}نمای اصلی جایگاه ایستگاه قطار
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}نمای اصلی از جایگاه لنگرگاه کشتی
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}نمای اصلی از جایگاه آشیانه
+
+
+
+
+
+# Engine preview window
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}پیغام از سازنده ی وسیله نقلیه
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}ما به تازگی {STRING} را طراحی کرده ایم- آیا مایلید در یک سال اولان را به شگل انحصاری مورد تست قرار دهید تا نحوه عملکرد وسیله را قبل از عرضه ی جهانی مورد بررسی قرار دهیم؟
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :لوکوموتیو راه آهن
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ماشین جاده ای
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :هواپیما
+STR_ENGINE_PREVIEW_SHIP                                         :کشتی
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :لوکوموتیو مونوریل
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :لوکوموتیو ریل مغناطیسی
+
+
+# Autoreplace window
+STR_REPLACE_VEHICLE_TRAIN                                       :قطار
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :ماشین
+STR_REPLACE_VEHICLE_SHIP                                        :کشتی
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :هواپیما
+
+
+
+
+
+
+# Vehicle view
+STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
+
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}نمای اصلی جایگاه قطار
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}نمای اصلی از جایگاه کشتی
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}نمای اصلی از جایگاه هواپیما
+
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}این قطار را به ایستگاه راه آهن بفرست. Ctrl+Click فقط قطار را سرویس میکند
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}فرستادن کشتی به لنگرگاه. ctrl+click فقط سرویس میکند
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}ارسال هواپیما به آشیانه. Ctrl+Click  فقط سرویس می کند
+
+
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}قطار را مجبور کن بدون صبر برای علامت ترخیص شروع به حرکت کند
+
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}تعمیر مجدد کشتی باری برای حمل نوع دیگری از محموله ها
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}تعمیر مجدد هواپیما برای حمل نوع دیگری از محموله ها
+
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}برعکس کردن جهت حرکت قطار
+
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}نمایش دستورات قطار
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}نمایش وظایف کشتی
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}نمایش وظایف هواپیما
+
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}نمایش مشخصات قطار
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}نمایش مشخصات کشتی
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}نمایش مشخصات هوا پیما
+
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}فعالیت فعلی قطار - برای توقف/شروع حرکت قطار اینجا کلیک کن
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}عمل فعلی کشتی - برای شروع/توقف کشتی اینجا کلیک کنید
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}عمل فعلی هواپیما - برای توقف/شروع کار هواپیما اینجا کلیک کنید
+
+# Messages in the start stop button in the vehicle view
+STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}پر / خالی کردن
+STR_VEHICLE_STATUS_CRASHED                                      :{RED}تصادف کرده!
+STR_VEHICLE_STATUS_STOPPED                                      :{RED}متوقف شده
+
+
+
+
+
+# Vehicle details
+STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (جزئیات)
+STR_VEHICLE_NAME_BUTTON                                         :{BLACK}نام
+
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}نام گذاری قطار
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}نام گذاری ماشین
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}نام گذاری کشتی
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}نامگذاری هواپیما
+
+# The next two need to stay in this order
+STR_VEHICLE_INFO_AGE                                            :{COMMA}سال{P "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} سال{P "" s} ({COMMA})
+
+
+
+
+
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}فاصله ی زمانی بین تعمیرات دوره ای: {LTBLUE}{COMMA}روز {BLACK}   آخیرین تعمسرات: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}افزایش مدت سرویس
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}کاهش مدت سرویس
+
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}نام گذاری قطار
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}نام گذاری کشتی
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}نامگذاری هواپیما
+
+# Extra buttons for train details windows
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   مدل: {LTBLUE}{NUM}{BLACK} قیمت: {LTBLUE}{CURRENCY}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}  قیمت: {LTBLUE}{CURRENCY}
+
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}مجموع ظرفیت بار این قطار:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+
+STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}خالی
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} از {STATION}
+
+STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}محموله
+STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}نمایش مشخصات محموله در حال حمل
+STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}اطلاعات
+STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}نمایش مشخصات قطار
+STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}ضرفیت ها
+STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}نمایش ظرفیت هر وسیله
+STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}مجموع بار
+
+
+# Vehicle refit
+STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (تعمیر مجدد)
+STR_REFIT_TITLE                                                 :{GOLD}انتخاب محموله قابل حمل:
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}ظرفیت جدید : {GOLD}{CARGO}{}{BLACK} بهای تعمیر مجدد: {GOLD}{CURRENCY}
+
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}انتخاب نوع محموله ای که این کشتی باید حمل کند
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}انتخاب نوع جدید محموله برای حمل با هواپیما
+
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}تعمیر مجدد کشتی
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}تعمیر مجدد هواپیما
+
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}تعمیر مجدد کشتی باری برای حمل محموله مشخص شده
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}تعمیر جدید هواپیما برای حمل  محموله ی مشخص شده
+
+# Order view
+STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (دستورات)
+
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}لیست دستورات - برای مشخص کردن دستور روی آن کلیک کنید. Ctrl+click به ایستگاه میرود
+STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+
+STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - پایان دستورات - -
+
+# Order bottom buttons
+
+
+
+
+
+
+
+
+STR_ORDERS_SKIP_BUTTON                                          :{BLACK}رها کردن
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}لغو دستور فعلی و شروع بعدی. Ctrl+Click دستور انتخاب شده را لغو می کند
+
+STR_ORDERS_DELETE_BUTTON                                        :{BLACK}پاک کردن
+STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}پاک کردن دستور مشخص شده
+
+STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}برو به
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}وارد کردن دستور جدید قبل از دستور مشخص شده. یا اضافه کردن آن به آخر لیست
+
+
+# String parts to build the order string
+
+
+
+
+
+
+
+
+
+# Time table window
+
+
+
+
+
+
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}پاک کردن زمان
+
+
+
+# AI debug window
+STR_AI_DEBUG                                                    :{WHITE}رفع اشکالات هوش مصنوعی
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}نام هوش مصنوعی
+STR_AI_DEBUG_RELOAD                                             :{BLACK}بازگشایی مجدد هوش مصنوعی
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}از بین بردن هوش مصنوعی. بازگشایی اسکریپت. و شروع مجدد هوش مصنوعی
+
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}صفحه رفع اشکال هوش مصنوعی فقط برای سرور قابل دسترس است
+
+# AI configuration window
+STR_AI_CONFIG_CAPTION                                           :{WHITE}تنظیمات هوش مصنوعی
+STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}همه هوشهای مصنوعی که در بازی بعد بازگشایی می شوند
+STR_AI_CONFIG_HUMAN_PLAYER                                      :بازیکن آدمیزاد
+STR_AI_CONFIG_RANDOM_AI                                         :انتخاب هوش مصنوعی به صورت اتفاقی
+
+STR_AI_CONFIG_CHANGE                                            :{BLACK}انتخاب هوش مصنوعی
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}باز گشایی یک هوش مصنوعی دیگر
+STR_AI_CONFIG_CONFIGURE                                         :{BLACK}تنظیم
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}تنظبم پارامتر های مربوط به هوش مصنوعی
+
+# Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}هوش مصنوعی های موجود
+STR_AI_LIST_TOOLTIP                                             :{BLACK}برای انتخلب هوش مصنوعی کلیک کنید
+
+STR_AI_LIST_VERSION                                             :{BLACK}نسخه: {NUM}
+STR_AI_LIST_URL                                                 :{BLACK}آدرس اینترنتی: {STRING}
+
+STR_AI_LIST_ACCEPT                                              :{BLACK}قبول
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}انتخاب هوش مصنوعی مشخص شده
+STR_AI_LIST_CANCEL                                              :{BLACK}لغو
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}هوش مصنوعی را تغییر نده
+
+# AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}پارامترهای هوش مصنوعی
+STR_AI_SETTINGS_CLOSE                                           :{BLACK}بستن
+STR_AI_SETTINGS_RESET                                           :{BLACK}بازنشاندن
+
+# Vehicle loading indicators
+
+# Income 'floats'
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}مخارج: {CURRENCY}
+STR_INCOME_FLOAT_COST                                           :{RED}مخارج: {CURRENCY}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}درآمد : {CURRENCY}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}درآمد: {CURRENCY}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}مخارج تقریبی: {CURRENCY}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}در آمد تقریبی: {CURRENCY}
+
+# Saveload messages
+STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}درایو خوانده می شود
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}بازی ذخیره نشد{}{STRING}
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}فایل حذف نمی شود
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}بازی بارگزاری نشد{}{STRING}
+
+# Map generation messages
+
+
+
+
+# Screenshot related messages
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE} تصویر با موفقیت در {STRING} ذخیره شد
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}تصئیر ذخیره نشد
+
+# Error message titles
+STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}پیام
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}پیام از {STRING}
+
+# Generic construction errors
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}خارج از نقشه
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}بسیار نزدیک به حاشیه ی نقشه
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}پول به اندازه ی کافی موجود نیست- به {CURRENCY} نیاز است
+STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}زمین باید مسطح باشد
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}نمی‌توانم انجام دهم
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE} اول باید ساختمان تخریب شود
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}این منطقه پاک نمی‌شود
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE} مکان مناسب نیست
+STR_ERROR_ALREADY_BUILT                                         :{WHITE} قبلا در اینجا ساخته شده
+STR_ERROR_OWNED_BY                                              :{WHITE} صاحب {STRING} است.
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE} این ناحیه توسط شرکت دیگری تصاحب شده
+
+# Local authority errors
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE} انجمن شهر {TOWN} اجازه این کار را نمیدهد
+
+# Leveling errors
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}نمی شود افزایش ارتفاع اد
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}نمی توان ارتفاع زمین را کم کرد
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE} قبلا یه سطح دریا رسیده است
+STR_ERROR_TOO_HIGH                                              :{WHITE}بیش از اندازه ارتفاع دارد
+
+# Company related errors
+
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}ساختمان مرکزی را نمی شود اینجا ساخت ...
+STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}نمی شود 25% سهام این شرکت را خرید
+STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}نمی شود 25% سهام این شرکت را فروخت
+
+# Town related errors
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}نمی توان اسم شهر را تغییر داد
+STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}اینجا نمی شود شهر ساخت
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE} به حاشیه ی نقشه زیادی نزدیک است
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE} به شهر دیگری بسیار نزدیک است
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}تعداد شهر ها بسیار زیاد شده
+
+# Industry related errors
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}نمی شود {STRING} اینجا ساخت
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}این نوع کاخانه را در اینجا نمی شود ساخت...
+STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE} اول باید شهر ساخته شود
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE} فقط یکی به ازای هر شهر مجاز است
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE} فقط در شهرهایی با جمعیت بیش از 1200 نفر ممکن است
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE} فقط میتوان در جنگل های بارانی ساخت
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE} فقط می توان در صحرا ساخت
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}فقط می توان در شهر ها ساخت
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...فقط در حاشیه ی نقشه ساخته می شود
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...جنگل باید بالای خط برف کاشته شود
+
+# Station construction related errors
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE} اینجا نمی شود ایستگاه راه آهن ساخت
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}اینجا ایستگاه اتوبوس نمی شود ساخت
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}اینجا ایستگاه کامیون نمیشود ساخت
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}نمی توان اینجا فرودگاه ساخت. . .
+
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}ایستگاه زیادی پخش شده است
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE} تعداد محوطه های بارگیری/ایستگاه بسیار زیاد شده
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}به ایستگاه دیگری بسیار نزدیک است
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}به محوطه ی بارگیری/ایستگاه دیگری بسیار نزدیک است
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}به بندر دیگری بسییار نزدیک است
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE} به فرودگاه دیگری بسیار نزدیک شده
+STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}نام این ایستگاه را نمی شود تغییر داد
+
+# Station destruction related errors
+
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE} اول باید راه آهن تخریب شود
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}باید اول بندر را تخریب کرد
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE} اول باید فرودگاه تخریب شود
+
+# Waypoint related errors
+
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}نمیتوان اینجا شناوری قرار داد
+
+
+# Depot related errors
+
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}هواپیما باید در آشیانه متوقف شود
+
+STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}قطار بسیار طولانی شده
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}نمیتوان جهت حرکت وسیله را معکوس کرد...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}نمیتوان جهت وسایلی که از چند قطعه تشکیل شده اند را معکوس کرد
+
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE} ...این وسیله را نمی توان حرکت داد
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}مسیری به ایستگاه راه آهن پیدا نمیشود
+
+
+# Autoreplace related errors
+
+# Rail construction errors
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}ترکیب ریل غیر ممکن است
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}قطعه مناسب راه آهن انتخاب نشده
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}اول باید ریل راه آهن حذف شود
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}اینجا نمی شود علامت ساخت
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE} اینجا نمی شود ریل ساخت
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}از اینجا نمی شود ریل را حذف کرد
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE} از اینجا نمی شود چراغ ها ی راهنمایی را حذف کرد
+
+
+# Road construction errors
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE} اول باید جاده حذف شود
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE} اینجا نمی توان جاده ساخت
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}جاده را نمی شود از اینجا حذف کرد
+
+# Waterway construction errors
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE} باید بر روی آب ساخته شود
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}نمی شود بر روی آب ساخت
+
+# Tree related errors
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE} قبلا اینجا درخت کشته شده است
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE} اینجا نمی شود درخت کاشت
+
+# Bridge related errors
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE} اینجا نمی شود پل ساخت
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}اول باید پل خراب شود
+STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE} محل شروع و پایاننمی توانند در یک نقطه باشند
+STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}محل شروع پایان باید در یک خط باشند
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}هر دو سر پل باید در خشکی قرار بگیرد
+
+# Tunnel related errors
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE} اینجا نمی شود تونل ساخت
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}محل برای شروع تونل نا مناسب است
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}اول باید تونل خراب شود
+
+# Unmovable related errors
+STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}چیزی در مسیر قرار گرفته
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}ساختمان اصلی شرکت در مسیر قرار گرفته است
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}نمی توان این ناحیه را خرید
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE} قبلا توسط شرکت خریداری شده
+
+# Group related errors
+
+# Generic vehicle errors
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}قطار در راه است
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}ماشین در جاده است
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}قطار در راه است
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}هواپیما در راه است
+
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}نمی توان این کشتی را تعمیر کرد. . .
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}نمی توان هواپیما را تعمیر کرد. . .
+
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}نمیتوان برای قطار نام انتخاب کرد...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}نمیتوان برای این کشتی نام انتخاب کرد
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}. . . نمیتوان نام هواپیما را انتخاب کرد
+
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}قطار را نمی شود حرکت داد / متوقف کرد...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}نمی شود کشتی را حرکت داد / متوقف کرد ...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}نمیتوان هواپاما را متوقف/آغاز به کار کرد
+
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}نمیتوان هواپیما را به آشیانه فرستاد. . .
+
+STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}نمیشود قطار  ساخت ...
+STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}نمی شود ماشین ساخت...
+STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}نمی شود کشتی ساخت...
+STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}نمی توان هواپیما را ساخت
+
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}نمی شود نوع قطار ها را تغییر نام داد...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}نمی شود انواع ماشین ها را تغییر نام داد...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}نمی توان نام جدید را انتخاب کرد
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}نمیتوان نام جدید نوع هواپیما را انتخاب کرد
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}نمی شود قطار را فروخت...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}نمیشود ماشین را فروخت...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}کشتی فروخته نمی شود...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}نمیتوان هواپیما را فروخت
+
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}هواپیما در دسترس نیست
+
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}ماشین‌های زیادی در بازی هستند
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}امکان تغییر فواصل زمانی سرویس وجود ندارد...
+
+
+# Specific vehicle errors
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}در هنگام خطر نمی توان علامت عبور قطار را داد
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}جهت قطار را نمی شود تغییر داد...
+
+
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}هواپاما در حال پرواز است
+
+# Order related errors
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}برای دستورات بیشتر جا نداریم
+STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}دستورات بسیار زیاد شده اند
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}نمی شود دستور جدید قرار داد ...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}نمی شود دستور را حذف کرد
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}این دستور تغییر نمی کند...
+
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}از هدف قبلی بسیار دور است......
+
+# Timetable related errors
+
+# Sign related errors
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE} تعداد لامات بسیار زیاد شده
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}اینجا نمی شود علامت ساخت
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}نمی شود اسم علامت را عوض کرد
+
+##id 0x2000
+# Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :ساختمان اداری بلند
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :ساختمان اداری
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :کلیسا
@@ -844,8 +1776,6 @@ STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :انبار
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :ساختمان اداری
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :ورزشگاه
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :خانه قدیمی
-STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK} امتیازات شرکت
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :کلبه ها
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :خانه ها
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :ساختمان اداری بلند
@@ -856,115 +1786,11 @@ STR_TOWN_BUILDING_NAME_OFFICES_1                                :ادارات
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :خانه ها
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :سینما
 STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :مرکز خرید
-STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}انجام بده
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}لیست کارهایی که می شود در این شهر انجام داد- برای اطلاعات بیشتر کلیک کنید
-STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}کارهای ممکن :
-STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :ساخت مجسمه رئیس شرکت
-STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :ساخت اختمان های جدید
-STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
-STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (در دست ساخت)
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :ایگلو
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :خانه-قوری
 
-##id 0x2800
-STR_LANDSCAPING_MENU_PLANT_TREES                                :کاشتن درخت
-STR_LANDSCAPING_MENU_PLACE_SIGN                                 :قرار دادن علامت
-STR_PLANT_TREE_CAPTION                                          :{WHITE}درختان
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE} قبلا اینجا درخت کشته شده است
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE} اینجا نمی شود درخت کاشت
-STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE} تعداد لامات بسیار زیاد شده
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}اینجا نمی شود علامت ساخت
-STR_DEFAULT_SIGN_NAME                                           :علامت
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}تغییر نام علامت
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}نمی شود اسم علامت را عوض کرد
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}نوع درخت را مشخص کنید تا کاشته شود
-STR_LAI_TREE_NAME_TREES                                         :درختان
-STR_LAI_TREE_NAME_RAINFOREST                                    :جنگل بارانی
-STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :کاکتوس
-
-##id 0x3000
-STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}انتخاب ایستگاه راه آهن
-STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}انتخاب فرودگاه
-STR_STATION_BUILD_ORIENTATION                                   :{BLACK} جهت
-STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK} تعداد خطوط
-STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}طول ایستگاه
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}به ایستگاه دیگری بسیار نزدیک است
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE} تعداد محوطه های بارگیری/ایستگاه بسیار زیاد شده
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}به محوطه ی بارگیری/ایستگاه دیگری بسیار نزدیک است
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE} اول باید راه آهن تخریب شود
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE} به فرودگاه دیگری بسیار نزدیک شده
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE} اول باید فرودگاه تخریب شود
-
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :نام گذاری محوطه ایستگاه/بارگیری
-STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}نام این ایستگاه را نمی شود تغییر داد
-STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}رده بندی
-STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}قبول می کند
-STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}رده بندی محلی درباره ی وضعیت حمل و نقل
-
-############ range for rating starts
-STR_CARGO_RATING_APPALLING                                      :ترسناک
-STR_CARGO_RATING_VERY_POOR                                      :بسیار ضعیف
-STR_CARGO_RATING_POOR                                           :ضعیف
-STR_CARGO_RATING_MEDIOCRE                                       :متوسط
-STR_CARGO_RATING_GOOD                                           :خوب
-STR_CARGO_RATING_VERY_GOOD                                      :بسیار خوب
-STR_CARGO_RATING_EXCELLENT                                      :عالی
-STR_CARGO_RATING_OUTSTANDING                                    :بسیار عالی
-############ range for rating ends
-
-### station view strings
-
-STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} دیگر {STRING} قبول نمی کند
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} دیگر {STRING} و {STRING} قبول نمی کند
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} از این پس {STRING} را هم قبول می کند
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}به بندر دیگری بسییار نزدیک است
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}باید اول بندر را تخریب کرد
-STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}انتخاب جهت ایستگاه راه آهن
-STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}انتخاب تعداد سکوها برای ایستگاه راه آهن
-STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}انتخاب طول ایستگاه راه آهن
-STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}انتخاب جهت ایستگاه اتوبوس
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}انتخاب جهت محل بارگیری کامیون
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}مرکز تصویر اصلی را روی محل ایستگاه قرار بده
-STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}نشان دادن امتیازات ایستگاه
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}تغییر نام ایستگاه
-STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}نشان دادن لیست کالاهای قابل دریافت
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}نام ایستگاه ها- بر روی نام کلیک کنید تا مرکز صفحه را بر روی ایستگاه قرار دهد
-STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}انتخاب اندازه/نوع فرودگاه
-STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
-STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :ایستگاه راه آهن
-STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :آشیانه هواپیما
-STR_LAI_STATION_DESCRIPTION_AIRPORT                             :فرودگاه
-STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :محوطه بارگیری کامیون
-STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :ایستگاه اتوبوس
-STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :اسکله
-STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}نور ناحیه ی اطراف ایستگاه
-STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}اسکله
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}ایستگاه زیادی پخش شده است
-
-
-##id 0x3800
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE} باید بر روی آب ساخته شود
-STR_LAI_WATER_DESCRIPTION_WATER                                 :آب
-STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :خلیج یا ساحل رودخانه
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}نمی شود بر روی آب ساخت
-
-##id 0x4000
-STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}ذخیره ی بازی
-STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}ادامه ی بازی
-STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}ذخیره
-STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}حذف
-STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}درایو خوانده می شود
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}بازی ذخیره نشد{}{STRING}
-STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}فایل حذف نمی شود
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}بازی بارگزاری نشد{}{STRING}
-STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}لیست درایو ها، پوشه ها و بازی های ذخیره شده
-
 ##id 0x4800
-STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
+# industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :معدن ذغال
 STR_INDUSTRY_NAME_POWER_STATION                                 :نیروگاه
 STR_INDUSTRY_NAME_SAWMILL                                       :چوب بری
@@ -1000,124 +1826,15 @@ STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :کارخانه 
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :مولد حباب
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :معدن شکر
 
-############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}مواد اولیه: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}مواد اولیه: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}مواد اولیه: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
-############ range for requires ends
-
-############ range for produces starts
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}محصولات: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}محصولات: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-############ range for produces ends
-
-STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}تولید در ماه گذشته:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% منتقل شد)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}مرکز تصویر را روی کارخانه قرار بده
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK} {STRING} جدیدی در مجاورت {TOWN} در حال ساخت است!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK} {STRING} جدیدی در مجاورت {TOWN} در حال کاشته شدن است!
-STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}خرج: {YELLOW}{CURRENCY}
-STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}این نوع کاخانه را در اینجا نمی شود ساخت...
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...جنگل باید بالای خط برف کاشته شود
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} تعطیلی فوری خود را اعلام کرد!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}مشکلات مالی باعث شد {STRING} تعطیلی فوری خود را اعلام کند!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}کمبود درختان مجاور {STRING} باعث شد که تعطیلی فوری خود را اعلام کننند!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} افزایش تولید داشت!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}رگه ی جدیدی از زغال در {INDUSTRY} پیدا شده!{}تولید این معدن دو برابر شد!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}مخزن جدیدی از نفت در مجاورت {INDUSTRY}پیدا شده!{}در نتیجه تولید خود را دو برابر کردند!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}پیشرفت روش مزرعه داری در {INDUSTRY} باعث شد تولید این مزرعه دو برابر شود!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}تولید {INDUSTRY} 50% کاهش یافت
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...فقط در حاشیه ی نقشه ساخته می شود
-
-##id 0x5000
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}اول باید تونل خراب شود
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}اول باید پل خراب شود
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE} محل شروع و پایاننمی توانند در یک نقطه باشند
-STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}محل شروع پایان باید در یک خط باشند
-STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}محل برای شروع تونل نا مناسب است
-STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
-STR_BRIDGE_NAME_WOODEN                                          :چوبی
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :لوله ای،فولادی
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE} اینجا نمی شود پل ساخت
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE} اینجا نمی شود تونل ساخت
-STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :تونل راه آهن
-STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :تونل ماشین رو
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :پل راه آهن چوبی
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :پل ماشین رو چوبی
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :پل لوله ای راه آهن
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :پل جاده ای لوله ای
-
-##id 0x5800
-STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}چیزی در مسیر قرار گرفته
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :فانوس دریایی
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :ساختمان اصلی شرکت
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}ساختمان اصلی شرکت در مسیر قرار گرفته است
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :زمین خریداری شده
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}نمی توان این ناحیه را خرید
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE} قبلا توسط شرکت خریداری شده
-
-
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 
 ##id 0x6020
-
 ############ end of savegame specific region!
 
-##id 0x6800
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}سطح سختی
-
-############ range for difficulty levels starts
-STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}ساده
-STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}متوسط
-STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}سخت
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}انتخابی
-############ range for difficulty levels ends
-
-############ range for difficulty settings starts
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}حد اکثر تعداد رقبا :{ORANGE}{COMMA}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}تعداد شهر ها: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}تعداد کارخانه ها: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}حد اکثر وام اولیه: {ORANGE}{CURRENCY}
-############ range for difficulty settings ends
-
-STR_NUM_CUSTOM                                                  :انتخابی
-
-##id 0x7000
-STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} هواپیما
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}مبلغ پرداختی محموله ها
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}روز های گذشته در حمل
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}مبلغ پرداختی برای 10 واحد (یا 10000لیتر) به ازای 20 مربع
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}روشن/خاموش کردن نمودار برای نوع محموله
-STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :مهندس
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :مدیر ترافیکی
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :رئیس حمل و نقل
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :مشاور جاده ها
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :رئیس کل
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :مشاور وزیر
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :وزیر ترابری
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :رئیس جمهور
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :ترک اصیل!
-STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}ساخت ساختمان مرکزی
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}ساخت / دیدن ساختمان مرکزی
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}ساختمان مرکزی را نمی شود اینجا ساخت ...
-STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}دیدن ساختمان مرکزی
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}تغییر دادن اندازه ی صفحه
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}ارزش شرکت: {WHITE}{CURRENCY}
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}25% سهام شرکت را بخر
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}25% سهام شرکت را بفروش
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}25% سهام این شرکت را بخر
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}25% سهام این شرکت را بفروش
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}نمی شود 25% سهام این شرکت را خرید
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}نمی شود 25% سهام این شرکت را فروخت
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% توسط {COMPANY} خریداری شده)
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} توسط {STRING} خریداری شد!
-
-
-
 ##id 0x8000
+# Vehicle names
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (بخار)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (دیزل)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
@@ -1367,320 +2084,31 @@ STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Flashbang Wizze
 STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :هلیکوپترTricario
 STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :هلیکوپترGuru X2
 STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :هلیکوپترPowernaut
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}پیغام از سازنده ی وسیله نقلیه
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}ما به تازگی {STRING} را طراحی کرده ایم- آیا مایلید در یک سال اولان را به شگل انحصاری مورد تست قرار دهید تا نحوه عملکرد وسیله را قبل از عرضه ی جهانی مورد بررسی قرار دهیم؟
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :لوکوموتیو راه آهن
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ماشین جاده ای
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :هواپیما
-STR_ENGINE_PREVIEW_SHIP                                         :کشتی
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :لوکوموتیو مونوریل
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :لوکوموتیو ریل مغناطیسی
 
 ##id 0x8800
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}شهروندان ورود اولین قطار را به {STATION} تبریک گفتند!
-STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (جزئیات)
-STR_ORDER                                                       :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
-STR_ORDER_SELECTED                                              :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+# Formatting of some strings
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_COMPANY_NUM                                          :(شرکت {COMMA})
+STR_FORMAT_GROUP_NAME                                           :گروه {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
+STR_DEFAULT_SIGN_NAME                                           :علامت
+STR_COMPANY_SOMEONE                                             :یک نفر{SKIP}{SKIP}
 
 
+# Viewport strings
 
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
 
-STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}خالی
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} از {STATION}
-STR_DEPOT_NO_ENGINE                                             :{BLACK}-
-STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}قطار بسیار طولانی شده
+STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
 
-STR_ORDERS_SKIP_BUTTON                                          :{BLACK}رها کردن
-STR_ORDERS_DELETE_BUTTON                                        :{BLACK}پاک کردن
-STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}برو به
-STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (دستورات)
-STR_ORDERS_END_OF_ORDERS                                        :{SETX 10}- - پایان دستورات - -
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   مدل: {LTBLUE}{NUM}{BLACK} قیمت: {LTBLUE}{CURRENCY}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}  قیمت: {LTBLUE}{CURRENCY}
-STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
-STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}پر / خالی کردن
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}برای دستورات بیشتر جا نداریم
-STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}دستورات بسیار زیاد شده اند
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}نمی شود دستور جدید قرار داد ...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}نمی شود دستور را حذف کرد
-STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}این دستور تغییر نمی کند...
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE} ...این وسیله را نمی توان حرکت داد
-STR_QUANTITY_N_A                                                :N/A{SKIP}
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}مسیری به ایستگاه راه آهن پیدا نمیشود
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}فاصله ی زمانی بین تعمیرات دوره ای: {LTBLUE}{COMMA}روز {BLACK}   آخیرین تعمسرات: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}قطار را مجبور کن بدون صبر برای علامت ترخیص شروع به حرکت کند
-STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}برعکس کردن جهت حرکت قطار
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}افزایش مدت سرویس
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}کاهش مدت سرویس
-STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}نمایش مشخصات محموله در حال حمل
-STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}نمایش مشخصات قطار
-STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}نمایش ظرفیت هر وسیله
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}لیست دستورات - برای مشخص کردن دستور روی آن کلیک کنید. Ctrl+click به ایستگاه میرود
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}لغو دستور فعلی و شروع بعدی. Ctrl+Click دستور انتخاب شده را لغو می کند
-STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}پاک کردن دستور مشخص شده
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}وارد کردن دستور جدید قبل از دستور مشخص شده. یا اضافه کردن آن به آخر لیست
-STR_VEHICLE_STATUS_STOPPED                                      :{RED}متوقف شده
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}در هنگام خطر نمی توان علامت عبور قطار را داد
-STR_VEHICLE_STATUS_CRASHED                                      :{RED}تصادف کرده!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}تصادف قطار!{}{COMMA} مرگ در انفجار حاصل از برخورد
-STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}جهت قطار را نمی شود تغییر داد...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}نمیتوان جهت حرکت وسیله را معکوس کرد...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}نمیتوان جهت وسایلی که از چند قطعه تشکیل شده اند را معکوس کرد
-STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}پاک کردن زمان
-
-
-
-
-
-##id 0x9000
-
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}شهروندان ورود اولین اتوبوس را به . . .{}{STATION} تبریک گفتند!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}شهروندان ورود اولین کامیون را به . . .{}{STATION} تبریک گفتند!
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}تصادف ماشین!{}راننده پس از تصادف با قطار در آتش سوخت
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}تصادف ماشین!{}راننده پس از تصادف با قطار{COMMA} در آتش سوخت
-
-
-##id 0x9800
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}ساخت بندر
-
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}جشن گرفتن شهروندان. . . {} اولین کشتی به {STATION} رسید!
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}یک شناور به عنوان نمایانگر راه قرار بده
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}نمیتوان اینجا شناوری قرار داد
-STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (تعمیر مجدد)
-STR_REFIT_TITLE                                                 :{GOLD}انتخاب محموله قابل حمل:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}ظرفیت جدید : {GOLD}{CARGO}{}{BLACK} بهای تعمیر مجدد: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_REFITTABLE                                    :(قابل تعمیر)
-
-##id 0xA000
-STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}فرودگاه ها
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}نمی توان اینجا فرودگاه ساخت. . .
-STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}هواپاما در حال پرواز است
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}هواپیما باید در آشیانه متوقف شود
-STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :ساختمان فرودگاه
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}ساخت فرودگاه
-
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}جشن شهروندان . . .{}اولین هواپیما به {STATION} می رسد!
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}تصادف هواپیما!{}{COMMA} مرگ در انفجار در {STATION}
-STR_TINY_BLACK_STATIONL                                         :{TINYFONT}{BLACK}{STATION}
-
-
-##id 0xB000
-
-
-
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
-############ Those following lines need to be in this order!!
-############ End of order list
-
-
-
-
-
-
-
-
-
-
-
-
-############ Vehicle lists
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}قطارها-برای اطلاعات بیشتر روی قطار کلیک کنید
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}کشتی ها - برای اطلاعات بیشتر روی کشتی کلیک کنید
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}هواپیما - برای اطلاعات بیشتر روی هواپیما کلیک کنید
-
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} قطار{P "" s}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} ماشین{P "" s}
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} هواپیما
-
-
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE}در آشیانه در حال انتظار است
-
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}تعمیر مجدد کشتی
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}تعمیر مجدد هواپیما
-
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}تعمیر مجدد کشتی باری برای حمل محموله مشخص شده
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}تعمیر جدید هواپیما برای حمل  محموله ی مشخص شده
-
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}انتخاب نوع محموله ای که این کشتی باید حمل کند
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}انتخاب نوع جدید محموله برای حمل با هواپیما
-
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION}آشیانه هواپیما
-
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}نام گذاری قطار
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}نام گذاری ماشین
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}نام گذاری کشتی
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}نامگذاری هواپیما
-
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}نام گذاری قطار
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}نام گذاری کشتی
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}نامگذاری هواپیما
-
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}قطار در راه است
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}ماشین در جاده است
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}قطار در راه است
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}هواپیما در راه است
-
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}نمی توان این کشتی را تعمیر کرد. . .
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}نمی توان هواپیما را تعمیر کرد. . .
-
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}نمیتوان برای قطار نام انتخاب کرد...
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}نمیتوان برای این کشتی نام انتخاب کرد
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}. . . نمیتوان نام هواپیما را انتخاب کرد
-
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}قطار را نمی شود حرکت داد / متوقف کرد...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}نمی شود کشتی را حرکت داد / متوقف کرد ...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}نمیتوان هواپاما را متوقف/آغاز به کار کرد
-
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}نمیتوان هواپیما را به آشیانه فرستاد. . .
-
-STR_ERROR_CAN_T_BUILD_TRAIN                                     :{WHITE}نمیشود قطار  ساخت ...
-STR_ERROR_CAN_T_BUILD_ROAD_VEHICLE                              :{WHITE}نمی شود ماشین ساخت...
-STR_ERROR_CAN_T_BUILD_SHIP                                      :{WHITE}نمی شود کشتی ساخت...
-STR_ERROR_CAN_T_BUILD_AIRCRAFT                                  :{WHITE}نمی توان هواپیما را ساخت
-
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}نمی شود نوع قطار ها را تغییر نام داد...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}نمی شود انواع ماشین ها را تغییر نام داد...
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}نمی توان نام جدید را انتخاب کرد
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}نمیتوان نام جدید نوع هواپیما را انتخاب کرد
-
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}نمی شود قطار را فروخت...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}نمیشود ماشین را فروخت...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}کشتی فروخته نمی شود...
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}نمیتوان هواپیما را فروخت
-
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}فعالیت فعلی قطار - برای توقف/شروع حرکت قطار اینجا کلیک کن
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}عمل فعلی کشتی - برای شروع/توقف کشتی اینجا کلیک کنید
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}عمل فعلی هواپیما - برای توقف/شروع کار هواپیما اینجا کلیک کنید
-
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}نمایش دستورات قطار
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}نمایش وظایف کشتی
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}نمایش وظایف هواپیما
-
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}نمای اصلی جایگاه قطار
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}نمای اصلی از جایگاه کشتی
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}نمای اصلی از جایگاه هواپیما
-
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}این قطار را به ایستگاه راه آهن بفرست. Ctrl+Click فقط قطار را سرویس میکند
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}فرستادن کشتی به لنگرگاه. ctrl+click فقط سرویس میکند
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}ارسال هواپیما به آشیانه. Ctrl+Click  فقط سرویس می کند
-
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}نمایش مشخصات قطار
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}نمایش مشخصات کشتی
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}نمایش مشخصات هوا پیما
-
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}تعمیر مجدد کشتی باری برای حمل نوع دیگری از محموله ها
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}تعمیر مجدد هواپیما برای حمل نوع دیگری از محموله ها
-
-
-
-
-
-
-
-STR_BUILD_VEHICLE_TRAIN_RAIL_CAPTION                            :{WHITE}قطار جدید
-STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}قطار جدید مونوریل
-STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}قطار جدید ریل مغناطیسی
-
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}وسایل ریل خط آهن
-STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}ماشین های جدید
-STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}هواپیمای جدید
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_BUTTON                    :{BLACK}ساخت وسیله نقلیه
-STR_BUILD_VEHICLE_ROAD_VEHICLE_BUILD_VEHICLE_BUTTON             :{BLACK}ساخت وسیله نقلیه
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_BUTTON                 :{BLACK}ساخت هواپیما
-
-STR_BUILD_VEHICLE_TRAIN_LIST_TOOLTIP                            :{BLACK}لیست انتخاب قطار - برای اطلاعات بیشتر روی وسیله کلیک کنید
-STR_BUILD_VEHICLE_SHIP_LIST_TOOLTIP                             :{BLACK}لیست انتخاب کشتی - برای اطلاعات بیشتر روی کشتی کلیک کنید
-STR_BUILD_VEHICLE_AIRCRAFT_LIST_TOOLTIP                         :{BLACK}لیست انتخاب هواپیما - برای اطلاعات بیشتر روی هواپیما کلیک کنید
-
-STR_BUILD_VEHICLE_TRAIN_BUILD_VEHICLE_TOOLTIP                   :{BLACK}قطار مشخص شده را بخر
-STR_BUILD_VEHICLE_SHIP_BUILD_VEHICLE_TOOLTIP                    :{BLACK}کشتی مشخص شده را بساز
-STR_BUILD_VEHICLE_AIRCRAFT_BUILD_VEHICLE_TOOLTIP                :{BLACK}ساخت هواپیمای مشخص شده
-
-STR_BUILD_VEHICLE_TRAIN_RENAME_BUTTON                           :{BLACK}تغییر نام
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                    :{BLACK}تغییر نام
-STR_BUILD_VEHICLE_SHIP_RENAME_BUTTON                            :{BLACK}نام گذاری مجدد
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_BUTTON                        :{BLACK}نام گذاری مجدد
-
-STR_BUILD_VEHICLE_TRAIN_RENAME_TOOLTIP                          :{BLACK}تغییر نام نوع قطار
-STR_BUILD_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                   :{BLACK}تغییر نام انواع ماشین ها
-STR_BUILD_VEHICLE_SHIP_RENAME_TOOLTIP                           :{BLACK}نام گذاری مجدد نوع کشتی
-STR_BUILD_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                       :{BLACK}نامگذاری مجدد نوع هواپیما
-
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}تغییر نام انواع قطار ها
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}تغییر نام انواع ماشین ها
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}نام گذاری مجدد نوع کشتی
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}نامگذاری مجدد نوع هواپیما
-
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}وسیله ی جدید
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}وسایل نقلیه ی جدید
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK} هواپیمای جدید
-
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}قطارها-برای اطلاعات بیشتر روی قطار کلیک کنید. وسیله را بکشید تا آن را از قطار خارج/وارد کنید
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}کشی ها -برای اطلاعات بر روی کشتی کلیک کنید
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}هواپیما - برای اطلاعاتبیشتر روی هواپیماکلیک کنید
-
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}ساخت قطار جدید
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}ساخت کشتی جدید
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}ساخت هواپیمای جدید
-
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}قطار را برای فروش به اینجا بکشید
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}کشتی را به اینجا بکشید تا فروخته شود
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}برای فروش هواپیما آن را به اینجا بکش
-
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}نمای اصلی جایگاه ایستگاه قطار
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}نمای اصلی از جایگاه لنگرگاه کشتی
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}نمای اصلی از جایگاه آشیانه
-
-
-### depot strings
-
-
-
-
-
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}هواپیما در دسترس نیست
-
-
-
-
-
-
-
-############ Lists rail types
-
-
-############ End of list of rail types
-
-
-
-########### For showing numbers in widgets
-
-
-########### String for New Landscape Generator
-
-
-
-# Strings for map borders at game generation
-
-########### String for new airports
-
-
-############ Tooltip measurment
-
-
-
-
-
-##### Mass Order
-
-
-
-
-#### String control codes and their formatting
+# Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
@@ -1704,26 +2132,24 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-STR_FORMAT_COMPANY_NUM                                          :(شرکت {COMMA})
-STR_FORMAT_GROUP_NAME                                           :گروه {COMMA}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-
+# Slightly 'raw' stringcodes with colour or size
 STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
+STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
+STR_TINY_BLACK_STATIONL                                         :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_WHITE_STRINGN                                               :{WHITE}{STRING}
+STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 
 STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
 STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
@@ -1740,110 +2166,3 @@ STR_BLACK_6                                                     :{BLACK}6
 STR_BLACK_7                                                     :{BLACK}7
 
 
-#### Improved sign GUI
-
-########
-
-
-############ Face formatting
-########
-
-############ signal GUI
-########
-
-############ on screen keyboard
-########
-
-############ AI GUI
-STR_INTRO_AI_SETTINGS                                           :{BLACK}تنظیمات هوش مصنوعی
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}نمایش تنظیمات هوش مصنوعی
-STR_AI_DEBUG                                                    :{WHITE}رفع اشکالات هوش مصنوعی
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}نام هوش مصنوعی
-STR_AI_DEBUG_RELOAD                                             :{BLACK}بازگشایی مجدد هوش مصنوعی
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}از بین بردن هوش مصنوعی. بازگشایی اسکریپت. و شروع مجدد هوش مصنوعی
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}صفحه رفع اشکال هوش مصنوعی فقط برای سرور قابل دسترس است
-STR_AI_CONFIG_CAPTION                                           :{WHITE}تنظیمات هوش مصنوعی
-STR_AI_CONFIG_CHANGE                                            :{BLACK}انتخاب هوش مصنوعی
-STR_AI_CONFIG_CONFIGURE                                         :{BLACK}تنظیم
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}باز گشایی یک هوش مصنوعی دیگر
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}تنظبم پارامتر های مربوط به هوش مصنوعی
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}همه هوشهای مصنوعی که در بازی بعد بازگشایی می شوند
-STR_AI_LIST_CAPTION                                             :{WHITE}هوش مصنوعی های موجود
-STR_AI_LIST_TOOLTIP                                             :{BLACK}برای انتخلب هوش مصنوعی کلیک کنید
-STR_AI_LIST_ACCEPT                                              :{BLACK}قبول
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}انتخاب هوش مصنوعی مشخص شده
-STR_AI_LIST_CANCEL                                              :{BLACK}لغو
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}هوش مصنوعی را تغییر نده
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}بستن
-STR_AI_SETTINGS_RESET                                           :{BLACK}بازنشاندن
-STR_AI_CONFIG_HUMAN_PLAYER                                      :بازیکن آدمیزاد
-STR_AI_CONFIG_RANDOM_AI                                         :انتخاب هوش مصنوعی به صورت اتفاقی
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}پارامترهای هوش مصنوعی
-STR_AI_LIST_VERSION                                             :{BLACK}نسخه: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}آدرس اینترنتی: {STRING}
-########
-
-############ town controlled noise level
-########
-
-############ Downloading of content from the central server
-STR_CONTENT_NO_ZLIB                                             :{WHITE}نرم افزار OpenTTD بدون استفاده از پشتیبانی "zlib" ساخته شده است
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... امکان دانلود این محتوی وجود ندارد!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :گرافیک پایه
-STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
-STR_CONTENT_TYPE_AI                                             :هوش مصنوعی
-STR_CONTENT_TYPE_AI_LIBRARY                                     :مجموعه ماخذ AI
-STR_CONTENT_TYPE_SCENARIO                                       :سناریو
-STR_CONTENT_TYPE_HEIGHTMAP                                      :نقشه
-STR_CONTENT_TITLE                                               :{WHITE} در حال دانلود
-STR_CONTENT_TYPE_CAPTION                                        :{BLACK}نوع
-STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}نوع محتوی
-STR_CONTENT_NAME_CAPTION                                        :{BLACK}نام
-STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}نام محتوی
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}برای مشاهده ی جزئیات روی خط کلیک کنید {}برای اتنخاب برای دانلود روی چک باکس کلیک کنید
-STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}انتخاب تمامی موارد
-STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}علامت گذاری تمامی موارد را برای دانلود
-STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}انتخاب موارد ارتقاع
-STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK} علامت گذاری برای دانلود ِ تمام مواردی که برای ارتقاع محتوی موجود لازم می باشد
-STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}پاک کردن تمام انتخاب ها
-STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}علامت گذاری تمامی موارد را برای عدم دانلود
-STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}وارد کردن رشته پایش
-STR_CONTENT_FILTER_TOOLTIP                                      :{BLACK}وارد کردن واژه کلیدی برای پایش لیست
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}برچسب/پایش بر اساس نام
-STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}دانلود
-STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}شروع به دانلود موارد انتخاب شده
-STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}حجم کل دانلود: {WHITE}{BYTES}
-STR_CONTENT_DETAIL_TITLE                                        :{SILVER}اطلاعات محتوی
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER} شما این گزینه را برای دانلود انتخاب نکرده اید
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}شما این گزینه را برای دانلود انتخاب کرده اید
-STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}این پیوست برای دانلود انتخاب شده است
-STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}شما این را از قبل داشته اید
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}این محتوی ناشناخته است و قابلیت دانلود در OpenTTD را ندارد
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}این مورد جایگزینی برای گزینه ی موجود است {STRING}
-STR_CONTENT_DETAIL_NAME                                         :{SILVER}نام:{WHITE}{STRING}
-STR_CONTENT_DETAIL_VERSION                                      :{SILVER}نسخه: {WHITE}{STRING}
-STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}شرح: {WHITE}{STRING}
-STR_CONTENT_DETAIL_URL                                          :{SILVER}آدرس اینترنتی: {WHITE}{STRING}
-STR_CONTENT_DETAIL_TYPE                                         :{SILVER}نوع: {WHITE}{STRING}
-STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}جحم دانلود: {BYTES}{WHITE}
-STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}دلیل انتخاب: {STRING}{WHITE}
-STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}وابستگی ها: {WHITE}{STRING}
-STR_CONTENT_DETAIL_TAGS                                         :{SILVER}برچسب ها: {WHITE}{STRING}
-
-STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}در حال دانلود...
-STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}در حال درخواست فایل...
-STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}دانلود شده {STRING} ({NUM} of {NUM})
-STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}اتمام دانلود
-STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} از {BYTES} دانلود شده ({NUM} %)
-
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}امکان برقراری ارتباط با سرور ممکن نیست...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}دانلود ناموفق بود...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ارتباط از بین رفت
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... فایل قابلیت درج ندارد
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}بازگشایی فایل دانلود شده ممکن نیست
-
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}چک کردن محتوی آنلاین
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}بررسی وجود مجموعه ها و به روز رسانی های جدید در اینترنت
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}یافتن مجموعه ای که کم است در اینترنت
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK} بررسی اینکه آیا مجموعه ای که کم است در اینترنت یافت می شود یا نه
-########

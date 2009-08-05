@@ -13,18 +13,11 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}نقشے کے کنارے سے باہر
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}نقشے کے کنارے سے زیادہ قریب
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}ناکافی پیسہ - {CURRENCY} مزید چاہیے
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_EMPTY                                                       :
-STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}ہموار زمین چاہیے
-STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}منتظر: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} سے براستہ ہے {STATION})
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}منظور کرتا ہے: {WHITE}
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}منظور کرتا ہے: {GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}فراہم کرتا ہے: {GOLD}
+STR_JUST_NOTHING                                                :کچھ نہیں
+
+# Cargo related strings
+# Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :مسافر
 STR_CARGO_PLURAL_COAL                                           :کویلہ
@@ -57,6 +50,8 @@ STR_CARGO_PLURAL_TOFFEE                                         :ٹافی
 STR_CARGO_PLURAL_BATTERIES                                      :بیٹریاں
 STR_CARGO_PLURAL_PLASTIC                                        :پلاسٹک
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :گیسی مشروب
+
+# Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :مسافر
 STR_CARGO_SINGULAR_COAL                                         :کویلہ
@@ -89,17 +84,17 @@ STR_CARGO_SINGULAR_TOFFEE                                       :ٹافی
 STR_CARGO_SINGULAR_BATTERY                                      :بیٹری
 STR_CARGO_SINGULAR_PLASTIC                                      :پلاسٹک
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :گیسی مشروب
+
+# Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} مسافر{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} کویلہ
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}یہ نہیں کر سکتا۔۔۔
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}یہ جگہ صاف نہیں کر سکتا۔۔۔
 
-STR_QUIT_CAPTION                                                :{WHITE}باہر نکلو
-STR_QUIT_YES                                                    :{BLACK}ہاں
-STR_QUIT_NO                                                     :{BLACK}نہیں
+# Two letter abbreviation of cargo name
 
-STR_JUST_NOTHING                                                :کچھ نہیں
+# 'Mode' of transport for cargoes
+
+# Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :گہرا نیلا
 STR_COLOUR_PALE_GREEN                                           :ہلکا سبز
 STR_COLOUR_PINK                                                 :گلابی
@@ -114,13 +109,153 @@ STR_COLOUR_ORANGE                                               :نارنجی
 STR_COLOUR_BROWN                                                :بھورا
 STR_COLOUR_GREY                                                 :سلیٹی
 STR_COLOUR_WHITE                                                :سفید
-STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}کھیل میں بہت زیادہ سواریاں
+
+# Units used in OpenTTD
+
+
+
+
+
+
+
+# Common window strings
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK} (ترتیب کا طریقہ منتخب کریں (کم ہوتا/بڑھتا
+STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}ترتیب کا طریقہ منتخب کریں
+STR_BUTTON_SORT_BY                                              :{BLACK}سے ترتیب دو
 STR_BUTTON_LOCATION                                             :{BLACK}جگہ
+
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}کھڑکی بند کرو
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}کھڑکی کا نام - کھڑکی کو ہلانے کیلیے اسے پکڑ کر ہلاو
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}زمین کے ایک مربے پر عمارتیں وغیرہ گراو
+
+# Query window
+
+# On screen keyboard window
+
+# Measurement tooltip
+
+
+# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+STR_SORT_BY_POPULATION                                          :{BLACK}آبادی
+STR_SORT_BY_NAME                                                :{BLACK}نام
+STR_SORT_BY_DATE                                                :{BLACK}تاریخ
+STR_SORT_BY_PRODUCTION                                          :پیداوار
+STR_SORT_BY_TYPE                                                :طرز
+STR_SORT_BY_TRANSPORTED                                         :منتقل شدہ
+STR_SORT_BY_NUMBER                                              :تعداد
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :پچھلے سال کا منافع
+STR_SORT_BY_CARGO_CAPACITY                                      :سامان کی گنجایش
+
+# Tooltips for the main toolbar
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}کمپنی کی مالیاتی معلومات دکھاو
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}کمپنی کی عام معلومات دکھاو
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}کمپنی کی ریل گاڑیوں کی فہرست دکھاو
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}کمپنی کی سڑک کی سواریوں کی فہرست دکھاو
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}کمپنی کی کشتیوں کی فہرست دکھاو
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}کمپنی کے ہوای جہازوں کی فہرست دکھاو
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}بڑا کر کے دکھاو
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}چھوٹا کر کے دکھاو
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}ریل کی پٹری بچھاو
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}سڑکیں بناو
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}بندرگاہیں بناو
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ہوای اڈے بناو
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}زمینی رقبہ کی معلومات
+
+# Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}شروع کرنے کی تاریخ کو ایک سال پیچھے کرو
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}شروع کرنے کی تاریخ کو ایک سال آگے کرو
+
+############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :اونچائی کا نقشہ دکھائو
+STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
+STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکلو
+############ range for SE file menu starts
+
+############ range for settings menu starts
+############ range ends here
+
+############ range for file menu starts
+STR_FILE_MENU_SAVE_GAME                                         :کھیل محفوظ کرو
+STR_FILE_MENU_LOAD_GAME                                         :کھیل دوبارہ چڑھاو
+STR_FILE_MENU_QUIT_GAME                                         :کھیل چھوڑ دو
+STR_FILE_MENU_EXIT                                              :باہر نکلو
+############ range ends here
+
+############ range for map menu starts
+############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+############ both ranges ends here
+
+############ range for subsidies menu starts
+############ range ends here
+
+############ range for graph menu starts
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :سامان کی ادایگی کا تناسب
+############ range ends here
+
+############ range for company league menu starts
+############ range ends here
+
+############ range for industry menu starts
+############ range ends here
+
+############ range for railway construction menu starts
+############ range ends here
+
+############ range for road construction menu starts
+############ range ends here
+
+############ range for waterways construction menu starts
+############ range ends here
+
+############ range for airport construction menu starts
+############ range ends here
+
+############ range for landscaping menu starts
+############ range ends here
+
+############ range for music menu starts
+############ range ends here
+
+############ range for message menu starts
+############ range ends here
+
+############ range for about menu starts
+############ range ends here
+
+############ range for days starts (also used for the place in the highscore window)
+############ range for days ends
+
+############ range for months starts
+
+############ range for months ends
+
+# Graph window
+
+
+
+
+# Graph key window
+
+# Company league window
+
+# Performance detail window
+############ Those following lines need to be in this order!!
+############ End of order list
+
+# Music window
+
+# Playlist window
+
+# Highscore window
+
+# Smallmap window
+
 STR_SMALLMAP_TYPE_VEHICLES                                      :سواریاں
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :صنعتیں
 STR_SMALLMAP_TYPE_ROUTES                                        :راستے
 STR_SMALLMAP_TYPE_VEGETATION                                    :سبزہ
 STR_SMALLMAP_TYPE_OWNERS                                        :مالکین
+
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}سڑکیں
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}اڈے/ہوایی اڈے/بندرگاہیں
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}عمارتیں/صنعتیں
@@ -138,143 +273,17 @@ STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}جنگل
 
 
-
-
-
-
-
-
-
-
-
-
-
-############ range for menu starts
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :سامان کی ادایگی کا تناسب
-############ range for menu ends
-
-STR_ABOUT_OPENTTD                                               :{WHITE}اوپن ٹی ٹی ڈی کے متعلق
-STR_FILE_MENU_SAVE_GAME                                         :کھیل محفوظ کرو
-STR_FILE_MENU_LOAD_GAME                                         :کھیل دوبارہ چڑھاو
-STR_FILE_MENU_QUIT_GAME                                         :کھیل چھوڑ دو
-STR_FILE_MENU_EXIT                                              :باہر نکلو
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}کیا آپ کو یقین ہے کہ آپ اس کھیل کو چھوڑنا چاہ رہے ہیں؟
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}کھیل چھوڑ دو
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK} (ترتیب کا طریقہ منتخب کریں (کم ہوتا/بڑھتا
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}ترتیب کا طریقہ منتخب کریں
-STR_BUTTON_SORT_BY                                              :{BLACK}سے ترتیب دو
-
-### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-STR_SORT_BY_POPULATION                                          :{BLACK}آبادی
-STR_SORT_BY_NAME                                                :{BLACK}نام
-STR_SORT_BY_DATE                                                :{BLACK}تاریخ
-STR_SORT_BY_PRODUCTION                                          :پیداوار
-STR_SORT_BY_TYPE                                                :طرز
-STR_SORT_BY_TRANSPORTED                                         :منتقل شدہ
-STR_SORT_BY_NUMBER                                              :تعداد
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :پچھلے سال کا منافع
-STR_SORT_BY_CARGO_CAPACITY                                      :سامان کی گنجایش
-
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}کسی قسم کا کویی سامان انتظار نہیں کر رہا ہے
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}تمام سہولتوں کا انتخاب کرو
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}تمام قسم کا سامان کا انتخاب کرو  (بشمول غیر منتظر سامان کے)
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}اس قسم کی گاڑیوں کےلیے دستیاب انجنوں کی فہرست دیکھو
-STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرست کا انتظام کرو
-
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}دستیاب ریل گاڑیاں
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}دستیاب گاڑیاں
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}دستیاب کشتیاں
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}دستیاب ہوایی جہاز
-
-
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}کمپنی کی مالیاتی معلومات دکھاو
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}کمپنی کی عام معلومات دکھاو
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}کمپنی کی ریل گاڑیوں کی فہرست دکھاو
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}کمپنی کی سڑک کی سواریوں کی فہرست دکھاو
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}کمپنی کی کشتیوں کی فہرست دکھاو
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}کمپنی کے ہوای جہازوں کی فہرست دکھاو
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}بڑا کر کے دکھاو
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}چھوٹا کر کے دکھاو
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}ریل کی پٹری بچھاو
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}سڑکیں بناو
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}بندرگاہیں بناو
-STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ہوای اڈے بناو
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}زمینی رقبہ کی معلومات
-STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}کھڑکی بند کرو
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}کھڑکی کا نام - کھڑکی کو ہلانے کیلیے اسے پکڑ کر ہلاو
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}زمین کے ایک مربے پر عمارتیں وغیرہ گراو
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ نیچے کرو
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ اونچا کرو
-
-############ range for service numbers starts
-############ range for service numbers ends
-
-
-############ range for days starts (also used for the place in the highscore window)
-############ range for days ends
-
-############ range for months starts
-
-############ range for months ends
-
-
-
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}دریا رکھو.
-STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}مٹائو
-STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}اس شہر کو پورا مٹا دو
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :اونچائی کا نقشہ دکھائو
-STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
-STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکلو
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}اونچائی کے نقشے کو کھیلو
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}ایک نیا کھیل شروع کرو، اونچائی کے نقشے کو زمین بنا کر
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}...صرف ان شہروں میں بن سکتا ہے جن کی آبادی ۱۲۰۰ سے زیادہ ہے
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}شروع کرنے کی تاریخ کو ایک سال پیچھے کرو
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}شروع کرنے کی تاریخ کو ایک سال آگے کرو
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...پل کے دونوں کنارے زمین پر ہونے چاہییں
-STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{G=m}{BLACK}چھوٹا
-STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{G=m}{BLACK}درمیانہ
-STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{G=m}{BLACK}بڑا
-STR_FOUND_TOWN_SIZE_RANDOM                                      :{G=m}{BLACK}کوئی سا
-STR_FOUND_TOWN_CITY                                             :{BLACK}شہر
-STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}شہر کا حجم منتخب کرو
-STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}شہر کا حجم:
-
-STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}شہر کی سڑکوں کا پھیلائو:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}اس شہر کیلئے سڑکوں کا بھیلائو منتخب کرو
-STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}اصلی
-STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}بہتر سڑکیں
-STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{G=f}{BLACK}کوئٰ سی
-
-STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
+# Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}آخری پیغام یا خبر دکھائو
+STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
+
+# News message history
+STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
+
+# Message settings window
 STR_NEWS_MESSAGES_OFF                                           :بند
 STR_NEWS_MESSAGES_SUMMARY                                       :خلاصہ
 STR_NEWS_MESSAGES_FULL                                          :مکمل
-STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-
-############ range for menu starts
-############ range ends here
-
-############ range for menu starts
-############ range ends here
-
-
-############ 'Display map' dropdown. In SE, there is one more item.
-############ end of the 'Display map' dropdown
-
-
-
-
-############ range for menu starts
-############ range ends here
-
-
-
-
-############ start of townname region
-############ end of townname region
-
-
 
 
 
@@ -296,6 +305,58 @@ STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {C
 
 
 
+# Extra view window
+
+# Game options window
+
+############ start of currency region
+############ end of currency region
+
+
+############ start of measuring units region
+############ end of measuring units region
+
+
+
+############ start of townname region
+############ end of townname region
+
+
+
+
+
+
+
+
+
+# Custom currency window
+
+
+
+
+
+
+# Difficulty level window
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+
+
+
+
+
+
+
+
+
+
+# Advanced settings window
 
 
 
@@ -311,7 +372,42 @@ STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {C
 
 
 
-############ generic strings for settings
+
+
+
+
+
+
+# Intro window
+
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}اونچائی کے نقشے کو کھیلو
+
+
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}ایک نیا کھیل شروع کرو، اونچائی کے نقشے کو زمین بنا کر
+
+
+
+# Quit window
+STR_QUIT_CAPTION                                                :{WHITE}باہر نکلو
+STR_QUIT_YES                                                    :{BLACK}ہاں
+STR_QUIT_NO                                                     :{BLACK}نہیں
+
+# Supported OSes
+
+# Abandon game
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}کھیل چھوڑ دو
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}کیا آپ کو یقین ہے کہ آپ اس کھیل کو چھوڑنا چاہ رہے ہیں؟
+
+# Cheat window
+
+# Livery window
+
+
+
+# Face selection window
+
+
+# Network server list
 
 
 
@@ -319,100 +415,239 @@ STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {C
 
 
 
+# Start new multiplayer server
 
 
 
 
 
+# Network game languages
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+# Network game lobby
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-############ network gui strings
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Network connecting window
 
 ############ Leave those lines in this order!!
+
 ############ End of leave-in-this-order
 
 
 
+# Network company list added strings
+
+# Network client list
 
 
 
+# Network set password
+
+# Network company info join/password
+
+# Network chat
+
+
+# Network messages
 
 ############ Leave those lines in this order!!
-
 ############ End of leave-in-this-order
 
-
-
-
-############ Leave those lines in this order!!
-############ End of leave-in-this-order
+# Network related errors
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 
+# Content downloading window
+
+# Order of these is important!
+
+# Content downloading progress window
+
+# Content downloading error messages
+
+# Transparency settings window
+
+# Base for station construction window(s)
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}منظور کرتا ہے: {GOLD}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}فراہم کرتا ہے: {GOLD}
+
+# Join station window
+
+
+# Rail construction toolbar
+
+
+# Rail depot construction window
+
+# Rail waypoint construction window
+
+# Rail station construction window
+
+
+
+# Signal window
+
+# Bridge selection window
+
+
+# Road construction toolbar
+
+# Road depot construction window
+
+# Road vehicle station construction window
+
+# Waterways toolbar (last two for SE only)
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}دریا رکھو.
+
+# Ship depot construction window
+
+# Dock construction window
+
+# Airport toolbar
+
+# Airport construction window
 
 
 
 
-############ end network gui strings
+# Landscaping toolbar
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ نیچے کرو
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ اونچا کرو
 
-##### PNG-MAP-Loader
+# Tree planting window (last two for SE only)
 
-
-
-##id 0x0800
-
-##id 0x1000
+# Land generation window (SE)
 
 
+# Town generation window (SE)
 
-##id 0x1800
+STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}شہر کا حجم:
+STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{G=m}{BLACK}چھوٹا
+STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{G=m}{BLACK}درمیانہ
+STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{G=m}{BLACK}بڑا
+STR_FOUND_TOWN_SIZE_RANDOM                                      :{G=m}{BLACK}کوئی سا
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}شہر کا حجم منتخب کرو
+STR_FOUND_TOWN_CITY                                             :{BLACK}شہر
 
-##id 0x2000
+STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}شہر کی سڑکوں کا پھیلائو:
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}اس شہر کیلئے سڑکوں کا بھیلائو منتخب کرو
+STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}اصلی
+STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}بہتر سڑکیں
+STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{G=f}{BLACK}کوئٰ سی
 
-##id 0x2800
+# Fund new industry window
 
-##id 0x3000
+# Land area window
+
+# Description of land area of different tiles
+
+
+
+# Houses come directly from their building names
+
+
+
+
+# Industries come directly from their industry names
+
+
+
+
+
+
+# About OpenTTD window
+STR_ABOUT_OPENTTD                                               :{WHITE}اوپن ٹی ٹی ڈی کے متعلق
+
+# Save/load game/scenario
+
+
+# World generation
+
+# Strings for map borders at game generation
+
+
+
+# SE Map generation
+
+
+# Map generation progress
+
+# NewGRF settings
+
+
+
+
+
+
+# NewGRF add window
+
+# NewGRF (self) generated warnings/errors
+
+# NewGRF related 'general' warnings
+
+
+
+# NewGRF 'it's broken' warnings
+
+
+# Sign list window
+
+# Sign window
+
+
+# Town directory window
+
+# Town view window
+
+STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}مٹائو
+STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}اس شہر کو پورا مٹا دو
+
+
+# Town local authority window
+
+
+
+# Subsidies window
+
+# Station list window
+STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}تمام سہولتوں کا انتخاب کرو
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}تمام قسم کا سامان کا انتخاب کرو  (بشمول غیر منتظر سامان کے)
+STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}کسی قسم کا کویی سامان انتظار نہیں کر رہا ہے
+
+# Station view window
+STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}منتظر: {WHITE}{STRING}
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} سے براستہ ہے {STATION})
+
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}منظور کرتا ہے: {WHITE}
 
 
 ############ range for rating starts
 ############ range for rating ends
 
-### station view strings
 
 
 
-##id 0x3800
+# Waypoint/buoy view window
 
-##id 0x4000
 
-##id 0x4800
+# Finances window
+
+# Company view
+
+
+
+
+
+
+
+# Industry directory
+
+# Industry view
 
 ############ range for requires starts
 ############ range for requires ends
@@ -421,166 +656,279 @@ STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {C
 ############ range for produces ends
 
 
-##id 0x5000
+# Vehicle lists
 
-##id 0x5800
 
+
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}دستیاب ریل گاڑیاں
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}دستیاب گاڑیاں
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}دستیاب کشتیاں
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}دستیاب ہوایی جہاز
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}اس قسم کی گاڑیوں کےلیے دستیاب انجنوں کی فہرست دیکھو
+
+STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرست کا انتظام کرو
+
+
+
+
+# Group window
+
+
+
+
+
+# Build vehicle window
+
+
+
+
+
+
+
+
+
+# Depot window
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Engine preview window
+
+
+# Autoreplace window
+
+
+
+
+
+
+# Vehicle view
+
+
+
+
+
+
+
+
+
+
+# Messages in the start stop button in the vehicle view
+
+
+
+
+
+# Vehicle details
+
+
+# The next two need to stay in this order
+
+
+
+
+
+
+
+# Extra buttons for train details windows
+
+
+
+
+
+# Vehicle refit
+
+
+
+
+# Order view
+
+
+
+# Order bottom buttons
+
+
+
+
+
+
+
+
+
+
+
+
+# String parts to build the order string
+
+
+
+
+
+
+
+
+
+# Time table window
+
+
+
+
+
+
+
+
+
+# AI debug window
+
+
+# AI configuration window
+
+
+# Available AIs window
+
+
+
+# AI Parameters
+
+# Vehicle loading indicators
+
+# Income 'floats'
+
+# Saveload messages
+
+# Map generation messages
+
+
+
+
+# Screenshot related messages
+
+# Error message titles
+
+# Generic construction errors
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}نقشے کے کنارے سے باہر
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}نقشے کے کنارے سے زیادہ قریب
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}ناکافی پیسہ - {CURRENCY} مزید چاہیے
+STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}ہموار زمین چاہیے
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}یہ نہیں کر سکتا۔۔۔
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}یہ جگہ صاف نہیں کر سکتا۔۔۔
+
+# Local authority errors
+
+# Leveling errors
+
+# Company related errors
+
+
+# Town related errors
+
+# Industry related errors
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}...صرف ان شہروں میں بن سکتا ہے جن کی آبادی ۱۲۰۰ سے زیادہ ہے
+
+# Station construction related errors
+
+
+# Station destruction related errors
+
+
+# Waypoint related errors
+
+
+
+# Depot related errors
+
+
+
+
+
+# Autoreplace related errors
+
+# Rail construction errors
+
+
+# Road construction errors
+
+# Waterway construction errors
+
+# Tree related errors
+
+# Bridge related errors
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...پل کے دونوں کنارے زمین پر ہونے چاہییں
+
+# Tunnel related errors
+
+# Unmovable related errors
+
+# Group related errors
+
+# Generic vehicle errors
+
+
+
+
+
+
+
+
+
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}کھیل میں بہت زیادہ سواریاں
+
+
+# Specific vehicle errors
+
+
+
+# Order related errors
+
+
+# Timetable related errors
+
+# Sign related errors
+
+##id 0x2000
+# Town building names
+
+##id 0x4800
+# industry names
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 
 ##id 0x6020
-
 ############ end of savegame specific region!
 
-##id 0x6800
-
-############ range for difficulty levels starts
-############ range for difficulty levels ends
-
-############ range for difficulty settings starts
-############ range for difficulty settings ends
-
-
-##id 0x7000
-
-
-
 ##id 0x8000
+# Vehicle names
 
 ##id 0x8800
+# Formatting of some strings
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 
 
 
+# Viewport strings
 
 
 
 
-
-
-
-
-
-##id 0x9000
-
-
-
-##id 0x9800
-
-
-##id 0xA000
-
-
-
-##id 0xB000
-
-
-
-############ Those following lines need to be in this order!!
-############ End of order list
-
-
-
-
-
-
-
-
-
-
-
-
-############ Vehicle lists
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### depot strings
-
-
-
-
-
-
-
-
-
-
-
-
-############ Lists rail types
-
-
-############ End of list of rail types
-
-
-
-########### For showing numbers in widgets
-
-
-########### String for New Landscape Generator
-
-
-
-# Strings for map borders at game generation
-
-########### String for new airports
-
-
-############ Tooltip measurment
-
-
-
-
-
-##### Mass Order
-
-
-
-
-#### String control codes and their formatting
+# Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
@@ -604,17 +952,13 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
-
+# Slightly 'raw' stringcodes with colour or size
 STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
@@ -635,28 +979,3 @@ STR_BLACK_4                                                     :{BLACK}۴
 STR_BLACK_5                                                     :{BLACK}۵
 
 
-#### Improved sign GUI
-
-########
-
-
-############ Face formatting
-########
-
-############ signal GUI
-########
-
-############ on screen keyboard
-########
-
-############ AI GUI
-########
-
-############ town controlled noise level
-########
-
-############ Downloading of content from the central server
-
-
-
-########

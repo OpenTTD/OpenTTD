@@ -12,15 +12,10 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Exter la bordo del mapo
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Tro proxim la bordo del mapo
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Ne sat pekunio - requizitas {CURRENCY}
-STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
-STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Plata tereno requizitita
-STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Vartabas: {WHITE}{STRING}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aceptas: {WHITE}
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas: {GOLD}
+STR_JUST_NOTHING                                                :Nulo
+
+# Cargo related strings
+# Plural cargo name
 STR_CARGO_PLURAL_PASSENGERS                                     :Pasajero
 STR_CARGO_PLURAL_COAL                                           :Karbono
 STR_CARGO_PLURAL_MAIL                                           :Posto
@@ -51,6 +46,8 @@ STR_CARGO_PLURAL_TOFFEE                                         :Karamelo
 STR_CARGO_PLURAL_BATTERIES                                      :Baterii
 STR_CARGO_PLURAL_PLASTIC                                        :Plastiko
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gasoza Drinkaji
+
+# Singular cargo name
 STR_CARGO_SINGULAR_PASSENGER                                    :Pasajero
 STR_CARGO_SINGULAR_COAL                                         :Karbono
 STR_CARGO_SINGULAR_MAIL                                         :Posto
@@ -81,21 +78,14 @@ STR_CARGO_SINGULAR_TOFFEE                                       :Karamelo
 STR_CARGO_SINGULAR_BATTERY                                      :Baterio
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastiko
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gasoza Drinkajo
-STR_SMALLMAP_CAPTION                                            :{WHITE}Mapo - {STRING}
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludo Selekti
-STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Sendajo
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Sendajo de {STRING}
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ne povas facas ca...
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Ne povas netigas ca areo....
-STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versiono {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 La kruo OpenTTD
 
-STR_QUIT_CAPTION                                                :{WHITE}Livas
-STR_QUIT_YES                                                    :{BLACK}Yes
-STR_QUIT_NO                                                     :{BLACK}Ne
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Kad tu esas certa ke tu volas livar OpenTTD ed rivenar a {STRING}?
+# Quantity of cargo
 
-STR_JUST_NOTHING                                                :Nulo
+# Two letter abbreviation of cargo name
+
+# 'Mode' of transport for cargoes
+
+# Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Obskur-blua
 STR_COLOUR_PALE_GREEN                                           :Pal-verda
 STR_COLOUR_PINK                                                 :Rozea
@@ -112,14 +102,126 @@ STR_COLOUR_ORANGE                                               :Orangea
 STR_COLOUR_BROWN                                                :Bruna
 STR_COLOUR_GREY                                                 :Griza
 STR_COLOUR_WHITE                                                :Blanka
-STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tro multa vehili en la ludo
+
+# Units used in OpenTTD
+
+
+
+
+
+
+
+# Common window strings
 STR_BUTTON_LOCATION                                             :{BLACK}Loko
+STR_BUTTON_RENAME                                               :{BLACK}Rinomizar
+
+
+# Query window
+STR_BUTTON_CANCEL                                               :{BLACK}Anular
+STR_BUTTON_OK                                                   :{BLACK}OK
+
+# On screen keyboard window
+
+# Measurement tooltip
+
+
+# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+
+# Tooltips for the main toolbar
+
+# Extra tooltips for the scenario editor toolbar
+
+############ range for SE file menu starts
+############ range for SE file menu starts
+
+############ range for settings menu starts
+############ range ends here
+
+############ range for file menu starts
+############ range ends here
+
+############ range for map menu starts
+############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+############ both ranges ends here
+
+############ range for subsidies menu starts
+############ range ends here
+
+############ range for graph menu starts
+STR_GRAPH_MENU_INCOME_GRAPH                                     :Revenuo grafiko
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Livrita kargajo grafiko
+############ range ends here
+
+############ range for company league menu starts
+############ range ends here
+
+############ range for industry menu starts
+############ range ends here
+
+############ range for railway construction menu starts
+############ range ends here
+
+############ range for road construction menu starts
+############ range ends here
+
+############ range for waterways construction menu starts
+############ range ends here
+
+############ range for airport construction menu starts
+############ range ends here
+
+############ range for landscaping menu starts
+############ range ends here
+
+############ range for music menu starts
+############ range ends here
+
+############ range for message menu starts
+############ range ends here
+
+############ range for about menu starts
+############ range ends here
+
+############ range for days starts (also used for the place in the highscore window)
+############ range for days ends
+
+############ range for months starts
+
+############ range for months ends
+
+# Graph window
+
+
+
+
+# Graph key window
+
+# Company league window
+
+# Performance detail window
+STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
+############ Those following lines need to be in this order!!
+############ End of order list
+
+# Music window
+
+# Playlist window
+
+# Highscore window
+
+# Smallmap window
+STR_SMALLMAP_CAPTION                                            :{WHITE}Mapo - {STRING}
+
 STR_SMALLMAP_TYPE_CONTOURS                                      :Konturi
 STR_SMALLMAP_TYPE_VEHICLES                                      :Vehili
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrii
 STR_SMALLMAP_TYPE_ROUTES                                        :Voyi
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vejetado
 STR_SMALLMAP_TYPE_OWNERS                                        :Proprietanto
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Montrar transport-voyi ad la mapo
+STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Montrar vejetado ad la mapo
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Montrar proprietanti ad la mapo
+
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Voyi
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Fervoyo
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stacioni/Aeroportua/Doko
@@ -153,91 +255,15 @@ STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Industrii
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Dezerto
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Nivo
-STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Sendajo
-STR_WHITE_STRINGN                                               :{WHITE}{STRING}
-STR_BUTTON_CANCEL                                               :{BLACK}Anular
-STR_BUTTON_OK                                                   :{BLACK}OK
-STR_BUTTON_RENAME                                               :{BLACK}Rinomizar
 
-
-STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Kargajo
-STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informo
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapacesi
-STR_INTRO_NEW_GAME                                              :{BLACK}Nova Ludo
-STR_INTRO_LOAD_GAME                                             :{BLACK}Charjas Ludo
-
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludo Selekti
-
-STR_COMPANY_SOMEONE                                             :ulu{SKIP}{SKIP}
-
-
-
-
-
-
-
-
-
-############ range for menu starts
-STR_GRAPH_MENU_INCOME_GRAPH                                     :Revenuo grafiko
-STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Livrita kargajo grafiko
-############ range for menu ends
-
-
-### The first three are also used as 'Sort by' buttons, the rest only in dropdowns
-
-
-
-
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Montrar transport-voyi ad la mapo
-STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Montrar vejetado ad la mapo
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Montrar proprietanti ad la mapo
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Montrar nam-urbi ad la mapo
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Profito to yaro: {CURRENCY} (lasta yaro: {CURRENCY})
 
-############ range for service numbers starts
-############ range for service numbers ends
+# Status bar messages
 
-STR_REPLACE_VEHICLE_TRAIN                                       :Treni
-STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Voy-vehili
-STR_REPLACE_VEHICLE_SHIP                                        :Bateli
-STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeroplani
+# News message history
 
-############ range for days starts (also used for the place in the highscore window)
-############ range for days ends
-
-############ range for months starts
-
-############ range for months ends
-
-
-
-
-
-
-############ range for menu starts
-############ range ends here
-
-############ range for menu starts
-############ range ends here
-
-
-############ 'Display map' dropdown. In SE, there is one more item.
-############ end of the 'Display map' dropdown
-
-
-
-
-############ range for menu starts
-############ range ends here
-
-
-
-
-############ start of townname region
-############ end of townname region
-
-
+# Message settings window
+STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Sendajo
 
 
 
@@ -259,13 +285,22 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeroplani
 
 
 
+# Extra view window
 
+# Game options window
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludo Selekti
 
+############ start of currency region
+############ end of currency region
 
 
+############ start of measuring units region
+############ end of measuring units region
 
 
 
+############ start of townname region
+############ end of townname region
 
 
 
@@ -274,134 +309,19 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeroplani
 
 
 
-############ generic strings for settings
 
+# Custom currency window
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-############ network gui strings
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-############ Leave those lines in this order!!
-############ End of leave-in-this-order
-
-
-
-
-
-
-
-############ Leave those lines in this order!!
-
-############ End of leave-in-this-order
-
-
-
-
-############ Leave those lines in this order!!
-############ End of leave-in-this-order
-############ Leave those lines in this order!!
-############ End of leave-in-this-order
-
-
-
-
-
-############ end network gui strings
-
-##### PNG-MAP-Loader
-
-
-
-##id 0x0800
-
-##id 0x1000
-
-
-
-##id 0x1800
-
-##id 0x2000
-
-##id 0x2800
-
-##id 0x3000
-
-
-############ range for rating starts
-############ range for rating ends
-
-### station view strings
-
-
-
-##id 0x3800
-
-##id 0x4000
-
-##id 0x4800
-
-############ range for requires starts
-############ range for requires ends
-
-############ range for produces starts
-############ range for produces ends
-
-
-##id 0x5000
-
-##id 0x5800
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Faro
-
-
-############ WARNING, using range 0x6000 for strings that are stored in the savegame
-############ These strings may never get a new id, or savegames will break!
-##id 0x6000
-
-##id 0x6020
-
-############ end of savegame specific region!
-
-##id 0x6800
+# Difficulty level window
 
 ############ range for difficulty levels starts
 ############ range for difficulty levels ends
+
 
 ############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomio: {ORANGE}{STRING}
@@ -411,154 +331,581 @@ STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Dizastr
 STR_NUM_LOW                                                     :Basa
 STR_NUM_NORMAL                                                  :Normala
 STR_NUM_HIGH                                                    :Alta
+
 STR_AI_SPEED_SLOW                                               :Lenta
 STR_AI_SPEED_MEDIUM                                             :Meza
 STR_AI_SPEED_FAST                                               :Rapida
+
 STR_SEA_LEVEL_LOW                                               :Basa
 STR_SEA_LEVEL_MEDIUM                                            :Meza
 STR_SEA_LEVEL_HIGH                                              :Alta
 
-##id 0x7000
+
+
+
+
+
+
+
+
+# Advanced settings window
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Intro window
+
+STR_INTRO_NEW_GAME                                              :{BLACK}Nova Ludo
+STR_INTRO_LOAD_GAME                                             :{BLACK}Charjas Ludo
+
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludo Selekti
+
+
+
+
+# Quit window
+STR_QUIT_CAPTION                                                :{WHITE}Livas
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Kad tu esas certa ke tu volas livar OpenTTD ed rivenar a {STRING}?
+STR_QUIT_YES                                                    :{BLACK}Yes
+STR_QUIT_NO                                                     :{BLACK}Ne
+
+# Supported OSes
+
+# Abandon game
+
+# Cheat window
+
+# Livery window
+
+
+
+# Face selection window
+
+
+# Network server list
+
+
+
+
+
+
+
+# Start new multiplayer server
+
+
+
+
+
+# Network game languages
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+# Network game lobby
+
+
+
+
+
+# Network connecting window
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+# Network company list added strings
+
+# Network client list
+
+
+
+# Network set password
+
+# Network company info join/password
+
+# Network chat
+
+
+# Network messages
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+# Network related errors
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+# Content downloading window
+
+# Order of these is important!
+
+# Content downloading progress window
+
+# Content downloading error messages
+
+# Transparency settings window
+
+# Base for station construction window(s)
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas: {GOLD}
+
+# Join station window
+
+
+# Rail construction toolbar
+
+
+# Rail depot construction window
+
+# Rail waypoint construction window
+
+# Rail station construction window
+
+
+
+# Signal window
+
+# Bridge selection window
+
+
+# Road construction toolbar
+
+# Road depot construction window
+
+# Road vehicle station construction window
+
+# Waterways toolbar (last two for SE only)
+
+# Ship depot construction window
+
+# Dock construction window
+
+# Airport toolbar
+
+# Airport construction window
+
+
+
+
+# Landscaping toolbar
+
+# Tree planting window (last two for SE only)
+
+# Land generation window (SE)
+
+
+# Town generation window (SE)
+
+
+
+# Fund new industry window
+
+# Land area window
+
+# Description of land area of different tiles
+
+
+
+# Houses come directly from their building names
+
+
+
+
+# Industries come directly from their industry names
+
+
+
+
+
+STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Faro
+
+# About OpenTTD window
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versiono {REV}
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2009 La kruo OpenTTD
+
+# Save/load game/scenario
+
+
+# World generation
+
+# Strings for map borders at game generation
+
+
+
+# SE Map generation
+
+
+# Map generation progress
+
+# NewGRF settings
+
+
+
+
+
+
+# NewGRF add window
+
+# NewGRF (self) generated warnings/errors
+
+# NewGRF related 'general' warnings
+
+
+
+# NewGRF 'it's broken' warnings
+
+
+# Sign list window
+
+# Sign window
+
+
+# Town directory window
+
+# Town view window
+
+
+
+# Town local authority window
+
+
+
+# Subsidies window
+
+# Station list window
+
+# Station view window
+STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Vartabas: {WHITE}{STRING}
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
+
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aceptas: {WHITE}
+
+
+############ range for rating starts
+############ range for rating ends
+
+
+
+
+# Waypoint/buoy view window
+
+
+# Finances window
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Prest-ajo
+
+# Company view
+
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehili:
 
 
 
+
+
+
+# Industry directory
+
+# Industry view
+
+############ range for requires starts
+############ range for requires ends
+
+############ range for produces starts
+############ range for produces ends
+
+
+# Vehicle lists
+
+
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Profito to yaro: {CURRENCY} (lasta yaro: {CURRENCY})
+
+
+
+
+
+
+# Group window
+
+
+
+
+
+# Build vehicle window
+
+
+
+
+
+
+
+
+
+# Depot window
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Engine preview window
+
+
+# Autoreplace window
+STR_REPLACE_VEHICLE_TRAIN                                       :Treni
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Voy-vehili
+STR_REPLACE_VEHICLE_SHIP                                        :Bateli
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeroplani
+
+
+
+
+
+
+# Vehicle view
+
+
+
+
+
+
+
+
+
+
+# Messages in the start stop button in the vehicle view
+
+
+
+
+
+# Vehicle details
+
+
+# The next two need to stay in this order
+
+
+
+
+
+
+
+# Extra buttons for train details windows
+
+
+
+STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Kargajo
+STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informo
+STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapacesi
+
+
+# Vehicle refit
+
+
+
+
+# Order view
+
+
+
+# Order bottom buttons
+
+
+
+
+
+
+
+
+
+
+
+
+# String parts to build the order string
+
+
+
+
+
+
+
+
+
+# Time table window
+
+
+
+
+
+
+
+
+
+# AI debug window
+
+
+# AI configuration window
+
+
+# Available AIs window
+
+
+
+# AI Parameters
+
+# Vehicle loading indicators
+
+# Income 'floats'
+
+# Saveload messages
+
+# Map generation messages
+
+
+
+
+# Screenshot related messages
+
+# Error message titles
+STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Sendajo
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Sendajo de {STRING}
+
+# Generic construction errors
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Exter la bordo del mapo
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Tro proxim la bordo del mapo
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Ne sat pekunio - requizitas {CURRENCY}
+STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Plata tereno requizitita
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ne povas facas ca...
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Ne povas netigas ca areo....
+
+# Local authority errors
+
+# Leveling errors
+
+# Company related errors
+
+
+# Town related errors
+
+# Industry related errors
+
+# Station construction related errors
+
+
+# Station destruction related errors
+
+
+# Waypoint related errors
+
+
+
+# Depot related errors
+
+
+
+
+
+# Autoreplace related errors
+
+# Rail construction errors
+
+
+# Road construction errors
+
+# Waterway construction errors
+
+# Tree related errors
+
+# Bridge related errors
+
+# Tunnel related errors
+
+# Unmovable related errors
+
+# Group related errors
+
+# Generic vehicle errors
+
+
+
+
+
+
+
+
+
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tro multa vehili en la ludo
+
+
+# Specific vehicle errors
+
+
+
+# Order related errors
+
+
+# Timetable related errors
+
+# Sign related errors
+
+##id 0x2000
+# Town building names
+
+##id 0x4800
+# industry names
+
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
+##id 0x6000
+
+##id 0x6020
+############ end of savegame specific region!
+
 ##id 0x8000
+# Vehicle names
 
 ##id 0x8800
+# Formatting of some strings
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 
+STR_COMPANY_SOMEONE                                             :ulu{SKIP}{SKIP}
 
 
+# Viewport strings
 
 
 
 
-
-
-
-
-
-##id 0x9000
-
-
-
-##id 0x9800
-
-
-##id 0xA000
-
-
-
-##id 0xB000
-
-
-
-STR_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
-############ Those following lines need to be in this order!!
-############ End of order list
-
-
-
-
-
-
-
-
-
-
-
-
-############ Vehicle lists
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### depot strings
-
-
-
-
-
-
-
-
-
-
-
-
-############ Lists rail types
-
-
-############ End of list of rail types
-
-
-
-########### For showing numbers in widgets
-
-
-########### String for New Landscape Generator
-
-
-
-# Strings for map borders at game generation
-
-########### String for new airports
-
-
-############ Tooltip measurment
-
-
-
-
-
-##### Mass Order
-
-
-
-
-#### String control codes and their formatting
+# Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
@@ -582,22 +929,20 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
-
+# Slightly 'raw' stringcodes with colour or size
 STR_BLACK_ARROW_DOWN                                            :{BLACK}{DOWNARROW}
 STR_BLACK_ARROW_UP                                              :{BLACK}{UPARROW}
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
 STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_WHITE_STRINGN                                               :{WHITE}{STRING}
 
 STR_BLACK_SMALL_ARROW_UP                                        :{BLACK}{SMALLUPARROW}
 STR_BLACK_SMALL_ARROW_DOWN                                      :{BLACK}{SMALLDOWNARROW}
@@ -614,28 +959,3 @@ STR_BLACK_6                                                     :{BLACK}6
 STR_BLACK_7                                                     :{BLACK}7
 
 
-#### Improved sign GUI
-
-########
-
-
-############ Face formatting
-########
-
-############ signal GUI
-########
-
-############ on screen keyboard
-########
-
-############ AI GUI
-########
-
-############ town controlled noise level
-########
-
-############ Downloading of content from the central server
-
-
-
-########
