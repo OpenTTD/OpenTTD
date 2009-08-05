@@ -670,6 +670,8 @@ STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Toggle t
 STR_SMALLMAP_CENTER                                             :{BLACK}Center the smallmap on the current position
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Disable all
+STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Enable all
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Show last message or news report
@@ -691,8 +693,6 @@ STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Play so
 STR_NEWS_MESSAGES_OFF                                           :Off
 STR_NEWS_MESSAGES_SUMMARY                                       :Summary
 STR_NEWS_MESSAGES_FULL                                          :Full
-STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Disable all
-STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Enable all
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Message types:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Arrival of first vehicle at player's station
@@ -1328,7 +1328,7 @@ STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
-# Abandom game
+# Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandon Game
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Are you sure you want to abandon this game?
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Are you sure you want to abandon this scenario?
@@ -1749,7 +1749,7 @@ STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}You hav
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}You have selected this to be downloaded
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}This dependency has been selected to be downloaded
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}You already have this
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}This content is unknown and cannot be downloaded in OpenTTD
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}This content is unknown and can't be downloaded in OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}This is a replacement for an exising {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Name: {WHITE}{RAW_STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Version: {WHITE}{RAW_STRING}
@@ -1858,7 +1858,6 @@ STR_STAT_CLASS_WAYP                                             :Waypoints
 
 # Signal window
 STR_SIGNAL_SELECTION                                            :{WHITE}Signal Selection
-STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Can't convert signals here...
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Block Signal (semaphore){}This is the most basic type of signal, allowing only one train to be in the same block at the same time.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Entry-Signal (semaphore){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Exit-Signal (semaphore){}Behaves in the same way as a block signal but is necessary to trigger the correct colour on entry & combo pre-signals.
@@ -2100,6 +2099,7 @@ STR_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING                   :Road/rail level
 STR_ROAD_DESCRIPTION_TRAMWAY                                    :Tramway
 
 # Houses come directly from their building names
+STR_TOWN_DESCRIPTION_UNDER_CONSTRUCTION                         :{STRING} (under construction)
 
 STR_TREE_NAME_TREES                                             :Trees
 STR_TREE_NAME_RAINFOREST                                        :Rainforest
@@ -2390,8 +2390,6 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Fund the construction of new commercial buildings in the town.{}Cost: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Buy 1 year's exclusive transport rights in town. Town authority will only allow passengers and cargo to use your company's stations.{}Cost: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}Cost: {CURRENCY}
-
-STR_TOWN_DESCRIPTION_UNDER_CONSTRUCTION                         :{STRING} (under construction)
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidies
@@ -3371,6 +3369,7 @@ STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Can't bu
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Can't build railway track here...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Can't remove railway track from here...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Can't remove signals from here...
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Can't convert signals here...
 
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Can't convert railtype here...
 
