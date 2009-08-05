@@ -80,7 +80,7 @@ void MoveBuoysToWaypoints()
 			wp->facilities |= FACIL_DOCK;
 		}
 
-		wp->rect.BeforeAddTile(st->xy, StationRect::ADD_FORCE);
+		wp->rect.BeforeAddTile(xy, StationRect::ADD_FORCE);
 	}
 }
 
