@@ -679,7 +679,6 @@ public:
 			if (this->server != NULL) {
 				if (keycode == WKC_DELETE) { // Press 'delete' to remove servers
 					NetworkGameListRemoveItem(this->server);
-					NetworkRebuildHostList();
 					this->server = NULL;
 					this->list_pos = SLP_INVALID;
 				}
@@ -700,10 +699,7 @@ public:
 
 	virtual void OnQueryTextFinished(char *str)
 	{
-		if (!StrEmpty(str)) {
-			NetworkAddServer(str);
-			NetworkRebuildHostList();
-		}
+		if (!StrEmpty(str)) NetworkAddServer(str);
 	}
 
 	virtual void OnResize(Point new_size, Point delta)
