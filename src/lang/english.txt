@@ -184,17 +184,6 @@ STR_COLOUR_BROWN                                                :Brown
 STR_COLOUR_GREY                                                 :Grey
 STR_COLOUR_WHITE                                                :White
 
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_DOS                                                  :DOS
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS X
-STR_OSNAME_BEOS                                                 :BeOS
-STR_OSNAME_MORPHOS                                              :MorphOS
-STR_OSNAME_AMIGAOS                                              :AmigaOS
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
-
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -1328,6 +1317,18 @@ STR_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                       :{YELLOW}Are you
 STR_YES                                                         :{BLACK}Yes
 STR_NO                                                          :{BLACK}No
 
+# Supported OSes
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
+
+# Abandom game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandon Game
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Are you sure you want to abandon this game?
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Are you sure you want to quit this scenario?
@@ -2373,21 +2374,23 @@ STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Do it
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Carry out the highlighted action in the list above
 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Small advertising campaign
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Initiate a small local advertising campaign, to attract more passengers and cargo to your transport services.{}Cost: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Medium advertising campaign
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Initiate a medium local advertising campaign, to attract more passengers and cargo to your transport services.{}Cost: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Large advertising campaign
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Initiate a large local advertising campaign, to attract more passengers and cargo to your transport services.{}Cost: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Fund local road reconstruction
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}Fund the reconstruction of the urban road network. Causes considerable disruption to road traffic for up to 6 months.{}Cost: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Build statue of company owner
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Build a statue in honour of your company.{}Cost: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Fund new buildings
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Fund the construction of new commercial buildings in the town.{}Cost: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Buy exclusive transport rights
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Buy 1 year's exclusive transport rights in town. Town authority will only allow passengers and cargo to use your company's stations.{}Cost: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Bribe the local authority
+
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Initiate a small local advertising campaign, to attract more passengers and cargo to your transport services.{}Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Initiate a medium local advertising campaign, to attract more passengers and cargo to your transport services.{}Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Initiate a large local advertising campaign, to attract more passengers and cargo to your transport services.{}Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}Fund the reconstruction of the urban road network. Causes considerable disruption to road traffic for up to 6 months.{}Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Build a statue in honour of your company.{}Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Fund the construction of new commercial buildings in the town.{}Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Buy 1 year's exclusive transport rights in town. Town authority will only allow passengers and cargo to use your company's stations.{}Cost: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}Cost: {CURRENCY}
+
 STR_TOWN_DESCRIPTION_UNDER_CONSTRUCTION                         :{STRING} (under construction)
 
 # Subsidies window
