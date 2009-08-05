@@ -297,7 +297,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Build ai
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Open the landscaping toolbar to raise/lower land, plant trees, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Show sound/music window
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Show last message/news report, show message options
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Land area information
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Land area information, console, AI debug, screenshots, about OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Save scenario, load scenario, abandon scenario editor, quit
@@ -372,13 +372,13 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detailed perfor
 ############ range ends here
 
 ############ range for industry menu starts
-STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industry Directory
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Industry directory
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fund new industry
 ############ range ends here
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Railway construction
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Electrified Railway construction
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Electrified railway construction
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monorail construction
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Maglev construction
 ############ range ends here
@@ -415,10 +415,10 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Message history
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Land area information
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toggle Console
-STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toggle console
+STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl+S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Giant Screenshot (Ctrl+G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Giant screenshot (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :About 'OpenTTD'
 ############ range ends here
 
@@ -723,7 +723,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Road Vehicle Crash!{}Driver dies in fireball after collision with train
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Road Vehicle Crash!{}{COMMA} die in fireball after collision with train
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Plane Crash!{}{COMMA} die in fireball at {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Plane Crash!{}Aircraft ran out of fuel, {COMMA} die in fireball!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Plane Crash!{}Aircraft ran out of fuel, {COMMA} die in fireball
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zeppelin disaster at {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Road vehicle destroyed in 'UFO' collision!
@@ -978,7 +978,7 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}City co
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :None
-STR_NUM_VERY_LOW                                                :Very low
+STR_NUM_VERY_LOW                                                :Very Low
 STR_NUM_LOW                                                     :Low
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :High
@@ -1296,7 +1296,7 @@ STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Load a s
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Start a new game, using a heightmap as landscape
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Start a new game, using a customised scenario
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Create a customised game world/scenario
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Start a multi-player game
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Start a multiplayer game
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Select 'temperate' landscape style
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Select 'sub-arctic' landscape style
@@ -1331,7 +1331,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandom game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandon Game
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Are you sure you want to abandon this game?
-STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Are you sure you want to quit this scenario?
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Are you sure you want to abandon this scenario?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats
@@ -1622,9 +1622,9 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server i
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company is protected. Enter password
 
 # Network company list added strings
-STR_NETWORK_CLIENT_LIST                                         :{WHITE}Client List
+STR_NETWORK_CLIENT_LIST                                         :{WHITE}Client list
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spectate
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}New Company
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}New company
 
 # Network client list
 STR_NETWORK_CLIENTLIST_NONE                                     :(none)
@@ -1678,7 +1678,7 @@ STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE}Could no
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Could not start the server
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Could not connect
 STR_NETWORK_ERR_TIMEOUT                                         :{WHITE}Connection #{NUM} timed out
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}A protocol-error was made and the connection was closed
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}A protocol error was detected and the connection was closed
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}The revision of this client does not match the server's revision
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Wrong password
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}The server is full
@@ -1698,7 +1698,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :received strang
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :wrong revision
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :name already in use
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :wrong password
-STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :wrong company-id in DoCommand
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :wrong company in DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :kicked by server
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :was trying to use a cheat
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server full
@@ -1929,7 +1929,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Freight 
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Select freight tram station orientation
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Waterways construction
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Waterways Construction
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waterways
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Build canals.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Build locks
@@ -2103,7 +2103,7 @@ STR_ROAD_DESCRIPTION_TRAMWAY                                    :Tramway
 
 STR_TREE_NAME_TREES                                             :Trees
 STR_TREE_NAME_RAINFOREST                                        :Rainforest
-STR_TREE_NAME_CACTUS_PLANTS                                     :Cactus Plants
+STR_TREE_NAME_CACTUS_PLANTS                                     :Cactus plants
 
 STR_STATION_DESCRIPTION_RAILROAD_STATION                        :Railway station
 STR_STATION_DESCRIPTION_AIRCRAFT_HANGAR                         :Aircraft hangar
@@ -2146,7 +2146,7 @@ STR_BRIDGE_DESCRIPTION_AQUEDUCT                                 :Aqueduct
 
 STR_UNMOVABLE_DESCRIPTION_TRANSMITTER                           :Transmitter
 STR_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                            :Lighthouse
-STR_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS                  :Company Headquarters
+STR_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS                  :Company headquarters
 STR_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                    :Company-owned land
 
 # About OpenTTD window
@@ -2173,7 +2173,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Save the
 STR_SAVE_OSKTITLE                                               :{BLACK}Enter a name for the savegame
 
 # World generation
-STR_WORLD_GENERATION_CAPTION                                    :{WHITE}World generation
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}World Generation
 STR_MAPSIZE                                                     :{BLACK}Map size:
 STR_BY                                                          :{BLACK}*
 STR_NUMBER_OF_TOWNS                                             :{BLACK}No. of towns:
@@ -2182,7 +2182,7 @@ STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}No. of i
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}Snow line height:
 STR_SNOW_LINE_UP                                                :{BLACK}Move the snow line height one up
 STR_SNOW_LINE_DOWN                                              :{BLACK}Move the snow line height one down
-STR_RANDOM_SEED                                                 :{BLACK}Random Seed:
+STR_RANDOM_SEED                                                 :{BLACK}Random seed:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Click to enter a random seed
 STR_RANDOM                                                      :{BLACK}Randomise
 STR_RANDOM_HELP                                                 :{BLACK}Change the random seed used for Terrain Generation
@@ -2214,7 +2214,7 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Change s
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Change starting year
 
 # SE Map generation
-STR_SE_CAPTION                                                  :{WHITE}Scenario type
+STR_SE_CAPTION                                                  :{WHITE}Scenario Type
 STR_SE_FLAT_WORLD                                               :{WHITE}Flat land
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generate a flat land
 STR_SE_RANDOM_LAND                                              :{WHITE}Random land
@@ -2225,7 +2225,7 @@ STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Move the
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Change height of flat land
 
 # Map generation progress
-STR_GENERATION_WORLD                                            :{WHITE}Generating world...
+STR_GENERATION_WORLD                                            :{WHITE}Generating World...
 STR_GENERATION_ABORT                                            :{BLACK}Abort
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Abort World Generation
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Do you really want to abort the generation?
@@ -2240,7 +2240,7 @@ STR_PREPARING_TILELOOP                                          :{BLACK}Running 
 STR_PREPARING_GAME                                              :{BLACK}Preparing game
 
 # NewGRF settings
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF settings
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF Settings
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Load the selected preset
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Save preset
 STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Save the current list as a preset
@@ -2680,7 +2680,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehicle{P "" s}{RAW_STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trains - click on train for info., drag vehicle to add/remove from train
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trains - click on train for information, drag vehicle to add/remove from train
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehicles - click on vehicle for information
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Ships - click on ship for information
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aircraft - click on aircraft for information
@@ -2761,7 +2761,7 @@ STR_VEHICLE_INFO_COST_MAX_SPEED_CAPACITY_RUNCOST                :{BLACK}Cost: {C
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace {STRING}
 STR_VEHICLE_TRAIN                                               :Train
-STR_VEHICLE_ROAD_VEHICLE                                        :Road vehicle
+STR_VEHICLE_ROAD_VEHICLE                                        :Road Vehicle
 STR_VEHICLE_SHIP                                                :Ship
 STR_VEHICLE_AIRCRAFT                                            :Aircraft
 
@@ -2812,7 +2812,7 @@ STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Force tr
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Refit train to carry a different cargo type
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Refit road vehicle to carry a different cargo type
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Refit cargo ship to carry a different cargo type
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Refit ship to carry a different cargo type
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Refit aircraft to carry a different cargo type
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Reverse direction of train
@@ -3185,16 +3185,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Data integrity 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game was saved in version without tram support. All trams have been removed.
 
 # Map generation messages
-STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Map generation aborted...{}...no suitable town locations
-STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...there is no town in this scenario
+STR_COULD_NOT_CREATE_TOWN                                       :{WHITE}Map generation aborted...{}... no suitable town locations
+STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}... there is no town in this scenario
 
 STR_PNGMAP_ERROR                                                :{WHITE}Can't load landscape from PNG...
-STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...file not found.
-STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...could not convert image type. 8 or 24-bit PNG image needed.
-STR_PNGMAP_ERR_MISC                                             :{WHITE}...something just went wrong. Sorry. (probably corrupted file)
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}... file not found.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}... could not convert image type. 8 or 24-bit PNG image needed.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}... something just went wrong. Sorry. (probably corrupted file)
 
 STR_BMPMAP_ERROR                                                :{WHITE}Can't load landscape from BMP...
-STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...could not convert image type.
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}... could not convert image type.
 
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Scale warning
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Resizing source map too much is not recommended. Continue with the generation?
@@ -3213,13 +3213,13 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Too clos
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Not enough cash - requires {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Flat land required
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Land sloped in wrong direction
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Can't do this....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Can't do this...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Building must be demolished first
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Can't clear this area....
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...site unsuitable
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...already built
-STR_ERROR_OWNED_BY                                              :{WHITE}...owned by {STRING2}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...area is owned by another company
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Can't clear this area...
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... site unsuitable
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... already built
+STR_ERROR_OWNED_BY                                              :{WHITE}... owned by {STRING2}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... area is owned by another company
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Name must be unique
 STR_OBJECT_IN_THE_WAY                                           :{WHITE}{STRING} in the way
 
@@ -3243,10 +3243,10 @@ STR_ALREADY_LEVELLED                                            :{WHITE}... alre
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Can't change company name...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Can't change manager's name...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...maximum permitted loan size is {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maximum permitted loan size is {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Can't borrow any more money...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...no loan to repay
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY} required
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... no loan to repay
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY} required
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Can't repay loan...
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}Can't give away money that is loaned from the bank...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Can't buy company...
@@ -3259,10 +3259,10 @@ STR_PROTECTED                                                   :{WHITE}This com
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Can't build any towns
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Can't rename town...
 STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Can't build town here...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...too close to edge of map
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...too close to another town
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...too many towns
-STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...there is no more space on the map
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... too close to edge of map
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... too close to another town
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... too many towns
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}... there is no more space on the map
 STR_TOWN_EXPAND_WARN_NO_ROADS                                   :{WHITE}The town will not build roads. You can enable building of roads via Advanced Settings->Economy->Towns.
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Road works in progress
 
@@ -3270,15 +3270,15 @@ STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Road wor
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Can't generate industries...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Can't build {STRING} here...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Can't construct this industry type here...
-STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...too close to another industry
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...must build town first
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...only one allowed per town
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...can only be built in towns with a population of at least 1200
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...can only be built in rainforest areas
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...can only be built in desert areas
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...can only be built in towns
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...can only be positioned near edges of map
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...forest can only be planted above snow-line
+STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}... too close to another industry
+STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... must build town first
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... only one allowed per town
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... can only be built in towns with a population of at least 1200
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... can only be built in rainforest areas
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... can only be built in desert areas
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... can only be built in towns
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... can only be positioned near edges of map
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... forest can only be planted above snow-line
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Can't build railway station here...
@@ -3290,8 +3290,8 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Can't bu
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Can't build airport here...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Adjoins more than one existing station/loading area
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...station too spread out
-STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...nonuniform stations disabled
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... station too spread out
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}... nonuniform stations disabled
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Too many stations/loading areas
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Too many railway station parts
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Too many bus stops
@@ -3301,8 +3301,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Too clos
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Too close to another dock
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Too close to another airport
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Can't rename station...
-STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...this is a town owned road
-STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...road facing in the wrong direction
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}... this is a town owned road
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}... road facing in the wrong direction
 
 # Station destruction related errors
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Can't remove part of station...
@@ -3330,8 +3330,8 @@ STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Can't ch
 
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Can't remove train waypoint here...
 STR_MUST_REMOVE_RAILWAYPOINT_FIRST                              :{WHITE}Must remove rail waypoint first
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...buoy in the way
-STR_BUOY_IS_IN_USE                                              :{WHITE}...buoy is in use!
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... buoy in the way
+STR_BUOY_IS_IN_USE                                              :{WHITE}... buoy is in use!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Can't build train depot here...
@@ -3340,7 +3340,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Can't bu
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Can't build ship depot here...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Train must be stopped inside a depot
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...must be stopped inside a road vehicle depot
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... must be stopped inside a road vehicle depot
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Ship must be stopped in depot
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Aircraft must be stopped in hangar
 
@@ -3386,13 +3386,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Can't re
 STR_CANT_BUILD_CANALS                                           :{WHITE}Can't build canals here...
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Can't build locks here...
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Can't place rivers here...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...must be built on water
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Can't build on water
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... must be built on water
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... can't build on water
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Must demolish canal first
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Can't build aqueduct here...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...tree already here
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... tree already here
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Can't plant tree here...
 
 # Bridge related errors
@@ -3402,7 +3402,7 @@ STR_ERROR_CANNOT_START_AND_END_ON                               :{WHITE}Can't st
 STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Bridge heads not at the same level
 STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Bridge is too low for the terrain
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start and end must be in line
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...ends of bridge must both be on land
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ends of bridge must both be on land
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Can't build tunnel here...
@@ -3414,9 +3414,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Unable t
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Object in the way
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...company headquarters in the way
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... company headquarters in the way
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Can't purchase this land area...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...you already own it!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... you already own it!
 
 # Group related errors
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Can't create group...
@@ -3496,13 +3496,13 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Can't mo
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Can't move this order...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Can't skip current order...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Can't skip to selected order...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}vehicle can't go to all stations
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}vehicle can't go to that station
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}a vehicle sharing this order can't go to that station
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... vehicle can't go to all stations
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... vehicle can't go to that station
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... a vehicle sharing this order can't go to that station
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Can't share order list...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Can't copy order list...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...too far from previous destination
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... too far from previous destination
 
 # Timetable related errors
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Can't timetable vehicle...
@@ -3510,7 +3510,7 @@ STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vehicles
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}This vehicle is not stopping at this station.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...too many signs
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... too many signs
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Can't place sign here...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Can't change sign name...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Can't delete sign...
