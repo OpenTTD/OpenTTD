@@ -17,7 +17,7 @@ if [ -z "$1" ]; then
 	for f in `ls *.hpp`; do
 		case "${f}" in
 			# these files should not be changed by this script
-			"ai_controller.hpp" | "ai_object.hpp" | "ai_types.hpp" ) continue;
+			"ai_controller.hpp" | "ai_object.hpp" | "ai_types.hpp" | "ai_changelog.hpp" ) continue;
 		esac
 		${AWK} -f squirrel_export.awk ${f} > ${f}.tmp
 		if ! [ -f "${f}.sq" ] || [ -n "`diff -I '$Id' -b ${f}.tmp ${f}.sq 2> /dev/null || echo boo`" ]; then
