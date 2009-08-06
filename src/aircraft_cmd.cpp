@@ -636,16 +636,6 @@ void Aircraft::OnNewDay()
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
-static void AgeAircraftCargo(Aircraft *v)
-{
-	if (_age_cargo_skip_counter != 0) return;
-
-	do {
-		v->cargo.AgeCargo();
-		v = v->Next();
-	} while (v != NULL);
-}
-
 static void HelicopterTickHandler(Aircraft *v)
 {
 	Aircraft *u = v->Next()->Next();
@@ -2033,8 +2023,6 @@ bool Aircraft::Tick()
 	if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
 
 	if (this->subtype == AIR_HELICOPTER) HelicopterTickHandler(this);
-
-	AgeAircraftCargo(this);
 
 	this->current_order_time++;
 

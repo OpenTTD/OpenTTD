@@ -1826,16 +1826,8 @@ static bool RoadVehController(RoadVehicle *v)
 	return true;
 }
 
-static void AgeRoadVehCargo(RoadVehicle *v)
-{
-	if (_age_cargo_skip_counter != 0) return;
-	v->cargo.AgeCargo();
-}
-
 bool RoadVehicle::Tick()
 {
-	AgeRoadVehCargo(this);
-
 	if (this->IsRoadVehFront()) {
 		if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
 		return RoadVehController(this);

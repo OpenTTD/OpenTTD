@@ -585,6 +585,8 @@ void CallVehicleTicks()
 			case VEH_ROAD:
 			case VEH_AIRCRAFT:
 			case VEH_SHIP:
+				if (_age_cargo_skip_counter == 0) v->cargo.AgeCargo();
+
 				if (v->type == VEH_TRAIN && Train::From(v)->IsWagon()) continue;
 				if (v->type == VEH_AIRCRAFT && v->subtype != AIR_HELICOPTER) continue;
 				if (v->type == VEH_ROAD && !RoadVehicle::From(v)->IsRoadVehFront()) continue;

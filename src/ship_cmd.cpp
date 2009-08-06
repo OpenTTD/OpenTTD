@@ -719,17 +719,10 @@ reverse_direction:
 	goto getout;
 }
 
-static void AgeShipCargo(Vehicle *v)
-{
-	if (_age_cargo_skip_counter != 0) return;
-	v->cargo.AgeCargo();
-}
-
 bool Ship::Tick()
 {
 	if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
 
-	AgeShipCargo(this);
 	ShipController(this);
 
 	return true;

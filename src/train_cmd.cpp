@@ -4485,8 +4485,6 @@ Money Train::GetRunningCost() const
 
 bool Train::Tick()
 {
-	if (_age_cargo_skip_counter == 0) this->cargo.AgeCargo();
-
 	this->tick_counter++;
 
 	if (this->IsFrontEngine()) {
