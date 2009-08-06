@@ -180,89 +180,10 @@ static const Month _autosave_months[] = {
 };
 
 /**
- * Runs the day_proc for every DAY_TICKS vehicle starting at daytick.
+ * Runs various procedures that have to be done yearly
  */
-static void RunVehicleDayProc(uint daytick)
+static void OnNewYear()
 {
-	for (size_t i = daytick; i < Vehicle::GetPoolSize(); i += DAY_TICKS) {
-		Vehicle *v = Vehicle::Get(i);
-
-		if (v != NULL) {
-			/* Call the 32-day callback if needed */
-			CheckVehicle32Day(v);
-			v->OnNewDay();
-		}
-	}
-}
-
-void IncreaseDate()
-{
-	YearMonthDay ymd;
-
-	if (_game_mode == GM_MENU) {
-		_tick_counter++;
-		return;
-	}
-
-	RunVehicleDayProc(_date_fract);
-
-	/* increase day, and check if a new day is there? */
-	_tick_counter++;
-
-	_date_fract++;
-	if (_date_fract < DAY_TICKS) return;
-	_date_fract = 0;
-
-	/* yeah, increase day counter and call various daily loops */
-	_date++;
-
-#ifdef ENABLE_NETWORK
-	NetworkChatMessageDailyLoop();
-#endif /* ENABLE_NETWORK */
-
-	DisasterDailyLoop();
-	IndustryDailyLoop();
-
-	if (_game_mode != GM_MENU) {
-		InvalidateWindowWidget(WC_STATUS_BAR, 0, 0);
-		EnginesDailyLoop();
-	}
-
-	/* check if we entered a new month? */
-	ConvertDateToYMD(_date, &ymd);
-	if (ymd.month == _cur_month) return;
-	_cur_month = ymd.month;
-
-	/* yes, call various monthly loops */
-	if (_game_mode != GM_MENU) {
-		if (_debug_desync_level > 2) {
-			char name[MAX_PATH];
-			snprintf(name, lengthof(name), "dmp_cmds_%08x_%08x.sav", _settings_game.game_creation.generation_seed, _date);
-			SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR);
-		}
-
-		if (_settings_client.gui.autosave != 0 && (_cur_month % _autosave_months[_settings_client.gui.autosave]) == 0) {
-			_do_autosave = true;
-			RedrawAutosave();
-		}
-
-		InvalidateWindowClasses(WC_CHEATS);
-		CompaniesMonthlyLoop();
-		SubsidyMonthlyLoop();
-		EnginesMonthlyLoop();
-		TownsMonthlyLoop();
-		IndustryMonthlyLoop();
-		StationMonthlyLoop();
-#ifdef ENABLE_NETWORK
-		if (_network_server) NetworkServerMonthlyLoop();
-#endif /* ENABLE_NETWORK */
-	}
-
-	/* check if we entered a new year? */
-	if (ymd.year == _cur_year) return;
-	_cur_year = ymd.year;
-
-	/* yes, call various yearly loops */
 	CompaniesYearlyLoop();
 	VehiclesYearlyLoop();
 	TownsYearlyLoop();
@@ -294,4 +215,106 @@ void IncreaseDate()
 	}
 
 	if (_settings_client.gui.auto_euro) CheckSwitchToEuro();
+}
+
+/**
+ * Runs various procedures that have to be done monthly
+ */
+static void OnNewMonth()
+{
+	if (_debug_desync_level > 2) {
+		char name[MAX_PATH];
+		snprintf(name, lengthof(name), "dmp_cmds_%08x_%08x.sav", _settings_game.game_creation.generation_seed, _date);
+		SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR);
+	}
+
+	if (_settings_client.gui.autosave != 0 && (_cur_month % _autosave_months[_settings_client.gui.autosave]) == 0) {
+		_do_autosave = true;
+		RedrawAutosave();
+	}
+
+	InvalidateWindowClasses(WC_CHEATS);
+	CompaniesMonthlyLoop();
+	SubsidyMonthlyLoop();
+	EnginesMonthlyLoop();
+	TownsMonthlyLoop();
+	IndustryMonthlyLoop();
+	StationMonthlyLoop();
+#ifdef ENABLE_NETWORK
+	if (_network_server) NetworkServerMonthlyLoop();
+#endif /* ENABLE_NETWORK */
+}
+
+/**
+ * Runs various procedures that have to be done daily
+ */
+static void OnNewDay()
+{
+#ifdef ENABLE_NETWORK
+	NetworkChatMessageDailyLoop();
+#endif /* ENABLE_NETWORK */
+
+	DisasterDailyLoop();
+	IndustryDailyLoop();
+
+	InvalidateWindowWidget(WC_STATUS_BAR, 0, 0);
+	EnginesDailyLoop();
+}
+
+/**
+ * Runs the day_proc for every DAY_TICKS vehicle starting at daytick.
+ */
+static void RunVehicleDayProc(uint daytick)
+{
+	for (size_t i = daytick; i < Vehicle::GetPoolSize(); i += DAY_TICKS) {
+		Vehicle *v = Vehicle::Get(i);
+
+		if (v != NULL) {
+			/* Call the 32-day callback if needed */
+			CheckVehicle32Day(v);
+			v->OnNewDay();
+		}
+	}
+}
+
+/**
+ * Increases the tick counter, increases date  and possibly calls
+ * procedures that have to be called daily, monthly or yearly.
+ */
+void IncreaseDate()
+{
+	if (_game_mode == GM_MENU) {
+		_tick_counter++;
+		return;
+	}
+
+	RunVehicleDayProc(_date_fract);
+
+	/* increase day, and check if a new day is there? */
+	_tick_counter++;
+
+	_date_fract++;
+	if (_date_fract < DAY_TICKS) return;
+	_date_fract = 0;
+
+	/* increase day counter and call various daily loops */
+	_date++;
+	OnNewDay();
+
+	YearMonthDay ymd;
+
+	/* check if we entered a new month? */
+	ConvertDateToYMD(_date, &ymd);
+	if (ymd.month == _cur_month) return;
+
+	/* yes, call various monthly loops */
+	_cur_month = ymd.month;
+	OnNewMonth();
+
+	/* check if we entered a new year? */
+	if (ymd.year == _cur_year) return;
+
+	/* yes, call various yearly loops */
+	_cur_year = ymd.year;
+	OnNewYear();
 }
