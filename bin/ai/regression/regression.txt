@@ -8365,7 +8365,7 @@
   GetNumWagons():       3
   GetLength():          24
   GetWagonEngineType(): 9
-  GetWagonAge():        1
+  GetWagonAge():        0
   GetWagonEngineType(): 27
   GetWagonAge():        0
   GetWagonEngineType(): 27
@@ -8401,11 +8401,11 @@
     14 => 1
     12 => 1
   Age ListDump:
-    17 => 1
-    16 => 1
-    14 => 1
-    13 => 1
-    12 => 1
+    17 => 0
+    16 => 0
+    14 => 0
+    13 => 0
+    12 => 0
   MaxAge ListDump:
     16 => 10980
     14 => 10980
@@ -8413,11 +8413,11 @@
     13 => 5490
     12 => 5490
   AgeLeft ListDump:
-    16 => 10979
-    14 => 10979
-    17 => 7319
-    13 => 5489
-    12 => 5489
+    16 => 10980
+    14 => 10980
+    17 => 7320
+    13 => 5490
+    12 => 5490
   CurrentSpeed ListDump:
     12 => 21
     17 => 0
@@ -8435,7 +8435,7 @@
     16 => 0
     14 => 0
     13 => 0
-    12 => -1
+    12 => 0
   ProfitLastYear ListDump:
     17 => 0
     16 => 0
