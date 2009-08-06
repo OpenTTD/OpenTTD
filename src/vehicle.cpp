@@ -576,9 +576,10 @@ static void RunVehicleDayProc()
 		/* Call the 32-day callback if needed */
 		if ((v->day_counter & 0x1F) == 0) {
 			uint16 callback = GetVehicleCallback(CBID_VEHICLE_32DAY_CALLBACK, 0, 0, v->engine_type, v);
-			if (callback == CALLBACK_FAILED) return;
-			if (HasBit(callback, 0)) TriggerVehicle(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
-			if (HasBit(callback, 1)) v->colourmap = PAL_NONE;
+			if (callback != CALLBACK_FAILED) {
+				if (HasBit(callback, 0)) TriggerVehicle(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
+				if (HasBit(callback, 1)) v->colourmap = PAL_NONE;
+			}
 		}
 
 		/* This is called once per day for each vehicle, but not in the first tick of the day */
