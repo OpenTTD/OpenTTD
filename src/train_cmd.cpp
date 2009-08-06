@@ -2292,12 +2292,6 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	return v->SendToDepot(flags, (DepotCommand)(p2 & DEPOT_COMMAND_MASK));
 }
 
-
-void OnTick_Train()
-{
-	_age_cargo_skip_counter = (_age_cargo_skip_counter == 0) ? 184 : (_age_cargo_skip_counter - 1);
-}
-
 static const int8 _vehicle_smoke_pos[8] = {
 	1, 1, 1, 0, -1, -1, -1, 0
 };
@@ -4601,9 +4595,4 @@ Trackdir Train::GetVehicleTrackdir() const
 	}
 
 	return TrackDirectionToTrackdir(FindFirstTrack(this->track), this->direction);
-}
-
-void InitializeTrains()
-{
-	_age_cargo_skip_counter = 1;
 }

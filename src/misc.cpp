@@ -99,7 +99,6 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date)
 	InitializeIndustries();
 	InitializeBuildingCounts();
 
-	InitializeTrains();
 	InitializeNPF();
 
 	InitializeCompanies();

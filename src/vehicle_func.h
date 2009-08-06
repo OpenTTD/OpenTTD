@@ -31,7 +31,6 @@ bool HasVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks();
 uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *colour);
 
-void InitializeTrains();
 byte VehicleRandomBits();
 void ResetVehiclePosHash();
 void ResetVehicleColourMap();
@@ -160,6 +159,7 @@ extern VehicleID _vehicle_id_ctr_day;
 extern const Vehicle *_place_clicked_vehicle;
 extern VehicleID _new_vehicle_id;
 extern uint16 _returned_refit_capacity;
+extern byte _age_cargo_skip_counter;
 
 bool CanVehicleUseStation(EngineID engine_type, const struct Station *st);
 bool CanVehicleUseStation(const Vehicle *v, const struct Station *st);

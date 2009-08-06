@@ -928,7 +928,6 @@ void OnTick_Station();
 void OnTick_Industry();
 
 void OnTick_Companies();
-void OnTick_Train();
 
 void CallLandscapeTick()
 {
@@ -938,5 +937,4 @@ void CallLandscapeTick()
 	OnTick_Industry();
 
 	OnTick_Companies();
-	OnTick_Train();
 }

@@ -12,9 +12,6 @@
 /* Amount of game ticks */
 VARDEF uint16 _tick_counter;
 
-/* Skip aging of cargo? */
-VARDEF byte _age_cargo_skip_counter;
-
 /* Also save scrollpos_x, scrollpos_y and zoom */
 VARDEF uint16 _disaster_delay;
 

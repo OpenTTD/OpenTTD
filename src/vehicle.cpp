@@ -49,6 +49,7 @@ VehicleID _vehicle_id_ctr_day;
 const Vehicle *_place_clicked_vehicle;
 VehicleID _new_vehicle_id;
 uint16 _returned_refit_capacity;
+byte _age_cargo_skip_counter; ///< Skip aging of cargo?
 
 
 /* Initialize the vehicle-pool */
@@ -439,6 +440,8 @@ void InitializeVehicles()
 	_vehicle_pool.CleanPool();
 	_cargo_payment_pool.CleanPool();
 
+	_age_cargo_skip_counter = 1;
+
 	_vehicles_to_autoreplace.Reset();
 	ResetVehiclePosHash();
 }
@@ -559,6 +562,8 @@ void VehicleEnteredDepotThisTick(Vehicle *v)
 void CallVehicleTicks()
 {
 	_vehicles_to_autoreplace.Clear();
+
+	_age_cargo_skip_counter = (_age_cargo_skip_counter == 0) ? 184 : (_age_cargo_skip_counter - 1);
 
 	Station *st;
 	FOR_ALL_STATIONS(st) LoadUnloadStation(st);
