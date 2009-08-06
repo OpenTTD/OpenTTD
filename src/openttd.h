@@ -16,6 +16,7 @@ enum GameMode {
 enum SwitchMode {
 	SM_NONE,
 	SM_NEWGAME,
+	SM_RESTARTGAME,
 	SM_EDITOR,
 	SM_LOAD,
 	SM_MENU,

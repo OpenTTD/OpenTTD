@@ -952,13 +952,16 @@ DEF_CONSOLE_CMD(ConRestart)
 	if (argc == 0) {
 		IConsoleHelp("Restart game. Usage: 'restart'");
 		IConsoleHelp("Restarts a game. It tries to reproduce the exact same map as the game started with.");
+		IConsoleHelp("However:");
+		IConsoleHelp(" * restarting games started in another version might create another map due to difference in map generation");
+		IConsoleHelp(" * restarting games based on scenarios, loaded games or heightmaps will start a new game based on the settings stored in the scenario/savegame");
 		return true;
 	}
 
 	/* Don't copy the _newgame pointers to the real pointers, so call SwitchToMode directly */
 	_settings_game.game_creation.map_x = MapLogX();
 	_settings_game.game_creation.map_y = FindFirstBit(MapSizeY());
-	SwitchToMode(SM_NEWGAME);
+	SwitchToMode(SM_RESTARTGAME);
 	return true;
 }
 

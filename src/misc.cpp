@@ -52,7 +52,7 @@ void InitializeCheats();
 void InitializeNPF();
 void InitializeOldNames();
 
-void InitializeGame(uint size_x, uint size_y, bool reset_date)
+void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settings)
 {
 	/* Make sure there isn't any window that can influence anything
 	 * related to the new game we're about to start/load. */
@@ -69,7 +69,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date)
 	_date_fract = 0;
 	_cur_tileloop_tile = 0;
 	_thd.redsq = INVALID_TILE;
-	MakeNewgameSettingsLive();
+	if (reset_settings) MakeNewgameSettingsLive();
 
 	if (reset_date) {
 		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));

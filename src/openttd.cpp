@@ -796,7 +796,7 @@ static void MakeNewGameDone()
 	MarkWholeScreenDirty();
 }
 
-static void MakeNewGame(bool from_heightmap)
+static void MakeNewGame(bool from_heightmap, bool reset_settings)
 {
 	_game_mode = GM_NORMAL;
 
@@ -807,7 +807,7 @@ static void MakeNewGame(bool from_heightmap)
 	_industry_mngr.ResetMapping();
 
 	GenerateWorldSetCallback(&MakeNewGameDone);
-	GenerateWorld(from_heightmap ? GW_HEIGHTMAP : GW_NEWGAME, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
+	GenerateWorld(from_heightmap ? GW_HEIGHTMAP : GW_NEWGAME, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y, reset_settings);
 }
 
 static void MakeNewEditorWorldDone()
@@ -915,7 +915,7 @@ void SwitchToMode(SwitchMode new_mode)
 	if (new_mode != SM_SAVE) {
 		/* If the network is active, make it not-active */
 		if (_networking) {
-			if (_network_server && (new_mode == SM_LOAD || new_mode == SM_NEWGAME)) {
+			if (_network_server && (new_mode == SM_LOAD || new_mode == SM_NEWGAME || new_mode == SM_RESTARTGAME)) {
 				NetworkReboot();
 			} else {
 				NetworkDisconnect();
@@ -948,13 +948,14 @@ void SwitchToMode(SwitchMode new_mode)
 			MakeNewEditorWorld();
 			break;
 
+		case SM_RESTARTGAME: // Restart --> 'Random game' with current settings
 		case SM_NEWGAME: // New Game --> 'Random game'
 #ifdef ENABLE_NETWORK
 			if (_network_server) {
 				snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "Random Map");
 			}
 #endif /* ENABLE_NETWORK */
-			MakeNewGame(false);
+			MakeNewGame(false, new_mode == SM_NEWGAME);
 			break;
 
 		case SM_START_SCENARIO: // New Game --> Choose one of the preset scenarios
@@ -1000,7 +1001,7 @@ void SwitchToMode(SwitchMode new_mode)
 				snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Heightmap)", _file_to_saveload.title);
 			}
 #endif /* ENABLE_NETWORK */
-			MakeNewGame(true);
+			MakeNewGame(true, true);
 			break;
 
 		case SM_LOAD_HEIGHTMAP: // Load heightmap from scenario editor
