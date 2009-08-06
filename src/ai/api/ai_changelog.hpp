@@ -16,44 +16,59 @@
  * \b 0.8.0
  *
  * API additions:
- * \li AIAbstractList::SORT_ASCENDING
- * \li AIAbstractList::SORT_DESCENDING
  * \li AIBaseStation
  * \li AIBuoyList
- * \li AICompany::GetPresidentGender
- * \li AICompany::SetPresidentGender
- * \li AIEngine::GetDesignDate
  * \li AIRail::RemoveRailWaypointTileRect
  *
  * Other changes:
  * \li The GetName / SetName / GetLocation functions were moved from AIStation
  *     and AIWaypoint to AIBaseStation, but you can still use AIStation.GetName
  *     as before
+ * \li The GetConstructionDate function was moved from AIStation to
+ *     AIBaseStation, but can still be used as AIStation.GetConstructionDate
  * \li WaypointID was replaced by StationID. All WaypointIDs from previous
  *     savegames are invalid
  * \li WAYPOINT_INVALID is now deprecated, use STATION_INVALID instead
+ * \li AIs can create subclasses of API classes and use API constants as part
+ *     of their own constants
+ *
+ * \b 0.7.3
+ *
+ * API additions:
+ * \li AIAbstractList::SORT_ASCENDING
+ * \li AIAbstractList::SORT_DESCENDING
+ * \li AICompany::GetPresidentGender
+ * \li AICompany::SetPresidentGender
+ * \li AIEngine::GetDesignDate
+ * \li AIStation::GetConstructionDate
  *
  * \b 0.7.2
  *
  * API additions:
  * \li AIVehicle::GetReliability
  *
+ * Other changes:
+ * \li DoCommands and sleeps in call, acall, pcall and valuators are disallowed
+ *
  * \b 0.7.1
  *
  * API additions:
  * \li AIAirport::GetPrice
  * \li AIController::GetVersion
+ * \li AIOrder::AIOF_DEPOT_FLAGS
  * \li AIOrder::AIOF_STOP_IN_DEPOT
  * \li AIOrder::IsCurrentOrderPartOfOrderList
  * \li AIOrder::IsGotoDepotOrder
  * \li AIOrder::IsGotoStationOrder
  * \li AIOrder::IsGotoWaypointOrder
  * \li AISignList
+ * \li AITile::CORNER_[WSEN]
  * \li AITile::ERR_AREA_ALREADY_FLAT
  * \li AITile::ERR_EXCAVATION_WOULD_DAMAGE
  * \li AITile::GetCornerHeight
  * \li AITile::GetMaxHeight
  * \li AITile::GetMinHeight
+ * \li AIVehicle::SendVehicleToDepotForServicing
  *
  * Other changes:
  * \li GetURL() was added as optional function to info.nut
