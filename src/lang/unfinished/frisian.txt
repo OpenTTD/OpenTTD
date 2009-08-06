@@ -939,6 +939,42 @@ STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Laad Spu
 
 # Network game languages
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :Alle
+STR_NETWORK_LANG_ENGLISH                                        :Ingelsk
+STR_NETWORK_LANG_GERMAN                                         :Dútsk
+STR_NETWORK_LANG_FRENCH                                         :Frânsk
+STR_NETWORK_LANG_BRAZILIAN                                      :Braziliaansk
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgaarsk
+STR_NETWORK_LANG_CHINESE                                        :Sinees
+STR_NETWORK_LANG_CZECH                                          :Tsjechysk
+STR_NETWORK_LANG_DANISH                                         :Deensk
+STR_NETWORK_LANG_DUTCH                                          :Nederlânsk
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finsk
+STR_NETWORK_LANG_HUNGARIAN                                      :Hongaarsk
+STR_NETWORK_LANG_ICELANDIC                                      :Yslânsk
+STR_NETWORK_LANG_ITALIAN                                        :Italjaansk
+STR_NETWORK_LANG_JAPANESE                                       :Japansk
+STR_NETWORK_LANG_KOREAN                                         :Koreaansk
+STR_NETWORK_LANG_LITHUANIAN                                     :Litousk
+STR_NETWORK_LANG_NORWEGIAN                                      :Noarsk
+STR_NETWORK_LANG_POLISH                                         :Poalsk
+STR_NETWORK_LANG_PORTUGUESE                                     :Portegeesk
+STR_NETWORK_LANG_ROMANIAN                                       :Roemeensk
+STR_NETWORK_LANG_RUSSIAN                                        :Russysk
+STR_NETWORK_LANG_SLOVAK                                         :Slowaaksk
+STR_NETWORK_LANG_SLOVENIAN                                      :Sloveensk
+STR_NETWORK_LANG_SPANISH                                        :Spaansk
+STR_NETWORK_LANG_SWEDISH                                        :Sweedsk
+STR_NETWORK_LANG_TURKISH                                        :Turksk
+STR_NETWORK_LANG_UKRAINIAN                                      :Oekraynsk
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaansk
+STR_NETWORK_LANG_CROATIAN                                       :Kroätysk
+STR_NETWORK_LANG_CATALAN                                        :Katalaansk
+STR_NETWORK_LANG_ESTONIAN                                       :Estlânsk
+STR_NETWORK_LANG_GALICIAN                                       :Galisysk
+STR_NETWORK_LANG_GREEK                                          :Gryksk
+STR_NETWORK_LANG_LATVIAN                                        :Letsk
 ############ End of leave-in-this-order
 
 # Network game lobby

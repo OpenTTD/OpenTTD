@@ -298,7 +298,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Flughafe
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Landschaftsbau: Land senken/heben, Bäume pflanzen, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Sound- / Musikfenster anzeigen
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Zeige letzte Mitteilung / Nachricht, Nachrichtenoptionen anzeigen
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Gebietsinformation
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Gebietsinformation, Konsole, KI Debug, Screenshot, über OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Szenario speichern, Szenario laden,  Szenariobearbeitung beenden, Beenden
@@ -418,8 +418,8 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebietsinformat
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsole öffnen/schließen
 STR_ABOUT_MENU_AI_DEBUG                                         :KI Debug
-STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Strg-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Riesiger Screenshot (Strg-G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Strg+S)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Riesiger Screenshot (Strg+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Über 'OpenTTD'
 ############ range ends here
 
@@ -724,7 +724,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Fahrzeug verunglückt!{}Fahrer stirbt in Inferno nach Zusammenstoß mit Zug
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Fahrzeug verunglückt!{}{COMMA} {P stirbt sterben} in Inferno nach Zusammenstoß mit Zug
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Flugzeugabsturz!{}{COMMA} {P stirbt sterben} in einem Feuerball auf {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Flugzeugabsturz!{}Dem Flugzeug ging der Treibstoff aus, {COMMA} {P stirbt sterben} in einem Feuerball!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Flugzeugabsturz!{}Dem Flugzeug ging der Treibstoff aus, {COMMA} {P stirbt sterben} in einem Feuerball
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zeppelinabsturz bei {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Fahrzeug bei Zusammenstoß mit einem 'UFO' zerstört!
@@ -1343,13 +1343,13 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiele 
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Mächtigeres Abrisswerkzeug: {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnel dürfen sich kreuzen: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Bauen im Pausenmodus: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Düsenflugzeuge stürzen auf kleinen Flughäfen nicht häufiger ab: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Wechsle Klima: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Düsenflugzeuge stürzen auf kleinen Flughäfen nicht häufiger ab: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Wechsle Klima: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Gemäßigt
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subarktisch
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Subtropisch
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Fantastisch
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ändere Datum: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ändere Datum: {ORANGE}{DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiviere Veränderung der Produktionswerte: {ORANGE}{STRING}
 
 # Livery window
@@ -1788,11 +1788,11 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kann her
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Transparenzeinstellungen
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparenz für Stationsschilder einstellen.  Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparenz für Stationsschilder einstellen. Strg+Klick, um Umschalten zu verhindern.
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Transparenz für Bäume einstellen. Strg+Klick, um Umschalten zu verhindern.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Transparenz für Häuser einstellen. Strg+Klick, um Umschalten zu verhindern.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Transparenz für Industrien einstellen.  Strg+Klick, um Umschalten zu verhindern.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transparenz für Gebäude wie Bahnhöfe, Depots und Wegpunkte einstellen.  Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Transparenz für Industrien einstellen. Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transparenz für Gebäude wie Bahnhöfe, Depots und Wegpunkte einstellen. Strg+Klick, um Umschalten zu verhindern.
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparenz für Brücken einstellen. Strg+Klick, um Umschalten zu verhindern.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparenz für Bauten wie Leuchttürme und Sendemasten einstellen. Strg+Klick, um Umschalten zu verhindern.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparenz für Oberleitungen. Strg+Klick, um Umschalten zu verhindern.
@@ -2615,7 +2615,7 @@ STR_BUILD_VEHICLE_TRAIN_ELRAIL_CAPTION                          :{WHITE}Neue E-L
 STR_BUILD_VEHICLE_TRAIN_MONORAIL_CAPTION                        :{WHITE}Neues Einschienenbahn-Fahrzeug
 STR_BUILD_VEHICLE_TRAIN_MAGLEV_CAPTION                          :{WHITE}Neue Magnetzüge
 
-STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Eisenbahnfahrzeuge
+STR_BUILD_VEHICLE_TRAIN_ALL_CAPTION                             :{WHITE}Neue Eisenbahnfahrzeuge
 STR_BUILD_VEHICLE_ROAD_VEHICLE_CAPTION                          :{WHITE}Neue Fahrzeuge
 STR_BUILD_VEHICLE_SHIP_CAPTION                                  :{WHITE}Neue Schiffe
 STR_BUILD_VEHICLE_AIRCRAFT_CAPTION                              :{WHITE}Neue Flugzeuge
@@ -2679,7 +2679,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} Fahrzeug{P "" e}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Züge - für Einzelheiten auf den Zug klicken; Waggon ziehen, um ihn an-/abzukoppeln
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Züge - für Informationen auf einen Zug klicken; Waggon ziehen, um ihn an-/abzukoppeln
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Straßenfahrzeuge - für Einzelheiten auf das Fahrzeug klicken
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schiffe - für Einzelheiten auf das Schiff klicken
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flugzeuge - für Einzelheiten auf das Flugzeug klicken
@@ -3184,16 +3184,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Prüfung der Da
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spiel wurde in einer Version ohne Straßenbahnunterstützung gespeichert. Alle Straßenbahnen wurden entfernt.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Spielfeldgenerierung wurde abgebrochen... {} ...kein brauchbarer Platz für eine Stadt gefunden
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...in diesem Szenario gibt es keine Stadt
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Spielfeldgenerierung wurde abgebrochen...{}... kein brauchbarer Platz für eine Stadt gefunden
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... in diesem Szenario gibt es keine Stadt
 
 STR_ERROR_PNGMAP                                                :{WHITE}Landschaft kann nicht aus PNG-Datei geladen werden...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...Datei nicht gefunden.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...Bildtyp kann nicht umgewandelt werden. 8- oder 24-bit-PNG-Datei erforderlich.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...irgendetwas ging schief. Sorry. (Vielleicht eine kaputte Datei?)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... Datei nicht gefunden.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... Bildtyp kann nicht umgewandelt werden. 8- oder 24-bit-PNG-Datei erforderlich.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... irgendetwas ging schief. Sorry. (Vielleicht eine kaputte Datei?)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Landschaft kann nicht aus BMP-Datei geladen werden...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...Bildtyp kann nicht umgewandelt werden.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... Bildtyp kann nicht umgewandelt werden.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skalierungswarnung
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Zu starke Skalierung des Spielfeldes wird nicht empfohlen. Generierung dennoch fortsetzen?
@@ -3215,10 +3215,10 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Das Land
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Befehl nicht ausführbar...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Gebäude muss erst abgerissen werden
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Gebiet kann nicht geräumt werden...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...ungeeigneter Standort
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...ist bereits gebaut
-STR_ERROR_OWNED_BY                                              :{WHITE}...Eigentum von {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...Gelände gehört jemand anderem
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... ungeeigneter Standort
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ist bereits gebaut
+STR_ERROR_OWNED_BY                                              :{WHITE}... Eigentum von {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... Gelände gehört einer anderen Firma
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Name bereits vergeben
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING} im Weg
 
@@ -3234,18 +3234,18 @@ STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Land kan
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Land kann nicht abgesenkt werden...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kann dieses Land nicht einebnen...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Die Ausschachtung würde den Tunnel zerstören
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Ist bereits auf Meereshöhe
-STR_ERROR_TOO_HIGH                                              :{WHITE}Zu hoch
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... ist bereits auf Meereshöhe
+STR_ERROR_TOO_HIGH                                              :{WHITE}... zu hoch
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ist schon flach
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Firmenname kann nicht geändert werden...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Managername kann nicht geändert werden...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...Maximaler Kredit ist {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maximaler Kredit ist {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Weitere Kreditaufnahme nicht möglich ...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...Kredit bereits zurückgezahlt
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...erfordert {CURRENCY}
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... Kredit bereits zurückgezahlt
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... erfordert {CURRENCY}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kredit kann nicht getilgt werden...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Von der Bank geliehenes Geld kann nicht abgegeben werden...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Firmenkauf nicht möglich...
@@ -3258,10 +3258,10 @@ STR_ERROR_PROTECTED                                             :{WHITE}Diese Fi
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Bau von Städten unmöglich
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Die Stadt kann nicht umbenannt werden...
 STR_ERROR_CAN_T_BUILD_TOWN_HERE                                 :{WHITE}Stadt kann hier nicht gegründet werden...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...zu dicht am Spielfeldrand
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...zu dicht an einer anderen Stadt
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...zu viele Städte
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...es ist kein Platz mehr auf dem Spielfeld.
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... zu dicht am Spielfeldrand
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... zu dicht an einer anderen Stadt
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... zu viele Städte
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... es ist kein Platz mehr auf dem Spielfeld.
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Städte bauen im Moment keine Straßen. Städtischer Straßenbau kann mittels Erweiterte Einstellungen->Wirtschaft->Städte eingestellt werden.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Straßenarbeiten sind im Gange
 
@@ -3269,15 +3269,15 @@ STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Straßen
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Industrie kann nicht erzeugt werden...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING} kann hier nicht gebaut werden...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Industrie kann hier nicht gebaut werden...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...zu nah an einer anderen Industrie
-STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}...erst muss eine Stadt gegründet werden
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...pro Stadt nur einmal erlaubt
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...kann nur in Städten mit mehr als 1200 Einwohnern gebaut werden
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...kann nur im Regenwaldgebiet errichtet werden
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...kann nur im Wüstengebiet errichtet werden
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...kann nur in Städten gebaut werden
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...kann nur in der Nähe des Spielfeldrandes errichtet werden
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...Wald kann nur oberhalb der Schneegrenze gepflanzt werden
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... zu nah an einer anderen Industrie
+STR_ERROR_MUST_BUILD_TOWN_FIRST                                 :{WHITE}... erst muss eine Stadt gegründet werden
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... pro Stadt nur einmal erlaubt
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kann nur in Städten mit mehr als 1200 Einwohnern gebaut werden
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kann nur in Regenwaldgebieten errichtet werden
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kann nur in Wüstengebieten errichtet werden
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kann nur in Städten gebaut werden
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kann nur in der Nähe des Spielfeldrandes errichtet werden
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... Wald kann nur oberhalb der Schneegrenze gepflanzt werden
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Bahnhof kann hier nicht gebaut werden...
@@ -3289,8 +3289,8 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Hafen ka
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Flughafen kann hier nicht gebaut werden...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grenzt an mehr als eine vorhandene Station/Ladeplatz
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...Bahnhof ist zu groß
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...ungleichförmige Stationen deaktiviert
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... Bahnhof ist zu groß
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... ungleichförmige Stationen deaktiviert
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Zu viele Stationen/Ladeplätze im Umkreis
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Zu viele Bahnsteigteile
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Zu viele Busbahnhöfe
@@ -3300,8 +3300,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Statione
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Zu dicht an einem anderen Hafen
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Zu dicht an einem anderen Flughafen
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Station kann nicht umbenannt werden...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...diese Straße ist in kommunaler Trägerschaft
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...Straße verläuft in die falsche Richtung
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... diese Straße ist in kommunaler Trägerschaft
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... Straße verläuft in die falsche Richtung
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Dieser Teil des Bahnhofs kann nicht entfernt werden...
@@ -3329,7 +3329,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Wegpunkt
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Wegpunkt kann hier nicht entfernt werden...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Wegpunkt muss erst abgerissen werden
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...Boje ist im Weg
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... Boje ist im Weg
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... Boje ist in Benutzung
 
 # Depot related errors
@@ -3339,7 +3339,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Straßen
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Werft kann hier nicht gebaut werden...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Zug muss im Depot angehalten sein
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...muss in einem Fahrzeugdepot angehalten werden
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... muss in einem Fahrzeugdepot angehalten werden
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Schiff muss in der Werft angehalten werden
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Flugzeug muss im Hangar angehalten werden
 
@@ -3386,13 +3386,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Straßen
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kanal kann hier nicht gebaut werden...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Schleuse kann hier nicht gebaut werden...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Kann hier keine Flüsse platzieren...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...muss auf Wasser gebaut werden
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...kann nicht auf Wasser gebaut werden
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... muss auf Wasser gebaut werden
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... kann nicht auf Wasser gebaut werden
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Kanal muss erst abgerissen werden
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kann hier kein Aquädukt bauen...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...hier sind bereits Bäume
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... hier sind bereits Bäume
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Baum kann hier nicht gepflanzt werden...
 
 # Bridge related errors
@@ -3402,7 +3402,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Anfang u
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Brückenköpfe nicht auf einer Höhe
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Die Brücke ist zu niedrig für diese Umgebung
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Anfang und Ende müssen auf einer Linie liegen
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...Brücke muss an beiden Seiten auf Land enden
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... Brücke muss an beiden Seiten auf Land enden
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tunnel kann hier nicht gebaut werden...
@@ -3414,9 +3414,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Land kan
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Gegenstand im Weg
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...Firmensitz ist im Weg
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... Firmensitz ist im Weg
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Das Land kann nicht erworben werden...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...ist bereits im Besitz der eigenen Firma!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... ist bereits im Besitz der eigenen Firma!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Gruppe kann nicht erstellt werden...
@@ -3496,13 +3496,13 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Auftrag 
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Auftrag kann nicht verschoben werden...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Auftrag kann nicht ausgelassen werden...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Wechseln zum ausgewählten Auftrag nicht möglich...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}Fahrzeug kann nicht alle Stationen erreichen
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}Fahrzeug kann diese Station nicht erreichen
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}Ein Fahrzeug, welches diesen gemeinsamen Fahrplan nutzt, kann die Station nicht erreichen
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... Fahrzeug kann nicht alle Stationen erreichen
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... Fahrzeug kann diese Station nicht erreichen
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ein Fahrzeug, welches diesen gemeinsamen Fahrplan nutzt, kann die Station nicht erreichen
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Fehler beim Erstellen eines gemeinsam genutzten Fahrplans...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Fahrplan kann nicht kopiert werden...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...zu weit vom vorherigen Bestimmungsort entfernt
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... zu weit vom vorherigen Bestimmungsort entfernt
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kein Fahrplan für das Fahrzeug...
@@ -3510,7 +3510,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Fahrzeug
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Das Fahrzeug hält nicht an dieser Station.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...zu viele Schilder
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... zu viele Schilder
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Schild kann hier nicht aufgestellt werden...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Schildname kann nicht geändert werden...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kann Schild nicht löschen...
