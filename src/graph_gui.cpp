@@ -99,7 +99,7 @@ static const Widget _graph_legend_widgets[] = {
 };
 
 static const WindowDesc _graph_legend_desc(
-	WDP_AUTO, WDP_AUTO, 250, 198, 250, 198,
+	WDP_AUTO, WDP_AUTO, 250, 196, 250, 196,
 	WC_GRAPH_LEGEND, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_graph_legend_widgets
