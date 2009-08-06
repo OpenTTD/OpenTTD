@@ -784,7 +784,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} is lost.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}'s profit last year was {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Order refit failure stopped {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stopped because an ordered refit failed
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autorenew failed on {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}New {STRING} now available!
