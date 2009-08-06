@@ -327,9 +327,10 @@ static int TranslateArgumentIdx(int arg);
 static void EmitWordList(const char * const *words, uint nw)
 {
 	PutByte(nw);
-	for (uint i = 0; i < nw; i++) PutByte(strlen(words[i]));
+	for (uint i = 0; i < nw; i++) PutByte(strlen(words[i]) + 1);
 	for (uint i = 0; i < nw; i++) {
 		for (uint j = 0; words[i][j] != '\0'; j++) PutByte(words[i][j]);
+		PutByte(0);
 	}
 }
 
