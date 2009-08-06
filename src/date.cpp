@@ -262,36 +262,15 @@ static void OnNewDay()
 }
 
 /**
- * Runs the day_proc for every DAY_TICKS vehicle starting at daytick.
- */
-static void RunVehicleDayProc(uint daytick)
-{
-	for (size_t i = daytick; i < Vehicle::GetPoolSize(); i += DAY_TICKS) {
-		Vehicle *v = Vehicle::Get(i);
-
-		if (v != NULL) {
-			/* Call the 32-day callback if needed */
-			CheckVehicle32Day(v);
-			v->OnNewDay();
-		}
-	}
-}
-
-/**
  * Increases the tick counter, increases date  and possibly calls
  * procedures that have to be called daily, monthly or yearly.
  */
 void IncreaseDate()
 {
-	if (_game_mode == GM_MENU) {
-		_tick_counter++;
-		return;
-	}
-
-	RunVehicleDayProc(_date_fract);
-
 	/* increase day, and check if a new day is there? */
 	_tick_counter++;
+
+	if (_game_mode == GM_MENU) return;
 
 	_date_fract++;
 	if (_date_fract < DAY_TICKS) return;

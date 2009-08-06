@@ -559,11 +559,40 @@ void VehicleEnteredDepotThisTick(Vehicle *v)
 	v->vehstatus |= VS_STOPPED;
 }
 
+/**
+ * Increases the day counter for all vehicles and calls 1-day and 32-day handlers.
+ * Each tick, it processes vehicles with "index % DAY_TICKS == _date_fract",
+ * so each day, all vehicles are processes in DAY_TICKS steps.
+ */
+static void RunVehicleDayProc()
+{
+	if (_game_mode != GM_NORMAL) return;
+
+	/* Run the day_proc for every DAY_TICKS vehicle starting at _date_fract. */
+	for (size_t i = _date_fract; i < Vehicle::GetPoolSize(); i += DAY_TICKS) {
+		Vehicle *v = Vehicle::Get(i);
+		if (v == NULL) continue;
+
+		/* Call the 32-day callback if needed */
+		if ((v->day_counter & 0x1F) == 0) {
+			uint16 callback = GetVehicleCallback(CBID_VEHICLE_32DAY_CALLBACK, 0, 0, v->engine_type, v);
+			if (callback == CALLBACK_FAILED) return;
+			if (HasBit(callback, 0)) TriggerVehicle(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
+			if (HasBit(callback, 1)) v->colourmap = PAL_NONE;
+		}
+
+		/* This is called once per day for each vehicle, but not in the first tick of the day */
+		v->OnNewDay();
+	}
+}
+
 void CallVehicleTicks()
 {
 	_vehicles_to_autoreplace.Clear();
 
 	_age_cargo_skip_counter = (_age_cargo_skip_counter == 0) ? 184 : (_age_cargo_skip_counter - 1);
+
+	RunVehicleDayProc();
 
 	Station *st;
 	FOR_ALL_STATIONS(st) LoadUnloadStation(st);
@@ -799,16 +828,6 @@ Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
 	}
 
 	return found;
-}
-
-void CheckVehicle32Day(Vehicle *v)
-{
-	if ((v->day_counter & 0x1F) != 0) return;
-
-	uint16 callback = GetVehicleCallback(CBID_VEHICLE_32DAY_CALLBACK, 0, 0, v->engine_type, v);
-	if (callback == CALLBACK_FAILED) return;
-	if (HasBit(callback, 0)) TriggerVehicle(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
-	if (HasBit(callback, 1)) v->colourmap = PAL_NONE;                         // Update colourmap via callback 2D
 }
 
 void DecreaseVehicleValue(Vehicle *v)

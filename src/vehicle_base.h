@@ -676,8 +676,6 @@ struct FreeUnitIDGenerator {
 	~FreeUnitIDGenerator() { free(this->cache); }
 };
 
-void CheckVehicle32Day(Vehicle *v);
-
 static const int32 INVALID_COORD = 0x7fffffff;
 
 #endif /* VEHICLE_BASE_H */
