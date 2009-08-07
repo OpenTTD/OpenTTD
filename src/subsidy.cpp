@@ -14,10 +14,45 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "subsidy_base.h"
+#include "subsidy_func.h"
 
 #include "table/strings.h"
 
 /* static */ Subsidy Subsidy::array[MAX_COMPANIES];
+
+/**
+ * Marks subsidy as awarded, creates news and AI event
+ * @param from source station
+ * @param to destination station
+ * @param company awarded company
+ */
+void Subsidy::AwardTo(StationID from, StationID to, CompanyID company)
+{
+	assert(!this->IsAwarded());
+
+	this->age = 12;
+	this->from = from;
+	this->to = to;
+
+	/* Add a news item */
+	Pair reftype = SetupSubsidyDecodeParam(this, 0);
+	InjectDParam(1);
+
+	char *company_name = MallocT<char>(MAX_LENGTH_COMPANY_NAME_BYTES);
+	SetDParam(0, company);
+	GetString(company_name, STR_COMPANY_NAME, company_name + MAX_LENGTH_COMPANY_NAME_BYTES - 1);
+
+	SetDParamStr(0, company_name);
+	AddNewsItem(
+		STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF + _settings_game.difficulty.subsidy_multiplier,
+		NS_SUBSIDIES,
+		(NewsReferenceType)reftype.a, this->from, (NewsReferenceType)reftype.b, this->to,
+		company_name
+	);
+	AI::BroadcastNewEvent(new AIEventSubsidyAwarded(this->Index()));
+
+	InvalidateWindow(WC_SUBSIDIES_LIST, 0);
+}
 
 /**
  * Allocates one subsidy
@@ -349,29 +384,7 @@ bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type,
 			}
 			if (DistanceMax(xy, to->xy) > 9) continue;
 
-			/* Found a subsidy, change the values to indicate that it's in use */
-			s->age = 12;
-			s->from = from->index;
-			s->to = to->index;
-
-			/* Add a news item */
-			Pair reftype = SetupSubsidyDecodeParam(s, 0);
-			InjectDParam(1);
-
-			char *company_name = MallocT<char>(MAX_LENGTH_COMPANY_NAME_BYTES);
-			SetDParam(0, company);
-			GetString(company_name, STR_COMPANY_NAME, company_name + MAX_LENGTH_COMPANY_NAME_BYTES - 1);
-
-			SetDParamStr(0, company_name);
-			AddNewsItem(
-				STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF + _settings_game.difficulty.subsidy_multiplier,
-				NS_SUBSIDIES,
-				(NewsReferenceType)reftype.a, s->from, (NewsReferenceType)reftype.b, s->to,
-				company_name
-			);
-			AI::BroadcastNewEvent(new AIEventSubsidyAwarded(s->Index()));
-
-			InvalidateWindow(WC_SUBSIDIES_LIST, 0);
+			s->AwardTo(from->index, to->index, company);
 			return true;
 		}
 	}

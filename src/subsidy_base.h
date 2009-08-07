@@ -7,6 +7,7 @@
 
 #include "cargo_type.h"
 #include "company_type.h"
+#include "station_type.h"
 
 typedef uint16 SubsidyID; ///< ID of a subsidy
 
@@ -25,6 +26,8 @@ struct Subsidy {
 	{
 		return this->age >= 12;
 	}
+
+	void AwardTo(StationID from, StationID to, CompanyID company);
 
 	/**
 	 * Determines index of this subsidy
