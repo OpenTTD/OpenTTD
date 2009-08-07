@@ -287,7 +287,7 @@ static bool FindIndustryToDeliver(TileIndex ind_tile, void *user_data)
  */
 void Station::RecomputeIndustriesNear()
 {
-	this->industries_near.Reset();
+	this->industries_near.Clear();
 	if (this->rect.IsEmpty()) return;
 
 	/* Compute acceptance rectangle */
