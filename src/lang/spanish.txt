@@ -785,7 +785,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} está perdido.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Los beneficios del año pasado del {VEHICLE} fueron {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Orden de fallo en recarga ha parado {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} se detuvo debido a un fallo en orden de reforma
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autorrenovación fallida para {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nuevo {STRING} ahora disponible!

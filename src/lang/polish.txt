@@ -639,6 +639,8 @@ STR_SORT_BY_LENGTH                                              :Dlugosc
 STR_SORT_BY_LIFE_TIME                                           :Pozostaly czas zycia
 STR_SORT_BY_FACILITY                                            :Typ stacji
 STR_SORT_BY_WAITING                                             :Wartość czekającego ładunku
+STR_SORT_BY_RATING_MAX                                          :Towar najwyższej wartości
+STR_SORT_BY_RATING_MIN                                          :Towar najniższej wartości
 STR_SORT_BY_ENGINE_ID                                           :ID pojazdu
 STR_SORT_BY_COST                                                :Cena
 STR_SORT_BY_POWER                                               :Moc
@@ -674,7 +676,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Budowa l
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Zmiana terenu, podwyższanie/obniżanie lądu, sadzenie drzew, itp.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Pokaż okno dźwięk/muzyka
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Pokaż ostatnią wiadomość/ogłoszenie, pokaż ustawienia wiadomości
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informacje o terenie
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informacje o terenie, konsola, ustawienia SI, zrzut ekranu, o grze OpenTTD
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Zapis scenariusza, wczytanie scenariusza, wyjście z edytora, wyjście
@@ -707,7 +709,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ustawienia newg
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcje przeźroczystości
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :{SETX 12}Wyświetlanie nazw miast
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :{SETX 12}Wyświetlanie nazw stacji
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Wyświetlanie punktów kontrolnych
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :{SETX 12}Wyświetlanie nazw punktów kontrolnych
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :{SETX 12}Wyświetlanie znaków
 STR_SETTINGS_MENU_FULL_ANIMATION                                :{SETX 12}Pełna animacja
 STR_SETTINGS_MENU_FULL_DETAIL                                   :{SETX 12}Wszystkie detale
@@ -795,7 +797,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Przełącz konsolę
 STR_ABOUT_MENU_AI_DEBUG                                         :Odpluskwianie SI
 STR_ABOUT_MENU_SCREENSHOT                                       :Zrzut ekranu (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Gigantyczny zrzut (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Gigantyczny zrzut ekranu (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Info o 'OpenTTD'
 ############ range ends here
 
@@ -881,6 +883,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLAC
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Przełącznik wykresu ładunku wł./wył.
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Pokaż szczegóły wyników
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Legenda do wykresów firm
@@ -1291,6 +1294,7 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Wybierz 
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Główny zestaw grafik
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Wybierz główny zestaw grafik do użycia
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatkowe informacje o grafice
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Uruchomienie trybu pelnoekranowego nie powiodlo sie
 
@@ -1468,7 +1472,7 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Pokaż 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generator krajobrazu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Oryginalny
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksymalna odległość rafinerii od brzegu mapy  {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksymalna odległość dla rafinerii od krawędzi mapy {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Wysokość granicy wiecznych śniegów: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Wyboistość terenu (w TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Bardzo łagodny
@@ -1715,12 +1719,12 @@ STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczn
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunele mogą się przecinać: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Budowa w trybie pauzy: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Odrzutowce nie będą rozbijać się (często) na małych lotniskach: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Zmień klimat: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Zmień klimat: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Krajobraz umiarkowany
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Krajobraz arktyczny
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Krajobraz tropikalny
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Krajobraz zabawkowy
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmień datę: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmień datę: {ORANGE}{DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Pozwól modyfikować wielkość produkcji przedsiębiorstw: {ORANGE}{STRING}
 
 # Livery window
@@ -1844,14 +1848,14 @@ STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Serwer d
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Kliknij by wybrac serwer na ktorym grales ostatnim razem
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO O GRZE
-STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klienci:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Język:  {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Krajobraz:  {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Rozmiar mapy:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Wersja serwera:  {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adres serwera:  {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data uruchomienia:  {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Bieżąca data:  {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klienci: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Język: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Krajobraz: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Rozmiar mapy: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Wersja serwera: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adres serwera: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data uruchomienia: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Bieżąca data: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Chronione hasłem!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERWER WYŁĄCZONY
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERWER PEŁNY
@@ -1949,20 +1953,20 @@ STR_NETWORK_LANG_LATVIAN                                        :Łotewski
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Lobby gry wieloosobowej
 
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Przygotowanie do połączenia:   {ORANGE}{STRING}
+STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Przygotowanie do połączenia: {ORANGE}{STRING}
 STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Lista wszystkich firm w grze. Możesz przyłączyć się do jednej z nich lub założyć nowa
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}INFO O FIRMIE
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Nazwa firmy:  {WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Inauguracja:  {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Wartość firmy:  {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Bieżący bilans:  {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Przychód w ostatnim roku:  {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Wydajność:  {WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Nazwa firmy: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Inauguracja: {WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Wartość firmy: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Bieżący bilans: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Przychód w ostatnim roku: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Wydajność: {WHITE}{NUM}
 
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Pojazdy:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stacje:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Gracze:  {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Pojazdy: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stacje: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Gracze: {WHITE}{STRING}
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nowa firma
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Rozpoczęcie działalności nowej firmy
@@ -2043,7 +2047,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Wpisz te
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Brak interface'u sieciowego lub skompilowano bez opcji ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE} Nie można znaleźć żadnej gry w sieci
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Serwer nie odpowiada
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}  Nie można było połączyć z powodu niezgodności NewGRF
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nie można było połączyć z powodu niezgodności NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Błąd synchronizacji gry sieciowej.
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} Połączenie utracone w grze sieciowej.
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} Nie można wczytać zapisanej gry z serwera.
@@ -2183,6 +2187,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Zasoby: 
 STR_JOIN_STATION_CAPTION                                        :{BLACK}Połącz stację
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Zbuduj oddzielną stację
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{BLACK}Połącz punkty
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Zbuduj oddzielny punkt kontrolny
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Konstrukcja torowiska
@@ -2750,14 +2756,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Ufunduj nowe bu
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kup wyłączność transportową
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Daj łapówkę lokalnym władzom
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Rozpocznij małą kampanię reklamową aby zachęcić pasażerów i fabryki do Twoich usług.{}  Koszt: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Rozpocznij średnią kampanię reklamową aby zachęcić więcej pasażerów i fabryk do Twoich usług transportowych.{}  Koszt: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Rozpocznij dużą kampanię reklamową aby zachęcić więcej pasażerów i fabryk do Twoich usług transportowych.{}  Koszt: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Ufunduj remont sieci dróg. Powoduje zakłócenia w ruchu ulicznym do 6 miesięcy.{}  Koszt: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} Zbuduj pomnij dla uczczenia Twojej firmy.{} Koszt: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} Ufundowanie nowych budynków komercyjnych w mieście.{}  Koszt: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} Kup roczną wyłączność na prawa transportowe w mieście. Lokalne władze pozwolą korzystać tylko z usług Twojej firmy.{} Koszt: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} Daj łapówkę lokalnym władzom, powiększ Swoją ocenę, ryzykując poważne kary w razie złapania.{}  Koszt: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Rozpocznij małą kampanię reklamową aby zachęcić pasażerów i fabryki do Twoich usług.{}Koszt: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Rozpocznij średnią kampanię reklamową aby zachęcić więcej pasażerów i fabryk do Twoich usług transportowych.{}Koszt: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Rozpocznij dużą kampanię reklamową aby zachęcić więcej pasażerów i fabryk do Twoich usług transportowych.{}Koszt: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}Ufunduj remont sieci dróg. Powoduje zakłócenia w ruchu ulicznym do 6 miesięcy.{}Koszt: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Zbuduj pomnik dla uczczenia Twojej firmy.{}Koszt: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Ufundowanie nowych budynków komercyjnych w mieście.{}Koszt: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Kup roczną wyłączność na prawa transportowe w mieście. Lokalne władze pozwolą korzystać tylko z usług Twojej firmy.{}Koszt: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Daj łapówkę lokalnym władzom, powiększ Swoją ocenę, ryzykując poważne kary w razie złapania.{}Koszt: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsydia
@@ -2773,6 +2779,7 @@ STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nazwa st
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Przytrzymaj CTRL aby zaznaczyć więcej niż jedną opcję
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nic -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Zaznacz wszystkie typy stacji
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Zaznacz wszystkie typy ładunku (oraz brak czekającego ładunku)
@@ -2815,7 +2822,10 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Pokazuje
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Zmień nazwę stacji
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centruj główny widok na punkcie kontrolnym
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmień nazwę punktu orientacyjnego
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centruj główny widok na boji
+STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Zmień nazwę boji
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edytuj nazwę pkt. kontrolnego
 
@@ -2841,10 +2851,10 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Łącznie:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bilans bankowy
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Pożyczka
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Maks. pożyczka:  {BLACK}{CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Maks. pożyczka: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pożyczka {SKIP}{SKIP}{CURRENCY}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Zwiększ wielkość pożyczki
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Zwiększ wielkość pożyczki. Ctrl+Klik spłaca maksymalną możliwą kwotę pożyczki
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Zwrot {SKIP}{SKIP}{CURRENCY}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Zwróć cześć pożyczki
 
@@ -3339,18 +3349,18 @@ STR_ORDER_GO_VIA                                                :Idź przez
 STR_ORDER_GO_NON_STOP_VIA                                       :Idź bez przerwy przez
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Zmień zachowanie hamowania podświetlonych rozkazów
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pelny zaladunek czegokolwiek
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pełny załadunek któregoś z towarów
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Załaduj jeśli dostępne
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Pelny zaladunek wszystkiego
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pelny zaladunek czegokolwiek
-STR_ORDER_DROP_NO_LOADING                                       :Nie ladowac
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pełny załadunek któregoś z towarów
+STR_ORDER_DROP_NO_LOADING                                       :Nie ładować
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Zmień zachowanie załadunku podświetlonego rozkazu
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Wyładuj wszystko
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Rozładuj i załaduj
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Wyładuj jeśli akceptowane
-STR_ORDER_DROP_UNLOAD                                           :Wyładuj wszystko
-STR_ORDER_DROP_TRANSFER                                         :Przeladowywac
-STR_ORDER_DROP_NO_UNLOADING                                     :Nie rozladowywac
+STR_ORDER_DROP_UNLOAD                                           :Rozładuj i załaduj
+STR_ORDER_DROP_TRANSFER                                         :Przeładunek
+STR_ORDER_DROP_NO_UNLOADING                                     :Nie rozładowuj
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}}Zmień zachowanie wyładunku podświetlonego rozkazu
 
 STR_ORDER_REFIT                                                 :{BLACK}Przeksztalc
@@ -3421,20 +3431,20 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_FULL_LOAD                                             :(Pełne załadowanie)
+STR_ORDER_FULL_LOAD                                             :(Pełen załadunek)
 STR_ORDER_FULL_LOAD_ANY                                         :(Pelny zaladunek wszystkiego)
-STR_ORDER_NO_LOAD                                               :(Nie ladowac)
-STR_ORDER_UNLOAD                                                :(Rozkladuj i zaladuj)
+STR_ORDER_NO_LOAD                                               :(Nie ładować)
+STR_ORDER_UNLOAD                                                :(Rozładuj i załaduj)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Wyładuj i czekaj na pełny załadunek)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Rozladuj i czekaj na pelny ladunek czegokolwiek)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Rozładuj i czekaj na pełny załadunek któregoś z towarów)
 STR_ORDER_UNLOAD_NO_LOAD                                        :Wyładuj i zostaw pusty
-STR_ORDER_TRANSFER                                              :(Przeladuj i zabierz ladunek)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Przeladuj i czekaj na pelny zaladunek)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Przeladuj i czekaj na pelny zaladunek czegokolwiek)
+STR_ORDER_TRANSFER                                              :(Przeładuj i zabierz ładunek)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Przeładuj i czekaj na pełny załadunek)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Przeładuj i czekaj na pełny załadunek któregoś z towarów)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Przeladuj i odjedz pusty)
-STR_ORDER_NO_UNLOAD                                             :(Nie rozladowuj i wez ladunek)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nie rozladowuj i czekaj na pelny zaladunek)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nie rozladowuj i czekaj na pelny zaladunek czegokolwiek)
+STR_ORDER_NO_UNLOAD                                             :(Nie rozładowuj i weź ładunek)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nie rozładowuj i czekaj na pełny załadunek)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nie rozładowuj i czekaj na pełny załadunek któregoś z towarów)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[blisko końca]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[środek]
@@ -3486,6 +3496,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nazwa SI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Przeładuj SI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zabij SI, przeładuj skrypt i zrestartuj SI
 
+STR_ERROR_AI_NO_AI_FOUND                                        :Nie znaleziono SI do wczytania.{}SI jest nieaktywne i nic nie robi.{}Możesz ściągnąć SI z 'Dodatki Online' w głównym menu gry.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna z działających SI przestała działać. Prosimy o zgłoszenie tego autorowi SI dołączając zrzut ekranu okna odpluskwiania SI.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno debugowania AI jest dostępne tylko w serwerze
 
@@ -3688,12 +3699,14 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Należy 
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Należy najpierw usunąć lotnisko
 
 # Waypoint related errors
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Za blisko do innego punktu nawigacyjnego
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Nie można budować tutaj punktu orientacyjnego...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Nie można tutaj ustawić boi...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nie można zmienić nazwy punktu orientacyjnego...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nie można usunąć stąd kolejowego punktu orientacyjnego...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Musisz usunąć najpierw punkt nawigacyjny
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...boja na drodze
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...boja w użyciu!
 
@@ -4019,6 +4032,8 @@ STR_SV_STNAME_AIRPORT                                           :Lotnisko {STRIN
 STR_SV_STNAME_OILFIELD                                          :{STRING} Platforma Wiertnicza
 STR_SV_STNAME_MINES                                             :{STRING} Kopalnia
 STR_SV_STNAME_DOCKS                                             :{STRING} Port
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Pawilon
 STR_SV_STNAME_SIDINGS                                           :{STRING} Bocznica
@@ -4296,6 +4311,8 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_BUOY_NAME                                            :{TOWN} Boja
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Boja #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Firma {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupa {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
