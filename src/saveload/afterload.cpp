@@ -1850,36 +1850,6 @@ bool AfterLoadGame()
 				i++;
 			}
 		}
-
-		/* Delete invalid subsidies possibly present in old versions (but converted to new savegame) */
-		Subsidy *s;
-		FOR_ALL_SUBSIDIES(s) {
-			if (s->IsAwarded()) {
-				/* Station -> Station */
-				const Station *from = Station::GetIfValid(s->from);
-				const Station *to = Station::GetIfValid(s->to);
-				if (from != NULL && to != NULL && from->owner == to->owner && Company::IsValidID(from->owner)) continue;
-			} else {
-				const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
-				switch (cs->town_effect) {
-					case TE_PASSENGERS:
-					case TE_MAIL:
-						/* Town -> Town */
-						if (Town::IsValidID(s->from) && Town::IsValidID(s->to)) continue;
-						break;
-					case TE_GOODS:
-					case TE_FOOD:
-						/* Industry -> Town */
-						if (Industry::IsValidID(s->from) && Town::IsValidID(s->to)) continue;
-						break;
-					default:
-						/* Industry -> Industry */
-						if (Industry::IsValidID(s->from) && Industry::IsValidID(s->to)) continue;
-						break;
-				}
-			}
-			s->cargo_type = CT_INVALID;
-		}
 	}
 
 	if (CheckSavegameVersion(124)) {
@@ -1895,6 +1865,43 @@ bool AfterLoadGame()
 				wp->train_station.w = 0;
 				wp->train_station.h = 0;
 			}
+		}
+	}
+
+	{
+		/* Delete invalid subsidies possibly present in old versions (but converted to new savegame) */
+		Subsidy *s;
+		FOR_ALL_SUBSIDIES(s) {
+			if (s->IsAwarded()) {
+				/* Station -> Station */
+				const Station *from = Station::GetIfValid(s->src);
+				const Station *to = Station::GetIfValid(s->dst);
+				s->src_type = s->dst_type = ST_STATION;
+				if (from != NULL && to != NULL && from->owner == to->owner && Company::IsValidID(from->owner)) continue;
+			} else {
+				const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
+				switch (cs->town_effect) {
+					case TE_PASSENGERS:
+					case TE_MAIL:
+						/* Town -> Town */
+						s->src_type = s->dst_type = ST_TOWN;
+						if (Town::IsValidID(s->src) && Town::IsValidID(s->dst)) continue;
+						break;
+					case TE_GOODS:
+					case TE_FOOD:
+						/* Industry -> Town */
+						s->src_type = ST_INDUSTRY;
+						s->dst_type = ST_TOWN;
+						if (Industry::IsValidID(s->src) && Town::IsValidID(s->dst)) continue;
+						break;
+					default:
+						/* Industry -> Industry */
+						s->src_type = s->dst_type = ST_INDUSTRY;
+						if (Industry::IsValidID(s->src) && Industry::IsValidID(s->dst)) continue;
+						break;
+				}
+			}
+			s->cargo_type = CT_INVALID;
 		}
 	}
 

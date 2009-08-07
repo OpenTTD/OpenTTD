@@ -5,6 +5,8 @@
 #ifndef CARGO_TYPE_H
 #define CARGO_TYPE_H
 
+#include "core/enum_type.hpp"
+
 typedef byte CargoID;
 
 /** Available types of cargo */
@@ -81,5 +83,17 @@ public:
 		return this->amount[cargo];
 	}
 };
+
+
+/** Types of subsidy source and destination */
+enum SourceType {
+	ST_INDUSTRY, ///< Source/destination is an industry
+	ST_TOWN,     ///< Source/destination is a town
+	ST_STATION,  ///< Source/destination is a station
+};
+typedef SimpleTinyEnumT<SourceType, byte> SourceTypeByte;
+
+typedef uint16 SourceID; ///< Contains either industry ID, town ID or station ID (or INVALID_SOURCE)
+static const SourceID INVALID_SOURCE = 0xFFFF; ///< Invalid/unknown index of source
 
 #endif /* CARGO_TYPE_H */

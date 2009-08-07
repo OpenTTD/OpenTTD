@@ -98,7 +98,7 @@ Town::~Town()
 		}
 	}
 
-	DeleteSubsidyWithTown(this->index);
+	DeleteSubsidyWith(ST_TOWN, this->index);
 
 	MarkWholeScreenDirty();
 }

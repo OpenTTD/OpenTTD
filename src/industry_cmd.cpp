@@ -167,7 +167,7 @@ Industry::~Industry()
 
 	DecIndustryTypeCount(this->type);
 
-	DeleteSubsidyWithIndustry(this->index);
+	DeleteSubsidyWith(ST_INDUSTRY, this->index);
 	DeleteIndustryNews(this->index);
 	DeleteWindowById(WC_INDUSTRY_VIEW, this->index);
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 0);

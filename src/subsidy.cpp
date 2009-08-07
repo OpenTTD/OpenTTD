@@ -31,8 +31,9 @@ void Subsidy::AwardTo(StationID from, StationID to, CompanyID company)
 	assert(!this->IsAwarded());
 
 	this->age = 12;
-	this->from = from;
-	this->to = to;
+	this->src_type = this->dst_type = ST_STATION;
+	this->src = from;
+	this->dst = to;
 
 	/* Add a news item */
 	Pair reftype = SetupSubsidyDecodeParam(this, 0);
@@ -46,7 +47,7 @@ void Subsidy::AwardTo(StationID from, StationID to, CompanyID company)
 	AddNewsItem(
 		STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF + _settings_game.difficulty.subsidy_multiplier,
 		NS_SUBSIDIES,
-		(NewsReferenceType)reftype.a, this->from, (NewsReferenceType)reftype.b, this->to,
+		(NewsReferenceType)reftype.a, this->src, (NewsReferenceType)reftype.b, this->dst,
 		company_name
 	);
 	AI::BroadcastNewEvent(new AIEventSubsidyAwarded(this->Index()));
@@ -95,37 +96,39 @@ Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode)
 	const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
 	SetDParam(0, mode ? cs->name : cs->name_single);
 
-	if (!s->IsAwarded()) {
-		if (cs->town_effect != TE_PASSENGERS && cs->town_effect != TE_MAIL) {
-			SetDParam(1, STR_INDUSTRY_NAME);
-			SetDParam(2, s->from);
+	switch (s->src_type) {
+		case ST_INDUSTRY:
 			reftype1 = NR_INDUSTRY;
-
-			if (cs->town_effect != TE_GOODS && cs->town_effect != TE_FOOD) {
-				SetDParam(4, STR_INDUSTRY_NAME);
-				SetDParam(5, s->to);
-				reftype2 = NR_INDUSTRY;
-			} else {
-				SetDParam(4, STR_TOWN_NAME);
-				SetDParam(5, s->to);
-				reftype2 = NR_TOWN;
-			}
-		} else {
-			SetDParam(1, STR_TOWN_NAME);
-			SetDParam(2, s->from);
+			SetDParam(1, STR_INDUSTRY_NAME);
+			break;
+		case ST_TOWN:
 			reftype1 = NR_TOWN;
-
-			SetDParam(4, STR_TOWN_NAME);
-			SetDParam(5, s->to);
-			reftype2 = NR_TOWN;
-		}
-	} else {
-		SetDParam(1, s->from);
-		reftype1 = NR_STATION;
-
-		SetDParam(2, s->to);
-		reftype2 = NR_STATION;
+			SetDParam(1, STR_TOWN_NAME);
+			break;
+		case ST_STATION:
+			reftype1 = NR_STATION;
+			SetDParam(1, s->src);
+			break;
+		default: NOT_REACHED();
 	}
+	SetDParam(2, s->src);
+
+	switch (s->dst_type) {
+		case ST_INDUSTRY:
+			reftype2 = NR_INDUSTRY;
+			SetDParam(4, STR_INDUSTRY_NAME);
+			break;
+		case ST_TOWN:
+			reftype2 = NR_TOWN;
+			SetDParam(4, STR_TOWN_NAME);
+			break;
+		case ST_STATION:
+			reftype2 = NR_STATION;
+			SetDParam(2, s->dst);
+			break;
+		default: NOT_REACHED();
+	}
+	SetDParam(5, s->dst);
 
 	Pair p;
 	p.a = reftype1;
@@ -133,48 +136,19 @@ Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode)
 	return p;
 }
 
-void DeleteSubsidyWithTown(TownID index)
-{
-	Subsidy *s;
-	FOR_ALL_SUBSIDIES(s) {
-		if (!s->IsAwarded()) {
-			const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
-			if (((cs->town_effect == TE_PASSENGERS || cs->town_effect == TE_MAIL) && (index == s->from || index == s->to)) ||
-				((cs->town_effect == TE_GOODS || cs->town_effect == TE_FOOD) && index == s->to)) {
-				s->cargo_type = CT_INVALID;
-			}
-		}
-	}
-}
-
-void DeleteSubsidyWithIndustry(IndustryID index)
-{
-	Subsidy *s;
-	FOR_ALL_SUBSIDIES(s) {
-		if (!s->IsAwarded()) {
-			const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
-			if (cs->town_effect != TE_PASSENGERS && cs->town_effect != TE_MAIL &&
-				(index == s->from || (cs->town_effect != TE_GOODS && cs->town_effect != TE_FOOD && index == s->to))) {
-				s->cargo_type = CT_INVALID;
-			}
-		}
-	}
-}
-
-void DeleteSubsidyWithStation(StationID index)
+void DeleteSubsidyWith(SourceType type, SourceID index)
 {
 	bool dirty = false;
 
 	Subsidy *s;
 	FOR_ALL_SUBSIDIES(s) {
-		if (s->IsAwarded() && (s->from == index || s->to == index)) {
+		if ((s->src_type == type && s->src == index) || (s->dst_type == type && s->dst == index)) {
 			s->cargo_type = CT_INVALID;
 			dirty = true;
 		}
 	}
 
-	if (dirty)
-		InvalidateWindow(WC_SUBSIDIES_LIST, 0);
+	if (dirty) InvalidateWindow(WC_SUBSIDIES_LIST, 0);
 }
 
 struct FoundRoute {
@@ -261,10 +235,9 @@ static bool CheckSubsidyDuplicate(Subsidy *s)
 {
 	const Subsidy *ss;
 	FOR_ALL_SUBSIDIES(ss) {
-		if (s != ss &&
-				ss->from == s->from &&
-				ss->to == s->to &&
-				ss->cargo_type == s->cargo_type) {
+		if (s != ss && ss->cargo_type == s->cargo_type &&
+				ss->src_type == s->src_type && ss->src == s->src &&
+				ss->dst_type == s->dst_type && ss->dst == s->dst) {
 			s->cargo_type = CT_INVALID;
 			return true;
 		}
@@ -275,24 +248,21 @@ static bool CheckSubsidyDuplicate(Subsidy *s)
 
 void SubsidyMonthlyLoop()
 {
-	Station *st;
-	uint n;
-	FoundRoute fr;
 	bool modified = false;
 
 	Subsidy *s;
 	FOR_ALL_SUBSIDIES(s) {
 		if (s->age == 12 - 1) {
 			Pair reftype = SetupSubsidyDecodeParam(s, 1);
-			AddNewsItem(STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->from, (NewsReferenceType)reftype.b, s->to);
+			AddNewsItem(STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
 			s->cargo_type = CT_INVALID;
 			modified = true;
 			AI::BroadcastNewEvent(new AIEventSubsidyOfferExpired(s->Index()));
 		} else if (s->age == 2 * 12 - 1) {
-			st = Station::Get(s->to);
+			Station *st = Station::Get(s->dst);
 			if (st->owner == _local_company) {
 				Pair reftype = SetupSubsidyDecodeParam(s, 1);
-				AddNewsItem(STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->from, (NewsReferenceType)reftype.b, s->to);
+				AddNewsItem(STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
 			}
 			s->cargo_type = CT_INVALID;
 			modified = true;
@@ -308,28 +278,37 @@ void SubsidyMonthlyLoop()
 		s = Subsidy::AllocateItem();
 		if (s == NULL) goto no_add;
 
-		n = 1000;
+		uint n = 1000;
 		do {
+			FoundRoute fr;
 			FindSubsidyPassengerRoute(&fr);
 			if (fr.distance <= 70) {
 				s->cargo_type = CT_PASSENGERS;
-				s->from = ((Town*)fr.from)->index;
-				s->to = ((Town*)fr.to)->index;
+				s->src_type = s->dst_type = ST_TOWN;
+				s->src = ((Town *)fr.from)->index;
+				s->dst = ((Town *)fr.to)->index;
 				goto add_subsidy;
 			}
 			FindSubsidyCargoRoute(&fr);
 			if (fr.distance <= 70) {
 				s->cargo_type = fr.cargo;
-				s->from = ((Industry*)fr.from)->index;
+				s->src_type = ST_INDUSTRY;
+				s->src = ((Industry *)fr.from)->index;
 				{
 					const CargoSpec *cs = CargoSpec::Get(fr.cargo);
-					s->to = (cs->town_effect == TE_GOODS || cs->town_effect == TE_FOOD) ? ((Town*)fr.to)->index : ((Industry*)fr.to)->index;
+					if (cs->town_effect == TE_GOODS || cs->town_effect == TE_FOOD) {
+						s->dst_type = ST_INDUSTRY;
+						s->dst = ((Industry *)fr.to)->index;
+					} else {
+						s->dst_type = ST_TOWN;
+						s->dst = ((Town *)fr.to)->index;
+					}
 				}
 	add_subsidy:
 				if (!CheckSubsidyDuplicate(s)) {
 					s->age = 0;
 					Pair reftype = SetupSubsidyDecodeParam(s, 0);
-					AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->from, (NewsReferenceType)reftype.b, s->to);
+					AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
 					AI::BroadcastNewEvent(new AIEventSubsidyOffer(s->Index()));
 					modified = true;
 					break;
@@ -351,8 +330,8 @@ bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type,
 	FOR_ALL_SUBSIDIES(s) {
 		if (s->cargo_type == cargo_type &&
 				s->IsAwarded() &&
-				s->from == from->index &&
-				s->to == to->index) {
+				s->src == from->index &&
+				s->dst == to->index) {
 			return true;
 		}
 	}
@@ -363,9 +342,9 @@ bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type,
 			/* Check distance from source */
 			const CargoSpec *cs = CargoSpec::Get(cargo_type);
 			if (cs->town_effect == TE_PASSENGERS || cs->town_effect == TE_MAIL) {
-				xy = Town::Get(s->from)->xy;
+				xy = Town::Get(s->src)->xy;
 			} else {
-				xy = Industry::Get(s->from)->xy;
+				xy = Industry::Get(s->src)->xy;
 			}
 			if (DistanceMax(xy, from->xy) > 9) continue;
 
@@ -375,11 +354,11 @@ bool CheckSubsidised(const Station *from, const Station *to, CargoID cargo_type,
 				case TE_MAIL:
 				case TE_GOODS:
 				case TE_FOOD:
-					xy = Town::Get(s->to)->xy;
+					xy = Town::Get(s->dst)->xy;
 					break;
 
 				default:
-					xy = Industry::Get(s->to)->xy;
+					xy = Industry::Get(s->dst)->xy;
 					break;
 			}
 			if (DistanceMax(xy, to->xy) > 9) continue;

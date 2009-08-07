@@ -88,10 +88,10 @@ Station::~Station()
 	DeleteWindowById(WC_AIRCRAFT_LIST, wno | (VEH_AIRCRAFT << 11));
 
 	/* Now delete all orders that go to the station */
-	RemoveOrderFromAllVehicles(OT_GOTO_STATION, index);
+	RemoveOrderFromAllVehicles(OT_GOTO_STATION, this->index);
 
 	/* Subsidies need removal as well */
-	DeleteSubsidyWithStation(index);
+	DeleteSubsidyWith(ST_STATION, this->index);
 
 	/* Remove all news items */
 	DeleteStationNews(this->index);

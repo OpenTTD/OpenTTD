@@ -13,10 +13,12 @@ typedef uint16 SubsidyID; ///< ID of a subsidy
 
 /** Struct about subsidies, offered and awarded */
 struct Subsidy {
-	CargoID cargo_type; ///< Cargo type involved in this subsidy, CT_INVALID for invalid subsidy
-	byte age;           ///< Subsidy age; < 12 is unawarded, >= 12 is awarded
-	uint16 from;        ///< Index of source. Either TownID, IndustryID or StationID, when awarded
-	uint16 to;          ///< Index of destination. Either TownID, IndustryID or StationID, when awarded
+	CargoID cargo_type;      ///< Cargo type involved in this subsidy, CT_INVALID for invalid subsidy
+	byte age;                ///< Subsidy age; < 12 is unawarded, >= 12 is awarded
+	SourceTypeByte src_type; ///< Source of subsidised path
+	SourceTypeByte dst_type; ///< Destination of subsidised path
+	uint16 src;              ///< Index of source. Either TownID, IndustryID or StationID, when awarded
+	uint16 dst;              ///< Index of destination. Either TownID, IndustryID or StationID, when awarded
 
 	/**
 	 * Tests whether this subsidy has been awarded to someone

@@ -78,31 +78,26 @@ struct SubsidyListWindow : Window {
 
 	void HandleClick(const Subsidy *s)
 	{
-		TownEffect te = CargoSpec::Get(s->cargo_type)->town_effect;
+		/* determine src coordinate for subsidy and try to scroll to it */
 		TileIndex xy;
-
-		/* determine from coordinate for subsidy and try to scroll to it */
-		uint offs = s->from;
-		if (s->IsAwarded()) {
-			xy = Station::Get(offs)->xy;
-		} else if (te == TE_PASSENGERS || te == TE_MAIL) {
-			xy = Town::Get(offs)->xy;
-		} else {
-			xy = Industry::Get(offs)->xy;
+		switch (s->src_type) {
+			case ST_INDUSTRY: xy = Industry::Get(s->src)->xy; break;
+			case ST_TOWN:     xy =     Town::Get(s->src)->xy; break;
+			case ST_STATION:  xy =  Station::Get(s->src)->xy; break;
+			default: NOT_REACHED();
 		}
 
 		if (_ctrl_pressed || !ScrollMainWindowToTile(xy)) {
 			if (_ctrl_pressed) ShowExtraViewPortWindow(xy);
 
-			/* otherwise determine to coordinate for subsidy and scroll to it */
-			offs = s->to;
-			if (s->IsAwarded()) {
-				xy = Station::Get(offs)->xy;
-			} else if (te == TE_PASSENGERS || te == TE_MAIL || te == TE_GOODS || te == TE_FOOD) {
-				xy = Town::Get(offs)->xy;
-			} else {
-				xy = Industry::Get(offs)->xy;
+			/* otherwise determine dst coordinate for subsidy and scroll to it */
+			switch (s->dst_type) {
+				case ST_INDUSTRY: xy = Industry::Get(s->dst)->xy; break;
+				case ST_TOWN:     xy =     Town::Get(s->dst)->xy; break;
+				case ST_STATION:  xy =  Station::Get(s->dst)->xy; break;
+				default: NOT_REACHED();
 			}
+
 
 			if (_ctrl_pressed) {
 				ShowExtraViewPortWindow(xy);
@@ -155,7 +150,7 @@ struct SubsidyListWindow : Window {
 		FOR_ALL_SUBSIDIES(s) {
 			if (s->IsAwarded()) {
 				SetupSubsidyDecodeParam(s, 1);
-				SetDParam(3, Station::Get(s->to)->owner);
+				SetDParam(3, Station::Get(s->dst)->owner);
 				SetDParam(4, _date - ymd.day + 768 - s->age * 32);
 
 				/* Displays the two connected stations */
