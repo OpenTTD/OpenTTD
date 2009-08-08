@@ -789,7 +789,7 @@ struct MessageHistoryWindow : Window {
 	{
 		this->InitNested(desc); // Initializes 'this->line_height' and 'this->date_width'.
 		this->vscroll.cap = (this->nested_array[MHW_BACKGROUND]->current_y - this->top_spacing - this->bottom_spacing) / this->line_height;
-		OnInvalidateData(0);
+		this->OnInvalidateData(0);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *resize)
@@ -808,7 +808,7 @@ struct MessageHistoryWindow : Window {
 
 	virtual void OnPaint()
 	{
-		OnInvalidateData(0);
+		this->OnInvalidateData(0);
 		this->DrawWidgets();
 	}
 
@@ -862,7 +862,7 @@ struct MessageHistoryWindow : Window {
 	virtual void OnResize(Point delta)
 	{
 		this->vscroll.cap += delta.y / this->line_height;
-		OnInvalidateData(0);
+		this->OnInvalidateData(0);
 	}
 };
 
