@@ -150,44 +150,58 @@ void DeleteSubsidyWith(SourceType type, SourceID index)
 	}
 }
 
-struct FoundRoute {
-	uint distance;
-	CargoID cargo;
-	void *from;
-	void *to;
-};
-
-static void FindSubsidyPassengerRoute(FoundRoute *fr)
+static bool CheckSubsidyDuplicate(CargoID cargo, SourceType src_type, SourceID src, SourceType dst_type, SourceID dst)
 {
-	Town *from, *to;
-
-	fr->distance = UINT_MAX;
-
-	fr->from = from = Town::GetRandom();
-	if (from == NULL || from->population < SUBSIDY_PAX_MIN_POPULATION ||
-			from->pct_pass_transported > SUBSIDY_MAX_PCT_TRANSPORTED) {
-		return;
+	const Subsidy *s;
+	FOR_ALL_SUBSIDIES(s) {
+		if (s->cargo_type == cargo &&
+				s->src_type == src_type && s->src == src &&
+				s->dst_type == dst_type && s->dst == dst) {
+			return true;
+		}
 	}
-
-	fr->to = to = Town::GetRandom();
-	if (from == to || to == NULL || to->population < SUBSIDY_PAX_MIN_POPULATION) return;
-
-	fr->distance = DistanceManhattan(from->xy, to->xy);
+	return false;
 }
 
-static void FindSubsidyCargoRoute(FoundRoute *fr)
+static Subsidy *FindSubsidyPassengerRoute()
 {
-	Industry *i;
-	int trans, total;
+	assert(Subsidy::CanAllocateItem());
+
+	const Town *src = Town::GetRandom();
+	if (src->population < SUBSIDY_PAX_MIN_POPULATION ||
+			src->pct_pass_transported > SUBSIDY_MAX_PCT_TRANSPORTED) {
+		return NULL;
+	}
+
+	const Town *dst = Town::GetRandom();
+	if (dst->population < SUBSIDY_PAX_MIN_POPULATION || src == dst) {
+		return NULL;
+	}
+
+	if (DistanceManhattan(src->xy, src->xy) > SUBSIDY_MAX_DISTANCE) return NULL;
+	if (CheckSubsidyDuplicate(CT_PASSENGERS, ST_TOWN, src->index, ST_TOWN, dst->index)) return NULL;
+
+	Subsidy *s = new Subsidy();
+	s->cargo_type = CT_PASSENGERS;
+	s->src_type = s->dst_type = ST_TOWN;
+	s->src = src->index;
+	s->dst = dst->index;
+
+	return s;
+}
+
+static Subsidy *FindSubsidyCargoRoute()
+{
+	assert(Subsidy::CanAllocateItem());
+
+	const Industry *i = Industry::GetRandom();
+	if (i == NULL) return NULL;
+
 	CargoID cargo;
-
-	fr->distance = UINT_MAX;
-
-	fr->from = i = Industry::GetRandom();
-	if (i == NULL) return;
+	int trans, total;
 
 	/* Randomize cargo type */
-	if (HasBit(Random(), 0) && i->produced_cargo[1] != CT_INVALID) {
+	if (i->produced_cargo[1] != CT_INVALID && HasBit(Random(), 0)) {
 		cargo = i->produced_cargo[1];
 		trans = i->last_month_pct_transported[1];
 		total = i->last_month_production[1];
@@ -198,54 +212,56 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 	}
 
 	/* Quit if no production in this industry
-	 * or if the cargo type is passengers
 	 * or if the pct transported is already large enough */
-	if (total == 0 || trans > SUBSIDY_MAX_PCT_TRANSPORTED || cargo == CT_INVALID) return;
+	if (total == 0 || trans > SUBSIDY_MAX_PCT_TRANSPORTED || cargo == CT_INVALID) return NULL;
 
+	/* Don't allow passengers subsidies from industry */
 	const CargoSpec *cs = CargoSpec::Get(cargo);
-	if (cs->town_effect == TE_PASSENGERS) return;
+	if (cs->town_effect == TE_PASSENGERS) return NULL;
 
-	fr->cargo = cargo;
+	SourceType dst_type;
+	SourceID dst;
 
 	if (cs->town_effect == TE_GOODS || cs->town_effect == TE_FOOD) {
 		/*  The destination is a town */
-		Town *t = Town::GetRandom();
+		dst_type = ST_TOWN;
+		const Town *t = Town::GetRandom();
 
 		/* Only want big towns */
-		if (t == NULL || t->population < SUBSIDY_CARGO_MIN_POPULATION) return;
+		if (t->population < SUBSIDY_CARGO_MIN_POPULATION) return NULL;
 
-		fr->distance = DistanceManhattan(i->xy, t->xy);
-		fr->to = t;
+		if (DistanceManhattan(i->xy, t->xy) > SUBSIDY_MAX_DISTANCE) return NULL;
+
+		dst = t->index;
 	} else {
 		/* The destination is an industry */
-		Industry *i2 = Industry::GetRandom();
+		dst_type = ST_INDUSTRY;
+		const Industry *i2 = Industry::GetRandom();
 
 		/* The industry must accept the cargo */
 		if (i2 == NULL || i == i2 ||
 				(cargo != i2->accepts_cargo[0] &&
-				cargo != i2->accepts_cargo[1] &&
-				cargo != i2->accepts_cargo[2])) {
-			return;
+				 cargo != i2->accepts_cargo[1] &&
+				 cargo != i2->accepts_cargo[2])) {
+			return NULL;
 		}
-		fr->distance = DistanceManhattan(i->xy, i2->xy);
-		fr->to = i2;
-	}
-}
 
-static bool CheckSubsidyDuplicate(Subsidy *s)
-{
-	const Subsidy *ss;
-	FOR_ALL_SUBSIDIES(ss) {
-		if (s != ss && ss->cargo_type == s->cargo_type &&
-				ss->src_type == s->src_type && ss->src == s->src &&
-				ss->dst_type == s->dst_type && ss->dst == s->dst) {
-			delete s;
-			return true;
-		}
-	}
-	return false;
-}
+		if (DistanceManhattan(i->xy, i2->xy) > SUBSIDY_MAX_DISTANCE) return NULL;
 
+		dst = i2->index;
+	}
+
+	if (CheckSubsidyDuplicate(cargo, ST_INDUSTRY, i->index, dst_type, dst)) return NULL;
+
+	Subsidy *s = new Subsidy();
+	s->cargo_type = cargo;
+	s->src_type = ST_INDUSTRY;
+	s->src = i->index;
+	s->dst_type = dst_type;
+	s->dst = dst;
+
+	return s;
+}
 
 void SubsidyMonthlyLoop()
 {
@@ -276,44 +292,18 @@ void SubsidyMonthlyLoop()
 	if (Subsidy::CanAllocateItem() && Chance16(1, 4)) {
 		uint n = 1000;
 		do {
-			FoundRoute fr;
-			FindSubsidyPassengerRoute(&fr);
-			if (fr.distance <= SUBSIDY_MAX_DISTANCE) {
-				s = new Subsidy();
-				s->cargo_type = CT_PASSENGERS;
-				s->src_type = s->dst_type = ST_TOWN;
-				s->src = ((Town *)fr.from)->index;
-				s->dst = ((Town *)fr.to)->index;
-				goto add_subsidy;
-			}
-			FindSubsidyCargoRoute(&fr);
-			if (fr.distance <= SUBSIDY_MAX_DISTANCE) {
-				s = new Subsidy();
-				s->cargo_type = fr.cargo;
-				s->src_type = ST_INDUSTRY;
-				s->src = ((Industry *)fr.from)->index;
-				{
-					const CargoSpec *cs = CargoSpec::Get(fr.cargo);
-					if (cs->town_effect == TE_GOODS || cs->town_effect == TE_FOOD) {
-						s->dst_type = ST_TOWN;
-						s->dst = ((Town *)fr.to)->index;
-					} else {
-						s->dst_type = ST_INDUSTRY;
-						s->dst = ((Industry *)fr.to)->index;
-					}
-				}
-	add_subsidy:
-				if (!CheckSubsidyDuplicate(s)) {
-					s->remaining = SUBSIDY_OFFER_MONTHS;
-					s->awarded = INVALID_COMPANY;
-					Pair reftype = SetupSubsidyDecodeParam(s, 0);
-					AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
-					SetPartOfSubsidyFlag(s->src_type, s->src, POS_SRC);
-					SetPartOfSubsidyFlag(s->dst_type, s->dst, POS_DST);
-					AI::BroadcastNewEvent(new AIEventSubsidyOffer(s->index));
-					modified = true;
-					break;
-				}
+			Subsidy *s = FindSubsidyPassengerRoute();
+			if (s == NULL) s = FindSubsidyCargoRoute();
+			if (s != NULL) {
+				s->remaining = SUBSIDY_OFFER_MONTHS;
+				s->awarded = INVALID_COMPANY;
+				Pair reftype = SetupSubsidyDecodeParam(s, 0);
+				AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
+				SetPartOfSubsidyFlag(s->src_type, s->src, POS_SRC);
+				SetPartOfSubsidyFlag(s->dst_type, s->dst, POS_DST);
+				AI::BroadcastNewEvent(new AIEventSubsidyOffer(s->index));
+				modified = true;
+				break;
 			}
 		} while (n--);
 	}
