@@ -1620,13 +1620,6 @@ void Train::UpdateDeltaXY(Direction direction)
 	this->z_extent      = 6;
 }
 
-static void UpdateVarsAfterSwap(Train *v)
-{
-	v->UpdateDeltaXY(v->direction);
-	v->cur_image = v->GetImage(v->direction);
-	VehicleMove(v, true);
-}
-
 static inline void SetLastSpeed(Train *v, int spd)
 {
 	int old = v->tcache.last_speed;
@@ -1714,15 +1707,15 @@ static void ReverseTrainSwapVeh(Train *v, int l, int r)
 		SwapTrainFlags(&a->flags, &b->flags);
 
 		/* update other vars */
-		UpdateVarsAfterSwap(a);
-		UpdateVarsAfterSwap(b);
+		a->UpdateViewport(true, true);
+		b->UpdateViewport(true, true);
 
 		/* call the proper EnterTile function unless we are in a wormhole */
 		if (a->track != TRACK_BIT_WORMHOLE) VehicleEnterTile(a, a->tile, a->x_pos, a->y_pos);
 		if (b->track != TRACK_BIT_WORMHOLE) VehicleEnterTile(b, b->tile, b->x_pos, b->y_pos);
 	} else {
 		if (a->track != TRACK_BIT_DEPOT) a->direction = ReverseDir(a->direction);
-		UpdateVarsAfterSwap(a);
+		a->UpdateViewport(true, true);
 
 		if (a->track != TRACK_BIT_WORMHOLE) VehicleEnterTile(a, a->tile, a->x_pos, a->y_pos);
 	}
@@ -1948,7 +1941,7 @@ static void ReverseTrainDirection(Train *v)
 	TrainConsistChanged(v, true);
 
 	/* update all images */
-	for (Vehicle *u = v; u != NULL; u = u->Next()) u->cur_image = u->GetImage(u->direction);
+	for (Vehicle *u = v; u != NULL; u = u->Next()) u->UpdateViewport(false, false);
 
 	/* update crossing we were approaching */
 	if (crossing != INVALID_TILE) UpdateLevelCrossing(crossing);
@@ -3324,8 +3317,7 @@ void Train::MarkDirty()
 {
 	Vehicle *v = this;
 	do {
-		v->cur_image = v->GetImage(v->direction);
-		MarkSingleVehicleDirty(v);
+		v->UpdateViewport(false, false);
 	} while ((v = v->Next()) != NULL);
 
 	/* need to update acceleration and cached values since the goods on the train changed. */
@@ -4450,9 +4442,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 	for (Train *u = v; u != NULL; u = u->Next()) {
 		if ((u->vehstatus & VS_HIDDEN) != 0) continue;
 
-		uint16 old_image = u->cur_image;
-		u->cur_image = u->GetImage(u->direction);
-		if (old_image != u->cur_image) VehicleMove(u, true);
+		u->UpdateViewport(false, false);
 	}
 
 	if (v->progress == 0) v->progress = j; // Save unused spd for next time, if TrainController didn't set progress
