@@ -131,6 +131,7 @@
 
 /* static */ int32 AITile::GetHeight(TileIndex tile)
 {
+	AILog::Warning("AITile::GetHeight is deprecated and will be removed soon, please use GetMinHeight/GetMaxHeight/GetCornerHeight instead.");
 	if (!::IsValidTile(tile)) return -1;
 
 	return ::TileHeight(tile);

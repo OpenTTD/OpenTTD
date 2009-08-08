@@ -404,7 +404,7 @@ public:
 	static bool SetOrderFlags(VehicleID vehicle_id, OrderPosition order_position, AIOrderFlags order_flags);
 
 	/**
-	 * Deprecated, use SetOrderFlags instead.
+	 * @Deprecated, use SetOrderFlags instead.
 	 */
 	static bool ChangeOrder(VehicleID vehicle_id, OrderPosition order_position, AIOrderFlags order_flags);
 

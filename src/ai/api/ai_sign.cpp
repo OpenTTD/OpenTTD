@@ -15,6 +15,7 @@
 
 /* static */ SignID AISign::GetMaxSignID()
 {
+	AILog::Warning("AISign::GetMaxSignID is deprecated and will be removed soon, please use AISignList instead.");
 	return (SignID)::Sign::GetPoolSize();
 }
 
