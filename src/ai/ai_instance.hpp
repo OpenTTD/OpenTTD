@@ -114,8 +114,6 @@ public:
 	static void LoadEmpty();
 
 private:
-	static class AIInstance *current_instance; //!< Static current AIInstance, so we can register AIs.
-
 	class AIController *controller;
 	class AIStorage *storage;
 	class Squirrel *engine;

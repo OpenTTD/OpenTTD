@@ -80,8 +80,6 @@
 
 #undef DEFINE_SCRIPT_FILES
 
-/* static */ AIInstance *AIInstance::current_instance = NULL;
-
 AIStorage::~AIStorage()
 {
 	/* Free our pointers */
@@ -108,7 +106,6 @@ AIInstance::AIInstance(AIInfo *info) :
 {
 	/* Set the instance already, so we can use AIObject::Set commands */
 	Company::Get(_current_company)->ai_instance = this;
-	AIInstance::current_instance = this;
 
 	this->controller = new AIController();
 	this->storage    = new AIStorage();
