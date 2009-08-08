@@ -29,6 +29,11 @@ struct Subsidy : SubsidyPool::PoolItem<&_subsidy_pool> {
 	FORCEINLINE Subsidy() { }
 
 	/**
+	 * (Empty) destructor has to be defined else operator delete might be called with NULL parameter
+	 */
+	FORCEINLINE ~Subsidy() { }
+
+	/**
 	 * Tests whether this subsidy has been awarded to someone
 	 * @return is this subsidy awarded?
 	 */
