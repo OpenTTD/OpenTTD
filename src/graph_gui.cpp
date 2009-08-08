@@ -398,14 +398,19 @@ protected:
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
 		this->num_vert_lines = 24;
 
-		/* Initialise the dataset */
-		this->OnTick();
-
 		this->graph_location.left   = left;
 		this->graph_location.right  = left + GRAPH_X_POSITION_BEGINNING + this->num_vert_lines * GRAPH_X_POSITION_SEPARATION - 1;
 
 		this->graph_location.top    = top;
 		this->graph_location.bottom = top + height - 1;
+	}
+
+	void InitializeWindow(const WindowDesc *desc)
+	{
+		this->FindWindowPlacementAndResize(desc);
+
+		/* Initialise the dataset */
+		this->UpdateStatistics(true);
 	}
 
 public:
@@ -429,6 +434,15 @@ public:
 
 	virtual void OnTick()
 	{
+		this->UpdateStatistics(false);
+	}
+
+	/**
+	 * Update the statistics.
+	 * @param initialize Initialize the data structure.
+	 */
+	void UpdateStatistics(bool initialize)
+	{
 		uint excluded_companies = _legend_excluded_companies;
 
 		/* Exclude the companies which aren't valid */
@@ -449,7 +463,7 @@ public:
 			mo += 12;
 		}
 
-		if (this->excluded_data == excluded_companies && this->num_on_x_axis == nums &&
+		if (!initialize && this->excluded_data == excluded_companies && this->num_on_x_axis == nums &&
 				this->year == yr && this->month == mo) {
 			/* There's no reason to get new stats */
 			return;
@@ -486,7 +500,7 @@ struct OperatingProfitGraphWindow : BaseGraphWindow {
 	OperatingProfitGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, window_number, 2, 18, 136, true, STR_JUST_CURRCOMPACT)
 	{
-		this->FindWindowPlacementAndResize(desc);
+		this->InitializeWindow(desc);
 	}
 
 	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
@@ -534,7 +548,7 @@ struct IncomeGraphWindow : BaseGraphWindow {
 	IncomeGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, window_number, 2, 18, 104, false, STR_JUST_CURRCOMPACT)
 	{
-		this->FindWindowPlacementAndResize(desc);
+		this->InitializeWindow(desc);
 	}
 
 	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
@@ -581,7 +595,7 @@ struct DeliveredCargoGraphWindow : BaseGraphWindow {
 	DeliveredCargoGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, window_number, 2, 18, 104, false, STR_JUST_COMMA)
 	{
-		this->FindWindowPlacementAndResize(desc);
+		this->InitializeWindow(desc);
 	}
 
 	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
@@ -636,7 +650,7 @@ struct PerformanceHistoryGraphWindow : BaseGraphWindow {
 	PerformanceHistoryGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, window_number, 2, 18, 200, false, STR_JUST_COMMA)
 	{
-		this->FindWindowPlacementAndResize(desc);
+		this->InitializeWindow(desc);
 	}
 
 	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
@@ -690,7 +704,7 @@ struct CompanyValueGraphWindow : BaseGraphWindow {
 	CompanyValueGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, window_number, 2, 18, 200, false, STR_JUST_CURRCOMPACT)
 	{
-		this->FindWindowPlacementAndResize(desc);
+		this->InitializeWindow(desc);
 	}
 
 	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
