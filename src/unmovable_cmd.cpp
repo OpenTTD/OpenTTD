@@ -23,6 +23,7 @@
 #include "cheat_type.h"
 #include "landscape_type.h"
 #include "unmovable.h"
+#include "cargopacket.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -62,6 +63,8 @@ static CommandCost DestroyCompanyHQ(CompanyID cid, DoCommandFlag flags)
 		DoClearSquare(t + TileDiffXY(1, 1));
 		c->location_of_HQ = INVALID_TILE; // reset HQ position
 		InvalidateWindow(WC_COMPANY, cid);
+
+		CargoPacket::InvalidateAllFrom(ST_HEADQUARTERS, cid);
 	}
 
 	/* cost of relocating company is 1% of company value */
@@ -335,7 +338,7 @@ static void TileLoop_Unmovable(TileIndex tile)
 	if (GB(r, 0, 8) < (256 / 4 / (6 - level))) {
 		uint amt = GB(r, 0, 8) / 8 / 4 + 1;
 		if (_economy.fluct <= 0) amt = (amt + 1) >> 1;
-		MoveGoodsToStation(tile, 2, 2, CT_PASSENGERS, amt);
+		MoveGoodsToStation(tile, 2, 2, CT_PASSENGERS, amt, ST_HEADQUARTERS, GetTileOwner(tile));
 	}
 
 	/* Top town building generates 90, HQ can make up to 196. The
@@ -344,7 +347,7 @@ static void TileLoop_Unmovable(TileIndex tile)
 	if (GB(r, 8, 8) < (196 / 4 / (6 - level))) {
 		uint amt = GB(r, 8, 8) / 8 / 4 + 1;
 		if (_economy.fluct <= 0) amt = (amt + 1) >> 1;
-		MoveGoodsToStation(tile, 2, 2, CT_MAIL, amt);
+		MoveGoodsToStation(tile, 2, 2, CT_MAIL, amt, ST_HEADQUARTERS, GetTileOwner(tile));
 	}
 }
 

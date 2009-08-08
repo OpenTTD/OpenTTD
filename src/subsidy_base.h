@@ -7,18 +7,17 @@
 
 #include "cargo_type.h"
 #include "company_type.h"
-#include "station_type.h"
-
-typedef uint16 SubsidyID; ///< ID of a subsidy
+#include "subsidy_type.h"
 
 /** Struct about subsidies, offered and awarded */
 struct Subsidy {
 	CargoID cargo_type;      ///< Cargo type involved in this subsidy, CT_INVALID for invalid subsidy
-	byte age;                ///< Subsidy age; < 12 is unawarded, >= 12 is awarded
-	SourceTypeByte src_type; ///< Source of subsidised path
-	SourceTypeByte dst_type; ///< Destination of subsidised path
-	uint16 src;              ///< Index of source. Either TownID, IndustryID or StationID, when awarded
-	uint16 dst;              ///< Index of destination. Either TownID, IndustryID or StationID, when awarded
+	byte remaining;          ///< Remaining months when this subsidy is valid
+	CompanyByte awarded;     ///< Subsidy is awarded to this company; INVALID_COMPANY if it's not awarded to anyone
+	SourceTypeByte src_type; ///< Source of subsidised path (ST_INDUSTRY or ST_TOWN)
+	SourceTypeByte dst_type; ///< Destination of subsidised path (ST_INDUSTRY or ST_TOWN)
+	SourceID src;            ///< Index of source. Either TownID or IndustryID
+	SourceID dst;            ///< Index of destination. Either TownID or IndustryID
 
 	/**
 	 * Tests whether this subsidy has been awarded to someone
@@ -26,10 +25,10 @@ struct Subsidy {
 	 */
 	FORCEINLINE bool IsAwarded() const
 	{
-		return this->age >= 12;
+		return this->awarded != INVALID_COMPANY;
 	}
 
-	void AwardTo(StationID from, StationID to, CompanyID company);
+	void AwardTo(CompanyID company);
 
 	/**
 	 * Determines index of this subsidy

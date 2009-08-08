@@ -4,6 +4,7 @@
 
 #include "ai_subsidy.hpp"
 #include "ai_date.hpp"
+#include "ai_log.hpp"
 #include "../../subsidy_base.h"
 #include "../../station_base.h"
 #include "../../cargotype.h"
@@ -24,7 +25,7 @@
 {
 	if (!IsAwarded(subsidy_id)) return AICompany::COMPANY_INVALID;
 
-	return (AICompany::CompanyID)((byte)::Station::Get(::Subsidy::Get(subsidy_id)->src)->owner);
+	return (AICompany::CompanyID)((byte)::Subsidy::Get(subsidy_id)->awarded);
 }
 
 /* static */ int32 AISubsidy::GetExpireDate(SubsidyID subsidy_id)
@@ -34,11 +35,7 @@
 	int year = AIDate::GetYear(AIDate::GetCurrentDate());
 	int month = AIDate::GetMonth(AIDate::GetCurrentDate());
 
-	if (IsAwarded(subsidy_id)) {
-		month += 24 - ::Subsidy::Get(subsidy_id)->age;
-	} else {
-		month += 12 - ::Subsidy::Get(subsidy_id)->age;
-	}
+	month += ::Subsidy::Get(subsidy_id)->remaining;
 
 	year += (month - 1) / 12;
 	month = ((month - 1) % 12) + 1;
@@ -64,6 +61,11 @@
 {
 	if (!IsValidSubsidy(subsidy_id)) return INVALID_STATION;
 
+	if (IsAwarded(subsidy_id)) {
+		AILog::Error("AISubsidy::GetSource returned INVALID_STATION due to internal changes in the Subsidy logic.");
+		return INVALID_STATION;
+	}
+
 	return ::Subsidy::Get(subsidy_id)->src;
 }
 
@@ -77,6 +79,11 @@
 /* static */ int32 AISubsidy::GetDestination(SubsidyID subsidy_id)
 {
 	if (!IsValidSubsidy(subsidy_id)) return INVALID_STATION;
+
+	if (IsAwarded(subsidy_id)) {
+		AILog::Error("AISubsidy::GetDestination returned INVALID_STATION due to internal changes in the Subsidy logic.");
+		return INVALID_STATION;
+	}
 
 	return ::Subsidy::Get(subsidy_id)->dst;
 }

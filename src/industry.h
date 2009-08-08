@@ -19,6 +19,7 @@
 #include "tile_type.h"
 #include "company_type.h"
 #include "strings_type.h"
+#include "subsidy_type.h"
 
 enum {
 	INVALID_INDUSTRY       = 0xFFFF,
@@ -124,6 +125,8 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	byte random_colour;                 ///< randomized colour of the industry, for display purpose
 	Year last_prod_year;                ///< last year of production
 	byte was_cargo_delivered;           ///< flag that indicate this has been the closest industry chosen for cargo delivery by a station. see DeliverGoodsToIndustry
+
+	PartOfSubsidyByte part_of_subsidy;  ///< NOSAVE: is this industry a source/destination of a subsidy?
 
 	OwnerByte founder;                  ///< Founder of the industry
 	Date construction_date;             ///< Date of the construction of the industry

@@ -300,6 +300,7 @@ strings_func.h
 strings_type.h
 subsidy_base.h
 subsidy_func.h
+subsidy_type.h
 tar_type.h
 terraform_gui.h
 textbuf_gui.h

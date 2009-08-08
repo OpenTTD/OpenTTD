@@ -32,6 +32,7 @@
 #include "../economy_base.h"
 #include "../animated_tile_func.h"
 #include "../subsidy_base.h"
+#include "../subsidy_func.h"
 
 #include "table/strings.h"
 
@@ -230,6 +231,7 @@ static bool InitializeWindowsAndCaches()
 	SetCachedEngineCounts();
 
 	Station::RecomputeIndustriesNearForAll();
+	RebuildSubsidisedSourceAndDestinationCache();
 
 	/* Towns have a noise controlled number of airports system
 	 * So each airport's noise value must be added to the town->noise_reached value
@@ -1868,17 +1870,15 @@ bool AfterLoadGame()
 		}
 	}
 
-	{
-		/* Delete invalid subsidies possibly present in old versions (but converted to new savegame) */
+	if (CheckSavegameVersion(125)) {
+		/* Convert old subsidies */
 		Subsidy *s;
 		FOR_ALL_SUBSIDIES(s) {
-			if (s->IsAwarded()) {
-				/* Station -> Station */
-				const Station *from = Station::GetIfValid(s->src);
-				const Station *to = Station::GetIfValid(s->dst);
-				s->src_type = s->dst_type = ST_STATION;
-				if (from != NULL && to != NULL && from->owner == to->owner && Company::IsValidID(from->owner)) continue;
-			} else {
+			/* Convert only nonawarded subsidies. The original source and destination town/industry
+			 * anymore for awarded subsidies, so invalidate them. */
+			if (s->remaining < 12) {
+				s->remaining = 12 - s->remaining; // convert "age" to "remaining"
+				s->awarded = INVALID_COMPANY; // not awarded to anyone
 				const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
 				switch (cs->town_effect) {
 					case TE_PASSENGERS:
@@ -1901,6 +1901,7 @@ bool AfterLoadGame()
 						break;
 				}
 			}
+			/* Awarded subsidy or invalid source/destination, invalidate */
 			s->cargo_type = CT_INVALID;
 		}
 	}

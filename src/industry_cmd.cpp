@@ -167,11 +167,12 @@ Industry::~Industry()
 
 	DecIndustryTypeCount(this->type);
 
-	DeleteSubsidyWith(ST_INDUSTRY, this->index);
 	DeleteIndustryNews(this->index);
 	DeleteWindowById(WC_INDUSTRY_VIEW, this->index);
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 0);
 
+	DeleteSubsidyWith(ST_INDUSTRY, this->index);
+	CargoPacket::InvalidateAllFrom(ST_INDUSTRY, this->index);
 	Station::RecomputeIndustriesNearForAll();
 }
 
@@ -479,7 +480,7 @@ static void TransportIndustryGoods(TileIndex tile)
 
 			i->this_month_production[j] += cw;
 
-			uint am = MoveGoodsToStation(i->xy, i->width, i->height, i->produced_cargo[j], cw);
+			uint am = MoveGoodsToStation(i->xy, i->width, i->height, i->produced_cargo[j], cw, ST_INDUSTRY, i->index);
 			i->this_month_transported[j] += am;
 
 			moved_cargo |= (am != 0);

@@ -1485,6 +1485,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\subsidy_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\tar_type.h"
 				>
 			</File>

@@ -85,15 +85,15 @@ public:
 };
 
 
-/** Types of subsidy source and destination */
+/** Types of cargo source and destination */
 enum SourceType {
-	ST_INDUSTRY, ///< Source/destination is an industry
-	ST_TOWN,     ///< Source/destination is a town
-	ST_STATION,  ///< Source/destination is a station
+	ST_INDUSTRY,     ///< Source/destination is an industry
+	ST_TOWN,         ///< Source/destination is a town
+	ST_HEADQUARTERS, ///< Source/destination are company headquarters
 };
 typedef SimpleTinyEnumT<SourceType, byte> SourceTypeByte;
 
-typedef uint16 SourceID; ///< Contains either industry ID, town ID or station ID (or INVALID_SOURCE)
+typedef uint16 SourceID; ///< Contains either industry ID, town ID or company ID (or INVALID_SOURCE)
 static const SourceID INVALID_SOURCE = 0xFFFF; ///< Invalid/unknown index of source
 
 #endif /* CARGO_TYPE_H */

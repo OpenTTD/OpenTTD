@@ -328,11 +328,13 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		Company::Get(old_owner)->money = UINT64_MAX >> 2; // jackpot ;p
 	}
 
-	if (new_owner == INVALID_OWNER) {
-		Subsidy *s;
-		FOR_ALL_SUBSIDIES(s) {
-			if (s->IsAwarded() && Station::Get(s->dst)->owner == old_owner) {
-				s->cargo_type = CT_INVALID;
+	Subsidy *s;
+	FOR_ALL_SUBSIDIES(s) {
+		if (s->awarded == old_owner) {
+			if (new_owner == INVALID_OWNER) {
+				DeleteSubsidy(s);
+			} else {
+				s->awarded = new_owner;
 			}
 		}
 	}
@@ -916,45 +918,38 @@ static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int nu
 /**
  * Delivers goods to industries/towns and calculates the payment
  * @param num_pieces amount of cargo delivered
- * @param source Originstation of the cargo
  * @param dest Station the cargo has been unloaded
  * @param source_tile The origin of the cargo for distance calculation
  * @param days_in_transit Travel time
  * @param company The company delivering the cargo
- * The cargo is just added to the stockpile of the industry. It is due to the caller to trigger the industry's production machinery
+ * @param src_type Type of source of cargo (industry, town, headquarters)
+ * @param src Index of source of cargo
+ * @return Revenue for delivering cargo
+ * @note The cargo is just added to the stockpile of the industry. It is due to the caller to trigger the industry's production machinery
  */
-static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, StationID dest, TileIndex source_tile, byte days_in_transit, Company *company)
+static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID dest, TileIndex source_tile, byte days_in_transit, Company *company, SourceType src_type, SourceID src)
 {
-	bool subsidised = false;
-
 	assert(num_pieces > 0);
 
 	/* Update company statistics */
 	company->cur_economy.delivered_cargo += num_pieces;
 	SetBit(company->cargo_types, cargo_type);
 
-	const Station *s_to = Station::Get(dest);
-
-	if (source != INVALID_STATION) {
-		const Station *s_from = Station::Get(source);
-
-		/* Check if a subsidy applies. */
-		subsidised = CheckSubsidised(s_from, s_to, cargo_type, company->index);
-	}
+	const Station *st = Station::Get(dest);
 
 	/* Increase town's counter for some special goods types */
 	const CargoSpec *cs = CargoSpec::Get(cargo_type);
-	if (cs->town_effect == TE_FOOD) s_to->town->new_act_food += num_pieces;
-	if (cs->town_effect == TE_WATER) s_to->town->new_act_water += num_pieces;
+	if (cs->town_effect == TE_FOOD) st->town->new_act_food += num_pieces;
+	if (cs->town_effect == TE_WATER) st->town->new_act_water += num_pieces;
 
 	/* Give the goods to the industry. */
-	DeliverGoodsToIndustry(s_to, cargo_type, num_pieces);
+	DeliverGoodsToIndustry(st, cargo_type, num_pieces);
 
 	/* Determine profit */
-	Money profit = GetTransportedGoodsIncome(num_pieces, DistanceManhattan(source_tile, s_to->xy), days_in_transit, cargo_type);
+	Money profit = GetTransportedGoodsIncome(num_pieces, DistanceManhattan(source_tile, st->xy), days_in_transit, cargo_type);
 
 	/* Modify profit if a subsidy is in effect */
-	if (subsidised) {
+	if (CheckSubsidised(cargo_type, company->index, src_type, src, st))  {
 		switch (_settings_game.difficulty.subsidy_multiplier) {
 			case 0:  profit += profit >> 1; break;
 			case 1:  profit *= 2; break;
@@ -1051,7 +1046,7 @@ void CargoPayment::PayFinalDelivery(CargoPacket *cp, uint count)
 	}
 
 	/* Handle end of route payment */
-	Money profit = DeliverGoods(count, this->ct, cp->source, this->current_station, cp->source_xy, cp->days_in_transit, this->owner);
+	Money profit = DeliverGoods(count, this->ct, this->current_station, cp->source_xy, cp->days_in_transit, this->owner, cp->source_type, cp->source_id);
 	this->route_profit += profit;
 
 	/* The vehicle's profit is whatever route profit there is minus feeder shares. */

@@ -2840,9 +2840,9 @@ void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint rad
 	}
 }
 
-static void UpdateStationWaiting(Station *st, CargoID type, uint amount)
+static void UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceType source_type, SourceID source_id)
 {
-	st->goods[type].cargo.Append(new CargoPacket(st->index, amount));
+	st->goods[type].cargo.Append(new CargoPacket(st->index, amount, source_type, source_id));
 	SetBit(st->goods[type].acceptance_pickup, GoodsEntry::PICKUP);
 
 	StationAnimationTrigger(st, st->xy, STAT_ANIM_NEW_CARGO, type);
@@ -2926,7 +2926,7 @@ void FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod, StationList
 	}
 }
 
-uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
+uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount, SourceType source_type, SourceID source_id)
 {
 	/* Return if nothing to do. Also the rounding below fails for 0. */
 	if (amount == 0) return 0;
@@ -2968,7 +2968,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 	if (st2 == NULL) {
 		/* only one station around */
 		uint moved = amount * best_rating1 / 256 + 1;
-		UpdateStationWaiting(st1, type, moved);
+		UpdateStationWaiting(st1, type, moved, source_type, source_id);
 		return moved;
 	}
 
@@ -2987,13 +2987,13 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 	if (t != 0) {
 		moved = t * best_rating1 / 256 + 1;
 		amount -= t;
-		UpdateStationWaiting(st1, type, moved);
+		UpdateStationWaiting(st1, type, moved, source_type, source_id);
 	}
 
 	if (amount != 0) {
 		amount = amount * best_rating2 / 256 + 1;
 		moved += amount;
-		UpdateStationWaiting(st2, type, amount);
+		UpdateStationWaiting(st2, type, amount, source_type, source_id);
 	}
 
 	return moved;

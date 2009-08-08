@@ -83,7 +83,6 @@ struct SubsidyListWindow : Window {
 		switch (s->src_type) {
 			case ST_INDUSTRY: xy = Industry::Get(s->src)->xy; break;
 			case ST_TOWN:     xy =     Town::Get(s->src)->xy; break;
-			case ST_STATION:  xy =  Station::Get(s->src)->xy; break;
 			default: NOT_REACHED();
 		}
 
@@ -94,10 +93,8 @@ struct SubsidyListWindow : Window {
 			switch (s->dst_type) {
 				case ST_INDUSTRY: xy = Industry::Get(s->dst)->xy; break;
 				case ST_TOWN:     xy =     Town::Get(s->dst)->xy; break;
-				case ST_STATION:  xy =  Station::Get(s->dst)->xy; break;
 				default: NOT_REACHED();
 			}
-
 
 			if (_ctrl_pressed) {
 				ShowExtraViewPortWindow(xy);
@@ -129,7 +126,7 @@ struct SubsidyListWindow : Window {
 			if (!s->IsAwarded()) {
 				/* Displays the two offered towns */
 				SetupSubsidyDecodeParam(s, 1);
-				SetDParam(7, _date - ymd.day + 384 - s->age * 32);
+				SetDParam(7, _date - ymd.day + s->remaining * 32);
 				DrawString(x + 2, right - 2, y, STR_SUBSIDIES_OFFERED_FROM_TO);
 
 				y += FONT_HEIGHT_NORMAL;
@@ -150,8 +147,8 @@ struct SubsidyListWindow : Window {
 		FOR_ALL_SUBSIDIES(s) {
 			if (s->IsAwarded()) {
 				SetupSubsidyDecodeParam(s, 1);
-				SetDParam(3, Station::Get(s->dst)->owner);
-				SetDParam(4, _date - ymd.day + 768 - s->age * 32);
+				SetDParam(7, s->awarded);
+				SetDParam(8, _date - ymd.day + s->remaining * 32);
 
 				/* Displays the two connected stations */
 				DrawString(x + 2, right - 2, y, STR_SUBSIDIES_SUBSIDISED_FROM_TO);

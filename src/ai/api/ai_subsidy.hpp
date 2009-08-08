@@ -69,12 +69,12 @@ public:
 
 	/**
 	 * Return the source TownID/IndustryID/StationID the subsidy is for.
-	 * 1) IsAwarded(subsidy_id) -> return the StationID the subsidy is awarded to.
-	 * 2) !IsAwarded(subsidy_id) && SourceIsTown(subsidy_id) -> return the TownID.
-	 * 3) !IsAwarded(subsidy_id) && !SourceIsTown(subsidy_id) -> return the IndustryID.
+	 * \li IsAwarded(subsidy_id) -> return INVALID_STATION.
+	 * \li !IsAwarded(subsidy_id) && SourceIsTown(subsidy_id) -> return the TownID.
+	 * \li !IsAwarded(subsidy_id) && !SourceIsTown(subsidy_id) -> return the IndustryID.
 	 * @param subsidy_id The SubsidyID to check.
 	 * @pre IsValidSubsidy(subsidy_id).
-	 * @return One of TownID/IndustryID/StationID.
+	 * @return One of TownID/IndustryID/INVALID_STATION.
 	 */
 	static int32 GetSource(SubsidyID subsidy_id);
 
@@ -88,12 +88,12 @@ public:
 
 	/**
 	 * Return the destination TownID/IndustryID/StationID the subsidy is for.
-	 * 1) IsAwarded(subsidy_id) -> return the StationID the subsidy is awarded to.
-	 * 2) !IsAwarded(subsidy_id) && SourceIsTown(subsidy_id) -> return the TownID.
-	 * 3) !IsAwarded(subsidy_id) && !SourceIsTown(subsidy_id) -> return the IndustryID.
+	 * \li IsAwarded(subsidy_id) -> return INVALID_STATION.
+	 * \li !IsAwarded(subsidy_id) && DestinationIsTown(subsidy_id) -> return the TownID.
+	 * \li !IsAwarded(subsidy_id) && !DestinationIsTown(subsidy_id) -> return the IndustryID.
 	 * @param subsidy_id the SubsidyID to check.
 	 * @pre IsValidSubsidy(subsidy_id).
-	 * @return One of TownID/IndustryID/StationID.
+	 * @return One of TownID/IndustryID/INVALID_STATION.
 	 */
 	static int32 GetDestination(SubsidyID subsidy_id);
 };

@@ -9,6 +9,7 @@
 #include "economy_type.h"
 #include "tile_type.h"
 #include "station_type.h"
+#include "cargo_type.h"
 #include <list>
 
 typedef uint32 CargoPacketID;
@@ -30,13 +31,16 @@ struct CargoPacket : CargoPacketPool::PoolItem<&_cargopacket_pool> {
 	uint16 count;           ///< The amount of cargo in this packet
 	byte days_in_transit;   ///< Amount of days this packet has been in transit
 
+	SourceTypeByte source_type; ///< Type of #source_id
+	SourceID source_id;         ///< Index of source, INVALID_SOURCE if unknown/invalid
+
 	/**
 	 * Creates a new cargo packet
 	 * @param source the source of the packet
 	 * @param count  the number of cargo entities to put in this packet
 	 * @pre count != 0 || source == INVALID_STATION
 	 */
-	CargoPacket(StationID source = INVALID_STATION, uint16 count = 0);
+	CargoPacket(StationID source = INVALID_STATION, uint16 count = 0, SourceType source_type = ST_INDUSTRY, SourceID source_id = INVALID_SOURCE);
 
 	/** Destroy the packet */
 	~CargoPacket() { }
@@ -49,8 +53,11 @@ struct CargoPacket : CargoPacketPool::PoolItem<&_cargopacket_pool> {
 	 */
 	FORCEINLINE bool SameSource(const CargoPacket *cp) const
 	{
-		return this->source_xy == cp->source_xy && this->days_in_transit == cp->days_in_transit;
+		return this->source_xy == cp->source_xy && this->days_in_transit == cp->days_in_transit &&
+				this->source_type == cp->source_type && this->source_id == cp->source_id;
 	}
+
+	static void InvalidateAllFrom(SourceType src_type, SourceID src);
 };
 
 /**

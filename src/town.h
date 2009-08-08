@@ -20,6 +20,7 @@
 #include "map_type.h"
 #include "command_type.h"
 #include "town_map.h"
+#include "subsidy_type.h"
 
 template <typename T>
 struct BuildingCounts {
@@ -106,6 +107,8 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	/* If this is a larger town, and should grow more quickly. */
 	bool larger_town;
 	TownLayoutByte layout; ///< town specific road layout
+
+	PartOfSubsidyByte part_of_subsidy; ///< NOSAVE: is this town a source/destination of a subsidy?
 
 	/* NOSAVE: UpdateTownRadius updates this given the house count. */
 	uint32 squared_town_zone_radius[HZB_END];
