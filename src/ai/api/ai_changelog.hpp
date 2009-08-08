@@ -12,6 +12,10 @@
  * \li AISign::GetMaxSignID
  * \li AITile::GetHeight
  * \li AIBaseStation::WAYPOINT_INVALID
+ * \li AISubsidy::SourceIsTown
+ * \li AISubsidy::GetSource
+ * \li AISubsidy::DestinationIsTown
+ * \li AISubsidy::GetDestination
  *
  * \b 0.8.0
  *
@@ -19,6 +23,11 @@
  * \li AIBaseStation
  * \li AIBuoyList
  * \li AIRail::RemoveRailWaypointTileRect
+ * \li AISubsidy::SubsidyParticipantType
+ * \li AISubsidy::GetSourceType
+ * \li AISubsidy::GetSourceIndex
+ * \li AISubsidy::GetDestinationType
+ * \li AISubsidy::GetDestinationIndex
  *
  * Other changes:
  * \li The GetName / SetName / GetLocation functions were moved from AIStation
@@ -30,7 +39,7 @@
  *     savegames are invalid
  * \li WAYPOINT_INVALID is now deprecated, use STATION_INVALID instead
  * \li AISubsidy::GetSource and AISubsidy::GetDestination return STATION_INVALID
- *     for awarded subsidies
+ *     for awarded subsidies. They are deprecated as well
  * \li AIs can create subclasses of API classes and use API constants as part
  *     of their own constants
  * \li AIVehicleList_Station now also works for waypoints

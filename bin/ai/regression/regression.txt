@@ -8524,15 +8524,15 @@
 
   First Subsidy Test
       --Subsidy (0) --
-        IsValidSubsidy():     true
-        IsAwarded():          false
-        GetAwardedTo():       -1
-        GetExpireDate():      714080
-        SourceIsTown():       true
-        GetSource():          15
-        DestionationIsTown(): true
-        GetDestionation():    7
-        GetCargoType():       0
+        IsValidSubsidy():      true
+        IsAwarded():           false
+        GetAwardedTo():        -1
+        GetExpireDate():       714080
+        GetSourceType():       1
+        GetSourceIndex():      15
+        GetDestinationType():  1
+        GetDestinationIndex(): 7
+        GetCargoType():        0
   GetNextEvent:          instance
     GetEventType:        6
       Unknown Event

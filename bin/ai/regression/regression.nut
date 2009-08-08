@@ -1636,15 +1636,15 @@ function Regression::Vehicle()
 function Regression::PrintSubsidy(subsidy_id)
 {
 	print("      --Subsidy (" + subsidy_id + ") --");
-	print("        IsValidSubsidy():     " + AISubsidy.IsValidSubsidy(subsidy_id));
-	print("        IsAwarded():          " + AISubsidy.IsAwarded(subsidy_id));
-	print("        GetAwardedTo():       " + AISubsidy.GetAwardedTo(subsidy_id));
-	print("        GetExpireDate():      " + AISubsidy.GetExpireDate(subsidy_id));
-	print("        SourceIsTown():       " + AISubsidy.SourceIsTown(subsidy_id));
-	print("        GetSource():          " + AISubsidy.GetSource(subsidy_id));
-	print("        DestionationIsTown(): " + AISubsidy.DestinationIsTown(subsidy_id));
-	print("        GetDestionation():    " + AISubsidy.GetDestination(subsidy_id));
-	print("        GetCargoType():       " + AISubsidy.GetCargoType(subsidy_id));
+	print("        IsValidSubsidy():      " + AISubsidy.IsValidSubsidy(subsidy_id));
+	print("        IsAwarded():           " + AISubsidy.IsAwarded(subsidy_id));
+	print("        GetAwardedTo():        " + AISubsidy.GetAwardedTo(subsidy_id));
+	print("        GetExpireDate():       " + AISubsidy.GetExpireDate(subsidy_id));
+	print("        GetSourceType():       " + AISubsidy.GetSourceType(subsidy_id));
+	print("        GetSourceIndex():      " + AISubsidy.GetSourceIndex(subsidy_id));
+	print("        GetDestinationType():  " + AISubsidy.GetDestinationType(subsidy_id));
+	print("        GetDestinationIndex(): " + AISubsidy.GetDestinationIndex(subsidy_id));
+	print("        GetCargoType():        " + AISubsidy.GetCargoType(subsidy_id));
 }
 
 

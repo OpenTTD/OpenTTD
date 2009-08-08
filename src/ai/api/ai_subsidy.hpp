@@ -16,6 +16,16 @@ public:
 	static const char *GetClassName() { return "AISubsidy"; }
 
 	/**
+	 * Enumeration for source and destination of a subsidy.
+	 * @note The list of values may grow in future.
+	 */
+	enum SubsidyParticipantType {
+		SPT_INDUSTRY =    0, //!< Subsidy participant is an industry
+		SPT_TOWN     =    1, //!< Subsidy participant is a town
+		SPT_INVALID  = 0xFF, //!< Invalid/unknown participant type
+	};
+
+	/**
 	 * Check whether this is a valid SubsidyID.
 	 * @param subsidy_id The SubsidyID to check.
 	 * @return True if and only if this subsidy is still valid.
@@ -64,6 +74,7 @@ public:
 	 * @param subsidy_id The SubsidyID to check.
 	 * @pre IsValidSubsidy(subsidy_id) && !IsAwarded(subsidy_id).
 	 * @return True if the source is a town, false if it is an industry.
+	 * @deprecated Use GetSourceType() instead.
 	 */
 	static bool SourceIsTown(SubsidyID subsidy_id);
 
@@ -75,14 +86,34 @@ public:
 	 * @param subsidy_id The SubsidyID to check.
 	 * @pre IsValidSubsidy(subsidy_id).
 	 * @return One of TownID/IndustryID/INVALID_STATION.
+	 * @deprecated Use GetSourceIndex() instead.
 	 */
 	static int32 GetSource(SubsidyID subsidy_id);
+
+	/**
+	 * Returns the type of source of subsidy.
+	 * @param subsidy_id The SubsidyID to check.
+	 * @pre IsValidSubsidy(subsidy_id).
+	 * @return Type of source of subsidy.
+	 */
+	static SubsidyParticipantType GetSourceType(SubsidyID subsidy_id);
+
+	/**
+	 * Return the source IndustryID/TownID the subsidy is for.
+	 * \li GetSourceType(subsidy_id) == SPT_INDUSTRY -> return the IndustryID.
+	 * \li GetSourceType(subsidy_id) == SPT_TOWN -> return the TownID.
+	 * @param subsidy_id The SubsidyID to check.
+	 * @pre IsValidSubsidy(subsidy_id).
+	 * @return One of TownID/IndustryID.
+	 */
+	static int32 GetSourceIndex(SubsidyID subsidy_id);
 
 	/**
 	 * Is the destination of the subsidy a town or an industry.
 	 * @param subsidy_id The SubsidyID to check.
 	 * @pre IsValidSubsidy(subsidy_id) && !IsAwarded(subsidy_id).
 	 * @return True if the destination is a town, false if it is an industry.
+	 * @deprecated Use GetDestinationType() instead.
 	 */
 	static bool DestinationIsTown(SubsidyID subsidy_id);
 
@@ -94,8 +125,27 @@ public:
 	 * @param subsidy_id the SubsidyID to check.
 	 * @pre IsValidSubsidy(subsidy_id).
 	 * @return One of TownID/IndustryID/INVALID_STATION.
+	 * @deprecated Use GetDestinationIndex() instead.
 	 */
 	static int32 GetDestination(SubsidyID subsidy_id);
+
+	/**
+	 * Returns the type of destination of subsidy.
+	 * @param subsidy_id The SubsidyID to check.
+	 * @pre IsValidSubsidy(subsidy_id).
+	 * @return Type of destination of subsidy.
+	 */
+	static SubsidyParticipantType GetDestinationType(SubsidyID subsidy_id);
+
+	/**
+	 * Return the destination IndustryID/TownID the subsidy is for.
+	 * \li GetDestinationType(subsidy_id) == SPT_INDUSTRY -> return the IndustryID.
+	 * \li GetDestinationType(subsidy_id) == SPT_TOWN -> return the TownID.
+	 * @param subsidy_id the SubsidyID to check.
+	 * @pre IsValidSubsidy(subsidy_id).
+	 * @return One of TownID/IndustryID.
+	 */
+	static int32 GetDestinationIndex(SubsidyID subsidy_id);
 };
 
 #endif /* AI_SUBSIDY_HPP */

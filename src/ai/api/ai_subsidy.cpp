@@ -52,6 +52,7 @@
 
 /* static */ bool AISubsidy::SourceIsTown(SubsidyID subsidy_id)
 {
+	AILog::Warning("AISubsidy::SourceIsTown is deprecated and will be removed soon, please use AISubsidy::GetSourceType instead.");
 	if (!IsValidSubsidy(subsidy_id) || IsAwarded(subsidy_id)) return false;
 
 	return ::Subsidy::Get(subsidy_id)->src_type == ST_TOWN;
@@ -59,6 +60,7 @@
 
 /* static */ int32 AISubsidy::GetSource(SubsidyID subsidy_id)
 {
+	AILog::Warning("AISubsidy::GetSource is deprecated and will be removed soon, please use AISubsidy::GetSourceIndex instead.");
 	if (!IsValidSubsidy(subsidy_id)) return INVALID_STATION;
 
 	if (IsAwarded(subsidy_id)) {
@@ -69,8 +71,23 @@
 	return ::Subsidy::Get(subsidy_id)->src;
 }
 
+/* static */ AISubsidy::SubsidyParticipantType AISubsidy::GetSourceType(SubsidyID subsidy_id)
+{
+	if (!IsValidSubsidy(subsidy_id)) return SPT_INVALID;
+
+	return (SubsidyParticipantType)(uint)::Subsidy::Get(subsidy_id)->src_type;
+}
+
+/* static */ int32 AISubsidy::GetSourceIndex(SubsidyID subsidy_id)
+{
+	if (!IsValidSubsidy(subsidy_id)) return INVALID_STATION;
+
+	return ::Subsidy::Get(subsidy_id)->src;
+}
+
 /* static */ bool AISubsidy::DestinationIsTown(SubsidyID subsidy_id)
 {
+	AILog::Warning("AISubsidy::DestinationIsTown is deprecated and will be removed soon, please use AISubsidy::GetDestinationType instead.");
 	if (!IsValidSubsidy(subsidy_id) || IsAwarded(subsidy_id)) return false;
 
 	return ::Subsidy::Get(subsidy_id)->dst_type == ST_TOWN;
@@ -78,12 +95,27 @@
 
 /* static */ int32 AISubsidy::GetDestination(SubsidyID subsidy_id)
 {
+	AILog::Warning("AISubsidy::GetDestination is deprecated and will be removed soon, please use AISubsidy::GetDestinationIndex instead.");
 	if (!IsValidSubsidy(subsidy_id)) return INVALID_STATION;
 
 	if (IsAwarded(subsidy_id)) {
 		AILog::Error("AISubsidy::GetDestination returned INVALID_STATION due to internal changes in the Subsidy logic.");
 		return INVALID_STATION;
 	}
+
+	return ::Subsidy::Get(subsidy_id)->dst;
+}
+
+/* static */ AISubsidy::SubsidyParticipantType AISubsidy::GetDestinationType(SubsidyID subsidy_id)
+{
+	if (!IsValidSubsidy(subsidy_id)) return SPT_INVALID;
+
+	return (SubsidyParticipantType)(uint)::Subsidy::Get(subsidy_id)->dst_type;
+}
+
+/* static */ int32 AISubsidy::GetDestinationIndex(SubsidyID subsidy_id)
+{
+	if (!IsValidSubsidy(subsidy_id)) return INVALID_STATION;
 
 	return ::Subsidy::Get(subsidy_id)->dst;
 }
